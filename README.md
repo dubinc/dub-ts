@@ -22,7 +22,9 @@ The full API of this library can be found in [api.md](https://www.github.com/dub
 ```js
 import Dub from 'dub';
 
-const dub = new Dub();
+const dub = new Dub({
+  apiKey: process.env['DUB_API_KEY'], // This is the default and can be omitted
+});
 
 async function main() {
   const projectDetails = await dub.projects.retrieve('REPLACE_ME');
@@ -39,7 +41,9 @@ This library includes TypeScript definitions for all request params and response
 ```ts
 import Dub from 'dub';
 
-const dub = new Dub();
+const dub = new Dub({
+  apiKey: process.env['DUB_API_KEY'], // This is the default and can be omitted
+});
 
 async function main() {
   const projectDetails: Dub.ProjectDetails = await dub.projects.retrieve('REPLACE_ME');
