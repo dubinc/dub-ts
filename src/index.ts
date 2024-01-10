@@ -8,9 +8,11 @@ import * as API from 'dub/resources/index';
 
 export interface ClientOptions {
   /**
-   * Defaults to process.env['DUB_BEARER_TOKEN'].
+   * Defaults to process.env['DUB_API_KEY'].
    */
-  bearerToken?: string;
+  apiKey?: string;
+
+  projectSlug?: string | null;
 
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
@@ -71,14 +73,16 @@ export interface ClientOptions {
 
 /** API Client for interfacing with the Dub API. */
 export class Dub extends Core.APIClient {
-  bearerToken: string;
+  apiKey: string;
+  projectSlug: string | null;
 
   private _options: ClientOptions;
 
   /**
    * API Client for interfacing with the Dub API.
    *
-   * @param {string} [opts.bearerToken=process.env['DUB_BEARER_TOKEN'] ?? undefined]
+   * @param {string} [opts.apiKey=process.env['DUB_API_KEY'] ?? undefined]
+   * @param {string | null} [opts.projectSlug]
    * @param {string} [opts.baseURL=process.env['DUB_BASE_URL'] ?? https://api.dub.co] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
@@ -89,17 +93,19 @@ export class Dub extends Core.APIClient {
    */
   constructor({
     baseURL = Core.readEnv('DUB_BASE_URL'),
-    bearerToken = Core.readEnv('DUB_BEARER_TOKEN'),
+    apiKey = Core.readEnv('DUB_API_KEY'),
+    projectSlug = null,
     ...opts
   }: ClientOptions = {}) {
-    if (bearerToken === undefined) {
+    if (apiKey === undefined) {
       throw new Errors.DubError(
-        "The DUB_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Dub client with an bearerToken option, like new Dub({ bearerToken: 'My Bearer Token' }).",
+        "The DUB_API_KEY environment variable is missing or empty; either provide it, or instantiate the Dub client with an apiKey option, like new Dub({ apiKey: 'My API Key' }).",
       );
     }
 
     const options: ClientOptions = {
-      bearerToken,
+      apiKey,
+      projectSlug,
       ...opts,
       baseURL: baseURL ?? `https://api.dub.co`,
     };
@@ -113,7 +119,8 @@ export class Dub extends Core.APIClient {
     });
     this._options = options;
 
-    this.bearerToken = bearerToken;
+    this.apiKey = apiKey;
+    this.projectSlug = projectSlug;
   }
 
   links: API.Links = new API.Links(this);
@@ -131,7 +138,7 @@ export class Dub extends Core.APIClient {
   }
 
   protected override authHeaders(opts: Core.FinalRequestOptions): Core.Headers {
-    return { Authorization: `Bearer ${this.bearerToken}` };
+    return { Authorization: `Bearer ${this.apiKey}` };
   }
 
   static Dub = this;
