@@ -12,8 +12,6 @@ export interface ClientOptions {
    */
   apiKey?: string;
 
-  projectSlug?: string | null;
-
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
    *
@@ -74,7 +72,6 @@ export interface ClientOptions {
 /** API Client for interfacing with the Dub API. */
 export class Dub extends Core.APIClient {
   apiKey: string;
-  projectSlug: string | null;
 
   private _options: ClientOptions;
 
@@ -82,7 +79,6 @@ export class Dub extends Core.APIClient {
    * API Client for interfacing with the Dub API.
    *
    * @param {string} [opts.apiKey=process.env['DUB_API_KEY'] ?? undefined]
-   * @param {string | null} [opts.projectSlug]
    * @param {string} [opts.baseURL=process.env['DUB_BASE_URL'] ?? https://api.dub.co] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
@@ -94,7 +90,6 @@ export class Dub extends Core.APIClient {
   constructor({
     baseURL = Core.readEnv('DUB_BASE_URL'),
     apiKey = Core.readEnv('DUB_API_KEY'),
-    projectSlug = null,
     ...opts
   }: ClientOptions = {}) {
     if (apiKey === undefined) {
@@ -105,9 +100,8 @@ export class Dub extends Core.APIClient {
 
     const options: ClientOptions = {
       apiKey,
-      projectSlug,
       ...opts,
-      baseURL: baseURL ?? `https://api.dub.co`,
+      baseURL: baseURL || `https://api.dub.co`,
     };
 
     super({
@@ -120,7 +114,6 @@ export class Dub extends Core.APIClient {
     this._options = options;
 
     this.apiKey = apiKey;
-    this.projectSlug = projectSlug;
   }
 
   links: API.Links = new API.Links(this);

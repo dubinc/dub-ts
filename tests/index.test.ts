@@ -134,7 +134,7 @@ describe('instantiate client', () => {
     });
 
     afterEach(() => {
-      process.env['SINK_BASE_URL'] = undefined;
+      process.env['DUB_BASE_URL'] = undefined;
     });
 
     test('explicit option', () => {
@@ -146,6 +146,18 @@ describe('instantiate client', () => {
       process.env['DUB_BASE_URL'] = 'https://example.com/from_env';
       const client = new Dub({ apiKey: 'My API Key' });
       expect(client.baseURL).toEqual('https://example.com/from_env');
+    });
+
+    test('empty env variable', () => {
+      process.env['DUB_BASE_URL'] = ''; // empty
+      const client = new Dub({ apiKey: 'My API Key' });
+      expect(client.baseURL).toEqual('https://api.dub.co');
+    });
+
+    test('blank env variable', () => {
+      process.env['DUB_BASE_URL'] = '  '; // blank
+      const client = new Dub({ apiKey: 'My API Key' });
+      expect(client.baseURL).toEqual('https://api.dub.co');
     });
   });
 
