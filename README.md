@@ -4,7 +4,7 @@
 
 This library provides convenient access to the Dub REST API from server-side TypeScript or JavaScript.
 
-The API documentation can be found [here](https://dub.co/helpi).
+The API documentation can be found [here](https://dub.co/help).
 
 ## Installation
 
