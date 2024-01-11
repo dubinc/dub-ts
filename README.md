@@ -1,4 +1,4 @@
-# Dub Node API Library
+# Official Dub.co Typescript API Library
 
 [![NPM version](https://img.shields.io/npm/v/dub.svg)](https://npmjs.org/package/dub)
 
