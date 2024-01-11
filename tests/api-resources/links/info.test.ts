@@ -4,7 +4,7 @@ import Dub from 'dub';
 import { Response } from 'node-fetch';
 
 const dub = new Dub({
-  apiKey: 'My API Key',
+  token: 'My Token',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
