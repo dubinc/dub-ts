@@ -23,7 +23,7 @@ The full API of this library can be found in [api.md](https://www.github.com/dub
 import Dub from 'dub';
 
 const dub = new Dub({
-  apiKey: process.env['DUB_API_KEY'], // This is the default and can be omitted
+  token: process.env['DUB_API_KEY'], // This is the default and can be omitted
 });
 
 async function main() {
@@ -42,7 +42,7 @@ This library includes TypeScript definitions for all request params and response
 import Dub from 'dub';
 
 const dub = new Dub({
-  apiKey: process.env['DUB_API_KEY'], // This is the default and can be omitted
+  token: process.env['DUB_API_KEY'], // This is the default and can be omitted
 });
 
 async function main() {
