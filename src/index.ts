@@ -10,7 +10,7 @@ export interface ClientOptions {
   /**
    * Defaults to process.env['DUB_API_KEY'].
    */
-  apiKey?: string;
+  token?: string;
 
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
@@ -71,14 +71,14 @@ export interface ClientOptions {
 
 /** API Client for interfacing with the Dub API. */
 export class Dub extends Core.APIClient {
-  apiKey: string;
+  token: string;
 
   private _options: ClientOptions;
 
   /**
    * API Client for interfacing with the Dub API.
    *
-   * @param {string} [opts.apiKey=process.env['DUB_API_KEY'] ?? undefined]
+   * @param {string} [opts.token=process.env['DUB_API_KEY'] ?? undefined]
    * @param {string} [opts.baseURL=process.env['DUB_BASE_URL'] ?? https://api.dub.co] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
@@ -89,17 +89,17 @@ export class Dub extends Core.APIClient {
    */
   constructor({
     baseURL = Core.readEnv('DUB_BASE_URL'),
-    apiKey = Core.readEnv('DUB_API_KEY'),
+    token = Core.readEnv('DUB_API_KEY'),
     ...opts
   }: ClientOptions = {}) {
-    if (apiKey === undefined) {
+    if (token === undefined) {
       throw new Errors.DubError(
-        "The DUB_API_KEY environment variable is missing or empty; either provide it, or instantiate the Dub client with an apiKey option, like new Dub({ apiKey: 'My API Key' }).",
+        "The DUB_API_KEY environment variable is missing or empty; either provide it, or instantiate the Dub client with an token option, like new Dub({ token: 'My Token' }).",
       );
     }
 
     const options: ClientOptions = {
-      apiKey,
+      token,
       ...opts,
       baseURL: baseURL || `https://api.dub.co`,
     };
@@ -113,7 +113,7 @@ export class Dub extends Core.APIClient {
     });
     this._options = options;
 
-    this.apiKey = apiKey;
+    this.token = token;
   }
 
   links: API.Links = new API.Links(this);
@@ -131,7 +131,7 @@ export class Dub extends Core.APIClient {
   }
 
   protected override authHeaders(opts: Core.FinalRequestOptions): Core.Headers {
-    return { Authorization: `Bearer ${this.apiKey}` };
+    return { Authorization: `Bearer ${this.token}` };
   }
 
   static Dub = this;
