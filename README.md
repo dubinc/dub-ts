@@ -4,7 +4,7 @@
 
 This library provides convenient access to the Dub REST API from server-side TypeScript or JavaScript.
 
-The REST API documentation can be found [on dub.co](https://dub.co/help). The full API of this library can be found in [api.md](https://www.github.com/dubinc/dub-node/blob/main/api.md).
+The REST API documentation can be found [on dub.co](https://dub.co/helpi). The full API of this library can be found in [api.md](https://www.github.com/dubinc/dub-node/blob/main/api.md).
 
 ## Installation
 
