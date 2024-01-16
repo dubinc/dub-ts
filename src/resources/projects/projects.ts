@@ -11,7 +11,8 @@ export class Projects extends APIResource {
   /**
    * Retrieve a project for the authenticated user.
    */
-  retrieve(projectSlug: string, options?: Core.RequestOptions): Core.APIPromise<ProjectDetails> {
+  retrieve(params: ProjectRetrieveParams, options?: Core.RequestOptions): Core.APIPromise<ProjectDetails> {
+    const { projectSlug = this._client.projectSlug } = params;
     return this._client.get(`/projects/${projectSlug}`, options);
   }
 
@@ -111,12 +112,22 @@ export namespace ProjectDetails {
 
 export type ProjectListResponse = Array<Project>;
 
+export interface ProjectRetrieveParams {
+  /**
+   * The slug for the project to retrieve. E.g. for app.dub.co/acme, the projectSlug
+   * is 'acme'.
+   */
+  projectSlug?: string;
+}
+
 export namespace Projects {
   export import Project = ProjectsAPI.Project;
   export import ProjectDetails = ProjectsAPI.ProjectDetails;
   export import ProjectListResponse = ProjectsAPI.ProjectListResponse;
+  export import ProjectRetrieveParams = ProjectsAPI.ProjectRetrieveParams;
   export import Tags = TagsAPI.Tags;
   export import Tag = TagsAPI.Tag;
   export import TagListResponse = TagsAPI.TagListResponse;
   export import TagCreateParams = TagsAPI.TagCreateParams;
+  export import TagListParams = TagsAPI.TagListParams;
 }

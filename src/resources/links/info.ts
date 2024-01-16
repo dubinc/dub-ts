@@ -9,8 +9,9 @@ export class Info extends APIResource {
   /**
    * Retrieve the info for a link from their domain and key.
    */
-  retrieve(query: InfoRetrieveParams, options?: Core.RequestOptions): Core.APIPromise<Shared.Link> {
-    return this._client.get('/links/info', { query, ...options });
+  retrieve(params: InfoRetrieveParams, options?: Core.RequestOptions): Core.APIPromise<Shared.Link> {
+    const { projectSlug = this._client.projectSlug, ...query } = params;
+    return this._client.get('/links/info', { query: { projectSlug, ...query }, ...options });
   }
 }
 
@@ -30,7 +31,7 @@ export interface InfoRetrieveParams {
    * The slug for the project that the link belongs to. E.g. for app.dub.co/acme, the
    * projectSlug is 'acme'.
    */
-  projectSlug: string;
+  projectSlug?: string;
 }
 
 export namespace Info {

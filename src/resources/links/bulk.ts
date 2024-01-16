@@ -10,7 +10,7 @@ export class Bulk extends APIResource {
    * Bulk create up to 100 links for the authenticated project.
    */
   create(params: BulkCreateParams, options?: Core.RequestOptions): Core.APIPromise<BulkCreateResponse> {
-    const { projectSlug, ...body } = params;
+    const { projectSlug = this._client.projectSlug, ...body } = params;
     return this._client.post('/links/bulk', { query: { projectSlug }, body, ...options });
   }
 }
@@ -22,7 +22,7 @@ export interface BulkCreateParams {
    * Query param: The slug for the project to create links for. E.g. for
    * app.dub.co/acme, the projectSlug is 'acme'.
    */
-  projectSlug: string;
+  projectSlug?: string;
 }
 
 export namespace BulkCreateParams {

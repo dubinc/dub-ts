@@ -12,6 +12,8 @@ export interface ClientOptions {
    */
   token?: string;
 
+  projectSlug?: string | null;
+
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
    *
@@ -72,6 +74,7 @@ export interface ClientOptions {
 /** API Client for interfacing with the Dub API. */
 export class Dub extends Core.APIClient {
   token: string;
+  projectSlug: string | null;
 
   private _options: ClientOptions;
 
@@ -79,6 +82,7 @@ export class Dub extends Core.APIClient {
    * API Client for interfacing with the Dub API.
    *
    * @param {string} [opts.token=process.env['DUB_API_KEY'] ?? undefined]
+   * @param {string | null} [opts.projectSlug]
    * @param {string} [opts.baseURL=process.env['DUB_BASE_URL'] ?? https://api.dub.co] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
@@ -90,6 +94,7 @@ export class Dub extends Core.APIClient {
   constructor({
     baseURL = Core.readEnv('DUB_BASE_URL'),
     token = Core.readEnv('DUB_API_KEY'),
+    projectSlug = null,
     ...opts
   }: ClientOptions = {}) {
     if (token === undefined) {
@@ -100,6 +105,7 @@ export class Dub extends Core.APIClient {
 
     const options: ClientOptions = {
       token,
+      projectSlug,
       ...opts,
       baseURL: baseURL || `https://api.dub.co`,
     };
@@ -114,6 +120,7 @@ export class Dub extends Core.APIClient {
     this._options = options;
 
     this.token = token;
+    this.projectSlug = projectSlug;
   }
 
   links: API.Links = new API.Links(this);
@@ -188,6 +195,7 @@ export namespace Dub {
   export import Project = API.Project;
   export import ProjectDetails = API.ProjectDetails;
   export import ProjectListResponse = API.ProjectListResponse;
+  export import ProjectRetrieveParams = API.ProjectRetrieveParams;
 
   export import Link = API.Link;
 }
