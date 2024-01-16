@@ -43,7 +43,7 @@ Types:
 
 Methods:
 
-- <code title="get /projects/{projectSlug}">client.projects.<a href="./src/resources/projects/projects.ts">retrieve</a>(projectSlug) -> ProjectDetails</code>
+- <code title="get /projects/{projectSlug}">client.projects.<a href="./src/resources/projects/projects.ts">retrieve</a>({ ...params }) -> ProjectDetails</code>
 - <code title="get /projects">client.projects.<a href="./src/resources/projects/projects.ts">list</a>() -> ProjectListResponse</code>
 
 ## Tags
@@ -55,5 +55,5 @@ Types:
 
 Methods:
 
-- <code title="post /projects/{projectSlug}/tags">client.projects.tags.<a href="./src/resources/projects/tags.ts">create</a>(projectSlug, { ...params }) -> Tag</code>
-- <code title="get /projects/{projectSlug}/tags">client.projects.tags.<a href="./src/resources/projects/tags.ts">list</a>(projectSlug) -> TagListResponse</code>
+- <code title="post /projects/{projectSlug}/tags">client.projects.tags.<a href="./src/resources/projects/tags.ts">create</a>({ ...params }) -> Tag</code>
+- <code title="get /projects/{projectSlug}/tags">client.projects.tags.<a href="./src/resources/projects/tags.ts">list</a>({ ...params }) -> TagListResponse</code>

@@ -24,6 +24,7 @@ describe('instantiate client', () => {
       baseURL: 'http://localhost:5000/',
       defaultHeaders: { 'X-My-Default-Header': '2' },
       token: 'My Token',
+      projectSlug: 'dub_project_slug',
     });
 
     test('they are used in the request', () => {
@@ -56,6 +57,7 @@ describe('instantiate client', () => {
         baseURL: 'http://localhost:5000/',
         defaultQuery: { apiVersion: 'foo' },
         token: 'My Token',
+        projectSlug: 'dub_project_slug',
       });
       expect(client.buildURL('/foo', null)).toEqual('http://localhost:5000/foo?apiVersion=foo');
     });
@@ -65,6 +67,7 @@ describe('instantiate client', () => {
         baseURL: 'http://localhost:5000/',
         defaultQuery: { apiVersion: 'foo', hello: 'world' },
         token: 'My Token',
+        projectSlug: 'dub_project_slug',
       });
       expect(client.buildURL('/foo', null)).toEqual('http://localhost:5000/foo?apiVersion=foo&hello=world');
     });
@@ -74,6 +77,7 @@ describe('instantiate client', () => {
         baseURL: 'http://localhost:5000/',
         defaultQuery: { hello: 'world' },
         token: 'My Token',
+        projectSlug: 'dub_project_slug',
       });
       expect(client.buildURL('/foo', { hello: undefined })).toEqual('http://localhost:5000/foo');
     });
@@ -83,6 +87,7 @@ describe('instantiate client', () => {
     const client = new Dub({
       baseURL: 'http://localhost:5000/',
       token: 'My Token',
+      projectSlug: 'dub_project_slug',
       fetch: (url) => {
         return Promise.resolve(
           new Response(JSON.stringify({ url, custom: true }), {
@@ -100,6 +105,7 @@ describe('instantiate client', () => {
     const client = new Dub({
       baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
       token: 'My Token',
+      projectSlug: 'dub_project_slug',
       fetch: (...args) => {
         return new Promise((resolve, reject) =>
           setTimeout(
@@ -124,12 +130,20 @@ describe('instantiate client', () => {
 
   describe('baseUrl', () => {
     test('trailing slash', () => {
-      const client = new Dub({ baseURL: 'http://localhost:5000/custom/path/', token: 'My Token' });
+      const client = new Dub({
+        baseURL: 'http://localhost:5000/custom/path/',
+        token: 'My Token',
+        projectSlug: 'dub_project_slug',
+      });
       expect(client.buildURL('/foo', null)).toEqual('http://localhost:5000/custom/path/foo');
     });
 
     test('no trailing slash', () => {
-      const client = new Dub({ baseURL: 'http://localhost:5000/custom/path', token: 'My Token' });
+      const client = new Dub({
+        baseURL: 'http://localhost:5000/custom/path',
+        token: 'My Token',
+        projectSlug: 'dub_project_slug',
+      });
       expect(client.buildURL('/foo', null)).toEqual('http://localhost:5000/custom/path/foo');
     });
 
@@ -138,55 +152,61 @@ describe('instantiate client', () => {
     });
 
     test('explicit option', () => {
-      const client = new Dub({ baseURL: 'https://example.com', token: 'My Token' });
+      const client = new Dub({
+        baseURL: 'https://example.com',
+        token: 'My Token',
+        projectSlug: 'dub_project_slug',
+      });
       expect(client.baseURL).toEqual('https://example.com');
     });
 
     test('env variable', () => {
       process.env['DUB_BASE_URL'] = 'https://example.com/from_env';
-      const client = new Dub({ token: 'My Token' });
+      const client = new Dub({ token: 'My Token', projectSlug: 'dub_project_slug' });
       expect(client.baseURL).toEqual('https://example.com/from_env');
     });
 
     test('empty env variable', () => {
       process.env['DUB_BASE_URL'] = ''; // empty
-      const client = new Dub({ token: 'My Token' });
+      const client = new Dub({ token: 'My Token', projectSlug: 'dub_project_slug' });
       expect(client.baseURL).toEqual('https://api.dub.co');
     });
 
     test('blank env variable', () => {
       process.env['DUB_BASE_URL'] = '  '; // blank
-      const client = new Dub({ token: 'My Token' });
+      const client = new Dub({ token: 'My Token', projectSlug: 'dub_project_slug' });
       expect(client.baseURL).toEqual('https://api.dub.co');
     });
   });
 
   test('maxRetries option is correctly set', () => {
-    const client = new Dub({ maxRetries: 4, token: 'My Token' });
+    const client = new Dub({ maxRetries: 4, token: 'My Token', projectSlug: 'dub_project_slug' });
     expect(client.maxRetries).toEqual(4);
 
     // default
-    const client2 = new Dub({ token: 'My Token' });
+    const client2 = new Dub({ token: 'My Token', projectSlug: 'dub_project_slug' });
     expect(client2.maxRetries).toEqual(2);
   });
 
   test('with environment variable arguments', () => {
     // set options via env var
     process.env['DUB_API_KEY'] = 'My Token';
-    const client = new Dub();
+    const client = new Dub({ projectSlug: 'dub_project_slug' });
     expect(client.token).toBe('My Token');
+    expect(client.projectSlug).toBe('dub_project_slug');
   });
 
   test('with overriden environment variable arguments', () => {
     // set options via env var
     process.env['DUB_API_KEY'] = 'another My Token';
-    const client = new Dub({ token: 'My Token' });
+    const client = new Dub({ token: 'My Token', projectSlug: 'dub_project_slug' });
     expect(client.token).toBe('My Token');
+    expect(client.projectSlug).toBe('dub_project_slug');
   });
 });
 
 describe('request building', () => {
-  const client = new Dub({ token: 'My Token' });
+  const client = new Dub({ token: 'My Token', projectSlug: 'dub_project_slug' });
 
   describe('Content-Length', () => {
     test('handles multi-byte characters', () => {
@@ -227,7 +247,12 @@ describe('retries', () => {
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
 
-    const client = new Dub({ token: 'My Token', timeout: 2000, fetch: testFetch });
+    const client = new Dub({
+      token: 'My Token',
+      projectSlug: 'dub_project_slug',
+      timeout: 2000,
+      fetch: testFetch,
+    });
 
     expect(await client.request({ path: '/foo', method: 'get' })).toEqual({ a: 1 });
     expect(count).toEqual(2);

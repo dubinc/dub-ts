@@ -4,7 +4,7 @@
 
 This library provides convenient access to the Dub REST API from server-side TypeScript or JavaScript.
 
-The API documentation can be found [here](https://dub.co/help).
+The REST API documentation can be found [on dub.co](https://dub.co/help). The full API of this library can be found in [api.md](https://www.github.com/dubinc/dub-node/blob/main/api.md).
 
 ## Installation
 
@@ -24,10 +24,11 @@ import Dub from 'dub';
 
 const dub = new Dub({
   token: process.env['DUB_API_KEY'], // This is the default and can be omitted
+  projectSlug: 'dub_project_slug',
 });
 
 async function main() {
-  const projectDetails = await dub.projects.retrieve('REPLACE_ME');
+  const projectDetails = await dub.projects.retrieve({ projectSlug: 'REPLACE_ME' });
 }
 
 main();
@@ -43,10 +44,12 @@ import Dub from 'dub';
 
 const dub = new Dub({
   token: process.env['DUB_API_KEY'], // This is the default and can be omitted
+  projectSlug: 'dub_project_slug',
 });
 
 async function main() {
-  const projectDetails: Dub.ProjectDetails = await dub.projects.retrieve('REPLACE_ME');
+  const params: Dub.ProjectRetrieveParams = { projectSlug: 'REPLACE_ME' };
+  const projectDetails: Dub.ProjectDetails = await dub.projects.retrieve(params);
 }
 
 main();
@@ -63,7 +66,7 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const project = await dub.projects.retrieve('REPLACE_ME').catch((err) => {
+  const project = await dub.projects.retrieve({ projectSlug: 'REPLACE_ME' }).catch((err) => {
     if (err instanceof Dub.APIError) {
       console.log(err.status); // 400
       console.log(err.name); // BadRequestError
@@ -103,10 +106,11 @@ You can use the `maxRetries` option to configure or disable this:
 // Configure the default for all requests:
 const dub = new Dub({
   maxRetries: 0, // default is 2
+  projectSlug: 'dub_project_slug',
 });
 
 // Or, configure per-request:
-await dub.projects.retrieve('REPLACE_ME', {
+await dub.projects.retrieve({ projectSlug: 'REPLACE_ME' }, {
   maxRetries: 5,
 });
 ```
@@ -120,10 +124,11 @@ Requests time out after 1 minute by default. You can configure this with a `time
 // Configure the default for all requests:
 const dub = new Dub({
   timeout: 20 * 1000, // 20 seconds (default is 1 minute)
+  projectSlug: 'dub_project_slug',
 });
 
 // Override per-request:
-await dub.projects.retrieve('REPLACE_ME', {
+await dub.projects.retrieve({ projectSlug: 'REPLACE_ME' }, {
   timeout: 5 * 1000,
 });
 ```
@@ -144,11 +149,13 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 ```ts
 const dub = new Dub();
 
-const response = await dub.projects.retrieve('REPLACE_ME').asResponse();
+const response = await dub.projects.retrieve({ projectSlug: 'REPLACE_ME' }).asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: projectDetails, response: raw } = await dub.projects.retrieve('REPLACE_ME').withResponse();
+const { data: projectDetails, response: raw } = await dub.projects
+  .retrieve({ projectSlug: 'REPLACE_ME' })
+  .withResponse();
 console.log(raw.headers.get('X-My-Header'));
 console.log(projectDetails);
 ```
@@ -179,8 +186,8 @@ import { fetch } from 'undici'; // as one example
 import Dub from 'dub';
 
 const client = new Dub({
-  fetch: (url: RequestInfo, init?: RequestInfo): Response => {
-    console.log('About to make request', url, init);
+  fetch: async (url: RequestInfo, init?: RequestInfo): Promise<Response> => {
+    console.log('About to make a request', url, init);
     const response = await fetch(url, init);
     console.log('Got response', response);
     return response;
@@ -205,10 +212,11 @@ import HttpsProxyAgent from 'https-proxy-agent';
 // Configure the default for all requests:
 const dub = new Dub({
   httpAgent: new HttpsProxyAgent(process.env.PROXY_URL),
+  projectSlug: 'dub_project_slug',
 });
 
 // Override per-request:
-await dub.projects.retrieve('REPLACE_ME', {
+await dub.projects.retrieve({ projectSlug: 'REPLACE_ME' }, {
   baseURL: 'http://localhost:8080/test-api',
   httpAgent: new http.Agent({ keepAlive: false }),
 })
