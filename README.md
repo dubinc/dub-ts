@@ -28,9 +28,9 @@ const dub = new Dub({
 });
 
 async function main() {
-  const link = await dub.links.create({ url: 'google.com' });
+  const link = await dub.links.create({ projectSlug: 'string', domain: 'string', url: 'google.com' });
 
-  console.log(link);
+  console.log(link.id);
 }
 
 main();
@@ -50,10 +50,8 @@ const dub = new Dub({
 });
 
 async function main() {
-  const params: Dub.LinkCreateParams = { url: 'google.com' };
+  const params: Dub.LinkCreateParams = { projectSlug: 'string', domain: 'string', url: 'google.com' };
   const link: Dub.Link = await dub.links.create(params);
-
-  console.log(link);
 }
 
 main();
@@ -71,7 +69,7 @@ a subclass of `APIError` will be thrown:
 ```ts
 async function main() {
   const link = await dub.links
-    .create({ url: 'google.com' })
+    .create({ projectSlug: 'string', domain: 'string', url: 'google.com' })
     .catch((err) => {
       if (err instanceof Dub.APIError) {
         console.log(err.status); // 400
@@ -116,7 +114,7 @@ const dub = new Dub({
 });
 
 // Or, configure per-request:
-await dub.links.create({ url: 'google.com' }, {
+await dub.links.create({ projectSlug: 'string', domain: 'string', url: 'google.com' }, {
   maxRetries: 5,
 });
 ```
@@ -134,7 +132,7 @@ const dub = new Dub({
 });
 
 // Override per-request:
-await dub.links.create({ url: 'google.com' }, {
+await dub.links.create({ projectSlug: 'string', domain: 'string', url: 'google.com' }, {
   timeout: 5 * 1000,
 });
 ```
@@ -156,13 +154,13 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 const dub = new Dub();
 
 const response = await dub.links
-  .create({ url: 'google.com' })
+  .create({ projectSlug: 'string', domain: 'string', url: 'google.com' })
   .asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
 const { data: link, response: raw } = await dub.links
-  .create({ url: 'google.com' })
+  .create({ projectSlug: 'string', domain: 'string', url: 'google.com' })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
 console.log(link.id);
@@ -224,7 +222,7 @@ const dub = new Dub({
 });
 
 // Override per-request:
-await dub.links.create({ url: 'google.com' }, {
+await dub.links.create({ projectSlug: 'string', domain: 'string', url: 'google.com' }, {
   baseURL: 'http://localhost:8080/test-api',
   httpAgent: new http.Agent({ keepAlive: false }),
 })
