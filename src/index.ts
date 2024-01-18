@@ -10,9 +10,9 @@ export interface ClientOptions {
   /**
    * Defaults to process.env['DUB_API_KEY'].
    */
-  token?: string;
+  token?: string | undefined;
 
-  projectSlug?: string | null;
+  projectSlug?: string | null | undefined;
 
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
@@ -81,8 +81,8 @@ export class Dub extends Core.APIClient {
   /**
    * API Client for interfacing with the Dub API.
    *
-   * @param {string} [opts.token=process.env['DUB_API_KEY'] ?? undefined]
-   * @param {string | null} [opts.projectSlug]
+   * @param {string | undefined} [opts.token=process.env['DUB_API_KEY'] ?? undefined]
+   * @param {string | null | undefined} [opts.projectSlug]
    * @param {string} [opts.baseURL=process.env['DUB_BASE_URL'] ?? https://api.dub.co] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.

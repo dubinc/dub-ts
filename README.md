@@ -28,7 +28,9 @@ const dub = new Dub({
 });
 
 async function main() {
-  const projectDetails = await dub.projects.retrieve({ projectSlug: 'REPLACE_ME' });
+  const link = await dub.links.create({ url: 'google.com' });
+
+  console.log(link);
 }
 
 main();
@@ -48,8 +50,10 @@ const dub = new Dub({
 });
 
 async function main() {
-  const params: Dub.ProjectRetrieveParams = { projectSlug: 'REPLACE_ME' };
-  const projectDetails: Dub.ProjectDetails = await dub.projects.retrieve(params);
+  const params: Dub.LinkCreateParams = { url: 'google.com' };
+  const link: Dub.Link = await dub.links.create(params);
+
+  console.log(link);
 }
 
 main();
@@ -66,15 +70,17 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const project = await dub.projects.retrieve({ projectSlug: 'REPLACE_ME' }).catch((err) => {
-    if (err instanceof Dub.APIError) {
-      console.log(err.status); // 400
-      console.log(err.name); // BadRequestError
-      console.log(err.headers); // {server: 'nginx', ...}
-    } else {
-      throw err;
-    }
-  });
+  const link = await dub.links
+    .create({ url: 'google.com' })
+    .catch((err) => {
+      if (err instanceof Dub.APIError) {
+        console.log(err.status); // 400
+        console.log(err.name); // BadRequestError
+        console.log(err.headers); // {server: 'nginx', ...}
+      } else {
+        throw err;
+      }
+    });
 }
 
 main();
@@ -110,7 +116,7 @@ const dub = new Dub({
 });
 
 // Or, configure per-request:
-await dub.projects.retrieve({ projectSlug: 'REPLACE_ME' }, {
+await dub.links.create({ url: 'google.com' }, {
   maxRetries: 5,
 });
 ```
@@ -128,7 +134,7 @@ const dub = new Dub({
 });
 
 // Override per-request:
-await dub.projects.retrieve({ projectSlug: 'REPLACE_ME' }, {
+await dub.links.create({ url: 'google.com' }, {
   timeout: 5 * 1000,
 });
 ```
@@ -149,15 +155,17 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 ```ts
 const dub = new Dub();
 
-const response = await dub.projects.retrieve({ projectSlug: 'REPLACE_ME' }).asResponse();
+const response = await dub.links
+  .create({ url: 'google.com' })
+  .asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: projectDetails, response: raw } = await dub.projects
-  .retrieve({ projectSlug: 'REPLACE_ME' })
+const { data: link, response: raw } = await dub.links
+  .create({ url: 'google.com' })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(projectDetails);
+console.log(link.id);
 ```
 
 ## Customizing the fetch client
@@ -216,7 +224,7 @@ const dub = new Dub({
 });
 
 // Override per-request:
-await dub.projects.retrieve({ projectSlug: 'REPLACE_ME' }, {
+await dub.links.create({ url: 'google.com' }, {
   baseURL: 'http://localhost:8080/test-api',
   httpAgent: new http.Agent({ keepAlive: false }),
 })
