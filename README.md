@@ -28,7 +28,13 @@ const dub = new Dub({
 });
 
 async function main() {
-  const projectDetails = await dub.projects.retrieve({ projectSlug: 'REPLACE_ME' });
+  const link = await dub.links.create({
+    projectSlug: 'dub_project_slug',
+    domain: 'mydomain',
+    url: 'example.com',
+  });
+
+  console.log(link.id);
 }
 
 main();
