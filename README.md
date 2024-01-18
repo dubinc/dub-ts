@@ -28,11 +28,7 @@ const dub = new Dub({
 });
 
 async function main() {
-  const link = await dub.links.create({
-    projectSlug: 'dub_project_slug',
-    domain: 'mydomain',
-    url: 'example.com',
-  });
+  const link = await dub.links.create({ projectSlug: 'string', domain: 'string', url: 'google.com' });
 
   console.log(link.id);
 }
