@@ -28,7 +28,10 @@ const dub = new Dub({
 });
 
 async function main() {
-  const link = await dub.links.create({ url: 'google.com' });
+  const link = await dub.links.create({
+    url: 'google.com',
+    domain: 'dub.sh',
+  });
 
   console.log(link);
 }
@@ -50,7 +53,7 @@ const dub = new Dub({
 });
 
 async function main() {
-  const params: Dub.LinkCreateParams = { url: 'google.com' };
+  const params: Dub.LinkCreateParams = { url: 'google.com', domain: 'dub.sh' };
   const link: Dub.Link = await dub.links.create(params);
 
   console.log(link);
@@ -71,7 +74,7 @@ a subclass of `APIError` will be thrown:
 ```ts
 async function main() {
   const link = await dub.links
-    .create({ url: 'google.com' })
+    .create({ url: 'google.com', domain: 'dub.sh' })
     .catch((err) => {
       if (err instanceof Dub.APIError) {
         console.log(err.status); // 400
@@ -116,7 +119,7 @@ const dub = new Dub({
 });
 
 // Or, configure per-request:
-await dub.links.create({ url: 'google.com' }, {
+await dub.links.create({ url: 'google.com', domain: 'dub.sh' }, {
   maxRetries: 5,
 });
 ```
@@ -134,7 +137,7 @@ const dub = new Dub({
 });
 
 // Override per-request:
-await dub.links.create({ url: 'google.com' }, {
+await dub.links.create({ url: 'google.com', domain: 'dub.sh' }, {
   timeout: 5 * 1000,
 });
 ```
@@ -156,7 +159,7 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 const dub = new Dub();
 
 const response = await dub.links
-  .create({ url: 'google.com' })
+  .create({ url: 'google.com', domain: 'dub.sh' })
   .asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
