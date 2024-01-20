@@ -10,6 +10,7 @@ export class Info extends APIResource {
    * Retrieve the info for a link from their domain and key.
    */
   retrieve(params: InfoRetrieveParams, options?: Core.RequestOptions): Core.APIPromise<Shared.Link> {
+    params.domain = params.domain || 'dub.sh';
     const { projectSlug = this._client.projectSlug, ...query } = params;
     return this._client.get('/links/info', { query: { projectSlug, ...query }, ...options });
   }
@@ -17,10 +18,10 @@ export class Info extends APIResource {
 
 export interface InfoRetrieveParams {
   /**
-   * The domain of the link to retrieve. E.g. for dub.sh/github, the domain is
-   * 'dub.sh'.
+   * The domain of the link to retrieve. E.g. for spt.fi/github, the domain is
+   * 'dub.sh'. If not provided the default domain is 'dub.sh'.
    */
-  domain: string;
+  domain?: string;
 
   /**
    * The key of the link to retrieve. E.g. for dub.sh/github, the key is 'github'.
