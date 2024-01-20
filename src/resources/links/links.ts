@@ -15,6 +15,8 @@ export class Links extends APIResource {
    * Create a new link for the authenticated project.
    */
   create(params: LinkCreateParams, options?: Core.RequestOptions): Core.APIPromise<Shared.Link> {
+    params.domain = params.domain || 'dub.sh';
+    console.log('Params:', params);
     const { projectSlug = this._client.projectSlug, ...body } = params;
     return this._client.post('/links', { query: { projectSlug }, body, ...options });
   }
@@ -63,9 +65,10 @@ export interface LinkCreateParams {
   projectSlug?: string;
 
   /**
-   * Body param: The domain of the short link.
+   * Body param: The domain of the short link. If not set it will default to
+   * 'dub.sh'.
    */
-  domain: string;
+  domain?: string;
 
   /**
    * Body param: The destination URL of the short link.
