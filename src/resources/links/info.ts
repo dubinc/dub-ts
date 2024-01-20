@@ -18,8 +18,8 @@ export class Info extends APIResource {
 
 export interface InfoRetrieveParams {
   /**
-   * The domain of the link to retrieve. E.g. for spt.fi/github, the domain is
-   * 'dub.sh'. If not provided the default domain is 'dub.sh'.
+   * The domain of the link to retrieve. E.g. for spt.fi/favsong, the domain is
+   * 'spt.fi'. If not provided the default domain is 'dub.sh'.
    */
   domain?: string;
 
