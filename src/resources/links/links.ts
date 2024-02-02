@@ -14,7 +14,7 @@ export class Links extends APIResource {
    * Create a new link for the authenticated project.
    */
   create(params: LinkCreateParams, options?: Core.RequestOptions): Core.APIPromise<Link> {
-    const { projectSlug, ...body } = params;
+    const { projectSlug = this._client.projectSlug, ...body } = params;
     return this._client.post('/links', { query: { projectSlug }, body, ...options });
   }
 
@@ -22,7 +22,7 @@ export class Links extends APIResource {
    * Edit a link for the authenticated project.
    */
   update(linkId: string, params: LinkUpdateParams, options?: Core.RequestOptions): Core.APIPromise<Link> {
-    const { projectSlug, ...body } = params;
+    const { projectSlug = this._client.projectSlug, ...body } = params;
     return this._client.put(`/links/${linkId}`, { query: { projectSlug }, body, ...options });
   }
 
@@ -30,8 +30,9 @@ export class Links extends APIResource {
    * Retrieve a list of links for the authenticated project. The list will be
    * paginated and the provided query parameters allow filtering the returned links.
    */
-  list(query: LinkListParams, options?: Core.RequestOptions): Core.APIPromise<LinkListResponse> {
-    return this._client.get('/links', { query, ...options });
+  list(params: LinkListParams, options?: Core.RequestOptions): Core.APIPromise<LinkListResponse> {
+    const { projectSlug = this._client.projectSlug, ...query } = params;
+    return this._client.get('/links', { query: { projectSlug, ...query }, ...options });
   }
 
   /**
@@ -42,7 +43,7 @@ export class Links extends APIResource {
     params: LinkDeleteLinkParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<Link> {
-    const { projectSlug } = params;
+    const { projectSlug = this._client.projectSlug } = params;
     return this._client.delete(`/links/${linkId}`, { query: { projectSlug }, ...options });
   }
 }
@@ -207,7 +208,7 @@ export interface LinkCreateParams {
    * Query param: The slug for the project to create links for. E.g. for
    * app.dub.co/acme, the projectSlug is 'acme'.
    */
-  projectSlug: string;
+  projectSlug?: string;
 
   /**
    * Body param: The domain of the short link.
@@ -308,7 +309,7 @@ export interface LinkUpdateParams {
    * Query param: The slug for the project that the link belongs to. E.g. for
    * app.dub.co/acme, the projectSlug is 'acme'.
    */
-  projectSlug: string;
+  projectSlug?: string;
 
   /**
    * Body param: The Android destination URL for the short link for Android device
@@ -409,7 +410,7 @@ export interface LinkListParams {
    * The slug for the project to retrieve links for. E.g. for app.dub.co/acme, the
    * projectSlug is 'acme'.
    */
-  projectSlug: string;
+  projectSlug?: string;
 
   /**
    * The domain to filter the links by. E.g. 'ac.me'. If not provided, all links for
@@ -456,7 +457,7 @@ export interface LinkDeleteLinkParams {
    * The slug for the project that the link belongs to. E.g. for app.dub.co/acme, the
    * projectSlug is 'acme'.
    */
-  projectSlug: string;
+  projectSlug?: string;
 }
 
 export namespace Links {
