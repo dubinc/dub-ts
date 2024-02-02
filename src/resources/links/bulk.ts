@@ -20,7 +20,7 @@ export type BulkCreateResponse = Array<LinksAPI.Link>;
 export interface BulkCreateParams {
   /**
    * Query param: The slug for the project to create links for. E.g. for
-   * app.dub.co/acme, the projectSlug is 'acme'.
+   * `app.dub.co/acme`, the projectSlug is `acme`.
    */
   projectSlug?: string;
 }
@@ -43,13 +43,14 @@ export namespace BulkCreateParams {
     comments?: string | null;
 
     /**
-     * The description of the short link generated via api.dub.co/metatags. Will be
+     * The description of the short link generated via `api.dub.co/metatags`. Will be
      * used for Custom Social Media Cards if `proxy` is true.
      */
     description?: string | null;
 
     /**
-     * The domain of the short link.
+     * The domain of the short link. If not provided, the primary domain for the
+     * project will be used (or `dub.sh` if the project has no domains).
      */
     domain?: string;
 
@@ -61,13 +62,13 @@ export namespace BulkCreateParams {
 
     /**
      * Geo targeting information for the short link in JSON format {[COUNTRY]:
-     * "https://example.com" }. Learn more: https://dub.sh/geo
+     * `https://example.com` }. Learn more: `https://dub.sh/geo`
      */
     geo?: Record<string, string> | null;
 
     /**
-     * The image of the short link generated via api.dub.co/metatags. Will be used for
-     * Custom Social Media Cards if `proxy` is true.
+     * The image of the short link generated via `api.dub.co/metatags`. Will be used
+     * for Custom Social Media Cards if `proxy` is true.
      */
     image?: string | null;
 
@@ -108,8 +109,8 @@ export namespace BulkCreateParams {
     tagId?: string | null;
 
     /**
-     * The title of the short link generated via api.dub.co/metatags. Will be used for
-     * Custom Social Media Cards if `proxy` is true.
+     * The title of the short link generated via `api.dub.co/metatags`. Will be used
+     * for Custom Social Media Cards if `proxy` is true.
      */
     title?: string | null;
 

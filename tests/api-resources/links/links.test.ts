@@ -11,7 +11,7 @@ const dub = new Dub({
 
 describe('resource links', () => {
   test('create: only required params', async () => {
-    const responsePromise = dub.links.create({ projectSlug: 'string', domain: 'string', url: 'string' });
+    const responsePromise = dub.links.create({ projectSlug: 'string', url: 'string' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -24,12 +24,12 @@ describe('resource links', () => {
   test('create: required and optional params', async () => {
     const response = await dub.links.create({
       projectSlug: 'string',
-      domain: 'string',
       url: 'string',
       android: 'string',
       archived: true,
       comments: 'string',
       description: 'string',
+      domain: 'string',
       expiresAt: '2019-12-27T18:11:19.117Z',
       geo: { foo: 'https://example.com' },
       image: 'string',
