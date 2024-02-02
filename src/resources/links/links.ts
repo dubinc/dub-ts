@@ -3,7 +3,6 @@
 import * as Core from 'dub/core';
 import { APIResource } from 'dub/resource';
 import * as LinksAPI from 'dub/resources/links/links';
-import * as Shared from 'dub/resources/shared';
 import * as BulkAPI from 'dub/resources/links/bulk';
 import * as InfoAPI from 'dub/resources/links/info';
 
@@ -14,20 +13,16 @@ export class Links extends APIResource {
   /**
    * Create a new link for the authenticated project.
    */
-  create(params: LinkCreateParams, options?: Core.RequestOptions): Core.APIPromise<Shared.Link> {
-    const { projectSlug = this._client.projectSlug, ...body } = params;
+  create(params: LinkCreateParams, options?: Core.RequestOptions): Core.APIPromise<Link> {
+    const { projectSlug, ...body } = params;
     return this._client.post('/links', { query: { projectSlug }, body, ...options });
   }
 
   /**
    * Edit a link for the authenticated project.
    */
-  update(
-    linkId: string,
-    params: LinkUpdateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.Link> {
-    const { projectSlug = this._client.projectSlug, ...body } = params;
+  update(linkId: string, params: LinkUpdateParams, options?: Core.RequestOptions): Core.APIPromise<Link> {
+    const { projectSlug, ...body } = params;
     return this._client.put(`/links/${linkId}`, { query: { projectSlug }, body, ...options });
   }
 
@@ -35,32 +30,184 @@ export class Links extends APIResource {
    * Retrieve a list of links for the authenticated project. The list will be
    * paginated and the provided query parameters allow filtering the returned links.
    */
-  list(params: LinkListParams, options?: Core.RequestOptions): Core.APIPromise<LinkListResponse> {
-    const { projectSlug = this._client.projectSlug, ...query } = params;
-    return this._client.get('/links', { query: { projectSlug, ...query }, ...options });
+  list(query: LinkListParams, options?: Core.RequestOptions): Core.APIPromise<LinkListResponse> {
+    return this._client.get('/links', { query, ...options });
   }
 
   /**
    * Delete a link for the authenticated project.
    */
-  delete(
+  deleteLink(
     linkId: string,
-    params: LinkDeleteParams,
+    params: LinkDeleteLinkParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.Link> {
-    const { projectSlug = this._client.projectSlug } = params;
+  ): Core.APIPromise<Link> {
+    const { projectSlug } = params;
     return this._client.delete(`/links/${linkId}`, { query: { projectSlug }, ...options });
   }
 }
 
-export type LinkListResponse = Array<Shared.Link>;
+export interface Link {
+  /**
+   * The unique ID of the short link.
+   */
+  id?: string;
+
+  /**
+   * The Android destination URL for the short link for Android device targeting.
+   */
+  android?: string | null;
+
+  /**
+   * Whether the short link is archived.
+   */
+  archived?: boolean;
+
+  /**
+   * The number of clicks on the short link.
+   */
+  clicks?: number;
+
+  /**
+   * The comments for the short link.
+   */
+  comments?: string | null;
+
+  /**
+   * The date and time when the short link was created.
+   */
+  createdAt?: string;
+
+  /**
+   * The description of the short link generated via api.dub.co/metatags. Will be
+   * used for Custom Social Media Cards if `proxy` is true.
+   */
+  description?: string | null;
+
+  /**
+   * The domain of the short link.
+   */
+  domain?: string;
+
+  /**
+   * The date and time when the short link will expire in ISO-8601 format. Must be in
+   * the future.
+   */
+  expiresAt?: string | null;
+
+  /**
+   * Geo targeting information for the short link in JSON format {[COUNTRY]:
+   * "https://example.com" }. Learn more: https://dub.sh/geo
+   */
+  geo?: Record<string, string> | null;
+
+  /**
+   * The image of the short link generated via api.dub.co/metatags. Will be used for
+   * Custom Social Media Cards if `proxy` is true.
+   */
+  image?: string | null;
+
+  /**
+   * The iOS destination URL for the short link for iOS device targeting.
+   */
+  ios?: string | null;
+
+  /**
+   * The short link slug. If not provided, a random 7-character slug will be
+   * generated.
+   */
+  key?: string;
+
+  /**
+   * The date and time when the short link was last clicked.
+   */
+  lastClicked?: string | null;
+
+  /**
+   * The password required to access the destination URL of the short link.
+   */
+  password?: string | null;
+
+  /**
+   * The project ID of the short link.
+   */
+  projectId?: string;
+
+  /**
+   * Whether the short link uses Custom Social Media Cards feature.
+   */
+  proxy?: boolean;
+
+  /**
+   * Whether the short link's stats are publicly accessible.
+   */
+  publicStats?: boolean;
+
+  /**
+   * Whether the short link uses link cloaking.
+   */
+  rewrite?: boolean;
+
+  /**
+   * The unique id of the tag assigned to the short link.
+   */
+  tagId?: string | null;
+
+  /**
+   * The title of the short link generated via api.dub.co/metatags. Will be used for
+   * Custom Social Media Cards if `proxy` is true.
+   */
+  title?: string | null;
+
+  /**
+   * The date and time when the short link was last updated.
+   */
+  updatedAt?: string;
+
+  /**
+   * The destination URL of the short link.
+   */
+  url?: string;
+
+  /**
+   * The user ID of the creator of the short link.
+   */
+  userId?: string;
+
+  /**
+   * The UTM campaign of the short link.
+   */
+  utm_campaign?: string | null;
+
+  /**
+   * The UTM content of the short link.
+   */
+  utm_content?: string | null;
+
+  /**
+   * The UTM medium of the short link.
+   */
+  utm_medium?: string | null;
+
+  /**
+   * The UTM source of the short link.
+   */
+  utm_source?: string | null;
+
+  /**
+   * The UTM term of the short link.
+   */
+  utm_term?: string | null;
+}
+
+export type LinkListResponse = Array<Link>;
 
 export interface LinkCreateParams {
   /**
    * Query param: The slug for the project to create links for. E.g. for
    * app.dub.co/acme, the projectSlug is 'acme'.
    */
-  projectSlug?: string;
+  projectSlug: string;
 
   /**
    * Body param: The domain of the short link.
@@ -161,7 +308,7 @@ export interface LinkUpdateParams {
    * Query param: The slug for the project that the link belongs to. E.g. for
    * app.dub.co/acme, the projectSlug is 'acme'.
    */
-  projectSlug?: string;
+  projectSlug: string;
 
   /**
    * Body param: The Android destination URL for the short link for Android device
@@ -262,7 +409,7 @@ export interface LinkListParams {
    * The slug for the project to retrieve links for. E.g. for app.dub.co/acme, the
    * projectSlug is 'acme'.
    */
-  projectSlug?: string;
+  projectSlug: string;
 
   /**
    * The domain to filter the links by. E.g. 'ac.me'. If not provided, all links for
@@ -304,20 +451,21 @@ export interface LinkListParams {
   userId?: string;
 }
 
-export interface LinkDeleteParams {
+export interface LinkDeleteLinkParams {
   /**
    * The slug for the project that the link belongs to. E.g. for app.dub.co/acme, the
    * projectSlug is 'acme'.
    */
-  projectSlug?: string;
+  projectSlug: string;
 }
 
 export namespace Links {
+  export import Link = LinksAPI.Link;
   export import LinkListResponse = LinksAPI.LinkListResponse;
   export import LinkCreateParams = LinksAPI.LinkCreateParams;
   export import LinkUpdateParams = LinksAPI.LinkUpdateParams;
   export import LinkListParams = LinksAPI.LinkListParams;
-  export import LinkDeleteParams = LinksAPI.LinkDeleteParams;
+  export import LinkDeleteLinkParams = LinksAPI.LinkDeleteLinkParams;
   export import Info = InfoAPI.Info;
   export import InfoRetrieveParams = InfoAPI.InfoRetrieveParams;
   export import Bulk = BulkAPI.Bulk;

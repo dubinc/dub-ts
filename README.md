@@ -4,7 +4,7 @@
 
 This library provides convenient access to the Dub REST API from server-side TypeScript or JavaScript.
 
-The REST API documentation can be found [on dub.co](https://dub.co/help). The full API of this library can be found in [api.md](https://www.github.com/dubinc/dub-node/blob/main/api.md).
+The REST API documentation can be found [on dub.co](https://dub.co/help). The full API of this library can be found in [api.md](api.md).
 
 ## Installation
 
@@ -16,21 +16,16 @@ yarn add dub
 
 ## Usage
 
-The full API of this library can be found in [api.md](https://www.github.com/dubinc/dub-node/blob/main/api.md).
+The full API of this library can be found in [api.md](api.md).
 
 <!-- prettier-ignore -->
 ```js
 import Dub from 'dub';
 
-const dub = new Dub({
-  token: process.env['DUB_API_KEY'], // This is the default and can be omitted
-  projectSlug: 'dub_project_slug',
-});
+const dub = new Dub();
 
 async function main() {
-  const link = await dub.links.create({ domain: 'string', url: 'google.com' });
-
-  console.log(link.id);
+  const projectDetails = await dub.projects.retrieve('REPLACE_ME');
 }
 
 main();
@@ -44,14 +39,10 @@ This library includes TypeScript definitions for all request params and response
 ```ts
 import Dub from 'dub';
 
-const dub = new Dub({
-  token: process.env['DUB_API_KEY'], // This is the default and can be omitted
-  projectSlug: 'dub_project_slug',
-});
+const dub = new Dub();
 
 async function main() {
-  const params: Dub.LinkCreateParams = { domain: 'string', url: 'google.com' };
-  const link: Dub.Link = await dub.links.create(params);
+  const projectDetails: Dub.ProjectDetails = await dub.projects.retrieve('REPLACE_ME');
 }
 
 main();
@@ -68,7 +59,7 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const link = await dub.links.create({ domain: 'string', url: 'google.com' }).catch((err) => {
+  const project = await dub.projects.retrieve('REPLACE_ME').catch((err) => {
     if (err instanceof Dub.APIError) {
       console.log(err.status); // 400
       console.log(err.name); // BadRequestError
@@ -108,11 +99,10 @@ You can use the `maxRetries` option to configure or disable this:
 // Configure the default for all requests:
 const dub = new Dub({
   maxRetries: 0, // default is 2
-  projectSlug: 'dub_project_slug',
 });
 
 // Or, configure per-request:
-await dub.links.create({ domain: 'string', url: 'google.com' }, {
+await dub.projects.retrieve('REPLACE_ME', {
   maxRetries: 5,
 });
 ```
@@ -126,11 +116,10 @@ Requests time out after 1 minute by default. You can configure this with a `time
 // Configure the default for all requests:
 const dub = new Dub({
   timeout: 20 * 1000, // 20 seconds (default is 1 minute)
-  projectSlug: 'dub_project_slug',
 });
 
 // Override per-request:
-await dub.links.create({ domain: 'string', url: 'google.com' }, {
+await dub.projects.retrieve('REPLACE_ME', {
   timeout: 5 * 1000,
 });
 ```
@@ -151,15 +140,13 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 ```ts
 const dub = new Dub();
 
-const response = await dub.links.create({ domain: 'string', url: 'google.com' }).asResponse();
+const response = await dub.projects.retrieve('REPLACE_ME').asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: link, response: raw } = await dub.links
-  .create({ domain: 'string', url: 'google.com' })
-  .withResponse();
+const { data: projectDetails, response: raw } = await dub.projects.retrieve('REPLACE_ME').withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(link.id);
+console.log(projectDetails);
 ```
 
 ## Customizing the fetch client
@@ -214,11 +201,10 @@ import HttpsProxyAgent from 'https-proxy-agent';
 // Configure the default for all requests:
 const dub = new Dub({
   httpAgent: new HttpsProxyAgent(process.env.PROXY_URL),
-  projectSlug: 'dub_project_slug',
 });
 
 // Override per-request:
-await dub.links.create({ domain: 'string', url: 'google.com' }, {
+await dub.projects.retrieve('REPLACE_ME', {
   baseURL: 'http://localhost:8080/test-api',
   httpAgent: new http.Agent({ keepAlive: false }),
 })
