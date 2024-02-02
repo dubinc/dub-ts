@@ -3,10 +3,11 @@
 export { BulkCreateResponse, BulkCreateParams, Bulk } from './bulk';
 export { InfoRetrieveParams, Info } from './info';
 export {
+  Link,
   LinkListResponse,
   LinkCreateParams,
   LinkUpdateParams,
   LinkListParams,
-  LinkDeleteParams,
+  LinkDeleteLinkParams,
   Links,
 } from './links';
