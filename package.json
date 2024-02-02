@@ -1,6 +1,6 @@
 {
   "name": "dub",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "The official TypeScript library for the Dub API",
   "author": "Dub <support@dub.co>",
   "types": "dist/index.d.ts",
@@ -9,7 +9,9 @@
   "repository": "github:dubinc/dub-node",
   "license": "Apache-2.0",
   "packageManager": "yarn@1.22.21",
-  "files": ["*"],
+  "files": [
+    "*"
+  ],
   "private": false,
   "scripts": {
     "test": "bin/check-test-server && yarn jest",

@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.0 (2024-02-02)
+
+Full Changelog: [v0.3.0...v0.4.0](https://github.com/dubinc/dub-node/compare/v0.3.0...v0.4.0)
+
+### Features
+
+* **api:** OpenAPI spec update ([#30](https://github.com/dubinc/dub-node/issues/30)) ([f36cb21](https://github.com/dubinc/dub-node/commit/f36cb2185218f9758516f7da72ccdc726b09cbce))
+
 ## 0.3.0 (2024-02-02)
 
 Full Changelog: [v0.2.0...v0.3.0](https://github.com/dubinc/dub-node/compare/v0.2.0...v0.3.0)
