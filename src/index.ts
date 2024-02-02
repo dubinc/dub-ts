@@ -194,6 +194,7 @@ export namespace Dub {
   export import LinkDeleteLinkParams = API.LinkDeleteLinkParams;
 
   export import Qr = API.Qr;
+  export import QrRetrieveParams = API.QrRetrieveParams;
 
   export import Projects = API.Projects;
   export import Project = API.Project;

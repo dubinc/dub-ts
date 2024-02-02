@@ -44,7 +44,7 @@ export type TagListResponse = Array<Tag>;
 export interface TagCreateParams {
   /**
    * Path param: The slug for the project to create tags for. E.g. for
-   * app.dub.co/acme, the projectSlug is 'acme'.
+   * `app.dub.co/acme`, the projectSlug is `acme`.
    */
   projectSlug?: string;
 
@@ -56,8 +56,8 @@ export interface TagCreateParams {
 
 export interface TagListParams {
   /**
-   * The slug for the project to retrieve tags for. E.g. for app.dub.co/acme, the
-   * projectSlug is 'acme'.
+   * The slug for the project to retrieve tags for. E.g. for `app.dub.co/acme`, the
+   * projectSlug is `acme`.
    */
   projectSlug?: string;
 }

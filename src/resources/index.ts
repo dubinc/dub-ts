@@ -16,4 +16,4 @@ export {
   ProjectRetrieveParams,
   Projects,
 } from './projects/projects';
-export { Qr } from './qr';
+export { QrRetrieveParams, Qr } from './qr';
