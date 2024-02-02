@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.3.0 (2024-02-02)
+
+Full Changelog: [v0.2.0...v0.3.0](https://github.com/dubinc/dub-node/compare/v0.2.0...v0.3.0)
+
+### Features
+
+* **api:** OpenAPI spec update ([#19](https://github.com/dubinc/dub-node/issues/19)) ([fccaea0](https://github.com/dubinc/dub-node/commit/fccaea0bc278bda99e3f6420dfff8900872dad74))
+* **api:** OpenAPI spec update ([#20](https://github.com/dubinc/dub-node/issues/20)) ([60eaaf1](https://github.com/dubinc/dub-node/commit/60eaaf1b374369fc0e21d0e43bed3a38d4411fb0))
+* **api:** OpenAPI spec update ([#24](https://github.com/dubinc/dub-node/issues/24)) ([26b8111](https://github.com/dubinc/dub-node/commit/26b8111a410f43c8f90d921011165cf2748e7ee6))
+* **api:** OpenAPI spec update ([#25](https://github.com/dubinc/dub-node/issues/25)) ([47e0786](https://github.com/dubinc/dub-node/commit/47e0786f2dbd9f16dbd70bd112ca06d868e8e1d6))
+* **api:** OpenAPI spec update ([#26](https://github.com/dubinc/dub-node/issues/26)) ([60287e9](https://github.com/dubinc/dub-node/commit/60287e9926fc2d0ba27418475b5e514bb1bf553c))
+* **api:** OpenAPI spec update ([#27](https://github.com/dubinc/dub-node/issues/27)) ([935314f](https://github.com/dubinc/dub-node/commit/935314f541dd252d8b135e19f98e972ccf865316))
+* **api:** OpenAPI spec update ([#28](https://github.com/dubinc/dub-node/issues/28)) ([eeedda3](https://github.com/dubinc/dub-node/commit/eeedda32db6f30e7d4fa1dcdde70bda1f398cc37))
+
 ## 0.3.0 (2024-01-18)
 
 Full Changelog: [v0.2.0...v0.3.0](https://github.com/dubinc/dub-node/compare/v0.2.0...v0.3.0)
