@@ -8,6 +8,13 @@ import * as API from 'dub/resources/index';
 
 export interface ClientOptions {
   /**
+   * Defaults to process.env['DUB_API_KEY'].
+   */
+  token?: string | undefined;
+
+  projectSlug?: string | null | undefined;
+
+  /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
    *
    * Defaults to process.env['DUB_BASE_URL'].
@@ -66,11 +73,16 @@ export interface ClientOptions {
 
 /** API Client for interfacing with the Dub API. */
 export class Dub extends Core.APIClient {
+  token: string;
+  projectSlug: string | null;
+
   private _options: ClientOptions;
 
   /**
    * API Client for interfacing with the Dub API.
    *
+   * @param {string | undefined} [opts.token=process.env['DUB_API_KEY'] ?? undefined]
+   * @param {string | null | undefined} [opts.projectSlug]
    * @param {string} [opts.baseURL=process.env['DUB_BASE_URL'] ?? https://api.dub.co] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
@@ -79,8 +91,21 @@ export class Dub extends Core.APIClient {
    * @param {Core.Headers} opts.defaultHeaders - Default headers to include with every request to the API.
    * @param {Core.DefaultQuery} opts.defaultQuery - Default query parameters to include with every request to the API.
    */
-  constructor({ baseURL = Core.readEnv('DUB_BASE_URL'), ...opts }: ClientOptions = {}) {
+  constructor({
+    baseURL = Core.readEnv('DUB_BASE_URL'),
+    token = Core.readEnv('DUB_API_KEY'),
+    projectSlug = null,
+    ...opts
+  }: ClientOptions = {}) {
+    if (token === undefined) {
+      throw new Errors.DubError(
+        "The DUB_API_KEY environment variable is missing or empty; either provide it, or instantiate the Dub client with an token option, like new Dub({ token: 'My Token' }).",
+      );
+    }
+
     const options: ClientOptions = {
+      token,
+      projectSlug,
       ...opts,
       baseURL: baseURL || `https://api.dub.co`,
     };
@@ -93,6 +118,9 @@ export class Dub extends Core.APIClient {
       fetch: options.fetch,
     });
     this._options = options;
+
+    this.token = token;
+    this.projectSlug = projectSlug;
   }
 
   links: API.Links = new API.Links(this);
@@ -108,6 +136,10 @@ export class Dub extends Core.APIClient {
       ...super.defaultHeaders(opts),
       ...this._options.defaultHeaders,
     };
+  }
+
+  protected override authHeaders(opts: Core.FinalRequestOptions): Core.Headers {
+    return { Authorization: `Bearer ${this.token}` };
   }
 
   static Dub = this;
@@ -167,6 +199,7 @@ export namespace Dub {
   export import Project = API.Project;
   export import ProjectDetails = API.ProjectDetails;
   export import ProjectListResponse = API.ProjectListResponse;
+  export import ProjectRetrieveParams = API.ProjectRetrieveParams;
 }
 
 export default Dub;
