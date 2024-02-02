@@ -80,13 +80,14 @@ export interface Link {
   createdAt?: string;
 
   /**
-   * The description of the short link generated via api.dub.co/metatags. Will be
+   * The description of the short link generated via `api.dub.co/metatags`. Will be
    * used for Custom Social Media Cards if `proxy` is true.
    */
   description?: string | null;
 
   /**
-   * The domain of the short link.
+   * The domain of the short link. If not provided, the primary domain for the
+   * project will be used (or `dub.sh` if the project has no domains).
    */
   domain?: string;
 
@@ -98,13 +99,13 @@ export interface Link {
 
   /**
    * Geo targeting information for the short link in JSON format {[COUNTRY]:
-   * "https://example.com" }. Learn more: https://dub.sh/geo
+   * `https://example.com` }. Learn more: `https://dub.sh/geo`
    */
   geo?: Record<string, string> | null;
 
   /**
-   * The image of the short link generated via api.dub.co/metatags. Will be used for
-   * Custom Social Media Cards if `proxy` is true.
+   * The image of the short link generated via `api.dub.co/metatags`. Will be used
+   * for Custom Social Media Cards if `proxy` is true.
    */
   image?: string | null;
 
@@ -145,9 +146,21 @@ export interface Link {
   publicStats?: boolean;
 
   /**
+   * The full URL of the QR code for the short link (e.g.
+   * `https://api.dub.co/qr?url=https://dub.sh/try`).
+   */
+  qrCode?: string;
+
+  /**
    * Whether the short link uses link cloaking.
    */
   rewrite?: boolean;
+
+  /**
+   * The full URL of the short link, including the https protocol (e.g.
+   * `https://dub.sh/try`).
+   */
+  shortLink?: string;
 
   /**
    * The unique id of the tag assigned to the short link.
@@ -155,8 +168,8 @@ export interface Link {
   tagId?: string | null;
 
   /**
-   * The title of the short link generated via api.dub.co/metatags. Will be used for
-   * Custom Social Media Cards if `proxy` is true.
+   * The title of the short link generated via `api.dub.co/metatags`. Will be used
+   * for Custom Social Media Cards if `proxy` is true.
    */
   title?: string | null;
 
@@ -206,14 +219,9 @@ export type LinkListResponse = Array<Link>;
 export interface LinkCreateParams {
   /**
    * Query param: The slug for the project to create links for. E.g. for
-   * app.dub.co/acme, the projectSlug is 'acme'.
+   * `app.dub.co/acme`, the projectSlug is `acme`.
    */
   projectSlug?: string;
-
-  /**
-   * Body param: The domain of the short link.
-   */
-  domain: string;
 
   /**
    * Body param: The destination URL of the short link.
@@ -237,10 +245,17 @@ export interface LinkCreateParams {
   comments?: string | null;
 
   /**
-   * Body param: The description of the short link generated via api.dub.co/metatags.
-   * Will be used for Custom Social Media Cards if `proxy` is true.
+   * Body param: The description of the short link generated via
+   * `api.dub.co/metatags`. Will be used for Custom Social Media Cards if `proxy` is
+   * true.
    */
   description?: string | null;
+
+  /**
+   * Body param: The domain of the short link. If not provided, the primary domain
+   * for the project will be used (or `dub.sh` if the project has no domains).
+   */
+  domain?: string;
 
   /**
    * Body param: The date and time when the short link will expire in ISO-8601
@@ -250,13 +265,13 @@ export interface LinkCreateParams {
 
   /**
    * Body param: Geo targeting information for the short link in JSON format
-   * {[COUNTRY]: "https://example.com" }. Learn more: https://dub.sh/geo
+   * {[COUNTRY]: `https://example.com` }. Learn more: `https://dub.sh/geo`
    */
   geo?: Record<string, string> | null;
 
   /**
-   * Body param: The image of the short link generated via api.dub.co/metatags. Will
-   * be used for Custom Social Media Cards if `proxy` is true.
+   * Body param: The image of the short link generated via `api.dub.co/metatags`.
+   * Will be used for Custom Social Media Cards if `proxy` is true.
    */
   image?: string | null;
 
@@ -298,8 +313,8 @@ export interface LinkCreateParams {
   tagId?: string | null;
 
   /**
-   * Body param: The title of the short link generated via api.dub.co/metatags. Will
-   * be used for Custom Social Media Cards if `proxy` is true.
+   * Body param: The title of the short link generated via `api.dub.co/metatags`.
+   * Will be used for Custom Social Media Cards if `proxy` is true.
    */
   title?: string | null;
 }
@@ -307,7 +322,7 @@ export interface LinkCreateParams {
 export interface LinkUpdateParams {
   /**
    * Query param: The slug for the project that the link belongs to. E.g. for
-   * app.dub.co/acme, the projectSlug is 'acme'.
+   * `app.dub.co/acme`, the projectSlug is `acme`.
    */
   projectSlug?: string;
 
@@ -328,13 +343,15 @@ export interface LinkUpdateParams {
   comments?: string | null;
 
   /**
-   * Body param: The description of the short link generated via api.dub.co/metatags.
-   * Will be used for Custom Social Media Cards if `proxy` is true.
+   * Body param: The description of the short link generated via
+   * `api.dub.co/metatags`. Will be used for Custom Social Media Cards if `proxy` is
+   * true.
    */
   description?: string | null;
 
   /**
-   * Body param: The domain of the short link.
+   * Body param: The domain of the short link. If not provided, the primary domain
+   * for the project will be used (or `dub.sh` if the project has no domains).
    */
   domain?: string;
 
@@ -346,13 +363,13 @@ export interface LinkUpdateParams {
 
   /**
    * Body param: Geo targeting information for the short link in JSON format
-   * {[COUNTRY]: "https://example.com" }. Learn more: https://dub.sh/geo
+   * {[COUNTRY]: `https://example.com` }. Learn more: `https://dub.sh/geo`
    */
   geo?: Record<string, string> | null;
 
   /**
-   * Body param: The image of the short link generated via api.dub.co/metatags. Will
-   * be used for Custom Social Media Cards if `proxy` is true.
+   * Body param: The image of the short link generated via `api.dub.co/metatags`.
+   * Will be used for Custom Social Media Cards if `proxy` is true.
    */
   image?: string | null;
 
@@ -394,8 +411,8 @@ export interface LinkUpdateParams {
   tagId?: string | null;
 
   /**
-   * Body param: The title of the short link generated via api.dub.co/metatags. Will
-   * be used for Custom Social Media Cards if `proxy` is true.
+   * Body param: The title of the short link generated via `api.dub.co/metatags`.
+   * Will be used for Custom Social Media Cards if `proxy` is true.
    */
   title?: string | null;
 
@@ -407,13 +424,13 @@ export interface LinkUpdateParams {
 
 export interface LinkListParams {
   /**
-   * The slug for the project to retrieve links for. E.g. for app.dub.co/acme, the
-   * projectSlug is 'acme'.
+   * The slug for the project to retrieve links for. E.g. for `app.dub.co/acme`, the
+   * projectSlug is `acme`.
    */
   projectSlug?: string;
 
   /**
-   * The domain to filter the links by. E.g. 'ac.me'. If not provided, all links for
+   * The domain to filter the links by. E.g. `ac.me`. If not provided, all links for
    * the project will be returned.
    */
   domain?: string;
@@ -430,13 +447,13 @@ export interface LinkListParams {
   search?: string;
 
   /**
-   * Whether to include archived links in the response. Defaults to false if not
+   * Whether to include archived links in the response. Defaults to `false` if not
    * provided.
    */
   showArchived?: true | false;
 
   /**
-   * The field to sort the links by. The default is 'createdAt', and sort order is
+   * The field to sort the links by. The default is `createdAt`, and sort order is
    * always descending.
    */
   sort?: 'createdAt' | 'clicks' | 'lastClicked';
@@ -454,8 +471,8 @@ export interface LinkListParams {
 
 export interface LinkDeleteLinkParams {
   /**
-   * The slug for the project that the link belongs to. E.g. for app.dub.co/acme, the
-   * projectSlug is 'acme'.
+   * The slug for the project that the link belongs to. E.g. for `app.dub.co/acme`,
+   * the projectSlug is `acme`.
    */
   projectSlug?: string;
 }

@@ -30,6 +30,10 @@ Methods:
 
 # Qr
 
+Methods:
+
+- <code title="get /qr">client.qr.<a href="./src/resources/qr.ts">retrieve</a>({ ...params }) -> Response</code>
+
 # Projects
 
 Types:
