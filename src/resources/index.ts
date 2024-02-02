@@ -9,5 +9,11 @@ export {
   LinkDeleteLinkParams,
   Links,
 } from './links/links';
-export { Project, ProjectDetails, ProjectListResponse, Projects } from './projects/projects';
+export {
+  Project,
+  ProjectDetails,
+  ProjectListResponse,
+  ProjectRetrieveParams,
+  Projects,
+} from './projects/projects';
 export { Qr } from './qr';
