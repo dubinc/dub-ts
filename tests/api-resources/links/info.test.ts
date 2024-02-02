@@ -3,11 +3,7 @@
 import Dub from 'dub';
 import { Response } from 'node-fetch';
 
-const dub = new Dub({
-  token: 'My Token',
-  projectSlug: 'dub_project_slug',
-  baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
-});
+const dub = new Dub({ baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010' });
 
 describe('resource info', () => {
   test('retrieve: only required params', async () => {

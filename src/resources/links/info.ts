@@ -3,15 +3,14 @@
 import * as Core from 'dub/core';
 import { APIResource } from 'dub/resource';
 import * as InfoAPI from 'dub/resources/links/info';
-import * as Shared from 'dub/resources/shared';
+import * as LinksAPI from 'dub/resources/links/links';
 
 export class Info extends APIResource {
   /**
    * Retrieve the info for a link from their domain and key.
    */
-  retrieve(params: InfoRetrieveParams, options?: Core.RequestOptions): Core.APIPromise<Shared.Link> {
-    const { projectSlug = this._client.projectSlug, ...query } = params;
-    return this._client.get('/links/info', { query: { projectSlug, ...query }, ...options });
+  retrieve(query: InfoRetrieveParams, options?: Core.RequestOptions): Core.APIPromise<LinksAPI.Link> {
+    return this._client.get('/links/info', { query, ...options });
   }
 }
 
@@ -31,7 +30,7 @@ export interface InfoRetrieveParams {
    * The slug for the project that the link belongs to. E.g. for app.dub.co/acme, the
    * projectSlug is 'acme'.
    */
-  projectSlug?: string;
+  projectSlug: string;
 }
 
 export namespace Info {

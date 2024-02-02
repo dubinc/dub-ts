@@ -3,11 +3,7 @@
 import Dub from 'dub';
 import { Response } from 'node-fetch';
 
-const dub = new Dub({
-  token: 'My Token',
-  projectSlug: 'dub_project_slug',
-  baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
-});
+const dub = new Dub({ baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010' });
 
 describe('resource links', () => {
   test('create: only required params', async () => {
@@ -102,8 +98,8 @@ describe('resource links', () => {
     });
   });
 
-  test('delete: only required params', async () => {
-    const responsePromise = dub.links.delete('string', { projectSlug: 'string' });
+  test('deleteLink: only required params', async () => {
+    const responsePromise = dub.links.deleteLink('string', { projectSlug: 'string' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -113,7 +109,7 @@ describe('resource links', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('delete: required and optional params', async () => {
-    const response = await dub.links.delete('string', { projectSlug: 'string' });
+  test('deleteLink: required and optional params', async () => {
+    const response = await dub.links.deleteLink('string', { projectSlug: 'string' });
   });
 });

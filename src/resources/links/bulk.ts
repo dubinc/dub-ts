@@ -3,26 +3,26 @@
 import * as Core from 'dub/core';
 import { APIResource } from 'dub/resource';
 import * as BulkAPI from 'dub/resources/links/bulk';
-import * as Shared from 'dub/resources/shared';
+import * as LinksAPI from 'dub/resources/links/links';
 
 export class Bulk extends APIResource {
   /**
    * Bulk create up to 100 links for the authenticated project.
    */
   create(params: BulkCreateParams, options?: Core.RequestOptions): Core.APIPromise<BulkCreateResponse> {
-    const { projectSlug = this._client.projectSlug, ...body } = params;
+    const { projectSlug, ...body } = params;
     return this._client.post('/links/bulk', { query: { projectSlug }, body, ...options });
   }
 }
 
-export type BulkCreateResponse = Array<Shared.Link>;
+export type BulkCreateResponse = Array<LinksAPI.Link>;
 
 export interface BulkCreateParams {
   /**
    * Query param: The slug for the project to create links for. E.g. for
    * app.dub.co/acme, the projectSlug is 'acme'.
    */
-  projectSlug?: string;
+  projectSlug: string;
 }
 
 export namespace BulkCreateParams {
