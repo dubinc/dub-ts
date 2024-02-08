@@ -9,7 +9,9 @@
   "repository": "github:dubinc/dub-node",
   "license": "Apache-2.0",
   "packageManager": "yarn@1.22.21",
-  "files": ["*"],
+  "files": [
+    "*"
+  ],
   "private": false,
   "scripts": {
     "test": "bin/check-test-server && yarn jest",
