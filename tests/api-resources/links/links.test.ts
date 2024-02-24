@@ -40,6 +40,7 @@ describe('resource links', () => {
       publicStats: true,
       rewrite: true,
       tagId: 'string',
+      tagIds: ['string', 'string', 'string'],
       title: 'string',
     });
   });
@@ -73,6 +74,7 @@ describe('resource links', () => {
       publicStats: true,
       rewrite: true,
       tagId: 'string',
+      tagIds: ['string', 'string', 'string'],
       title: 'string',
       url: 'string',
     });
@@ -99,6 +101,7 @@ describe('resource links', () => {
       sort: 'createdAt',
       tagId: 'string',
       userId: 'string',
+      withTags: true,
     });
   });
 

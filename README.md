@@ -60,7 +60,7 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const project = await dub.projects.retrieve({ projectSlug: 'REPLACE_ME' }).catch((err) => {
+  const projectDetails = await dub.projects.retrieve({ projectSlug: 'REPLACE_ME' }).catch((err) => {
     if (err instanceof Dub.APIError) {
       console.log(err.status); // 400
       console.log(err.name); // BadRequestError
