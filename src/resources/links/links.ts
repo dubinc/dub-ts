@@ -5,6 +5,7 @@ import { APIResource } from 'dub/resource';
 import * as LinksAPI from 'dub/resources/links/links';
 import * as BulkAPI from 'dub/resources/links/bulk';
 import * as InfoAPI from 'dub/resources/links/info';
+import * as TagsAPI from 'dub/resources/projects/tags';
 
 export class Links extends APIResource {
   info: InfoAPI.Info = new InfoAPI.Info(this._client);
@@ -163,9 +164,19 @@ export interface Link {
   shortLink?: string;
 
   /**
-   * The unique id of the tag assigned to the short link.
+   * The unique ID of the tag assigned to the short link.
    */
-  tagId?: string | null;
+  tagId?: string;
+
+  /**
+   * The unique IDs of the tags assigned to the short link.
+   */
+  tagIds?: Array<string>;
+
+  /**
+   * The tags assigned to the short link.
+   */
+  tags?: Array<TagsAPI.Tag>;
 
   /**
    * The title of the short link generated via `api.dub.co/metatags`. Will be used
@@ -308,9 +319,14 @@ export interface LinkCreateParams {
   rewrite?: boolean;
 
   /**
-   * Body param: The unique id of the tag assigned to the short link.
+   * Body param: The unique ID of the tag assigned to the short link.
    */
-  tagId?: string | null;
+  tagId?: string;
+
+  /**
+   * Body param: The unique IDs of the tags assigned to the short link.
+   */
+  tagIds?: Array<string>;
 
   /**
    * Body param: The title of the short link generated via `api.dub.co/metatags`.
@@ -406,9 +422,14 @@ export interface LinkUpdateParams {
   rewrite?: boolean;
 
   /**
-   * Body param: The unique id of the tag assigned to the short link.
+   * Body param: The unique ID of the tag assigned to the short link.
    */
-  tagId?: string | null;
+  tagId?: string;
+
+  /**
+   * Body param: The unique IDs of the tags assigned to the short link.
+   */
+  tagIds?: Array<string>;
 
   /**
    * Body param: The title of the short link generated via `api.dub.co/metatags`.
@@ -459,14 +480,19 @@ export interface LinkListParams {
   sort?: 'createdAt' | 'clicks' | 'lastClicked';
 
   /**
-   * The tag ID to filter the links by.
+   * The tag ID(s) to filter the links by.
    */
-  tagId?: string;
+  tagId?: string | Array<string>;
 
   /**
    * The user ID to filter the links by.
    */
   userId?: string;
+
+  /**
+   * Only return links with tags. Defaults to `false` if not provided.
+   */
+  withTags?: true | false;
 }
 
 export interface LinkDeleteLinkParams {

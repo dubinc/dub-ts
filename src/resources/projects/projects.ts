@@ -127,7 +127,4 @@ export namespace Projects {
   export import ProjectRetrieveParams = ProjectsAPI.ProjectRetrieveParams;
   export import Tags = TagsAPI.Tags;
   export import Tag = TagsAPI.Tag;
-  export import TagListResponse = TagsAPI.TagListResponse;
-  export import TagCreateParams = TagsAPI.TagCreateParams;
-  export import TagListParams = TagsAPI.TagListParams;
 }
