@@ -10,8 +10,8 @@ export class Bulk extends APIResource {
    * Bulk create up to 100 links for the authenticated project.
    */
   create(params: BulkCreateParams, options?: Core.RequestOptions): Core.APIPromise<BulkCreateResponse> {
-    const { projectSlug = this._client.projectSlug, ...body } = params;
-    return this._client.post('/links/bulk', { query: { projectSlug }, body, ...options });
+    const { projectSlug = this._client.projectSlug, body } = params;
+    return this._client.post('/links/bulk', { query: { projectSlug }, body: body, ...options });
   }
 }
 
@@ -23,6 +23,11 @@ export interface BulkCreateParams {
    * `app.dub.co/acme`, the projectSlug is `acme`.
    */
   projectSlug?: string;
+
+  /**
+   * Body param:
+   */
+  body: Array<BulkCreateParams.Body>;
 }
 
 export namespace BulkCreateParams {
@@ -89,6 +94,13 @@ export namespace BulkCreateParams {
     password?: string | null;
 
     /**
+     * The prefix of the short link slug for randomly-generated keys (e.g. if prefix is
+     * `/c/`, generated keys will be in the `/c/:key` format). Will be ignored if `key`
+     * is provided.
+     */
+    prefix?: string;
+
+    /**
      * Whether the short link uses Custom Social Media Cards feature.
      */
     proxy?: boolean;
@@ -104,9 +116,14 @@ export namespace BulkCreateParams {
     rewrite?: boolean;
 
     /**
-     * The unique id of the tag assigned to the short link.
+     * The unique ID of the tag assigned to the short link.
      */
-    tagId?: string | null;
+    tagId?: string;
+
+    /**
+     * The unique IDs of the tags assigned to the short link.
+     */
+    tagIds?: Array<string>;
 
     /**
      * The title of the short link generated via `api.dub.co/metatags`. Will be used

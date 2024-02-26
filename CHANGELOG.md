@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.8.0 (2024-02-26)
+
+Full Changelog: [v0.7.0...v0.8.0](https://github.com/dubinc/dub-node/compare/v0.7.0...v0.8.0)
+
+### Features
+
+* update via SDK Studio ([#39](https://github.com/dubinc/dub-node/issues/39)) ([762245e](https://github.com/dubinc/dub-node/commit/762245ef4f02098c1b36b2229e8c71abba0ba236))
+* update via SDK Studio ([#41](https://github.com/dubinc/dub-node/issues/41)) ([bc51cb7](https://github.com/dubinc/dub-node/commit/bc51cb781fb3ae4dfb3d16536f3659310a72e50c))
+
 ## 0.7.0 (2024-02-08)
 
 Full Changelog: [v0.6.0...v0.7.0](https://github.com/dubinc/dub-node/compare/v0.6.0...v0.7.0)

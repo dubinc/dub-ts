@@ -52,9 +52,3 @@ Methods:
 Types:
 
 - <code><a href="./src/resources/projects/tags.ts">Tag</a></code>
-- <code><a href="./src/resources/projects/tags.ts">TagListResponse</a></code>
-
-Methods:
-
-- <code title="post /projects/{projectSlug}/tags">client.projects.tags.<a href="./src/resources/projects/tags.ts">create</a>({ ...params }) -> Tag</code>
-- <code title="get /projects/{projectSlug}/tags">client.projects.tags.<a href="./src/resources/projects/tags.ts">list</a>({ ...params }) -> TagListResponse</code>
