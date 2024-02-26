@@ -94,6 +94,13 @@ export namespace BulkCreateParams {
     password?: string | null;
 
     /**
+     * The prefix of the short link slug for randomly-generated keys (e.g. if prefix is
+     * `/c/`, generated keys will be in the `/c/:key` format). Will be ignored if `key`
+     * is provided.
+     */
+    prefix?: string;
+
+    /**
      * Whether the short link uses Custom Social Media Cards feature.
      */
     proxy?: boolean;

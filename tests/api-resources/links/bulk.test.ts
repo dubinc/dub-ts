@@ -28,6 +28,7 @@ describe('resource bulk', () => {
         {
           domain: 'string',
           key: 'string',
+          prefix: 'string',
           url: 'string',
           archived: true,
           expiresAt: '2019-12-27T18:11:19.117Z',
@@ -48,6 +49,7 @@ describe('resource bulk', () => {
         {
           domain: 'string',
           key: 'string',
+          prefix: 'string',
           url: 'string',
           archived: true,
           expiresAt: '2019-12-27T18:11:19.117Z',
@@ -68,6 +70,7 @@ describe('resource bulk', () => {
         {
           domain: 'string',
           key: 'string',
+          prefix: 'string',
           url: 'string',
           archived: true,
           expiresAt: '2019-12-27T18:11:19.117Z',

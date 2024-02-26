@@ -132,6 +132,13 @@ export interface Link {
   password?: string | null;
 
   /**
+   * The prefix of the short link slug for randomly-generated keys (e.g. if prefix is
+   * `/c/`, generated keys will be in the `/c/:key` format). Will be ignored if `key`
+   * is provided.
+   */
+  prefix?: string;
+
+  /**
    * The project ID of the short link.
    */
   projectId?: string;
@@ -304,6 +311,13 @@ export interface LinkCreateParams {
   password?: string | null;
 
   /**
+   * Body param: The prefix of the short link slug for randomly-generated keys (e.g.
+   * if prefix is `/c/`, generated keys will be in the `/c/:key` format). Will be
+   * ignored if `key` is provided.
+   */
+  prefix?: string;
+
+  /**
    * Body param: Whether the short link uses Custom Social Media Cards feature.
    */
   proxy?: boolean;
@@ -405,6 +419,13 @@ export interface LinkUpdateParams {
    * link.
    */
   password?: string | null;
+
+  /**
+   * Body param: The prefix of the short link slug for randomly-generated keys (e.g.
+   * if prefix is `/c/`, generated keys will be in the `/c/:key` format). Will be
+   * ignored if `key` is provided.
+   */
+  prefix?: string;
 
   /**
    * Body param: Whether the short link uses Custom Social Media Cards feature.
