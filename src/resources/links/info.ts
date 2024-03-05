@@ -17,13 +17,13 @@ export class Info extends APIResource {
 
 export interface InfoRetrieveParams {
   /**
-   * The domain of the link to retrieve. E.g. for `dub.sh/github`, the domain is
+   * The domain of the link to retrieve. E.g. for `d.to/github`, the domain is
    * `dub.sh`.
    */
   domain: string;
 
   /**
-   * The key of the link to retrieve. E.g. for `dub.sh/github`, the key is `github`.
+   * The key of the link to retrieve. E.g. for `d.to/github`, the key is `github`.
    */
   key: string;
 
