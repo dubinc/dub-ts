@@ -9,6 +9,7 @@ The REST API documentation can be found [on dub.co](https://dub.co/help). The fu
 ## Installation
 
 ```sh
+# install from NPM
 npm install --save dub
 # or
 yarn add dub
@@ -60,7 +61,7 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const projectDetails = await dub.projects.retrieve({ projectSlug: 'REPLACE_ME' }).catch((err) => {
+  const projectDetails = await dub.projects.retrieve({ projectSlug: 'REPLACE_ME' }).catch(async (err) => {
     if (err instanceof Dub.APIError) {
       console.log(err.status); // 400
       console.log(err.name); // BadRequestError
@@ -170,7 +171,7 @@ import Dub from 'dub';
 ```
 
 To do the inverse, add `import "dub/shims/node"` (which does import polyfills).
-This can also be useful if you are getting the wrong TypeScript types for `Response` - more details [here](https://github.com/dubinc/dub-node/tree/main/src/_shims#readme).
+This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/dubinc/dub-node/tree/main/src/_shims#readme)).
 
 You may also provide a custom `fetch` function when instantiating the client,
 which can be used to inspect or alter the `Request` or `Response` before/after each request:
@@ -180,7 +181,7 @@ import { fetch } from 'undici'; // as one example
 import Dub from 'dub';
 
 const client = new Dub({
-  fetch: async (url: RequestInfo, init?: RequestInfo): Promise<Response> => {
+  fetch: async (url: RequestInfo, init?: RequestInit): Promise<Response> => {
     console.log('About to make a request', url, init);
     const response = await fetch(url, init);
     console.log('Got response', response);
@@ -201,7 +202,7 @@ If you would like to disable or customize this behavior, for example to use the 
 <!-- prettier-ignore -->
 ```ts
 import http from 'http';
-import HttpsProxyAgent from 'https-proxy-agent';
+import { HttpsProxyAgent } from 'https-proxy-agent';
 
 // Configure the default for all requests:
 const dub = new Dub({
@@ -210,10 +211,12 @@ const dub = new Dub({
 });
 
 // Override per-request:
-await dub.projects.retrieve({ projectSlug: 'REPLACE_ME' }, {
-  baseURL: 'http://localhost:8080/test-api',
-  httpAgent: new http.Agent({ keepAlive: false }),
-})
+await dub.projects.retrieve(
+  { projectSlug: 'REPLACE_ME' },
+  {
+    httpAgent: new http.Agent({ keepAlive: false }),
+  },
+);
 ```
 
 ## Semantic Versioning

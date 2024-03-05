@@ -100,7 +100,7 @@ export interface Link {
 
   /**
    * Geo targeting information for the short link in JSON format {[COUNTRY]:
-   * `https://example.com` }. Learn more: `https://dub.sh/geo`
+   * `https://example.com` }. Learn more: `https://d.to/geo`
    */
   geo?: Record<string, string> | null;
 
@@ -155,7 +155,7 @@ export interface Link {
 
   /**
    * The full URL of the QR code for the short link (e.g.
-   * `https://api.dub.co/qr?url=https://dub.sh/try`).
+   * `https://api.dub.co/qr?url=https://d.to/try`).
    */
   qrCode?: string;
 
@@ -166,7 +166,7 @@ export interface Link {
 
   /**
    * The full URL of the short link, including the https protocol (e.g.
-   * `https://dub.sh/try`).
+   * `https://d.to/try`).
    */
   shortLink?: string;
 
@@ -283,7 +283,7 @@ export interface LinkCreateParams {
 
   /**
    * Body param: Geo targeting information for the short link in JSON format
-   * {[COUNTRY]: `https://example.com` }. Learn more: `https://dub.sh/geo`
+   * {[COUNTRY]: `https://example.com` }. Learn more: `https://d.to/geo`
    */
   geo?: Record<string, string> | null;
 
@@ -393,7 +393,7 @@ export interface LinkUpdateParams {
 
   /**
    * Body param: Geo targeting information for the short link in JSON format
-   * {[COUNTRY]: `https://example.com` }. Learn more: `https://dub.sh/geo`
+   * {[COUNTRY]: `https://example.com` }. Learn more: `https://d.to/geo`
    */
   geo?: Record<string, string> | null;
 
