@@ -26,7 +26,9 @@ import Dub from 'dub';
 const dub = new Dub();
 
 async function main() {
-  const projectDetails = await dub.projects.retrieve({ projectSlug: 'REPLACE_ME' });
+  const projectRetrieveResponse = await dub.projects.retrieve({ projectSlug: 'REPLACE_ME' });
+
+  console.log(projectRetrieveResponse.id);
 }
 
 main();
@@ -44,7 +46,7 @@ const dub = new Dub();
 
 async function main() {
   const params: Dub.ProjectRetrieveParams = { projectSlug: 'REPLACE_ME' };
-  const projectDetails: Dub.ProjectDetails = await dub.projects.retrieve(params);
+  const projectRetrieveResponse: Dub.ProjectRetrieveResponse = await dub.projects.retrieve(params);
 }
 
 main();
@@ -61,15 +63,17 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const projectDetails = await dub.projects.retrieve({ projectSlug: 'REPLACE_ME' }).catch(async (err) => {
-    if (err instanceof Dub.APIError) {
-      console.log(err.status); // 400
-      console.log(err.name); // BadRequestError
-      console.log(err.headers); // {server: 'nginx', ...}
-    } else {
-      throw err;
-    }
-  });
+  const projectRetrieveResponse = await dub.projects
+    .retrieve({ projectSlug: 'REPLACE_ME' })
+    .catch(async (err) => {
+      if (err instanceof Dub.APIError) {
+        console.log(err.status); // 400
+        console.log(err.name); // BadRequestError
+        console.log(err.headers); // {server: 'nginx', ...}
+      } else {
+        throw err;
+      }
+    });
 }
 
 main();
@@ -148,11 +152,11 @@ const response = await dub.projects.retrieve({ projectSlug: 'REPLACE_ME' }).asRe
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: projectDetails, response: raw } = await dub.projects
+const { data: projectRetrieveResponse, response: raw } = await dub.projects
   .retrieve({ projectSlug: 'REPLACE_ME' })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(projectDetails);
+console.log(projectRetrieveResponse.id);
 ```
 
 ## Customizing the fetch client

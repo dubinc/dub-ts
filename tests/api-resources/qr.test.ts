@@ -9,14 +9,25 @@ const dub = new Dub({
 });
 
 describe('resource qr', () => {
-  test('retrieve: required and optional params', async () => {
-    const response = await dub.qr.retrieve({
-      url: 'string',
-      bgColor: 'string',
-      fgColor: 'string',
-      includeMargin: true,
-      level: 'L',
-      size: 0,
-    });
+  test('retrieve: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(dub.qr.retrieve({ path: '/_stainless_unknown_path' })).rejects.toThrow(Dub.NotFoundError);
+  });
+
+  test('retrieve: request options and params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      dub.qr.retrieve(
+        {
+          bgColor: 'string',
+          fgColor: 'string',
+          includeMargin: true,
+          level: 'L',
+          size: 0,
+          url: 'https://example.com',
+        },
+        { path: '/_stainless_unknown_path' },
+      ),
+    ).rejects.toThrow(Dub.NotFoundError);
   });
 });
