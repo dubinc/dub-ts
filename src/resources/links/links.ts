@@ -5,7 +5,6 @@ import { APIResource } from 'dub/resource';
 import * as LinksAPI from 'dub/resources/links/links';
 import * as BulkAPI from 'dub/resources/links/bulk';
 import * as InfoAPI from 'dub/resources/links/info';
-import * as TagsAPI from 'dub/resources/projects/tags';
 
 export class Links extends APIResource {
   info: InfoAPI.Info = new InfoAPI.Info(this._client);
@@ -14,7 +13,7 @@ export class Links extends APIResource {
   /**
    * Create a new link for the authenticated project.
    */
-  create(params: LinkCreateParams, options?: Core.RequestOptions): Core.APIPromise<Link> {
+  create(params: LinkCreateParams, options?: Core.RequestOptions): Core.APIPromise<LinkCreateResponse> {
     const { projectSlug = this._client.projectSlug, ...body } = params;
     return this._client.post('/links', { query: { projectSlug }, body, ...options });
   }
@@ -22,7 +21,11 @@ export class Links extends APIResource {
   /**
    * Edit a link for the authenticated project.
    */
-  update(linkId: string, params: LinkUpdateParams, options?: Core.RequestOptions): Core.APIPromise<Link> {
+  update(
+    linkId: string,
+    params: LinkUpdateParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<LinkUpdateResponse> {
     const { projectSlug = this._client.projectSlug, ...body } = params;
     return this._client.put(`/links/${linkId}`, { query: { projectSlug }, body, ...options });
   }
@@ -43,200 +46,759 @@ export class Links extends APIResource {
     linkId: string,
     params: LinkDeleteLinkParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<Link> {
+  ): Core.APIPromise<LinkDeleteLinkResponse> {
     const { projectSlug = this._client.projectSlug } = params;
     return this._client.delete(`/links/${linkId}`, { query: { projectSlug }, ...options });
   }
 }
 
-export interface Link {
+export interface LinkCreateResponse {
   /**
    * The unique ID of the short link.
    */
-  id?: string;
+  id: string;
 
   /**
    * The Android destination URL for the short link for Android device targeting.
    */
-  android?: string | null;
+  android: string | null;
 
   /**
    * Whether the short link is archived.
    */
-  archived?: boolean;
+  archived: boolean;
 
   /**
    * The number of clicks on the short link.
    */
-  clicks?: number;
+  clicks: number;
 
   /**
    * The comments for the short link.
    */
-  comments?: string | null;
+  comments: string | null;
 
   /**
    * The date and time when the short link was created.
    */
-  createdAt?: string;
+  createdAt: string;
 
   /**
    * The description of the short link generated via `api.dub.co/metatags`. Will be
    * used for Custom Social Media Cards if `proxy` is true.
    */
-  description?: string | null;
+  description: string | null;
 
   /**
    * The domain of the short link. If not provided, the primary domain for the
    * project will be used (or `dub.sh` if the project has no domains).
    */
-  domain?: string;
+  domain: string;
 
   /**
    * The date and time when the short link will expire in ISO-8601 format. Must be in
    * the future.
    */
-  expiresAt?: string | null;
+  expiresAt: string | null;
 
   /**
-   * Geo targeting information for the short link in JSON format {[COUNTRY]:
-   * `https://example.com` }. Learn more: `https://dub.sh/geo`
+   * Geo targeting information for the short link in JSON format
+   * `{[COUNTRY]: https://example.com }`. Learn more: https://d.to/geo
    */
-  geo?: Record<string, string> | null;
+  geo: Record<string, string> | null;
 
   /**
    * The image of the short link generated via `api.dub.co/metatags`. Will be used
    * for Custom Social Media Cards if `proxy` is true.
    */
-  image?: string | null;
+  image: string | null;
 
   /**
    * The iOS destination URL for the short link for iOS device targeting.
    */
-  ios?: string | null;
+  ios: string | null;
 
   /**
    * The short link slug. If not provided, a random 7-character slug will be
    * generated.
    */
-  key?: string;
+  key: string;
 
   /**
    * The date and time when the short link was last clicked.
    */
-  lastClicked?: string | null;
+  lastClicked: string | null;
 
   /**
    * The password required to access the destination URL of the short link.
    */
-  password?: string | null;
-
-  /**
-   * The prefix of the short link slug for randomly-generated keys (e.g. if prefix is
-   * `/c/`, generated keys will be in the `/c/:key` format). Will be ignored if `key`
-   * is provided.
-   */
-  prefix?: string;
+  password: string | null;
 
   /**
    * The project ID of the short link.
    */
-  projectId?: string;
+  projectId: string;
 
   /**
    * Whether the short link uses Custom Social Media Cards feature.
    */
-  proxy?: boolean;
+  proxy: boolean;
 
   /**
    * Whether the short link's stats are publicly accessible.
    */
-  publicStats?: boolean;
+  publicStats: boolean;
 
   /**
    * The full URL of the QR code for the short link (e.g.
    * `https://api.dub.co/qr?url=https://dub.sh/try`).
    */
-  qrCode?: string;
+  qrCode: string;
 
   /**
    * Whether the short link uses link cloaking.
    */
-  rewrite?: boolean;
+  rewrite: boolean;
 
   /**
    * The full URL of the short link, including the https protocol (e.g.
    * `https://dub.sh/try`).
    */
-  shortLink?: string;
-
-  /**
-   * The unique ID of the tag assigned to the short link.
-   */
-  tagId?: string;
-
-  /**
-   * The unique IDs of the tags assigned to the short link.
-   */
-  tagIds?: Array<string>;
+  shortLink: string;
 
   /**
    * The tags assigned to the short link.
    */
-  tags?: Array<TagsAPI.Tag>;
+  tags: Array<LinkCreateResponse.Tag> | null;
 
   /**
    * The title of the short link generated via `api.dub.co/metatags`. Will be used
    * for Custom Social Media Cards if `proxy` is true.
    */
-  title?: string | null;
+  title: string | null;
 
   /**
    * The date and time when the short link was last updated.
    */
-  updatedAt?: string;
+  updatedAt: string;
 
   /**
    * The destination URL of the short link.
    */
-  url?: string;
+  url: string;
 
   /**
    * The user ID of the creator of the short link.
    */
-  userId?: string;
+  userId: string;
 
   /**
    * The UTM campaign of the short link.
    */
-  utm_campaign?: string | null;
+  utm_campaign: string | null;
 
   /**
    * The UTM content of the short link.
    */
-  utm_content?: string | null;
+  utm_content: string | null;
 
   /**
    * The UTM medium of the short link.
    */
-  utm_medium?: string | null;
+  utm_medium: string | null;
 
   /**
    * The UTM source of the short link.
    */
-  utm_source?: string | null;
+  utm_source: string | null;
 
   /**
    * The UTM term of the short link.
    */
-  utm_term?: string | null;
+  utm_term: string | null;
 }
 
-export type LinkListResponse = Array<Link>;
+export namespace LinkCreateResponse {
+  export interface Tag {
+    /**
+     * The unique ID of the tag.
+     */
+    id: string;
+
+    /**
+     * The color of the tag.
+     */
+    color: 'red' | 'yellow' | 'green' | 'blue' | 'purple' | 'pink' | 'brown';
+
+    /**
+     * The name of the tag.
+     */
+    name: string;
+  }
+}
+
+export interface LinkUpdateResponse {
+  /**
+   * The unique ID of the short link.
+   */
+  id: string;
+
+  /**
+   * The Android destination URL for the short link for Android device targeting.
+   */
+  android: string | null;
+
+  /**
+   * Whether the short link is archived.
+   */
+  archived: boolean;
+
+  /**
+   * The number of clicks on the short link.
+   */
+  clicks: number;
+
+  /**
+   * The comments for the short link.
+   */
+  comments: string | null;
+
+  /**
+   * The date and time when the short link was created.
+   */
+  createdAt: string;
+
+  /**
+   * The description of the short link generated via `api.dub.co/metatags`. Will be
+   * used for Custom Social Media Cards if `proxy` is true.
+   */
+  description: string | null;
+
+  /**
+   * The domain of the short link. If not provided, the primary domain for the
+   * project will be used (or `dub.sh` if the project has no domains).
+   */
+  domain: string;
+
+  /**
+   * The date and time when the short link will expire in ISO-8601 format. Must be in
+   * the future.
+   */
+  expiresAt: string | null;
+
+  /**
+   * Geo targeting information for the short link in JSON format
+   * `{[COUNTRY]: https://example.com }`. Learn more: https://d.to/geo
+   */
+  geo: Record<string, string> | null;
+
+  /**
+   * The image of the short link generated via `api.dub.co/metatags`. Will be used
+   * for Custom Social Media Cards if `proxy` is true.
+   */
+  image: string | null;
+
+  /**
+   * The iOS destination URL for the short link for iOS device targeting.
+   */
+  ios: string | null;
+
+  /**
+   * The short link slug. If not provided, a random 7-character slug will be
+   * generated.
+   */
+  key: string;
+
+  /**
+   * The date and time when the short link was last clicked.
+   */
+  lastClicked: string | null;
+
+  /**
+   * The password required to access the destination URL of the short link.
+   */
+  password: string | null;
+
+  /**
+   * The project ID of the short link.
+   */
+  projectId: string;
+
+  /**
+   * Whether the short link uses Custom Social Media Cards feature.
+   */
+  proxy: boolean;
+
+  /**
+   * Whether the short link's stats are publicly accessible.
+   */
+  publicStats: boolean;
+
+  /**
+   * The full URL of the QR code for the short link (e.g.
+   * `https://api.dub.co/qr?url=https://dub.sh/try`).
+   */
+  qrCode: string;
+
+  /**
+   * Whether the short link uses link cloaking.
+   */
+  rewrite: boolean;
+
+  /**
+   * The full URL of the short link, including the https protocol (e.g.
+   * `https://dub.sh/try`).
+   */
+  shortLink: string;
+
+  /**
+   * The tags assigned to the short link.
+   */
+  tags: Array<LinkUpdateResponse.Tag> | null;
+
+  /**
+   * The title of the short link generated via `api.dub.co/metatags`. Will be used
+   * for Custom Social Media Cards if `proxy` is true.
+   */
+  title: string | null;
+
+  /**
+   * The date and time when the short link was last updated.
+   */
+  updatedAt: string;
+
+  /**
+   * The destination URL of the short link.
+   */
+  url: string;
+
+  /**
+   * The user ID of the creator of the short link.
+   */
+  userId: string;
+
+  /**
+   * The UTM campaign of the short link.
+   */
+  utm_campaign: string | null;
+
+  /**
+   * The UTM content of the short link.
+   */
+  utm_content: string | null;
+
+  /**
+   * The UTM medium of the short link.
+   */
+  utm_medium: string | null;
+
+  /**
+   * The UTM source of the short link.
+   */
+  utm_source: string | null;
+
+  /**
+   * The UTM term of the short link.
+   */
+  utm_term: string | null;
+}
+
+export namespace LinkUpdateResponse {
+  export interface Tag {
+    /**
+     * The unique ID of the tag.
+     */
+    id: string;
+
+    /**
+     * The color of the tag.
+     */
+    color: 'red' | 'yellow' | 'green' | 'blue' | 'purple' | 'pink' | 'brown';
+
+    /**
+     * The name of the tag.
+     */
+    name: string;
+  }
+}
+
+export type LinkListResponse = Array<LinkListResponse.LinkListResponseItem>;
+
+export namespace LinkListResponse {
+  export interface LinkListResponseItem {
+    /**
+     * The unique ID of the short link.
+     */
+    id: string;
+
+    /**
+     * The Android destination URL for the short link for Android device targeting.
+     */
+    android: string | null;
+
+    /**
+     * Whether the short link is archived.
+     */
+    archived: boolean;
+
+    /**
+     * The number of clicks on the short link.
+     */
+    clicks: number;
+
+    /**
+     * The comments for the short link.
+     */
+    comments: string | null;
+
+    /**
+     * The date and time when the short link was created.
+     */
+    createdAt: string;
+
+    /**
+     * The description of the short link generated via `api.dub.co/metatags`. Will be
+     * used for Custom Social Media Cards if `proxy` is true.
+     */
+    description: string | null;
+
+    /**
+     * The domain of the short link. If not provided, the primary domain for the
+     * project will be used (or `dub.sh` if the project has no domains).
+     */
+    domain: string;
+
+    /**
+     * The date and time when the short link will expire in ISO-8601 format. Must be in
+     * the future.
+     */
+    expiresAt: string | null;
+
+    /**
+     * Geo targeting information for the short link in JSON format
+     * `{[COUNTRY]: https://example.com }`. Learn more: https://d.to/geo
+     */
+    geo: Record<string, string> | null;
+
+    /**
+     * The image of the short link generated via `api.dub.co/metatags`. Will be used
+     * for Custom Social Media Cards if `proxy` is true.
+     */
+    image: string | null;
+
+    /**
+     * The iOS destination URL for the short link for iOS device targeting.
+     */
+    ios: string | null;
+
+    /**
+     * The short link slug. If not provided, a random 7-character slug will be
+     * generated.
+     */
+    key: string;
+
+    /**
+     * The date and time when the short link was last clicked.
+     */
+    lastClicked: string | null;
+
+    /**
+     * The password required to access the destination URL of the short link.
+     */
+    password: string | null;
+
+    /**
+     * The project ID of the short link.
+     */
+    projectId: string;
+
+    /**
+     * Whether the short link uses Custom Social Media Cards feature.
+     */
+    proxy: boolean;
+
+    /**
+     * Whether the short link's stats are publicly accessible.
+     */
+    publicStats: boolean;
+
+    /**
+     * The full URL of the QR code for the short link (e.g.
+     * `https://api.dub.co/qr?url=https://dub.sh/try`).
+     */
+    qrCode: string;
+
+    /**
+     * Whether the short link uses link cloaking.
+     */
+    rewrite: boolean;
+
+    /**
+     * The full URL of the short link, including the https protocol (e.g.
+     * `https://dub.sh/try`).
+     */
+    shortLink: string;
+
+    /**
+     * The tags assigned to the short link.
+     */
+    tags: Array<LinkListResponseItem.Tag> | null;
+
+    /**
+     * The title of the short link generated via `api.dub.co/metatags`. Will be used
+     * for Custom Social Media Cards if `proxy` is true.
+     */
+    title: string | null;
+
+    /**
+     * The date and time when the short link was last updated.
+     */
+    updatedAt: string;
+
+    /**
+     * The destination URL of the short link.
+     */
+    url: string;
+
+    /**
+     * The user ID of the creator of the short link.
+     */
+    userId: string;
+
+    /**
+     * The UTM campaign of the short link.
+     */
+    utm_campaign: string | null;
+
+    /**
+     * The UTM content of the short link.
+     */
+    utm_content: string | null;
+
+    /**
+     * The UTM medium of the short link.
+     */
+    utm_medium: string | null;
+
+    /**
+     * The UTM source of the short link.
+     */
+    utm_source: string | null;
+
+    /**
+     * The UTM term of the short link.
+     */
+    utm_term: string | null;
+  }
+
+  export namespace LinkListResponseItem {
+    export interface Tag {
+      /**
+       * The unique ID of the tag.
+       */
+      id: string;
+
+      /**
+       * The color of the tag.
+       */
+      color: 'red' | 'yellow' | 'green' | 'blue' | 'purple' | 'pink' | 'brown';
+
+      /**
+       * The name of the tag.
+       */
+      name: string;
+    }
+  }
+}
+
+export interface LinkDeleteLinkResponse {
+  /**
+   * The unique ID of the short link.
+   */
+  id: string;
+
+  /**
+   * The Android destination URL for the short link for Android device targeting.
+   */
+  android: string | null;
+
+  /**
+   * Whether the short link is archived.
+   */
+  archived: boolean;
+
+  /**
+   * The number of clicks on the short link.
+   */
+  clicks: number;
+
+  /**
+   * The comments for the short link.
+   */
+  comments: string | null;
+
+  /**
+   * The date and time when the short link was created.
+   */
+  createdAt: string;
+
+  /**
+   * The description of the short link generated via `api.dub.co/metatags`. Will be
+   * used for Custom Social Media Cards if `proxy` is true.
+   */
+  description: string | null;
+
+  /**
+   * The domain of the short link. If not provided, the primary domain for the
+   * project will be used (or `dub.sh` if the project has no domains).
+   */
+  domain: string;
+
+  /**
+   * The date and time when the short link will expire in ISO-8601 format. Must be in
+   * the future.
+   */
+  expiresAt: string | null;
+
+  /**
+   * Geo targeting information for the short link in JSON format
+   * `{[COUNTRY]: https://example.com }`. Learn more: https://d.to/geo
+   */
+  geo: Record<string, string> | null;
+
+  /**
+   * The image of the short link generated via `api.dub.co/metatags`. Will be used
+   * for Custom Social Media Cards if `proxy` is true.
+   */
+  image: string | null;
+
+  /**
+   * The iOS destination URL for the short link for iOS device targeting.
+   */
+  ios: string | null;
+
+  /**
+   * The short link slug. If not provided, a random 7-character slug will be
+   * generated.
+   */
+  key: string;
+
+  /**
+   * The date and time when the short link was last clicked.
+   */
+  lastClicked: string | null;
+
+  /**
+   * The password required to access the destination URL of the short link.
+   */
+  password: string | null;
+
+  /**
+   * The project ID of the short link.
+   */
+  projectId: string;
+
+  /**
+   * Whether the short link uses Custom Social Media Cards feature.
+   */
+  proxy: boolean;
+
+  /**
+   * Whether the short link's stats are publicly accessible.
+   */
+  publicStats: boolean;
+
+  /**
+   * The full URL of the QR code for the short link (e.g.
+   * `https://api.dub.co/qr?url=https://dub.sh/try`).
+   */
+  qrCode: string;
+
+  /**
+   * Whether the short link uses link cloaking.
+   */
+  rewrite: boolean;
+
+  /**
+   * The full URL of the short link, including the https protocol (e.g.
+   * `https://dub.sh/try`).
+   */
+  shortLink: string;
+
+  /**
+   * The tags assigned to the short link.
+   */
+  tags: Array<LinkDeleteLinkResponse.Tag> | null;
+
+  /**
+   * The title of the short link generated via `api.dub.co/metatags`. Will be used
+   * for Custom Social Media Cards if `proxy` is true.
+   */
+  title: string | null;
+
+  /**
+   * The date and time when the short link was last updated.
+   */
+  updatedAt: string;
+
+  /**
+   * The destination URL of the short link.
+   */
+  url: string;
+
+  /**
+   * The user ID of the creator of the short link.
+   */
+  userId: string;
+
+  /**
+   * The UTM campaign of the short link.
+   */
+  utm_campaign: string | null;
+
+  /**
+   * The UTM content of the short link.
+   */
+  utm_content: string | null;
+
+  /**
+   * The UTM medium of the short link.
+   */
+  utm_medium: string | null;
+
+  /**
+   * The UTM source of the short link.
+   */
+  utm_source: string | null;
+
+  /**
+   * The UTM term of the short link.
+   */
+  utm_term: string | null;
+}
+
+export namespace LinkDeleteLinkResponse {
+  export interface Tag {
+    /**
+     * The unique ID of the tag.
+     */
+    id: string;
+
+    /**
+     * The color of the tag.
+     */
+    color: 'red' | 'yellow' | 'green' | 'blue' | 'purple' | 'pink' | 'brown';
+
+    /**
+     * The name of the tag.
+     */
+    name: string;
+  }
+}
 
 export interface LinkCreateParams {
   /**
-   * Query param: The slug for the project to create links for. E.g. for
+   * Query param: The slug for the project that the link belongs to. E.g. for
    * `app.dub.co/acme`, the projectSlug is `acme`.
    */
   projectSlug?: string;
@@ -283,7 +845,7 @@ export interface LinkCreateParams {
 
   /**
    * Body param: Geo targeting information for the short link in JSON format
-   * {[COUNTRY]: `https://example.com` }. Learn more: `https://dub.sh/geo`
+   * `{[COUNTRY]: https://example.com }`.
    */
   geo?: Record<string, string> | null;
 
@@ -335,12 +897,12 @@ export interface LinkCreateParams {
   /**
    * Body param: The unique ID of the tag assigned to the short link.
    */
-  tagId?: string;
+  tagId?: string | null;
 
   /**
    * Body param: The unique IDs of the tags assigned to the short link.
    */
-  tagIds?: Array<string>;
+  tagIds?: Array<string> | null;
 
   /**
    * Body param: The title of the short link generated via `api.dub.co/metatags`.
@@ -355,6 +917,11 @@ export interface LinkUpdateParams {
    * `app.dub.co/acme`, the projectSlug is `acme`.
    */
   projectSlug?: string;
+
+  /**
+   * Body param: The destination URL of the short link.
+   */
+  url: string;
 
   /**
    * Body param: The Android destination URL for the short link for Android device
@@ -393,7 +960,7 @@ export interface LinkUpdateParams {
 
   /**
    * Body param: Geo targeting information for the short link in JSON format
-   * {[COUNTRY]: `https://example.com` }. Learn more: `https://dub.sh/geo`
+   * `{[COUNTRY]: https://example.com }`.
    */
   geo?: Record<string, string> | null;
 
@@ -445,29 +1012,24 @@ export interface LinkUpdateParams {
   /**
    * Body param: The unique ID of the tag assigned to the short link.
    */
-  tagId?: string;
+  tagId?: string | null;
 
   /**
    * Body param: The unique IDs of the tags assigned to the short link.
    */
-  tagIds?: Array<string>;
+  tagIds?: Array<string> | null;
 
   /**
    * Body param: The title of the short link generated via `api.dub.co/metatags`.
    * Will be used for Custom Social Media Cards if `proxy` is true.
    */
   title?: string | null;
-
-  /**
-   * Body param: The destination URL of the short link.
-   */
-  url?: string;
 }
 
 export interface LinkListParams {
   /**
-   * The slug for the project to retrieve links for. E.g. for `app.dub.co/acme`, the
-   * projectSlug is `acme`.
+   * The slug for the project that the link belongs to. E.g. for `app.dub.co/acme`,
+   * the projectSlug is `acme`.
    */
   projectSlug?: string;
 
@@ -492,7 +1054,7 @@ export interface LinkListParams {
    * Whether to include archived links in the response. Defaults to `false` if not
    * provided.
    */
-  showArchived?: true | false;
+  showArchived?: boolean;
 
   /**
    * The field to sort the links by. The default is `createdAt`, and sort order is
@@ -501,9 +1063,14 @@ export interface LinkListParams {
   sort?: 'createdAt' | 'clicks' | 'lastClicked';
 
   /**
-   * The tag ID(s) to filter the links by.
+   * The tag ID to filter the links by.
    */
-  tagId?: string | Array<string>;
+  tagId?: string;
+
+  /**
+   * The tag IDs to filter the links by.
+   */
+  tagIds?: Array<string>;
 
   /**
    * The user ID to filter the links by.
@@ -511,9 +1078,9 @@ export interface LinkListParams {
   userId?: string;
 
   /**
-   * Only return links with tags. Defaults to `false` if not provided.
+   * Whether to include tags in the response. Defaults to `false` if not provided.
    */
-  withTags?: true | false;
+  withTags?: boolean;
 }
 
 export interface LinkDeleteLinkParams {
@@ -525,13 +1092,16 @@ export interface LinkDeleteLinkParams {
 }
 
 export namespace Links {
-  export import Link = LinksAPI.Link;
+  export import LinkCreateResponse = LinksAPI.LinkCreateResponse;
+  export import LinkUpdateResponse = LinksAPI.LinkUpdateResponse;
   export import LinkListResponse = LinksAPI.LinkListResponse;
+  export import LinkDeleteLinkResponse = LinksAPI.LinkDeleteLinkResponse;
   export import LinkCreateParams = LinksAPI.LinkCreateParams;
   export import LinkUpdateParams = LinksAPI.LinkUpdateParams;
   export import LinkListParams = LinksAPI.LinkListParams;
   export import LinkDeleteLinkParams = LinksAPI.LinkDeleteLinkParams;
   export import Info = InfoAPI.Info;
+  export import InfoRetrieveResponse = InfoAPI.InfoRetrieveResponse;
   export import InfoRetrieveParams = InfoAPI.InfoRetrieveParams;
   export import Bulk = BulkAPI.Bulk;
   export import BulkCreateResponse = BulkAPI.BulkCreateResponse;

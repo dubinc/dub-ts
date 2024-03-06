@@ -4,6 +4,7 @@ import * as Core from './core';
 import * as Errors from './error';
 import { type Agent } from './_shims/index';
 import * as Uploads from './uploads';
+import * as qs from 'qs';
 import * as API from 'dub/resources/index';
 
 export interface ClientOptions {
@@ -142,6 +143,10 @@ export class Dub extends Core.APIClient {
     return { Authorization: `Bearer ${this.token}` };
   }
 
+  protected override stringifyQuery(query: Record<string, unknown>): string {
+    return qs.stringify(query, { arrayFormat: 'comma' });
+  }
+
   static Dub = this;
 
   static DubError = Errors.DubError;
@@ -186,8 +191,10 @@ export namespace Dub {
   export import RequestOptions = Core.RequestOptions;
 
   export import Links = API.Links;
-  export import Link = API.Link;
+  export import LinkCreateResponse = API.LinkCreateResponse;
+  export import LinkUpdateResponse = API.LinkUpdateResponse;
   export import LinkListResponse = API.LinkListResponse;
+  export import LinkDeleteLinkResponse = API.LinkDeleteLinkResponse;
   export import LinkCreateParams = API.LinkCreateParams;
   export import LinkUpdateParams = API.LinkUpdateParams;
   export import LinkListParams = API.LinkListParams;
@@ -197,8 +204,7 @@ export namespace Dub {
   export import QrRetrieveParams = API.QrRetrieveParams;
 
   export import Projects = API.Projects;
-  export import Project = API.Project;
-  export import ProjectDetails = API.ProjectDetails;
+  export import ProjectRetrieveResponse = API.ProjectRetrieveResponse;
   export import ProjectListResponse = API.ProjectListResponse;
   export import ProjectRetrieveParams = API.ProjectRetrieveParams;
 }

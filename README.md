@@ -9,9 +9,7 @@ The REST API documentation can be found [on dub.co](https://dub.co/help). The fu
 ## Installation
 
 ```sh
-npm install --save dub
-# or
-yarn add dub
+npm install dub
 ```
 
 ## Usage
@@ -25,7 +23,9 @@ import Dub from 'dub';
 const dub = new Dub();
 
 async function main() {
-  const projectDetails = await dub.projects.retrieve({ projectSlug: 'REPLACE_ME' });
+  const projectRetrieveResponse = await dub.projects.retrieve({ projectSlug: 'REPLACE_ME' });
+
+  console.log(projectRetrieveResponse.id);
 }
 
 main();
@@ -43,7 +43,7 @@ const dub = new Dub();
 
 async function main() {
   const params: Dub.ProjectRetrieveParams = { projectSlug: 'REPLACE_ME' };
-  const projectDetails: Dub.ProjectDetails = await dub.projects.retrieve(params);
+  const projectRetrieveResponse: Dub.ProjectRetrieveResponse = await dub.projects.retrieve(params);
 }
 
 main();
@@ -60,15 +60,17 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const projectDetails = await dub.projects.retrieve({ projectSlug: 'REPLACE_ME' }).catch((err) => {
-    if (err instanceof Dub.APIError) {
-      console.log(err.status); // 400
-      console.log(err.name); // BadRequestError
-      console.log(err.headers); // {server: 'nginx', ...}
-    } else {
-      throw err;
-    }
-  });
+  const projectRetrieveResponse = await dub.projects
+    .retrieve({ projectSlug: 'REPLACE_ME' })
+    .catch(async (err) => {
+      if (err instanceof Dub.APIError) {
+        console.log(err.status); // 400
+        console.log(err.name); // BadRequestError
+        console.log(err.headers); // {server: 'nginx', ...}
+      } else {
+        throw err;
+      }
+    });
 }
 
 main();
@@ -147,11 +149,11 @@ const response = await dub.projects.retrieve({ projectSlug: 'REPLACE_ME' }).asRe
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: projectDetails, response: raw } = await dub.projects
+const { data: projectRetrieveResponse, response: raw } = await dub.projects
   .retrieve({ projectSlug: 'REPLACE_ME' })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(projectDetails);
+console.log(projectRetrieveResponse.id);
 ```
 
 ## Customizing the fetch client
@@ -170,7 +172,7 @@ import Dub from 'dub';
 ```
 
 To do the inverse, add `import "dub/shims/node"` (which does import polyfills).
-This can also be useful if you are getting the wrong TypeScript types for `Response` - more details [here](https://github.com/dubinc/dub-node/tree/main/src/_shims#readme).
+This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/dubinc/dub-node/tree/main/src/_shims#readme)).
 
 You may also provide a custom `fetch` function when instantiating the client,
 which can be used to inspect or alter the `Request` or `Response` before/after each request:
@@ -180,7 +182,7 @@ import { fetch } from 'undici'; // as one example
 import Dub from 'dub';
 
 const client = new Dub({
-  fetch: async (url: RequestInfo, init?: RequestInfo): Promise<Response> => {
+  fetch: async (url: RequestInfo, init?: RequestInit): Promise<Response> => {
     console.log('About to make a request', url, init);
     const response = await fetch(url, init);
     console.log('Got response', response);
@@ -201,7 +203,7 @@ If you would like to disable or customize this behavior, for example to use the 
 <!-- prettier-ignore -->
 ```ts
 import http from 'http';
-import HttpsProxyAgent from 'https-proxy-agent';
+import { HttpsProxyAgent } from 'https-proxy-agent';
 
 // Configure the default for all requests:
 const dub = new Dub({
@@ -210,10 +212,12 @@ const dub = new Dub({
 });
 
 // Override per-request:
-await dub.projects.retrieve({ projectSlug: 'REPLACE_ME' }, {
-  baseURL: 'http://localhost:8080/test-api',
-  httpAgent: new http.Agent({ keepAlive: false }),
-})
+await dub.projects.retrieve(
+  { projectSlug: 'REPLACE_ME' },
+  {
+    httpAgent: new http.Agent({ keepAlive: false }),
+  },
+);
 ```
 
 ## Semantic Versioning

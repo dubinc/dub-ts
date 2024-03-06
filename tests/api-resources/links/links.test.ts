@@ -11,7 +11,7 @@ const dub = new Dub({
 
 describe('resource links', () => {
   test('create: only required params', async () => {
-    const responsePromise = dub.links.create({ projectSlug: 'string', url: 'string' });
+    const responsePromise = dub.links.create({ projectSlug: 'x', url: 'https://example.com' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -23,15 +23,15 @@ describe('resource links', () => {
 
   test('create: required and optional params', async () => {
     const response = await dub.links.create({
-      projectSlug: 'string',
-      url: 'string',
+      projectSlug: 'x',
+      url: 'https://example.com',
       android: 'string',
       archived: true,
       comments: 'string',
       description: 'string',
       domain: 'string',
       expiresAt: '2019-12-27T18:11:19.117Z',
-      geo: { foo: 'https://example.com' },
+      geo: { foo: 'string' },
       image: 'string',
       ios: 'string',
       key: 'string',
@@ -47,7 +47,7 @@ describe('resource links', () => {
   });
 
   test('update: only required params', async () => {
-    const responsePromise = dub.links.update('string', { projectSlug: 'string' });
+    const responsePromise = dub.links.update('string', { projectSlug: 'x', url: 'https://example.com' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -59,14 +59,15 @@ describe('resource links', () => {
 
   test('update: required and optional params', async () => {
     const response = await dub.links.update('string', {
-      projectSlug: 'string',
+      projectSlug: 'x',
+      url: 'https://example.com',
       android: 'string',
       archived: true,
       comments: 'string',
       description: 'string',
       domain: 'string',
       expiresAt: '2019-12-27T18:11:19.117Z',
-      geo: { foo: 'https://example.com' },
+      geo: { foo: 'string' },
       image: 'string',
       ios: 'string',
       key: 'string',
@@ -78,7 +79,6 @@ describe('resource links', () => {
       tagId: 'string',
       tagIds: ['string', 'string', 'string'],
       title: 'string',
-      url: 'string',
     });
   });
 
@@ -102,6 +102,7 @@ describe('resource links', () => {
       showArchived: true,
       sort: 'createdAt',
       tagId: 'string',
+      tagIds: ['string', 'string', 'string'],
       userId: 'string',
       withTags: true,
     });
