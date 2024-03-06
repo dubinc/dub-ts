@@ -11,7 +11,10 @@ const dub = new Dub({
 
 describe('resource bulk', () => {
   test('create: only required params', async () => {
-    const responsePromise = dub.links.bulk.create({ projectSlug: 'string', body: [{}, {}, {}] });
+    const responsePromise = dub.links.bulk.create({
+      projectSlug: 'x',
+      body: [{ url: 'https://example.com' }, { url: 'https://example.com' }, { url: 'https://example.com' }],
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -23,13 +26,13 @@ describe('resource bulk', () => {
 
   test('create: required and optional params', async () => {
     const response = await dub.links.bulk.create({
-      projectSlug: 'string',
+      projectSlug: 'x',
       body: [
         {
           domain: 'string',
           key: 'string',
           prefix: 'string',
-          url: 'string',
+          url: 'https://example.com',
           archived: true,
           expiresAt: '2019-12-27T18:11:19.117Z',
           password: 'string',
@@ -40,7 +43,7 @@ describe('resource bulk', () => {
           rewrite: true,
           ios: 'string',
           android: 'string',
-          geo: { foo: 'https://example.com' },
+          geo: { foo: 'string' },
           publicStats: true,
           tagId: 'string',
           tagIds: ['string', 'string', 'string'],
@@ -50,7 +53,7 @@ describe('resource bulk', () => {
           domain: 'string',
           key: 'string',
           prefix: 'string',
-          url: 'string',
+          url: 'https://example.com',
           archived: true,
           expiresAt: '2019-12-27T18:11:19.117Z',
           password: 'string',
@@ -61,7 +64,7 @@ describe('resource bulk', () => {
           rewrite: true,
           ios: 'string',
           android: 'string',
-          geo: { foo: 'https://example.com' },
+          geo: { foo: 'string' },
           publicStats: true,
           tagId: 'string',
           tagIds: ['string', 'string', 'string'],
@@ -71,7 +74,7 @@ describe('resource bulk', () => {
           domain: 'string',
           key: 'string',
           prefix: 'string',
-          url: 'string',
+          url: 'https://example.com',
           archived: true,
           expiresAt: '2019-12-27T18:11:19.117Z',
           password: 'string',
@@ -82,7 +85,7 @@ describe('resource bulk', () => {
           rewrite: true,
           ios: 'string',
           android: 'string',
-          geo: { foo: 'https://example.com' },
+          geo: { foo: 'string' },
           publicStats: true,
           tagId: 'string',
           tagIds: ['string', 'string', 'string'],

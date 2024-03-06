@@ -1,10 +1,12 @@
 // File generated from our OpenAPI spec by Stainless.
 
 export { BulkCreateResponse, BulkCreateParams, Bulk } from './bulk';
-export { InfoRetrieveParams, Info } from './info';
+export { InfoRetrieveResponse, InfoRetrieveParams, Info } from './info';
 export {
-  Link,
+  LinkCreateResponse,
+  LinkUpdateResponse,
   LinkListResponse,
+  LinkDeleteLinkResponse,
   LinkCreateParams,
   LinkUpdateParams,
   LinkListParams,
