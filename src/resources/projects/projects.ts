@@ -68,8 +68,6 @@ export interface ProjectRetrieveResponse {
    */
   logo: string | null;
 
-  metadata: ProjectRetrieveResponse.Metadata;
-
   /**
    * The name of the project.
    */
@@ -124,10 +122,6 @@ export namespace ProjectRetrieveResponse {
     slug: string;
   }
 
-  export interface Metadata {
-    defaultDomains: Array<string>;
-  }
-
   export interface User {
     /**
      * The role of the authenticated user in the project.
@@ -179,8 +173,6 @@ export namespace ProjectListResponse {
      * The logo of the project.
      */
     logo: string | null;
-
-    metadata: ProjectListResponseItem.Metadata;
 
     /**
      * The name of the project.
@@ -234,10 +226,6 @@ export namespace ProjectListResponse {
        * The domain of the project.
        */
       slug: string;
-    }
-
-    export interface Metadata {
-      defaultDomains: Array<string>;
     }
 
     export interface User {
