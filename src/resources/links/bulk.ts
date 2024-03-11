@@ -307,7 +307,7 @@ export namespace BulkCreateParams {
     rewrite?: boolean;
 
     /**
-     * The unique ID of the tag assigned to the short link.
+     * @deprecated: The unique ID of the tag assigned to the short link.
      */
     tagId?: string | null;
 
