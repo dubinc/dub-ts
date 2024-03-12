@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.10.0 (2024-03-12)
+
+Full Changelog: [v0.9.0...v0.10.0](https://github.com/dubinc/dub-node/compare/v0.9.0...v0.10.0)
+
+### Features
+
+* OpenAPI spec update via Stainless API ([#46](https://github.com/dubinc/dub-node/issues/46)) ([4511287](https://github.com/dubinc/dub-node/commit/451128778aef75b30b50de04cd36ec1d86465155))
+* OpenAPI spec update via Stainless API ([#49](https://github.com/dubinc/dub-node/issues/49)) ([12c3863](https://github.com/dubinc/dub-node/commit/12c3863336cf39ace314d9bc13230d7a26b8f1db))
+* update via SDK Studio ([#48](https://github.com/dubinc/dub-node/issues/48)) ([e6e882a](https://github.com/dubinc/dub-node/commit/e6e882ad701ba8ea1302c0966bb762453c908567))
+
 ## 0.9.0 (2024-03-06)
 
 Full Changelog: [v0.8.0...v0.9.0](https://github.com/dubinc/dub-node/compare/v0.8.0...v0.9.0)
