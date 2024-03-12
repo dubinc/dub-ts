@@ -41,7 +41,7 @@ describe('resource links', () => {
       publicStats: true,
       rewrite: true,
       tagId: 'string',
-      tagIds: ['string', 'string', 'string'],
+      tagIds: 'string',
       title: 'string',
     });
   });
@@ -77,7 +77,7 @@ describe('resource links', () => {
       publicStats: true,
       rewrite: true,
       tagId: 'string',
-      tagIds: ['string', 'string', 'string'],
+      tagIds: 'string',
       title: 'string',
     });
   });
@@ -102,7 +102,7 @@ describe('resource links', () => {
       showArchived: true,
       sort: 'createdAt',
       tagId: 'string',
-      tagIds: ['string', 'string', 'string'],
+      tagIds: 'string',
       userId: 'string',
       withTags: true,
     });

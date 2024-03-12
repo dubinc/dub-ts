@@ -129,6 +129,12 @@ export interface InfoRetrieveResponse {
   shortLink: string;
 
   /**
+   * @deprecated: [DEPRECATED (use `tags` instead)]: The unique ID of the tag
+   * assigned to the short link.
+   */
+  tagId: string | null;
+
+  /**
    * The tags assigned to the short link.
    */
   tags: Array<InfoRetrieveResponse.Tag> | null;
