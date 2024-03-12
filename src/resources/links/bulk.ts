@@ -132,6 +132,12 @@ export namespace BulkCreateResponse {
     shortLink: string;
 
     /**
+     * @deprecated: [DEPRECATED (use `tags` instead)]: The unique ID of the tag
+     * assigned to the short link.
+     */
+    tagId: string | null;
+
+    /**
      * The tags assigned to the short link.
      */
     tags: Array<BulkCreateResponseItem.Tag> | null;
@@ -307,14 +313,15 @@ export namespace BulkCreateParams {
     rewrite?: boolean;
 
     /**
-     * @deprecated: The unique ID of the tag assigned to the short link.
+     * @deprecated: [DEPRECATED (use tagIds instead)]: The unique ID of the tag
+     * assigned to the short link.
      */
     tagId?: string | null;
 
     /**
      * The unique IDs of the tags assigned to the short link.
      */
-    tagIds?: Array<string> | null;
+    tagIds?: string | Array<string>;
 
     /**
      * The title of the short link generated via `api.dub.co/metatags`. Will be used

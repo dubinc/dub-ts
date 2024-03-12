@@ -46,7 +46,7 @@ describe('resource bulk', () => {
           geo: { foo: 'string' },
           publicStats: true,
           tagId: 'string',
-          tagIds: ['string', 'string', 'string'],
+          tagIds: 'string',
           comments: 'string',
         },
         {
@@ -67,7 +67,7 @@ describe('resource bulk', () => {
           geo: { foo: 'string' },
           publicStats: true,
           tagId: 'string',
-          tagIds: ['string', 'string', 'string'],
+          tagIds: 'string',
           comments: 'string',
         },
         {
@@ -88,7 +88,7 @@ describe('resource bulk', () => {
           geo: { foo: 'string' },
           publicStats: true,
           tagId: 'string',
-          tagIds: ['string', 'string', 'string'],
+          tagIds: 'string',
           comments: 'string',
         },
       ],

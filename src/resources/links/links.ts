@@ -167,6 +167,12 @@ export interface LinkCreateResponse {
   shortLink: string;
 
   /**
+   * @deprecated: [DEPRECATED (use `tags` instead)]: The unique ID of the tag
+   * assigned to the short link.
+   */
+  tagId: string | null;
+
+  /**
    * The tags assigned to the short link.
    */
   tags: Array<LinkCreateResponse.Tag> | null;
@@ -350,6 +356,12 @@ export interface LinkUpdateResponse {
    * `https://dub.sh/try`).
    */
   shortLink: string;
+
+  /**
+   * @deprecated: [DEPRECATED (use `tags` instead)]: The unique ID of the tag
+   * assigned to the short link.
+   */
+  tagId: string | null;
 
   /**
    * The tags assigned to the short link.
@@ -540,6 +552,12 @@ export namespace LinkListResponse {
     shortLink: string;
 
     /**
+     * @deprecated: [DEPRECATED (use `tags` instead)]: The unique ID of the tag
+     * assigned to the short link.
+     */
+    tagId: string | null;
+
+    /**
      * The tags assigned to the short link.
      */
     tags: Array<LinkListResponseItem.Tag> | null;
@@ -726,6 +744,12 @@ export interface LinkDeleteLinkResponse {
   shortLink: string;
 
   /**
+   * @deprecated: [DEPRECATED (use `tags` instead)]: The unique ID of the tag
+   * assigned to the short link.
+   */
+  tagId: string | null;
+
+  /**
    * The tags assigned to the short link.
    */
   tags: Array<LinkDeleteLinkResponse.Tag> | null;
@@ -895,14 +919,15 @@ export interface LinkCreateParams {
   rewrite?: boolean;
 
   /**
-   * Body param: The unique ID of the tag assigned to the short link.
+   * Body param: [DEPRECATED (use tagIds instead)]: The unique ID of the tag assigned
+   * to the short link.
    */
   tagId?: string | null;
 
   /**
    * Body param: The unique IDs of the tags assigned to the short link.
    */
-  tagIds?: Array<string> | null;
+  tagIds?: string | Array<string>;
 
   /**
    * Body param: The title of the short link generated via `api.dub.co/metatags`.
@@ -1010,14 +1035,15 @@ export interface LinkUpdateParams {
   rewrite?: boolean;
 
   /**
-   * Body param: The unique ID of the tag assigned to the short link.
+   * Body param: [DEPRECATED (use tagIds instead)]: The unique ID of the tag assigned
+   * to the short link.
    */
   tagId?: string | null;
 
   /**
    * Body param: The unique IDs of the tags assigned to the short link.
    */
-  tagIds?: Array<string> | null;
+  tagIds?: string | Array<string>;
 
   /**
    * Body param: The title of the short link generated via `api.dub.co/metatags`.
@@ -1063,14 +1089,14 @@ export interface LinkListParams {
   sort?: 'createdAt' | 'clicks' | 'lastClicked';
 
   /**
-   * The tag ID to filter the links by.
+   * [DEPRECATED (use tagIds instead)]: The tag ID to filter the links by.
    */
   tagId?: string;
 
   /**
    * The tag IDs to filter the links by.
    */
-  tagIds?: Array<string>;
+  tagIds?: string | Array<string>;
 
   /**
    * The user ID to filter the links by.
