@@ -1,4 +1,4 @@
-// File generated from our OpenAPI spec by Stainless.
+// File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import Dub from 'dub';
 import { Response } from 'node-fetch';
@@ -11,7 +11,7 @@ const dub = new Dub({
 
 describe('resource links', () => {
   test('create: only required params', async () => {
-    const responsePromise = dub.links.create({ projectSlug: 'x', url: 'https://example.com' });
+    const responsePromise = dub.links.create({ projectSlug: 'x', url: 'string' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -24,7 +24,7 @@ describe('resource links', () => {
   test('create: required and optional params', async () => {
     const response = await dub.links.create({
       projectSlug: 'x',
-      url: 'https://example.com',
+      url: 'string',
       android: 'string',
       archived: true,
       comments: 'string',
@@ -47,7 +47,7 @@ describe('resource links', () => {
   });
 
   test('update: only required params', async () => {
-    const responsePromise = dub.links.update('string', { projectSlug: 'x', url: 'https://example.com' });
+    const responsePromise = dub.links.update('string', { projectSlug: 'x', url: 'string' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -60,7 +60,7 @@ describe('resource links', () => {
   test('update: required and optional params', async () => {
     const response = await dub.links.update('string', {
       projectSlug: 'x',
-      url: 'https://example.com',
+      url: 'string',
       android: 'string',
       archived: true,
       comments: 'string',
