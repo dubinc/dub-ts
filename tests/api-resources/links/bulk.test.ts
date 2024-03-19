@@ -12,7 +12,7 @@ const dub = new Dub({
 describe('resource bulk', () => {
   test('create: only required params', async () => {
     const responsePromise = dub.links.bulk.create({
-      projectSlug: 'x',
+      workspaceId: 'string',
       body: [{ url: 'string' }, { url: 'string' }, { url: 'string' }],
     });
     const rawResponse = await responsePromise.asResponse();
@@ -26,7 +26,7 @@ describe('resource bulk', () => {
 
   test('create: required and optional params', async () => {
     const response = await dub.links.bulk.create({
-      projectSlug: 'x',
+      workspaceId: 'string',
       body: [
         {
           domain: 'string',

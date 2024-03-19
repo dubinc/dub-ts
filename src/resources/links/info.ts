@@ -8,9 +8,8 @@ export class Info extends APIResource {
   /**
    * Retrieve the info for a link from their domain and key.
    */
-  retrieve(params: InfoRetrieveParams, options?: Core.RequestOptions): Core.APIPromise<InfoRetrieveResponse> {
-    const { projectSlug = this._client.projectSlug, ...query } = params;
-    return this._client.get('/links/info', { query: { projectSlug, ...query }, ...options });
+  retrieve(query: InfoRetrieveParams, options?: Core.RequestOptions): Core.APIPromise<InfoRetrieveResponse> {
+    return this._client.get('/links/info', { query, ...options });
   }
 }
 
@@ -53,7 +52,7 @@ export interface InfoRetrieveResponse {
 
   /**
    * The domain of the short link. If not provided, the primary domain for the
-   * project will be used (or `dub.sh` if the project has no domains).
+   * workspace will be used (or `dub.sh` if the workspace has no domains).
    */
   domain: string;
 
@@ -97,7 +96,8 @@ export interface InfoRetrieveResponse {
   password: string | null;
 
   /**
-   * The project ID of the short link.
+   * @deprecated: [DEPRECATED] (use workspaceId instead): The project ID of the short
+   * link.
    */
   projectId: string;
 
@@ -129,7 +129,7 @@ export interface InfoRetrieveResponse {
   shortLink: string;
 
   /**
-   * @deprecated: [DEPRECATED (use `tags` instead)]: The unique ID of the tag
+   * @deprecated: [DEPRECATED] (use `tags` instead): The unique ID of the tag
    * assigned to the short link.
    */
   tagId: string | null;
@@ -184,6 +184,11 @@ export interface InfoRetrieveResponse {
    * The UTM term of the short link.
    */
   utm_term: string | null;
+
+  /**
+   * The workspace ID of the short link.
+   */
+  workspaceId: string;
 }
 
 export namespace InfoRetrieveResponse {
@@ -218,10 +223,9 @@ export interface InfoRetrieveParams {
   key: string;
 
   /**
-   * The slug for the project that the link belongs to. E.g. for `app.dub.co/acme`,
-   * the projectSlug is `acme`.
+   * The ID of the workspace the link belongs to.
    */
-  projectSlug?: string;
+  workspaceId: string;
 }
 
 export namespace Info {
