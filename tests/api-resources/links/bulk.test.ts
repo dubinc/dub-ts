@@ -1,4 +1,4 @@
-// File generated from our OpenAPI spec by Stainless.
+// File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import Dub from 'dub';
 import { Response } from 'node-fetch';
@@ -13,7 +13,7 @@ describe('resource bulk', () => {
   test('create: only required params', async () => {
     const responsePromise = dub.links.bulk.create({
       projectSlug: 'x',
-      body: [{ url: 'https://example.com' }, { url: 'https://example.com' }, { url: 'https://example.com' }],
+      body: [{ url: 'string' }, { url: 'string' }, { url: 'string' }],
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -32,7 +32,7 @@ describe('resource bulk', () => {
           domain: 'string',
           key: 'string',
           prefix: 'string',
-          url: 'https://example.com',
+          url: 'string',
           archived: true,
           expiresAt: '2019-12-27T18:11:19.117Z',
           password: 'string',
@@ -53,7 +53,7 @@ describe('resource bulk', () => {
           domain: 'string',
           key: 'string',
           prefix: 'string',
-          url: 'https://example.com',
+          url: 'string',
           archived: true,
           expiresAt: '2019-12-27T18:11:19.117Z',
           password: 'string',
@@ -74,7 +74,7 @@ describe('resource bulk', () => {
           domain: 'string',
           key: 'string',
           prefix: 'string',
-          url: 'https://example.com',
+          url: 'string',
           archived: true,
           expiresAt: '2019-12-27T18:11:19.117Z',
           password: 'string',
