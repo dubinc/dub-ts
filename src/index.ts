@@ -204,9 +204,6 @@ export namespace Dub {
   export import QrRetrieveParams = API.QrRetrieveParams;
 
   export import Projects = API.Projects;
-  export import ProjectRetrieveResponse = API.ProjectRetrieveResponse;
-  export import ProjectListResponse = API.ProjectListResponse;
-  export import ProjectRetrieveParams = API.ProjectRetrieveParams;
 }
 
 export default Dub;

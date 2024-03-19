@@ -11,7 +11,7 @@ const dub = new Dub({
 
 describe('resource info', () => {
   test('retrieve: only required params', async () => {
-    const responsePromise = dub.links.info.retrieve({ domain: 'x', key: 'x', projectSlug: 'x' });
+    const responsePromise = dub.links.info.retrieve({ domain: 'x', key: 'x', workspaceId: 'string' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -22,6 +22,6 @@ describe('resource info', () => {
   });
 
   test('retrieve: required and optional params', async () => {
-    const response = await dub.links.info.retrieve({ domain: 'x', key: 'x', projectSlug: 'x' });
+    const response = await dub.links.info.retrieve({ domain: 'x', key: 'x', workspaceId: 'string' });
   });
 });

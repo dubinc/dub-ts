@@ -11,7 +11,7 @@ const dub = new Dub({
 
 describe('resource links', () => {
   test('create: only required params', async () => {
-    const responsePromise = dub.links.create({ projectSlug: 'x', url: 'string' });
+    const responsePromise = dub.links.create({ workspaceId: 'string', url: 'string' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -23,7 +23,7 @@ describe('resource links', () => {
 
   test('create: required and optional params', async () => {
     const response = await dub.links.create({
-      projectSlug: 'x',
+      workspaceId: 'string',
       url: 'string',
       android: 'string',
       archived: true,
@@ -47,7 +47,7 @@ describe('resource links', () => {
   });
 
   test('update: only required params', async () => {
-    const responsePromise = dub.links.update('string', { projectSlug: 'x', url: 'string' });
+    const responsePromise = dub.links.update('string', { workspaceId: 'string', url: 'string' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -59,7 +59,7 @@ describe('resource links', () => {
 
   test('update: required and optional params', async () => {
     const response = await dub.links.update('string', {
-      projectSlug: 'x',
+      workspaceId: 'string',
       url: 'string',
       android: 'string',
       archived: true,
@@ -83,7 +83,7 @@ describe('resource links', () => {
   });
 
   test('list: only required params', async () => {
-    const responsePromise = dub.links.list({ projectSlug: 'string' });
+    const responsePromise = dub.links.list({ workspaceId: 'string' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -95,7 +95,7 @@ describe('resource links', () => {
 
   test('list: required and optional params', async () => {
     const response = await dub.links.list({
-      projectSlug: 'string',
+      workspaceId: 'string',
       domain: 'string',
       page: 0,
       search: 'string',
@@ -109,7 +109,7 @@ describe('resource links', () => {
   });
 
   test('deleteLink: only required params', async () => {
-    const responsePromise = dub.links.deleteLink('string', { projectSlug: 'string' });
+    const responsePromise = dub.links.deleteLink('string', { workspaceId: 'string' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -120,6 +120,6 @@ describe('resource links', () => {
   });
 
   test('deleteLink: required and optional params', async () => {
-    const response = await dub.links.deleteLink('string', { projectSlug: 'string' });
+    const response = await dub.links.deleteLink('string', { workspaceId: 'string' });
   });
 });
