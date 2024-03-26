@@ -4,7 +4,7 @@ import Dub from 'dub';
 
 const dub = new Dub({
   token: 'My Token',
-  projectSlug: 'dub_project_slug',
+  workspaceId: 'dub_workspace_id',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 

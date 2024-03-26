@@ -14,7 +14,7 @@ export class Links extends APIResource {
    * Create a new link for the authenticated workspace.
    */
   create(params: LinkCreateParams, options?: Core.RequestOptions): Core.APIPromise<LinkCreateResponse> {
-    const { workspaceId, ...body } = params;
+    const { workspaceId = this._client.workspaceId, ...body } = params;
     return this._client.post('/links', { query: { workspaceId }, body, ...options });
   }
 
@@ -26,7 +26,7 @@ export class Links extends APIResource {
     params: LinkUpdateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<LinkUpdateResponse> {
-    const { workspaceId, ...body } = params;
+    const { workspaceId = this._client.workspaceId, ...body } = params;
     return this._client.put(`/links/${linkId}`, { query: { workspaceId }, body, ...options });
   }
 
@@ -34,8 +34,9 @@ export class Links extends APIResource {
    * Retrieve a list of links for the authenticated workspace. The list will be
    * paginated and the provided query parameters allow filtering the returned links.
    */
-  list(query: LinkListParams, options?: Core.RequestOptions): Core.APIPromise<LinkListResponse> {
-    return this._client.get('/links', { query, ...options });
+  list(params: LinkListParams, options?: Core.RequestOptions): Core.APIPromise<LinkListResponse> {
+    const { workspaceId = this._client.workspaceId, ...query } = params;
+    return this._client.get('/links', { query: { workspaceId, ...query }, ...options });
   }
 
   /**
@@ -46,7 +47,7 @@ export class Links extends APIResource {
     params: LinkDeleteLinkParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<LinkDeleteLinkResponse> {
-    const { workspaceId } = params;
+    const { workspaceId = this._client.workspaceId } = params;
     return this._client.delete(`/links/${linkId}`, { query: { workspaceId }, ...options });
   }
 }
@@ -847,7 +848,7 @@ export interface LinkCreateParams {
   /**
    * Query param: The ID of the workspace to create the link for.
    */
-  workspaceId: string;
+  workspaceId?: string;
 
   /**
    * Body param: The destination URL of the short link.
@@ -962,7 +963,7 @@ export interface LinkUpdateParams {
   /**
    * Query param: The ID of the workspace the link belongs to.
    */
-  workspaceId: string;
+  workspaceId?: string;
 
   /**
    * Body param: The destination URL of the short link.
@@ -1077,7 +1078,7 @@ export interface LinkListParams {
   /**
    * The ID of the workspace the link belongs to.
    */
-  workspaceId: string;
+  workspaceId?: string;
 
   /**
    * The domain to filter the links by. E.g. `ac.me`. If not provided, all links for
@@ -1133,7 +1134,7 @@ export interface LinkDeleteLinkParams {
   /**
    * The ID of the workspace the link belongs to.
    */
-  workspaceId: string;
+  workspaceId?: string;
 }
 
 export namespace Links {

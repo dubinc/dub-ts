@@ -8,8 +8,9 @@ export class Info extends APIResource {
   /**
    * Retrieve the info for a link from their domain and key.
    */
-  retrieve(query: InfoRetrieveParams, options?: Core.RequestOptions): Core.APIPromise<InfoRetrieveResponse> {
-    return this._client.get('/links/info', { query, ...options });
+  retrieve(params: InfoRetrieveParams, options?: Core.RequestOptions): Core.APIPromise<InfoRetrieveResponse> {
+    const { workspaceId = this._client.workspaceId, ...query } = params;
+    return this._client.get('/links/info', { query: { workspaceId, ...query }, ...options });
   }
 }
 
@@ -225,7 +226,7 @@ export interface InfoRetrieveParams {
   /**
    * The ID of the workspace the link belongs to.
    */
-  workspaceId: string;
+  workspaceId?: string;
 }
 
 export namespace Info {

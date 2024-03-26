@@ -9,7 +9,7 @@ export class Bulk extends APIResource {
    * Bulk create up to 100 links for the authenticated workspace.
    */
   create(params: BulkCreateParams, options?: Core.RequestOptions): Core.APIPromise<BulkCreateResponse> {
-    const { workspaceId, body } = params;
+    const { workspaceId = this._client.workspaceId, body } = params;
     return this._client.post('/links/bulk', { query: { workspaceId }, body: body, ...options });
   }
 }
@@ -219,7 +219,7 @@ export interface BulkCreateParams {
   /**
    * Query param: The ID of the workspace to create the link for.
    */
-  workspaceId: string;
+  workspaceId?: string;
 
   /**
    * Body param:
