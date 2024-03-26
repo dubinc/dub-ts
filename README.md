@@ -25,7 +25,7 @@ import Dub from 'dub';
 const dub = new Dub();
 
 async function main() {
-  const linkCreateResponse = await dub.links.create({ workspaceId: 'string', url: 'string' });
+  const linkCreateResponse = await dub.links.create({ workspaceId: 'REPLACE_ME', url: 'string' });
 
   console.log(linkCreateResponse.id);
 }
@@ -44,7 +44,7 @@ import Dub from 'dub';
 const dub = new Dub();
 
 async function main() {
-  const params: Dub.LinkCreateParams = { workspaceId: 'string', url: 'string' };
+  const params: Dub.LinkCreateParams = { workspaceId: 'REPLACE_ME', url: 'string' };
   const linkCreateResponse: Dub.LinkCreateResponse = await dub.links.create(params);
 }
 
@@ -63,7 +63,7 @@ a subclass of `APIError` will be thrown:
 ```ts
 async function main() {
   const linkCreateResponse = await dub.links
-    .create({ workspaceId: 'string', url: 'string' })
+    .create({ workspaceId: 'REPLACE_ME', url: 'string' })
     .catch(async (err) => {
       if (err instanceof Dub.APIError) {
         console.log(err.status); // 400
@@ -104,11 +104,11 @@ You can use the `maxRetries` option to configure or disable this:
 // Configure the default for all requests:
 const dub = new Dub({
   maxRetries: 0, // default is 2
-  projectSlug: 'dub_project_slug',
+  workspaceId: 'dub_workspace_id',
 });
 
 // Or, configure per-request:
-await dub.links.create({ workspaceId: 'string', url: 'string' }, {
+await dub.links.create({ workspaceId: 'REPLACE_ME', url: 'string' }, {
   maxRetries: 5,
 });
 ```
@@ -122,11 +122,11 @@ Requests time out after 1 minute by default. You can configure this with a `time
 // Configure the default for all requests:
 const dub = new Dub({
   timeout: 20 * 1000, // 20 seconds (default is 1 minute)
-  projectSlug: 'dub_project_slug',
+  workspaceId: 'dub_workspace_id',
 });
 
 // Override per-request:
-await dub.links.create({ workspaceId: 'string', url: 'string' }, {
+await dub.links.create({ workspaceId: 'REPLACE_ME', url: 'string' }, {
   timeout: 5 * 1000,
 });
 ```
@@ -147,12 +147,12 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 ```ts
 const dub = new Dub();
 
-const response = await dub.links.create({ workspaceId: 'string', url: 'string' }).asResponse();
+const response = await dub.links.create({ workspaceId: 'REPLACE_ME', url: 'string' }).asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
 const { data: linkCreateResponse, response: raw } = await dub.links
-  .create({ workspaceId: 'string', url: 'string' })
+  .create({ workspaceId: 'REPLACE_ME', url: 'string' })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
 console.log(linkCreateResponse.id);
@@ -256,12 +256,12 @@ import { HttpsProxyAgent } from 'https-proxy-agent';
 // Configure the default for all requests:
 const dub = new Dub({
   httpAgent: new HttpsProxyAgent(process.env.PROXY_URL),
-  projectSlug: 'dub_project_slug',
+  workspaceId: 'dub_workspace_id',
 });
 
 // Override per-request:
 await dub.links.create(
-  { workspaceId: 'string', url: 'string' },
+  { workspaceId: 'REPLACE_ME', url: 'string' },
   {
     httpAgent: new http.Agent({ keepAlive: false }),
   },
