@@ -10,6 +10,7 @@ import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
 import * as errors from "../models/errors";
 import * as operations from "../models/operations";
+import * as z from "zod";
 
 export enum GetQRCodeAcceptEnum {
     applicationJson = "application/json",
@@ -52,7 +53,7 @@ export class QRCodes extends ClientSDK {
     async getQRCode(
         input: operations.GetQRCodeRequest,
         options?: RequestOptions & { acceptHeaderOverride?: GetQRCodeAcceptEnum }
-    ): Promise<operations.GetQRCodeResponse> {
+    ): Promise<string> {
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
 
@@ -89,17 +90,17 @@ export class QRCodes extends ClientSDK {
             .join("&");
 
         let security$;
-        if (typeof this.options$.bearerToken === "function") {
-            security$ = { bearerToken: await this.options$.bearerToken() };
-        } else if (this.options$.bearerToken) {
-            security$ = { bearerToken: this.options$.bearerToken };
+        if (typeof this.options$.token === "function") {
+            security$ = { token: await this.options$.token() };
+        } else if (this.options$.token) {
+            security$ = { token: this.options$.token };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "getQRCode",
             oAuth2Scopes: [],
-            securitySource: this.options$.bearerToken,
+            securitySource: this.options$.token,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -145,10 +146,7 @@ export class QRCodes extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return operations.GetQRCodeResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        res: val$,
-                    });
+                    return z.string().parse(val$);
                 },
                 "Response validation failed"
             );
@@ -271,7 +269,8 @@ export class QRCodes extends ClientSDK {
             );
             throw result;
         } else {
-            throw new errors.SDKError("Unexpected API response", { response, request });
+            const responseBody = await response.text();
+            throw new errors.SDKError("Unexpected API response", response, responseBody);
         }
     }
 }

@@ -17,7 +17,7 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+    token: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
   const workspaceId = "<value>";
@@ -42,7 +42,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetTagsResponse](../../models/operations/gettagsresponse.md)>**
+**Promise<[components.TagSchema[]](../../models/.md)>**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
@@ -69,7 +69,7 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+    token: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
   const workspaceId = "<value>";
@@ -98,7 +98,7 @@ run();
 
 ### Response
 
-**Promise<[operations.CreateTagResponse](../../models/operations/createtagresponse.md)>**
+**Promise<[components.TagSchema](../../models/components/tagschema.md)>**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |

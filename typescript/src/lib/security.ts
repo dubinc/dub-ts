@@ -175,7 +175,7 @@ export function resolveGlobalSecurity(security: Partial<components.Security> | n
         {
             fieldName: "Authorization",
             type: "http:bearer",
-            value: security?.bearerToken,
+            value: security?.token,
         },
     ]);
 }

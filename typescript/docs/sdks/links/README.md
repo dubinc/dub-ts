@@ -22,7 +22,7 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+    token: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
   const result = await sdk.links.getLinks({
@@ -48,7 +48,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetLinksResponse](../../models/operations/getlinksresponse.md)>**
+**Promise<[components.LinkSchema[]](../../models/.md)>**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
@@ -75,7 +75,7 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+    token: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
   const workspaceId = "<value>";
@@ -108,7 +108,7 @@ run();
 
 ### Response
 
-**Promise<[operations.CreateLinkResponse](../../models/operations/createlinkresponse.md)>**
+**Promise<[components.LinkSchema](../../models/components/linkschema.md)>**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
@@ -136,7 +136,7 @@ import { Two } from "dub/models/operations";
 
 async function run() {
   const sdk = new Dub({
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+    token: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
   const result = await sdk.links.getLinksCount({
@@ -165,7 +165,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetLinksCountResponse](../../models/operations/getlinkscountresponse.md)>**
+**Promise<[components.LinkSchema[]](../../models/.md)>**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
@@ -192,7 +192,7 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+    token: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
   const workspaceId = "<value>";
@@ -221,7 +221,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetLinkInfoResponse](../../models/operations/getlinkinforesponse.md)>**
+**Promise<[components.LinkSchema](../../models/components/linkschema.md)>**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
@@ -248,7 +248,7 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+    token: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
   const linkId = "<value>";
@@ -283,7 +283,7 @@ run();
 
 ### Response
 
-**Promise<[operations.EditLinkResponse](../../models/operations/editlinkresponse.md)>**
+**Promise<[components.LinkSchema](../../models/components/linkschema.md)>**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
@@ -310,7 +310,7 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+    token: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
   const linkId = "<value>";
@@ -337,7 +337,7 @@ run();
 
 ### Response
 
-**Promise<[operations.DeleteLinkResponse](../../models/operations/deletelinkresponse.md)>**
+**Promise<[components.LinkSchema](../../models/components/linkschema.md)>**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
@@ -364,7 +364,7 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+    token: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
   const workspaceId = "<value>";
@@ -399,7 +399,7 @@ run();
 
 ### Response
 
-**Promise<[operations.BulkCreateLinksResponse](../../models/operations/bulkcreatelinksresponse.md)>**
+**Promise<[components.LinkSchema[]](../../models/.md)>**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |

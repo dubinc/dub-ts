@@ -4,7 +4,7 @@ import { Dub } from "dub";
 
 async function run() {
     const sdk = new Dub({
-        bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+        token: "<YOUR_BEARER_TOKEN_HERE>",
     });
 
     const result = await sdk.links.getLinks({

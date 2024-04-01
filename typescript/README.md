@@ -48,7 +48,7 @@ import { Dub } from "dub";
 
 async function run() {
     const sdk = new Dub({
-        bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+        token: "<YOUR_BEARER_TOKEN_HERE>",
     });
 
     const result = await sdk.links.getLinks({
@@ -134,7 +134,7 @@ import * as errors from "dub/models/errors";
 
 async function run() {
     const sdk = new Dub({
-        bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+        token: "<YOUR_BEARER_TOKEN_HERE>",
     });
 
     let result;
@@ -212,7 +212,7 @@ You can override the default server globally by passing a server index to the `s
 
 | # | Server | Variables |
 | - | ------ | --------- |
-| 0 | `https://api.dub.co` | None |
+| 0 | `http://api.localhost:8888` | None |
 
 ```typescript
 import { Dub } from "dub";
@@ -220,7 +220,7 @@ import { Dub } from "dub";
 async function run() {
     const sdk = new Dub({
         serverIdx: 0,
-        bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+        token: "<YOUR_BEARER_TOKEN_HERE>",
     });
 
     const result = await sdk.links.getLinks({
@@ -246,8 +246,8 @@ import { Dub } from "dub";
 
 async function run() {
     const sdk = new Dub({
-        serverURL: "https://api.dub.co",
-        bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+        serverURL: "http://api.localhost:8888",
+        token: "<YOUR_BEARER_TOKEN_HERE>",
     });
 
     const result = await sdk.links.getLinks({
@@ -320,17 +320,17 @@ const sdk = new Dub({ httpClient });
 
 This SDK supports the following security scheme globally:
 
-| Name          | Type          | Scheme        |
-| ------------- | ------------- | ------------- |
-| `bearerToken` | http          | HTTP Bearer   |
+| Name        | Type        | Scheme      |
+| ----------- | ----------- | ----------- |
+| `token`     | http        | HTTP Bearer |
 
-To authenticate with the API the `bearerToken` parameter must be set when initializing the SDK client instance. For example:
+To authenticate with the API the `token` parameter must be set when initializing the SDK client instance. For example:
 ```typescript
 import { Dub } from "dub";
 
 async function run() {
     const sdk = new Dub({
-        bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+        token: "<YOUR_BEARER_TOKEN_HERE>",
     });
 
     const result = await sdk.links.getLinks({

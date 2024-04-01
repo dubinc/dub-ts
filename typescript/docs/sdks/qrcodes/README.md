@@ -16,7 +16,7 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+    token: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
   const result = await sdk.qrCodes.getQRCode({});
@@ -39,7 +39,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetQRCodeResponse](../../models/operations/getqrcoderesponse.md)>**
+**Promise<[string](../../models/.md)>**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |

@@ -18,7 +18,7 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+    token: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
   const result = await sdk.workspaces.getWorkspaces();
@@ -40,7 +40,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetWorkspacesResponse](../../models/operations/getworkspacesresponse.md)>**
+**Promise<[components.WorkspaceSchema[]](../../models/.md)>**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
@@ -67,7 +67,7 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+    token: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
   const result = await sdk.workspaces.createWorkspace({
@@ -93,7 +93,7 @@ run();
 
 ### Response
 
-**Promise<[operations.CreateWorkspaceResponse](../../models/operations/createworkspaceresponse.md)>**
+**Promise<[components.WorkspaceSchema](../../models/components/workspaceschema.md)>**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
@@ -120,7 +120,7 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+    token: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
   const idOrSlug = "<value>";
@@ -145,7 +145,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetWorkspaceResponse](../../models/operations/getworkspaceresponse.md)>**
+**Promise<[components.WorkspaceSchema](../../models/components/workspaceschema.md)>**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |

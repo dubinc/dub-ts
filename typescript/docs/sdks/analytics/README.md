@@ -25,7 +25,7 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+    token: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
   const result = await sdk.analytics.getClicksAnalytics({
@@ -50,7 +50,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetClicksAnalyticsResponse](../../models/operations/getclicksanalyticsresponse.md)>**
+**Promise<[number](../../models/.md)>**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
@@ -77,7 +77,7 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+    token: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
   const result = await sdk.analytics.getTimeseriesAnalytics({
@@ -102,7 +102,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetTimeseriesAnalyticsResponse](../../models/operations/gettimeseriesanalyticsresponse.md)>**
+**Promise<[operations.ResponseBody[]](../../models/.md)>**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
@@ -129,7 +129,7 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+    token: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
   const result = await sdk.analytics.getCountryAnalytics({
@@ -154,7 +154,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetCountryAnalyticsResponse](../../models/operations/getcountryanalyticsresponse.md)>**
+**Promise<[operations.GetCountryAnalyticsResponseBody[]](../../models/.md)>**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
@@ -181,7 +181,7 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+    token: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
   const result = await sdk.analytics.getCityAnalytics({
@@ -206,7 +206,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetCityAnalyticsResponse](../../models/operations/getcityanalyticsresponse.md)>**
+**Promise<[operations.GetCityAnalyticsResponseBody[]](../../models/.md)>**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
@@ -233,7 +233,7 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+    token: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
   const result = await sdk.analytics.getDeviceAnalytics({
@@ -258,7 +258,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetDeviceAnalyticsResponse](../../models/operations/getdeviceanalyticsresponse.md)>**
+**Promise<[operations.GetDeviceAnalyticsResponseBody[]](../../models/.md)>**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
@@ -285,7 +285,7 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+    token: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
   const result = await sdk.analytics.getBrowserAnalytics({
@@ -310,7 +310,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetBrowserAnalyticsResponse](../../models/operations/getbrowseranalyticsresponse.md)>**
+**Promise<[operations.GetBrowserAnalyticsResponseBody[]](../../models/.md)>**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
@@ -337,7 +337,7 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+    token: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
   const result = await sdk.analytics.getOSAnalytics({
@@ -362,7 +362,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetOSAnalyticsResponse](../../models/operations/getosanalyticsresponse.md)>**
+**Promise<[operations.GetOSAnalyticsResponseBody[]](../../models/.md)>**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
@@ -389,7 +389,7 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+    token: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
   const result = await sdk.analytics.getRefererAnalytics({
@@ -414,7 +414,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetRefererAnalyticsResponse](../../models/operations/getrefereranalyticsresponse.md)>**
+**Promise<[operations.GetRefererAnalyticsResponseBody[]](../../models/.md)>**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
@@ -441,7 +441,7 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+    token: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
   const result = await sdk.analytics.getTopLinks({
@@ -466,7 +466,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetTopLinksResponse](../../models/operations/gettoplinksresponse.md)>**
+**Promise<[operations.GetTopLinksResponseBody[]](../../models/.md)>**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
@@ -493,7 +493,7 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+    token: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
   const result = await sdk.analytics.getTopURLs({
@@ -518,7 +518,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetTopURLsResponse](../../models/operations/gettopurlsresponse.md)>**
+**Promise<[operations.GetTopURLsResponseBody[]](../../models/.md)>**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
