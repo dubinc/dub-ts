@@ -94,7 +94,7 @@ export type CreateLinkRequest = {
     /**
      * The ID of the workspace to create the link for.
      */
-    workspaceId: string;
+    workspaceId?: string | undefined;
     requestBody?: CreateLinkRequestBody | undefined;
 };
 
@@ -262,35 +262,35 @@ export namespace CreateLinkRequestBody$ {
 /** @internal */
 export namespace CreateLinkRequest$ {
     export type Inbound = {
-        workspaceId: string;
+        workspaceId?: string | undefined;
         RequestBody?: CreateLinkRequestBody$.Inbound | undefined;
     };
 
     export const inboundSchema: z.ZodType<CreateLinkRequest, z.ZodTypeDef, Inbound> = z
         .object({
-            workspaceId: z.string(),
+            workspaceId: z.string().optional(),
             RequestBody: z.lazy(() => CreateLinkRequestBody$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
-                workspaceId: v.workspaceId,
+                ...(v.workspaceId === undefined ? null : { workspaceId: v.workspaceId }),
                 ...(v.RequestBody === undefined ? null : { requestBody: v.RequestBody }),
             };
         });
 
     export type Outbound = {
-        workspaceId: string;
+        workspaceId?: string | undefined;
         RequestBody?: CreateLinkRequestBody$.Outbound | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateLinkRequest> = z
         .object({
-            workspaceId: z.string(),
+            workspaceId: z.string().optional(),
             requestBody: z.lazy(() => CreateLinkRequestBody$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {
-                workspaceId: v.workspaceId,
+                ...(v.workspaceId === undefined ? null : { workspaceId: v.workspaceId }),
                 ...(v.requestBody === undefined ? null : { RequestBody: v.requestBody }),
             };
         });

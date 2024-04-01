@@ -8,7 +8,7 @@ export type GetLinkInfoRequest = {
     /**
      * The ID of the workspace the link belongs to.
      */
-    workspaceId: string;
+    workspaceId?: string | undefined;
     /**
      * The domain of the link to retrieve. E.g. for `d.to/github`, the domain is `d.to`.
      */
@@ -22,40 +22,40 @@ export type GetLinkInfoRequest = {
 /** @internal */
 export namespace GetLinkInfoRequest$ {
     export type Inbound = {
-        workspaceId: string;
+        workspaceId?: string | undefined;
         domain: string;
         key: string;
     };
 
     export const inboundSchema: z.ZodType<GetLinkInfoRequest, z.ZodTypeDef, Inbound> = z
         .object({
-            workspaceId: z.string(),
+            workspaceId: z.string().optional(),
             domain: z.string(),
             key: z.string(),
         })
         .transform((v) => {
             return {
-                workspaceId: v.workspaceId,
+                ...(v.workspaceId === undefined ? null : { workspaceId: v.workspaceId }),
                 domain: v.domain,
                 key: v.key,
             };
         });
 
     export type Outbound = {
-        workspaceId: string;
+        workspaceId?: string | undefined;
         domain: string;
         key: string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLinkInfoRequest> = z
         .object({
-            workspaceId: z.string(),
+            workspaceId: z.string().optional(),
             domain: z.string(),
             key: z.string(),
         })
         .transform((v) => {
             return {
-                workspaceId: v.workspaceId,
+                ...(v.workspaceId === undefined ? null : { workspaceId: v.workspaceId }),
                 domain: v.domain,
                 key: v.key,
             };

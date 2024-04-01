@@ -276,7 +276,7 @@ export type GetOSAnalyticsRequest = {
     /**
      * The ID of the workspace the link belongs to.
      */
-    workspaceId: string;
+    workspaceId?: string | undefined;
     /**
      * The domain of the short link.
      */
@@ -347,7 +347,7 @@ export const GetOSAnalyticsQueryParamCountry$ = z.nativeEnum(GetOSAnalyticsQuery
 /** @internal */
 export namespace GetOSAnalyticsRequest$ {
     export type Inbound = {
-        workspaceId: string;
+        workspaceId?: string | undefined;
         domain?: string | undefined;
         key?: string | undefined;
         interval?: GetOSAnalyticsQueryParamInterval | undefined;
@@ -364,7 +364,7 @@ export namespace GetOSAnalyticsRequest$ {
 
     export const inboundSchema: z.ZodType<GetOSAnalyticsRequest, z.ZodTypeDef, Inbound> = z
         .object({
-            workspaceId: z.string(),
+            workspaceId: z.string().optional(),
             domain: z.string().optional(),
             key: z.string().optional(),
             interval: GetOSAnalyticsQueryParamInterval$.optional(),
@@ -380,7 +380,7 @@ export namespace GetOSAnalyticsRequest$ {
         })
         .transform((v) => {
             return {
-                workspaceId: v.workspaceId,
+                ...(v.workspaceId === undefined ? null : { workspaceId: v.workspaceId }),
                 ...(v.domain === undefined ? null : { domain: v.domain }),
                 ...(v.key === undefined ? null : { key: v.key }),
                 ...(v.interval === undefined ? null : { interval: v.interval }),
@@ -397,7 +397,7 @@ export namespace GetOSAnalyticsRequest$ {
         });
 
     export type Outbound = {
-        workspaceId: string;
+        workspaceId?: string | undefined;
         domain?: string | undefined;
         key?: string | undefined;
         interval?: GetOSAnalyticsQueryParamInterval | undefined;
@@ -414,7 +414,7 @@ export namespace GetOSAnalyticsRequest$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetOSAnalyticsRequest> = z
         .object({
-            workspaceId: z.string(),
+            workspaceId: z.string().optional(),
             domain: z.string().optional(),
             key: z.string().optional(),
             interval: GetOSAnalyticsQueryParamInterval$.optional(),
@@ -430,7 +430,7 @@ export namespace GetOSAnalyticsRequest$ {
         })
         .transform((v) => {
             return {
-                workspaceId: v.workspaceId,
+                ...(v.workspaceId === undefined ? null : { workspaceId: v.workspaceId }),
                 ...(v.domain === undefined ? null : { domain: v.domain }),
                 ...(v.key === undefined ? null : { key: v.key }),
                 ...(v.interval === undefined ? null : { interval: v.interval }),

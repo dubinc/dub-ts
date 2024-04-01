@@ -276,7 +276,7 @@ export type GetBrowserAnalyticsRequest = {
     /**
      * The ID of the workspace the link belongs to.
      */
-    workspaceId: string;
+    workspaceId?: string | undefined;
     /**
      * The domain of the short link.
      */
@@ -351,7 +351,7 @@ export const GetBrowserAnalyticsQueryParamCountry$ = z.nativeEnum(
 /** @internal */
 export namespace GetBrowserAnalyticsRequest$ {
     export type Inbound = {
-        workspaceId: string;
+        workspaceId?: string | undefined;
         domain?: string | undefined;
         key?: string | undefined;
         interval?: GetBrowserAnalyticsQueryParamInterval | undefined;
@@ -368,7 +368,7 @@ export namespace GetBrowserAnalyticsRequest$ {
 
     export const inboundSchema: z.ZodType<GetBrowserAnalyticsRequest, z.ZodTypeDef, Inbound> = z
         .object({
-            workspaceId: z.string(),
+            workspaceId: z.string().optional(),
             domain: z.string().optional(),
             key: z.string().optional(),
             interval: GetBrowserAnalyticsQueryParamInterval$.optional(),
@@ -384,7 +384,7 @@ export namespace GetBrowserAnalyticsRequest$ {
         })
         .transform((v) => {
             return {
-                workspaceId: v.workspaceId,
+                ...(v.workspaceId === undefined ? null : { workspaceId: v.workspaceId }),
                 ...(v.domain === undefined ? null : { domain: v.domain }),
                 ...(v.key === undefined ? null : { key: v.key }),
                 ...(v.interval === undefined ? null : { interval: v.interval }),
@@ -401,7 +401,7 @@ export namespace GetBrowserAnalyticsRequest$ {
         });
 
     export type Outbound = {
-        workspaceId: string;
+        workspaceId?: string | undefined;
         domain?: string | undefined;
         key?: string | undefined;
         interval?: GetBrowserAnalyticsQueryParamInterval | undefined;
@@ -418,7 +418,7 @@ export namespace GetBrowserAnalyticsRequest$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetBrowserAnalyticsRequest> = z
         .object({
-            workspaceId: z.string(),
+            workspaceId: z.string().optional(),
             domain: z.string().optional(),
             key: z.string().optional(),
             interval: GetBrowserAnalyticsQueryParamInterval$.optional(),
@@ -434,7 +434,7 @@ export namespace GetBrowserAnalyticsRequest$ {
         })
         .transform((v) => {
             return {
-                workspaceId: v.workspaceId,
+                ...(v.workspaceId === undefined ? null : { workspaceId: v.workspaceId }),
                 ...(v.domain === undefined ? null : { domain: v.domain }),
                 ...(v.key === undefined ? null : { key: v.key }),
                 ...(v.interval === undefined ? null : { interval: v.interval }),

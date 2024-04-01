@@ -98,7 +98,7 @@ export type EditLinkRequest = {
     /**
      * The ID of the workspace the link belongs to.
      */
-    workspaceId: string;
+    workspaceId?: string | undefined;
     requestBody?: EditLinkRequestBody | undefined;
 };
 
@@ -267,40 +267,40 @@ export namespace EditLinkRequestBody$ {
 export namespace EditLinkRequest$ {
     export type Inbound = {
         linkId: string;
-        workspaceId: string;
+        workspaceId?: string | undefined;
         RequestBody?: EditLinkRequestBody$.Inbound | undefined;
     };
 
     export const inboundSchema: z.ZodType<EditLinkRequest, z.ZodTypeDef, Inbound> = z
         .object({
             linkId: z.string(),
-            workspaceId: z.string(),
+            workspaceId: z.string().optional(),
             RequestBody: z.lazy(() => EditLinkRequestBody$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
                 linkId: v.linkId,
-                workspaceId: v.workspaceId,
+                ...(v.workspaceId === undefined ? null : { workspaceId: v.workspaceId }),
                 ...(v.RequestBody === undefined ? null : { requestBody: v.RequestBody }),
             };
         });
 
     export type Outbound = {
         linkId: string;
-        workspaceId: string;
+        workspaceId?: string | undefined;
         RequestBody?: EditLinkRequestBody$.Outbound | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EditLinkRequest> = z
         .object({
             linkId: z.string(),
-            workspaceId: z.string(),
+            workspaceId: z.string().optional(),
             requestBody: z.lazy(() => EditLinkRequestBody$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {
                 linkId: v.linkId,
-                workspaceId: v.workspaceId,
+                ...(v.workspaceId === undefined ? null : { workspaceId: v.workspaceId }),
                 ...(v.requestBody === undefined ? null : { RequestBody: v.requestBody }),
             };
         });

@@ -3,15 +3,15 @@
 
 ### Available Operations
 
-* [getLinks](#getlinks) - Retrieve a list of links
-* [createLink](#createlink) - Create a new link
-* [getLinksCount](#getlinkscount) - Retrieve the number of links
-* [getLinkInfo](#getlinkinfo) - Retrieve a link
-* [editLink](#editlink) - Edit a link
-* [deleteLink](#deletelink) - Delete a link
-* [bulkCreateLinks](#bulkcreatelinks) - Bulk create links
+* [list](#list) - Retrieve a list of links
+* [create](#create) - Create a new link
+* [count](#count) - Retrieve the number of links
+* [get](#get) - Retrieve a link
+* [update](#update) - Edit a link
+* [delete](#delete) - Delete a link
+* [bulkCreate](#bulkcreate) - Bulk create links
 
-## getLinks
+## list
 
 Retrieve a list of links for the authenticated workspace. The list will be paginated and the provided query parameters allow filtering the returned links.
 
@@ -23,11 +23,13 @@ import { Dub } from "dub";
 async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
+    workspaceId: "<value>",
   });
 
-  const result = await sdk.links.getLinks({
-    workspaceId: "<value>",
-  tagIds: "<value>",
+  const result = await sdk.links.list({
+  tagIds:     [
+        "<value>",
+      ],
   });
 
   // Handle the result
@@ -64,7 +66,7 @@ run();
 | errors.FiveHundred              | 500                             | application/json                |
 | errors.SDKError                 | 4xx-5xx                         | */*                             |
 
-## createLink
+## create
 
 Create a new link for the authenticated workspace.
 
@@ -76,18 +78,18 @@ import { Dub } from "dub";
 async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
+    workspaceId: "<value>",
   });
 
-  const workspaceId = "<value>";
-  const requestBody = {
-    url: "https://first-marxism.net",
-    geo: {
-      "key": "<value>",
+  const result = await sdk.links.create({
+    requestBody: {
+      url: "http://limp-pastry.org",
+      geo: {
+        "key": "<value>",
+      },
+    tagIds: "<value>",
     },
-  tagIds: "<value>",
-  };
-  
-  const result = await sdk.links.createLink(workspaceId, requestBody);
+  });
 
   // Handle the result
   console.log(result)
@@ -100,8 +102,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `workspaceId`                                                                                                                                                                  | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The ID of the workspace to create the link for.                                                                                                                                |
-| `requestBody`                                                                                                                                                                  | [operations.CreateLinkRequestBody](../../models/operations/createlinkrequestbody.md)                                                                                           | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            |
+| `request`                                                                                                                                                                      | [operations.CreateLinkRequest](../../models/operations/createlinkrequest.md)                                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
@@ -124,7 +125,7 @@ run();
 | errors.FiveHundred              | 500                             | application/json                |
 | errors.SDKError                 | 4xx-5xx                         | */*                             |
 
-## getLinksCount
+## count
 
 Retrieve the number of links for the authenticated workspace. The provided query parameters allow filtering the returned links.
 
@@ -132,19 +133,17 @@ Retrieve the number of links for the authenticated workspace. The provided query
 
 ```typescript
 import { Dub } from "dub";
-import { Two } from "dub/models/operations";
+import { One } from "dub/models/operations";
 
 async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
+    workspaceId: "<value>",
   });
 
-  const result = await sdk.links.getLinksCount({
-    workspaceId: "<value>",
-  tagIds:     [
-        "<value>",
-      ],
-  groupBy: Two.TagId,
+  const result = await sdk.links.count({
+  tagIds: "<value>",
+  groupBy: One.Domain,
   });
 
   // Handle the result
@@ -181,7 +180,7 @@ run();
 | errors.FiveHundred              | 500                             | application/json                |
 | errors.SDKError                 | 4xx-5xx                         | */*                             |
 
-## getLinkInfo
+## get
 
 Retrieve the info for a link from their domain and key.
 
@@ -193,13 +192,13 @@ import { Dub } from "dub";
 async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
+    workspaceId: "<value>",
   });
 
-  const workspaceId = "<value>";
-  const domain = "<value>";
-  const key = "<value>";
-  
-  const result = await sdk.links.getLinkInfo(workspaceId, domain, key);
+  const result = await sdk.links.get({
+    domain: "ringed-blow.name",
+    key: "<key>",
+  });
 
   // Handle the result
   console.log(result)
@@ -212,9 +211,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `workspaceId`                                                                                                                                                                  | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The ID of the workspace the link belongs to.                                                                                                                                   |
-| `domain`                                                                                                                                                                       | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The domain of the link to retrieve. E.g. for `d.to/github`, the domain is `d.to`.                                                                                              |
-| `key`                                                                                                                                                                          | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The key of the link to retrieve. E.g. for `d.to/github`, the key is `github`.                                                                                                  |
+| `request`                                                                                                                                                                      | [operations.GetLinkInfoRequest](../../models/operations/getlinkinforequest.md)                                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
@@ -237,7 +234,7 @@ run();
 | errors.FiveHundred              | 500                             | application/json                |
 | errors.SDKError                 | 4xx-5xx                         | */*                             |
 
-## editLink
+## update
 
 Edit a link for the authenticated workspace.
 
@@ -249,19 +246,19 @@ import { Dub } from "dub";
 async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
+    workspaceId: "<value>",
   });
 
-  const linkId = "<value>";
-  const workspaceId = "<value>";
-  const requestBody = {
-    url: "https://fruitful-strategy.com",
-    geo: {
-      "key": "<value>",
+  const result = await sdk.links.update({
+    linkId: "<value>",
+    requestBody: {
+      url: "https://alarming-nondisclosure.com",
+      geo: {
+        "key": "<value>",
+      },
+    tagIds: "<value>",
     },
-  tagIds: "<value>",
-  };
-  
-  const result = await sdk.links.editLink(linkId, workspaceId, requestBody);
+  });
 
   // Handle the result
   console.log(result)
@@ -274,9 +271,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `linkId`                                                                                                                                                                       | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The id of the link to edit. You can get this via the `getLinkInfo` endpoint.                                                                                                   |
-| `workspaceId`                                                                                                                                                                  | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The ID of the workspace the link belongs to.                                                                                                                                   |
-| `requestBody`                                                                                                                                                                  | [operations.EditLinkRequestBody](../../models/operations/editlinkrequestbody.md)                                                                                               | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            |
+| `request`                                                                                                                                                                      | [operations.EditLinkRequest](../../models/operations/editlinkrequest.md)                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
@@ -299,7 +294,7 @@ run();
 | errors.FiveHundred              | 500                             | application/json                |
 | errors.SDKError                 | 4xx-5xx                         | */*                             |
 
-## deleteLink
+## delete
 
 Delete a link for the authenticated workspace.
 
@@ -311,12 +306,12 @@ import { Dub } from "dub";
 async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
+    workspaceId: "<value>",
   });
 
-  const linkId = "<value>";
-  const workspaceId = "<value>";
-  
-  const result = await sdk.links.deleteLink(linkId, workspaceId);
+  const result = await sdk.links.delete({
+    linkId: "<value>",
+  });
 
   // Handle the result
   console.log(result)
@@ -329,8 +324,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `linkId`                                                                                                                                                                       | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The id of the link to delete. You can get this via the `getLinkInfo` endpoint.                                                                                                 |
-| `workspaceId`                                                                                                                                                                  | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The ID of the workspace the link belongs to.                                                                                                                                   |
+| `request`                                                                                                                                                                      | [operations.DeleteLinkRequest](../../models/operations/deletelinkrequest.md)                                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
@@ -353,7 +347,7 @@ run();
 | errors.FiveHundred              | 500                             | application/json                |
 | errors.SDKError                 | 4xx-5xx                         | */*                             |
 
-## bulkCreateLinks
+## bulkCreate
 
 Bulk create up to 100 links for the authenticated workspace.
 
@@ -365,20 +359,22 @@ import { Dub } from "dub";
 async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
+    workspaceId: "<value>",
   });
 
-  const workspaceId = "<value>";
-  const requestBody = [
-    {
-      url: "https://impish-brow.info",
-      geo: {
-        "key": "<value>",
+  const result = await sdk.links.bulkCreate({
+    requestBody: [
+      {
+        url: "http://bad-sidecar.net",
+        geo: {
+          "key": "<value>",
+        },
+      tagIds:     [
+            "<value>",
+          ],
       },
-    tagIds: "<value>",
-    },
-  ];
-  
-  const result = await sdk.links.bulkCreateLinks(workspaceId, requestBody);
+    ],
+  });
 
   // Handle the result
   console.log(result)
@@ -391,8 +387,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `workspaceId`                                                                                                                                                                  | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The ID of the workspace to create the link for.                                                                                                                                |
-| `requestBody`                                                                                                                                                                  | [operations.RequestBody](../../models/operations/requestbody.md)[]                                                                                                             | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            |
+| `request`                                                                                                                                                                      | [operations.BulkCreateLinksRequest](../../models/operations/bulkcreatelinksrequest.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 

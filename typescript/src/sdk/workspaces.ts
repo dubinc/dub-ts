@@ -459,18 +459,15 @@ export class Workspaces extends ClientSDK {
      * Retrieve a workspace for the authenticated user.
      */
     async getWorkspace(
-        idOrSlug: string,
+        input: operations.GetWorkspaceRequest,
         options?: RequestOptions
     ): Promise<components.WorkspaceSchema> {
-        const input$: operations.GetWorkspaceRequest = {
-            idOrSlug: idOrSlug,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input$,
+            input,
             (value$) => operations.GetWorkspaceRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );

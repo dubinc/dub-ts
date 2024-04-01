@@ -12,42 +12,42 @@ export type DeleteLinkRequest = {
     /**
      * The ID of the workspace the link belongs to.
      */
-    workspaceId: string;
+    workspaceId?: string | undefined;
 };
 
 /** @internal */
 export namespace DeleteLinkRequest$ {
     export type Inbound = {
         linkId: string;
-        workspaceId: string;
+        workspaceId?: string | undefined;
     };
 
     export const inboundSchema: z.ZodType<DeleteLinkRequest, z.ZodTypeDef, Inbound> = z
         .object({
             linkId: z.string(),
-            workspaceId: z.string(),
+            workspaceId: z.string().optional(),
         })
         .transform((v) => {
             return {
                 linkId: v.linkId,
-                workspaceId: v.workspaceId,
+                ...(v.workspaceId === undefined ? null : { workspaceId: v.workspaceId }),
             };
         });
 
     export type Outbound = {
         linkId: string;
-        workspaceId: string;
+        workspaceId?: string | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteLinkRequest> = z
         .object({
             linkId: z.string(),
-            workspaceId: z.string(),
+            workspaceId: z.string().optional(),
         })
         .transform((v) => {
             return {
                 linkId: v.linkId,
-                workspaceId: v.workspaceId,
+                ...(v.workspaceId === undefined ? null : { workspaceId: v.workspaceId }),
             };
         });
 }

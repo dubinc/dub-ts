@@ -26,11 +26,10 @@ import { Dub } from "dub";
 async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
-  });
-
-  const result = await sdk.analytics.getClicksAnalytics({
     workspaceId: "<value>",
   });
+
+  const result = await sdk.analytics.getClicksAnalytics({});
 
   // Handle the result
   console.log(result)
@@ -78,11 +77,10 @@ import { Dub } from "dub";
 async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
-  });
-
-  const result = await sdk.analytics.getTimeseriesAnalytics({
     workspaceId: "<value>",
   });
+
+  const result = await sdk.analytics.getTimeseriesAnalytics({});
 
   // Handle the result
   console.log(result)
@@ -130,11 +128,10 @@ import { Dub } from "dub";
 async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
-  });
-
-  const result = await sdk.analytics.getCountryAnalytics({
     workspaceId: "<value>",
   });
+
+  const result = await sdk.analytics.getCountryAnalytics({});
 
   // Handle the result
   console.log(result)
@@ -182,11 +179,10 @@ import { Dub } from "dub";
 async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
-  });
-
-  const result = await sdk.analytics.getCityAnalytics({
     workspaceId: "<value>",
   });
+
+  const result = await sdk.analytics.getCityAnalytics({});
 
   // Handle the result
   console.log(result)
@@ -234,11 +230,10 @@ import { Dub } from "dub";
 async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
-  });
-
-  const result = await sdk.analytics.getDeviceAnalytics({
     workspaceId: "<value>",
   });
+
+  const result = await sdk.analytics.getDeviceAnalytics({});
 
   // Handle the result
   console.log(result)
@@ -286,11 +281,10 @@ import { Dub } from "dub";
 async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
-  });
-
-  const result = await sdk.analytics.getBrowserAnalytics({
     workspaceId: "<value>",
   });
+
+  const result = await sdk.analytics.getBrowserAnalytics({});
 
   // Handle the result
   console.log(result)
@@ -338,11 +332,10 @@ import { Dub } from "dub";
 async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
-  });
-
-  const result = await sdk.analytics.getOSAnalytics({
     workspaceId: "<value>",
   });
+
+  const result = await sdk.analytics.getOSAnalytics({});
 
   // Handle the result
   console.log(result)
@@ -390,11 +383,10 @@ import { Dub } from "dub";
 async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
-  });
-
-  const result = await sdk.analytics.getRefererAnalytics({
     workspaceId: "<value>",
   });
+
+  const result = await sdk.analytics.getRefererAnalytics({});
 
   // Handle the result
   console.log(result)
@@ -442,11 +434,10 @@ import { Dub } from "dub";
 async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
-  });
-
-  const result = await sdk.analytics.getTopLinks({
     workspaceId: "<value>",
   });
+
+  const result = await sdk.analytics.getTopLinks({});
 
   // Handle the result
   console.log(result)
@@ -494,11 +485,10 @@ import { Dub } from "dub";
 async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
-  });
-
-  const result = await sdk.analytics.getTopURLs({
     workspaceId: "<value>",
   });
+
+  const result = await sdk.analytics.getTopURLs({});
 
   // Handle the result
   console.log(result)

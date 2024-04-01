@@ -17,6 +17,7 @@ import { Dub } from "dub";
 async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
+    workspaceId: "<value>",
   });
 
   const result = await sdk.qrCodes.getQRCode({});

@@ -8,36 +8,36 @@ export type GetTagsRequest = {
     /**
      * The ID of the workspace to retrieve the tags for.
      */
-    workspaceId: string;
+    workspaceId?: string | undefined;
 };
 
 /** @internal */
 export namespace GetTagsRequest$ {
     export type Inbound = {
-        workspaceId: string;
+        workspaceId?: string | undefined;
     };
 
     export const inboundSchema: z.ZodType<GetTagsRequest, z.ZodTypeDef, Inbound> = z
         .object({
-            workspaceId: z.string(),
+            workspaceId: z.string().optional(),
         })
         .transform((v) => {
             return {
-                workspaceId: v.workspaceId,
+                ...(v.workspaceId === undefined ? null : { workspaceId: v.workspaceId }),
             };
         });
 
     export type Outbound = {
-        workspaceId: string;
+        workspaceId?: string | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetTagsRequest> = z
         .object({
-            workspaceId: z.string(),
+            workspaceId: z.string().optional(),
         })
         .transform((v) => {
             return {
-                workspaceId: v.workspaceId,
+                ...(v.workspaceId === undefined ? null : { workspaceId: v.workspaceId }),
             };
         });
 }

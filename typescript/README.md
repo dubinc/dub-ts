@@ -49,11 +49,11 @@ import { Dub } from "dub";
 async function run() {
     const sdk = new Dub({
         token: "<YOUR_BEARER_TOKEN_HERE>",
+        workspaceId: "<value>",
     });
 
-    const result = await sdk.links.getLinks({
-        workspaceId: "<value>",
-        tagIds: "<value>",
+    const result = await sdk.links.list({
+        tagIds: ["<value>"],
     });
 
     // Handle the result
@@ -70,13 +70,13 @@ run();
 
 ### [links](docs/sdks/links/README.md)
 
-* [getLinks](docs/sdks/links/README.md#getlinks) - Retrieve a list of links
-* [createLink](docs/sdks/links/README.md#createlink) - Create a new link
-* [getLinksCount](docs/sdks/links/README.md#getlinkscount) - Retrieve the number of links
-* [getLinkInfo](docs/sdks/links/README.md#getlinkinfo) - Retrieve a link
-* [editLink](docs/sdks/links/README.md#editlink) - Edit a link
-* [deleteLink](docs/sdks/links/README.md#deletelink) - Delete a link
-* [bulkCreateLinks](docs/sdks/links/README.md#bulkcreatelinks) - Bulk create links
+* [list](docs/sdks/links/README.md#list) - Retrieve a list of links
+* [create](docs/sdks/links/README.md#create) - Create a new link
+* [count](docs/sdks/links/README.md#count) - Retrieve the number of links
+* [get](docs/sdks/links/README.md#get) - Retrieve a link
+* [update](docs/sdks/links/README.md#update) - Edit a link
+* [delete](docs/sdks/links/README.md#delete) - Delete a link
+* [bulkCreate](docs/sdks/links/README.md#bulkcreate) - Bulk create links
 
 ### [qrCodes](docs/sdks/qrcodes/README.md)
 
@@ -135,13 +135,13 @@ import * as errors from "dub/models/errors";
 async function run() {
     const sdk = new Dub({
         token: "<YOUR_BEARER_TOKEN_HERE>",
+        workspaceId: "<value>",
     });
 
     let result;
     try {
-        result = await sdk.links.getLinks({
-            workspaceId: "<value>",
-            tagIds: "<value>",
+        result = await sdk.links.list({
+            tagIds: ["<value>"],
         });
     } catch (err) {
         switch (true) {
@@ -221,11 +221,11 @@ async function run() {
     const sdk = new Dub({
         serverIdx: 0,
         token: "<YOUR_BEARER_TOKEN_HERE>",
+        workspaceId: "<value>",
     });
 
-    const result = await sdk.links.getLinks({
-        workspaceId: "<value>",
-        tagIds: "<value>",
+    const result = await sdk.links.list({
+        tagIds: ["<value>"],
     });
 
     // Handle the result
@@ -248,11 +248,11 @@ async function run() {
     const sdk = new Dub({
         serverURL: "http://api.localhost:8888",
         token: "<YOUR_BEARER_TOKEN_HERE>",
+        workspaceId: "<value>",
     });
 
-    const result = await sdk.links.getLinks({
-        workspaceId: "<value>",
-        tagIds: "<value>",
+    const result = await sdk.links.list({
+        tagIds: ["<value>"],
     });
 
     // Handle the result
@@ -331,11 +331,11 @@ import { Dub } from "dub";
 async function run() {
     const sdk = new Dub({
         token: "<YOUR_BEARER_TOKEN_HERE>",
+        workspaceId: "<value>",
     });
 
-    const result = await sdk.links.getLinks({
-        workspaceId: "<value>",
-        tagIds: "<value>",
+    const result = await sdk.links.list({
+        tagIds: ["<value>"],
     });
 
     // Handle the result
@@ -346,6 +346,47 @@ run();
 
 ```
 <!-- End Authentication [security] -->
+
+<!-- Start Global Parameters [global-parameters] -->
+## Global Parameters
+
+A parameter is configured globally. This parameter must be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
+
+For example, you can set `workspaceId` to `"<value>"` at SDK initialization and then you do not have to pass the same value on calls to operations like `list`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+
+
+### Available Globals
+
+The following global parameter is available. The required parameter must be set when you initialize the SDK client.
+
+| Name | Type | Required | Description |
+| ---- | ---- |:--------:| ----------- |
+| workspaceId | string | ✔️ | The workspaceId parameter. |
+
+
+### Example
+
+```typescript
+import { Dub } from "dub";
+
+async function run() {
+    const sdk = new Dub({
+        token: "<YOUR_BEARER_TOKEN_HERE>",
+        workspaceId: "<value>",
+    });
+
+    const result = await sdk.links.list({
+        tagIds: ["<value>"],
+    });
+
+    // Handle the result
+    console.log(result);
+}
+
+run();
+
+```
+<!-- End Global Parameters [global-parameters] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

@@ -19,6 +19,7 @@ import { Dub } from "dub";
 async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
+    workspaceId: "<value>",
   });
 
   const result = await sdk.workspaces.getWorkspaces();
@@ -68,6 +69,7 @@ import { Dub } from "dub";
 async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
+    workspaceId: "<value>",
   });
 
   const result = await sdk.workspaces.createWorkspace({
@@ -121,11 +123,12 @@ import { Dub } from "dub";
 async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
+    workspaceId: "<value>",
   });
 
-  const idOrSlug = "<value>";
-  
-  const result = await sdk.workspaces.getWorkspace(idOrSlug);
+  const result = await sdk.workspaces.getWorkspace({
+    idOrSlug: "<value>",
+  });
 
   // Handle the result
   console.log(result)
@@ -138,7 +141,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `idOrSlug`                                                                                                                                                                     | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The ID or slug of the workspace.                                                                                                                                               |
+| `request`                                                                                                                                                                      | [operations.GetWorkspaceRequest](../../models/operations/getworkspacerequest.md)                                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 

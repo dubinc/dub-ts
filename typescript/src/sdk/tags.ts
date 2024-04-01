@@ -47,18 +47,15 @@ export class Tags extends ClientSDK {
      * Retrieve a list of tags for the authenticated workspace.
      */
     async getTags(
-        workspaceId: string,
+        input: operations.GetTagsRequest,
         options?: RequestOptions
     ): Promise<Array<components.TagSchema>> {
-        const input$: operations.GetTagsRequest = {
-            workspaceId: workspaceId,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input$,
+            input,
             (value$) => operations.GetTagsRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -67,7 +64,7 @@ export class Tags extends ClientSDK {
         const path$ = this.templateURLComponent("/tags")();
 
         const query$ = [
-            enc$.encodeForm("workspaceId", payload$.workspaceId, {
+            enc$.encodeForm("workspaceId", payload$.workspaceId ?? this.options$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
             }),
@@ -267,21 +264,16 @@ export class Tags extends ClientSDK {
      * Create a new tag for the authenticated workspace.
      */
     async createTag(
-        workspaceId: string,
-        requestBody?: operations.CreateTagRequestBody | undefined,
+        input: operations.CreateTagRequest,
         options?: RequestOptions
     ): Promise<components.TagSchema> {
-        const input$: operations.CreateTagRequest = {
-            workspaceId: workspaceId,
-            requestBody: requestBody,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input$,
+            input,
             (value$) => operations.CreateTagRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -290,7 +282,7 @@ export class Tags extends ClientSDK {
         const path$ = this.templateURLComponent("/tags")();
 
         const query$ = [
-            enc$.encodeForm("workspaceId", payload$.workspaceId, {
+            enc$.encodeForm("workspaceId", payload$.workspaceId ?? this.options$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
             }),

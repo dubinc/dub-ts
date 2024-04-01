@@ -1,6 +1,6 @@
 {
   "name": "dub",
-  "version": "0.0.2",
+  "version": "0.4.1",
   "author": "Speakeasy",
   "main": "./index.js",
   "sideEffects": false,

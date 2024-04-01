@@ -1,21 +1,22 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: acc7bf655f808be56af38e0fd9d7522a
+  docChecksum: 28bac1fa020135ab9d952ad293453482
   docVersion: 0.0.1
   speakeasyVersion: 1.228.1
   generationVersion: 2.292.0
-  releaseVersion: 0.0.2
-  configChecksum: 597e3531845ad9cd660b304fba2ed9fd
+  releaseVersion: 0.4.1
+  configChecksum: 0f2b5b2650b6b9da4a1e32c5d8f913ba
 features:
   typescript:
     acceptHeaders: 2.81.1
     constsAndDefaults: 0.1.5
     core: 3.7.0
     deprecations: 2.81.1
-    flattening: 2.81.1
     globalSecurity: 2.82.8
     globalServerURLs: 2.82.4
+    globals: 2.82.1
+    nameOverrides: 2.81.1
     responseFormat: 0.2.3
     unions: 2.85.3
 generatedFiles:

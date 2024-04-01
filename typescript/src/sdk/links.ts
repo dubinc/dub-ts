@@ -46,7 +46,7 @@ export class Links extends ClientSDK {
      * @remarks
      * Retrieve a list of links for the authenticated workspace. The list will be paginated and the provided query parameters allow filtering the returned links.
      */
-    async getLinks(
+    async list(
         input: operations.GetLinksRequest,
         options?: RequestOptions
     ): Promise<Array<components.LinkSchema>> {
@@ -79,7 +79,7 @@ export class Links extends ClientSDK {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeForm("workspaceId", payload$.workspaceId, {
+            enc$.encodeForm("workspaceId", payload$.workspaceId ?? this.options$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
             }),
@@ -278,22 +278,17 @@ export class Links extends ClientSDK {
      * @remarks
      * Create a new link for the authenticated workspace.
      */
-    async createLink(
-        workspaceId: string,
-        requestBody?: operations.CreateLinkRequestBody | undefined,
+    async create(
+        input: operations.CreateLinkRequest,
         options?: RequestOptions
     ): Promise<components.LinkSchema> {
-        const input$: operations.CreateLinkRequest = {
-            workspaceId: workspaceId,
-            requestBody: requestBody,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input$,
+            input,
             (value$) => operations.CreateLinkRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -302,7 +297,7 @@ export class Links extends ClientSDK {
         const path$ = this.templateURLComponent("/links")();
 
         const query$ = [
-            enc$.encodeForm("workspaceId", payload$.workspaceId, {
+            enc$.encodeForm("workspaceId", payload$.workspaceId ?? this.options$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
             }),
@@ -501,7 +496,7 @@ export class Links extends ClientSDK {
      * @remarks
      * Retrieve the number of links for the authenticated workspace. The provided query parameters allow filtering the returned links.
      */
-    async getLinksCount(
+    async count(
         input: operations.GetLinksCountRequest,
         options?: RequestOptions
     ): Promise<Array<components.LinkSchema>> {
@@ -536,7 +531,7 @@ export class Links extends ClientSDK {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeForm("workspaceId", payload$.workspaceId, {
+            enc$.encodeForm("workspaceId", payload$.workspaceId ?? this.options$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
             }),
@@ -735,23 +730,16 @@ export class Links extends ClientSDK {
      * @remarks
      * Retrieve the info for a link from their domain and key.
      */
-    async getLinkInfo(
-        workspaceId: string,
-        domain: string,
-        key: string,
+    async get(
+        input: operations.GetLinkInfoRequest,
         options?: RequestOptions
     ): Promise<components.LinkSchema> {
-        const input$: operations.GetLinkInfoRequest = {
-            workspaceId: workspaceId,
-            domain: domain,
-            key: key,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input$,
+            input,
             (value$) => operations.GetLinkInfoRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -762,7 +750,7 @@ export class Links extends ClientSDK {
         const query$ = [
             enc$.encodeForm("domain", payload$.domain, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("key", payload$.key, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("workspaceId", payload$.workspaceId, {
+            enc$.encodeForm("workspaceId", payload$.workspaceId ?? this.options$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
             }),
@@ -961,24 +949,17 @@ export class Links extends ClientSDK {
      * @remarks
      * Edit a link for the authenticated workspace.
      */
-    async editLink(
-        linkId: string,
-        workspaceId: string,
-        requestBody?: operations.EditLinkRequestBody | undefined,
+    async update(
+        input: operations.EditLinkRequest,
         options?: RequestOptions
     ): Promise<components.LinkSchema> {
-        const input$: operations.EditLinkRequest = {
-            linkId: linkId,
-            workspaceId: workspaceId,
-            requestBody: requestBody,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input$,
+            input,
             (value$) => operations.EditLinkRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -993,7 +974,7 @@ export class Links extends ClientSDK {
         const path$ = this.templateURLComponent("/links/{linkId}")(pathParams$);
 
         const query$ = [
-            enc$.encodeForm("workspaceId", payload$.workspaceId, {
+            enc$.encodeForm("workspaceId", payload$.workspaceId ?? this.options$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
             }),
@@ -1192,21 +1173,16 @@ export class Links extends ClientSDK {
      * @remarks
      * Delete a link for the authenticated workspace.
      */
-    async deleteLink(
-        linkId: string,
-        workspaceId: string,
+    async delete(
+        input: operations.DeleteLinkRequest,
         options?: RequestOptions
     ): Promise<components.LinkSchema> {
-        const input$: operations.DeleteLinkRequest = {
-            linkId: linkId,
-            workspaceId: workspaceId,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input$,
+            input,
             (value$) => operations.DeleteLinkRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -1221,7 +1197,7 @@ export class Links extends ClientSDK {
         const path$ = this.templateURLComponent("/links/{linkId}")(pathParams$);
 
         const query$ = [
-            enc$.encodeForm("workspaceId", payload$.workspaceId, {
+            enc$.encodeForm("workspaceId", payload$.workspaceId ?? this.options$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
             }),
@@ -1420,22 +1396,17 @@ export class Links extends ClientSDK {
      * @remarks
      * Bulk create up to 100 links for the authenticated workspace.
      */
-    async bulkCreateLinks(
-        workspaceId: string,
-        requestBody?: Array<operations.RequestBody> | undefined,
+    async bulkCreate(
+        input: operations.BulkCreateLinksRequest,
         options?: RequestOptions
     ): Promise<Array<components.LinkSchema>> {
-        const input$: operations.BulkCreateLinksRequest = {
-            workspaceId: workspaceId,
-            requestBody: requestBody,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input$,
+            input,
             (value$) => operations.BulkCreateLinksRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -1444,7 +1415,7 @@ export class Links extends ClientSDK {
         const path$ = this.templateURLComponent("/links/bulk")();
 
         const query$ = [
-            enc$.encodeForm("workspaceId", payload$.workspaceId, {
+            enc$.encodeForm("workspaceId", payload$.workspaceId ?? this.options$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
             }),
