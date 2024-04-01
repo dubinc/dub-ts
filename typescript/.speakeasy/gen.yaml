@@ -17,7 +17,7 @@ typescript:
     dependencies: {}
     devDependencies: {}
     peerDependencies: {}
-  author: Speakeasy
+  author: Dub
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: true
   imports:
