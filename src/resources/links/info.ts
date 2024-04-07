@@ -58,8 +58,12 @@ export interface InfoRetrieveResponse {
   domain: string;
 
   /**
-   * The date and time when the short link will expire in ISO-8601 format. Must be in
-   * the future.
+   * The URL to redirect to when the short link has expired.
+   */
+  expiredUrl: string | null;
+
+  /**
+   * The date and time when the short link will expire in ISO-8601 format.
    */
   expiresAt: string | null;
 

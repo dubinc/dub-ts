@@ -11,7 +11,7 @@ const dub = new Dub({
 
 describe('resource info', () => {
   test('retrieve: only required params', async () => {
-    const responsePromise = dub.links.info.retrieve({ domain: 'x', key: 'x', workspaceId: 'string' });
+    const responsePromise = dub.links.info.retrieve({ domain: 'x', key: 'x' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;

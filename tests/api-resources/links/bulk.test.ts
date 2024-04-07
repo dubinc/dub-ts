@@ -12,7 +12,6 @@ const dub = new Dub({
 describe('resource bulk', () => {
   test('create: only required params', async () => {
     const responsePromise = dub.links.bulk.create({
-      workspaceId: 'string',
       body: [{ url: 'string' }, { url: 'string' }, { url: 'string' }],
     });
     const rawResponse = await responsePromise.asResponse();
@@ -34,7 +33,8 @@ describe('resource bulk', () => {
           prefix: 'string',
           url: 'string',
           archived: true,
-          expiresAt: '2019-12-27T18:11:19.117Z',
+          expiresAt: 'string',
+          expiredUrl: 'string',
           password: 'string',
           proxy: true,
           title: 'string',
@@ -55,7 +55,8 @@ describe('resource bulk', () => {
           prefix: 'string',
           url: 'string',
           archived: true,
-          expiresAt: '2019-12-27T18:11:19.117Z',
+          expiresAt: 'string',
+          expiredUrl: 'string',
           password: 'string',
           proxy: true,
           title: 'string',
@@ -76,7 +77,8 @@ describe('resource bulk', () => {
           prefix: 'string',
           url: 'string',
           archived: true,
-          expiresAt: '2019-12-27T18:11:19.117Z',
+          expiresAt: 'string',
+          expiredUrl: 'string',
           password: 'string',
           proxy: true,
           title: 'string',
