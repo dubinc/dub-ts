@@ -9,7 +9,6 @@
       "dub/_shims/auto/*": ["deno/_shims/auto/*-deno"],
       "dub/*": ["deno/*"],
       "dub": ["deno/index.ts"],
-      "digest-fetch": ["./typings/digest-fetch"]
     },
     "noEmit": true,
     "declaration": true,

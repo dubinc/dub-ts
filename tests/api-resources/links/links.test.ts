@@ -11,7 +11,7 @@ const dub = new Dub({
 
 describe('resource links', () => {
   test('create: only required params', async () => {
-    const responsePromise = dub.links.create({ workspaceId: 'string', url: 'string' });
+    const responsePromise = dub.links.create({ url: 'string' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -30,7 +30,8 @@ describe('resource links', () => {
       comments: 'string',
       description: 'string',
       domain: 'string',
-      expiresAt: '2019-12-27T18:11:19.117Z',
+      expiredUrl: 'string',
+      expiresAt: 'string',
       geo: { foo: 'string' },
       image: 'string',
       ios: 'string',
@@ -47,7 +48,7 @@ describe('resource links', () => {
   });
 
   test('update: only required params', async () => {
-    const responsePromise = dub.links.update('string', { workspaceId: 'string', url: 'string' });
+    const responsePromise = dub.links.update('string', { url: 'string' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -66,7 +67,8 @@ describe('resource links', () => {
       comments: 'string',
       description: 'string',
       domain: 'string',
-      expiresAt: '2019-12-27T18:11:19.117Z',
+      expiredUrl: 'string',
+      expiresAt: 'string',
       geo: { foo: 'string' },
       image: 'string',
       ios: 'string',
@@ -83,7 +85,7 @@ describe('resource links', () => {
   });
 
   test('list: only required params', async () => {
-    const responsePromise = dub.links.list({ workspaceId: 'string' });
+    const responsePromise = dub.links.list({});
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -109,7 +111,7 @@ describe('resource links', () => {
   });
 
   test('deleteLink: only required params', async () => {
-    const responsePromise = dub.links.deleteLink('string', { workspaceId: 'string' });
+    const responsePromise = dub.links.deleteLink('string', {});
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;

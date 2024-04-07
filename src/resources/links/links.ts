@@ -96,8 +96,12 @@ export interface LinkCreateResponse {
   domain: string;
 
   /**
-   * The date and time when the short link will expire in ISO-8601 format. Must be in
-   * the future.
+   * The URL to redirect to when the short link has expired.
+   */
+  expiredUrl: string | null;
+
+  /**
+   * The date and time when the short link will expire in ISO-8601 format.
    */
   expiresAt: string | null;
 
@@ -293,8 +297,12 @@ export interface LinkUpdateResponse {
   domain: string;
 
   /**
-   * The date and time when the short link will expire in ISO-8601 format. Must be in
-   * the future.
+   * The URL to redirect to when the short link has expired.
+   */
+  expiredUrl: string | null;
+
+  /**
+   * The date and time when the short link will expire in ISO-8601 format.
    */
   expiresAt: string | null;
 
@@ -493,8 +501,12 @@ export namespace LinkListResponse {
     domain: string;
 
     /**
-     * The date and time when the short link will expire in ISO-8601 format. Must be in
-     * the future.
+     * The URL to redirect to when the short link has expired.
+     */
+    expiredUrl: string | null;
+
+    /**
+     * The date and time when the short link will expire in ISO-8601 format.
      */
     expiresAt: string | null;
 
@@ -691,8 +703,12 @@ export interface LinkDeleteLinkResponse {
   domain: string;
 
   /**
-   * The date and time when the short link will expire in ISO-8601 format. Must be in
-   * the future.
+   * The URL to redirect to when the short link has expired.
+   */
+  expiredUrl: string | null;
+
+  /**
+   * The date and time when the short link will expire in ISO-8601 format.
    */
   expiresAt: string | null;
 
@@ -885,8 +901,12 @@ export interface LinkCreateParams {
   domain?: string;
 
   /**
-   * Body param: The date and time when the short link will expire in ISO-8601
-   * format. Must be in the future.
+   * Body param: The URL to redirect to when the short link has expired.
+   */
+  expiredUrl?: string | null;
+
+  /**
+   * Body param: The date and time when the short link will expire at.
    */
   expiresAt?: string | null;
 
@@ -1000,8 +1020,12 @@ export interface LinkUpdateParams {
   domain?: string;
 
   /**
-   * Body param: The date and time when the short link will expire in ISO-8601
-   * format. Must be in the future.
+   * Body param: The URL to redirect to when the short link has expired.
+   */
+  expiredUrl?: string | null;
+
+  /**
+   * Body param: The date and time when the short link will expire at.
    */
   expiresAt?: string | null;
 
