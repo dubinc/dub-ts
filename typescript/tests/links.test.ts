@@ -1,7 +1,7 @@
 import { Dub } from "../src"
 import * as errors from "../src/models/errors";
 import { expect, test, describe, beforeAll, afterAll } from 'vitest'
-import { Color } from "../src/models/operations";
+import { Color, Country, GetBrowserAnalyticsQueryParamCountry } from "../src/models/operations";
 
 const dubWorkspace = {
   name: "Dub Workspace",
@@ -158,4 +158,6 @@ describe('SDK Methods', () => {
     expect(links[1].domain).toBe(domain);
     expect(links[1].workspaceId).toBe(workspaceId)
   });
+
+
 })

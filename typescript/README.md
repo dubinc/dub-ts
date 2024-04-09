@@ -84,16 +84,16 @@ run();
 
 ### [analytics](docs/sdks/analytics/README.md)
 
-* [getClicksAnalytics](docs/sdks/analytics/README.md#getclicksanalytics) - Retrieve clicks analytics
-* [getTimeseriesAnalytics](docs/sdks/analytics/README.md#gettimeseriesanalytics) - Retrieve timeseries analytics
-* [getCountryAnalytics](docs/sdks/analytics/README.md#getcountryanalytics) - Retrieve country analytics
-* [getCityAnalytics](docs/sdks/analytics/README.md#getcityanalytics) - Retrieve city analytics
-* [getDeviceAnalytics](docs/sdks/analytics/README.md#getdeviceanalytics) - Retrieve device analytics
-* [getBrowserAnalytics](docs/sdks/analytics/README.md#getbrowseranalytics) - Retrieve browser analytics
-* [getOSAnalytics](docs/sdks/analytics/README.md#getosanalytics) - Retrieve OS analytics
-* [getRefererAnalytics](docs/sdks/analytics/README.md#getrefereranalytics) - Retrieve referer analytics
-* [getTopLinks](docs/sdks/analytics/README.md#gettoplinks) - Retrieve top links
-* [getTopURLs](docs/sdks/analytics/README.md#gettopurls) - Retrieve top URLs
+* [clicks](docs/sdks/analytics/README.md#clicks) - Retrieve clicks analytics
+* [timeseries](docs/sdks/analytics/README.md#timeseries) - Retrieve timeseries analytics
+* [countries](docs/sdks/analytics/README.md#countries) - Retrieve country analytics
+* [cities](docs/sdks/analytics/README.md#cities) - Retrieve city analytics
+* [devices](docs/sdks/analytics/README.md#devices) - Retrieve device analytics
+* [browsers](docs/sdks/analytics/README.md#browsers) - Retrieve browser analytics
+* [os](docs/sdks/analytics/README.md#os) - Retrieve OS analytics
+* [referers](docs/sdks/analytics/README.md#referers) - Retrieve referer analytics
+* [topLinks](docs/sdks/analytics/README.md#toplinks) - Retrieve top links
+* [topUrls](docs/sdks/analytics/README.md#topurls) - Retrieve top URLs
 
 ### [workspaces](docs/sdks/workspaces/README.md)
 

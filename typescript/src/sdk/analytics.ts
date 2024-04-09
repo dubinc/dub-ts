@@ -45,7 +45,7 @@ export class Analytics extends ClientSDK {
      * @remarks
      * Retrieve the number of clicks for a link, a domain, or the authenticated workspace.
      */
-    async getClicksAnalytics(
+    async clicks(
         input: operations.GetClicksAnalyticsRequest,
         options?: RequestOptions
     ): Promise<number> {
@@ -289,7 +289,7 @@ export class Analytics extends ClientSDK {
      * @remarks
      * Retrieve the number of clicks for a link, a domain, or the authenticated workspace over a period of time.
      */
-    async getTimeseriesAnalytics(
+    async timeseries(
         input: operations.GetTimeseriesAnalyticsRequest,
         options?: RequestOptions
     ): Promise<Array<operations.ResponseBody>> {
@@ -533,7 +533,7 @@ export class Analytics extends ClientSDK {
      * @remarks
      * Retrieve the top countries by number of clicks for a link, a domain, or the authenticated workspace.
      */
-    async getCountryAnalytics(
+    async countries(
         input: operations.GetCountryAnalyticsRequest,
         options?: RequestOptions
     ): Promise<Array<operations.GetCountryAnalyticsResponseBody>> {
@@ -779,7 +779,7 @@ export class Analytics extends ClientSDK {
      * @remarks
      * Retrieve the top countries by number of clicks for a link, a domain, or the authenticated workspace.
      */
-    async getCityAnalytics(
+    async cities(
         input: operations.GetCityAnalyticsRequest,
         options?: RequestOptions
     ): Promise<Array<operations.GetCityAnalyticsResponseBody>> {
@@ -1025,7 +1025,7 @@ export class Analytics extends ClientSDK {
      * @remarks
      * Retrieve the top devices by number of clicks for a link, a domain, or the authenticated workspace.
      */
-    async getDeviceAnalytics(
+    async devices(
         input: operations.GetDeviceAnalyticsRequest,
         options?: RequestOptions
     ): Promise<Array<operations.GetDeviceAnalyticsResponseBody>> {
@@ -1271,7 +1271,7 @@ export class Analytics extends ClientSDK {
      * @remarks
      * Retrieve the top browsers by number of clicks for a link, a domain, or the authenticated workspace.
      */
-    async getBrowserAnalytics(
+    async browsers(
         input: operations.GetBrowserAnalyticsRequest,
         options?: RequestOptions
     ): Promise<Array<operations.GetBrowserAnalyticsResponseBody>> {
@@ -1517,7 +1517,7 @@ export class Analytics extends ClientSDK {
      * @remarks
      * Retrieve the top OS by number of clicks for a link, a domain, or the authenticated workspace.
      */
-    async getOSAnalytics(
+    async os(
         input: operations.GetOSAnalyticsRequest,
         options?: RequestOptions
     ): Promise<Array<operations.GetOSAnalyticsResponseBody>> {
@@ -1763,7 +1763,7 @@ export class Analytics extends ClientSDK {
      * @remarks
      * Retrieve the top referers by number of clicks for a link, a domain, or the authenticated workspace.
      */
-    async getRefererAnalytics(
+    async referers(
         input: operations.GetRefererAnalyticsRequest,
         options?: RequestOptions
     ): Promise<Array<operations.GetRefererAnalyticsResponseBody>> {
@@ -2009,7 +2009,7 @@ export class Analytics extends ClientSDK {
      * @remarks
      * Retrieve the top links by number of clicks for a domain or the authenticated workspace.
      */
-    async getTopLinks(
+    async topLinks(
         input: operations.GetTopLinksRequest,
         options?: RequestOptions
     ): Promise<Array<operations.GetTopLinksResponseBody>> {
@@ -2253,7 +2253,7 @@ export class Analytics extends ClientSDK {
      * @remarks
      * Retrieve the top URLs by number of clicks for a given short link.
      */
-    async getTopURLs(
+    async topUrls(
         input: operations.GetTopURLsRequest,
         options?: RequestOptions
     ): Promise<Array<operations.GetTopURLsResponseBody>> {

@@ -3,18 +3,18 @@
 
 ### Available Operations
 
-* [getClicksAnalytics](#getclicksanalytics) - Retrieve clicks analytics
-* [getTimeseriesAnalytics](#gettimeseriesanalytics) - Retrieve timeseries analytics
-* [getCountryAnalytics](#getcountryanalytics) - Retrieve country analytics
-* [getCityAnalytics](#getcityanalytics) - Retrieve city analytics
-* [getDeviceAnalytics](#getdeviceanalytics) - Retrieve device analytics
-* [getBrowserAnalytics](#getbrowseranalytics) - Retrieve browser analytics
-* [getOSAnalytics](#getosanalytics) - Retrieve OS analytics
-* [getRefererAnalytics](#getrefereranalytics) - Retrieve referer analytics
-* [getTopLinks](#gettoplinks) - Retrieve top links
-* [getTopURLs](#gettopurls) - Retrieve top URLs
+* [clicks](#clicks) - Retrieve clicks analytics
+* [timeseries](#timeseries) - Retrieve timeseries analytics
+* [countries](#countries) - Retrieve country analytics
+* [cities](#cities) - Retrieve city analytics
+* [devices](#devices) - Retrieve device analytics
+* [browsers](#browsers) - Retrieve browser analytics
+* [os](#os) - Retrieve OS analytics
+* [referers](#referers) - Retrieve referer analytics
+* [topLinks](#toplinks) - Retrieve top links
+* [topUrls](#topurls) - Retrieve top URLs
 
-## getClicksAnalytics
+## clicks
 
 Retrieve the number of clicks for a link, a domain, or the authenticated workspace.
 
@@ -29,7 +29,7 @@ async function run() {
     workspaceId: "<value>",
   });
 
-  const result = await sdk.analytics.getClicksAnalytics({});
+  const result = await sdk.analytics.clicks({});
 
   // Handle the result
   console.log(result)
@@ -65,7 +65,7 @@ run();
 | errors.FiveHundred              | 500                             | application/json                |
 | errors.SDKError                 | 4xx-5xx                         | */*                             |
 
-## getTimeseriesAnalytics
+## timeseries
 
 Retrieve the number of clicks for a link, a domain, or the authenticated workspace over a period of time.
 
@@ -80,7 +80,7 @@ async function run() {
     workspaceId: "<value>",
   });
 
-  const result = await sdk.analytics.getTimeseriesAnalytics({});
+  const result = await sdk.analytics.timeseries({});
 
   // Handle the result
   console.log(result)
@@ -116,7 +116,7 @@ run();
 | errors.FiveHundred              | 500                             | application/json                |
 | errors.SDKError                 | 4xx-5xx                         | */*                             |
 
-## getCountryAnalytics
+## countries
 
 Retrieve the top countries by number of clicks for a link, a domain, or the authenticated workspace.
 
@@ -131,7 +131,7 @@ async function run() {
     workspaceId: "<value>",
   });
 
-  const result = await sdk.analytics.getCountryAnalytics({});
+  const result = await sdk.analytics.countries({});
 
   // Handle the result
   console.log(result)
@@ -167,7 +167,7 @@ run();
 | errors.FiveHundred              | 500                             | application/json                |
 | errors.SDKError                 | 4xx-5xx                         | */*                             |
 
-## getCityAnalytics
+## cities
 
 Retrieve the top countries by number of clicks for a link, a domain, or the authenticated workspace.
 
@@ -182,7 +182,7 @@ async function run() {
     workspaceId: "<value>",
   });
 
-  const result = await sdk.analytics.getCityAnalytics({});
+  const result = await sdk.analytics.cities({});
 
   // Handle the result
   console.log(result)
@@ -218,7 +218,7 @@ run();
 | errors.FiveHundred              | 500                             | application/json                |
 | errors.SDKError                 | 4xx-5xx                         | */*                             |
 
-## getDeviceAnalytics
+## devices
 
 Retrieve the top devices by number of clicks for a link, a domain, or the authenticated workspace.
 
@@ -233,7 +233,7 @@ async function run() {
     workspaceId: "<value>",
   });
 
-  const result = await sdk.analytics.getDeviceAnalytics({});
+  const result = await sdk.analytics.devices({});
 
   // Handle the result
   console.log(result)
@@ -269,7 +269,7 @@ run();
 | errors.FiveHundred              | 500                             | application/json                |
 | errors.SDKError                 | 4xx-5xx                         | */*                             |
 
-## getBrowserAnalytics
+## browsers
 
 Retrieve the top browsers by number of clicks for a link, a domain, or the authenticated workspace.
 
@@ -284,7 +284,7 @@ async function run() {
     workspaceId: "<value>",
   });
 
-  const result = await sdk.analytics.getBrowserAnalytics({});
+  const result = await sdk.analytics.browsers({});
 
   // Handle the result
   console.log(result)
@@ -320,7 +320,7 @@ run();
 | errors.FiveHundred              | 500                             | application/json                |
 | errors.SDKError                 | 4xx-5xx                         | */*                             |
 
-## getOSAnalytics
+## os
 
 Retrieve the top OS by number of clicks for a link, a domain, or the authenticated workspace.
 
@@ -335,7 +335,7 @@ async function run() {
     workspaceId: "<value>",
   });
 
-  const result = await sdk.analytics.getOSAnalytics({});
+  const result = await sdk.analytics.os({});
 
   // Handle the result
   console.log(result)
@@ -371,7 +371,7 @@ run();
 | errors.FiveHundred              | 500                             | application/json                |
 | errors.SDKError                 | 4xx-5xx                         | */*                             |
 
-## getRefererAnalytics
+## referers
 
 Retrieve the top referers by number of clicks for a link, a domain, or the authenticated workspace.
 
@@ -386,7 +386,7 @@ async function run() {
     workspaceId: "<value>",
   });
 
-  const result = await sdk.analytics.getRefererAnalytics({});
+  const result = await sdk.analytics.referers({});
 
   // Handle the result
   console.log(result)
@@ -422,7 +422,7 @@ run();
 | errors.FiveHundred              | 500                             | application/json                |
 | errors.SDKError                 | 4xx-5xx                         | */*                             |
 
-## getTopLinks
+## topLinks
 
 Retrieve the top links by number of clicks for a domain or the authenticated workspace.
 
@@ -437,7 +437,7 @@ async function run() {
     workspaceId: "<value>",
   });
 
-  const result = await sdk.analytics.getTopLinks({});
+  const result = await sdk.analytics.topLinks({});
 
   // Handle the result
   console.log(result)
@@ -473,7 +473,7 @@ run();
 | errors.FiveHundred              | 500                             | application/json                |
 | errors.SDKError                 | 4xx-5xx                         | */*                             |
 
-## getTopURLs
+## topUrls
 
 Retrieve the top URLs by number of clicks for a given short link.
 
@@ -488,7 +488,7 @@ async function run() {
     workspaceId: "<value>",
   });
 
-  const result = await sdk.analytics.getTopURLs({});
+  const result = await sdk.analytics.topUrls({});
 
   // Handle the result
   console.log(result)
