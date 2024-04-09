@@ -11,12 +11,23 @@ const key = Math.random().toString(36).substring(7);
 
 const dub = new Dub({ token,  workspaceId });
 
-describe('Links', () => {
+describe('SDK Methods', () => {
   beforeAll(async () => {
     const links = await dub.links.list({});
     const promises = links.map((link) => dub.links.delete(link.id))
     await Promise.allSettled(promises);
   })
+
+
+  test('add tags', async () => {
+    const link = await dub.links.create({url, key, domain});
+
+    expect(link).toBeDefined();
+    expect(link.url).toBe(url);
+    expect(link.key).toBe(key);
+    expect(link.workspaceId).toBe(workspaceId);
+  });
+
 
   test('create link', async () => {
     const link = await dub.links.create({url, key, domain});
@@ -105,6 +116,3 @@ describe('Links', () => {
     expect(links[1].workspaceId).toBe(workspaceId)
   });
 })
-
-// How did that work out for you ?
-// It worked out well. We were able to generate the SDK methods the way we wanted. Thanks for the help.
