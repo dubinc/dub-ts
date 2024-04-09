@@ -3,9 +3,9 @@
 
 ### Available Operations
 
-* [getQRCode](#getqrcode) - Retrieve a QR code
+* [get](#get) - Retrieve a QR code
 
-## getQRCode
+## get
 
 Retrieve a QR code for a link.
 
@@ -20,7 +20,7 @@ async function run() {
     workspaceId: "<value>",
   });
 
-  const result = await sdk.qrCodes.getQRCode({});
+  const result = await sdk.qrCodes.get({});
 
   // Handle the result
   console.log(result)

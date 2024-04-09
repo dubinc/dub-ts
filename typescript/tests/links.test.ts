@@ -1,7 +1,7 @@
 import { Dub } from "../src"
 import * as errors from "../src/models/errors";
-import { expect, test, describe, beforeAll, afterAll } from 'vitest'
-import { Color, Country, GetBrowserAnalyticsQueryParamCountry } from "../src/models/operations";
+import { expect, test, describe, beforeAll } from 'vitest'
+import { Color } from "../src/models/operations";
 
 const dubWorkspace = {
   name: "Dub Workspace",
@@ -24,6 +24,11 @@ describe('SDK Methods', () => {
     const promises = links.map((link) => dub.links.delete(link.id))
     await Promise.allSettled(promises);
   })
+
+  test('get QR code', async () => {
+    const qrCode = await dub.qrCodes.get({ url });
+    expect(qrCode).toBeDefined();
+  });
 
   test('create workspace', async () => {
     const workspace = await dub.workspaces.create({

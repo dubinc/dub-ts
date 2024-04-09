@@ -80,7 +80,7 @@ run();
 
 ### [qrCodes](docs/sdks/qrcodes/README.md)
 
-* [getQRCode](docs/sdks/qrcodes/README.md#getqrcode) - Retrieve a QR code
+* [get](docs/sdks/qrcodes/README.md#get) - Retrieve a QR code
 
 ### [analytics](docs/sdks/analytics/README.md)
 

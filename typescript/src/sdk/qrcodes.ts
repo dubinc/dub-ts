@@ -12,7 +12,7 @@ import * as errors from "../models/errors";
 import * as operations from "../models/operations";
 import * as z from "zod";
 
-export enum GetQRCodeAcceptEnum {
+export enum GetAcceptEnum {
     applicationJson = "application/json",
     imagePng = "image/png",
 }
@@ -50,9 +50,9 @@ export class QRCodes extends ClientSDK {
      * @remarks
      * Retrieve a QR code for a link.
      */
-    async getQRCode(
+    async get(
         input: operations.GetQRCodeRequest,
-        options?: RequestOptions & { acceptHeaderOverride?: GetQRCodeAcceptEnum }
+        options?: RequestOptions & { acceptHeaderOverride?: GetAcceptEnum }
     ): Promise<string> {
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
