@@ -7,3 +7,4 @@ targets:
     my-first-target:
         target: typescript
         source: my-first-source
+        output: ./typescript
