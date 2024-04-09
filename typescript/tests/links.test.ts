@@ -18,9 +18,8 @@ describe('SDK Methods', () => {
     await Promise.allSettled(promises);
   })
 
-
   test('add tags', async () => {
-    const link = await dub.links.create({url, key, domain});
+    const link = await dub.tags.create();
 
     expect(link).toBeDefined();
     expect(link.url).toBe(url);
