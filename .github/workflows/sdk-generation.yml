@@ -6,15 +6,24 @@ permissions:
   pull-requests: write
   statuses: write
 
-on:
-  workflow_dispatch:
-    inputs:
-      force:
-        description: "Force the generation of the SDKs"
-        type: boolean
-        default: false
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       force:
+#         description: "Force the generation of the SDKs"
+#         type: boolean
+#         default: false
 #   schedule:
 #     - cron: 0 0 * * *
+
+on:
+  push:
+    branches:
+      - main
+      - release
+  pull_request:
+    branches:
+      - main
 
 jobs:
   # generate:
