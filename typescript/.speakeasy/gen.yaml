@@ -12,10 +12,11 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
 typescript:
-  version: 0.4.1
+  version: 0.9.7
   additionalDependencies:
     dependencies: {}
-    devDependencies: {}
+    devDependencies:
+      vitest: 1.4.0
     peerDependencies: {}
   author: Dub
   clientServerStatusCodesAsErrors: true
@@ -29,7 +30,7 @@ typescript:
       shared: models/components
       webhooks: models/webhooks
   inputModelSuffix: input
-  maxMethodParams: 0
+  maxMethodParams: 1
   outputModelSuffix: output
   packageName: dub
   responseFormat: flat

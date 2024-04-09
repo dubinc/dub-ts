@@ -90,14 +90,6 @@ export type CreateLinkRequestBody = {
     comments?: string | null | undefined;
 };
 
-export type CreateLinkRequest = {
-    /**
-     * The ID of the workspace to create the link for.
-     */
-    workspaceId?: string | undefined;
-    requestBody?: CreateLinkRequestBody | undefined;
-};
-
 /** @internal */
 export namespace TagIds$ {
     export type Inbound = string | Array<string>;
@@ -255,43 +247,6 @@ export namespace CreateLinkRequestBody$ {
                 ...(v.tagId === undefined ? null : { tagId: v.tagId }),
                 ...(v.tagIds === undefined ? null : { tagIds: v.tagIds }),
                 ...(v.comments === undefined ? null : { comments: v.comments }),
-            };
-        });
-}
-
-/** @internal */
-export namespace CreateLinkRequest$ {
-    export type Inbound = {
-        workspaceId?: string | undefined;
-        RequestBody?: CreateLinkRequestBody$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CreateLinkRequest, z.ZodTypeDef, Inbound> = z
-        .object({
-            workspaceId: z.string().optional(),
-            RequestBody: z.lazy(() => CreateLinkRequestBody$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.workspaceId === undefined ? null : { workspaceId: v.workspaceId }),
-                ...(v.RequestBody === undefined ? null : { requestBody: v.RequestBody }),
-            };
-        });
-
-    export type Outbound = {
-        workspaceId?: string | undefined;
-        RequestBody?: CreateLinkRequestBody$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateLinkRequest> = z
-        .object({
-            workspaceId: z.string().optional(),
-            requestBody: z.lazy(() => CreateLinkRequestBody$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.workspaceId === undefined ? null : { workspaceId: v.workspaceId }),
-                ...(v.requestBody === undefined ? null : { RequestBody: v.requestBody }),
             };
         });
 }

@@ -47,15 +47,18 @@ export class Tags extends ClientSDK {
      * Retrieve a list of tags for the authenticated workspace.
      */
     async getTags(
-        input: operations.GetTagsRequest,
+        workspaceId?: string | undefined,
         options?: RequestOptions
     ): Promise<Array<components.TagSchema>> {
+        const input$: operations.GetTagsRequest = {
+            workspaceId: workspaceId,
+        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.GetTagsRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );

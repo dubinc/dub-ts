@@ -279,7 +279,7 @@ export class Links extends ClientSDK {
      * Create a new link for the authenticated workspace.
      */
     async create(
-        input: operations.CreateLinkRequest,
+        input: operations.CreateLinkRequestBody | undefined,
         options?: RequestOptions
     ): Promise<components.LinkSchema> {
         const headers$ = new Headers();
@@ -289,21 +289,15 @@ export class Links extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input,
-            (value$) => operations.CreateLinkRequest$.outboundSchema.parse(value$),
+            (value$) => operations.CreateLinkRequestBody$.outboundSchema.optional().parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.RequestBody, { explode: true });
+        const body$ =
+            payload$ === undefined ? null : enc$.encodeJSON("body", payload$, { explode: true });
 
         const path$ = this.templateURLComponent("/links")();
 
-        const query$ = [
-            enc$.encodeForm("workspaceId", payload$.workspaceId ?? this.options$.workspaceId, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = "";
 
         let security$;
         if (typeof this.options$.token === "function") {

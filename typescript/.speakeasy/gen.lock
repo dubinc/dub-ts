@@ -1,18 +1,19 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: 28bac1fa020135ab9d952ad293453482
+  docChecksum: c6cc64562e81f3f32a8769446f8d7c70
   docVersion: 0.0.1
   speakeasyVersion: 1.228.1
   generationVersion: 2.292.0
-  releaseVersion: 0.4.1
-  configChecksum: 0f2b5b2650b6b9da4a1e32c5d8f913ba
+  releaseVersion: 0.9.7
+  configChecksum: 9edc640d15a38f26da81d80284246241
 features:
   typescript:
     acceptHeaders: 2.81.1
     constsAndDefaults: 0.1.5
     core: 3.7.0
     deprecations: 2.81.1
+    flattening: 2.81.1
     globalSecurity: 2.82.8
     globalServerURLs: 2.82.4
     globals: 2.82.1
@@ -127,7 +128,6 @@ generatedFiles:
   - docs/models/operations/getlinksrequest.md
   - docs/models/operations/tagids.md
   - docs/models/operations/createlinkrequestbody.md
-  - docs/models/operations/createlinkrequest.md
   - docs/models/operations/getlinkscountqueryparamtagids.md
   - docs/models/operations/two.md
   - docs/models/operations/one.md
