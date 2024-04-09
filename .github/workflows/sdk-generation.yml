@@ -1,10 +1,10 @@
 name: Generate SDK
 
-permissions:
-  checks: write
-  contents: write
-  pull-requests: write
-  statuses: write
+# permissions:
+#   checks: write
+#   contents: write
+#   pull-requests: write
+#   statuses: write
 
 # on:
 #   workflow_dispatch:
@@ -24,6 +24,7 @@ on:
   pull_request:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   # generate:
