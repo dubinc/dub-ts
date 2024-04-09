@@ -97,9 +97,9 @@ run();
 
 ### [workspaces](docs/sdks/workspaces/README.md)
 
-* [getWorkspaces](docs/sdks/workspaces/README.md#getworkspaces) - Retrieve a list of workspaces
-* [createWorkspace](docs/sdks/workspaces/README.md#createworkspace) - Create a workspace
-* [getWorkspace](docs/sdks/workspaces/README.md#getworkspace) - Retrieve a workspace
+* [list](docs/sdks/workspaces/README.md#list) - Retrieve a list of workspaces
+* [create](docs/sdks/workspaces/README.md#create) - Create a workspace
+* [get](docs/sdks/workspaces/README.md#get) - Retrieve a workspace
 
 ### [tags](docs/sdks/tags/README.md)
 

@@ -46,7 +46,7 @@ export class Workspaces extends ClientSDK {
      * @remarks
      * Retrieve a list of workspaces for the authenticated user.
      */
-    async getWorkspaces(options?: RequestOptions): Promise<Array<components.WorkspaceSchema>> {
+    async list(options?: RequestOptions): Promise<Array<components.WorkspaceSchema>> {
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
@@ -245,7 +245,7 @@ export class Workspaces extends ClientSDK {
      * @remarks
      * Create a new workspace for the authenticated user.
      */
-    async createWorkspace(
+    async create(
         input: operations.CreateWorkspaceRequestBody | undefined,
         options?: RequestOptions
     ): Promise<components.WorkspaceSchema> {
@@ -458,7 +458,7 @@ export class Workspaces extends ClientSDK {
      * @remarks
      * Retrieve a workspace for the authenticated user.
      */
-    async getWorkspace(
+    async get(
         input: operations.GetWorkspaceRequest,
         options?: RequestOptions
     ): Promise<components.WorkspaceSchema> {

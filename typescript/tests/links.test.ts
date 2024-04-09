@@ -3,6 +3,11 @@ import * as errors from "../src/models/errors";
 import { expect, test, describe, beforeAll, afterAll } from 'vitest'
 import { Color } from "../src/models/operations";
 
+const dubWorkspace = {
+  name: "Dub Workspace",
+  slug: "dub-workspace"
+}
+
 const token  = "tZ6ECyDkA21K9jrMn8EOkajh";
 const workspaceId = "ws_clur5mtu10004jb3oqz83lpxo";
 
@@ -19,6 +24,35 @@ describe('SDK Methods', () => {
     const promises = links.map((link) => dub.links.delete(link.id))
     await Promise.allSettled(promises);
   })
+
+  test('create workspace', async () => {
+    const workspace = await dub.workspaces.create({
+      name: dubWorkspace.name,
+      slug: dubWorkspace.slug
+    });
+
+    expect(workspace).toBeDefined();
+    expect(workspace.name).toBe(dubWorkspace.name);
+    expect(workspace.slug).toBe(dubWorkspace.slug);
+  });
+
+  test('retrieve workspace', async () => {
+    const workspace = await dub.workspaces.get({ idOrSlug: dubWorkspace.slug});
+
+    expect(workspace).toBeDefined();
+    expect(workspace.name).toBe(dubWorkspace.name);
+    expect(workspace.slug).toBe(dubWorkspace.slug);
+  });
+
+  test('list workspaces', async () => {
+    const workspaces = await dub.workspaces.list({});
+
+    const expectedWorkspace = workspaces.find((workspace) => workspace.slug === dubWorkspace.slug);
+
+    expect(workspaces).toBeDefined();
+    expect(workspaces.length).greaterThan(0);
+    expect(expectedWorkspace).toBeDefined()
+  });
 
   test('create tag', async () => {
     const tag = await dub.tags.create({tag: tagName, color: Color.Red});

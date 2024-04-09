@@ -3,11 +3,11 @@
 
 ### Available Operations
 
-* [getWorkspaces](#getworkspaces) - Retrieve a list of workspaces
-* [createWorkspace](#createworkspace) - Create a workspace
-* [getWorkspace](#getworkspace) - Retrieve a workspace
+* [list](#list) - Retrieve a list of workspaces
+* [create](#create) - Create a workspace
+* [get](#get) - Retrieve a workspace
 
-## getWorkspaces
+## list
 
 Retrieve a list of workspaces for the authenticated user.
 
@@ -22,7 +22,7 @@ async function run() {
     workspaceId: "<value>",
   });
 
-  const result = await sdk.workspaces.getWorkspaces();
+  const result = await sdk.workspaces.list();
 
   // Handle the result
   console.log(result)
@@ -57,7 +57,7 @@ run();
 | errors.FiveHundred              | 500                             | application/json                |
 | errors.SDKError                 | 4xx-5xx                         | */*                             |
 
-## createWorkspace
+## create
 
 Create a new workspace for the authenticated user.
 
@@ -72,7 +72,7 @@ async function run() {
     workspaceId: "<value>",
   });
 
-  const result = await sdk.workspaces.createWorkspace({
+  const result = await sdk.workspaces.create({
     name: "<value>",
     slug: "<value>",
   });
@@ -111,7 +111,7 @@ run();
 | errors.FiveHundred              | 500                             | application/json                |
 | errors.SDKError                 | 4xx-5xx                         | */*                             |
 
-## getWorkspace
+## get
 
 Retrieve a workspace for the authenticated user.
 
@@ -126,7 +126,7 @@ async function run() {
     workspaceId: "<value>",
   });
 
-  const result = await sdk.workspaces.getWorkspace({
+  const result = await sdk.workspaces.get({
     idOrSlug: "<value>",
   });
 
