@@ -41,10 +41,10 @@ jobs:
       speakeasy_version: latest
       create_release: true
       openapi_docs: |
-        - https://api.dub.sh
+        - location: https://api.dub.sh
       languages: |
         - typescript
-      publish_typescript: true
+      # publish_typescript: true
       mode: pr
       force: ${{ github.event.inputs.force }}
     secrets:
