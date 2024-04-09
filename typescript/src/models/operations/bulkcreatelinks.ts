@@ -94,6 +94,14 @@ export type RequestBody = {
     comments?: string | null | undefined;
 };
 
+export type BulkCreateLinksRequest = {
+    /**
+     * The ID of the workspace to create the link for.
+     */
+    workspaceId: string;
+    requestBody?: Array<RequestBody> | undefined;
+};
+
 /** @internal */
 export namespace BulkCreateLinksTagIds$ {
     export type Inbound = string | Array<string>;
@@ -249,6 +257,43 @@ export namespace RequestBody$ {
                 ...(v.tagId === undefined ? null : { tagId: v.tagId }),
                 ...(v.tagIds === undefined ? null : { tagIds: v.tagIds }),
                 ...(v.comments === undefined ? null : { comments: v.comments }),
+            };
+        });
+}
+
+/** @internal */
+export namespace BulkCreateLinksRequest$ {
+    export type Inbound = {
+        workspaceId: string;
+        RequestBody?: Array<RequestBody$.Inbound> | undefined;
+    };
+
+    export const inboundSchema: z.ZodType<BulkCreateLinksRequest, z.ZodTypeDef, Inbound> = z
+        .object({
+            workspaceId: z.string(),
+            RequestBody: z.array(z.lazy(() => RequestBody$.inboundSchema)).optional(),
+        })
+        .transform((v) => {
+            return {
+                workspaceId: v.workspaceId,
+                ...(v.RequestBody === undefined ? null : { requestBody: v.RequestBody }),
+            };
+        });
+
+    export type Outbound = {
+        workspaceId: string;
+        RequestBody?: Array<RequestBody$.Outbound> | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, BulkCreateLinksRequest> = z
+        .object({
+            workspaceId: z.string(),
+            requestBody: z.array(z.lazy(() => RequestBody$.outboundSchema)).optional(),
+        })
+        .transform((v) => {
+            return {
+                workspaceId: v.workspaceId,
+                ...(v.requestBody === undefined ? null : { RequestBody: v.requestBody }),
             };
         });
 }

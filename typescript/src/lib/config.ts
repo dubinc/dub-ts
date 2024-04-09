@@ -13,16 +13,11 @@ export const ServerList = [
     /**
      * Production API
      */
-    "http://api.localhost:8888",
+    "https://api.dub.co",
 ] as const;
 
 export type SDKOptions = {
-    token?: string | (() => Promise<string>);
-
-    /**
-     * Allows setting the workspaceId parameter for all supported operations
-     */
-    workspaceId?: string;
+    bearerToken?: string | (() => Promise<string>);
 
     httpClient?: HTTPClient;
     /**

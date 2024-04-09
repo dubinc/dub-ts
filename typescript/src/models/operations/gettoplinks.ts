@@ -274,6 +274,10 @@ export enum GetTopLinksQueryParamCountry {
 
 export type GetTopLinksRequest = {
     /**
+     * The ID of the workspace the link belongs to.
+     */
+    workspaceId: string;
+    /**
      * The domain of the short link.
      */
     domain?: string | undefined;
@@ -343,6 +347,7 @@ export const GetTopLinksQueryParamCountry$ = z.nativeEnum(GetTopLinksQueryParamC
 /** @internal */
 export namespace GetTopLinksRequest$ {
     export type Inbound = {
+        workspaceId: string;
         domain?: string | undefined;
         key?: string | undefined;
         interval?: GetTopLinksQueryParamInterval | undefined;
@@ -359,6 +364,7 @@ export namespace GetTopLinksRequest$ {
 
     export const inboundSchema: z.ZodType<GetTopLinksRequest, z.ZodTypeDef, Inbound> = z
         .object({
+            workspaceId: z.string(),
             domain: z.string().optional(),
             key: z.string().optional(),
             interval: GetTopLinksQueryParamInterval$.optional(),
@@ -374,6 +380,7 @@ export namespace GetTopLinksRequest$ {
         })
         .transform((v) => {
             return {
+                workspaceId: v.workspaceId,
                 ...(v.domain === undefined ? null : { domain: v.domain }),
                 ...(v.key === undefined ? null : { key: v.key }),
                 ...(v.interval === undefined ? null : { interval: v.interval }),
@@ -390,6 +397,7 @@ export namespace GetTopLinksRequest$ {
         });
 
     export type Outbound = {
+        workspaceId: string;
         domain?: string | undefined;
         key?: string | undefined;
         interval?: GetTopLinksQueryParamInterval | undefined;
@@ -406,6 +414,7 @@ export namespace GetTopLinksRequest$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetTopLinksRequest> = z
         .object({
+            workspaceId: z.string(),
             domain: z.string().optional(),
             key: z.string().optional(),
             interval: GetTopLinksQueryParamInterval$.optional(),
@@ -421,6 +430,7 @@ export namespace GetTopLinksRequest$ {
         })
         .transform((v) => {
             return {
+                workspaceId: v.workspaceId,
                 ...(v.domain === undefined ? null : { domain: v.domain }),
                 ...(v.key === undefined ? null : { key: v.key }),
                 ...(v.interval === undefined ? null : { interval: v.interval }),

@@ -3,18 +3,18 @@
 
 ### Available Operations
 
-* [clicks](#clicks) - Retrieve clicks analytics
-* [timeseries](#timeseries) - Retrieve timeseries analytics
-* [countries](#countries) - Retrieve country analytics
-* [cities](#cities) - Retrieve city analytics
-* [devices](#devices) - Retrieve device analytics
-* [browsers](#browsers) - Retrieve browser analytics
-* [os](#os) - Retrieve OS analytics
-* [referers](#referers) - Retrieve referer analytics
-* [topLinks](#toplinks) - Retrieve top links
-* [topUrls](#topurls) - Retrieve top URLs
+* [getClicksAnalytics](#getclicksanalytics) - Retrieve clicks analytics
+* [getTimeseriesAnalytics](#gettimeseriesanalytics) - Retrieve timeseries analytics
+* [getCountryAnalytics](#getcountryanalytics) - Retrieve country analytics
+* [getCityAnalytics](#getcityanalytics) - Retrieve city analytics
+* [getDeviceAnalytics](#getdeviceanalytics) - Retrieve device analytics
+* [getBrowserAnalytics](#getbrowseranalytics) - Retrieve browser analytics
+* [getOSAnalytics](#getosanalytics) - Retrieve OS analytics
+* [getRefererAnalytics](#getrefereranalytics) - Retrieve referer analytics
+* [getTopLinks](#gettoplinks) - Retrieve top links
+* [getTopURLs](#gettopurls) - Retrieve top URLs
 
-## clicks
+## getClicksAnalytics
 
 Retrieve the number of clicks for a link, a domain, or the authenticated workspace.
 
@@ -25,11 +25,12 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
-    workspaceId: "<value>",
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  const result = await sdk.analytics.clicks({});
+  const result = await sdk.analytics.getClicksAnalytics({
+    workspaceId: "<value>",
+  });
 
   // Handle the result
   console.log(result)
@@ -52,20 +53,20 @@ run();
 **Promise<[number](../../models/.md)>**
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.BadRequest          | 400                        | application/json           |
-| errors.Unauthorized        | 401                        | application/json           |
-| errors.Forbidden           | 403                        | application/json           |
-| errors.NotFound            | 404                        | application/json           |
-| errors.Conflict            | 409                        | application/json           |
-| errors.InviteExpired       | 410                        | application/json           |
-| errors.UnprocessableEntity | 422                        | application/json           |
-| errors.RateLimitExceeded   | 429                        | application/json           |
-| errors.InternalServerError | 500                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.FourHundred              | 400                             | application/json                |
+| errors.FourHundredAndOne        | 401                             | application/json                |
+| errors.FourHundredAndThree      | 403                             | application/json                |
+| errors.FourHundredAndFour       | 404                             | application/json                |
+| errors.FourHundredAndNine       | 409                             | application/json                |
+| errors.FourHundredAndTen        | 410                             | application/json                |
+| errors.FourHundredAndTwentyTwo  | 422                             | application/json                |
+| errors.FourHundredAndTwentyNine | 429                             | application/json                |
+| errors.FiveHundred              | 500                             | application/json                |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
 
-## timeseries
+## getTimeseriesAnalytics
 
 Retrieve the number of clicks for a link, a domain, or the authenticated workspace over a period of time.
 
@@ -76,11 +77,12 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
-    workspaceId: "<value>",
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  const result = await sdk.analytics.timeseries({});
+  const result = await sdk.analytics.getTimeseriesAnalytics({
+    workspaceId: "<value>",
+  });
 
   // Handle the result
   console.log(result)
@@ -103,20 +105,20 @@ run();
 **Promise<[operations.ResponseBody[]](../../models/.md)>**
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.BadRequest          | 400                        | application/json           |
-| errors.Unauthorized        | 401                        | application/json           |
-| errors.Forbidden           | 403                        | application/json           |
-| errors.NotFound            | 404                        | application/json           |
-| errors.Conflict            | 409                        | application/json           |
-| errors.InviteExpired       | 410                        | application/json           |
-| errors.UnprocessableEntity | 422                        | application/json           |
-| errors.RateLimitExceeded   | 429                        | application/json           |
-| errors.InternalServerError | 500                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.FourHundred              | 400                             | application/json                |
+| errors.FourHundredAndOne        | 401                             | application/json                |
+| errors.FourHundredAndThree      | 403                             | application/json                |
+| errors.FourHundredAndFour       | 404                             | application/json                |
+| errors.FourHundredAndNine       | 409                             | application/json                |
+| errors.FourHundredAndTen        | 410                             | application/json                |
+| errors.FourHundredAndTwentyTwo  | 422                             | application/json                |
+| errors.FourHundredAndTwentyNine | 429                             | application/json                |
+| errors.FiveHundred              | 500                             | application/json                |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
 
-## countries
+## getCountryAnalytics
 
 Retrieve the top countries by number of clicks for a link, a domain, or the authenticated workspace.
 
@@ -127,11 +129,12 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
-    workspaceId: "<value>",
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  const result = await sdk.analytics.countries({});
+  const result = await sdk.analytics.getCountryAnalytics({
+    workspaceId: "<value>",
+  });
 
   // Handle the result
   console.log(result)
@@ -154,20 +157,20 @@ run();
 **Promise<[operations.GetCountryAnalyticsResponseBody[]](../../models/.md)>**
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.BadRequest          | 400                        | application/json           |
-| errors.Unauthorized        | 401                        | application/json           |
-| errors.Forbidden           | 403                        | application/json           |
-| errors.NotFound            | 404                        | application/json           |
-| errors.Conflict            | 409                        | application/json           |
-| errors.InviteExpired       | 410                        | application/json           |
-| errors.UnprocessableEntity | 422                        | application/json           |
-| errors.RateLimitExceeded   | 429                        | application/json           |
-| errors.InternalServerError | 500                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.FourHundred              | 400                             | application/json                |
+| errors.FourHundredAndOne        | 401                             | application/json                |
+| errors.FourHundredAndThree      | 403                             | application/json                |
+| errors.FourHundredAndFour       | 404                             | application/json                |
+| errors.FourHundredAndNine       | 409                             | application/json                |
+| errors.FourHundredAndTen        | 410                             | application/json                |
+| errors.FourHundredAndTwentyTwo  | 422                             | application/json                |
+| errors.FourHundredAndTwentyNine | 429                             | application/json                |
+| errors.FiveHundred              | 500                             | application/json                |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
 
-## cities
+## getCityAnalytics
 
 Retrieve the top countries by number of clicks for a link, a domain, or the authenticated workspace.
 
@@ -178,11 +181,12 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
-    workspaceId: "<value>",
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  const result = await sdk.analytics.cities({});
+  const result = await sdk.analytics.getCityAnalytics({
+    workspaceId: "<value>",
+  });
 
   // Handle the result
   console.log(result)
@@ -205,20 +209,20 @@ run();
 **Promise<[operations.GetCityAnalyticsResponseBody[]](../../models/.md)>**
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.BadRequest          | 400                        | application/json           |
-| errors.Unauthorized        | 401                        | application/json           |
-| errors.Forbidden           | 403                        | application/json           |
-| errors.NotFound            | 404                        | application/json           |
-| errors.Conflict            | 409                        | application/json           |
-| errors.InviteExpired       | 410                        | application/json           |
-| errors.UnprocessableEntity | 422                        | application/json           |
-| errors.RateLimitExceeded   | 429                        | application/json           |
-| errors.InternalServerError | 500                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.FourHundred              | 400                             | application/json                |
+| errors.FourHundredAndOne        | 401                             | application/json                |
+| errors.FourHundredAndThree      | 403                             | application/json                |
+| errors.FourHundredAndFour       | 404                             | application/json                |
+| errors.FourHundredAndNine       | 409                             | application/json                |
+| errors.FourHundredAndTen        | 410                             | application/json                |
+| errors.FourHundredAndTwentyTwo  | 422                             | application/json                |
+| errors.FourHundredAndTwentyNine | 429                             | application/json                |
+| errors.FiveHundred              | 500                             | application/json                |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
 
-## devices
+## getDeviceAnalytics
 
 Retrieve the top devices by number of clicks for a link, a domain, or the authenticated workspace.
 
@@ -229,11 +233,12 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
-    workspaceId: "<value>",
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  const result = await sdk.analytics.devices({});
+  const result = await sdk.analytics.getDeviceAnalytics({
+    workspaceId: "<value>",
+  });
 
   // Handle the result
   console.log(result)
@@ -256,20 +261,20 @@ run();
 **Promise<[operations.GetDeviceAnalyticsResponseBody[]](../../models/.md)>**
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.BadRequest          | 400                        | application/json           |
-| errors.Unauthorized        | 401                        | application/json           |
-| errors.Forbidden           | 403                        | application/json           |
-| errors.NotFound            | 404                        | application/json           |
-| errors.Conflict            | 409                        | application/json           |
-| errors.InviteExpired       | 410                        | application/json           |
-| errors.UnprocessableEntity | 422                        | application/json           |
-| errors.RateLimitExceeded   | 429                        | application/json           |
-| errors.InternalServerError | 500                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.FourHundred              | 400                             | application/json                |
+| errors.FourHundredAndOne        | 401                             | application/json                |
+| errors.FourHundredAndThree      | 403                             | application/json                |
+| errors.FourHundredAndFour       | 404                             | application/json                |
+| errors.FourHundredAndNine       | 409                             | application/json                |
+| errors.FourHundredAndTen        | 410                             | application/json                |
+| errors.FourHundredAndTwentyTwo  | 422                             | application/json                |
+| errors.FourHundredAndTwentyNine | 429                             | application/json                |
+| errors.FiveHundred              | 500                             | application/json                |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
 
-## browsers
+## getBrowserAnalytics
 
 Retrieve the top browsers by number of clicks for a link, a domain, or the authenticated workspace.
 
@@ -280,11 +285,12 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
-    workspaceId: "<value>",
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  const result = await sdk.analytics.browsers({});
+  const result = await sdk.analytics.getBrowserAnalytics({
+    workspaceId: "<value>",
+  });
 
   // Handle the result
   console.log(result)
@@ -307,20 +313,20 @@ run();
 **Promise<[operations.GetBrowserAnalyticsResponseBody[]](../../models/.md)>**
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.BadRequest          | 400                        | application/json           |
-| errors.Unauthorized        | 401                        | application/json           |
-| errors.Forbidden           | 403                        | application/json           |
-| errors.NotFound            | 404                        | application/json           |
-| errors.Conflict            | 409                        | application/json           |
-| errors.InviteExpired       | 410                        | application/json           |
-| errors.UnprocessableEntity | 422                        | application/json           |
-| errors.RateLimitExceeded   | 429                        | application/json           |
-| errors.InternalServerError | 500                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.FourHundred              | 400                             | application/json                |
+| errors.FourHundredAndOne        | 401                             | application/json                |
+| errors.FourHundredAndThree      | 403                             | application/json                |
+| errors.FourHundredAndFour       | 404                             | application/json                |
+| errors.FourHundredAndNine       | 409                             | application/json                |
+| errors.FourHundredAndTen        | 410                             | application/json                |
+| errors.FourHundredAndTwentyTwo  | 422                             | application/json                |
+| errors.FourHundredAndTwentyNine | 429                             | application/json                |
+| errors.FiveHundred              | 500                             | application/json                |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
 
-## os
+## getOSAnalytics
 
 Retrieve the top OS by number of clicks for a link, a domain, or the authenticated workspace.
 
@@ -331,11 +337,12 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
-    workspaceId: "<value>",
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  const result = await sdk.analytics.os({});
+  const result = await sdk.analytics.getOSAnalytics({
+    workspaceId: "<value>",
+  });
 
   // Handle the result
   console.log(result)
@@ -358,20 +365,20 @@ run();
 **Promise<[operations.GetOSAnalyticsResponseBody[]](../../models/.md)>**
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.BadRequest          | 400                        | application/json           |
-| errors.Unauthorized        | 401                        | application/json           |
-| errors.Forbidden           | 403                        | application/json           |
-| errors.NotFound            | 404                        | application/json           |
-| errors.Conflict            | 409                        | application/json           |
-| errors.InviteExpired       | 410                        | application/json           |
-| errors.UnprocessableEntity | 422                        | application/json           |
-| errors.RateLimitExceeded   | 429                        | application/json           |
-| errors.InternalServerError | 500                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.FourHundred              | 400                             | application/json                |
+| errors.FourHundredAndOne        | 401                             | application/json                |
+| errors.FourHundredAndThree      | 403                             | application/json                |
+| errors.FourHundredAndFour       | 404                             | application/json                |
+| errors.FourHundredAndNine       | 409                             | application/json                |
+| errors.FourHundredAndTen        | 410                             | application/json                |
+| errors.FourHundredAndTwentyTwo  | 422                             | application/json                |
+| errors.FourHundredAndTwentyNine | 429                             | application/json                |
+| errors.FiveHundred              | 500                             | application/json                |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
 
-## referers
+## getRefererAnalytics
 
 Retrieve the top referers by number of clicks for a link, a domain, or the authenticated workspace.
 
@@ -382,11 +389,12 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
-    workspaceId: "<value>",
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  const result = await sdk.analytics.referers({});
+  const result = await sdk.analytics.getRefererAnalytics({
+    workspaceId: "<value>",
+  });
 
   // Handle the result
   console.log(result)
@@ -409,20 +417,20 @@ run();
 **Promise<[operations.GetRefererAnalyticsResponseBody[]](../../models/.md)>**
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.BadRequest          | 400                        | application/json           |
-| errors.Unauthorized        | 401                        | application/json           |
-| errors.Forbidden           | 403                        | application/json           |
-| errors.NotFound            | 404                        | application/json           |
-| errors.Conflict            | 409                        | application/json           |
-| errors.InviteExpired       | 410                        | application/json           |
-| errors.UnprocessableEntity | 422                        | application/json           |
-| errors.RateLimitExceeded   | 429                        | application/json           |
-| errors.InternalServerError | 500                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.FourHundred              | 400                             | application/json                |
+| errors.FourHundredAndOne        | 401                             | application/json                |
+| errors.FourHundredAndThree      | 403                             | application/json                |
+| errors.FourHundredAndFour       | 404                             | application/json                |
+| errors.FourHundredAndNine       | 409                             | application/json                |
+| errors.FourHundredAndTen        | 410                             | application/json                |
+| errors.FourHundredAndTwentyTwo  | 422                             | application/json                |
+| errors.FourHundredAndTwentyNine | 429                             | application/json                |
+| errors.FiveHundred              | 500                             | application/json                |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
 
-## topLinks
+## getTopLinks
 
 Retrieve the top links by number of clicks for a domain or the authenticated workspace.
 
@@ -433,11 +441,12 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
-    workspaceId: "<value>",
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  const result = await sdk.analytics.topLinks({});
+  const result = await sdk.analytics.getTopLinks({
+    workspaceId: "<value>",
+  });
 
   // Handle the result
   console.log(result)
@@ -460,20 +469,20 @@ run();
 **Promise<[operations.GetTopLinksResponseBody[]](../../models/.md)>**
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.BadRequest          | 400                        | application/json           |
-| errors.Unauthorized        | 401                        | application/json           |
-| errors.Forbidden           | 403                        | application/json           |
-| errors.NotFound            | 404                        | application/json           |
-| errors.Conflict            | 409                        | application/json           |
-| errors.InviteExpired       | 410                        | application/json           |
-| errors.UnprocessableEntity | 422                        | application/json           |
-| errors.RateLimitExceeded   | 429                        | application/json           |
-| errors.InternalServerError | 500                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.FourHundred              | 400                             | application/json                |
+| errors.FourHundredAndOne        | 401                             | application/json                |
+| errors.FourHundredAndThree      | 403                             | application/json                |
+| errors.FourHundredAndFour       | 404                             | application/json                |
+| errors.FourHundredAndNine       | 409                             | application/json                |
+| errors.FourHundredAndTen        | 410                             | application/json                |
+| errors.FourHundredAndTwentyTwo  | 422                             | application/json                |
+| errors.FourHundredAndTwentyNine | 429                             | application/json                |
+| errors.FiveHundred              | 500                             | application/json                |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
 
-## topUrls
+## getTopURLs
 
 Retrieve the top URLs by number of clicks for a given short link.
 
@@ -484,11 +493,12 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
-    workspaceId: "<value>",
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  const result = await sdk.analytics.topUrls({});
+  const result = await sdk.analytics.getTopURLs({
+    workspaceId: "<value>",
+  });
 
   // Handle the result
   console.log(result)
@@ -511,15 +521,15 @@ run();
 **Promise<[operations.GetTopURLsResponseBody[]](../../models/.md)>**
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.BadRequest          | 400                        | application/json           |
-| errors.Unauthorized        | 401                        | application/json           |
-| errors.Forbidden           | 403                        | application/json           |
-| errors.NotFound            | 404                        | application/json           |
-| errors.Conflict            | 409                        | application/json           |
-| errors.InviteExpired       | 410                        | application/json           |
-| errors.UnprocessableEntity | 422                        | application/json           |
-| errors.RateLimitExceeded   | 429                        | application/json           |
-| errors.InternalServerError | 500                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.FourHundred              | 400                             | application/json                |
+| errors.FourHundredAndOne        | 401                             | application/json                |
+| errors.FourHundredAndThree      | 403                             | application/json                |
+| errors.FourHundredAndFour       | 404                             | application/json                |
+| errors.FourHundredAndNine       | 409                             | application/json                |
+| errors.FourHundredAndTen        | 410                             | application/json                |
+| errors.FourHundredAndTwentyTwo  | 422                             | application/json                |
+| errors.FourHundredAndTwentyNine | 429                             | application/json                |
+| errors.FiveHundred              | 500                             | application/json                |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |

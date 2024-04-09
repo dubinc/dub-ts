@@ -46,7 +46,7 @@ export class Links extends ClientSDK {
      * @remarks
      * Retrieve a list of links for the authenticated workspace. The list will be paginated and the provided query parameters allow filtering the returned links.
      */
-    async list(
+    async getLinks(
         input: operations.GetLinksRequest,
         options?: RequestOptions
     ): Promise<Array<components.LinkSchema>> {
@@ -79,7 +79,7 @@ export class Links extends ClientSDK {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
+            enc$.encodeForm("workspaceId", payload$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
             }),
@@ -88,17 +88,17 @@ export class Links extends ClientSDK {
             .join("&");
 
         let security$;
-        if (typeof this.options$.token === "function") {
-            security$ = { token: await this.options$.token() };
-        } else if (this.options$.token) {
-            security$ = { token: this.options$.token };
+        if (typeof this.options$.bearerToken === "function") {
+            security$ = { bearerToken: await this.options$.bearerToken() };
+        } else if (this.options$.bearerToken) {
+            security$ = { bearerToken: this.options$.bearerToken };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "getLinks",
             oAuth2Scopes: [],
-            securitySource: this.options$.token,
+            securitySource: this.options$.bearerToken,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -154,7 +154,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.BadRequest$.inboundSchema.parse({
+                    return errors.FourHundred$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -167,7 +167,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Unauthorized$.inboundSchema.parse({
+                    return errors.FourHundredAndOne$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -180,7 +180,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Forbidden$.inboundSchema.parse({
+                    return errors.FourHundredAndThree$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -193,7 +193,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.NotFound$.inboundSchema.parse({
+                    return errors.FourHundredAndFour$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -206,7 +206,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Conflict$.inboundSchema.parse({
+                    return errors.FourHundredAndNine$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -219,7 +219,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.InviteExpired$.inboundSchema.parse({
+                    return errors.FourHundredAndTen$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -232,7 +232,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.UnprocessableEntity$.inboundSchema.parse({
+                    return errors.FourHundredAndTwentyTwo$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -245,7 +245,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.RateLimitExceeded$.inboundSchema.parse({
+                    return errors.FourHundredAndTwentyNine$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -258,7 +258,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.InternalServerError$.inboundSchema.parse({
+                    return errors.FiveHundred$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -278,8 +278,8 @@ export class Links extends ClientSDK {
      * @remarks
      * Create a new link for the authenticated workspace.
      */
-    async create(
-        input: operations.CreateLinkRequestBody | undefined,
+    async createLink(
+        input: operations.CreateLinkRequest,
         options?: RequestOptions
     ): Promise<components.LinkSchema> {
         const headers$ = new Headers();
@@ -289,16 +289,15 @@ export class Links extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input,
-            (value$) => operations.CreateLinkRequestBody$.outboundSchema.optional().parse(value$),
+            (value$) => operations.CreateLinkRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ =
-            payload$ === undefined ? null : enc$.encodeJSON("body", payload$, { explode: true });
+        const body$ = enc$.encodeJSON("body", payload$.RequestBody, { explode: true });
 
         const path$ = this.templateURLComponent("/links")();
 
         const query$ = [
-            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
+            enc$.encodeForm("workspaceId", payload$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
             }),
@@ -307,17 +306,17 @@ export class Links extends ClientSDK {
             .join("&");
 
         let security$;
-        if (typeof this.options$.token === "function") {
-            security$ = { token: await this.options$.token() };
-        } else if (this.options$.token) {
-            security$ = { token: this.options$.token };
+        if (typeof this.options$.bearerToken === "function") {
+            security$ = { bearerToken: await this.options$.bearerToken() };
+        } else if (this.options$.bearerToken) {
+            security$ = { bearerToken: this.options$.bearerToken };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "createLink",
             oAuth2Scopes: [],
-            securitySource: this.options$.token,
+            securitySource: this.options$.bearerToken,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -373,7 +372,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.BadRequest$.inboundSchema.parse({
+                    return errors.FourHundred$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -386,7 +385,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Unauthorized$.inboundSchema.parse({
+                    return errors.FourHundredAndOne$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -399,7 +398,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Forbidden$.inboundSchema.parse({
+                    return errors.FourHundredAndThree$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -412,7 +411,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.NotFound$.inboundSchema.parse({
+                    return errors.FourHundredAndFour$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -425,7 +424,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Conflict$.inboundSchema.parse({
+                    return errors.FourHundredAndNine$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -438,7 +437,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.InviteExpired$.inboundSchema.parse({
+                    return errors.FourHundredAndTen$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -451,7 +450,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.UnprocessableEntity$.inboundSchema.parse({
+                    return errors.FourHundredAndTwentyTwo$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -464,7 +463,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.RateLimitExceeded$.inboundSchema.parse({
+                    return errors.FourHundredAndTwentyNine$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -477,7 +476,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.InternalServerError$.inboundSchema.parse({
+                    return errors.FiveHundred$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -497,7 +496,10 @@ export class Links extends ClientSDK {
      * @remarks
      * Retrieve the number of links for the authenticated workspace. The provided query parameters allow filtering the returned links.
      */
-    async count(input: operations.GetLinksCountRequest, options?: RequestOptions): Promise<number> {
+    async getLinksCount(
+        input: operations.GetLinksCountRequest,
+        options?: RequestOptions
+    ): Promise<Array<components.LinkSchema>> {
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
@@ -529,7 +531,7 @@ export class Links extends ClientSDK {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
+            enc$.encodeForm("workspaceId", payload$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
             }),
@@ -538,17 +540,17 @@ export class Links extends ClientSDK {
             .join("&");
 
         let security$;
-        if (typeof this.options$.token === "function") {
-            security$ = { token: await this.options$.token() };
-        } else if (this.options$.token) {
-            security$ = { token: this.options$.token };
+        if (typeof this.options$.bearerToken === "function") {
+            security$ = { bearerToken: await this.options$.bearerToken() };
+        } else if (this.options$.bearerToken) {
+            security$ = { bearerToken: this.options$.bearerToken };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "getLinksCount",
             oAuth2Scopes: [],
-            securitySource: this.options$.token,
+            securitySource: this.options$.bearerToken,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -594,7 +596,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return z.number().parse(val$);
+                    return z.array(components.LinkSchema$.inboundSchema).parse(val$);
                 },
                 "Response validation failed"
             );
@@ -604,7 +606,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.BadRequest$.inboundSchema.parse({
+                    return errors.FourHundred$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -617,7 +619,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Unauthorized$.inboundSchema.parse({
+                    return errors.FourHundredAndOne$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -630,7 +632,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Forbidden$.inboundSchema.parse({
+                    return errors.FourHundredAndThree$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -643,7 +645,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.NotFound$.inboundSchema.parse({
+                    return errors.FourHundredAndFour$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -656,7 +658,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Conflict$.inboundSchema.parse({
+                    return errors.FourHundredAndNine$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -669,7 +671,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.InviteExpired$.inboundSchema.parse({
+                    return errors.FourHundredAndTen$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -682,7 +684,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.UnprocessableEntity$.inboundSchema.parse({
+                    return errors.FourHundredAndTwentyTwo$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -695,7 +697,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.RateLimitExceeded$.inboundSchema.parse({
+                    return errors.FourHundredAndTwentyNine$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -708,7 +710,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.InternalServerError$.inboundSchema.parse({
+                    return errors.FiveHundred$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -728,7 +730,7 @@ export class Links extends ClientSDK {
      * @remarks
      * Retrieve the info for a link from their domain and key.
      */
-    async get(
+    async getLinkInfo(
         input: operations.GetLinkInfoRequest,
         options?: RequestOptions
     ): Promise<components.LinkSchema> {
@@ -748,7 +750,7 @@ export class Links extends ClientSDK {
         const query$ = [
             enc$.encodeForm("domain", payload$.domain, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("key", payload$.key, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
+            enc$.encodeForm("workspaceId", payload$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
             }),
@@ -757,17 +759,17 @@ export class Links extends ClientSDK {
             .join("&");
 
         let security$;
-        if (typeof this.options$.token === "function") {
-            security$ = { token: await this.options$.token() };
-        } else if (this.options$.token) {
-            security$ = { token: this.options$.token };
+        if (typeof this.options$.bearerToken === "function") {
+            security$ = { bearerToken: await this.options$.bearerToken() };
+        } else if (this.options$.bearerToken) {
+            security$ = { bearerToken: this.options$.bearerToken };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "getLinkInfo",
             oAuth2Scopes: [],
-            securitySource: this.options$.token,
+            securitySource: this.options$.bearerToken,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -823,7 +825,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.BadRequest$.inboundSchema.parse({
+                    return errors.FourHundred$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -836,7 +838,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Unauthorized$.inboundSchema.parse({
+                    return errors.FourHundredAndOne$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -849,7 +851,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Forbidden$.inboundSchema.parse({
+                    return errors.FourHundredAndThree$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -862,7 +864,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.NotFound$.inboundSchema.parse({
+                    return errors.FourHundredAndFour$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -875,7 +877,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Conflict$.inboundSchema.parse({
+                    return errors.FourHundredAndNine$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -888,7 +890,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.InviteExpired$.inboundSchema.parse({
+                    return errors.FourHundredAndTen$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -901,7 +903,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.UnprocessableEntity$.inboundSchema.parse({
+                    return errors.FourHundredAndTwentyTwo$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -914,7 +916,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.RateLimitExceeded$.inboundSchema.parse({
+                    return errors.FourHundredAndTwentyNine$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -927,7 +929,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.InternalServerError$.inboundSchema.parse({
+                    return errors.FiveHundred$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -947,22 +949,17 @@ export class Links extends ClientSDK {
      * @remarks
      * Edit a link for the authenticated workspace.
      */
-    async update(
-        linkId: string,
-        requestBody?: operations.EditLinkRequestBody | undefined,
+    async editLink(
+        input: operations.EditLinkRequest,
         options?: RequestOptions
     ): Promise<components.LinkSchema> {
-        const input$: operations.EditLinkRequest = {
-            linkId: linkId,
-            requestBody: requestBody,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input$,
+            input,
             (value$) => operations.EditLinkRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -977,7 +974,7 @@ export class Links extends ClientSDK {
         const path$ = this.templateURLComponent("/links/{linkId}")(pathParams$);
 
         const query$ = [
-            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
+            enc$.encodeForm("workspaceId", payload$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
             }),
@@ -986,17 +983,17 @@ export class Links extends ClientSDK {
             .join("&");
 
         let security$;
-        if (typeof this.options$.token === "function") {
-            security$ = { token: await this.options$.token() };
-        } else if (this.options$.token) {
-            security$ = { token: this.options$.token };
+        if (typeof this.options$.bearerToken === "function") {
+            security$ = { bearerToken: await this.options$.bearerToken() };
+        } else if (this.options$.bearerToken) {
+            security$ = { bearerToken: this.options$.bearerToken };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "editLink",
             oAuth2Scopes: [],
-            securitySource: this.options$.token,
+            securitySource: this.options$.bearerToken,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -1052,7 +1049,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.BadRequest$.inboundSchema.parse({
+                    return errors.FourHundred$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1065,7 +1062,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Unauthorized$.inboundSchema.parse({
+                    return errors.FourHundredAndOne$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1078,7 +1075,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Forbidden$.inboundSchema.parse({
+                    return errors.FourHundredAndThree$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1091,7 +1088,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.NotFound$.inboundSchema.parse({
+                    return errors.FourHundredAndFour$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1104,7 +1101,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Conflict$.inboundSchema.parse({
+                    return errors.FourHundredAndNine$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1117,7 +1114,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.InviteExpired$.inboundSchema.parse({
+                    return errors.FourHundredAndTen$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1130,7 +1127,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.UnprocessableEntity$.inboundSchema.parse({
+                    return errors.FourHundredAndTwentyTwo$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1143,7 +1140,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.RateLimitExceeded$.inboundSchema.parse({
+                    return errors.FourHundredAndTwentyNine$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1156,7 +1153,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.InternalServerError$.inboundSchema.parse({
+                    return errors.FiveHundred$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1176,19 +1173,16 @@ export class Links extends ClientSDK {
      * @remarks
      * Delete a link for the authenticated workspace.
      */
-    async delete(
-        linkId: string,
+    async deleteLink(
+        input: operations.DeleteLinkRequest,
         options?: RequestOptions
-    ): Promise<operations.DeleteLinkResponseBody> {
-        const input$: operations.DeleteLinkRequest = {
-            linkId: linkId,
-        };
+    ): Promise<components.LinkSchema> {
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input$,
+            input,
             (value$) => operations.DeleteLinkRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -1203,7 +1197,7 @@ export class Links extends ClientSDK {
         const path$ = this.templateURLComponent("/links/{linkId}")(pathParams$);
 
         const query$ = [
-            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
+            enc$.encodeForm("workspaceId", payload$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
             }),
@@ -1212,17 +1206,17 @@ export class Links extends ClientSDK {
             .join("&");
 
         let security$;
-        if (typeof this.options$.token === "function") {
-            security$ = { token: await this.options$.token() };
-        } else if (this.options$.token) {
-            security$ = { token: this.options$.token };
+        if (typeof this.options$.bearerToken === "function") {
+            security$ = { bearerToken: await this.options$.bearerToken() };
+        } else if (this.options$.bearerToken) {
+            security$ = { bearerToken: this.options$.bearerToken };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "deleteLink",
             oAuth2Scopes: [],
-            securitySource: this.options$.token,
+            securitySource: this.options$.bearerToken,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -1268,7 +1262,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return operations.DeleteLinkResponseBody$.inboundSchema.parse(val$);
+                    return components.LinkSchema$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
@@ -1278,7 +1272,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.BadRequest$.inboundSchema.parse({
+                    return errors.FourHundred$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1291,7 +1285,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Unauthorized$.inboundSchema.parse({
+                    return errors.FourHundredAndOne$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1304,7 +1298,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Forbidden$.inboundSchema.parse({
+                    return errors.FourHundredAndThree$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1317,7 +1311,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.NotFound$.inboundSchema.parse({
+                    return errors.FourHundredAndFour$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1330,7 +1324,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Conflict$.inboundSchema.parse({
+                    return errors.FourHundredAndNine$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1343,7 +1337,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.InviteExpired$.inboundSchema.parse({
+                    return errors.FourHundredAndTen$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1356,7 +1350,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.UnprocessableEntity$.inboundSchema.parse({
+                    return errors.FourHundredAndTwentyTwo$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1369,7 +1363,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.RateLimitExceeded$.inboundSchema.parse({
+                    return errors.FourHundredAndTwentyNine$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1382,7 +1376,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.InternalServerError$.inboundSchema.parse({
+                    return errors.FiveHundred$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1402,8 +1396,8 @@ export class Links extends ClientSDK {
      * @remarks
      * Bulk create up to 100 links for the authenticated workspace.
      */
-    async bulkCreate(
-        input: Array<operations.RequestBody> | undefined,
+    async bulkCreateLinks(
+        input: operations.BulkCreateLinksRequest,
         options?: RequestOptions
     ): Promise<Array<components.LinkSchema>> {
         const headers$ = new Headers();
@@ -1413,16 +1407,15 @@ export class Links extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input,
-            (value$) => z.array(operations.RequestBody$.outboundSchema).optional().parse(value$),
+            (value$) => operations.BulkCreateLinksRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ =
-            payload$ === undefined ? null : enc$.encodeJSON("body", payload$, { explode: true });
+        const body$ = enc$.encodeJSON("body", payload$.RequestBody, { explode: true });
 
         const path$ = this.templateURLComponent("/links/bulk")();
 
         const query$ = [
-            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
+            enc$.encodeForm("workspaceId", payload$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
             }),
@@ -1431,17 +1424,17 @@ export class Links extends ClientSDK {
             .join("&");
 
         let security$;
-        if (typeof this.options$.token === "function") {
-            security$ = { token: await this.options$.token() };
-        } else if (this.options$.token) {
-            security$ = { token: this.options$.token };
+        if (typeof this.options$.bearerToken === "function") {
+            security$ = { bearerToken: await this.options$.bearerToken() };
+        } else if (this.options$.bearerToken) {
+            security$ = { bearerToken: this.options$.bearerToken };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "bulkCreateLinks",
             oAuth2Scopes: [],
-            securitySource: this.options$.token,
+            securitySource: this.options$.bearerToken,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -1497,7 +1490,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.BadRequest$.inboundSchema.parse({
+                    return errors.FourHundred$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1510,7 +1503,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Unauthorized$.inboundSchema.parse({
+                    return errors.FourHundredAndOne$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1523,7 +1516,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Forbidden$.inboundSchema.parse({
+                    return errors.FourHundredAndThree$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1536,7 +1529,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.NotFound$.inboundSchema.parse({
+                    return errors.FourHundredAndFour$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1549,7 +1542,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Conflict$.inboundSchema.parse({
+                    return errors.FourHundredAndNine$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1562,7 +1555,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.InviteExpired$.inboundSchema.parse({
+                    return errors.FourHundredAndTen$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1575,7 +1568,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.UnprocessableEntity$.inboundSchema.parse({
+                    return errors.FourHundredAndTwentyTwo$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1588,7 +1581,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.RateLimitExceeded$.inboundSchema.parse({
+                    return errors.FourHundredAndTwentyNine$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1601,7 +1594,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.InternalServerError$.inboundSchema.parse({
+                    return errors.FiveHundred$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });

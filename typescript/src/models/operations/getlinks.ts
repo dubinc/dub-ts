@@ -20,6 +20,10 @@ export enum Sort {
 
 export type GetLinksRequest = {
     /**
+     * The ID of the workspace the link belongs to.
+     */
+    workspaceId: string;
+    /**
      * The domain to filter the links by. E.g. `ac.me`. If not provided, all links for the workspace will be returned.
      */
     domain?: string | undefined;
@@ -78,6 +82,7 @@ export const Sort$ = z.nativeEnum(Sort);
 /** @internal */
 export namespace GetLinksRequest$ {
     export type Inbound = {
+        workspaceId: string;
         domain?: string | undefined;
         tagId?: string | undefined;
         tagIds?: string | Array<string> | undefined;
@@ -91,6 +96,7 @@ export namespace GetLinksRequest$ {
 
     export const inboundSchema: z.ZodType<GetLinksRequest, z.ZodTypeDef, Inbound> = z
         .object({
+            workspaceId: z.string(),
             domain: z.string().optional(),
             tagId: z.string().optional(),
             tagIds: z.union([z.string(), z.array(z.string())]).optional(),
@@ -103,6 +109,7 @@ export namespace GetLinksRequest$ {
         })
         .transform((v) => {
             return {
+                workspaceId: v.workspaceId,
                 ...(v.domain === undefined ? null : { domain: v.domain }),
                 ...(v.tagId === undefined ? null : { tagId: v.tagId }),
                 ...(v.tagIds === undefined ? null : { tagIds: v.tagIds }),
@@ -116,6 +123,7 @@ export namespace GetLinksRequest$ {
         });
 
     export type Outbound = {
+        workspaceId: string;
         domain?: string | undefined;
         tagId?: string | undefined;
         tagIds?: string | Array<string> | undefined;
@@ -129,6 +137,7 @@ export namespace GetLinksRequest$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLinksRequest> = z
         .object({
+            workspaceId: z.string(),
             domain: z.string().optional(),
             tagId: z.string().optional(),
             tagIds: z.union([z.string(), z.array(z.string())]).optional(),
@@ -141,6 +150,7 @@ export namespace GetLinksRequest$ {
         })
         .transform((v) => {
             return {
+                workspaceId: v.workspaceId,
                 ...(v.domain === undefined ? null : { domain: v.domain }),
                 ...(v.tagId === undefined ? null : { tagId: v.tagId }),
                 ...(v.tagIds === undefined ? null : { tagIds: v.tagIds }),

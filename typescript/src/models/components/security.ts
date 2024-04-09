@@ -5,36 +5,36 @@
 import * as z from "zod";
 
 export type Security = {
-    token?: string | undefined;
+    bearerToken?: string | undefined;
 };
 
 /** @internal */
 export namespace Security$ {
     export type Inbound = {
-        token?: string | undefined;
+        bearerToken?: string | undefined;
     };
 
     export const inboundSchema: z.ZodType<Security, z.ZodTypeDef, Inbound> = z
         .object({
-            token: z.string().optional(),
+            bearerToken: z.string().optional(),
         })
         .transform((v) => {
             return {
-                ...(v.token === undefined ? null : { token: v.token }),
+                ...(v.bearerToken === undefined ? null : { bearerToken: v.bearerToken }),
             };
         });
 
     export type Outbound = {
-        token?: string | undefined;
+        bearerToken?: string | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Security> = z
         .object({
-            token: z.string().optional(),
+            bearerToken: z.string().optional(),
         })
         .transform((v) => {
             return {
-                ...(v.token === undefined ? null : { token: v.token }),
+                ...(v.bearerToken === undefined ? null : { bearerToken: v.bearerToken }),
             };
         });
 }
