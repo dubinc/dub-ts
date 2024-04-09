@@ -103,8 +103,8 @@ run();
 
 ### [tags](docs/sdks/tags/README.md)
 
-* [getTags](docs/sdks/tags/README.md#gettags) - Retrieve a list of tags
-* [createTag](docs/sdks/tags/README.md#createtag) - Create a new tag
+* [list](docs/sdks/tags/README.md#list) - Retrieve a list of tags
+* [create](docs/sdks/tags/README.md#create) - Create a new tag
 <!-- End Available Resources and Operations [operations] -->
 
 <!-- Start Error Handling [errors] -->

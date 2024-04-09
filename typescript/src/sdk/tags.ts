@@ -46,7 +46,7 @@ export class Tags extends ClientSDK {
      * @remarks
      * Retrieve a list of tags for the authenticated workspace.
      */
-    async getTags(
+    async list(
         _input: operations.GetTagsRequest,
         options?: RequestOptions
     ): Promise<Array<components.TagSchema>> {
@@ -255,7 +255,7 @@ export class Tags extends ClientSDK {
      * @remarks
      * Create a new tag for the authenticated workspace.
      */
-    async createTag(
+    async create(
         input: operations.CreateTagRequestBody | undefined,
         options?: RequestOptions
     ): Promise<components.TagSchema> {

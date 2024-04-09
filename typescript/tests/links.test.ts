@@ -1,6 +1,7 @@
 import { Dub } from "../src"
 import * as errors from "../src/models/errors";
 import { expect, test, describe, beforeAll, afterAll } from 'vitest'
+import { Color } from "../src/models/operations";
 
 const token  = "tZ6ECyDkA21K9jrMn8EOkajh";
 const workspaceId = "ws_clur5mtu10004jb3oqz83lpxo";
@@ -8,6 +9,7 @@ const workspaceId = "ws_clur5mtu10004jb3oqz83lpxo";
 const domain = "a.com"
 const url = "https://github.com/dubinc/dub"
 const key = Math.random().toString(36).substring(7);
+const tagName = Math.random().toString(36).substring(7);
 
 const dub = new Dub({ token,  workspaceId });
 
@@ -18,15 +20,23 @@ describe('SDK Methods', () => {
     await Promise.allSettled(promises);
   })
 
-  test('add tags', async () => {
-    const link = await dub.tags.create();
+  test('create tag', async () => {
+    const tag = await dub.tags.create({tag: tagName, color: Color.Red});
 
-    expect(link).toBeDefined();
-    expect(link.url).toBe(url);
-    expect(link.key).toBe(key);
-    expect(link.workspaceId).toBe(workspaceId);
+    expect(tag).toBeDefined();
+    expect(tag.name).toBe(tagName);
+    expect(tag.color).toBe(Color.Red);
   });
 
+  test('retrieve tags', async () => {
+    const tags = await dub.tags.list({});
+
+    const expectedTag = tags.find((tag) => tag.name === tagName);
+
+    expect(tags).toBeDefined();
+    expect(tags.length).greaterThan(0);
+    expect(expectedTag).toBeDefined()
+  })
 
   test('create link', async () => {
     const link = await dub.links.create({url, key, domain});

@@ -3,10 +3,10 @@
 
 ### Available Operations
 
-* [getTags](#gettags) - Retrieve a list of tags
-* [createTag](#createtag) - Create a new tag
+* [list](#list) - Retrieve a list of tags
+* [create](#create) - Create a new tag
 
-## getTags
+## list
 
 Retrieve a list of tags for the authenticated workspace.
 
@@ -21,7 +21,7 @@ async function run() {
     workspaceId: "<value>",
   });
 
-  const result = await sdk.tags.getTags({});
+  const result = await sdk.tags.list({});
 
   // Handle the result
   console.log(result)
@@ -57,7 +57,7 @@ run();
 | errors.FiveHundred              | 500                             | application/json                |
 | errors.SDKError                 | 4xx-5xx                         | */*                             |
 
-## createTag
+## create
 
 Create a new tag for the authenticated workspace.
 
@@ -72,7 +72,7 @@ async function run() {
     workspaceId: "<value>",
   });
 
-  const result = await sdk.tags.createTag({
+  const result = await sdk.tags.create({
     tag: "<value>",
   });
 
