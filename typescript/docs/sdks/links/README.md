@@ -162,7 +162,7 @@ run();
 
 ### Response
 
-**Promise<[components.LinkSchema[]](../../models/.md)>**
+**Promise<[number](../../models/.md)>**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |

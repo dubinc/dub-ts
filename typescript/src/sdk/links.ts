@@ -497,10 +497,7 @@ export class Links extends ClientSDK {
      * @remarks
      * Retrieve the number of links for the authenticated workspace. The provided query parameters allow filtering the returned links.
      */
-    async count(
-        input: operations.GetLinksCountRequest,
-        options?: RequestOptions
-    ): Promise<Array<components.LinkSchema>> {
+    async count(input: operations.GetLinksCountRequest, options?: RequestOptions): Promise<number> {
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
@@ -597,7 +594,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return z.array(components.LinkSchema$.inboundSchema).parse(val$);
+                    return z.number().parse(val$);
                 },
                 "Response validation failed"
             );

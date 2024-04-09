@@ -37,9 +37,8 @@ describe('Links', () => {
     expect(link.workspaceId).toBe(workspaceId);
   });
 
-  test.skip('retrieve links', async () => {
+  test('retrieve links', async () => {
     const links = await dub.links.list({});
-    console.log(links)
 
     expect(links).toBeDefined();
     expect(links.length).toEqual(1);
@@ -63,6 +62,13 @@ describe('Links', () => {
     expect(updatedLink.domain).toBe(domain);
     expect(updatedLink.workspaceId).toBe(workspaceId);
     expect(updatedLink.comments).toBe("This is a test link");
+  })
+
+  test('number of links', async () => {
+    const count = await dub.links.count({});
+
+    expect(count).toBeDefined();
+    expect(count).toBe(1);
   })
 
   test('delete link', async () => {
@@ -99,3 +105,6 @@ describe('Links', () => {
     expect(links[1].workspaceId).toBe(workspaceId)
   });
 })
+
+// How did that work out for you ?
+// It worked out well. We were able to generate the SDK methods the way we wanted. Thanks for the help.
