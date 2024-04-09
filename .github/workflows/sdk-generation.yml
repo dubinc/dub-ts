@@ -1,54 +1,26 @@
-name: Generate SDK
-
-# permissions:
-#   checks: write
-#   contents: write
-#   pull-requests: write
-#   statuses: write
-
-# on:
-#   workflow_dispatch:
-#     inputs:
-#       force:
-#         description: "Force the generation of the SDKs"
-#         type: boolean
-#         default: false
-#   schedule:
-#     - cron: 0 0 * * *
-
-on:
-  push:
-    branches:
-      - main
-      - release
-  pull_request:
-    branches:
-      - main
+name: Generate
+permissions:
+  checks: write
+  contents: write
+  pull-requests: write
+  statuses: write
+"on":
   workflow_dispatch:
-
+    inputs:
+      force:
+        description: Force generation of SDKs
+        type: boolean
+        default: false
+  schedule:
+    - cron: 0 0 * * *
 jobs:
-  # generate:
-  #   uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-generation.yaml@v14
-  #   with:
-  #     speakeasy_version: latest
-  #     openapi_docs: |
-  #       - https://api.dub.sh
-  #     speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
-  #     github_access_token: ${{ secrets.GITHUB_TOKEN }}
-
   generate:
-    uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-generation.yaml@v14
+    uses: speakeasy-api/sdk-generation-action/.github/workflows/workflow-executor.yaml@v15
     with:
-      speakeasy_version: latest
-      create_release: true
-      openapi_docs: |
-        - location: https://api.dub.sh
-      languages: |
-        - typescript
-      # publish_typescript: true
-      mode: pr
       force: ${{ github.event.inputs.force }}
+      mode: pr
+      speakeasy_version: latest
+      working_directory: ./typescript
     secrets:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
-      # npm_token: ${{ secrets.DUB_NPM_TOKEN || secrets.NPM_TOKEN }}
       speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
