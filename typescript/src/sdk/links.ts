@@ -79,7 +79,7 @@ export class Links extends ClientSDK {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeForm("workspaceId", payload$.workspaceId ?? this.options$.workspaceId, {
+            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
             }),
@@ -297,7 +297,14 @@ export class Links extends ClientSDK {
 
         const path$ = this.templateURLComponent("/links")();
 
-        const query$ = "";
+        const query$ = [
+            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
+                explode: true,
+                charEncoding: "percent",
+            }),
+        ]
+            .filter(Boolean)
+            .join("&");
 
         let security$;
         if (typeof this.options$.token === "function") {
@@ -525,7 +532,7 @@ export class Links extends ClientSDK {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeForm("workspaceId", payload$.workspaceId ?? this.options$.workspaceId, {
+            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
             }),
@@ -744,7 +751,7 @@ export class Links extends ClientSDK {
         const query$ = [
             enc$.encodeForm("domain", payload$.domain, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("key", payload$.key, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("workspaceId", payload$.workspaceId ?? this.options$.workspaceId, {
+            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
             }),
@@ -944,16 +951,21 @@ export class Links extends ClientSDK {
      * Edit a link for the authenticated workspace.
      */
     async update(
-        input: operations.EditLinkRequest,
+        linkId: string,
+        requestBody?: operations.EditLinkRequestBody | undefined,
         options?: RequestOptions
     ): Promise<components.LinkSchema> {
+        const input$: operations.EditLinkRequest = {
+            linkId: linkId,
+            requestBody: requestBody,
+        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.EditLinkRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -968,7 +980,7 @@ export class Links extends ClientSDK {
         const path$ = this.templateURLComponent("/links/{linkId}")(pathParams$);
 
         const query$ = [
-            enc$.encodeForm("workspaceId", payload$.workspaceId ?? this.options$.workspaceId, {
+            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
             }),
@@ -1168,15 +1180,18 @@ export class Links extends ClientSDK {
      * Delete a link for the authenticated workspace.
      */
     async delete(
-        input: operations.DeleteLinkRequest,
+        linkId: string,
         options?: RequestOptions
-    ): Promise<components.LinkSchema> {
+    ): Promise<operations.DeleteLinkResponseBody> {
+        const input$: operations.DeleteLinkRequest = {
+            linkId: linkId,
+        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.DeleteLinkRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -1191,7 +1206,7 @@ export class Links extends ClientSDK {
         const path$ = this.templateURLComponent("/links/{linkId}")(pathParams$);
 
         const query$ = [
-            enc$.encodeForm("workspaceId", payload$.workspaceId ?? this.options$.workspaceId, {
+            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
             }),
@@ -1256,7 +1271,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return components.LinkSchema$.inboundSchema.parse(val$);
+                    return operations.DeleteLinkResponseBody$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
@@ -1391,7 +1406,7 @@ export class Links extends ClientSDK {
      * Bulk create up to 100 links for the authenticated workspace.
      */
     async bulkCreate(
-        input: operations.BulkCreateLinksRequest,
+        input: Array<operations.RequestBody> | undefined,
         options?: RequestOptions
     ): Promise<Array<components.LinkSchema>> {
         const headers$ = new Headers();
@@ -1401,15 +1416,16 @@ export class Links extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input,
-            (value$) => operations.BulkCreateLinksRequest$.outboundSchema.parse(value$),
+            (value$) => z.array(operations.RequestBody$.outboundSchema).optional().parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.RequestBody, { explode: true });
+        const body$ =
+            payload$ === undefined ? null : enc$.encodeJSON("body", payload$, { explode: true });
 
         const path$ = this.templateURLComponent("/links/bulk")();
 
         const query$ = [
-            enc$.encodeForm("workspaceId", payload$.workspaceId ?? this.options$.workspaceId, {
+            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
             }),

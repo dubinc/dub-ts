@@ -9,45 +9,76 @@ export type DeleteLinkRequest = {
      * The id of the link to delete. You can get this via the `getLinkInfo` endpoint.
      */
     linkId: string;
+};
+
+/**
+ * The deleted link
+ */
+export type DeleteLinkResponseBody = {
     /**
-     * The ID of the workspace the link belongs to.
+     * The ID of the link.
      */
-    workspaceId?: string | undefined;
+    id: string;
 };
 
 /** @internal */
 export namespace DeleteLinkRequest$ {
     export type Inbound = {
         linkId: string;
-        workspaceId?: string | undefined;
     };
 
     export const inboundSchema: z.ZodType<DeleteLinkRequest, z.ZodTypeDef, Inbound> = z
         .object({
             linkId: z.string(),
-            workspaceId: z.string().optional(),
         })
         .transform((v) => {
             return {
                 linkId: v.linkId,
-                ...(v.workspaceId === undefined ? null : { workspaceId: v.workspaceId }),
             };
         });
 
     export type Outbound = {
         linkId: string;
-        workspaceId?: string | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteLinkRequest> = z
         .object({
             linkId: z.string(),
-            workspaceId: z.string().optional(),
         })
         .transform((v) => {
             return {
                 linkId: v.linkId,
-                ...(v.workspaceId === undefined ? null : { workspaceId: v.workspaceId }),
+            };
+        });
+}
+
+/** @internal */
+export namespace DeleteLinkResponseBody$ {
+    export type Inbound = {
+        id: string;
+    };
+
+    export const inboundSchema: z.ZodType<DeleteLinkResponseBody, z.ZodTypeDef, Inbound> = z
+        .object({
+            id: z.string(),
+        })
+        .transform((v) => {
+            return {
+                id: v.id,
+            };
+        });
+
+    export type Outbound = {
+        id: string;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteLinkResponseBody> = z
+        .object({
+            id: z.string(),
+        })
+        .transform((v) => {
+            return {
+                id: v.id,
             };
         });
 }

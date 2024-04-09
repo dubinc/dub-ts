@@ -274,10 +274,6 @@ export enum GetCountryAnalyticsQueryParamCountry {
 
 export type GetCountryAnalyticsRequest = {
     /**
-     * The ID of the workspace the link belongs to.
-     */
-    workspaceId?: string | undefined;
-    /**
      * The domain of the short link.
      */
     domain?: string | undefined;
@@ -607,7 +603,6 @@ export const GetCountryAnalyticsQueryParamCountry$ = z.nativeEnum(
 /** @internal */
 export namespace GetCountryAnalyticsRequest$ {
     export type Inbound = {
-        workspaceId?: string | undefined;
         domain?: string | undefined;
         key?: string | undefined;
         interval?: GetCountryAnalyticsQueryParamInterval | undefined;
@@ -624,7 +619,6 @@ export namespace GetCountryAnalyticsRequest$ {
 
     export const inboundSchema: z.ZodType<GetCountryAnalyticsRequest, z.ZodTypeDef, Inbound> = z
         .object({
-            workspaceId: z.string().optional(),
             domain: z.string().optional(),
             key: z.string().optional(),
             interval: GetCountryAnalyticsQueryParamInterval$.optional(),
@@ -640,7 +634,6 @@ export namespace GetCountryAnalyticsRequest$ {
         })
         .transform((v) => {
             return {
-                ...(v.workspaceId === undefined ? null : { workspaceId: v.workspaceId }),
                 ...(v.domain === undefined ? null : { domain: v.domain }),
                 ...(v.key === undefined ? null : { key: v.key }),
                 ...(v.interval === undefined ? null : { interval: v.interval }),
@@ -657,7 +650,6 @@ export namespace GetCountryAnalyticsRequest$ {
         });
 
     export type Outbound = {
-        workspaceId?: string | undefined;
         domain?: string | undefined;
         key?: string | undefined;
         interval?: GetCountryAnalyticsQueryParamInterval | undefined;
@@ -674,7 +666,6 @@ export namespace GetCountryAnalyticsRequest$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetCountryAnalyticsRequest> = z
         .object({
-            workspaceId: z.string().optional(),
             domain: z.string().optional(),
             key: z.string().optional(),
             interval: GetCountryAnalyticsQueryParamInterval$.optional(),
@@ -690,7 +681,6 @@ export namespace GetCountryAnalyticsRequest$ {
         })
         .transform((v) => {
             return {
-                ...(v.workspaceId === undefined ? null : { workspaceId: v.workspaceId }),
                 ...(v.domain === undefined ? null : { domain: v.domain }),
                 ...(v.key === undefined ? null : { key: v.key }),
                 ...(v.interval === undefined ? null : { interval: v.interval }),

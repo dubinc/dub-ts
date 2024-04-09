@@ -47,27 +47,17 @@ export class Tags extends ClientSDK {
      * Retrieve a list of tags for the authenticated workspace.
      */
     async getTags(
-        workspaceId?: string | undefined,
+        _input: operations.GetTagsRequest,
         options?: RequestOptions
     ): Promise<Array<components.TagSchema>> {
-        const input$: operations.GetTagsRequest = {
-            workspaceId: workspaceId,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
-        const payload$ = schemas$.parse(
-            input$,
-            (value$) => operations.GetTagsRequest$.outboundSchema.parse(value$),
-            "Input validation failed"
-        );
-        const body$ = null;
-
         const path$ = this.templateURLComponent("/tags")();
 
         const query$ = [
-            enc$.encodeForm("workspaceId", payload$.workspaceId ?? this.options$.workspaceId, {
+            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
             }),
@@ -113,7 +103,6 @@ export class Tags extends ClientSDK {
                 path: path$,
                 headers: headers$,
                 query: query$,
-                body: body$,
             },
             options
         );
@@ -267,7 +256,7 @@ export class Tags extends ClientSDK {
      * Create a new tag for the authenticated workspace.
      */
     async createTag(
-        input: operations.CreateTagRequest,
+        input: operations.CreateTagRequestBody | undefined,
         options?: RequestOptions
     ): Promise<components.TagSchema> {
         const headers$ = new Headers();
@@ -277,15 +266,16 @@ export class Tags extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input,
-            (value$) => operations.CreateTagRequest$.outboundSchema.parse(value$),
+            (value$) => operations.CreateTagRequestBody$.outboundSchema.optional().parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.RequestBody, { explode: true });
+        const body$ =
+            payload$ === undefined ? null : enc$.encodeJSON("body", payload$, { explode: true });
 
         const path$ = this.templateURLComponent("/tags")();
 
         const query$ = [
-            enc$.encodeForm("workspaceId", payload$.workspaceId ?? this.options$.workspaceId, {
+            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
             }),

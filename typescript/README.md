@@ -347,47 +347,6 @@ run();
 ```
 <!-- End Authentication [security] -->
 
-<!-- Start Global Parameters [global-parameters] -->
-## Global Parameters
-
-A parameter is configured globally. This parameter must be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
-
-For example, you can set `workspaceId` to `"<value>"` at SDK initialization and then you do not have to pass the same value on calls to operations like `list`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
-
-
-### Available Globals
-
-The following global parameter is available. The required parameter must be set when you initialize the SDK client.
-
-| Name | Type | Required | Description |
-| ---- | ---- |:--------:| ----------- |
-| workspaceId | string | ✔️ | The workspaceId parameter. |
-
-
-### Example
-
-```typescript
-import { Dub } from "dub";
-
-async function run() {
-    const sdk = new Dub({
-        token: "<YOUR_BEARER_TOKEN_HERE>",
-        workspaceId: "<value>",
-    });
-
-    const result = await sdk.links.list({
-        tagIds: ["<value>"],
-    });
-
-    // Handle the result
-    console.log(result);
-}
-
-run();
-
-```
-<!-- End Global Parameters [global-parameters] -->
-
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
 # Development

@@ -31,9 +31,13 @@ export type CreateLinkRequestBody = {
      */
     archived?: boolean | undefined;
     /**
-     * The date and time when the short link will expire in ISO-8601 format. Must be in the future.
+     * The date and time when the short link will expire at.
      */
-    expiresAt?: Date | null | undefined;
+    expiresAt?: string | null | undefined;
+    /**
+     * The URL to redirect to when the short link has expired.
+     */
+    expiredUrl?: string | null | undefined;
     /**
      * The password required to access the destination URL of the short link.
      */
@@ -114,6 +118,7 @@ export namespace CreateLinkRequestBody$ {
         url: string;
         archived?: boolean | undefined;
         expiresAt?: string | null | undefined;
+        expiredUrl?: string | null | undefined;
         password?: string | null | undefined;
         proxy?: boolean | undefined;
         title?: string | null | undefined;
@@ -136,14 +141,8 @@ export namespace CreateLinkRequestBody$ {
             prefix: z.string().optional(),
             url: z.string(),
             archived: z.boolean().default(false),
-            expiresAt: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
+            expiresAt: z.nullable(z.string()).optional(),
+            expiredUrl: z.nullable(z.string()).optional(),
             password: z.nullable(z.string()).optional(),
             proxy: z.boolean().default(false),
             title: z.nullable(z.string()).optional(),
@@ -166,6 +165,7 @@ export namespace CreateLinkRequestBody$ {
                 url: v.url,
                 archived: v.archived,
                 ...(v.expiresAt === undefined ? null : { expiresAt: v.expiresAt }),
+                ...(v.expiredUrl === undefined ? null : { expiredUrl: v.expiredUrl }),
                 ...(v.password === undefined ? null : { password: v.password }),
                 proxy: v.proxy,
                 ...(v.title === undefined ? null : { title: v.title }),
@@ -189,6 +189,7 @@ export namespace CreateLinkRequestBody$ {
         url: string;
         archived: boolean;
         expiresAt?: string | null | undefined;
+        expiredUrl?: string | null | undefined;
         password?: string | null | undefined;
         proxy: boolean;
         title?: string | null | undefined;
@@ -211,7 +212,8 @@ export namespace CreateLinkRequestBody$ {
             prefix: z.string().optional(),
             url: z.string(),
             archived: z.boolean().default(false),
-            expiresAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            expiresAt: z.nullable(z.string()).optional(),
+            expiredUrl: z.nullable(z.string()).optional(),
             password: z.nullable(z.string()).optional(),
             proxy: z.boolean().default(false),
             title: z.nullable(z.string()).optional(),
@@ -234,6 +236,7 @@ export namespace CreateLinkRequestBody$ {
                 url: v.url,
                 archived: v.archived,
                 ...(v.expiresAt === undefined ? null : { expiresAt: v.expiresAt }),
+                ...(v.expiredUrl === undefined ? null : { expiredUrl: v.expiredUrl }),
                 ...(v.password === undefined ? null : { password: v.password }),
                 proxy: v.proxy,
                 ...(v.title === undefined ? null : { title: v.title }),

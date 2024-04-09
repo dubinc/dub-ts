@@ -31,9 +31,13 @@ export type RequestBody = {
      */
     archived?: boolean | undefined;
     /**
-     * The date and time when the short link will expire in ISO-8601 format. Must be in the future.
+     * The date and time when the short link will expire at.
      */
-    expiresAt?: Date | null | undefined;
+    expiresAt?: string | null | undefined;
+    /**
+     * The URL to redirect to when the short link has expired.
+     */
+    expiredUrl?: string | null | undefined;
     /**
      * The password required to access the destination URL of the short link.
      */
@@ -90,14 +94,6 @@ export type RequestBody = {
     comments?: string | null | undefined;
 };
 
-export type BulkCreateLinksRequest = {
-    /**
-     * The ID of the workspace to create the link for.
-     */
-    workspaceId?: string | undefined;
-    requestBody?: Array<RequestBody> | undefined;
-};
-
 /** @internal */
 export namespace BulkCreateLinksTagIds$ {
     export type Inbound = string | Array<string>;
@@ -121,6 +117,7 @@ export namespace RequestBody$ {
         url: string;
         archived?: boolean | undefined;
         expiresAt?: string | null | undefined;
+        expiredUrl?: string | null | undefined;
         password?: string | null | undefined;
         proxy?: boolean | undefined;
         title?: string | null | undefined;
@@ -143,14 +140,8 @@ export namespace RequestBody$ {
             prefix: z.string().optional(),
             url: z.string(),
             archived: z.boolean().default(false),
-            expiresAt: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
+            expiresAt: z.nullable(z.string()).optional(),
+            expiredUrl: z.nullable(z.string()).optional(),
             password: z.nullable(z.string()).optional(),
             proxy: z.boolean().default(false),
             title: z.nullable(z.string()).optional(),
@@ -173,6 +164,7 @@ export namespace RequestBody$ {
                 url: v.url,
                 archived: v.archived,
                 ...(v.expiresAt === undefined ? null : { expiresAt: v.expiresAt }),
+                ...(v.expiredUrl === undefined ? null : { expiredUrl: v.expiredUrl }),
                 ...(v.password === undefined ? null : { password: v.password }),
                 proxy: v.proxy,
                 ...(v.title === undefined ? null : { title: v.title }),
@@ -196,6 +188,7 @@ export namespace RequestBody$ {
         url: string;
         archived: boolean;
         expiresAt?: string | null | undefined;
+        expiredUrl?: string | null | undefined;
         password?: string | null | undefined;
         proxy: boolean;
         title?: string | null | undefined;
@@ -218,7 +211,8 @@ export namespace RequestBody$ {
             prefix: z.string().optional(),
             url: z.string(),
             archived: z.boolean().default(false),
-            expiresAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            expiresAt: z.nullable(z.string()).optional(),
+            expiredUrl: z.nullable(z.string()).optional(),
             password: z.nullable(z.string()).optional(),
             proxy: z.boolean().default(false),
             title: z.nullable(z.string()).optional(),
@@ -241,6 +235,7 @@ export namespace RequestBody$ {
                 url: v.url,
                 archived: v.archived,
                 ...(v.expiresAt === undefined ? null : { expiresAt: v.expiresAt }),
+                ...(v.expiredUrl === undefined ? null : { expiredUrl: v.expiredUrl }),
                 ...(v.password === undefined ? null : { password: v.password }),
                 proxy: v.proxy,
                 ...(v.title === undefined ? null : { title: v.title }),
@@ -254,43 +249,6 @@ export namespace RequestBody$ {
                 ...(v.tagId === undefined ? null : { tagId: v.tagId }),
                 ...(v.tagIds === undefined ? null : { tagIds: v.tagIds }),
                 ...(v.comments === undefined ? null : { comments: v.comments }),
-            };
-        });
-}
-
-/** @internal */
-export namespace BulkCreateLinksRequest$ {
-    export type Inbound = {
-        workspaceId?: string | undefined;
-        RequestBody?: Array<RequestBody$.Inbound> | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<BulkCreateLinksRequest, z.ZodTypeDef, Inbound> = z
-        .object({
-            workspaceId: z.string().optional(),
-            RequestBody: z.array(z.lazy(() => RequestBody$.inboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.workspaceId === undefined ? null : { workspaceId: v.workspaceId }),
-                ...(v.RequestBody === undefined ? null : { requestBody: v.RequestBody }),
-            };
-        });
-
-    export type Outbound = {
-        workspaceId?: string | undefined;
-        RequestBody?: Array<RequestBody$.Outbound> | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, BulkCreateLinksRequest> = z
-        .object({
-            workspaceId: z.string().optional(),
-            requestBody: z.array(z.lazy(() => RequestBody$.outboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.workspaceId === undefined ? null : { workspaceId: v.workspaceId }),
-                ...(v.requestBody === undefined ? null : { RequestBody: v.requestBody }),
             };
         });
 }

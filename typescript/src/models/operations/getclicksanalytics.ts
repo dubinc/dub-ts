@@ -274,10 +274,6 @@ export enum Country {
 
 export type GetClicksAnalyticsRequest = {
     /**
-     * The ID of the workspace the link belongs to.
-     */
-    workspaceId?: string | undefined;
-    /**
      * The domain of the short link.
      */
     domain?: string | undefined;
@@ -336,7 +332,6 @@ export const Country$ = z.nativeEnum(Country);
 /** @internal */
 export namespace GetClicksAnalyticsRequest$ {
     export type Inbound = {
-        workspaceId?: string | undefined;
         domain?: string | undefined;
         key?: string | undefined;
         interval?: Interval | undefined;
@@ -353,7 +348,6 @@ export namespace GetClicksAnalyticsRequest$ {
 
     export const inboundSchema: z.ZodType<GetClicksAnalyticsRequest, z.ZodTypeDef, Inbound> = z
         .object({
-            workspaceId: z.string().optional(),
             domain: z.string().optional(),
             key: z.string().optional(),
             interval: Interval$.optional(),
@@ -369,7 +363,6 @@ export namespace GetClicksAnalyticsRequest$ {
         })
         .transform((v) => {
             return {
-                ...(v.workspaceId === undefined ? null : { workspaceId: v.workspaceId }),
                 ...(v.domain === undefined ? null : { domain: v.domain }),
                 ...(v.key === undefined ? null : { key: v.key }),
                 ...(v.interval === undefined ? null : { interval: v.interval }),
@@ -386,7 +379,6 @@ export namespace GetClicksAnalyticsRequest$ {
         });
 
     export type Outbound = {
-        workspaceId?: string | undefined;
         domain?: string | undefined;
         key?: string | undefined;
         interval?: Interval | undefined;
@@ -403,7 +395,6 @@ export namespace GetClicksAnalyticsRequest$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetClicksAnalyticsRequest> = z
         .object({
-            workspaceId: z.string().optional(),
             domain: z.string().optional(),
             key: z.string().optional(),
             interval: Interval$.optional(),
@@ -419,7 +410,6 @@ export namespace GetClicksAnalyticsRequest$ {
         })
         .transform((v) => {
             return {
-                ...(v.workspaceId === undefined ? null : { workspaceId: v.workspaceId }),
                 ...(v.domain === undefined ? null : { domain: v.domain }),
                 ...(v.key === undefined ? null : { key: v.key }),
                 ...(v.interval === undefined ? null : { interval: v.interval }),

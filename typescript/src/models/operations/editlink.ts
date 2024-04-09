@@ -31,9 +31,13 @@ export type EditLinkRequestBody = {
      */
     archived?: boolean | undefined;
     /**
-     * The date and time when the short link will expire in ISO-8601 format. Must be in the future.
+     * The date and time when the short link will expire at.
      */
-    expiresAt?: Date | null | undefined;
+    expiresAt?: string | null | undefined;
+    /**
+     * The URL to redirect to when the short link has expired.
+     */
+    expiredUrl?: string | null | undefined;
     /**
      * The password required to access the destination URL of the short link.
      */
@@ -95,10 +99,6 @@ export type EditLinkRequest = {
      * The id of the link to edit. You can get this via the `getLinkInfo` endpoint.
      */
     linkId: string;
-    /**
-     * The ID of the workspace the link belongs to.
-     */
-    workspaceId?: string | undefined;
     requestBody?: EditLinkRequestBody | undefined;
 };
 
@@ -126,6 +126,7 @@ export namespace EditLinkRequestBody$ {
         url: string;
         archived?: boolean | undefined;
         expiresAt?: string | null | undefined;
+        expiredUrl?: string | null | undefined;
         password?: string | null | undefined;
         proxy?: boolean | undefined;
         title?: string | null | undefined;
@@ -148,14 +149,8 @@ export namespace EditLinkRequestBody$ {
             prefix: z.string().optional(),
             url: z.string(),
             archived: z.boolean().default(false),
-            expiresAt: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
+            expiresAt: z.nullable(z.string()).optional(),
+            expiredUrl: z.nullable(z.string()).optional(),
             password: z.nullable(z.string()).optional(),
             proxy: z.boolean().default(false),
             title: z.nullable(z.string()).optional(),
@@ -178,6 +173,7 @@ export namespace EditLinkRequestBody$ {
                 url: v.url,
                 archived: v.archived,
                 ...(v.expiresAt === undefined ? null : { expiresAt: v.expiresAt }),
+                ...(v.expiredUrl === undefined ? null : { expiredUrl: v.expiredUrl }),
                 ...(v.password === undefined ? null : { password: v.password }),
                 proxy: v.proxy,
                 ...(v.title === undefined ? null : { title: v.title }),
@@ -201,6 +197,7 @@ export namespace EditLinkRequestBody$ {
         url: string;
         archived: boolean;
         expiresAt?: string | null | undefined;
+        expiredUrl?: string | null | undefined;
         password?: string | null | undefined;
         proxy: boolean;
         title?: string | null | undefined;
@@ -223,7 +220,8 @@ export namespace EditLinkRequestBody$ {
             prefix: z.string().optional(),
             url: z.string(),
             archived: z.boolean().default(false),
-            expiresAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            expiresAt: z.nullable(z.string()).optional(),
+            expiredUrl: z.nullable(z.string()).optional(),
             password: z.nullable(z.string()).optional(),
             proxy: z.boolean().default(false),
             title: z.nullable(z.string()).optional(),
@@ -246,6 +244,7 @@ export namespace EditLinkRequestBody$ {
                 url: v.url,
                 archived: v.archived,
                 ...(v.expiresAt === undefined ? null : { expiresAt: v.expiresAt }),
+                ...(v.expiredUrl === undefined ? null : { expiredUrl: v.expiredUrl }),
                 ...(v.password === undefined ? null : { password: v.password }),
                 proxy: v.proxy,
                 ...(v.title === undefined ? null : { title: v.title }),
@@ -267,40 +266,34 @@ export namespace EditLinkRequestBody$ {
 export namespace EditLinkRequest$ {
     export type Inbound = {
         linkId: string;
-        workspaceId?: string | undefined;
         RequestBody?: EditLinkRequestBody$.Inbound | undefined;
     };
 
     export const inboundSchema: z.ZodType<EditLinkRequest, z.ZodTypeDef, Inbound> = z
         .object({
             linkId: z.string(),
-            workspaceId: z.string().optional(),
             RequestBody: z.lazy(() => EditLinkRequestBody$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
                 linkId: v.linkId,
-                ...(v.workspaceId === undefined ? null : { workspaceId: v.workspaceId }),
                 ...(v.RequestBody === undefined ? null : { requestBody: v.RequestBody }),
             };
         });
 
     export type Outbound = {
         linkId: string;
-        workspaceId?: string | undefined;
         RequestBody?: EditLinkRequestBody$.Outbound | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EditLinkRequest> = z
         .object({
             linkId: z.string(),
-            workspaceId: z.string().optional(),
             requestBody: z.lazy(() => EditLinkRequestBody$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {
                 linkId: v.linkId,
-                ...(v.workspaceId === undefined ? null : { workspaceId: v.workspaceId }),
                 ...(v.requestBody === undefined ? null : { RequestBody: v.requestBody }),
             };
         });

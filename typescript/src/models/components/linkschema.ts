@@ -27,9 +27,13 @@ export type LinkSchema = {
      */
     archived?: boolean | undefined;
     /**
-     * The date and time when the short link will expire in ISO-8601 format. Must be in the future.
+     * The date and time when the short link will expire in ISO-8601 format.
      */
-    expiresAt: string | null;
+    expiresAt: Date | null;
+    /**
+     * The URL to redirect to when the short link has expired.
+     */
+    expiredUrl: string | null;
     /**
      * The password required to access the destination URL of the short link.
      */
@@ -153,6 +157,7 @@ export namespace LinkSchema$ {
         url: string;
         archived?: boolean | undefined;
         expiresAt: string | null;
+        expiredUrl: string | null;
         password: string | null;
         proxy?: boolean | undefined;
         title: string | null;
@@ -189,7 +194,13 @@ export namespace LinkSchema$ {
             key: z.string(),
             url: z.string(),
             archived: z.boolean().default(false),
-            expiresAt: z.nullable(z.string()),
+            expiresAt: z.nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            ),
+            expiredUrl: z.nullable(z.string()),
             password: z.nullable(z.string()),
             proxy: z.boolean().default(false),
             title: z.nullable(z.string()),
@@ -226,6 +237,7 @@ export namespace LinkSchema$ {
                 url: v.url,
                 archived: v.archived,
                 expiresAt: v.expiresAt,
+                expiredUrl: v.expiredUrl,
                 password: v.password,
                 proxy: v.proxy,
                 title: v.title,
@@ -263,6 +275,7 @@ export namespace LinkSchema$ {
         url: string;
         archived: boolean;
         expiresAt: string | null;
+        expiredUrl: string | null;
         password: string | null;
         proxy: boolean;
         title: string | null;
@@ -299,7 +312,8 @@ export namespace LinkSchema$ {
             key: z.string(),
             url: z.string(),
             archived: z.boolean().default(false),
-            expiresAt: z.nullable(z.string()),
+            expiresAt: z.nullable(z.date().transform((v) => v.toISOString())),
+            expiredUrl: z.nullable(z.string()),
             password: z.nullable(z.string()),
             proxy: z.boolean().default(false),
             title: z.nullable(z.string()),
@@ -336,6 +350,7 @@ export namespace LinkSchema$ {
                 url: v.url,
                 archived: v.archived,
                 expiresAt: v.expiresAt,
+                expiredUrl: v.expiredUrl,
                 password: v.password,
                 proxy: v.proxy,
                 title: v.title,

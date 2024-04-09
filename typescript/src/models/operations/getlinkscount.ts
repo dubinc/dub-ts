@@ -24,10 +24,6 @@ export type GroupBy = One | Two;
 
 export type GetLinksCountRequest = {
     /**
-     * The ID of the workspace the link belongs to.
-     */
-    workspaceId?: string | undefined;
-    /**
      * The domain to filter the links by. E.g. `ac.me`. If not provided, all links for the workspace will be returned.
      */
     domain?: string | undefined;
@@ -90,7 +86,6 @@ export namespace GroupBy$ {
 /** @internal */
 export namespace GetLinksCountRequest$ {
     export type Inbound = {
-        workspaceId?: string | undefined;
         domain?: string | undefined;
         tagId?: string | undefined;
         tagIds?: string | Array<string> | undefined;
@@ -103,7 +98,6 @@ export namespace GetLinksCountRequest$ {
 
     export const inboundSchema: z.ZodType<GetLinksCountRequest, z.ZodTypeDef, Inbound> = z
         .object({
-            workspaceId: z.string().optional(),
             domain: z.string().optional(),
             tagId: z.string().optional(),
             tagIds: z.union([z.string(), z.array(z.string())]).optional(),
@@ -115,7 +109,6 @@ export namespace GetLinksCountRequest$ {
         })
         .transform((v) => {
             return {
-                ...(v.workspaceId === undefined ? null : { workspaceId: v.workspaceId }),
                 ...(v.domain === undefined ? null : { domain: v.domain }),
                 ...(v.tagId === undefined ? null : { tagId: v.tagId }),
                 ...(v.tagIds === undefined ? null : { tagIds: v.tagIds }),
@@ -128,7 +121,6 @@ export namespace GetLinksCountRequest$ {
         });
 
     export type Outbound = {
-        workspaceId?: string | undefined;
         domain?: string | undefined;
         tagId?: string | undefined;
         tagIds?: string | Array<string> | undefined;
@@ -141,7 +133,6 @@ export namespace GetLinksCountRequest$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLinksCountRequest> = z
         .object({
-            workspaceId: z.string().optional(),
             domain: z.string().optional(),
             tagId: z.string().optional(),
             tagIds: z.union([z.string(), z.array(z.string())]).optional(),
@@ -153,7 +144,6 @@ export namespace GetLinksCountRequest$ {
         })
         .transform((v) => {
             return {
-                ...(v.workspaceId === undefined ? null : { workspaceId: v.workspaceId }),
                 ...(v.domain === undefined ? null : { domain: v.domain }),
                 ...(v.tagId === undefined ? null : { tagId: v.tagId }),
                 ...(v.tagIds === undefined ? null : { tagIds: v.tagIds }),

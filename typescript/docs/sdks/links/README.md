@@ -247,16 +247,16 @@ async function run() {
     workspaceId: "<value>",
   });
 
-  const result = await sdk.links.update({
-    linkId: "<value>",
-    requestBody: {
-      url: "https://alarming-nondisclosure.com",
-      geo: {
-        "key": "<value>",
-      },
-    tagIds: "<value>",
+  const linkId = "<value>";
+  const requestBody = {
+    url: "https://alarming-nondisclosure.com",
+    geo: {
+      "key": "<value>",
     },
-  });
+  tagIds: "<value>",
+  };
+  
+  const result = await sdk.links.update(linkId, requestBody);
 
   // Handle the result
   console.log(result)
@@ -269,7 +269,8 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.EditLinkRequest](../../models/operations/editlinkrequest.md)                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `linkId`                                                                                                                                                                       | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The id of the link to edit. You can get this via the `getLinkInfo` endpoint.                                                                                                   |
+| `requestBody`                                                                                                                                                                  | [operations.EditLinkRequestBody](../../models/operations/editlinkrequestbody.md)                                                                                               | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
@@ -307,9 +308,9 @@ async function run() {
     workspaceId: "<value>",
   });
 
-  const result = await sdk.links.delete({
-    linkId: "<value>",
-  });
+  const linkId = "<value>";
+  
+  const result = await sdk.links.delete(linkId);
 
   // Handle the result
   console.log(result)
@@ -322,14 +323,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.DeleteLinkRequest](../../models/operations/deletelinkrequest.md)                                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `linkId`                                                                                                                                                                       | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The id of the link to delete. You can get this via the `getLinkInfo` endpoint.                                                                                                 |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
 
-**Promise<[components.LinkSchema](../../models/components/linkschema.md)>**
+**Promise<[operations.DeleteLinkResponseBody](../../models/operations/deletelinkresponsebody.md)>**
 ### Errors
 
 | Error Object                    | Status Code                     | Content Type                    |
@@ -360,19 +361,17 @@ async function run() {
     workspaceId: "<value>",
   });
 
-  const result = await sdk.links.bulkCreate({
-    requestBody: [
-      {
-        url: "http://bad-sidecar.net",
-        geo: {
-          "key": "<value>",
-        },
-      tagIds:     [
-            "<value>",
-          ],
+  const result = await sdk.links.bulkCreate([
+    {
+      url: "http://bad-sidecar.net",
+      geo: {
+        "key": "<value>",
       },
-    ],
-  });
+    tagIds:     [
+          "<value>",
+        ],
+    },
+  ]);
 
   // Handle the result
   console.log(result)
@@ -385,7 +384,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.BulkCreateLinksRequest](../../models/operations/bulkcreatelinksrequest.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.RequestBody[]](../../models/.md)                                                                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 

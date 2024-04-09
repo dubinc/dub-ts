@@ -1,23 +1,24 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: c6cc64562e81f3f32a8769446f8d7c70
+  docChecksum: 8860478e960ecbe86592e13db08304f5
   docVersion: 0.0.1
-  speakeasyVersion: 1.228.1
-  generationVersion: 2.292.0
-  releaseVersion: 0.9.7
-  configChecksum: 9edc640d15a38f26da81d80284246241
+  speakeasyVersion: 1.244.0
+  generationVersion: 2.301.0
+  releaseVersion: 0.16.1
+  configChecksum: 9afeac6b788ab8d2c23821845ce380ff
 features:
   typescript:
     acceptHeaders: 2.81.1
     constsAndDefaults: 0.1.5
-    core: 3.7.0
+    core: 3.7.1
     deprecations: 2.81.1
     flattening: 2.81.1
-    globalSecurity: 2.82.8
+    globalSecurity: 2.82.9
     globalServerURLs: 2.82.4
     globals: 2.82.1
-    nameOverrides: 2.81.1
+    hiddenGlobals: 0.1.0
+    nameOverrides: 2.81.2
     responseFormat: 0.2.3
     unions: 2.85.3
 generatedFiles:
@@ -138,9 +139,9 @@ generatedFiles:
   - docs/models/operations/editlinkrequestbody.md
   - docs/models/operations/editlinkrequest.md
   - docs/models/operations/deletelinkrequest.md
+  - docs/models/operations/deletelinkresponsebody.md
   - docs/models/operations/bulkcreatelinkstagids.md
   - docs/models/operations/requestbody.md
-  - docs/models/operations/bulkcreatelinksrequest.md
   - docs/models/operations/level.md
   - docs/models/operations/getqrcoderequest.md
   - docs/models/operations/interval.md
@@ -189,7 +190,6 @@ generatedFiles:
   - docs/models/operations/gettagsrequest.md
   - docs/models/operations/color.md
   - docs/models/operations/createtagrequestbody.md
-  - docs/models/operations/createtagrequest.md
   - docs/sdks/dub/README.md
   - docs/sdks/links/README.md
   - docs/sdks/qrcodes/README.md
