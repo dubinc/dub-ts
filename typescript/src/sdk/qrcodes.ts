@@ -156,7 +156,7 @@ export class QRCodes extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundred$.inboundSchema.parse({
+                    return errors.BadRequest$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -169,7 +169,7 @@ export class QRCodes extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndOne$.inboundSchema.parse({
+                    return errors.Unauthorized$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -182,7 +182,7 @@ export class QRCodes extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndThree$.inboundSchema.parse({
+                    return errors.Forbidden$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -195,7 +195,7 @@ export class QRCodes extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndFour$.inboundSchema.parse({
+                    return errors.NotFound$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -208,7 +208,7 @@ export class QRCodes extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndNine$.inboundSchema.parse({
+                    return errors.Conflict$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -221,7 +221,7 @@ export class QRCodes extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTen$.inboundSchema.parse({
+                    return errors.InviteExpired$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -234,7 +234,7 @@ export class QRCodes extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTwentyTwo$.inboundSchema.parse({
+                    return errors.UnprocessableEntity$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -247,7 +247,7 @@ export class QRCodes extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTwentyNine$.inboundSchema.parse({
+                    return errors.RateLimitExceeded$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -260,7 +260,7 @@ export class QRCodes extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FiveHundred$.inboundSchema.parse({
+                    return errors.InternalServerError$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });

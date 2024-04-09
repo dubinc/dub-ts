@@ -44,18 +44,18 @@ run();
 **Promise<[components.WorkspaceSchema[]](../../models/.md)>**
 ### Errors
 
-| Error Object                    | Status Code                     | Content Type                    |
-| ------------------------------- | ------------------------------- | ------------------------------- |
-| errors.FourHundred              | 400                             | application/json                |
-| errors.FourHundredAndOne        | 401                             | application/json                |
-| errors.FourHundredAndThree      | 403                             | application/json                |
-| errors.FourHundredAndFour       | 404                             | application/json                |
-| errors.FourHundredAndNine       | 409                             | application/json                |
-| errors.FourHundredAndTen        | 410                             | application/json                |
-| errors.FourHundredAndTwentyTwo  | 422                             | application/json                |
-| errors.FourHundredAndTwentyNine | 429                             | application/json                |
-| errors.FiveHundred              | 500                             | application/json                |
-| errors.SDKError                 | 4xx-5xx                         | */*                             |
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.BadRequest          | 400                        | application/json           |
+| errors.Unauthorized        | 401                        | application/json           |
+| errors.Forbidden           | 403                        | application/json           |
+| errors.NotFound            | 404                        | application/json           |
+| errors.Conflict            | 409                        | application/json           |
+| errors.InviteExpired       | 410                        | application/json           |
+| errors.UnprocessableEntity | 422                        | application/json           |
+| errors.RateLimitExceeded   | 429                        | application/json           |
+| errors.InternalServerError | 500                        | application/json           |
+| errors.SDKError            | 4xx-5xx                    | */*                        |
 
 ## create
 
@@ -98,18 +98,18 @@ run();
 **Promise<[components.WorkspaceSchema](../../models/components/workspaceschema.md)>**
 ### Errors
 
-| Error Object                    | Status Code                     | Content Type                    |
-| ------------------------------- | ------------------------------- | ------------------------------- |
-| errors.FourHundred              | 400                             | application/json                |
-| errors.FourHundredAndOne        | 401                             | application/json                |
-| errors.FourHundredAndThree      | 403                             | application/json                |
-| errors.FourHundredAndFour       | 404                             | application/json                |
-| errors.FourHundredAndNine       | 409                             | application/json                |
-| errors.FourHundredAndTen        | 410                             | application/json                |
-| errors.FourHundredAndTwentyTwo  | 422                             | application/json                |
-| errors.FourHundredAndTwentyNine | 429                             | application/json                |
-| errors.FiveHundred              | 500                             | application/json                |
-| errors.SDKError                 | 4xx-5xx                         | */*                             |
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.BadRequest          | 400                        | application/json           |
+| errors.Unauthorized        | 401                        | application/json           |
+| errors.Forbidden           | 403                        | application/json           |
+| errors.NotFound            | 404                        | application/json           |
+| errors.Conflict            | 409                        | application/json           |
+| errors.InviteExpired       | 410                        | application/json           |
+| errors.UnprocessableEntity | 422                        | application/json           |
+| errors.RateLimitExceeded   | 429                        | application/json           |
+| errors.InternalServerError | 500                        | application/json           |
+| errors.SDKError            | 4xx-5xx                    | */*                        |
 
 ## get
 
@@ -151,15 +151,15 @@ run();
 **Promise<[components.WorkspaceSchema](../../models/components/workspaceschema.md)>**
 ### Errors
 
-| Error Object                    | Status Code                     | Content Type                    |
-| ------------------------------- | ------------------------------- | ------------------------------- |
-| errors.FourHundred              | 400                             | application/json                |
-| errors.FourHundredAndOne        | 401                             | application/json                |
-| errors.FourHundredAndThree      | 403                             | application/json                |
-| errors.FourHundredAndFour       | 404                             | application/json                |
-| errors.FourHundredAndNine       | 409                             | application/json                |
-| errors.FourHundredAndTen        | 410                             | application/json                |
-| errors.FourHundredAndTwentyTwo  | 422                             | application/json                |
-| errors.FourHundredAndTwentyNine | 429                             | application/json                |
-| errors.FiveHundred              | 500                             | application/json                |
-| errors.SDKError                 | 4xx-5xx                         | */*                             |
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.BadRequest          | 400                        | application/json           |
+| errors.Unauthorized        | 401                        | application/json           |
+| errors.Forbidden           | 403                        | application/json           |
+| errors.NotFound            | 404                        | application/json           |
+| errors.Conflict            | 409                        | application/json           |
+| errors.InviteExpired       | 410                        | application/json           |
+| errors.UnprocessableEntity | 422                        | application/json           |
+| errors.RateLimitExceeded   | 429                        | application/json           |
+| errors.InternalServerError | 500                        | application/json           |
+| errors.SDKError            | 4xx-5xx                    | */*                        |

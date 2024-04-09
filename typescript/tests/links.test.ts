@@ -142,7 +142,7 @@ describe('SDK Methods', () => {
     // Check if the link is deleted
       await dub.links.get({ domain, key });
     } catch (error) {
-      expect(error).toBeInstanceOf(errors.FourHundredAndFour);
+      expect(error).toBeInstanceOf(errors.NotFound);
     }
   })
 

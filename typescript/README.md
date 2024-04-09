@@ -112,18 +112,18 @@ run();
 
 All SDK methods return a response object or throw an error. If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
 
-| Error Object                    | Status Code                     | Content Type                    |
-| ------------------------------- | ------------------------------- | ------------------------------- |
-| errors.FourHundred              | 400                             | application/json                |
-| errors.FourHundredAndOne        | 401                             | application/json                |
-| errors.FourHundredAndThree      | 403                             | application/json                |
-| errors.FourHundredAndFour       | 404                             | application/json                |
-| errors.FourHundredAndNine       | 409                             | application/json                |
-| errors.FourHundredAndTen        | 410                             | application/json                |
-| errors.FourHundredAndTwentyTwo  | 422                             | application/json                |
-| errors.FourHundredAndTwentyNine | 429                             | application/json                |
-| errors.FiveHundred              | 500                             | application/json                |
-| errors.SDKError                 | 4xx-5xx                         | */*                             |
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.BadRequest          | 400                        | application/json           |
+| errors.Unauthorized        | 401                        | application/json           |
+| errors.Forbidden           | 403                        | application/json           |
+| errors.NotFound            | 404                        | application/json           |
+| errors.Conflict            | 409                        | application/json           |
+| errors.InviteExpired       | 410                        | application/json           |
+| errors.UnprocessableEntity | 422                        | application/json           |
+| errors.RateLimitExceeded   | 429                        | application/json           |
+| errors.InternalServerError | 500                        | application/json           |
+| errors.SDKError            | 4xx-5xx                    | */*                        |
 
 Validation errors can also occur when either method arguments or data returned from the server do not match the expected format. The `SDKValidationError` that is thrown as a result will capture the raw value that failed validation in an attribute called `rawValue`. Additionally, a `pretty()` method is available on this error that can be used to log a nicely formatted string since validation errors can list many issues and the plain error string may be difficult read when debugging. 
 
@@ -152,39 +152,39 @@ async function run() {
                 console.error(err.rawValue);
                 return;
             }
-            case err instanceof errors.FourHundred: {
+            case err instanceof errors.BadRequest: {
                 console.error(err); // handle exception
                 return;
             }
-            case err instanceof errors.FourHundredAndOne: {
+            case err instanceof errors.Unauthorized: {
                 console.error(err); // handle exception
                 return;
             }
-            case err instanceof errors.FourHundredAndThree: {
+            case err instanceof errors.Forbidden: {
                 console.error(err); // handle exception
                 return;
             }
-            case err instanceof errors.FourHundredAndFour: {
+            case err instanceof errors.NotFound: {
                 console.error(err); // handle exception
                 return;
             }
-            case err instanceof errors.FourHundredAndNine: {
+            case err instanceof errors.Conflict: {
                 console.error(err); // handle exception
                 return;
             }
-            case err instanceof errors.FourHundredAndTen: {
+            case err instanceof errors.InviteExpired: {
                 console.error(err); // handle exception
                 return;
             }
-            case err instanceof errors.FourHundredAndTwentyTwo: {
+            case err instanceof errors.UnprocessableEntity: {
                 console.error(err); // handle exception
                 return;
             }
-            case err instanceof errors.FourHundredAndTwentyNine: {
+            case err instanceof errors.RateLimitExceeded: {
                 console.error(err); // handle exception
                 return;
             }
-            case err instanceof errors.FiveHundred: {
+            case err instanceof errors.InternalServerError: {
                 console.error(err); // handle exception
                 return;
             }
