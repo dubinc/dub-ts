@@ -17,8 +17,8 @@ on:
 #     - cron: 0 0 * * *
 
 jobs:
-  validate:
-    uses: speakeasy-api/sdk-generation-action@v14
+  generate:
+    uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-generation.yaml@v14
     with:
       speakeasy_version: latest
       openapi_docs: |
