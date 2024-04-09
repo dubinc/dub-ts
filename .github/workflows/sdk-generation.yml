@@ -17,28 +17,28 @@ on:
 #     - cron: 0 0 * * *
 
 jobs:
-  generate:
-    uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-generation.yaml@v14
-    with:
-      speakeasy_version: latest
-      openapi_docs: |
-        - https://api.dub.sh
-      speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
-      github_access_token: ${{ secrets.GITHUB_TOKEN }}
-
   # generate:
   #   uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-generation.yaml@v14
   #   with:
   #     speakeasy_version: latest
-  #     create_release: true
   #     openapi_docs: |
   #       - https://api.dub.sh
-  #     languages: |
-  #       - typescript
-  #     publish_typescript: true
-  #     mode: pr
-  #     force: ${{ github.event.inputs.force }}
-  #   secrets:
-  #     github_access_token: ${{ secrets.GITHUB_TOKEN }}
-  #     npm_token: ${{ secrets.DUB_NPM_TOKEN || secrets.NPM_TOKEN }}
   #     speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
+  #     github_access_token: ${{ secrets.GITHUB_TOKEN }}
+
+  generate:
+    uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-generation.yaml@v14
+    with:
+      speakeasy_version: latest
+      create_release: true
+      openapi_docs: |
+        - https://api.dub.sh
+      languages: |
+        - typescript
+      publish_typescript: true
+      mode: pr
+      force: ${{ github.event.inputs.force }}
+    secrets:
+      github_access_token: ${{ secrets.GITHUB_TOKEN }}
+      # npm_token: ${{ secrets.DUB_NPM_TOKEN || secrets.NPM_TOKEN }}
+      speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
