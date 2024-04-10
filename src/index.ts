@@ -6,5 +6,6 @@ export * from "./sdk";
 export * from "./lib/config";
 
 import { Dub } from './sdk'
-// eslint-disable-next-line import/no-default-export
-export default Dub;
+
+/** @deprecated Use named export instead: `import { Dub } from "dub";` */
+export default Dub; // eslint-disable-line import/no-default-export
