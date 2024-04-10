@@ -7,3 +7,6 @@ targets:
     my-first-target:
         target: typescript
         source: my-first-source
+        publish:
+            npm:
+                token: $npm_token
