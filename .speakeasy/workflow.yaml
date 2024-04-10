@@ -2,8 +2,11 @@ workflowVersion: 1.0.0
 sources:
     my-first-source:
         inputs:
-            - location: https://api.dub.sh
+            - location: https://api.dub.co
 targets:
     my-first-target:
         target: typescript
         source: my-first-source
+        publish:
+            npm:
+                token: $npm_token
