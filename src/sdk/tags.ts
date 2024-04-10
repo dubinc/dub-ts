@@ -57,6 +57,10 @@ export class Tags extends ClientSDK {
         const path$ = this.templateURLComponent("/tags")();
 
         const query$ = [
+            enc$.encodeForm("projectSlug", this.options$.projectSlug, {
+                explode: true,
+                charEncoding: "percent",
+            }),
             enc$.encodeForm("workspaceId", this.options$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
@@ -275,6 +279,10 @@ export class Tags extends ClientSDK {
         const path$ = this.templateURLComponent("/tags")();
 
         const query$ = [
+            enc$.encodeForm("projectSlug", this.options$.projectSlug, {
+                explode: true,
+                charEncoding: "percent",
+            }),
             enc$.encodeForm("workspaceId", this.options$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
