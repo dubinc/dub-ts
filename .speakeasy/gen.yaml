@@ -12,10 +12,11 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
 typescript:
-  version: 0.20.2
+  version: 0.20.3
   additionalDependencies:
     dependencies: {}
     devDependencies:
+      '@types/node': ^20.12.7
       vitest: 1.4.0
     peerDependencies: {}
   author: Dub

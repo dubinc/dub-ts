@@ -66,6 +66,10 @@ export class Links extends ClientSDK {
         const query$ = [
             enc$.encodeForm("domain", payload$.domain, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("projectSlug", this.options$.projectSlug, {
+                explode: true,
+                charEncoding: "percent",
+            }),
             enc$.encodeForm("search", payload$.search, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("showArchived", payload$.showArchived, {
                 explode: true,
@@ -298,6 +302,10 @@ export class Links extends ClientSDK {
         const path$ = this.templateURLComponent("/links")();
 
         const query$ = [
+            enc$.encodeForm("projectSlug", this.options$.projectSlug, {
+                explode: true,
+                charEncoding: "percent",
+            }),
             enc$.encodeForm("workspaceId", this.options$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
@@ -514,6 +522,10 @@ export class Links extends ClientSDK {
         const query$ = [
             enc$.encodeForm("domain", payload$.domain, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("groupBy", payload$.groupBy, {
+                explode: true,
+                charEncoding: "percent",
+            }),
+            enc$.encodeForm("projectSlug", this.options$.projectSlug, {
                 explode: true,
                 charEncoding: "percent",
             }),
@@ -748,6 +760,10 @@ export class Links extends ClientSDK {
         const query$ = [
             enc$.encodeForm("domain", payload$.domain, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("key", payload$.key, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("projectSlug", this.options$.projectSlug, {
+                explode: true,
+                charEncoding: "percent",
+            }),
             enc$.encodeForm("workspaceId", this.options$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
@@ -977,6 +993,10 @@ export class Links extends ClientSDK {
         const path$ = this.templateURLComponent("/links/{linkId}")(pathParams$);
 
         const query$ = [
+            enc$.encodeForm("projectSlug", this.options$.projectSlug, {
+                explode: true,
+                charEncoding: "percent",
+            }),
             enc$.encodeForm("workspaceId", this.options$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
@@ -1203,6 +1223,10 @@ export class Links extends ClientSDK {
         const path$ = this.templateURLComponent("/links/{linkId}")(pathParams$);
 
         const query$ = [
+            enc$.encodeForm("projectSlug", this.options$.projectSlug, {
+                explode: true,
+                charEncoding: "percent",
+            }),
             enc$.encodeForm("workspaceId", this.options$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
@@ -1422,6 +1446,10 @@ export class Links extends ClientSDK {
         const path$ = this.templateURLComponent("/links/bulk")();
 
         const query$ = [
+            enc$.encodeForm("projectSlug", this.options$.projectSlug, {
+                explode: true,
+                charEncoding: "percent",
+            }),
             enc$.encodeForm("workspaceId", this.options$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",

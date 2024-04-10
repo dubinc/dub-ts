@@ -84,6 +84,10 @@ export class Analytics extends ClientSDK {
             }),
             enc$.encodeForm("key", payload$.key, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("os", payload$.os, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("projectSlug", this.options$.projectSlug, {
+                explode: true,
+                charEncoding: "percent",
+            }),
             enc$.encodeForm("referer", payload$.referer, {
                 explode: true,
                 charEncoding: "percent",
@@ -328,6 +332,10 @@ export class Analytics extends ClientSDK {
             }),
             enc$.encodeForm("key", payload$.key, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("os", payload$.os, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("projectSlug", this.options$.projectSlug, {
+                explode: true,
+                charEncoding: "percent",
+            }),
             enc$.encodeForm("referer", payload$.referer, {
                 explode: true,
                 charEncoding: "percent",
@@ -572,6 +580,10 @@ export class Analytics extends ClientSDK {
             }),
             enc$.encodeForm("key", payload$.key, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("os", payload$.os, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("projectSlug", this.options$.projectSlug, {
+                explode: true,
+                charEncoding: "percent",
+            }),
             enc$.encodeForm("referer", payload$.referer, {
                 explode: true,
                 charEncoding: "percent",
@@ -818,6 +830,10 @@ export class Analytics extends ClientSDK {
             }),
             enc$.encodeForm("key", payload$.key, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("os", payload$.os, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("projectSlug", this.options$.projectSlug, {
+                explode: true,
+                charEncoding: "percent",
+            }),
             enc$.encodeForm("referer", payload$.referer, {
                 explode: true,
                 charEncoding: "percent",
@@ -1064,6 +1080,10 @@ export class Analytics extends ClientSDK {
             }),
             enc$.encodeForm("key", payload$.key, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("os", payload$.os, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("projectSlug", this.options$.projectSlug, {
+                explode: true,
+                charEncoding: "percent",
+            }),
             enc$.encodeForm("referer", payload$.referer, {
                 explode: true,
                 charEncoding: "percent",
@@ -1310,6 +1330,10 @@ export class Analytics extends ClientSDK {
             }),
             enc$.encodeForm("key", payload$.key, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("os", payload$.os, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("projectSlug", this.options$.projectSlug, {
+                explode: true,
+                charEncoding: "percent",
+            }),
             enc$.encodeForm("referer", payload$.referer, {
                 explode: true,
                 charEncoding: "percent",
@@ -1556,6 +1580,10 @@ export class Analytics extends ClientSDK {
             }),
             enc$.encodeForm("key", payload$.key, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("os", payload$.os, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("projectSlug", this.options$.projectSlug, {
+                explode: true,
+                charEncoding: "percent",
+            }),
             enc$.encodeForm("referer", payload$.referer, {
                 explode: true,
                 charEncoding: "percent",
@@ -1802,6 +1830,10 @@ export class Analytics extends ClientSDK {
             }),
             enc$.encodeForm("key", payload$.key, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("os", payload$.os, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("projectSlug", this.options$.projectSlug, {
+                explode: true,
+                charEncoding: "percent",
+            }),
             enc$.encodeForm("referer", payload$.referer, {
                 explode: true,
                 charEncoding: "percent",
@@ -2048,6 +2080,10 @@ export class Analytics extends ClientSDK {
             }),
             enc$.encodeForm("key", payload$.key, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("os", payload$.os, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("projectSlug", this.options$.projectSlug, {
+                explode: true,
+                charEncoding: "percent",
+            }),
             enc$.encodeForm("referer", payload$.referer, {
                 explode: true,
                 charEncoding: "percent",
@@ -2292,6 +2328,10 @@ export class Analytics extends ClientSDK {
             }),
             enc$.encodeForm("key", payload$.key, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("os", payload$.os, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("projectSlug", this.options$.projectSlug, {
+                explode: true,
+                charEncoding: "percent",
+            }),
             enc$.encodeForm("referer", payload$.referer, {
                 explode: true,
                 charEncoding: "percent",
