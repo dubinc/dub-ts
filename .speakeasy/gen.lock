@@ -3,8 +3,8 @@ id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
   docChecksum: 3ef41873dee5fcca0b0407f423aa20bf
   docVersion: 0.0.1
-  speakeasyVersion: 1.246.0
-  generationVersion: 2.302.0
+  speakeasyVersion: 1.246.1
+  generationVersion: 2.302.1
   releaseVersion: 0.20.3
   configChecksum: f00e14281ccef6d45ad59080cff52693
   repoURL: https://github.com/dubinc/dub-node.git
