@@ -274,10 +274,6 @@ export enum GetBrowserAnalyticsQueryParamCountry {
 
 export type GetBrowserAnalyticsRequest = {
     /**
-     * The ID of the workspace the link belongs to.
-     */
-    workspaceId: string;
-    /**
      * The domain of the short link.
      */
     domain?: string | undefined;
@@ -351,7 +347,6 @@ export const GetBrowserAnalyticsQueryParamCountry$ = z.nativeEnum(
 /** @internal */
 export namespace GetBrowserAnalyticsRequest$ {
     export type Inbound = {
-        workspaceId: string;
         domain?: string | undefined;
         key?: string | undefined;
         interval?: GetBrowserAnalyticsQueryParamInterval | undefined;
@@ -368,7 +363,6 @@ export namespace GetBrowserAnalyticsRequest$ {
 
     export const inboundSchema: z.ZodType<GetBrowserAnalyticsRequest, z.ZodTypeDef, Inbound> = z
         .object({
-            workspaceId: z.string(),
             domain: z.string().optional(),
             key: z.string().optional(),
             interval: GetBrowserAnalyticsQueryParamInterval$.optional(),
@@ -384,7 +378,6 @@ export namespace GetBrowserAnalyticsRequest$ {
         })
         .transform((v) => {
             return {
-                workspaceId: v.workspaceId,
                 ...(v.domain === undefined ? null : { domain: v.domain }),
                 ...(v.key === undefined ? null : { key: v.key }),
                 ...(v.interval === undefined ? null : { interval: v.interval }),
@@ -401,7 +394,6 @@ export namespace GetBrowserAnalyticsRequest$ {
         });
 
     export type Outbound = {
-        workspaceId: string;
         domain?: string | undefined;
         key?: string | undefined;
         interval?: GetBrowserAnalyticsQueryParamInterval | undefined;
@@ -418,7 +410,6 @@ export namespace GetBrowserAnalyticsRequest$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetBrowserAnalyticsRequest> = z
         .object({
-            workspaceId: z.string(),
             domain: z.string().optional(),
             key: z.string().optional(),
             interval: GetBrowserAnalyticsQueryParamInterval$.optional(),
@@ -434,7 +425,6 @@ export namespace GetBrowserAnalyticsRequest$ {
         })
         .transform((v) => {
             return {
-                workspaceId: v.workspaceId,
                 ...(v.domain === undefined ? null : { domain: v.domain }),
                 ...(v.key === undefined ? null : { key: v.key }),
                 ...(v.interval === undefined ? null : { interval: v.interval }),

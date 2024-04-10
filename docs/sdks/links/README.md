@@ -3,15 +3,15 @@
 
 ### Available Operations
 
-* [getLinks](#getlinks) - Retrieve a list of links
-* [createLink](#createlink) - Create a new link
-* [getLinksCount](#getlinkscount) - Retrieve the number of links
-* [getLinkInfo](#getlinkinfo) - Retrieve a link
-* [editLink](#editlink) - Edit a link
-* [deleteLink](#deletelink) - Delete a link
-* [bulkCreateLinks](#bulkcreatelinks) - Bulk create links
+* [list](#list) - Retrieve a list of links
+* [create](#create) - Create a new link
+* [count](#count) - Retrieve the number of links
+* [get](#get) - Retrieve a link
+* [update](#update) - Edit a link
+* [delete](#delete) - Delete a link
+* [bulkCreate](#bulkcreate) - Bulk create links
 
-## getLinks
+## list
 
 Retrieve a list of links for the authenticated workspace. The list will be paginated and the provided query parameters allow filtering the returned links.
 
@@ -22,12 +22,14 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+    token: "<YOUR_BEARER_TOKEN_HERE>",
+    workspaceId: "<value>",
   });
 
-  const result = await sdk.links.getLinks({
-    workspaceId: "<value>",
-  tagIds: "<value>",
+  const result = await sdk.links.list({
+  tagIds:     [
+        "<value>",
+      ],
   });
 
   // Handle the result
@@ -51,20 +53,20 @@ run();
 **Promise<[components.LinkSchema[]](../../models/.md)>**
 ### Errors
 
-| Error Object                    | Status Code                     | Content Type                    |
-| ------------------------------- | ------------------------------- | ------------------------------- |
-| errors.FourHundred              | 400                             | application/json                |
-| errors.FourHundredAndOne        | 401                             | application/json                |
-| errors.FourHundredAndThree      | 403                             | application/json                |
-| errors.FourHundredAndFour       | 404                             | application/json                |
-| errors.FourHundredAndNine       | 409                             | application/json                |
-| errors.FourHundredAndTen        | 410                             | application/json                |
-| errors.FourHundredAndTwentyTwo  | 422                             | application/json                |
-| errors.FourHundredAndTwentyNine | 429                             | application/json                |
-| errors.FiveHundred              | 500                             | application/json                |
-| errors.SDKError                 | 4xx-5xx                         | */*                             |
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.BadRequest          | 400                        | application/json           |
+| errors.Unauthorized        | 401                        | application/json           |
+| errors.Forbidden           | 403                        | application/json           |
+| errors.NotFound            | 404                        | application/json           |
+| errors.Conflict            | 409                        | application/json           |
+| errors.InviteExpired       | 410                        | application/json           |
+| errors.UnprocessableEntity | 422                        | application/json           |
+| errors.RateLimitExceeded   | 429                        | application/json           |
+| errors.InternalServerError | 500                        | application/json           |
+| errors.SDKError            | 4xx-5xx                    | */*                        |
 
-## createLink
+## create
 
 Create a new link for the authenticated workspace.
 
@@ -75,18 +77,16 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+    token: "<YOUR_BEARER_TOKEN_HERE>",
+    workspaceId: "<value>",
   });
 
-  const result = await sdk.links.createLink({
-    workspaceId: "<value>",
-    requestBody: {
-      url: "https://first-marxism.net",
-      geo: {
-        "key": "<value>",
-      },
-    tagIds: "<value>",
+  const result = await sdk.links.create({
+    url: "http://limp-pastry.org",
+    geo: {
+      "key": "<value>",
     },
+  tagIds: "<value>",
   });
 
   // Handle the result
@@ -100,7 +100,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.CreateLinkRequest](../../models/operations/createlinkrequest.md)                                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.CreateLinkRequestBody](../../models/operations/createlinkrequestbody.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
@@ -110,20 +110,20 @@ run();
 **Promise<[components.LinkSchema](../../models/components/linkschema.md)>**
 ### Errors
 
-| Error Object                    | Status Code                     | Content Type                    |
-| ------------------------------- | ------------------------------- | ------------------------------- |
-| errors.FourHundred              | 400                             | application/json                |
-| errors.FourHundredAndOne        | 401                             | application/json                |
-| errors.FourHundredAndThree      | 403                             | application/json                |
-| errors.FourHundredAndFour       | 404                             | application/json                |
-| errors.FourHundredAndNine       | 409                             | application/json                |
-| errors.FourHundredAndTen        | 410                             | application/json                |
-| errors.FourHundredAndTwentyTwo  | 422                             | application/json                |
-| errors.FourHundredAndTwentyNine | 429                             | application/json                |
-| errors.FiveHundred              | 500                             | application/json                |
-| errors.SDKError                 | 4xx-5xx                         | */*                             |
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.BadRequest          | 400                        | application/json           |
+| errors.Unauthorized        | 401                        | application/json           |
+| errors.Forbidden           | 403                        | application/json           |
+| errors.NotFound            | 404                        | application/json           |
+| errors.Conflict            | 409                        | application/json           |
+| errors.InviteExpired       | 410                        | application/json           |
+| errors.UnprocessableEntity | 422                        | application/json           |
+| errors.RateLimitExceeded   | 429                        | application/json           |
+| errors.InternalServerError | 500                        | application/json           |
+| errors.SDKError            | 4xx-5xx                    | */*                        |
 
-## getLinksCount
+## count
 
 Retrieve the number of links for the authenticated workspace. The provided query parameters allow filtering the returned links.
 
@@ -131,19 +131,17 @@ Retrieve the number of links for the authenticated workspace. The provided query
 
 ```typescript
 import { Dub } from "dub";
-import { Two } from "dub/models/operations";
+import { One } from "dub/models/operations";
 
 async function run() {
   const sdk = new Dub({
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+    token: "<YOUR_BEARER_TOKEN_HERE>",
+    workspaceId: "<value>",
   });
 
-  const result = await sdk.links.getLinksCount({
-    workspaceId: "<value>",
-  tagIds:     [
-        "<value>",
-      ],
-  groupBy: Two.TagId,
+  const result = await sdk.links.count({
+  tagIds: "<value>",
+  groupBy: One.Domain,
   });
 
   // Handle the result
@@ -164,23 +162,23 @@ run();
 
 ### Response
 
-**Promise<[components.LinkSchema[]](../../models/.md)>**
+**Promise<[number](../../models/.md)>**
 ### Errors
 
-| Error Object                    | Status Code                     | Content Type                    |
-| ------------------------------- | ------------------------------- | ------------------------------- |
-| errors.FourHundred              | 400                             | application/json                |
-| errors.FourHundredAndOne        | 401                             | application/json                |
-| errors.FourHundredAndThree      | 403                             | application/json                |
-| errors.FourHundredAndFour       | 404                             | application/json                |
-| errors.FourHundredAndNine       | 409                             | application/json                |
-| errors.FourHundredAndTen        | 410                             | application/json                |
-| errors.FourHundredAndTwentyTwo  | 422                             | application/json                |
-| errors.FourHundredAndTwentyNine | 429                             | application/json                |
-| errors.FiveHundred              | 500                             | application/json                |
-| errors.SDKError                 | 4xx-5xx                         | */*                             |
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.BadRequest          | 400                        | application/json           |
+| errors.Unauthorized        | 401                        | application/json           |
+| errors.Forbidden           | 403                        | application/json           |
+| errors.NotFound            | 404                        | application/json           |
+| errors.Conflict            | 409                        | application/json           |
+| errors.InviteExpired       | 410                        | application/json           |
+| errors.UnprocessableEntity | 422                        | application/json           |
+| errors.RateLimitExceeded   | 429                        | application/json           |
+| errors.InternalServerError | 500                        | application/json           |
+| errors.SDKError            | 4xx-5xx                    | */*                        |
 
-## getLinkInfo
+## get
 
 Retrieve the info for a link from their domain and key.
 
@@ -191,12 +189,12 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+    token: "<YOUR_BEARER_TOKEN_HERE>",
+    workspaceId: "<value>",
   });
 
-  const result = await sdk.links.getLinkInfo({
-    workspaceId: "<value>",
-    domain: "harmonious-venti.org",
+  const result = await sdk.links.get({
+    domain: "ringed-blow.name",
     key: "<key>",
   });
 
@@ -221,20 +219,20 @@ run();
 **Promise<[components.LinkSchema](../../models/components/linkschema.md)>**
 ### Errors
 
-| Error Object                    | Status Code                     | Content Type                    |
-| ------------------------------- | ------------------------------- | ------------------------------- |
-| errors.FourHundred              | 400                             | application/json                |
-| errors.FourHundredAndOne        | 401                             | application/json                |
-| errors.FourHundredAndThree      | 403                             | application/json                |
-| errors.FourHundredAndFour       | 404                             | application/json                |
-| errors.FourHundredAndNine       | 409                             | application/json                |
-| errors.FourHundredAndTen        | 410                             | application/json                |
-| errors.FourHundredAndTwentyTwo  | 422                             | application/json                |
-| errors.FourHundredAndTwentyNine | 429                             | application/json                |
-| errors.FiveHundred              | 500                             | application/json                |
-| errors.SDKError                 | 4xx-5xx                         | */*                             |
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.BadRequest          | 400                        | application/json           |
+| errors.Unauthorized        | 401                        | application/json           |
+| errors.Forbidden           | 403                        | application/json           |
+| errors.NotFound            | 404                        | application/json           |
+| errors.Conflict            | 409                        | application/json           |
+| errors.InviteExpired       | 410                        | application/json           |
+| errors.UnprocessableEntity | 422                        | application/json           |
+| errors.RateLimitExceeded   | 429                        | application/json           |
+| errors.InternalServerError | 500                        | application/json           |
+| errors.SDKError            | 4xx-5xx                    | */*                        |
 
-## editLink
+## update
 
 Edit a link for the authenticated workspace.
 
@@ -245,20 +243,20 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+    token: "<YOUR_BEARER_TOKEN_HERE>",
+    workspaceId: "<value>",
   });
 
-  const result = await sdk.links.editLink({
-    linkId: "<value>",
-    workspaceId: "<value>",
-    requestBody: {
-      url: "https://fruitful-strategy.com",
-      geo: {
-        "key": "<value>",
-      },
-    tagIds: "<value>",
+  const linkId = "<value>";
+  const requestBody = {
+    url: "https://alarming-nondisclosure.com",
+    geo: {
+      "key": "<value>",
     },
-  });
+  tagIds: "<value>",
+  };
+  
+  const result = await sdk.links.update(linkId, requestBody);
 
   // Handle the result
   console.log(result)
@@ -271,7 +269,8 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.EditLinkRequest](../../models/operations/editlinkrequest.md)                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `linkId`                                                                                                                                                                       | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The id of the link to edit. You can get this via the `getLinkInfo` endpoint.                                                                                                   |
+| `requestBody`                                                                                                                                                                  | [operations.EditLinkRequestBody](../../models/operations/editlinkrequestbody.md)                                                                                               | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
@@ -281,20 +280,20 @@ run();
 **Promise<[components.LinkSchema](../../models/components/linkschema.md)>**
 ### Errors
 
-| Error Object                    | Status Code                     | Content Type                    |
-| ------------------------------- | ------------------------------- | ------------------------------- |
-| errors.FourHundred              | 400                             | application/json                |
-| errors.FourHundredAndOne        | 401                             | application/json                |
-| errors.FourHundredAndThree      | 403                             | application/json                |
-| errors.FourHundredAndFour       | 404                             | application/json                |
-| errors.FourHundredAndNine       | 409                             | application/json                |
-| errors.FourHundredAndTen        | 410                             | application/json                |
-| errors.FourHundredAndTwentyTwo  | 422                             | application/json                |
-| errors.FourHundredAndTwentyNine | 429                             | application/json                |
-| errors.FiveHundred              | 500                             | application/json                |
-| errors.SDKError                 | 4xx-5xx                         | */*                             |
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.BadRequest          | 400                        | application/json           |
+| errors.Unauthorized        | 401                        | application/json           |
+| errors.Forbidden           | 403                        | application/json           |
+| errors.NotFound            | 404                        | application/json           |
+| errors.Conflict            | 409                        | application/json           |
+| errors.InviteExpired       | 410                        | application/json           |
+| errors.UnprocessableEntity | 422                        | application/json           |
+| errors.RateLimitExceeded   | 429                        | application/json           |
+| errors.InternalServerError | 500                        | application/json           |
+| errors.SDKError            | 4xx-5xx                    | */*                        |
 
-## deleteLink
+## delete
 
 Delete a link for the authenticated workspace.
 
@@ -305,13 +304,13 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-  });
-
-  const result = await sdk.links.deleteLink({
-    linkId: "<value>",
+    token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
   });
+
+  const linkId = "<value>";
+  
+  const result = await sdk.links.delete(linkId);
 
   // Handle the result
   console.log(result)
@@ -324,30 +323,30 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.DeleteLinkRequest](../../models/operations/deletelinkrequest.md)                                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `linkId`                                                                                                                                                                       | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The id of the link to delete. You can get this via the `getLinkInfo` endpoint.                                                                                                 |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
 
-**Promise<[components.LinkSchema](../../models/components/linkschema.md)>**
+**Promise<[operations.DeleteLinkResponseBody](../../models/operations/deletelinkresponsebody.md)>**
 ### Errors
 
-| Error Object                    | Status Code                     | Content Type                    |
-| ------------------------------- | ------------------------------- | ------------------------------- |
-| errors.FourHundred              | 400                             | application/json                |
-| errors.FourHundredAndOne        | 401                             | application/json                |
-| errors.FourHundredAndThree      | 403                             | application/json                |
-| errors.FourHundredAndFour       | 404                             | application/json                |
-| errors.FourHundredAndNine       | 409                             | application/json                |
-| errors.FourHundredAndTen        | 410                             | application/json                |
-| errors.FourHundredAndTwentyTwo  | 422                             | application/json                |
-| errors.FourHundredAndTwentyNine | 429                             | application/json                |
-| errors.FiveHundred              | 500                             | application/json                |
-| errors.SDKError                 | 4xx-5xx                         | */*                             |
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.BadRequest          | 400                        | application/json           |
+| errors.Unauthorized        | 401                        | application/json           |
+| errors.Forbidden           | 403                        | application/json           |
+| errors.NotFound            | 404                        | application/json           |
+| errors.Conflict            | 409                        | application/json           |
+| errors.InviteExpired       | 410                        | application/json           |
+| errors.UnprocessableEntity | 422                        | application/json           |
+| errors.RateLimitExceeded   | 429                        | application/json           |
+| errors.InternalServerError | 500                        | application/json           |
+| errors.SDKError            | 4xx-5xx                    | */*                        |
 
-## bulkCreateLinks
+## bulkCreate
 
 Bulk create up to 100 links for the authenticated workspace.
 
@@ -358,21 +357,21 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+    token: "<YOUR_BEARER_TOKEN_HERE>",
+    workspaceId: "<value>",
   });
 
-  const result = await sdk.links.bulkCreateLinks({
-    workspaceId: "<value>",
-    requestBody: [
-      {
-        url: "https://impish-brow.info",
-        geo: {
-          "key": "<value>",
-        },
-      tagIds: "<value>",
+  const result = await sdk.links.bulkCreate([
+    {
+      url: "http://bad-sidecar.net",
+      geo: {
+        "key": "<value>",
       },
-    ],
-  });
+    tagIds:     [
+          "<value>",
+        ],
+    },
+  ]);
 
   // Handle the result
   console.log(result)
@@ -385,7 +384,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.BulkCreateLinksRequest](../../models/operations/bulkcreatelinksrequest.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.RequestBody[]](../../models/.md)                                                                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
@@ -395,15 +394,15 @@ run();
 **Promise<[components.LinkSchema[]](../../models/.md)>**
 ### Errors
 
-| Error Object                    | Status Code                     | Content Type                    |
-| ------------------------------- | ------------------------------- | ------------------------------- |
-| errors.FourHundred              | 400                             | application/json                |
-| errors.FourHundredAndOne        | 401                             | application/json                |
-| errors.FourHundredAndThree      | 403                             | application/json                |
-| errors.FourHundredAndFour       | 404                             | application/json                |
-| errors.FourHundredAndNine       | 409                             | application/json                |
-| errors.FourHundredAndTen        | 410                             | application/json                |
-| errors.FourHundredAndTwentyTwo  | 422                             | application/json                |
-| errors.FourHundredAndTwentyNine | 429                             | application/json                |
-| errors.FiveHundred              | 500                             | application/json                |
-| errors.SDKError                 | 4xx-5xx                         | */*                             |
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.BadRequest          | 400                        | application/json           |
+| errors.Unauthorized        | 401                        | application/json           |
+| errors.Forbidden           | 403                        | application/json           |
+| errors.NotFound            | 404                        | application/json           |
+| errors.Conflict            | 409                        | application/json           |
+| errors.InviteExpired       | 410                        | application/json           |
+| errors.UnprocessableEntity | 422                        | application/json           |
+| errors.RateLimitExceeded   | 429                        | application/json           |
+| errors.InternalServerError | 500                        | application/json           |
+| errors.SDKError            | 4xx-5xx                    | */*                        |

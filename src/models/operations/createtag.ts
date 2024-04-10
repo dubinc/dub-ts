@@ -28,14 +28,6 @@ export type CreateTagRequestBody = {
     color?: Color | undefined;
 };
 
-export type CreateTagRequest = {
-    /**
-     * The ID of the workspace to create the tag for.
-     */
-    workspaceId: string;
-    requestBody?: CreateTagRequestBody | undefined;
-};
-
 /** @internal */
 export const Color$ = z.nativeEnum(Color);
 
@@ -72,43 +64,6 @@ export namespace CreateTagRequestBody$ {
             return {
                 tag: v.tag,
                 ...(v.color === undefined ? null : { color: v.color }),
-            };
-        });
-}
-
-/** @internal */
-export namespace CreateTagRequest$ {
-    export type Inbound = {
-        workspaceId: string;
-        RequestBody?: CreateTagRequestBody$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CreateTagRequest, z.ZodTypeDef, Inbound> = z
-        .object({
-            workspaceId: z.string(),
-            RequestBody: z.lazy(() => CreateTagRequestBody$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return {
-                workspaceId: v.workspaceId,
-                ...(v.RequestBody === undefined ? null : { requestBody: v.RequestBody }),
-            };
-        });
-
-    export type Outbound = {
-        workspaceId: string;
-        RequestBody?: CreateTagRequestBody$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateTagRequest> = z
-        .object({
-            workspaceId: z.string(),
-            requestBody: z.lazy(() => CreateTagRequestBody$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return {
-                workspaceId: v.workspaceId,
-                ...(v.requestBody === undefined ? null : { RequestBody: v.requestBody }),
             };
         });
 }

@@ -12,7 +12,7 @@ import * as errors from "../models/errors";
 import * as operations from "../models/operations";
 import * as z from "zod";
 
-export enum GetQRCodeAcceptEnum {
+export enum GetAcceptEnum {
     applicationJson = "application/json",
     imagePng = "image/png",
 }
@@ -50,9 +50,9 @@ export class QRCodes extends ClientSDK {
      * @remarks
      * Retrieve a QR code for a link.
      */
-    async getQRCode(
+    async get(
         input: operations.GetQRCodeRequest,
-        options?: RequestOptions & { acceptHeaderOverride?: GetQRCodeAcceptEnum }
+        options?: RequestOptions & { acceptHeaderOverride?: GetAcceptEnum }
     ): Promise<string> {
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
@@ -90,17 +90,17 @@ export class QRCodes extends ClientSDK {
             .join("&");
 
         let security$;
-        if (typeof this.options$.bearerToken === "function") {
-            security$ = { bearerToken: await this.options$.bearerToken() };
-        } else if (this.options$.bearerToken) {
-            security$ = { bearerToken: this.options$.bearerToken };
+        if (typeof this.options$.token === "function") {
+            security$ = { token: await this.options$.token() };
+        } else if (this.options$.token) {
+            security$ = { token: this.options$.token };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "getQRCode",
             oAuth2Scopes: [],
-            securitySource: this.options$.bearerToken,
+            securitySource: this.options$.token,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -156,7 +156,7 @@ export class QRCodes extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundred$.inboundSchema.parse({
+                    return errors.BadRequest$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -169,7 +169,7 @@ export class QRCodes extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndOne$.inboundSchema.parse({
+                    return errors.Unauthorized$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -182,7 +182,7 @@ export class QRCodes extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndThree$.inboundSchema.parse({
+                    return errors.Forbidden$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -195,7 +195,7 @@ export class QRCodes extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndFour$.inboundSchema.parse({
+                    return errors.NotFound$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -208,7 +208,7 @@ export class QRCodes extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndNine$.inboundSchema.parse({
+                    return errors.Conflict$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -221,7 +221,7 @@ export class QRCodes extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTen$.inboundSchema.parse({
+                    return errors.InviteExpired$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -234,7 +234,7 @@ export class QRCodes extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTwentyTwo$.inboundSchema.parse({
+                    return errors.UnprocessableEntity$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -247,7 +247,7 @@ export class QRCodes extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTwentyNine$.inboundSchema.parse({
+                    return errors.RateLimitExceeded$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -260,7 +260,7 @@ export class QRCodes extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FiveHundred$.inboundSchema.parse({
+                    return errors.InternalServerError$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });

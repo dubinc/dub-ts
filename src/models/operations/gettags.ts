@@ -4,40 +4,15 @@
 
 import * as z from "zod";
 
-export type GetTagsRequest = {
-    /**
-     * The ID of the workspace to retrieve the tags for.
-     */
-    workspaceId: string;
-};
+export type GetTagsRequest = {};
 
 /** @internal */
 export namespace GetTagsRequest$ {
-    export type Inbound = {
-        workspaceId: string;
-    };
+    export type Inbound = {};
 
-    export const inboundSchema: z.ZodType<GetTagsRequest, z.ZodTypeDef, Inbound> = z
-        .object({
-            workspaceId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                workspaceId: v.workspaceId,
-            };
-        });
+    export const inboundSchema: z.ZodType<GetTagsRequest, z.ZodTypeDef, Inbound> = z.object({});
 
-    export type Outbound = {
-        workspaceId: string;
-    };
+    export type Outbound = {};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetTagsRequest> = z
-        .object({
-            workspaceId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                workspaceId: v.workspaceId,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetTagsRequest> = z.object({});
 }

@@ -274,10 +274,6 @@ export enum QueryParamCountry {
 
 export type GetTimeseriesAnalyticsRequest = {
     /**
-     * The ID of the workspace the link belongs to.
-     */
-    workspaceId: string;
-    /**
      * The domain of the short link.
      */
     domain?: string | undefined;
@@ -347,7 +343,6 @@ export const QueryParamCountry$ = z.nativeEnum(QueryParamCountry);
 /** @internal */
 export namespace GetTimeseriesAnalyticsRequest$ {
     export type Inbound = {
-        workspaceId: string;
         domain?: string | undefined;
         key?: string | undefined;
         interval?: QueryParamInterval | undefined;
@@ -364,7 +359,6 @@ export namespace GetTimeseriesAnalyticsRequest$ {
 
     export const inboundSchema: z.ZodType<GetTimeseriesAnalyticsRequest, z.ZodTypeDef, Inbound> = z
         .object({
-            workspaceId: z.string(),
             domain: z.string().optional(),
             key: z.string().optional(),
             interval: QueryParamInterval$.optional(),
@@ -380,7 +374,6 @@ export namespace GetTimeseriesAnalyticsRequest$ {
         })
         .transform((v) => {
             return {
-                workspaceId: v.workspaceId,
                 ...(v.domain === undefined ? null : { domain: v.domain }),
                 ...(v.key === undefined ? null : { key: v.key }),
                 ...(v.interval === undefined ? null : { interval: v.interval }),
@@ -397,7 +390,6 @@ export namespace GetTimeseriesAnalyticsRequest$ {
         });
 
     export type Outbound = {
-        workspaceId: string;
         domain?: string | undefined;
         key?: string | undefined;
         interval?: QueryParamInterval | undefined;
@@ -415,7 +407,6 @@ export namespace GetTimeseriesAnalyticsRequest$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetTimeseriesAnalyticsRequest> =
         z
             .object({
-                workspaceId: z.string(),
                 domain: z.string().optional(),
                 key: z.string().optional(),
                 interval: QueryParamInterval$.optional(),
@@ -431,7 +422,6 @@ export namespace GetTimeseriesAnalyticsRequest$ {
             })
             .transform((v) => {
                 return {
-                    workspaceId: v.workspaceId,
                     ...(v.domain === undefined ? null : { domain: v.domain }),
                     ...(v.key === undefined ? null : { key: v.key }),
                     ...(v.interval === undefined ? null : { interval: v.interval }),

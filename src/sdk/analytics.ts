@@ -45,7 +45,7 @@ export class Analytics extends ClientSDK {
      * @remarks
      * Retrieve the number of clicks for a link, a domain, or the authenticated workspace.
      */
-    async getClicksAnalytics(
+    async clicks(
         input: operations.GetClicksAnalyticsRequest,
         options?: RequestOptions
     ): Promise<number> {
@@ -90,7 +90,7 @@ export class Analytics extends ClientSDK {
             }),
             enc$.encodeForm("tagId", payload$.tagId, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("url", payload$.url, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("workspaceId", payload$.workspaceId, {
+            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
             }),
@@ -99,17 +99,17 @@ export class Analytics extends ClientSDK {
             .join("&");
 
         let security$;
-        if (typeof this.options$.bearerToken === "function") {
-            security$ = { bearerToken: await this.options$.bearerToken() };
-        } else if (this.options$.bearerToken) {
-            security$ = { bearerToken: this.options$.bearerToken };
+        if (typeof this.options$.token === "function") {
+            security$ = { token: await this.options$.token() };
+        } else if (this.options$.token) {
+            security$ = { token: this.options$.token };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "getClicksAnalytics",
             oAuth2Scopes: [],
-            securitySource: this.options$.bearerToken,
+            securitySource: this.options$.token,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -165,7 +165,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundred$.inboundSchema.parse({
+                    return errors.BadRequest$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -178,7 +178,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndOne$.inboundSchema.parse({
+                    return errors.Unauthorized$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -191,7 +191,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndThree$.inboundSchema.parse({
+                    return errors.Forbidden$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -204,7 +204,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndFour$.inboundSchema.parse({
+                    return errors.NotFound$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -217,7 +217,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndNine$.inboundSchema.parse({
+                    return errors.Conflict$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -230,7 +230,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTen$.inboundSchema.parse({
+                    return errors.InviteExpired$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -243,7 +243,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTwentyTwo$.inboundSchema.parse({
+                    return errors.UnprocessableEntity$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -256,7 +256,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTwentyNine$.inboundSchema.parse({
+                    return errors.RateLimitExceeded$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -269,7 +269,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FiveHundred$.inboundSchema.parse({
+                    return errors.InternalServerError$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -289,7 +289,7 @@ export class Analytics extends ClientSDK {
      * @remarks
      * Retrieve the number of clicks for a link, a domain, or the authenticated workspace over a period of time.
      */
-    async getTimeseriesAnalytics(
+    async timeseries(
         input: operations.GetTimeseriesAnalyticsRequest,
         options?: RequestOptions
     ): Promise<Array<operations.ResponseBody>> {
@@ -334,7 +334,7 @@ export class Analytics extends ClientSDK {
             }),
             enc$.encodeForm("tagId", payload$.tagId, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("url", payload$.url, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("workspaceId", payload$.workspaceId, {
+            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
             }),
@@ -343,17 +343,17 @@ export class Analytics extends ClientSDK {
             .join("&");
 
         let security$;
-        if (typeof this.options$.bearerToken === "function") {
-            security$ = { bearerToken: await this.options$.bearerToken() };
-        } else if (this.options$.bearerToken) {
-            security$ = { bearerToken: this.options$.bearerToken };
+        if (typeof this.options$.token === "function") {
+            security$ = { token: await this.options$.token() };
+        } else if (this.options$.token) {
+            security$ = { token: this.options$.token };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "getTimeseriesAnalytics",
             oAuth2Scopes: [],
-            securitySource: this.options$.bearerToken,
+            securitySource: this.options$.token,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -409,7 +409,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundred$.inboundSchema.parse({
+                    return errors.BadRequest$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -422,7 +422,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndOne$.inboundSchema.parse({
+                    return errors.Unauthorized$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -435,7 +435,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndThree$.inboundSchema.parse({
+                    return errors.Forbidden$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -448,7 +448,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndFour$.inboundSchema.parse({
+                    return errors.NotFound$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -461,7 +461,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndNine$.inboundSchema.parse({
+                    return errors.Conflict$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -474,7 +474,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTen$.inboundSchema.parse({
+                    return errors.InviteExpired$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -487,7 +487,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTwentyTwo$.inboundSchema.parse({
+                    return errors.UnprocessableEntity$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -500,7 +500,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTwentyNine$.inboundSchema.parse({
+                    return errors.RateLimitExceeded$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -513,7 +513,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FiveHundred$.inboundSchema.parse({
+                    return errors.InternalServerError$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -533,7 +533,7 @@ export class Analytics extends ClientSDK {
      * @remarks
      * Retrieve the top countries by number of clicks for a link, a domain, or the authenticated workspace.
      */
-    async getCountryAnalytics(
+    async countries(
         input: operations.GetCountryAnalyticsRequest,
         options?: RequestOptions
     ): Promise<Array<operations.GetCountryAnalyticsResponseBody>> {
@@ -578,7 +578,7 @@ export class Analytics extends ClientSDK {
             }),
             enc$.encodeForm("tagId", payload$.tagId, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("url", payload$.url, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("workspaceId", payload$.workspaceId, {
+            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
             }),
@@ -587,17 +587,17 @@ export class Analytics extends ClientSDK {
             .join("&");
 
         let security$;
-        if (typeof this.options$.bearerToken === "function") {
-            security$ = { bearerToken: await this.options$.bearerToken() };
-        } else if (this.options$.bearerToken) {
-            security$ = { bearerToken: this.options$.bearerToken };
+        if (typeof this.options$.token === "function") {
+            security$ = { token: await this.options$.token() };
+        } else if (this.options$.token) {
+            security$ = { token: this.options$.token };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "getCountryAnalytics",
             oAuth2Scopes: [],
-            securitySource: this.options$.bearerToken,
+            securitySource: this.options$.token,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -655,7 +655,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundred$.inboundSchema.parse({
+                    return errors.BadRequest$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -668,7 +668,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndOne$.inboundSchema.parse({
+                    return errors.Unauthorized$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -681,7 +681,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndThree$.inboundSchema.parse({
+                    return errors.Forbidden$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -694,7 +694,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndFour$.inboundSchema.parse({
+                    return errors.NotFound$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -707,7 +707,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndNine$.inboundSchema.parse({
+                    return errors.Conflict$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -720,7 +720,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTen$.inboundSchema.parse({
+                    return errors.InviteExpired$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -733,7 +733,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTwentyTwo$.inboundSchema.parse({
+                    return errors.UnprocessableEntity$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -746,7 +746,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTwentyNine$.inboundSchema.parse({
+                    return errors.RateLimitExceeded$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -759,7 +759,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FiveHundred$.inboundSchema.parse({
+                    return errors.InternalServerError$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -779,7 +779,7 @@ export class Analytics extends ClientSDK {
      * @remarks
      * Retrieve the top countries by number of clicks for a link, a domain, or the authenticated workspace.
      */
-    async getCityAnalytics(
+    async cities(
         input: operations.GetCityAnalyticsRequest,
         options?: RequestOptions
     ): Promise<Array<operations.GetCityAnalyticsResponseBody>> {
@@ -824,7 +824,7 @@ export class Analytics extends ClientSDK {
             }),
             enc$.encodeForm("tagId", payload$.tagId, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("url", payload$.url, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("workspaceId", payload$.workspaceId, {
+            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
             }),
@@ -833,17 +833,17 @@ export class Analytics extends ClientSDK {
             .join("&");
 
         let security$;
-        if (typeof this.options$.bearerToken === "function") {
-            security$ = { bearerToken: await this.options$.bearerToken() };
-        } else if (this.options$.bearerToken) {
-            security$ = { bearerToken: this.options$.bearerToken };
+        if (typeof this.options$.token === "function") {
+            security$ = { token: await this.options$.token() };
+        } else if (this.options$.token) {
+            security$ = { token: this.options$.token };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "getCityAnalytics",
             oAuth2Scopes: [],
-            securitySource: this.options$.bearerToken,
+            securitySource: this.options$.token,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -901,7 +901,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundred$.inboundSchema.parse({
+                    return errors.BadRequest$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -914,7 +914,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndOne$.inboundSchema.parse({
+                    return errors.Unauthorized$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -927,7 +927,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndThree$.inboundSchema.parse({
+                    return errors.Forbidden$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -940,7 +940,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndFour$.inboundSchema.parse({
+                    return errors.NotFound$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -953,7 +953,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndNine$.inboundSchema.parse({
+                    return errors.Conflict$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -966,7 +966,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTen$.inboundSchema.parse({
+                    return errors.InviteExpired$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -979,7 +979,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTwentyTwo$.inboundSchema.parse({
+                    return errors.UnprocessableEntity$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -992,7 +992,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTwentyNine$.inboundSchema.parse({
+                    return errors.RateLimitExceeded$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1005,7 +1005,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FiveHundred$.inboundSchema.parse({
+                    return errors.InternalServerError$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1025,7 +1025,7 @@ export class Analytics extends ClientSDK {
      * @remarks
      * Retrieve the top devices by number of clicks for a link, a domain, or the authenticated workspace.
      */
-    async getDeviceAnalytics(
+    async devices(
         input: operations.GetDeviceAnalyticsRequest,
         options?: RequestOptions
     ): Promise<Array<operations.GetDeviceAnalyticsResponseBody>> {
@@ -1070,7 +1070,7 @@ export class Analytics extends ClientSDK {
             }),
             enc$.encodeForm("tagId", payload$.tagId, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("url", payload$.url, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("workspaceId", payload$.workspaceId, {
+            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
             }),
@@ -1079,17 +1079,17 @@ export class Analytics extends ClientSDK {
             .join("&");
 
         let security$;
-        if (typeof this.options$.bearerToken === "function") {
-            security$ = { bearerToken: await this.options$.bearerToken() };
-        } else if (this.options$.bearerToken) {
-            security$ = { bearerToken: this.options$.bearerToken };
+        if (typeof this.options$.token === "function") {
+            security$ = { token: await this.options$.token() };
+        } else if (this.options$.token) {
+            security$ = { token: this.options$.token };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "getDeviceAnalytics",
             oAuth2Scopes: [],
-            securitySource: this.options$.bearerToken,
+            securitySource: this.options$.token,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -1147,7 +1147,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundred$.inboundSchema.parse({
+                    return errors.BadRequest$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1160,7 +1160,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndOne$.inboundSchema.parse({
+                    return errors.Unauthorized$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1173,7 +1173,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndThree$.inboundSchema.parse({
+                    return errors.Forbidden$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1186,7 +1186,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndFour$.inboundSchema.parse({
+                    return errors.NotFound$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1199,7 +1199,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndNine$.inboundSchema.parse({
+                    return errors.Conflict$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1212,7 +1212,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTen$.inboundSchema.parse({
+                    return errors.InviteExpired$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1225,7 +1225,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTwentyTwo$.inboundSchema.parse({
+                    return errors.UnprocessableEntity$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1238,7 +1238,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTwentyNine$.inboundSchema.parse({
+                    return errors.RateLimitExceeded$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1251,7 +1251,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FiveHundred$.inboundSchema.parse({
+                    return errors.InternalServerError$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1271,7 +1271,7 @@ export class Analytics extends ClientSDK {
      * @remarks
      * Retrieve the top browsers by number of clicks for a link, a domain, or the authenticated workspace.
      */
-    async getBrowserAnalytics(
+    async browsers(
         input: operations.GetBrowserAnalyticsRequest,
         options?: RequestOptions
     ): Promise<Array<operations.GetBrowserAnalyticsResponseBody>> {
@@ -1316,7 +1316,7 @@ export class Analytics extends ClientSDK {
             }),
             enc$.encodeForm("tagId", payload$.tagId, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("url", payload$.url, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("workspaceId", payload$.workspaceId, {
+            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
             }),
@@ -1325,17 +1325,17 @@ export class Analytics extends ClientSDK {
             .join("&");
 
         let security$;
-        if (typeof this.options$.bearerToken === "function") {
-            security$ = { bearerToken: await this.options$.bearerToken() };
-        } else if (this.options$.bearerToken) {
-            security$ = { bearerToken: this.options$.bearerToken };
+        if (typeof this.options$.token === "function") {
+            security$ = { token: await this.options$.token() };
+        } else if (this.options$.token) {
+            security$ = { token: this.options$.token };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "getBrowserAnalytics",
             oAuth2Scopes: [],
-            securitySource: this.options$.bearerToken,
+            securitySource: this.options$.token,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -1393,7 +1393,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundred$.inboundSchema.parse({
+                    return errors.BadRequest$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1406,7 +1406,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndOne$.inboundSchema.parse({
+                    return errors.Unauthorized$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1419,7 +1419,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndThree$.inboundSchema.parse({
+                    return errors.Forbidden$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1432,7 +1432,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndFour$.inboundSchema.parse({
+                    return errors.NotFound$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1445,7 +1445,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndNine$.inboundSchema.parse({
+                    return errors.Conflict$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1458,7 +1458,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTen$.inboundSchema.parse({
+                    return errors.InviteExpired$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1471,7 +1471,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTwentyTwo$.inboundSchema.parse({
+                    return errors.UnprocessableEntity$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1484,7 +1484,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTwentyNine$.inboundSchema.parse({
+                    return errors.RateLimitExceeded$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1497,7 +1497,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FiveHundred$.inboundSchema.parse({
+                    return errors.InternalServerError$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1517,7 +1517,7 @@ export class Analytics extends ClientSDK {
      * @remarks
      * Retrieve the top OS by number of clicks for a link, a domain, or the authenticated workspace.
      */
-    async getOSAnalytics(
+    async os(
         input: operations.GetOSAnalyticsRequest,
         options?: RequestOptions
     ): Promise<Array<operations.GetOSAnalyticsResponseBody>> {
@@ -1562,7 +1562,7 @@ export class Analytics extends ClientSDK {
             }),
             enc$.encodeForm("tagId", payload$.tagId, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("url", payload$.url, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("workspaceId", payload$.workspaceId, {
+            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
             }),
@@ -1571,17 +1571,17 @@ export class Analytics extends ClientSDK {
             .join("&");
 
         let security$;
-        if (typeof this.options$.bearerToken === "function") {
-            security$ = { bearerToken: await this.options$.bearerToken() };
-        } else if (this.options$.bearerToken) {
-            security$ = { bearerToken: this.options$.bearerToken };
+        if (typeof this.options$.token === "function") {
+            security$ = { token: await this.options$.token() };
+        } else if (this.options$.token) {
+            security$ = { token: this.options$.token };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "getOSAnalytics",
             oAuth2Scopes: [],
-            securitySource: this.options$.bearerToken,
+            securitySource: this.options$.token,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -1639,7 +1639,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundred$.inboundSchema.parse({
+                    return errors.BadRequest$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1652,7 +1652,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndOne$.inboundSchema.parse({
+                    return errors.Unauthorized$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1665,7 +1665,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndThree$.inboundSchema.parse({
+                    return errors.Forbidden$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1678,7 +1678,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndFour$.inboundSchema.parse({
+                    return errors.NotFound$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1691,7 +1691,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndNine$.inboundSchema.parse({
+                    return errors.Conflict$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1704,7 +1704,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTen$.inboundSchema.parse({
+                    return errors.InviteExpired$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1717,7 +1717,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTwentyTwo$.inboundSchema.parse({
+                    return errors.UnprocessableEntity$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1730,7 +1730,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTwentyNine$.inboundSchema.parse({
+                    return errors.RateLimitExceeded$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1743,7 +1743,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FiveHundred$.inboundSchema.parse({
+                    return errors.InternalServerError$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1763,7 +1763,7 @@ export class Analytics extends ClientSDK {
      * @remarks
      * Retrieve the top referers by number of clicks for a link, a domain, or the authenticated workspace.
      */
-    async getRefererAnalytics(
+    async referers(
         input: operations.GetRefererAnalyticsRequest,
         options?: RequestOptions
     ): Promise<Array<operations.GetRefererAnalyticsResponseBody>> {
@@ -1808,7 +1808,7 @@ export class Analytics extends ClientSDK {
             }),
             enc$.encodeForm("tagId", payload$.tagId, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("url", payload$.url, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("workspaceId", payload$.workspaceId, {
+            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
             }),
@@ -1817,17 +1817,17 @@ export class Analytics extends ClientSDK {
             .join("&");
 
         let security$;
-        if (typeof this.options$.bearerToken === "function") {
-            security$ = { bearerToken: await this.options$.bearerToken() };
-        } else if (this.options$.bearerToken) {
-            security$ = { bearerToken: this.options$.bearerToken };
+        if (typeof this.options$.token === "function") {
+            security$ = { token: await this.options$.token() };
+        } else if (this.options$.token) {
+            security$ = { token: this.options$.token };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "getRefererAnalytics",
             oAuth2Scopes: [],
-            securitySource: this.options$.bearerToken,
+            securitySource: this.options$.token,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -1885,7 +1885,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundred$.inboundSchema.parse({
+                    return errors.BadRequest$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1898,7 +1898,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndOne$.inboundSchema.parse({
+                    return errors.Unauthorized$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1911,7 +1911,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndThree$.inboundSchema.parse({
+                    return errors.Forbidden$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1924,7 +1924,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndFour$.inboundSchema.parse({
+                    return errors.NotFound$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1937,7 +1937,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndNine$.inboundSchema.parse({
+                    return errors.Conflict$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1950,7 +1950,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTen$.inboundSchema.parse({
+                    return errors.InviteExpired$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1963,7 +1963,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTwentyTwo$.inboundSchema.parse({
+                    return errors.UnprocessableEntity$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1976,7 +1976,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTwentyNine$.inboundSchema.parse({
+                    return errors.RateLimitExceeded$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -1989,7 +1989,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FiveHundred$.inboundSchema.parse({
+                    return errors.InternalServerError$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -2009,7 +2009,7 @@ export class Analytics extends ClientSDK {
      * @remarks
      * Retrieve the top links by number of clicks for a domain or the authenticated workspace.
      */
-    async getTopLinks(
+    async topLinks(
         input: operations.GetTopLinksRequest,
         options?: RequestOptions
     ): Promise<Array<operations.GetTopLinksResponseBody>> {
@@ -2054,7 +2054,7 @@ export class Analytics extends ClientSDK {
             }),
             enc$.encodeForm("tagId", payload$.tagId, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("url", payload$.url, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("workspaceId", payload$.workspaceId, {
+            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
             }),
@@ -2063,17 +2063,17 @@ export class Analytics extends ClientSDK {
             .join("&");
 
         let security$;
-        if (typeof this.options$.bearerToken === "function") {
-            security$ = { bearerToken: await this.options$.bearerToken() };
-        } else if (this.options$.bearerToken) {
-            security$ = { bearerToken: this.options$.bearerToken };
+        if (typeof this.options$.token === "function") {
+            security$ = { token: await this.options$.token() };
+        } else if (this.options$.token) {
+            security$ = { token: this.options$.token };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "getTopLinks",
             oAuth2Scopes: [],
-            securitySource: this.options$.bearerToken,
+            securitySource: this.options$.token,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -2129,7 +2129,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundred$.inboundSchema.parse({
+                    return errors.BadRequest$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -2142,7 +2142,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndOne$.inboundSchema.parse({
+                    return errors.Unauthorized$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -2155,7 +2155,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndThree$.inboundSchema.parse({
+                    return errors.Forbidden$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -2168,7 +2168,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndFour$.inboundSchema.parse({
+                    return errors.NotFound$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -2181,7 +2181,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndNine$.inboundSchema.parse({
+                    return errors.Conflict$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -2194,7 +2194,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTen$.inboundSchema.parse({
+                    return errors.InviteExpired$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -2207,7 +2207,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTwentyTwo$.inboundSchema.parse({
+                    return errors.UnprocessableEntity$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -2220,7 +2220,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTwentyNine$.inboundSchema.parse({
+                    return errors.RateLimitExceeded$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -2233,7 +2233,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FiveHundred$.inboundSchema.parse({
+                    return errors.InternalServerError$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -2253,7 +2253,7 @@ export class Analytics extends ClientSDK {
      * @remarks
      * Retrieve the top URLs by number of clicks for a given short link.
      */
-    async getTopURLs(
+    async topUrls(
         input: operations.GetTopURLsRequest,
         options?: RequestOptions
     ): Promise<Array<operations.GetTopURLsResponseBody>> {
@@ -2298,7 +2298,7 @@ export class Analytics extends ClientSDK {
             }),
             enc$.encodeForm("tagId", payload$.tagId, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("url", payload$.url, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("workspaceId", payload$.workspaceId, {
+            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
             }),
@@ -2307,17 +2307,17 @@ export class Analytics extends ClientSDK {
             .join("&");
 
         let security$;
-        if (typeof this.options$.bearerToken === "function") {
-            security$ = { bearerToken: await this.options$.bearerToken() };
-        } else if (this.options$.bearerToken) {
-            security$ = { bearerToken: this.options$.bearerToken };
+        if (typeof this.options$.token === "function") {
+            security$ = { token: await this.options$.token() };
+        } else if (this.options$.token) {
+            security$ = { token: this.options$.token };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "getTopURLs",
             oAuth2Scopes: [],
-            securitySource: this.options$.bearerToken,
+            securitySource: this.options$.token,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -2373,7 +2373,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundred$.inboundSchema.parse({
+                    return errors.BadRequest$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -2386,7 +2386,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndOne$.inboundSchema.parse({
+                    return errors.Unauthorized$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -2399,7 +2399,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndThree$.inboundSchema.parse({
+                    return errors.Forbidden$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -2412,7 +2412,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndFour$.inboundSchema.parse({
+                    return errors.NotFound$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -2425,7 +2425,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndNine$.inboundSchema.parse({
+                    return errors.Conflict$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -2438,7 +2438,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTen$.inboundSchema.parse({
+                    return errors.InviteExpired$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -2451,7 +2451,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTwentyTwo$.inboundSchema.parse({
+                    return errors.UnprocessableEntity$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -2464,7 +2464,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTwentyNine$.inboundSchema.parse({
+                    return errors.RateLimitExceeded$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -2477,7 +2477,7 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FiveHundred$.inboundSchema.parse({
+                    return errors.InternalServerError$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
