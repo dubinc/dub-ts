@@ -24,6 +24,11 @@ export type SDKOptions = {
      */
     workspaceId?: string;
 
+    /**
+     * Allows setting the projectSlug parameter for all supported operations
+     */
+    projectSlug?: string | undefined;
+
     httpClient?: HTTPClient;
     /**
      * Allows overriding the default server used by the SDK
@@ -59,7 +64,7 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 export const SDK_METADATA = Object.freeze({
     language: "typescript",
     openapiDocVersion: "0.0.1",
-    sdkVersion: "0.20.1",
-    genVersion: "2.301.3",
-    userAgent: "speakeasy-sdk/typescript 0.20.1 2.301.3 0.0.1 dub",
+    sdkVersion: "0.20.2",
+    genVersion: "2.302.0",
+    userAgent: "speakeasy-sdk/typescript 0.20.2 2.302.0 0.0.1 dub",
 });

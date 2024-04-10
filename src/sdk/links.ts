@@ -1402,7 +1402,7 @@ export class Links extends ClientSDK {
      * @remarks
      * Bulk create up to 100 links for the authenticated workspace.
      */
-    async bulkCreate(
+    async createMany(
         input: Array<operations.RequestBody> | undefined,
         options?: RequestOptions
     ): Promise<Array<components.LinkSchema>> {
