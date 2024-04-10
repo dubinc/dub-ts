@@ -9,7 +9,7 @@
 * [get](#get) - Retrieve a link
 * [update](#update) - Edit a link
 * [delete](#delete) - Delete a link
-* [bulkCreate](#bulkcreate) - Bulk create links
+* [createMany](#createmany) - Bulk create links
 
 ## list
 
@@ -24,6 +24,7 @@ async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
+    projectSlug: "<value>",
   });
 
   const result = await sdk.links.list({
@@ -79,6 +80,7 @@ async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
+    projectSlug: "<value>",
   });
 
   const result = await sdk.links.create({
@@ -137,6 +139,7 @@ async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
+    projectSlug: "<value>",
   });
 
   const result = await sdk.links.count({
@@ -191,6 +194,7 @@ async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
+    projectSlug: "<value>",
   });
 
   const result = await sdk.links.get({
@@ -245,6 +249,7 @@ async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
+    projectSlug: "<value>",
   });
 
   const linkId = "<value>";
@@ -306,6 +311,7 @@ async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
+    projectSlug: "<value>",
   });
 
   const linkId = "<value>";
@@ -346,7 +352,7 @@ run();
 | errors.InternalServerError | 500                        | application/json           |
 | errors.SDKError            | 4xx-5xx                    | */*                        |
 
-## bulkCreate
+## createMany
 
 Bulk create up to 100 links for the authenticated workspace.
 
@@ -359,11 +365,12 @@ async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
+    projectSlug: "<value>",
   });
 
-  const result = await sdk.links.bulkCreate([
+  const result = await sdk.links.createMany([
     {
-      url: "http://bad-sidecar.net",
+      url: "https://positive-plane.info",
       geo: {
         "key": "<value>",
       },

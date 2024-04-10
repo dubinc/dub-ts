@@ -41,6 +41,7 @@ async function run() {
     const sdk = new Dub({
         token: "<YOUR_BEARER_TOKEN_HERE>",
         workspaceId: "<value>",
+        projectSlug: "<value>",
     });
 
     const result = await sdk.links.list({
@@ -67,7 +68,7 @@ run();
 * [get](docs/sdks/links/README.md#get) - Retrieve a link
 * [update](docs/sdks/links/README.md#update) - Edit a link
 * [delete](docs/sdks/links/README.md#delete) - Delete a link
-* [bulkCreate](docs/sdks/links/README.md#bulkcreate) - Bulk create links
+* [createMany](docs/sdks/links/README.md#createmany) - Bulk create links
 
 ### [qrCodes](docs/sdks/qrcodes/README.md)
 
@@ -127,6 +128,7 @@ async function run() {
     const sdk = new Dub({
         token: "<YOUR_BEARER_TOKEN_HERE>",
         workspaceId: "<value>",
+        projectSlug: "<value>",
     });
 
     let result;
@@ -213,6 +215,7 @@ async function run() {
         serverIdx: 0,
         token: "<YOUR_BEARER_TOKEN_HERE>",
         workspaceId: "<value>",
+        projectSlug: "<value>",
     });
 
     const result = await sdk.links.list({
@@ -240,6 +243,7 @@ async function run() {
         serverURL: "https://api.dub.co",
         token: "<YOUR_BEARER_TOKEN_HERE>",
         workspaceId: "<value>",
+        projectSlug: "<value>",
     });
 
     const result = await sdk.links.list({
@@ -323,6 +327,7 @@ async function run() {
     const sdk = new Dub({
         token: "<YOUR_BEARER_TOKEN_HERE>",
         workspaceId: "<value>",
+        projectSlug: "<value>",
     });
 
     const result = await sdk.links.list({

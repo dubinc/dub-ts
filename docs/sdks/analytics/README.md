@@ -27,6 +27,7 @@ async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
+    projectSlug: "<value>",
   });
 
   const result = await sdk.analytics.clicks({});
@@ -78,6 +79,7 @@ async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
+    projectSlug: "<value>",
   });
 
   const result = await sdk.analytics.timeseries({});
@@ -129,6 +131,7 @@ async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
+    projectSlug: "<value>",
   });
 
   const result = await sdk.analytics.countries({});
@@ -180,6 +183,7 @@ async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
+    projectSlug: "<value>",
   });
 
   const result = await sdk.analytics.cities({});
@@ -231,6 +235,7 @@ async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
+    projectSlug: "<value>",
   });
 
   const result = await sdk.analytics.devices({});
@@ -282,6 +287,7 @@ async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
+    projectSlug: "<value>",
   });
 
   const result = await sdk.analytics.browsers({});
@@ -333,6 +339,7 @@ async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
+    projectSlug: "<value>",
   });
 
   const result = await sdk.analytics.os({});
@@ -384,6 +391,7 @@ async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
+    projectSlug: "<value>",
   });
 
   const result = await sdk.analytics.referers({});
@@ -435,6 +443,7 @@ async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
+    projectSlug: "<value>",
   });
 
   const result = await sdk.analytics.topLinks({});
@@ -486,6 +495,7 @@ async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
+    projectSlug: "<value>",
   });
 
   const result = await sdk.analytics.topUrls({});
