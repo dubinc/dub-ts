@@ -6,7 +6,7 @@ const hasOwn = Object.prototype.hasOwnProperty;
 
 export function pathToFunc(
   pathPattern: string,
-  options?: { charEncoding?: "percent" | "none" },
+  options?: { charEncoding?: 'percent' | 'none' },
 ): (params?: Record<string, string | number>) => string {
   const paramRE = /\{([a-zA-Z0-9_]+?)\}/g;
 
@@ -17,15 +17,11 @@ export function pathToFunc(
       }
 
       const value = params[placeholder];
-      if (typeof value !== "string" && typeof value !== "number") {
-        throw new Error(
-          `Parameter '${placeholder}' must be a string or number`,
-        );
+      if (typeof value !== 'string' && typeof value !== 'number') {
+        throw new Error(`Parameter '${placeholder}' must be a string or number`);
       }
 
-      return options?.charEncoding === "percent"
-        ? encodeURIComponent(`${value}`)
-        : `${value}`;
+      return options?.charEncoding === 'percent' ? encodeURIComponent(`${value}`) : `${value}`;
     });
   };
 }

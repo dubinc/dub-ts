@@ -17,9 +17,9 @@ const defaultBackoff: BackoffStrategy = {
 };
 
 export type RetryConfig =
-  | { strategy: "none" }
+  | { strategy: 'none' }
   | {
-      strategy: "backoff";
+      strategy: 'backoff';
       backoff?: BackoffStrategy;
       retryConnectionErrors?: boolean;
     };
@@ -28,7 +28,7 @@ class PermanentError extends Error {
   inner: unknown;
 
   constructor(inner: unknown) {
-    super("Permanent error");
+    super('Permanent error');
     this.inner = inner;
 
     Object.setPrototypeOf(this, PermanentError.prototype);
@@ -39,7 +39,7 @@ class TemporaryError extends Error {
   res: Response;
 
   constructor(res: Response) {
-    super("Temporary error");
+    super('Temporary error');
     this.res = res;
 
     Object.setPrototypeOf(this, TemporaryError.prototype);
@@ -54,7 +54,7 @@ export async function retry(
   },
 ): Promise<Response> {
   switch (options.config.strategy) {
-    case "backoff":
+    case 'backoff':
       return retryBackoff(
         wrapFetcher(fetchFn, {
           statusCodes: options.statusCodes,
@@ -87,10 +87,7 @@ function wrapFetcher(
         throw err;
       }
 
-      if (
-        options.retryConnectionErrors &&
-        (isTimeoutError(err) || isConnectionError(err))
-      ) {
+      if (options.retryConnectionErrors && (isTimeoutError(err) || isConnectionError(err))) {
         throw err;
       }
 
@@ -100,47 +97,39 @@ function wrapFetcher(
 }
 
 function isConnectionError(err: unknown) {
-  if (typeof err !== "object" || err == null) {
+  if (typeof err !== 'object' || err == null) {
     return false;
   }
 
   // Covers fetch in Deno as well
-  const isBrowserErr =
-    err instanceof TypeError &&
-    err.message.toLowerCase().startsWith("failed to fetch");
+  const isBrowserErr = err instanceof TypeError && err.message.toLowerCase().startsWith('failed to fetch');
 
-  const isNodeErr =
-    err instanceof TypeError &&
-    err.message.toLowerCase().startsWith("fetch failed");
+  const isNodeErr = err instanceof TypeError && err.message.toLowerCase().startsWith('fetch failed');
 
-  const isBunErr = "name" in err && err.name === "ConnectionError";
+  const isBunErr = 'name' in err && err.name === 'ConnectionError';
 
   const isGenericErr =
-    "code" in err &&
-    typeof err.code === "string" &&
-    err.code.toLowerCase() === "econnreset";
+    'code' in err && typeof err.code === 'string' && err.code.toLowerCase() === 'econnreset';
 
   return isBrowserErr || isNodeErr || isGenericErr || isBunErr;
 }
 
 function isTimeoutError(err: unknown) {
-  if (typeof err !== "object" || err == null) {
+  if (typeof err !== 'object' || err == null) {
     return false;
   }
 
   // Fetch in browser, Node.js, Bun, Deno
-  const isNative = "name" in err && err.name === "TimeoutError";
+  const isNative = 'name' in err && err.name === 'TimeoutError';
 
   // Node.js HTTP client and Axios
   const isGenericErr =
-    "code" in err &&
-    typeof err.code === "string" &&
-    err.code.toLowerCase() === "econnaborted";
+    'code' in err && typeof err.code === 'string' && err.code.toLowerCase() === 'econnaborted';
 
   return isNative || isGenericErr;
 }
 
-const codeRangeRE = new RegExp("^[0-9]xx$", "i");
+const codeRangeRE = new RegExp('^[0-9]xx$', 'i');
 
 function isRetryableResponse(res: Response, statusCodes: string[]): boolean {
   const actual = `${res.status}`;
@@ -152,7 +141,7 @@ function isRetryableResponse(res: Response, statusCodes: string[]): boolean {
 
     const expectFamily = code.charAt(0);
     if (!expectFamily) {
-      throw new Error("Invalid status code range");
+      throw new Error('Invalid status code range');
     }
 
     const actualFamily = actual.charAt(0);
@@ -164,10 +153,7 @@ function isRetryableResponse(res: Response, statusCodes: string[]): boolean {
   });
 }
 
-async function retryBackoff(
-  fn: () => Promise<Response>,
-  strategy: BackoffStrategy,
-): Promise<Response> {
+async function retryBackoff(fn: () => Promise<Response>, strategy: BackoffStrategy): Promise<Response> {
   const { maxElapsedTime, initialInterval, exponent, maxInterval } = strategy;
 
   const start = Date.now();
@@ -193,8 +179,8 @@ async function retryBackoff(
 
       let retryInterval = 0;
       if (err instanceof TemporaryError && err.res && err.res.headers) {
-        const retryVal = err.res.headers.get("retry-after") || "";
-        if (retryVal != "") {
+        const retryVal = err.res.headers.get('retry-after') || '';
+        if (retryVal != '') {
           const parsedNumber = Number(retryVal);
           if (!isNaN(parsedNumber) && Number.isInteger(parsedNumber)) {
             retryInterval = parsedNumber * 1000;
@@ -209,8 +195,7 @@ async function retryBackoff(
       }
 
       if (retryInterval == 0) {
-        retryInterval =
-          initialInterval * Math.pow(x, exponent) + Math.random() * 1000;
+        retryInterval = initialInterval * Math.pow(x, exponent) + Math.random() * 1000;
       }
 
       const d = Math.min(retryInterval, maxInterval);
