@@ -22,13 +22,13 @@ It has been generated successfully based on your OpenAPI spec. However, it is no
 ### NPM
 
 ```bash
-npm add https://github.com/dubinc/dub-node
+npm add dub
 ```
 
 ### Yarn
 
 ```bash
-yarn add https://github.com/dubinc/dub-node
+yarn add dub
 ```
 <!-- End SDK Installation [installation] -->
 
