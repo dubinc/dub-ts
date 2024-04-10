@@ -1,6 +1,6 @@
 {
   "name": "dub",
-  "version": "0.20.1",
+  "version": "0.21.0",
   "description": "The official TypeScript library for the Dub API",
   "author": "Dub <support@dub.co>",
   "types": "dist/index.d.ts",
