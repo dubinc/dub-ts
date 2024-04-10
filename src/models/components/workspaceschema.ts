@@ -37,6 +37,10 @@ export type Domains = {
      * The domain of the workspace.
      */
     slug: string;
+    /**
+     * Indicates if the domain is the primary domain.
+     */
+    primary: boolean;
 };
 
 export type WorkspaceSchema = {
@@ -151,29 +155,35 @@ export namespace Users$ {
 export namespace Domains$ {
     export type Inbound = {
         slug: string;
+        primary: boolean;
     };
 
     export const inboundSchema: z.ZodType<Domains, z.ZodTypeDef, Inbound> = z
         .object({
             slug: z.string(),
+            primary: z.boolean(),
         })
         .transform((v) => {
             return {
                 slug: v.slug,
+                primary: v.primary,
             };
         });
 
     export type Outbound = {
         slug: string;
+        primary: boolean;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Domains> = z
         .object({
             slug: z.string(),
+            primary: z.boolean(),
         })
         .transform((v) => {
             return {
                 slug: v.slug,
+                primary: v.primary,
             };
         });
 }

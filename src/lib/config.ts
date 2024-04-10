@@ -17,7 +17,12 @@ export const ServerList = [
 ] as const;
 
 export type SDKOptions = {
-    bearerToken?: string | (() => Promise<string>);
+    token?: string | (() => Promise<string>);
+
+    /**
+     * Allows setting the workspaceId parameter for all supported operations
+     */
+    workspaceId?: string;
 
     httpClient?: HTTPClient;
     /**
@@ -54,7 +59,7 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 export const SDK_METADATA = Object.freeze({
     language: "typescript",
     openapiDocVersion: "0.0.1",
-    sdkVersion: "0.19.0",
-    genVersion: "2.301.0",
-    userAgent: "speakeasy-sdk/typescript 0.19.0 2.301.0 0.0.1 dub",
+    sdkVersion: "0.20.0",
+    genVersion: "2.301.3",
+    userAgent: "speakeasy-sdk/typescript 0.20.0 2.301.3 0.0.1 dub",
 });

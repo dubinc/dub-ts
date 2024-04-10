@@ -46,25 +46,18 @@ export class Tags extends ClientSDK {
      * @remarks
      * Retrieve a list of tags for the authenticated workspace.
      */
-    async getTags(
-        input: operations.GetTagsRequest,
+    async list(
+        _input: operations.GetTagsRequest,
         options?: RequestOptions
     ): Promise<Array<components.TagSchema>> {
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
-        const payload$ = schemas$.parse(
-            input,
-            (value$) => operations.GetTagsRequest$.outboundSchema.parse(value$),
-            "Input validation failed"
-        );
-        const body$ = null;
-
         const path$ = this.templateURLComponent("/tags")();
 
         const query$ = [
-            enc$.encodeForm("workspaceId", payload$.workspaceId, {
+            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
             }),
@@ -73,17 +66,17 @@ export class Tags extends ClientSDK {
             .join("&");
 
         let security$;
-        if (typeof this.options$.bearerToken === "function") {
-            security$ = { bearerToken: await this.options$.bearerToken() };
-        } else if (this.options$.bearerToken) {
-            security$ = { bearerToken: this.options$.bearerToken };
+        if (typeof this.options$.token === "function") {
+            security$ = { token: await this.options$.token() };
+        } else if (this.options$.token) {
+            security$ = { token: this.options$.token };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "getTags",
             oAuth2Scopes: [],
-            securitySource: this.options$.bearerToken,
+            securitySource: this.options$.token,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -110,7 +103,6 @@ export class Tags extends ClientSDK {
                 path: path$,
                 headers: headers$,
                 query: query$,
-                body: body$,
             },
             options
         );
@@ -139,7 +131,7 @@ export class Tags extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundred$.inboundSchema.parse({
+                    return errors.BadRequest$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -152,7 +144,7 @@ export class Tags extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndOne$.inboundSchema.parse({
+                    return errors.Unauthorized$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -165,7 +157,7 @@ export class Tags extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndThree$.inboundSchema.parse({
+                    return errors.Forbidden$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -178,7 +170,7 @@ export class Tags extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndFour$.inboundSchema.parse({
+                    return errors.NotFound$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -191,7 +183,7 @@ export class Tags extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndNine$.inboundSchema.parse({
+                    return errors.Conflict$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -204,7 +196,7 @@ export class Tags extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTen$.inboundSchema.parse({
+                    return errors.InviteExpired$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -217,7 +209,7 @@ export class Tags extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTwentyTwo$.inboundSchema.parse({
+                    return errors.UnprocessableEntity$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -230,7 +222,7 @@ export class Tags extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTwentyNine$.inboundSchema.parse({
+                    return errors.RateLimitExceeded$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -243,7 +235,7 @@ export class Tags extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FiveHundred$.inboundSchema.parse({
+                    return errors.InternalServerError$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -263,8 +255,8 @@ export class Tags extends ClientSDK {
      * @remarks
      * Create a new tag for the authenticated workspace.
      */
-    async createTag(
-        input: operations.CreateTagRequest,
+    async create(
+        input: operations.CreateTagRequestBody | undefined,
         options?: RequestOptions
     ): Promise<components.TagSchema> {
         const headers$ = new Headers();
@@ -274,15 +266,16 @@ export class Tags extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input,
-            (value$) => operations.CreateTagRequest$.outboundSchema.parse(value$),
+            (value$) => operations.CreateTagRequestBody$.outboundSchema.optional().parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.RequestBody, { explode: true });
+        const body$ =
+            payload$ === undefined ? null : enc$.encodeJSON("body", payload$, { explode: true });
 
         const path$ = this.templateURLComponent("/tags")();
 
         const query$ = [
-            enc$.encodeForm("workspaceId", payload$.workspaceId, {
+            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
                 explode: true,
                 charEncoding: "percent",
             }),
@@ -291,17 +284,17 @@ export class Tags extends ClientSDK {
             .join("&");
 
         let security$;
-        if (typeof this.options$.bearerToken === "function") {
-            security$ = { bearerToken: await this.options$.bearerToken() };
-        } else if (this.options$.bearerToken) {
-            security$ = { bearerToken: this.options$.bearerToken };
+        if (typeof this.options$.token === "function") {
+            security$ = { token: await this.options$.token() };
+        } else if (this.options$.token) {
+            security$ = { token: this.options$.token };
         } else {
             security$ = {};
         }
         const context = {
             operationID: "createTag",
             oAuth2Scopes: [],
-            securitySource: this.options$.bearerToken,
+            securitySource: this.options$.token,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
@@ -357,7 +350,7 @@ export class Tags extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundred$.inboundSchema.parse({
+                    return errors.BadRequest$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -370,7 +363,7 @@ export class Tags extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndOne$.inboundSchema.parse({
+                    return errors.Unauthorized$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -383,7 +376,7 @@ export class Tags extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndThree$.inboundSchema.parse({
+                    return errors.Forbidden$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -396,7 +389,7 @@ export class Tags extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndFour$.inboundSchema.parse({
+                    return errors.NotFound$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -409,7 +402,7 @@ export class Tags extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndNine$.inboundSchema.parse({
+                    return errors.Conflict$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -422,7 +415,7 @@ export class Tags extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTen$.inboundSchema.parse({
+                    return errors.InviteExpired$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -435,7 +428,7 @@ export class Tags extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTwentyTwo$.inboundSchema.parse({
+                    return errors.UnprocessableEntity$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -448,7 +441,7 @@ export class Tags extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FourHundredAndTwentyNine$.inboundSchema.parse({
+                    return errors.RateLimitExceeded$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });
@@ -461,7 +454,7 @@ export class Tags extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.FiveHundred$.inboundSchema.parse({
+                    return errors.InternalServerError$.inboundSchema.parse({
                         ...responseFields$,
                         ...val$,
                     });

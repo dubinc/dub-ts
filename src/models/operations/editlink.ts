@@ -99,10 +99,6 @@ export type EditLinkRequest = {
      * The id of the link to edit. You can get this via the `getLinkInfo` endpoint.
      */
     linkId: string;
-    /**
-     * The ID of the workspace the link belongs to.
-     */
-    workspaceId: string;
     requestBody?: EditLinkRequestBody | undefined;
 };
 
@@ -270,40 +266,34 @@ export namespace EditLinkRequestBody$ {
 export namespace EditLinkRequest$ {
     export type Inbound = {
         linkId: string;
-        workspaceId: string;
         RequestBody?: EditLinkRequestBody$.Inbound | undefined;
     };
 
     export const inboundSchema: z.ZodType<EditLinkRequest, z.ZodTypeDef, Inbound> = z
         .object({
             linkId: z.string(),
-            workspaceId: z.string(),
             RequestBody: z.lazy(() => EditLinkRequestBody$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
                 linkId: v.linkId,
-                workspaceId: v.workspaceId,
                 ...(v.RequestBody === undefined ? null : { requestBody: v.RequestBody }),
             };
         });
 
     export type Outbound = {
         linkId: string;
-        workspaceId: string;
         RequestBody?: EditLinkRequestBody$.Outbound | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EditLinkRequest> = z
         .object({
             linkId: z.string(),
-            workspaceId: z.string(),
             requestBody: z.lazy(() => EditLinkRequestBody$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {
                 linkId: v.linkId,
-                workspaceId: v.workspaceId,
                 ...(v.requestBody === undefined ? null : { RequestBody: v.requestBody }),
             };
         });

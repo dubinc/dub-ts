@@ -22,13 +22,13 @@ It has been generated successfully based on your OpenAPI spec. However, it is no
 ### NPM
 
 ```bash
-npm add <UNSET>
+npm add https://github.com/dubinc/dub-node
 ```
 
 ### Yarn
 
 ```bash
-yarn add <UNSET>
+yarn add https://github.com/dubinc/dub-node
 ```
 <!-- End SDK Installation [installation] -->
 
@@ -48,12 +48,12 @@ import { Dub } from "dub";
 
 async function run() {
     const sdk = new Dub({
-        bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+        token: "<YOUR_BEARER_TOKEN_HERE>",
+        workspaceId: "<value>",
     });
 
-    const result = await sdk.links.getLinks({
-        workspaceId: "<value>",
-        tagIds: "<value>",
+    const result = await sdk.links.list({
+        tagIds: ["<value>"],
     });
 
     // Handle the result
@@ -70,41 +70,41 @@ run();
 
 ### [links](docs/sdks/links/README.md)
 
-* [getLinks](docs/sdks/links/README.md#getlinks) - Retrieve a list of links
-* [createLink](docs/sdks/links/README.md#createlink) - Create a new link
-* [getLinksCount](docs/sdks/links/README.md#getlinkscount) - Retrieve the number of links
-* [getLinkInfo](docs/sdks/links/README.md#getlinkinfo) - Retrieve a link
-* [editLink](docs/sdks/links/README.md#editlink) - Edit a link
-* [deleteLink](docs/sdks/links/README.md#deletelink) - Delete a link
-* [bulkCreateLinks](docs/sdks/links/README.md#bulkcreatelinks) - Bulk create links
+* [list](docs/sdks/links/README.md#list) - Retrieve a list of links
+* [create](docs/sdks/links/README.md#create) - Create a new link
+* [count](docs/sdks/links/README.md#count) - Retrieve the number of links
+* [get](docs/sdks/links/README.md#get) - Retrieve a link
+* [update](docs/sdks/links/README.md#update) - Edit a link
+* [delete](docs/sdks/links/README.md#delete) - Delete a link
+* [bulkCreate](docs/sdks/links/README.md#bulkcreate) - Bulk create links
 
 ### [qrCodes](docs/sdks/qrcodes/README.md)
 
-* [getQRCode](docs/sdks/qrcodes/README.md#getqrcode) - Retrieve a QR code
+* [get](docs/sdks/qrcodes/README.md#get) - Retrieve a QR code
 
 ### [analytics](docs/sdks/analytics/README.md)
 
-* [getClicksAnalytics](docs/sdks/analytics/README.md#getclicksanalytics) - Retrieve clicks analytics
-* [getTimeseriesAnalytics](docs/sdks/analytics/README.md#gettimeseriesanalytics) - Retrieve timeseries analytics
-* [getCountryAnalytics](docs/sdks/analytics/README.md#getcountryanalytics) - Retrieve country analytics
-* [getCityAnalytics](docs/sdks/analytics/README.md#getcityanalytics) - Retrieve city analytics
-* [getDeviceAnalytics](docs/sdks/analytics/README.md#getdeviceanalytics) - Retrieve device analytics
-* [getBrowserAnalytics](docs/sdks/analytics/README.md#getbrowseranalytics) - Retrieve browser analytics
-* [getOSAnalytics](docs/sdks/analytics/README.md#getosanalytics) - Retrieve OS analytics
-* [getRefererAnalytics](docs/sdks/analytics/README.md#getrefereranalytics) - Retrieve referer analytics
-* [getTopLinks](docs/sdks/analytics/README.md#gettoplinks) - Retrieve top links
-* [getTopURLs](docs/sdks/analytics/README.md#gettopurls) - Retrieve top URLs
+* [clicks](docs/sdks/analytics/README.md#clicks) - Retrieve clicks analytics
+* [timeseries](docs/sdks/analytics/README.md#timeseries) - Retrieve timeseries analytics
+* [countries](docs/sdks/analytics/README.md#countries) - Retrieve country analytics
+* [cities](docs/sdks/analytics/README.md#cities) - Retrieve city analytics
+* [devices](docs/sdks/analytics/README.md#devices) - Retrieve device analytics
+* [browsers](docs/sdks/analytics/README.md#browsers) - Retrieve browser analytics
+* [os](docs/sdks/analytics/README.md#os) - Retrieve OS analytics
+* [referers](docs/sdks/analytics/README.md#referers) - Retrieve referer analytics
+* [topLinks](docs/sdks/analytics/README.md#toplinks) - Retrieve top links
+* [topUrls](docs/sdks/analytics/README.md#topurls) - Retrieve top URLs
 
 ### [workspaces](docs/sdks/workspaces/README.md)
 
-* [getWorkspaces](docs/sdks/workspaces/README.md#getworkspaces) - Retrieve a list of workspaces
-* [createWorkspace](docs/sdks/workspaces/README.md#createworkspace) - Create a workspace
-* [getWorkspace](docs/sdks/workspaces/README.md#getworkspace) - Retrieve a workspace
+* [list](docs/sdks/workspaces/README.md#list) - Retrieve a list of workspaces
+* [create](docs/sdks/workspaces/README.md#create) - Create a workspace
+* [get](docs/sdks/workspaces/README.md#get) - Retrieve a workspace
 
 ### [tags](docs/sdks/tags/README.md)
 
-* [getTags](docs/sdks/tags/README.md#gettags) - Retrieve a list of tags
-* [createTag](docs/sdks/tags/README.md#createtag) - Create a new tag
+* [list](docs/sdks/tags/README.md#list) - Retrieve a list of tags
+* [create](docs/sdks/tags/README.md#create) - Create a new tag
 <!-- End Available Resources and Operations [operations] -->
 
 <!-- Start Error Handling [errors] -->
@@ -112,18 +112,18 @@ run();
 
 All SDK methods return a response object or throw an error. If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
 
-| Error Object                    | Status Code                     | Content Type                    |
-| ------------------------------- | ------------------------------- | ------------------------------- |
-| errors.FourHundred              | 400                             | application/json                |
-| errors.FourHundredAndOne        | 401                             | application/json                |
-| errors.FourHundredAndThree      | 403                             | application/json                |
-| errors.FourHundredAndFour       | 404                             | application/json                |
-| errors.FourHundredAndNine       | 409                             | application/json                |
-| errors.FourHundredAndTen        | 410                             | application/json                |
-| errors.FourHundredAndTwentyTwo  | 422                             | application/json                |
-| errors.FourHundredAndTwentyNine | 429                             | application/json                |
-| errors.FiveHundred              | 500                             | application/json                |
-| errors.SDKError                 | 4xx-5xx                         | */*                             |
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.BadRequest          | 400                        | application/json           |
+| errors.Unauthorized        | 401                        | application/json           |
+| errors.Forbidden           | 403                        | application/json           |
+| errors.NotFound            | 404                        | application/json           |
+| errors.Conflict            | 409                        | application/json           |
+| errors.InviteExpired       | 410                        | application/json           |
+| errors.UnprocessableEntity | 422                        | application/json           |
+| errors.RateLimitExceeded   | 429                        | application/json           |
+| errors.InternalServerError | 500                        | application/json           |
+| errors.SDKError            | 4xx-5xx                    | */*                        |
 
 Validation errors can also occur when either method arguments or data returned from the server do not match the expected format. The `SDKValidationError` that is thrown as a result will capture the raw value that failed validation in an attribute called `rawValue`. Additionally, a `pretty()` method is available on this error that can be used to log a nicely formatted string since validation errors can list many issues and the plain error string may be difficult read when debugging. 
 
@@ -134,14 +134,14 @@ import * as errors from "dub/models/errors";
 
 async function run() {
     const sdk = new Dub({
-        bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+        token: "<YOUR_BEARER_TOKEN_HERE>",
+        workspaceId: "<value>",
     });
 
     let result;
     try {
-        result = await sdk.links.getLinks({
-            workspaceId: "<value>",
-            tagIds: "<value>",
+        result = await sdk.links.list({
+            tagIds: ["<value>"],
         });
     } catch (err) {
         switch (true) {
@@ -152,39 +152,39 @@ async function run() {
                 console.error(err.rawValue);
                 return;
             }
-            case err instanceof errors.FourHundred: {
+            case err instanceof errors.BadRequest: {
                 console.error(err); // handle exception
                 return;
             }
-            case err instanceof errors.FourHundredAndOne: {
+            case err instanceof errors.Unauthorized: {
                 console.error(err); // handle exception
                 return;
             }
-            case err instanceof errors.FourHundredAndThree: {
+            case err instanceof errors.Forbidden: {
                 console.error(err); // handle exception
                 return;
             }
-            case err instanceof errors.FourHundredAndFour: {
+            case err instanceof errors.NotFound: {
                 console.error(err); // handle exception
                 return;
             }
-            case err instanceof errors.FourHundredAndNine: {
+            case err instanceof errors.Conflict: {
                 console.error(err); // handle exception
                 return;
             }
-            case err instanceof errors.FourHundredAndTen: {
+            case err instanceof errors.InviteExpired: {
                 console.error(err); // handle exception
                 return;
             }
-            case err instanceof errors.FourHundredAndTwentyTwo: {
+            case err instanceof errors.UnprocessableEntity: {
                 console.error(err); // handle exception
                 return;
             }
-            case err instanceof errors.FourHundredAndTwentyNine: {
+            case err instanceof errors.RateLimitExceeded: {
                 console.error(err); // handle exception
                 return;
             }
-            case err instanceof errors.FiveHundred: {
+            case err instanceof errors.InternalServerError: {
                 console.error(err); // handle exception
                 return;
             }
@@ -220,12 +220,12 @@ import { Dub } from "dub";
 async function run() {
     const sdk = new Dub({
         serverIdx: 0,
-        bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+        token: "<YOUR_BEARER_TOKEN_HERE>",
+        workspaceId: "<value>",
     });
 
-    const result = await sdk.links.getLinks({
-        workspaceId: "<value>",
-        tagIds: "<value>",
+    const result = await sdk.links.list({
+        tagIds: ["<value>"],
     });
 
     // Handle the result
@@ -247,12 +247,12 @@ import { Dub } from "dub";
 async function run() {
     const sdk = new Dub({
         serverURL: "https://api.dub.co",
-        bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+        token: "<YOUR_BEARER_TOKEN_HERE>",
+        workspaceId: "<value>",
     });
 
-    const result = await sdk.links.getLinks({
-        workspaceId: "<value>",
-        tagIds: "<value>",
+    const result = await sdk.links.list({
+        tagIds: ["<value>"],
     });
 
     // Handle the result
@@ -320,22 +320,22 @@ const sdk = new Dub({ httpClient });
 
 This SDK supports the following security scheme globally:
 
-| Name          | Type          | Scheme        |
-| ------------- | ------------- | ------------- |
-| `bearerToken` | http          | HTTP Bearer   |
+| Name        | Type        | Scheme      |
+| ----------- | ----------- | ----------- |
+| `token`     | http        | HTTP Bearer |
 
-To authenticate with the API the `bearerToken` parameter must be set when initializing the SDK client instance. For example:
+To authenticate with the API the `token` parameter must be set when initializing the SDK client instance. For example:
 ```typescript
 import { Dub } from "dub";
 
 async function run() {
     const sdk = new Dub({
-        bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+        token: "<YOUR_BEARER_TOKEN_HERE>",
+        workspaceId: "<value>",
     });
 
-    const result = await sdk.links.getLinks({
-        workspaceId: "<value>",
-        tagIds: "<value>",
+    const result = await sdk.links.list({
+        tagIds: ["<value>"],
     });
 
     // Handle the result

@@ -274,10 +274,6 @@ export enum GetDeviceAnalyticsQueryParamCountry {
 
 export type GetDeviceAnalyticsRequest = {
     /**
-     * The ID of the workspace the link belongs to.
-     */
-    workspaceId: string;
-    /**
      * The domain of the short link.
      */
     domain?: string | undefined;
@@ -351,7 +347,6 @@ export const GetDeviceAnalyticsQueryParamCountry$ = z.nativeEnum(
 /** @internal */
 export namespace GetDeviceAnalyticsRequest$ {
     export type Inbound = {
-        workspaceId: string;
         domain?: string | undefined;
         key?: string | undefined;
         interval?: GetDeviceAnalyticsQueryParamInterval | undefined;
@@ -368,7 +363,6 @@ export namespace GetDeviceAnalyticsRequest$ {
 
     export const inboundSchema: z.ZodType<GetDeviceAnalyticsRequest, z.ZodTypeDef, Inbound> = z
         .object({
-            workspaceId: z.string(),
             domain: z.string().optional(),
             key: z.string().optional(),
             interval: GetDeviceAnalyticsQueryParamInterval$.optional(),
@@ -384,7 +378,6 @@ export namespace GetDeviceAnalyticsRequest$ {
         })
         .transform((v) => {
             return {
-                workspaceId: v.workspaceId,
                 ...(v.domain === undefined ? null : { domain: v.domain }),
                 ...(v.key === undefined ? null : { key: v.key }),
                 ...(v.interval === undefined ? null : { interval: v.interval }),
@@ -401,7 +394,6 @@ export namespace GetDeviceAnalyticsRequest$ {
         });
 
     export type Outbound = {
-        workspaceId: string;
         domain?: string | undefined;
         key?: string | undefined;
         interval?: GetDeviceAnalyticsQueryParamInterval | undefined;
@@ -418,7 +410,6 @@ export namespace GetDeviceAnalyticsRequest$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetDeviceAnalyticsRequest> = z
         .object({
-            workspaceId: z.string(),
             domain: z.string().optional(),
             key: z.string().optional(),
             interval: GetDeviceAnalyticsQueryParamInterval$.optional(),
@@ -434,7 +425,6 @@ export namespace GetDeviceAnalyticsRequest$ {
         })
         .transform((v) => {
             return {
-                workspaceId: v.workspaceId,
                 ...(v.domain === undefined ? null : { domain: v.domain }),
                 ...(v.key === undefined ? null : { key: v.key }),
                 ...(v.interval === undefined ? null : { interval: v.interval }),

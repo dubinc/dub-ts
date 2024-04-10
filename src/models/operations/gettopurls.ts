@@ -274,10 +274,6 @@ export enum GetTopURLsQueryParamCountry {
 
 export type GetTopURLsRequest = {
     /**
-     * The ID of the workspace the link belongs to.
-     */
-    workspaceId: string;
-    /**
      * The domain of the short link.
      */
     domain?: string | undefined;
@@ -347,7 +343,6 @@ export const GetTopURLsQueryParamCountry$ = z.nativeEnum(GetTopURLsQueryParamCou
 /** @internal */
 export namespace GetTopURLsRequest$ {
     export type Inbound = {
-        workspaceId: string;
         domain?: string | undefined;
         key?: string | undefined;
         interval?: GetTopURLsQueryParamInterval | undefined;
@@ -364,7 +359,6 @@ export namespace GetTopURLsRequest$ {
 
     export const inboundSchema: z.ZodType<GetTopURLsRequest, z.ZodTypeDef, Inbound> = z
         .object({
-            workspaceId: z.string(),
             domain: z.string().optional(),
             key: z.string().optional(),
             interval: GetTopURLsQueryParamInterval$.optional(),
@@ -380,7 +374,6 @@ export namespace GetTopURLsRequest$ {
         })
         .transform((v) => {
             return {
-                workspaceId: v.workspaceId,
                 ...(v.domain === undefined ? null : { domain: v.domain }),
                 ...(v.key === undefined ? null : { key: v.key }),
                 ...(v.interval === undefined ? null : { interval: v.interval }),
@@ -397,7 +390,6 @@ export namespace GetTopURLsRequest$ {
         });
 
     export type Outbound = {
-        workspaceId: string;
         domain?: string | undefined;
         key?: string | undefined;
         interval?: GetTopURLsQueryParamInterval | undefined;
@@ -414,7 +406,6 @@ export namespace GetTopURLsRequest$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetTopURLsRequest> = z
         .object({
-            workspaceId: z.string(),
             domain: z.string().optional(),
             key: z.string().optional(),
             interval: GetTopURLsQueryParamInterval$.optional(),
@@ -430,7 +421,6 @@ export namespace GetTopURLsRequest$ {
         })
         .transform((v) => {
             return {
-                workspaceId: v.workspaceId,
                 ...(v.domain === undefined ? null : { domain: v.domain }),
                 ...(v.key === undefined ? null : { key: v.key }),
                 ...(v.interval === undefined ? null : { interval: v.interval }),
