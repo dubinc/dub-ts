@@ -1,365 +1,302 @@
-# dub
+# Official Dub.co Typescript API Library
 
-<div align="left">
-    <a href="https://speakeasyapi.dev/"><img src="https://custom-icon-badges.demolab.com/badge/-Built%20By%20Speakeasy-212015?style=for-the-badge&logoColor=FBE331&logo=speakeasy&labelColor=545454" /></a>
-    <a href="https://opensource.org/licenses/MIT">
-        <img src="https://img.shields.io/badge/License-MIT-blue.svg" style="width: 100px; height: 28px;" />
-    </a>
-</div>
+[![NPM version](https://img.shields.io/npm/v/dub.svg)](https://npmjs.org/package/dub)
 
+This library provides convenient access to the Dub REST API from server-side TypeScript or JavaScript.
 
-## 🏗 **Welcome to your new SDK!** 🏗
+The REST API documentation can be found [on dub.co](https://dub.co/help). The full API of this library can be found in [api.md](api.md).
 
-It has been generated successfully based on your OpenAPI spec. However, it is not yet ready for production use. Here are some next steps:
-- [ ] 🛠 Make your SDK feel handcrafted by [customizing it](https://www.speakeasyapi.dev/docs/customize-sdks)
-- [ ] ♻️ Refine your SDK quickly by iterating locally with the [Speakeasy CLI](https://github.com/speakeasy-api/speakeasy)
-- [ ] 🎁 Publish your SDK to package managers by [configuring automatic publishing](https://www.speakeasyapi.dev/docs/advanced-setup/publish-sdks)
-- [ ] ✨ When ready to productionize, delete this section from the README
+It is generated with [Stainless](https://www.stainlessapi.com/).
 
-<!-- Start SDK Installation [installation] -->
-## SDK Installation
+## Installation
 
-### NPM
-
-```bash
-npm add dub
+```sh
+npm install dub
 ```
 
-### Yarn
+## Usage
 
-```bash
-yarn add dub
+The full API of this library can be found in [api.md](api.md).
+
+<!-- prettier-ignore -->
+```js
+import Dub from 'dub';
+
+const dub = new Dub();
+
+async function main() {
+  const linkCreateResponse = await dub.links.create({ workspaceId: 'REPLACE_ME', url: 'string' });
+
+  console.log(linkCreateResponse.id);
+}
+
+main();
 ```
-<!-- End SDK Installation [installation] -->
 
-<!-- Start Requirements [requirements] -->
+### Request & Response types
+
+This library includes TypeScript definitions for all request params and response fields. You may import and use them like so:
+
+<!-- prettier-ignore -->
+```ts
+import Dub from 'dub';
+
+const dub = new Dub();
+
+async function main() {
+  const params: Dub.LinkCreateParams = { workspaceId: 'REPLACE_ME', url: 'string' };
+  const linkCreateResponse: Dub.LinkCreateResponse = await dub.links.create(params);
+}
+
+main();
+```
+
+Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
+
+## Handling errors
+
+When the library is unable to connect to the API,
+or if the API returns a non-success status code (i.e., 4xx or 5xx response),
+a subclass of `APIError` will be thrown:
+
+<!-- prettier-ignore -->
+```ts
+async function main() {
+  const linkCreateResponse = await dub.links
+    .create({ workspaceId: 'REPLACE_ME', url: 'string' })
+    .catch(async (err) => {
+      if (err instanceof Dub.APIError) {
+        console.log(err.status); // 400
+        console.log(err.name); // BadRequestError
+        console.log(err.headers); // {server: 'nginx', ...}
+      } else {
+        throw err;
+      }
+    });
+}
+
+main();
+```
+
+Error codes are as followed:
+
+| Status Code | Error Type                 |
+| ----------- | -------------------------- |
+| 400         | `BadRequestError`          |
+| 401         | `AuthenticationError`      |
+| 403         | `PermissionDeniedError`    |
+| 404         | `NotFoundError`            |
+| 422         | `UnprocessableEntityError` |
+| 429         | `RateLimitError`           |
+| >=500       | `InternalServerError`      |
+| N/A         | `APIConnectionError`       |
+
+### Retries
+
+Certain errors will be automatically retried 2 times by default, with a short exponential backoff.
+Connection errors (for example, due to a network connectivity problem), 408 Request Timeout, 409 Conflict,
+429 Rate Limit, and >=500 Internal errors will all be retried by default.
+
+You can use the `maxRetries` option to configure or disable this:
+
+<!-- prettier-ignore -->
+```js
+// Configure the default for all requests:
+const dub = new Dub({
+  maxRetries: 0, // default is 2
+  token: 'My Token',
+  workspaceId: 'dub_workspace_id',
+});
+
+// Or, configure per-request:
+await dub.links.create({ workspaceId: 'REPLACE_ME', url: 'string' }, {
+  maxRetries: 5,
+});
+```
+
+### Timeouts
+
+Requests time out after 1 minute by default. You can configure this with a `timeout` option:
+
+<!-- prettier-ignore -->
+```ts
+// Configure the default for all requests:
+const dub = new Dub({
+  timeout: 20 * 1000, // 20 seconds (default is 1 minute)
+  token: 'My Token',
+  workspaceId: 'dub_workspace_id',
+});
+
+// Override per-request:
+await dub.links.create({ workspaceId: 'REPLACE_ME', url: 'string' }, {
+  timeout: 5 * 1000,
+});
+```
+
+On timeout, an `APIConnectionTimeoutError` is thrown.
+
+Note that requests which time out will be [retried twice by default](#retries).
+
+## Advanced Usage
+
+### Accessing raw Response data (e.g., headers)
+
+The "raw" `Response` returned by `fetch()` can be accessed through the `.asResponse()` method on the `APIPromise` type that all methods return.
+
+You can also use the `.withResponse()` method to get the raw `Response` along with the parsed data.
+
+<!-- prettier-ignore -->
+```ts
+const dub = new Dub();
+
+const response = await dub.links.create({ workspaceId: 'REPLACE_ME', url: 'string' }).asResponse();
+console.log(response.headers.get('X-My-Header'));
+console.log(response.statusText); // access the underlying Response object
+
+const { data: linkCreateResponse, response: raw } = await dub.links
+  .create({ workspaceId: 'REPLACE_ME', url: 'string' })
+  .withResponse();
+console.log(raw.headers.get('X-My-Header'));
+console.log(linkCreateResponse.id);
+```
+
+### Making custom/undocumented requests
+
+This library is typed for convenient access to the documented API. If you need to access undocumented
+endpoints, params, or response properties, the library can still be used.
+
+#### Undocumented endpoints
+
+To make requests to undocumented endpoints, you can use `client.get`, `client.post`, and other HTTP verbs.
+Options on the client, such as retries, will be respected when making these requests.
+
+```ts
+await client.post('/some/path', {
+  body: { some_prop: 'foo' },
+  query: { some_query_arg: 'bar' },
+});
+```
+
+#### Undocumented request params
+
+To make requests using undocumented parameters, you may use `// @ts-expect-error` on the undocumented
+parameter. This library doesn't validate at runtime that the request matches the type, so any extra values you
+send will be sent as-is.
+
+```ts
+client.foo.create({
+  foo: 'my_param',
+  bar: 12,
+  // @ts-expect-error baz is not yet public
+  baz: 'undocumented option',
+});
+```
+
+For requests with the `GET` verb, any extra params will be in the query, all other requests will send the
+extra param in the body.
+
+If you want to explicitly send an extra argument, you can do so with the `query`, `body`, and `headers` request
+options.
+
+#### Undocumented response properties
+
+To access undocumented response properties, you may access the response object with `// @ts-expect-error` on
+the response object, or cast the response object to the requisite type. Like the request params, we do not
+validate or strip extra properties from the response from the API.
+
+### Customizing the fetch client
+
+By default, this library uses `node-fetch` in Node, and expects a global `fetch` function in other environments.
+
+If you would prefer to use a global, web-standards-compliant `fetch` function even in a Node environment,
+(for example, if you are running Node with `--experimental-fetch` or using NextJS which polyfills with `undici`),
+add the following import before your first import `from "Dub"`:
+
+```ts
+// Tell TypeScript and the package to use the global web fetch instead of node-fetch.
+// Note, despite the name, this does not add any polyfills, but expects them to be provided if needed.
+import 'dub/shims/web';
+import Dub from 'dub';
+```
+
+To do the inverse, add `import "dub/shims/node"` (which does import polyfills).
+This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/dubinc/dub-node/tree/main/src/_shims#readme)).
+
+### Logging and middleware
+
+You may also provide a custom `fetch` function when instantiating the client,
+which can be used to inspect or alter the `Request` or `Response` before/after each request:
+
+```ts
+import { fetch } from 'undici'; // as one example
+import Dub from 'dub';
+
+const client = new Dub({
+  fetch: async (url: RequestInfo, init?: RequestInit): Promise<Response> => {
+    console.log('About to make a request', url, init);
+    const response = await fetch(url, init);
+    console.log('Got response', response);
+    return response;
+  },
+});
+```
+
+Note that if given a `DEBUG=true` environment variable, this library will log all requests and responses automatically.
+This is intended for debugging purposes only and may change in the future without notice.
+
+### Configuring an HTTP(S) Agent (e.g., for proxies)
+
+By default, this library uses a stable agent for all http/https requests to reuse TCP connections, eliminating many TCP & TLS handshakes and shaving around 100ms off most requests.
+
+If you would like to disable or customize this behavior, for example to use the API behind a proxy, you can pass an `httpAgent` which is used for all requests (be they http or https), for example:
+
+<!-- prettier-ignore -->
+```ts
+import http from 'http';
+import { HttpsProxyAgent } from 'https-proxy-agent';
+
+// Configure the default for all requests:
+const dub = new Dub({
+  httpAgent: new HttpsProxyAgent(process.env.PROXY_URL),
+  token: 'My Token',
+  workspaceId: 'dub_workspace_id',
+});
+
+// Override per-request:
+await dub.links.create(
+  { workspaceId: 'REPLACE_ME', url: 'string' },
+  {
+    httpAgent: new http.Agent({ keepAlive: false }),
+  },
+);
+```
+
+## Semantic versioning
+
+This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) conventions, though certain backwards-incompatible changes may be released as minor versions:
+
+1. Changes that only affect static types, without breaking runtime behavior.
+2. Changes to library internals which are technically public but not intended or documented for external use. _(Please open a GitHub issue to let us know if you are relying on such internals)_.
+3. Changes that we do not expect to impact the vast majority of users in practice.
+
+We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
+
+We are keen for your feedback; please open an [issue](https://www.github.com/dubinc/dub-node/issues) with questions, bugs, or suggestions.
+
 ## Requirements
 
-For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
-<!-- End Requirements [requirements] -->
+TypeScript >= 4.5 is supported.
 
-<!-- Start SDK Example Usage [usage] -->
-## SDK Example Usage
+The following runtimes are supported:
 
-### Example
+- Node.js 18 LTS or later ([non-EOL](https://endoflife.date/nodejs)) versions.
+- Deno v1.28.0 or higher, using `import Dub from "npm:dub"`.
+- Bun 1.0 or later.
+- Cloudflare Workers.
+- Vercel Edge Runtime.
+- Jest 28 or greater with the `"node"` environment (`"jsdom"` is not supported at this time).
+- Nitro v2.6 or greater.
 
-```typescript
-import { Dub } from "dub";
+Note that React Native is not supported at this time.
 
-async function run() {
-    const sdk = new Dub({
-        token: "<YOUR_BEARER_TOKEN_HERE>",
-        workspaceId: "<value>",
-    });
-
-    const result = await sdk.links.list({
-        tagIds: ["<value>"],
-    });
-
-    // Handle the result
-    console.log(result);
-}
-
-run();
-
-```
-<!-- End SDK Example Usage [usage] -->
-
-<!-- Start Available Resources and Operations [operations] -->
-## Available Resources and Operations
-
-### [links](docs/sdks/links/README.md)
-
-* [list](docs/sdks/links/README.md#list) - Retrieve a list of links
-* [create](docs/sdks/links/README.md#create) - Create a new link
-* [count](docs/sdks/links/README.md#count) - Retrieve the number of links
-* [get](docs/sdks/links/README.md#get) - Retrieve a link
-* [update](docs/sdks/links/README.md#update) - Edit a link
-* [delete](docs/sdks/links/README.md#delete) - Delete a link
-* [bulkCreate](docs/sdks/links/README.md#bulkcreate) - Bulk create links
-
-### [qrCodes](docs/sdks/qrcodes/README.md)
-
-* [get](docs/sdks/qrcodes/README.md#get) - Retrieve a QR code
-
-### [analytics](docs/sdks/analytics/README.md)
-
-* [clicks](docs/sdks/analytics/README.md#clicks) - Retrieve clicks analytics
-* [timeseries](docs/sdks/analytics/README.md#timeseries) - Retrieve timeseries analytics
-* [countries](docs/sdks/analytics/README.md#countries) - Retrieve country analytics
-* [cities](docs/sdks/analytics/README.md#cities) - Retrieve city analytics
-* [devices](docs/sdks/analytics/README.md#devices) - Retrieve device analytics
-* [browsers](docs/sdks/analytics/README.md#browsers) - Retrieve browser analytics
-* [os](docs/sdks/analytics/README.md#os) - Retrieve OS analytics
-* [referers](docs/sdks/analytics/README.md#referers) - Retrieve referer analytics
-* [topLinks](docs/sdks/analytics/README.md#toplinks) - Retrieve top links
-* [topUrls](docs/sdks/analytics/README.md#topurls) - Retrieve top URLs
-
-### [workspaces](docs/sdks/workspaces/README.md)
-
-* [list](docs/sdks/workspaces/README.md#list) - Retrieve a list of workspaces
-* [create](docs/sdks/workspaces/README.md#create) - Create a workspace
-* [get](docs/sdks/workspaces/README.md#get) - Retrieve a workspace
-
-### [tags](docs/sdks/tags/README.md)
-
-* [list](docs/sdks/tags/README.md#list) - Retrieve a list of tags
-* [create](docs/sdks/tags/README.md#create) - Create a new tag
-<!-- End Available Resources and Operations [operations] -->
-
-<!-- Start Error Handling [errors] -->
-## Error Handling
-
-All SDK methods return a response object or throw an error. If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
-
-| Error Object               | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.BadRequest          | 400                        | application/json           |
-| errors.Unauthorized        | 401                        | application/json           |
-| errors.Forbidden           | 403                        | application/json           |
-| errors.NotFound            | 404                        | application/json           |
-| errors.Conflict            | 409                        | application/json           |
-| errors.InviteExpired       | 410                        | application/json           |
-| errors.UnprocessableEntity | 422                        | application/json           |
-| errors.RateLimitExceeded   | 429                        | application/json           |
-| errors.InternalServerError | 500                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
-
-Validation errors can also occur when either method arguments or data returned from the server do not match the expected format. The `SDKValidationError` that is thrown as a result will capture the raw value that failed validation in an attribute called `rawValue`. Additionally, a `pretty()` method is available on this error that can be used to log a nicely formatted string since validation errors can list many issues and the plain error string may be difficult read when debugging. 
-
-
-```typescript
-import { Dub } from "dub";
-import * as errors from "dub/models/errors";
-
-async function run() {
-    const sdk = new Dub({
-        token: "<YOUR_BEARER_TOKEN_HERE>",
-        workspaceId: "<value>",
-    });
-
-    let result;
-    try {
-        result = await sdk.links.list({
-            tagIds: ["<value>"],
-        });
-    } catch (err) {
-        switch (true) {
-            case err instanceof errors.SDKValidationError: {
-                // Validation errors can be pretty-printed
-                console.error(err.pretty());
-                // Raw value may also be inspected
-                console.error(err.rawValue);
-                return;
-            }
-            case err instanceof errors.BadRequest: {
-                console.error(err); // handle exception
-                return;
-            }
-            case err instanceof errors.Unauthorized: {
-                console.error(err); // handle exception
-                return;
-            }
-            case err instanceof errors.Forbidden: {
-                console.error(err); // handle exception
-                return;
-            }
-            case err instanceof errors.NotFound: {
-                console.error(err); // handle exception
-                return;
-            }
-            case err instanceof errors.Conflict: {
-                console.error(err); // handle exception
-                return;
-            }
-            case err instanceof errors.InviteExpired: {
-                console.error(err); // handle exception
-                return;
-            }
-            case err instanceof errors.UnprocessableEntity: {
-                console.error(err); // handle exception
-                return;
-            }
-            case err instanceof errors.RateLimitExceeded: {
-                console.error(err); // handle exception
-                return;
-            }
-            case err instanceof errors.InternalServerError: {
-                console.error(err); // handle exception
-                return;
-            }
-            default: {
-                throw err;
-            }
-        }
-    }
-
-    // Handle the result
-    console.log(result);
-}
-
-run();
-
-```
-<!-- End Error Handling [errors] -->
-
-<!-- Start Server Selection [server] -->
-## Server Selection
-
-### Select Server by Index
-
-You can override the default server globally by passing a server index to the `serverIdx` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
-
-| # | Server | Variables |
-| - | ------ | --------- |
-| 0 | `https://api.dub.co` | None |
-
-```typescript
-import { Dub } from "dub";
-
-async function run() {
-    const sdk = new Dub({
-        serverIdx: 0,
-        token: "<YOUR_BEARER_TOKEN_HERE>",
-        workspaceId: "<value>",
-    });
-
-    const result = await sdk.links.list({
-        tagIds: ["<value>"],
-    });
-
-    // Handle the result
-    console.log(result);
-}
-
-run();
-
-```
-
-
-### Override Server URL Per-Client
-
-The default server can also be overridden globally by passing a URL to the `serverURL` optional parameter when initializing the SDK client instance. For example:
-
-```typescript
-import { Dub } from "dub";
-
-async function run() {
-    const sdk = new Dub({
-        serverURL: "https://api.dub.co",
-        token: "<YOUR_BEARER_TOKEN_HERE>",
-        workspaceId: "<value>",
-    });
-
-    const result = await sdk.links.list({
-        tagIds: ["<value>"],
-    });
-
-    // Handle the result
-    console.log(result);
-}
-
-run();
-
-```
-<!-- End Server Selection [server] -->
-
-<!-- Start Custom HTTP Client [http-client] -->
-## Custom HTTP Client
-
-The TypeScript SDK makes API calls using an `HTTPClient` that wraps the native
-[Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API). This
-client is a thin wrapper around `fetch` and provides the ability to attach hooks
-around the request lifecycle that can be used to modify the request or handle
-errors and response.
-
-The `HTTPClient` constructor takes an optional `fetcher` argument that can be
-used to integrate a third-party HTTP client or when writing tests to mock out
-the HTTP client and feed in fixtures.
-
-The following example shows how to use the `"beforeRequest"` hook to to add a
-custom header and a timeout to requests and how to use the `"requestError"` hook
-to log errors:
-
-```typescript
-import { Dub } from "dub";
-import { HTTPClient } from "dub/lib/http";
-
-const httpClient = new HTTPClient({
-  // fetcher takes a function that has the same signature as native `fetch`.
-  fetcher: (request) => {
-    return fetch(request);
-  }
-});
-
-httpClient.addHook("beforeRequest", (request) => {
-  const nextRequest = new Request(request, {
-    signal: request.signal || AbortSignal.timeout(5000);
-  });
-
-  nextRequest.headers.set("x-custom-header", "custom value");
-
-  return nextRequest;
-});
-
-httpClient.addHook("requestError", (error, request) => {
-  console.group("Request Error");
-  console.log("Reason:", `${error}`);
-  console.log("Endpoint:", `${request.method} ${request.url}`);
-  console.groupEnd();
-});
-
-const sdk = new Dub({ httpClient });
-```
-<!-- End Custom HTTP Client [http-client] -->
-
-<!-- Start Authentication [security] -->
-## Authentication
-
-### Per-Client Security Schemes
-
-This SDK supports the following security scheme globally:
-
-| Name        | Type        | Scheme      |
-| ----------- | ----------- | ----------- |
-| `token`     | http        | HTTP Bearer |
-
-To authenticate with the API the `token` parameter must be set when initializing the SDK client instance. For example:
-```typescript
-import { Dub } from "dub";
-
-async function run() {
-    const sdk = new Dub({
-        token: "<YOUR_BEARER_TOKEN_HERE>",
-        workspaceId: "<value>",
-    });
-
-    const result = await sdk.links.list({
-        tagIds: ["<value>"],
-    });
-
-    // Handle the result
-    console.log(result);
-}
-
-run();
-
-```
-<!-- End Authentication [security] -->
-
-<!-- Placeholder for Future Speakeasy SDK Sections -->
-
-# Development
-
-## Maturity
-
-This SDK is in beta, and there may be breaking changes between versions without a major version update. Therefore, we recommend pinning usage
-to a specific package version. This way, you can install the same version each time without breaking changes unless you are intentionally
-looking for the latest version.
-
-## Contributions
-
-While we value open-source contributions to this SDK, this library is generated programmatically.
-Feel free to open a PR or a Github issue as a proof of concept and we'll do our best to include it in a future release!
-
-### SDK Created by [Speakeasy](https://docs.speakeasyapi.dev/docs/using-speakeasy/client-sdks)
+If you are interested in other runtime environments, please open or upvote an issue on GitHub.

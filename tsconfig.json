@@ -1,40 +1,38 @@
 {
+  "include": ["src", "tests", "examples"],
+  "exclude": ["src/_shims/**/*-deno.ts"],
   "compilerOptions": {
-    "incremental": true,
-    "tsBuildInfoFile": ".tsbuildinfo",
-    "target": "ES2018",
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
-
-    "module": "Node16",
-    "moduleResolution": "Node16",
-
-    "allowJs": true,
-
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
-    "outDir": ".",
-    
-
-    // https://github.com/tsconfig/bases/blob/a1bf7c0fa2e094b068ca3e1448ca2ece4157977e/bases/strictest.json
-    "strict": true,
-    "allowUnusedLabels": false,
-    "allowUnreachableCode": false,
-    "exactOptionalPropertyTypes": true,
-    "useUnknownInCatchVariables": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitOverride": true,
-    "noImplicitReturns": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "noUncheckedIndexedAccess": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "isolatedModules": true,
-    "checkJs": true,
+    "target": "es2020",
+    "lib": ["es2020"],
+    "module": "commonjs",
+    "moduleResolution": "node",
     "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
-  },
-  "include": ["src"],
-  "exclude": ["node_modules"]
+    "baseUrl": "./",
+    "paths": {
+      "dub/_shims/auto/*": ["src/_shims/auto/*-node"],
+      "dub/*": ["src/*"],
+      "dub": ["src/index.ts"],
+    },
+    "noEmit": true,
+
+    "resolveJsonModule": true,
+
+    "forceConsistentCasingInFileNames": true,
+
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "noImplicitReturns": true,
+    "alwaysStrict": true,
+    "exactOptionalPropertyTypes": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+
+    "skipLibCheck": true
+  }
 }
