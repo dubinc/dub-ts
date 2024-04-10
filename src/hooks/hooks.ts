@@ -14,13 +14,17 @@ import {
     SDKInitOptions,
 } from "./types";
 
+import { initHooks } from "./registration";
+
 export class SDKHooks implements Hooks {
     sdkInitHooks: SDKInitHook[] = [];
     beforeRequestHooks: BeforeRequestHook[] = [];
     afterSuccessHooks: AfterSuccessHook[] = [];
     afterErrorHooks: AfterErrorHook[] = [];
 
-    constructor() {}
+    constructor() {
+        initHooks(this);
+    }
 
     registerSDKInitHook(hook: SDKInitHook) {
         this.sdkInitHooks.push(hook);
