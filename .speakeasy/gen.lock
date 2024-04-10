@@ -1,24 +1,20 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: cca62df209e2e9fe36ff456a41001da4
+  docChecksum: b1d12231accc98a1d3f77a8c4dbd3ab4
   docVersion: 0.0.1
   speakeasyVersion: 1.244.0
   generationVersion: 2.301.0
-  releaseVersion: 0.18.3
-  configChecksum: df48e024b99e6b2abb07c6eafc8d5bfd
+  releaseVersion: 0.19.0
+  configChecksum: 85ea8ddaa543c26316a0fe6f527b5484
 features:
   typescript:
     acceptHeaders: 2.81.1
     constsAndDefaults: 0.1.5
     core: 3.7.1
     deprecations: 2.81.1
-    flattening: 2.81.1
     globalSecurity: 2.82.9
     globalServerURLs: 2.82.4
-    globals: 2.82.1
-    hiddenGlobals: 0.1.0
-    nameOverrides: 2.81.2
     responseFormat: 0.2.3
     unions: 2.85.3
 generatedFiles:
@@ -54,15 +50,15 @@ generatedFiles:
   - src/models/components/tagschema.ts
   - src/models/components/workspaceschema.ts
   - src/models/components/security.ts
-  - src/models/errors/badrequest.ts
-  - src/models/errors/unauthorized.ts
-  - src/models/errors/forbidden.ts
-  - src/models/errors/notfound.ts
-  - src/models/errors/conflict.ts
-  - src/models/errors/inviteexpired.ts
-  - src/models/errors/unprocessableentity.ts
-  - src/models/errors/ratelimitexceeded.ts
-  - src/models/errors/internalservererror.ts
+  - src/models/errors/fourhundred.ts
+  - src/models/errors/fourhundredandone.ts
+  - src/models/errors/fourhundredandthree.ts
+  - src/models/errors/fourhundredandfour.ts
+  - src/models/errors/fourhundredandnine.ts
+  - src/models/errors/fourhundredandten.ts
+  - src/models/errors/fourhundredandtwentytwo.ts
+  - src/models/errors/fourhundredandtwentynine.ts
+  - src/models/errors/fivehundred.ts
   - src/models/operations/getlinks.ts
   - src/models/operations/createlink.ts
   - src/models/operations/getlinkscount.ts
@@ -99,36 +95,37 @@ generatedFiles:
   - docs/models/components/security.md
   - docs/models/errors/code.md
   - docs/models/errors/errort.md
-  - docs/models/errors/badrequest.md
-  - docs/models/errors/unauthorizedcode.md
-  - docs/models/errors/unauthorizederror.md
-  - docs/models/errors/unauthorized.md
-  - docs/models/errors/forbiddencode.md
-  - docs/models/errors/forbiddenerror.md
-  - docs/models/errors/forbidden.md
-  - docs/models/errors/notfoundcode.md
-  - docs/models/errors/notfounderror.md
-  - docs/models/errors/notfound.md
-  - docs/models/errors/conflictcode.md
-  - docs/models/errors/conflicterror.md
-  - docs/models/errors/conflict.md
-  - docs/models/errors/inviteexpiredcode.md
-  - docs/models/errors/inviteexpirederror.md
-  - docs/models/errors/inviteexpired.md
-  - docs/models/errors/unprocessableentitycode.md
-  - docs/models/errors/unprocessableentityerror.md
-  - docs/models/errors/unprocessableentity.md
-  - docs/models/errors/ratelimitexceededcode.md
-  - docs/models/errors/ratelimitexceedederror.md
-  - docs/models/errors/ratelimitexceeded.md
-  - docs/models/errors/internalservererrorcode.md
-  - docs/models/errors/internalservererrorerror.md
-  - docs/models/errors/internalservererror.md
+  - docs/models/errors/fourhundred.md
+  - docs/models/errors/fourhundredandonecode.md
+  - docs/models/errors/fourhundredandoneerror.md
+  - docs/models/errors/fourhundredandone.md
+  - docs/models/errors/fourhundredandthreecode.md
+  - docs/models/errors/fourhundredandthreeerror.md
+  - docs/models/errors/fourhundredandthree.md
+  - docs/models/errors/fourhundredandfourcode.md
+  - docs/models/errors/fourhundredandfourerror.md
+  - docs/models/errors/fourhundredandfour.md
+  - docs/models/errors/fourhundredandninecode.md
+  - docs/models/errors/fourhundredandnineerror.md
+  - docs/models/errors/fourhundredandnine.md
+  - docs/models/errors/fourhundredandtencode.md
+  - docs/models/errors/fourhundredandtenerror.md
+  - docs/models/errors/fourhundredandten.md
+  - docs/models/errors/fourhundredandtwentytwocode.md
+  - docs/models/errors/fourhundredandtwentytwoerror.md
+  - docs/models/errors/fourhundredandtwentytwo.md
+  - docs/models/errors/fourhundredandtwentyninecode.md
+  - docs/models/errors/fourhundredandtwentynineerror.md
+  - docs/models/errors/fourhundredandtwentynine.md
+  - docs/models/errors/fivehundredcode.md
+  - docs/models/errors/fivehundrederror.md
+  - docs/models/errors/fivehundred.md
   - docs/models/operations/queryparamtagids.md
   - docs/models/operations/sort.md
   - docs/models/operations/getlinksrequest.md
   - docs/models/operations/tagids.md
   - docs/models/operations/createlinkrequestbody.md
+  - docs/models/operations/createlinkrequest.md
   - docs/models/operations/getlinkscountqueryparamtagids.md
   - docs/models/operations/two.md
   - docs/models/operations/one.md
@@ -139,9 +136,9 @@ generatedFiles:
   - docs/models/operations/editlinkrequestbody.md
   - docs/models/operations/editlinkrequest.md
   - docs/models/operations/deletelinkrequest.md
-  - docs/models/operations/deletelinkresponsebody.md
   - docs/models/operations/bulkcreatelinkstagids.md
   - docs/models/operations/requestbody.md
+  - docs/models/operations/bulkcreatelinksrequest.md
   - docs/models/operations/level.md
   - docs/models/operations/getqrcoderequest.md
   - docs/models/operations/interval.md
@@ -190,6 +187,7 @@ generatedFiles:
   - docs/models/operations/gettagsrequest.md
   - docs/models/operations/color.md
   - docs/models/operations/createtagrequestbody.md
+  - docs/models/operations/createtagrequest.md
   - docs/sdks/dub/README.md
   - docs/sdks/links/README.md
   - docs/sdks/qrcodes/README.md

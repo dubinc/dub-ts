@@ -1,7 +1,10 @@
-node_modules
-yarn-error.log
-codegen.log
-dist
-/deno
-/*.tgz
-.idea/
+/models
+/models/errors
+/types
+/lib
+/sdk
+/hooks
+/index.*
+/cjs
+/node_modules
+/.tsbuildinfo
