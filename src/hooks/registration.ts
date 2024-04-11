@@ -1,3 +1,5 @@
+import { injectAPIKey } from "./auth";
+import { overrideBaseURL } from "./base-url";
 import { Hooks } from "./types";
 
 /*
@@ -6,9 +8,11 @@ import { Hooks } from "./types";
  * in this file or in separate files in the hooks folder.
  */
 
-// @ts-expect-error remove this line when you add your first hook and hooks is used
 export function initHooks(hooks: Hooks) {
     // Add hooks by calling hooks.register{ClientInit/BeforeRequest/AfterSuccess/AfterError}Hook
     // with an instance of a hook that implements that specific Hook interface
     // Hooks are registered per SDK instance, and are valid for the lifetime of the SDK instance
+
+    hooks.registerBeforeRequestHook(injectAPIKey);
+    hooks.registerBeforeRequestHook(overrideBaseURL);
 }

@@ -16,6 +16,7 @@ typescript:
   additionalDependencies:
     dependencies: {}
     devDependencies:
+      '@types/node': ^20.12.7
       vitest: 1.4.0
     peerDependencies: {}
   author: Dub
