@@ -7,9 +7,14 @@ import * as z from "zod";
 /**
  * A short code indicating the error code returned.
  */
-export enum InternalServerErrorCode {
-    InternalServerError = "internal_server_error",
-}
+export const InternalServerErrorCode = {
+    InternalServerError: "internal_server_error",
+} as const;
+/**
+ * A short code indicating the error code returned.
+ */
+export type InternalServerErrorCode =
+    (typeof InternalServerErrorCode)[keyof typeof InternalServerErrorCode];
 
 export type InternalServerErrorError = {
     /**

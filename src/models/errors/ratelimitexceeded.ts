@@ -7,9 +7,14 @@ import * as z from "zod";
 /**
  * A short code indicating the error code returned.
  */
-export enum RateLimitExceededCode {
-    RateLimitExceeded = "rate_limit_exceeded",
-}
+export const RateLimitExceededCode = {
+    RateLimitExceeded: "rate_limit_exceeded",
+} as const;
+/**
+ * A short code indicating the error code returned.
+ */
+export type RateLimitExceededCode =
+    (typeof RateLimitExceededCode)[keyof typeof RateLimitExceededCode];
 
 export type RateLimitExceededError = {
     /**

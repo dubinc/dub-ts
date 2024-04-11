@@ -7,9 +7,13 @@ import * as z from "zod";
 /**
  * A short code indicating the error code returned.
  */
-export enum ForbiddenCode {
-    Forbidden = "forbidden",
-}
+export const ForbiddenCode = {
+    Forbidden: "forbidden",
+} as const;
+/**
+ * A short code indicating the error code returned.
+ */
+export type ForbiddenCode = (typeof ForbiddenCode)[keyof typeof ForbiddenCode];
 
 export type ForbiddenError = {
     /**

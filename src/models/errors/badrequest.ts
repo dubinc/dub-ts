@@ -7,9 +7,13 @@ import * as z from "zod";
 /**
  * A short code indicating the error code returned.
  */
-export enum Code {
-    BadRequest = "bad_request",
-}
+export const Code = {
+    BadRequest: "bad_request",
+} as const;
+/**
+ * A short code indicating the error code returned.
+ */
+export type Code = (typeof Code)[keyof typeof Code];
 
 export type ErrorT = {
     /**

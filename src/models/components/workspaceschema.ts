@@ -7,23 +7,31 @@ import * as z from "zod";
 /**
  * The plan of the workspace.
  */
-export enum Plan {
-    Free = "free",
-    Pro = "pro",
-    Business = "business",
-    BusinessPlus = "business plus",
-    BusinessExtra = "business extra",
-    BusinessMax = "business max",
-    Enterprise = "enterprise",
-}
+export const Plan = {
+    Free: "free",
+    Pro: "pro",
+    Business: "business",
+    BusinessPlus: "business plus",
+    BusinessExtra: "business extra",
+    BusinessMax: "business max",
+    Enterprise: "enterprise",
+} as const;
+/**
+ * The plan of the workspace.
+ */
+export type Plan = (typeof Plan)[keyof typeof Plan];
 
 /**
  * The role of the authenticated user in the workspace.
  */
-export enum Role {
-    Owner = "owner",
-    Member = "member",
-}
+export const Role = {
+    Owner: "owner",
+    Member: "member",
+} as const;
+/**
+ * The role of the authenticated user in the workspace.
+ */
+export type Role = (typeof Role)[keyof typeof Role];
 
 export type Users = {
     /**
