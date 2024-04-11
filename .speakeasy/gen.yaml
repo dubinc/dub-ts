@@ -21,6 +21,7 @@ typescript:
     peerDependencies: {}
   author: Dub
   clientServerStatusCodesAsErrors: true
+  enumFormat: union
   flattenGlobalSecurity: true
   imports:
     option: openapi
