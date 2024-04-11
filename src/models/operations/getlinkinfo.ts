@@ -5,9 +5,6 @@
 import * as z from "zod";
 
 export type GetLinkInfoRequest = {
-    /**
-     * The domain of the link to retrieve. E.g. for `d.to/github`, the domain is `d.to`.
-     */
     domain: string;
     /**
      * The key of the link to retrieve. E.g. for `d.to/github`, the key is `github`.
