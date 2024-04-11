@@ -16,13 +16,12 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
+    token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
     projectSlug: "<value>",
   });
 
-  const operationSecurity = "<YOUR_BEARER_TOKEN_HERE>";
-  
-  const result = await sdk.qrCodes.get({}, operationSecurity);
+  const result = await sdk.qrCodes.get({});
 
   // Handle the result
   console.log(result)
@@ -36,7 +35,6 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `request`                                                                                                                                                                      | [operations.GetQRCodeRequest](../../models/operations/getqrcoderequest.md)                                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `security`                                                                                                                                                                     | [operations.GetQRCodeSecurity](../../models/operations/getqrcodesecurity.md)                                                                                                   | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 

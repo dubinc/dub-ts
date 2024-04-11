@@ -4,10 +4,6 @@
 
 import * as z from "zod";
 
-export type GetLinkInfoSecurity = {
-    token?: string | undefined;
-};
-
 export type GetLinkInfoRequest = {
     domain: string;
     /**
@@ -15,37 +11,6 @@ export type GetLinkInfoRequest = {
      */
     key: string;
 };
-
-/** @internal */
-export namespace GetLinkInfoSecurity$ {
-    export type Inbound = {
-        token?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetLinkInfoSecurity, z.ZodTypeDef, Inbound> = z
-        .object({
-            token: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.token === undefined ? null : { token: v.token }),
-            };
-        });
-
-    export type Outbound = {
-        token?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLinkInfoSecurity> = z
-        .object({
-            token: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.token === undefined ? null : { token: v.token }),
-            };
-        });
-}
 
 /** @internal */
 export namespace GetLinkInfoRequest$ {

@@ -8,7 +8,6 @@ import * as enc$ from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
-import { SecurityInput } from "../lib/security";
 import * as components from "../models/components";
 import * as errors from "../models/errors";
 import * as operations from "../models/operations";
@@ -47,10 +46,7 @@ export class Workspaces extends ClientSDK {
      * @remarks
      * Retrieve a list of workspaces for the authenticated user.
      */
-    async list(
-        security: operations.GetWorkspacesSecurity,
-        options?: RequestOptions
-    ): Promise<Array<components.WorkspaceSchema>> {
+    async list(options?: RequestOptions): Promise<Array<components.WorkspaceSchema>> {
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
@@ -59,21 +55,20 @@ export class Workspaces extends ClientSDK {
 
         const query$ = "";
 
-        const security$: SecurityInput[][] = [
-            [
-                {
-                    fieldName: "Authorization",
-                    type: "http:bearer",
-                    value: security?.token,
-                },
-            ],
-        ];
-        const securitySettings$ = this.resolveSecurity(...security$);
+        let security$;
+        if (typeof this.options$.token === "function") {
+            security$ = { token: await this.options$.token() };
+        } else if (this.options$.token) {
+            security$ = { token: this.options$.token };
+        } else {
+            security$ = {};
+        }
         const context = {
             operationID: "getWorkspaces",
             oAuth2Scopes: [],
-            securitySource: security$,
+            securitySource: this.options$.token,
         };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = {
             context,
@@ -252,7 +247,6 @@ export class Workspaces extends ClientSDK {
      */
     async create(
         input: operations.CreateWorkspaceRequestBody | undefined,
-        security: operations.CreateWorkspaceSecurity,
         options?: RequestOptions
     ): Promise<components.WorkspaceSchema> {
         const headers$ = new Headers();
@@ -273,21 +267,20 @@ export class Workspaces extends ClientSDK {
 
         const query$ = "";
 
-        const security$: SecurityInput[][] = [
-            [
-                {
-                    fieldName: "Authorization",
-                    type: "http:bearer",
-                    value: security?.token,
-                },
-            ],
-        ];
-        const securitySettings$ = this.resolveSecurity(...security$);
+        let security$;
+        if (typeof this.options$.token === "function") {
+            security$ = { token: await this.options$.token() };
+        } else if (this.options$.token) {
+            security$ = { token: this.options$.token };
+        } else {
+            security$ = {};
+        }
         const context = {
             operationID: "createWorkspace",
             oAuth2Scopes: [],
-            securitySource: security$,
+            securitySource: this.options$.token,
         };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = {
             context,
@@ -467,7 +460,6 @@ export class Workspaces extends ClientSDK {
      */
     async get(
         input: operations.GetWorkspaceRequest,
-        security: operations.GetWorkspaceSecurity,
         options?: RequestOptions
     ): Promise<components.WorkspaceSchema> {
         const headers$ = new Headers();
@@ -491,21 +483,20 @@ export class Workspaces extends ClientSDK {
 
         const query$ = "";
 
-        const security$: SecurityInput[][] = [
-            [
-                {
-                    fieldName: "Authorization",
-                    type: "http:bearer",
-                    value: security?.token,
-                },
-            ],
-        ];
-        const securitySettings$ = this.resolveSecurity(...security$);
+        let security$;
+        if (typeof this.options$.token === "function") {
+            security$ = { token: await this.options$.token() };
+        } else if (this.options$.token) {
+            security$ = { token: this.options$.token };
+        } else {
+            security$ = {};
+        }
         const context = {
             operationID: "getWorkspace",
             oAuth2Scopes: [],
-            securitySource: security$,
+            securitySource: this.options$.token,
         };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = {
             context,
