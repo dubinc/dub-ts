@@ -7,12 +7,16 @@ import * as z from "zod";
 /**
  * The level of error correction to use for the QR code. Defaults to `L` if not provided.
  */
-export enum Level {
-    L = "L",
-    M = "M",
-    Q = "Q",
-    H = "H",
-}
+export const Level = {
+    L: "L",
+    M: "M",
+    Q: "Q",
+    H: "H",
+} as const;
+/**
+ * The level of error correction to use for the QR code. Defaults to `L` if not provided.
+ */
+export type Level = (typeof Level)[keyof typeof Level];
 
 export type GetQRCodeRequest = {
     /**
@@ -59,7 +63,7 @@ export namespace GetQRCodeRequest$ {
         .object({
             url: z.string().default("https://dub.co"),
             size: z.number().default(600),
-            level: Level$.default(Level.L),
+            level: Level$.default("L"),
             fgColor: z.string().default("#000000"),
             bgColor: z.string().default("#FFFFFF"),
             includeMargin: z.boolean().default(false),
@@ -88,7 +92,7 @@ export namespace GetQRCodeRequest$ {
         .object({
             url: z.string().default("https://dub.co"),
             size: z.number().default(600),
-            level: Level$.default(Level.L),
+            level: Level$.default("L"),
             fgColor: z.string().default("#000000"),
             bgColor: z.string().default("#FFFFFF"),
             includeMargin: z.boolean().default(false),

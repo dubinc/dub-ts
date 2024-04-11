@@ -9,13 +9,15 @@ import * as z from "zod";
  */
 export type GetLinksCountQueryParamTagIds = string | Array<string>;
 
-export enum Two {
-    TagId = "tagId",
-}
+export const Two = {
+    TagId: "tagId",
+} as const;
+export type Two = (typeof Two)[keyof typeof Two];
 
-export enum One {
-    Domain = "domain",
-}
+export const One = {
+    Domain: "domain",
+} as const;
+export type One = (typeof One)[keyof typeof One];
 
 /**
  * The field to group the links by.

@@ -7,9 +7,13 @@ import * as z from "zod";
 /**
  * A short code indicating the error code returned.
  */
-export enum ConflictCode {
-    Conflict = "conflict",
-}
+export const ConflictCode = {
+    Conflict: "conflict",
+} as const;
+/**
+ * A short code indicating the error code returned.
+ */
+export type ConflictCode = (typeof ConflictCode)[keyof typeof ConflictCode];
 
 export type ConflictError = {
     /**

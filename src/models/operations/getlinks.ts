@@ -12,11 +12,15 @@ export type QueryParamTagIds = string | Array<string>;
 /**
  * The field to sort the links by. The default is `createdAt`, and sort order is always descending.
  */
-export enum Sort {
-    CreatedAt = "createdAt",
-    Clicks = "clicks",
-    LastClicked = "lastClicked",
-}
+export const Sort = {
+    CreatedAt: "createdAt",
+    Clicks: "clicks",
+    LastClicked: "lastClicked",
+} as const;
+/**
+ * The field to sort the links by. The default is `createdAt`, and sort order is always descending.
+ */
+export type Sort = (typeof Sort)[keyof typeof Sort];
 
 export type GetLinksRequest = {
     /**
@@ -98,7 +102,7 @@ export namespace GetLinksRequest$ {
             userId: z.string().optional(),
             showArchived: z.boolean().default(false),
             withTags: z.boolean().default(false),
-            sort: Sort$.default(Sort.CreatedAt),
+            sort: Sort$.default("createdAt"),
             page: z.number().optional(),
         })
         .transform((v) => {
@@ -136,7 +140,7 @@ export namespace GetLinksRequest$ {
             userId: z.string().optional(),
             showArchived: z.boolean().default(false),
             withTags: z.boolean().default(false),
-            sort: Sort$.default(Sort.CreatedAt),
+            sort: Sort$.default("createdAt"),
             page: z.number().optional(),
         })
         .transform((v) => {

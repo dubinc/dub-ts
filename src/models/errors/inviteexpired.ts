@@ -7,9 +7,13 @@ import * as z from "zod";
 /**
  * A short code indicating the error code returned.
  */
-export enum InviteExpiredCode {
-    InviteExpired = "invite_expired",
-}
+export const InviteExpiredCode = {
+    InviteExpired: "invite_expired",
+} as const;
+/**
+ * A short code indicating the error code returned.
+ */
+export type InviteExpiredCode = (typeof InviteExpiredCode)[keyof typeof InviteExpiredCode];
 
 export type InviteExpiredError = {
     /**

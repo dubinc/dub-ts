@@ -24,7 +24,6 @@ async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
-    projectSlug: "<value>",
   });
 
   const result = await sdk.links.list({
@@ -80,7 +79,6 @@ async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
-    projectSlug: "<value>",
   });
 
   const result = await sdk.links.create({
@@ -139,7 +137,6 @@ async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
-    projectSlug: "<value>",
   });
 
   const result = await sdk.links.count({
@@ -194,7 +191,6 @@ async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
-    projectSlug: "<value>",
   });
 
   const result = await sdk.links.get({
@@ -249,7 +245,6 @@ async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
-    projectSlug: "<value>",
   });
 
   const linkId = "<value>";
@@ -311,7 +306,6 @@ async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
-    projectSlug: "<value>",
   });
 
   const linkId = "<value>";
@@ -365,7 +359,6 @@ async function run() {
   const sdk = new Dub({
     token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
-    projectSlug: "<value>",
   });
 
   const result = await sdk.links.createMany([

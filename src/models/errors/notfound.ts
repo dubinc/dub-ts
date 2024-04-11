@@ -7,9 +7,13 @@ import * as z from "zod";
 /**
  * A short code indicating the error code returned.
  */
-export enum NotFoundCode {
-    NotFound = "not_found",
-}
+export const NotFoundCode = {
+    NotFound: "not_found",
+} as const;
+/**
+ * A short code indicating the error code returned.
+ */
+export type NotFoundCode = (typeof NotFoundCode)[keyof typeof NotFoundCode];
 
 export type NotFoundError = {
     /**

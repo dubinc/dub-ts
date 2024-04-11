@@ -7,9 +7,14 @@ import * as z from "zod";
 /**
  * A short code indicating the error code returned.
  */
-export enum UnprocessableEntityCode {
-    UnprocessableEntity = "unprocessable_entity",
-}
+export const UnprocessableEntityCode = {
+    UnprocessableEntity: "unprocessable_entity",
+} as const;
+/**
+ * A short code indicating the error code returned.
+ */
+export type UnprocessableEntityCode =
+    (typeof UnprocessableEntityCode)[keyof typeof UnprocessableEntityCode];
 
 export type UnprocessableEntityError = {
     /**
