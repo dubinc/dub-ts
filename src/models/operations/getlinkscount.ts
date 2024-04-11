@@ -30,7 +30,7 @@ export type GetLinksCountRequest = {
      */
     domain?: string | undefined;
     /**
-     * [DEPRECATED] (use tagIds instead): The tag ID to filter the links by.
+     * The tag ID to filter the links by. This field is deprecated – use `tagIds` instead.
      */
     tagId?: string | undefined;
     /**
