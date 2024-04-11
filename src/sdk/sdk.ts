@@ -8,6 +8,7 @@ import { HTTPClient } from "../lib/http";
 import { ClientSDK } from "../lib/sdks";
 import { Analytics } from "./analytics";
 import { Links } from "./links";
+import { Metatags } from "./metatags";
 import { QRCodes } from "./qrcodes";
 import { Tags } from "./tags";
 import { Workspaces } from "./workspaces";
@@ -62,5 +63,10 @@ export class Dub extends ClientSDK {
     private _tags?: Tags;
     get tags() {
         return (this._tags ??= new Tags(this.options$));
+    }
+
+    private _metatags?: Metatags;
+    get metatags() {
+        return (this._metatags ??= new Metatags(this.options$));
     }
 }

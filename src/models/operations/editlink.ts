@@ -9,6 +9,1012 @@ import * as z from "zod";
  */
 export type EditLinkTagIds = string | Array<string>;
 
+/**
+ * Geo targeting information for the short link in JSON format `{[COUNTRY]: https://example.com }`.
+ */
+export type EditLinkGeo = {
+    /**
+     * The destination URL of the short link.
+     */
+    af?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    al?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    dz?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    as?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    ad?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    ao?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    ai?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    aq?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    ag?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    ar?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    am?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    aw?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    au?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    at?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    az?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    bs?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    bh?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    bd?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    bb?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    by?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    be?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    bz?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    bj?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    bm?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    bt?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    bo?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    ba?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    bw?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    bv?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    br?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    io?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    bn?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    bg?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    bf?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    bi?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    kh?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    cm?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    ca?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    cv?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    ky?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    cf?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    td?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    cl?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    cn?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    cx?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    cc?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    co?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    km?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    cg?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    cd?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    ck?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    cr?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    ci?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    hr?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    cu?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    cy?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    cz?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    dk?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    dj?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    dm?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    do?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    ec?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    eg?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    sv?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    gq?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    er?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    ee?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    et?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    fk?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    fo?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    fj?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    fi?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    fr?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    gf?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    pf?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    tf?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    ga?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    gm?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    ge?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    de?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    gh?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    gi?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    gr?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    gl?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    gd?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    gp?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    gu?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    gt?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    gn?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    gw?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    gy?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    ht?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    hm?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    va?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    hn?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    hk?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    hu?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    is?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    in?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    id?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    ir?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    iq?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    ie?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    il?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    it?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    jm?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    jp?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    jo?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    kz?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    ke?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    ki?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    kp?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    kr?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    kw?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    kg?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    la?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    lv?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    lb?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    ls?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    lr?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    ly?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    li?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    lt?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    lu?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    mo?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    mg?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    mw?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    my?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    mv?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    ml?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    mt?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    mh?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    mq?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    mr?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    mu?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    yt?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    mx?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    fm?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    md?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    mc?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    mn?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    ms?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    ma?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    mz?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    mm?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    na?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    nr?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    np?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    nl?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    nc?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    nz?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    ni?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    ne?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    ng?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    nu?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    nf?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    mk?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    mp?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    no?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    om?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    pk?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    pw?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    ps?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    pa?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    pg?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    py?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    pe?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    ph?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    pn?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    pl?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    pt?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    pr?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    qa?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    re?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    ro?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    ru?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    rw?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    sh?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    kn?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    lc?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    pm?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    vc?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    ws?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    sm?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    st?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    sa?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    sn?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    sc?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    sl?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    sg?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    sk?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    si?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    sb?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    so?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    za?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    gs?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    es?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    lk?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    sd?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    sr?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    sj?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    sz?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    se?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    ch?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    sy?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    tw?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    tj?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    tz?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    th?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    tl?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    tg?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    tk?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    to?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    tt?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    tn?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    tr?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    tm?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    tc?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    tv?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    ug?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    ua?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    ae?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    gb?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    us?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    um?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    uy?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    uz?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    vu?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    ve?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    vn?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    vg?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    vi?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    wf?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    eh?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    ye?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    zm?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    zw?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    ax?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    bq?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    cw?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    gg?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    im?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    je?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    me?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    bl?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    mf?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    rs?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    sx?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    ss?: string | undefined;
+    /**
+     * The destination URL of the short link.
+     */
+    xk?: string | undefined;
+};
+
 export type EditLinkRequestBody = {
     /**
      * The domain of the short link. If not provided, the primary domain for the workspace will be used (or `dub.sh` if the workspace has no domains).
@@ -30,6 +1036,24 @@ export type EditLinkRequestBody = {
      * Whether the short link is archived.
      */
     archived?: boolean | undefined;
+    /**
+     * Whether the short link's stats are publicly accessible.
+     */
+    publicStats?: boolean | undefined;
+    /**
+     * The unique ID of the tag assigned to the short link. This field is deprecated – use `tagIds` instead.
+     *
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    tagId?: string | null | undefined;
+    /**
+     * The unique IDs of the tags assigned to the short link.
+     */
+    tagIds?: string | Array<string> | undefined;
+    /**
+     * The comments for the short link.
+     */
+    comments?: string | null | undefined;
     /**
      * The date and time when the short link will expire at.
      */
@@ -73,25 +1097,7 @@ export type EditLinkRequestBody = {
     /**
      * Geo targeting information for the short link in JSON format `{[COUNTRY]: https://example.com }`.
      */
-    geo?: Record<string, string> | null | undefined;
-    /**
-     * Whether the short link's stats are publicly accessible.
-     */
-    publicStats?: boolean | undefined;
-    /**
-     * [DEPRECATED] (use tagIds instead): The unique ID of the tag assigned to the short link.
-     *
-     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    tagId?: string | null | undefined;
-    /**
-     * The unique IDs of the tags assigned to the short link.
-     */
-    tagIds?: string | Array<string> | undefined;
-    /**
-     * The comments for the short link.
-     */
-    comments?: string | null | undefined;
+    geo?: EditLinkGeo | null | undefined;
 };
 
 export type EditLinkRequest = {
@@ -118,6 +1124,1531 @@ export namespace EditLinkTagIds$ {
 }
 
 /** @internal */
+export namespace EditLinkGeo$ {
+    export type Inbound = {
+        AF?: string | undefined;
+        AL?: string | undefined;
+        DZ?: string | undefined;
+        AS?: string | undefined;
+        AD?: string | undefined;
+        AO?: string | undefined;
+        AI?: string | undefined;
+        AQ?: string | undefined;
+        AG?: string | undefined;
+        AR?: string | undefined;
+        AM?: string | undefined;
+        AW?: string | undefined;
+        AU?: string | undefined;
+        AT?: string | undefined;
+        AZ?: string | undefined;
+        BS?: string | undefined;
+        BH?: string | undefined;
+        BD?: string | undefined;
+        BB?: string | undefined;
+        BY?: string | undefined;
+        BE?: string | undefined;
+        BZ?: string | undefined;
+        BJ?: string | undefined;
+        BM?: string | undefined;
+        BT?: string | undefined;
+        BO?: string | undefined;
+        BA?: string | undefined;
+        BW?: string | undefined;
+        BV?: string | undefined;
+        BR?: string | undefined;
+        IO?: string | undefined;
+        BN?: string | undefined;
+        BG?: string | undefined;
+        BF?: string | undefined;
+        BI?: string | undefined;
+        KH?: string | undefined;
+        CM?: string | undefined;
+        CA?: string | undefined;
+        CV?: string | undefined;
+        KY?: string | undefined;
+        CF?: string | undefined;
+        TD?: string | undefined;
+        CL?: string | undefined;
+        CN?: string | undefined;
+        CX?: string | undefined;
+        CC?: string | undefined;
+        CO?: string | undefined;
+        KM?: string | undefined;
+        CG?: string | undefined;
+        CD?: string | undefined;
+        CK?: string | undefined;
+        CR?: string | undefined;
+        CI?: string | undefined;
+        HR?: string | undefined;
+        CU?: string | undefined;
+        CY?: string | undefined;
+        CZ?: string | undefined;
+        DK?: string | undefined;
+        DJ?: string | undefined;
+        DM?: string | undefined;
+        DO?: string | undefined;
+        EC?: string | undefined;
+        EG?: string | undefined;
+        SV?: string | undefined;
+        GQ?: string | undefined;
+        ER?: string | undefined;
+        EE?: string | undefined;
+        ET?: string | undefined;
+        FK?: string | undefined;
+        FO?: string | undefined;
+        FJ?: string | undefined;
+        FI?: string | undefined;
+        FR?: string | undefined;
+        GF?: string | undefined;
+        PF?: string | undefined;
+        TF?: string | undefined;
+        GA?: string | undefined;
+        GM?: string | undefined;
+        GE?: string | undefined;
+        DE?: string | undefined;
+        GH?: string | undefined;
+        GI?: string | undefined;
+        GR?: string | undefined;
+        GL?: string | undefined;
+        GD?: string | undefined;
+        GP?: string | undefined;
+        GU?: string | undefined;
+        GT?: string | undefined;
+        GN?: string | undefined;
+        GW?: string | undefined;
+        GY?: string | undefined;
+        HT?: string | undefined;
+        HM?: string | undefined;
+        VA?: string | undefined;
+        HN?: string | undefined;
+        HK?: string | undefined;
+        HU?: string | undefined;
+        IS?: string | undefined;
+        IN?: string | undefined;
+        ID?: string | undefined;
+        IR?: string | undefined;
+        IQ?: string | undefined;
+        IE?: string | undefined;
+        IL?: string | undefined;
+        IT?: string | undefined;
+        JM?: string | undefined;
+        JP?: string | undefined;
+        JO?: string | undefined;
+        KZ?: string | undefined;
+        KE?: string | undefined;
+        KI?: string | undefined;
+        KP?: string | undefined;
+        KR?: string | undefined;
+        KW?: string | undefined;
+        KG?: string | undefined;
+        LA?: string | undefined;
+        LV?: string | undefined;
+        LB?: string | undefined;
+        LS?: string | undefined;
+        LR?: string | undefined;
+        LY?: string | undefined;
+        LI?: string | undefined;
+        LT?: string | undefined;
+        LU?: string | undefined;
+        MO?: string | undefined;
+        MG?: string | undefined;
+        MW?: string | undefined;
+        MY?: string | undefined;
+        MV?: string | undefined;
+        ML?: string | undefined;
+        MT?: string | undefined;
+        MH?: string | undefined;
+        MQ?: string | undefined;
+        MR?: string | undefined;
+        MU?: string | undefined;
+        YT?: string | undefined;
+        MX?: string | undefined;
+        FM?: string | undefined;
+        MD?: string | undefined;
+        MC?: string | undefined;
+        MN?: string | undefined;
+        MS?: string | undefined;
+        MA?: string | undefined;
+        MZ?: string | undefined;
+        MM?: string | undefined;
+        NA?: string | undefined;
+        NR?: string | undefined;
+        NP?: string | undefined;
+        NL?: string | undefined;
+        NC?: string | undefined;
+        NZ?: string | undefined;
+        NI?: string | undefined;
+        NE?: string | undefined;
+        NG?: string | undefined;
+        NU?: string | undefined;
+        NF?: string | undefined;
+        MK?: string | undefined;
+        MP?: string | undefined;
+        NO?: string | undefined;
+        OM?: string | undefined;
+        PK?: string | undefined;
+        PW?: string | undefined;
+        PS?: string | undefined;
+        PA?: string | undefined;
+        PG?: string | undefined;
+        PY?: string | undefined;
+        PE?: string | undefined;
+        PH?: string | undefined;
+        PN?: string | undefined;
+        PL?: string | undefined;
+        PT?: string | undefined;
+        PR?: string | undefined;
+        QA?: string | undefined;
+        RE?: string | undefined;
+        RO?: string | undefined;
+        RU?: string | undefined;
+        RW?: string | undefined;
+        SH?: string | undefined;
+        KN?: string | undefined;
+        LC?: string | undefined;
+        PM?: string | undefined;
+        VC?: string | undefined;
+        WS?: string | undefined;
+        SM?: string | undefined;
+        ST?: string | undefined;
+        SA?: string | undefined;
+        SN?: string | undefined;
+        SC?: string | undefined;
+        SL?: string | undefined;
+        SG?: string | undefined;
+        SK?: string | undefined;
+        SI?: string | undefined;
+        SB?: string | undefined;
+        SO?: string | undefined;
+        ZA?: string | undefined;
+        GS?: string | undefined;
+        ES?: string | undefined;
+        LK?: string | undefined;
+        SD?: string | undefined;
+        SR?: string | undefined;
+        SJ?: string | undefined;
+        SZ?: string | undefined;
+        SE?: string | undefined;
+        CH?: string | undefined;
+        SY?: string | undefined;
+        TW?: string | undefined;
+        TJ?: string | undefined;
+        TZ?: string | undefined;
+        TH?: string | undefined;
+        TL?: string | undefined;
+        TG?: string | undefined;
+        TK?: string | undefined;
+        TO?: string | undefined;
+        TT?: string | undefined;
+        TN?: string | undefined;
+        TR?: string | undefined;
+        TM?: string | undefined;
+        TC?: string | undefined;
+        TV?: string | undefined;
+        UG?: string | undefined;
+        UA?: string | undefined;
+        AE?: string | undefined;
+        GB?: string | undefined;
+        US?: string | undefined;
+        UM?: string | undefined;
+        UY?: string | undefined;
+        UZ?: string | undefined;
+        VU?: string | undefined;
+        VE?: string | undefined;
+        VN?: string | undefined;
+        VG?: string | undefined;
+        VI?: string | undefined;
+        WF?: string | undefined;
+        EH?: string | undefined;
+        YE?: string | undefined;
+        ZM?: string | undefined;
+        ZW?: string | undefined;
+        AX?: string | undefined;
+        BQ?: string | undefined;
+        CW?: string | undefined;
+        GG?: string | undefined;
+        IM?: string | undefined;
+        JE?: string | undefined;
+        ME?: string | undefined;
+        BL?: string | undefined;
+        MF?: string | undefined;
+        RS?: string | undefined;
+        SX?: string | undefined;
+        SS?: string | undefined;
+        XK?: string | undefined;
+    };
+
+    export const inboundSchema: z.ZodType<EditLinkGeo, z.ZodTypeDef, Inbound> = z
+        .object({
+            AF: z.string().optional(),
+            AL: z.string().optional(),
+            DZ: z.string().optional(),
+            AS: z.string().optional(),
+            AD: z.string().optional(),
+            AO: z.string().optional(),
+            AI: z.string().optional(),
+            AQ: z.string().optional(),
+            AG: z.string().optional(),
+            AR: z.string().optional(),
+            AM: z.string().optional(),
+            AW: z.string().optional(),
+            AU: z.string().optional(),
+            AT: z.string().optional(),
+            AZ: z.string().optional(),
+            BS: z.string().optional(),
+            BH: z.string().optional(),
+            BD: z.string().optional(),
+            BB: z.string().optional(),
+            BY: z.string().optional(),
+            BE: z.string().optional(),
+            BZ: z.string().optional(),
+            BJ: z.string().optional(),
+            BM: z.string().optional(),
+            BT: z.string().optional(),
+            BO: z.string().optional(),
+            BA: z.string().optional(),
+            BW: z.string().optional(),
+            BV: z.string().optional(),
+            BR: z.string().optional(),
+            IO: z.string().optional(),
+            BN: z.string().optional(),
+            BG: z.string().optional(),
+            BF: z.string().optional(),
+            BI: z.string().optional(),
+            KH: z.string().optional(),
+            CM: z.string().optional(),
+            CA: z.string().optional(),
+            CV: z.string().optional(),
+            KY: z.string().optional(),
+            CF: z.string().optional(),
+            TD: z.string().optional(),
+            CL: z.string().optional(),
+            CN: z.string().optional(),
+            CX: z.string().optional(),
+            CC: z.string().optional(),
+            CO: z.string().optional(),
+            KM: z.string().optional(),
+            CG: z.string().optional(),
+            CD: z.string().optional(),
+            CK: z.string().optional(),
+            CR: z.string().optional(),
+            CI: z.string().optional(),
+            HR: z.string().optional(),
+            CU: z.string().optional(),
+            CY: z.string().optional(),
+            CZ: z.string().optional(),
+            DK: z.string().optional(),
+            DJ: z.string().optional(),
+            DM: z.string().optional(),
+            DO: z.string().optional(),
+            EC: z.string().optional(),
+            EG: z.string().optional(),
+            SV: z.string().optional(),
+            GQ: z.string().optional(),
+            ER: z.string().optional(),
+            EE: z.string().optional(),
+            ET: z.string().optional(),
+            FK: z.string().optional(),
+            FO: z.string().optional(),
+            FJ: z.string().optional(),
+            FI: z.string().optional(),
+            FR: z.string().optional(),
+            GF: z.string().optional(),
+            PF: z.string().optional(),
+            TF: z.string().optional(),
+            GA: z.string().optional(),
+            GM: z.string().optional(),
+            GE: z.string().optional(),
+            DE: z.string().optional(),
+            GH: z.string().optional(),
+            GI: z.string().optional(),
+            GR: z.string().optional(),
+            GL: z.string().optional(),
+            GD: z.string().optional(),
+            GP: z.string().optional(),
+            GU: z.string().optional(),
+            GT: z.string().optional(),
+            GN: z.string().optional(),
+            GW: z.string().optional(),
+            GY: z.string().optional(),
+            HT: z.string().optional(),
+            HM: z.string().optional(),
+            VA: z.string().optional(),
+            HN: z.string().optional(),
+            HK: z.string().optional(),
+            HU: z.string().optional(),
+            IS: z.string().optional(),
+            IN: z.string().optional(),
+            ID: z.string().optional(),
+            IR: z.string().optional(),
+            IQ: z.string().optional(),
+            IE: z.string().optional(),
+            IL: z.string().optional(),
+            IT: z.string().optional(),
+            JM: z.string().optional(),
+            JP: z.string().optional(),
+            JO: z.string().optional(),
+            KZ: z.string().optional(),
+            KE: z.string().optional(),
+            KI: z.string().optional(),
+            KP: z.string().optional(),
+            KR: z.string().optional(),
+            KW: z.string().optional(),
+            KG: z.string().optional(),
+            LA: z.string().optional(),
+            LV: z.string().optional(),
+            LB: z.string().optional(),
+            LS: z.string().optional(),
+            LR: z.string().optional(),
+            LY: z.string().optional(),
+            LI: z.string().optional(),
+            LT: z.string().optional(),
+            LU: z.string().optional(),
+            MO: z.string().optional(),
+            MG: z.string().optional(),
+            MW: z.string().optional(),
+            MY: z.string().optional(),
+            MV: z.string().optional(),
+            ML: z.string().optional(),
+            MT: z.string().optional(),
+            MH: z.string().optional(),
+            MQ: z.string().optional(),
+            MR: z.string().optional(),
+            MU: z.string().optional(),
+            YT: z.string().optional(),
+            MX: z.string().optional(),
+            FM: z.string().optional(),
+            MD: z.string().optional(),
+            MC: z.string().optional(),
+            MN: z.string().optional(),
+            MS: z.string().optional(),
+            MA: z.string().optional(),
+            MZ: z.string().optional(),
+            MM: z.string().optional(),
+            NA: z.string().optional(),
+            NR: z.string().optional(),
+            NP: z.string().optional(),
+            NL: z.string().optional(),
+            NC: z.string().optional(),
+            NZ: z.string().optional(),
+            NI: z.string().optional(),
+            NE: z.string().optional(),
+            NG: z.string().optional(),
+            NU: z.string().optional(),
+            NF: z.string().optional(),
+            MK: z.string().optional(),
+            MP: z.string().optional(),
+            NO: z.string().optional(),
+            OM: z.string().optional(),
+            PK: z.string().optional(),
+            PW: z.string().optional(),
+            PS: z.string().optional(),
+            PA: z.string().optional(),
+            PG: z.string().optional(),
+            PY: z.string().optional(),
+            PE: z.string().optional(),
+            PH: z.string().optional(),
+            PN: z.string().optional(),
+            PL: z.string().optional(),
+            PT: z.string().optional(),
+            PR: z.string().optional(),
+            QA: z.string().optional(),
+            RE: z.string().optional(),
+            RO: z.string().optional(),
+            RU: z.string().optional(),
+            RW: z.string().optional(),
+            SH: z.string().optional(),
+            KN: z.string().optional(),
+            LC: z.string().optional(),
+            PM: z.string().optional(),
+            VC: z.string().optional(),
+            WS: z.string().optional(),
+            SM: z.string().optional(),
+            ST: z.string().optional(),
+            SA: z.string().optional(),
+            SN: z.string().optional(),
+            SC: z.string().optional(),
+            SL: z.string().optional(),
+            SG: z.string().optional(),
+            SK: z.string().optional(),
+            SI: z.string().optional(),
+            SB: z.string().optional(),
+            SO: z.string().optional(),
+            ZA: z.string().optional(),
+            GS: z.string().optional(),
+            ES: z.string().optional(),
+            LK: z.string().optional(),
+            SD: z.string().optional(),
+            SR: z.string().optional(),
+            SJ: z.string().optional(),
+            SZ: z.string().optional(),
+            SE: z.string().optional(),
+            CH: z.string().optional(),
+            SY: z.string().optional(),
+            TW: z.string().optional(),
+            TJ: z.string().optional(),
+            TZ: z.string().optional(),
+            TH: z.string().optional(),
+            TL: z.string().optional(),
+            TG: z.string().optional(),
+            TK: z.string().optional(),
+            TO: z.string().optional(),
+            TT: z.string().optional(),
+            TN: z.string().optional(),
+            TR: z.string().optional(),
+            TM: z.string().optional(),
+            TC: z.string().optional(),
+            TV: z.string().optional(),
+            UG: z.string().optional(),
+            UA: z.string().optional(),
+            AE: z.string().optional(),
+            GB: z.string().optional(),
+            US: z.string().optional(),
+            UM: z.string().optional(),
+            UY: z.string().optional(),
+            UZ: z.string().optional(),
+            VU: z.string().optional(),
+            VE: z.string().optional(),
+            VN: z.string().optional(),
+            VG: z.string().optional(),
+            VI: z.string().optional(),
+            WF: z.string().optional(),
+            EH: z.string().optional(),
+            YE: z.string().optional(),
+            ZM: z.string().optional(),
+            ZW: z.string().optional(),
+            AX: z.string().optional(),
+            BQ: z.string().optional(),
+            CW: z.string().optional(),
+            GG: z.string().optional(),
+            IM: z.string().optional(),
+            JE: z.string().optional(),
+            ME: z.string().optional(),
+            BL: z.string().optional(),
+            MF: z.string().optional(),
+            RS: z.string().optional(),
+            SX: z.string().optional(),
+            SS: z.string().optional(),
+            XK: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.AF === undefined ? null : { af: v.AF }),
+                ...(v.AL === undefined ? null : { al: v.AL }),
+                ...(v.DZ === undefined ? null : { dz: v.DZ }),
+                ...(v.AS === undefined ? null : { as: v.AS }),
+                ...(v.AD === undefined ? null : { ad: v.AD }),
+                ...(v.AO === undefined ? null : { ao: v.AO }),
+                ...(v.AI === undefined ? null : { ai: v.AI }),
+                ...(v.AQ === undefined ? null : { aq: v.AQ }),
+                ...(v.AG === undefined ? null : { ag: v.AG }),
+                ...(v.AR === undefined ? null : { ar: v.AR }),
+                ...(v.AM === undefined ? null : { am: v.AM }),
+                ...(v.AW === undefined ? null : { aw: v.AW }),
+                ...(v.AU === undefined ? null : { au: v.AU }),
+                ...(v.AT === undefined ? null : { at: v.AT }),
+                ...(v.AZ === undefined ? null : { az: v.AZ }),
+                ...(v.BS === undefined ? null : { bs: v.BS }),
+                ...(v.BH === undefined ? null : { bh: v.BH }),
+                ...(v.BD === undefined ? null : { bd: v.BD }),
+                ...(v.BB === undefined ? null : { bb: v.BB }),
+                ...(v.BY === undefined ? null : { by: v.BY }),
+                ...(v.BE === undefined ? null : { be: v.BE }),
+                ...(v.BZ === undefined ? null : { bz: v.BZ }),
+                ...(v.BJ === undefined ? null : { bj: v.BJ }),
+                ...(v.BM === undefined ? null : { bm: v.BM }),
+                ...(v.BT === undefined ? null : { bt: v.BT }),
+                ...(v.BO === undefined ? null : { bo: v.BO }),
+                ...(v.BA === undefined ? null : { ba: v.BA }),
+                ...(v.BW === undefined ? null : { bw: v.BW }),
+                ...(v.BV === undefined ? null : { bv: v.BV }),
+                ...(v.BR === undefined ? null : { br: v.BR }),
+                ...(v.IO === undefined ? null : { io: v.IO }),
+                ...(v.BN === undefined ? null : { bn: v.BN }),
+                ...(v.BG === undefined ? null : { bg: v.BG }),
+                ...(v.BF === undefined ? null : { bf: v.BF }),
+                ...(v.BI === undefined ? null : { bi: v.BI }),
+                ...(v.KH === undefined ? null : { kh: v.KH }),
+                ...(v.CM === undefined ? null : { cm: v.CM }),
+                ...(v.CA === undefined ? null : { ca: v.CA }),
+                ...(v.CV === undefined ? null : { cv: v.CV }),
+                ...(v.KY === undefined ? null : { ky: v.KY }),
+                ...(v.CF === undefined ? null : { cf: v.CF }),
+                ...(v.TD === undefined ? null : { td: v.TD }),
+                ...(v.CL === undefined ? null : { cl: v.CL }),
+                ...(v.CN === undefined ? null : { cn: v.CN }),
+                ...(v.CX === undefined ? null : { cx: v.CX }),
+                ...(v.CC === undefined ? null : { cc: v.CC }),
+                ...(v.CO === undefined ? null : { co: v.CO }),
+                ...(v.KM === undefined ? null : { km: v.KM }),
+                ...(v.CG === undefined ? null : { cg: v.CG }),
+                ...(v.CD === undefined ? null : { cd: v.CD }),
+                ...(v.CK === undefined ? null : { ck: v.CK }),
+                ...(v.CR === undefined ? null : { cr: v.CR }),
+                ...(v.CI === undefined ? null : { ci: v.CI }),
+                ...(v.HR === undefined ? null : { hr: v.HR }),
+                ...(v.CU === undefined ? null : { cu: v.CU }),
+                ...(v.CY === undefined ? null : { cy: v.CY }),
+                ...(v.CZ === undefined ? null : { cz: v.CZ }),
+                ...(v.DK === undefined ? null : { dk: v.DK }),
+                ...(v.DJ === undefined ? null : { dj: v.DJ }),
+                ...(v.DM === undefined ? null : { dm: v.DM }),
+                ...(v.DO === undefined ? null : { do: v.DO }),
+                ...(v.EC === undefined ? null : { ec: v.EC }),
+                ...(v.EG === undefined ? null : { eg: v.EG }),
+                ...(v.SV === undefined ? null : { sv: v.SV }),
+                ...(v.GQ === undefined ? null : { gq: v.GQ }),
+                ...(v.ER === undefined ? null : { er: v.ER }),
+                ...(v.EE === undefined ? null : { ee: v.EE }),
+                ...(v.ET === undefined ? null : { et: v.ET }),
+                ...(v.FK === undefined ? null : { fk: v.FK }),
+                ...(v.FO === undefined ? null : { fo: v.FO }),
+                ...(v.FJ === undefined ? null : { fj: v.FJ }),
+                ...(v.FI === undefined ? null : { fi: v.FI }),
+                ...(v.FR === undefined ? null : { fr: v.FR }),
+                ...(v.GF === undefined ? null : { gf: v.GF }),
+                ...(v.PF === undefined ? null : { pf: v.PF }),
+                ...(v.TF === undefined ? null : { tf: v.TF }),
+                ...(v.GA === undefined ? null : { ga: v.GA }),
+                ...(v.GM === undefined ? null : { gm: v.GM }),
+                ...(v.GE === undefined ? null : { ge: v.GE }),
+                ...(v.DE === undefined ? null : { de: v.DE }),
+                ...(v.GH === undefined ? null : { gh: v.GH }),
+                ...(v.GI === undefined ? null : { gi: v.GI }),
+                ...(v.GR === undefined ? null : { gr: v.GR }),
+                ...(v.GL === undefined ? null : { gl: v.GL }),
+                ...(v.GD === undefined ? null : { gd: v.GD }),
+                ...(v.GP === undefined ? null : { gp: v.GP }),
+                ...(v.GU === undefined ? null : { gu: v.GU }),
+                ...(v.GT === undefined ? null : { gt: v.GT }),
+                ...(v.GN === undefined ? null : { gn: v.GN }),
+                ...(v.GW === undefined ? null : { gw: v.GW }),
+                ...(v.GY === undefined ? null : { gy: v.GY }),
+                ...(v.HT === undefined ? null : { ht: v.HT }),
+                ...(v.HM === undefined ? null : { hm: v.HM }),
+                ...(v.VA === undefined ? null : { va: v.VA }),
+                ...(v.HN === undefined ? null : { hn: v.HN }),
+                ...(v.HK === undefined ? null : { hk: v.HK }),
+                ...(v.HU === undefined ? null : { hu: v.HU }),
+                ...(v.IS === undefined ? null : { is: v.IS }),
+                ...(v.IN === undefined ? null : { in: v.IN }),
+                ...(v.ID === undefined ? null : { id: v.ID }),
+                ...(v.IR === undefined ? null : { ir: v.IR }),
+                ...(v.IQ === undefined ? null : { iq: v.IQ }),
+                ...(v.IE === undefined ? null : { ie: v.IE }),
+                ...(v.IL === undefined ? null : { il: v.IL }),
+                ...(v.IT === undefined ? null : { it: v.IT }),
+                ...(v.JM === undefined ? null : { jm: v.JM }),
+                ...(v.JP === undefined ? null : { jp: v.JP }),
+                ...(v.JO === undefined ? null : { jo: v.JO }),
+                ...(v.KZ === undefined ? null : { kz: v.KZ }),
+                ...(v.KE === undefined ? null : { ke: v.KE }),
+                ...(v.KI === undefined ? null : { ki: v.KI }),
+                ...(v.KP === undefined ? null : { kp: v.KP }),
+                ...(v.KR === undefined ? null : { kr: v.KR }),
+                ...(v.KW === undefined ? null : { kw: v.KW }),
+                ...(v.KG === undefined ? null : { kg: v.KG }),
+                ...(v.LA === undefined ? null : { la: v.LA }),
+                ...(v.LV === undefined ? null : { lv: v.LV }),
+                ...(v.LB === undefined ? null : { lb: v.LB }),
+                ...(v.LS === undefined ? null : { ls: v.LS }),
+                ...(v.LR === undefined ? null : { lr: v.LR }),
+                ...(v.LY === undefined ? null : { ly: v.LY }),
+                ...(v.LI === undefined ? null : { li: v.LI }),
+                ...(v.LT === undefined ? null : { lt: v.LT }),
+                ...(v.LU === undefined ? null : { lu: v.LU }),
+                ...(v.MO === undefined ? null : { mo: v.MO }),
+                ...(v.MG === undefined ? null : { mg: v.MG }),
+                ...(v.MW === undefined ? null : { mw: v.MW }),
+                ...(v.MY === undefined ? null : { my: v.MY }),
+                ...(v.MV === undefined ? null : { mv: v.MV }),
+                ...(v.ML === undefined ? null : { ml: v.ML }),
+                ...(v.MT === undefined ? null : { mt: v.MT }),
+                ...(v.MH === undefined ? null : { mh: v.MH }),
+                ...(v.MQ === undefined ? null : { mq: v.MQ }),
+                ...(v.MR === undefined ? null : { mr: v.MR }),
+                ...(v.MU === undefined ? null : { mu: v.MU }),
+                ...(v.YT === undefined ? null : { yt: v.YT }),
+                ...(v.MX === undefined ? null : { mx: v.MX }),
+                ...(v.FM === undefined ? null : { fm: v.FM }),
+                ...(v.MD === undefined ? null : { md: v.MD }),
+                ...(v.MC === undefined ? null : { mc: v.MC }),
+                ...(v.MN === undefined ? null : { mn: v.MN }),
+                ...(v.MS === undefined ? null : { ms: v.MS }),
+                ...(v.MA === undefined ? null : { ma: v.MA }),
+                ...(v.MZ === undefined ? null : { mz: v.MZ }),
+                ...(v.MM === undefined ? null : { mm: v.MM }),
+                ...(v.NA === undefined ? null : { na: v.NA }),
+                ...(v.NR === undefined ? null : { nr: v.NR }),
+                ...(v.NP === undefined ? null : { np: v.NP }),
+                ...(v.NL === undefined ? null : { nl: v.NL }),
+                ...(v.NC === undefined ? null : { nc: v.NC }),
+                ...(v.NZ === undefined ? null : { nz: v.NZ }),
+                ...(v.NI === undefined ? null : { ni: v.NI }),
+                ...(v.NE === undefined ? null : { ne: v.NE }),
+                ...(v.NG === undefined ? null : { ng: v.NG }),
+                ...(v.NU === undefined ? null : { nu: v.NU }),
+                ...(v.NF === undefined ? null : { nf: v.NF }),
+                ...(v.MK === undefined ? null : { mk: v.MK }),
+                ...(v.MP === undefined ? null : { mp: v.MP }),
+                ...(v.NO === undefined ? null : { no: v.NO }),
+                ...(v.OM === undefined ? null : { om: v.OM }),
+                ...(v.PK === undefined ? null : { pk: v.PK }),
+                ...(v.PW === undefined ? null : { pw: v.PW }),
+                ...(v.PS === undefined ? null : { ps: v.PS }),
+                ...(v.PA === undefined ? null : { pa: v.PA }),
+                ...(v.PG === undefined ? null : { pg: v.PG }),
+                ...(v.PY === undefined ? null : { py: v.PY }),
+                ...(v.PE === undefined ? null : { pe: v.PE }),
+                ...(v.PH === undefined ? null : { ph: v.PH }),
+                ...(v.PN === undefined ? null : { pn: v.PN }),
+                ...(v.PL === undefined ? null : { pl: v.PL }),
+                ...(v.PT === undefined ? null : { pt: v.PT }),
+                ...(v.PR === undefined ? null : { pr: v.PR }),
+                ...(v.QA === undefined ? null : { qa: v.QA }),
+                ...(v.RE === undefined ? null : { re: v.RE }),
+                ...(v.RO === undefined ? null : { ro: v.RO }),
+                ...(v.RU === undefined ? null : { ru: v.RU }),
+                ...(v.RW === undefined ? null : { rw: v.RW }),
+                ...(v.SH === undefined ? null : { sh: v.SH }),
+                ...(v.KN === undefined ? null : { kn: v.KN }),
+                ...(v.LC === undefined ? null : { lc: v.LC }),
+                ...(v.PM === undefined ? null : { pm: v.PM }),
+                ...(v.VC === undefined ? null : { vc: v.VC }),
+                ...(v.WS === undefined ? null : { ws: v.WS }),
+                ...(v.SM === undefined ? null : { sm: v.SM }),
+                ...(v.ST === undefined ? null : { st: v.ST }),
+                ...(v.SA === undefined ? null : { sa: v.SA }),
+                ...(v.SN === undefined ? null : { sn: v.SN }),
+                ...(v.SC === undefined ? null : { sc: v.SC }),
+                ...(v.SL === undefined ? null : { sl: v.SL }),
+                ...(v.SG === undefined ? null : { sg: v.SG }),
+                ...(v.SK === undefined ? null : { sk: v.SK }),
+                ...(v.SI === undefined ? null : { si: v.SI }),
+                ...(v.SB === undefined ? null : { sb: v.SB }),
+                ...(v.SO === undefined ? null : { so: v.SO }),
+                ...(v.ZA === undefined ? null : { za: v.ZA }),
+                ...(v.GS === undefined ? null : { gs: v.GS }),
+                ...(v.ES === undefined ? null : { es: v.ES }),
+                ...(v.LK === undefined ? null : { lk: v.LK }),
+                ...(v.SD === undefined ? null : { sd: v.SD }),
+                ...(v.SR === undefined ? null : { sr: v.SR }),
+                ...(v.SJ === undefined ? null : { sj: v.SJ }),
+                ...(v.SZ === undefined ? null : { sz: v.SZ }),
+                ...(v.SE === undefined ? null : { se: v.SE }),
+                ...(v.CH === undefined ? null : { ch: v.CH }),
+                ...(v.SY === undefined ? null : { sy: v.SY }),
+                ...(v.TW === undefined ? null : { tw: v.TW }),
+                ...(v.TJ === undefined ? null : { tj: v.TJ }),
+                ...(v.TZ === undefined ? null : { tz: v.TZ }),
+                ...(v.TH === undefined ? null : { th: v.TH }),
+                ...(v.TL === undefined ? null : { tl: v.TL }),
+                ...(v.TG === undefined ? null : { tg: v.TG }),
+                ...(v.TK === undefined ? null : { tk: v.TK }),
+                ...(v.TO === undefined ? null : { to: v.TO }),
+                ...(v.TT === undefined ? null : { tt: v.TT }),
+                ...(v.TN === undefined ? null : { tn: v.TN }),
+                ...(v.TR === undefined ? null : { tr: v.TR }),
+                ...(v.TM === undefined ? null : { tm: v.TM }),
+                ...(v.TC === undefined ? null : { tc: v.TC }),
+                ...(v.TV === undefined ? null : { tv: v.TV }),
+                ...(v.UG === undefined ? null : { ug: v.UG }),
+                ...(v.UA === undefined ? null : { ua: v.UA }),
+                ...(v.AE === undefined ? null : { ae: v.AE }),
+                ...(v.GB === undefined ? null : { gb: v.GB }),
+                ...(v.US === undefined ? null : { us: v.US }),
+                ...(v.UM === undefined ? null : { um: v.UM }),
+                ...(v.UY === undefined ? null : { uy: v.UY }),
+                ...(v.UZ === undefined ? null : { uz: v.UZ }),
+                ...(v.VU === undefined ? null : { vu: v.VU }),
+                ...(v.VE === undefined ? null : { ve: v.VE }),
+                ...(v.VN === undefined ? null : { vn: v.VN }),
+                ...(v.VG === undefined ? null : { vg: v.VG }),
+                ...(v.VI === undefined ? null : { vi: v.VI }),
+                ...(v.WF === undefined ? null : { wf: v.WF }),
+                ...(v.EH === undefined ? null : { eh: v.EH }),
+                ...(v.YE === undefined ? null : { ye: v.YE }),
+                ...(v.ZM === undefined ? null : { zm: v.ZM }),
+                ...(v.ZW === undefined ? null : { zw: v.ZW }),
+                ...(v.AX === undefined ? null : { ax: v.AX }),
+                ...(v.BQ === undefined ? null : { bq: v.BQ }),
+                ...(v.CW === undefined ? null : { cw: v.CW }),
+                ...(v.GG === undefined ? null : { gg: v.GG }),
+                ...(v.IM === undefined ? null : { im: v.IM }),
+                ...(v.JE === undefined ? null : { je: v.JE }),
+                ...(v.ME === undefined ? null : { me: v.ME }),
+                ...(v.BL === undefined ? null : { bl: v.BL }),
+                ...(v.MF === undefined ? null : { mf: v.MF }),
+                ...(v.RS === undefined ? null : { rs: v.RS }),
+                ...(v.SX === undefined ? null : { sx: v.SX }),
+                ...(v.SS === undefined ? null : { ss: v.SS }),
+                ...(v.XK === undefined ? null : { xk: v.XK }),
+            };
+        });
+
+    export type Outbound = {
+        AF?: string | undefined;
+        AL?: string | undefined;
+        DZ?: string | undefined;
+        AS?: string | undefined;
+        AD?: string | undefined;
+        AO?: string | undefined;
+        AI?: string | undefined;
+        AQ?: string | undefined;
+        AG?: string | undefined;
+        AR?: string | undefined;
+        AM?: string | undefined;
+        AW?: string | undefined;
+        AU?: string | undefined;
+        AT?: string | undefined;
+        AZ?: string | undefined;
+        BS?: string | undefined;
+        BH?: string | undefined;
+        BD?: string | undefined;
+        BB?: string | undefined;
+        BY?: string | undefined;
+        BE?: string | undefined;
+        BZ?: string | undefined;
+        BJ?: string | undefined;
+        BM?: string | undefined;
+        BT?: string | undefined;
+        BO?: string | undefined;
+        BA?: string | undefined;
+        BW?: string | undefined;
+        BV?: string | undefined;
+        BR?: string | undefined;
+        IO?: string | undefined;
+        BN?: string | undefined;
+        BG?: string | undefined;
+        BF?: string | undefined;
+        BI?: string | undefined;
+        KH?: string | undefined;
+        CM?: string | undefined;
+        CA?: string | undefined;
+        CV?: string | undefined;
+        KY?: string | undefined;
+        CF?: string | undefined;
+        TD?: string | undefined;
+        CL?: string | undefined;
+        CN?: string | undefined;
+        CX?: string | undefined;
+        CC?: string | undefined;
+        CO?: string | undefined;
+        KM?: string | undefined;
+        CG?: string | undefined;
+        CD?: string | undefined;
+        CK?: string | undefined;
+        CR?: string | undefined;
+        CI?: string | undefined;
+        HR?: string | undefined;
+        CU?: string | undefined;
+        CY?: string | undefined;
+        CZ?: string | undefined;
+        DK?: string | undefined;
+        DJ?: string | undefined;
+        DM?: string | undefined;
+        DO?: string | undefined;
+        EC?: string | undefined;
+        EG?: string | undefined;
+        SV?: string | undefined;
+        GQ?: string | undefined;
+        ER?: string | undefined;
+        EE?: string | undefined;
+        ET?: string | undefined;
+        FK?: string | undefined;
+        FO?: string | undefined;
+        FJ?: string | undefined;
+        FI?: string | undefined;
+        FR?: string | undefined;
+        GF?: string | undefined;
+        PF?: string | undefined;
+        TF?: string | undefined;
+        GA?: string | undefined;
+        GM?: string | undefined;
+        GE?: string | undefined;
+        DE?: string | undefined;
+        GH?: string | undefined;
+        GI?: string | undefined;
+        GR?: string | undefined;
+        GL?: string | undefined;
+        GD?: string | undefined;
+        GP?: string | undefined;
+        GU?: string | undefined;
+        GT?: string | undefined;
+        GN?: string | undefined;
+        GW?: string | undefined;
+        GY?: string | undefined;
+        HT?: string | undefined;
+        HM?: string | undefined;
+        VA?: string | undefined;
+        HN?: string | undefined;
+        HK?: string | undefined;
+        HU?: string | undefined;
+        IS?: string | undefined;
+        IN?: string | undefined;
+        ID?: string | undefined;
+        IR?: string | undefined;
+        IQ?: string | undefined;
+        IE?: string | undefined;
+        IL?: string | undefined;
+        IT?: string | undefined;
+        JM?: string | undefined;
+        JP?: string | undefined;
+        JO?: string | undefined;
+        KZ?: string | undefined;
+        KE?: string | undefined;
+        KI?: string | undefined;
+        KP?: string | undefined;
+        KR?: string | undefined;
+        KW?: string | undefined;
+        KG?: string | undefined;
+        LA?: string | undefined;
+        LV?: string | undefined;
+        LB?: string | undefined;
+        LS?: string | undefined;
+        LR?: string | undefined;
+        LY?: string | undefined;
+        LI?: string | undefined;
+        LT?: string | undefined;
+        LU?: string | undefined;
+        MO?: string | undefined;
+        MG?: string | undefined;
+        MW?: string | undefined;
+        MY?: string | undefined;
+        MV?: string | undefined;
+        ML?: string | undefined;
+        MT?: string | undefined;
+        MH?: string | undefined;
+        MQ?: string | undefined;
+        MR?: string | undefined;
+        MU?: string | undefined;
+        YT?: string | undefined;
+        MX?: string | undefined;
+        FM?: string | undefined;
+        MD?: string | undefined;
+        MC?: string | undefined;
+        MN?: string | undefined;
+        MS?: string | undefined;
+        MA?: string | undefined;
+        MZ?: string | undefined;
+        MM?: string | undefined;
+        NA?: string | undefined;
+        NR?: string | undefined;
+        NP?: string | undefined;
+        NL?: string | undefined;
+        NC?: string | undefined;
+        NZ?: string | undefined;
+        NI?: string | undefined;
+        NE?: string | undefined;
+        NG?: string | undefined;
+        NU?: string | undefined;
+        NF?: string | undefined;
+        MK?: string | undefined;
+        MP?: string | undefined;
+        NO?: string | undefined;
+        OM?: string | undefined;
+        PK?: string | undefined;
+        PW?: string | undefined;
+        PS?: string | undefined;
+        PA?: string | undefined;
+        PG?: string | undefined;
+        PY?: string | undefined;
+        PE?: string | undefined;
+        PH?: string | undefined;
+        PN?: string | undefined;
+        PL?: string | undefined;
+        PT?: string | undefined;
+        PR?: string | undefined;
+        QA?: string | undefined;
+        RE?: string | undefined;
+        RO?: string | undefined;
+        RU?: string | undefined;
+        RW?: string | undefined;
+        SH?: string | undefined;
+        KN?: string | undefined;
+        LC?: string | undefined;
+        PM?: string | undefined;
+        VC?: string | undefined;
+        WS?: string | undefined;
+        SM?: string | undefined;
+        ST?: string | undefined;
+        SA?: string | undefined;
+        SN?: string | undefined;
+        SC?: string | undefined;
+        SL?: string | undefined;
+        SG?: string | undefined;
+        SK?: string | undefined;
+        SI?: string | undefined;
+        SB?: string | undefined;
+        SO?: string | undefined;
+        ZA?: string | undefined;
+        GS?: string | undefined;
+        ES?: string | undefined;
+        LK?: string | undefined;
+        SD?: string | undefined;
+        SR?: string | undefined;
+        SJ?: string | undefined;
+        SZ?: string | undefined;
+        SE?: string | undefined;
+        CH?: string | undefined;
+        SY?: string | undefined;
+        TW?: string | undefined;
+        TJ?: string | undefined;
+        TZ?: string | undefined;
+        TH?: string | undefined;
+        TL?: string | undefined;
+        TG?: string | undefined;
+        TK?: string | undefined;
+        TO?: string | undefined;
+        TT?: string | undefined;
+        TN?: string | undefined;
+        TR?: string | undefined;
+        TM?: string | undefined;
+        TC?: string | undefined;
+        TV?: string | undefined;
+        UG?: string | undefined;
+        UA?: string | undefined;
+        AE?: string | undefined;
+        GB?: string | undefined;
+        US?: string | undefined;
+        UM?: string | undefined;
+        UY?: string | undefined;
+        UZ?: string | undefined;
+        VU?: string | undefined;
+        VE?: string | undefined;
+        VN?: string | undefined;
+        VG?: string | undefined;
+        VI?: string | undefined;
+        WF?: string | undefined;
+        EH?: string | undefined;
+        YE?: string | undefined;
+        ZM?: string | undefined;
+        ZW?: string | undefined;
+        AX?: string | undefined;
+        BQ?: string | undefined;
+        CW?: string | undefined;
+        GG?: string | undefined;
+        IM?: string | undefined;
+        JE?: string | undefined;
+        ME?: string | undefined;
+        BL?: string | undefined;
+        MF?: string | undefined;
+        RS?: string | undefined;
+        SX?: string | undefined;
+        SS?: string | undefined;
+        XK?: string | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EditLinkGeo> = z
+        .object({
+            af: z.string().optional(),
+            al: z.string().optional(),
+            dz: z.string().optional(),
+            as: z.string().optional(),
+            ad: z.string().optional(),
+            ao: z.string().optional(),
+            ai: z.string().optional(),
+            aq: z.string().optional(),
+            ag: z.string().optional(),
+            ar: z.string().optional(),
+            am: z.string().optional(),
+            aw: z.string().optional(),
+            au: z.string().optional(),
+            at: z.string().optional(),
+            az: z.string().optional(),
+            bs: z.string().optional(),
+            bh: z.string().optional(),
+            bd: z.string().optional(),
+            bb: z.string().optional(),
+            by: z.string().optional(),
+            be: z.string().optional(),
+            bz: z.string().optional(),
+            bj: z.string().optional(),
+            bm: z.string().optional(),
+            bt: z.string().optional(),
+            bo: z.string().optional(),
+            ba: z.string().optional(),
+            bw: z.string().optional(),
+            bv: z.string().optional(),
+            br: z.string().optional(),
+            io: z.string().optional(),
+            bn: z.string().optional(),
+            bg: z.string().optional(),
+            bf: z.string().optional(),
+            bi: z.string().optional(),
+            kh: z.string().optional(),
+            cm: z.string().optional(),
+            ca: z.string().optional(),
+            cv: z.string().optional(),
+            ky: z.string().optional(),
+            cf: z.string().optional(),
+            td: z.string().optional(),
+            cl: z.string().optional(),
+            cn: z.string().optional(),
+            cx: z.string().optional(),
+            cc: z.string().optional(),
+            co: z.string().optional(),
+            km: z.string().optional(),
+            cg: z.string().optional(),
+            cd: z.string().optional(),
+            ck: z.string().optional(),
+            cr: z.string().optional(),
+            ci: z.string().optional(),
+            hr: z.string().optional(),
+            cu: z.string().optional(),
+            cy: z.string().optional(),
+            cz: z.string().optional(),
+            dk: z.string().optional(),
+            dj: z.string().optional(),
+            dm: z.string().optional(),
+            do: z.string().optional(),
+            ec: z.string().optional(),
+            eg: z.string().optional(),
+            sv: z.string().optional(),
+            gq: z.string().optional(),
+            er: z.string().optional(),
+            ee: z.string().optional(),
+            et: z.string().optional(),
+            fk: z.string().optional(),
+            fo: z.string().optional(),
+            fj: z.string().optional(),
+            fi: z.string().optional(),
+            fr: z.string().optional(),
+            gf: z.string().optional(),
+            pf: z.string().optional(),
+            tf: z.string().optional(),
+            ga: z.string().optional(),
+            gm: z.string().optional(),
+            ge: z.string().optional(),
+            de: z.string().optional(),
+            gh: z.string().optional(),
+            gi: z.string().optional(),
+            gr: z.string().optional(),
+            gl: z.string().optional(),
+            gd: z.string().optional(),
+            gp: z.string().optional(),
+            gu: z.string().optional(),
+            gt: z.string().optional(),
+            gn: z.string().optional(),
+            gw: z.string().optional(),
+            gy: z.string().optional(),
+            ht: z.string().optional(),
+            hm: z.string().optional(),
+            va: z.string().optional(),
+            hn: z.string().optional(),
+            hk: z.string().optional(),
+            hu: z.string().optional(),
+            is: z.string().optional(),
+            in: z.string().optional(),
+            id: z.string().optional(),
+            ir: z.string().optional(),
+            iq: z.string().optional(),
+            ie: z.string().optional(),
+            il: z.string().optional(),
+            it: z.string().optional(),
+            jm: z.string().optional(),
+            jp: z.string().optional(),
+            jo: z.string().optional(),
+            kz: z.string().optional(),
+            ke: z.string().optional(),
+            ki: z.string().optional(),
+            kp: z.string().optional(),
+            kr: z.string().optional(),
+            kw: z.string().optional(),
+            kg: z.string().optional(),
+            la: z.string().optional(),
+            lv: z.string().optional(),
+            lb: z.string().optional(),
+            ls: z.string().optional(),
+            lr: z.string().optional(),
+            ly: z.string().optional(),
+            li: z.string().optional(),
+            lt: z.string().optional(),
+            lu: z.string().optional(),
+            mo: z.string().optional(),
+            mg: z.string().optional(),
+            mw: z.string().optional(),
+            my: z.string().optional(),
+            mv: z.string().optional(),
+            ml: z.string().optional(),
+            mt: z.string().optional(),
+            mh: z.string().optional(),
+            mq: z.string().optional(),
+            mr: z.string().optional(),
+            mu: z.string().optional(),
+            yt: z.string().optional(),
+            mx: z.string().optional(),
+            fm: z.string().optional(),
+            md: z.string().optional(),
+            mc: z.string().optional(),
+            mn: z.string().optional(),
+            ms: z.string().optional(),
+            ma: z.string().optional(),
+            mz: z.string().optional(),
+            mm: z.string().optional(),
+            na: z.string().optional(),
+            nr: z.string().optional(),
+            np: z.string().optional(),
+            nl: z.string().optional(),
+            nc: z.string().optional(),
+            nz: z.string().optional(),
+            ni: z.string().optional(),
+            ne: z.string().optional(),
+            ng: z.string().optional(),
+            nu: z.string().optional(),
+            nf: z.string().optional(),
+            mk: z.string().optional(),
+            mp: z.string().optional(),
+            no: z.string().optional(),
+            om: z.string().optional(),
+            pk: z.string().optional(),
+            pw: z.string().optional(),
+            ps: z.string().optional(),
+            pa: z.string().optional(),
+            pg: z.string().optional(),
+            py: z.string().optional(),
+            pe: z.string().optional(),
+            ph: z.string().optional(),
+            pn: z.string().optional(),
+            pl: z.string().optional(),
+            pt: z.string().optional(),
+            pr: z.string().optional(),
+            qa: z.string().optional(),
+            re: z.string().optional(),
+            ro: z.string().optional(),
+            ru: z.string().optional(),
+            rw: z.string().optional(),
+            sh: z.string().optional(),
+            kn: z.string().optional(),
+            lc: z.string().optional(),
+            pm: z.string().optional(),
+            vc: z.string().optional(),
+            ws: z.string().optional(),
+            sm: z.string().optional(),
+            st: z.string().optional(),
+            sa: z.string().optional(),
+            sn: z.string().optional(),
+            sc: z.string().optional(),
+            sl: z.string().optional(),
+            sg: z.string().optional(),
+            sk: z.string().optional(),
+            si: z.string().optional(),
+            sb: z.string().optional(),
+            so: z.string().optional(),
+            za: z.string().optional(),
+            gs: z.string().optional(),
+            es: z.string().optional(),
+            lk: z.string().optional(),
+            sd: z.string().optional(),
+            sr: z.string().optional(),
+            sj: z.string().optional(),
+            sz: z.string().optional(),
+            se: z.string().optional(),
+            ch: z.string().optional(),
+            sy: z.string().optional(),
+            tw: z.string().optional(),
+            tj: z.string().optional(),
+            tz: z.string().optional(),
+            th: z.string().optional(),
+            tl: z.string().optional(),
+            tg: z.string().optional(),
+            tk: z.string().optional(),
+            to: z.string().optional(),
+            tt: z.string().optional(),
+            tn: z.string().optional(),
+            tr: z.string().optional(),
+            tm: z.string().optional(),
+            tc: z.string().optional(),
+            tv: z.string().optional(),
+            ug: z.string().optional(),
+            ua: z.string().optional(),
+            ae: z.string().optional(),
+            gb: z.string().optional(),
+            us: z.string().optional(),
+            um: z.string().optional(),
+            uy: z.string().optional(),
+            uz: z.string().optional(),
+            vu: z.string().optional(),
+            ve: z.string().optional(),
+            vn: z.string().optional(),
+            vg: z.string().optional(),
+            vi: z.string().optional(),
+            wf: z.string().optional(),
+            eh: z.string().optional(),
+            ye: z.string().optional(),
+            zm: z.string().optional(),
+            zw: z.string().optional(),
+            ax: z.string().optional(),
+            bq: z.string().optional(),
+            cw: z.string().optional(),
+            gg: z.string().optional(),
+            im: z.string().optional(),
+            je: z.string().optional(),
+            me: z.string().optional(),
+            bl: z.string().optional(),
+            mf: z.string().optional(),
+            rs: z.string().optional(),
+            sx: z.string().optional(),
+            ss: z.string().optional(),
+            xk: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.af === undefined ? null : { AF: v.af }),
+                ...(v.al === undefined ? null : { AL: v.al }),
+                ...(v.dz === undefined ? null : { DZ: v.dz }),
+                ...(v.as === undefined ? null : { AS: v.as }),
+                ...(v.ad === undefined ? null : { AD: v.ad }),
+                ...(v.ao === undefined ? null : { AO: v.ao }),
+                ...(v.ai === undefined ? null : { AI: v.ai }),
+                ...(v.aq === undefined ? null : { AQ: v.aq }),
+                ...(v.ag === undefined ? null : { AG: v.ag }),
+                ...(v.ar === undefined ? null : { AR: v.ar }),
+                ...(v.am === undefined ? null : { AM: v.am }),
+                ...(v.aw === undefined ? null : { AW: v.aw }),
+                ...(v.au === undefined ? null : { AU: v.au }),
+                ...(v.at === undefined ? null : { AT: v.at }),
+                ...(v.az === undefined ? null : { AZ: v.az }),
+                ...(v.bs === undefined ? null : { BS: v.bs }),
+                ...(v.bh === undefined ? null : { BH: v.bh }),
+                ...(v.bd === undefined ? null : { BD: v.bd }),
+                ...(v.bb === undefined ? null : { BB: v.bb }),
+                ...(v.by === undefined ? null : { BY: v.by }),
+                ...(v.be === undefined ? null : { BE: v.be }),
+                ...(v.bz === undefined ? null : { BZ: v.bz }),
+                ...(v.bj === undefined ? null : { BJ: v.bj }),
+                ...(v.bm === undefined ? null : { BM: v.bm }),
+                ...(v.bt === undefined ? null : { BT: v.bt }),
+                ...(v.bo === undefined ? null : { BO: v.bo }),
+                ...(v.ba === undefined ? null : { BA: v.ba }),
+                ...(v.bw === undefined ? null : { BW: v.bw }),
+                ...(v.bv === undefined ? null : { BV: v.bv }),
+                ...(v.br === undefined ? null : { BR: v.br }),
+                ...(v.io === undefined ? null : { IO: v.io }),
+                ...(v.bn === undefined ? null : { BN: v.bn }),
+                ...(v.bg === undefined ? null : { BG: v.bg }),
+                ...(v.bf === undefined ? null : { BF: v.bf }),
+                ...(v.bi === undefined ? null : { BI: v.bi }),
+                ...(v.kh === undefined ? null : { KH: v.kh }),
+                ...(v.cm === undefined ? null : { CM: v.cm }),
+                ...(v.ca === undefined ? null : { CA: v.ca }),
+                ...(v.cv === undefined ? null : { CV: v.cv }),
+                ...(v.ky === undefined ? null : { KY: v.ky }),
+                ...(v.cf === undefined ? null : { CF: v.cf }),
+                ...(v.td === undefined ? null : { TD: v.td }),
+                ...(v.cl === undefined ? null : { CL: v.cl }),
+                ...(v.cn === undefined ? null : { CN: v.cn }),
+                ...(v.cx === undefined ? null : { CX: v.cx }),
+                ...(v.cc === undefined ? null : { CC: v.cc }),
+                ...(v.co === undefined ? null : { CO: v.co }),
+                ...(v.km === undefined ? null : { KM: v.km }),
+                ...(v.cg === undefined ? null : { CG: v.cg }),
+                ...(v.cd === undefined ? null : { CD: v.cd }),
+                ...(v.ck === undefined ? null : { CK: v.ck }),
+                ...(v.cr === undefined ? null : { CR: v.cr }),
+                ...(v.ci === undefined ? null : { CI: v.ci }),
+                ...(v.hr === undefined ? null : { HR: v.hr }),
+                ...(v.cu === undefined ? null : { CU: v.cu }),
+                ...(v.cy === undefined ? null : { CY: v.cy }),
+                ...(v.cz === undefined ? null : { CZ: v.cz }),
+                ...(v.dk === undefined ? null : { DK: v.dk }),
+                ...(v.dj === undefined ? null : { DJ: v.dj }),
+                ...(v.dm === undefined ? null : { DM: v.dm }),
+                ...(v.do === undefined ? null : { DO: v.do }),
+                ...(v.ec === undefined ? null : { EC: v.ec }),
+                ...(v.eg === undefined ? null : { EG: v.eg }),
+                ...(v.sv === undefined ? null : { SV: v.sv }),
+                ...(v.gq === undefined ? null : { GQ: v.gq }),
+                ...(v.er === undefined ? null : { ER: v.er }),
+                ...(v.ee === undefined ? null : { EE: v.ee }),
+                ...(v.et === undefined ? null : { ET: v.et }),
+                ...(v.fk === undefined ? null : { FK: v.fk }),
+                ...(v.fo === undefined ? null : { FO: v.fo }),
+                ...(v.fj === undefined ? null : { FJ: v.fj }),
+                ...(v.fi === undefined ? null : { FI: v.fi }),
+                ...(v.fr === undefined ? null : { FR: v.fr }),
+                ...(v.gf === undefined ? null : { GF: v.gf }),
+                ...(v.pf === undefined ? null : { PF: v.pf }),
+                ...(v.tf === undefined ? null : { TF: v.tf }),
+                ...(v.ga === undefined ? null : { GA: v.ga }),
+                ...(v.gm === undefined ? null : { GM: v.gm }),
+                ...(v.ge === undefined ? null : { GE: v.ge }),
+                ...(v.de === undefined ? null : { DE: v.de }),
+                ...(v.gh === undefined ? null : { GH: v.gh }),
+                ...(v.gi === undefined ? null : { GI: v.gi }),
+                ...(v.gr === undefined ? null : { GR: v.gr }),
+                ...(v.gl === undefined ? null : { GL: v.gl }),
+                ...(v.gd === undefined ? null : { GD: v.gd }),
+                ...(v.gp === undefined ? null : { GP: v.gp }),
+                ...(v.gu === undefined ? null : { GU: v.gu }),
+                ...(v.gt === undefined ? null : { GT: v.gt }),
+                ...(v.gn === undefined ? null : { GN: v.gn }),
+                ...(v.gw === undefined ? null : { GW: v.gw }),
+                ...(v.gy === undefined ? null : { GY: v.gy }),
+                ...(v.ht === undefined ? null : { HT: v.ht }),
+                ...(v.hm === undefined ? null : { HM: v.hm }),
+                ...(v.va === undefined ? null : { VA: v.va }),
+                ...(v.hn === undefined ? null : { HN: v.hn }),
+                ...(v.hk === undefined ? null : { HK: v.hk }),
+                ...(v.hu === undefined ? null : { HU: v.hu }),
+                ...(v.is === undefined ? null : { IS: v.is }),
+                ...(v.in === undefined ? null : { IN: v.in }),
+                ...(v.id === undefined ? null : { ID: v.id }),
+                ...(v.ir === undefined ? null : { IR: v.ir }),
+                ...(v.iq === undefined ? null : { IQ: v.iq }),
+                ...(v.ie === undefined ? null : { IE: v.ie }),
+                ...(v.il === undefined ? null : { IL: v.il }),
+                ...(v.it === undefined ? null : { IT: v.it }),
+                ...(v.jm === undefined ? null : { JM: v.jm }),
+                ...(v.jp === undefined ? null : { JP: v.jp }),
+                ...(v.jo === undefined ? null : { JO: v.jo }),
+                ...(v.kz === undefined ? null : { KZ: v.kz }),
+                ...(v.ke === undefined ? null : { KE: v.ke }),
+                ...(v.ki === undefined ? null : { KI: v.ki }),
+                ...(v.kp === undefined ? null : { KP: v.kp }),
+                ...(v.kr === undefined ? null : { KR: v.kr }),
+                ...(v.kw === undefined ? null : { KW: v.kw }),
+                ...(v.kg === undefined ? null : { KG: v.kg }),
+                ...(v.la === undefined ? null : { LA: v.la }),
+                ...(v.lv === undefined ? null : { LV: v.lv }),
+                ...(v.lb === undefined ? null : { LB: v.lb }),
+                ...(v.ls === undefined ? null : { LS: v.ls }),
+                ...(v.lr === undefined ? null : { LR: v.lr }),
+                ...(v.ly === undefined ? null : { LY: v.ly }),
+                ...(v.li === undefined ? null : { LI: v.li }),
+                ...(v.lt === undefined ? null : { LT: v.lt }),
+                ...(v.lu === undefined ? null : { LU: v.lu }),
+                ...(v.mo === undefined ? null : { MO: v.mo }),
+                ...(v.mg === undefined ? null : { MG: v.mg }),
+                ...(v.mw === undefined ? null : { MW: v.mw }),
+                ...(v.my === undefined ? null : { MY: v.my }),
+                ...(v.mv === undefined ? null : { MV: v.mv }),
+                ...(v.ml === undefined ? null : { ML: v.ml }),
+                ...(v.mt === undefined ? null : { MT: v.mt }),
+                ...(v.mh === undefined ? null : { MH: v.mh }),
+                ...(v.mq === undefined ? null : { MQ: v.mq }),
+                ...(v.mr === undefined ? null : { MR: v.mr }),
+                ...(v.mu === undefined ? null : { MU: v.mu }),
+                ...(v.yt === undefined ? null : { YT: v.yt }),
+                ...(v.mx === undefined ? null : { MX: v.mx }),
+                ...(v.fm === undefined ? null : { FM: v.fm }),
+                ...(v.md === undefined ? null : { MD: v.md }),
+                ...(v.mc === undefined ? null : { MC: v.mc }),
+                ...(v.mn === undefined ? null : { MN: v.mn }),
+                ...(v.ms === undefined ? null : { MS: v.ms }),
+                ...(v.ma === undefined ? null : { MA: v.ma }),
+                ...(v.mz === undefined ? null : { MZ: v.mz }),
+                ...(v.mm === undefined ? null : { MM: v.mm }),
+                ...(v.na === undefined ? null : { NA: v.na }),
+                ...(v.nr === undefined ? null : { NR: v.nr }),
+                ...(v.np === undefined ? null : { NP: v.np }),
+                ...(v.nl === undefined ? null : { NL: v.nl }),
+                ...(v.nc === undefined ? null : { NC: v.nc }),
+                ...(v.nz === undefined ? null : { NZ: v.nz }),
+                ...(v.ni === undefined ? null : { NI: v.ni }),
+                ...(v.ne === undefined ? null : { NE: v.ne }),
+                ...(v.ng === undefined ? null : { NG: v.ng }),
+                ...(v.nu === undefined ? null : { NU: v.nu }),
+                ...(v.nf === undefined ? null : { NF: v.nf }),
+                ...(v.mk === undefined ? null : { MK: v.mk }),
+                ...(v.mp === undefined ? null : { MP: v.mp }),
+                ...(v.no === undefined ? null : { NO: v.no }),
+                ...(v.om === undefined ? null : { OM: v.om }),
+                ...(v.pk === undefined ? null : { PK: v.pk }),
+                ...(v.pw === undefined ? null : { PW: v.pw }),
+                ...(v.ps === undefined ? null : { PS: v.ps }),
+                ...(v.pa === undefined ? null : { PA: v.pa }),
+                ...(v.pg === undefined ? null : { PG: v.pg }),
+                ...(v.py === undefined ? null : { PY: v.py }),
+                ...(v.pe === undefined ? null : { PE: v.pe }),
+                ...(v.ph === undefined ? null : { PH: v.ph }),
+                ...(v.pn === undefined ? null : { PN: v.pn }),
+                ...(v.pl === undefined ? null : { PL: v.pl }),
+                ...(v.pt === undefined ? null : { PT: v.pt }),
+                ...(v.pr === undefined ? null : { PR: v.pr }),
+                ...(v.qa === undefined ? null : { QA: v.qa }),
+                ...(v.re === undefined ? null : { RE: v.re }),
+                ...(v.ro === undefined ? null : { RO: v.ro }),
+                ...(v.ru === undefined ? null : { RU: v.ru }),
+                ...(v.rw === undefined ? null : { RW: v.rw }),
+                ...(v.sh === undefined ? null : { SH: v.sh }),
+                ...(v.kn === undefined ? null : { KN: v.kn }),
+                ...(v.lc === undefined ? null : { LC: v.lc }),
+                ...(v.pm === undefined ? null : { PM: v.pm }),
+                ...(v.vc === undefined ? null : { VC: v.vc }),
+                ...(v.ws === undefined ? null : { WS: v.ws }),
+                ...(v.sm === undefined ? null : { SM: v.sm }),
+                ...(v.st === undefined ? null : { ST: v.st }),
+                ...(v.sa === undefined ? null : { SA: v.sa }),
+                ...(v.sn === undefined ? null : { SN: v.sn }),
+                ...(v.sc === undefined ? null : { SC: v.sc }),
+                ...(v.sl === undefined ? null : { SL: v.sl }),
+                ...(v.sg === undefined ? null : { SG: v.sg }),
+                ...(v.sk === undefined ? null : { SK: v.sk }),
+                ...(v.si === undefined ? null : { SI: v.si }),
+                ...(v.sb === undefined ? null : { SB: v.sb }),
+                ...(v.so === undefined ? null : { SO: v.so }),
+                ...(v.za === undefined ? null : { ZA: v.za }),
+                ...(v.gs === undefined ? null : { GS: v.gs }),
+                ...(v.es === undefined ? null : { ES: v.es }),
+                ...(v.lk === undefined ? null : { LK: v.lk }),
+                ...(v.sd === undefined ? null : { SD: v.sd }),
+                ...(v.sr === undefined ? null : { SR: v.sr }),
+                ...(v.sj === undefined ? null : { SJ: v.sj }),
+                ...(v.sz === undefined ? null : { SZ: v.sz }),
+                ...(v.se === undefined ? null : { SE: v.se }),
+                ...(v.ch === undefined ? null : { CH: v.ch }),
+                ...(v.sy === undefined ? null : { SY: v.sy }),
+                ...(v.tw === undefined ? null : { TW: v.tw }),
+                ...(v.tj === undefined ? null : { TJ: v.tj }),
+                ...(v.tz === undefined ? null : { TZ: v.tz }),
+                ...(v.th === undefined ? null : { TH: v.th }),
+                ...(v.tl === undefined ? null : { TL: v.tl }),
+                ...(v.tg === undefined ? null : { TG: v.tg }),
+                ...(v.tk === undefined ? null : { TK: v.tk }),
+                ...(v.to === undefined ? null : { TO: v.to }),
+                ...(v.tt === undefined ? null : { TT: v.tt }),
+                ...(v.tn === undefined ? null : { TN: v.tn }),
+                ...(v.tr === undefined ? null : { TR: v.tr }),
+                ...(v.tm === undefined ? null : { TM: v.tm }),
+                ...(v.tc === undefined ? null : { TC: v.tc }),
+                ...(v.tv === undefined ? null : { TV: v.tv }),
+                ...(v.ug === undefined ? null : { UG: v.ug }),
+                ...(v.ua === undefined ? null : { UA: v.ua }),
+                ...(v.ae === undefined ? null : { AE: v.ae }),
+                ...(v.gb === undefined ? null : { GB: v.gb }),
+                ...(v.us === undefined ? null : { US: v.us }),
+                ...(v.um === undefined ? null : { UM: v.um }),
+                ...(v.uy === undefined ? null : { UY: v.uy }),
+                ...(v.uz === undefined ? null : { UZ: v.uz }),
+                ...(v.vu === undefined ? null : { VU: v.vu }),
+                ...(v.ve === undefined ? null : { VE: v.ve }),
+                ...(v.vn === undefined ? null : { VN: v.vn }),
+                ...(v.vg === undefined ? null : { VG: v.vg }),
+                ...(v.vi === undefined ? null : { VI: v.vi }),
+                ...(v.wf === undefined ? null : { WF: v.wf }),
+                ...(v.eh === undefined ? null : { EH: v.eh }),
+                ...(v.ye === undefined ? null : { YE: v.ye }),
+                ...(v.zm === undefined ? null : { ZM: v.zm }),
+                ...(v.zw === undefined ? null : { ZW: v.zw }),
+                ...(v.ax === undefined ? null : { AX: v.ax }),
+                ...(v.bq === undefined ? null : { BQ: v.bq }),
+                ...(v.cw === undefined ? null : { CW: v.cw }),
+                ...(v.gg === undefined ? null : { GG: v.gg }),
+                ...(v.im === undefined ? null : { IM: v.im }),
+                ...(v.je === undefined ? null : { JE: v.je }),
+                ...(v.me === undefined ? null : { ME: v.me }),
+                ...(v.bl === undefined ? null : { BL: v.bl }),
+                ...(v.mf === undefined ? null : { MF: v.mf }),
+                ...(v.rs === undefined ? null : { RS: v.rs }),
+                ...(v.sx === undefined ? null : { SX: v.sx }),
+                ...(v.ss === undefined ? null : { SS: v.ss }),
+                ...(v.xk === undefined ? null : { XK: v.xk }),
+            };
+        });
+}
+
+/** @internal */
 export namespace EditLinkRequestBody$ {
     export type Inbound = {
         domain?: string | undefined;
@@ -125,6 +2656,10 @@ export namespace EditLinkRequestBody$ {
         prefix?: string | undefined;
         url: string;
         archived?: boolean | undefined;
+        publicStats?: boolean | undefined;
+        tagId?: string | null | undefined;
+        tagIds?: string | Array<string> | undefined;
+        comments?: string | null | undefined;
         expiresAt?: string | null | undefined;
         expiredUrl?: string | null | undefined;
         password?: string | null | undefined;
@@ -135,11 +2670,7 @@ export namespace EditLinkRequestBody$ {
         rewrite?: boolean | undefined;
         ios?: string | null | undefined;
         android?: string | null | undefined;
-        geo?: Record<string, string> | null | undefined;
-        publicStats?: boolean | undefined;
-        tagId?: string | null | undefined;
-        tagIds?: string | Array<string> | undefined;
-        comments?: string | null | undefined;
+        geo?: EditLinkGeo$.Inbound | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<EditLinkRequestBody, z.ZodTypeDef, Inbound> = z
@@ -149,6 +2680,10 @@ export namespace EditLinkRequestBody$ {
             prefix: z.string().optional(),
             url: z.string(),
             archived: z.boolean().default(false),
+            publicStats: z.boolean().default(false),
+            tagId: z.nullable(z.string()).optional(),
+            tagIds: z.union([z.string(), z.array(z.string())]).optional(),
+            comments: z.nullable(z.string()).optional(),
             expiresAt: z.nullable(z.string()).optional(),
             expiredUrl: z.nullable(z.string()).optional(),
             password: z.nullable(z.string()).optional(),
@@ -159,11 +2694,7 @@ export namespace EditLinkRequestBody$ {
             rewrite: z.boolean().default(false),
             ios: z.nullable(z.string()).optional(),
             android: z.nullable(z.string()).optional(),
-            geo: z.nullable(z.record(z.string())).optional(),
-            publicStats: z.boolean().default(false),
-            tagId: z.nullable(z.string()).optional(),
-            tagIds: z.union([z.string(), z.array(z.string())]).optional(),
-            comments: z.nullable(z.string()).optional(),
+            geo: z.nullable(z.lazy(() => EditLinkGeo$.inboundSchema)).optional(),
         })
         .transform((v) => {
             return {
@@ -172,6 +2703,10 @@ export namespace EditLinkRequestBody$ {
                 ...(v.prefix === undefined ? null : { prefix: v.prefix }),
                 url: v.url,
                 archived: v.archived,
+                publicStats: v.publicStats,
+                ...(v.tagId === undefined ? null : { tagId: v.tagId }),
+                ...(v.tagIds === undefined ? null : { tagIds: v.tagIds }),
+                ...(v.comments === undefined ? null : { comments: v.comments }),
                 ...(v.expiresAt === undefined ? null : { expiresAt: v.expiresAt }),
                 ...(v.expiredUrl === undefined ? null : { expiredUrl: v.expiredUrl }),
                 ...(v.password === undefined ? null : { password: v.password }),
@@ -183,10 +2718,6 @@ export namespace EditLinkRequestBody$ {
                 ...(v.ios === undefined ? null : { ios: v.ios }),
                 ...(v.android === undefined ? null : { android: v.android }),
                 ...(v.geo === undefined ? null : { geo: v.geo }),
-                publicStats: v.publicStats,
-                ...(v.tagId === undefined ? null : { tagId: v.tagId }),
-                ...(v.tagIds === undefined ? null : { tagIds: v.tagIds }),
-                ...(v.comments === undefined ? null : { comments: v.comments }),
             };
         });
 
@@ -196,6 +2727,10 @@ export namespace EditLinkRequestBody$ {
         prefix?: string | undefined;
         url: string;
         archived: boolean;
+        publicStats: boolean;
+        tagId?: string | null | undefined;
+        tagIds?: string | Array<string> | undefined;
+        comments?: string | null | undefined;
         expiresAt?: string | null | undefined;
         expiredUrl?: string | null | undefined;
         password?: string | null | undefined;
@@ -206,11 +2741,7 @@ export namespace EditLinkRequestBody$ {
         rewrite: boolean;
         ios?: string | null | undefined;
         android?: string | null | undefined;
-        geo?: Record<string, string> | null | undefined;
-        publicStats: boolean;
-        tagId?: string | null | undefined;
-        tagIds?: string | Array<string> | undefined;
-        comments?: string | null | undefined;
+        geo?: EditLinkGeo$.Outbound | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EditLinkRequestBody> = z
@@ -220,6 +2751,10 @@ export namespace EditLinkRequestBody$ {
             prefix: z.string().optional(),
             url: z.string(),
             archived: z.boolean().default(false),
+            publicStats: z.boolean().default(false),
+            tagId: z.nullable(z.string()).optional(),
+            tagIds: z.union([z.string(), z.array(z.string())]).optional(),
+            comments: z.nullable(z.string()).optional(),
             expiresAt: z.nullable(z.string()).optional(),
             expiredUrl: z.nullable(z.string()).optional(),
             password: z.nullable(z.string()).optional(),
@@ -230,11 +2765,7 @@ export namespace EditLinkRequestBody$ {
             rewrite: z.boolean().default(false),
             ios: z.nullable(z.string()).optional(),
             android: z.nullable(z.string()).optional(),
-            geo: z.nullable(z.record(z.string())).optional(),
-            publicStats: z.boolean().default(false),
-            tagId: z.nullable(z.string()).optional(),
-            tagIds: z.union([z.string(), z.array(z.string())]).optional(),
-            comments: z.nullable(z.string()).optional(),
+            geo: z.nullable(z.lazy(() => EditLinkGeo$.outboundSchema)).optional(),
         })
         .transform((v) => {
             return {
@@ -243,6 +2774,10 @@ export namespace EditLinkRequestBody$ {
                 ...(v.prefix === undefined ? null : { prefix: v.prefix }),
                 url: v.url,
                 archived: v.archived,
+                publicStats: v.publicStats,
+                ...(v.tagId === undefined ? null : { tagId: v.tagId }),
+                ...(v.tagIds === undefined ? null : { tagIds: v.tagIds }),
+                ...(v.comments === undefined ? null : { comments: v.comments }),
                 ...(v.expiresAt === undefined ? null : { expiresAt: v.expiresAt }),
                 ...(v.expiredUrl === undefined ? null : { expiredUrl: v.expiredUrl }),
                 ...(v.password === undefined ? null : { password: v.password }),
@@ -254,10 +2789,6 @@ export namespace EditLinkRequestBody$ {
                 ...(v.ios === undefined ? null : { ios: v.ios }),
                 ...(v.android === undefined ? null : { android: v.android }),
                 ...(v.geo === undefined ? null : { geo: v.geo }),
-                publicStats: v.publicStats,
-                ...(v.tagId === undefined ? null : { tagId: v.tagId }),
-                ...(v.tagIds === undefined ? null : { tagIds: v.tagIds }),
-                ...(v.comments === undefined ? null : { comments: v.comments }),
             };
         });
 }

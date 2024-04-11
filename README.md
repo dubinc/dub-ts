@@ -96,6 +96,10 @@ run();
 
 * [list](docs/sdks/tags/README.md#list) - Retrieve a list of tags
 * [create](docs/sdks/tags/README.md#create) - Create a new tag
+
+### [metatags](docs/sdks/metatags/README.md)
+
+* [get](docs/sdks/metatags/README.md#get) - Retrieve the metatags for a URL
 <!-- End Available Resources and Operations [operations] -->
 
 <!-- Start Error Handling [errors] -->

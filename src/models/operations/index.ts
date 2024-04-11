@@ -16,6 +16,7 @@ export * from "./getdeviceanalytics";
 export * from "./getlinkinfo";
 export * from "./getlinks";
 export * from "./getlinkscount";
+export * from "./getmetatags";
 export * from "./getosanalytics";
 export * from "./getqrcode";
 export * from "./getrefereranalytics";

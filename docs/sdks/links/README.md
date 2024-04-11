@@ -83,10 +83,8 @@ async function run() {
 
   const result = await sdk.links.create({
     url: "http://limp-pastry.org",
-    geo: {
-      "key": "<value>",
-    },
   tagIds: "<value>",
+    geo: {},
   });
 
   // Handle the result
@@ -250,10 +248,8 @@ async function run() {
   const linkId = "<value>";
   const requestBody = {
     url: "https://alarming-nondisclosure.com",
-    geo: {
-      "key": "<value>",
-    },
   tagIds: "<value>",
+    geo: {},
   };
   
   const result = await sdk.links.update(linkId, requestBody);
@@ -364,12 +360,10 @@ async function run() {
   const result = await sdk.links.createMany([
     {
       url: "https://positive-plane.info",
-      geo: {
-        "key": "<value>",
-      },
     tagIds:     [
           "<value>",
         ],
+      geo: {},
     },
   ]);
 
