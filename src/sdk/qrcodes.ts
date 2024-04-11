@@ -8,6 +8,7 @@ import * as enc$ from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
+import { SecurityInput } from "../lib/security";
 import * as errors from "../models/errors";
 import * as operations from "../models/operations";
 import * as z from "zod";
@@ -52,6 +53,7 @@ export class QRCodes extends ClientSDK {
      */
     async get(
         input: operations.GetQRCodeRequest,
+        security: operations.GetQRCodeSecurity,
         options?: RequestOptions & { acceptHeaderOverride?: GetAcceptEnum }
     ): Promise<string> {
         const headers$ = new Headers();
@@ -89,20 +91,17 @@ export class QRCodes extends ClientSDK {
             .filter(Boolean)
             .join("&");
 
-        let security$;
-        if (typeof this.options$.token === "function") {
-            security$ = { token: await this.options$.token() };
-        } else if (this.options$.token) {
-            security$ = { token: this.options$.token };
-        } else {
-            security$ = {};
-        }
-        const context = {
-            operationID: "getQRCode",
-            oAuth2Scopes: [],
-            securitySource: this.options$.token,
-        };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
+        const security$: SecurityInput[][] = [
+            [
+                {
+                    fieldName: "Authorization",
+                    type: "http:bearer",
+                    value: security?.token,
+                },
+            ],
+        ];
+        const securitySettings$ = this.resolveSecurity(...security$);
+        const context = { operationID: "getQRCode", oAuth2Scopes: [], securitySource: security$ };
 
         const doOptions = {
             context,

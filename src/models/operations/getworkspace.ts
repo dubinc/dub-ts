@@ -4,12 +4,47 @@
 
 import * as z from "zod";
 
+export type GetWorkspaceSecurity = {
+    token?: string | undefined;
+};
+
 export type GetWorkspaceRequest = {
     /**
      * The ID or slug of the workspace.
      */
     idOrSlug: string;
 };
+
+/** @internal */
+export namespace GetWorkspaceSecurity$ {
+    export type Inbound = {
+        token?: string | undefined;
+    };
+
+    export const inboundSchema: z.ZodType<GetWorkspaceSecurity, z.ZodTypeDef, Inbound> = z
+        .object({
+            token: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.token === undefined ? null : { token: v.token }),
+            };
+        });
+
+    export type Outbound = {
+        token?: string | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetWorkspaceSecurity> = z
+        .object({
+            token: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.token === undefined ? null : { token: v.token }),
+            };
+        });
+}
 
 /** @internal */
 export namespace GetWorkspaceRequest$ {

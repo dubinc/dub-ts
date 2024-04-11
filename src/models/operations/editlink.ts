@@ -4,6 +4,10 @@
 
 import * as z from "zod";
 
+export type EditLinkSecurity = {
+    token?: string | undefined;
+};
+
 /**
  * The unique IDs of the tags assigned to the short link.
  */
@@ -101,6 +105,37 @@ export type EditLinkRequest = {
     linkId: string;
     requestBody?: EditLinkRequestBody | undefined;
 };
+
+/** @internal */
+export namespace EditLinkSecurity$ {
+    export type Inbound = {
+        token?: string | undefined;
+    };
+
+    export const inboundSchema: z.ZodType<EditLinkSecurity, z.ZodTypeDef, Inbound> = z
+        .object({
+            token: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.token === undefined ? null : { token: v.token }),
+            };
+        });
+
+    export type Outbound = {
+        token?: string | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EditLinkSecurity> = z
+        .object({
+            token: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.token === undefined ? null : { token: v.token }),
+            };
+        });
+}
 
 /** @internal */
 export namespace EditLinkTagIds$ {

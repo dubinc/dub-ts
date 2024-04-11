@@ -8,6 +8,7 @@ import * as enc$ from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
+import { SecurityInput } from "../lib/security";
 import * as components from "../models/components";
 import * as errors from "../models/errors";
 import * as operations from "../models/operations";
@@ -48,6 +49,7 @@ export class Tags extends ClientSDK {
      */
     async list(
         _input: operations.GetTagsRequest,
+        security: operations.GetTagsSecurity,
         options?: RequestOptions
     ): Promise<Array<components.TagSchema>> {
         const headers$ = new Headers();
@@ -69,20 +71,17 @@ export class Tags extends ClientSDK {
             .filter(Boolean)
             .join("&");
 
-        let security$;
-        if (typeof this.options$.token === "function") {
-            security$ = { token: await this.options$.token() };
-        } else if (this.options$.token) {
-            security$ = { token: this.options$.token };
-        } else {
-            security$ = {};
-        }
-        const context = {
-            operationID: "getTags",
-            oAuth2Scopes: [],
-            securitySource: this.options$.token,
-        };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
+        const security$: SecurityInput[][] = [
+            [
+                {
+                    fieldName: "Authorization",
+                    type: "http:bearer",
+                    value: security?.token,
+                },
+            ],
+        ];
+        const securitySettings$ = this.resolveSecurity(...security$);
+        const context = { operationID: "getTags", oAuth2Scopes: [], securitySource: security$ };
 
         const doOptions = {
             context,
@@ -261,6 +260,7 @@ export class Tags extends ClientSDK {
      */
     async create(
         input: operations.CreateTagRequestBody | undefined,
+        security: operations.CreateTagSecurity,
         options?: RequestOptions
     ): Promise<components.TagSchema> {
         const headers$ = new Headers();
@@ -291,20 +291,17 @@ export class Tags extends ClientSDK {
             .filter(Boolean)
             .join("&");
 
-        let security$;
-        if (typeof this.options$.token === "function") {
-            security$ = { token: await this.options$.token() };
-        } else if (this.options$.token) {
-            security$ = { token: this.options$.token };
-        } else {
-            security$ = {};
-        }
-        const context = {
-            operationID: "createTag",
-            oAuth2Scopes: [],
-            securitySource: this.options$.token,
-        };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
+        const security$: SecurityInput[][] = [
+            [
+                {
+                    fieldName: "Authorization",
+                    type: "http:bearer",
+                    value: security?.token,
+                },
+            ],
+        ];
+        const securitySettings$ = this.resolveSecurity(...security$);
+        const context = { operationID: "createTag", oAuth2Scopes: [], securitySource: security$ };
 
         const doOptions = {
             context,

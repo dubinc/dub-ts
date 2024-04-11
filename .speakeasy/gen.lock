@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: 3ef41873dee5fcca0b0407f423aa20bf
+  docChecksum: f8ac17a98fb5def350bdc78e5e3d074a
   docVersion: 0.0.1
   speakeasyVersion: 1.246.1
   generationVersion: 2.302.1
-  releaseVersion: 0.20.3
-  configChecksum: f00e14281ccef6d45ad59080cff52693
+  releaseVersion: 0.21.0
+  configChecksum: 820075540fd62258f8b88385064cd939
   repoURL: https://github.com/dubinc/dub-node.git
   installationURL: https://github.com/dubinc/dub-node
   published: true
@@ -21,6 +21,7 @@ features:
     globalServerURLs: 2.82.4
     globals: 2.82.1
     hiddenGlobals: 0.1.0
+    methodSecurity: 2.82.4
     nameOverrides: 2.81.2
     responseFormat: 0.2.3
     unions: 2.85.3
@@ -83,6 +84,7 @@ generatedFiles:
   - src/models/operations/getrefereranalytics.ts
   - src/models/operations/gettoplinks.ts
   - src/models/operations/gettopurls.ts
+  - src/models/operations/getworkspaces.ts
   - src/models/operations/createworkspace.ts
   - src/models/operations/getworkspace.ts
   - src/models/operations/gettags.ts
@@ -126,70 +128,93 @@ generatedFiles:
   - docs/models/errors/internalservererrorcode.md
   - docs/models/errors/internalservererrorerror.md
   - docs/models/errors/internalservererror.md
+  - docs/models/operations/getlinkssecurity.md
   - docs/models/operations/queryparamtagids.md
   - docs/models/operations/sort.md
   - docs/models/operations/getlinksrequest.md
+  - docs/models/operations/createlinksecurity.md
   - docs/models/operations/tagids.md
   - docs/models/operations/createlinkrequestbody.md
+  - docs/models/operations/getlinkscountsecurity.md
   - docs/models/operations/getlinkscountqueryparamtagids.md
   - docs/models/operations/two.md
   - docs/models/operations/one.md
   - docs/models/operations/groupby.md
   - docs/models/operations/getlinkscountrequest.md
+  - docs/models/operations/getlinkinfosecurity.md
   - docs/models/operations/getlinkinforequest.md
+  - docs/models/operations/editlinksecurity.md
   - docs/models/operations/editlinktagids.md
   - docs/models/operations/editlinkrequestbody.md
   - docs/models/operations/editlinkrequest.md
+  - docs/models/operations/deletelinksecurity.md
   - docs/models/operations/deletelinkrequest.md
   - docs/models/operations/deletelinkresponsebody.md
+  - docs/models/operations/bulkcreatelinkssecurity.md
   - docs/models/operations/bulkcreatelinkstagids.md
   - docs/models/operations/requestbody.md
+  - docs/models/operations/getqrcodesecurity.md
   - docs/models/operations/level.md
   - docs/models/operations/getqrcoderequest.md
+  - docs/models/operations/getclicksanalyticssecurity.md
   - docs/models/operations/interval.md
   - docs/models/operations/country.md
   - docs/models/operations/getclicksanalyticsrequest.md
+  - docs/models/operations/gettimeseriesanalyticssecurity.md
   - docs/models/operations/queryparaminterval.md
   - docs/models/operations/queryparamcountry.md
   - docs/models/operations/gettimeseriesanalyticsrequest.md
   - docs/models/operations/responsebody.md
+  - docs/models/operations/getcountryanalyticssecurity.md
   - docs/models/operations/getcountryanalyticsqueryparaminterval.md
   - docs/models/operations/getcountryanalyticsqueryparamcountry.md
   - docs/models/operations/getcountryanalyticsrequest.md
   - docs/models/operations/getcountryanalyticscountry.md
   - docs/models/operations/getcountryanalyticsresponsebody.md
+  - docs/models/operations/getcityanalyticssecurity.md
   - docs/models/operations/getcityanalyticsqueryparaminterval.md
   - docs/models/operations/getcityanalyticsqueryparamcountry.md
   - docs/models/operations/getcityanalyticsrequest.md
   - docs/models/operations/getcityanalyticscountry.md
   - docs/models/operations/getcityanalyticsresponsebody.md
+  - docs/models/operations/getdeviceanalyticssecurity.md
   - docs/models/operations/getdeviceanalyticsqueryparaminterval.md
   - docs/models/operations/getdeviceanalyticsqueryparamcountry.md
   - docs/models/operations/getdeviceanalyticsrequest.md
   - docs/models/operations/getdeviceanalyticsresponsebody.md
+  - docs/models/operations/getbrowseranalyticssecurity.md
   - docs/models/operations/getbrowseranalyticsqueryparaminterval.md
   - docs/models/operations/getbrowseranalyticsqueryparamcountry.md
   - docs/models/operations/getbrowseranalyticsrequest.md
   - docs/models/operations/getbrowseranalyticsresponsebody.md
+  - docs/models/operations/getosanalyticssecurity.md
   - docs/models/operations/getosanalyticsqueryparaminterval.md
   - docs/models/operations/getosanalyticsqueryparamcountry.md
   - docs/models/operations/getosanalyticsrequest.md
   - docs/models/operations/getosanalyticsresponsebody.md
+  - docs/models/operations/getrefereranalyticssecurity.md
   - docs/models/operations/getrefereranalyticsqueryparaminterval.md
   - docs/models/operations/getrefereranalyticsqueryparamcountry.md
   - docs/models/operations/getrefereranalyticsrequest.md
   - docs/models/operations/getrefereranalyticsresponsebody.md
+  - docs/models/operations/gettoplinkssecurity.md
   - docs/models/operations/gettoplinksqueryparaminterval.md
   - docs/models/operations/gettoplinksqueryparamcountry.md
   - docs/models/operations/gettoplinksrequest.md
   - docs/models/operations/gettoplinksresponsebody.md
+  - docs/models/operations/gettopurlssecurity.md
   - docs/models/operations/gettopurlsqueryparaminterval.md
   - docs/models/operations/gettopurlsqueryparamcountry.md
   - docs/models/operations/gettopurlsrequest.md
   - docs/models/operations/gettopurlsresponsebody.md
+  - docs/models/operations/getworkspacessecurity.md
+  - docs/models/operations/createworkspacesecurity.md
   - docs/models/operations/createworkspacerequestbody.md
+  - docs/models/operations/getworkspacesecurity.md
   - docs/models/operations/getworkspacerequest.md
+  - docs/models/operations/gettagssecurity.md
   - docs/models/operations/gettagsrequest.md
+  - docs/models/operations/createtagsecurity.md
   - docs/models/operations/color.md
   - docs/models/operations/createtagrequestbody.md
   - docs/sdks/dub/README.md

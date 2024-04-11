@@ -4,6 +4,10 @@
 
 import * as z from "zod";
 
+export type CreateTagSecurity = {
+    token?: string | undefined;
+};
+
 /**
  * The color of the tag. If not provided, a random color will be used from the list: red, yellow, green, blue, purple, pink, brown.
  */
@@ -27,6 +31,37 @@ export type CreateTagRequestBody = {
      */
     color?: Color | undefined;
 };
+
+/** @internal */
+export namespace CreateTagSecurity$ {
+    export type Inbound = {
+        token?: string | undefined;
+    };
+
+    export const inboundSchema: z.ZodType<CreateTagSecurity, z.ZodTypeDef, Inbound> = z
+        .object({
+            token: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.token === undefined ? null : { token: v.token }),
+            };
+        });
+
+    export type Outbound = {
+        token?: string | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateTagSecurity> = z
+        .object({
+            token: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.token === undefined ? null : { token: v.token }),
+            };
+        });
+}
 
 /** @internal */
 export const Color$ = z.nativeEnum(Color);
