@@ -13,7 +13,7 @@ export const injectAPIKey: BeforeRequestHook = {
         }
 
         if (!token) {
-            throw new Error("API key is required");
+            throw new Error("The DUB_API_KEY environment variable is missing or empty; either provide it, or instantiate the Dub client with an token option, like new Dub({ token: 'My Token' }).");
         }
 
         request.headers.set("Authorization", `Bearer ${token}`);
