@@ -8,6 +8,7 @@ import * as enc$ from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
+import { SecurityInput } from "../lib/security";
 import * as components from "../models/components";
 import * as errors from "../models/errors";
 import * as operations from "../models/operations";
@@ -48,6 +49,7 @@ export class Links extends ClientSDK {
      */
     async list(
         input: operations.GetLinksRequest,
+        security: operations.GetLinksSecurity,
         options?: RequestOptions
     ): Promise<Array<components.LinkSchema>> {
         const headers$ = new Headers();
@@ -91,20 +93,17 @@ export class Links extends ClientSDK {
             .filter(Boolean)
             .join("&");
 
-        let security$;
-        if (typeof this.options$.token === "function") {
-            security$ = { token: await this.options$.token() };
-        } else if (this.options$.token) {
-            security$ = { token: this.options$.token };
-        } else {
-            security$ = {};
-        }
-        const context = {
-            operationID: "getLinks",
-            oAuth2Scopes: [],
-            securitySource: this.options$.token,
-        };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
+        const security$: SecurityInput[][] = [
+            [
+                {
+                    fieldName: "Authorization",
+                    type: "http:bearer",
+                    value: security?.token,
+                },
+            ],
+        ];
+        const securitySettings$ = this.resolveSecurity(...security$);
+        const context = { operationID: "getLinks", oAuth2Scopes: [], securitySource: security$ };
 
         const doOptions = {
             context,
@@ -284,6 +283,7 @@ export class Links extends ClientSDK {
      */
     async create(
         input: operations.CreateLinkRequestBody | undefined,
+        security: operations.CreateLinkSecurity,
         options?: RequestOptions
     ): Promise<components.LinkSchema> {
         const headers$ = new Headers();
@@ -314,20 +314,17 @@ export class Links extends ClientSDK {
             .filter(Boolean)
             .join("&");
 
-        let security$;
-        if (typeof this.options$.token === "function") {
-            security$ = { token: await this.options$.token() };
-        } else if (this.options$.token) {
-            security$ = { token: this.options$.token };
-        } else {
-            security$ = {};
-        }
-        const context = {
-            operationID: "createLink",
-            oAuth2Scopes: [],
-            securitySource: this.options$.token,
-        };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
+        const security$: SecurityInput[][] = [
+            [
+                {
+                    fieldName: "Authorization",
+                    type: "http:bearer",
+                    value: security?.token,
+                },
+            ],
+        ];
+        const securitySettings$ = this.resolveSecurity(...security$);
+        const context = { operationID: "createLink", oAuth2Scopes: [], securitySource: security$ };
 
         const doOptions = {
             context,
@@ -505,7 +502,11 @@ export class Links extends ClientSDK {
      * @remarks
      * Retrieve the number of links for the authenticated workspace. The provided query parameters allow filtering the returned links.
      */
-    async count(input: operations.GetLinksCountRequest, options?: RequestOptions): Promise<number> {
+    async count(
+        input: operations.GetLinksCountRequest,
+        security: operations.GetLinksCountSecurity,
+        options?: RequestOptions
+    ): Promise<number> {
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
@@ -549,20 +550,21 @@ export class Links extends ClientSDK {
             .filter(Boolean)
             .join("&");
 
-        let security$;
-        if (typeof this.options$.token === "function") {
-            security$ = { token: await this.options$.token() };
-        } else if (this.options$.token) {
-            security$ = { token: this.options$.token };
-        } else {
-            security$ = {};
-        }
+        const security$: SecurityInput[][] = [
+            [
+                {
+                    fieldName: "Authorization",
+                    type: "http:bearer",
+                    value: security?.token,
+                },
+            ],
+        ];
+        const securitySettings$ = this.resolveSecurity(...security$);
         const context = {
             operationID: "getLinksCount",
             oAuth2Scopes: [],
-            securitySource: this.options$.token,
+            securitySource: security$,
         };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = {
             context,
@@ -742,6 +744,7 @@ export class Links extends ClientSDK {
      */
     async get(
         input: operations.GetLinkInfoRequest,
+        security: operations.GetLinkInfoSecurity,
         options?: RequestOptions
     ): Promise<components.LinkSchema> {
         const headers$ = new Headers();
@@ -772,20 +775,17 @@ export class Links extends ClientSDK {
             .filter(Boolean)
             .join("&");
 
-        let security$;
-        if (typeof this.options$.token === "function") {
-            security$ = { token: await this.options$.token() };
-        } else if (this.options$.token) {
-            security$ = { token: this.options$.token };
-        } else {
-            security$ = {};
-        }
-        const context = {
-            operationID: "getLinkInfo",
-            oAuth2Scopes: [],
-            securitySource: this.options$.token,
-        };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
+        const security$: SecurityInput[][] = [
+            [
+                {
+                    fieldName: "Authorization",
+                    type: "http:bearer",
+                    value: security?.token,
+                },
+            ],
+        ];
+        const securitySettings$ = this.resolveSecurity(...security$);
+        const context = { operationID: "getLinkInfo", oAuth2Scopes: [], securitySource: security$ };
 
         const doOptions = {
             context,
@@ -964,6 +964,7 @@ export class Links extends ClientSDK {
      * Edit a link for the authenticated workspace.
      */
     async update(
+        security: operations.EditLinkSecurity,
         linkId: string,
         requestBody?: operations.EditLinkRequestBody | undefined,
         options?: RequestOptions
@@ -1005,20 +1006,17 @@ export class Links extends ClientSDK {
             .filter(Boolean)
             .join("&");
 
-        let security$;
-        if (typeof this.options$.token === "function") {
-            security$ = { token: await this.options$.token() };
-        } else if (this.options$.token) {
-            security$ = { token: this.options$.token };
-        } else {
-            security$ = {};
-        }
-        const context = {
-            operationID: "editLink",
-            oAuth2Scopes: [],
-            securitySource: this.options$.token,
-        };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
+        const security$: SecurityInput[][] = [
+            [
+                {
+                    fieldName: "Authorization",
+                    type: "http:bearer",
+                    value: security?.token,
+                },
+            ],
+        ];
+        const securitySettings$ = this.resolveSecurity(...security$);
+        const context = { operationID: "editLink", oAuth2Scopes: [], securitySource: security$ };
 
         const doOptions = {
             context,
@@ -1197,6 +1195,7 @@ export class Links extends ClientSDK {
      * Delete a link for the authenticated workspace.
      */
     async delete(
+        security: operations.DeleteLinkSecurity,
         linkId: string,
         options?: RequestOptions
     ): Promise<operations.DeleteLinkResponseBody> {
@@ -1235,20 +1234,17 @@ export class Links extends ClientSDK {
             .filter(Boolean)
             .join("&");
 
-        let security$;
-        if (typeof this.options$.token === "function") {
-            security$ = { token: await this.options$.token() };
-        } else if (this.options$.token) {
-            security$ = { token: this.options$.token };
-        } else {
-            security$ = {};
-        }
-        const context = {
-            operationID: "deleteLink",
-            oAuth2Scopes: [],
-            securitySource: this.options$.token,
-        };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
+        const security$: SecurityInput[][] = [
+            [
+                {
+                    fieldName: "Authorization",
+                    type: "http:bearer",
+                    value: security?.token,
+                },
+            ],
+        ];
+        const securitySettings$ = this.resolveSecurity(...security$);
+        const context = { operationID: "deleteLink", oAuth2Scopes: [], securitySource: security$ };
 
         const doOptions = {
             context,
@@ -1428,6 +1424,7 @@ export class Links extends ClientSDK {
      */
     async createMany(
         input: Array<operations.RequestBody> | undefined,
+        security: operations.BulkCreateLinksSecurity,
         options?: RequestOptions
     ): Promise<Array<components.LinkSchema>> {
         const headers$ = new Headers();
@@ -1458,20 +1455,21 @@ export class Links extends ClientSDK {
             .filter(Boolean)
             .join("&");
 
-        let security$;
-        if (typeof this.options$.token === "function") {
-            security$ = { token: await this.options$.token() };
-        } else if (this.options$.token) {
-            security$ = { token: this.options$.token };
-        } else {
-            security$ = {};
-        }
+        const security$: SecurityInput[][] = [
+            [
+                {
+                    fieldName: "Authorization",
+                    type: "http:bearer",
+                    value: security?.token,
+                },
+            ],
+        ];
+        const securitySettings$ = this.resolveSecurity(...security$);
         const context = {
             operationID: "bulkCreateLinks",
             oAuth2Scopes: [],
-            securitySource: this.options$.token,
+            securitySource: security$,
         };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = {
             context,

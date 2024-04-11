@@ -4,14 +4,18 @@ import { Dub } from "dub";
 
 async function run() {
     const sdk = new Dub({
-        token: "<YOUR_BEARER_TOKEN_HERE>",
         workspaceId: "<value>",
         projectSlug: "<value>",
     });
 
-    const result = await sdk.links.list({
-        tagIds: ["<value>"],
-    });
+    const operationSecurity = "<YOUR_BEARER_TOKEN_HERE>";
+
+    const result = await sdk.links.list(
+        {
+            tagIds: ["<value>"],
+        },
+        operationSecurity
+    );
 
     // Handle the result
     console.log(result);

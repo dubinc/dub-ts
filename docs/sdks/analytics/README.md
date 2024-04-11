@@ -25,12 +25,13 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
     projectSlug: "<value>",
   });
 
-  const result = await sdk.analytics.clicks({});
+  const operationSecurity = "<YOUR_BEARER_TOKEN_HERE>";
+  
+  const result = await sdk.analytics.clicks({}, operationSecurity);
 
   // Handle the result
   console.log(result)
@@ -44,6 +45,7 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `request`                                                                                                                                                                      | [operations.GetClicksAnalyticsRequest](../../models/operations/getclicksanalyticsrequest.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `security`                                                                                                                                                                     | [operations.GetClicksAnalyticsSecurity](../../models/operations/getclicksanalyticssecurity.md)                                                                                 | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
@@ -77,12 +79,13 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
     projectSlug: "<value>",
   });
 
-  const result = await sdk.analytics.timeseries({});
+  const operationSecurity = "<YOUR_BEARER_TOKEN_HERE>";
+  
+  const result = await sdk.analytics.timeseries({}, operationSecurity);
 
   // Handle the result
   console.log(result)
@@ -96,6 +99,7 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `request`                                                                                                                                                                      | [operations.GetTimeseriesAnalyticsRequest](../../models/operations/gettimeseriesanalyticsrequest.md)                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `security`                                                                                                                                                                     | [operations.GetTimeseriesAnalyticsSecurity](../../models/operations/gettimeseriesanalyticssecurity.md)                                                                         | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
@@ -129,12 +133,13 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
     projectSlug: "<value>",
   });
 
-  const result = await sdk.analytics.countries({});
+  const operationSecurity = "<YOUR_BEARER_TOKEN_HERE>";
+  
+  const result = await sdk.analytics.countries({}, operationSecurity);
 
   // Handle the result
   console.log(result)
@@ -148,6 +153,7 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `request`                                                                                                                                                                      | [operations.GetCountryAnalyticsRequest](../../models/operations/getcountryanalyticsrequest.md)                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `security`                                                                                                                                                                     | [operations.GetCountryAnalyticsSecurity](../../models/operations/getcountryanalyticssecurity.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
@@ -181,12 +187,13 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
     projectSlug: "<value>",
   });
 
-  const result = await sdk.analytics.cities({});
+  const operationSecurity = "<YOUR_BEARER_TOKEN_HERE>";
+  
+  const result = await sdk.analytics.cities({}, operationSecurity);
 
   // Handle the result
   console.log(result)
@@ -200,6 +207,7 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `request`                                                                                                                                                                      | [operations.GetCityAnalyticsRequest](../../models/operations/getcityanalyticsrequest.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `security`                                                                                                                                                                     | [operations.GetCityAnalyticsSecurity](../../models/operations/getcityanalyticssecurity.md)                                                                                     | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
@@ -233,12 +241,13 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
     projectSlug: "<value>",
   });
 
-  const result = await sdk.analytics.devices({});
+  const operationSecurity = "<YOUR_BEARER_TOKEN_HERE>";
+  
+  const result = await sdk.analytics.devices({}, operationSecurity);
 
   // Handle the result
   console.log(result)
@@ -252,6 +261,7 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `request`                                                                                                                                                                      | [operations.GetDeviceAnalyticsRequest](../../models/operations/getdeviceanalyticsrequest.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `security`                                                                                                                                                                     | [operations.GetDeviceAnalyticsSecurity](../../models/operations/getdeviceanalyticssecurity.md)                                                                                 | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
@@ -285,12 +295,13 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
     projectSlug: "<value>",
   });
 
-  const result = await sdk.analytics.browsers({});
+  const operationSecurity = "<YOUR_BEARER_TOKEN_HERE>";
+  
+  const result = await sdk.analytics.browsers({}, operationSecurity);
 
   // Handle the result
   console.log(result)
@@ -304,6 +315,7 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `request`                                                                                                                                                                      | [operations.GetBrowserAnalyticsRequest](../../models/operations/getbrowseranalyticsrequest.md)                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `security`                                                                                                                                                                     | [operations.GetBrowserAnalyticsSecurity](../../models/operations/getbrowseranalyticssecurity.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
@@ -337,12 +349,13 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
     projectSlug: "<value>",
   });
 
-  const result = await sdk.analytics.os({});
+  const operationSecurity = "<YOUR_BEARER_TOKEN_HERE>";
+  
+  const result = await sdk.analytics.os({}, operationSecurity);
 
   // Handle the result
   console.log(result)
@@ -356,6 +369,7 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `request`                                                                                                                                                                      | [operations.GetOSAnalyticsRequest](../../models/operations/getosanalyticsrequest.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `security`                                                                                                                                                                     | [operations.GetOSAnalyticsSecurity](../../models/operations/getosanalyticssecurity.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
@@ -389,12 +403,13 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
     projectSlug: "<value>",
   });
 
-  const result = await sdk.analytics.referers({});
+  const operationSecurity = "<YOUR_BEARER_TOKEN_HERE>";
+  
+  const result = await sdk.analytics.referers({}, operationSecurity);
 
   // Handle the result
   console.log(result)
@@ -408,6 +423,7 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `request`                                                                                                                                                                      | [operations.GetRefererAnalyticsRequest](../../models/operations/getrefereranalyticsrequest.md)                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `security`                                                                                                                                                                     | [operations.GetRefererAnalyticsSecurity](../../models/operations/getrefereranalyticssecurity.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
@@ -441,12 +457,13 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
     projectSlug: "<value>",
   });
 
-  const result = await sdk.analytics.topLinks({});
+  const operationSecurity = "<YOUR_BEARER_TOKEN_HERE>";
+  
+  const result = await sdk.analytics.topLinks({}, operationSecurity);
 
   // Handle the result
   console.log(result)
@@ -460,6 +477,7 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `request`                                                                                                                                                                      | [operations.GetTopLinksRequest](../../models/operations/gettoplinksrequest.md)                                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `security`                                                                                                                                                                     | [operations.GetTopLinksSecurity](../../models/operations/gettoplinkssecurity.md)                                                                                               | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
@@ -493,12 +511,13 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
     projectSlug: "<value>",
   });
 
-  const result = await sdk.analytics.topUrls({});
+  const operationSecurity = "<YOUR_BEARER_TOKEN_HERE>";
+  
+  const result = await sdk.analytics.topUrls({}, operationSecurity);
 
   // Handle the result
   console.log(result)
@@ -512,6 +531,7 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `request`                                                                                                                                                                      | [operations.GetTopURLsRequest](../../models/operations/gettopurlsrequest.md)                                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `security`                                                                                                                                                                     | [operations.GetTopURLsSecurity](../../models/operations/gettopurlssecurity.md)                                                                                                 | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 

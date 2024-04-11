@@ -4,6 +4,10 @@
 
 import * as z from "zod";
 
+export type GetCityAnalyticsSecurity = {
+    token?: string | undefined;
+};
+
 /**
  * The interval to retrieve analytics for.
  */
@@ -593,6 +597,37 @@ export type GetCityAnalyticsResponseBody = {
      */
     clicks: number;
 };
+
+/** @internal */
+export namespace GetCityAnalyticsSecurity$ {
+    export type Inbound = {
+        token?: string | undefined;
+    };
+
+    export const inboundSchema: z.ZodType<GetCityAnalyticsSecurity, z.ZodTypeDef, Inbound> = z
+        .object({
+            token: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.token === undefined ? null : { token: v.token }),
+            };
+        });
+
+    export type Outbound = {
+        token?: string | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetCityAnalyticsSecurity> = z
+        .object({
+            token: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.token === undefined ? null : { token: v.token }),
+            };
+        });
+}
 
 /** @internal */
 export const GetCityAnalyticsQueryParamInterval$ = z.nativeEnum(GetCityAnalyticsQueryParamInterval);

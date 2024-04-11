@@ -4,6 +4,10 @@
 
 import * as z from "zod";
 
+export type GetClicksAnalyticsSecurity = {
+    token?: string | undefined;
+};
+
 /**
  * The interval to retrieve analytics for.
  */
@@ -322,6 +326,37 @@ export type GetClicksAnalyticsRequest = {
      */
     tagId?: string | undefined;
 };
+
+/** @internal */
+export namespace GetClicksAnalyticsSecurity$ {
+    export type Inbound = {
+        token?: string | undefined;
+    };
+
+    export const inboundSchema: z.ZodType<GetClicksAnalyticsSecurity, z.ZodTypeDef, Inbound> = z
+        .object({
+            token: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.token === undefined ? null : { token: v.token }),
+            };
+        });
+
+    export type Outbound = {
+        token?: string | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetClicksAnalyticsSecurity> = z
+        .object({
+            token: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.token === undefined ? null : { token: v.token }),
+            };
+        });
+}
 
 /** @internal */
 export const Interval$ = z.nativeEnum(Interval);

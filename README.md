@@ -39,14 +39,18 @@ import { Dub } from "dub";
 
 async function run() {
     const sdk = new Dub({
-        token: "<YOUR_BEARER_TOKEN_HERE>",
         workspaceId: "<value>",
         projectSlug: "<value>",
     });
 
-    const result = await sdk.links.list({
-        tagIds: ["<value>"],
-    });
+    const operationSecurity = "<YOUR_BEARER_TOKEN_HERE>";
+
+    const result = await sdk.links.list(
+        {
+            tagIds: ["<value>"],
+        },
+        operationSecurity
+    );
 
     // Handle the result
     console.log(result);
@@ -126,16 +130,20 @@ import * as errors from "dub/models/errors";
 
 async function run() {
     const sdk = new Dub({
-        token: "<YOUR_BEARER_TOKEN_HERE>",
         workspaceId: "<value>",
         projectSlug: "<value>",
     });
 
+    const operationSecurity = "<YOUR_BEARER_TOKEN_HERE>";
+
     let result;
     try {
-        result = await sdk.links.list({
-            tagIds: ["<value>"],
-        });
+        result = await sdk.links.list(
+            {
+                tagIds: ["<value>"],
+            },
+            operationSecurity
+        );
     } catch (err) {
         switch (true) {
             case err instanceof errors.SDKValidationError: {
@@ -213,14 +221,18 @@ import { Dub } from "dub";
 async function run() {
     const sdk = new Dub({
         serverIdx: 0,
-        token: "<YOUR_BEARER_TOKEN_HERE>",
         workspaceId: "<value>",
         projectSlug: "<value>",
     });
 
-    const result = await sdk.links.list({
-        tagIds: ["<value>"],
-    });
+    const operationSecurity = "<YOUR_BEARER_TOKEN_HERE>";
+
+    const result = await sdk.links.list(
+        {
+            tagIds: ["<value>"],
+        },
+        operationSecurity
+    );
 
     // Handle the result
     console.log(result);
@@ -241,14 +253,18 @@ import { Dub } from "dub";
 async function run() {
     const sdk = new Dub({
         serverURL: "https://api.dub.co",
-        token: "<YOUR_BEARER_TOKEN_HERE>",
         workspaceId: "<value>",
         projectSlug: "<value>",
     });
 
-    const result = await sdk.links.list({
-        tagIds: ["<value>"],
-    });
+    const operationSecurity = "<YOUR_BEARER_TOKEN_HERE>";
+
+    const result = await sdk.links.list(
+        {
+            tagIds: ["<value>"],
+        },
+        operationSecurity
+    );
 
     // Handle the result
     console.log(result);
@@ -320,19 +336,28 @@ This SDK supports the following security scheme globally:
 | `token`     | http        | HTTP Bearer |
 
 To authenticate with the API the `token` parameter must be set when initializing the SDK client instance. For example:
+
+
+### Per-Operation Security Schemes
+
+Some operations in this SDK require the security scheme to be specified at the request level. For example:
 ```typescript
 import { Dub } from "dub";
 
 async function run() {
     const sdk = new Dub({
-        token: "<YOUR_BEARER_TOKEN_HERE>",
         workspaceId: "<value>",
         projectSlug: "<value>",
     });
 
-    const result = await sdk.links.list({
-        tagIds: ["<value>"],
-    });
+    const operationSecurity = "<YOUR_BEARER_TOKEN_HERE>";
+
+    const result = await sdk.links.list(
+        {
+            tagIds: ["<value>"],
+        },
+        operationSecurity
+    );
 
     // Handle the result
     console.log(result);

@@ -4,6 +4,10 @@
 
 import * as z from "zod";
 
+export type GetTopLinksSecurity = {
+    token?: string | undefined;
+};
+
 /**
  * The interval to retrieve analytics for.
  */
@@ -333,6 +337,37 @@ export type GetTopLinksResponseBody = {
      */
     clicks: number;
 };
+
+/** @internal */
+export namespace GetTopLinksSecurity$ {
+    export type Inbound = {
+        token?: string | undefined;
+    };
+
+    export const inboundSchema: z.ZodType<GetTopLinksSecurity, z.ZodTypeDef, Inbound> = z
+        .object({
+            token: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.token === undefined ? null : { token: v.token }),
+            };
+        });
+
+    export type Outbound = {
+        token?: string | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetTopLinksSecurity> = z
+        .object({
+            token: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.token === undefined ? null : { token: v.token }),
+            };
+        });
+}
 
 /** @internal */
 export const GetTopLinksQueryParamInterval$ = z.nativeEnum(GetTopLinksQueryParamInterval);
