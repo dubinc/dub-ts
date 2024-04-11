@@ -4,10 +4,6 @@
 
 import * as z from "zod";
 
-export type GetLinksSecurity = {
-    token?: string | undefined;
-};
-
 /**
  * The tag IDs to filter the links by.
  */
@@ -60,37 +56,6 @@ export type GetLinksRequest = {
      */
     page?: number | undefined;
 };
-
-/** @internal */
-export namespace GetLinksSecurity$ {
-    export type Inbound = {
-        token?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetLinksSecurity, z.ZodTypeDef, Inbound> = z
-        .object({
-            token: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.token === undefined ? null : { token: v.token }),
-            };
-        });
-
-    export type Outbound = {
-        token?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLinksSecurity> = z
-        .object({
-            token: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.token === undefined ? null : { token: v.token }),
-            };
-        });
-}
 
 /** @internal */
 export namespace QueryParamTagIds$ {

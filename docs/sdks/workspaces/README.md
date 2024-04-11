@@ -18,13 +18,12 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
+    token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
     projectSlug: "<value>",
   });
 
-  const operationSecurity = "<YOUR_BEARER_TOKEN_HERE>";
-  
-  const result = await sdk.workspaces.list(operationSecurity);
+  const result = await sdk.workspaces.list();
 
   // Handle the result
   console.log(result)
@@ -37,7 +36,6 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `security`                                                                                                                                                                     | [operations.GetWorkspacesSecurity](../../models/operations/getworkspacessecurity.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
@@ -71,16 +69,15 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
+    token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
     projectSlug: "<value>",
   });
 
-  const operationSecurity = "<YOUR_BEARER_TOKEN_HERE>";
-  
   const result = await sdk.workspaces.create({
     name: "<value>",
     slug: "<value>",
-  }, operationSecurity);
+  });
 
   // Handle the result
   console.log(result)
@@ -94,7 +91,6 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `request`                                                                                                                                                                      | [operations.CreateWorkspaceRequestBody](../../models/operations/createworkspacerequestbody.md)                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `security`                                                                                                                                                                     | [operations.CreateWorkspaceSecurity](../../models/operations/createworkspacesecurity.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
@@ -128,15 +124,14 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
+    token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
     projectSlug: "<value>",
   });
 
-  const operationSecurity = "<YOUR_BEARER_TOKEN_HERE>";
-  
   const result = await sdk.workspaces.get({
     idOrSlug: "<value>",
-  }, operationSecurity);
+  });
 
   // Handle the result
   console.log(result)
@@ -150,7 +145,6 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `request`                                                                                                                                                                      | [operations.GetWorkspaceRequest](../../models/operations/getworkspacerequest.md)                                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `security`                                                                                                                                                                     | [operations.GetWorkspaceSecurity](../../models/operations/getworkspacesecurity.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 

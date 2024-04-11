@@ -4,10 +4,6 @@
 
 import * as z from "zod";
 
-export type GetDeviceAnalyticsSecurity = {
-    token?: string | undefined;
-};
-
 /**
  * The interval to retrieve analytics for.
  */
@@ -337,37 +333,6 @@ export type GetDeviceAnalyticsResponseBody = {
      */
     clicks: number;
 };
-
-/** @internal */
-export namespace GetDeviceAnalyticsSecurity$ {
-    export type Inbound = {
-        token?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetDeviceAnalyticsSecurity, z.ZodTypeDef, Inbound> = z
-        .object({
-            token: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.token === undefined ? null : { token: v.token }),
-            };
-        });
-
-    export type Outbound = {
-        token?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetDeviceAnalyticsSecurity> = z
-        .object({
-            token: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.token === undefined ? null : { token: v.token }),
-            };
-        });
-}
 
 /** @internal */
 export const GetDeviceAnalyticsQueryParamInterval$ = z.nativeEnum(

@@ -8,7 +8,6 @@ import * as enc$ from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
-import { SecurityInput } from "../lib/security";
 import * as errors from "../models/errors";
 import * as operations from "../models/operations";
 import * as z from "zod";
@@ -48,7 +47,6 @@ export class Analytics extends ClientSDK {
      */
     async clicks(
         input: operations.GetClicksAnalyticsRequest,
-        security: operations.GetClicksAnalyticsSecurity,
         options?: RequestOptions
     ): Promise<number> {
         const headers$ = new Headers();
@@ -104,21 +102,20 @@ export class Analytics extends ClientSDK {
             .filter(Boolean)
             .join("&");
 
-        const security$: SecurityInput[][] = [
-            [
-                {
-                    fieldName: "Authorization",
-                    type: "http:bearer",
-                    value: security?.token,
-                },
-            ],
-        ];
-        const securitySettings$ = this.resolveSecurity(...security$);
+        let security$;
+        if (typeof this.options$.token === "function") {
+            security$ = { token: await this.options$.token() };
+        } else if (this.options$.token) {
+            security$ = { token: this.options$.token };
+        } else {
+            security$ = {};
+        }
         const context = {
             operationID: "getClicksAnalytics",
             oAuth2Scopes: [],
-            securitySource: security$,
+            securitySource: this.options$.token,
         };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = {
             context,
@@ -298,7 +295,6 @@ export class Analytics extends ClientSDK {
      */
     async timeseries(
         input: operations.GetTimeseriesAnalyticsRequest,
-        security: operations.GetTimeseriesAnalyticsSecurity,
         options?: RequestOptions
     ): Promise<Array<operations.ResponseBody>> {
         const headers$ = new Headers();
@@ -354,21 +350,20 @@ export class Analytics extends ClientSDK {
             .filter(Boolean)
             .join("&");
 
-        const security$: SecurityInput[][] = [
-            [
-                {
-                    fieldName: "Authorization",
-                    type: "http:bearer",
-                    value: security?.token,
-                },
-            ],
-        ];
-        const securitySettings$ = this.resolveSecurity(...security$);
+        let security$;
+        if (typeof this.options$.token === "function") {
+            security$ = { token: await this.options$.token() };
+        } else if (this.options$.token) {
+            security$ = { token: this.options$.token };
+        } else {
+            security$ = {};
+        }
         const context = {
             operationID: "getTimeseriesAnalytics",
             oAuth2Scopes: [],
-            securitySource: security$,
+            securitySource: this.options$.token,
         };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = {
             context,
@@ -548,7 +543,6 @@ export class Analytics extends ClientSDK {
      */
     async countries(
         input: operations.GetCountryAnalyticsRequest,
-        security: operations.GetCountryAnalyticsSecurity,
         options?: RequestOptions
     ): Promise<Array<operations.GetCountryAnalyticsResponseBody>> {
         const headers$ = new Headers();
@@ -604,21 +598,20 @@ export class Analytics extends ClientSDK {
             .filter(Boolean)
             .join("&");
 
-        const security$: SecurityInput[][] = [
-            [
-                {
-                    fieldName: "Authorization",
-                    type: "http:bearer",
-                    value: security?.token,
-                },
-            ],
-        ];
-        const securitySettings$ = this.resolveSecurity(...security$);
+        let security$;
+        if (typeof this.options$.token === "function") {
+            security$ = { token: await this.options$.token() };
+        } else if (this.options$.token) {
+            security$ = { token: this.options$.token };
+        } else {
+            security$ = {};
+        }
         const context = {
             operationID: "getCountryAnalytics",
             oAuth2Scopes: [],
-            securitySource: security$,
+            securitySource: this.options$.token,
         };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = {
             context,
@@ -800,7 +793,6 @@ export class Analytics extends ClientSDK {
      */
     async cities(
         input: operations.GetCityAnalyticsRequest,
-        security: operations.GetCityAnalyticsSecurity,
         options?: RequestOptions
     ): Promise<Array<operations.GetCityAnalyticsResponseBody>> {
         const headers$ = new Headers();
@@ -856,21 +848,20 @@ export class Analytics extends ClientSDK {
             .filter(Boolean)
             .join("&");
 
-        const security$: SecurityInput[][] = [
-            [
-                {
-                    fieldName: "Authorization",
-                    type: "http:bearer",
-                    value: security?.token,
-                },
-            ],
-        ];
-        const securitySettings$ = this.resolveSecurity(...security$);
+        let security$;
+        if (typeof this.options$.token === "function") {
+            security$ = { token: await this.options$.token() };
+        } else if (this.options$.token) {
+            security$ = { token: this.options$.token };
+        } else {
+            security$ = {};
+        }
         const context = {
             operationID: "getCityAnalytics",
             oAuth2Scopes: [],
-            securitySource: security$,
+            securitySource: this.options$.token,
         };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = {
             context,
@@ -1052,7 +1043,6 @@ export class Analytics extends ClientSDK {
      */
     async devices(
         input: operations.GetDeviceAnalyticsRequest,
-        security: operations.GetDeviceAnalyticsSecurity,
         options?: RequestOptions
     ): Promise<Array<operations.GetDeviceAnalyticsResponseBody>> {
         const headers$ = new Headers();
@@ -1108,21 +1098,20 @@ export class Analytics extends ClientSDK {
             .filter(Boolean)
             .join("&");
 
-        const security$: SecurityInput[][] = [
-            [
-                {
-                    fieldName: "Authorization",
-                    type: "http:bearer",
-                    value: security?.token,
-                },
-            ],
-        ];
-        const securitySettings$ = this.resolveSecurity(...security$);
+        let security$;
+        if (typeof this.options$.token === "function") {
+            security$ = { token: await this.options$.token() };
+        } else if (this.options$.token) {
+            security$ = { token: this.options$.token };
+        } else {
+            security$ = {};
+        }
         const context = {
             operationID: "getDeviceAnalytics",
             oAuth2Scopes: [],
-            securitySource: security$,
+            securitySource: this.options$.token,
         };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = {
             context,
@@ -1304,7 +1293,6 @@ export class Analytics extends ClientSDK {
      */
     async browsers(
         input: operations.GetBrowserAnalyticsRequest,
-        security: operations.GetBrowserAnalyticsSecurity,
         options?: RequestOptions
     ): Promise<Array<operations.GetBrowserAnalyticsResponseBody>> {
         const headers$ = new Headers();
@@ -1360,21 +1348,20 @@ export class Analytics extends ClientSDK {
             .filter(Boolean)
             .join("&");
 
-        const security$: SecurityInput[][] = [
-            [
-                {
-                    fieldName: "Authorization",
-                    type: "http:bearer",
-                    value: security?.token,
-                },
-            ],
-        ];
-        const securitySettings$ = this.resolveSecurity(...security$);
+        let security$;
+        if (typeof this.options$.token === "function") {
+            security$ = { token: await this.options$.token() };
+        } else if (this.options$.token) {
+            security$ = { token: this.options$.token };
+        } else {
+            security$ = {};
+        }
         const context = {
             operationID: "getBrowserAnalytics",
             oAuth2Scopes: [],
-            securitySource: security$,
+            securitySource: this.options$.token,
         };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = {
             context,
@@ -1556,7 +1543,6 @@ export class Analytics extends ClientSDK {
      */
     async os(
         input: operations.GetOSAnalyticsRequest,
-        security: operations.GetOSAnalyticsSecurity,
         options?: RequestOptions
     ): Promise<Array<operations.GetOSAnalyticsResponseBody>> {
         const headers$ = new Headers();
@@ -1612,21 +1598,20 @@ export class Analytics extends ClientSDK {
             .filter(Boolean)
             .join("&");
 
-        const security$: SecurityInput[][] = [
-            [
-                {
-                    fieldName: "Authorization",
-                    type: "http:bearer",
-                    value: security?.token,
-                },
-            ],
-        ];
-        const securitySettings$ = this.resolveSecurity(...security$);
+        let security$;
+        if (typeof this.options$.token === "function") {
+            security$ = { token: await this.options$.token() };
+        } else if (this.options$.token) {
+            security$ = { token: this.options$.token };
+        } else {
+            security$ = {};
+        }
         const context = {
             operationID: "getOSAnalytics",
             oAuth2Scopes: [],
-            securitySource: security$,
+            securitySource: this.options$.token,
         };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = {
             context,
@@ -1808,7 +1793,6 @@ export class Analytics extends ClientSDK {
      */
     async referers(
         input: operations.GetRefererAnalyticsRequest,
-        security: operations.GetRefererAnalyticsSecurity,
         options?: RequestOptions
     ): Promise<Array<operations.GetRefererAnalyticsResponseBody>> {
         const headers$ = new Headers();
@@ -1864,21 +1848,20 @@ export class Analytics extends ClientSDK {
             .filter(Boolean)
             .join("&");
 
-        const security$: SecurityInput[][] = [
-            [
-                {
-                    fieldName: "Authorization",
-                    type: "http:bearer",
-                    value: security?.token,
-                },
-            ],
-        ];
-        const securitySettings$ = this.resolveSecurity(...security$);
+        let security$;
+        if (typeof this.options$.token === "function") {
+            security$ = { token: await this.options$.token() };
+        } else if (this.options$.token) {
+            security$ = { token: this.options$.token };
+        } else {
+            security$ = {};
+        }
         const context = {
             operationID: "getRefererAnalytics",
             oAuth2Scopes: [],
-            securitySource: security$,
+            securitySource: this.options$.token,
         };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = {
             context,
@@ -2060,7 +2043,6 @@ export class Analytics extends ClientSDK {
      */
     async topLinks(
         input: operations.GetTopLinksRequest,
-        security: operations.GetTopLinksSecurity,
         options?: RequestOptions
     ): Promise<Array<operations.GetTopLinksResponseBody>> {
         const headers$ = new Headers();
@@ -2116,17 +2098,20 @@ export class Analytics extends ClientSDK {
             .filter(Boolean)
             .join("&");
 
-        const security$: SecurityInput[][] = [
-            [
-                {
-                    fieldName: "Authorization",
-                    type: "http:bearer",
-                    value: security?.token,
-                },
-            ],
-        ];
-        const securitySettings$ = this.resolveSecurity(...security$);
-        const context = { operationID: "getTopLinks", oAuth2Scopes: [], securitySource: security$ };
+        let security$;
+        if (typeof this.options$.token === "function") {
+            security$ = { token: await this.options$.token() };
+        } else if (this.options$.token) {
+            security$ = { token: this.options$.token };
+        } else {
+            security$ = {};
+        }
+        const context = {
+            operationID: "getTopLinks",
+            oAuth2Scopes: [],
+            securitySource: this.options$.token,
+        };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = {
             context,
@@ -2306,7 +2291,6 @@ export class Analytics extends ClientSDK {
      */
     async topUrls(
         input: operations.GetTopURLsRequest,
-        security: operations.GetTopURLsSecurity,
         options?: RequestOptions
     ): Promise<Array<operations.GetTopURLsResponseBody>> {
         const headers$ = new Headers();
@@ -2362,17 +2346,20 @@ export class Analytics extends ClientSDK {
             .filter(Boolean)
             .join("&");
 
-        const security$: SecurityInput[][] = [
-            [
-                {
-                    fieldName: "Authorization",
-                    type: "http:bearer",
-                    value: security?.token,
-                },
-            ],
-        ];
-        const securitySettings$ = this.resolveSecurity(...security$);
-        const context = { operationID: "getTopURLs", oAuth2Scopes: [], securitySource: security$ };
+        let security$;
+        if (typeof this.options$.token === "function") {
+            security$ = { token: await this.options$.token() };
+        } else if (this.options$.token) {
+            security$ = { token: this.options$.token };
+        } else {
+            security$ = {};
+        }
+        const context = {
+            operationID: "getTopURLs",
+            oAuth2Scopes: [],
+            securitySource: this.options$.token,
+        };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = {
             context,

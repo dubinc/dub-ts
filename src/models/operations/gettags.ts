@@ -4,42 +4,7 @@
 
 import * as z from "zod";
 
-export type GetTagsSecurity = {
-    token?: string | undefined;
-};
-
 export type GetTagsRequest = {};
-
-/** @internal */
-export namespace GetTagsSecurity$ {
-    export type Inbound = {
-        token?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetTagsSecurity, z.ZodTypeDef, Inbound> = z
-        .object({
-            token: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.token === undefined ? null : { token: v.token }),
-            };
-        });
-
-    export type Outbound = {
-        token?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetTagsSecurity> = z
-        .object({
-            token: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.token === undefined ? null : { token: v.token }),
-            };
-        });
-}
 
 /** @internal */
 export namespace GetTagsRequest$ {

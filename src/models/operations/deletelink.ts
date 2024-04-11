@@ -4,10 +4,6 @@
 
 import * as z from "zod";
 
-export type DeleteLinkSecurity = {
-    token?: string | undefined;
-};
-
 export type DeleteLinkRequest = {
     /**
      * The id of the link to delete. You can get this via the `getLinkInfo` endpoint.
@@ -24,37 +20,6 @@ export type DeleteLinkResponseBody = {
      */
     id: string;
 };
-
-/** @internal */
-export namespace DeleteLinkSecurity$ {
-    export type Inbound = {
-        token?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<DeleteLinkSecurity, z.ZodTypeDef, Inbound> = z
-        .object({
-            token: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.token === undefined ? null : { token: v.token }),
-            };
-        });
-
-    export type Outbound = {
-        token?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteLinkSecurity> = z
-        .object({
-            token: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.token === undefined ? null : { token: v.token }),
-            };
-        });
-}
 
 /** @internal */
 export namespace DeleteLinkRequest$ {

@@ -4,10 +4,6 @@
 
 import * as z from "zod";
 
-export type GetQRCodeSecurity = {
-    token?: string | undefined;
-};
-
 /**
  * The level of error correction to use for the QR code. Defaults to `L` if not provided.
  */
@@ -44,37 +40,6 @@ export type GetQRCodeRequest = {
      */
     includeMargin?: boolean | undefined;
 };
-
-/** @internal */
-export namespace GetQRCodeSecurity$ {
-    export type Inbound = {
-        token?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetQRCodeSecurity, z.ZodTypeDef, Inbound> = z
-        .object({
-            token: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.token === undefined ? null : { token: v.token }),
-            };
-        });
-
-    export type Outbound = {
-        token?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetQRCodeSecurity> = z
-        .object({
-            token: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.token === undefined ? null : { token: v.token }),
-            };
-        });
-}
 
 /** @internal */
 export const Level$ = z.nativeEnum(Level);

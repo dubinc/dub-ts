@@ -22,17 +22,16 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
+    token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
     projectSlug: "<value>",
   });
 
-  const operationSecurity = "<YOUR_BEARER_TOKEN_HERE>";
-  
   const result = await sdk.links.list({
   tagIds:     [
         "<value>",
       ],
-  }, operationSecurity);
+  });
 
   // Handle the result
   console.log(result)
@@ -46,7 +45,6 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `request`                                                                                                                                                                      | [operations.GetLinksRequest](../../models/operations/getlinksrequest.md)                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `security`                                                                                                                                                                     | [operations.GetLinksSecurity](../../models/operations/getlinkssecurity.md)                                                                                                     | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
@@ -80,19 +78,18 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
+    token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
     projectSlug: "<value>",
   });
 
-  const operationSecurity = "<YOUR_BEARER_TOKEN_HERE>";
-  
   const result = await sdk.links.create({
     url: "http://limp-pastry.org",
     geo: {
       "key": "<value>",
     },
   tagIds: "<value>",
-  }, operationSecurity);
+  });
 
   // Handle the result
   console.log(result)
@@ -106,7 +103,6 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `request`                                                                                                                                                                      | [operations.CreateLinkRequestBody](../../models/operations/createlinkrequestbody.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `security`                                                                                                                                                                     | [operations.CreateLinkSecurity](../../models/operations/createlinksecurity.md)                                                                                                 | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
@@ -141,16 +137,15 @@ import { One } from "dub/models/operations";
 
 async function run() {
   const sdk = new Dub({
+    token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
     projectSlug: "<value>",
   });
 
-  const operationSecurity = "<YOUR_BEARER_TOKEN_HERE>";
-  
   const result = await sdk.links.count({
   tagIds: "<value>",
   groupBy: One.Domain,
-  }, operationSecurity);
+  });
 
   // Handle the result
   console.log(result)
@@ -164,7 +159,6 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `request`                                                                                                                                                                      | [operations.GetLinksCountRequest](../../models/operations/getlinkscountrequest.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `security`                                                                                                                                                                     | [operations.GetLinksCountSecurity](../../models/operations/getlinkscountsecurity.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
@@ -198,16 +192,15 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
+    token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
     projectSlug: "<value>",
   });
 
-  const operationSecurity = "<YOUR_BEARER_TOKEN_HERE>";
-  
   const result = await sdk.links.get({
     domain: "ringed-blow.name",
     key: "<key>",
-  }, operationSecurity);
+  });
 
   // Handle the result
   console.log(result)
@@ -221,7 +214,6 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `request`                                                                                                                                                                      | [operations.GetLinkInfoRequest](../../models/operations/getlinkinforequest.md)                                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `security`                                                                                                                                                                     | [operations.GetLinkInfoSecurity](../../models/operations/getlinkinfosecurity.md)                                                                                               | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
@@ -255,6 +247,7 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
+    token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
     projectSlug: "<value>",
   });
@@ -267,9 +260,8 @@ async function run() {
     },
   tagIds: "<value>",
   };
-  const operationSecurity = "<YOUR_BEARER_TOKEN_HERE>";
   
-  const result = await sdk.links.update(operationSecurity, linkId, requestBody);
+  const result = await sdk.links.update(linkId, requestBody);
 
   // Handle the result
   console.log(result)
@@ -282,7 +274,6 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `security`                                                                                                                                                                     | [operations.EditLinkSecurity](../../models/operations/editlinksecurity.md)                                                                                                     | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
 | `linkId`                                                                                                                                                                       | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The id of the link to edit. You can get this via the `getLinkInfo` endpoint.                                                                                                   |
 | `requestBody`                                                                                                                                                                  | [operations.EditLinkRequestBody](../../models/operations/editlinkrequestbody.md)                                                                                               | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
@@ -318,14 +309,14 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
+    token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
     projectSlug: "<value>",
   });
 
   const linkId = "<value>";
-  const operationSecurity = "<YOUR_BEARER_TOKEN_HERE>";
   
-  const result = await sdk.links.delete(operationSecurity, linkId);
+  const result = await sdk.links.delete(linkId);
 
   // Handle the result
   console.log(result)
@@ -338,7 +329,6 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `security`                                                                                                                                                                     | [operations.DeleteLinkSecurity](../../models/operations/deletelinksecurity.md)                                                                                                 | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
 | `linkId`                                                                                                                                                                       | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The id of the link to delete. You can get this via the `getLinkInfo` endpoint.                                                                                                 |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
@@ -373,12 +363,11 @@ import { Dub } from "dub";
 
 async function run() {
   const sdk = new Dub({
+    token: "<YOUR_BEARER_TOKEN_HERE>",
     workspaceId: "<value>",
     projectSlug: "<value>",
   });
 
-  const operationSecurity = "<YOUR_BEARER_TOKEN_HERE>";
-  
   const result = await sdk.links.createMany([
     {
       url: "https://positive-plane.info",
@@ -389,7 +378,7 @@ async function run() {
           "<value>",
         ],
     },
-  ], operationSecurity);
+  ]);
 
   // Handle the result
   console.log(result)
@@ -403,7 +392,6 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `request`                                                                                                                                                                      | [operations.RequestBody[]](../../models/.md)                                                                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `security`                                                                                                                                                                     | [operations.BulkCreateLinksSecurity](../../models/operations/bulkcreatelinkssecurity.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
