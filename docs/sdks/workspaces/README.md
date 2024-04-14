@@ -16,13 +16,13 @@ Retrieve a list of workspaces for the authenticated user.
 ```typescript
 import { Dub } from "dub";
 
-async function run() {
-  const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
-    workspaceId: "<value>",
-  });
+const dub = new Dub({
+  token: "<YOUR_BEARER_TOKEN_HERE>",
+  workspaceId: "<value>",
+});
 
-  const result = await sdk.workspaces.list();
+async function run() {
+  const result = await dub.workspaces.list();
 
   // Handle the result
   console.log(result)
@@ -66,13 +66,13 @@ Create a new workspace for the authenticated user.
 ```typescript
 import { Dub } from "dub";
 
-async function run() {
-  const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
-    workspaceId: "<value>",
-  });
+const dub = new Dub({
+  token: "<YOUR_BEARER_TOKEN_HERE>",
+  workspaceId: "<value>",
+});
 
-  const result = await sdk.workspaces.create({
+async function run() {
+  const result = await dub.workspaces.create({
     name: "<value>",
     slug: "<value>",
   });
@@ -120,13 +120,13 @@ Retrieve a workspace for the authenticated user.
 ```typescript
 import { Dub } from "dub";
 
-async function run() {
-  const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
-    workspaceId: "<value>",
-  });
+const dub = new Dub({
+  token: "<YOUR_BEARER_TOKEN_HERE>",
+  workspaceId: "<value>",
+});
 
-  const result = await sdk.workspaces.get({
+async function run() {
+  const result = await dub.workspaces.get({
     idOrSlug: "<value>",
   });
 

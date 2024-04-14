@@ -14,13 +14,13 @@ Retrieve the metatags for a URL
 ```typescript
 import { Dub } from "dub";
 
-async function run() {
-  const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
-    workspaceId: "<value>",
-  });
+const dub = new Dub({
+  token: "<YOUR_BEARER_TOKEN_HERE>",
+  workspaceId: "<value>",
+});
 
-  const result = await sdk.metatags.get({
+async function run() {
+  const result = await dub.metatags.get({
     url: "https://brief-micronutrient.org",
   });
 

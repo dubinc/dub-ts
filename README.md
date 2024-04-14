@@ -37,13 +37,13 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 ```typescript
 import { Dub } from "dub";
 
-async function run() {
-    const sdk = new Dub({
-        token: "<YOUR_BEARER_TOKEN_HERE>",
-        workspaceId: "<value>",
-    });
+const dub = new Dub({
+    token: "<YOUR_BEARER_TOKEN_HERE>",
+    workspaceId: "<value>",
+});
 
-    const result = await sdk.links.list({
+async function run() {
+    const result = await dub.links.list({
         tagIds: ["<value>"],
     });
 
@@ -127,15 +127,15 @@ Validation errors can also occur when either method arguments or data returned f
 import { Dub } from "dub";
 import * as errors from "dub/models/errors";
 
-async function run() {
-    const sdk = new Dub({
-        token: "<YOUR_BEARER_TOKEN_HERE>",
-        workspaceId: "<value>",
-    });
+const dub = new Dub({
+    token: "<YOUR_BEARER_TOKEN_HERE>",
+    workspaceId: "<value>",
+});
 
+async function run() {
     let result;
     try {
-        result = await sdk.links.list({
+        result = await dub.links.list({
             tagIds: ["<value>"],
         });
     } catch (err) {
@@ -212,14 +212,14 @@ You can override the default server globally by passing a server index to the `s
 ```typescript
 import { Dub } from "dub";
 
-async function run() {
-    const sdk = new Dub({
-        serverIdx: 0,
-        token: "<YOUR_BEARER_TOKEN_HERE>",
-        workspaceId: "<value>",
-    });
+const dub = new Dub({
+    serverIdx: 0,
+    token: "<YOUR_BEARER_TOKEN_HERE>",
+    workspaceId: "<value>",
+});
 
-    const result = await sdk.links.list({
+async function run() {
+    const result = await dub.links.list({
         tagIds: ["<value>"],
     });
 
@@ -239,14 +239,14 @@ The default server can also be overridden globally by passing a URL to the `serv
 ```typescript
 import { Dub } from "dub";
 
-async function run() {
-    const sdk = new Dub({
-        serverURL: "https://api.dub.co",
-        token: "<YOUR_BEARER_TOKEN_HERE>",
-        workspaceId: "<value>",
-    });
+const dub = new Dub({
+    serverURL: "https://api.dub.co",
+    token: "<YOUR_BEARER_TOKEN_HERE>",
+    workspaceId: "<value>",
+});
 
-    const result = await sdk.links.list({
+async function run() {
+    const result = await dub.links.list({
         tagIds: ["<value>"],
     });
 
@@ -323,13 +323,13 @@ To authenticate with the API the `token` parameter must be set when initializing
 ```typescript
 import { Dub } from "dub";
 
-async function run() {
-    const sdk = new Dub({
-        token: "<YOUR_BEARER_TOKEN_HERE>",
-        workspaceId: "<value>",
-    });
+const dub = new Dub({
+    token: "<YOUR_BEARER_TOKEN_HERE>",
+    workspaceId: "<value>",
+});
 
-    const result = await sdk.links.list({
+async function run() {
+    const result = await dub.links.list({
         tagIds: ["<value>"],
     });
 

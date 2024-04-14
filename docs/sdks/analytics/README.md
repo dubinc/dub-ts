@@ -23,13 +23,13 @@ Retrieve the number of clicks for a link, a domain, or the authenticated workspa
 ```typescript
 import { Dub } from "dub";
 
-async function run() {
-  const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
-    workspaceId: "<value>",
-  });
+const dub = new Dub({
+  token: "<YOUR_BEARER_TOKEN_HERE>",
+  workspaceId: "<value>",
+});
 
-  const result = await sdk.analytics.clicks({});
+async function run() {
+  const result = await dub.analytics.clicks({});
 
   // Handle the result
   console.log(result)
@@ -74,13 +74,13 @@ Retrieve the number of clicks for a link, a domain, or the authenticated workspa
 ```typescript
 import { Dub } from "dub";
 
-async function run() {
-  const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
-    workspaceId: "<value>",
-  });
+const dub = new Dub({
+  token: "<YOUR_BEARER_TOKEN_HERE>",
+  workspaceId: "<value>",
+});
 
-  const result = await sdk.analytics.timeseries({});
+async function run() {
+  const result = await dub.analytics.timeseries({});
 
   // Handle the result
   console.log(result)
@@ -125,13 +125,13 @@ Retrieve the top countries by number of clicks for a link, a domain, or the auth
 ```typescript
 import { Dub } from "dub";
 
-async function run() {
-  const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
-    workspaceId: "<value>",
-  });
+const dub = new Dub({
+  token: "<YOUR_BEARER_TOKEN_HERE>",
+  workspaceId: "<value>",
+});
 
-  const result = await sdk.analytics.countries({});
+async function run() {
+  const result = await dub.analytics.countries({});
 
   // Handle the result
   console.log(result)
@@ -176,13 +176,13 @@ Retrieve the top countries by number of clicks for a link, a domain, or the auth
 ```typescript
 import { Dub } from "dub";
 
-async function run() {
-  const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
-    workspaceId: "<value>",
-  });
+const dub = new Dub({
+  token: "<YOUR_BEARER_TOKEN_HERE>",
+  workspaceId: "<value>",
+});
 
-  const result = await sdk.analytics.cities({});
+async function run() {
+  const result = await dub.analytics.cities({});
 
   // Handle the result
   console.log(result)
@@ -227,13 +227,13 @@ Retrieve the top devices by number of clicks for a link, a domain, or the authen
 ```typescript
 import { Dub } from "dub";
 
-async function run() {
-  const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
-    workspaceId: "<value>",
-  });
+const dub = new Dub({
+  token: "<YOUR_BEARER_TOKEN_HERE>",
+  workspaceId: "<value>",
+});
 
-  const result = await sdk.analytics.devices({});
+async function run() {
+  const result = await dub.analytics.devices({});
 
   // Handle the result
   console.log(result)
@@ -278,13 +278,13 @@ Retrieve the top browsers by number of clicks for a link, a domain, or the authe
 ```typescript
 import { Dub } from "dub";
 
-async function run() {
-  const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
-    workspaceId: "<value>",
-  });
+const dub = new Dub({
+  token: "<YOUR_BEARER_TOKEN_HERE>",
+  workspaceId: "<value>",
+});
 
-  const result = await sdk.analytics.browsers({});
+async function run() {
+  const result = await dub.analytics.browsers({});
 
   // Handle the result
   console.log(result)
@@ -329,13 +329,13 @@ Retrieve the top OS by number of clicks for a link, a domain, or the authenticat
 ```typescript
 import { Dub } from "dub";
 
-async function run() {
-  const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
-    workspaceId: "<value>",
-  });
+const dub = new Dub({
+  token: "<YOUR_BEARER_TOKEN_HERE>",
+  workspaceId: "<value>",
+});
 
-  const result = await sdk.analytics.os({});
+async function run() {
+  const result = await dub.analytics.os({});
 
   // Handle the result
   console.log(result)
@@ -380,13 +380,13 @@ Retrieve the top referers by number of clicks for a link, a domain, or the authe
 ```typescript
 import { Dub } from "dub";
 
-async function run() {
-  const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
-    workspaceId: "<value>",
-  });
+const dub = new Dub({
+  token: "<YOUR_BEARER_TOKEN_HERE>",
+  workspaceId: "<value>",
+});
 
-  const result = await sdk.analytics.referers({});
+async function run() {
+  const result = await dub.analytics.referers({});
 
   // Handle the result
   console.log(result)
@@ -431,13 +431,13 @@ Retrieve the top links by number of clicks for a domain or the authenticated wor
 ```typescript
 import { Dub } from "dub";
 
-async function run() {
-  const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
-    workspaceId: "<value>",
-  });
+const dub = new Dub({
+  token: "<YOUR_BEARER_TOKEN_HERE>",
+  workspaceId: "<value>",
+});
 
-  const result = await sdk.analytics.topLinks({});
+async function run() {
+  const result = await dub.analytics.topLinks({});
 
   // Handle the result
   console.log(result)
@@ -482,13 +482,13 @@ Retrieve the top URLs by number of clicks for a given short link.
 ```typescript
 import { Dub } from "dub";
 
-async function run() {
-  const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
-    workspaceId: "<value>",
-  });
+const dub = new Dub({
+  token: "<YOUR_BEARER_TOKEN_HERE>",
+  workspaceId: "<value>",
+});
 
-  const result = await sdk.analytics.topUrls({});
+async function run() {
+  const result = await dub.analytics.topUrls({});
 
   // Handle the result
   console.log(result)

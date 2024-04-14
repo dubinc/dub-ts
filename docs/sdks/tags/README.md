@@ -15,13 +15,13 @@ Retrieve a list of tags for the authenticated workspace.
 ```typescript
 import { Dub } from "dub";
 
-async function run() {
-  const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
-    workspaceId: "<value>",
-  });
+const dub = new Dub({
+  token: "<YOUR_BEARER_TOKEN_HERE>",
+  workspaceId: "<value>",
+});
 
-  const result = await sdk.tags.list({});
+async function run() {
+  const result = await dub.tags.list({});
 
   // Handle the result
   console.log(result)
@@ -66,13 +66,13 @@ Create a new tag for the authenticated workspace.
 ```typescript
 import { Dub } from "dub";
 
-async function run() {
-  const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
-    workspaceId: "<value>",
-  });
+const dub = new Dub({
+  token: "<YOUR_BEARER_TOKEN_HERE>",
+  workspaceId: "<value>",
+});
 
-  const result = await sdk.tags.create({
+async function run() {
+  const result = await dub.tags.create({
     tag: "<value>",
   });
 
