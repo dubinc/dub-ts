@@ -14,13 +14,13 @@ Retrieve a QR code for a link.
 ```typescript
 import { Dub } from "dub";
 
-async function run() {
-  const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
-    workspaceId: "<value>",
-  });
+const dub = new Dub({
+  token: "<YOUR_BEARER_TOKEN_HERE>",
+  workspaceId: "<value>",
+});
 
-  const result = await sdk.qrCodes.get({});
+async function run() {
+  const result = await dub.qrCodes.get({});
 
   // Handle the result
   console.log(result)

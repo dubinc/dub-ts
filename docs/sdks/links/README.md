@@ -20,13 +20,13 @@ Retrieve a list of links for the authenticated workspace. The list will be pagin
 ```typescript
 import { Dub } from "dub";
 
-async function run() {
-  const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
-    workspaceId: "<value>",
-  });
+const dub = new Dub({
+  token: "<YOUR_BEARER_TOKEN_HERE>",
+  workspaceId: "<value>",
+});
 
-  const result = await sdk.links.list({
+async function run() {
+  const result = await dub.links.list({
   tagIds:     [
         "<value>",
       ],
@@ -75,13 +75,13 @@ Create a new link for the authenticated workspace.
 ```typescript
 import { Dub } from "dub";
 
-async function run() {
-  const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
-    workspaceId: "<value>",
-  });
+const dub = new Dub({
+  token: "<YOUR_BEARER_TOKEN_HERE>",
+  workspaceId: "<value>",
+});
 
-  const result = await sdk.links.create({
+async function run() {
+  const result = await dub.links.create({
     url: "http://limp-pastry.org",
   tagIds: "<value>",
     geo: {},
@@ -131,13 +131,13 @@ Retrieve the number of links for the authenticated workspace. The provided query
 import { Dub } from "dub";
 import { One } from "dub/models/operations";
 
-async function run() {
-  const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
-    workspaceId: "<value>",
-  });
+const dub = new Dub({
+  token: "<YOUR_BEARER_TOKEN_HERE>",
+  workspaceId: "<value>",
+});
 
-  const result = await sdk.links.count({
+async function run() {
+  const result = await dub.links.count({
   tagIds: "<value>",
   groupBy: One.Domain,
   });
@@ -185,13 +185,13 @@ Retrieve the info for a link from their domain and key.
 ```typescript
 import { Dub } from "dub";
 
-async function run() {
-  const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
-    workspaceId: "<value>",
-  });
+const dub = new Dub({
+  token: "<YOUR_BEARER_TOKEN_HERE>",
+  workspaceId: "<value>",
+});
 
-  const result = await sdk.links.get({
+async function run() {
+  const result = await dub.links.get({
     domain: "ringed-blow.name",
     key: "<key>",
   });
@@ -239,12 +239,12 @@ Edit a link for the authenticated workspace.
 ```typescript
 import { Dub } from "dub";
 
-async function run() {
-  const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
-    workspaceId: "<value>",
-  });
+const dub = new Dub({
+  token: "<YOUR_BEARER_TOKEN_HERE>",
+  workspaceId: "<value>",
+});
 
+async function run() {
   const linkId = "<value>";
   const requestBody = {
     url: "https://alarming-nondisclosure.com",
@@ -252,7 +252,7 @@ async function run() {
     geo: {},
   };
   
-  const result = await sdk.links.update(linkId, requestBody);
+  const result = await dub.links.update(linkId, requestBody);
 
   // Handle the result
   console.log(result)
@@ -298,15 +298,15 @@ Delete a link for the authenticated workspace.
 ```typescript
 import { Dub } from "dub";
 
-async function run() {
-  const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
-    workspaceId: "<value>",
-  });
+const dub = new Dub({
+  token: "<YOUR_BEARER_TOKEN_HERE>",
+  workspaceId: "<value>",
+});
 
+async function run() {
   const linkId = "<value>";
   
-  const result = await sdk.links.delete(linkId);
+  const result = await dub.links.delete(linkId);
 
   // Handle the result
   console.log(result)
@@ -351,13 +351,13 @@ Bulk create up to 100 links for the authenticated workspace.
 ```typescript
 import { Dub } from "dub";
 
-async function run() {
-  const sdk = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
-    workspaceId: "<value>",
-  });
+const dub = new Dub({
+  token: "<YOUR_BEARER_TOKEN_HERE>",
+  workspaceId: "<value>",
+});
 
-  const result = await sdk.links.createMany([
+async function run() {
+  const result = await dub.links.createMany([
     {
       url: "https://positive-plane.info",
     tagIds:     [
