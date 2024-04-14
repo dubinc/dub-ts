@@ -1,0 +1,39 @@
+configVersion: 2.0.0
+generation:
+  sdkClassName: dub
+  maintainOpenAPIOrder: true
+  usageSnippets:
+    optionalPropertyRendering: withExample
+  useClassNamesForArrayFields: true
+  fixes:
+    nameResolutionDec2023: true
+    parameterOrderingFeb2024: true
+    requestResponseComponentNamesFeb2024: true
+  auth:
+    oAuth2ClientCredentialsEnabled: false
+typescript:
+  version: 0.22.2
+  additionalDependencies:
+    dependencies: {}
+    devDependencies:
+      '@types/node': ^20.12.7
+      vitest: 1.4.0
+    peerDependencies: {}
+  author: Dub
+  clientServerStatusCodesAsErrors: true
+  enumFormat: union
+  flattenGlobalSecurity: true
+  imports:
+    option: openapi
+    paths:
+      callbacks: models/callbacks
+      errors: models/errors
+      operations: models/operations
+      shared: models/components
+      webhooks: models/webhooks
+  inputModelSuffix: input
+  maxMethodParams: 0
+  outputModelSuffix: output
+  packageName: dub
+  responseFormat: flat
+  templateVersion: v2
