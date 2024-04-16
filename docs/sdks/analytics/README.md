@@ -24,7 +24,7 @@ Retrieve the number of clicks for a link, a domain, or the authenticated workspa
 import { Dub } from "dub";
 
 const dub = new Dub({
-  token: "<YOUR_BEARER_TOKEN_HERE>",
+  token: "DUB_API_KEY",
   workspaceId: "<value>",
 });
 
@@ -75,7 +75,7 @@ Retrieve the number of clicks for a link, a domain, or the authenticated workspa
 import { Dub } from "dub";
 
 const dub = new Dub({
-  token: "<YOUR_BEARER_TOKEN_HERE>",
+  token: "DUB_API_KEY",
   workspaceId: "<value>",
 });
 
@@ -126,7 +126,7 @@ Retrieve the top countries by number of clicks for a link, a domain, or the auth
 import { Dub } from "dub";
 
 const dub = new Dub({
-  token: "<YOUR_BEARER_TOKEN_HERE>",
+  token: "DUB_API_KEY",
   workspaceId: "<value>",
 });
 
@@ -177,7 +177,7 @@ Retrieve the top countries by number of clicks for a link, a domain, or the auth
 import { Dub } from "dub";
 
 const dub = new Dub({
-  token: "<YOUR_BEARER_TOKEN_HERE>",
+  token: "DUB_API_KEY",
   workspaceId: "<value>",
 });
 
@@ -228,7 +228,7 @@ Retrieve the top devices by number of clicks for a link, a domain, or the authen
 import { Dub } from "dub";
 
 const dub = new Dub({
-  token: "<YOUR_BEARER_TOKEN_HERE>",
+  token: "DUB_API_KEY",
   workspaceId: "<value>",
 });
 
@@ -279,7 +279,7 @@ Retrieve the top browsers by number of clicks for a link, a domain, or the authe
 import { Dub } from "dub";
 
 const dub = new Dub({
-  token: "<YOUR_BEARER_TOKEN_HERE>",
+  token: "DUB_API_KEY",
   workspaceId: "<value>",
 });
 
@@ -330,7 +330,7 @@ Retrieve the top OS by number of clicks for a link, a domain, or the authenticat
 import { Dub } from "dub";
 
 const dub = new Dub({
-  token: "<YOUR_BEARER_TOKEN_HERE>",
+  token: "DUB_API_KEY",
   workspaceId: "<value>",
 });
 
@@ -381,7 +381,7 @@ Retrieve the top referers by number of clicks for a link, a domain, or the authe
 import { Dub } from "dub";
 
 const dub = new Dub({
-  token: "<YOUR_BEARER_TOKEN_HERE>",
+  token: "DUB_API_KEY",
   workspaceId: "<value>",
 });
 
@@ -432,7 +432,7 @@ Retrieve the top links by number of clicks for a domain or the authenticated wor
 import { Dub } from "dub";
 
 const dub = new Dub({
-  token: "<YOUR_BEARER_TOKEN_HERE>",
+  token: "DUB_API_KEY",
   workspaceId: "<value>",
 });
 
@@ -483,7 +483,7 @@ Retrieve the top URLs by number of clicks for a given short link.
 import { Dub } from "dub";
 
 const dub = new Dub({
-  token: "<YOUR_BEARER_TOKEN_HERE>",
+  token: "DUB_API_KEY",
   workspaceId: "<value>",
 });
 

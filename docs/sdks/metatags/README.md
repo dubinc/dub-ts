@@ -15,7 +15,7 @@ Retrieve the metatags for a URL
 import { Dub } from "dub";
 
 const dub = new Dub({
-  token: "<YOUR_BEARER_TOKEN_HERE>",
+  token: "DUB_API_KEY",
   workspaceId: "<value>",
 });
 

@@ -21,7 +21,7 @@ Retrieve a list of links for the authenticated workspace. The list will be pagin
 import { Dub } from "dub";
 
 const dub = new Dub({
-  token: "<YOUR_BEARER_TOKEN_HERE>",
+  token: "DUB_API_KEY",
   workspaceId: "<value>",
 });
 
@@ -76,14 +76,16 @@ Create a new link for the authenticated workspace.
 import { Dub } from "dub";
 
 const dub = new Dub({
-  token: "<YOUR_BEARER_TOKEN_HERE>",
+  token: "DUB_API_KEY",
   workspaceId: "<value>",
 });
 
 async function run() {
   const result = await dub.links.create({
-    url: "http://limp-pastry.org",
-  tagIds: "<value>",
+    url: "https://google/com",
+  tagIds:     [
+        "clux0rgak00011...",
+      ],
     geo: {},
   });
 
@@ -132,7 +134,7 @@ import { Dub } from "dub";
 import { One } from "dub/models/operations";
 
 const dub = new Dub({
-  token: "<YOUR_BEARER_TOKEN_HERE>",
+  token: "DUB_API_KEY",
   workspaceId: "<value>",
 });
 
@@ -186,7 +188,7 @@ Retrieve the info for a link from their domain and key.
 import { Dub } from "dub";
 
 const dub = new Dub({
-  token: "<YOUR_BEARER_TOKEN_HERE>",
+  token: "DUB_API_KEY",
   workspaceId: "<value>",
 });
 
@@ -240,15 +242,17 @@ Edit a link for the authenticated workspace.
 import { Dub } from "dub";
 
 const dub = new Dub({
-  token: "<YOUR_BEARER_TOKEN_HERE>",
+  token: "DUB_API_KEY",
   workspaceId: "<value>",
 });
 
 async function run() {
   const linkId = "<value>";
   const requestBody = {
-    url: "https://alarming-nondisclosure.com",
-  tagIds: "<value>",
+    url: "https://google/com",
+  tagIds:     [
+        "clux0rgak00011...",
+      ],
     geo: {},
   };
   
@@ -299,7 +303,7 @@ Delete a link for the authenticated workspace.
 import { Dub } from "dub";
 
 const dub = new Dub({
-  token: "<YOUR_BEARER_TOKEN_HERE>",
+  token: "DUB_API_KEY",
   workspaceId: "<value>",
 });
 
@@ -352,16 +356,16 @@ Bulk create up to 100 links for the authenticated workspace.
 import { Dub } from "dub";
 
 const dub = new Dub({
-  token: "<YOUR_BEARER_TOKEN_HERE>",
+  token: "DUB_API_KEY",
   workspaceId: "<value>",
 });
 
 async function run() {
   const result = await dub.links.createMany([
     {
-      url: "https://positive-plane.info",
+      url: "https://google/com",
     tagIds:     [
-          "<value>",
+          "clux0rgak00011...",
         ],
       geo: {},
     },

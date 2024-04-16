@@ -3,13 +3,15 @@
 import { Dub } from "dub";
 
 const dub = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
+    token: "DUB_API_KEY",
     workspaceId: "<value>",
 });
 
 async function run() {
-    const result = await dub.links.list({
-        tagIds: ["<value>"],
+    const result = await dub.links.create({
+        url: "https://google/com",
+        tagIds: ["clux0rgak00011..."],
+        geo: {},
     });
 
     // Handle the result
