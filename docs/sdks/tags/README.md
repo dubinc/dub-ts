@@ -16,7 +16,7 @@ Retrieve a list of tags for the authenticated workspace.
 import { Dub } from "dub";
 
 const dub = new Dub({
-  token: "<YOUR_BEARER_TOKEN_HERE>",
+  token: "DUB_API_KEY",
   workspaceId: "<value>",
 });
 
@@ -67,7 +67,7 @@ Create a new tag for the authenticated workspace.
 import { Dub } from "dub";
 
 const dub = new Dub({
-  token: "<YOUR_BEARER_TOKEN_HERE>",
+  token: "DUB_API_KEY",
   workspaceId: "<value>",
 });
 

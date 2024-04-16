@@ -17,7 +17,7 @@ Retrieve a list of workspaces for the authenticated user.
 import { Dub } from "dub";
 
 const dub = new Dub({
-  token: "<YOUR_BEARER_TOKEN_HERE>",
+  token: "DUB_API_KEY",
   workspaceId: "<value>",
 });
 
@@ -67,7 +67,7 @@ Create a new workspace for the authenticated user.
 import { Dub } from "dub";
 
 const dub = new Dub({
-  token: "<YOUR_BEARER_TOKEN_HERE>",
+  token: "DUB_API_KEY",
   workspaceId: "<value>",
 });
 
@@ -121,7 +121,7 @@ Retrieve a workspace for the authenticated user.
 import { Dub } from "dub";
 
 const dub = new Dub({
-  token: "<YOUR_BEARER_TOKEN_HERE>",
+  token: "DUB_API_KEY",
   workspaceId: "<value>",
 });
 

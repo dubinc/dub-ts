@@ -15,7 +15,7 @@ Retrieve a QR code for a link.
 import { Dub } from "dub";
 
 const dub = new Dub({
-  token: "<YOUR_BEARER_TOKEN_HERE>",
+  token: "DUB_API_KEY",
   workspaceId: "<value>",
 });
 

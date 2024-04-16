@@ -38,13 +38,15 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 import { Dub } from "dub";
 
 const dub = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
+    token: "DUB_API_KEY",
     workspaceId: "<value>",
 });
 
 async function run() {
-    const result = await dub.links.list({
-        tagIds: ["<value>"],
+    const result = await dub.links.create({
+        url: "https://google/com",
+        tagIds: ["clux0rgak00011..."],
+        geo: {},
     });
 
     // Handle the result
@@ -128,7 +130,7 @@ import { Dub } from "dub";
 import * as errors from "dub/models/errors";
 
 const dub = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
+    token: "DUB_API_KEY",
     workspaceId: "<value>",
 });
 
@@ -214,7 +216,7 @@ import { Dub } from "dub";
 
 const dub = new Dub({
     serverIdx: 0,
-    token: "<YOUR_BEARER_TOKEN_HERE>",
+    token: "DUB_API_KEY",
     workspaceId: "<value>",
 });
 
@@ -241,7 +243,7 @@ import { Dub } from "dub";
 
 const dub = new Dub({
     serverURL: "https://api.dub.co",
-    token: "<YOUR_BEARER_TOKEN_HERE>",
+    token: "DUB_API_KEY",
     workspaceId: "<value>",
 });
 
@@ -324,7 +326,7 @@ To authenticate with the API the `token` parameter must be set when initializing
 import { Dub } from "dub";
 
 const dub = new Dub({
-    token: "<YOUR_BEARER_TOKEN_HERE>",
+    token: "DUB_API_KEY",
     workspaceId: "<value>",
 });
 
