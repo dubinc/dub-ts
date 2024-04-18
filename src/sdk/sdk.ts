@@ -7,6 +7,7 @@ import { SDKOptions, serverURLFromOptions } from "../lib/config";
 import { HTTPClient } from "../lib/http";
 import { ClientSDK } from "../lib/sdks";
 import { Analytics } from "./analytics";
+import { Domains } from "./domains";
 import { Links } from "./links";
 import { Metatags } from "./metatags";
 import { QRCodes } from "./qrcodes";
@@ -63,6 +64,11 @@ export class Dub extends ClientSDK {
     private _tags?: Tags;
     get tags() {
         return (this._tags ??= new Tags(this.options$));
+    }
+
+    private _domains?: Domains;
+    get domains() {
+        return (this._domains ??= new Domains(this.options$));
     }
 
     private _metatags?: Metatags;

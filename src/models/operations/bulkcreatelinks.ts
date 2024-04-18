@@ -13,1005 +13,255 @@ export type BulkCreateLinksTagIds = string | Array<string>;
  * Geo targeting information for the short link in JSON format `{[COUNTRY]: https://example.com }`.
  */
 export type BulkCreateLinksGeo = {
-    /**
-     * The destination URL of the short link.
-     */
     af?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     al?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     dz?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     as?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     ad?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     ao?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     ai?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     aq?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     ag?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     ar?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     am?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     aw?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     au?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     at?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     az?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     bs?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     bh?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     bd?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     bb?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     by?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     be?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     bz?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     bj?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     bm?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     bt?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     bo?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     ba?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     bw?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     bv?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     br?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     io?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     bn?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     bg?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     bf?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     bi?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     kh?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     cm?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     ca?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     cv?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     ky?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     cf?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     td?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     cl?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     cn?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     cx?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     cc?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     co?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     km?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     cg?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     cd?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     ck?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     cr?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     ci?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     hr?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     cu?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     cy?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     cz?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     dk?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     dj?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     dm?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     do?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     ec?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     eg?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     sv?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     gq?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     er?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     ee?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     et?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     fk?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     fo?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     fj?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     fi?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     fr?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     gf?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     pf?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     tf?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     ga?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     gm?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     ge?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     de?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     gh?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     gi?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     gr?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     gl?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     gd?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     gp?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     gu?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     gt?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     gn?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     gw?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     gy?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     ht?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     hm?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     va?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     hn?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     hk?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     hu?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     is?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     in?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     id?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     ir?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     iq?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     ie?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     il?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     it?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     jm?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     jp?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     jo?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     kz?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     ke?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     ki?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     kp?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     kr?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     kw?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     kg?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     la?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     lv?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     lb?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     ls?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     lr?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     ly?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     li?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     lt?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     lu?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     mo?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     mg?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     mw?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     my?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     mv?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     ml?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     mt?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     mh?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     mq?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     mr?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     mu?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     yt?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     mx?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     fm?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     md?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     mc?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     mn?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     ms?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     ma?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     mz?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     mm?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     na?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     nr?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     np?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     nl?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     nc?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     nz?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     ni?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     ne?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     ng?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     nu?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     nf?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     mk?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     mp?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     no?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     om?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     pk?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     pw?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     ps?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     pa?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     pg?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     py?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     pe?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     ph?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     pn?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     pl?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     pt?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     pr?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     qa?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     re?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     ro?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     ru?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     rw?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     sh?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     kn?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     lc?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     pm?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     vc?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     ws?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     sm?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     st?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     sa?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     sn?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     sc?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     sl?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     sg?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     sk?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     si?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     sb?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     so?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     za?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     gs?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     es?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     lk?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     sd?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     sr?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     sj?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     sz?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     se?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     ch?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     sy?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     tw?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     tj?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     tz?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     th?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     tl?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     tg?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     tk?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     to?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     tt?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     tn?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     tr?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     tm?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     tc?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     tv?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     ug?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     ua?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     ae?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     gb?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     us?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     um?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     uy?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     uz?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     vu?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     ve?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     vn?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     vg?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     vi?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     wf?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     eh?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     ye?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     zm?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     zw?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     ax?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     bq?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     cw?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     gg?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     im?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     je?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     me?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     bl?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     mf?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     rs?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     sx?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     ss?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
     xk?: string | undefined;
 };
 

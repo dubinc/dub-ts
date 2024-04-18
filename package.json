@@ -1,7 +1,7 @@
 {
   "name": "dub",
-  "version": "0.23.0",
-  "author": "Dub",
+  "version": "0.23.1",
+  "author": "Dub",  
   "main": "./index.js",
   "sideEffects": false,
   "repository": {
@@ -13,7 +13,6 @@
     "build": "tsc",
     "prepare": "npm run build"
   },
-  "keywords": [],
   "peerDependencies": {
     "zod": ">= 3"
   },

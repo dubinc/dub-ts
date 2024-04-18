@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: 0fd7c7dd60bcd8b21c5a82e77f886ca4
+  docChecksum: 59b2c58aae7e82783142168d3327e8c8
   docVersion: 0.0.1
-  speakeasyVersion: 1.253.1
-  generationVersion: 2.306.0
-  releaseVersion: 0.23.0
-  configChecksum: 42694dd34d8f28936b3acf5fc2011448
+  speakeasyVersion: 1.257.1
+  generationVersion: 2.308.2
+  releaseVersion: 0.23.1
+  configChecksum: bfc60f1488f62d05649364aba10d384b
   repoURL: https://github.com/dubinc/dub-node.git
   installationURL: https://github.com/dubinc/dub-node
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     acceptHeaders: 2.81.1
     constsAndDefaults: 0.1.5
-    core: 3.7.1
+    core: 3.7.2
     deprecations: 2.81.1
     examples: 2.81.3
     flattening: 2.81.1
@@ -31,6 +31,7 @@ generatedFiles:
   - src/sdk/analytics.ts
   - src/sdk/workspaces.ts
   - src/sdk/tags.ts
+  - src/sdk/domains.ts
   - src/sdk/metatags.ts
   - src/sdk/sdk.ts
   - .eslintrc.js
@@ -89,6 +90,12 @@ generatedFiles:
   - src/models/operations/getworkspace.ts
   - src/models/operations/gettags.ts
   - src/models/operations/createtag.ts
+  - src/models/operations/listdomains.ts
+  - src/models/operations/adddomain.ts
+  - src/models/operations/deletedomain.ts
+  - src/models/operations/editdomain.ts
+  - src/models/operations/setprimarydomain.ts
+  - src/models/operations/transferdomain.ts
   - src/models/operations/getmetatags.ts
   - src/models/errors/index.ts
   - src/models/components/index.ts
@@ -199,6 +206,27 @@ generatedFiles:
   - docs/models/operations/gettagsrequest.md
   - docs/models/operations/color.md
   - docs/models/operations/createtagrequestbody.md
+  - docs/models/operations/listdomainsrequest.md
+  - docs/models/operations/listdomainstype.md
+  - docs/models/operations/listdomainsresponsebody.md
+  - docs/models/operations/type.md
+  - docs/models/operations/adddomainrequestbody.md
+  - docs/models/operations/adddomaintype.md
+  - docs/models/operations/adddomainresponsebody.md
+  - docs/models/operations/deletedomainrequest.md
+  - docs/models/operations/deletedomainresponsebody.md
+  - docs/models/operations/editdomaintype.md
+  - docs/models/operations/editdomainrequestbody.md
+  - docs/models/operations/editdomainrequest.md
+  - docs/models/operations/editdomaindomainstype.md
+  - docs/models/operations/editdomainresponsebody.md
+  - docs/models/operations/setprimarydomainrequest.md
+  - docs/models/operations/setprimarydomaintype.md
+  - docs/models/operations/setprimarydomainresponsebody.md
+  - docs/models/operations/transferdomainrequestbody.md
+  - docs/models/operations/transferdomainrequest.md
+  - docs/models/operations/transferdomaintype.md
+  - docs/models/operations/transferdomainresponsebody.md
   - docs/models/operations/getmetatagsrequest.md
   - docs/models/operations/getmetatagsresponsebody.md
   - docs/sdks/dub/README.md
@@ -207,6 +235,7 @@ generatedFiles:
   - docs/sdks/analytics/README.md
   - docs/sdks/workspaces/README.md
   - docs/sdks/tags/README.md
+  - docs/sdks/domains/README.md
   - docs/sdks/metatags/README.md
   - USAGE.md
   - .gitattributes

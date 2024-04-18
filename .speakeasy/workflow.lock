@@ -1,0 +1,21 @@
+speakeasyVersion: 1.257.1
+sources:
+    my-first-source: {}
+targets:
+    my-first-target:
+        source: my-first-source
+        outLocation: /github/workspace/repo
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        my-first-source:
+            inputs:
+                - location: https://api.dub.co
+    targets:
+        my-first-target:
+            target: typescript
+            source: my-first-source
+            publish:
+                npm:
+                    token: $npm_token

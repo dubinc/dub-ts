@@ -99,6 +99,15 @@ run();
 * [list](docs/sdks/tags/README.md#list) - Retrieve a list of tags
 * [create](docs/sdks/tags/README.md#create) - Create a new tag
 
+### [domains](docs/sdks/domains/README.md)
+
+* [list](docs/sdks/domains/README.md#list) - Retrieve a list of domains
+* [add](docs/sdks/domains/README.md#add) - Add a domain
+* [delete](docs/sdks/domains/README.md#delete) - Delete a domain
+* [update](docs/sdks/domains/README.md#update) - Edit a domain
+* [setPrimary](docs/sdks/domains/README.md#setprimary) - Set a domain as primary
+* [transfer](docs/sdks/domains/README.md#transfer) - Transfer a domain
+
 ### [metatags](docs/sdks/metatags/README.md)
 
 * [get](docs/sdks/metatags/README.md#get) - Retrieve the metatags for a URL
