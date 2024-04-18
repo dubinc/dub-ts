@@ -21,7 +21,7 @@ typescript:
     peerDependencies: {}
   additionalPackageJSON: {}
   author: Dub
-  clientServerStatusCodesAsErrors: true
+  clientServerStatusCodesAsErrors: false
   enumFormat: union
   flattenGlobalSecurity: true
   imports:
