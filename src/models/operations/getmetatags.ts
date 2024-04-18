@@ -15,15 +15,15 @@ export type GetMetatagsResponseBody = {
     /**
      * The meta title tag for the URL
      */
-    title?: string | undefined;
+    title: string;
     /**
      * The meta description tag for the URL
      */
-    description?: string | undefined;
+    description: string;
     /**
      * The OpenGraph image for the URL
      */
-    image?: string | undefined;
+    image: string;
 };
 
 /** @internal */
@@ -60,42 +60,42 @@ export namespace GetMetatagsRequest$ {
 /** @internal */
 export namespace GetMetatagsResponseBody$ {
     export type Inbound = {
-        title?: string | undefined;
-        description?: string | undefined;
-        image?: string | undefined;
+        title: string;
+        description: string;
+        image: string;
     };
 
     export const inboundSchema: z.ZodType<GetMetatagsResponseBody, z.ZodTypeDef, Inbound> = z
         .object({
-            title: z.string().optional(),
-            description: z.string().optional(),
-            image: z.string().optional(),
+            title: z.string(),
+            description: z.string(),
+            image: z.string(),
         })
         .transform((v) => {
             return {
-                ...(v.title === undefined ? null : { title: v.title }),
-                ...(v.description === undefined ? null : { description: v.description }),
-                ...(v.image === undefined ? null : { image: v.image }),
+                title: v.title,
+                description: v.description,
+                image: v.image,
             };
         });
 
     export type Outbound = {
-        title?: string | undefined;
-        description?: string | undefined;
-        image?: string | undefined;
+        title: string;
+        description: string;
+        image: string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetMetatagsResponseBody> = z
         .object({
-            title: z.string().optional(),
-            description: z.string().optional(),
-            image: z.string().optional(),
+            title: z.string(),
+            description: z.string(),
+            image: z.string(),
         })
         .transform((v) => {
             return {
-                ...(v.title === undefined ? null : { title: v.title }),
-                ...(v.description === undefined ? null : { description: v.description }),
-                ...(v.image === undefined ? null : { image: v.image }),
+                title: v.title,
+                description: v.description,
+                image: v.image,
             };
         });
 }

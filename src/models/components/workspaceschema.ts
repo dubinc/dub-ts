@@ -42,13 +42,13 @@ export type Users = {
 
 export type Domains = {
     /**
-     * The domain of the workspace.
+     * The domain name.
      */
     slug: string;
     /**
-     * Indicates if the domain is the primary domain.
+     * Whether the domain is the primary domain for the workspace.
      */
-    primary: boolean;
+    primary?: boolean | undefined;
 };
 
 export type WorkspaceSchema = {
@@ -163,13 +163,13 @@ export namespace Users$ {
 export namespace Domains$ {
     export type Inbound = {
         slug: string;
-        primary: boolean;
+        primary?: boolean | undefined;
     };
 
     export const inboundSchema: z.ZodType<Domains, z.ZodTypeDef, Inbound> = z
         .object({
             slug: z.string(),
-            primary: z.boolean(),
+            primary: z.boolean().default(false),
         })
         .transform((v) => {
             return {
@@ -186,7 +186,7 @@ export namespace Domains$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Domains> = z
         .object({
             slug: z.string(),
-            primary: z.boolean(),
+            primary: z.boolean().default(false),
         })
         .transform((v) => {
             return {

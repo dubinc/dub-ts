@@ -12,13 +12,14 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
 typescript:
-  version: 0.23.0
+  version: 0.23.1
   additionalDependencies:
     dependencies: {}
     devDependencies:
       '@types/node': ^20.12.7
       vitest: 1.4.0
     peerDependencies: {}
+  additionalPackageJSON: {}
   author: Dub
   clientServerStatusCodesAsErrors: true
   enumFormat: union

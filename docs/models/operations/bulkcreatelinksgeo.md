@@ -5,255 +5,255 @@ Geo targeting information for the short link in JSON format `{[COUNTRY]: https:/
 
 ## Fields
 
-| Field                                  | Type                                   | Required                               | Description                            |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| `af`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `al`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `dz`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `as`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `ad`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `ao`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `ai`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `aq`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `ag`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `ar`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `am`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `aw`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `au`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `at`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `az`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `bs`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `bh`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `bd`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `bb`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `by`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `be`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `bz`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `bj`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `bm`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `bt`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `bo`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `ba`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `bw`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `bv`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `br`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `io`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `bn`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `bg`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `bf`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `bi`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `kh`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `cm`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `ca`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `cv`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `ky`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `cf`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `td`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `cl`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `cn`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `cx`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `cc`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `co`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `km`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `cg`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `cd`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `ck`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `cr`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `ci`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `hr`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `cu`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `cy`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `cz`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `dk`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `dj`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `dm`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `do`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `ec`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `eg`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `sv`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `gq`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `er`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `ee`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `et`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `fk`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `fo`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `fj`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `fi`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `fr`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `gf`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `pf`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `tf`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `ga`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `gm`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `ge`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `de`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `gh`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `gi`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `gr`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `gl`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `gd`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `gp`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `gu`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `gt`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `gn`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `gw`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `gy`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `ht`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `hm`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `va`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `hn`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `hk`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `hu`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `is`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `in`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `id`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `ir`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `iq`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `ie`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `il`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `it`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `jm`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `jp`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `jo`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `kz`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `ke`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `ki`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `kp`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `kr`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `kw`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `kg`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `la`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `lv`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `lb`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `ls`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `lr`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `ly`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `li`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `lt`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `lu`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `mo`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `mg`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `mw`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `my`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `mv`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `ml`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `mt`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `mh`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `mq`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `mr`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `mu`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `yt`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `mx`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `fm`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `md`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `mc`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `mn`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `ms`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `ma`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `mz`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `mm`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `na`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `nr`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `np`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `nl`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `nc`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `nz`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `ni`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `ne`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `ng`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `nu`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `nf`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `mk`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `mp`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `no`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `om`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `pk`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `pw`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `ps`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `pa`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `pg`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `py`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `pe`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `ph`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `pn`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `pl`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `pt`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `pr`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `qa`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `re`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `ro`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `ru`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `rw`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `sh`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `kn`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `lc`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `pm`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `vc`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `ws`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `sm`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `st`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `sa`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `sn`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `sc`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `sl`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `sg`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `sk`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `si`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `sb`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `so`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `za`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `gs`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `es`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `lk`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `sd`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `sr`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `sj`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `sz`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `se`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `ch`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `sy`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `tw`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `tj`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `tz`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `th`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `tl`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `tg`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `tk`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `to`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `tt`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `tn`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `tr`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `tm`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `tc`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `tv`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `ug`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `ua`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `ae`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `gb`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `us`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `um`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `uy`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `uz`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `vu`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `ve`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `vn`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `vg`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `vi`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `wf`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `eh`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `ye`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `zm`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `zw`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `ax`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `bq`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `cw`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `gg`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `im`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `je`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `me`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `bl`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `mf`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `rs`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `sx`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `ss`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
-| `xk`                                   | *string*                               | :heavy_minus_sign:                     | The destination URL of the short link. |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `af`               | *string*           | :heavy_minus_sign: | N/A                |
+| `al`               | *string*           | :heavy_minus_sign: | N/A                |
+| `dz`               | *string*           | :heavy_minus_sign: | N/A                |
+| `as`               | *string*           | :heavy_minus_sign: | N/A                |
+| `ad`               | *string*           | :heavy_minus_sign: | N/A                |
+| `ao`               | *string*           | :heavy_minus_sign: | N/A                |
+| `ai`               | *string*           | :heavy_minus_sign: | N/A                |
+| `aq`               | *string*           | :heavy_minus_sign: | N/A                |
+| `ag`               | *string*           | :heavy_minus_sign: | N/A                |
+| `ar`               | *string*           | :heavy_minus_sign: | N/A                |
+| `am`               | *string*           | :heavy_minus_sign: | N/A                |
+| `aw`               | *string*           | :heavy_minus_sign: | N/A                |
+| `au`               | *string*           | :heavy_minus_sign: | N/A                |
+| `at`               | *string*           | :heavy_minus_sign: | N/A                |
+| `az`               | *string*           | :heavy_minus_sign: | N/A                |
+| `bs`               | *string*           | :heavy_minus_sign: | N/A                |
+| `bh`               | *string*           | :heavy_minus_sign: | N/A                |
+| `bd`               | *string*           | :heavy_minus_sign: | N/A                |
+| `bb`               | *string*           | :heavy_minus_sign: | N/A                |
+| `by`               | *string*           | :heavy_minus_sign: | N/A                |
+| `be`               | *string*           | :heavy_minus_sign: | N/A                |
+| `bz`               | *string*           | :heavy_minus_sign: | N/A                |
+| `bj`               | *string*           | :heavy_minus_sign: | N/A                |
+| `bm`               | *string*           | :heavy_minus_sign: | N/A                |
+| `bt`               | *string*           | :heavy_minus_sign: | N/A                |
+| `bo`               | *string*           | :heavy_minus_sign: | N/A                |
+| `ba`               | *string*           | :heavy_minus_sign: | N/A                |
+| `bw`               | *string*           | :heavy_minus_sign: | N/A                |
+| `bv`               | *string*           | :heavy_minus_sign: | N/A                |
+| `br`               | *string*           | :heavy_minus_sign: | N/A                |
+| `io`               | *string*           | :heavy_minus_sign: | N/A                |
+| `bn`               | *string*           | :heavy_minus_sign: | N/A                |
+| `bg`               | *string*           | :heavy_minus_sign: | N/A                |
+| `bf`               | *string*           | :heavy_minus_sign: | N/A                |
+| `bi`               | *string*           | :heavy_minus_sign: | N/A                |
+| `kh`               | *string*           | :heavy_minus_sign: | N/A                |
+| `cm`               | *string*           | :heavy_minus_sign: | N/A                |
+| `ca`               | *string*           | :heavy_minus_sign: | N/A                |
+| `cv`               | *string*           | :heavy_minus_sign: | N/A                |
+| `ky`               | *string*           | :heavy_minus_sign: | N/A                |
+| `cf`               | *string*           | :heavy_minus_sign: | N/A                |
+| `td`               | *string*           | :heavy_minus_sign: | N/A                |
+| `cl`               | *string*           | :heavy_minus_sign: | N/A                |
+| `cn`               | *string*           | :heavy_minus_sign: | N/A                |
+| `cx`               | *string*           | :heavy_minus_sign: | N/A                |
+| `cc`               | *string*           | :heavy_minus_sign: | N/A                |
+| `co`               | *string*           | :heavy_minus_sign: | N/A                |
+| `km`               | *string*           | :heavy_minus_sign: | N/A                |
+| `cg`               | *string*           | :heavy_minus_sign: | N/A                |
+| `cd`               | *string*           | :heavy_minus_sign: | N/A                |
+| `ck`               | *string*           | :heavy_minus_sign: | N/A                |
+| `cr`               | *string*           | :heavy_minus_sign: | N/A                |
+| `ci`               | *string*           | :heavy_minus_sign: | N/A                |
+| `hr`               | *string*           | :heavy_minus_sign: | N/A                |
+| `cu`               | *string*           | :heavy_minus_sign: | N/A                |
+| `cy`               | *string*           | :heavy_minus_sign: | N/A                |
+| `cz`               | *string*           | :heavy_minus_sign: | N/A                |
+| `dk`               | *string*           | :heavy_minus_sign: | N/A                |
+| `dj`               | *string*           | :heavy_minus_sign: | N/A                |
+| `dm`               | *string*           | :heavy_minus_sign: | N/A                |
+| `do`               | *string*           | :heavy_minus_sign: | N/A                |
+| `ec`               | *string*           | :heavy_minus_sign: | N/A                |
+| `eg`               | *string*           | :heavy_minus_sign: | N/A                |
+| `sv`               | *string*           | :heavy_minus_sign: | N/A                |
+| `gq`               | *string*           | :heavy_minus_sign: | N/A                |
+| `er`               | *string*           | :heavy_minus_sign: | N/A                |
+| `ee`               | *string*           | :heavy_minus_sign: | N/A                |
+| `et`               | *string*           | :heavy_minus_sign: | N/A                |
+| `fk`               | *string*           | :heavy_minus_sign: | N/A                |
+| `fo`               | *string*           | :heavy_minus_sign: | N/A                |
+| `fj`               | *string*           | :heavy_minus_sign: | N/A                |
+| `fi`               | *string*           | :heavy_minus_sign: | N/A                |
+| `fr`               | *string*           | :heavy_minus_sign: | N/A                |
+| `gf`               | *string*           | :heavy_minus_sign: | N/A                |
+| `pf`               | *string*           | :heavy_minus_sign: | N/A                |
+| `tf`               | *string*           | :heavy_minus_sign: | N/A                |
+| `ga`               | *string*           | :heavy_minus_sign: | N/A                |
+| `gm`               | *string*           | :heavy_minus_sign: | N/A                |
+| `ge`               | *string*           | :heavy_minus_sign: | N/A                |
+| `de`               | *string*           | :heavy_minus_sign: | N/A                |
+| `gh`               | *string*           | :heavy_minus_sign: | N/A                |
+| `gi`               | *string*           | :heavy_minus_sign: | N/A                |
+| `gr`               | *string*           | :heavy_minus_sign: | N/A                |
+| `gl`               | *string*           | :heavy_minus_sign: | N/A                |
+| `gd`               | *string*           | :heavy_minus_sign: | N/A                |
+| `gp`               | *string*           | :heavy_minus_sign: | N/A                |
+| `gu`               | *string*           | :heavy_minus_sign: | N/A                |
+| `gt`               | *string*           | :heavy_minus_sign: | N/A                |
+| `gn`               | *string*           | :heavy_minus_sign: | N/A                |
+| `gw`               | *string*           | :heavy_minus_sign: | N/A                |
+| `gy`               | *string*           | :heavy_minus_sign: | N/A                |
+| `ht`               | *string*           | :heavy_minus_sign: | N/A                |
+| `hm`               | *string*           | :heavy_minus_sign: | N/A                |
+| `va`               | *string*           | :heavy_minus_sign: | N/A                |
+| `hn`               | *string*           | :heavy_minus_sign: | N/A                |
+| `hk`               | *string*           | :heavy_minus_sign: | N/A                |
+| `hu`               | *string*           | :heavy_minus_sign: | N/A                |
+| `is`               | *string*           | :heavy_minus_sign: | N/A                |
+| `in`               | *string*           | :heavy_minus_sign: | N/A                |
+| `id`               | *string*           | :heavy_minus_sign: | N/A                |
+| `ir`               | *string*           | :heavy_minus_sign: | N/A                |
+| `iq`               | *string*           | :heavy_minus_sign: | N/A                |
+| `ie`               | *string*           | :heavy_minus_sign: | N/A                |
+| `il`               | *string*           | :heavy_minus_sign: | N/A                |
+| `it`               | *string*           | :heavy_minus_sign: | N/A                |
+| `jm`               | *string*           | :heavy_minus_sign: | N/A                |
+| `jp`               | *string*           | :heavy_minus_sign: | N/A                |
+| `jo`               | *string*           | :heavy_minus_sign: | N/A                |
+| `kz`               | *string*           | :heavy_minus_sign: | N/A                |
+| `ke`               | *string*           | :heavy_minus_sign: | N/A                |
+| `ki`               | *string*           | :heavy_minus_sign: | N/A                |
+| `kp`               | *string*           | :heavy_minus_sign: | N/A                |
+| `kr`               | *string*           | :heavy_minus_sign: | N/A                |
+| `kw`               | *string*           | :heavy_minus_sign: | N/A                |
+| `kg`               | *string*           | :heavy_minus_sign: | N/A                |
+| `la`               | *string*           | :heavy_minus_sign: | N/A                |
+| `lv`               | *string*           | :heavy_minus_sign: | N/A                |
+| `lb`               | *string*           | :heavy_minus_sign: | N/A                |
+| `ls`               | *string*           | :heavy_minus_sign: | N/A                |
+| `lr`               | *string*           | :heavy_minus_sign: | N/A                |
+| `ly`               | *string*           | :heavy_minus_sign: | N/A                |
+| `li`               | *string*           | :heavy_minus_sign: | N/A                |
+| `lt`               | *string*           | :heavy_minus_sign: | N/A                |
+| `lu`               | *string*           | :heavy_minus_sign: | N/A                |
+| `mo`               | *string*           | :heavy_minus_sign: | N/A                |
+| `mg`               | *string*           | :heavy_minus_sign: | N/A                |
+| `mw`               | *string*           | :heavy_minus_sign: | N/A                |
+| `my`               | *string*           | :heavy_minus_sign: | N/A                |
+| `mv`               | *string*           | :heavy_minus_sign: | N/A                |
+| `ml`               | *string*           | :heavy_minus_sign: | N/A                |
+| `mt`               | *string*           | :heavy_minus_sign: | N/A                |
+| `mh`               | *string*           | :heavy_minus_sign: | N/A                |
+| `mq`               | *string*           | :heavy_minus_sign: | N/A                |
+| `mr`               | *string*           | :heavy_minus_sign: | N/A                |
+| `mu`               | *string*           | :heavy_minus_sign: | N/A                |
+| `yt`               | *string*           | :heavy_minus_sign: | N/A                |
+| `mx`               | *string*           | :heavy_minus_sign: | N/A                |
+| `fm`               | *string*           | :heavy_minus_sign: | N/A                |
+| `md`               | *string*           | :heavy_minus_sign: | N/A                |
+| `mc`               | *string*           | :heavy_minus_sign: | N/A                |
+| `mn`               | *string*           | :heavy_minus_sign: | N/A                |
+| `ms`               | *string*           | :heavy_minus_sign: | N/A                |
+| `ma`               | *string*           | :heavy_minus_sign: | N/A                |
+| `mz`               | *string*           | :heavy_minus_sign: | N/A                |
+| `mm`               | *string*           | :heavy_minus_sign: | N/A                |
+| `na`               | *string*           | :heavy_minus_sign: | N/A                |
+| `nr`               | *string*           | :heavy_minus_sign: | N/A                |
+| `np`               | *string*           | :heavy_minus_sign: | N/A                |
+| `nl`               | *string*           | :heavy_minus_sign: | N/A                |
+| `nc`               | *string*           | :heavy_minus_sign: | N/A                |
+| `nz`               | *string*           | :heavy_minus_sign: | N/A                |
+| `ni`               | *string*           | :heavy_minus_sign: | N/A                |
+| `ne`               | *string*           | :heavy_minus_sign: | N/A                |
+| `ng`               | *string*           | :heavy_minus_sign: | N/A                |
+| `nu`               | *string*           | :heavy_minus_sign: | N/A                |
+| `nf`               | *string*           | :heavy_minus_sign: | N/A                |
+| `mk`               | *string*           | :heavy_minus_sign: | N/A                |
+| `mp`               | *string*           | :heavy_minus_sign: | N/A                |
+| `no`               | *string*           | :heavy_minus_sign: | N/A                |
+| `om`               | *string*           | :heavy_minus_sign: | N/A                |
+| `pk`               | *string*           | :heavy_minus_sign: | N/A                |
+| `pw`               | *string*           | :heavy_minus_sign: | N/A                |
+| `ps`               | *string*           | :heavy_minus_sign: | N/A                |
+| `pa`               | *string*           | :heavy_minus_sign: | N/A                |
+| `pg`               | *string*           | :heavy_minus_sign: | N/A                |
+| `py`               | *string*           | :heavy_minus_sign: | N/A                |
+| `pe`               | *string*           | :heavy_minus_sign: | N/A                |
+| `ph`               | *string*           | :heavy_minus_sign: | N/A                |
+| `pn`               | *string*           | :heavy_minus_sign: | N/A                |
+| `pl`               | *string*           | :heavy_minus_sign: | N/A                |
+| `pt`               | *string*           | :heavy_minus_sign: | N/A                |
+| `pr`               | *string*           | :heavy_minus_sign: | N/A                |
+| `qa`               | *string*           | :heavy_minus_sign: | N/A                |
+| `re`               | *string*           | :heavy_minus_sign: | N/A                |
+| `ro`               | *string*           | :heavy_minus_sign: | N/A                |
+| `ru`               | *string*           | :heavy_minus_sign: | N/A                |
+| `rw`               | *string*           | :heavy_minus_sign: | N/A                |
+| `sh`               | *string*           | :heavy_minus_sign: | N/A                |
+| `kn`               | *string*           | :heavy_minus_sign: | N/A                |
+| `lc`               | *string*           | :heavy_minus_sign: | N/A                |
+| `pm`               | *string*           | :heavy_minus_sign: | N/A                |
+| `vc`               | *string*           | :heavy_minus_sign: | N/A                |
+| `ws`               | *string*           | :heavy_minus_sign: | N/A                |
+| `sm`               | *string*           | :heavy_minus_sign: | N/A                |
+| `st`               | *string*           | :heavy_minus_sign: | N/A                |
+| `sa`               | *string*           | :heavy_minus_sign: | N/A                |
+| `sn`               | *string*           | :heavy_minus_sign: | N/A                |
+| `sc`               | *string*           | :heavy_minus_sign: | N/A                |
+| `sl`               | *string*           | :heavy_minus_sign: | N/A                |
+| `sg`               | *string*           | :heavy_minus_sign: | N/A                |
+| `sk`               | *string*           | :heavy_minus_sign: | N/A                |
+| `si`               | *string*           | :heavy_minus_sign: | N/A                |
+| `sb`               | *string*           | :heavy_minus_sign: | N/A                |
+| `so`               | *string*           | :heavy_minus_sign: | N/A                |
+| `za`               | *string*           | :heavy_minus_sign: | N/A                |
+| `gs`               | *string*           | :heavy_minus_sign: | N/A                |
+| `es`               | *string*           | :heavy_minus_sign: | N/A                |
+| `lk`               | *string*           | :heavy_minus_sign: | N/A                |
+| `sd`               | *string*           | :heavy_minus_sign: | N/A                |
+| `sr`               | *string*           | :heavy_minus_sign: | N/A                |
+| `sj`               | *string*           | :heavy_minus_sign: | N/A                |
+| `sz`               | *string*           | :heavy_minus_sign: | N/A                |
+| `se`               | *string*           | :heavy_minus_sign: | N/A                |
+| `ch`               | *string*           | :heavy_minus_sign: | N/A                |
+| `sy`               | *string*           | :heavy_minus_sign: | N/A                |
+| `tw`               | *string*           | :heavy_minus_sign: | N/A                |
+| `tj`               | *string*           | :heavy_minus_sign: | N/A                |
+| `tz`               | *string*           | :heavy_minus_sign: | N/A                |
+| `th`               | *string*           | :heavy_minus_sign: | N/A                |
+| `tl`               | *string*           | :heavy_minus_sign: | N/A                |
+| `tg`               | *string*           | :heavy_minus_sign: | N/A                |
+| `tk`               | *string*           | :heavy_minus_sign: | N/A                |
+| `to`               | *string*           | :heavy_minus_sign: | N/A                |
+| `tt`               | *string*           | :heavy_minus_sign: | N/A                |
+| `tn`               | *string*           | :heavy_minus_sign: | N/A                |
+| `tr`               | *string*           | :heavy_minus_sign: | N/A                |
+| `tm`               | *string*           | :heavy_minus_sign: | N/A                |
+| `tc`               | *string*           | :heavy_minus_sign: | N/A                |
+| `tv`               | *string*           | :heavy_minus_sign: | N/A                |
+| `ug`               | *string*           | :heavy_minus_sign: | N/A                |
+| `ua`               | *string*           | :heavy_minus_sign: | N/A                |
+| `ae`               | *string*           | :heavy_minus_sign: | N/A                |
+| `gb`               | *string*           | :heavy_minus_sign: | N/A                |
+| `us`               | *string*           | :heavy_minus_sign: | N/A                |
+| `um`               | *string*           | :heavy_minus_sign: | N/A                |
+| `uy`               | *string*           | :heavy_minus_sign: | N/A                |
+| `uz`               | *string*           | :heavy_minus_sign: | N/A                |
+| `vu`               | *string*           | :heavy_minus_sign: | N/A                |
+| `ve`               | *string*           | :heavy_minus_sign: | N/A                |
+| `vn`               | *string*           | :heavy_minus_sign: | N/A                |
+| `vg`               | *string*           | :heavy_minus_sign: | N/A                |
+| `vi`               | *string*           | :heavy_minus_sign: | N/A                |
+| `wf`               | *string*           | :heavy_minus_sign: | N/A                |
+| `eh`               | *string*           | :heavy_minus_sign: | N/A                |
+| `ye`               | *string*           | :heavy_minus_sign: | N/A                |
+| `zm`               | *string*           | :heavy_minus_sign: | N/A                |
+| `zw`               | *string*           | :heavy_minus_sign: | N/A                |
+| `ax`               | *string*           | :heavy_minus_sign: | N/A                |
+| `bq`               | *string*           | :heavy_minus_sign: | N/A                |
+| `cw`               | *string*           | :heavy_minus_sign: | N/A                |
+| `gg`               | *string*           | :heavy_minus_sign: | N/A                |
+| `im`               | *string*           | :heavy_minus_sign: | N/A                |
+| `je`               | *string*           | :heavy_minus_sign: | N/A                |
+| `me`               | *string*           | :heavy_minus_sign: | N/A                |
+| `bl`               | *string*           | :heavy_minus_sign: | N/A                |
+| `mf`               | *string*           | :heavy_minus_sign: | N/A                |
+| `rs`               | *string*           | :heavy_minus_sign: | N/A                |
+| `sx`               | *string*           | :heavy_minus_sign: | N/A                |
+| `ss`               | *string*           | :heavy_minus_sign: | N/A                |
+| `xk`               | *string*           | :heavy_minus_sign: | N/A                |
