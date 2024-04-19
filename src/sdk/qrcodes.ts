@@ -10,6 +10,7 @@ import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
 import * as errors from "../models/errors";
 import * as operations from "../models/operations";
+import * as z from "zod";
 
 export enum GetAcceptEnum {
     applicationJson = "application/json",
@@ -52,7 +53,7 @@ export class QRCodes extends ClientSDK {
     async get(
         input: operations.GetQRCodeRequest,
         options?: RequestOptions & { acceptHeaderOverride?: GetAcceptEnum }
-    ): Promise<operations.GetQRCodeResponse> {
+    ): Promise<string> {
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
 
@@ -103,7 +104,22 @@ export class QRCodes extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: [] };
+        const doOptions = {
+            context,
+            errorCodes: [
+                "400",
+                "401",
+                "403",
+                "404",
+                "409",
+                "410",
+                "422",
+                "429",
+                "4XX",
+                "500",
+                "5XX",
+            ],
+        };
         const request = this.createRequest$(
             {
                 security: securitySettings$,
@@ -118,12 +134,19 @@ export class QRCodes extends ClientSDK {
 
         const response = await this.do$(request, doOptions);
 
+        const responseFields$ = {
+            HttpMeta: {
+                Response: response,
+                Request: request,
+            },
+        };
+
         if (this.matchResponse(response, 200, "image/png")) {
             const responseBody = await response.text();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return operations.GetQRCodeResponse$.inboundSchema.parse(val$);
+                    return z.string().parse(val$);
                 },
                 "Response validation failed"
             );
@@ -133,91 +156,118 @@ export class QRCodes extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return operations.GetQRCodeResponse$.inboundSchema.parse(val$);
+                    return errors.BadRequest$.inboundSchema.parse({
+                        ...responseFields$,
+                        ...val$,
+                    });
                 },
                 "Response validation failed"
             );
-            return result;
+            throw result;
         } else if (this.matchResponse(response, 401, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return operations.GetQRCodeResponse$.inboundSchema.parse(val$);
+                    return errors.Unauthorized$.inboundSchema.parse({
+                        ...responseFields$,
+                        ...val$,
+                    });
                 },
                 "Response validation failed"
             );
-            return result;
+            throw result;
         } else if (this.matchResponse(response, 403, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return operations.GetQRCodeResponse$.inboundSchema.parse(val$);
+                    return errors.Forbidden$.inboundSchema.parse({
+                        ...responseFields$,
+                        ...val$,
+                    });
                 },
                 "Response validation failed"
             );
-            return result;
+            throw result;
         } else if (this.matchResponse(response, 404, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return operations.GetQRCodeResponse$.inboundSchema.parse(val$);
+                    return errors.NotFound$.inboundSchema.parse({
+                        ...responseFields$,
+                        ...val$,
+                    });
                 },
                 "Response validation failed"
             );
-            return result;
+            throw result;
         } else if (this.matchResponse(response, 409, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return operations.GetQRCodeResponse$.inboundSchema.parse(val$);
+                    return errors.Conflict$.inboundSchema.parse({
+                        ...responseFields$,
+                        ...val$,
+                    });
                 },
                 "Response validation failed"
             );
-            return result;
+            throw result;
         } else if (this.matchResponse(response, 410, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return operations.GetQRCodeResponse$.inboundSchema.parse(val$);
+                    return errors.InviteExpired$.inboundSchema.parse({
+                        ...responseFields$,
+                        ...val$,
+                    });
                 },
                 "Response validation failed"
             );
-            return result;
+            throw result;
         } else if (this.matchResponse(response, 422, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return operations.GetQRCodeResponse$.inboundSchema.parse(val$);
+                    return errors.UnprocessableEntity$.inboundSchema.parse({
+                        ...responseFields$,
+                        ...val$,
+                    });
                 },
                 "Response validation failed"
             );
-            return result;
+            throw result;
         } else if (this.matchResponse(response, 429, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return operations.GetQRCodeResponse$.inboundSchema.parse(val$);
+                    return errors.RateLimitExceeded$.inboundSchema.parse({
+                        ...responseFields$,
+                        ...val$,
+                    });
                 },
                 "Response validation failed"
             );
-            return result;
+            throw result;
         } else if (this.matchResponse(response, 500, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return operations.GetQRCodeResponse$.inboundSchema.parse(val$);
+                    return errors.InternalServerError$.inboundSchema.parse({
+                        ...responseFields$,
+                        ...val$,
+                    });
                 },
                 "Response validation failed"
             );
-            return result;
+            throw result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
