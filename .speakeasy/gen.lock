@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: 9b3afff112a002c5cdcb95800b733810
+  docChecksum: ac1c5d14dce8082823d12ee6e19cced7
   docVersion: 0.0.1
-  speakeasyVersion: 1.260.6
-  generationVersion: 2.311.1
-  releaseVersion: 0.24.0
-  configChecksum: 7295cbecb89a751fe5c558989aade82b
+  speakeasyVersion: 1.262.0
+  generationVersion: 2.312.0
+  releaseVersion: 0.24.1
+  configChecksum: dc858107ccc11c8da5b123cd4e4ec590
   repoURL: https://github.com/dubinc/dub-node.git
   installationURL: https://github.com/dubinc/dub-node
   published: true
@@ -56,6 +56,19 @@ generatedFiles:
   - src/types/operations.ts
   - src/types/rfcdate.ts
   - tsconfig.json
+  - src/models/components/linkschema.ts
+  - src/models/components/tagschema.ts
+  - src/models/components/workspaceschema.ts
+  - src/models/components/security.ts
+  - src/models/errors/badrequest.ts
+  - src/models/errors/unauthorized.ts
+  - src/models/errors/forbidden.ts
+  - src/models/errors/notfound.ts
+  - src/models/errors/conflict.ts
+  - src/models/errors/inviteexpired.ts
+  - src/models/errors/unprocessableentity.ts
+  - src/models/errors/ratelimitexceeded.ts
+  - src/models/errors/internalservererror.ts
   - src/models/operations/getlinks.ts
   - src/models/operations/createlink.ts
   - src/models/operations/getlinkscount.ts
@@ -74,7 +87,6 @@ generatedFiles:
   - src/models/operations/getrefereranalytics.ts
   - src/models/operations/gettoplinks.ts
   - src/models/operations/gettopurls.ts
-  - src/models/operations/getworkspaces.ts
   - src/models/operations/createworkspace.ts
   - src/models/operations/getworkspace.ts
   - src/models/operations/gettags.ts
@@ -86,180 +98,138 @@ generatedFiles:
   - src/models/operations/setprimarydomain.ts
   - src/models/operations/transferdomain.ts
   - src/models/operations/getmetatags.ts
-  - src/models/components/linkschema.ts
-  - src/models/components/tagschema.ts
-  - src/models/components/badrequest.ts
-  - src/models/components/unauthorized.ts
-  - src/models/components/forbidden.ts
-  - src/models/components/notfound.ts
-  - src/models/components/conflict.ts
-  - src/models/components/inviteexpired.ts
-  - src/models/components/unprocessableentity.ts
-  - src/models/components/ratelimitexceeded.ts
-  - src/models/components/internalservererror.ts
-  - src/models/components/workspaceschema.ts
-  - src/models/components/security.ts
   - src/models/errors/index.ts
-  - src/models/operations/index.ts
   - src/models/components/index.ts
-  - docs/models/operations/queryparamtagids.md
-  - docs/models/operations/sort.md
-  - docs/models/operations/getlinksrequest.md
-  - docs/models/operations/getlinksresponse.md
-  - docs/models/operations/tagids.md
-  - docs/models/operations/geo.md
-  - docs/models/operations/createlinkrequestbody.md
-  - docs/models/operations/createlinkresponse.md
-  - docs/models/operations/getlinkscountqueryparamtagids.md
-  - docs/models/operations/two.md
-  - docs/models/operations/one.md
-  - docs/models/operations/groupby.md
-  - docs/models/operations/getlinkscountrequest.md
-  - docs/models/operations/getlinkscountresponse.md
-  - docs/models/operations/getlinkinforequest.md
-  - docs/models/operations/getlinkinforesponse.md
-  - docs/models/operations/editlinktagids.md
-  - docs/models/operations/editlinkgeo.md
-  - docs/models/operations/editlinkrequestbody.md
-  - docs/models/operations/editlinkrequest.md
-  - docs/models/operations/editlinkresponse.md
-  - docs/models/operations/deletelinkrequest.md
-  - docs/models/operations/deletelinkresponsebody.md
-  - docs/models/operations/deletelinkresponse.md
-  - docs/models/operations/bulkcreatelinkstagids.md
-  - docs/models/operations/bulkcreatelinksgeo.md
-  - docs/models/operations/requestbody.md
-  - docs/models/operations/bulkcreatelinksresponse.md
-  - docs/models/operations/level.md
-  - docs/models/operations/getqrcoderequest.md
-  - docs/models/operations/getqrcoderesponse.md
-  - docs/models/operations/interval.md
-  - docs/models/operations/country.md
-  - docs/models/operations/getclicksanalyticsrequest.md
-  - docs/models/operations/getclicksanalyticsresponse.md
-  - docs/models/operations/queryparaminterval.md
-  - docs/models/operations/queryparamcountry.md
-  - docs/models/operations/gettimeseriesanalyticsrequest.md
-  - docs/models/operations/responsebody.md
-  - docs/models/operations/gettimeseriesanalyticsresponse.md
-  - docs/models/operations/getcountryanalyticsqueryparaminterval.md
-  - docs/models/operations/getcountryanalyticsqueryparamcountry.md
-  - docs/models/operations/getcountryanalyticsrequest.md
-  - docs/models/operations/getcountryanalyticscountry.md
-  - docs/models/operations/getcountryanalyticsresponsebody.md
-  - docs/models/operations/getcountryanalyticsresponse.md
-  - docs/models/operations/getcityanalyticsqueryparaminterval.md
-  - docs/models/operations/getcityanalyticsqueryparamcountry.md
-  - docs/models/operations/getcityanalyticsrequest.md
-  - docs/models/operations/getcityanalyticscountry.md
-  - docs/models/operations/getcityanalyticsresponsebody.md
-  - docs/models/operations/getcityanalyticsresponse.md
-  - docs/models/operations/getdeviceanalyticsqueryparaminterval.md
-  - docs/models/operations/getdeviceanalyticsqueryparamcountry.md
-  - docs/models/operations/getdeviceanalyticsrequest.md
-  - docs/models/operations/getdeviceanalyticsresponsebody.md
-  - docs/models/operations/getdeviceanalyticsresponse.md
-  - docs/models/operations/getbrowseranalyticsqueryparaminterval.md
-  - docs/models/operations/getbrowseranalyticsqueryparamcountry.md
-  - docs/models/operations/getbrowseranalyticsrequest.md
-  - docs/models/operations/getbrowseranalyticsresponsebody.md
-  - docs/models/operations/getbrowseranalyticsresponse.md
-  - docs/models/operations/getosanalyticsqueryparaminterval.md
-  - docs/models/operations/getosanalyticsqueryparamcountry.md
-  - docs/models/operations/getosanalyticsrequest.md
-  - docs/models/operations/getosanalyticsresponsebody.md
-  - docs/models/operations/getosanalyticsresponse.md
-  - docs/models/operations/getrefereranalyticsqueryparaminterval.md
-  - docs/models/operations/getrefereranalyticsqueryparamcountry.md
-  - docs/models/operations/getrefereranalyticsrequest.md
-  - docs/models/operations/getrefereranalyticsresponsebody.md
-  - docs/models/operations/getrefereranalyticsresponse.md
-  - docs/models/operations/gettoplinksqueryparaminterval.md
-  - docs/models/operations/gettoplinksqueryparamcountry.md
-  - docs/models/operations/gettoplinksrequest.md
-  - docs/models/operations/gettoplinksresponsebody.md
-  - docs/models/operations/gettoplinksresponse.md
-  - docs/models/operations/gettopurlsqueryparaminterval.md
-  - docs/models/operations/gettopurlsqueryparamcountry.md
-  - docs/models/operations/gettopurlsrequest.md
-  - docs/models/operations/gettopurlsresponsebody.md
-  - docs/models/operations/gettopurlsresponse.md
-  - docs/models/operations/getworkspacesresponse.md
-  - docs/models/operations/createworkspacerequestbody.md
-  - docs/models/operations/createworkspaceresponse.md
-  - docs/models/operations/getworkspacerequest.md
-  - docs/models/operations/getworkspaceresponse.md
-  - docs/models/operations/gettagsrequest.md
-  - docs/models/operations/gettagsresponse.md
-  - docs/models/operations/color.md
-  - docs/models/operations/createtagrequestbody.md
-  - docs/models/operations/createtagresponse.md
-  - docs/models/operations/listdomainsrequest.md
-  - docs/models/operations/listdomainstype.md
-  - docs/models/operations/listdomainsresponsebody.md
-  - docs/models/operations/listdomainsresponse.md
-  - docs/models/operations/type.md
-  - docs/models/operations/adddomainrequestbody.md
-  - docs/models/operations/adddomaintype.md
-  - docs/models/operations/adddomainresponsebody.md
-  - docs/models/operations/adddomainresponse.md
-  - docs/models/operations/deletedomainrequest.md
-  - docs/models/operations/deletedomainresponsebody.md
-  - docs/models/operations/deletedomainresponse.md
-  - docs/models/operations/editdomaintype.md
-  - docs/models/operations/editdomainrequestbody.md
-  - docs/models/operations/editdomainrequest.md
-  - docs/models/operations/editdomaindomainstype.md
-  - docs/models/operations/editdomainresponsebody.md
-  - docs/models/operations/editdomainresponse.md
-  - docs/models/operations/setprimarydomainrequest.md
-  - docs/models/operations/setprimarydomaintype.md
-  - docs/models/operations/setprimarydomainresponsebody.md
-  - docs/models/operations/setprimarydomainresponse.md
-  - docs/models/operations/transferdomainrequestbody.md
-  - docs/models/operations/transferdomainrequest.md
-  - docs/models/operations/transferdomaintype.md
-  - docs/models/operations/transferdomainresponsebody.md
-  - docs/models/operations/transferdomainresponse.md
-  - docs/models/operations/getmetatagsrequest.md
-  - docs/models/operations/getmetatagsresponsebody.md
+  - src/models/operations/index.ts
   - docs/models/components/geo.md
   - docs/models/components/linkschema.md
   - docs/models/components/color.md
   - docs/models/components/tagschema.md
-  - docs/models/components/code.md
-  - docs/models/components/errort.md
-  - docs/models/components/badrequest.md
-  - docs/models/components/unauthorizedcode.md
-  - docs/models/components/unauthorizederror.md
-  - docs/models/components/unauthorized.md
-  - docs/models/components/forbiddencode.md
-  - docs/models/components/forbiddenerror.md
-  - docs/models/components/forbidden.md
-  - docs/models/components/notfoundcode.md
-  - docs/models/components/notfounderror.md
-  - docs/models/components/notfound.md
-  - docs/models/components/conflictcode.md
-  - docs/models/components/conflicterror.md
-  - docs/models/components/conflict.md
-  - docs/models/components/inviteexpiredcode.md
-  - docs/models/components/inviteexpirederror.md
-  - docs/models/components/inviteexpired.md
-  - docs/models/components/unprocessableentitycode.md
-  - docs/models/components/unprocessableentityerror.md
-  - docs/models/components/unprocessableentity.md
-  - docs/models/components/ratelimitexceededcode.md
-  - docs/models/components/ratelimitexceedederror.md
-  - docs/models/components/ratelimitexceeded.md
-  - docs/models/components/internalservererrorcode.md
-  - docs/models/components/internalservererrorerror.md
-  - docs/models/components/internalservererror.md
   - docs/models/components/plan.md
   - docs/models/components/role.md
   - docs/models/components/users.md
   - docs/models/components/domains.md
   - docs/models/components/workspaceschema.md
   - docs/models/components/security.md
+  - docs/models/errors/code.md
+  - docs/models/errors/errort.md
+  - docs/models/errors/badrequest.md
+  - docs/models/errors/unauthorizedcode.md
+  - docs/models/errors/unauthorizederror.md
+  - docs/models/errors/unauthorized.md
+  - docs/models/errors/forbiddencode.md
+  - docs/models/errors/forbiddenerror.md
+  - docs/models/errors/forbidden.md
+  - docs/models/errors/notfoundcode.md
+  - docs/models/errors/notfounderror.md
+  - docs/models/errors/notfound.md
+  - docs/models/errors/conflictcode.md
+  - docs/models/errors/conflicterror.md
+  - docs/models/errors/conflict.md
+  - docs/models/errors/inviteexpiredcode.md
+  - docs/models/errors/inviteexpirederror.md
+  - docs/models/errors/inviteexpired.md
+  - docs/models/errors/unprocessableentitycode.md
+  - docs/models/errors/unprocessableentityerror.md
+  - docs/models/errors/unprocessableentity.md
+  - docs/models/errors/ratelimitexceededcode.md
+  - docs/models/errors/ratelimitexceedederror.md
+  - docs/models/errors/ratelimitexceeded.md
+  - docs/models/errors/internalservererrorcode.md
+  - docs/models/errors/internalservererrorerror.md
+  - docs/models/errors/internalservererror.md
+  - docs/models/operations/queryparamtagids.md
+  - docs/models/operations/sort.md
+  - docs/models/operations/getlinksrequest.md
+  - docs/models/operations/tagids.md
+  - docs/models/operations/geo.md
+  - docs/models/operations/createlinkrequestbody.md
+  - docs/models/operations/getlinkscountqueryparamtagids.md
+  - docs/models/operations/two.md
+  - docs/models/operations/one.md
+  - docs/models/operations/groupby.md
+  - docs/models/operations/getlinkscountrequest.md
+  - docs/models/operations/getlinkinforequest.md
+  - docs/models/operations/editlinktagids.md
+  - docs/models/operations/editlinkgeo.md
+  - docs/models/operations/editlinkrequestbody.md
+  - docs/models/operations/editlinkrequest.md
+  - docs/models/operations/deletelinkrequest.md
+  - docs/models/operations/deletelinkresponsebody.md
+  - docs/models/operations/bulkcreatelinkstagids.md
+  - docs/models/operations/bulkcreatelinksgeo.md
+  - docs/models/operations/requestbody.md
+  - docs/models/operations/level.md
+  - docs/models/operations/getqrcoderequest.md
+  - docs/models/operations/interval.md
+  - docs/models/operations/country.md
+  - docs/models/operations/getclicksanalyticsrequest.md
+  - docs/models/operations/queryparaminterval.md
+  - docs/models/operations/queryparamcountry.md
+  - docs/models/operations/gettimeseriesanalyticsrequest.md
+  - docs/models/operations/responsebody.md
+  - docs/models/operations/getcountryanalyticsqueryparaminterval.md
+  - docs/models/operations/getcountryanalyticsqueryparamcountry.md
+  - docs/models/operations/getcountryanalyticsrequest.md
+  - docs/models/operations/getcountryanalyticscountry.md
+  - docs/models/operations/getcountryanalyticsresponsebody.md
+  - docs/models/operations/getcityanalyticsqueryparaminterval.md
+  - docs/models/operations/getcityanalyticsqueryparamcountry.md
+  - docs/models/operations/getcityanalyticsrequest.md
+  - docs/models/operations/getcityanalyticscountry.md
+  - docs/models/operations/getcityanalyticsresponsebody.md
+  - docs/models/operations/getdeviceanalyticsqueryparaminterval.md
+  - docs/models/operations/getdeviceanalyticsqueryparamcountry.md
+  - docs/models/operations/getdeviceanalyticsrequest.md
+  - docs/models/operations/getdeviceanalyticsresponsebody.md
+  - docs/models/operations/getbrowseranalyticsqueryparaminterval.md
+  - docs/models/operations/getbrowseranalyticsqueryparamcountry.md
+  - docs/models/operations/getbrowseranalyticsrequest.md
+  - docs/models/operations/getbrowseranalyticsresponsebody.md
+  - docs/models/operations/getosanalyticsqueryparaminterval.md
+  - docs/models/operations/getosanalyticsqueryparamcountry.md
+  - docs/models/operations/getosanalyticsrequest.md
+  - docs/models/operations/getosanalyticsresponsebody.md
+  - docs/models/operations/getrefereranalyticsqueryparaminterval.md
+  - docs/models/operations/getrefereranalyticsqueryparamcountry.md
+  - docs/models/operations/getrefereranalyticsrequest.md
+  - docs/models/operations/getrefereranalyticsresponsebody.md
+  - docs/models/operations/gettoplinksqueryparaminterval.md
+  - docs/models/operations/gettoplinksqueryparamcountry.md
+  - docs/models/operations/gettoplinksrequest.md
+  - docs/models/operations/gettoplinksresponsebody.md
+  - docs/models/operations/gettopurlsqueryparaminterval.md
+  - docs/models/operations/gettopurlsqueryparamcountry.md
+  - docs/models/operations/gettopurlsrequest.md
+  - docs/models/operations/gettopurlsresponsebody.md
+  - docs/models/operations/createworkspacerequestbody.md
+  - docs/models/operations/getworkspacerequest.md
+  - docs/models/operations/gettagsrequest.md
+  - docs/models/operations/color.md
+  - docs/models/operations/createtagrequestbody.md
+  - docs/models/operations/listdomainsrequest.md
+  - docs/models/operations/listdomainstype.md
+  - docs/models/operations/listdomainsresponsebody.md
+  - docs/models/operations/type.md
+  - docs/models/operations/adddomainrequestbody.md
+  - docs/models/operations/adddomaintype.md
+  - docs/models/operations/adddomainresponsebody.md
+  - docs/models/operations/deletedomainrequest.md
+  - docs/models/operations/deletedomainresponsebody.md
+  - docs/models/operations/editdomaintype.md
+  - docs/models/operations/editdomainrequestbody.md
+  - docs/models/operations/editdomainrequest.md
+  - docs/models/operations/editdomaindomainstype.md
+  - docs/models/operations/editdomainresponsebody.md
+  - docs/models/operations/setprimarydomainrequest.md
+  - docs/models/operations/setprimarydomaintype.md
+  - docs/models/operations/setprimarydomainresponsebody.md
+  - docs/models/operations/transferdomainrequestbody.md
+  - docs/models/operations/transferdomainrequest.md
+  - docs/models/operations/transferdomaintype.md
+  - docs/models/operations/transferdomainresponsebody.md
+  - docs/models/operations/getmetatagsrequest.md
+  - docs/models/operations/getmetatagsresponsebody.md
   - docs/sdks/dub/README.md
   - docs/sdks/links/README.md
   - docs/sdks/qrcodes/README.md
