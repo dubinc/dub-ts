@@ -37,7 +37,7 @@ export type TagSchema = {
 };
 
 /** @internal */
-export const Color$ = z.nativeEnum(Color);
+export const Color$: z.ZodNativeEnum<typeof Color> = z.nativeEnum(Color);
 
 /** @internal */
 export namespace TagSchema$ {

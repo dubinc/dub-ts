@@ -1,0 +1,2 @@
+# GetCityAnalyticsResponse
+

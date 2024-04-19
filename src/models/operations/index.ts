@@ -28,6 +28,7 @@ export * from "./gettimeseriesanalytics";
 export * from "./gettoplinks";
 export * from "./gettopurls";
 export * from "./getworkspace";
+export * from "./getworkspaces";
 export * from "./listdomains";
 export * from "./setprimarydomain";
 export * from "./transferdomain";

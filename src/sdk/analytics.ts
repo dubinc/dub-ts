@@ -10,7 +10,6 @@ import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
 import * as errors from "../models/errors";
 import * as operations from "../models/operations";
-import * as z from "zod";
 
 export class Analytics extends ClientSDK {
     private readonly options$: SDKOptions & { hooks?: SDKHooks };
@@ -48,7 +47,7 @@ export class Analytics extends ClientSDK {
     async clicks(
         input: operations.GetClicksAnalyticsRequest,
         options?: RequestOptions
-    ): Promise<number> {
+    ): Promise<operations.GetClicksAnalyticsResponse> {
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
@@ -74,10 +73,6 @@ export class Analytics extends ClientSDK {
             }),
             enc$.encodeForm("device", payload$.device, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("domain", payload$.domain, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("excludeRoot", payload$.excludeRoot, {
-                explode: true,
-                charEncoding: "percent",
-            }),
             enc$.encodeForm("interval", payload$.interval, {
                 explode: true,
                 charEncoding: "percent",
@@ -88,10 +83,12 @@ export class Analytics extends ClientSDK {
                 explode: true,
                 charEncoding: "percent",
             }),
+            enc$.encodeForm("qr", payload$.qr, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("referer", payload$.referer, {
                 explode: true,
                 charEncoding: "percent",
             }),
+            enc$.encodeForm("root", payload$.root, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("tagId", payload$.tagId, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("url", payload$.url, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("workspaceId", this.options$.workspaceId, {
@@ -117,22 +114,7 @@ export class Analytics extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: [
-                "400",
-                "401",
-                "403",
-                "404",
-                "409",
-                "410",
-                "422",
-                "429",
-                "4XX",
-                "500",
-                "5XX",
-            ],
-        };
+        const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {
                 security: securitySettings$,
@@ -147,19 +129,12 @@ export class Analytics extends ClientSDK {
 
         const response = await this.do$(request, doOptions);
 
-        const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request,
-            },
-        };
-
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return z.number().parse(val$);
+                    return operations.GetClicksAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
@@ -169,118 +144,91 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.BadRequest$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetClicksAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 401, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Unauthorized$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetClicksAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 403, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Forbidden$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetClicksAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 404, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.NotFound$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetClicksAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 409, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Conflict$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetClicksAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 410, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.InviteExpired$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetClicksAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 422, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.UnprocessableEntity$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetClicksAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 429, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.RateLimitExceeded$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetClicksAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 500, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.InternalServerError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetClicksAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
@@ -296,7 +244,7 @@ export class Analytics extends ClientSDK {
     async timeseries(
         input: operations.GetTimeseriesAnalyticsRequest,
         options?: RequestOptions
-    ): Promise<Array<operations.ResponseBody>> {
+    ): Promise<operations.GetTimeseriesAnalyticsResponse> {
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
@@ -322,10 +270,6 @@ export class Analytics extends ClientSDK {
             }),
             enc$.encodeForm("device", payload$.device, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("domain", payload$.domain, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("excludeRoot", payload$.excludeRoot, {
-                explode: true,
-                charEncoding: "percent",
-            }),
             enc$.encodeForm("interval", payload$.interval, {
                 explode: true,
                 charEncoding: "percent",
@@ -336,10 +280,12 @@ export class Analytics extends ClientSDK {
                 explode: true,
                 charEncoding: "percent",
             }),
+            enc$.encodeForm("qr", payload$.qr, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("referer", payload$.referer, {
                 explode: true,
                 charEncoding: "percent",
             }),
+            enc$.encodeForm("root", payload$.root, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("tagId", payload$.tagId, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("url", payload$.url, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("workspaceId", this.options$.workspaceId, {
@@ -365,22 +311,7 @@ export class Analytics extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: [
-                "400",
-                "401",
-                "403",
-                "404",
-                "409",
-                "410",
-                "422",
-                "429",
-                "4XX",
-                "500",
-                "5XX",
-            ],
-        };
+        const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {
                 security: securitySettings$,
@@ -395,19 +326,12 @@ export class Analytics extends ClientSDK {
 
         const response = await this.do$(request, doOptions);
 
-        const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request,
-            },
-        };
-
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return z.array(operations.ResponseBody$.inboundSchema).parse(val$);
+                    return operations.GetTimeseriesAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
@@ -417,118 +341,91 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.BadRequest$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetTimeseriesAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 401, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Unauthorized$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetTimeseriesAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 403, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Forbidden$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetTimeseriesAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 404, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.NotFound$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetTimeseriesAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 409, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Conflict$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetTimeseriesAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 410, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.InviteExpired$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetTimeseriesAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 422, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.UnprocessableEntity$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetTimeseriesAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 429, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.RateLimitExceeded$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetTimeseriesAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 500, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.InternalServerError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetTimeseriesAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
@@ -544,7 +441,7 @@ export class Analytics extends ClientSDK {
     async countries(
         input: operations.GetCountryAnalyticsRequest,
         options?: RequestOptions
-    ): Promise<Array<operations.GetCountryAnalyticsResponseBody>> {
+    ): Promise<operations.GetCountryAnalyticsResponse> {
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
@@ -570,10 +467,6 @@ export class Analytics extends ClientSDK {
             }),
             enc$.encodeForm("device", payload$.device, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("domain", payload$.domain, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("excludeRoot", payload$.excludeRoot, {
-                explode: true,
-                charEncoding: "percent",
-            }),
             enc$.encodeForm("interval", payload$.interval, {
                 explode: true,
                 charEncoding: "percent",
@@ -584,10 +477,12 @@ export class Analytics extends ClientSDK {
                 explode: true,
                 charEncoding: "percent",
             }),
+            enc$.encodeForm("qr", payload$.qr, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("referer", payload$.referer, {
                 explode: true,
                 charEncoding: "percent",
             }),
+            enc$.encodeForm("root", payload$.root, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("tagId", payload$.tagId, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("url", payload$.url, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("workspaceId", this.options$.workspaceId, {
@@ -613,22 +508,7 @@ export class Analytics extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: [
-                "400",
-                "401",
-                "403",
-                "404",
-                "409",
-                "410",
-                "422",
-                "429",
-                "4XX",
-                "500",
-                "5XX",
-            ],
-        };
+        const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {
                 security: securitySettings$,
@@ -643,21 +523,12 @@ export class Analytics extends ClientSDK {
 
         const response = await this.do$(request, doOptions);
 
-        const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request,
-            },
-        };
-
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return z
-                        .array(operations.GetCountryAnalyticsResponseBody$.inboundSchema)
-                        .parse(val$);
+                    return operations.GetCountryAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
@@ -667,118 +538,91 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.BadRequest$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetCountryAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 401, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Unauthorized$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetCountryAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 403, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Forbidden$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetCountryAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 404, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.NotFound$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetCountryAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 409, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Conflict$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetCountryAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 410, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.InviteExpired$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetCountryAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 422, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.UnprocessableEntity$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetCountryAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 429, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.RateLimitExceeded$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetCountryAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 500, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.InternalServerError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetCountryAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
@@ -794,7 +638,7 @@ export class Analytics extends ClientSDK {
     async cities(
         input: operations.GetCityAnalyticsRequest,
         options?: RequestOptions
-    ): Promise<Array<operations.GetCityAnalyticsResponseBody>> {
+    ): Promise<operations.GetCityAnalyticsResponse> {
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
@@ -820,10 +664,6 @@ export class Analytics extends ClientSDK {
             }),
             enc$.encodeForm("device", payload$.device, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("domain", payload$.domain, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("excludeRoot", payload$.excludeRoot, {
-                explode: true,
-                charEncoding: "percent",
-            }),
             enc$.encodeForm("interval", payload$.interval, {
                 explode: true,
                 charEncoding: "percent",
@@ -834,10 +674,12 @@ export class Analytics extends ClientSDK {
                 explode: true,
                 charEncoding: "percent",
             }),
+            enc$.encodeForm("qr", payload$.qr, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("referer", payload$.referer, {
                 explode: true,
                 charEncoding: "percent",
             }),
+            enc$.encodeForm("root", payload$.root, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("tagId", payload$.tagId, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("url", payload$.url, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("workspaceId", this.options$.workspaceId, {
@@ -863,22 +705,7 @@ export class Analytics extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: [
-                "400",
-                "401",
-                "403",
-                "404",
-                "409",
-                "410",
-                "422",
-                "429",
-                "4XX",
-                "500",
-                "5XX",
-            ],
-        };
+        const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {
                 security: securitySettings$,
@@ -893,21 +720,12 @@ export class Analytics extends ClientSDK {
 
         const response = await this.do$(request, doOptions);
 
-        const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request,
-            },
-        };
-
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return z
-                        .array(operations.GetCityAnalyticsResponseBody$.inboundSchema)
-                        .parse(val$);
+                    return operations.GetCityAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
@@ -917,118 +735,91 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.BadRequest$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetCityAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 401, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Unauthorized$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetCityAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 403, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Forbidden$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetCityAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 404, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.NotFound$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetCityAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 409, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Conflict$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetCityAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 410, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.InviteExpired$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetCityAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 422, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.UnprocessableEntity$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetCityAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 429, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.RateLimitExceeded$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetCityAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 500, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.InternalServerError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetCityAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
@@ -1044,7 +835,7 @@ export class Analytics extends ClientSDK {
     async devices(
         input: operations.GetDeviceAnalyticsRequest,
         options?: RequestOptions
-    ): Promise<Array<operations.GetDeviceAnalyticsResponseBody>> {
+    ): Promise<operations.GetDeviceAnalyticsResponse> {
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
@@ -1070,10 +861,6 @@ export class Analytics extends ClientSDK {
             }),
             enc$.encodeForm("device", payload$.device, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("domain", payload$.domain, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("excludeRoot", payload$.excludeRoot, {
-                explode: true,
-                charEncoding: "percent",
-            }),
             enc$.encodeForm("interval", payload$.interval, {
                 explode: true,
                 charEncoding: "percent",
@@ -1084,10 +871,12 @@ export class Analytics extends ClientSDK {
                 explode: true,
                 charEncoding: "percent",
             }),
+            enc$.encodeForm("qr", payload$.qr, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("referer", payload$.referer, {
                 explode: true,
                 charEncoding: "percent",
             }),
+            enc$.encodeForm("root", payload$.root, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("tagId", payload$.tagId, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("url", payload$.url, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("workspaceId", this.options$.workspaceId, {
@@ -1113,22 +902,7 @@ export class Analytics extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: [
-                "400",
-                "401",
-                "403",
-                "404",
-                "409",
-                "410",
-                "422",
-                "429",
-                "4XX",
-                "500",
-                "5XX",
-            ],
-        };
+        const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {
                 security: securitySettings$,
@@ -1143,21 +917,12 @@ export class Analytics extends ClientSDK {
 
         const response = await this.do$(request, doOptions);
 
-        const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request,
-            },
-        };
-
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return z
-                        .array(operations.GetDeviceAnalyticsResponseBody$.inboundSchema)
-                        .parse(val$);
+                    return operations.GetDeviceAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
@@ -1167,118 +932,91 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.BadRequest$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetDeviceAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 401, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Unauthorized$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetDeviceAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 403, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Forbidden$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetDeviceAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 404, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.NotFound$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetDeviceAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 409, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Conflict$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetDeviceAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 410, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.InviteExpired$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetDeviceAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 422, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.UnprocessableEntity$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetDeviceAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 429, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.RateLimitExceeded$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetDeviceAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 500, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.InternalServerError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetDeviceAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
@@ -1294,7 +1032,7 @@ export class Analytics extends ClientSDK {
     async browsers(
         input: operations.GetBrowserAnalyticsRequest,
         options?: RequestOptions
-    ): Promise<Array<operations.GetBrowserAnalyticsResponseBody>> {
+    ): Promise<operations.GetBrowserAnalyticsResponse> {
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
@@ -1320,10 +1058,6 @@ export class Analytics extends ClientSDK {
             }),
             enc$.encodeForm("device", payload$.device, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("domain", payload$.domain, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("excludeRoot", payload$.excludeRoot, {
-                explode: true,
-                charEncoding: "percent",
-            }),
             enc$.encodeForm("interval", payload$.interval, {
                 explode: true,
                 charEncoding: "percent",
@@ -1334,10 +1068,12 @@ export class Analytics extends ClientSDK {
                 explode: true,
                 charEncoding: "percent",
             }),
+            enc$.encodeForm("qr", payload$.qr, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("referer", payload$.referer, {
                 explode: true,
                 charEncoding: "percent",
             }),
+            enc$.encodeForm("root", payload$.root, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("tagId", payload$.tagId, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("url", payload$.url, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("workspaceId", this.options$.workspaceId, {
@@ -1363,22 +1099,7 @@ export class Analytics extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: [
-                "400",
-                "401",
-                "403",
-                "404",
-                "409",
-                "410",
-                "422",
-                "429",
-                "4XX",
-                "500",
-                "5XX",
-            ],
-        };
+        const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {
                 security: securitySettings$,
@@ -1393,21 +1114,12 @@ export class Analytics extends ClientSDK {
 
         const response = await this.do$(request, doOptions);
 
-        const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request,
-            },
-        };
-
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return z
-                        .array(operations.GetBrowserAnalyticsResponseBody$.inboundSchema)
-                        .parse(val$);
+                    return operations.GetBrowserAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
@@ -1417,118 +1129,91 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.BadRequest$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetBrowserAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 401, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Unauthorized$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetBrowserAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 403, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Forbidden$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetBrowserAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 404, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.NotFound$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetBrowserAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 409, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Conflict$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetBrowserAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 410, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.InviteExpired$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetBrowserAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 422, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.UnprocessableEntity$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetBrowserAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 429, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.RateLimitExceeded$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetBrowserAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 500, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.InternalServerError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetBrowserAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
@@ -1544,7 +1229,7 @@ export class Analytics extends ClientSDK {
     async os(
         input: operations.GetOSAnalyticsRequest,
         options?: RequestOptions
-    ): Promise<Array<operations.GetOSAnalyticsResponseBody>> {
+    ): Promise<operations.GetOSAnalyticsResponse> {
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
@@ -1570,10 +1255,6 @@ export class Analytics extends ClientSDK {
             }),
             enc$.encodeForm("device", payload$.device, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("domain", payload$.domain, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("excludeRoot", payload$.excludeRoot, {
-                explode: true,
-                charEncoding: "percent",
-            }),
             enc$.encodeForm("interval", payload$.interval, {
                 explode: true,
                 charEncoding: "percent",
@@ -1584,10 +1265,12 @@ export class Analytics extends ClientSDK {
                 explode: true,
                 charEncoding: "percent",
             }),
+            enc$.encodeForm("qr", payload$.qr, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("referer", payload$.referer, {
                 explode: true,
                 charEncoding: "percent",
             }),
+            enc$.encodeForm("root", payload$.root, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("tagId", payload$.tagId, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("url", payload$.url, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("workspaceId", this.options$.workspaceId, {
@@ -1613,22 +1296,7 @@ export class Analytics extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: [
-                "400",
-                "401",
-                "403",
-                "404",
-                "409",
-                "410",
-                "422",
-                "429",
-                "4XX",
-                "500",
-                "5XX",
-            ],
-        };
+        const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {
                 security: securitySettings$,
@@ -1643,21 +1311,12 @@ export class Analytics extends ClientSDK {
 
         const response = await this.do$(request, doOptions);
 
-        const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request,
-            },
-        };
-
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return z
-                        .array(operations.GetOSAnalyticsResponseBody$.inboundSchema)
-                        .parse(val$);
+                    return operations.GetOSAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
@@ -1667,118 +1326,91 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.BadRequest$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetOSAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 401, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Unauthorized$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetOSAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 403, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Forbidden$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetOSAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 404, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.NotFound$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetOSAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 409, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Conflict$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetOSAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 410, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.InviteExpired$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetOSAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 422, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.UnprocessableEntity$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetOSAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 429, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.RateLimitExceeded$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetOSAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 500, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.InternalServerError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetOSAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
@@ -1794,7 +1426,7 @@ export class Analytics extends ClientSDK {
     async referers(
         input: operations.GetRefererAnalyticsRequest,
         options?: RequestOptions
-    ): Promise<Array<operations.GetRefererAnalyticsResponseBody>> {
+    ): Promise<operations.GetRefererAnalyticsResponse> {
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
@@ -1820,10 +1452,6 @@ export class Analytics extends ClientSDK {
             }),
             enc$.encodeForm("device", payload$.device, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("domain", payload$.domain, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("excludeRoot", payload$.excludeRoot, {
-                explode: true,
-                charEncoding: "percent",
-            }),
             enc$.encodeForm("interval", payload$.interval, {
                 explode: true,
                 charEncoding: "percent",
@@ -1834,10 +1462,12 @@ export class Analytics extends ClientSDK {
                 explode: true,
                 charEncoding: "percent",
             }),
+            enc$.encodeForm("qr", payload$.qr, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("referer", payload$.referer, {
                 explode: true,
                 charEncoding: "percent",
             }),
+            enc$.encodeForm("root", payload$.root, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("tagId", payload$.tagId, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("url", payload$.url, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("workspaceId", this.options$.workspaceId, {
@@ -1863,22 +1493,7 @@ export class Analytics extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: [
-                "400",
-                "401",
-                "403",
-                "404",
-                "409",
-                "410",
-                "422",
-                "429",
-                "4XX",
-                "500",
-                "5XX",
-            ],
-        };
+        const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {
                 security: securitySettings$,
@@ -1893,21 +1508,12 @@ export class Analytics extends ClientSDK {
 
         const response = await this.do$(request, doOptions);
 
-        const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request,
-            },
-        };
-
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return z
-                        .array(operations.GetRefererAnalyticsResponseBody$.inboundSchema)
-                        .parse(val$);
+                    return operations.GetRefererAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
@@ -1917,118 +1523,91 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.BadRequest$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetRefererAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 401, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Unauthorized$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetRefererAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 403, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Forbidden$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetRefererAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 404, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.NotFound$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetRefererAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 409, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Conflict$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetRefererAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 410, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.InviteExpired$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetRefererAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 422, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.UnprocessableEntity$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetRefererAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 429, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.RateLimitExceeded$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetRefererAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 500, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.InternalServerError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetRefererAnalyticsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
@@ -2044,7 +1623,7 @@ export class Analytics extends ClientSDK {
     async topLinks(
         input: operations.GetTopLinksRequest,
         options?: RequestOptions
-    ): Promise<Array<operations.GetTopLinksResponseBody>> {
+    ): Promise<operations.GetTopLinksResponse> {
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
@@ -2070,10 +1649,6 @@ export class Analytics extends ClientSDK {
             }),
             enc$.encodeForm("device", payload$.device, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("domain", payload$.domain, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("excludeRoot", payload$.excludeRoot, {
-                explode: true,
-                charEncoding: "percent",
-            }),
             enc$.encodeForm("interval", payload$.interval, {
                 explode: true,
                 charEncoding: "percent",
@@ -2084,10 +1659,12 @@ export class Analytics extends ClientSDK {
                 explode: true,
                 charEncoding: "percent",
             }),
+            enc$.encodeForm("qr", payload$.qr, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("referer", payload$.referer, {
                 explode: true,
                 charEncoding: "percent",
             }),
+            enc$.encodeForm("root", payload$.root, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("tagId", payload$.tagId, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("url", payload$.url, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("workspaceId", this.options$.workspaceId, {
@@ -2113,22 +1690,7 @@ export class Analytics extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: [
-                "400",
-                "401",
-                "403",
-                "404",
-                "409",
-                "410",
-                "422",
-                "429",
-                "4XX",
-                "500",
-                "5XX",
-            ],
-        };
+        const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {
                 security: securitySettings$,
@@ -2143,19 +1705,12 @@ export class Analytics extends ClientSDK {
 
         const response = await this.do$(request, doOptions);
 
-        const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request,
-            },
-        };
-
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return z.array(operations.GetTopLinksResponseBody$.inboundSchema).parse(val$);
+                    return operations.GetTopLinksResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
@@ -2165,118 +1720,91 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.BadRequest$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetTopLinksResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 401, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Unauthorized$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetTopLinksResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 403, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Forbidden$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetTopLinksResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 404, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.NotFound$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetTopLinksResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 409, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Conflict$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetTopLinksResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 410, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.InviteExpired$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetTopLinksResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 422, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.UnprocessableEntity$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetTopLinksResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 429, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.RateLimitExceeded$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetTopLinksResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 500, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.InternalServerError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetTopLinksResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
@@ -2292,7 +1820,7 @@ export class Analytics extends ClientSDK {
     async topUrls(
         input: operations.GetTopURLsRequest,
         options?: RequestOptions
-    ): Promise<Array<operations.GetTopURLsResponseBody>> {
+    ): Promise<operations.GetTopURLsResponse> {
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
@@ -2318,10 +1846,6 @@ export class Analytics extends ClientSDK {
             }),
             enc$.encodeForm("device", payload$.device, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("domain", payload$.domain, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("excludeRoot", payload$.excludeRoot, {
-                explode: true,
-                charEncoding: "percent",
-            }),
             enc$.encodeForm("interval", payload$.interval, {
                 explode: true,
                 charEncoding: "percent",
@@ -2332,10 +1856,12 @@ export class Analytics extends ClientSDK {
                 explode: true,
                 charEncoding: "percent",
             }),
+            enc$.encodeForm("qr", payload$.qr, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("referer", payload$.referer, {
                 explode: true,
                 charEncoding: "percent",
             }),
+            enc$.encodeForm("root", payload$.root, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("tagId", payload$.tagId, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("url", payload$.url, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("workspaceId", this.options$.workspaceId, {
@@ -2361,22 +1887,7 @@ export class Analytics extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: [
-                "400",
-                "401",
-                "403",
-                "404",
-                "409",
-                "410",
-                "422",
-                "429",
-                "4XX",
-                "500",
-                "5XX",
-            ],
-        };
+        const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {
                 security: securitySettings$,
@@ -2391,19 +1902,12 @@ export class Analytics extends ClientSDK {
 
         const response = await this.do$(request, doOptions);
 
-        const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request,
-            },
-        };
-
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return z.array(operations.GetTopURLsResponseBody$.inboundSchema).parse(val$);
+                    return operations.GetTopURLsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
@@ -2413,118 +1917,91 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.BadRequest$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetTopURLsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 401, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Unauthorized$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetTopURLsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 403, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Forbidden$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetTopURLsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 404, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.NotFound$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetTopURLsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 409, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Conflict$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetTopURLsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 410, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.InviteExpired$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetTopURLsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 422, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.UnprocessableEntity$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetTopURLsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 429, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.RateLimitExceeded$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetTopURLsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 500, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.InternalServerError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetTopURLsResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);

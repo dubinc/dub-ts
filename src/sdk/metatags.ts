@@ -42,7 +42,7 @@ export class Metatags extends ClientSDK {
      * Retrieve the metatags for a URL
      *
      * @remarks
-     * Retrieve the metatags for a URL
+     * Retrieve the metatags for a URL.
      */
     async get(
         input: operations.GetMetatagsRequest,
@@ -82,7 +82,7 @@ export class Metatags extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["4XX", "5XX"] };
+        const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {
                 security: securitySettings$,
