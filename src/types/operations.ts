@@ -11,7 +11,7 @@ export type PageIterator<Result> = Result & {
 
 export function createPageIterator<Result>(
   page: Result & { next: Paginator<Result> },
-) {
+): { [Symbol.asyncIterator]: () => AsyncIterableIterator<Result> } {
   return {
     [Symbol.asyncIterator]: async function* paginator() {
       yield page;

@@ -7,7 +7,7 @@
 
 ## get
 
-Retrieve the metatags for a URL
+Retrieve the metatags for a URL.
 
 ### Example Usage
 
@@ -21,7 +21,7 @@ const dub = new Dub({
 
 async function run() {
   const result = await dub.metatags.get({
-    url: "https://brief-micronutrient.org",
+    url: "https://dub.co",
   });
 
   // Handle the result

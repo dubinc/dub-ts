@@ -123,10 +123,10 @@ export type WorkspaceSchema = {
 };
 
 /** @internal */
-export const Plan$ = z.nativeEnum(Plan);
+export const Plan$: z.ZodNativeEnum<typeof Plan> = z.nativeEnum(Plan);
 
 /** @internal */
-export const Role$ = z.nativeEnum(Role);
+export const Role$: z.ZodNativeEnum<typeof Role> = z.nativeEnum(Role);
 
 /** @internal */
 export namespace Users$ {

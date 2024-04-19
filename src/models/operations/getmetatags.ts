@@ -5,6 +5,9 @@
 import * as z from "zod";
 
 export type GetMetatagsRequest = {
+    /**
+     * The URL to retrieve metatags for.
+     */
     url: string;
 };
 
@@ -13,17 +16,17 @@ export type GetMetatagsRequest = {
  */
 export type GetMetatagsResponseBody = {
     /**
-     * The meta title tag for the URL
+     * The meta title tag for the URL.
      */
-    title: string;
+    title: string | null;
     /**
-     * The meta description tag for the URL
+     * The meta description tag for the URL.
      */
-    description: string;
+    description: string | null;
     /**
-     * The OpenGraph image for the URL
+     * The OpenGraph image for the URL.
      */
-    image: string;
+    image: string | null;
 };
 
 /** @internal */
@@ -60,16 +63,16 @@ export namespace GetMetatagsRequest$ {
 /** @internal */
 export namespace GetMetatagsResponseBody$ {
     export type Inbound = {
-        title: string;
-        description: string;
-        image: string;
+        title: string | null;
+        description: string | null;
+        image: string | null;
     };
 
     export const inboundSchema: z.ZodType<GetMetatagsResponseBody, z.ZodTypeDef, Inbound> = z
         .object({
-            title: z.string(),
-            description: z.string(),
-            image: z.string(),
+            title: z.nullable(z.string()),
+            description: z.nullable(z.string()),
+            image: z.nullable(z.string()),
         })
         .transform((v) => {
             return {
@@ -80,16 +83,16 @@ export namespace GetMetatagsResponseBody$ {
         });
 
     export type Outbound = {
-        title: string;
-        description: string;
-        image: string;
+        title: string | null;
+        description: string | null;
+        image: string | null;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetMetatagsResponseBody> = z
         .object({
-            title: z.string(),
-            description: z.string(),
-            image: z.string(),
+            title: z.nullable(z.string()),
+            description: z.nullable(z.string()),
+            image: z.nullable(z.string()),
         })
         .transform((v) => {
             return {

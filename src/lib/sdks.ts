@@ -40,7 +40,7 @@ export class ClientSDK {
         this.client = client;
     }
 
-    protected createRequest$(conf: RequestConfig, options?: RequestOptions) {
+    protected createRequest$(conf: RequestConfig, options?: RequestOptions): Request {
         const { method, path, query, headers: opHeaders, security } = conf;
 
         const base = conf.baseURL ?? this.baseURL;
@@ -109,7 +109,7 @@ export class ClientSDK {
             context: HookContext;
             errorCodes: number | string | (number | string)[];
         }
-    ) {
+    ): Promise<Response> {
         const { context, errorCodes } = options;
 
         let response = await this.client.request(await this.hooks$.beforeRequest(context, req));

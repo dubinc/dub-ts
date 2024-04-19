@@ -4,10 +4,12 @@
 
 const hasOwn = Object.prototype.hasOwnProperty;
 
+export type Params = Partial<Record<string, string | number>>;
+
 export function pathToFunc(
   pathPattern: string,
   options?: { charEncoding?: "percent" | "none" },
-): (params?: Record<string, string | number>) => string {
+): (params?: Params) => string {
   const paramRE = /\{([a-zA-Z0-9_]+?)\}/g;
 
   return function buildURLPath(params: Record<string, unknown> = {}): string {

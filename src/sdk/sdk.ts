@@ -42,37 +42,37 @@ export class Dub extends ClientSDK {
     }
 
     private _links?: Links;
-    get links() {
+    get links(): Links {
         return (this._links ??= new Links(this.options$));
     }
 
     private _qrCodes?: QRCodes;
-    get qrCodes() {
+    get qrCodes(): QRCodes {
         return (this._qrCodes ??= new QRCodes(this.options$));
     }
 
     private _analytics?: Analytics;
-    get analytics() {
+    get analytics(): Analytics {
         return (this._analytics ??= new Analytics(this.options$));
     }
 
     private _workspaces?: Workspaces;
-    get workspaces() {
+    get workspaces(): Workspaces {
         return (this._workspaces ??= new Workspaces(this.options$));
     }
 
     private _tags?: Tags;
-    get tags() {
+    get tags(): Tags {
         return (this._tags ??= new Tags(this.options$));
     }
 
     private _domains?: Domains;
-    get domains() {
+    get domains(): Domains {
         return (this._domains ??= new Domains(this.options$));
     }
 
     private _metatags?: Metatags;
-    get metatags() {
+    get metatags(): Metatags {
         return (this._metatags ??= new Metatags(this.options$));
     }
 }

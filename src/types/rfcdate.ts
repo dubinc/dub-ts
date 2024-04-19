@@ -10,7 +10,7 @@ export class RFCDate {
   /**
    * Creates a new RFCDate instance using today's date.
    */
-  static today() {
+  static today(): RFCDate {
     return new RFCDate(new Date());
   }
 

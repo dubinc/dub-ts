@@ -15,7 +15,7 @@ export function encodeMatrix(
   key: string,
   value: unknown,
   options?: { explode?: boolean; charEncoding?: "percent" | "none" },
-) {
+): string {
   let out = "";
   const pairs: [string, unknown][] = options?.explode
     ? explode(key, value)
@@ -65,7 +65,7 @@ export function encodeLabel(
   key: string,
   value: unknown,
   options?: { explode?: boolean; charEncoding?: "percent" | "none" },
-) {
+): string {
   let out = "";
   const pairs: [string, unknown][] = options?.explode
     ? explode(key, value)
@@ -100,7 +100,13 @@ export function encodeLabel(
   return out;
 }
 
-function formEncoder(sep: string) {
+type FormEncoder = (
+  key: string,
+  value: unknown,
+  options?: { explode?: boolean; charEncoding?: "percent" | "none" },
+) => string;
+
+function formEncoder(sep: string): FormEncoder {
   return (
     key: string,
     value: unknown,
@@ -157,7 +163,7 @@ export function encodeBodyForm(
   key: string,
   value: unknown,
   options?: { explode?: boolean; charEncoding?: "percent" | "none" },
-) {
+): string {
   let out = "";
   const pairs: [string, unknown][] = options?.explode
     ? explode(key, value)
@@ -200,7 +206,7 @@ export function encodeDeepObject(
   key: string,
   value: unknown,
   options?: { charEncoding?: "percent" | "none" },
-) {
+): string {
   if (value == null) {
     return "";
   }
@@ -247,7 +253,7 @@ export function encodeJSON(
   key: string,
   value: unknown,
   options?: { explode?: boolean; charEncoding?: "percent" | "none" },
-) {
+): string {
   if (typeof value === "undefined") {
     return "";
   }
@@ -265,7 +271,7 @@ export const encodeSimple = (
   key: string,
   value: unknown,
   options?: { explode?: boolean; charEncoding?: "percent" | "none" },
-) => {
+): string => {
   let out = "";
   const pairs: [string, unknown][] = options?.explode
     ? explode(key, value)
@@ -337,7 +343,7 @@ function serializeValue(value: unknown): string {
   return `${value}`;
 }
 
-function jsonReplacer(_: string, value: unknown) {
+function jsonReplacer(_: string, value: unknown): unknown {
   if (value instanceof Uint8Array) {
     return bytesToBase64(value);
   } else {

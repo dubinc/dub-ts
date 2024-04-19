@@ -169,7 +169,9 @@ function applyBearer(
 
     state.headers[spec.fieldName] = value;
 }
-export function resolveGlobalSecurity(security: Partial<components.Security> | null | undefined) {
+export function resolveGlobalSecurity(
+    security: Partial<components.Security> | null | undefined
+): SecurityState | null {
     return resolveSecurity([
         {
             fieldName: "Authorization",

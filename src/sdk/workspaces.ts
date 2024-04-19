@@ -8,10 +8,8 @@ import * as enc$ from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
-import * as components from "../models/components";
 import * as errors from "../models/errors";
 import * as operations from "../models/operations";
-import * as z from "zod";
 
 export class Workspaces extends ClientSDK {
     private readonly options$: SDKOptions & { hooks?: SDKHooks };
@@ -46,7 +44,7 @@ export class Workspaces extends ClientSDK {
      * @remarks
      * Retrieve a list of workspaces for the authenticated user.
      */
-    async list(options?: RequestOptions): Promise<Array<components.WorkspaceSchema>> {
+    async list(options?: RequestOptions): Promise<operations.GetWorkspacesResponse> {
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
@@ -70,22 +68,7 @@ export class Workspaces extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: [
-                "400",
-                "401",
-                "403",
-                "404",
-                "409",
-                "410",
-                "422",
-                "429",
-                "4XX",
-                "500",
-                "5XX",
-            ],
-        };
+        const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {
                 security: securitySettings$,
@@ -99,19 +82,12 @@ export class Workspaces extends ClientSDK {
 
         const response = await this.do$(request, doOptions);
 
-        const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request,
-            },
-        };
-
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return z.array(components.WorkspaceSchema$.inboundSchema).parse(val$);
+                    return operations.GetWorkspacesResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
@@ -121,118 +97,91 @@ export class Workspaces extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.BadRequest$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetWorkspacesResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 401, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Unauthorized$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetWorkspacesResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 403, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Forbidden$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetWorkspacesResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 404, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.NotFound$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetWorkspacesResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 409, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Conflict$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetWorkspacesResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 410, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.InviteExpired$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetWorkspacesResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 422, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.UnprocessableEntity$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetWorkspacesResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 429, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.RateLimitExceeded$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetWorkspacesResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 500, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.InternalServerError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetWorkspacesResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
@@ -248,7 +197,7 @@ export class Workspaces extends ClientSDK {
     async create(
         input: operations.CreateWorkspaceRequestBody | undefined,
         options?: RequestOptions
-    ): Promise<components.WorkspaceSchema> {
+    ): Promise<operations.CreateWorkspaceResponse> {
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
@@ -282,22 +231,7 @@ export class Workspaces extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: [
-                "400",
-                "401",
-                "403",
-                "404",
-                "409",
-                "410",
-                "422",
-                "429",
-                "4XX",
-                "500",
-                "5XX",
-            ],
-        };
+        const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {
                 security: securitySettings$,
@@ -312,19 +246,12 @@ export class Workspaces extends ClientSDK {
 
         const response = await this.do$(request, doOptions);
 
-        const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request,
-            },
-        };
-
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return components.WorkspaceSchema$.inboundSchema.parse(val$);
+                    return operations.CreateWorkspaceResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
@@ -334,118 +261,91 @@ export class Workspaces extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.BadRequest$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.CreateWorkspaceResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 401, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Unauthorized$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.CreateWorkspaceResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 403, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Forbidden$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.CreateWorkspaceResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 404, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.NotFound$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.CreateWorkspaceResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 409, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Conflict$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.CreateWorkspaceResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 410, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.InviteExpired$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.CreateWorkspaceResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 422, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.UnprocessableEntity$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.CreateWorkspaceResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 429, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.RateLimitExceeded$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.CreateWorkspaceResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 500, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.InternalServerError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.CreateWorkspaceResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);
@@ -461,7 +361,7 @@ export class Workspaces extends ClientSDK {
     async get(
         input: operations.GetWorkspaceRequest,
         options?: RequestOptions
-    ): Promise<components.WorkspaceSchema> {
+    ): Promise<operations.GetWorkspaceResponse> {
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
@@ -498,22 +398,7 @@ export class Workspaces extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: [
-                "400",
-                "401",
-                "403",
-                "404",
-                "409",
-                "410",
-                "422",
-                "429",
-                "4XX",
-                "500",
-                "5XX",
-            ],
-        };
+        const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {
                 security: securitySettings$,
@@ -528,19 +413,12 @@ export class Workspaces extends ClientSDK {
 
         const response = await this.do$(request, doOptions);
 
-        const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request,
-            },
-        };
-
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return components.WorkspaceSchema$.inboundSchema.parse(val$);
+                    return operations.GetWorkspaceResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
@@ -550,118 +428,91 @@ export class Workspaces extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.BadRequest$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetWorkspaceResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 401, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Unauthorized$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetWorkspaceResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 403, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Forbidden$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetWorkspaceResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 404, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.NotFound$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetWorkspaceResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 409, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.Conflict$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetWorkspaceResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 410, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.InviteExpired$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetWorkspaceResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 422, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.UnprocessableEntity$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetWorkspaceResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 429, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.RateLimitExceeded$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetWorkspaceResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else if (this.matchResponse(response, 500, "application/json")) {
             const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return errors.InternalServerError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
+                    return operations.GetWorkspaceResponse$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
-            throw result;
+            return result;
         } else {
             const responseBody = await response.text();
             throw new errors.SDKError("Unexpected API response", response, responseBody);

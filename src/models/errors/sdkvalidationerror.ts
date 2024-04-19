@@ -17,7 +17,7 @@ export class SDKValidationError extends Error {
     this.rawValue = rawValue;
   }
 
-  public override toString() {
+  public override toString(): string {
     return `${this.message}: ${this.cause}`;
   }
 
@@ -26,7 +26,7 @@ export class SDKValidationError extends Error {
    * is a ZodError or some other recognized error type, otherwise return the
    * default error message.
    */
-  public pretty() {
+  public pretty(): string {
     if (this.cause instanceof z.ZodError) {
       return `${this.message}\n${formatZodError(this.cause)}`;
     } else {
