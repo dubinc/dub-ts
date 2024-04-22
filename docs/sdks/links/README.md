@@ -30,6 +30,7 @@ async function run() {
   tagIds:     [
         "<value>",
       ],
+  tagNames: "<value>",
   });
 
   // Handle the result
@@ -86,6 +87,7 @@ async function run() {
   tagIds:     [
         "clux0rgak00011...",
       ],
+  tagNames: "<value>",
     geo: {},
   });
 
@@ -141,6 +143,7 @@ const dub = new Dub({
 async function run() {
   const result = await dub.links.count({
   tagIds: "<value>",
+  tagNames: "<value>",
   groupBy: One.Domain,
   });
 
@@ -252,6 +255,9 @@ async function run() {
     url: "https://google/com",
   tagIds:     [
         "clux0rgak00011...",
+      ],
+  tagNames:     [
+        "<value>",
       ],
     geo: {},
   };
@@ -366,6 +372,9 @@ async function run() {
       url: "https://google/com",
     tagIds:     [
           "clux0rgak00011...",
+        ],
+    tagNames:     [
+          "<value>",
         ],
       geo: {},
     },

@@ -10,6 +10,11 @@ import * as z from "zod";
 export type TagIds = string | Array<string>;
 
 /**
+ * The unique name of the tags assigned to the short link (case insensitive).
+ */
+export type TagNames = string | Array<string>;
+
+/**
  * Geo targeting information for the short link in JSON format `{[COUNTRY]: https://example.com }`.
  */
 export type Geo = {
@@ -301,6 +306,10 @@ export type CreateLinkRequestBody = {
      */
     tagIds?: string | Array<string> | undefined;
     /**
+     * The unique name of the tags assigned to the short link (case insensitive).
+     */
+    tagNames?: string | Array<string> | undefined;
+    /**
      * The comments for the short link.
      */
     comments?: string | null | undefined;
@@ -360,6 +369,21 @@ export namespace TagIds$ {
         z.array(z.string()),
     ]);
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TagIds> = z.union([
+        z.string(),
+        z.array(z.string()),
+    ]);
+}
+
+/** @internal */
+export namespace TagNames$ {
+    export type Inbound = string | Array<string>;
+
+    export type Outbound = string | Array<string>;
+    export const inboundSchema: z.ZodType<TagNames, z.ZodTypeDef, Inbound> = z.union([
+        z.string(),
+        z.array(z.string()),
+    ]);
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TagNames> = z.union([
         z.string(),
         z.array(z.string()),
     ]);
@@ -1901,6 +1925,7 @@ export namespace CreateLinkRequestBody$ {
         publicStats?: boolean | undefined;
         tagId?: string | null | undefined;
         tagIds?: string | Array<string> | undefined;
+        tagNames?: string | Array<string> | undefined;
         comments?: string | null | undefined;
         expiresAt?: string | null | undefined;
         expiredUrl?: string | null | undefined;
@@ -1925,6 +1950,7 @@ export namespace CreateLinkRequestBody$ {
             publicStats: z.boolean().default(false),
             tagId: z.nullable(z.string()).optional(),
             tagIds: z.union([z.string(), z.array(z.string())]).optional(),
+            tagNames: z.union([z.string(), z.array(z.string())]).optional(),
             comments: z.nullable(z.string()).optional(),
             expiresAt: z.nullable(z.string()).optional(),
             expiredUrl: z.nullable(z.string()).optional(),
@@ -1948,6 +1974,7 @@ export namespace CreateLinkRequestBody$ {
                 publicStats: v.publicStats,
                 ...(v.tagId === undefined ? null : { tagId: v.tagId }),
                 ...(v.tagIds === undefined ? null : { tagIds: v.tagIds }),
+                ...(v.tagNames === undefined ? null : { tagNames: v.tagNames }),
                 ...(v.comments === undefined ? null : { comments: v.comments }),
                 ...(v.expiresAt === undefined ? null : { expiresAt: v.expiresAt }),
                 ...(v.expiredUrl === undefined ? null : { expiredUrl: v.expiredUrl }),
@@ -1972,6 +1999,7 @@ export namespace CreateLinkRequestBody$ {
         publicStats: boolean;
         tagId?: string | null | undefined;
         tagIds?: string | Array<string> | undefined;
+        tagNames?: string | Array<string> | undefined;
         comments?: string | null | undefined;
         expiresAt?: string | null | undefined;
         expiredUrl?: string | null | undefined;
@@ -1996,6 +2024,7 @@ export namespace CreateLinkRequestBody$ {
             publicStats: z.boolean().default(false),
             tagId: z.nullable(z.string()).optional(),
             tagIds: z.union([z.string(), z.array(z.string())]).optional(),
+            tagNames: z.union([z.string(), z.array(z.string())]).optional(),
             comments: z.nullable(z.string()).optional(),
             expiresAt: z.nullable(z.string()).optional(),
             expiredUrl: z.nullable(z.string()).optional(),
@@ -2019,6 +2048,7 @@ export namespace CreateLinkRequestBody$ {
                 publicStats: v.publicStats,
                 ...(v.tagId === undefined ? null : { tagId: v.tagId }),
                 ...(v.tagIds === undefined ? null : { tagIds: v.tagIds }),
+                ...(v.tagNames === undefined ? null : { tagNames: v.tagNames }),
                 ...(v.comments === undefined ? null : { comments: v.comments }),
                 ...(v.expiresAt === undefined ? null : { expiresAt: v.expiresAt }),
                 ...(v.expiredUrl === undefined ? null : { expiredUrl: v.expiredUrl }),

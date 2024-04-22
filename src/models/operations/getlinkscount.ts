@@ -9,6 +9,11 @@ import * as z from "zod";
  */
 export type GetLinksCountQueryParamTagIds = string | Array<string>;
 
+/**
+ * The unique name of the tags assigned to the short link (case insensitive).
+ */
+export type GetLinksCountQueryParamTagNames = string | Array<string>;
+
 export const Two = {
     TagId: "tagId",
 } as const;
@@ -37,6 +42,10 @@ export type GetLinksCountRequest = {
      * The tag IDs to filter the links by.
      */
     tagIds?: string | Array<string> | undefined;
+    /**
+     * The unique name of the tags assigned to the short link (case insensitive).
+     */
+    tagNames?: string | Array<string> | undefined;
     /**
      * The search term to filter the links by. The search term will be matched against the short link slug and the destination url.
      */
@@ -71,6 +80,20 @@ export namespace GetLinksCountQueryParamTagIds$ {
 }
 
 /** @internal */
+export namespace GetLinksCountQueryParamTagNames$ {
+    export type Inbound = string | Array<string>;
+
+    export type Outbound = string | Array<string>;
+    export const inboundSchema: z.ZodType<GetLinksCountQueryParamTagNames, z.ZodTypeDef, Inbound> =
+        z.union([z.string(), z.array(z.string())]);
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        GetLinksCountQueryParamTagNames
+    > = z.union([z.string(), z.array(z.string())]);
+}
+
+/** @internal */
 export const Two$: z.ZodNativeEnum<typeof Two> = z.nativeEnum(Two);
 
 /** @internal */
@@ -91,6 +114,7 @@ export namespace GetLinksCountRequest$ {
         domain?: string | undefined;
         tagId?: string | undefined;
         tagIds?: string | Array<string> | undefined;
+        tagNames?: string | Array<string> | undefined;
         search?: string | undefined;
         userId?: string | undefined;
         showArchived?: boolean | undefined;
@@ -103,6 +127,7 @@ export namespace GetLinksCountRequest$ {
             domain: z.string().optional(),
             tagId: z.string().optional(),
             tagIds: z.union([z.string(), z.array(z.string())]).optional(),
+            tagNames: z.union([z.string(), z.array(z.string())]).optional(),
             search: z.string().optional(),
             userId: z.string().optional(),
             showArchived: z.boolean().default(false),
@@ -114,6 +139,7 @@ export namespace GetLinksCountRequest$ {
                 ...(v.domain === undefined ? null : { domain: v.domain }),
                 ...(v.tagId === undefined ? null : { tagId: v.tagId }),
                 ...(v.tagIds === undefined ? null : { tagIds: v.tagIds }),
+                ...(v.tagNames === undefined ? null : { tagNames: v.tagNames }),
                 ...(v.search === undefined ? null : { search: v.search }),
                 ...(v.userId === undefined ? null : { userId: v.userId }),
                 showArchived: v.showArchived,
@@ -126,6 +152,7 @@ export namespace GetLinksCountRequest$ {
         domain?: string | undefined;
         tagId?: string | undefined;
         tagIds?: string | Array<string> | undefined;
+        tagNames?: string | Array<string> | undefined;
         search?: string | undefined;
         userId?: string | undefined;
         showArchived: boolean;
@@ -138,6 +165,7 @@ export namespace GetLinksCountRequest$ {
             domain: z.string().optional(),
             tagId: z.string().optional(),
             tagIds: z.union([z.string(), z.array(z.string())]).optional(),
+            tagNames: z.union([z.string(), z.array(z.string())]).optional(),
             search: z.string().optional(),
             userId: z.string().optional(),
             showArchived: z.boolean().default(false),
@@ -149,6 +177,7 @@ export namespace GetLinksCountRequest$ {
                 ...(v.domain === undefined ? null : { domain: v.domain }),
                 ...(v.tagId === undefined ? null : { tagId: v.tagId }),
                 ...(v.tagIds === undefined ? null : { tagIds: v.tagIds }),
+                ...(v.tagNames === undefined ? null : { tagNames: v.tagNames }),
                 ...(v.search === undefined ? null : { search: v.search }),
                 ...(v.userId === undefined ? null : { userId: v.userId }),
                 showArchived: v.showArchived,

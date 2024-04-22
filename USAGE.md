@@ -11,6 +11,7 @@ async function run() {
     const result = await dub.links.create({
         url: "https://google/com",
         tagIds: ["clux0rgak00011..."],
+        tagNames: "<value>",
         geo: {},
     });
 

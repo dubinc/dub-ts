@@ -78,6 +78,10 @@ export class Links extends ClientSDK {
             enc$.encodeForm("sort", payload$.sort, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("tagId", payload$.tagId, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("tagIds", payload$.tagIds, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("tagNames", payload$.tagNames, {
+                explode: true,
+                charEncoding: "percent",
+            }),
             enc$.encodeForm("userId", payload$.userId, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("withTags", payload$.withTags, {
                 explode: true,
@@ -536,6 +540,10 @@ export class Links extends ClientSDK {
             }),
             enc$.encodeForm("tagId", payload$.tagId, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("tagIds", payload$.tagIds, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("tagNames", payload$.tagNames, {
+                explode: true,
+                charEncoding: "percent",
+            }),
             enc$.encodeForm("userId", payload$.userId, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("withTags", payload$.withTags, {
                 explode: true,

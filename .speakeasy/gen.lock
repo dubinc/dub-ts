@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: ac1c5d14dce8082823d12ee6e19cced7
+  docChecksum: ee7da4456797f17b6f7c67ca994aedaa
   docVersion: 0.0.1
-  speakeasyVersion: 1.262.0
+  speakeasyVersion: 1.267.0
   generationVersion: 2.312.0
-  releaseVersion: 0.24.1
-  configChecksum: dc858107ccc11c8da5b123cd4e4ec590
+  releaseVersion: 0.24.2
+  configChecksum: c8623ee582aaaaf866509a98018154be
   repoURL: https://github.com/dubinc/dub-node.git
   installationURL: https://github.com/dubinc/dub-node
   published: true
@@ -59,6 +59,7 @@ generatedFiles:
   - src/models/components/linkschema.ts
   - src/models/components/tagschema.ts
   - src/models/components/workspaceschema.ts
+  - src/models/components/domainschema.ts
   - src/models/components/security.ts
   - src/models/errors/badrequest.ts
   - src/models/errors/unauthorized.ts
@@ -110,6 +111,8 @@ generatedFiles:
   - docs/models/components/users.md
   - docs/models/components/domains.md
   - docs/models/components/workspaceschema.md
+  - docs/models/components/type.md
+  - docs/models/components/domainschema.md
   - docs/models/components/security.md
   - docs/models/errors/code.md
   - docs/models/errors/errort.md
@@ -139,24 +142,29 @@ generatedFiles:
   - docs/models/errors/internalservererrorerror.md
   - docs/models/errors/internalservererror.md
   - docs/models/operations/queryparamtagids.md
+  - docs/models/operations/queryparamtagnames.md
   - docs/models/operations/sort.md
   - docs/models/operations/getlinksrequest.md
   - docs/models/operations/tagids.md
+  - docs/models/operations/tagnames.md
   - docs/models/operations/geo.md
   - docs/models/operations/createlinkrequestbody.md
   - docs/models/operations/getlinkscountqueryparamtagids.md
+  - docs/models/operations/getlinkscountqueryparamtagnames.md
   - docs/models/operations/two.md
   - docs/models/operations/one.md
   - docs/models/operations/groupby.md
   - docs/models/operations/getlinkscountrequest.md
   - docs/models/operations/getlinkinforequest.md
   - docs/models/operations/editlinktagids.md
+  - docs/models/operations/editlinktagnames.md
   - docs/models/operations/editlinkgeo.md
   - docs/models/operations/editlinkrequestbody.md
   - docs/models/operations/editlinkrequest.md
   - docs/models/operations/deletelinkrequest.md
   - docs/models/operations/deletelinkresponsebody.md
   - docs/models/operations/bulkcreatelinkstagids.md
+  - docs/models/operations/bulkcreatelinkstagnames.md
   - docs/models/operations/bulkcreatelinksgeo.md
   - docs/models/operations/requestbody.md
   - docs/models/operations/level.md
@@ -208,26 +216,16 @@ generatedFiles:
   - docs/models/operations/color.md
   - docs/models/operations/createtagrequestbody.md
   - docs/models/operations/listdomainsrequest.md
-  - docs/models/operations/listdomainstype.md
-  - docs/models/operations/listdomainsresponsebody.md
   - docs/models/operations/type.md
   - docs/models/operations/adddomainrequestbody.md
-  - docs/models/operations/adddomaintype.md
-  - docs/models/operations/adddomainresponsebody.md
   - docs/models/operations/deletedomainrequest.md
   - docs/models/operations/deletedomainresponsebody.md
   - docs/models/operations/editdomaintype.md
   - docs/models/operations/editdomainrequestbody.md
   - docs/models/operations/editdomainrequest.md
-  - docs/models/operations/editdomaindomainstype.md
-  - docs/models/operations/editdomainresponsebody.md
   - docs/models/operations/setprimarydomainrequest.md
-  - docs/models/operations/setprimarydomaintype.md
-  - docs/models/operations/setprimarydomainresponsebody.md
   - docs/models/operations/transferdomainrequestbody.md
   - docs/models/operations/transferdomainrequest.md
-  - docs/models/operations/transferdomaintype.md
-  - docs/models/operations/transferdomainresponsebody.md
   - docs/models/operations/getmetatagsrequest.md
   - docs/models/operations/getmetatagsresponsebody.md
   - docs/sdks/dub/README.md

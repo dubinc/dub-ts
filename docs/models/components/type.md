@@ -1,4 +1,4 @@
-# AddDomainType
+# Type
 
 The type of redirect to use for this domain.
 
