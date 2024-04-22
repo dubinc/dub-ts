@@ -8,6 +8,7 @@ import * as enc$ from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
+import * as components from "../models/components";
 import * as errors from "../models/errors";
 import * as operations from "../models/operations";
 import * as z from "zod";
@@ -48,7 +49,7 @@ export class Domains extends ClientSDK {
     async list(
         _input: operations.ListDomainsRequest,
         options?: RequestOptions
-    ): Promise<Array<operations.ListDomainsResponseBody>> {
+    ): Promise<Array<components.DomainSchema>> {
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
@@ -124,7 +125,7 @@ export class Domains extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return z.array(operations.ListDomainsResponseBody$.inboundSchema).parse(val$);
+                    return z.array(components.DomainSchema$.inboundSchema).parse(val$);
                 },
                 "Response validation failed"
             );
@@ -261,7 +262,7 @@ export class Domains extends ClientSDK {
     async add(
         input: operations.AddDomainRequestBody | undefined,
         options?: RequestOptions
-    ): Promise<operations.AddDomainResponseBody> {
+    ): Promise<components.DomainSchema> {
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
@@ -347,7 +348,7 @@ export class Domains extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return operations.AddDomainResponseBody$.inboundSchema.parse(val$);
+                    return components.DomainSchema$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
@@ -712,7 +713,7 @@ export class Domains extends ClientSDK {
         slug: string,
         requestBody?: operations.EditDomainRequestBody | undefined,
         options?: RequestOptions
-    ): Promise<operations.EditDomainResponseBody> {
+    ): Promise<components.DomainSchema> {
         const input$: operations.EditDomainRequest = {
             slug: slug,
             requestBody: requestBody,
@@ -807,7 +808,7 @@ export class Domains extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return operations.EditDomainResponseBody$.inboundSchema.parse(val$);
+                    return components.DomainSchema$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
@@ -944,7 +945,7 @@ export class Domains extends ClientSDK {
     async setPrimary(
         input: operations.SetPrimaryDomainRequest,
         options?: RequestOptions
-    ): Promise<operations.SetPrimaryDomainResponseBody> {
+    ): Promise<components.DomainSchema> {
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
@@ -1034,7 +1035,7 @@ export class Domains extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return operations.SetPrimaryDomainResponseBody$.inboundSchema.parse(val$);
+                    return components.DomainSchema$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
@@ -1172,7 +1173,7 @@ export class Domains extends ClientSDK {
         slug: string,
         requestBody?: operations.TransferDomainRequestBody | undefined,
         options?: RequestOptions
-    ): Promise<operations.TransferDomainResponseBody> {
+    ): Promise<components.DomainSchema> {
         const input$: operations.TransferDomainRequest = {
             slug: slug,
             requestBody: requestBody,
@@ -1267,7 +1268,7 @@ export class Domains extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return operations.TransferDomainResponseBody$.inboundSchema.parse(val$);
+                    return components.DomainSchema$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );

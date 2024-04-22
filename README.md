@@ -48,6 +48,7 @@ async function run() {
     const result = await dub.links.create({
         url: "https://google/com",
         tagIds: ["clux0rgak00011..."],
+        tagNames: "<value>",
         geo: {},
     });
 
@@ -150,6 +151,7 @@ async function run() {
     try {
         result = await dub.links.list({
             tagIds: ["<value>"],
+            tagNames: "<value>",
         });
     } catch (err) {
         switch (true) {
@@ -234,6 +236,7 @@ const dub = new Dub({
 async function run() {
     const result = await dub.links.list({
         tagIds: ["<value>"],
+        tagNames: "<value>",
     });
 
     // Handle the result
@@ -261,6 +264,7 @@ const dub = new Dub({
 async function run() {
     const result = await dub.links.list({
         tagIds: ["<value>"],
+        tagNames: "<value>",
     });
 
     // Handle the result
@@ -344,6 +348,7 @@ const dub = new Dub({
 async function run() {
     const result = await dub.links.list({
         tagIds: ["<value>"],
+        tagNames: "<value>",
     });
 
     // Handle the result

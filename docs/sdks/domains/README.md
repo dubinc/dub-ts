@@ -45,7 +45,7 @@ run();
 
 ### Response
 
-**Promise<[operations.ListDomainsResponseBody[]](../../models/.md)>**
+**Promise<[components.DomainSchema[]](../../models/.md)>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -104,7 +104,7 @@ run();
 
 ### Response
 
-**Promise<[operations.AddDomainResponseBody](../../models/operations/adddomainresponsebody.md)>**
+**Promise<[components.DomainSchema](../../models/components/domainschema.md)>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -220,7 +220,7 @@ run();
 
 ### Response
 
-**Promise<[operations.EditDomainResponseBody](../../models/operations/editdomainresponsebody.md)>**
+**Promise<[components.DomainSchema](../../models/components/domainschema.md)>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -273,7 +273,7 @@ run();
 
 ### Response
 
-**Promise<[operations.SetPrimaryDomainResponseBody](../../models/operations/setprimarydomainresponsebody.md)>**
+**Promise<[components.DomainSchema](../../models/components/domainschema.md)>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -330,7 +330,7 @@ run();
 
 ### Response
 
-**Promise<[operations.TransferDomainResponseBody](../../models/operations/transferdomainresponsebody.md)>**
+**Promise<[components.DomainSchema](../../models/components/domainschema.md)>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
