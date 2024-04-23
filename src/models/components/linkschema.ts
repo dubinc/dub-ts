@@ -275,6 +275,10 @@ export type LinkSchema = {
      */
     key: string;
     /**
+     * This is the ID of the link in your database. If set, it can be used to identify the link in the future. Must be prefixed with 'ext_' when passed as a query parameter.
+     */
+    externalId: string | null;
+    /**
      * The destination URL of the short link.
      */
     url: string;
@@ -1935,6 +1939,7 @@ export namespace LinkSchema$ {
         id: string;
         domain: string;
         key: string;
+        externalId: string | null;
         url: string;
         archived?: boolean | undefined;
         expiresAt: string | null;
@@ -1973,6 +1978,7 @@ export namespace LinkSchema$ {
             id: z.string(),
             domain: z.string(),
             key: z.string(),
+            externalId: z.nullable(z.string()),
             url: z.string(),
             archived: z.boolean().default(false),
             expiresAt: z.nullable(
@@ -2015,6 +2021,7 @@ export namespace LinkSchema$ {
                 id: v.id,
                 domain: v.domain,
                 key: v.key,
+                externalId: v.externalId,
                 url: v.url,
                 archived: v.archived,
                 expiresAt: v.expiresAt,
@@ -2053,6 +2060,7 @@ export namespace LinkSchema$ {
         id: string;
         domain: string;
         key: string;
+        externalId: string | null;
         url: string;
         archived: boolean;
         expiresAt: string | null;
@@ -2091,6 +2099,7 @@ export namespace LinkSchema$ {
             id: z.string(),
             domain: z.string(),
             key: z.string(),
+            externalId: z.nullable(z.string()),
             url: z.string(),
             archived: z.boolean().default(false),
             expiresAt: z.nullable(z.date().transform((v) => v.toISOString())),
@@ -2128,6 +2137,7 @@ export namespace LinkSchema$ {
                 id: v.id,
                 domain: v.domain,
                 key: v.key,
+                externalId: v.externalId,
                 url: v.url,
                 archived: v.archived,
                 expiresAt: v.expiresAt,

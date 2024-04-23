@@ -272,6 +272,10 @@ export type Geo = {
 
 export type CreateLinkRequestBody = {
     /**
+     * The destination URL of the short link.
+     */
+    url: string;
+    /**
      * The domain of the short link. If not provided, the primary domain for the workspace will be used (or `dub.sh` if the workspace has no domains).
      */
     domain?: string | undefined;
@@ -280,13 +284,13 @@ export type CreateLinkRequestBody = {
      */
     key?: string | undefined;
     /**
+     * This is the ID of the link in your database. If set, it can be used to identify the link in the future. Must be prefixed with 'ext_' when passed as a query parameter.
+     */
+    externalId?: string | null | undefined;
+    /**
      * The prefix of the short link slug for randomly-generated keys (e.g. if prefix is `/c/`, generated keys will be in the `/c/:key` format). Will be ignored if `key` is provided.
      */
     prefix?: string | undefined;
-    /**
-     * The destination URL of the short link.
-     */
-    url: string;
     /**
      * Whether the short link is archived.
      */
@@ -1917,10 +1921,11 @@ export namespace Geo$ {
 /** @internal */
 export namespace CreateLinkRequestBody$ {
     export type Inbound = {
+        url: string;
         domain?: string | undefined;
         key?: string | undefined;
+        externalId?: string | null | undefined;
         prefix?: string | undefined;
-        url: string;
         archived?: boolean | undefined;
         publicStats?: boolean | undefined;
         tagId?: string | null | undefined;
@@ -1942,10 +1947,11 @@ export namespace CreateLinkRequestBody$ {
 
     export const inboundSchema: z.ZodType<CreateLinkRequestBody, z.ZodTypeDef, Inbound> = z
         .object({
+            url: z.string(),
             domain: z.string().optional(),
             key: z.string().optional(),
+            externalId: z.nullable(z.string()).optional(),
             prefix: z.string().optional(),
-            url: z.string(),
             archived: z.boolean().default(false),
             publicStats: z.boolean().default(false),
             tagId: z.nullable(z.string()).optional(),
@@ -1966,10 +1972,11 @@ export namespace CreateLinkRequestBody$ {
         })
         .transform((v) => {
             return {
+                url: v.url,
                 ...(v.domain === undefined ? null : { domain: v.domain }),
                 ...(v.key === undefined ? null : { key: v.key }),
+                ...(v.externalId === undefined ? null : { externalId: v.externalId }),
                 ...(v.prefix === undefined ? null : { prefix: v.prefix }),
-                url: v.url,
                 archived: v.archived,
                 publicStats: v.publicStats,
                 ...(v.tagId === undefined ? null : { tagId: v.tagId }),
@@ -1991,10 +1998,11 @@ export namespace CreateLinkRequestBody$ {
         });
 
     export type Outbound = {
+        url: string;
         domain?: string | undefined;
         key?: string | undefined;
+        externalId?: string | null | undefined;
         prefix?: string | undefined;
-        url: string;
         archived: boolean;
         publicStats: boolean;
         tagId?: string | null | undefined;
@@ -2016,10 +2024,11 @@ export namespace CreateLinkRequestBody$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateLinkRequestBody> = z
         .object({
+            url: z.string(),
             domain: z.string().optional(),
             key: z.string().optional(),
+            externalId: z.nullable(z.string()).optional(),
             prefix: z.string().optional(),
-            url: z.string(),
             archived: z.boolean().default(false),
             publicStats: z.boolean().default(false),
             tagId: z.nullable(z.string()).optional(),
@@ -2040,10 +2049,11 @@ export namespace CreateLinkRequestBody$ {
         })
         .transform((v) => {
             return {
+                url: v.url,
                 ...(v.domain === undefined ? null : { domain: v.domain }),
                 ...(v.key === undefined ? null : { key: v.key }),
+                ...(v.externalId === undefined ? null : { externalId: v.externalId }),
                 ...(v.prefix === undefined ? null : { prefix: v.prefix }),
-                url: v.url,
                 archived: v.archived,
                 publicStats: v.publicStats,
                 ...(v.tagId === undefined ? null : { tagId: v.tagId }),
