@@ -120,6 +120,10 @@ export type WorkspaceSchema = {
      * The domains of the workspace.
      */
     domains: Array<Domains>;
+    /**
+     * The invite code of the workspace.
+     */
+    inviteCode: string | null;
 };
 
 /** @internal */
@@ -216,6 +220,7 @@ export namespace WorkspaceSchema$ {
         createdAt: string;
         users: Array<Users$.Inbound>;
         domains: Array<Domains$.Inbound>;
+        inviteCode: string | null;
     };
 
     export const inboundSchema: z.ZodType<WorkspaceSchema, z.ZodTypeDef, Inbound> = z
@@ -237,6 +242,7 @@ export namespace WorkspaceSchema$ {
             createdAt: z.string(),
             users: z.array(z.lazy(() => Users$.inboundSchema)),
             domains: z.array(z.lazy(() => Domains$.inboundSchema)),
+            inviteCode: z.nullable(z.string()),
         })
         .transform((v) => {
             return {
@@ -257,6 +263,7 @@ export namespace WorkspaceSchema$ {
                 createdAt: v.createdAt,
                 users: v.users,
                 domains: v.domains,
+                inviteCode: v.inviteCode,
             };
         });
 
@@ -278,6 +285,7 @@ export namespace WorkspaceSchema$ {
         createdAt: string;
         users: Array<Users$.Outbound>;
         domains: Array<Domains$.Outbound>;
+        inviteCode: string | null;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WorkspaceSchema> = z
@@ -299,6 +307,7 @@ export namespace WorkspaceSchema$ {
             createdAt: z.string(),
             users: z.array(z.lazy(() => Users$.outboundSchema)),
             domains: z.array(z.lazy(() => Domains$.outboundSchema)),
+            inviteCode: z.nullable(z.string()),
         })
         .transform((v) => {
             return {
@@ -319,6 +328,7 @@ export namespace WorkspaceSchema$ {
                 createdAt: v.createdAt,
                 users: v.users,
                 domains: v.domains,
+                inviteCode: v.inviteCode,
             };
         });
 }
