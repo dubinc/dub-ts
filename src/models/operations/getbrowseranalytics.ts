@@ -292,6 +292,14 @@ export type GetBrowserAnalyticsRequest = {
      */
     key?: string | undefined;
     /**
+     * The unique ID of the short link on Dub.
+     */
+    linkId?: string | undefined;
+    /**
+     * This is the ID of the link in the your database. Must be prefixed with 'ext_' when passed as a query parameter.
+     */
+    externalId?: string | undefined;
+    /**
      * The interval to retrieve analytics for.
      */
     interval?: GetBrowserAnalyticsQueryParamInterval | undefined;
@@ -363,6 +371,8 @@ export namespace GetBrowserAnalyticsRequest$ {
     export type Inbound = {
         domain?: string | undefined;
         key?: string | undefined;
+        linkId?: string | undefined;
+        externalId?: string | undefined;
         interval?: GetBrowserAnalyticsQueryParamInterval | undefined;
         country?: GetBrowserAnalyticsQueryParamCountry | undefined;
         city?: string | undefined;
@@ -380,6 +390,8 @@ export namespace GetBrowserAnalyticsRequest$ {
         .object({
             domain: z.string().optional(),
             key: z.string().optional(),
+            linkId: z.string().optional(),
+            externalId: z.string().optional(),
             interval: GetBrowserAnalyticsQueryParamInterval$.optional(),
             country: GetBrowserAnalyticsQueryParamCountry$.optional(),
             city: z.string().optional(),
@@ -396,6 +408,8 @@ export namespace GetBrowserAnalyticsRequest$ {
             return {
                 ...(v.domain === undefined ? null : { domain: v.domain }),
                 ...(v.key === undefined ? null : { key: v.key }),
+                ...(v.linkId === undefined ? null : { linkId: v.linkId }),
+                ...(v.externalId === undefined ? null : { externalId: v.externalId }),
                 ...(v.interval === undefined ? null : { interval: v.interval }),
                 ...(v.country === undefined ? null : { country: v.country }),
                 ...(v.city === undefined ? null : { city: v.city }),
@@ -413,6 +427,8 @@ export namespace GetBrowserAnalyticsRequest$ {
     export type Outbound = {
         domain?: string | undefined;
         key?: string | undefined;
+        linkId?: string | undefined;
+        externalId?: string | undefined;
         interval?: GetBrowserAnalyticsQueryParamInterval | undefined;
         country?: GetBrowserAnalyticsQueryParamCountry | undefined;
         city?: string | undefined;
@@ -430,6 +446,8 @@ export namespace GetBrowserAnalyticsRequest$ {
         .object({
             domain: z.string().optional(),
             key: z.string().optional(),
+            linkId: z.string().optional(),
+            externalId: z.string().optional(),
             interval: GetBrowserAnalyticsQueryParamInterval$.optional(),
             country: GetBrowserAnalyticsQueryParamCountry$.optional(),
             city: z.string().optional(),
@@ -446,6 +464,8 @@ export namespace GetBrowserAnalyticsRequest$ {
             return {
                 ...(v.domain === undefined ? null : { domain: v.domain }),
                 ...(v.key === undefined ? null : { key: v.key }),
+                ...(v.linkId === undefined ? null : { linkId: v.linkId }),
+                ...(v.externalId === undefined ? null : { externalId: v.externalId }),
                 ...(v.interval === undefined ? null : { interval: v.interval }),
                 ...(v.country === undefined ? null : { country: v.country }),
                 ...(v.city === undefined ? null : { city: v.city }),
