@@ -9,7 +9,7 @@ targets:
         target: typescript
         source: my-first-source
         codeSamples:
-          output: codeSamples.yaml
+          output: codeSamples.json
         publish:
             npm:
                 token: $npm_token
