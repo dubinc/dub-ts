@@ -1,4 +1,4 @@
-speakeasyVersion: 1.272.0
+speakeasyVersion: 1.272.2
 sources:
     my-first-source: {}
 targets:
@@ -19,3 +19,5 @@ workflow:
             publish:
                 npm:
                     token: $npm_token
+            codeSamples:
+                output: codeSamples.yaml
