@@ -480,18 +480,21 @@ export class Domains extends ClientSDK {
      * Delete a domain
      *
      * @remarks
-     * Delete a domain from a workspace.
+     * Delete a domain from a workspace. It cannot be undone. This will also delete all the links associated with the domain.
      */
     async delete(
-        input: operations.DeleteDomainRequest,
+        slug: string,
         options?: RequestOptions
     ): Promise<operations.DeleteDomainResponseBody> {
+        const input$: operations.DeleteDomainRequest = {
+            slug: slug,
+        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.DeleteDomainRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -942,16 +945,16 @@ export class Domains extends ClientSDK {
      * @remarks
      * Set a domain as primary for the authenticated workspace.
      */
-    async setPrimary(
-        input: operations.SetPrimaryDomainRequest,
-        options?: RequestOptions
-    ): Promise<components.DomainSchema> {
+    async setPrimary(slug: string, options?: RequestOptions): Promise<components.DomainSchema> {
+        const input$: operations.SetPrimaryDomainRequest = {
+            slug: slug,
+        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.SetPrimaryDomainRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
