@@ -10,10 +10,6 @@ const dub = new Dub({
 async function run() {
     const result = await dub.links.create({
         url: "https://google/com",
-        externalId: "123456",
-        tagIds: ["clux0rgak00011..."],
-        tagNames: "<value>",
-        geo: {},
     });
 
     // Handle the result

@@ -47,10 +47,6 @@ const dub = new Dub({
 async function run() {
     const result = await dub.links.create({
         url: "https://google/com",
-        externalId: "123456",
-        tagIds: ["clux0rgak00011..."],
-        tagNames: "<value>",
-        geo: {},
     });
 
     // Handle the result
@@ -150,10 +146,7 @@ const dub = new Dub({
 async function run() {
     let result;
     try {
-        result = await dub.links.list({
-            tagIds: ["<value>"],
-            tagNames: "<value>",
-        });
+        result = await dub.links.list({});
     } catch (err) {
         switch (true) {
             case err instanceof errors.SDKValidationError: {
@@ -235,10 +228,7 @@ const dub = new Dub({
 });
 
 async function run() {
-    const result = await dub.links.list({
-        tagIds: ["<value>"],
-        tagNames: "<value>",
-    });
+    const result = await dub.links.list({});
 
     // Handle the result
     console.log(result);
@@ -263,10 +253,7 @@ const dub = new Dub({
 });
 
 async function run() {
-    const result = await dub.links.list({
-        tagIds: ["<value>"],
-        tagNames: "<value>",
-    });
+    const result = await dub.links.list({});
 
     // Handle the result
     console.log(result);
@@ -347,10 +334,7 @@ const dub = new Dub({
 });
 
 async function run() {
-    const result = await dub.links.list({
-        tagIds: ["<value>"],
-        tagNames: "<value>",
-    });
+    const result = await dub.links.list({});
 
     // Handle the result
     console.log(result);
