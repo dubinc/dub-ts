@@ -3,7 +3,7 @@ generation:
   sdkClassName: dub
   maintainOpenAPIOrder: true
   usageSnippets:
-    optionalPropertyRendering: withExample
+    optionalPropertyRendering: never
   useClassNamesForArrayFields: true
   fixes:
     nameResolutionDec2023: true
