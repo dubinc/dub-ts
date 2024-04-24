@@ -26,12 +26,7 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.links.list({
-  tagIds:     [
-        "<value>",
-      ],
-  tagNames: "<value>",
-  });
+  const result = await dub.links.list({});
 
   // Handle the result
   console.log(result)
@@ -84,12 +79,6 @@ const dub = new Dub({
 async function run() {
   const result = await dub.links.create({
     url: "https://google/com",
-    externalId: "123456",
-  tagIds:     [
-        "clux0rgak00011...",
-      ],
-  tagNames: "<value>",
-    geo: {},
   });
 
   // Handle the result
@@ -134,7 +123,6 @@ Retrieve the number of links for the authenticated workspace. The provided query
 
 ```typescript
 import { Dub } from "dub";
-import { One } from "dub/models/operations";
 
 const dub = new Dub({
   token: "DUB_API_KEY",
@@ -142,11 +130,7 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.links.count({
-  tagIds: "<value>",
-  tagNames: "<value>",
-  groupBy: One.Domain,
-  });
+  const result = await dub.links.count({});
 
   // Handle the result
   console.log(result)
@@ -254,14 +238,6 @@ async function run() {
   const linkId = "<value>";
   const requestBody = {
     url: "https://google/com",
-    externalId: "123456",
-  tagIds:     [
-        "clux0rgak00011...",
-      ],
-  tagNames:     [
-        "<value>",
-      ],
-    geo: {},
   };
   
   const result = await dub.links.update(linkId, requestBody);
@@ -372,14 +348,6 @@ async function run() {
   const result = await dub.links.createMany([
     {
       url: "https://google/com",
-      externalId: "123456",
-    tagIds:     [
-          "clux0rgak00011...",
-        ],
-    tagNames:     [
-          "<value>",
-        ],
-      geo: {},
     },
   ]);
 

@@ -69,7 +69,6 @@ Add a domain to the authenticated workspace.
 
 ```typescript
 import { Dub } from "dub";
-import { Type } from "dub/models/operations";
 
 const dub = new Dub({
   token: "DUB_API_KEY",
@@ -79,11 +78,6 @@ const dub = new Dub({
 async function run() {
   const result = await dub.domains.add({
     slug: "acme.com",
-    type: Type.Redirect,
-    target: "https://acme.com/landing",
-    expiredUrl: "https://acme.com/expired",
-    archived: false,
-    placeholder: "https://dub.co/help/article/what-is-dub",
   });
 
   // Handle the result
@@ -181,7 +175,6 @@ Edit a domain for the authenticated workspace.
 
 ```typescript
 import { Dub } from "dub";
-import { EditDomainType } from "dub/models/operations";
 
 const dub = new Dub({
   token: "DUB_API_KEY",
@@ -190,14 +183,7 @@ const dub = new Dub({
 
 async function run() {
   const slug = "acme.com";
-  const requestBody = {
-    slug: "acme.com",
-    type: EditDomainType.Redirect,
-    target: "https://acme.com/landing",
-    expiredUrl: "https://acme.com/expired",
-    archived: false,
-    placeholder: "https://dub.co/help/article/what-is-dub",
-  };
+  const requestBody = {};
   
   const result = await dub.domains.update(slug, requestBody);
 
