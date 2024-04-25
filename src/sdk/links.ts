@@ -127,6 +127,7 @@ export class Links extends ClientSDK {
             ],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -350,6 +351,7 @@ export class Links extends ClientSDK {
             ],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "POST",
@@ -589,6 +591,7 @@ export class Links extends ClientSDK {
             ],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -812,6 +815,7 @@ export class Links extends ClientSDK {
             ],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -1045,6 +1049,7 @@ export class Links extends ClientSDK {
             ],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "PUT",
@@ -1275,6 +1280,7 @@ export class Links extends ClientSDK {
             ],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "DELETE",
@@ -1498,6 +1504,7 @@ export class Links extends ClientSDK {
             ],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "POST",

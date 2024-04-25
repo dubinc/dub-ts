@@ -121,6 +121,7 @@ export class QRCodes extends ClientSDK {
             ],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",

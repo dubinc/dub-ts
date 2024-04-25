@@ -101,6 +101,7 @@ export class Domains extends ClientSDK {
             ],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -323,6 +324,7 @@ export class Domains extends ClientSDK {
             ],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "POST",
@@ -553,6 +555,7 @@ export class Domains extends ClientSDK {
             ],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "DELETE",
@@ -786,6 +789,7 @@ export class Domains extends ClientSDK {
             ],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "PATCH",
@@ -1013,6 +1017,7 @@ export class Domains extends ClientSDK {
             ],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "POST",
@@ -1246,6 +1251,7 @@ export class Domains extends ClientSDK {
             ],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "POST",
