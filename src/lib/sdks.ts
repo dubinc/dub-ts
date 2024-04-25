@@ -40,7 +40,11 @@ export class ClientSDK {
         this.client = client;
     }
 
-    protected createRequest$(conf: RequestConfig, options?: RequestOptions): Request {
+    protected createRequest$(
+        context: HookContext,
+        conf: RequestConfig,
+        options?: RequestOptions
+    ): Request {
         const { method, path, query, headers: opHeaders, security } = conf;
 
         const base = conf.baseURL ?? this.baseURL;
@@ -95,12 +99,17 @@ export class ClientSDK {
             headers.set(k, v);
         }
 
-        return new Request(reqURL, {
-            ...options?.fetchOptions,
-            body: conf.body ?? null,
-            headers,
-            method,
+        const input = this.hooks$.beforeCreateRequest(context, {
+            url: reqURL,
+            options: {
+                ...options?.fetchOptions,
+                body: conf.body ?? null,
+                headers,
+                method,
+            },
         });
+
+        return new Request(input.url, input.options);
     }
 
     protected async do$(

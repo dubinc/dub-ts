@@ -137,6 +137,7 @@ export class Analytics extends ClientSDK {
             ],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -388,6 +389,7 @@ export class Analytics extends ClientSDK {
             ],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -639,6 +641,7 @@ export class Analytics extends ClientSDK {
             ],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -892,6 +895,7 @@ export class Analytics extends ClientSDK {
             ],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -1145,6 +1149,7 @@ export class Analytics extends ClientSDK {
             ],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -1398,6 +1403,7 @@ export class Analytics extends ClientSDK {
             ],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -1651,6 +1657,7 @@ export class Analytics extends ClientSDK {
             ],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -1904,6 +1911,7 @@ export class Analytics extends ClientSDK {
             ],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -2157,6 +2165,7 @@ export class Analytics extends ClientSDK {
             ],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -2408,6 +2417,7 @@ export class Analytics extends ClientSDK {
             ],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",

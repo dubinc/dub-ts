@@ -101,6 +101,7 @@ export class Tags extends ClientSDK {
             ],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -323,6 +324,7 @@ export class Tags extends ClientSDK {
             ],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "POST",

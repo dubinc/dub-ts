@@ -11,6 +11,17 @@ export type Awaitable<T> = T | Promise<T>;
 
 const DEFAULT_FETCHER: Fetcher = (input, init) => fetch(input, init);
 
+export type RequestInput = {
+  /**
+   * The URL the request will use.
+   */
+  url: URL;
+  /**
+   * Options used to create a [`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request).
+   */
+  options?: RequestInit | undefined;
+};
+
 export interface HTTPClientOptions {
   fetcher?: Fetcher;
 }

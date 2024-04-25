@@ -84,6 +84,7 @@ export class Metatags extends ClientSDK {
 
         const doOptions = { context, errorCodes: ["4XX", "5XX"] };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
