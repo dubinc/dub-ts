@@ -284,7 +284,7 @@ export type EditLinkRequestBody = {
      */
     key?: string | undefined;
     /**
-     * This is the ID of the link in your database. If set, it can be used to identify the link in the future. Must be prefixed with 'ext_' when passed as a query parameter.
+     * This is the ID of the link in your database. If set, it can be used to identify the link in the future. Must be prefixed with `ext_` when passed as a query parameter.
      */
     externalId?: string | null | undefined;
     /**
@@ -365,7 +365,7 @@ export type EditLinkRequestBody = {
 
 export type EditLinkRequest = {
     /**
-     * The id of the link to edit. You can get this via the `getLinkInfo` endpoint.
+     * The id of the link to edit. You may use either `linkId` (obtained via `/links/info` endpoint) or `externalId` prefixed with `ext_`.
      */
     linkId: string;
     requestBody?: EditLinkRequestBody | undefined;
