@@ -4,12 +4,14 @@ sources:
     my-first-source:
         inputs:
             - location: https://api.dub.co
+        registry:
+            location: registry.speakeasyapi.dev/dub/dub/my-first-source
 targets:
     my-first-target:
         target: typescript
         source: my-first-source
-        codeSamples:
-          output: codeSamples.yaml
         publish:
             npm:
                 token: $npm_token
+        codeSamples:
+            output: codeSamples.yaml
