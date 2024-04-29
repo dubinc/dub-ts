@@ -18,6 +18,10 @@ export type Type = (typeof Type)[keyof typeof Type];
 
 export type DomainSchema = {
     /**
+     * The unique identifier of the domain.
+     */
+    id: string;
+    /**
      * The domain name.
      */
     slug: string;
@@ -61,6 +65,7 @@ export const Type$: z.ZodNativeEnum<typeof Type> = z.nativeEnum(Type);
 /** @internal */
 export namespace DomainSchema$ {
     export type Inbound = {
+        id: string;
         slug: string;
         verified?: boolean | undefined;
         primary?: boolean | undefined;
@@ -74,6 +79,7 @@ export namespace DomainSchema$ {
 
     export const inboundSchema: z.ZodType<DomainSchema, z.ZodTypeDef, Inbound> = z
         .object({
+            id: z.string(),
             slug: z.string(),
             verified: z.boolean().default(false),
             primary: z.boolean().default(false),
@@ -86,6 +92,7 @@ export namespace DomainSchema$ {
         })
         .transform((v) => {
             return {
+                id: v.id,
                 slug: v.slug,
                 verified: v.verified,
                 primary: v.primary,
@@ -99,6 +106,7 @@ export namespace DomainSchema$ {
         });
 
     export type Outbound = {
+        id: string;
         slug: string;
         verified: boolean;
         primary: boolean;
@@ -112,6 +120,7 @@ export namespace DomainSchema$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DomainSchema> = z
         .object({
+            id: z.string(),
             slug: z.string(),
             verified: z.boolean().default(false),
             primary: z.boolean().default(false),
@@ -124,6 +133,7 @@ export namespace DomainSchema$ {
         })
         .transform((v) => {
             return {
+                id: v.id,
                 slug: v.slug,
                 verified: v.verified,
                 primary: v.primary,
