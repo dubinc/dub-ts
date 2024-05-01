@@ -4,6 +4,7 @@
 
 export class SDKError extends Error {
     public readonly statusCode: number;
+    public readonly contentType: string;
 
     constructor(
         message: string,
@@ -11,11 +12,13 @@ export class SDKError extends Error {
         public readonly body: string = ""
     ) {
         const statusCode = rawResponse.status;
+        const contentType = rawResponse.headers.get("content-type") || "";
         const bodyString = body.length > 0 ? `\n${body}` : "";
 
-        super(`${message}: Status ${statusCode}${bodyString}`);
+        super(`${message}: Status ${statusCode} Content-Type ${contentType} Body ${bodyString}`);
 
         this.statusCode = statusCode;
+        this.contentType = contentType;
 
         this.name = "SDKError";
     }

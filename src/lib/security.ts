@@ -68,7 +68,7 @@ type SecurityInputOAuth2 = {
 type SecurityInputOAuth2ClientCredentials = {
     type: "oauth2:client_credentials";
     value: string | null | undefined;
-    fieldName: "clientID" | "clientSecret";
+    fieldName: string;
 };
 
 export type SecurityInput =

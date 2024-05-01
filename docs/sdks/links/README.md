@@ -168,7 +168,7 @@ run();
 
 ## get
 
-Retrieve the info for a link from their domain and key.
+Retrieve the info for a link.
 
 ### Example Usage
 
@@ -181,10 +181,7 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.links.get({
-    domain: "ringed-blow.name",
-    key: "<key>",
-  });
+  const result = await dub.links.get({});
 
   // Handle the result
   console.log(result)

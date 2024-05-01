@@ -277,7 +277,11 @@ export class Links extends ClientSDK {
             throw result;
         } else {
             const responseBody = await response.text();
-            throw new errors.SDKError("Unexpected API response", response, responseBody);
+            throw new errors.SDKError(
+                "Unexpected API response status or content-type",
+                response,
+                responseBody
+            );
         }
     }
 
@@ -501,7 +505,11 @@ export class Links extends ClientSDK {
             throw result;
         } else {
             const responseBody = await response.text();
-            throw new errors.SDKError("Unexpected API response", response, responseBody);
+            throw new errors.SDKError(
+                "Unexpected API response status or content-type",
+                response,
+                responseBody
+            );
         }
     }
 
@@ -741,7 +749,11 @@ export class Links extends ClientSDK {
             throw result;
         } else {
             const responseBody = await response.text();
-            throw new errors.SDKError("Unexpected API response", response, responseBody);
+            throw new errors.SDKError(
+                "Unexpected API response status or content-type",
+                response,
+                responseBody
+            );
         }
     }
 
@@ -749,7 +761,7 @@ export class Links extends ClientSDK {
      * Retrieve a link
      *
      * @remarks
-     * Retrieve the info for a link from their domain and key.
+     * Retrieve the info for a link.
      */
     async get(
         input: operations.GetLinkInfoRequest,
@@ -770,7 +782,12 @@ export class Links extends ClientSDK {
 
         const query$ = [
             enc$.encodeForm("domain", payload$.domain, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("externalId", payload$.externalId, {
+                explode: true,
+                charEncoding: "percent",
+            }),
             enc$.encodeForm("key", payload$.key, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("linkId", payload$.linkId, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("projectSlug", this.options$.projectSlug, {
                 explode: true,
                 charEncoding: "percent",
@@ -965,7 +982,11 @@ export class Links extends ClientSDK {
             throw result;
         } else {
             const responseBody = await response.text();
-            throw new errors.SDKError("Unexpected API response", response, responseBody);
+            throw new errors.SDKError(
+                "Unexpected API response status or content-type",
+                response,
+                responseBody
+            );
         }
     }
 
@@ -1199,7 +1220,11 @@ export class Links extends ClientSDK {
             throw result;
         } else {
             const responseBody = await response.text();
-            throw new errors.SDKError("Unexpected API response", response, responseBody);
+            throw new errors.SDKError(
+                "Unexpected API response status or content-type",
+                response,
+                responseBody
+            );
         }
     }
 
@@ -1430,7 +1455,11 @@ export class Links extends ClientSDK {
             throw result;
         } else {
             const responseBody = await response.text();
-            throw new errors.SDKError("Unexpected API response", response, responseBody);
+            throw new errors.SDKError(
+                "Unexpected API response status or content-type",
+                response,
+                responseBody
+            );
         }
     }
 
@@ -1654,7 +1683,11 @@ export class Links extends ClientSDK {
             throw result;
         } else {
             const responseBody = await response.text();
-            throw new errors.SDKError("Unexpected API response", response, responseBody);
+            throw new errors.SDKError(
+                "Unexpected API response status or content-type",
+                response,
+                responseBody
+            );
         }
     }
 }

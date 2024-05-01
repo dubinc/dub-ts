@@ -289,7 +289,7 @@ export type LinkSchema = {
     /**
      * The date and time when the short link will expire in ISO-8601 format.
      */
-    expiresAt: Date | null;
+    expiresAt: string | null;
     /**
      * The URL to redirect to when the short link has expired.
      */
@@ -1981,12 +1981,7 @@ export namespace LinkSchema$ {
             externalId: z.nullable(z.string()),
             url: z.string(),
             archived: z.boolean().default(false),
-            expiresAt: z.nullable(
-                z
-                    .string()
-                    .datetime({ offset: true })
-                    .transform((v) => new Date(v))
-            ),
+            expiresAt: z.nullable(z.string()),
             expiredUrl: z.nullable(z.string()),
             password: z.nullable(z.string()),
             proxy: z.boolean().default(false),
@@ -2102,7 +2097,7 @@ export namespace LinkSchema$ {
             externalId: z.nullable(z.string()),
             url: z.string(),
             archived: z.boolean().default(false),
-            expiresAt: z.nullable(z.date().transform((v) => v.toISOString())),
+            expiresAt: z.nullable(z.string()),
             expiredUrl: z.nullable(z.string()),
             password: z.nullable(z.string()),
             proxy: z.boolean().default(false),
