@@ -12,11 +12,6 @@ import * as errors from "../models/errors";
 import * as operations from "../models/operations";
 import * as z from "zod";
 
-export enum GetAcceptEnum {
-    applicationJson = "application/json",
-    imagePng = "image/png",
-}
-
 export class QRCodes extends ClientSDK {
     private readonly options$: SDKOptions & { hooks?: SDKHooks };
 
@@ -50,15 +45,10 @@ export class QRCodes extends ClientSDK {
      * @remarks
      * Retrieve a QR code for a link.
      */
-    async get(
-        input: operations.GetQRCodeRequest,
-        options?: RequestOptions & { acceptHeaderOverride?: GetAcceptEnum }
-    ): Promise<string> {
+    async get(input: operations.GetQRCodeRequest, options?: RequestOptions): Promise<string> {
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
-
-        const accept = options?.acceptHeaderOverride || "application/json;q=1, image/png;q=0";
-        headers$.set("Accept", accept);
+        headers$.set("Accept", "image/png");
 
         const payload$ = schemas$.parse(
             input,
@@ -271,7 +261,11 @@ export class QRCodes extends ClientSDK {
             throw result;
         } else {
             const responseBody = await response.text();
-            throw new errors.SDKError("Unexpected API response", response, responseBody);
+            throw new errors.SDKError(
+                "Unexpected API response status or content-type",
+                response,
+                responseBody
+            );
         }
     }
 }
