@@ -9,6 +9,8 @@
 
 <br/>
 
+Learn more about the Dub.co TypeScript SDK in the [official documentation](https://dub.co/docs/sdks/typescript/overview).
+
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
