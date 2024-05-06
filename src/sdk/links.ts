@@ -991,31 +991,28 @@ export class Links extends ClientSDK {
     }
 
     /**
-     * Edit a link
+     * Delete a link
      *
      * @remarks
-     * Edit a link for the authenticated workspace.
+     * Delete a link for the authenticated workspace.
      */
-    async update(
+    async delete(
         linkId: string,
-        requestBody?: operations.EditLinkRequestBody | undefined,
         options?: RequestOptions
-    ): Promise<components.LinkSchema> {
-        const input$: operations.EditLinkRequest = {
+    ): Promise<operations.DeleteLinkResponseBody> {
+        const input$: operations.DeleteLinkRequest = {
             linkId: linkId,
-            requestBody: requestBody,
         };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.EditLinkRequest$.outboundSchema.parse(value$),
+            (value$) => operations.DeleteLinkRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.RequestBody, { explode: true });
+        const body$ = null;
 
         const pathParams$ = {
             linkId: enc$.encodeSimple("linkId", payload$.linkId, {
@@ -1047,7 +1044,7 @@ export class Links extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "editLink",
+            operationID: "deleteLink",
             oAuth2Scopes: [],
             securitySource: this.options$.token,
         };
@@ -1073,7 +1070,7 @@ export class Links extends ClientSDK {
             context,
             {
                 security: securitySettings$,
-                method: "PUT",
+                method: "DELETE",
                 path: path$,
                 headers: headers$,
                 query: query$,
@@ -1096,7 +1093,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return components.LinkSchema$.inboundSchema.parse(val$);
+                    return operations.DeleteLinkResponseBody$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );
@@ -1229,28 +1226,31 @@ export class Links extends ClientSDK {
     }
 
     /**
-     * Delete a link
+     * Update a link
      *
      * @remarks
-     * Delete a link for the authenticated workspace.
+     * Update a link for the authenticated workspace.
      */
-    async delete(
+    async update(
         linkId: string,
+        requestBody?: operations.UpdateLinkRequestBody | undefined,
         options?: RequestOptions
-    ): Promise<operations.DeleteLinkResponseBody> {
-        const input$: operations.DeleteLinkRequest = {
+    ): Promise<components.LinkSchema> {
+        const input$: operations.UpdateLinkRequest = {
             linkId: linkId,
+            requestBody: requestBody,
         };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.DeleteLinkRequest$.outboundSchema.parse(value$),
+            (value$) => operations.UpdateLinkRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = null;
+        const body$ = enc$.encodeJSON("body", payload$.RequestBody, { explode: true });
 
         const pathParams$ = {
             linkId: enc$.encodeSimple("linkId", payload$.linkId, {
@@ -1282,7 +1282,7 @@ export class Links extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "deleteLink",
+            operationID: "updateLink",
             oAuth2Scopes: [],
             securitySource: this.options$.token,
         };
@@ -1308,7 +1308,7 @@ export class Links extends ClientSDK {
             context,
             {
                 security: securitySettings$,
-                method: "DELETE",
+                method: "PATCH",
                 path: path$,
                 headers: headers$,
                 query: query$,
@@ -1331,7 +1331,7 @@ export class Links extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return operations.DeleteLinkResponseBody$.inboundSchema.parse(val$);
+                    return components.LinkSchema$.inboundSchema.parse(val$);
                 },
                 "Response validation failed"
             );

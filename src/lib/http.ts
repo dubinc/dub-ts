@@ -9,7 +9,17 @@ export type Fetcher = (
 
 export type Awaitable<T> = T | Promise<T>;
 
-const DEFAULT_FETCHER: Fetcher = (input, init) => fetch(input, init);
+const DEFAULT_FETCHER: Fetcher = (input, init) => {
+  // If input is a Request and init is undefined, Bun will discard the method,
+  // headers, body and other options that were set on the request object.
+  // Node.js and browers would ignore an undefined init value. This check is
+  // therefore needed for interop with Bun.
+  if (init == null) {
+    return fetch(input);
+  } else {
+    return fetch(input, init);
+  }
+};
 
 export type RequestInput = {
   /**

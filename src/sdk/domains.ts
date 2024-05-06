@@ -722,17 +722,17 @@ export class Domains extends ClientSDK {
     }
 
     /**
-     * Edit a domain
+     * Update a domain
      *
      * @remarks
-     * Edit a domain for the authenticated workspace.
+     * Update a domain for the authenticated workspace.
      */
     async update(
         slug: string,
-        requestBody?: operations.EditDomainRequestBody | undefined,
+        requestBody?: operations.UpdateDomainRequestBody | undefined,
         options?: RequestOptions
     ): Promise<components.DomainSchema> {
-        const input$: operations.EditDomainRequest = {
+        const input$: operations.UpdateDomainRequest = {
             slug: slug,
             requestBody: requestBody,
         };
@@ -743,7 +743,7 @@ export class Domains extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.EditDomainRequest$.outboundSchema.parse(value$),
+            (value$) => operations.UpdateDomainRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = enc$.encodeJSON("body", payload$.RequestBody, { explode: true });
@@ -778,7 +778,7 @@ export class Domains extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "editDomain",
+            operationID: "updateDomain",
             oAuth2Scopes: [],
             securitySource: this.options$.token,
         };
