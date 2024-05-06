@@ -7,17 +7,17 @@ import * as z from "zod";
 /**
  * The unique IDs of the tags assigned to the short link.
  */
-export type EditLinkTagIds = string | Array<string>;
+export type UpdateLinkTagIds = string | Array<string>;
 
 /**
  * The unique name of the tags assigned to the short link (case insensitive).
  */
-export type EditLinkTagNames = string | Array<string>;
+export type UpdateLinkTagNames = string | Array<string>;
 
 /**
  * Geo targeting information for the short link in JSON format `{[COUNTRY]: https://example.com }`.
  */
-export type EditLinkGeo = {
+export type UpdateLinkGeo = {
     af?: string | undefined;
     al?: string | undefined;
     dz?: string | undefined;
@@ -270,7 +270,7 @@ export type EditLinkGeo = {
     xk?: string | undefined;
 };
 
-export type EditLinkRequestBody = {
+export type UpdateLinkRequestBody = {
     /**
      * The destination URL of the short link.
      */
@@ -360,49 +360,49 @@ export type EditLinkRequestBody = {
     /**
      * Geo targeting information for the short link in JSON format `{[COUNTRY]: https://example.com }`.
      */
-    geo?: EditLinkGeo | null | undefined;
+    geo?: UpdateLinkGeo | null | undefined;
 };
 
-export type EditLinkRequest = {
+export type UpdateLinkRequest = {
     /**
-     * The id of the link to edit. You may use either `linkId` (obtained via `/links/info` endpoint) or `externalId` prefixed with `ext_`.
+     * The id of the link to update. You may use either `linkId` (obtained via `/links/info` endpoint) or `externalId` prefixed with `ext_`.
      */
     linkId: string;
-    requestBody?: EditLinkRequestBody | undefined;
+    requestBody?: UpdateLinkRequestBody | undefined;
 };
 
 /** @internal */
-export namespace EditLinkTagIds$ {
+export namespace UpdateLinkTagIds$ {
     export type Inbound = string | Array<string>;
 
     export type Outbound = string | Array<string>;
-    export const inboundSchema: z.ZodType<EditLinkTagIds, z.ZodTypeDef, Inbound> = z.union([
+    export const inboundSchema: z.ZodType<UpdateLinkTagIds, z.ZodTypeDef, Inbound> = z.union([
         z.string(),
         z.array(z.string()),
     ]);
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EditLinkTagIds> = z.union([
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateLinkTagIds> = z.union([
         z.string(),
         z.array(z.string()),
     ]);
 }
 
 /** @internal */
-export namespace EditLinkTagNames$ {
+export namespace UpdateLinkTagNames$ {
     export type Inbound = string | Array<string>;
 
     export type Outbound = string | Array<string>;
-    export const inboundSchema: z.ZodType<EditLinkTagNames, z.ZodTypeDef, Inbound> = z.union([
+    export const inboundSchema: z.ZodType<UpdateLinkTagNames, z.ZodTypeDef, Inbound> = z.union([
         z.string(),
         z.array(z.string()),
     ]);
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EditLinkTagNames> = z.union([
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateLinkTagNames> = z.union([
         z.string(),
         z.array(z.string()),
     ]);
 }
 
 /** @internal */
-export namespace EditLinkGeo$ {
+export namespace UpdateLinkGeo$ {
     export type Inbound = {
         AF?: string | undefined;
         AL?: string | undefined;
@@ -656,7 +656,7 @@ export namespace EditLinkGeo$ {
         XK?: string | undefined;
     };
 
-    export const inboundSchema: z.ZodType<EditLinkGeo, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UpdateLinkGeo, z.ZodTypeDef, Inbound> = z
         .object({
             AF: z.string().optional(),
             AL: z.string().optional(),
@@ -1417,7 +1417,7 @@ export namespace EditLinkGeo$ {
         XK?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EditLinkGeo> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateLinkGeo> = z
         .object({
             af: z.string().optional(),
             al: z.string().optional(),
@@ -1927,7 +1927,7 @@ export namespace EditLinkGeo$ {
 }
 
 /** @internal */
-export namespace EditLinkRequestBody$ {
+export namespace UpdateLinkRequestBody$ {
     export type Inbound = {
         url: string;
         domain?: string | undefined;
@@ -1950,10 +1950,10 @@ export namespace EditLinkRequestBody$ {
         rewrite?: boolean | undefined;
         ios?: string | null | undefined;
         android?: string | null | undefined;
-        geo?: EditLinkGeo$.Inbound | null | undefined;
+        geo?: UpdateLinkGeo$.Inbound | null | undefined;
     };
 
-    export const inboundSchema: z.ZodType<EditLinkRequestBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UpdateLinkRequestBody, z.ZodTypeDef, Inbound> = z
         .object({
             url: z.string(),
             domain: z.string().optional(),
@@ -1976,7 +1976,7 @@ export namespace EditLinkRequestBody$ {
             rewrite: z.boolean().default(false),
             ios: z.nullable(z.string()).optional(),
             android: z.nullable(z.string()).optional(),
-            geo: z.nullable(z.lazy(() => EditLinkGeo$.inboundSchema)).optional(),
+            geo: z.nullable(z.lazy(() => UpdateLinkGeo$.inboundSchema)).optional(),
         })
         .transform((v) => {
             return {
@@ -2027,10 +2027,10 @@ export namespace EditLinkRequestBody$ {
         rewrite: boolean;
         ios?: string | null | undefined;
         android?: string | null | undefined;
-        geo?: EditLinkGeo$.Outbound | null | undefined;
+        geo?: UpdateLinkGeo$.Outbound | null | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EditLinkRequestBody> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateLinkRequestBody> = z
         .object({
             url: z.string(),
             domain: z.string().optional(),
@@ -2053,7 +2053,7 @@ export namespace EditLinkRequestBody$ {
             rewrite: z.boolean().default(false),
             ios: z.nullable(z.string()).optional(),
             android: z.nullable(z.string()).optional(),
-            geo: z.nullable(z.lazy(() => EditLinkGeo$.outboundSchema)).optional(),
+            geo: z.nullable(z.lazy(() => UpdateLinkGeo$.outboundSchema)).optional(),
         })
         .transform((v) => {
             return {
@@ -2084,16 +2084,16 @@ export namespace EditLinkRequestBody$ {
 }
 
 /** @internal */
-export namespace EditLinkRequest$ {
+export namespace UpdateLinkRequest$ {
     export type Inbound = {
         linkId: string;
-        RequestBody?: EditLinkRequestBody$.Inbound | undefined;
+        RequestBody?: UpdateLinkRequestBody$.Inbound | undefined;
     };
 
-    export const inboundSchema: z.ZodType<EditLinkRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UpdateLinkRequest, z.ZodTypeDef, Inbound> = z
         .object({
             linkId: z.string(),
-            RequestBody: z.lazy(() => EditLinkRequestBody$.inboundSchema).optional(),
+            RequestBody: z.lazy(() => UpdateLinkRequestBody$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -2104,13 +2104,13 @@ export namespace EditLinkRequest$ {
 
     export type Outbound = {
         linkId: string;
-        RequestBody?: EditLinkRequestBody$.Outbound | undefined;
+        RequestBody?: UpdateLinkRequestBody$.Outbound | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EditLinkRequest> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateLinkRequest> = z
         .object({
             linkId: z.string(),
-            requestBody: z.lazy(() => EditLinkRequestBody$.outboundSchema).optional(),
+            requestBody: z.lazy(() => UpdateLinkRequestBody$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {

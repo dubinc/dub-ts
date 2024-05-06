@@ -69,8 +69,8 @@ run();
 * [create](docs/sdks/links/README.md#create) - Create a new link
 * [count](docs/sdks/links/README.md#count) - Retrieve the number of links
 * [get](docs/sdks/links/README.md#get) - Retrieve a link
-* [update](docs/sdks/links/README.md#update) - Edit a link
 * [delete](docs/sdks/links/README.md#delete) - Delete a link
+* [update](docs/sdks/links/README.md#update) - Update a link
 * [createMany](docs/sdks/links/README.md#createmany) - Bulk create links
 
 ### [qrCodes](docs/sdks/qrcodes/README.md)
@@ -106,7 +106,7 @@ run();
 * [list](docs/sdks/domains/README.md#list) - Retrieve a list of domains
 * [add](docs/sdks/domains/README.md#add) - Add a domain
 * [delete](docs/sdks/domains/README.md#delete) - Delete a domain
-* [update](docs/sdks/domains/README.md#update) - Edit a domain
+* [update](docs/sdks/domains/README.md#update) - Update a domain
 * [setPrimary](docs/sdks/domains/README.md#setprimary) - Set a domain as primary
 * [transfer](docs/sdks/domains/README.md#transfer) - Transfer a domain
 

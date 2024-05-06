@@ -7,16 +7,16 @@ import * as z from "zod";
 /**
  * The type of redirect to use for this domain.
  */
-export const EditDomainType = {
+export const UpdateDomainType = {
     Redirect: "redirect",
     Rewrite: "rewrite",
 } as const;
 /**
  * The type of redirect to use for this domain.
  */
-export type EditDomainType = (typeof EditDomainType)[keyof typeof EditDomainType];
+export type UpdateDomainType = (typeof UpdateDomainType)[keyof typeof UpdateDomainType];
 
-export type EditDomainRequestBody = {
+export type UpdateDomainRequestBody = {
     /**
      * Name of the domain.
      */
@@ -24,7 +24,7 @@ export type EditDomainRequestBody = {
     /**
      * The type of redirect to use for this domain.
      */
-    type?: EditDomainType | undefined;
+    type?: UpdateDomainType | undefined;
     /**
      * The page your users will get redirected to when they visit your domain.
      */
@@ -43,32 +43,33 @@ export type EditDomainRequestBody = {
     placeholder?: string | null | undefined;
 };
 
-export type EditDomainRequest = {
+export type UpdateDomainRequest = {
     /**
      * The domain name.
      */
     slug: string;
-    requestBody?: EditDomainRequestBody | undefined;
+    requestBody?: UpdateDomainRequestBody | undefined;
 };
 
 /** @internal */
-export const EditDomainType$: z.ZodNativeEnum<typeof EditDomainType> = z.nativeEnum(EditDomainType);
+export const UpdateDomainType$: z.ZodNativeEnum<typeof UpdateDomainType> =
+    z.nativeEnum(UpdateDomainType);
 
 /** @internal */
-export namespace EditDomainRequestBody$ {
+export namespace UpdateDomainRequestBody$ {
     export type Inbound = {
         slug?: string | undefined;
-        type?: EditDomainType | undefined;
+        type?: UpdateDomainType | undefined;
         target?: string | null | undefined;
         expiredUrl?: string | null | undefined;
         archived?: boolean | undefined;
         placeholder?: string | null | undefined;
     };
 
-    export const inboundSchema: z.ZodType<EditDomainRequestBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UpdateDomainRequestBody, z.ZodTypeDef, Inbound> = z
         .object({
             slug: z.string().optional(),
-            type: EditDomainType$.default("redirect"),
+            type: UpdateDomainType$.default("redirect"),
             target: z.nullable(z.string()).optional(),
             expiredUrl: z.nullable(z.string()).optional(),
             archived: z.boolean().default(false),
@@ -87,17 +88,17 @@ export namespace EditDomainRequestBody$ {
 
     export type Outbound = {
         slug?: string | undefined;
-        type: EditDomainType;
+        type: UpdateDomainType;
         target?: string | null | undefined;
         expiredUrl?: string | null | undefined;
         archived: boolean;
         placeholder: string | null;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EditDomainRequestBody> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateDomainRequestBody> = z
         .object({
             slug: z.string().optional(),
-            type: EditDomainType$.default("redirect"),
+            type: UpdateDomainType$.default("redirect"),
             target: z.nullable(z.string()).optional(),
             expiredUrl: z.nullable(z.string()).optional(),
             archived: z.boolean().default(false),
@@ -116,16 +117,16 @@ export namespace EditDomainRequestBody$ {
 }
 
 /** @internal */
-export namespace EditDomainRequest$ {
+export namespace UpdateDomainRequest$ {
     export type Inbound = {
         slug: string;
-        RequestBody?: EditDomainRequestBody$.Inbound | undefined;
+        RequestBody?: UpdateDomainRequestBody$.Inbound | undefined;
     };
 
-    export const inboundSchema: z.ZodType<EditDomainRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UpdateDomainRequest, z.ZodTypeDef, Inbound> = z
         .object({
             slug: z.string(),
-            RequestBody: z.lazy(() => EditDomainRequestBody$.inboundSchema).optional(),
+            RequestBody: z.lazy(() => UpdateDomainRequestBody$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -136,13 +137,13 @@ export namespace EditDomainRequest$ {
 
     export type Outbound = {
         slug: string;
-        RequestBody?: EditDomainRequestBody$.Outbound | undefined;
+        RequestBody?: UpdateDomainRequestBody$.Outbound | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EditDomainRequest> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateDomainRequest> = z
         .object({
             slug: z.string(),
-            requestBody: z.lazy(() => EditDomainRequestBody$.outboundSchema).optional(),
+            requestBody: z.lazy(() => UpdateDomainRequestBody$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {
