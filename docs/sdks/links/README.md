@@ -232,9 +232,7 @@ const dub = new Dub({
 });
 
 async function run() {
-  const linkId = "<value>";
-  
-  const result = await dub.links.delete(linkId);
+  const result = await dub.links.delete("<value>");
 
   // Handle the result
   console.log(result)
@@ -285,12 +283,9 @@ const dub = new Dub({
 });
 
 async function run() {
-  const linkId = "<value>";
-  const requestBody = {
+  const result = await dub.links.update("<value>", {
     url: "https://google/com",
-  };
-  
-  const result = await dub.links.update(linkId, requestBody);
+  });
 
   // Handle the result
   console.log(result)
