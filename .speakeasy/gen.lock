@@ -3,26 +3,31 @@ id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
   docChecksum: c38ab49043c57320aee33ca443a1c66b
   docVersion: 0.0.1
-  speakeasyVersion: 1.279.0
-  generationVersion: 2.322.5
-  releaseVersion: 0.26.1
-  configChecksum: 2bd291f2df61e20c2670d16d58227cef
+  speakeasyVersion: 1.282.0
+  generationVersion: 2.326.0
+  releaseVersion: 0.27.0
+  configChecksum: 3511857bf47eb65f185cfb3f2c6b5763
   repoURL: https://github.com/dubinc/dub-node.git
   installationURL: https://github.com/dubinc/dub-node
   published: true
 features:
   typescript:
+    additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.5
     core: 3.9.3
     deprecations: 2.81.1
     examples: 2.81.3
     flattening: 2.81.1
     globalSecurity: 2.82.9
+    globalSecurityCallbacks: 0.1.0
+    globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.4
     globals: 2.82.1
     hiddenGlobals: 0.1.0
     nameOverrides: 2.81.2
+    nullables: 0.1.0
     responseFormat: 0.2.3
+    sdkHooks: 0.1.0
     unions: 2.85.4
 generatedFiles:
   - src/sdk/links.ts

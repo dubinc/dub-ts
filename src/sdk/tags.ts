@@ -47,9 +47,11 @@ export class Tags extends ClientSDK {
      * Retrieve a list of tags for the authenticated workspace.
      */
     async list(
-        _input: operations.GetTagsRequest,
+        request?: operations.GetTagsRequest | undefined,
         options?: RequestOptions
     ): Promise<Array<components.TagSchema>> {
+        const input$ = typeof request === "undefined" ? {} : request;
+        void input$; // request input is unused
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
@@ -100,7 +102,7 @@ export class Tags extends ClientSDK {
                 "5XX",
             ],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -112,12 +114,12 @@ export class Tags extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             HttpMeta: {
                 Response: response,
-                Request: request,
+                Request: request$,
             },
         };
 
@@ -265,16 +267,17 @@ export class Tags extends ClientSDK {
      * Create a new tag for the authenticated workspace.
      */
     async create(
-        input: operations.CreateTagRequestBody | undefined,
+        request?: operations.CreateTagRequestBody | undefined,
         options?: RequestOptions
     ): Promise<components.TagSchema> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.CreateTagRequestBody$.outboundSchema.optional().parse(value$),
             "Input validation failed"
         );
@@ -327,7 +330,7 @@ export class Tags extends ClientSDK {
                 "5XX",
             ],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -340,12 +343,12 @@ export class Tags extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             HttpMeta: {
                 Response: response,
-                Request: request,
+                Request: request$,
             },
         };
 

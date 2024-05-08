@@ -12,7 +12,7 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
 typescript:
-  version: 0.26.1
+  version: 0.27.0
   additionalDependencies:
     dependencies: {}
     devDependencies:
@@ -34,6 +34,7 @@ typescript:
       webhooks: models/webhooks
   inputModelSuffix: input
   maxMethodParams: 0
+  methodArguments: infer-optional-args
   outputModelSuffix: output
   packageName: dub
   responseFormat: flat

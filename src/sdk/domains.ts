@@ -47,9 +47,11 @@ export class Domains extends ClientSDK {
      * Retrieve a list of domains associated with the authenticated workspace.
      */
     async list(
-        _input: operations.ListDomainsRequest,
+        request?: operations.ListDomainsRequest | undefined,
         options?: RequestOptions
     ): Promise<Array<components.DomainSchema>> {
+        const input$ = typeof request === "undefined" ? {} : request;
+        void input$; // request input is unused
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
@@ -100,7 +102,7 @@ export class Domains extends ClientSDK {
                 "5XX",
             ],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -112,12 +114,12 @@ export class Domains extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             HttpMeta: {
                 Response: response,
-                Request: request,
+                Request: request$,
             },
         };
 
@@ -265,16 +267,17 @@ export class Domains extends ClientSDK {
      * Add a domain to the authenticated workspace.
      */
     async add(
-        input: operations.AddDomainRequestBody | undefined,
+        request?: operations.AddDomainRequestBody | undefined,
         options?: RequestOptions
     ): Promise<components.DomainSchema> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.AddDomainRequestBody$.outboundSchema.optional().parse(value$),
             "Input validation failed"
         );
@@ -327,7 +330,7 @@ export class Domains extends ClientSDK {
                 "5XX",
             ],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -340,12 +343,12 @@ export class Domains extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             HttpMeta: {
                 Response: response,
-                Request: request,
+                Request: request$,
             },
         };
 
@@ -562,7 +565,7 @@ export class Domains extends ClientSDK {
                 "5XX",
             ],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -575,12 +578,12 @@ export class Domains extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             HttpMeta: {
                 Response: response,
-                Request: request,
+                Request: request$,
             },
         };
 
@@ -800,7 +803,7 @@ export class Domains extends ClientSDK {
                 "5XX",
             ],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -813,12 +816,12 @@ export class Domains extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             HttpMeta: {
                 Response: response,
-                Request: request,
+                Request: request$,
             },
         };
 
@@ -1032,7 +1035,7 @@ export class Domains extends ClientSDK {
                 "5XX",
             ],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -1045,12 +1048,12 @@ export class Domains extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             HttpMeta: {
                 Response: response,
-                Request: request,
+                Request: request$,
             },
         };
 
@@ -1270,7 +1273,7 @@ export class Domains extends ClientSDK {
                 "5XX",
             ],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -1283,12 +1286,12 @@ export class Domains extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             HttpMeta: {
                 Response: response,
-                Request: request,
+                Request: request$,
             },
         };
 

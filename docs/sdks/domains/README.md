@@ -129,9 +129,7 @@ const dub = new Dub({
 });
 
 async function run() {
-  const slug = "acme.com";
-  
-  const result = await dub.domains.delete(slug);
+  const result = await dub.domains.delete("acme.com");
 
   // Handle the result
   console.log(result)
@@ -182,10 +180,7 @@ const dub = new Dub({
 });
 
 async function run() {
-  const slug = "acme.com";
-  const requestBody = {};
-  
-  const result = await dub.domains.update(slug, requestBody);
+  const result = await dub.domains.update("acme.com", {});
 
   // Handle the result
   console.log(result)
@@ -237,9 +232,7 @@ const dub = new Dub({
 });
 
 async function run() {
-  const slug = "acme.com";
-  
-  const result = await dub.domains.setPrimary(slug);
+  const result = await dub.domains.setPrimary("acme.com");
 
   // Handle the result
   console.log(result)
@@ -290,12 +283,9 @@ const dub = new Dub({
 });
 
 async function run() {
-  const slug = "acme.com";
-  const requestBody = {
+  const result = await dub.domains.transfer("acme.com", {
     newWorkspaceId: "<value>",
-  };
-  
-  const result = await dub.domains.transfer(slug, requestBody);
+  });
 
   // Handle the result
   console.log(result)
