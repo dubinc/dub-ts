@@ -47,15 +47,16 @@ export class Links extends ClientSDK {
      * Retrieve a list of links for the authenticated workspace. The list will be paginated and the provided query parameters allow filtering the returned links.
      */
     async list(
-        input: operations.GetLinksRequest,
+        request?: operations.GetLinksRequest | undefined,
         options?: RequestOptions
     ): Promise<Array<components.LinkSchema>> {
+        const input$ = typeof request === "undefined" ? {} : request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.GetLinksRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -126,7 +127,7 @@ export class Links extends ClientSDK {
                 "5XX",
             ],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -139,12 +140,12 @@ export class Links extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             HttpMeta: {
                 Response: response,
-                Request: request,
+                Request: request$,
             },
         };
 
@@ -292,16 +293,17 @@ export class Links extends ClientSDK {
      * Create a new link for the authenticated workspace.
      */
     async create(
-        input: operations.CreateLinkRequestBody | undefined,
+        request?: operations.CreateLinkRequestBody | undefined,
         options?: RequestOptions
     ): Promise<components.LinkSchema> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.CreateLinkRequestBody$.outboundSchema.optional().parse(value$),
             "Input validation failed"
         );
@@ -354,7 +356,7 @@ export class Links extends ClientSDK {
                 "5XX",
             ],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -367,12 +369,12 @@ export class Links extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             HttpMeta: {
                 Response: response,
-                Request: request,
+                Request: request$,
             },
         };
 
@@ -519,13 +521,17 @@ export class Links extends ClientSDK {
      * @remarks
      * Retrieve the number of links for the authenticated workspace. The provided query parameters allow filtering the returned links.
      */
-    async count(input: operations.GetLinksCountRequest, options?: RequestOptions): Promise<number> {
+    async count(
+        request?: operations.GetLinksCountRequest | undefined,
+        options?: RequestOptions
+    ): Promise<number> {
+        const input$ = typeof request === "undefined" ? {} : request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.GetLinksCountRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -598,7 +604,7 @@ export class Links extends ClientSDK {
                 "5XX",
             ],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -611,12 +617,12 @@ export class Links extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             HttpMeta: {
                 Response: response,
-                Request: request,
+                Request: request$,
             },
         };
 
@@ -764,15 +770,16 @@ export class Links extends ClientSDK {
      * Retrieve the info for a link.
      */
     async get(
-        input: operations.GetLinkInfoRequest,
+        request?: operations.GetLinkInfoRequest | undefined,
         options?: RequestOptions
     ): Promise<components.LinkSchema> {
+        const input$ = typeof request === "undefined" ? {} : request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.GetLinkInfoRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -831,7 +838,7 @@ export class Links extends ClientSDK {
                 "5XX",
             ],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -844,12 +851,12 @@ export class Links extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             HttpMeta: {
                 Response: response,
-                Request: request,
+                Request: request$,
             },
         };
 
@@ -1066,7 +1073,7 @@ export class Links extends ClientSDK {
                 "5XX",
             ],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -1079,12 +1086,12 @@ export class Links extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             HttpMeta: {
                 Response: response,
-                Request: request,
+                Request: request$,
             },
         };
 
@@ -1304,7 +1311,7 @@ export class Links extends ClientSDK {
                 "5XX",
             ],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -1317,12 +1324,12 @@ export class Links extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             HttpMeta: {
                 Response: response,
-                Request: request,
+                Request: request$,
             },
         };
 
@@ -1470,16 +1477,17 @@ export class Links extends ClientSDK {
      * Bulk create up to 100 links for the authenticated workspace.
      */
     async createMany(
-        input: Array<operations.RequestBody> | undefined,
+        request?: Array<operations.RequestBody> | undefined,
         options?: RequestOptions
     ): Promise<Array<components.LinkSchema>> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => z.array(operations.RequestBody$.outboundSchema).optional().parse(value$),
             "Input validation failed"
         );
@@ -1532,7 +1540,7 @@ export class Links extends ClientSDK {
                 "5XX",
             ],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -1545,12 +1553,12 @@ export class Links extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             HttpMeta: {
                 Response: response,
-                Request: request,
+                Request: request$,
             },
         };
 

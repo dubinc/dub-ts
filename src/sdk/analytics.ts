@@ -46,15 +46,16 @@ export class Analytics extends ClientSDK {
      * Retrieve the number of clicks for a link, a domain, or the authenticated workspace.
      */
     async clicks(
-        input: operations.GetClicksAnalyticsRequest,
+        request?: operations.GetClicksAnalyticsRequest | undefined,
         options?: RequestOptions
     ): Promise<number> {
+        const input$ = typeof request === "undefined" ? {} : request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.GetClicksAnalyticsRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -136,7 +137,7 @@ export class Analytics extends ClientSDK {
                 "5XX",
             ],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -149,12 +150,12 @@ export class Analytics extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             HttpMeta: {
                 Response: response,
-                Request: request,
+                Request: request$,
             },
         };
 
@@ -302,15 +303,16 @@ export class Analytics extends ClientSDK {
      * Retrieve the number of clicks for a link, a domain, or the authenticated workspace over a period of time.
      */
     async timeseries(
-        input: operations.GetTimeseriesAnalyticsRequest,
+        request?: operations.GetTimeseriesAnalyticsRequest | undefined,
         options?: RequestOptions
     ): Promise<Array<operations.ResponseBody>> {
+        const input$ = typeof request === "undefined" ? {} : request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.GetTimeseriesAnalyticsRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -392,7 +394,7 @@ export class Analytics extends ClientSDK {
                 "5XX",
             ],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -405,12 +407,12 @@ export class Analytics extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             HttpMeta: {
                 Response: response,
-                Request: request,
+                Request: request$,
             },
         };
 
@@ -558,15 +560,16 @@ export class Analytics extends ClientSDK {
      * Retrieve the top countries by number of clicks for a link, a domain, or the authenticated workspace.
      */
     async countries(
-        input: operations.GetCountryAnalyticsRequest,
+        request?: operations.GetCountryAnalyticsRequest | undefined,
         options?: RequestOptions
     ): Promise<Array<operations.GetCountryAnalyticsResponseBody>> {
+        const input$ = typeof request === "undefined" ? {} : request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.GetCountryAnalyticsRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -648,7 +651,7 @@ export class Analytics extends ClientSDK {
                 "5XX",
             ],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -661,12 +664,12 @@ export class Analytics extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             HttpMeta: {
                 Response: response,
-                Request: request,
+                Request: request$,
             },
         };
 
@@ -816,15 +819,16 @@ export class Analytics extends ClientSDK {
      * Retrieve the top countries by number of clicks for a link, a domain, or the authenticated workspace.
      */
     async cities(
-        input: operations.GetCityAnalyticsRequest,
+        request?: operations.GetCityAnalyticsRequest | undefined,
         options?: RequestOptions
     ): Promise<Array<operations.GetCityAnalyticsResponseBody>> {
+        const input$ = typeof request === "undefined" ? {} : request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.GetCityAnalyticsRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -906,7 +910,7 @@ export class Analytics extends ClientSDK {
                 "5XX",
             ],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -919,12 +923,12 @@ export class Analytics extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             HttpMeta: {
                 Response: response,
-                Request: request,
+                Request: request$,
             },
         };
 
@@ -1074,15 +1078,16 @@ export class Analytics extends ClientSDK {
      * Retrieve the top devices by number of clicks for a link, a domain, or the authenticated workspace.
      */
     async devices(
-        input: operations.GetDeviceAnalyticsRequest,
+        request?: operations.GetDeviceAnalyticsRequest | undefined,
         options?: RequestOptions
     ): Promise<Array<operations.GetDeviceAnalyticsResponseBody>> {
+        const input$ = typeof request === "undefined" ? {} : request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.GetDeviceAnalyticsRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -1164,7 +1169,7 @@ export class Analytics extends ClientSDK {
                 "5XX",
             ],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -1177,12 +1182,12 @@ export class Analytics extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             HttpMeta: {
                 Response: response,
-                Request: request,
+                Request: request$,
             },
         };
 
@@ -1332,15 +1337,16 @@ export class Analytics extends ClientSDK {
      * Retrieve the top browsers by number of clicks for a link, a domain, or the authenticated workspace.
      */
     async browsers(
-        input: operations.GetBrowserAnalyticsRequest,
+        request?: operations.GetBrowserAnalyticsRequest | undefined,
         options?: RequestOptions
     ): Promise<Array<operations.GetBrowserAnalyticsResponseBody>> {
+        const input$ = typeof request === "undefined" ? {} : request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.GetBrowserAnalyticsRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -1422,7 +1428,7 @@ export class Analytics extends ClientSDK {
                 "5XX",
             ],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -1435,12 +1441,12 @@ export class Analytics extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             HttpMeta: {
                 Response: response,
-                Request: request,
+                Request: request$,
             },
         };
 
@@ -1590,15 +1596,16 @@ export class Analytics extends ClientSDK {
      * Retrieve the top OS by number of clicks for a link, a domain, or the authenticated workspace.
      */
     async os(
-        input: operations.GetOSAnalyticsRequest,
+        request?: operations.GetOSAnalyticsRequest | undefined,
         options?: RequestOptions
     ): Promise<Array<operations.GetOSAnalyticsResponseBody>> {
+        const input$ = typeof request === "undefined" ? {} : request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.GetOSAnalyticsRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -1680,7 +1687,7 @@ export class Analytics extends ClientSDK {
                 "5XX",
             ],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -1693,12 +1700,12 @@ export class Analytics extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             HttpMeta: {
                 Response: response,
-                Request: request,
+                Request: request$,
             },
         };
 
@@ -1848,15 +1855,16 @@ export class Analytics extends ClientSDK {
      * Retrieve the top referers by number of clicks for a link, a domain, or the authenticated workspace.
      */
     async referers(
-        input: operations.GetRefererAnalyticsRequest,
+        request?: operations.GetRefererAnalyticsRequest | undefined,
         options?: RequestOptions
     ): Promise<Array<operations.GetRefererAnalyticsResponseBody>> {
+        const input$ = typeof request === "undefined" ? {} : request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.GetRefererAnalyticsRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -1938,7 +1946,7 @@ export class Analytics extends ClientSDK {
                 "5XX",
             ],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -1951,12 +1959,12 @@ export class Analytics extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             HttpMeta: {
                 Response: response,
-                Request: request,
+                Request: request$,
             },
         };
 
@@ -2106,15 +2114,16 @@ export class Analytics extends ClientSDK {
      * Retrieve the top links by number of clicks for a domain or the authenticated workspace.
      */
     async topLinks(
-        input: operations.GetTopLinksRequest,
+        request?: operations.GetTopLinksRequest | undefined,
         options?: RequestOptions
     ): Promise<Array<operations.GetTopLinksResponseBody>> {
+        const input$ = typeof request === "undefined" ? {} : request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.GetTopLinksRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -2196,7 +2205,7 @@ export class Analytics extends ClientSDK {
                 "5XX",
             ],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -2209,12 +2218,12 @@ export class Analytics extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             HttpMeta: {
                 Response: response,
-                Request: request,
+                Request: request$,
             },
         };
 
@@ -2362,15 +2371,16 @@ export class Analytics extends ClientSDK {
      * Retrieve the top URLs by number of clicks for a given short link.
      */
     async topUrls(
-        input: operations.GetTopURLsRequest,
+        request?: operations.GetTopURLsRequest | undefined,
         options?: RequestOptions
     ): Promise<Array<operations.GetTopURLsResponseBody>> {
+        const input$ = typeof request === "undefined" ? {} : request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.GetTopURLsRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -2452,7 +2462,7 @@ export class Analytics extends ClientSDK {
                 "5XX",
             ],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -2465,12 +2475,12 @@ export class Analytics extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             HttpMeta: {
                 Response: response,
-                Request: request,
+                Request: request$,
             },
         };
 
