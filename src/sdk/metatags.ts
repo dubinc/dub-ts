@@ -45,16 +45,15 @@ export class Metatags extends ClientSDK {
      * Retrieve the metatags for a URL.
      */
     async get(
-        request: operations.GetMetatagsRequest,
+        input: operations.GetMetatagsRequest,
         options?: RequestOptions
     ): Promise<operations.GetMetatagsResponseBody> {
-        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input$,
+            input,
             (value$) => operations.GetMetatagsRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -84,7 +83,7 @@ export class Metatags extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: ["4XX", "5XX"] };
-        const request$ = this.createRequest$(
+        const request = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -97,7 +96,7 @@ export class Metatags extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request, doOptions);
 
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();

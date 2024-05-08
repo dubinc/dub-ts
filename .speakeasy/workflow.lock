@@ -1,18 +1,19 @@
-speakeasyVersion: 1.282.0
+speakeasyVersion: 1.283.1
 sources:
     my-first-source:
         sourceNamespace: my-first-source
-        sourceRevisionDigest: sha256:93e125426c46395b4a2233b93538de3ab5f87b576187f1b61252288deb289a1f
-        sourceBlobDigest: sha256:6f94ba6f5cc47943b6eb8754892c4ce750e1ea1b9370923312f1f040ffddf040
+        sourceRevisionDigest: sha256:b43a4dbf6e1046455dbbc1d82d42ad674fc9ac4329ad56ea56b8fa871eb663fc
+        sourceBlobDigest: sha256:e16837f81e17ab3177f10c0449b07608dcd0cc3f17b40a9a971ecc382c36b4b2
         tags:
             - latest
+            - main
 targets:
     my-first-target:
         source: my-first-source
         sourceNamespace: my-first-source
-        sourceRevisionDigest: sha256:93e125426c46395b4a2233b93538de3ab5f87b576187f1b61252288deb289a1f
-        sourceBlobDigest: sha256:6f94ba6f5cc47943b6eb8754892c4ce750e1ea1b9370923312f1f040ffddf040
-        outLocation: /home/disintegrator/github.com/disintegrator/dub-node
+        sourceRevisionDigest: sha256:b43a4dbf6e1046455dbbc1d82d42ad674fc9ac4329ad56ea56b8fa871eb663fc
+        sourceBlobDigest: sha256:e16837f81e17ab3177f10c0449b07608dcd0cc3f17b40a9a971ecc382c36b4b2
+        outLocation: /github/workspace/repo
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
