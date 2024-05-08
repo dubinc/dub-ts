@@ -86,7 +86,7 @@ export class Workspaces extends ClientSDK {
                 "5XX",
             ],
         };
-        const request$ = this.createRequest$(
+        const request = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -98,12 +98,12 @@ export class Workspaces extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request, doOptions);
 
         const responseFields$ = {
             HttpMeta: {
                 Response: response,
-                Request: request$,
+                Request: request,
             },
         };
 
@@ -251,17 +251,16 @@ export class Workspaces extends ClientSDK {
      * Create a new workspace for the authenticated user.
      */
     async create(
-        request?: operations.CreateWorkspaceRequestBody | undefined,
+        input: operations.CreateWorkspaceRequestBody | undefined,
         options?: RequestOptions
     ): Promise<components.WorkspaceSchema> {
-        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input$,
+            input,
             (value$) =>
                 operations.CreateWorkspaceRequestBody$.outboundSchema.optional().parse(value$),
             "Input validation failed"
@@ -304,7 +303,7 @@ export class Workspaces extends ClientSDK {
                 "5XX",
             ],
         };
-        const request$ = this.createRequest$(
+        const request = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -317,12 +316,12 @@ export class Workspaces extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request, doOptions);
 
         const responseFields$ = {
             HttpMeta: {
                 Response: response,
-                Request: request$,
+                Request: request,
             },
         };
 
@@ -470,16 +469,15 @@ export class Workspaces extends ClientSDK {
      * Retrieve a workspace for the authenticated user.
      */
     async get(
-        request: operations.GetWorkspaceRequest,
+        input: operations.GetWorkspaceRequest,
         options?: RequestOptions
     ): Promise<components.WorkspaceSchema> {
-        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input$,
+            input,
             (value$) => operations.GetWorkspaceRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -526,7 +524,7 @@ export class Workspaces extends ClientSDK {
                 "5XX",
             ],
         };
-        const request$ = this.createRequest$(
+        const request = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -539,12 +537,12 @@ export class Workspaces extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request, doOptions);
 
         const responseFields$ = {
             HttpMeta: {
                 Response: response,
-                Request: request$,
+                Request: request,
             },
         };
 
