@@ -75,6 +75,7 @@ export class Analytics extends ClientSDK {
             }),
             enc$.encodeForm("device", payload$.device, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("domain", payload$.domain, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("end", payload$.end, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("externalId", payload$.externalId, {
                 explode: true,
                 charEncoding: "percent",
@@ -96,6 +97,7 @@ export class Analytics extends ClientSDK {
                 charEncoding: "percent",
             }),
             enc$.encodeForm("root", payload$.root, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("start", payload$.start, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("tagId", payload$.tagId, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("url", payload$.url, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("workspaceId", this.options$.workspaceId, {
@@ -332,6 +334,7 @@ export class Analytics extends ClientSDK {
             }),
             enc$.encodeForm("device", payload$.device, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("domain", payload$.domain, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("end", payload$.end, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("externalId", payload$.externalId, {
                 explode: true,
                 charEncoding: "percent",
@@ -353,6 +356,7 @@ export class Analytics extends ClientSDK {
                 charEncoding: "percent",
             }),
             enc$.encodeForm("root", payload$.root, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("start", payload$.start, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("tagId", payload$.tagId, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("url", payload$.url, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("workspaceId", this.options$.workspaceId, {
@@ -589,6 +593,7 @@ export class Analytics extends ClientSDK {
             }),
             enc$.encodeForm("device", payload$.device, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("domain", payload$.domain, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("end", payload$.end, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("externalId", payload$.externalId, {
                 explode: true,
                 charEncoding: "percent",
@@ -610,6 +615,7 @@ export class Analytics extends ClientSDK {
                 charEncoding: "percent",
             }),
             enc$.encodeForm("root", payload$.root, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("start", payload$.start, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("tagId", payload$.tagId, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("url", payload$.url, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("workspaceId", this.options$.workspaceId, {
@@ -848,6 +854,7 @@ export class Analytics extends ClientSDK {
             }),
             enc$.encodeForm("device", payload$.device, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("domain", payload$.domain, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("end", payload$.end, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("externalId", payload$.externalId, {
                 explode: true,
                 charEncoding: "percent",
@@ -869,6 +876,7 @@ export class Analytics extends ClientSDK {
                 charEncoding: "percent",
             }),
             enc$.encodeForm("root", payload$.root, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("start", payload$.start, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("tagId", payload$.tagId, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("url", payload$.url, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("workspaceId", this.options$.workspaceId, {
@@ -1107,6 +1115,7 @@ export class Analytics extends ClientSDK {
             }),
             enc$.encodeForm("device", payload$.device, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("domain", payload$.domain, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("end", payload$.end, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("externalId", payload$.externalId, {
                 explode: true,
                 charEncoding: "percent",
@@ -1128,6 +1137,7 @@ export class Analytics extends ClientSDK {
                 charEncoding: "percent",
             }),
             enc$.encodeForm("root", payload$.root, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("start", payload$.start, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("tagId", payload$.tagId, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("url", payload$.url, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("workspaceId", this.options$.workspaceId, {
@@ -1366,6 +1376,7 @@ export class Analytics extends ClientSDK {
             }),
             enc$.encodeForm("device", payload$.device, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("domain", payload$.domain, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("end", payload$.end, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("externalId", payload$.externalId, {
                 explode: true,
                 charEncoding: "percent",
@@ -1387,6 +1398,7 @@ export class Analytics extends ClientSDK {
                 charEncoding: "percent",
             }),
             enc$.encodeForm("root", payload$.root, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("start", payload$.start, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("tagId", payload$.tagId, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("url", payload$.url, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("workspaceId", this.options$.workspaceId, {
@@ -1625,6 +1637,7 @@ export class Analytics extends ClientSDK {
             }),
             enc$.encodeForm("device", payload$.device, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("domain", payload$.domain, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("end", payload$.end, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("externalId", payload$.externalId, {
                 explode: true,
                 charEncoding: "percent",
@@ -1646,6 +1659,7 @@ export class Analytics extends ClientSDK {
                 charEncoding: "percent",
             }),
             enc$.encodeForm("root", payload$.root, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("start", payload$.start, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("tagId", payload$.tagId, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("url", payload$.url, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("workspaceId", this.options$.workspaceId, {
@@ -1884,6 +1898,7 @@ export class Analytics extends ClientSDK {
             }),
             enc$.encodeForm("device", payload$.device, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("domain", payload$.domain, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("end", payload$.end, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("externalId", payload$.externalId, {
                 explode: true,
                 charEncoding: "percent",
@@ -1905,6 +1920,7 @@ export class Analytics extends ClientSDK {
                 charEncoding: "percent",
             }),
             enc$.encodeForm("root", payload$.root, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("start", payload$.start, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("tagId", payload$.tagId, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("url", payload$.url, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("workspaceId", this.options$.workspaceId, {
@@ -2143,6 +2159,7 @@ export class Analytics extends ClientSDK {
             }),
             enc$.encodeForm("device", payload$.device, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("domain", payload$.domain, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("end", payload$.end, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("externalId", payload$.externalId, {
                 explode: true,
                 charEncoding: "percent",
@@ -2164,6 +2181,7 @@ export class Analytics extends ClientSDK {
                 charEncoding: "percent",
             }),
             enc$.encodeForm("root", payload$.root, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("start", payload$.start, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("tagId", payload$.tagId, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("url", payload$.url, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("workspaceId", this.options$.workspaceId, {
@@ -2400,6 +2418,7 @@ export class Analytics extends ClientSDK {
             }),
             enc$.encodeForm("device", payload$.device, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("domain", payload$.domain, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("end", payload$.end, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("externalId", payload$.externalId, {
                 explode: true,
                 charEncoding: "percent",
@@ -2421,6 +2440,7 @@ export class Analytics extends ClientSDK {
                 charEncoding: "percent",
             }),
             enc$.encodeForm("root", payload$.root, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("start", payload$.start, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("tagId", payload$.tagId, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("url", payload$.url, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("workspaceId", this.options$.workspaceId, {

@@ -10,6 +10,7 @@
 * [delete](#delete) - Delete a link
 * [update](#update) - Update a link
 * [createMany](#createmany) - Bulk create links
+* [upsert](#upsert) - Upsert a link
 
 ## list
 
@@ -270,7 +271,7 @@ run();
 
 ## update
 
-Update a link for the authenticated workspace.
+Update a link for the authenticated workspace. If there's no change, returns as is.
 
 ### Example Usage
 
@@ -362,6 +363,59 @@ run();
 ### Response
 
 **Promise<[components.LinkSchema[]](../../models/.md)>**
+### Errors
+
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.BadRequest          | 400                        | application/json           |
+| errors.Unauthorized        | 401                        | application/json           |
+| errors.Forbidden           | 403                        | application/json           |
+| errors.NotFound            | 404                        | application/json           |
+| errors.Conflict            | 409                        | application/json           |
+| errors.InviteExpired       | 410                        | application/json           |
+| errors.UnprocessableEntity | 422                        | application/json           |
+| errors.RateLimitExceeded   | 429                        | application/json           |
+| errors.InternalServerError | 500                        | application/json           |
+| errors.SDKError            | 4xx-5xx                    | */*                        |
+
+## upsert
+
+Upsert a link for the authenticated workspace by its URL. If a link with the same URL already exists, returns as is if there's no change, or update it. Otherwise, a new link will be created.
+
+### Example Usage
+
+```typescript
+import { Dub } from "dub";
+
+const dub = new Dub({
+  token: "DUB_API_KEY",
+  workspaceId: "<value>",
+});
+
+async function run() {
+  const result = await dub.links.upsert({
+    url: "https://google/com",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.UpsertLinkRequestBody](../../models/operations/upsertlinkrequestbody.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise<[components.LinkSchema](../../models/components/linkschema.md)>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |

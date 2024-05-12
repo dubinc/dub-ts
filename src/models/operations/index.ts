@@ -31,3 +31,4 @@ export * from "./setprimarydomain";
 export * from "./transferdomain";
 export * from "./updatedomain";
 export * from "./updatelink";
+export * from "./upsertlink";

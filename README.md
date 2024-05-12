@@ -36,7 +36,7 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 <!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
 
-### Example
+### Example 1
 
 ```typescript
 import { Dub } from "dub";
@@ -48,6 +48,29 @@ const dub = new Dub({
 
 async function run() {
     const result = await dub.links.create({
+        url: "https://google/com",
+    });
+
+    // Handle the result
+    console.log(result);
+}
+
+run();
+
+```
+
+### Example 2
+
+```typescript
+import { Dub } from "dub";
+
+const dub = new Dub({
+    token: "DUB_API_KEY",
+    workspaceId: "<value>",
+});
+
+async function run() {
+    const result = await dub.links.upsert({
         url: "https://google/com",
     });
 
@@ -72,6 +95,7 @@ run();
 * [delete](docs/sdks/links/README.md#delete) - Delete a link
 * [update](docs/sdks/links/README.md#update) - Update a link
 * [createMany](docs/sdks/links/README.md#createmany) - Bulk create links
+* [upsert](docs/sdks/links/README.md#upsert) - Upsert a link
 
 ### [qrCodes](docs/sdks/qrcodes/README.md)
 
