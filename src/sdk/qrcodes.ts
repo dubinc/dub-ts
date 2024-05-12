@@ -45,11 +45,8 @@ export class QRCodes extends ClientSDK {
      * @remarks
      * Retrieve a QR code for a link.
      */
-    async get(
-        request?: operations.GetQRCodeRequest | undefined,
-        options?: RequestOptions
-    ): Promise<string> {
-        const input$ = typeof request === "undefined" ? {} : request;
+    async get(request: operations.GetQRCodeRequest, options?: RequestOptions): Promise<string> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "image/png");
