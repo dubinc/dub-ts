@@ -20,9 +20,9 @@ export type Level = (typeof Level)[keyof typeof Level];
 
 export type GetQRCodeRequest = {
     /**
-     * The URL to generate a QR code for. Defaults to `https://dub.co` if not provided.
+     * The URL to generate a QR code for.
      */
-    url?: string | undefined;
+    url: string;
     /**
      * The size of the QR code in pixels. Defaults to `600` if not provided.
      */
@@ -51,7 +51,7 @@ export const Level$: z.ZodNativeEnum<typeof Level> = z.nativeEnum(Level);
 /** @internal */
 export namespace GetQRCodeRequest$ {
     export type Inbound = {
-        url?: string | undefined;
+        url: string;
         size?: number | undefined;
         level?: Level | undefined;
         fgColor?: string | undefined;
@@ -61,7 +61,7 @@ export namespace GetQRCodeRequest$ {
 
     export const inboundSchema: z.ZodType<GetQRCodeRequest, z.ZodTypeDef, Inbound> = z
         .object({
-            url: z.string().default("https://dub.co"),
+            url: z.string(),
             size: z.number().default(600),
             level: Level$.default("L"),
             fgColor: z.string().default("#000000"),
@@ -90,7 +90,7 @@ export namespace GetQRCodeRequest$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetQRCodeRequest> = z
         .object({
-            url: z.string().default("https://dub.co"),
+            url: z.string(),
             size: z.number().default(600),
             level: Level$.default("L"),
             fgColor: z.string().default("#000000"),

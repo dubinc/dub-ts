@@ -5,7 +5,7 @@
 import * as z from "zod";
 
 /**
- * The interval to retrieve analytics for.
+ * The interval to retrieve analytics for. Takes precedence over start and end.
  */
 export const GetTopURLsQueryParamInterval = {
     Oneh: "1h",
@@ -13,10 +13,12 @@ export const GetTopURLsQueryParamInterval = {
     Sevend: "7d",
     Thirtyd: "30d",
     Ninetyd: "90d",
+    Ytd: "ytd",
+    Oney: "1y",
     All: "all",
 } as const;
 /**
- * The interval to retrieve analytics for.
+ * The interval to retrieve analytics for. Takes precedence over start and end.
  */
 export type GetTopURLsQueryParamInterval =
     (typeof GetTopURLsQueryParamInterval)[keyof typeof GetTopURLsQueryParamInterval];
@@ -300,9 +302,17 @@ export type GetTopURLsRequest = {
      */
     externalId?: string | undefined;
     /**
-     * The interval to retrieve analytics for.
+     * The interval to retrieve analytics for. Takes precedence over start and end.
      */
     interval?: GetTopURLsQueryParamInterval | undefined;
+    /**
+     * The start date and time when to retrieve analytics from.
+     */
+    start?: string | undefined;
+    /**
+     * The end date and time when to retrieve analytics from. If not provided, defaults to the current date.
+     */
+    end?: string | undefined;
     /**
      * The country to retrieve analytics for.
      */
@@ -372,6 +382,8 @@ export namespace GetTopURLsRequest$ {
         linkId?: string | undefined;
         externalId?: string | undefined;
         interval?: GetTopURLsQueryParamInterval | undefined;
+        start?: string | undefined;
+        end?: string | undefined;
         country?: GetTopURLsQueryParamCountry | undefined;
         city?: string | undefined;
         device?: string | undefined;
@@ -391,6 +403,8 @@ export namespace GetTopURLsRequest$ {
             linkId: z.string().optional(),
             externalId: z.string().optional(),
             interval: GetTopURLsQueryParamInterval$.optional(),
+            start: z.string().optional(),
+            end: z.string().optional(),
             country: GetTopURLsQueryParamCountry$.optional(),
             city: z.string().optional(),
             device: z.string().optional(),
@@ -409,6 +423,8 @@ export namespace GetTopURLsRequest$ {
                 ...(v.linkId === undefined ? null : { linkId: v.linkId }),
                 ...(v.externalId === undefined ? null : { externalId: v.externalId }),
                 ...(v.interval === undefined ? null : { interval: v.interval }),
+                ...(v.start === undefined ? null : { start: v.start }),
+                ...(v.end === undefined ? null : { end: v.end }),
                 ...(v.country === undefined ? null : { country: v.country }),
                 ...(v.city === undefined ? null : { city: v.city }),
                 ...(v.device === undefined ? null : { device: v.device }),
@@ -428,6 +444,8 @@ export namespace GetTopURLsRequest$ {
         linkId?: string | undefined;
         externalId?: string | undefined;
         interval?: GetTopURLsQueryParamInterval | undefined;
+        start?: string | undefined;
+        end?: string | undefined;
         country?: GetTopURLsQueryParamCountry | undefined;
         city?: string | undefined;
         device?: string | undefined;
@@ -447,6 +465,8 @@ export namespace GetTopURLsRequest$ {
             linkId: z.string().optional(),
             externalId: z.string().optional(),
             interval: GetTopURLsQueryParamInterval$.optional(),
+            start: z.string().optional(),
+            end: z.string().optional(),
             country: GetTopURLsQueryParamCountry$.optional(),
             city: z.string().optional(),
             device: z.string().optional(),
@@ -465,6 +485,8 @@ export namespace GetTopURLsRequest$ {
                 ...(v.linkId === undefined ? null : { linkId: v.linkId }),
                 ...(v.externalId === undefined ? null : { externalId: v.externalId }),
                 ...(v.interval === undefined ? null : { interval: v.interval }),
+                ...(v.start === undefined ? null : { start: v.start }),
+                ...(v.end === undefined ? null : { end: v.end }),
                 ...(v.country === undefined ? null : { country: v.country }),
                 ...(v.city === undefined ? null : { city: v.city }),
                 ...(v.device === undefined ? null : { device: v.device }),

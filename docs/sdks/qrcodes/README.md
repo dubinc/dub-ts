@@ -20,7 +20,9 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.qrCodes.get({});
+  const result = await dub.qrCodes.get({
+    url: "https://brief-micronutrient.org",
+  });
 
   // Handle the result
   console.log(result)

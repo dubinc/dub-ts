@@ -5,7 +5,7 @@
 import * as z from "zod";
 
 /**
- * The interval to retrieve analytics for.
+ * The interval to retrieve analytics for. Takes precedence over start and end.
  */
 export const GetCountryAnalyticsQueryParamInterval = {
     Oneh: "1h",
@@ -13,10 +13,12 @@ export const GetCountryAnalyticsQueryParamInterval = {
     Sevend: "7d",
     Thirtyd: "30d",
     Ninetyd: "90d",
+    Ytd: "ytd",
+    Oney: "1y",
     All: "all",
 } as const;
 /**
- * The interval to retrieve analytics for.
+ * The interval to retrieve analytics for. Takes precedence over start and end.
  */
 export type GetCountryAnalyticsQueryParamInterval =
     (typeof GetCountryAnalyticsQueryParamInterval)[keyof typeof GetCountryAnalyticsQueryParamInterval];
@@ -300,9 +302,17 @@ export type GetCountryAnalyticsRequest = {
      */
     externalId?: string | undefined;
     /**
-     * The interval to retrieve analytics for.
+     * The interval to retrieve analytics for. Takes precedence over start and end.
      */
     interval?: GetCountryAnalyticsQueryParamInterval | undefined;
+    /**
+     * The start date and time when to retrieve analytics from.
+     */
+    start?: string | undefined;
+    /**
+     * The end date and time when to retrieve analytics from. If not provided, defaults to the current date.
+     */
+    end?: string | undefined;
     /**
      * The country to retrieve analytics for.
      */
@@ -635,6 +645,8 @@ export namespace GetCountryAnalyticsRequest$ {
         linkId?: string | undefined;
         externalId?: string | undefined;
         interval?: GetCountryAnalyticsQueryParamInterval | undefined;
+        start?: string | undefined;
+        end?: string | undefined;
         country?: GetCountryAnalyticsQueryParamCountry | undefined;
         city?: string | undefined;
         device?: string | undefined;
@@ -654,6 +666,8 @@ export namespace GetCountryAnalyticsRequest$ {
             linkId: z.string().optional(),
             externalId: z.string().optional(),
             interval: GetCountryAnalyticsQueryParamInterval$.optional(),
+            start: z.string().optional(),
+            end: z.string().optional(),
             country: GetCountryAnalyticsQueryParamCountry$.optional(),
             city: z.string().optional(),
             device: z.string().optional(),
@@ -672,6 +686,8 @@ export namespace GetCountryAnalyticsRequest$ {
                 ...(v.linkId === undefined ? null : { linkId: v.linkId }),
                 ...(v.externalId === undefined ? null : { externalId: v.externalId }),
                 ...(v.interval === undefined ? null : { interval: v.interval }),
+                ...(v.start === undefined ? null : { start: v.start }),
+                ...(v.end === undefined ? null : { end: v.end }),
                 ...(v.country === undefined ? null : { country: v.country }),
                 ...(v.city === undefined ? null : { city: v.city }),
                 ...(v.device === undefined ? null : { device: v.device }),
@@ -691,6 +707,8 @@ export namespace GetCountryAnalyticsRequest$ {
         linkId?: string | undefined;
         externalId?: string | undefined;
         interval?: GetCountryAnalyticsQueryParamInterval | undefined;
+        start?: string | undefined;
+        end?: string | undefined;
         country?: GetCountryAnalyticsQueryParamCountry | undefined;
         city?: string | undefined;
         device?: string | undefined;
@@ -710,6 +728,8 @@ export namespace GetCountryAnalyticsRequest$ {
             linkId: z.string().optional(),
             externalId: z.string().optional(),
             interval: GetCountryAnalyticsQueryParamInterval$.optional(),
+            start: z.string().optional(),
+            end: z.string().optional(),
             country: GetCountryAnalyticsQueryParamCountry$.optional(),
             city: z.string().optional(),
             device: z.string().optional(),
@@ -728,6 +748,8 @@ export namespace GetCountryAnalyticsRequest$ {
                 ...(v.linkId === undefined ? null : { linkId: v.linkId }),
                 ...(v.externalId === undefined ? null : { externalId: v.externalId }),
                 ...(v.interval === undefined ? null : { interval: v.interval }),
+                ...(v.start === undefined ? null : { start: v.start }),
+                ...(v.end === undefined ? null : { end: v.end }),
                 ...(v.country === undefined ? null : { country: v.country }),
                 ...(v.city === undefined ? null : { city: v.city }),
                 ...(v.device === undefined ? null : { device: v.device }),

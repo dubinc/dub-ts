@@ -1,6 +1,6 @@
 # GetOSAnalyticsQueryParamInterval
 
-The interval to retrieve analytics for.
+The interval to retrieve analytics for. Takes precedence over start and end.
 
 
 ## Values
@@ -12,4 +12,6 @@ The interval to retrieve analytics for.
 | `Sevend`      | 7d            |
 | `Thirtyd`     | 30d           |
 | `Ninetyd`     | 90d           |
+| `Ytd`         | ytd           |
+| `Oney`        | 1y            |
 | `All`         | all           |
