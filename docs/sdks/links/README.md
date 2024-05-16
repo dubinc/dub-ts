@@ -271,7 +271,7 @@ run();
 
 ## update
 
-Update a link for the authenticated workspace. If there's no change, returns as is.
+Update a link for the authenticated workspace. If there's no change, returns it as it is.
 
 ### Example Usage
 
@@ -380,7 +380,7 @@ run();
 
 ## upsert
 
-Upsert a link for the authenticated workspace by its URL. If a link with the same URL already exists, returns as is if there's no change, or update it. Otherwise, a new link will be created.
+Upsert a link for the authenticated workspace by its URL. If a link with the same URL already exists, return it (or update it if there are any changes). Otherwise, a new link will be created.
 
 ### Example Usage
 

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: 98ca9bc4e949829ec5b766834b0ad8c5
+  docChecksum: 61ca2a4d60218732e7611140e6caf8d9
   docVersion: 0.0.1
-  speakeasyVersion: 1.286.0
-  generationVersion: 2.326.3
-  releaseVersion: 0.29.1
-  configChecksum: 6f6d30c5a12a247a1c1897cfaf975279
+  speakeasyVersion: 1.292.0
+  generationVersion: 2.332.4
+  releaseVersion: 0.29.2
+  configChecksum: d735362927204881510a6a6042f5e824
   repoURL: https://github.com/dubinc/dub-node.git
   installationURL: https://github.com/dubinc/dub-node
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.5
-    core: 3.9.3
+    core: 3.9.4
     deprecations: 2.81.1
     examples: 2.81.4
     flattening: 2.81.1
@@ -32,6 +32,7 @@ features:
 generatedFiles:
   - src/sdk/links.ts
   - src/sdk/qrcodes.ts
+  - src/sdk/clicks.ts
   - src/sdk/analytics.ts
   - src/sdk/workspaces.ts
   - src/sdk/tags.ts
@@ -56,6 +57,7 @@ generatedFiles:
   - src/models/errors/sdkerror.ts
   - src/models/errors/sdkvalidationerror.ts
   - src/types/blobs.ts
+  - src/types/enums.ts
   - src/types/index.ts
   - src/types/operations.ts
   - src/types/rfcdate.ts
@@ -83,16 +85,26 @@ generatedFiles:
   - src/models/operations/bulkcreatelinks.ts
   - src/models/operations/upsertlink.ts
   - src/models/operations/getqrcode.ts
-  - src/models/operations/getclicksanalytics.ts
-  - src/models/operations/gettimeseriesanalytics.ts
-  - src/models/operations/getcountryanalytics.ts
-  - src/models/operations/getcityanalytics.ts
-  - src/models/operations/getdeviceanalytics.ts
-  - src/models/operations/getbrowseranalytics.ts
-  - src/models/operations/getosanalytics.ts
-  - src/models/operations/getrefereranalytics.ts
-  - src/models/operations/gettoplinks.ts
-  - src/models/operations/gettopurls.ts
+  - src/models/operations/gettimeseriesbyclicksdeprecated.ts
+  - src/models/operations/getcountriesbyclicksdeprecated.ts
+  - src/models/operations/getcitiesbyclicksdeprecated.ts
+  - src/models/operations/getdevicesbyclicksdeprecated.ts
+  - src/models/operations/getbrowsersbyclicksdeprecated.ts
+  - src/models/operations/getosbyclicksdeprecated.ts
+  - src/models/operations/getreferersbyclicksdeprecated.ts
+  - src/models/operations/gettoplinksbyclicksdeprecated.ts
+  - src/models/operations/gettopurlsbyclicksdeprecated.ts
+  - src/models/operations/getclickscount.ts
+  - src/models/operations/gettimeseriesbyclicks.ts
+  - src/models/operations/getcountriesbyclicks.ts
+  - src/models/operations/getcitiesbyclicks.ts
+  - src/models/operations/getdevicesbyclicks.ts
+  - src/models/operations/getbrowsersbyclicks.ts
+  - src/models/operations/getosbyclicks.ts
+  - src/models/operations/getreferersbyclicks.ts
+  - src/models/operations/gettoplinksbyclicks.ts
+  - src/models/operations/gettopurlsbyclicks.ts
+  - src/models/operations/getclickscountdeprecated.ts
   - src/models/operations/createworkspace.ts
   - src/models/operations/getworkspace.ts
   - src/models/operations/gettags.ts
@@ -178,47 +190,88 @@ generatedFiles:
   - docs/models/operations/upsertlinkrequestbody.md
   - docs/models/operations/level.md
   - docs/models/operations/getqrcoderequest.md
+  - docs/models/operations/gettimeseriesbyclicksdeprecatedqueryparaminterval.md
+  - docs/models/operations/gettimeseriesbyclicksdeprecatedqueryparamcountry.md
+  - docs/models/operations/gettimeseriesbyclicksdeprecatedrequest.md
+  - docs/models/operations/gettimeseriesbyclicksdeprecatedresponsebody.md
+  - docs/models/operations/getcountriesbyclicksdeprecatedqueryparaminterval.md
+  - docs/models/operations/getcountriesbyclicksdeprecatedqueryparamcountry.md
+  - docs/models/operations/getcountriesbyclicksdeprecatedrequest.md
+  - docs/models/operations/getcountriesbyclicksdeprecatedcountry.md
+  - docs/models/operations/getcountriesbyclicksdeprecatedresponsebody.md
+  - docs/models/operations/getcitiesbyclicksdeprecatedqueryparaminterval.md
+  - docs/models/operations/getcitiesbyclicksdeprecatedqueryparamcountry.md
+  - docs/models/operations/getcitiesbyclicksdeprecatedrequest.md
+  - docs/models/operations/getcitiesbyclicksdeprecatedcountry.md
+  - docs/models/operations/getcitiesbyclicksdeprecatedresponsebody.md
+  - docs/models/operations/getdevicesbyclicksdeprecatedqueryparaminterval.md
+  - docs/models/operations/getdevicesbyclicksdeprecatedqueryparamcountry.md
+  - docs/models/operations/getdevicesbyclicksdeprecatedrequest.md
+  - docs/models/operations/getdevicesbyclicksdeprecatedresponsebody.md
+  - docs/models/operations/getbrowsersbyclicksdeprecatedqueryparaminterval.md
+  - docs/models/operations/getbrowsersbyclicksdeprecatedqueryparamcountry.md
+  - docs/models/operations/getbrowsersbyclicksdeprecatedrequest.md
+  - docs/models/operations/getbrowsersbyclicksdeprecatedresponsebody.md
+  - docs/models/operations/getosbyclicksdeprecatedqueryparaminterval.md
+  - docs/models/operations/getosbyclicksdeprecatedqueryparamcountry.md
+  - docs/models/operations/getosbyclicksdeprecatedrequest.md
+  - docs/models/operations/getosbyclicksdeprecatedresponsebody.md
+  - docs/models/operations/getreferersbyclicksdeprecatedqueryparaminterval.md
+  - docs/models/operations/getreferersbyclicksdeprecatedqueryparamcountry.md
+  - docs/models/operations/getreferersbyclicksdeprecatedrequest.md
+  - docs/models/operations/getreferersbyclicksdeprecatedresponsebody.md
+  - docs/models/operations/gettoplinksbyclicksdeprecatedqueryparaminterval.md
+  - docs/models/operations/gettoplinksbyclicksdeprecatedqueryparamcountry.md
+  - docs/models/operations/gettoplinksbyclicksdeprecatedrequest.md
+  - docs/models/operations/gettoplinksbyclicksdeprecatedresponsebody.md
+  - docs/models/operations/gettopurlsbyclicksdeprecatedqueryparaminterval.md
+  - docs/models/operations/gettopurlsbyclicksdeprecatedqueryparamcountry.md
+  - docs/models/operations/gettopurlsbyclicksdeprecatedrequest.md
+  - docs/models/operations/gettopurlsbyclicksdeprecatedresponsebody.md
   - docs/models/operations/interval.md
   - docs/models/operations/country.md
-  - docs/models/operations/getclicksanalyticsrequest.md
+  - docs/models/operations/getclickscountrequest.md
   - docs/models/operations/queryparaminterval.md
   - docs/models/operations/queryparamcountry.md
-  - docs/models/operations/gettimeseriesanalyticsrequest.md
+  - docs/models/operations/gettimeseriesbyclicksrequest.md
   - docs/models/operations/responsebody.md
-  - docs/models/operations/getcountryanalyticsqueryparaminterval.md
-  - docs/models/operations/getcountryanalyticsqueryparamcountry.md
-  - docs/models/operations/getcountryanalyticsrequest.md
-  - docs/models/operations/getcountryanalyticscountry.md
-  - docs/models/operations/getcountryanalyticsresponsebody.md
-  - docs/models/operations/getcityanalyticsqueryparaminterval.md
-  - docs/models/operations/getcityanalyticsqueryparamcountry.md
-  - docs/models/operations/getcityanalyticsrequest.md
-  - docs/models/operations/getcityanalyticscountry.md
-  - docs/models/operations/getcityanalyticsresponsebody.md
-  - docs/models/operations/getdeviceanalyticsqueryparaminterval.md
-  - docs/models/operations/getdeviceanalyticsqueryparamcountry.md
-  - docs/models/operations/getdeviceanalyticsrequest.md
-  - docs/models/operations/getdeviceanalyticsresponsebody.md
-  - docs/models/operations/getbrowseranalyticsqueryparaminterval.md
-  - docs/models/operations/getbrowseranalyticsqueryparamcountry.md
-  - docs/models/operations/getbrowseranalyticsrequest.md
-  - docs/models/operations/getbrowseranalyticsresponsebody.md
-  - docs/models/operations/getosanalyticsqueryparaminterval.md
-  - docs/models/operations/getosanalyticsqueryparamcountry.md
-  - docs/models/operations/getosanalyticsrequest.md
-  - docs/models/operations/getosanalyticsresponsebody.md
-  - docs/models/operations/getrefereranalyticsqueryparaminterval.md
-  - docs/models/operations/getrefereranalyticsqueryparamcountry.md
-  - docs/models/operations/getrefereranalyticsrequest.md
-  - docs/models/operations/getrefereranalyticsresponsebody.md
-  - docs/models/operations/gettoplinksqueryparaminterval.md
-  - docs/models/operations/gettoplinksqueryparamcountry.md
-  - docs/models/operations/gettoplinksrequest.md
-  - docs/models/operations/gettoplinksresponsebody.md
-  - docs/models/operations/gettopurlsqueryparaminterval.md
-  - docs/models/operations/gettopurlsqueryparamcountry.md
-  - docs/models/operations/gettopurlsrequest.md
-  - docs/models/operations/gettopurlsresponsebody.md
+  - docs/models/operations/getcountriesbyclicksqueryparaminterval.md
+  - docs/models/operations/getcountriesbyclicksqueryparamcountry.md
+  - docs/models/operations/getcountriesbyclicksrequest.md
+  - docs/models/operations/getcountriesbyclickscountry.md
+  - docs/models/operations/getcountriesbyclicksresponsebody.md
+  - docs/models/operations/getcitiesbyclicksqueryparaminterval.md
+  - docs/models/operations/getcitiesbyclicksqueryparamcountry.md
+  - docs/models/operations/getcitiesbyclicksrequest.md
+  - docs/models/operations/getcitiesbyclickscountry.md
+  - docs/models/operations/getcitiesbyclicksresponsebody.md
+  - docs/models/operations/getdevicesbyclicksqueryparaminterval.md
+  - docs/models/operations/getdevicesbyclicksqueryparamcountry.md
+  - docs/models/operations/getdevicesbyclicksrequest.md
+  - docs/models/operations/getdevicesbyclicksresponsebody.md
+  - docs/models/operations/getbrowsersbyclicksqueryparaminterval.md
+  - docs/models/operations/getbrowsersbyclicksqueryparamcountry.md
+  - docs/models/operations/getbrowsersbyclicksrequest.md
+  - docs/models/operations/getbrowsersbyclicksresponsebody.md
+  - docs/models/operations/getosbyclicksqueryparaminterval.md
+  - docs/models/operations/getosbyclicksqueryparamcountry.md
+  - docs/models/operations/getosbyclicksrequest.md
+  - docs/models/operations/getosbyclicksresponsebody.md
+  - docs/models/operations/getreferersbyclicksqueryparaminterval.md
+  - docs/models/operations/getreferersbyclicksqueryparamcountry.md
+  - docs/models/operations/getreferersbyclicksrequest.md
+  - docs/models/operations/getreferersbyclicksresponsebody.md
+  - docs/models/operations/gettoplinksbyclicksqueryparaminterval.md
+  - docs/models/operations/gettoplinksbyclicksqueryparamcountry.md
+  - docs/models/operations/gettoplinksbyclicksrequest.md
+  - docs/models/operations/gettoplinksbyclicksresponsebody.md
+  - docs/models/operations/gettopurlsbyclicksqueryparaminterval.md
+  - docs/models/operations/gettopurlsbyclicksqueryparamcountry.md
+  - docs/models/operations/gettopurlsbyclicksrequest.md
+  - docs/models/operations/gettopurlsbyclicksresponsebody.md
+  - docs/models/operations/getclickscountdeprecatedqueryparaminterval.md
+  - docs/models/operations/getclickscountdeprecatedqueryparamcountry.md
+  - docs/models/operations/getclickscountdeprecatedrequest.md
   - docs/models/operations/createworkspacerequestbody.md
   - docs/models/operations/getworkspacerequest.md
   - docs/models/operations/gettagsrequest.md
@@ -241,6 +294,7 @@ generatedFiles:
   - docs/sdks/links/README.md
   - docs/sdks/qrcodes/README.md
   - docs/sdks/analytics/README.md
+  - docs/sdks/clicks/README.md
   - docs/sdks/workspaces/README.md
   - docs/sdks/tags/README.md
   - docs/sdks/domains/README.md

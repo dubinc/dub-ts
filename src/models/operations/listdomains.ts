@@ -8,9 +8,7 @@ export type ListDomainsRequest = {};
 
 /** @internal */
 export namespace ListDomainsRequest$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<ListDomainsRequest, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<ListDomainsRequest, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 

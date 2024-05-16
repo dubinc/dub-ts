@@ -23,11 +23,7 @@ export type DeleteDomainResponseBody = {
 
 /** @internal */
 export namespace DeleteDomainRequest$ {
-    export type Inbound = {
-        slug: string;
-    };
-
-    export const inboundSchema: z.ZodType<DeleteDomainRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeleteDomainRequest, z.ZodTypeDef, unknown> = z
         .object({
             slug: z.string(),
         })
@@ -54,11 +50,7 @@ export namespace DeleteDomainRequest$ {
 
 /** @internal */
 export namespace DeleteDomainResponseBody$ {
-    export type Inbound = {
-        slug: string;
-    };
-
-    export const inboundSchema: z.ZodType<DeleteDomainResponseBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeleteDomainResponseBody, z.ZodTypeDef, unknown> = z
         .object({
             slug: z.string(),
         })

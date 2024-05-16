@@ -10,11 +10,7 @@ export type Security = {
 
 /** @internal */
 export namespace Security$ {
-    export type Inbound = {
-        token?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Security, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Security, z.ZodTypeDef, unknown> = z
         .object({
             token: z.string().optional(),
         })

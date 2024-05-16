@@ -12,13 +12,7 @@ export type CreateWorkspaceRequestBody = {
 
 /** @internal */
 export namespace CreateWorkspaceRequestBody$ {
-    export type Inbound = {
-        name: string;
-        slug: string;
-        domain?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CreateWorkspaceRequestBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateWorkspaceRequestBody, z.ZodTypeDef, unknown> = z
         .object({
             name: z.string(),
             slug: z.string(),

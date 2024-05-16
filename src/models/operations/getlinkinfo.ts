@@ -22,14 +22,7 @@ export type GetLinkInfoRequest = {
 
 /** @internal */
 export namespace GetLinkInfoRequest$ {
-    export type Inbound = {
-        domain?: string | undefined;
-        key?: string | undefined;
-        linkId?: string | undefined;
-        externalId?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetLinkInfoRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetLinkInfoRequest, z.ZodTypeDef, unknown> = z
         .object({
             domain: z.string().optional(),
             key: z.string().optional(),

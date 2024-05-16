@@ -8,9 +8,7 @@ export type GetTagsRequest = {};
 
 /** @internal */
 export namespace GetTagsRequest$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<GetTagsRequest, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<GetTagsRequest, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 

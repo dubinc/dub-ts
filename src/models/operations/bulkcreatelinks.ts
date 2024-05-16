@@ -365,13 +365,12 @@ export type RequestBody = {
 
 /** @internal */
 export namespace BulkCreateLinksTagIds$ {
-    export type Inbound = string | Array<string>;
-
-    export type Outbound = string | Array<string>;
-    export const inboundSchema: z.ZodType<BulkCreateLinksTagIds, z.ZodTypeDef, Inbound> = z.union([
+    export const inboundSchema: z.ZodType<BulkCreateLinksTagIds, z.ZodTypeDef, unknown> = z.union([
         z.string(),
         z.array(z.string()),
     ]);
+
+    export type Outbound = string | Array<string>;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, BulkCreateLinksTagIds> = z.union(
         [z.string(), z.array(z.string())]
     );
@@ -379,272 +378,18 @@ export namespace BulkCreateLinksTagIds$ {
 
 /** @internal */
 export namespace BulkCreateLinksTagNames$ {
-    export type Inbound = string | Array<string>;
-
-    export type Outbound = string | Array<string>;
-    export const inboundSchema: z.ZodType<BulkCreateLinksTagNames, z.ZodTypeDef, Inbound> = z.union(
+    export const inboundSchema: z.ZodType<BulkCreateLinksTagNames, z.ZodTypeDef, unknown> = z.union(
         [z.string(), z.array(z.string())]
     );
+
+    export type Outbound = string | Array<string>;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, BulkCreateLinksTagNames> =
         z.union([z.string(), z.array(z.string())]);
 }
 
 /** @internal */
 export namespace BulkCreateLinksGeo$ {
-    export type Inbound = {
-        AF?: string | undefined;
-        AL?: string | undefined;
-        DZ?: string | undefined;
-        AS?: string | undefined;
-        AD?: string | undefined;
-        AO?: string | undefined;
-        AI?: string | undefined;
-        AQ?: string | undefined;
-        AG?: string | undefined;
-        AR?: string | undefined;
-        AM?: string | undefined;
-        AW?: string | undefined;
-        AU?: string | undefined;
-        AT?: string | undefined;
-        AZ?: string | undefined;
-        BS?: string | undefined;
-        BH?: string | undefined;
-        BD?: string | undefined;
-        BB?: string | undefined;
-        BY?: string | undefined;
-        BE?: string | undefined;
-        BZ?: string | undefined;
-        BJ?: string | undefined;
-        BM?: string | undefined;
-        BT?: string | undefined;
-        BO?: string | undefined;
-        BA?: string | undefined;
-        BW?: string | undefined;
-        BV?: string | undefined;
-        BR?: string | undefined;
-        IO?: string | undefined;
-        BN?: string | undefined;
-        BG?: string | undefined;
-        BF?: string | undefined;
-        BI?: string | undefined;
-        KH?: string | undefined;
-        CM?: string | undefined;
-        CA?: string | undefined;
-        CV?: string | undefined;
-        KY?: string | undefined;
-        CF?: string | undefined;
-        TD?: string | undefined;
-        CL?: string | undefined;
-        CN?: string | undefined;
-        CX?: string | undefined;
-        CC?: string | undefined;
-        CO?: string | undefined;
-        KM?: string | undefined;
-        CG?: string | undefined;
-        CD?: string | undefined;
-        CK?: string | undefined;
-        CR?: string | undefined;
-        CI?: string | undefined;
-        HR?: string | undefined;
-        CU?: string | undefined;
-        CY?: string | undefined;
-        CZ?: string | undefined;
-        DK?: string | undefined;
-        DJ?: string | undefined;
-        DM?: string | undefined;
-        DO?: string | undefined;
-        EC?: string | undefined;
-        EG?: string | undefined;
-        SV?: string | undefined;
-        GQ?: string | undefined;
-        ER?: string | undefined;
-        EE?: string | undefined;
-        ET?: string | undefined;
-        FK?: string | undefined;
-        FO?: string | undefined;
-        FJ?: string | undefined;
-        FI?: string | undefined;
-        FR?: string | undefined;
-        GF?: string | undefined;
-        PF?: string | undefined;
-        TF?: string | undefined;
-        GA?: string | undefined;
-        GM?: string | undefined;
-        GE?: string | undefined;
-        DE?: string | undefined;
-        GH?: string | undefined;
-        GI?: string | undefined;
-        GR?: string | undefined;
-        GL?: string | undefined;
-        GD?: string | undefined;
-        GP?: string | undefined;
-        GU?: string | undefined;
-        GT?: string | undefined;
-        GN?: string | undefined;
-        GW?: string | undefined;
-        GY?: string | undefined;
-        HT?: string | undefined;
-        HM?: string | undefined;
-        VA?: string | undefined;
-        HN?: string | undefined;
-        HK?: string | undefined;
-        HU?: string | undefined;
-        IS?: string | undefined;
-        IN?: string | undefined;
-        ID?: string | undefined;
-        IR?: string | undefined;
-        IQ?: string | undefined;
-        IE?: string | undefined;
-        IL?: string | undefined;
-        IT?: string | undefined;
-        JM?: string | undefined;
-        JP?: string | undefined;
-        JO?: string | undefined;
-        KZ?: string | undefined;
-        KE?: string | undefined;
-        KI?: string | undefined;
-        KP?: string | undefined;
-        KR?: string | undefined;
-        KW?: string | undefined;
-        KG?: string | undefined;
-        LA?: string | undefined;
-        LV?: string | undefined;
-        LB?: string | undefined;
-        LS?: string | undefined;
-        LR?: string | undefined;
-        LY?: string | undefined;
-        LI?: string | undefined;
-        LT?: string | undefined;
-        LU?: string | undefined;
-        MO?: string | undefined;
-        MG?: string | undefined;
-        MW?: string | undefined;
-        MY?: string | undefined;
-        MV?: string | undefined;
-        ML?: string | undefined;
-        MT?: string | undefined;
-        MH?: string | undefined;
-        MQ?: string | undefined;
-        MR?: string | undefined;
-        MU?: string | undefined;
-        YT?: string | undefined;
-        MX?: string | undefined;
-        FM?: string | undefined;
-        MD?: string | undefined;
-        MC?: string | undefined;
-        MN?: string | undefined;
-        MS?: string | undefined;
-        MA?: string | undefined;
-        MZ?: string | undefined;
-        MM?: string | undefined;
-        NA?: string | undefined;
-        NR?: string | undefined;
-        NP?: string | undefined;
-        NL?: string | undefined;
-        NC?: string | undefined;
-        NZ?: string | undefined;
-        NI?: string | undefined;
-        NE?: string | undefined;
-        NG?: string | undefined;
-        NU?: string | undefined;
-        NF?: string | undefined;
-        MK?: string | undefined;
-        MP?: string | undefined;
-        NO?: string | undefined;
-        OM?: string | undefined;
-        PK?: string | undefined;
-        PW?: string | undefined;
-        PS?: string | undefined;
-        PA?: string | undefined;
-        PG?: string | undefined;
-        PY?: string | undefined;
-        PE?: string | undefined;
-        PH?: string | undefined;
-        PN?: string | undefined;
-        PL?: string | undefined;
-        PT?: string | undefined;
-        PR?: string | undefined;
-        QA?: string | undefined;
-        RE?: string | undefined;
-        RO?: string | undefined;
-        RU?: string | undefined;
-        RW?: string | undefined;
-        SH?: string | undefined;
-        KN?: string | undefined;
-        LC?: string | undefined;
-        PM?: string | undefined;
-        VC?: string | undefined;
-        WS?: string | undefined;
-        SM?: string | undefined;
-        ST?: string | undefined;
-        SA?: string | undefined;
-        SN?: string | undefined;
-        SC?: string | undefined;
-        SL?: string | undefined;
-        SG?: string | undefined;
-        SK?: string | undefined;
-        SI?: string | undefined;
-        SB?: string | undefined;
-        SO?: string | undefined;
-        ZA?: string | undefined;
-        GS?: string | undefined;
-        ES?: string | undefined;
-        LK?: string | undefined;
-        SD?: string | undefined;
-        SR?: string | undefined;
-        SJ?: string | undefined;
-        SZ?: string | undefined;
-        SE?: string | undefined;
-        CH?: string | undefined;
-        SY?: string | undefined;
-        TW?: string | undefined;
-        TJ?: string | undefined;
-        TZ?: string | undefined;
-        TH?: string | undefined;
-        TL?: string | undefined;
-        TG?: string | undefined;
-        TK?: string | undefined;
-        TO?: string | undefined;
-        TT?: string | undefined;
-        TN?: string | undefined;
-        TR?: string | undefined;
-        TM?: string | undefined;
-        TC?: string | undefined;
-        TV?: string | undefined;
-        UG?: string | undefined;
-        UA?: string | undefined;
-        AE?: string | undefined;
-        GB?: string | undefined;
-        US?: string | undefined;
-        UM?: string | undefined;
-        UY?: string | undefined;
-        UZ?: string | undefined;
-        VU?: string | undefined;
-        VE?: string | undefined;
-        VN?: string | undefined;
-        VG?: string | undefined;
-        VI?: string | undefined;
-        WF?: string | undefined;
-        EH?: string | undefined;
-        YE?: string | undefined;
-        ZM?: string | undefined;
-        ZW?: string | undefined;
-        AX?: string | undefined;
-        BQ?: string | undefined;
-        CW?: string | undefined;
-        GG?: string | undefined;
-        IM?: string | undefined;
-        JE?: string | undefined;
-        ME?: string | undefined;
-        BL?: string | undefined;
-        MF?: string | undefined;
-        RS?: string | undefined;
-        SX?: string | undefined;
-        SS?: string | undefined;
-        XK?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<BulkCreateLinksGeo, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<BulkCreateLinksGeo, z.ZodTypeDef, unknown> = z
         .object({
             AF: z.string().optional(),
             AL: z.string().optional(),
@@ -1916,32 +1661,7 @@ export namespace BulkCreateLinksGeo$ {
 
 /** @internal */
 export namespace RequestBody$ {
-    export type Inbound = {
-        url: string;
-        domain?: string | undefined;
-        key?: string | undefined;
-        externalId?: string | null | undefined;
-        prefix?: string | undefined;
-        archived?: boolean | undefined;
-        publicStats?: boolean | undefined;
-        tagId?: string | null | undefined;
-        tagIds?: string | Array<string> | undefined;
-        tagNames?: string | Array<string> | undefined;
-        comments?: string | null | undefined;
-        expiresAt?: string | null | undefined;
-        expiredUrl?: string | null | undefined;
-        password?: string | null | undefined;
-        proxy?: boolean | undefined;
-        title?: string | null | undefined;
-        description?: string | null | undefined;
-        image?: string | null | undefined;
-        rewrite?: boolean | undefined;
-        ios?: string | null | undefined;
-        android?: string | null | undefined;
-        geo?: BulkCreateLinksGeo$.Inbound | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<RequestBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<RequestBody, z.ZodTypeDef, unknown> = z
         .object({
             url: z.string(),
             domain: z.string().optional(),

@@ -10,6 +10,7 @@ import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
 import * as errors from "../models/errors";
 import * as operations from "../models/operations";
+import { Clicks } from "./clicks";
 import * as z from "zod";
 
 export class Analytics extends ClientSDK {
@@ -39,275 +40,23 @@ export class Analytics extends ClientSDK {
         void this.options$;
     }
 
-    /**
-     * Retrieve clicks analytics
-     *
-     * @remarks
-     * Retrieve the number of clicks for a link, a domain, or the authenticated workspace.
-     */
-    async clicks(
-        request?: operations.GetClicksAnalyticsRequest | undefined,
-        options?: RequestOptions
-    ): Promise<number> {
-        const input$ = typeof request === "undefined" ? {} : request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
-
-        const payload$ = schemas$.parse(
-            input$,
-            (value$) => operations.GetClicksAnalyticsRequest$.outboundSchema.parse(value$),
-            "Input validation failed"
-        );
-        const body$ = null;
-
-        const path$ = this.templateURLComponent("/analytics/clicks")();
-
-        const query$ = [
-            enc$.encodeForm("browser", payload$.browser, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("city", payload$.city, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("country", payload$.country, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("device", payload$.device, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("domain", payload$.domain, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("end", payload$.end, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("externalId", payload$.externalId, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("interval", payload$.interval, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("key", payload$.key, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("linkId", payload$.linkId, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("os", payload$.os, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("projectSlug", this.options$.projectSlug, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("qr", payload$.qr, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("referer", payload$.referer, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("root", payload$.root, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("start", payload$.start, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("tagId", payload$.tagId, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("url", payload$.url, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
-
-        let security$;
-        if (typeof this.options$.token === "function") {
-            security$ = { token: await this.options$.token() };
-        } else if (this.options$.token) {
-            security$ = { token: this.options$.token };
-        } else {
-            security$ = {};
-        }
-        const context = {
-            operationID: "getClicksAnalytics",
-            oAuth2Scopes: [],
-            securitySource: this.options$.token,
-        };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
-
-        const doOptions = {
-            context,
-            errorCodes: [
-                "400",
-                "401",
-                "403",
-                "404",
-                "409",
-                "410",
-                "422",
-                "429",
-                "4XX",
-                "500",
-                "5XX",
-            ],
-        };
-        const request$ = this.createRequest$(
-            context,
-            {
-                security: securitySettings$,
-                method: "GET",
-                path: path$,
-                headers: headers$,
-                query: query$,
-                body: body$,
-            },
-            options
-        );
-
-        const response = await this.do$(request$, doOptions);
-
-        const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request$,
-            },
-        };
-
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return z.number().parse(val$);
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else if (this.matchResponse(response, 400, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.BadRequest$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else if (this.matchResponse(response, 401, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.Unauthorized$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else if (this.matchResponse(response, 403, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.Forbidden$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else if (this.matchResponse(response, 404, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.NotFound$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else if (this.matchResponse(response, 409, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.Conflict$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else if (this.matchResponse(response, 410, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.InviteExpired$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else if (this.matchResponse(response, 422, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.UnprocessableEntity$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else if (this.matchResponse(response, 429, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.RateLimitExceeded$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else if (this.matchResponse(response, 500, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.InternalServerError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+    private _clicks?: Clicks;
+    get clicks(): Clicks {
+        return (this._clicks ??= new Clicks(this.options$));
     }
 
     /**
-     * Retrieve timeseries analytics
+     * Retrieve timeseries click analytics
      *
      * @remarks
-     * Retrieve the number of clicks for a link, a domain, or the authenticated workspace over a period of time.
+     * Retrieve timeseries click analytics for a link, a domain, or the authenticated workspace over a period of time.
+     *
+     * @deprecated method: This method is deprecated. Use dub.analytics.clicks.timeseries instead.. Use timeseries instead.
      */
     async timeseries(
-        request?: operations.GetTimeseriesAnalyticsRequest | undefined,
+        request?: operations.GetTimeseriesByClicksDeprecatedRequest | undefined,
         options?: RequestOptions
-    ): Promise<Array<operations.ResponseBody>> {
+    ): Promise<Array<operations.GetTimeseriesByClicksDeprecatedResponseBody>> {
         const input$ = typeof request === "undefined" ? {} : request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
@@ -315,7 +64,8 @@ export class Analytics extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetTimeseriesAnalyticsRequest$.outboundSchema.parse(value$),
+            (value$) =>
+                operations.GetTimeseriesByClicksDeprecatedRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -376,7 +126,7 @@ export class Analytics extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "getTimeseriesAnalytics",
+            operationID: "getTimeseriesByClicksDeprecated",
             oAuth2Scopes: [],
             securitySource: this.options$.token,
         };
@@ -425,7 +175,11 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return z.array(operations.ResponseBody$.inboundSchema).parse(val$);
+                    return z
+                        .array(
+                            operations.GetTimeseriesByClicksDeprecatedResponseBody$.inboundSchema
+                        )
+                        .parse(val$);
                 },
                 "Response validation failed"
             );
@@ -558,15 +312,17 @@ export class Analytics extends ClientSDK {
     }
 
     /**
-     * Retrieve country analytics
+     * Retrieve top countries by clicks
      *
      * @remarks
      * Retrieve the top countries by number of clicks for a link, a domain, or the authenticated workspace.
+     *
+     * @deprecated method: This method is deprecated. Use dub.analytics.clicks.countries instead.. Use countries instead.
      */
-    async countries(
-        request?: operations.GetCountryAnalyticsRequest | undefined,
+    async country(
+        request?: operations.GetCountriesByClicksDeprecatedRequest | undefined,
         options?: RequestOptions
-    ): Promise<Array<operations.GetCountryAnalyticsResponseBody>> {
+    ): Promise<Array<operations.GetCountriesByClicksDeprecatedResponseBody>> {
         const input$ = typeof request === "undefined" ? {} : request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
@@ -574,7 +330,8 @@ export class Analytics extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetCountryAnalyticsRequest$.outboundSchema.parse(value$),
+            (value$) =>
+                operations.GetCountriesByClicksDeprecatedRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -635,7 +392,7 @@ export class Analytics extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "getCountryAnalytics",
+            operationID: "getCountriesByClicksDeprecated",
             oAuth2Scopes: [],
             securitySource: this.options$.token,
         };
@@ -685,7 +442,7 @@ export class Analytics extends ClientSDK {
                 responseBody,
                 (val$) => {
                     return z
-                        .array(operations.GetCountryAnalyticsResponseBody$.inboundSchema)
+                        .array(operations.GetCountriesByClicksDeprecatedResponseBody$.inboundSchema)
                         .parse(val$);
                 },
                 "Response validation failed"
@@ -819,15 +576,17 @@ export class Analytics extends ClientSDK {
     }
 
     /**
-     * Retrieve city analytics
+     * Retrieve top cities by clicks
      *
      * @remarks
      * Retrieve the top countries by number of clicks for a link, a domain, or the authenticated workspace.
+     *
+     * @deprecated method: This method is deprecated. Use dub.analytics.clicks.cities instead.. Use cities instead.
      */
-    async cities(
-        request?: operations.GetCityAnalyticsRequest | undefined,
+    async city(
+        request?: operations.GetCitiesByClicksDeprecatedRequest | undefined,
         options?: RequestOptions
-    ): Promise<Array<operations.GetCityAnalyticsResponseBody>> {
+    ): Promise<Array<operations.GetCitiesByClicksDeprecatedResponseBody>> {
         const input$ = typeof request === "undefined" ? {} : request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
@@ -835,7 +594,7 @@ export class Analytics extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetCityAnalyticsRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetCitiesByClicksDeprecatedRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -896,7 +655,7 @@ export class Analytics extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "getCityAnalytics",
+            operationID: "getCitiesByClicksDeprecated",
             oAuth2Scopes: [],
             securitySource: this.options$.token,
         };
@@ -946,7 +705,7 @@ export class Analytics extends ClientSDK {
                 responseBody,
                 (val$) => {
                     return z
-                        .array(operations.GetCityAnalyticsResponseBody$.inboundSchema)
+                        .array(operations.GetCitiesByClicksDeprecatedResponseBody$.inboundSchema)
                         .parse(val$);
                 },
                 "Response validation failed"
@@ -1080,15 +839,17 @@ export class Analytics extends ClientSDK {
     }
 
     /**
-     * Retrieve device analytics
+     * Retrieve top devices by clicks
      *
      * @remarks
      * Retrieve the top devices by number of clicks for a link, a domain, or the authenticated workspace.
+     *
+     * @deprecated method: This method is deprecated. Use dub.analytics.clicks.devices instead.. Use devices instead.
      */
-    async devices(
-        request?: operations.GetDeviceAnalyticsRequest | undefined,
+    async device(
+        request?: operations.GetDevicesByClicksDeprecatedRequest | undefined,
         options?: RequestOptions
-    ): Promise<Array<operations.GetDeviceAnalyticsResponseBody>> {
+    ): Promise<Array<operations.GetDevicesByClicksDeprecatedResponseBody>> {
         const input$ = typeof request === "undefined" ? {} : request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
@@ -1096,7 +857,8 @@ export class Analytics extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetDeviceAnalyticsRequest$.outboundSchema.parse(value$),
+            (value$) =>
+                operations.GetDevicesByClicksDeprecatedRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -1157,7 +919,7 @@ export class Analytics extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "getDeviceAnalytics",
+            operationID: "getDevicesByClicksDeprecated",
             oAuth2Scopes: [],
             securitySource: this.options$.token,
         };
@@ -1207,7 +969,7 @@ export class Analytics extends ClientSDK {
                 responseBody,
                 (val$) => {
                     return z
-                        .array(operations.GetDeviceAnalyticsResponseBody$.inboundSchema)
+                        .array(operations.GetDevicesByClicksDeprecatedResponseBody$.inboundSchema)
                         .parse(val$);
                 },
                 "Response validation failed"
@@ -1341,15 +1103,17 @@ export class Analytics extends ClientSDK {
     }
 
     /**
-     * Retrieve browser analytics
+     * Retrieve top browsers by clicks
      *
      * @remarks
      * Retrieve the top browsers by number of clicks for a link, a domain, or the authenticated workspace.
+     *
+     * @deprecated method: This method is deprecated. Use dub.analytics.clicks.browsers instead.. Use browsers instead.
      */
-    async browsers(
-        request?: operations.GetBrowserAnalyticsRequest | undefined,
+    async browser(
+        request?: operations.GetBrowsersByClicksDeprecatedRequest | undefined,
         options?: RequestOptions
-    ): Promise<Array<operations.GetBrowserAnalyticsResponseBody>> {
+    ): Promise<Array<operations.GetBrowsersByClicksDeprecatedResponseBody>> {
         const input$ = typeof request === "undefined" ? {} : request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
@@ -1357,7 +1121,8 @@ export class Analytics extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetBrowserAnalyticsRequest$.outboundSchema.parse(value$),
+            (value$) =>
+                operations.GetBrowsersByClicksDeprecatedRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -1418,7 +1183,7 @@ export class Analytics extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "getBrowserAnalytics",
+            operationID: "getBrowsersByClicksDeprecated",
             oAuth2Scopes: [],
             securitySource: this.options$.token,
         };
@@ -1468,7 +1233,7 @@ export class Analytics extends ClientSDK {
                 responseBody,
                 (val$) => {
                     return z
-                        .array(operations.GetBrowserAnalyticsResponseBody$.inboundSchema)
+                        .array(operations.GetBrowsersByClicksDeprecatedResponseBody$.inboundSchema)
                         .parse(val$);
                 },
                 "Response validation failed"
@@ -1602,15 +1367,17 @@ export class Analytics extends ClientSDK {
     }
 
     /**
-     * Retrieve OS analytics
+     * Retrieve top OS by clicks
      *
      * @remarks
      * Retrieve the top OS by number of clicks for a link, a domain, or the authenticated workspace.
+     *
+     * @deprecated method: This method is deprecated. Use dub.analytics.clicks.os instead.. Use os instead.
      */
     async os(
-        request?: operations.GetOSAnalyticsRequest | undefined,
+        request?: operations.GetOSByClicksDeprecatedRequest | undefined,
         options?: RequestOptions
-    ): Promise<Array<operations.GetOSAnalyticsResponseBody>> {
+    ): Promise<Array<operations.GetOSByClicksDeprecatedResponseBody>> {
         const input$ = typeof request === "undefined" ? {} : request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
@@ -1618,7 +1385,7 @@ export class Analytics extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetOSAnalyticsRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetOSByClicksDeprecatedRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -1679,7 +1446,7 @@ export class Analytics extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "getOSAnalytics",
+            operationID: "getOSByClicksDeprecated",
             oAuth2Scopes: [],
             securitySource: this.options$.token,
         };
@@ -1729,7 +1496,7 @@ export class Analytics extends ClientSDK {
                 responseBody,
                 (val$) => {
                     return z
-                        .array(operations.GetOSAnalyticsResponseBody$.inboundSchema)
+                        .array(operations.GetOSByClicksDeprecatedResponseBody$.inboundSchema)
                         .parse(val$);
                 },
                 "Response validation failed"
@@ -1863,15 +1630,17 @@ export class Analytics extends ClientSDK {
     }
 
     /**
-     * Retrieve referer analytics
+     * Retrieve top referers by clicks
      *
      * @remarks
      * Retrieve the top referers by number of clicks for a link, a domain, or the authenticated workspace.
+     *
+     * @deprecated method: This method is deprecated. Use dub.analytics.clicks.referers instead.. Use referers instead.
      */
-    async referers(
-        request?: operations.GetRefererAnalyticsRequest | undefined,
+    async referer(
+        request?: operations.GetReferersByClicksDeprecatedRequest | undefined,
         options?: RequestOptions
-    ): Promise<Array<operations.GetRefererAnalyticsResponseBody>> {
+    ): Promise<Array<operations.GetReferersByClicksDeprecatedResponseBody>> {
         const input$ = typeof request === "undefined" ? {} : request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
@@ -1879,7 +1648,8 @@ export class Analytics extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetRefererAnalyticsRequest$.outboundSchema.parse(value$),
+            (value$) =>
+                operations.GetReferersByClicksDeprecatedRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -1940,7 +1710,7 @@ export class Analytics extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "getRefererAnalytics",
+            operationID: "getReferersByClicksDeprecated",
             oAuth2Scopes: [],
             securitySource: this.options$.token,
         };
@@ -1990,7 +1760,7 @@ export class Analytics extends ClientSDK {
                 responseBody,
                 (val$) => {
                     return z
-                        .array(operations.GetRefererAnalyticsResponseBody$.inboundSchema)
+                        .array(operations.GetReferersByClicksDeprecatedResponseBody$.inboundSchema)
                         .parse(val$);
                 },
                 "Response validation failed"
@@ -2124,15 +1894,17 @@ export class Analytics extends ClientSDK {
     }
 
     /**
-     * Retrieve top links
+     * Retrieve top links by clicks
      *
      * @remarks
      * Retrieve the top links by number of clicks for a domain or the authenticated workspace.
+     *
+     * @deprecated method: This method is deprecated. Use dub.analytics.clicks.topLinks instead.. Use topLinks instead.
      */
     async topLinks(
-        request?: operations.GetTopLinksRequest | undefined,
+        request?: operations.GetTopLinksByClicksDeprecatedRequest | undefined,
         options?: RequestOptions
-    ): Promise<Array<operations.GetTopLinksResponseBody>> {
+    ): Promise<Array<operations.GetTopLinksByClicksDeprecatedResponseBody>> {
         const input$ = typeof request === "undefined" ? {} : request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
@@ -2140,7 +1912,8 @@ export class Analytics extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetTopLinksRequest$.outboundSchema.parse(value$),
+            (value$) =>
+                operations.GetTopLinksByClicksDeprecatedRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -2201,7 +1974,7 @@ export class Analytics extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "getTopLinks",
+            operationID: "getTopLinksByClicksDeprecated",
             oAuth2Scopes: [],
             securitySource: this.options$.token,
         };
@@ -2250,7 +2023,9 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return z.array(operations.GetTopLinksResponseBody$.inboundSchema).parse(val$);
+                    return z
+                        .array(operations.GetTopLinksByClicksDeprecatedResponseBody$.inboundSchema)
+                        .parse(val$);
                 },
                 "Response validation failed"
             );
@@ -2383,15 +2158,17 @@ export class Analytics extends ClientSDK {
     }
 
     /**
-     * Retrieve top URLs
+     * Retrieve top URLs by clicks
      *
      * @remarks
      * Retrieve the top URLs by number of clicks for a given short link.
+     *
+     * @deprecated method: This method is deprecated. Use dub.analytics.clicks.topUrls instead.. Use topUrls instead.
      */
     async topUrls(
-        request?: operations.GetTopURLsRequest | undefined,
+        request?: operations.GetTopURLsByClicksDeprecatedRequest | undefined,
         options?: RequestOptions
-    ): Promise<Array<operations.GetTopURLsResponseBody>> {
+    ): Promise<Array<operations.GetTopURLsByClicksDeprecatedResponseBody>> {
         const input$ = typeof request === "undefined" ? {} : request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
@@ -2399,7 +2176,8 @@ export class Analytics extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetTopURLsRequest$.outboundSchema.parse(value$),
+            (value$) =>
+                operations.GetTopURLsByClicksDeprecatedRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -2460,7 +2238,7 @@ export class Analytics extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "getTopURLs",
+            operationID: "getTopURLsByClicksDeprecated",
             oAuth2Scopes: [],
             securitySource: this.options$.token,
         };
@@ -2509,7 +2287,9 @@ export class Analytics extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return z.array(operations.GetTopURLsResponseBody$.inboundSchema).parse(val$);
+                    return z
+                        .array(operations.GetTopURLsByClicksDeprecatedResponseBody$.inboundSchema)
+                        .parse(val$);
                 },
                 "Response validation failed"
             );

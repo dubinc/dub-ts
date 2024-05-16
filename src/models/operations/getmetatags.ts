@@ -31,11 +31,7 @@ export type GetMetatagsResponseBody = {
 
 /** @internal */
 export namespace GetMetatagsRequest$ {
-    export type Inbound = {
-        url: string;
-    };
-
-    export const inboundSchema: z.ZodType<GetMetatagsRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetMetatagsRequest, z.ZodTypeDef, unknown> = z
         .object({
             url: z.string(),
         })
@@ -62,13 +58,7 @@ export namespace GetMetatagsRequest$ {
 
 /** @internal */
 export namespace GetMetatagsResponseBody$ {
-    export type Inbound = {
-        title: string | null;
-        description: string | null;
-        image: string | null;
-    };
-
-    export const inboundSchema: z.ZodType<GetMetatagsResponseBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetMetatagsResponseBody, z.ZodTypeDef, unknown> = z
         .object({
             title: z.nullable(z.string()),
             description: z.nullable(z.string()),

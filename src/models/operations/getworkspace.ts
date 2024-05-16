@@ -13,11 +13,7 @@ export type GetWorkspaceRequest = {
 
 /** @internal */
 export namespace GetWorkspaceRequest$ {
-    export type Inbound = {
-        idOrSlug: string;
-    };
-
-    export const inboundSchema: z.ZodType<GetWorkspaceRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetWorkspaceRequest, z.ZodTypeDef, unknown> = z
         .object({
             idOrSlug: z.string(),
         })

@@ -23,11 +23,7 @@ export type DeleteLinkResponseBody = {
 
 /** @internal */
 export namespace DeleteLinkRequest$ {
-    export type Inbound = {
-        linkId: string;
-    };
-
-    export const inboundSchema: z.ZodType<DeleteLinkRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeleteLinkRequest, z.ZodTypeDef, unknown> = z
         .object({
             linkId: z.string(),
         })
@@ -54,11 +50,7 @@ export namespace DeleteLinkRequest$ {
 
 /** @internal */
 export namespace DeleteLinkResponseBody$ {
-    export type Inbound = {
-        id: string;
-    };
-
-    export const inboundSchema: z.ZodType<DeleteLinkResponseBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeleteLinkResponseBody, z.ZodTypeDef, unknown> = z
         .object({
             id: z.string(),
         })

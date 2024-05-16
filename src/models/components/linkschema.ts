@@ -283,6 +283,10 @@ export type LinkSchema = {
      */
     url: string;
     /**
+     * [BETA] Whether to track conversions for the short link.
+     */
+    trackConversion?: boolean | undefined;
+    /**
      * Whether the short link is archived.
      */
     archived?: boolean | undefined;
@@ -410,260 +414,7 @@ export type LinkSchema = {
 
 /** @internal */
 export namespace Geo$ {
-    export type Inbound = {
-        AF?: string | undefined;
-        AL?: string | undefined;
-        DZ?: string | undefined;
-        AS?: string | undefined;
-        AD?: string | undefined;
-        AO?: string | undefined;
-        AI?: string | undefined;
-        AQ?: string | undefined;
-        AG?: string | undefined;
-        AR?: string | undefined;
-        AM?: string | undefined;
-        AW?: string | undefined;
-        AU?: string | undefined;
-        AT?: string | undefined;
-        AZ?: string | undefined;
-        BS?: string | undefined;
-        BH?: string | undefined;
-        BD?: string | undefined;
-        BB?: string | undefined;
-        BY?: string | undefined;
-        BE?: string | undefined;
-        BZ?: string | undefined;
-        BJ?: string | undefined;
-        BM?: string | undefined;
-        BT?: string | undefined;
-        BO?: string | undefined;
-        BA?: string | undefined;
-        BW?: string | undefined;
-        BV?: string | undefined;
-        BR?: string | undefined;
-        IO?: string | undefined;
-        BN?: string | undefined;
-        BG?: string | undefined;
-        BF?: string | undefined;
-        BI?: string | undefined;
-        KH?: string | undefined;
-        CM?: string | undefined;
-        CA?: string | undefined;
-        CV?: string | undefined;
-        KY?: string | undefined;
-        CF?: string | undefined;
-        TD?: string | undefined;
-        CL?: string | undefined;
-        CN?: string | undefined;
-        CX?: string | undefined;
-        CC?: string | undefined;
-        CO?: string | undefined;
-        KM?: string | undefined;
-        CG?: string | undefined;
-        CD?: string | undefined;
-        CK?: string | undefined;
-        CR?: string | undefined;
-        CI?: string | undefined;
-        HR?: string | undefined;
-        CU?: string | undefined;
-        CY?: string | undefined;
-        CZ?: string | undefined;
-        DK?: string | undefined;
-        DJ?: string | undefined;
-        DM?: string | undefined;
-        DO?: string | undefined;
-        EC?: string | undefined;
-        EG?: string | undefined;
-        SV?: string | undefined;
-        GQ?: string | undefined;
-        ER?: string | undefined;
-        EE?: string | undefined;
-        ET?: string | undefined;
-        FK?: string | undefined;
-        FO?: string | undefined;
-        FJ?: string | undefined;
-        FI?: string | undefined;
-        FR?: string | undefined;
-        GF?: string | undefined;
-        PF?: string | undefined;
-        TF?: string | undefined;
-        GA?: string | undefined;
-        GM?: string | undefined;
-        GE?: string | undefined;
-        DE?: string | undefined;
-        GH?: string | undefined;
-        GI?: string | undefined;
-        GR?: string | undefined;
-        GL?: string | undefined;
-        GD?: string | undefined;
-        GP?: string | undefined;
-        GU?: string | undefined;
-        GT?: string | undefined;
-        GN?: string | undefined;
-        GW?: string | undefined;
-        GY?: string | undefined;
-        HT?: string | undefined;
-        HM?: string | undefined;
-        VA?: string | undefined;
-        HN?: string | undefined;
-        HK?: string | undefined;
-        HU?: string | undefined;
-        IS?: string | undefined;
-        IN?: string | undefined;
-        ID?: string | undefined;
-        IR?: string | undefined;
-        IQ?: string | undefined;
-        IE?: string | undefined;
-        IL?: string | undefined;
-        IT?: string | undefined;
-        JM?: string | undefined;
-        JP?: string | undefined;
-        JO?: string | undefined;
-        KZ?: string | undefined;
-        KE?: string | undefined;
-        KI?: string | undefined;
-        KP?: string | undefined;
-        KR?: string | undefined;
-        KW?: string | undefined;
-        KG?: string | undefined;
-        LA?: string | undefined;
-        LV?: string | undefined;
-        LB?: string | undefined;
-        LS?: string | undefined;
-        LR?: string | undefined;
-        LY?: string | undefined;
-        LI?: string | undefined;
-        LT?: string | undefined;
-        LU?: string | undefined;
-        MO?: string | undefined;
-        MG?: string | undefined;
-        MW?: string | undefined;
-        MY?: string | undefined;
-        MV?: string | undefined;
-        ML?: string | undefined;
-        MT?: string | undefined;
-        MH?: string | undefined;
-        MQ?: string | undefined;
-        MR?: string | undefined;
-        MU?: string | undefined;
-        YT?: string | undefined;
-        MX?: string | undefined;
-        FM?: string | undefined;
-        MD?: string | undefined;
-        MC?: string | undefined;
-        MN?: string | undefined;
-        MS?: string | undefined;
-        MA?: string | undefined;
-        MZ?: string | undefined;
-        MM?: string | undefined;
-        NA?: string | undefined;
-        NR?: string | undefined;
-        NP?: string | undefined;
-        NL?: string | undefined;
-        NC?: string | undefined;
-        NZ?: string | undefined;
-        NI?: string | undefined;
-        NE?: string | undefined;
-        NG?: string | undefined;
-        NU?: string | undefined;
-        NF?: string | undefined;
-        MK?: string | undefined;
-        MP?: string | undefined;
-        NO?: string | undefined;
-        OM?: string | undefined;
-        PK?: string | undefined;
-        PW?: string | undefined;
-        PS?: string | undefined;
-        PA?: string | undefined;
-        PG?: string | undefined;
-        PY?: string | undefined;
-        PE?: string | undefined;
-        PH?: string | undefined;
-        PN?: string | undefined;
-        PL?: string | undefined;
-        PT?: string | undefined;
-        PR?: string | undefined;
-        QA?: string | undefined;
-        RE?: string | undefined;
-        RO?: string | undefined;
-        RU?: string | undefined;
-        RW?: string | undefined;
-        SH?: string | undefined;
-        KN?: string | undefined;
-        LC?: string | undefined;
-        PM?: string | undefined;
-        VC?: string | undefined;
-        WS?: string | undefined;
-        SM?: string | undefined;
-        ST?: string | undefined;
-        SA?: string | undefined;
-        SN?: string | undefined;
-        SC?: string | undefined;
-        SL?: string | undefined;
-        SG?: string | undefined;
-        SK?: string | undefined;
-        SI?: string | undefined;
-        SB?: string | undefined;
-        SO?: string | undefined;
-        ZA?: string | undefined;
-        GS?: string | undefined;
-        ES?: string | undefined;
-        LK?: string | undefined;
-        SD?: string | undefined;
-        SR?: string | undefined;
-        SJ?: string | undefined;
-        SZ?: string | undefined;
-        SE?: string | undefined;
-        CH?: string | undefined;
-        SY?: string | undefined;
-        TW?: string | undefined;
-        TJ?: string | undefined;
-        TZ?: string | undefined;
-        TH?: string | undefined;
-        TL?: string | undefined;
-        TG?: string | undefined;
-        TK?: string | undefined;
-        TO?: string | undefined;
-        TT?: string | undefined;
-        TN?: string | undefined;
-        TR?: string | undefined;
-        TM?: string | undefined;
-        TC?: string | undefined;
-        TV?: string | undefined;
-        UG?: string | undefined;
-        UA?: string | undefined;
-        AE?: string | undefined;
-        GB?: string | undefined;
-        US?: string | undefined;
-        UM?: string | undefined;
-        UY?: string | undefined;
-        UZ?: string | undefined;
-        VU?: string | undefined;
-        VE?: string | undefined;
-        VN?: string | undefined;
-        VG?: string | undefined;
-        VI?: string | undefined;
-        WF?: string | undefined;
-        EH?: string | undefined;
-        YE?: string | undefined;
-        ZM?: string | undefined;
-        ZW?: string | undefined;
-        AX?: string | undefined;
-        BQ?: string | undefined;
-        CW?: string | undefined;
-        GG?: string | undefined;
-        IM?: string | undefined;
-        JE?: string | undefined;
-        ME?: string | undefined;
-        BL?: string | undefined;
-        MF?: string | undefined;
-        RS?: string | undefined;
-        SX?: string | undefined;
-        SS?: string | undefined;
-        XK?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Geo, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Geo, z.ZodTypeDef, unknown> = z
         .object({
             AF: z.string().optional(),
             AL: z.string().optional(),
@@ -1935,51 +1686,14 @@ export namespace Geo$ {
 
 /** @internal */
 export namespace LinkSchema$ {
-    export type Inbound = {
-        id: string;
-        domain: string;
-        key: string;
-        externalId: string | null;
-        url: string;
-        archived?: boolean | undefined;
-        expiresAt: string | null;
-        expiredUrl: string | null;
-        password: string | null;
-        proxy?: boolean | undefined;
-        title: string | null;
-        description: string | null;
-        image: string | null;
-        rewrite?: boolean | undefined;
-        ios: string | null;
-        android: string | null;
-        geo: Geo$.Inbound | null;
-        publicStats?: boolean | undefined;
-        tagId: string | null;
-        tags: Array<TagSchema$.Inbound> | null;
-        comments: string | null;
-        shortLink: string;
-        qrCode: string;
-        utm_source: string | null;
-        utm_medium: string | null;
-        utm_campaign: string | null;
-        utm_term: string | null;
-        utm_content: string | null;
-        userId: string;
-        workspaceId: string;
-        clicks?: number | undefined;
-        lastClicked: string | null;
-        createdAt: string;
-        updatedAt: string;
-        projectId: string;
-    };
-
-    export const inboundSchema: z.ZodType<LinkSchema, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<LinkSchema, z.ZodTypeDef, unknown> = z
         .object({
             id: z.string(),
             domain: z.string(),
             key: z.string(),
             externalId: z.nullable(z.string()),
             url: z.string(),
+            trackConversion: z.boolean().default(false),
             archived: z.boolean().default(false),
             expiresAt: z.nullable(z.string()),
             expiredUrl: z.nullable(z.string()),
@@ -2018,6 +1732,7 @@ export namespace LinkSchema$ {
                 key: v.key,
                 externalId: v.externalId,
                 url: v.url,
+                trackConversion: v.trackConversion,
                 archived: v.archived,
                 expiresAt: v.expiresAt,
                 expiredUrl: v.expiredUrl,
@@ -2057,6 +1772,7 @@ export namespace LinkSchema$ {
         key: string;
         externalId: string | null;
         url: string;
+        trackConversion: boolean;
         archived: boolean;
         expiresAt: string | null;
         expiredUrl: string | null;
@@ -2096,6 +1812,7 @@ export namespace LinkSchema$ {
             key: z.string(),
             externalId: z.nullable(z.string()),
             url: z.string(),
+            trackConversion: z.boolean().default(false),
             archived: z.boolean().default(false),
             expiresAt: z.nullable(z.string()),
             expiredUrl: z.nullable(z.string()),
@@ -2134,6 +1851,7 @@ export namespace LinkSchema$ {
                 key: v.key,
                 externalId: v.externalId,
                 url: v.url,
+                trackConversion: v.trackConversion,
                 archived: v.archived,
                 expiresAt: v.expiresAt,
                 expiredUrl: v.expiredUrl,
