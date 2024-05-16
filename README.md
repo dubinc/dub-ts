@@ -103,16 +103,29 @@ run();
 
 ### [analytics](docs/sdks/analytics/README.md)
 
-* [clicks](docs/sdks/analytics/README.md#clicks) - Retrieve clicks analytics
-* [timeseries](docs/sdks/analytics/README.md#timeseries) - Retrieve timeseries analytics
-* [countries](docs/sdks/analytics/README.md#countries) - Retrieve country analytics
-* [cities](docs/sdks/analytics/README.md#cities) - Retrieve city analytics
-* [devices](docs/sdks/analytics/README.md#devices) - Retrieve device analytics
-* [browsers](docs/sdks/analytics/README.md#browsers) - Retrieve browser analytics
-* [os](docs/sdks/analytics/README.md#os) - Retrieve OS analytics
-* [referers](docs/sdks/analytics/README.md#referers) - Retrieve referer analytics
-* [topLinks](docs/sdks/analytics/README.md#toplinks) - Retrieve top links
-* [topUrls](docs/sdks/analytics/README.md#topurls) - Retrieve top URLs
+* [~~timeseries~~](docs/sdks/analytics/README.md#timeseries) - Retrieve timeseries click analytics :warning: **Deprecated** Use `timeseries` instead.
+* [~~country~~](docs/sdks/analytics/README.md#country) - Retrieve top countries by clicks :warning: **Deprecated** Use `countries` instead.
+* [~~city~~](docs/sdks/analytics/README.md#city) - Retrieve top cities by clicks :warning: **Deprecated** Use `cities` instead.
+* [~~device~~](docs/sdks/analytics/README.md#device) - Retrieve top devices by clicks :warning: **Deprecated** Use `devices` instead.
+* [~~browser~~](docs/sdks/analytics/README.md#browser) - Retrieve top browsers by clicks :warning: **Deprecated** Use `browsers` instead.
+* [~~os~~](docs/sdks/analytics/README.md#os) - Retrieve top OS by clicks :warning: **Deprecated** Use `os` instead.
+* [~~referer~~](docs/sdks/analytics/README.md#referer) - Retrieve top referers by clicks :warning: **Deprecated** Use `referers` instead.
+* [~~topLinks~~](docs/sdks/analytics/README.md#toplinks) - Retrieve top links by clicks :warning: **Deprecated** Use `topLinks` instead.
+* [~~topUrls~~](docs/sdks/analytics/README.md#topurls) - Retrieve top URLs by clicks :warning: **Deprecated** Use `topUrls` instead.
+
+### [analytics.clicks](docs/sdks/clicks/README.md)
+
+* [count](docs/sdks/clicks/README.md#count) - Retrieve the total clicks count
+* [timeseries](docs/sdks/clicks/README.md#timeseries) - Retrieve timeseries click analytics
+* [countries](docs/sdks/clicks/README.md#countries) - Retrieve top countries by clicks
+* [cities](docs/sdks/clicks/README.md#cities) - Retrieve top cities by clicks
+* [devices](docs/sdks/clicks/README.md#devices) - Retrieve top devices by clicks
+* [browsers](docs/sdks/clicks/README.md#browsers) - Retrieve top browsers by clicks
+* [os](docs/sdks/clicks/README.md#os) - Retrieve top OS by clicks
+* [referers](docs/sdks/clicks/README.md#referers) - Retrieve top referers by clicks
+* [topLinks](docs/sdks/clicks/README.md#toplinks) - Retrieve top links by clicks
+* [topUrls](docs/sdks/clicks/README.md#topurls) - Retrieve top URLs by clicks
+* [~~getClicksCountDeprecated~~](docs/sdks/clicks/README.md#getclickscountdeprecated) - Retrieve the total clicks count :warning: **Deprecated** Use `count` instead.
 
 ### [workspaces](docs/sdks/workspaces/README.md)
 

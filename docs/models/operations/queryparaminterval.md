@@ -1,6 +1,6 @@
 # QueryParamInterval
 
-The interval to retrieve analytics for. Takes precedence over start and end.
+The interval to retrieve analytics for. Takes precedence over start and end. If undefined, defaults to 24h.
 
 
 ## Values

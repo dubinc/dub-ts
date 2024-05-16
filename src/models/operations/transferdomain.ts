@@ -21,11 +21,7 @@ export type TransferDomainRequest = {
 
 /** @internal */
 export namespace TransferDomainRequestBody$ {
-    export type Inbound = {
-        newWorkspaceId: string;
-    };
-
-    export const inboundSchema: z.ZodType<TransferDomainRequestBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<TransferDomainRequestBody, z.ZodTypeDef, unknown> = z
         .object({
             newWorkspaceId: z.string(),
         })
@@ -52,12 +48,7 @@ export namespace TransferDomainRequestBody$ {
 
 /** @internal */
 export namespace TransferDomainRequest$ {
-    export type Inbound = {
-        slug: string;
-        RequestBody?: TransferDomainRequestBody$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<TransferDomainRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<TransferDomainRequest, z.ZodTypeDef, unknown> = z
         .object({
             slug: z.string(),
             RequestBody: z.lazy(() => TransferDomainRequestBody$.inboundSchema).optional(),

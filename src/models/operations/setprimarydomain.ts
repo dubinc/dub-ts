@@ -13,11 +13,7 @@ export type SetPrimaryDomainRequest = {
 
 /** @internal */
 export namespace SetPrimaryDomainRequest$ {
-    export type Inbound = {
-        slug: string;
-    };
-
-    export const inboundSchema: z.ZodType<SetPrimaryDomainRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<SetPrimaryDomainRequest, z.ZodTypeDef, unknown> = z
         .object({
             slug: z.string(),
         })
