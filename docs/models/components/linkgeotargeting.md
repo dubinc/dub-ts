@@ -1,4 +1,4 @@
-# Geo
+# LinkGeoTargeting
 
 Geo targeting information for the short link in JSON format `{[COUNTRY]: https://example.com }`.
 

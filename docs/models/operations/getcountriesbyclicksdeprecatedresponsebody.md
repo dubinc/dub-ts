@@ -1,9 +1,0 @@
-# GetCountriesByClicksDeprecatedResponseBody
-
-
-## Fields
-
-| Field                                                                                                                | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
-| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `country`                                                                                                            | [operations.GetCountriesByClicksDeprecatedCountry](../../models/operations/getcountriesbyclicksdeprecatedcountry.md) | :heavy_check_mark:                                                                                                   | The 2-letter country code: https://d.to/geo                                                                          |
-| `clicks`                                                                                                             | *number*                                                                                                             | :heavy_check_mark:                                                                                                   | The number of clicks from this country                                                                               |

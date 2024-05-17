@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: 61ca2a4d60218732e7611140e6caf8d9
+  docChecksum: 2174cc715c8b8406f1015e71de6e9a07
   docVersion: 0.0.1
-  speakeasyVersion: 1.292.0
+  speakeasyVersion: 1.293.0
   generationVersion: 2.332.4
-  releaseVersion: 0.29.2
-  configChecksum: d735362927204881510a6a6042f5e824
+  releaseVersion: 0.29.3
+  configChecksum: c6c98a549bafe2e1fdcb6812e7870dbb
   repoURL: https://github.com/dubinc/dub-node.git
   installationURL: https://github.com/dubinc/dub-node
   published: true
@@ -64,6 +64,10 @@ generatedFiles:
   - tsconfig.json
   - src/models/components/linkschema.ts
   - src/models/components/tagschema.ts
+  - src/models/components/linkgeotargeting.ts
+  - src/models/components/countrycode.ts
+  - src/models/components/clicksbycountry.ts
+  - src/models/components/clicksbycities.ts
   - src/models/components/workspaceschema.ts
   - src/models/components/domainschema.ts
   - src/models/components/security.ts
@@ -123,6 +127,12 @@ generatedFiles:
   - docs/models/components/linkschema.md
   - docs/models/components/color.md
   - docs/models/components/tagschema.md
+  - docs/models/components/linkgeotargeting.md
+  - docs/models/components/countrycode.md
+  - docs/models/components/country.md
+  - docs/models/components/clicksbycountry.md
+  - docs/models/components/clicksbycitiescountry.md
+  - docs/models/components/clicksbycities.md
   - docs/models/components/plan.md
   - docs/models/components/role.md
   - docs/models/components/users.md
@@ -164,7 +174,6 @@ generatedFiles:
   - docs/models/operations/getlinksrequest.md
   - docs/models/operations/tagids.md
   - docs/models/operations/tagnames.md
-  - docs/models/operations/geo.md
   - docs/models/operations/createlinkrequestbody.md
   - docs/models/operations/getlinkscountqueryparamtagids.md
   - docs/models/operations/getlinkscountqueryparamtagnames.md
@@ -177,100 +186,69 @@ generatedFiles:
   - docs/models/operations/deletelinkresponsebody.md
   - docs/models/operations/updatelinktagids.md
   - docs/models/operations/updatelinktagnames.md
-  - docs/models/operations/updatelinkgeo.md
   - docs/models/operations/updatelinkrequestbody.md
   - docs/models/operations/updatelinkrequest.md
   - docs/models/operations/bulkcreatelinkstagids.md
   - docs/models/operations/bulkcreatelinkstagnames.md
-  - docs/models/operations/bulkcreatelinksgeo.md
   - docs/models/operations/requestbody.md
   - docs/models/operations/upsertlinktagids.md
   - docs/models/operations/upsertlinktagnames.md
-  - docs/models/operations/upsertlinkgeo.md
   - docs/models/operations/upsertlinkrequestbody.md
   - docs/models/operations/level.md
   - docs/models/operations/getqrcoderequest.md
   - docs/models/operations/gettimeseriesbyclicksdeprecatedqueryparaminterval.md
-  - docs/models/operations/gettimeseriesbyclicksdeprecatedqueryparamcountry.md
   - docs/models/operations/gettimeseriesbyclicksdeprecatedrequest.md
   - docs/models/operations/gettimeseriesbyclicksdeprecatedresponsebody.md
   - docs/models/operations/getcountriesbyclicksdeprecatedqueryparaminterval.md
-  - docs/models/operations/getcountriesbyclicksdeprecatedqueryparamcountry.md
   - docs/models/operations/getcountriesbyclicksdeprecatedrequest.md
-  - docs/models/operations/getcountriesbyclicksdeprecatedcountry.md
-  - docs/models/operations/getcountriesbyclicksdeprecatedresponsebody.md
   - docs/models/operations/getcitiesbyclicksdeprecatedqueryparaminterval.md
-  - docs/models/operations/getcitiesbyclicksdeprecatedqueryparamcountry.md
   - docs/models/operations/getcitiesbyclicksdeprecatedrequest.md
-  - docs/models/operations/getcitiesbyclicksdeprecatedcountry.md
-  - docs/models/operations/getcitiesbyclicksdeprecatedresponsebody.md
   - docs/models/operations/getdevicesbyclicksdeprecatedqueryparaminterval.md
-  - docs/models/operations/getdevicesbyclicksdeprecatedqueryparamcountry.md
   - docs/models/operations/getdevicesbyclicksdeprecatedrequest.md
   - docs/models/operations/getdevicesbyclicksdeprecatedresponsebody.md
   - docs/models/operations/getbrowsersbyclicksdeprecatedqueryparaminterval.md
-  - docs/models/operations/getbrowsersbyclicksdeprecatedqueryparamcountry.md
   - docs/models/operations/getbrowsersbyclicksdeprecatedrequest.md
   - docs/models/operations/getbrowsersbyclicksdeprecatedresponsebody.md
   - docs/models/operations/getosbyclicksdeprecatedqueryparaminterval.md
-  - docs/models/operations/getosbyclicksdeprecatedqueryparamcountry.md
   - docs/models/operations/getosbyclicksdeprecatedrequest.md
   - docs/models/operations/getosbyclicksdeprecatedresponsebody.md
   - docs/models/operations/getreferersbyclicksdeprecatedqueryparaminterval.md
-  - docs/models/operations/getreferersbyclicksdeprecatedqueryparamcountry.md
   - docs/models/operations/getreferersbyclicksdeprecatedrequest.md
   - docs/models/operations/getreferersbyclicksdeprecatedresponsebody.md
   - docs/models/operations/gettoplinksbyclicksdeprecatedqueryparaminterval.md
-  - docs/models/operations/gettoplinksbyclicksdeprecatedqueryparamcountry.md
   - docs/models/operations/gettoplinksbyclicksdeprecatedrequest.md
   - docs/models/operations/gettoplinksbyclicksdeprecatedresponsebody.md
   - docs/models/operations/gettopurlsbyclicksdeprecatedqueryparaminterval.md
-  - docs/models/operations/gettopurlsbyclicksdeprecatedqueryparamcountry.md
   - docs/models/operations/gettopurlsbyclicksdeprecatedrequest.md
   - docs/models/operations/gettopurlsbyclicksdeprecatedresponsebody.md
   - docs/models/operations/interval.md
-  - docs/models/operations/country.md
   - docs/models/operations/getclickscountrequest.md
   - docs/models/operations/queryparaminterval.md
-  - docs/models/operations/queryparamcountry.md
   - docs/models/operations/gettimeseriesbyclicksrequest.md
   - docs/models/operations/responsebody.md
   - docs/models/operations/getcountriesbyclicksqueryparaminterval.md
-  - docs/models/operations/getcountriesbyclicksqueryparamcountry.md
   - docs/models/operations/getcountriesbyclicksrequest.md
-  - docs/models/operations/getcountriesbyclickscountry.md
-  - docs/models/operations/getcountriesbyclicksresponsebody.md
   - docs/models/operations/getcitiesbyclicksqueryparaminterval.md
-  - docs/models/operations/getcitiesbyclicksqueryparamcountry.md
   - docs/models/operations/getcitiesbyclicksrequest.md
-  - docs/models/operations/getcitiesbyclickscountry.md
-  - docs/models/operations/getcitiesbyclicksresponsebody.md
   - docs/models/operations/getdevicesbyclicksqueryparaminterval.md
-  - docs/models/operations/getdevicesbyclicksqueryparamcountry.md
   - docs/models/operations/getdevicesbyclicksrequest.md
   - docs/models/operations/getdevicesbyclicksresponsebody.md
   - docs/models/operations/getbrowsersbyclicksqueryparaminterval.md
-  - docs/models/operations/getbrowsersbyclicksqueryparamcountry.md
   - docs/models/operations/getbrowsersbyclicksrequest.md
   - docs/models/operations/getbrowsersbyclicksresponsebody.md
   - docs/models/operations/getosbyclicksqueryparaminterval.md
-  - docs/models/operations/getosbyclicksqueryparamcountry.md
   - docs/models/operations/getosbyclicksrequest.md
   - docs/models/operations/getosbyclicksresponsebody.md
   - docs/models/operations/getreferersbyclicksqueryparaminterval.md
-  - docs/models/operations/getreferersbyclicksqueryparamcountry.md
   - docs/models/operations/getreferersbyclicksrequest.md
   - docs/models/operations/getreferersbyclicksresponsebody.md
   - docs/models/operations/gettoplinksbyclicksqueryparaminterval.md
-  - docs/models/operations/gettoplinksbyclicksqueryparamcountry.md
   - docs/models/operations/gettoplinksbyclicksrequest.md
   - docs/models/operations/gettoplinksbyclicksresponsebody.md
   - docs/models/operations/gettopurlsbyclicksqueryparaminterval.md
-  - docs/models/operations/gettopurlsbyclicksqueryparamcountry.md
   - docs/models/operations/gettopurlsbyclicksrequest.md
   - docs/models/operations/gettopurlsbyclicksresponsebody.md
   - docs/models/operations/getclickscountdeprecatedqueryparaminterval.md
-  - docs/models/operations/getclickscountdeprecatedqueryparamcountry.md
   - docs/models/operations/getclickscountdeprecatedrequest.md
   - docs/models/operations/createworkspacerequestbody.md
   - docs/models/operations/getworkspacerequest.md

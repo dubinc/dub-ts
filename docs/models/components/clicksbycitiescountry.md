@@ -1,6 +1,6 @@
-# GetCountriesByClicksDeprecatedQueryParamCountry
+# ClicksByCitiesCountry
 
-The country to retrieve analytics for.
+The 2-letter country code of the city: https://d.to/geo
 
 
 ## Values

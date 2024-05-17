@@ -103,7 +103,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetCountriesByClicksDeprecatedResponseBody[]](../../models/.md)>**
+**Promise<[components.ClicksByCountry[]](../../models/.md)>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -156,7 +156,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetCitiesByClicksDeprecatedResponseBody[]](../../models/.md)>**
+**Promise<[components.ClicksByCities[]](../../models/.md)>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |

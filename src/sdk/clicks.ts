@@ -8,6 +8,7 @@ import * as enc$ from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
+import * as components from "../models/components";
 import * as errors from "../models/errors";
 import * as operations from "../models/operations";
 import * as z from "zod";
@@ -566,7 +567,7 @@ export class Clicks extends ClientSDK {
     async countries(
         request?: operations.GetCountriesByClicksRequest | undefined,
         options?: RequestOptions
-    ): Promise<Array<operations.GetCountriesByClicksResponseBody>> {
+    ): Promise<Array<components.ClicksByCountry>> {
         const input$ = typeof request === "undefined" ? {} : request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
@@ -684,9 +685,7 @@ export class Clicks extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return z
-                        .array(operations.GetCountriesByClicksResponseBody$.inboundSchema)
-                        .parse(val$);
+                    return z.array(components.ClicksByCountry$.inboundSchema).parse(val$);
                 },
                 "Response validation failed"
             );
@@ -827,7 +826,7 @@ export class Clicks extends ClientSDK {
     async cities(
         request?: operations.GetCitiesByClicksRequest | undefined,
         options?: RequestOptions
-    ): Promise<Array<operations.GetCitiesByClicksResponseBody>> {
+    ): Promise<Array<components.ClicksByCities>> {
         const input$ = typeof request === "undefined" ? {} : request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
@@ -945,9 +944,7 @@ export class Clicks extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return z
-                        .array(operations.GetCitiesByClicksResponseBody$.inboundSchema)
-                        .parse(val$);
+                    return z.array(components.ClicksByCities$.inboundSchema).parse(val$);
                 },
                 "Response validation failed"
             );

@@ -152,7 +152,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetCountriesByClicksResponseBody[]](../../models/.md)>**
+**Promise<[components.ClicksByCountry[]](../../models/.md)>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -203,7 +203,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetCitiesByClicksResponseBody[]](../../models/.md)>**
+**Promise<[components.ClicksByCities[]](../../models/.md)>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
