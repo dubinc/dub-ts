@@ -1,9 +1,0 @@
-# GetCountriesByClicksResponseBody
-
-
-## Fields
-
-| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `country`                                                                                        | [operations.GetCountriesByClicksCountry](../../models/operations/getcountriesbyclickscountry.md) | :heavy_check_mark:                                                                               | The 2-letter country code: https://d.to/geo                                                      |
-| `clicks`                                                                                         | *number*                                                                                         | :heavy_check_mark:                                                                               | The number of clicks from this country                                                           |

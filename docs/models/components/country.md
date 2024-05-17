@@ -1,6 +1,6 @@
-# GetTimeseriesByClicksDeprecatedQueryParamCountry
+# Country
 
-The country to retrieve analytics for.
+The 2-letter country code: https://d.to/geo
 
 
 ## Values
