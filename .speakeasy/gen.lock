@@ -3,10 +3,10 @@ id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
   docChecksum: 2174cc715c8b8406f1015e71de6e9a07
   docVersion: 0.0.1
-  speakeasyVersion: 1.293.0
-  generationVersion: 2.332.4
-  releaseVersion: 0.29.3
-  configChecksum: c6c98a549bafe2e1fdcb6812e7870dbb
+  speakeasyVersion: 1.293.1
+  generationVersion: 2.333.3
+  releaseVersion: 0.29.4
+  configChecksum: d1a183c9b0a8e050303467cda9fa68c2
   repoURL: https://github.com/dubinc/dub-node.git
   installationURL: https://github.com/dubinc/dub-node
   published: true
@@ -28,7 +28,7 @@ features:
     nullables: 0.1.0
     responseFormat: 0.2.3
     sdkHooks: 0.1.0
-    unions: 2.85.4
+    unions: 2.85.5
 generatedFiles:
   - src/sdk/links.ts
   - src/sdk/qrcodes.ts
