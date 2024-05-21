@@ -39,6 +39,10 @@ export type DomainSchema = {
      */
     archived?: boolean | undefined;
     /**
+     * Prevent search engines from indexing the domain.
+     */
+    noindex?: boolean | undefined;
+    /**
      * Provide context to your teammates in the link creation modal by showing them an example of a link to be shortened.
      */
     placeholder?: string | undefined;
@@ -75,6 +79,7 @@ export namespace DomainSchema$ {
             verified: z.boolean().default(false),
             primary: z.boolean().default(false),
             archived: z.boolean().default(false),
+            noindex: z.boolean().default(false),
             placeholder: z.string().default("https://dub.co/help/article/what-is-dub"),
             expiredUrl: z.nullable(z.string()),
             target: z.nullable(z.string()),
@@ -88,6 +93,7 @@ export namespace DomainSchema$ {
                 verified: v.verified,
                 primary: v.primary,
                 archived: v.archived,
+                noindex: v.noindex,
                 placeholder: v.placeholder,
                 expiredUrl: v.expiredUrl,
                 target: v.target,
@@ -102,6 +108,7 @@ export namespace DomainSchema$ {
         verified: boolean;
         primary: boolean;
         archived: boolean;
+        noindex: boolean;
         placeholder: string;
         expiredUrl: string | null;
         target: string | null;
@@ -116,6 +123,7 @@ export namespace DomainSchema$ {
             verified: z.boolean().default(false),
             primary: z.boolean().default(false),
             archived: z.boolean().default(false),
+            noindex: z.boolean().default(false),
             placeholder: z.string().default("https://dub.co/help/article/what-is-dub"),
             expiredUrl: z.nullable(z.string()),
             target: z.nullable(z.string()),
@@ -129,6 +137,7 @@ export namespace DomainSchema$ {
                 verified: v.verified,
                 primary: v.primary,
                 archived: v.archived,
+                noindex: v.noindex,
                 placeholder: v.placeholder,
                 expiredUrl: v.expiredUrl,
                 target: v.target,

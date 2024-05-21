@@ -39,6 +39,10 @@ export type UpdateDomainRequestBody = {
      */
     archived?: boolean | undefined;
     /**
+     * Prevent search engines from indexing the domain. Defaults to `false`.
+     */
+    noindex?: boolean | undefined;
+    /**
      * Provide context to your teammates in the link creation modal by showing them an example of a link to be shortened.
      */
     placeholder?: string | null | undefined;
@@ -67,6 +71,7 @@ export namespace UpdateDomainRequestBody$ {
             target: z.nullable(z.string()).optional(),
             expiredUrl: z.nullable(z.string()).optional(),
             archived: z.boolean().default(false),
+            noindex: z.boolean().optional(),
             placeholder: z.nullable(z.string().default("https://dub.co/help/article/what-is-dub")),
         })
         .transform((v) => {
@@ -76,6 +81,7 @@ export namespace UpdateDomainRequestBody$ {
                 ...(v.target === undefined ? null : { target: v.target }),
                 ...(v.expiredUrl === undefined ? null : { expiredUrl: v.expiredUrl }),
                 archived: v.archived,
+                ...(v.noindex === undefined ? null : { noindex: v.noindex }),
                 placeholder: v.placeholder,
             };
         });
@@ -86,6 +92,7 @@ export namespace UpdateDomainRequestBody$ {
         target?: string | null | undefined;
         expiredUrl?: string | null | undefined;
         archived: boolean;
+        noindex?: boolean | undefined;
         placeholder: string | null;
     };
 
@@ -96,6 +103,7 @@ export namespace UpdateDomainRequestBody$ {
             target: z.nullable(z.string()).optional(),
             expiredUrl: z.nullable(z.string()).optional(),
             archived: z.boolean().default(false),
+            noindex: z.boolean().optional(),
             placeholder: z.nullable(z.string().default("https://dub.co/help/article/what-is-dub")),
         })
         .transform((v) => {
@@ -105,6 +113,7 @@ export namespace UpdateDomainRequestBody$ {
                 ...(v.target === undefined ? null : { target: v.target }),
                 ...(v.expiredUrl === undefined ? null : { expiredUrl: v.expiredUrl }),
                 archived: v.archived,
+                ...(v.noindex === undefined ? null : { noindex: v.noindex }),
                 placeholder: v.placeholder,
             };
         });
