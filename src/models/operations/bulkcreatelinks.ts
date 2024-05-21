@@ -37,6 +37,10 @@ export type RequestBody = {
      */
     prefix?: string | undefined;
     /**
+     * Whether to track conversions for the short link.
+     */
+    trackConversion?: boolean | undefined;
+    /**
      * Whether the short link is archived.
      */
     archived?: boolean | undefined;
@@ -141,6 +145,7 @@ export namespace RequestBody$ {
             key: z.string().optional(),
             externalId: z.nullable(z.string()).optional(),
             prefix: z.string().optional(),
+            trackConversion: z.boolean().default(false),
             archived: z.boolean().default(false),
             publicStats: z.boolean().default(false),
             tagId: z.nullable(z.string()).optional(),
@@ -166,6 +171,7 @@ export namespace RequestBody$ {
                 ...(v.key === undefined ? null : { key: v.key }),
                 ...(v.externalId === undefined ? null : { externalId: v.externalId }),
                 ...(v.prefix === undefined ? null : { prefix: v.prefix }),
+                trackConversion: v.trackConversion,
                 archived: v.archived,
                 publicStats: v.publicStats,
                 ...(v.tagId === undefined ? null : { tagId: v.tagId }),
@@ -192,6 +198,7 @@ export namespace RequestBody$ {
         key?: string | undefined;
         externalId?: string | null | undefined;
         prefix?: string | undefined;
+        trackConversion: boolean;
         archived: boolean;
         publicStats: boolean;
         tagId?: string | null | undefined;
@@ -218,6 +225,7 @@ export namespace RequestBody$ {
             key: z.string().optional(),
             externalId: z.nullable(z.string()).optional(),
             prefix: z.string().optional(),
+            trackConversion: z.boolean().default(false),
             archived: z.boolean().default(false),
             publicStats: z.boolean().default(false),
             tagId: z.nullable(z.string()).optional(),
@@ -243,6 +251,7 @@ export namespace RequestBody$ {
                 ...(v.key === undefined ? null : { key: v.key }),
                 ...(v.externalId === undefined ? null : { externalId: v.externalId }),
                 ...(v.prefix === undefined ? null : { prefix: v.prefix }),
+                trackConversion: v.trackConversion,
                 archived: v.archived,
                 publicStats: v.publicStats,
                 ...(v.tagId === undefined ? null : { tagId: v.tagId }),
