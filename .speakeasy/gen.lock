@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: 4f30b36ccc0d6c4b8d2e3cfc7acb8456
+  docChecksum: 325f4eff71e08b965879b29076b63bb6
   docVersion: 0.0.1
   speakeasyVersion: 1.294.0
   generationVersion: 2.333.3
-  releaseVersion: 0.29.5
-  configChecksum: 277a39290066dc427421b36035d1c002
+  releaseVersion: 0.29.6
+  configChecksum: 3f9a0bc54abf62009e85b3c1e8c5bb7e
   repoURL: https://github.com/dubinc/dub-node.git
   installationURL: https://github.com/dubinc/dub-node
   published: true
@@ -37,6 +37,7 @@ generatedFiles:
   - src/sdk/workspaces.ts
   - src/sdk/tags.ts
   - src/sdk/domains.ts
+  - src/sdk/track.ts
   - src/sdk/metatags.ts
   - src/sdk/sdk.ts
   - .eslintrc.js
@@ -119,6 +120,9 @@ generatedFiles:
   - src/models/operations/updatedomain.ts
   - src/models/operations/setprimarydomain.ts
   - src/models/operations/transferdomain.ts
+  - src/models/operations/tracklead.ts
+  - src/models/operations/tracksale.ts
+  - src/models/operations/trackcustomer.ts
   - src/models/operations/getmetatags.ts
   - src/models/errors/index.ts
   - src/models/components/index.ts
@@ -266,6 +270,13 @@ generatedFiles:
   - docs/models/operations/setprimarydomainrequest.md
   - docs/models/operations/transferdomainrequestbody.md
   - docs/models/operations/transferdomainrequest.md
+  - docs/models/operations/trackleadrequestbody.md
+  - docs/models/operations/trackleadresponsebody.md
+  - docs/models/operations/paymentprocessor.md
+  - docs/models/operations/tracksalerequestbody.md
+  - docs/models/operations/tracksaleresponsebody.md
+  - docs/models/operations/trackcustomerrequestbody.md
+  - docs/models/operations/trackcustomerresponsebody.md
   - docs/models/operations/getmetatagsrequest.md
   - docs/models/operations/getmetatagsresponsebody.md
   - docs/sdks/dub/README.md
@@ -276,6 +287,7 @@ generatedFiles:
   - docs/sdks/workspaces/README.md
   - docs/sdks/tags/README.md
   - docs/sdks/domains/README.md
+  - docs/sdks/track/README.md
   - docs/sdks/metatags/README.md
   - USAGE.md
   - .gitattributes

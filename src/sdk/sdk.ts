@@ -12,6 +12,7 @@ import { Links } from "./links";
 import { Metatags } from "./metatags";
 import { QRCodes } from "./qrcodes";
 import { Tags } from "./tags";
+import { Track } from "./track";
 import { Workspaces } from "./workspaces";
 
 export class Dub extends ClientSDK {
@@ -69,6 +70,11 @@ export class Dub extends ClientSDK {
     private _domains?: Domains;
     get domains(): Domains {
         return (this._domains ??= new Domains(this.options$));
+    }
+
+    private _track?: Track;
+    get track(): Track {
+        return (this._track ??= new Track(this.options$));
     }
 
     private _metatags?: Metatags;

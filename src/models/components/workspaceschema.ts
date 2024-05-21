@@ -110,6 +110,10 @@ export type WorkspaceSchema = {
      */
     billingCycleStart: number;
     /**
+     * [BETA]: The Stripe Connect ID of the workspace.
+     */
+    stripeConnectId: string | null;
+    /**
      * The date and time when the workspace was created.
      */
     createdAt: string;
@@ -125,6 +129,10 @@ export type WorkspaceSchema = {
      * The invite code of the workspace.
      */
     inviteCode: string | null;
+    /**
+     * Whether the workspace is enrolled in the beta testing program.
+     */
+    betaTester?: boolean | undefined;
 };
 
 /** @internal */
@@ -216,10 +224,12 @@ export namespace WorkspaceSchema$ {
             plan: Plan$.inboundSchema,
             stripeId: z.nullable(z.string()),
             billingCycleStart: z.number(),
+            stripeConnectId: z.nullable(z.string()),
             createdAt: z.string(),
             users: z.array(z.lazy(() => Users$.inboundSchema)),
             domains: z.array(z.lazy(() => Domains$.inboundSchema)),
             inviteCode: z.nullable(z.string()),
+            betaTester: z.boolean().optional(),
         })
         .transform((v) => {
             return {
@@ -237,10 +247,12 @@ export namespace WorkspaceSchema$ {
                 plan: v.plan,
                 stripeId: v.stripeId,
                 billingCycleStart: v.billingCycleStart,
+                stripeConnectId: v.stripeConnectId,
                 createdAt: v.createdAt,
                 users: v.users,
                 domains: v.domains,
                 inviteCode: v.inviteCode,
+                ...(v.betaTester === undefined ? null : { betaTester: v.betaTester }),
             };
         });
 
@@ -259,10 +271,12 @@ export namespace WorkspaceSchema$ {
         plan: string;
         stripeId: string | null;
         billingCycleStart: number;
+        stripeConnectId: string | null;
         createdAt: string;
         users: Array<Users$.Outbound>;
         domains: Array<Domains$.Outbound>;
         inviteCode: string | null;
+        betaTester?: boolean | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WorkspaceSchema> = z
@@ -281,10 +295,12 @@ export namespace WorkspaceSchema$ {
             plan: Plan$.outboundSchema,
             stripeId: z.nullable(z.string()),
             billingCycleStart: z.number(),
+            stripeConnectId: z.nullable(z.string()),
             createdAt: z.string(),
             users: z.array(z.lazy(() => Users$.outboundSchema)),
             domains: z.array(z.lazy(() => Domains$.outboundSchema)),
             inviteCode: z.nullable(z.string()),
+            betaTester: z.boolean().optional(),
         })
         .transform((v) => {
             return {
@@ -302,10 +318,12 @@ export namespace WorkspaceSchema$ {
                 plan: v.plan,
                 stripeId: v.stripeId,
                 billingCycleStart: v.billingCycleStart,
+                stripeConnectId: v.stripeConnectId,
                 createdAt: v.createdAt,
                 users: v.users,
                 domains: v.domains,
                 inviteCode: v.inviteCode,
+                ...(v.betaTester === undefined ? null : { betaTester: v.betaTester }),
             };
         });
 }
