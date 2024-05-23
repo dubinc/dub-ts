@@ -5,6 +5,14 @@
 import * as components from "../components";
 import * as z from "zod";
 
+export type UpdateLinkGlobals = {
+    workspaceId: string;
+    /**
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    projectSlug?: string | undefined;
+};
+
 /**
  * The unique IDs of the tags assigned to the short link.
  */
@@ -119,6 +127,38 @@ export type UpdateLinkRequest = {
     linkId: string;
     requestBody?: UpdateLinkRequestBody | undefined;
 };
+
+/** @internal */
+export namespace UpdateLinkGlobals$ {
+    export const inboundSchema: z.ZodType<UpdateLinkGlobals, z.ZodTypeDef, unknown> = z
+        .object({
+            workspaceId: z.string(),
+            projectSlug: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                workspaceId: v.workspaceId,
+                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
+            };
+        });
+
+    export type Outbound = {
+        workspaceId: string;
+        projectSlug?: string | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateLinkGlobals> = z
+        .object({
+            workspaceId: z.string(),
+            projectSlug: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                workspaceId: v.workspaceId,
+                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
+            };
+        });
+}
 
 /** @internal */
 export namespace UpdateLinkTagIds$ {

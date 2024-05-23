@@ -41,7 +41,7 @@ run();
 
 ### Response
 
-**Promise<[components.TagSchema[]](../../models/.md)>**
+**Promise\<[components.TagSchema[]](../../models/.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -94,7 +94,7 @@ run();
 
 ### Response
 
-**Promise<[components.TagSchema](../../models/components/tagschema.md)>**
+**Promise\<[components.TagSchema](../../models/components/tagschema.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |

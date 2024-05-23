@@ -4,6 +4,14 @@
 
 import * as z from "zod";
 
+export type DeleteLinkGlobals = {
+    workspaceId: string;
+    /**
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    projectSlug?: string | undefined;
+};
+
 export type DeleteLinkRequest = {
     /**
      * The id of the link to delete. You may use either `linkId` (obtained via `/links/info` endpoint) or `externalId` prefixed with `ext_`.
@@ -20,6 +28,38 @@ export type DeleteLinkResponseBody = {
      */
     id: string;
 };
+
+/** @internal */
+export namespace DeleteLinkGlobals$ {
+    export const inboundSchema: z.ZodType<DeleteLinkGlobals, z.ZodTypeDef, unknown> = z
+        .object({
+            workspaceId: z.string(),
+            projectSlug: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                workspaceId: v.workspaceId,
+                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
+            };
+        });
+
+    export type Outbound = {
+        workspaceId: string;
+        projectSlug?: string | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteLinkGlobals> = z
+        .object({
+            workspaceId: z.string(),
+            projectSlug: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                workspaceId: v.workspaceId,
+                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
+            };
+        });
+}
 
 /** @internal */
 export namespace DeleteLinkRequest$ {

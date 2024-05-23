@@ -47,7 +47,7 @@ run();
 
 ### Response
 
-**Promise<[components.LinkSchema[]](../../models/.md)>**
+**Promise\<[components.LinkSchema[]](../../models/.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -100,7 +100,7 @@ run();
 
 ### Response
 
-**Promise<[components.LinkSchema](../../models/components/linkschema.md)>**
+**Promise\<[components.LinkSchema](../../models/components/linkschema.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -151,7 +151,7 @@ run();
 
 ### Response
 
-**Promise<[number](../../models/.md)>**
+**Promise\<[number](../../models/.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -202,7 +202,7 @@ run();
 
 ### Response
 
-**Promise<[components.LinkSchema](../../models/components/linkschema.md)>**
+**Promise\<[components.LinkSchema](../../models/components/linkschema.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -253,7 +253,7 @@ run();
 
 ### Response
 
-**Promise<[operations.DeleteLinkResponseBody](../../models/operations/deletelinkresponsebody.md)>**
+**Promise\<[operations.DeleteLinkResponseBody](../../models/operations/deletelinkresponsebody.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -307,7 +307,7 @@ run();
 
 ### Response
 
-**Promise<[components.LinkSchema](../../models/components/linkschema.md)>**
+**Promise\<[components.LinkSchema](../../models/components/linkschema.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -362,7 +362,7 @@ run();
 
 ### Response
 
-**Promise<[components.LinkSchema[]](../../models/.md)>**
+**Promise\<[components.LinkSchema[]](../../models/.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -415,7 +415,7 @@ run();
 
 ### Response
 
-**Promise<[components.LinkSchema](../../models/components/linkschema.md)>**
+**Promise\<[components.LinkSchema](../../models/components/linkschema.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |

@@ -3,6 +3,7 @@
  */
 
 import { bytesToBase64 } from "./base64";
+import { isPlainObject } from "./primitives";
 
 export class EncodingError extends Error {
   constructor(message: string) {
@@ -319,12 +320,6 @@ function explode(key: string, value: unknown): [string, unknown][] {
   } else {
     return [[key, value]];
   }
-}
-
-function isPlainObject(value: unknown): value is object {
-  if (typeof value !== "object" || value == null) return false;
-  const proto = Object.getPrototypeOf(value);
-  return proto === null || proto === Object.prototype;
 }
 
 function serializeValue(value: unknown): string {

@@ -50,7 +50,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetTimeseriesByClicksDeprecatedResponseBody[]](../../models/.md)>**
+**Promise\<[operations.GetTimeseriesByClicksDeprecatedResponseBody[]](../../models/.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -103,7 +103,7 @@ run();
 
 ### Response
 
-**Promise<[components.ClicksByCountry[]](../../models/.md)>**
+**Promise\<[components.ClicksByCountry[]](../../models/.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -156,7 +156,7 @@ run();
 
 ### Response
 
-**Promise<[components.ClicksByCities[]](../../models/.md)>**
+**Promise\<[components.ClicksByCities[]](../../models/.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -209,7 +209,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetDevicesByClicksDeprecatedResponseBody[]](../../models/.md)>**
+**Promise\<[operations.GetDevicesByClicksDeprecatedResponseBody[]](../../models/.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -262,7 +262,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetBrowsersByClicksDeprecatedResponseBody[]](../../models/.md)>**
+**Promise\<[operations.GetBrowsersByClicksDeprecatedResponseBody[]](../../models/.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -315,7 +315,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetOSByClicksDeprecatedResponseBody[]](../../models/.md)>**
+**Promise\<[operations.GetOSByClicksDeprecatedResponseBody[]](../../models/.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -368,7 +368,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetReferersByClicksDeprecatedResponseBody[]](../../models/.md)>**
+**Promise\<[operations.GetReferersByClicksDeprecatedResponseBody[]](../../models/.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -421,7 +421,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetTopLinksByClicksDeprecatedResponseBody[]](../../models/.md)>**
+**Promise\<[operations.GetTopLinksByClicksDeprecatedResponseBody[]](../../models/.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -474,7 +474,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetTopURLsByClicksDeprecatedResponseBody[]](../../models/.md)>**
+**Promise\<[operations.GetTopURLsByClicksDeprecatedResponseBody[]](../../models/.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |

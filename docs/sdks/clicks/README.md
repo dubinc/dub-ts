@@ -50,7 +50,7 @@ run();
 
 ### Response
 
-**Promise<[number](../../models/.md)>**
+**Promise\<[number](../../models/.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -101,7 +101,7 @@ run();
 
 ### Response
 
-**Promise<[operations.ResponseBody[]](../../models/.md)>**
+**Promise\<[operations.ResponseBody[]](../../models/.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -152,7 +152,7 @@ run();
 
 ### Response
 
-**Promise<[components.ClicksByCountry[]](../../models/.md)>**
+**Promise\<[components.ClicksByCountry[]](../../models/.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -203,7 +203,7 @@ run();
 
 ### Response
 
-**Promise<[components.ClicksByCities[]](../../models/.md)>**
+**Promise\<[components.ClicksByCities[]](../../models/.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -254,7 +254,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetDevicesByClicksResponseBody[]](../../models/.md)>**
+**Promise\<[operations.GetDevicesByClicksResponseBody[]](../../models/.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -305,7 +305,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetBrowsersByClicksResponseBody[]](../../models/.md)>**
+**Promise\<[operations.GetBrowsersByClicksResponseBody[]](../../models/.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -356,7 +356,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetOSByClicksResponseBody[]](../../models/.md)>**
+**Promise\<[operations.GetOSByClicksResponseBody[]](../../models/.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -407,7 +407,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetReferersByClicksResponseBody[]](../../models/.md)>**
+**Promise\<[operations.GetReferersByClicksResponseBody[]](../../models/.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -458,7 +458,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetTopLinksByClicksResponseBody[]](../../models/.md)>**
+**Promise\<[operations.GetTopLinksByClicksResponseBody[]](../../models/.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -509,7 +509,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetTopURLsByClicksResponseBody[]](../../models/.md)>**
+**Promise\<[operations.GetTopURLsByClicksResponseBody[]](../../models/.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -562,7 +562,7 @@ run();
 
 ### Response
 
-**Promise<[number](../../models/.md)>**
+**Promise\<[number](../../models/.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |

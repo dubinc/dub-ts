@@ -5,6 +5,14 @@
 import { ClosedEnum } from "../../types";
 import * as z from "zod";
 
+export type UpdateDomainGlobals = {
+    workspaceId: string;
+    /**
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    projectSlug?: string | undefined;
+};
+
 /**
  * The type of redirect to use for this domain.
  */
@@ -55,6 +63,38 @@ export type UpdateDomainRequest = {
     slug: string;
     requestBody?: UpdateDomainRequestBody | undefined;
 };
+
+/** @internal */
+export namespace UpdateDomainGlobals$ {
+    export const inboundSchema: z.ZodType<UpdateDomainGlobals, z.ZodTypeDef, unknown> = z
+        .object({
+            workspaceId: z.string(),
+            projectSlug: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                workspaceId: v.workspaceId,
+                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
+            };
+        });
+
+    export type Outbound = {
+        workspaceId: string;
+        projectSlug?: string | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateDomainGlobals> = z
+        .object({
+            workspaceId: z.string(),
+            projectSlug: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                workspaceId: v.workspaceId,
+                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
+            };
+        });
+}
 
 /** @internal */
 export namespace UpdateDomainType$ {

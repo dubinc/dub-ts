@@ -4,6 +4,14 @@
 
 import * as z from "zod";
 
+export type TransferDomainGlobals = {
+    workspaceId: string;
+    /**
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    projectSlug?: string | undefined;
+};
+
 export type TransferDomainRequestBody = {
     /**
      * The ID of the new workspace to transfer the domain to.
@@ -18,6 +26,38 @@ export type TransferDomainRequest = {
     slug: string;
     requestBody?: TransferDomainRequestBody | undefined;
 };
+
+/** @internal */
+export namespace TransferDomainGlobals$ {
+    export const inboundSchema: z.ZodType<TransferDomainGlobals, z.ZodTypeDef, unknown> = z
+        .object({
+            workspaceId: z.string(),
+            projectSlug: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                workspaceId: v.workspaceId,
+                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
+            };
+        });
+
+    export type Outbound = {
+        workspaceId: string;
+        projectSlug?: string | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TransferDomainGlobals> = z
+        .object({
+            workspaceId: z.string(),
+            projectSlug: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                workspaceId: v.workspaceId,
+                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
+            };
+        });
+}
 
 /** @internal */
 export namespace TransferDomainRequestBody$ {

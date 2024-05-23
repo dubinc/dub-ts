@@ -8,7 +8,6 @@ import * as enc$ from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
-import * as errors from "../models/errors";
 import * as operations from "../models/operations";
 
 export class Metatags extends ClientSDK {
@@ -99,23 +98,11 @@ export class Metatags extends ClientSDK {
 
         const response = await this.do$(request$, doOptions);
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.GetMetatagsResponseBody$.inboundSchema.parse(val$);
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.GetMetatagsResponseBody>()
+            .json(200, operations.GetMetatagsResponseBody$)
+            .fail(["4XX", "5XX"])
+            .match(response);
+
+        return result$;
     }
 }

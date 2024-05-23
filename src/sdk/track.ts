@@ -113,147 +113,24 @@ export class Track extends ClientSDK {
         const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request$,
-            },
+            HttpMeta: { Response: response, Request: request$ },
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.TrackLeadResponseBody$.inboundSchema.parse(val$);
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else if (this.matchResponse(response, 400, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.BadRequest$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else if (this.matchResponse(response, 401, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.Unauthorized$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else if (this.matchResponse(response, 403, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.Forbidden$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else if (this.matchResponse(response, 404, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.NotFound$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else if (this.matchResponse(response, 409, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.Conflict$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else if (this.matchResponse(response, 410, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.InviteExpired$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else if (this.matchResponse(response, 422, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.UnprocessableEntity$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else if (this.matchResponse(response, 429, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.RateLimitExceeded$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else if (this.matchResponse(response, 500, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.InternalServerError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.TrackLeadResponseBody>()
+            .json(200, operations.TrackLeadResponseBody$)
+            .json(400, errors.BadRequest$, { err: true })
+            .json(401, errors.Unauthorized$, { err: true })
+            .json(403, errors.Forbidden$, { err: true })
+            .json(404, errors.NotFound$, { err: true })
+            .json(409, errors.Conflict$, { err: true })
+            .json(410, errors.InviteExpired$, { err: true })
+            .json(422, errors.UnprocessableEntity$, { err: true })
+            .json(429, errors.RateLimitExceeded$, { err: true })
+            .fail(["4XX", "5XX"])
+            .json(500, errors.InternalServerError$, { err: true })
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -331,147 +208,24 @@ export class Track extends ClientSDK {
         const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request$,
-            },
+            HttpMeta: { Response: response, Request: request$ },
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.TrackSaleResponseBody$.inboundSchema.parse(val$);
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else if (this.matchResponse(response, 400, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.BadRequest$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else if (this.matchResponse(response, 401, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.Unauthorized$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else if (this.matchResponse(response, 403, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.Forbidden$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else if (this.matchResponse(response, 404, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.NotFound$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else if (this.matchResponse(response, 409, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.Conflict$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else if (this.matchResponse(response, 410, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.InviteExpired$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else if (this.matchResponse(response, 422, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.UnprocessableEntity$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else if (this.matchResponse(response, 429, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.RateLimitExceeded$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else if (this.matchResponse(response, 500, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.InternalServerError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.TrackSaleResponseBody>()
+            .json(200, operations.TrackSaleResponseBody$)
+            .json(400, errors.BadRequest$, { err: true })
+            .json(401, errors.Unauthorized$, { err: true })
+            .json(403, errors.Forbidden$, { err: true })
+            .json(404, errors.NotFound$, { err: true })
+            .json(409, errors.Conflict$, { err: true })
+            .json(410, errors.InviteExpired$, { err: true })
+            .json(422, errors.UnprocessableEntity$, { err: true })
+            .json(429, errors.RateLimitExceeded$, { err: true })
+            .fail(["4XX", "5XX"])
+            .json(500, errors.InternalServerError$, { err: true })
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -550,146 +304,23 @@ export class Track extends ClientSDK {
         const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
-            HttpMeta: {
-                Response: response,
-                Request: request$,
-            },
+            HttpMeta: { Response: response, Request: request$ },
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.TrackCustomerResponseBody$.inboundSchema.parse(val$);
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else if (this.matchResponse(response, 400, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.BadRequest$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else if (this.matchResponse(response, 401, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.Unauthorized$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else if (this.matchResponse(response, 403, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.Forbidden$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else if (this.matchResponse(response, 404, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.NotFound$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else if (this.matchResponse(response, 409, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.Conflict$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else if (this.matchResponse(response, 410, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.InviteExpired$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else if (this.matchResponse(response, 422, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.UnprocessableEntity$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else if (this.matchResponse(response, 429, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.RateLimitExceeded$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else if (this.matchResponse(response, 500, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return errors.InternalServerError$.inboundSchema.parse({
-                        ...responseFields$,
-                        ...val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            throw result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.TrackCustomerResponseBody>()
+            .json(200, operations.TrackCustomerResponseBody$)
+            .json(400, errors.BadRequest$, { err: true })
+            .json(401, errors.Unauthorized$, { err: true })
+            .json(403, errors.Forbidden$, { err: true })
+            .json(404, errors.NotFound$, { err: true })
+            .json(409, errors.Conflict$, { err: true })
+            .json(410, errors.InviteExpired$, { err: true })
+            .json(422, errors.UnprocessableEntity$, { err: true })
+            .json(429, errors.RateLimitExceeded$, { err: true })
+            .fail(["4XX", "5XX"])
+            .json(500, errors.InternalServerError$, { err: true })
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 }

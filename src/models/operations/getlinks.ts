@@ -5,6 +5,14 @@
 import { ClosedEnum } from "../../types";
 import * as z from "zod";
 
+export type GetLinksGlobals = {
+    workspaceId: string;
+    /**
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    projectSlug?: string | undefined;
+};
+
 /**
  * The tag IDs to filter the links by.
  */
@@ -70,6 +78,38 @@ export type GetLinksRequest = {
      */
     page?: number | undefined;
 };
+
+/** @internal */
+export namespace GetLinksGlobals$ {
+    export const inboundSchema: z.ZodType<GetLinksGlobals, z.ZodTypeDef, unknown> = z
+        .object({
+            workspaceId: z.string(),
+            projectSlug: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                workspaceId: v.workspaceId,
+                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
+            };
+        });
+
+    export type Outbound = {
+        workspaceId: string;
+        projectSlug?: string | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLinksGlobals> = z
+        .object({
+            workspaceId: z.string(),
+            projectSlug: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                workspaceId: v.workspaceId,
+                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
+            };
+        });
+}
 
 /** @internal */
 export namespace QueryParamTagIds$ {
