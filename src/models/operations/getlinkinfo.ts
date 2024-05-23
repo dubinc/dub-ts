@@ -4,6 +4,14 @@
 
 import * as z from "zod";
 
+export type GetLinkInfoGlobals = {
+    workspaceId: string;
+    /**
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    projectSlug?: string | undefined;
+};
+
 export type GetLinkInfoRequest = {
     domain?: string | undefined;
     /**
@@ -19,6 +27,38 @@ export type GetLinkInfoRequest = {
      */
     externalId?: string | undefined;
 };
+
+/** @internal */
+export namespace GetLinkInfoGlobals$ {
+    export const inboundSchema: z.ZodType<GetLinkInfoGlobals, z.ZodTypeDef, unknown> = z
+        .object({
+            workspaceId: z.string(),
+            projectSlug: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                workspaceId: v.workspaceId,
+                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
+            };
+        });
+
+    export type Outbound = {
+        workspaceId: string;
+        projectSlug?: string | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLinkInfoGlobals> = z
+        .object({
+            workspaceId: z.string(),
+            projectSlug: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                workspaceId: v.workspaceId,
+                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
+            };
+        });
+}
 
 /** @internal */
 export namespace GetLinkInfoRequest$ {

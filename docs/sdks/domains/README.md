@@ -45,7 +45,7 @@ run();
 
 ### Response
 
-**Promise<[components.DomainSchema[]](../../models/.md)>**
+**Promise\<[components.DomainSchema[]](../../models/.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -98,7 +98,7 @@ run();
 
 ### Response
 
-**Promise<[components.DomainSchema](../../models/components/domainschema.md)>**
+**Promise\<[components.DomainSchema](../../models/components/domainschema.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -149,7 +149,7 @@ run();
 
 ### Response
 
-**Promise<[operations.DeleteDomainResponseBody](../../models/operations/deletedomainresponsebody.md)>**
+**Promise\<[operations.DeleteDomainResponseBody](../../models/operations/deletedomainresponsebody.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -201,7 +201,7 @@ run();
 
 ### Response
 
-**Promise<[components.DomainSchema](../../models/components/domainschema.md)>**
+**Promise\<[components.DomainSchema](../../models/components/domainschema.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -252,7 +252,7 @@ run();
 
 ### Response
 
-**Promise<[components.DomainSchema](../../models/components/domainschema.md)>**
+**Promise\<[components.DomainSchema](../../models/components/domainschema.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -306,7 +306,7 @@ run();
 
 ### Response
 
-**Promise<[components.DomainSchema](../../models/components/domainschema.md)>**
+**Promise\<[components.DomainSchema](../../models/components/domainschema.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |

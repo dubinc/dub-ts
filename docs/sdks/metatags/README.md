@@ -42,7 +42,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetMetatagsResponseBody](../../models/operations/getmetatagsresponsebody.md)>**
+**Promise\<[operations.GetMetatagsResponseBody](../../models/operations/getmetatagsresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

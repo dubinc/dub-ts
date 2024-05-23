@@ -46,7 +46,7 @@ run();
 
 ### Response
 
-**Promise<[operations.TrackLeadResponseBody](../../models/operations/trackleadresponsebody.md)>**
+**Promise\<[operations.TrackLeadResponseBody](../../models/operations/trackleadresponsebody.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -102,7 +102,7 @@ run();
 
 ### Response
 
-**Promise<[operations.TrackSaleResponseBody](../../models/operations/tracksaleresponsebody.md)>**
+**Promise\<[operations.TrackSaleResponseBody](../../models/operations/tracksaleresponsebody.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -155,7 +155,7 @@ run();
 
 ### Response
 
-**Promise<[operations.TrackCustomerResponseBody](../../models/operations/trackcustomerresponsebody.md)>**
+**Promise\<[operations.TrackCustomerResponseBody](../../models/operations/trackcustomerresponsebody.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |

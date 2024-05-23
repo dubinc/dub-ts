@@ -6,6 +6,14 @@ import { ClosedEnum } from "../../types";
 import * as components from "../components";
 import * as z from "zod";
 
+export type GetOSByClicksGlobals = {
+    workspaceId: string;
+    /**
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    projectSlug?: string | undefined;
+};
+
 /**
  * The interval to retrieve analytics for. Takes precedence over start and end. If undefined, defaults to 24h.
  */
@@ -107,6 +115,38 @@ export type GetOSByClicksResponseBody = {
 };
 
 /** @internal */
+export namespace GetOSByClicksGlobals$ {
+    export const inboundSchema: z.ZodType<GetOSByClicksGlobals, z.ZodTypeDef, unknown> = z
+        .object({
+            workspaceId: z.string(),
+            projectSlug: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                workspaceId: v.workspaceId,
+                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
+            };
+        });
+
+    export type Outbound = {
+        workspaceId: string;
+        projectSlug?: string | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetOSByClicksGlobals> = z
+        .object({
+            workspaceId: z.string(),
+            projectSlug: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                workspaceId: v.workspaceId,
+                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
+            };
+        });
+}
+
+/** @internal */
 export namespace GetOSByClicksQueryParamInterval$ {
     export const inboundSchema = z.nativeEnum(GetOSByClicksQueryParamInterval);
     export const outboundSchema = inboundSchema;
@@ -120,7 +160,7 @@ export namespace GetOSByClicksRequest$ {
             key: z.string().optional(),
             linkId: z.string().optional(),
             externalId: z.string().optional(),
-            interval: GetOSByClicksQueryParamInterval$.inboundSchema.default("24h"),
+            interval: GetOSByClicksQueryParamInterval$.inboundSchema.optional(),
             start: z.string().optional(),
             end: z.string().optional(),
             country: components.CountryCode$.inboundSchema.optional(),
@@ -140,7 +180,7 @@ export namespace GetOSByClicksRequest$ {
                 ...(v.key === undefined ? null : { key: v.key }),
                 ...(v.linkId === undefined ? null : { linkId: v.linkId }),
                 ...(v.externalId === undefined ? null : { externalId: v.externalId }),
-                interval: v.interval,
+                ...(v.interval === undefined ? null : { interval: v.interval }),
                 ...(v.start === undefined ? null : { start: v.start }),
                 ...(v.end === undefined ? null : { end: v.end }),
                 ...(v.country === undefined ? null : { country: v.country }),
@@ -161,7 +201,7 @@ export namespace GetOSByClicksRequest$ {
         key?: string | undefined;
         linkId?: string | undefined;
         externalId?: string | undefined;
-        interval: string;
+        interval?: string | undefined;
         start?: string | undefined;
         end?: string | undefined;
         country?: string | undefined;
@@ -182,7 +222,7 @@ export namespace GetOSByClicksRequest$ {
             key: z.string().optional(),
             linkId: z.string().optional(),
             externalId: z.string().optional(),
-            interval: GetOSByClicksQueryParamInterval$.outboundSchema.default("24h"),
+            interval: GetOSByClicksQueryParamInterval$.outboundSchema.optional(),
             start: z.string().optional(),
             end: z.string().optional(),
             country: components.CountryCode$.outboundSchema.optional(),
@@ -202,7 +242,7 @@ export namespace GetOSByClicksRequest$ {
                 ...(v.key === undefined ? null : { key: v.key }),
                 ...(v.linkId === undefined ? null : { linkId: v.linkId }),
                 ...(v.externalId === undefined ? null : { externalId: v.externalId }),
-                interval: v.interval,
+                ...(v.interval === undefined ? null : { interval: v.interval }),
                 ...(v.start === undefined ? null : { start: v.start }),
                 ...(v.end === undefined ? null : { end: v.end }),
                 ...(v.country === undefined ? null : { country: v.country }),

@@ -5,6 +5,14 @@
 import { ClosedEnum } from "../../types";
 import * as z from "zod";
 
+export type CreateTagGlobals = {
+    workspaceId: string;
+    /**
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    projectSlug?: string | undefined;
+};
+
 /**
  * The color of the tag. If not provided, a random color will be used from the list: red, yellow, green, blue, purple, pink, brown.
  */
@@ -32,6 +40,38 @@ export type CreateTagRequestBody = {
      */
     color?: Color | undefined;
 };
+
+/** @internal */
+export namespace CreateTagGlobals$ {
+    export const inboundSchema: z.ZodType<CreateTagGlobals, z.ZodTypeDef, unknown> = z
+        .object({
+            workspaceId: z.string(),
+            projectSlug: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                workspaceId: v.workspaceId,
+                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
+            };
+        });
+
+    export type Outbound = {
+        workspaceId: string;
+        projectSlug?: string | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateTagGlobals> = z
+        .object({
+            workspaceId: z.string(),
+            projectSlug: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                workspaceId: v.workspaceId,
+                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
+            };
+        });
+}
 
 /** @internal */
 export namespace Color$ {

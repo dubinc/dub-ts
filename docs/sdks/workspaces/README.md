@@ -41,7 +41,7 @@ run();
 
 ### Response
 
-**Promise<[components.WorkspaceSchema[]](../../models/.md)>**
+**Promise\<[components.WorkspaceSchema[]](../../models/.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -95,7 +95,7 @@ run();
 
 ### Response
 
-**Promise<[components.WorkspaceSchema](../../models/components/workspaceschema.md)>**
+**Promise\<[components.WorkspaceSchema](../../models/components/workspaceschema.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -148,7 +148,7 @@ run();
 
 ### Response
 
-**Promise<[components.WorkspaceSchema](../../models/components/workspaceschema.md)>**
+**Promise\<[components.WorkspaceSchema](../../models/components/workspaceschema.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
