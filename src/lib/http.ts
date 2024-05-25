@@ -4,7 +4,7 @@
 
 import { never as znever } from "zod";
 import { parse } from "./schemas";
-import { isPlainObject } from "./primitives";
+import { isPlainObject } from "./is-plain-object";
 import * as errors from "../models/errors";
 
 export type Fetcher = (input: RequestInfo | URL, init?: RequestInit) => Promise<Response>;
