@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: e93bbcff56bcb0510ebfb526412ef8a9
+  docChecksum: c82cc79ffda0379ff35a3ee5f8667c0d
   docVersion: 0.0.1
   speakeasyVersion: 1.296.1
   generationVersion: 2.338.1
-  releaseVersion: 0.29.8
-  configChecksum: 7fa1e2abca84e8cf14af404198b0660e
+  releaseVersion: 0.29.9
+  configChecksum: 1b24c67caa5adefda06b3a743d0bca5f
   repoURL: https://github.com/dubinc/dub-node.git
   installationURL: https://github.com/dubinc/dub-node
   published: true

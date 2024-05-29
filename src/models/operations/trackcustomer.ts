@@ -12,15 +12,15 @@ export type TrackCustomerRequestBody = {
     /**
      * Name of the customer in the client's app.
      */
-    customerName?: string | null | undefined;
+    customerName?: string | undefined;
     /**
      * Email of the customer in the client's app.
      */
-    customerEmail?: string | null | undefined;
+    customerEmail?: string | undefined;
     /**
      * Avatar of the customer in the client's app.
      */
-    customerAvatar?: string | null | undefined;
+    customerAvatar?: string | undefined;
 };
 
 /**
@@ -38,39 +38,39 @@ export namespace TrackCustomerRequestBody$ {
     export const inboundSchema: z.ZodType<TrackCustomerRequestBody, z.ZodTypeDef, unknown> = z
         .object({
             customerId: z.string(),
-            customerName: z.nullable(z.string()).default(null),
-            customerEmail: z.nullable(z.string()).default(null),
-            customerAvatar: z.nullable(z.string()).default(null),
+            customerName: z.string().optional(),
+            customerEmail: z.string().optional(),
+            customerAvatar: z.string().optional(),
         })
         .transform((v) => {
             return {
                 customerId: v.customerId,
-                customerName: v.customerName,
-                customerEmail: v.customerEmail,
-                customerAvatar: v.customerAvatar,
+                ...(v.customerName === undefined ? null : { customerName: v.customerName }),
+                ...(v.customerEmail === undefined ? null : { customerEmail: v.customerEmail }),
+                ...(v.customerAvatar === undefined ? null : { customerAvatar: v.customerAvatar }),
             };
         });
 
     export type Outbound = {
         customerId: string;
-        customerName: string | null;
-        customerEmail: string | null;
-        customerAvatar: string | null;
+        customerName?: string | undefined;
+        customerEmail?: string | undefined;
+        customerAvatar?: string | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TrackCustomerRequestBody> = z
         .object({
             customerId: z.string(),
-            customerName: z.nullable(z.string()).default(null),
-            customerEmail: z.nullable(z.string()).default(null),
-            customerAvatar: z.nullable(z.string()).default(null),
+            customerName: z.string().optional(),
+            customerEmail: z.string().optional(),
+            customerAvatar: z.string().optional(),
         })
         .transform((v) => {
             return {
                 customerId: v.customerId,
-                customerName: v.customerName,
-                customerEmail: v.customerEmail,
-                customerAvatar: v.customerAvatar,
+                ...(v.customerName === undefined ? null : { customerName: v.customerName }),
+                ...(v.customerEmail === undefined ? null : { customerEmail: v.customerEmail }),
+                ...(v.customerAvatar === undefined ? null : { customerAvatar: v.customerAvatar }),
             };
         });
 }
