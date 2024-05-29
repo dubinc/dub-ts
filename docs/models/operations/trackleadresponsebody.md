@@ -13,4 +13,4 @@ A lead was tracked.
 | `customerName`        | *string*              | :heavy_check_mark:    | N/A                   |
 | `customerEmail`       | *string*              | :heavy_check_mark:    | N/A                   |
 | `customerAvatar`      | *string*              | :heavy_check_mark:    | N/A                   |
-| `metadata`            | Record<string, *any*> | :heavy_check_mark:    | N/A                   |
+| `metadata`            | Record<string, *any*> | :heavy_minus_sign:    | N/A                   |

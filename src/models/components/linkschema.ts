@@ -397,6 +397,14 @@ export type LinkSchema = {
      */
     lastClicked: string | null;
     /**
+     * [BETA]: The number of leads the short links has generated.
+     */
+    leads?: number | undefined;
+    /**
+     * [BETA]: The number of sales the short links has generated.
+     */
+    sales?: number | undefined;
+    /**
      * The date and time when the short link was created.
      */
     createdAt: string;
@@ -1721,6 +1729,8 @@ export namespace LinkSchema$ {
             workspaceId: z.string(),
             clicks: z.number().default(0),
             lastClicked: z.nullable(z.string()),
+            leads: z.number().default(0),
+            sales: z.number().default(0),
             createdAt: z.string(),
             updatedAt: z.string(),
             projectId: z.string(),
@@ -1760,6 +1770,8 @@ export namespace LinkSchema$ {
                 workspaceId: v.workspaceId,
                 clicks: v.clicks,
                 lastClicked: v.lastClicked,
+                leads: v.leads,
+                sales: v.sales,
                 createdAt: v.createdAt,
                 updatedAt: v.updatedAt,
                 projectId: v.projectId,
@@ -1800,6 +1812,8 @@ export namespace LinkSchema$ {
         workspaceId: string;
         clicks: number;
         lastClicked: string | null;
+        leads: number;
+        sales: number;
         createdAt: string;
         updatedAt: string;
         projectId: string;
@@ -1840,6 +1854,8 @@ export namespace LinkSchema$ {
             workspaceId: z.string(),
             clicks: z.number().default(0),
             lastClicked: z.nullable(z.string()),
+            leads: z.number().default(0),
+            sales: z.number().default(0),
             createdAt: z.string(),
             updatedAt: z.string(),
             projectId: z.string(),
@@ -1879,6 +1895,8 @@ export namespace LinkSchema$ {
                 workspaceId: v.workspaceId,
                 clicks: v.clicks,
                 lastClicked: v.lastClicked,
+                leads: v.leads,
+                sales: v.sales,
                 createdAt: v.createdAt,
                 updatedAt: v.updatedAt,
                 projectId: v.projectId,
