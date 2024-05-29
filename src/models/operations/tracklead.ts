@@ -20,19 +20,19 @@ export type TrackLeadRequestBody = {
     /**
      * Name of the customer in the client's app.
      */
-    customerName?: string | undefined;
+    customerName?: string | null | undefined;
     /**
      * Email of the customer in the client's app.
      */
-    customerEmail?: string | undefined;
+    customerEmail?: string | null | undefined;
     /**
      * Avatar of the customer in the client's app.
      */
-    customerAvatar?: string | undefined;
+    customerAvatar?: string | null | undefined;
     /**
      * Additional metadata to be stored with the lead event
      */
-    metadata?: { [k: string]: any } | undefined;
+    metadata?: { [k: string]: any } | null | undefined;
 };
 
 /**
@@ -55,10 +55,10 @@ export namespace TrackLeadRequestBody$ {
             clickId: z.string(),
             eventName: z.string(),
             customerId: z.string(),
-            customerName: z.string().optional(),
-            customerEmail: z.string().optional(),
-            customerAvatar: z.string().optional(),
-            metadata: z.record(z.any()).optional(),
+            customerName: z.nullable(z.string()).optional(),
+            customerEmail: z.nullable(z.string()).optional(),
+            customerAvatar: z.nullable(z.string()).optional(),
+            metadata: z.nullable(z.record(z.any())).optional(),
         })
         .transform((v) => {
             return {
@@ -76,10 +76,10 @@ export namespace TrackLeadRequestBody$ {
         clickId: string;
         eventName: string;
         customerId: string;
-        customerName?: string | undefined;
-        customerEmail?: string | undefined;
-        customerAvatar?: string | undefined;
-        metadata?: { [k: string]: any } | undefined;
+        customerName?: string | null | undefined;
+        customerEmail?: string | null | undefined;
+        customerAvatar?: string | null | undefined;
+        metadata?: { [k: string]: any } | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TrackLeadRequestBody> = z
@@ -87,10 +87,10 @@ export namespace TrackLeadRequestBody$ {
             clickId: z.string(),
             eventName: z.string(),
             customerId: z.string(),
-            customerName: z.string().optional(),
-            customerEmail: z.string().optional(),
-            customerAvatar: z.string().optional(),
-            metadata: z.record(z.any()).optional(),
+            customerName: z.nullable(z.string()).optional(),
+            customerEmail: z.nullable(z.string()).optional(),
+            customerAvatar: z.nullable(z.string()).optional(),
+            metadata: z.nullable(z.record(z.any())).optional(),
         })
         .transform((v) => {
             return {
