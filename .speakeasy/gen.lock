@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: c82cc79ffda0379ff35a3ee5f8667c0d
+  docChecksum: 6f3206753e886703c723485794073b77
   docVersion: 0.0.1
-  speakeasyVersion: 1.296.1
+  speakeasyVersion: 1.297.0
   generationVersion: 2.338.1
-  releaseVersion: 0.29.9
-  configChecksum: 1b24c67caa5adefda06b3a743d0bca5f
+  releaseVersion: 0.29.10
+  configChecksum: 70681a5b78b1bf018371485189a5d1f1
   repoURL: https://github.com/dubinc/dub-node.git
   installationURL: https://github.com/dubinc/dub-node
   published: true
@@ -32,7 +32,6 @@ features:
 generatedFiles:
   - src/sdk/links.ts
   - src/sdk/qrcodes.ts
-  - src/sdk/clicks.ts
   - src/sdk/analytics.ts
   - src/sdk/workspaces.ts
   - src/sdk/tags.ts
@@ -67,9 +66,37 @@ generatedFiles:
   - src/models/components/linkschema.ts
   - src/models/components/tagschema.ts
   - src/models/components/linkgeotargeting.ts
+  - src/models/components/clickscount.ts
+  - src/models/components/clickstimeseries.ts
+  - src/models/components/clickscountries.ts
+  - src/models/components/clickscities.ts
+  - src/models/components/clicksdevices.ts
+  - src/models/components/clicksbrowsers.ts
+  - src/models/components/clicksos.ts
+  - src/models/components/clicksreferers.ts
+  - src/models/components/clickstoplinks.ts
+  - src/models/components/clickstopurls.ts
+  - src/models/components/leadscount.ts
+  - src/models/components/leadstimeseries.ts
+  - src/models/components/leadscountries.ts
+  - src/models/components/leadscities.ts
+  - src/models/components/leadsdevices.ts
+  - src/models/components/leadsbrowsers.ts
+  - src/models/components/leadsos.ts
+  - src/models/components/leadsreferers.ts
+  - src/models/components/leadstoplinks.ts
+  - src/models/components/leadstopurls.ts
+  - src/models/components/salescount.ts
+  - src/models/components/salestimeseries.ts
+  - src/models/components/salescountries.ts
+  - src/models/components/salescities.ts
+  - src/models/components/salesdevices.ts
+  - src/models/components/salesbrowsers.ts
+  - src/models/components/salesos.ts
+  - src/models/components/salesreferers.ts
+  - src/models/components/salestoplinks.ts
+  - src/models/components/salestopurls.ts
   - src/models/components/countrycode.ts
-  - src/models/components/clicksbycountry.ts
-  - src/models/components/clicksbycities.ts
   - src/models/components/workspaceschema.ts
   - src/models/components/domainschema.ts
   - src/models/components/security.ts
@@ -91,26 +118,7 @@ generatedFiles:
   - src/models/operations/bulkcreatelinks.ts
   - src/models/operations/upsertlink.ts
   - src/models/operations/getqrcode.ts
-  - src/models/operations/gettimeseriesbyclicksdeprecated.ts
-  - src/models/operations/getcountriesbyclicksdeprecated.ts
-  - src/models/operations/getcitiesbyclicksdeprecated.ts
-  - src/models/operations/getdevicesbyclicksdeprecated.ts
-  - src/models/operations/getbrowsersbyclicksdeprecated.ts
-  - src/models/operations/getosbyclicksdeprecated.ts
-  - src/models/operations/getreferersbyclicksdeprecated.ts
-  - src/models/operations/gettoplinksbyclicksdeprecated.ts
-  - src/models/operations/gettopurlsbyclicksdeprecated.ts
-  - src/models/operations/getclickscount.ts
-  - src/models/operations/gettimeseriesbyclicks.ts
-  - src/models/operations/getcountriesbyclicks.ts
-  - src/models/operations/getcitiesbyclicks.ts
-  - src/models/operations/getdevicesbyclicks.ts
-  - src/models/operations/getbrowsersbyclicks.ts
-  - src/models/operations/getosbyclicks.ts
-  - src/models/operations/getreferersbyclicks.ts
-  - src/models/operations/gettoplinksbyclicks.ts
-  - src/models/operations/gettopurlsbyclicks.ts
-  - src/models/operations/getclickscountdeprecated.ts
+  - src/models/operations/retrieveanalytics.ts
   - src/models/operations/createworkspace.ts
   - src/models/operations/getworkspace.ts
   - src/models/operations/gettags.ts
@@ -133,11 +141,43 @@ generatedFiles:
   - docs/models/components/color.md
   - docs/models/components/tagschema.md
   - docs/models/components/linkgeotargeting.md
-  - docs/models/components/countrycode.md
+  - docs/models/components/clickscount.md
+  - docs/models/components/clickstimeseries.md
   - docs/models/components/country.md
-  - docs/models/components/clicksbycountry.md
-  - docs/models/components/clicksbycitiescountry.md
-  - docs/models/components/clicksbycities.md
+  - docs/models/components/clickscountries.md
+  - docs/models/components/clickscitiescountry.md
+  - docs/models/components/clickscities.md
+  - docs/models/components/clicksdevices.md
+  - docs/models/components/clicksbrowsers.md
+  - docs/models/components/clicksos.md
+  - docs/models/components/clicksreferers.md
+  - docs/models/components/clickstoplinks.md
+  - docs/models/components/clickstopurls.md
+  - docs/models/components/leadscount.md
+  - docs/models/components/leadstimeseries.md
+  - docs/models/components/leadscountriescountry.md
+  - docs/models/components/leadscountries.md
+  - docs/models/components/leadscitiescountry.md
+  - docs/models/components/leadscities.md
+  - docs/models/components/leadsdevices.md
+  - docs/models/components/leadsbrowsers.md
+  - docs/models/components/leadsos.md
+  - docs/models/components/leadsreferers.md
+  - docs/models/components/leadstoplinks.md
+  - docs/models/components/leadstopurls.md
+  - docs/models/components/salescount.md
+  - docs/models/components/salestimeseries.md
+  - docs/models/components/salescountriescountry.md
+  - docs/models/components/salescountries.md
+  - docs/models/components/salescitiescountry.md
+  - docs/models/components/salescities.md
+  - docs/models/components/salesdevices.md
+  - docs/models/components/salesbrowsers.md
+  - docs/models/components/salesos.md
+  - docs/models/components/salesreferers.md
+  - docs/models/components/salestoplinks.md
+  - docs/models/components/salestopurls.md
+  - docs/models/components/countrycode.md
   - docs/models/components/plan.md
   - docs/models/components/role.md
   - docs/models/components/users.md
@@ -209,80 +249,12 @@ generatedFiles:
   - docs/models/operations/upsertlinkrequestbody.md
   - docs/models/operations/level.md
   - docs/models/operations/getqrcoderequest.md
-  - docs/models/operations/gettimeseriesbyclicksdeprecatedglobals.md
-  - docs/models/operations/gettimeseriesbyclicksdeprecatedqueryparaminterval.md
-  - docs/models/operations/gettimeseriesbyclicksdeprecatedrequest.md
-  - docs/models/operations/gettimeseriesbyclicksdeprecatedresponsebody.md
-  - docs/models/operations/getcountriesbyclicksdeprecatedglobals.md
-  - docs/models/operations/getcountriesbyclicksdeprecatedqueryparaminterval.md
-  - docs/models/operations/getcountriesbyclicksdeprecatedrequest.md
-  - docs/models/operations/getcitiesbyclicksdeprecatedglobals.md
-  - docs/models/operations/getcitiesbyclicksdeprecatedqueryparaminterval.md
-  - docs/models/operations/getcitiesbyclicksdeprecatedrequest.md
-  - docs/models/operations/getdevicesbyclicksdeprecatedglobals.md
-  - docs/models/operations/getdevicesbyclicksdeprecatedqueryparaminterval.md
-  - docs/models/operations/getdevicesbyclicksdeprecatedrequest.md
-  - docs/models/operations/getdevicesbyclicksdeprecatedresponsebody.md
-  - docs/models/operations/getbrowsersbyclicksdeprecatedglobals.md
-  - docs/models/operations/getbrowsersbyclicksdeprecatedqueryparaminterval.md
-  - docs/models/operations/getbrowsersbyclicksdeprecatedrequest.md
-  - docs/models/operations/getbrowsersbyclicksdeprecatedresponsebody.md
-  - docs/models/operations/getosbyclicksdeprecatedglobals.md
-  - docs/models/operations/getosbyclicksdeprecatedqueryparaminterval.md
-  - docs/models/operations/getosbyclicksdeprecatedrequest.md
-  - docs/models/operations/getosbyclicksdeprecatedresponsebody.md
-  - docs/models/operations/getreferersbyclicksdeprecatedglobals.md
-  - docs/models/operations/getreferersbyclicksdeprecatedqueryparaminterval.md
-  - docs/models/operations/getreferersbyclicksdeprecatedrequest.md
-  - docs/models/operations/getreferersbyclicksdeprecatedresponsebody.md
-  - docs/models/operations/gettoplinksbyclicksdeprecatedglobals.md
-  - docs/models/operations/gettoplinksbyclicksdeprecatedqueryparaminterval.md
-  - docs/models/operations/gettoplinksbyclicksdeprecatedrequest.md
-  - docs/models/operations/gettoplinksbyclicksdeprecatedresponsebody.md
-  - docs/models/operations/gettopurlsbyclicksdeprecatedglobals.md
-  - docs/models/operations/gettopurlsbyclicksdeprecatedqueryparaminterval.md
-  - docs/models/operations/gettopurlsbyclicksdeprecatedrequest.md
-  - docs/models/operations/gettopurlsbyclicksdeprecatedresponsebody.md
-  - docs/models/operations/getclickscountglobals.md
+  - docs/models/operations/retrieveanalyticsglobals.md
+  - docs/models/operations/event.md
+  - docs/models/operations/queryparamgroupby.md
   - docs/models/operations/interval.md
-  - docs/models/operations/getclickscountrequest.md
-  - docs/models/operations/gettimeseriesbyclicksglobals.md
-  - docs/models/operations/queryparaminterval.md
-  - docs/models/operations/gettimeseriesbyclicksrequest.md
-  - docs/models/operations/responsebody.md
-  - docs/models/operations/getcountriesbyclicksglobals.md
-  - docs/models/operations/getcountriesbyclicksqueryparaminterval.md
-  - docs/models/operations/getcountriesbyclicksrequest.md
-  - docs/models/operations/getcitiesbyclicksglobals.md
-  - docs/models/operations/getcitiesbyclicksqueryparaminterval.md
-  - docs/models/operations/getcitiesbyclicksrequest.md
-  - docs/models/operations/getdevicesbyclicksglobals.md
-  - docs/models/operations/getdevicesbyclicksqueryparaminterval.md
-  - docs/models/operations/getdevicesbyclicksrequest.md
-  - docs/models/operations/getdevicesbyclicksresponsebody.md
-  - docs/models/operations/getbrowsersbyclicksglobals.md
-  - docs/models/operations/getbrowsersbyclicksqueryparaminterval.md
-  - docs/models/operations/getbrowsersbyclicksrequest.md
-  - docs/models/operations/getbrowsersbyclicksresponsebody.md
-  - docs/models/operations/getosbyclicksglobals.md
-  - docs/models/operations/getosbyclicksqueryparaminterval.md
-  - docs/models/operations/getosbyclicksrequest.md
-  - docs/models/operations/getosbyclicksresponsebody.md
-  - docs/models/operations/getreferersbyclicksglobals.md
-  - docs/models/operations/getreferersbyclicksqueryparaminterval.md
-  - docs/models/operations/getreferersbyclicksrequest.md
-  - docs/models/operations/getreferersbyclicksresponsebody.md
-  - docs/models/operations/gettoplinksbyclicksglobals.md
-  - docs/models/operations/gettoplinksbyclicksqueryparaminterval.md
-  - docs/models/operations/gettoplinksbyclicksrequest.md
-  - docs/models/operations/gettoplinksbyclicksresponsebody.md
-  - docs/models/operations/gettopurlsbyclicksglobals.md
-  - docs/models/operations/gettopurlsbyclicksqueryparaminterval.md
-  - docs/models/operations/gettopurlsbyclicksrequest.md
-  - docs/models/operations/gettopurlsbyclicksresponsebody.md
-  - docs/models/operations/getclickscountdeprecatedglobals.md
-  - docs/models/operations/getclickscountdeprecatedqueryparaminterval.md
-  - docs/models/operations/getclickscountdeprecatedrequest.md
+  - docs/models/operations/retrieveanalyticsrequest.md
+  - docs/models/operations/retrieveanalyticsresponsebody.md
   - docs/models/operations/createworkspacerequestbody.md
   - docs/models/operations/getworkspacerequest.md
   - docs/models/operations/gettagsglobals.md
@@ -320,7 +292,6 @@ generatedFiles:
   - docs/sdks/links/README.md
   - docs/sdks/qrcodes/README.md
   - docs/sdks/analytics/README.md
-  - docs/sdks/clicks/README.md
   - docs/sdks/workspaces/README.md
   - docs/sdks/tags/README.md
   - docs/sdks/domains/README.md
