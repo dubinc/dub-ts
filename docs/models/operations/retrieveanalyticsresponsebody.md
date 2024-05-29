@@ -1,0 +1,4 @@
+# RetrieveAnalyticsResponseBody
+
+Analytics data
+
