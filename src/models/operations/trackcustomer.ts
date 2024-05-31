@@ -4,6 +4,14 @@
 
 import * as z from "zod";
 
+export type TrackCustomerGlobals = {
+    workspaceId: string;
+    /**
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    projectSlug?: string | undefined;
+};
+
 export type TrackCustomerRequestBody = {
     /**
      * This is the unique identifier for the customer in the client's app. This is used to track the customer's journey.
@@ -32,6 +40,38 @@ export type TrackCustomerResponseBody = {
     customerEmail: string | null;
     customerAvatar: string | null;
 };
+
+/** @internal */
+export namespace TrackCustomerGlobals$ {
+    export const inboundSchema: z.ZodType<TrackCustomerGlobals, z.ZodTypeDef, unknown> = z
+        .object({
+            workspaceId: z.string(),
+            projectSlug: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                workspaceId: v.workspaceId,
+                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
+            };
+        });
+
+    export type Outbound = {
+        workspaceId: string;
+        projectSlug?: string | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TrackCustomerGlobals> = z
+        .object({
+            workspaceId: z.string(),
+            projectSlug: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                workspaceId: v.workspaceId,
+                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
+            };
+        });
+}
 
 /** @internal */
 export namespace TrackCustomerRequestBody$ {

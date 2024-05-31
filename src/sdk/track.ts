@@ -64,7 +64,18 @@ export class Track extends ClientSDK {
 
         const path$ = this.templateURLComponent("/track/lead")();
 
-        const query$ = "";
+        const query$ = [
+            enc$.encodeForm("projectSlug", this.options$.projectSlug, {
+                explode: true,
+                charEncoding: "percent",
+            }),
+            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
+                explode: true,
+                charEncoding: "percent",
+            }),
+        ]
+            .filter(Boolean)
+            .join("&");
 
         let security$;
         if (typeof this.options$.token === "function") {
@@ -159,7 +170,18 @@ export class Track extends ClientSDK {
 
         const path$ = this.templateURLComponent("/track/sale")();
 
-        const query$ = "";
+        const query$ = [
+            enc$.encodeForm("projectSlug", this.options$.projectSlug, {
+                explode: true,
+                charEncoding: "percent",
+            }),
+            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
+                explode: true,
+                charEncoding: "percent",
+            }),
+        ]
+            .filter(Boolean)
+            .join("&");
 
         let security$;
         if (typeof this.options$.token === "function") {
@@ -255,7 +277,18 @@ export class Track extends ClientSDK {
 
         const path$ = this.templateURLComponent("/track/customer")();
 
-        const query$ = "";
+        const query$ = [
+            enc$.encodeForm("projectSlug", this.options$.projectSlug, {
+                explode: true,
+                charEncoding: "percent",
+            }),
+            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
+                explode: true,
+                charEncoding: "percent",
+            }),
+        ]
+            .filter(Boolean)
+            .join("&");
 
         let security$;
         if (typeof this.options$.token === "function") {

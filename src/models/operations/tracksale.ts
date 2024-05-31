@@ -5,6 +5,14 @@
 import { ClosedEnum } from "../../types";
 import * as z from "zod";
 
+export type TrackSaleGlobals = {
+    workspaceId: string;
+    /**
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    projectSlug?: string | undefined;
+};
+
 /**
  * The payment processor via which the sale was made.
  */
@@ -56,6 +64,38 @@ export type TrackSaleResponseBody = {
     currency: string;
     metadata: { [k: string]: any } | null;
 };
+
+/** @internal */
+export namespace TrackSaleGlobals$ {
+    export const inboundSchema: z.ZodType<TrackSaleGlobals, z.ZodTypeDef, unknown> = z
+        .object({
+            workspaceId: z.string(),
+            projectSlug: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                workspaceId: v.workspaceId,
+                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
+            };
+        });
+
+    export type Outbound = {
+        workspaceId: string;
+        projectSlug?: string | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TrackSaleGlobals> = z
+        .object({
+            workspaceId: z.string(),
+            projectSlug: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                workspaceId: v.workspaceId,
+                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
+            };
+        });
+}
 
 /** @internal */
 export namespace PaymentProcessor$ {
