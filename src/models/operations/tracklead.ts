@@ -4,6 +4,14 @@
 
 import * as z from "zod";
 
+export type TrackLeadGlobals = {
+    workspaceId: string;
+    /**
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    projectSlug?: string | undefined;
+};
+
 export type TrackLeadRequestBody = {
     /**
      * The ID of the click in th Dub. You can read this value from `dclid` cookie.
@@ -47,6 +55,38 @@ export type TrackLeadResponseBody = {
     customerAvatar: string | null;
     metadata?: { [k: string]: any } | undefined;
 };
+
+/** @internal */
+export namespace TrackLeadGlobals$ {
+    export const inboundSchema: z.ZodType<TrackLeadGlobals, z.ZodTypeDef, unknown> = z
+        .object({
+            workspaceId: z.string(),
+            projectSlug: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                workspaceId: v.workspaceId,
+                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
+            };
+        });
+
+    export type Outbound = {
+        workspaceId: string;
+        projectSlug?: string | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TrackLeadGlobals> = z
+        .object({
+            workspaceId: z.string(),
+            projectSlug: z.string().optional(),
+        })
+        .transform((v) => {
+            return {
+                workspaceId: v.workspaceId,
+                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
+            };
+        });
+}
 
 /** @internal */
 export namespace TrackLeadRequestBody$ {
