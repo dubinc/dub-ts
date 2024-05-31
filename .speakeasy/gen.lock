@@ -5,8 +5,8 @@ management:
   docVersion: 0.0.1
   speakeasyVersion: 1.299.4
   generationVersion: 2.338.7
-  releaseVersion: 0.29.13
-  configChecksum: f29df458bc70edf5911d8ec36c741de5
+  releaseVersion: 0.29.14
+  configChecksum: 3f0426d7827c9ae11b36475a31d0faf9
   repoURL: https://github.com/dubinc/dub-node.git
   installationURL: https://github.com/dubinc/dub-node
   published: true
