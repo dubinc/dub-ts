@@ -30,53 +30,30 @@ export type GetLinkInfoRequest = {
 
 /** @internal */
 export namespace GetLinkInfoGlobals$ {
-    export const inboundSchema: z.ZodType<GetLinkInfoGlobals, z.ZodTypeDef, unknown> = z
-        .object({
-            workspaceId: z.string(),
-            projectSlug: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                workspaceId: v.workspaceId,
-                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
-            };
-        });
+    export const inboundSchema: z.ZodType<GetLinkInfoGlobals, z.ZodTypeDef, unknown> = z.object({
+        workspaceId: z.string(),
+        projectSlug: z.string().optional(),
+    });
 
     export type Outbound = {
         workspaceId: string;
         projectSlug?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLinkInfoGlobals> = z
-        .object({
-            workspaceId: z.string(),
-            projectSlug: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                workspaceId: v.workspaceId,
-                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLinkInfoGlobals> = z.object({
+        workspaceId: z.string(),
+        projectSlug: z.string().optional(),
+    });
 }
 
 /** @internal */
 export namespace GetLinkInfoRequest$ {
-    export const inboundSchema: z.ZodType<GetLinkInfoRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            domain: z.string().optional(),
-            key: z.string().optional(),
-            linkId: z.string().optional(),
-            externalId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.domain === undefined ? null : { domain: v.domain }),
-                ...(v.key === undefined ? null : { key: v.key }),
-                ...(v.linkId === undefined ? null : { linkId: v.linkId }),
-                ...(v.externalId === undefined ? null : { externalId: v.externalId }),
-            };
-        });
+    export const inboundSchema: z.ZodType<GetLinkInfoRequest, z.ZodTypeDef, unknown> = z.object({
+        domain: z.string().optional(),
+        key: z.string().optional(),
+        linkId: z.string().optional(),
+        externalId: z.string().optional(),
+    });
 
     export type Outbound = {
         domain?: string | undefined;
@@ -85,19 +62,10 @@ export namespace GetLinkInfoRequest$ {
         externalId?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLinkInfoRequest> = z
-        .object({
-            domain: z.string().optional(),
-            key: z.string().optional(),
-            linkId: z.string().optional(),
-            externalId: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.domain === undefined ? null : { domain: v.domain }),
-                ...(v.key === undefined ? null : { key: v.key }),
-                ...(v.linkId === undefined ? null : { linkId: v.linkId }),
-                ...(v.externalId === undefined ? null : { externalId: v.externalId }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLinkInfoRequest> = z.object({
+        domain: z.string().optional(),
+        key: z.string().optional(),
+        linkId: z.string().optional(),
+        externalId: z.string().optional(),
+    });
 }

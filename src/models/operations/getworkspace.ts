@@ -13,27 +13,15 @@ export type GetWorkspaceRequest = {
 
 /** @internal */
 export namespace GetWorkspaceRequest$ {
-    export const inboundSchema: z.ZodType<GetWorkspaceRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            idOrSlug: z.string(),
-        })
-        .transform((v) => {
-            return {
-                idOrSlug: v.idOrSlug,
-            };
-        });
+    export const inboundSchema: z.ZodType<GetWorkspaceRequest, z.ZodTypeDef, unknown> = z.object({
+        idOrSlug: z.string(),
+    });
 
     export type Outbound = {
         idOrSlug: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetWorkspaceRequest> = z
-        .object({
-            idOrSlug: z.string(),
-        })
-        .transform((v) => {
-            return {
-                idOrSlug: v.idOrSlug,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetWorkspaceRequest> = z.object({
+        idOrSlug: z.string(),
+    });
 }

@@ -21,19 +21,11 @@ export type SalesDevices = {
 
 /** @internal */
 export namespace SalesDevices$ {
-    export const inboundSchema: z.ZodType<SalesDevices, z.ZodTypeDef, unknown> = z
-        .object({
-            device: z.string(),
-            sales: z.number(),
-            amount: z.number(),
-        })
-        .transform((v) => {
-            return {
-                device: v.device,
-                sales: v.sales,
-                amount: v.amount,
-            };
-        });
+    export const inboundSchema: z.ZodType<SalesDevices, z.ZodTypeDef, unknown> = z.object({
+        device: z.string(),
+        sales: z.number(),
+        amount: z.number(),
+    });
 
     export type Outbound = {
         device: string;
@@ -41,17 +33,9 @@ export namespace SalesDevices$ {
         amount: number;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SalesDevices> = z
-        .object({
-            device: z.string(),
-            sales: z.number(),
-            amount: z.number(),
-        })
-        .transform((v) => {
-            return {
-                device: v.device,
-                sales: v.sales,
-                amount: v.amount,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SalesDevices> = z.object({
+        device: z.string(),
+        sales: z.number(),
+        amount: z.number(),
+    });
 }

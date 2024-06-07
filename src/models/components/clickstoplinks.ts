@@ -43,29 +43,16 @@ export type ClicksTopLinks = {
 
 /** @internal */
 export namespace ClicksTopLinks$ {
-    export const inboundSchema: z.ZodType<ClicksTopLinks, z.ZodTypeDef, unknown> = z
-        .object({
-            link: z.string(),
-            id: z.string(),
-            domain: z.string(),
-            key: z.string(),
-            shortLink: z.string(),
-            url: z.string(),
-            createdAt: z.string(),
-            clicks: z.number(),
-        })
-        .transform((v) => {
-            return {
-                link: v.link,
-                id: v.id,
-                domain: v.domain,
-                key: v.key,
-                shortLink: v.shortLink,
-                url: v.url,
-                createdAt: v.createdAt,
-                clicks: v.clicks,
-            };
-        });
+    export const inboundSchema: z.ZodType<ClicksTopLinks, z.ZodTypeDef, unknown> = z.object({
+        link: z.string(),
+        id: z.string(),
+        domain: z.string(),
+        key: z.string(),
+        shortLink: z.string(),
+        url: z.string(),
+        createdAt: z.string(),
+        clicks: z.number(),
+    });
 
     export type Outbound = {
         link: string;
@@ -78,27 +65,14 @@ export namespace ClicksTopLinks$ {
         clicks: number;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ClicksTopLinks> = z
-        .object({
-            link: z.string(),
-            id: z.string(),
-            domain: z.string(),
-            key: z.string(),
-            shortLink: z.string(),
-            url: z.string(),
-            createdAt: z.string(),
-            clicks: z.number(),
-        })
-        .transform((v) => {
-            return {
-                link: v.link,
-                id: v.id,
-                domain: v.domain,
-                key: v.key,
-                shortLink: v.shortLink,
-                url: v.url,
-                createdAt: v.createdAt,
-                clicks: v.clicks,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ClicksTopLinks> = z.object({
+        link: z.string(),
+        id: z.string(),
+        domain: z.string(),
+        key: z.string(),
+        shortLink: z.string(),
+        url: z.string(),
+        createdAt: z.string(),
+        clicks: z.number(),
+    });
 }

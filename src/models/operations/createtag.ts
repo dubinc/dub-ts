@@ -43,34 +43,20 @@ export type CreateTagRequestBody = {
 
 /** @internal */
 export namespace CreateTagGlobals$ {
-    export const inboundSchema: z.ZodType<CreateTagGlobals, z.ZodTypeDef, unknown> = z
-        .object({
-            workspaceId: z.string(),
-            projectSlug: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                workspaceId: v.workspaceId,
-                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
-            };
-        });
+    export const inboundSchema: z.ZodType<CreateTagGlobals, z.ZodTypeDef, unknown> = z.object({
+        workspaceId: z.string(),
+        projectSlug: z.string().optional(),
+    });
 
     export type Outbound = {
         workspaceId: string;
         projectSlug?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateTagGlobals> = z
-        .object({
-            workspaceId: z.string(),
-            projectSlug: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                workspaceId: v.workspaceId,
-                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateTagGlobals> = z.object({
+        workspaceId: z.string(),
+        projectSlug: z.string().optional(),
+    });
 }
 
 /** @internal */
@@ -81,32 +67,20 @@ export namespace Color$ {
 
 /** @internal */
 export namespace CreateTagRequestBody$ {
-    export const inboundSchema: z.ZodType<CreateTagRequestBody, z.ZodTypeDef, unknown> = z
-        .object({
-            tag: z.string(),
-            color: Color$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return {
-                tag: v.tag,
-                ...(v.color === undefined ? null : { color: v.color }),
-            };
-        });
+    export const inboundSchema: z.ZodType<CreateTagRequestBody, z.ZodTypeDef, unknown> = z.object({
+        tag: z.string(),
+        color: Color$.inboundSchema.optional(),
+    });
 
     export type Outbound = {
         tag: string;
         color?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateTagRequestBody> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateTagRequestBody> = z.object(
+        {
             tag: z.string(),
             color: Color$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return {
-                tag: v.tag,
-                ...(v.color === undefined ? null : { color: v.color }),
-            };
-        });
+        }
+    );
 }

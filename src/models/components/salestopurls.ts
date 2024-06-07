@@ -21,19 +21,11 @@ export type SalesTopUrls = {
 
 /** @internal */
 export namespace SalesTopUrls$ {
-    export const inboundSchema: z.ZodType<SalesTopUrls, z.ZodTypeDef, unknown> = z
-        .object({
-            url: z.string(),
-            sales: z.number(),
-            amount: z.number(),
-        })
-        .transform((v) => {
-            return {
-                url: v.url,
-                sales: v.sales,
-                amount: v.amount,
-            };
-        });
+    export const inboundSchema: z.ZodType<SalesTopUrls, z.ZodTypeDef, unknown> = z.object({
+        url: z.string(),
+        sales: z.number(),
+        amount: z.number(),
+    });
 
     export type Outbound = {
         url: string;
@@ -41,17 +33,9 @@ export namespace SalesTopUrls$ {
         amount: number;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SalesTopUrls> = z
-        .object({
-            url: z.string(),
-            sales: z.number(),
-            amount: z.number(),
-        })
-        .transform((v) => {
-            return {
-                url: v.url,
-                sales: v.sales,
-                amount: v.amount,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SalesTopUrls> = z.object({
+        url: z.string(),
+        sales: z.number(),
+        amount: z.number(),
+    });
 }

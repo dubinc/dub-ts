@@ -288,19 +288,11 @@ export namespace ClicksCitiesCountry$ {
 
 /** @internal */
 export namespace ClicksCities$ {
-    export const inboundSchema: z.ZodType<ClicksCities, z.ZodTypeDef, unknown> = z
-        .object({
-            city: z.string(),
-            country: ClicksCitiesCountry$.inboundSchema,
-            clicks: z.number(),
-        })
-        .transform((v) => {
-            return {
-                city: v.city,
-                country: v.country,
-                clicks: v.clicks,
-            };
-        });
+    export const inboundSchema: z.ZodType<ClicksCities, z.ZodTypeDef, unknown> = z.object({
+        city: z.string(),
+        country: ClicksCitiesCountry$.inboundSchema,
+        clicks: z.number(),
+    });
 
     export type Outbound = {
         city: string;
@@ -308,17 +300,9 @@ export namespace ClicksCities$ {
         clicks: number;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ClicksCities> = z
-        .object({
-            city: z.string(),
-            country: ClicksCitiesCountry$.outboundSchema,
-            clicks: z.number(),
-        })
-        .transform((v) => {
-            return {
-                city: v.city,
-                country: v.country,
-                clicks: v.clicks,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ClicksCities> = z.object({
+        city: z.string(),
+        country: ClicksCitiesCountry$.outboundSchema,
+        clicks: z.number(),
+    });
 }

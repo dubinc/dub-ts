@@ -31,45 +31,26 @@ export type GetMetatagsResponseBody = {
 
 /** @internal */
 export namespace GetMetatagsRequest$ {
-    export const inboundSchema: z.ZodType<GetMetatagsRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            url: z.string(),
-        })
-        .transform((v) => {
-            return {
-                url: v.url,
-            };
-        });
+    export const inboundSchema: z.ZodType<GetMetatagsRequest, z.ZodTypeDef, unknown> = z.object({
+        url: z.string(),
+    });
 
     export type Outbound = {
         url: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetMetatagsRequest> = z
-        .object({
-            url: z.string(),
-        })
-        .transform((v) => {
-            return {
-                url: v.url,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetMetatagsRequest> = z.object({
+        url: z.string(),
+    });
 }
 
 /** @internal */
 export namespace GetMetatagsResponseBody$ {
-    export const inboundSchema: z.ZodType<GetMetatagsResponseBody, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<GetMetatagsResponseBody, z.ZodTypeDef, unknown> =
+        z.object({
             title: z.nullable(z.string()),
             description: z.nullable(z.string()),
             image: z.nullable(z.string()),
-        })
-        .transform((v) => {
-            return {
-                title: v.title,
-                description: v.description,
-                image: v.image,
-            };
         });
 
     export type Outbound = {
@@ -78,17 +59,10 @@ export namespace GetMetatagsResponseBody$ {
         image: string | null;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetMetatagsResponseBody> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetMetatagsResponseBody> =
+        z.object({
             title: z.nullable(z.string()),
             description: z.nullable(z.string()),
             image: z.nullable(z.string()),
-        })
-        .transform((v) => {
-            return {
-                title: v.title,
-                description: v.description,
-                image: v.image,
-            };
         });
 }

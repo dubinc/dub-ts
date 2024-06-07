@@ -12,18 +12,11 @@ export type CreateWorkspaceRequestBody = {
 
 /** @internal */
 export namespace CreateWorkspaceRequestBody$ {
-    export const inboundSchema: z.ZodType<CreateWorkspaceRequestBody, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<CreateWorkspaceRequestBody, z.ZodTypeDef, unknown> =
+        z.object({
             name: z.string(),
             slug: z.string(),
             domain: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                name: v.name,
-                slug: v.slug,
-                ...(v.domain === undefined ? null : { domain: v.domain }),
-            };
         });
 
     export type Outbound = {
@@ -32,17 +25,10 @@ export namespace CreateWorkspaceRequestBody$ {
         domain?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateWorkspaceRequestBody> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateWorkspaceRequestBody> =
+        z.object({
             name: z.string(),
             slug: z.string(),
             domain: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                name: v.name,
-                slug: v.slug,
-                ...(v.domain === undefined ? null : { domain: v.domain }),
-            };
         });
 }

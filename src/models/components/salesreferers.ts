@@ -21,19 +21,11 @@ export type SalesReferers = {
 
 /** @internal */
 export namespace SalesReferers$ {
-    export const inboundSchema: z.ZodType<SalesReferers, z.ZodTypeDef, unknown> = z
-        .object({
-            referer: z.string(),
-            sales: z.number(),
-            amount: z.number(),
-        })
-        .transform((v) => {
-            return {
-                referer: v.referer,
-                sales: v.sales,
-                amount: v.amount,
-            };
-        });
+    export const inboundSchema: z.ZodType<SalesReferers, z.ZodTypeDef, unknown> = z.object({
+        referer: z.string(),
+        sales: z.number(),
+        amount: z.number(),
+    });
 
     export type Outbound = {
         referer: string;
@@ -41,17 +33,9 @@ export namespace SalesReferers$ {
         amount: number;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SalesReferers> = z
-        .object({
-            referer: z.string(),
-            sales: z.number(),
-            amount: z.number(),
-        })
-        .transform((v) => {
-            return {
-                referer: v.referer,
-                sales: v.sales,
-                amount: v.amount,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SalesReferers> = z.object({
+        referer: z.string(),
+        sales: z.number(),
+        amount: z.number(),
+    });
 }

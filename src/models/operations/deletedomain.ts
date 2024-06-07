@@ -31,86 +31,50 @@ export type DeleteDomainResponseBody = {
 
 /** @internal */
 export namespace DeleteDomainGlobals$ {
-    export const inboundSchema: z.ZodType<DeleteDomainGlobals, z.ZodTypeDef, unknown> = z
-        .object({
-            workspaceId: z.string(),
-            projectSlug: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                workspaceId: v.workspaceId,
-                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
-            };
-        });
+    export const inboundSchema: z.ZodType<DeleteDomainGlobals, z.ZodTypeDef, unknown> = z.object({
+        workspaceId: z.string(),
+        projectSlug: z.string().optional(),
+    });
 
     export type Outbound = {
         workspaceId: string;
         projectSlug?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteDomainGlobals> = z
-        .object({
-            workspaceId: z.string(),
-            projectSlug: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                workspaceId: v.workspaceId,
-                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteDomainGlobals> = z.object({
+        workspaceId: z.string(),
+        projectSlug: z.string().optional(),
+    });
 }
 
 /** @internal */
 export namespace DeleteDomainRequest$ {
-    export const inboundSchema: z.ZodType<DeleteDomainRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            slug: z.string(),
-        })
-        .transform((v) => {
-            return {
-                slug: v.slug,
-            };
-        });
+    export const inboundSchema: z.ZodType<DeleteDomainRequest, z.ZodTypeDef, unknown> = z.object({
+        slug: z.string(),
+    });
 
     export type Outbound = {
         slug: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteDomainRequest> = z
-        .object({
-            slug: z.string(),
-        })
-        .transform((v) => {
-            return {
-                slug: v.slug,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteDomainRequest> = z.object({
+        slug: z.string(),
+    });
 }
 
 /** @internal */
 export namespace DeleteDomainResponseBody$ {
-    export const inboundSchema: z.ZodType<DeleteDomainResponseBody, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<DeleteDomainResponseBody, z.ZodTypeDef, unknown> =
+        z.object({
             slug: z.string(),
-        })
-        .transform((v) => {
-            return {
-                slug: v.slug,
-            };
         });
 
     export type Outbound = {
         slug: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteDomainResponseBody> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteDomainResponseBody> =
+        z.object({
             slug: z.string(),
-        })
-        .transform((v) => {
-            return {
-                slug: v.slug,
-            };
         });
 }

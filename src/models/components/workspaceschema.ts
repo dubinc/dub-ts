@@ -149,112 +149,61 @@ export namespace Role$ {
 
 /** @internal */
 export namespace Users$ {
-    export const inboundSchema: z.ZodType<Users, z.ZodTypeDef, unknown> = z
-        .object({
-            role: Role$.inboundSchema,
-        })
-        .transform((v) => {
-            return {
-                role: v.role,
-            };
-        });
+    export const inboundSchema: z.ZodType<Users, z.ZodTypeDef, unknown> = z.object({
+        role: Role$.inboundSchema,
+    });
 
     export type Outbound = {
         role: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Users> = z
-        .object({
-            role: Role$.outboundSchema,
-        })
-        .transform((v) => {
-            return {
-                role: v.role,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Users> = z.object({
+        role: Role$.outboundSchema,
+    });
 }
 
 /** @internal */
 export namespace Domains$ {
-    export const inboundSchema: z.ZodType<Domains, z.ZodTypeDef, unknown> = z
-        .object({
-            slug: z.string(),
-            primary: z.boolean().default(false),
-        })
-        .transform((v) => {
-            return {
-                slug: v.slug,
-                primary: v.primary,
-            };
-        });
+    export const inboundSchema: z.ZodType<Domains, z.ZodTypeDef, unknown> = z.object({
+        slug: z.string(),
+        primary: z.boolean().default(false),
+    });
 
     export type Outbound = {
         slug: string;
         primary: boolean;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Domains> = z
-        .object({
-            slug: z.string(),
-            primary: z.boolean().default(false),
-        })
-        .transform((v) => {
-            return {
-                slug: v.slug,
-                primary: v.primary,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Domains> = z.object({
+        slug: z.string(),
+        primary: z.boolean().default(false),
+    });
 }
 
 /** @internal */
 export namespace WorkspaceSchema$ {
-    export const inboundSchema: z.ZodType<WorkspaceSchema, z.ZodTypeDef, unknown> = z
-        .object({
-            id: z.string(),
-            name: z.string(),
-            slug: z.string(),
-            logo: z.nullable(z.string()).default(null),
-            usage: z.number(),
-            usageLimit: z.number(),
-            linksUsage: z.number(),
-            linksLimit: z.number(),
-            domainsLimit: z.number(),
-            tagsLimit: z.number(),
-            usersLimit: z.number(),
-            plan: Plan$.inboundSchema,
-            stripeId: z.nullable(z.string()),
-            billingCycleStart: z.number(),
-            stripeConnectId: z.nullable(z.string()),
-            createdAt: z.string(),
-            users: z.array(z.lazy(() => Users$.inboundSchema)),
-            domains: z.array(z.lazy(() => Domains$.inboundSchema)),
-            inviteCode: z.nullable(z.string()),
-            betaTester: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return {
-                id: v.id,
-                name: v.name,
-                slug: v.slug,
-                logo: v.logo,
-                usage: v.usage,
-                usageLimit: v.usageLimit,
-                linksUsage: v.linksUsage,
-                linksLimit: v.linksLimit,
-                domainsLimit: v.domainsLimit,
-                tagsLimit: v.tagsLimit,
-                usersLimit: v.usersLimit,
-                plan: v.plan,
-                stripeId: v.stripeId,
-                billingCycleStart: v.billingCycleStart,
-                stripeConnectId: v.stripeConnectId,
-                createdAt: v.createdAt,
-                users: v.users,
-                domains: v.domains,
-                inviteCode: v.inviteCode,
-                ...(v.betaTester === undefined ? null : { betaTester: v.betaTester }),
-            };
-        });
+    export const inboundSchema: z.ZodType<WorkspaceSchema, z.ZodTypeDef, unknown> = z.object({
+        id: z.string(),
+        name: z.string(),
+        slug: z.string(),
+        logo: z.nullable(z.string()).default(null),
+        usage: z.number(),
+        usageLimit: z.number(),
+        linksUsage: z.number(),
+        linksLimit: z.number(),
+        domainsLimit: z.number(),
+        tagsLimit: z.number(),
+        usersLimit: z.number(),
+        plan: Plan$.inboundSchema,
+        stripeId: z.nullable(z.string()),
+        billingCycleStart: z.number(),
+        stripeConnectId: z.nullable(z.string()),
+        createdAt: z.string(),
+        users: z.array(z.lazy(() => Users$.inboundSchema)),
+        domains: z.array(z.lazy(() => Domains$.inboundSchema)),
+        inviteCode: z.nullable(z.string()),
+        betaTester: z.boolean().optional(),
+    });
 
     export type Outbound = {
         id: string;
@@ -279,51 +228,26 @@ export namespace WorkspaceSchema$ {
         betaTester?: boolean | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WorkspaceSchema> = z
-        .object({
-            id: z.string(),
-            name: z.string(),
-            slug: z.string(),
-            logo: z.nullable(z.string()).default(null),
-            usage: z.number(),
-            usageLimit: z.number(),
-            linksUsage: z.number(),
-            linksLimit: z.number(),
-            domainsLimit: z.number(),
-            tagsLimit: z.number(),
-            usersLimit: z.number(),
-            plan: Plan$.outboundSchema,
-            stripeId: z.nullable(z.string()),
-            billingCycleStart: z.number(),
-            stripeConnectId: z.nullable(z.string()),
-            createdAt: z.string(),
-            users: z.array(z.lazy(() => Users$.outboundSchema)),
-            domains: z.array(z.lazy(() => Domains$.outboundSchema)),
-            inviteCode: z.nullable(z.string()),
-            betaTester: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return {
-                id: v.id,
-                name: v.name,
-                slug: v.slug,
-                logo: v.logo,
-                usage: v.usage,
-                usageLimit: v.usageLimit,
-                linksUsage: v.linksUsage,
-                linksLimit: v.linksLimit,
-                domainsLimit: v.domainsLimit,
-                tagsLimit: v.tagsLimit,
-                usersLimit: v.usersLimit,
-                plan: v.plan,
-                stripeId: v.stripeId,
-                billingCycleStart: v.billingCycleStart,
-                stripeConnectId: v.stripeConnectId,
-                createdAt: v.createdAt,
-                users: v.users,
-                domains: v.domains,
-                inviteCode: v.inviteCode,
-                ...(v.betaTester === undefined ? null : { betaTester: v.betaTester }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WorkspaceSchema> = z.object({
+        id: z.string(),
+        name: z.string(),
+        slug: z.string(),
+        logo: z.nullable(z.string()).default(null),
+        usage: z.number(),
+        usageLimit: z.number(),
+        linksUsage: z.number(),
+        linksLimit: z.number(),
+        domainsLimit: z.number(),
+        tagsLimit: z.number(),
+        usersLimit: z.number(),
+        plan: Plan$.outboundSchema,
+        stripeId: z.nullable(z.string()),
+        billingCycleStart: z.number(),
+        stripeConnectId: z.nullable(z.string()),
+        createdAt: z.string(),
+        users: z.array(z.lazy(() => Users$.outboundSchema)),
+        domains: z.array(z.lazy(() => Domains$.outboundSchema)),
+        inviteCode: z.nullable(z.string()),
+        betaTester: z.boolean().optional(),
+    });
 }

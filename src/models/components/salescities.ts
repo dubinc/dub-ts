@@ -292,21 +292,12 @@ export namespace SalesCitiesCountry$ {
 
 /** @internal */
 export namespace SalesCities$ {
-    export const inboundSchema: z.ZodType<SalesCities, z.ZodTypeDef, unknown> = z
-        .object({
-            city: z.string(),
-            country: SalesCitiesCountry$.inboundSchema,
-            sales: z.number(),
-            amount: z.number(),
-        })
-        .transform((v) => {
-            return {
-                city: v.city,
-                country: v.country,
-                sales: v.sales,
-                amount: v.amount,
-            };
-        });
+    export const inboundSchema: z.ZodType<SalesCities, z.ZodTypeDef, unknown> = z.object({
+        city: z.string(),
+        country: SalesCitiesCountry$.inboundSchema,
+        sales: z.number(),
+        amount: z.number(),
+    });
 
     export type Outbound = {
         city: string;
@@ -315,19 +306,10 @@ export namespace SalesCities$ {
         amount: number;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SalesCities> = z
-        .object({
-            city: z.string(),
-            country: SalesCitiesCountry$.outboundSchema,
-            sales: z.number(),
-            amount: z.number(),
-        })
-        .transform((v) => {
-            return {
-                city: v.city,
-                country: v.country,
-                sales: v.sales,
-                amount: v.amount,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SalesCities> = z.object({
+        city: z.string(),
+        country: SalesCitiesCountry$.outboundSchema,
+        sales: z.number(),
+        amount: z.number(),
+    });
 }

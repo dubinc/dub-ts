@@ -1,6 +1,6 @@
 {
   "name": "dub",
-  "version": "0.29.15",
+  "version": "0.29.16",
   "author": "Dub",  
   "main": "./index.js",
   "sideEffects": false,

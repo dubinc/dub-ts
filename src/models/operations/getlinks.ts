@@ -81,34 +81,20 @@ export type GetLinksRequest = {
 
 /** @internal */
 export namespace GetLinksGlobals$ {
-    export const inboundSchema: z.ZodType<GetLinksGlobals, z.ZodTypeDef, unknown> = z
-        .object({
-            workspaceId: z.string(),
-            projectSlug: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                workspaceId: v.workspaceId,
-                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
-            };
-        });
+    export const inboundSchema: z.ZodType<GetLinksGlobals, z.ZodTypeDef, unknown> = z.object({
+        workspaceId: z.string(),
+        projectSlug: z.string().optional(),
+    });
 
     export type Outbound = {
         workspaceId: string;
         projectSlug?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLinksGlobals> = z
-        .object({
-            workspaceId: z.string(),
-            projectSlug: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                workspaceId: v.workspaceId,
-                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLinksGlobals> = z.object({
+        workspaceId: z.string(),
+        projectSlug: z.string().optional(),
+    });
 }
 
 /** @internal */
@@ -147,33 +133,18 @@ export namespace Sort$ {
 
 /** @internal */
 export namespace GetLinksRequest$ {
-    export const inboundSchema: z.ZodType<GetLinksRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            domain: z.string().optional(),
-            tagId: z.string().optional(),
-            tagIds: z.union([z.string(), z.array(z.string())]).optional(),
-            tagNames: z.union([z.string(), z.array(z.string())]).optional(),
-            search: z.string().optional(),
-            userId: z.string().optional(),
-            showArchived: z.boolean().default(false),
-            withTags: z.boolean().default(false),
-            sort: Sort$.inboundSchema.default("createdAt"),
-            page: z.number().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.domain === undefined ? null : { domain: v.domain }),
-                ...(v.tagId === undefined ? null : { tagId: v.tagId }),
-                ...(v.tagIds === undefined ? null : { tagIds: v.tagIds }),
-                ...(v.tagNames === undefined ? null : { tagNames: v.tagNames }),
-                ...(v.search === undefined ? null : { search: v.search }),
-                ...(v.userId === undefined ? null : { userId: v.userId }),
-                showArchived: v.showArchived,
-                withTags: v.withTags,
-                sort: v.sort,
-                ...(v.page === undefined ? null : { page: v.page }),
-            };
-        });
+    export const inboundSchema: z.ZodType<GetLinksRequest, z.ZodTypeDef, unknown> = z.object({
+        domain: z.string().optional(),
+        tagId: z.string().optional(),
+        tagIds: z.union([z.string(), z.array(z.string())]).optional(),
+        tagNames: z.union([z.string(), z.array(z.string())]).optional(),
+        search: z.string().optional(),
+        userId: z.string().optional(),
+        showArchived: z.boolean().default(false),
+        withTags: z.boolean().default(false),
+        sort: Sort$.inboundSchema.default("createdAt"),
+        page: z.number().optional(),
+    });
 
     export type Outbound = {
         domain?: string | undefined;
@@ -188,31 +159,16 @@ export namespace GetLinksRequest$ {
         page?: number | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLinksRequest> = z
-        .object({
-            domain: z.string().optional(),
-            tagId: z.string().optional(),
-            tagIds: z.union([z.string(), z.array(z.string())]).optional(),
-            tagNames: z.union([z.string(), z.array(z.string())]).optional(),
-            search: z.string().optional(),
-            userId: z.string().optional(),
-            showArchived: z.boolean().default(false),
-            withTags: z.boolean().default(false),
-            sort: Sort$.outboundSchema.default("createdAt"),
-            page: z.number().optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.domain === undefined ? null : { domain: v.domain }),
-                ...(v.tagId === undefined ? null : { tagId: v.tagId }),
-                ...(v.tagIds === undefined ? null : { tagIds: v.tagIds }),
-                ...(v.tagNames === undefined ? null : { tagNames: v.tagNames }),
-                ...(v.search === undefined ? null : { search: v.search }),
-                ...(v.userId === undefined ? null : { userId: v.userId }),
-                showArchived: v.showArchived,
-                withTags: v.withTags,
-                sort: v.sort,
-                ...(v.page === undefined ? null : { page: v.page }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLinksRequest> = z.object({
+        domain: z.string().optional(),
+        tagId: z.string().optional(),
+        tagIds: z.union([z.string(), z.array(z.string())]).optional(),
+        tagNames: z.union([z.string(), z.array(z.string())]).optional(),
+        search: z.string().optional(),
+        userId: z.string().optional(),
+        showArchived: z.boolean().default(false),
+        withTags: z.boolean().default(false),
+        sort: Sort$.outboundSchema.default("createdAt"),
+        page: z.number().optional(),
+    });
 }

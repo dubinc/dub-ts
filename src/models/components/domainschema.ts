@@ -72,35 +72,19 @@ export namespace Type$ {
 
 /** @internal */
 export namespace DomainSchema$ {
-    export const inboundSchema: z.ZodType<DomainSchema, z.ZodTypeDef, unknown> = z
-        .object({
-            id: z.string(),
-            slug: z.string(),
-            verified: z.boolean().default(false),
-            primary: z.boolean().default(false),
-            archived: z.boolean().default(false),
-            noindex: z.boolean().default(false),
-            placeholder: z.string().default("https://dub.co/help/article/what-is-dub"),
-            expiredUrl: z.nullable(z.string()),
-            target: z.nullable(z.string()),
-            type: Type$.inboundSchema,
-            clicks: z.number().default(0),
-        })
-        .transform((v) => {
-            return {
-                id: v.id,
-                slug: v.slug,
-                verified: v.verified,
-                primary: v.primary,
-                archived: v.archived,
-                noindex: v.noindex,
-                placeholder: v.placeholder,
-                expiredUrl: v.expiredUrl,
-                target: v.target,
-                type: v.type,
-                clicks: v.clicks,
-            };
-        });
+    export const inboundSchema: z.ZodType<DomainSchema, z.ZodTypeDef, unknown> = z.object({
+        id: z.string(),
+        slug: z.string(),
+        verified: z.boolean().default(false),
+        primary: z.boolean().default(false),
+        archived: z.boolean().default(false),
+        noindex: z.boolean().default(false),
+        placeholder: z.string().default("https://dub.co/help/article/what-is-dub"),
+        expiredUrl: z.nullable(z.string()),
+        target: z.nullable(z.string()),
+        type: Type$.inboundSchema,
+        clicks: z.number().default(0),
+    });
 
     export type Outbound = {
         id: string;
@@ -116,33 +100,17 @@ export namespace DomainSchema$ {
         clicks: number;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DomainSchema> = z
-        .object({
-            id: z.string(),
-            slug: z.string(),
-            verified: z.boolean().default(false),
-            primary: z.boolean().default(false),
-            archived: z.boolean().default(false),
-            noindex: z.boolean().default(false),
-            placeholder: z.string().default("https://dub.co/help/article/what-is-dub"),
-            expiredUrl: z.nullable(z.string()),
-            target: z.nullable(z.string()),
-            type: Type$.outboundSchema,
-            clicks: z.number().default(0),
-        })
-        .transform((v) => {
-            return {
-                id: v.id,
-                slug: v.slug,
-                verified: v.verified,
-                primary: v.primary,
-                archived: v.archived,
-                noindex: v.noindex,
-                placeholder: v.placeholder,
-                expiredUrl: v.expiredUrl,
-                target: v.target,
-                type: v.type,
-                clicks: v.clicks,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DomainSchema> = z.object({
+        id: z.string(),
+        slug: z.string(),
+        verified: z.boolean().default(false),
+        primary: z.boolean().default(false),
+        archived: z.boolean().default(false),
+        noindex: z.boolean().default(false),
+        placeholder: z.string().default("https://dub.co/help/article/what-is-dub"),
+        expiredUrl: z.nullable(z.string()),
+        target: z.nullable(z.string()),
+        type: Type$.outboundSchema,
+        clicks: z.number().default(0),
+    });
 }

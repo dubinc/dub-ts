@@ -17,32 +17,18 @@ export type ClicksTopUrls = {
 
 /** @internal */
 export namespace ClicksTopUrls$ {
-    export const inboundSchema: z.ZodType<ClicksTopUrls, z.ZodTypeDef, unknown> = z
-        .object({
-            url: z.string(),
-            clicks: z.number(),
-        })
-        .transform((v) => {
-            return {
-                url: v.url,
-                clicks: v.clicks,
-            };
-        });
+    export const inboundSchema: z.ZodType<ClicksTopUrls, z.ZodTypeDef, unknown> = z.object({
+        url: z.string(),
+        clicks: z.number(),
+    });
 
     export type Outbound = {
         url: string;
         clicks: number;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ClicksTopUrls> = z
-        .object({
-            url: z.string(),
-            clicks: z.number(),
-        })
-        .transform((v) => {
-            return {
-                url: v.url,
-                clicks: v.clicks,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ClicksTopUrls> = z.object({
+        url: z.string(),
+        clicks: z.number(),
+    });
 }

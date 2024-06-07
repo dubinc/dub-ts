@@ -187,16 +187,10 @@ export type RetrieveAnalyticsResponseBody =
 
 /** @internal */
 export namespace RetrieveAnalyticsGlobals$ {
-    export const inboundSchema: z.ZodType<RetrieveAnalyticsGlobals, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<RetrieveAnalyticsGlobals, z.ZodTypeDef, unknown> =
+        z.object({
             workspaceId: z.string(),
             projectSlug: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                workspaceId: v.workspaceId,
-                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
-            };
         });
 
     export type Outbound = {
@@ -204,16 +198,10 @@ export namespace RetrieveAnalyticsGlobals$ {
         projectSlug?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveAnalyticsGlobals> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveAnalyticsGlobals> =
+        z.object({
             workspaceId: z.string(),
             projectSlug: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                workspaceId: v.workspaceId,
-                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
-            };
         });
 }
 
@@ -237,8 +225,8 @@ export namespace Interval$ {
 
 /** @internal */
 export namespace RetrieveAnalyticsRequest$ {
-    export const inboundSchema: z.ZodType<RetrieveAnalyticsRequest, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<RetrieveAnalyticsRequest, z.ZodTypeDef, unknown> =
+        z.object({
             event: Event$.inboundSchema.default("clicks"),
             groupBy: QueryParamGroupBy$.inboundSchema.default("count"),
             domain: z.string().optional(),
@@ -259,30 +247,6 @@ export namespace RetrieveAnalyticsRequest$ {
             tagId: z.string().optional(),
             qr: z.boolean().optional(),
             root: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return {
-                event: v.event,
-                groupBy: v.groupBy,
-                ...(v.domain === undefined ? null : { domain: v.domain }),
-                ...(v.key === undefined ? null : { key: v.key }),
-                ...(v.linkId === undefined ? null : { linkId: v.linkId }),
-                ...(v.externalId === undefined ? null : { externalId: v.externalId }),
-                ...(v.interval === undefined ? null : { interval: v.interval }),
-                ...(v.start === undefined ? null : { start: v.start }),
-                ...(v.end === undefined ? null : { end: v.end }),
-                timezone: v.timezone,
-                ...(v.country === undefined ? null : { country: v.country }),
-                ...(v.city === undefined ? null : { city: v.city }),
-                ...(v.device === undefined ? null : { device: v.device }),
-                ...(v.browser === undefined ? null : { browser: v.browser }),
-                ...(v.os === undefined ? null : { os: v.os }),
-                ...(v.referer === undefined ? null : { referer: v.referer }),
-                ...(v.url === undefined ? null : { url: v.url }),
-                ...(v.tagId === undefined ? null : { tagId: v.tagId }),
-                ...(v.qr === undefined ? null : { qr: v.qr }),
-                ...(v.root === undefined ? null : { root: v.root }),
-            };
         });
 
     export type Outbound = {
@@ -308,8 +272,8 @@ export namespace RetrieveAnalyticsRequest$ {
         root?: boolean | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveAnalyticsRequest> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveAnalyticsRequest> =
+        z.object({
             event: Event$.outboundSchema.default("clicks"),
             groupBy: QueryParamGroupBy$.outboundSchema.default("count"),
             domain: z.string().optional(),
@@ -330,30 +294,6 @@ export namespace RetrieveAnalyticsRequest$ {
             tagId: z.string().optional(),
             qr: z.boolean().optional(),
             root: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return {
-                event: v.event,
-                groupBy: v.groupBy,
-                ...(v.domain === undefined ? null : { domain: v.domain }),
-                ...(v.key === undefined ? null : { key: v.key }),
-                ...(v.linkId === undefined ? null : { linkId: v.linkId }),
-                ...(v.externalId === undefined ? null : { externalId: v.externalId }),
-                ...(v.interval === undefined ? null : { interval: v.interval }),
-                ...(v.start === undefined ? null : { start: v.start }),
-                ...(v.end === undefined ? null : { end: v.end }),
-                timezone: v.timezone,
-                ...(v.country === undefined ? null : { country: v.country }),
-                ...(v.city === undefined ? null : { city: v.city }),
-                ...(v.device === undefined ? null : { device: v.device }),
-                ...(v.browser === undefined ? null : { browser: v.browser }),
-                ...(v.os === undefined ? null : { os: v.os }),
-                ...(v.referer === undefined ? null : { referer: v.referer }),
-                ...(v.url === undefined ? null : { url: v.url }),
-                ...(v.tagId === undefined ? null : { tagId: v.tagId }),
-                ...(v.qr === undefined ? null : { qr: v.qr }),
-                ...(v.root === undefined ? null : { root: v.root }),
-            };
         });
 }
 

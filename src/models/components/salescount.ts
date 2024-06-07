@@ -17,32 +17,18 @@ export type SalesCount = {
 
 /** @internal */
 export namespace SalesCount$ {
-    export const inboundSchema: z.ZodType<SalesCount, z.ZodTypeDef, unknown> = z
-        .object({
-            sales: z.number(),
-            amount: z.number(),
-        })
-        .transform((v) => {
-            return {
-                sales: v.sales,
-                amount: v.amount,
-            };
-        });
+    export const inboundSchema: z.ZodType<SalesCount, z.ZodTypeDef, unknown> = z.object({
+        sales: z.number(),
+        amount: z.number(),
+    });
 
     export type Outbound = {
         sales: number;
         amount: number;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SalesCount> = z
-        .object({
-            sales: z.number(),
-            amount: z.number(),
-        })
-        .transform((v) => {
-            return {
-                sales: v.sales,
-                amount: v.amount,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SalesCount> = z.object({
+        sales: z.number(),
+        amount: z.number(),
+    });
 }

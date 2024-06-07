@@ -45,19 +45,11 @@ export namespace Color$ {
 
 /** @internal */
 export namespace TagSchema$ {
-    export const inboundSchema: z.ZodType<TagSchema, z.ZodTypeDef, unknown> = z
-        .object({
-            id: z.string(),
-            name: z.string(),
-            color: Color$.inboundSchema,
-        })
-        .transform((v) => {
-            return {
-                id: v.id,
-                name: v.name,
-                color: v.color,
-            };
-        });
+    export const inboundSchema: z.ZodType<TagSchema, z.ZodTypeDef, unknown> = z.object({
+        id: z.string(),
+        name: z.string(),
+        color: Color$.inboundSchema,
+    });
 
     export type Outbound = {
         id: string;
@@ -65,17 +57,9 @@ export namespace TagSchema$ {
         color: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TagSchema> = z
-        .object({
-            id: z.string(),
-            name: z.string(),
-            color: Color$.outboundSchema,
-        })
-        .transform((v) => {
-            return {
-                id: v.id,
-                name: v.name,
-                color: v.color,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TagSchema> = z.object({
+        id: z.string(),
+        name: z.string(),
+        color: Color$.outboundSchema,
+    });
 }
