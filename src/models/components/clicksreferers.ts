@@ -17,32 +17,18 @@ export type ClicksReferers = {
 
 /** @internal */
 export namespace ClicksReferers$ {
-    export const inboundSchema: z.ZodType<ClicksReferers, z.ZodTypeDef, unknown> = z
-        .object({
-            referer: z.string(),
-            clicks: z.number(),
-        })
-        .transform((v) => {
-            return {
-                referer: v.referer,
-                clicks: v.clicks,
-            };
-        });
+    export const inboundSchema: z.ZodType<ClicksReferers, z.ZodTypeDef, unknown> = z.object({
+        referer: z.string(),
+        clicks: z.number(),
+    });
 
     export type Outbound = {
         referer: string;
         clicks: number;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ClicksReferers> = z
-        .object({
-            referer: z.string(),
-            clicks: z.number(),
-        })
-        .transform((v) => {
-            return {
-                referer: v.referer,
-                clicks: v.clicks,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ClicksReferers> = z.object({
+        referer: z.string(),
+        clicks: z.number(),
+    });
 }

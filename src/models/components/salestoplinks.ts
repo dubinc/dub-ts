@@ -47,31 +47,17 @@ export type SalesTopLinks = {
 
 /** @internal */
 export namespace SalesTopLinks$ {
-    export const inboundSchema: z.ZodType<SalesTopLinks, z.ZodTypeDef, unknown> = z
-        .object({
-            link: z.string(),
-            id: z.string(),
-            domain: z.string(),
-            key: z.string(),
-            shortLink: z.string(),
-            url: z.string(),
-            createdAt: z.string(),
-            sales: z.number(),
-            amount: z.number(),
-        })
-        .transform((v) => {
-            return {
-                link: v.link,
-                id: v.id,
-                domain: v.domain,
-                key: v.key,
-                shortLink: v.shortLink,
-                url: v.url,
-                createdAt: v.createdAt,
-                sales: v.sales,
-                amount: v.amount,
-            };
-        });
+    export const inboundSchema: z.ZodType<SalesTopLinks, z.ZodTypeDef, unknown> = z.object({
+        link: z.string(),
+        id: z.string(),
+        domain: z.string(),
+        key: z.string(),
+        shortLink: z.string(),
+        url: z.string(),
+        createdAt: z.string(),
+        sales: z.number(),
+        amount: z.number(),
+    });
 
     export type Outbound = {
         link: string;
@@ -85,29 +71,15 @@ export namespace SalesTopLinks$ {
         amount: number;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SalesTopLinks> = z
-        .object({
-            link: z.string(),
-            id: z.string(),
-            domain: z.string(),
-            key: z.string(),
-            shortLink: z.string(),
-            url: z.string(),
-            createdAt: z.string(),
-            sales: z.number(),
-            amount: z.number(),
-        })
-        .transform((v) => {
-            return {
-                link: v.link,
-                id: v.id,
-                domain: v.domain,
-                key: v.key,
-                shortLink: v.shortLink,
-                url: v.url,
-                createdAt: v.createdAt,
-                sales: v.sales,
-                amount: v.amount,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SalesTopLinks> = z.object({
+        link: z.string(),
+        id: z.string(),
+        domain: z.string(),
+        key: z.string(),
+        shortLink: z.string(),
+        url: z.string(),
+        createdAt: z.string(),
+        sales: z.number(),
+        amount: z.number(),
+    });
 }

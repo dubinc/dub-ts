@@ -67,34 +67,20 @@ export type TrackSaleResponseBody = {
 
 /** @internal */
 export namespace TrackSaleGlobals$ {
-    export const inboundSchema: z.ZodType<TrackSaleGlobals, z.ZodTypeDef, unknown> = z
-        .object({
-            workspaceId: z.string(),
-            projectSlug: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                workspaceId: v.workspaceId,
-                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
-            };
-        });
+    export const inboundSchema: z.ZodType<TrackSaleGlobals, z.ZodTypeDef, unknown> = z.object({
+        workspaceId: z.string(),
+        projectSlug: z.string().optional(),
+    });
 
     export type Outbound = {
         workspaceId: string;
         projectSlug?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TrackSaleGlobals> = z
-        .object({
-            workspaceId: z.string(),
-            projectSlug: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                workspaceId: v.workspaceId,
-                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TrackSaleGlobals> = z.object({
+        workspaceId: z.string(),
+        projectSlug: z.string().optional(),
+    });
 }
 
 /** @internal */
@@ -105,25 +91,14 @@ export namespace PaymentProcessor$ {
 
 /** @internal */
 export namespace TrackSaleRequestBody$ {
-    export const inboundSchema: z.ZodType<TrackSaleRequestBody, z.ZodTypeDef, unknown> = z
-        .object({
-            customerId: z.string(),
-            amount: z.number().int(),
-            paymentProcessor: PaymentProcessor$.inboundSchema,
-            invoiceId: z.nullable(z.string()).default(null),
-            currency: z.string().default("usd"),
-            metadata: z.nullable(z.record(z.any())).optional(),
-        })
-        .transform((v) => {
-            return {
-                customerId: v.customerId,
-                amount: v.amount,
-                paymentProcessor: v.paymentProcessor,
-                invoiceId: v.invoiceId,
-                currency: v.currency,
-                ...(v.metadata === undefined ? null : { metadata: v.metadata }),
-            };
-        });
+    export const inboundSchema: z.ZodType<TrackSaleRequestBody, z.ZodTypeDef, unknown> = z.object({
+        customerId: z.string(),
+        amount: z.number().int(),
+        paymentProcessor: PaymentProcessor$.inboundSchema,
+        invoiceId: z.nullable(z.string()).default(null),
+        currency: z.string().default("usd"),
+        metadata: z.nullable(z.record(z.any())).optional(),
+    });
 
     export type Outbound = {
         customerId: string;
@@ -134,48 +109,28 @@ export namespace TrackSaleRequestBody$ {
         metadata?: { [k: string]: any } | null | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TrackSaleRequestBody> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TrackSaleRequestBody> = z.object(
+        {
             customerId: z.string(),
             amount: z.number().int(),
             paymentProcessor: PaymentProcessor$.outboundSchema,
             invoiceId: z.nullable(z.string()).default(null),
             currency: z.string().default("usd"),
             metadata: z.nullable(z.record(z.any())).optional(),
-        })
-        .transform((v) => {
-            return {
-                customerId: v.customerId,
-                amount: v.amount,
-                paymentProcessor: v.paymentProcessor,
-                invoiceId: v.invoiceId,
-                currency: v.currency,
-                ...(v.metadata === undefined ? null : { metadata: v.metadata }),
-            };
-        });
+        }
+    );
 }
 
 /** @internal */
 export namespace TrackSaleResponseBody$ {
-    export const inboundSchema: z.ZodType<TrackSaleResponseBody, z.ZodTypeDef, unknown> = z
-        .object({
-            customerId: z.string(),
-            amount: z.number(),
-            paymentProcessor: z.string(),
-            invoiceId: z.nullable(z.string()),
-            currency: z.string(),
-            metadata: z.nullable(z.record(z.any())),
-        })
-        .transform((v) => {
-            return {
-                customerId: v.customerId,
-                amount: v.amount,
-                paymentProcessor: v.paymentProcessor,
-                invoiceId: v.invoiceId,
-                currency: v.currency,
-                metadata: v.metadata,
-            };
-        });
+    export const inboundSchema: z.ZodType<TrackSaleResponseBody, z.ZodTypeDef, unknown> = z.object({
+        customerId: z.string(),
+        amount: z.number(),
+        paymentProcessor: z.string(),
+        invoiceId: z.nullable(z.string()),
+        currency: z.string(),
+        metadata: z.nullable(z.record(z.any())),
+    });
 
     export type Outbound = {
         customerId: string;
@@ -186,23 +141,13 @@ export namespace TrackSaleResponseBody$ {
         metadata: { [k: string]: any } | null;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TrackSaleResponseBody> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TrackSaleResponseBody> =
+        z.object({
             customerId: z.string(),
             amount: z.number(),
             paymentProcessor: z.string(),
             invoiceId: z.nullable(z.string()),
             currency: z.string(),
             metadata: z.nullable(z.record(z.any())),
-        })
-        .transform((v) => {
-            return {
-                customerId: v.customerId,
-                amount: v.amount,
-                paymentProcessor: v.paymentProcessor,
-                invoiceId: v.invoiceId,
-                currency: v.currency,
-                metadata: v.metadata,
-            };
         });
 }

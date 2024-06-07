@@ -21,19 +21,11 @@ export type SalesBrowsers = {
 
 /** @internal */
 export namespace SalesBrowsers$ {
-    export const inboundSchema: z.ZodType<SalesBrowsers, z.ZodTypeDef, unknown> = z
-        .object({
-            browser: z.string(),
-            sales: z.number(),
-            amount: z.number(),
-        })
-        .transform((v) => {
-            return {
-                browser: v.browser,
-                sales: v.sales,
-                amount: v.amount,
-            };
-        });
+    export const inboundSchema: z.ZodType<SalesBrowsers, z.ZodTypeDef, unknown> = z.object({
+        browser: z.string(),
+        sales: z.number(),
+        amount: z.number(),
+    });
 
     export type Outbound = {
         browser: string;
@@ -41,17 +33,9 @@ export namespace SalesBrowsers$ {
         amount: number;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SalesBrowsers> = z
-        .object({
-            browser: z.string(),
-            sales: z.number(),
-            amount: z.number(),
-        })
-        .transform((v) => {
-            return {
-                browser: v.browser,
-                sales: v.sales,
-                amount: v.amount,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SalesBrowsers> = z.object({
+        browser: z.string(),
+        sales: z.number(),
+        amount: z.number(),
+    });
 }

@@ -31,86 +31,51 @@ export type DeleteLinkResponseBody = {
 
 /** @internal */
 export namespace DeleteLinkGlobals$ {
-    export const inboundSchema: z.ZodType<DeleteLinkGlobals, z.ZodTypeDef, unknown> = z
-        .object({
-            workspaceId: z.string(),
-            projectSlug: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                workspaceId: v.workspaceId,
-                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
-            };
-        });
+    export const inboundSchema: z.ZodType<DeleteLinkGlobals, z.ZodTypeDef, unknown> = z.object({
+        workspaceId: z.string(),
+        projectSlug: z.string().optional(),
+    });
 
     export type Outbound = {
         workspaceId: string;
         projectSlug?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteLinkGlobals> = z
-        .object({
-            workspaceId: z.string(),
-            projectSlug: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                workspaceId: v.workspaceId,
-                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteLinkGlobals> = z.object({
+        workspaceId: z.string(),
+        projectSlug: z.string().optional(),
+    });
 }
 
 /** @internal */
 export namespace DeleteLinkRequest$ {
-    export const inboundSchema: z.ZodType<DeleteLinkRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            linkId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                linkId: v.linkId,
-            };
-        });
+    export const inboundSchema: z.ZodType<DeleteLinkRequest, z.ZodTypeDef, unknown> = z.object({
+        linkId: z.string(),
+    });
 
     export type Outbound = {
         linkId: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteLinkRequest> = z
-        .object({
-            linkId: z.string(),
-        })
-        .transform((v) => {
-            return {
-                linkId: v.linkId,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteLinkRequest> = z.object({
+        linkId: z.string(),
+    });
 }
 
 /** @internal */
 export namespace DeleteLinkResponseBody$ {
-    export const inboundSchema: z.ZodType<DeleteLinkResponseBody, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<DeleteLinkResponseBody, z.ZodTypeDef, unknown> = z.object(
+        {
             id: z.string(),
-        })
-        .transform((v) => {
-            return {
-                id: v.id,
-            };
-        });
+        }
+    );
 
     export type Outbound = {
         id: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteLinkResponseBody> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteLinkResponseBody> =
+        z.object({
             id: z.string(),
-        })
-        .transform((v) => {
-            return {
-                id: v.id,
-            };
         });
 }

@@ -21,16 +21,10 @@ export type SetPrimaryDomainRequest = {
 
 /** @internal */
 export namespace SetPrimaryDomainGlobals$ {
-    export const inboundSchema: z.ZodType<SetPrimaryDomainGlobals, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<SetPrimaryDomainGlobals, z.ZodTypeDef, unknown> =
+        z.object({
             workspaceId: z.string(),
             projectSlug: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                workspaceId: v.workspaceId,
-                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
-            };
         });
 
     export type Outbound = {
@@ -38,42 +32,26 @@ export namespace SetPrimaryDomainGlobals$ {
         projectSlug?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SetPrimaryDomainGlobals> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SetPrimaryDomainGlobals> =
+        z.object({
             workspaceId: z.string(),
             projectSlug: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                workspaceId: v.workspaceId,
-                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
-            };
         });
 }
 
 /** @internal */
 export namespace SetPrimaryDomainRequest$ {
-    export const inboundSchema: z.ZodType<SetPrimaryDomainRequest, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<SetPrimaryDomainRequest, z.ZodTypeDef, unknown> =
+        z.object({
             slug: z.string(),
-        })
-        .transform((v) => {
-            return {
-                slug: v.slug,
-            };
         });
 
     export type Outbound = {
         slug: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SetPrimaryDomainRequest> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SetPrimaryDomainRequest> =
+        z.object({
             slug: z.string(),
-        })
-        .transform((v) => {
-            return {
-                slug: v.slug,
-            };
         });
 }

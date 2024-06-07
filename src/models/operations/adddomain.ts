@@ -58,34 +58,20 @@ export type AddDomainRequestBody = {
 
 /** @internal */
 export namespace AddDomainGlobals$ {
-    export const inboundSchema: z.ZodType<AddDomainGlobals, z.ZodTypeDef, unknown> = z
-        .object({
-            workspaceId: z.string(),
-            projectSlug: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                workspaceId: v.workspaceId,
-                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
-            };
-        });
+    export const inboundSchema: z.ZodType<AddDomainGlobals, z.ZodTypeDef, unknown> = z.object({
+        workspaceId: z.string(),
+        projectSlug: z.string().optional(),
+    });
 
     export type Outbound = {
         workspaceId: string;
         projectSlug?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AddDomainGlobals> = z
-        .object({
-            workspaceId: z.string(),
-            projectSlug: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                workspaceId: v.workspaceId,
-                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AddDomainGlobals> = z.object({
+        workspaceId: z.string(),
+        projectSlug: z.string().optional(),
+    });
 }
 
 /** @internal */
@@ -96,27 +82,15 @@ export namespace Type$ {
 
 /** @internal */
 export namespace AddDomainRequestBody$ {
-    export const inboundSchema: z.ZodType<AddDomainRequestBody, z.ZodTypeDef, unknown> = z
-        .object({
-            slug: z.string(),
-            type: Type$.inboundSchema.default("redirect"),
-            target: z.nullable(z.string()).optional(),
-            expiredUrl: z.nullable(z.string()).optional(),
-            archived: z.boolean().default(false),
-            noindex: z.boolean().optional(),
-            placeholder: z.nullable(z.string().default("https://dub.co/help/article/what-is-dub")),
-        })
-        .transform((v) => {
-            return {
-                slug: v.slug,
-                type: v.type,
-                ...(v.target === undefined ? null : { target: v.target }),
-                ...(v.expiredUrl === undefined ? null : { expiredUrl: v.expiredUrl }),
-                archived: v.archived,
-                ...(v.noindex === undefined ? null : { noindex: v.noindex }),
-                placeholder: v.placeholder,
-            };
-        });
+    export const inboundSchema: z.ZodType<AddDomainRequestBody, z.ZodTypeDef, unknown> = z.object({
+        slug: z.string(),
+        type: Type$.inboundSchema.default("redirect"),
+        target: z.nullable(z.string()).optional(),
+        expiredUrl: z.nullable(z.string()).optional(),
+        archived: z.boolean().default(false),
+        noindex: z.boolean().optional(),
+        placeholder: z.nullable(z.string().default("https://dub.co/help/article/what-is-dub")),
+    });
 
     export type Outbound = {
         slug: string;
@@ -128,8 +102,8 @@ export namespace AddDomainRequestBody$ {
         placeholder: string | null;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AddDomainRequestBody> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AddDomainRequestBody> = z.object(
+        {
             slug: z.string(),
             type: Type$.outboundSchema.default("redirect"),
             target: z.nullable(z.string()).optional(),
@@ -137,16 +111,6 @@ export namespace AddDomainRequestBody$ {
             archived: z.boolean().default(false),
             noindex: z.boolean().optional(),
             placeholder: z.nullable(z.string().default("https://dub.co/help/article/what-is-dub")),
-        })
-        .transform((v) => {
-            return {
-                slug: v.slug,
-                type: v.type,
-                ...(v.target === undefined ? null : { target: v.target }),
-                ...(v.expiredUrl === undefined ? null : { expiredUrl: v.expiredUrl }),
-                archived: v.archived,
-                ...(v.noindex === undefined ? null : { noindex: v.noindex }),
-                placeholder: v.placeholder,
-            };
-        });
+        }
+    );
 }

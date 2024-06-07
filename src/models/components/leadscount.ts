@@ -13,27 +13,15 @@ export type LeadsCount = {
 
 /** @internal */
 export namespace LeadsCount$ {
-    export const inboundSchema: z.ZodType<LeadsCount, z.ZodTypeDef, unknown> = z
-        .object({
-            leads: z.number(),
-        })
-        .transform((v) => {
-            return {
-                leads: v.leads,
-            };
-        });
+    export const inboundSchema: z.ZodType<LeadsCount, z.ZodTypeDef, unknown> = z.object({
+        leads: z.number(),
+    });
 
     export type Outbound = {
         leads: number;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LeadsCount> = z
-        .object({
-            leads: z.number(),
-        })
-        .transform((v) => {
-            return {
-                leads: v.leads,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LeadsCount> = z.object({
+        leads: z.number(),
+    });
 }

@@ -58,59 +58,33 @@ export type TrackLeadResponseBody = {
 
 /** @internal */
 export namespace TrackLeadGlobals$ {
-    export const inboundSchema: z.ZodType<TrackLeadGlobals, z.ZodTypeDef, unknown> = z
-        .object({
-            workspaceId: z.string(),
-            projectSlug: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                workspaceId: v.workspaceId,
-                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
-            };
-        });
+    export const inboundSchema: z.ZodType<TrackLeadGlobals, z.ZodTypeDef, unknown> = z.object({
+        workspaceId: z.string(),
+        projectSlug: z.string().optional(),
+    });
 
     export type Outbound = {
         workspaceId: string;
         projectSlug?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TrackLeadGlobals> = z
-        .object({
-            workspaceId: z.string(),
-            projectSlug: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                workspaceId: v.workspaceId,
-                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TrackLeadGlobals> = z.object({
+        workspaceId: z.string(),
+        projectSlug: z.string().optional(),
+    });
 }
 
 /** @internal */
 export namespace TrackLeadRequestBody$ {
-    export const inboundSchema: z.ZodType<TrackLeadRequestBody, z.ZodTypeDef, unknown> = z
-        .object({
-            clickId: z.string(),
-            eventName: z.string(),
-            customerId: z.string(),
-            customerName: z.nullable(z.string()).optional(),
-            customerEmail: z.nullable(z.string()).optional(),
-            customerAvatar: z.nullable(z.string()).optional(),
-            metadata: z.nullable(z.record(z.any())).optional(),
-        })
-        .transform((v) => {
-            return {
-                clickId: v.clickId,
-                eventName: v.eventName,
-                customerId: v.customerId,
-                ...(v.customerName === undefined ? null : { customerName: v.customerName }),
-                ...(v.customerEmail === undefined ? null : { customerEmail: v.customerEmail }),
-                ...(v.customerAvatar === undefined ? null : { customerAvatar: v.customerAvatar }),
-                ...(v.metadata === undefined ? null : { metadata: v.metadata }),
-            };
-        });
+    export const inboundSchema: z.ZodType<TrackLeadRequestBody, z.ZodTypeDef, unknown> = z.object({
+        clickId: z.string(),
+        eventName: z.string(),
+        customerId: z.string(),
+        customerName: z.nullable(z.string()).optional(),
+        customerEmail: z.nullable(z.string()).optional(),
+        customerAvatar: z.nullable(z.string()).optional(),
+        metadata: z.nullable(z.record(z.any())).optional(),
+    });
 
     export type Outbound = {
         clickId: string;
@@ -122,8 +96,8 @@ export namespace TrackLeadRequestBody$ {
         metadata?: { [k: string]: any } | null | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TrackLeadRequestBody> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TrackLeadRequestBody> = z.object(
+        {
             clickId: z.string(),
             eventName: z.string(),
             customerId: z.string(),
@@ -131,43 +105,21 @@ export namespace TrackLeadRequestBody$ {
             customerEmail: z.nullable(z.string()).optional(),
             customerAvatar: z.nullable(z.string()).optional(),
             metadata: z.nullable(z.record(z.any())).optional(),
-        })
-        .transform((v) => {
-            return {
-                clickId: v.clickId,
-                eventName: v.eventName,
-                customerId: v.customerId,
-                ...(v.customerName === undefined ? null : { customerName: v.customerName }),
-                ...(v.customerEmail === undefined ? null : { customerEmail: v.customerEmail }),
-                ...(v.customerAvatar === undefined ? null : { customerAvatar: v.customerAvatar }),
-                ...(v.metadata === undefined ? null : { metadata: v.metadata }),
-            };
-        });
+        }
+    );
 }
 
 /** @internal */
 export namespace TrackLeadResponseBody$ {
-    export const inboundSchema: z.ZodType<TrackLeadResponseBody, z.ZodTypeDef, unknown> = z
-        .object({
-            clickId: z.string(),
-            eventName: z.string(),
-            customerId: z.string(),
-            customerName: z.nullable(z.string()),
-            customerEmail: z.nullable(z.string()),
-            customerAvatar: z.nullable(z.string()),
-            metadata: z.record(z.any()).optional(),
-        })
-        .transform((v) => {
-            return {
-                clickId: v.clickId,
-                eventName: v.eventName,
-                customerId: v.customerId,
-                customerName: v.customerName,
-                customerEmail: v.customerEmail,
-                customerAvatar: v.customerAvatar,
-                ...(v.metadata === undefined ? null : { metadata: v.metadata }),
-            };
-        });
+    export const inboundSchema: z.ZodType<TrackLeadResponseBody, z.ZodTypeDef, unknown> = z.object({
+        clickId: z.string(),
+        eventName: z.string(),
+        customerId: z.string(),
+        customerName: z.nullable(z.string()),
+        customerEmail: z.nullable(z.string()),
+        customerAvatar: z.nullable(z.string()),
+        metadata: z.record(z.any()).optional(),
+    });
 
     export type Outbound = {
         clickId: string;
@@ -179,8 +131,8 @@ export namespace TrackLeadResponseBody$ {
         metadata?: { [k: string]: any } | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TrackLeadResponseBody> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TrackLeadResponseBody> =
+        z.object({
             clickId: z.string(),
             eventName: z.string(),
             customerId: z.string(),
@@ -188,16 +140,5 @@ export namespace TrackLeadResponseBody$ {
             customerEmail: z.nullable(z.string()),
             customerAvatar: z.nullable(z.string()),
             metadata: z.record(z.any()).optional(),
-        })
-        .transform((v) => {
-            return {
-                clickId: v.clickId,
-                eventName: v.eventName,
-                customerId: v.customerId,
-                customerName: v.customerName,
-                customerEmail: v.customerEmail,
-                customerAvatar: v.customerAvatar,
-                ...(v.metadata === undefined ? null : { metadata: v.metadata }),
-            };
         });
 }

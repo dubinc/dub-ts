@@ -284,32 +284,18 @@ export namespace Country$ {
 
 /** @internal */
 export namespace ClicksCountries$ {
-    export const inboundSchema: z.ZodType<ClicksCountries, z.ZodTypeDef, unknown> = z
-        .object({
-            country: Country$.inboundSchema,
-            clicks: z.number(),
-        })
-        .transform((v) => {
-            return {
-                country: v.country,
-                clicks: v.clicks,
-            };
-        });
+    export const inboundSchema: z.ZodType<ClicksCountries, z.ZodTypeDef, unknown> = z.object({
+        country: Country$.inboundSchema,
+        clicks: z.number(),
+    });
 
     export type Outbound = {
         country: string;
         clicks: number;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ClicksCountries> = z
-        .object({
-            country: Country$.outboundSchema,
-            clicks: z.number(),
-        })
-        .transform((v) => {
-            return {
-                country: v.country,
-                clicks: v.clicks,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ClicksCountries> = z.object({
+        country: Country$.outboundSchema,
+        clicks: z.number(),
+    });
 }

@@ -122,33 +122,22 @@ export type RequestBody = {
 
 /** @internal */
 export namespace BulkCreateLinksGlobals$ {
-    export const inboundSchema: z.ZodType<BulkCreateLinksGlobals, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<BulkCreateLinksGlobals, z.ZodTypeDef, unknown> = z.object(
+        {
             workspaceId: z.string(),
             projectSlug: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                workspaceId: v.workspaceId,
-                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
-            };
-        });
+        }
+    );
 
     export type Outbound = {
         workspaceId: string;
         projectSlug?: string | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, BulkCreateLinksGlobals> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, BulkCreateLinksGlobals> =
+        z.object({
             workspaceId: z.string(),
             projectSlug: z.string().optional(),
-        })
-        .transform((v) => {
-            return {
-                workspaceId: v.workspaceId,
-                ...(v.projectSlug === undefined ? null : { projectSlug: v.projectSlug }),
-            };
         });
 }
 
@@ -178,59 +167,31 @@ export namespace BulkCreateLinksTagNames$ {
 
 /** @internal */
 export namespace RequestBody$ {
-    export const inboundSchema: z.ZodType<RequestBody, z.ZodTypeDef, unknown> = z
-        .object({
-            url: z.string(),
-            domain: z.string().optional(),
-            key: z.string().optional(),
-            externalId: z.nullable(z.string()).optional(),
-            prefix: z.string().optional(),
-            trackConversion: z.boolean().default(false),
-            archived: z.boolean().default(false),
-            publicStats: z.boolean().default(false),
-            tagId: z.nullable(z.string()).optional(),
-            tagIds: z.union([z.string(), z.array(z.string())]).optional(),
-            tagNames: z.union([z.string(), z.array(z.string())]).optional(),
-            comments: z.nullable(z.string()).optional(),
-            expiresAt: z.nullable(z.string()).optional(),
-            expiredUrl: z.nullable(z.string()).optional(),
-            password: z.nullable(z.string()).optional(),
-            proxy: z.boolean().default(false),
-            title: z.nullable(z.string()).optional(),
-            description: z.nullable(z.string()).optional(),
-            image: z.nullable(z.string()).optional(),
-            rewrite: z.boolean().default(false),
-            ios: z.nullable(z.string()).optional(),
-            android: z.nullable(z.string()).optional(),
-            geo: z.nullable(components.LinkGeoTargeting$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return {
-                url: v.url,
-                ...(v.domain === undefined ? null : { domain: v.domain }),
-                ...(v.key === undefined ? null : { key: v.key }),
-                ...(v.externalId === undefined ? null : { externalId: v.externalId }),
-                ...(v.prefix === undefined ? null : { prefix: v.prefix }),
-                trackConversion: v.trackConversion,
-                archived: v.archived,
-                publicStats: v.publicStats,
-                ...(v.tagId === undefined ? null : { tagId: v.tagId }),
-                ...(v.tagIds === undefined ? null : { tagIds: v.tagIds }),
-                ...(v.tagNames === undefined ? null : { tagNames: v.tagNames }),
-                ...(v.comments === undefined ? null : { comments: v.comments }),
-                ...(v.expiresAt === undefined ? null : { expiresAt: v.expiresAt }),
-                ...(v.expiredUrl === undefined ? null : { expiredUrl: v.expiredUrl }),
-                ...(v.password === undefined ? null : { password: v.password }),
-                proxy: v.proxy,
-                ...(v.title === undefined ? null : { title: v.title }),
-                ...(v.description === undefined ? null : { description: v.description }),
-                ...(v.image === undefined ? null : { image: v.image }),
-                rewrite: v.rewrite,
-                ...(v.ios === undefined ? null : { ios: v.ios }),
-                ...(v.android === undefined ? null : { android: v.android }),
-                ...(v.geo === undefined ? null : { geo: v.geo }),
-            };
-        });
+    export const inboundSchema: z.ZodType<RequestBody, z.ZodTypeDef, unknown> = z.object({
+        url: z.string(),
+        domain: z.string().optional(),
+        key: z.string().optional(),
+        externalId: z.nullable(z.string()).optional(),
+        prefix: z.string().optional(),
+        trackConversion: z.boolean().default(false),
+        archived: z.boolean().default(false),
+        publicStats: z.boolean().default(false),
+        tagId: z.nullable(z.string()).optional(),
+        tagIds: z.union([z.string(), z.array(z.string())]).optional(),
+        tagNames: z.union([z.string(), z.array(z.string())]).optional(),
+        comments: z.nullable(z.string()).optional(),
+        expiresAt: z.nullable(z.string()).optional(),
+        expiredUrl: z.nullable(z.string()).optional(),
+        password: z.nullable(z.string()).optional(),
+        proxy: z.boolean().default(false),
+        title: z.nullable(z.string()).optional(),
+        description: z.nullable(z.string()).optional(),
+        image: z.nullable(z.string()).optional(),
+        rewrite: z.boolean().default(false),
+        ios: z.nullable(z.string()).optional(),
+        android: z.nullable(z.string()).optional(),
+        geo: z.nullable(components.LinkGeoTargeting$.inboundSchema).optional(),
+    });
 
     export type Outbound = {
         url: string;
@@ -258,57 +219,29 @@ export namespace RequestBody$ {
         geo?: components.LinkGeoTargeting$.Outbound | null | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RequestBody> = z
-        .object({
-            url: z.string(),
-            domain: z.string().optional(),
-            key: z.string().optional(),
-            externalId: z.nullable(z.string()).optional(),
-            prefix: z.string().optional(),
-            trackConversion: z.boolean().default(false),
-            archived: z.boolean().default(false),
-            publicStats: z.boolean().default(false),
-            tagId: z.nullable(z.string()).optional(),
-            tagIds: z.union([z.string(), z.array(z.string())]).optional(),
-            tagNames: z.union([z.string(), z.array(z.string())]).optional(),
-            comments: z.nullable(z.string()).optional(),
-            expiresAt: z.nullable(z.string()).optional(),
-            expiredUrl: z.nullable(z.string()).optional(),
-            password: z.nullable(z.string()).optional(),
-            proxy: z.boolean().default(false),
-            title: z.nullable(z.string()).optional(),
-            description: z.nullable(z.string()).optional(),
-            image: z.nullable(z.string()).optional(),
-            rewrite: z.boolean().default(false),
-            ios: z.nullable(z.string()).optional(),
-            android: z.nullable(z.string()).optional(),
-            geo: z.nullable(components.LinkGeoTargeting$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return {
-                url: v.url,
-                ...(v.domain === undefined ? null : { domain: v.domain }),
-                ...(v.key === undefined ? null : { key: v.key }),
-                ...(v.externalId === undefined ? null : { externalId: v.externalId }),
-                ...(v.prefix === undefined ? null : { prefix: v.prefix }),
-                trackConversion: v.trackConversion,
-                archived: v.archived,
-                publicStats: v.publicStats,
-                ...(v.tagId === undefined ? null : { tagId: v.tagId }),
-                ...(v.tagIds === undefined ? null : { tagIds: v.tagIds }),
-                ...(v.tagNames === undefined ? null : { tagNames: v.tagNames }),
-                ...(v.comments === undefined ? null : { comments: v.comments }),
-                ...(v.expiresAt === undefined ? null : { expiresAt: v.expiresAt }),
-                ...(v.expiredUrl === undefined ? null : { expiredUrl: v.expiredUrl }),
-                ...(v.password === undefined ? null : { password: v.password }),
-                proxy: v.proxy,
-                ...(v.title === undefined ? null : { title: v.title }),
-                ...(v.description === undefined ? null : { description: v.description }),
-                ...(v.image === undefined ? null : { image: v.image }),
-                rewrite: v.rewrite,
-                ...(v.ios === undefined ? null : { ios: v.ios }),
-                ...(v.android === undefined ? null : { android: v.android }),
-                ...(v.geo === undefined ? null : { geo: v.geo }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RequestBody> = z.object({
+        url: z.string(),
+        domain: z.string().optional(),
+        key: z.string().optional(),
+        externalId: z.nullable(z.string()).optional(),
+        prefix: z.string().optional(),
+        trackConversion: z.boolean().default(false),
+        archived: z.boolean().default(false),
+        publicStats: z.boolean().default(false),
+        tagId: z.nullable(z.string()).optional(),
+        tagIds: z.union([z.string(), z.array(z.string())]).optional(),
+        tagNames: z.union([z.string(), z.array(z.string())]).optional(),
+        comments: z.nullable(z.string()).optional(),
+        expiresAt: z.nullable(z.string()).optional(),
+        expiredUrl: z.nullable(z.string()).optional(),
+        password: z.nullable(z.string()).optional(),
+        proxy: z.boolean().default(false),
+        title: z.nullable(z.string()).optional(),
+        description: z.nullable(z.string()).optional(),
+        image: z.nullable(z.string()).optional(),
+        rewrite: z.boolean().default(false),
+        ios: z.nullable(z.string()).optional(),
+        android: z.nullable(z.string()).optional(),
+        geo: z.nullable(components.LinkGeoTargeting$.outboundSchema).optional(),
+    });
 }

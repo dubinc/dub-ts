@@ -54,25 +54,14 @@ export namespace Level$ {
 
 /** @internal */
 export namespace GetQRCodeRequest$ {
-    export const inboundSchema: z.ZodType<GetQRCodeRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            url: z.string(),
-            size: z.number().default(600),
-            level: Level$.inboundSchema.default("L"),
-            fgColor: z.string().default("#000000"),
-            bgColor: z.string().default("#FFFFFF"),
-            includeMargin: z.boolean().default(false),
-        })
-        .transform((v) => {
-            return {
-                url: v.url,
-                size: v.size,
-                level: v.level,
-                fgColor: v.fgColor,
-                bgColor: v.bgColor,
-                includeMargin: v.includeMargin,
-            };
-        });
+    export const inboundSchema: z.ZodType<GetQRCodeRequest, z.ZodTypeDef, unknown> = z.object({
+        url: z.string(),
+        size: z.number().default(600),
+        level: Level$.inboundSchema.default("L"),
+        fgColor: z.string().default("#000000"),
+        bgColor: z.string().default("#FFFFFF"),
+        includeMargin: z.boolean().default(false),
+    });
 
     export type Outbound = {
         url: string;
@@ -83,23 +72,12 @@ export namespace GetQRCodeRequest$ {
         includeMargin: boolean;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetQRCodeRequest> = z
-        .object({
-            url: z.string(),
-            size: z.number().default(600),
-            level: Level$.outboundSchema.default("L"),
-            fgColor: z.string().default("#000000"),
-            bgColor: z.string().default("#FFFFFF"),
-            includeMargin: z.boolean().default(false),
-        })
-        .transform((v) => {
-            return {
-                url: v.url,
-                size: v.size,
-                level: v.level,
-                fgColor: v.fgColor,
-                bgColor: v.bgColor,
-                includeMargin: v.includeMargin,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetQRCodeRequest> = z.object({
+        url: z.string(),
+        size: z.number().default(600),
+        level: Level$.outboundSchema.default("L"),
+        fgColor: z.string().default("#000000"),
+        bgColor: z.string().default("#FFFFFF"),
+        includeMargin: z.boolean().default(false),
+    });
 }
