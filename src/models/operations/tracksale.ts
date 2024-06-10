@@ -40,6 +40,10 @@ export type TrackSaleRequestBody = {
      */
     paymentProcessor: PaymentProcessor;
     /**
+     * The name of the sale event. It can be used to track different types of event for example 'Purchase', 'Upgrade', 'Payment', etc.
+     */
+    eventName?: string | undefined;
+    /**
      * The invoice ID of the sale.
      */
     invoiceId?: string | null | undefined;
@@ -57,6 +61,7 @@ export type TrackSaleRequestBody = {
  * A sale was tracked.
  */
 export type TrackSaleResponseBody = {
+    eventName: string;
     customerId: string;
     amount: number;
     paymentProcessor: string;
@@ -95,6 +100,7 @@ export namespace TrackSaleRequestBody$ {
         customerId: z.string(),
         amount: z.number().int(),
         paymentProcessor: PaymentProcessor$.inboundSchema,
+        eventName: z.string().default("Purchase"),
         invoiceId: z.nullable(z.string()).default(null),
         currency: z.string().default("usd"),
         metadata: z.nullable(z.record(z.any())).optional(),
@@ -104,6 +110,7 @@ export namespace TrackSaleRequestBody$ {
         customerId: string;
         amount: number;
         paymentProcessor: string;
+        eventName: string;
         invoiceId: string | null;
         currency: string;
         metadata?: { [k: string]: any } | null | undefined;
@@ -114,6 +121,7 @@ export namespace TrackSaleRequestBody$ {
             customerId: z.string(),
             amount: z.number().int(),
             paymentProcessor: PaymentProcessor$.outboundSchema,
+            eventName: z.string().default("Purchase"),
             invoiceId: z.nullable(z.string()).default(null),
             currency: z.string().default("usd"),
             metadata: z.nullable(z.record(z.any())).optional(),
@@ -124,6 +132,7 @@ export namespace TrackSaleRequestBody$ {
 /** @internal */
 export namespace TrackSaleResponseBody$ {
     export const inboundSchema: z.ZodType<TrackSaleResponseBody, z.ZodTypeDef, unknown> = z.object({
+        eventName: z.string(),
         customerId: z.string(),
         amount: z.number(),
         paymentProcessor: z.string(),
@@ -133,6 +142,7 @@ export namespace TrackSaleResponseBody$ {
     });
 
     export type Outbound = {
+        eventName: string;
         customerId: string;
         amount: number;
         paymentProcessor: string;
@@ -143,6 +153,7 @@ export namespace TrackSaleResponseBody$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TrackSaleResponseBody> =
         z.object({
+            eventName: z.string(),
             customerId: z.string(),
             amount: z.number(),
             paymentProcessor: z.string(),

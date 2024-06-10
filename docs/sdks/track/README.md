@@ -24,7 +24,7 @@ const dub = new Dub({
 async function run() {
   const result = await dub.track.lead({
     clickId: "<value>",
-    eventName: "Signup",
+    eventName: "Sign up",
     customerId: "<value>",
   });
 
