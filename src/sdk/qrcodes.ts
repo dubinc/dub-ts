@@ -4,7 +4,7 @@
 
 import { SDKHooks } from "../hooks";
 import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config";
-import * as enc$ from "../lib/encodings";
+import { encodeFormQuery as encodeFormQuery$ } from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
@@ -60,25 +60,14 @@ export class QRCodes extends ClientSDK {
 
         const path$ = this.templateURLComponent("/qr")();
 
-        const query$ = [
-            enc$.encodeForm("bgColor", payload$.bgColor, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("fgColor", payload$.fgColor, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("includeMargin", payload$.includeMargin, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("level", payload$.level, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("size", payload$.size, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("url", payload$.url, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            includeMargin: payload$.includeMargin,
+            url: payload$.url,
+            size: payload$.size,
+            level: payload$.level,
+            fgColor: payload$.fgColor,
+            bgColor: payload$.bgColor,
+        });
 
         let security$;
         if (typeof this.options$.token === "function") {

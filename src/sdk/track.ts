@@ -4,7 +4,7 @@
 
 import { SDKHooks } from "../hooks";
 import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config";
-import * as enc$ from "../lib/encodings";
+import { encodeFormQuery as encodeFormQuery$, encodeJSON as encodeJSON$ } from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
@@ -60,22 +60,14 @@ export class Track extends ClientSDK {
             "Input validation failed"
         );
         const body$ =
-            payload$ === undefined ? null : enc$.encodeJSON("body", payload$, { explode: true });
+            payload$ === undefined ? null : encodeJSON$("body", payload$, { explode: true });
 
         const path$ = this.templateURLComponent("/track/lead")();
 
-        const query$ = [
-            enc$.encodeForm("projectSlug", this.options$.projectSlug, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            workspaceId: this.options$.workspaceId,
+            projectSlug: this.options$.projectSlug,
+        });
 
         let security$;
         if (typeof this.options$.token === "function") {
@@ -166,22 +158,14 @@ export class Track extends ClientSDK {
             "Input validation failed"
         );
         const body$ =
-            payload$ === undefined ? null : enc$.encodeJSON("body", payload$, { explode: true });
+            payload$ === undefined ? null : encodeJSON$("body", payload$, { explode: true });
 
         const path$ = this.templateURLComponent("/track/sale")();
 
-        const query$ = [
-            enc$.encodeForm("projectSlug", this.options$.projectSlug, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            workspaceId: this.options$.workspaceId,
+            projectSlug: this.options$.projectSlug,
+        });
 
         let security$;
         if (typeof this.options$.token === "function") {
@@ -273,22 +257,14 @@ export class Track extends ClientSDK {
             "Input validation failed"
         );
         const body$ =
-            payload$ === undefined ? null : enc$.encodeJSON("body", payload$, { explode: true });
+            payload$ === undefined ? null : encodeJSON$("body", payload$, { explode: true });
 
         const path$ = this.templateURLComponent("/track/customer")();
 
-        const query$ = [
-            enc$.encodeForm("projectSlug", this.options$.projectSlug, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            workspaceId: this.options$.workspaceId,
+            projectSlug: this.options$.projectSlug,
+        });
 
         let security$;
         if (typeof this.options$.token === "function") {
