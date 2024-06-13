@@ -4,7 +4,7 @@
 
 import { SDKHooks } from "../hooks";
 import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config";
-import * as enc$ from "../lib/encodings";
+import { encodeFormQuery as encodeFormQuery$ } from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
@@ -61,11 +61,9 @@ export class Metatags extends ClientSDK {
 
         const path$ = this.templateURLComponent("/metatags")();
 
-        const query$ = [
-            enc$.encodeForm("url", payload$.url, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            url: payload$.url,
+        });
 
         let security$;
         if (typeof this.options$.token === "function") {

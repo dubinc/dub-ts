@@ -4,7 +4,11 @@
 
 import { SDKHooks } from "../hooks";
 import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config";
-import * as enc$ from "../lib/encodings";
+import {
+    encodeFormQuery as encodeFormQuery$,
+    encodeJSON as encodeJSON$,
+    encodeSimple as encodeSimple$,
+} from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
@@ -64,37 +68,20 @@ export class Links extends ClientSDK {
 
         const path$ = this.templateURLComponent("/links")();
 
-        const query$ = [
-            enc$.encodeForm("domain", payload$.domain, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("projectSlug", this.options$.projectSlug, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("search", payload$.search, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("showArchived", payload$.showArchived, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("sort", payload$.sort, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("tagId", payload$.tagId, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("tagIds", payload$.tagIds, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("tagNames", payload$.tagNames, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("userId", payload$.userId, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("withTags", payload$.withTags, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            tagId: payload$.tagId,
+            sort: payload$.sort,
+            page: payload$.page,
+            workspaceId: this.options$.workspaceId,
+            domain: payload$.domain,
+            tagIds: payload$.tagIds,
+            tagNames: payload$.tagNames,
+            search: payload$.search,
+            userId: payload$.userId,
+            showArchived: payload$.showArchived,
+            withTags: payload$.withTags,
+            projectSlug: this.options$.projectSlug,
+        });
 
         let security$;
         if (typeof this.options$.token === "function") {
@@ -185,22 +172,14 @@ export class Links extends ClientSDK {
             "Input validation failed"
         );
         const body$ =
-            payload$ === undefined ? null : enc$.encodeJSON("body", payload$, { explode: true });
+            payload$ === undefined ? null : encodeJSON$("body", payload$, { explode: true });
 
         const path$ = this.templateURLComponent("/links")();
 
-        const query$ = [
-            enc$.encodeForm("projectSlug", this.options$.projectSlug, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            workspaceId: this.options$.workspaceId,
+            projectSlug: this.options$.projectSlug,
+        });
 
         let security$;
         if (typeof this.options$.token === "function") {
@@ -293,39 +272,19 @@ export class Links extends ClientSDK {
 
         const path$ = this.templateURLComponent("/links/count")();
 
-        const query$ = [
-            enc$.encodeForm("domain", payload$.domain, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("groupBy", payload$.groupBy, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("projectSlug", this.options$.projectSlug, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("search", payload$.search, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("showArchived", payload$.showArchived, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("tagId", payload$.tagId, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("tagIds", payload$.tagIds, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("tagNames", payload$.tagNames, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("userId", payload$.userId, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("withTags", payload$.withTags, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            workspaceId: this.options$.workspaceId,
+            tagIds: payload$.tagIds,
+            tagNames: payload$.tagNames,
+            groupBy: payload$.groupBy,
+            userId: payload$.userId,
+            showArchived: payload$.showArchived,
+            withTags: payload$.withTags,
+            projectSlug: this.options$.projectSlug,
+            domain: payload$.domain,
+            tagId: payload$.tagId,
+            search: payload$.search,
+        });
 
         let security$;
         if (typeof this.options$.token === "function") {
@@ -418,25 +377,14 @@ export class Links extends ClientSDK {
 
         const path$ = this.templateURLComponent("/links/info")();
 
-        const query$ = [
-            enc$.encodeForm("domain", payload$.domain, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("externalId", payload$.externalId, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("key", payload$.key, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("linkId", payload$.linkId, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("projectSlug", this.options$.projectSlug, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            domain: payload$.domain,
+            key: payload$.key,
+            linkId: payload$.linkId,
+            externalId: payload$.externalId,
+            workspaceId: this.options$.workspaceId,
+            projectSlug: this.options$.projectSlug,
+        });
 
         let security$;
         if (typeof this.options$.token === "function") {
@@ -530,25 +478,17 @@ export class Links extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            linkId: enc$.encodeSimple("linkId", payload$.linkId, {
+            linkId: encodeSimple$("linkId", payload$.linkId, {
                 explode: false,
                 charEncoding: "percent",
             }),
         };
         const path$ = this.templateURLComponent("/links/{linkId}")(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("projectSlug", this.options$.projectSlug, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            workspaceId: this.options$.workspaceId,
+            projectSlug: this.options$.projectSlug,
+        });
 
         let security$;
         if (typeof this.options$.token === "function") {
@@ -642,28 +582,20 @@ export class Links extends ClientSDK {
             (value$) => operations.UpdateLinkRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.RequestBody, { explode: true });
+        const body$ = encodeJSON$("body", payload$.RequestBody, { explode: true });
 
         const pathParams$ = {
-            linkId: enc$.encodeSimple("linkId", payload$.linkId, {
+            linkId: encodeSimple$("linkId", payload$.linkId, {
                 explode: false,
                 charEncoding: "percent",
             }),
         };
         const path$ = this.templateURLComponent("/links/{linkId}")(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("projectSlug", this.options$.projectSlug, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            workspaceId: this.options$.workspaceId,
+            projectSlug: this.options$.projectSlug,
+        });
 
         let security$;
         if (typeof this.options$.token === "function") {
@@ -754,22 +686,14 @@ export class Links extends ClientSDK {
             "Input validation failed"
         );
         const body$ =
-            payload$ === undefined ? null : enc$.encodeJSON("body", payload$, { explode: true });
+            payload$ === undefined ? null : encodeJSON$("body", payload$, { explode: true });
 
         const path$ = this.templateURLComponent("/links/bulk")();
 
-        const query$ = [
-            enc$.encodeForm("projectSlug", this.options$.projectSlug, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            workspaceId: this.options$.workspaceId,
+            projectSlug: this.options$.projectSlug,
+        });
 
         let security$;
         if (typeof this.options$.token === "function") {
@@ -860,22 +784,14 @@ export class Links extends ClientSDK {
             "Input validation failed"
         );
         const body$ =
-            payload$ === undefined ? null : enc$.encodeJSON("body", payload$, { explode: true });
+            payload$ === undefined ? null : encodeJSON$("body", payload$, { explode: true });
 
         const path$ = this.templateURLComponent("/links/upsert")();
 
-        const query$ = [
-            enc$.encodeForm("projectSlug", this.options$.projectSlug, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            workspaceId: this.options$.workspaceId,
+            projectSlug: this.options$.projectSlug,
+        });
 
         let security$;
         if (typeof this.options$.token === "function") {

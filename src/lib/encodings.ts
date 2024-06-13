@@ -383,3 +383,49 @@ function mapDefinedEntries<K, V, R>(
 
   return acc;
 }
+
+export function queryJoin(...args: string[]): string {
+  return args.filter(Boolean).join("&");
+}
+
+type QueryEncoderOptions = {
+  explode?: boolean;
+  charEncoding?: "percent" | "none";
+};
+
+type QueryEncoder = (
+  key: string,
+  value: unknown,
+  options?: QueryEncoderOptions,
+) => string;
+
+type BulkQueryEncoder = (
+  values: Record<string, unknown>,
+  options?: QueryEncoderOptions,
+) => string;
+
+export function queryEncoder(f: QueryEncoder): BulkQueryEncoder {
+  const bulkEncode = function (
+    values: Record<string, unknown>,
+    options?: QueryEncoderOptions,
+  ): string {
+    const opts: QueryEncoderOptions = {
+      ...options,
+      explode: options?.explode ?? true,
+      charEncoding: options?.charEncoding ?? "percent",
+    };
+
+    const encoded = Object.entries(values).map(([key, value]) => {
+      return f(key, value, opts);
+    });
+    return queryJoin(...encoded);
+  };
+
+  return bulkEncode;
+}
+
+export const encodeJSONQuery = queryEncoder(encodeJSON);
+export const encodeFormQuery = queryEncoder(encodeForm);
+export const encodeSpaceDelimitedQuery = queryEncoder(encodeSpaceDelimited);
+export const encodePipeDelimitedQuery = queryEncoder(encodePipeDelimited);
+export const encodeDeepObjectQuery = queryEncoder(encodeDeepObject);

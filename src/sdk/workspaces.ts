@@ -4,7 +4,7 @@
 
 import { SDKHooks } from "../hooks";
 import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config";
-import * as enc$ from "../lib/encodings";
+import { encodeJSON as encodeJSON$, encodeSimple as encodeSimple$ } from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
@@ -144,7 +144,7 @@ export class Workspaces extends ClientSDK {
             "Input validation failed"
         );
         const body$ =
-            payload$ === undefined ? null : enc$.encodeJSON("body", payload$, { explode: true });
+            payload$ === undefined ? null : encodeJSON$("body", payload$, { explode: true });
 
         const path$ = this.templateURLComponent("/workspaces")();
 
@@ -240,7 +240,7 @@ export class Workspaces extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            idOrSlug: enc$.encodeSimple("idOrSlug", payload$.idOrSlug, {
+            idOrSlug: encodeSimple$("idOrSlug", payload$.idOrSlug, {
                 explode: false,
                 charEncoding: "percent",
             }),

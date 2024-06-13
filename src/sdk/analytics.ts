@@ -4,7 +4,7 @@
 
 import { SDKHooks } from "../hooks";
 import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config";
-import * as enc$ from "../lib/encodings";
+import { encodeFormQuery as encodeFormQuery$ } from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
@@ -62,59 +62,30 @@ export class Analytics extends ClientSDK {
 
         const path$ = this.templateURLComponent("/analytics")();
 
-        const query$ = [
-            enc$.encodeForm("browser", payload$.browser, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("city", payload$.city, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("country", payload$.country, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("device", payload$.device, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("domain", payload$.domain, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("end", payload$.end, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("event", payload$.event, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("externalId", payload$.externalId, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("groupBy", payload$.groupBy, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("interval", payload$.interval, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("key", payload$.key, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("linkId", payload$.linkId, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("os", payload$.os, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("projectSlug", this.options$.projectSlug, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("qr", payload$.qr, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("referer", payload$.referer, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("root", payload$.root, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("start", payload$.start, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("tagId", payload$.tagId, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("timezone", payload$.timezone, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("url", payload$.url, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("workspaceId", this.options$.workspaceId, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            key: payload$.key,
+            linkId: payload$.linkId,
+            device: payload$.device,
+            browser: payload$.browser,
+            tagId: payload$.tagId,
+            city: payload$.city,
+            url: payload$.url,
+            workspaceId: this.options$.workspaceId,
+            event: payload$.event,
+            domain: payload$.domain,
+            externalId: payload$.externalId,
+            timezone: payload$.timezone,
+            country: payload$.country,
+            projectSlug: this.options$.projectSlug,
+            qr: payload$.qr,
+            groupBy: payload$.groupBy,
+            interval: payload$.interval,
+            start: payload$.start,
+            os: payload$.os,
+            referer: payload$.referer,
+            end: payload$.end,
+            root: payload$.root,
+        });
 
         let security$;
         if (typeof this.options$.token === "function") {
