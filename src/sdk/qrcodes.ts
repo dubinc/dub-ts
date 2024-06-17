@@ -61,12 +61,12 @@ export class QRCodes extends ClientSDK {
         const path$ = this.templateURLComponent("/qr")();
 
         const query$ = encodeFormQuery$({
-            includeMargin: payload$.includeMargin,
-            url: payload$.url,
-            size: payload$.size,
-            level: payload$.level,
-            fgColor: payload$.fgColor,
             bgColor: payload$.bgColor,
+            fgColor: payload$.fgColor,
+            includeMargin: payload$.includeMargin,
+            level: payload$.level,
+            size: payload$.size,
+            url: payload$.url,
         });
 
         let security$;

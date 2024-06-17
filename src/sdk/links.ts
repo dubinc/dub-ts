@@ -69,18 +69,18 @@ export class Links extends ClientSDK {
         const path$ = this.templateURLComponent("/links")();
 
         const query$ = encodeFormQuery$({
-            tagId: payload$.tagId,
-            sort: payload$.sort,
-            page: payload$.page,
-            workspaceId: this.options$.workspaceId,
             domain: payload$.domain,
+            page: payload$.page,
+            projectSlug: this.options$.projectSlug,
+            search: payload$.search,
+            showArchived: payload$.showArchived,
+            sort: payload$.sort,
+            tagId: payload$.tagId,
             tagIds: payload$.tagIds,
             tagNames: payload$.tagNames,
-            search: payload$.search,
             userId: payload$.userId,
-            showArchived: payload$.showArchived,
             withTags: payload$.withTags,
-            projectSlug: this.options$.projectSlug,
+            workspaceId: this.options$.workspaceId,
         });
 
         let security$;
@@ -177,8 +177,8 @@ export class Links extends ClientSDK {
         const path$ = this.templateURLComponent("/links")();
 
         const query$ = encodeFormQuery$({
-            workspaceId: this.options$.workspaceId,
             projectSlug: this.options$.projectSlug,
+            workspaceId: this.options$.workspaceId,
         });
 
         let security$;
@@ -273,17 +273,17 @@ export class Links extends ClientSDK {
         const path$ = this.templateURLComponent("/links/count")();
 
         const query$ = encodeFormQuery$({
-            workspaceId: this.options$.workspaceId,
+            domain: payload$.domain,
+            groupBy: payload$.groupBy,
+            projectSlug: this.options$.projectSlug,
+            search: payload$.search,
+            showArchived: payload$.showArchived,
+            tagId: payload$.tagId,
             tagIds: payload$.tagIds,
             tagNames: payload$.tagNames,
-            groupBy: payload$.groupBy,
             userId: payload$.userId,
-            showArchived: payload$.showArchived,
             withTags: payload$.withTags,
-            projectSlug: this.options$.projectSlug,
-            domain: payload$.domain,
-            tagId: payload$.tagId,
-            search: payload$.search,
+            workspaceId: this.options$.workspaceId,
         });
 
         let security$;
@@ -379,11 +379,11 @@ export class Links extends ClientSDK {
 
         const query$ = encodeFormQuery$({
             domain: payload$.domain,
+            externalId: payload$.externalId,
             key: payload$.key,
             linkId: payload$.linkId,
-            externalId: payload$.externalId,
-            workspaceId: this.options$.workspaceId,
             projectSlug: this.options$.projectSlug,
+            workspaceId: this.options$.workspaceId,
         });
 
         let security$;
@@ -486,8 +486,8 @@ export class Links extends ClientSDK {
         const path$ = this.templateURLComponent("/links/{linkId}")(pathParams$);
 
         const query$ = encodeFormQuery$({
-            workspaceId: this.options$.workspaceId,
             projectSlug: this.options$.projectSlug,
+            workspaceId: this.options$.workspaceId,
         });
 
         let security$;
@@ -593,8 +593,8 @@ export class Links extends ClientSDK {
         const path$ = this.templateURLComponent("/links/{linkId}")(pathParams$);
 
         const query$ = encodeFormQuery$({
-            workspaceId: this.options$.workspaceId,
             projectSlug: this.options$.projectSlug,
+            workspaceId: this.options$.workspaceId,
         });
 
         let security$;
@@ -691,8 +691,8 @@ export class Links extends ClientSDK {
         const path$ = this.templateURLComponent("/links/bulk")();
 
         const query$ = encodeFormQuery$({
-            workspaceId: this.options$.workspaceId,
             projectSlug: this.options$.projectSlug,
+            workspaceId: this.options$.workspaceId,
         });
 
         let security$;
@@ -789,8 +789,8 @@ export class Links extends ClientSDK {
         const path$ = this.templateURLComponent("/links/upsert")();
 
         const query$ = encodeFormQuery$({
-            workspaceId: this.options$.workspaceId,
             projectSlug: this.options$.projectSlug,
+            workspaceId: this.options$.workspaceId,
         });
 
         let security$;
