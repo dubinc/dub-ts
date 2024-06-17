@@ -65,8 +65,8 @@ export class Track extends ClientSDK {
         const path$ = this.templateURLComponent("/track/lead")();
 
         const query$ = encodeFormQuery$({
-            workspaceId: this.options$.workspaceId,
             projectSlug: this.options$.projectSlug,
+            workspaceId: this.options$.workspaceId,
         });
 
         let security$;
@@ -163,8 +163,8 @@ export class Track extends ClientSDK {
         const path$ = this.templateURLComponent("/track/sale")();
 
         const query$ = encodeFormQuery$({
-            workspaceId: this.options$.workspaceId,
             projectSlug: this.options$.projectSlug,
+            workspaceId: this.options$.workspaceId,
         });
 
         let security$;
@@ -262,8 +262,8 @@ export class Track extends ClientSDK {
         const path$ = this.templateURLComponent("/track/customer")();
 
         const query$ = encodeFormQuery$({
-            workspaceId: this.options$.workspaceId,
             projectSlug: this.options$.projectSlug,
+            workspaceId: this.options$.workspaceId,
         });
 
         let security$;

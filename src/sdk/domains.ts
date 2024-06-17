@@ -63,8 +63,8 @@ export class Domains extends ClientSDK {
         const path$ = this.templateURLComponent("/domains")();
 
         const query$ = encodeFormQuery$({
-            workspaceId: this.options$.workspaceId,
             projectSlug: this.options$.projectSlug,
+            workspaceId: this.options$.workspaceId,
         });
 
         let security$;
@@ -160,8 +160,8 @@ export class Domains extends ClientSDK {
         const path$ = this.templateURLComponent("/domains")();
 
         const query$ = encodeFormQuery$({
-            workspaceId: this.options$.workspaceId,
             projectSlug: this.options$.projectSlug,
+            workspaceId: this.options$.workspaceId,
         });
 
         let security$;
@@ -261,8 +261,8 @@ export class Domains extends ClientSDK {
         const path$ = this.templateURLComponent("/domains/{slug}")(pathParams$);
 
         const query$ = encodeFormQuery$({
-            workspaceId: this.options$.workspaceId,
             projectSlug: this.options$.projectSlug,
+            workspaceId: this.options$.workspaceId,
         });
 
         let security$;
@@ -365,8 +365,8 @@ export class Domains extends ClientSDK {
         const path$ = this.templateURLComponent("/domains/{slug}")(pathParams$);
 
         const query$ = encodeFormQuery$({
-            workspaceId: this.options$.workspaceId,
             projectSlug: this.options$.projectSlug,
+            workspaceId: this.options$.workspaceId,
         });
 
         let security$;
@@ -463,8 +463,8 @@ export class Domains extends ClientSDK {
         const path$ = this.templateURLComponent("/domains/{slug}/primary")(pathParams$);
 
         const query$ = encodeFormQuery$({
-            workspaceId: this.options$.workspaceId,
             projectSlug: this.options$.projectSlug,
+            workspaceId: this.options$.workspaceId,
         });
 
         let security$;
@@ -567,8 +567,8 @@ export class Domains extends ClientSDK {
         const path$ = this.templateURLComponent("/domains/{slug}/transfer")(pathParams$);
 
         const query$ = encodeFormQuery$({
-            workspaceId: this.options$.workspaceId,
             projectSlug: this.options$.projectSlug,
+            workspaceId: this.options$.workspaceId,
         });
 
         let security$;
