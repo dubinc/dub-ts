@@ -1,9 +1,9 @@
-speakeasyVersion: 1.308.1
+speakeasyVersion: 1.308.2
 sources:
     my-first-source:
         sourceNamespace: my-first-source
-        sourceRevisionDigest: sha256:9a700e801c2472d685c26ad0596334e1fdf7630c097d072aa8794e7087e6e2bb
-        sourceBlobDigest: sha256:3146fa3c80ad954fbc1a1ea231099ecc5126b8f14693850e8c2d10183642574e
+        sourceRevisionDigest: sha256:6a8cea41954c3d3cd36a5a63983a97111557a7837c712e03bb0e78c5e8f93a8b
+        sourceBlobDigest: sha256:b0dbaefce5ec5fed85b7f72f714ef3ce5178e5013f469038d87418564621c089
         tags:
             - latest
             - main
@@ -11,8 +11,8 @@ targets:
     my-first-target:
         source: my-first-source
         sourceNamespace: my-first-source
-        sourceRevisionDigest: sha256:9a700e801c2472d685c26ad0596334e1fdf7630c097d072aa8794e7087e6e2bb
-        sourceBlobDigest: sha256:3146fa3c80ad954fbc1a1ea231099ecc5126b8f14693850e8c2d10183642574e
+        sourceRevisionDigest: sha256:6a8cea41954c3d3cd36a5a63983a97111557a7837c712e03bb0e78c5e8f93a8b
+        sourceBlobDigest: sha256:b0dbaefce5ec5fed85b7f72f714ef3ce5178e5013f469038d87418564621c089
         outLocation: /github/workspace/repo
 workflow:
     workflowVersion: 1.0.0

@@ -3,11 +3,11 @@ info:
   title: CodeSamples overlay for typescript target
   version: 0.0.0
 actions:
-  - target: $["paths"]["/links"]["get"]
+  - target: $["paths"]["/links/bulk"]["post"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
-          "label": "getLinks"
+          "label": "bulkCreateLinks"
           "source": |-
             import { Dub } from "dub";
 
@@ -17,228 +17,11 @@ actions:
             });
 
             async function run() {
-              const result = await dub.links.list({});
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/analytics"]["get"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "retrieveAnalytics"
-          "source": |-
-            import { Dub } from "dub";
-
-            const dub = new Dub({
-              token: "DUB_API_KEY",
-              workspaceId: "<value>",
-            });
-
-            async function run() {
-              const result = await dub.analytics.retrieve({});
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/tags"]["get"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "getTags"
-          "source": |-
-            import { Dub } from "dub";
-
-            const dub = new Dub({
-              token: "DUB_API_KEY",
-              workspaceId: "<value>",
-            });
-
-            async function run() {
-              const result = await dub.tags.list({});
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/tags"]["post"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "createTag"
-          "source": |-
-            import { Dub } from "dub";
-
-            const dub = new Dub({
-              token: "DUB_API_KEY",
-              workspaceId: "<value>",
-            });
-
-            async function run() {
-              const result = await dub.tags.create({
-                tag: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/domains/{slug}/primary"]["post"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "setPrimaryDomain"
-          "source": |-
-            import { Dub } from "dub";
-
-            const dub = new Dub({
-              token: "DUB_API_KEY",
-              workspaceId: "<value>",
-            });
-
-            async function run() {
-              const result = await dub.domains.setPrimary("acme.com");
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/links/upsert"]["put"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "upsertLink"
-          "source": |-
-            import { Dub } from "dub";
-
-            const dub = new Dub({
-              token: "DUB_API_KEY",
-              workspaceId: "<value>",
-            });
-
-            async function run() {
-              const result = await dub.links.upsert({
-                url: "https://google/com",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/qr"]["get"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "getQRCode"
-          "source": |-
-            import { Dub } from "dub";
-
-            const dub = new Dub({
-              token: "DUB_API_KEY",
-              workspaceId: "<value>",
-            });
-
-            async function run() {
-              const result = await dub.qrCodes.get({
-                url: "https://brief-micronutrient.org",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/workspaces"]["get"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "getWorkspaces"
-          "source": |-
-            import { Dub } from "dub";
-
-            const dub = new Dub({
-              token: "DUB_API_KEY",
-              workspaceId: "<value>",
-            });
-
-            async function run() {
-              const result = await dub.workspaces.list();
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/domains/{slug}"]["patch"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "updateDomain"
-          "source": |-
-            import { Dub } from "dub";
-
-            const dub = new Dub({
-              token: "DUB_API_KEY",
-              workspaceId: "<value>",
-            });
-
-            async function run() {
-              const result = await dub.domains.update("acme.com", {});
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/track/sale"]["post"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "trackSale"
-          "source": |-
-            import { Dub } from "dub";
-            import { PaymentProcessor } from "dub/models/operations";
-
-            const dub = new Dub({
-              token: "DUB_API_KEY",
-              workspaceId: "<value>",
-            });
-
-            async function run() {
-              const result = await dub.track.sale({
-                customerId: "<value>",
-                amount: 996500,
-                paymentProcessor: PaymentProcessor.Shopify,
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/links/{linkId}"]["delete"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "deleteLink"
-          "source": |-
-            import { Dub } from "dub";
-
-            const dub = new Dub({
-              token: "DUB_API_KEY",
-              workspaceId: "<value>",
-            });
-
-            async function run() {
-              const result = await dub.links.delete("<value>");
+              const result = await dub.links.createMany([
+                {
+                  url: "https://google/com",
+                },
+              ]);
 
               // Handle the result
               console.log(result)
@@ -292,6 +75,50 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/tags"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "getTags"
+          "source": |-
+            import { Dub } from "dub";
+
+            const dub = new Dub({
+              token: "DUB_API_KEY",
+              workspaceId: "<value>",
+            });
+
+            async function run() {
+              const result = await dub.tags.list({});
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/tags"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "createTag"
+          "source": |-
+            import { Dub } from "dub";
+
+            const dub = new Dub({
+              token: "DUB_API_KEY",
+              workspaceId: "<value>",
+            });
+
+            async function run() {
+              const result = await dub.tags.create({
+                tag: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
   - target: $["paths"]["/domains/{slug}"]["delete"]
     update:
       "x-codeSamples":
@@ -307,6 +134,117 @@ actions:
 
             async function run() {
               const result = await dub.domains.delete("acme.com");
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/domains/{slug}/primary"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "setPrimaryDomain"
+          "source": |-
+            import { Dub } from "dub";
+
+            const dub = new Dub({
+              token: "DUB_API_KEY",
+              workspaceId: "<value>",
+            });
+
+            async function run() {
+              const result = await dub.domains.setPrimary("acme.com");
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/links"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "createLink"
+          "source": |-
+            import { Dub } from "dub";
+
+            const dub = new Dub({
+              token: "DUB_API_KEY",
+              workspaceId: "<value>",
+            });
+
+            async function run() {
+              const result = await dub.links.create({
+                url: "https://google/com",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/links/upsert"]["put"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "upsertLink"
+          "source": |-
+            import { Dub } from "dub";
+
+            const dub = new Dub({
+              token: "DUB_API_KEY",
+              workspaceId: "<value>",
+            });
+
+            async function run() {
+              const result = await dub.links.upsert({
+                url: "https://google/com",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/links/{linkId}"]["delete"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "deleteLink"
+          "source": |-
+            import { Dub } from "dub";
+
+            const dub = new Dub({
+              token: "DUB_API_KEY",
+              workspaceId: "<value>",
+            });
+
+            async function run() {
+              const result = await dub.links.delete("<value>");
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/domains"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "addDomain"
+          "source": |-
+            import { Dub } from "dub";
+
+            const dub = new Dub({
+              token: "DUB_API_KEY",
+              workspaceId: "<value>",
+            });
+
+            async function run() {
+              const result = await dub.domains.add({
+                slug: "acme.com",
+              });
 
               // Handle the result
               console.log(result)
@@ -382,11 +320,11 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/track/lead"]["post"]
+  - target: $["paths"]["/links"]["get"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
-          "label": "trackLead"
+          "label": "getLinks"
           "source": |-
             import { Dub } from "dub";
 
@@ -396,22 +334,18 @@ actions:
             });
 
             async function run() {
-              const result = await dub.track.lead({
-                clickId: "<value>",
-                eventName: "Sign up",
-                customerId: "<value>",
-              });
+              const result = await dub.links.list({});
 
               // Handle the result
               console.log(result)
             }
 
             run();
-  - target: $["paths"]["/links"]["post"]
+  - target: $["paths"]["/links/info"]["get"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
-          "label": "createLink"
+          "label": "getLinkInfo"
           "source": |-
             import { Dub } from "dub";
 
@@ -421,8 +355,53 @@ actions:
             });
 
             async function run() {
-              const result = await dub.links.create({
-                url: "https://google/com",
+              const result = await dub.links.get({});
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/analytics"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "retrieveAnalytics"
+          "source": |-
+            import { Dub } from "dub";
+
+            const dub = new Dub({
+              token: "DUB_API_KEY",
+              workspaceId: "<value>",
+            });
+
+            async function run() {
+              const result = await dub.analytics.retrieve({});
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/track/sale"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "trackSale"
+          "source": |-
+            import { Dub } from "dub";
+            import { PaymentProcessor } from "dub/models/operations";
+
+            const dub = new Dub({
+              token: "DUB_API_KEY",
+              workspaceId: "<value>",
+            });
+
+            async function run() {
+              const result = await dub.track.sale({
+                customerId: "<value>",
+                amount: 996500,
+                paymentProcessor: PaymentProcessor.Shopify,
               });
 
               // Handle the result
@@ -445,27 +424,6 @@ actions:
 
             async function run() {
               const result = await dub.links.count({});
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/links/info"]["get"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "getLinkInfo"
-          "source": |-
-            import { Dub } from "dub";
-
-            const dub = new Dub({
-              token: "DUB_API_KEY",
-              workspaceId: "<value>",
-            });
-
-            async function run() {
-              const result = await dub.links.get({});
 
               // Handle the result
               console.log(result)
@@ -495,11 +453,11 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/links/bulk"]["post"]
+  - target: $["paths"]["/qr"]["get"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
-          "label": "bulkCreateLinks"
+          "label": "getQRCode"
           "source": |-
             import { Dub } from "dub";
 
@@ -509,11 +467,30 @@ actions:
             });
 
             async function run() {
-              const result = await dub.links.createMany([
-                {
-                  url: "https://google/com",
-                },
-              ]);
+              const result = await dub.qrCodes.get({
+                url: "https://brief-micronutrient.org",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/workspaces"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "getWorkspaces"
+          "source": |-
+            import { Dub } from "dub";
+
+            const dub = new Dub({
+              token: "DUB_API_KEY",
+              workspaceId: "<value>",
+            });
+
+            async function run() {
+              const result = await dub.workspaces.list();
 
               // Handle the result
               console.log(result)
@@ -541,11 +518,11 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/domains"]["post"]
+  - target: $["paths"]["/domains/{slug}"]["patch"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
-          "label": "addDomain"
+          "label": "updateDomain"
           "source": |-
             import { Dub } from "dub";
 
@@ -555,8 +532,31 @@ actions:
             });
 
             async function run() {
-              const result = await dub.domains.add({
-                slug: "acme.com",
+              const result = await dub.domains.update("acme.com", {});
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/track/lead"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "trackLead"
+          "source": |-
+            import { Dub } from "dub";
+
+            const dub = new Dub({
+              token: "DUB_API_KEY",
+              workspaceId: "<value>",
+            });
+
+            async function run() {
+              const result = await dub.track.lead({
+                clickId: "<value>",
+                eventName: "Sign up",
+                customerId: "<value>",
               });
 
               // Handle the result
