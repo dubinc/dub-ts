@@ -1,4 +1,4 @@
-# AddDomainRequestBody
+# CreateDomainRequestBody
 
 
 ## Fields

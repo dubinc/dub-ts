@@ -5,7 +5,7 @@
 import * as z from "zod";
 
 export type DeleteDomainGlobals = {
-    workspaceId: string;
+    workspaceId?: string | undefined;
     /**
      * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
@@ -32,17 +32,17 @@ export type DeleteDomainResponseBody = {
 /** @internal */
 export namespace DeleteDomainGlobals$ {
     export const inboundSchema: z.ZodType<DeleteDomainGlobals, z.ZodTypeDef, unknown> = z.object({
-        workspaceId: z.string(),
+        workspaceId: z.string().optional(),
         projectSlug: z.string().optional(),
     });
 
     export type Outbound = {
-        workspaceId: string;
+        workspaceId?: string | undefined;
         projectSlug?: string | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteDomainGlobals> = z.object({
-        workspaceId: z.string(),
+        workspaceId: z.string().optional(),
         projectSlug: z.string().optional(),
     });
 }

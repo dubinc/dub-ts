@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: ba3e83845a082a6c2321d0eeaaf9c23c
+  docChecksum: 4e9799bd93fdf4959c9efd6004900847
   docVersion: 0.0.1
-  speakeasyVersion: 1.308.1
-  generationVersion: 2.342.6
-  releaseVersion: 0.29.19
-  configChecksum: 16dcbf7b27038e97d6737d5eb5d0d00f
+  speakeasyVersion: 1.310.0
+  generationVersion: 2.347.4
+  releaseVersion: 0.30.0
+  configChecksum: 3a10eead6c2e202b51efca6e91e3a3c5
   repoURL: https://github.com/dubinc/dub-node.git
   installationURL: https://github.com/dubinc/dub-node
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.5
-    core: 3.9.14
+    core: 3.10.0
     deprecations: 2.81.1
     examples: 2.81.4
     flattening: 2.81.1
@@ -39,7 +39,7 @@ generatedFiles:
   - src/sdk/track.ts
   - src/sdk/metatags.ts
   - src/sdk/sdk.ts
-  - .eslintrc.js
+  - .eslintrc.cjs
   - .npmignore
   - RUNTIMES.md
   - jsr.json
@@ -125,7 +125,7 @@ generatedFiles:
   - src/models/operations/gettags.ts
   - src/models/operations/createtag.ts
   - src/models/operations/listdomains.ts
-  - src/models/operations/adddomain.ts
+  - src/models/operations/createdomain.ts
   - src/models/operations/deletedomain.ts
   - src/models/operations/updatedomain.ts
   - src/models/operations/setprimarydomain.ts
@@ -265,9 +265,9 @@ generatedFiles:
   - docs/models/operations/createtagrequestbody.md
   - docs/models/operations/listdomainsglobals.md
   - docs/models/operations/listdomainsrequest.md
-  - docs/models/operations/adddomainglobals.md
+  - docs/models/operations/createdomainglobals.md
   - docs/models/operations/type.md
-  - docs/models/operations/adddomainrequestbody.md
+  - docs/models/operations/createdomainrequestbody.md
   - docs/models/operations/deletedomainglobals.md
   - docs/models/operations/deletedomainrequest.md
   - docs/models/operations/deletedomainresponsebody.md
