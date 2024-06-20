@@ -4,7 +4,7 @@
 ### Available Operations
 
 * [list](#list) - Retrieve a list of domains
-* [add](#add) - Add a domain
+* [create](#create) - Create a domain
 * [delete](#delete) - Delete a domain
 * [update](#update) - Update a domain
 * [setPrimary](#setprimary) - Set a domain as primary
@@ -21,7 +21,6 @@ import { Dub } from "dub";
 
 const dub = new Dub({
   token: "DUB_API_KEY",
-  workspaceId: "<value>",
 });
 
 async function run() {
@@ -61,9 +60,9 @@ run();
 | errors.InternalServerError | 500                        | application/json           |
 | errors.SDKError            | 4xx-5xx                    | */*                        |
 
-## add
+## create
 
-Add a domain to the authenticated workspace.
+Create a domain for the authenticated workspace.
 
 ### Example Usage
 
@@ -72,11 +71,10 @@ import { Dub } from "dub";
 
 const dub = new Dub({
   token: "DUB_API_KEY",
-  workspaceId: "<value>",
 });
 
 async function run() {
-  const result = await dub.domains.add({
+  const result = await dub.domains.create({
     slug: "acme.com",
   });
 
@@ -91,7 +89,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.AddDomainRequestBody](../../models/operations/adddomainrequestbody.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.CreateDomainRequestBody](../../models/operations/createdomainrequestbody.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
@@ -125,7 +123,6 @@ import { Dub } from "dub";
 
 const dub = new Dub({
   token: "DUB_API_KEY",
-  workspaceId: "<value>",
 });
 
 async function run() {
@@ -176,7 +173,6 @@ import { Dub } from "dub";
 
 const dub = new Dub({
   token: "DUB_API_KEY",
-  workspaceId: "<value>",
 });
 
 async function run() {
@@ -228,7 +224,6 @@ import { Dub } from "dub";
 
 const dub = new Dub({
   token: "DUB_API_KEY",
-  workspaceId: "<value>",
 });
 
 async function run() {
@@ -279,7 +274,6 @@ import { Dub } from "dub";
 
 const dub = new Dub({
   token: "DUB_API_KEY",
-  workspaceId: "<value>",
 });
 
 async function run() {

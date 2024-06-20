@@ -18,7 +18,6 @@ import { Dub } from "dub";
 
 const dub = new Dub({
   token: "DUB_API_KEY",
-  workspaceId: "<value>",
 });
 
 async function run() {
@@ -68,7 +67,6 @@ import { Dub } from "dub";
 
 const dub = new Dub({
   token: "DUB_API_KEY",
-  workspaceId: "<value>",
 });
 
 async function run() {
@@ -122,7 +120,6 @@ import { Dub } from "dub";
 
 const dub = new Dub({
   token: "DUB_API_KEY",
-  workspaceId: "<value>",
 });
 
 async function run() {

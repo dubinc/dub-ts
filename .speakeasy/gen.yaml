@@ -12,7 +12,7 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
 typescript:
-  version: 0.29.19
+  version: 0.30.0
   additionalDependencies:
     dependencies: {}
     devDependencies:
@@ -39,3 +39,4 @@ typescript:
   packageName: dub
   responseFormat: flat
   templateVersion: v2
+  useIndexModules: true

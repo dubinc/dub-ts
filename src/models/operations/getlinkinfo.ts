@@ -5,7 +5,7 @@
 import * as z from "zod";
 
 export type GetLinkInfoGlobals = {
-    workspaceId: string;
+    workspaceId?: string | undefined;
     /**
      * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
@@ -31,17 +31,17 @@ export type GetLinkInfoRequest = {
 /** @internal */
 export namespace GetLinkInfoGlobals$ {
     export const inboundSchema: z.ZodType<GetLinkInfoGlobals, z.ZodTypeDef, unknown> = z.object({
-        workspaceId: z.string(),
+        workspaceId: z.string().optional(),
         projectSlug: z.string().optional(),
     });
 
     export type Outbound = {
-        workspaceId: string;
+        workspaceId?: string | undefined;
         projectSlug?: string | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLinkInfoGlobals> = z.object({
-        workspaceId: z.string(),
+        workspaceId: z.string().optional(),
         projectSlug: z.string().optional(),
     });
 }

@@ -20,10 +20,25 @@ Learn more about the Dub.co TypeScript SDK in the [official documentation](https
 npm add dub
 ```
 
+### PNPM
+
+```bash
+pnpm add dub
+```
+
+### Bun
+
+```bash
+bun add dub
+```
+
 ### Yarn
 
 ```bash
-yarn add dub
+yarn add dub zod
+
+# Note that Yarn does not install peer dependencies automatically. You will need
+# to install zod as shown above.
 ```
 <!-- End SDK Installation [installation] -->
 
@@ -43,7 +58,6 @@ import { Dub } from "dub";
 
 const dub = new Dub({
     token: "DUB_API_KEY",
-    workspaceId: "<value>",
 });
 
 async function run() {
@@ -66,7 +80,6 @@ import { Dub } from "dub";
 
 const dub = new Dub({
     token: "DUB_API_KEY",
-    workspaceId: "<value>",
 });
 
 async function run() {
@@ -119,7 +132,7 @@ run();
 ### [domains](docs/sdks/domains/README.md)
 
 * [list](docs/sdks/domains/README.md#list) - Retrieve a list of domains
-* [add](docs/sdks/domains/README.md#add) - Add a domain
+* [create](docs/sdks/domains/README.md#create) - Create a domain
 * [delete](docs/sdks/domains/README.md#delete) - Delete a domain
 * [update](docs/sdks/domains/README.md#update) - Update a domain
 * [setPrimary](docs/sdks/domains/README.md#setprimary) - Set a domain as primary
@@ -159,11 +172,10 @@ Validation errors can also occur when either method arguments or data returned f
 
 ```typescript
 import { Dub } from "dub";
-import * as errors from "dub/models/errors";
+import { SDKValidationError } from "dub/models/errors";
 
 const dub = new Dub({
     token: "DUB_API_KEY",
-    workspaceId: "<value>",
 });
 
 async function run() {
@@ -172,7 +184,7 @@ async function run() {
         result = await dub.links.list({});
     } catch (err) {
         switch (true) {
-            case err instanceof errors.SDKValidationError: {
+            case err instanceof SDKValidationError: {
                 // Validation errors can be pretty-printed
                 console.error(err.pretty());
                 // Raw value may also be inspected
@@ -247,7 +259,6 @@ import { Dub } from "dub";
 const dub = new Dub({
     serverIdx: 0,
     token: "DUB_API_KEY",
-    workspaceId: "<value>",
 });
 
 async function run() {
@@ -272,7 +283,6 @@ import { Dub } from "dub";
 const dub = new Dub({
     serverURL: "https://api.dub.co",
     token: "DUB_API_KEY",
-    workspaceId: "<value>",
 });
 
 async function run() {
@@ -353,7 +363,6 @@ import { Dub } from "dub";
 
 const dub = new Dub({
     token: "DUB_API_KEY",
-    workspaceId: "<value>",
 });
 
 async function run() {
