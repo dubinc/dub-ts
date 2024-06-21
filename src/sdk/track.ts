@@ -132,8 +132,8 @@ export class Track extends ClientSDK {
             .json(410, errors.InviteExpired$, { err: true })
             .json(422, errors.UnprocessableEntity$, { err: true })
             .json(429, errors.RateLimitExceeded$, { err: true })
-            .fail(["4XX", "5XX"])
             .json(500, errors.InternalServerError$, { err: true })
+            .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
         return result$;
@@ -230,8 +230,8 @@ export class Track extends ClientSDK {
             .json(410, errors.InviteExpired$, { err: true })
             .json(422, errors.UnprocessableEntity$, { err: true })
             .json(429, errors.RateLimitExceeded$, { err: true })
-            .fail(["4XX", "5XX"])
             .json(500, errors.InternalServerError$, { err: true })
+            .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
         return result$;
@@ -329,8 +329,8 @@ export class Track extends ClientSDK {
             .json(410, errors.InviteExpired$, { err: true })
             .json(422, errors.UnprocessableEntity$, { err: true })
             .json(429, errors.RateLimitExceeded$, { err: true })
-            .fail(["4XX", "5XX"])
             .json(500, errors.InternalServerError$, { err: true })
+            .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
         return result$;

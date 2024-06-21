@@ -3,10 +3,10 @@ id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
   docChecksum: 4e9799bd93fdf4959c9efd6004900847
   docVersion: 0.0.1
-  speakeasyVersion: 1.310.0
-  generationVersion: 2.347.4
-  releaseVersion: 0.30.0
-  configChecksum: 3a10eead6c2e202b51efca6e91e3a3c5
+  speakeasyVersion: 1.313.0
+  generationVersion: 2.347.8
+  releaseVersion: 0.30.1
+  configChecksum: cac24fa351193e38d0c0de1fb515e0a1
   repoURL: https://github.com/dubinc/dub-node.git
   installationURL: https://github.com/dubinc/dub-node
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.5
-    core: 3.10.0
+    core: 3.10.1
     deprecations: 2.81.1
     examples: 2.81.4
     flattening: 2.81.1
