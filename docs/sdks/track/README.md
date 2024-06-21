@@ -69,7 +69,6 @@ Track a sale for a short link.
 
 ```typescript
 import { Dub } from "dub";
-import { PaymentProcessor } from "dub/models/operations";
 
 const dub = new Dub({
   token: "DUB_API_KEY",
@@ -79,7 +78,7 @@ async function run() {
   const result = await dub.track.sale({
     customerId: "<value>",
     amount: 996500,
-    paymentProcessor: PaymentProcessor.Shopify,
+    paymentProcessor: "shopify",
   });
 
   // Handle the result
