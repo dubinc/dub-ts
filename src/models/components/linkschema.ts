@@ -324,6 +324,10 @@ export type LinkSchema = {
      */
     rewrite?: boolean | undefined;
     /**
+     * Whether to allow search engines to index the short link.
+     */
+    doIndex?: boolean | undefined;
+    /**
      * The iOS destination URL for the short link for iOS device targeting.
      */
     ios: string | null;
@@ -1712,6 +1716,7 @@ export namespace LinkSchema$ {
             description: z.nullable(z.string()),
             image: z.nullable(z.string()),
             rewrite: z.boolean().default(false),
+            doIndex: z.boolean().default(false),
             ios: z.nullable(z.string()),
             android: z.nullable(z.string()),
             geo: z.nullable(z.lazy(() => Geo$.inboundSchema)),
@@ -1762,6 +1767,7 @@ export namespace LinkSchema$ {
         description: string | null;
         image: string | null;
         rewrite: boolean;
+        doIndex: boolean;
         ios: string | null;
         android: string | null;
         geo: Geo$.Outbound | null;
@@ -1804,6 +1810,7 @@ export namespace LinkSchema$ {
             description: z.nullable(z.string()),
             image: z.nullable(z.string()),
             rewrite: z.boolean().default(false),
+            doIndex: z.boolean().default(false),
             ios: z.nullable(z.string()),
             android: z.nullable(z.string()),
             geo: z.nullable(z.lazy(() => Geo$.outboundSchema)),

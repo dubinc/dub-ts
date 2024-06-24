@@ -119,6 +119,10 @@ export type UpdateLinkRequestBody = {
      * Geo targeting information for the short link in JSON format `{[COUNTRY]: https://example.com }`.
      */
     geo?: components.LinkGeoTargeting | null | undefined;
+    /**
+     * Allow search engines to index your short link. Defaults to `false` if not provided. Learn more: https://d.to/noindex
+     */
+    doIndex?: boolean | undefined;
 };
 
 export type UpdateLinkRequest = {
@@ -201,6 +205,7 @@ export namespace UpdateLinkRequestBody$ {
         ios: z.nullable(z.string()).optional(),
         android: z.nullable(z.string()).optional(),
         geo: z.nullable(components.LinkGeoTargeting$.inboundSchema).optional(),
+        doIndex: z.boolean().default(false),
     });
 
     export type Outbound = {
@@ -227,6 +232,7 @@ export namespace UpdateLinkRequestBody$ {
         ios?: string | null | undefined;
         android?: string | null | undefined;
         geo?: components.LinkGeoTargeting$.Outbound | null | undefined;
+        doIndex: boolean;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateLinkRequestBody> =
@@ -254,6 +260,7 @@ export namespace UpdateLinkRequestBody$ {
             ios: z.nullable(z.string()).optional(),
             android: z.nullable(z.string()).optional(),
             geo: z.nullable(components.LinkGeoTargeting$.outboundSchema).optional(),
+            doIndex: z.boolean().default(false),
         });
 }
 
