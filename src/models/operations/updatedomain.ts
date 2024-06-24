@@ -3,7 +3,6 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import { ClosedEnum } from "../../types/enums.js";
 import * as z from "zod";
 
 export type UpdateDomainGlobals = {
@@ -14,31 +13,11 @@ export type UpdateDomainGlobals = {
     projectSlug?: string | undefined;
 };
 
-/**
- * The type of redirect to use for this domain.
- */
-export const UpdateDomainType = {
-    Redirect: "redirect",
-    Rewrite: "rewrite",
-} as const;
-/**
- * The type of redirect to use for this domain.
- */
-export type UpdateDomainType = ClosedEnum<typeof UpdateDomainType>;
-
 export type UpdateDomainRequestBody = {
     /**
      * Name of the domain.
      */
     slug?: string | undefined;
-    /**
-     * The type of redirect to use for this domain.
-     */
-    type?: UpdateDomainType | undefined;
-    /**
-     * The page your users will get redirected to when they visit your domain.
-     */
-    target?: string | null | undefined;
     /**
      * Redirect users to a specific URL when any link under this domain has expired.
      */
@@ -47,10 +26,6 @@ export type UpdateDomainRequestBody = {
      * Whether to archive this domain. `false` will unarchive a previously archived domain.
      */
     archived?: boolean | undefined;
-    /**
-     * Prevent search engines from indexing the domain. Defaults to `false`.
-     */
-    noindex?: boolean | undefined;
     /**
      * Provide context to your teammates in the link creation modal by showing them an example of a link to be shortened.
      */
@@ -84,43 +59,27 @@ export namespace UpdateDomainGlobals$ {
 }
 
 /** @internal */
-export namespace UpdateDomainType$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof UpdateDomainType> =
-        z.nativeEnum(UpdateDomainType);
-    export const outboundSchema: z.ZodNativeEnum<typeof UpdateDomainType> = inboundSchema;
-}
-
-/** @internal */
 export namespace UpdateDomainRequestBody$ {
     export const inboundSchema: z.ZodType<UpdateDomainRequestBody, z.ZodTypeDef, unknown> =
         z.object({
             slug: z.string().optional(),
-            type: UpdateDomainType$.inboundSchema.default("redirect"),
-            target: z.nullable(z.string()).optional(),
             expiredUrl: z.nullable(z.string()).optional(),
             archived: z.boolean().default(false),
-            noindex: z.boolean().optional(),
             placeholder: z.nullable(z.string().default("https://dub.co/help/article/what-is-dub")),
         });
 
     export type Outbound = {
         slug?: string | undefined;
-        type: string;
-        target?: string | null | undefined;
         expiredUrl?: string | null | undefined;
         archived: boolean;
-        noindex?: boolean | undefined;
         placeholder: string | null;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateDomainRequestBody> =
         z.object({
             slug: z.string().optional(),
-            type: UpdateDomainType$.outboundSchema.default("redirect"),
-            target: z.nullable(z.string()).optional(),
             expiredUrl: z.nullable(z.string()).optional(),
             archived: z.boolean().default(false),
-            noindex: z.boolean().optional(),
             placeholder: z.nullable(z.string().default("https://dub.co/help/article/what-is-dub")),
         });
 }
