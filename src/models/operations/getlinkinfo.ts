@@ -5,6 +5,9 @@
 import * as z from "zod";
 
 export type GetLinkInfoGlobals = {
+    /**
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
     workspaceId?: string | undefined;
     /**
      * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.

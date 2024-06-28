@@ -6,6 +6,9 @@ import * as components from "../components/index.js";
 import * as z from "zod";
 
 export type CreateLinkGlobals = {
+    /**
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
     workspaceId?: string | undefined;
     /**
      * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.

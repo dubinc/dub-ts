@@ -6,7 +6,6 @@ export * from "./bulkcreatelinks.js";
 export * from "./createdomain.js";
 export * from "./createlink.js";
 export * from "./createtag.js";
-export * from "./createworkspace.js";
 export * from "./deletedomain.js";
 export * from "./deletelink.js";
 export * from "./getlinkinfo.js";

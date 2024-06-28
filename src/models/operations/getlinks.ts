@@ -6,6 +6,9 @@ import { ClosedEnum } from "../../types/enums.js";
 import * as z from "zod";
 
 export type GetLinksGlobals = {
+    /**
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
     workspaceId?: string | undefined;
     /**
      * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -143,7 +146,7 @@ export namespace GetLinksRequest$ {
         showArchived: z.boolean().default(false),
         withTags: z.boolean().default(false),
         sort: Sort$.inboundSchema.default("createdAt"),
-        page: z.number().optional(),
+        page: z.number().int().optional(),
     });
 
     export type Outbound = {
@@ -169,6 +172,6 @@ export namespace GetLinksRequest$ {
         showArchived: z.boolean().default(false),
         withTags: z.boolean().default(false),
         sort: Sort$.outboundSchema.default("createdAt"),
-        page: z.number().optional(),
+        page: z.number().int().optional(),
     });
 }
