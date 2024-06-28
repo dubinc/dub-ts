@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: f8b1be2fa34844de98cc6c19757c0e81
+  docChecksum: 5419a35a3e662a9a0df7547a5a8ffdc3
   docVersion: 0.0.1
-  speakeasyVersion: 1.314.2
-  generationVersion: 2.349.6
-  releaseVersion: 0.30.2
-  configChecksum: a5007338ee4d06f07b0ea685566f4669
+  speakeasyVersion: 1.322.3
+  generationVersion: 2.354.2
+  releaseVersion: 0.30.3
+  configChecksum: 4c2d47bc1b3bc6be3ef333824dcde473
   repoURL: https://github.com/dubinc/dub-node.git
   installationURL: https://github.com/dubinc/dub-node
   published: true
@@ -120,7 +120,6 @@ generatedFiles:
   - src/models/operations/upsertlink.ts
   - src/models/operations/getqrcode.ts
   - src/models/operations/retrieveanalytics.ts
-  - src/models/operations/createworkspace.ts
   - src/models/operations/getworkspace.ts
   - src/models/operations/gettags.ts
   - src/models/operations/createtag.ts
@@ -255,7 +254,6 @@ generatedFiles:
   - docs/models/operations/interval.md
   - docs/models/operations/retrieveanalyticsrequest.md
   - docs/models/operations/retrieveanalyticsresponsebody.md
-  - docs/models/operations/createworkspacerequestbody.md
   - docs/models/operations/getworkspacerequest.md
   - docs/models/operations/gettagsglobals.md
   - docs/models/operations/gettagsrequest.md
