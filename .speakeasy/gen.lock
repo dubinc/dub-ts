@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: 5419a35a3e662a9a0df7547a5a8ffdc3
+  docChecksum: c0895b6571175adfc5c4d2c3943adf22
   docVersion: 0.0.1
-  speakeasyVersion: 1.322.3
-  generationVersion: 2.354.2
-  releaseVersion: 0.30.3
-  configChecksum: 4c2d47bc1b3bc6be3ef333824dcde473
+  speakeasyVersion: 1.324.0
+  generationVersion: 2.356.0
+  releaseVersion: 0.30.4
+  configChecksum: 1bce93402ebd31b8624230da52eb8af5
   repoURL: https://github.com/dubinc/dub-node.git
   installationURL: https://github.com/dubinc/dub-node
   published: true
@@ -121,14 +121,14 @@ generatedFiles:
   - src/models/operations/getqrcode.ts
   - src/models/operations/retrieveanalytics.ts
   - src/models/operations/getworkspace.ts
+  - src/models/operations/updateworkspace.ts
   - src/models/operations/gettags.ts
   - src/models/operations/createtag.ts
+  - src/models/operations/updatetag.ts
   - src/models/operations/listdomains.ts
   - src/models/operations/createdomain.ts
   - src/models/operations/deletedomain.ts
   - src/models/operations/updatedomain.ts
-  - src/models/operations/setprimarydomain.ts
-  - src/models/operations/transferdomain.ts
   - src/models/operations/tracklead.ts
   - src/models/operations/tracksale.ts
   - src/models/operations/trackcustomer.ts
@@ -255,11 +255,16 @@ generatedFiles:
   - docs/models/operations/retrieveanalyticsrequest.md
   - docs/models/operations/retrieveanalyticsresponsebody.md
   - docs/models/operations/getworkspacerequest.md
+  - docs/models/operations/updateworkspacerequest.md
   - docs/models/operations/gettagsglobals.md
   - docs/models/operations/gettagsrequest.md
   - docs/models/operations/createtagglobals.md
   - docs/models/operations/color.md
   - docs/models/operations/createtagrequestbody.md
+  - docs/models/operations/updatetagglobals.md
+  - docs/models/operations/updatetagcolor.md
+  - docs/models/operations/updatetagrequestbody.md
+  - docs/models/operations/updatetagrequest.md
   - docs/models/operations/listdomainsglobals.md
   - docs/models/operations/listdomainsrequest.md
   - docs/models/operations/createdomainglobals.md
@@ -270,11 +275,6 @@ generatedFiles:
   - docs/models/operations/updatedomainglobals.md
   - docs/models/operations/updatedomainrequestbody.md
   - docs/models/operations/updatedomainrequest.md
-  - docs/models/operations/setprimarydomainglobals.md
-  - docs/models/operations/setprimarydomainrequest.md
-  - docs/models/operations/transferdomainglobals.md
-  - docs/models/operations/transferdomainrequestbody.md
-  - docs/models/operations/transferdomainrequest.md
   - docs/models/operations/trackleadglobals.md
   - docs/models/operations/trackleadrequestbody.md
   - docs/models/operations/trackleadresponsebody.md

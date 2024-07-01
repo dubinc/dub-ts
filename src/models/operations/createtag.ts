@@ -37,11 +37,17 @@ export type CreateTagRequestBody = {
     /**
      * The name of the tag to create.
      */
-    tag: string;
+    name?: string | undefined;
     /**
      * The color of the tag. If not provided, a random color will be used from the list: red, yellow, green, blue, purple, pink, brown.
      */
     color?: Color | undefined;
+    /**
+     * The name of the tag to create.
+     *
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    tag?: string | undefined;
 };
 
 /** @internal */
@@ -71,19 +77,22 @@ export namespace Color$ {
 /** @internal */
 export namespace CreateTagRequestBody$ {
     export const inboundSchema: z.ZodType<CreateTagRequestBody, z.ZodTypeDef, unknown> = z.object({
-        tag: z.string(),
+        name: z.string().optional(),
         color: Color$.inboundSchema.optional(),
+        tag: z.string().optional(),
     });
 
     export type Outbound = {
-        tag: string;
+        name?: string | undefined;
         color?: string | undefined;
+        tag?: string | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateTagRequestBody> = z.object(
         {
-            tag: z.string(),
+            name: z.string().optional(),
             color: Color$.outboundSchema.optional(),
+            tag: z.string().optional(),
         }
     );
 }
