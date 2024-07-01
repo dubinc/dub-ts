@@ -7,6 +7,7 @@ import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config.js
 import {
     encodeFormQuery as encodeFormQuery$,
     encodeJSON as encodeJSON$,
+    encodeSimple as encodeSimple$,
 } from "../lib/encodings.js";
 import { HTTPClient } from "../lib/http.js";
 import * as schemas$ from "../lib/schemas.js";
@@ -215,6 +216,106 @@ export class Tags extends ClientSDK {
 
         const [result$] = await this.matcher<components.TagSchema>()
             .json(201, components.TagSchema$)
+            .json(400, errors.BadRequest$, { err: true })
+            .json(401, errors.Unauthorized$, { err: true })
+            .json(403, errors.Forbidden$, { err: true })
+            .json(404, errors.NotFound$, { err: true })
+            .json(409, errors.Conflict$, { err: true })
+            .json(410, errors.InviteExpired$, { err: true })
+            .json(422, errors.UnprocessableEntity$, { err: true })
+            .json(429, errors.RateLimitExceeded$, { err: true })
+            .json(500, errors.InternalServerError$, { err: true })
+            .fail(["4XX", "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
+    }
+
+    /**
+     * Update a tag
+     *
+     * @remarks
+     * Update a tag in the workspace.
+     */
+    async update(
+        request: operations.UpdateTagRequest,
+        options?: RequestOptions
+    ): Promise<components.TagSchema> {
+        const input$ = request;
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Content-Type", "application/json");
+        headers$.set("Accept", "application/json");
+
+        const payload$ = schemas$.parse(
+            input$,
+            (value$) => operations.UpdateTagRequest$.outboundSchema.parse(value$),
+            "Input validation failed"
+        );
+        const body$ = encodeJSON$("body", payload$.RequestBody, { explode: true });
+
+        const pathParams$ = {
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
+        };
+        const path$ = this.templateURLComponent("/tags/{id}")(pathParams$);
+
+        const query$ = encodeFormQuery$({
+            projectSlug: this.options$.projectSlug,
+            workspaceId: this.options$.workspaceId,
+        });
+
+        let security$;
+        if (typeof this.options$.token === "function") {
+            security$ = { token: await this.options$.token() };
+        } else if (this.options$.token) {
+            security$ = { token: this.options$.token };
+        } else {
+            security$ = {};
+        }
+        const context = {
+            operationID: "updateTag",
+            oAuth2Scopes: [],
+            securitySource: this.options$.token,
+        };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
+
+        const doOptions = {
+            context,
+            errorCodes: [
+                "400",
+                "401",
+                "403",
+                "404",
+                "409",
+                "410",
+                "422",
+                "429",
+                "4XX",
+                "500",
+                "5XX",
+            ],
+        };
+        const request$ = this.createRequest$(
+            context,
+            {
+                security: securitySettings$,
+                method: "PATCH",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
+            options
+        );
+
+        const response = await this.do$(request$, doOptions);
+
+        const responseFields$ = {
+            HttpMeta: { Response: response, Request: request$ },
+        };
+
+        const [result$] = await this.matcher<components.TagSchema>()
+            .json(200, components.TagSchema$)
             .json(400, errors.BadRequest$, { err: true })
             .json(401, errors.Unauthorized$, { err: true })
             .json(403, errors.Forbidden$, { err: true })
