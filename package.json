@@ -1,7 +1,7 @@
 {
   "name": "dub",
-  "version": "0.30.4",
-  "author": "Dub",  
+  "version": "0.31.0",
+  "author": "Dub",
   "main": "./index.js",
   "sideEffects": false,
   "repository": {

@@ -3,6 +3,7 @@
  */
 
 export * from "./bulkcreatelinks.js";
+export * from "./bulkupdatelinks.js";
 export * from "./createdomain.js";
 export * from "./createlink.js";
 export * from "./createtag.js";

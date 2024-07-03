@@ -1,3 +1,7 @@
+/esm
+/dist
+/.tshy
+/.tshy-*
 /models
 /models/errors
 /types
