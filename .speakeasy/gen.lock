@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: c0895b6571175adfc5c4d2c3943adf22
+  docChecksum: a161f5bf3b2f2db5151fac8953378ea9
   docVersion: 0.0.1
-  speakeasyVersion: 1.324.0
-  generationVersion: 2.356.0
-  releaseVersion: 0.30.4
-  configChecksum: 1bce93402ebd31b8624230da52eb8af5
+  speakeasyVersion: 1.326.0
+  generationVersion: 2.359.0
+  releaseVersion: 0.31.0
+  configChecksum: e0fb7c1cb9e74baad492e9b91cc1008d
   repoURL: https://github.com/dubinc/dub-node.git
   installationURL: https://github.com/dubinc/dub-node
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.5
-    core: 3.10.2
+    core: 3.11.0
     deprecations: 2.81.1
     examples: 2.81.4
     flattening: 2.81.1
@@ -117,6 +117,7 @@ generatedFiles:
   - src/models/operations/deletelink.ts
   - src/models/operations/updatelink.ts
   - src/models/operations/bulkcreatelinks.ts
+  - src/models/operations/bulkupdatelinks.ts
   - src/models/operations/upsertlink.ts
   - src/models/operations/getqrcode.ts
   - src/models/operations/retrieveanalytics.ts
@@ -242,6 +243,10 @@ generatedFiles:
   - docs/models/operations/bulkcreatelinkstagids.md
   - docs/models/operations/bulkcreatelinkstagnames.md
   - docs/models/operations/requestbody.md
+  - docs/models/operations/bulkupdatelinkstagids.md
+  - docs/models/operations/bulkupdatelinkstagnames.md
+  - docs/models/operations/data.md
+  - docs/models/operations/bulkupdatelinksrequestbody.md
   - docs/models/operations/upsertlinkglobals.md
   - docs/models/operations/upsertlinktagids.md
   - docs/models/operations/upsertlinktagnames.md
