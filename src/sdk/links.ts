@@ -3,7 +3,7 @@
  */
 
 import { SDKHooks } from "../hooks/hooks.js";
-import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config.js";
+import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import {
     encodeFormQuery as encodeFormQuery$,
     encodeJSON as encodeJSON$,
@@ -48,16 +48,13 @@ export class Links extends ClientSDK {
      * Retrieve a list of links
      *
      * @remarks
-     * Retrieve a list of links for the authenticated workspace. The list will be paginated and the provided query parameters allow filtering the returned links.
+     * Retrieve a paginated list of links for the authenticated workspace.
      */
     async list(
         request?: operations.GetLinksRequest | undefined,
         options?: RequestOptions
     ): Promise<Array<components.LinkSchema>> {
         const input$ = typeof request === "undefined" ? {} : request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -71,7 +68,6 @@ export class Links extends ClientSDK {
         const query$ = encodeFormQuery$({
             domain: payload$.domain,
             page: payload$.page,
-            projectSlug: this.options$.projectSlug,
             search: payload$.search,
             showArchived: payload$.showArchived,
             sort: payload$.sort,
@@ -81,6 +77,10 @@ export class Links extends ClientSDK {
             userId: payload$.userId,
             withTags: payload$.withTags,
             workspaceId: this.options$.workspaceId,
+        });
+
+        const headers$ = new Headers({
+            Accept: "application/json",
         });
 
         let security$;
@@ -98,7 +98,20 @@ export class Links extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
+        const request$ = this.createRequest$(
+            context,
+            {
+                security: securitySettings$,
+                method: "GET",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
+            options
+        );
+
+        const response = await this.do$(request$, {
             context,
             errorCodes: [
                 "400",
@@ -113,21 +126,7 @@ export class Links extends ClientSDK {
                 "500",
                 "5XX",
             ],
-        };
-        const request$ = this.createRequest$(
-            context,
-            {
-                security: securitySettings$,
-                method: "GET",
-                path: path$,
-                headers: headers$,
-                query: query$,
-                body: body$,
-            },
-            options
-        );
-
-        const response = await this.do$(request$, doOptions);
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
@@ -161,10 +160,6 @@ export class Links extends ClientSDK {
         options?: RequestOptions
     ): Promise<components.LinkSchema> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -177,8 +172,12 @@ export class Links extends ClientSDK {
         const path$ = this.templateURLComponent("/links")();
 
         const query$ = encodeFormQuery$({
-            projectSlug: this.options$.projectSlug,
             workspaceId: this.options$.workspaceId,
+        });
+
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
         });
 
         let security$;
@@ -196,7 +195,20 @@ export class Links extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
+        const request$ = this.createRequest$(
+            context,
+            {
+                security: securitySettings$,
+                method: "POST",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
+            options
+        );
+
+        const response = await this.do$(request$, {
             context,
             errorCodes: [
                 "400",
@@ -211,21 +223,7 @@ export class Links extends ClientSDK {
                 "500",
                 "5XX",
             ],
-        };
-        const request$ = this.createRequest$(
-            context,
-            {
-                security: securitySettings$,
-                method: "POST",
-                path: path$,
-                headers: headers$,
-                query: query$,
-                body: body$,
-            },
-            options
-        );
-
-        const response = await this.do$(request$, doOptions);
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
@@ -249,19 +247,16 @@ export class Links extends ClientSDK {
     }
 
     /**
-     * Retrieve the number of links
+     * Retrieve links count
      *
      * @remarks
-     * Retrieve the number of links for the authenticated workspace. The provided query parameters allow filtering the returned links.
+     * Retrieve the number of links for the authenticated workspace.
      */
     async count(
         request?: operations.GetLinksCountRequest | undefined,
         options?: RequestOptions
     ): Promise<number> {
         const input$ = typeof request === "undefined" ? {} : request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -275,7 +270,6 @@ export class Links extends ClientSDK {
         const query$ = encodeFormQuery$({
             domain: payload$.domain,
             groupBy: payload$.groupBy,
-            projectSlug: this.options$.projectSlug,
             search: payload$.search,
             showArchived: payload$.showArchived,
             tagId: payload$.tagId,
@@ -284,6 +278,10 @@ export class Links extends ClientSDK {
             userId: payload$.userId,
             withTags: payload$.withTags,
             workspaceId: this.options$.workspaceId,
+        });
+
+        const headers$ = new Headers({
+            Accept: "application/json",
         });
 
         let security$;
@@ -301,7 +299,20 @@ export class Links extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
+        const request$ = this.createRequest$(
+            context,
+            {
+                security: securitySettings$,
+                method: "GET",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
+            options
+        );
+
+        const response = await this.do$(request$, {
             context,
             errorCodes: [
                 "400",
@@ -316,21 +327,7 @@ export class Links extends ClientSDK {
                 "500",
                 "5XX",
             ],
-        };
-        const request$ = this.createRequest$(
-            context,
-            {
-                security: securitySettings$,
-                method: "GET",
-                path: path$,
-                headers: headers$,
-                query: query$,
-                body: body$,
-            },
-            options
-        );
-
-        const response = await this.do$(request$, doOptions);
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
@@ -364,9 +361,6 @@ export class Links extends ClientSDK {
         options?: RequestOptions
     ): Promise<components.LinkSchema> {
         const input$ = typeof request === "undefined" ? {} : request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -382,8 +376,11 @@ export class Links extends ClientSDK {
             externalId: payload$.externalId,
             key: payload$.key,
             linkId: payload$.linkId,
-            projectSlug: this.options$.projectSlug,
             workspaceId: this.options$.workspaceId,
+        });
+
+        const headers$ = new Headers({
+            Accept: "application/json",
         });
 
         let security$;
@@ -401,7 +398,20 @@ export class Links extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
+        const request$ = this.createRequest$(
+            context,
+            {
+                security: securitySettings$,
+                method: "GET",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
+            options
+        );
+
+        const response = await this.do$(request$, {
             context,
             errorCodes: [
                 "400",
@@ -416,21 +426,7 @@ export class Links extends ClientSDK {
                 "500",
                 "5XX",
             ],
-        };
-        const request$ = this.createRequest$(
-            context,
-            {
-                security: securitySettings$,
-                method: "GET",
-                path: path$,
-                headers: headers$,
-                query: query$,
-                body: body$,
-            },
-            options
-        );
-
-        const response = await this.do$(request$, doOptions);
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
@@ -466,9 +462,6 @@ export class Links extends ClientSDK {
         const input$: operations.DeleteLinkRequest = {
             linkId: linkId,
         };
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -486,8 +479,11 @@ export class Links extends ClientSDK {
         const path$ = this.templateURLComponent("/links/{linkId}")(pathParams$);
 
         const query$ = encodeFormQuery$({
-            projectSlug: this.options$.projectSlug,
             workspaceId: this.options$.workspaceId,
+        });
+
+        const headers$ = new Headers({
+            Accept: "application/json",
         });
 
         let security$;
@@ -505,7 +501,20 @@ export class Links extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
+        const request$ = this.createRequest$(
+            context,
+            {
+                security: securitySettings$,
+                method: "DELETE",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
+            options
+        );
+
+        const response = await this.do$(request$, {
             context,
             errorCodes: [
                 "400",
@@ -520,21 +529,7 @@ export class Links extends ClientSDK {
                 "500",
                 "5XX",
             ],
-        };
-        const request$ = this.createRequest$(
-            context,
-            {
-                security: securitySettings$,
-                method: "DELETE",
-                path: path$,
-                headers: headers$,
-                query: query$,
-                body: body$,
-            },
-            options
-        );
-
-        const response = await this.do$(request$, doOptions);
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
@@ -572,10 +567,6 @@ export class Links extends ClientSDK {
             linkId: linkId,
             requestBody: requestBody,
         };
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -593,8 +584,12 @@ export class Links extends ClientSDK {
         const path$ = this.templateURLComponent("/links/{linkId}")(pathParams$);
 
         const query$ = encodeFormQuery$({
-            projectSlug: this.options$.projectSlug,
             workspaceId: this.options$.workspaceId,
+        });
+
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
         });
 
         let security$;
@@ -612,7 +607,20 @@ export class Links extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
+        const request$ = this.createRequest$(
+            context,
+            {
+                security: securitySettings$,
+                method: "PATCH",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
+            options
+        );
+
+        const response = await this.do$(request$, {
             context,
             errorCodes: [
                 "400",
@@ -627,21 +635,7 @@ export class Links extends ClientSDK {
                 "500",
                 "5XX",
             ],
-        };
-        const request$ = this.createRequest$(
-            context,
-            {
-                security: securitySettings$,
-                method: "PATCH",
-                path: path$,
-                headers: headers$,
-                query: query$,
-                body: body$,
-            },
-            options
-        );
-
-        const response = await this.do$(request$, doOptions);
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
@@ -675,10 +669,6 @@ export class Links extends ClientSDK {
         options?: RequestOptions
     ): Promise<Array<components.LinkSchema>> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -691,8 +681,12 @@ export class Links extends ClientSDK {
         const path$ = this.templateURLComponent("/links/bulk")();
 
         const query$ = encodeFormQuery$({
-            projectSlug: this.options$.projectSlug,
             workspaceId: this.options$.workspaceId,
+        });
+
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
         });
 
         let security$;
@@ -710,7 +704,20 @@ export class Links extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
+        const request$ = this.createRequest$(
+            context,
+            {
+                security: securitySettings$,
+                method: "POST",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
+            options
+        );
+
+        const response = await this.do$(request$, {
             context,
             errorCodes: [
                 "400",
@@ -725,21 +732,7 @@ export class Links extends ClientSDK {
                 "500",
                 "5XX",
             ],
-        };
-        const request$ = this.createRequest$(
-            context,
-            {
-                security: securitySettings$,
-                method: "POST",
-                path: path$,
-                headers: headers$,
-                query: query$,
-                body: body$,
-            },
-            options
-        );
-
-        const response = await this.do$(request$, doOptions);
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
@@ -773,10 +766,6 @@ export class Links extends ClientSDK {
         options?: RequestOptions
     ): Promise<Array<components.LinkSchema>> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -790,6 +779,11 @@ export class Links extends ClientSDK {
         const path$ = this.templateURLComponent("/links/bulk")();
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        });
 
         let security$;
         if (typeof this.options$.token === "function") {
@@ -806,7 +800,20 @@ export class Links extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
+        const request$ = this.createRequest$(
+            context,
+            {
+                security: securitySettings$,
+                method: "PATCH",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
+            options
+        );
+
+        const response = await this.do$(request$, {
             context,
             errorCodes: [
                 "400",
@@ -821,21 +828,7 @@ export class Links extends ClientSDK {
                 "500",
                 "5XX",
             ],
-        };
-        const request$ = this.createRequest$(
-            context,
-            {
-                security: securitySettings$,
-                method: "PATCH",
-                path: path$,
-                headers: headers$,
-                query: query$,
-                body: body$,
-            },
-            options
-        );
-
-        const response = await this.do$(request$, doOptions);
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
@@ -869,10 +862,6 @@ export class Links extends ClientSDK {
         options?: RequestOptions
     ): Promise<components.LinkSchema> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -885,8 +874,12 @@ export class Links extends ClientSDK {
         const path$ = this.templateURLComponent("/links/upsert")();
 
         const query$ = encodeFormQuery$({
-            projectSlug: this.options$.projectSlug,
             workspaceId: this.options$.workspaceId,
+        });
+
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
         });
 
         let security$;
@@ -904,7 +897,20 @@ export class Links extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
+        const request$ = this.createRequest$(
+            context,
+            {
+                security: securitySettings$,
+                method: "PUT",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
+            options
+        );
+
+        const response = await this.do$(request$, {
             context,
             errorCodes: [
                 "400",
@@ -919,21 +925,7 @@ export class Links extends ClientSDK {
                 "500",
                 "5XX",
             ],
-        };
-        const request$ = this.createRequest$(
-            context,
-            {
-                security: securitySettings$,
-                method: "PUT",
-                path: path$,
-                headers: headers$,
-                query: query$,
-                body: body$,
-            },
-            options
-        );
-
-        const response = await this.do$(request$, doOptions);
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },

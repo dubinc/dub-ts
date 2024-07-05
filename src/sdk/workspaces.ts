@@ -3,7 +3,7 @@
  */
 
 import { SDKHooks } from "../hooks/hooks.js";
-import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config.js";
+import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import { encodeSimple as encodeSimple$ } from "../lib/encodings.js";
 import { HTTPClient } from "../lib/http.js";
 import * as schemas$ from "../lib/schemas.js";
@@ -50,9 +50,6 @@ export class Workspaces extends ClientSDK {
         options?: RequestOptions
     ): Promise<components.WorkspaceSchema> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -71,6 +68,10 @@ export class Workspaces extends ClientSDK {
 
         const query$ = "";
 
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
+
         let security$;
         if (typeof this.options$.token === "function") {
             security$ = { token: await this.options$.token() };
@@ -86,7 +87,20 @@ export class Workspaces extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
+        const request$ = this.createRequest$(
+            context,
+            {
+                security: securitySettings$,
+                method: "GET",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
+            options
+        );
+
+        const response = await this.do$(request$, {
             context,
             errorCodes: [
                 "400",
@@ -101,21 +115,7 @@ export class Workspaces extends ClientSDK {
                 "500",
                 "5XX",
             ],
-        };
-        const request$ = this.createRequest$(
-            context,
-            {
-                security: securitySettings$,
-                method: "GET",
-                path: path$,
-                headers: headers$,
-                query: query$,
-                body: body$,
-            },
-            options
-        );
-
-        const response = await this.do$(request$, doOptions);
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
@@ -149,9 +149,6 @@ export class Workspaces extends ClientSDK {
         options?: RequestOptions
     ): Promise<components.WorkspaceSchema> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -170,6 +167,10 @@ export class Workspaces extends ClientSDK {
 
         const query$ = "";
 
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
+
         let security$;
         if (typeof this.options$.token === "function") {
             security$ = { token: await this.options$.token() };
@@ -185,7 +186,20 @@ export class Workspaces extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
+        const request$ = this.createRequest$(
+            context,
+            {
+                security: securitySettings$,
+                method: "PATCH",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
+            options
+        );
+
+        const response = await this.do$(request$, {
             context,
             errorCodes: [
                 "400",
@@ -200,21 +214,7 @@ export class Workspaces extends ClientSDK {
                 "500",
                 "5XX",
             ],
-        };
-        const request$ = this.createRequest$(
-            context,
-            {
-                security: securitySettings$,
-                method: "PATCH",
-                path: path$,
-                headers: headers$,
-                query: query$,
-                body: body$,
-            },
-            options
-        );
-
-        const response = await this.do$(request$, doOptions);
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },

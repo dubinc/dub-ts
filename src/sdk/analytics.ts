@@ -3,7 +3,7 @@
  */
 
 import { SDKHooks } from "../hooks/hooks.js";
-import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config.js";
+import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import { encodeFormQuery as encodeFormQuery$ } from "../lib/encodings.js";
 import { HTTPClient } from "../lib/http.js";
 import * as schemas$ from "../lib/schemas.js";
@@ -49,9 +49,6 @@ export class Analytics extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.RetrieveAnalyticsResponseBody> {
         const input$ = typeof request === "undefined" ? {} : request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -76,7 +73,6 @@ export class Analytics extends ClientSDK {
             key: payload$.key,
             linkId: payload$.linkId,
             os: payload$.os,
-            projectSlug: this.options$.projectSlug,
             qr: payload$.qr,
             referer: payload$.referer,
             root: payload$.root,
@@ -85,6 +81,10 @@ export class Analytics extends ClientSDK {
             timezone: payload$.timezone,
             url: payload$.url,
             workspaceId: this.options$.workspaceId,
+        });
+
+        const headers$ = new Headers({
+            Accept: "application/json",
         });
 
         let security$;
@@ -102,7 +102,20 @@ export class Analytics extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
+        const request$ = this.createRequest$(
+            context,
+            {
+                security: securitySettings$,
+                method: "GET",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
+            options
+        );
+
+        const response = await this.do$(request$, {
             context,
             errorCodes: [
                 "400",
@@ -117,21 +130,7 @@ export class Analytics extends ClientSDK {
                 "500",
                 "5XX",
             ],
-        };
-        const request$ = this.createRequest$(
-            context,
-            {
-                security: securitySettings$,
-                method: "GET",
-                path: path$,
-                headers: headers$,
-                query: query$,
-                body: body$,
-            },
-            options
-        );
-
-        const response = await this.do$(request$, doOptions);
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
