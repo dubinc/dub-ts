@@ -3,7 +3,7 @@
  */
 
 import { SDKHooks } from "../hooks/hooks.js";
-import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config.js";
+import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import { encodeFormQuery as encodeFormQuery$ } from "../lib/encodings.js";
 import { HTTPClient } from "../lib/http.js";
 import * as schemas$ from "../lib/schemas.js";
@@ -48,9 +48,6 @@ export class Metatags extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.GetMetatagsResponseBody> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -63,6 +60,10 @@ export class Metatags extends ClientSDK {
 
         const query$ = encodeFormQuery$({
             url: payload$.url,
+        });
+
+        const headers$ = new Headers({
+            Accept: "application/json",
         });
 
         let security$;
@@ -80,7 +81,6 @@ export class Metatags extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -94,7 +94,7 @@ export class Metatags extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, { context, errorCodes: ["4XX", "5XX"] });
 
         const [result$] = await this.matcher<operations.GetMetatagsResponseBody>()
             .json(200, operations.GetMetatagsResponseBody$)

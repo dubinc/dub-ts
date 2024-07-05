@@ -7,6 +7,7 @@ import { SecurityState, resolveSecurity, resolveGlobalSecurity } from "./securit
 import { pathToFunc } from "./url.js";
 import { encodeForm } from "./encodings.js";
 import { stringToBase64 } from "./base64.js";
+import { SDK_METADATA } from "./config.js";
 import { SDKHooks } from "../hooks/hooks.js";
 import { HookContext } from "../hooks/types.js";
 
@@ -22,7 +23,19 @@ type RequestConfig = {
     body?: RequestInit["body"];
     headers?: HeadersInit;
     security?: SecurityState | null;
+    uaHeader?: string;
 };
+
+const gt: unknown = typeof globalThis === "undefined" ? null : globalThis;
+const webWorkerLike =
+    typeof gt === "object" &&
+    gt != null &&
+    "importScripts" in gt &&
+    typeof gt["importScripts"] === "function";
+const isBrowserLike =
+    webWorkerLike ||
+    (typeof navigator !== "undefined" && "serviceWorker" in navigator) ||
+    typeof window === "object";
 
 export class ClientSDK {
     private readonly client: HTTPClient;
@@ -98,6 +111,12 @@ export class ClientSDK {
         const userHeaders = new Headers(options?.fetchOptions?.headers);
         for (const [k, v] of userHeaders) {
             headers.set(k, v);
+        }
+
+        // Only set user agent header in non-browser-like environments since CORS
+        // policy disallows setting it in browsers e.g. Chrome throws an error.
+        if (!isBrowserLike) {
+            headers.set(conf.uaHeader ?? "user-agent", SDK_METADATA.userAgent);
         }
 
         const input = this.hooks$.beforeCreateRequest(context, {

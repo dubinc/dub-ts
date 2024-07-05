@@ -9,10 +9,6 @@ export type ListDomainsGlobals = {
      * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     workspaceId?: string | undefined;
-    /**
-     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    projectSlug?: string | undefined;
 };
 
 export type ListDomainsRequest = {};
@@ -21,17 +17,14 @@ export type ListDomainsRequest = {};
 export namespace ListDomainsGlobals$ {
     export const inboundSchema: z.ZodType<ListDomainsGlobals, z.ZodTypeDef, unknown> = z.object({
         workspaceId: z.string().optional(),
-        projectSlug: z.string().optional(),
     });
 
     export type Outbound = {
         workspaceId?: string | undefined;
-        projectSlug?: string | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListDomainsGlobals> = z.object({
         workspaceId: z.string().optional(),
-        projectSlug: z.string().optional(),
     });
 }
 

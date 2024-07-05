@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: a161f5bf3b2f2db5151fac8953378ea9
+  docChecksum: bdbe0b838757272c0b9e043ea9c5cb5f
   docVersion: 0.0.1
-  speakeasyVersion: 1.326.0
-  generationVersion: 2.359.0
-  releaseVersion: 0.31.0
-  configChecksum: e0fb7c1cb9e74baad492e9b91cc1008d
+  speakeasyVersion: 1.326.3
+  generationVersion: 2.359.6
+  releaseVersion: 0.31.1
+  configChecksum: ebfc9e3ac69db1d429d7eb3d3905df22
   repoURL: https://github.com/dubinc/dub-node.git
   installationURL: https://github.com/dubinc/dub-node
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.5
-    core: 3.11.0
+    core: 3.11.3
     deprecations: 2.81.1
     examples: 2.81.4
     flattening: 2.81.1

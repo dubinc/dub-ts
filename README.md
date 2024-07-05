@@ -103,7 +103,7 @@ run();
 
 * [list](docs/sdks/links/README.md#list) - Retrieve a list of links
 * [create](docs/sdks/links/README.md#create) - Create a new link
-* [count](docs/sdks/links/README.md#count) - Retrieve the number of links
+* [count](docs/sdks/links/README.md#count) - Retrieve links count
 * [get](docs/sdks/links/README.md#get) - Retrieve a link
 * [delete](docs/sdks/links/README.md#delete) - Delete a link
 * [update](docs/sdks/links/README.md#update) - Update a link

@@ -3,7 +3,7 @@
  */
 
 import { SDKHooks } from "../hooks/hooks.js";
-import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config.js";
+import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import {
     encodeFormQuery as encodeFormQuery$,
     encodeJSON as encodeJSON$,
@@ -52,10 +52,6 @@ export class Track extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.TrackLeadResponseBody> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -68,8 +64,12 @@ export class Track extends ClientSDK {
         const path$ = this.templateURLComponent("/track/lead")();
 
         const query$ = encodeFormQuery$({
-            projectSlug: this.options$.projectSlug,
             workspaceId: this.options$.workspaceId,
+        });
+
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
         });
 
         let security$;
@@ -87,7 +87,20 @@ export class Track extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
+        const request$ = this.createRequest$(
+            context,
+            {
+                security: securitySettings$,
+                method: "POST",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
+            options
+        );
+
+        const response = await this.do$(request$, {
             context,
             errorCodes: [
                 "400",
@@ -102,21 +115,7 @@ export class Track extends ClientSDK {
                 "500",
                 "5XX",
             ],
-        };
-        const request$ = this.createRequest$(
-            context,
-            {
-                security: securitySettings$,
-                method: "POST",
-                path: path$,
-                headers: headers$,
-                query: query$,
-                body: body$,
-            },
-            options
-        );
-
-        const response = await this.do$(request$, doOptions);
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
@@ -150,10 +149,6 @@ export class Track extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.TrackSaleResponseBody> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -166,8 +161,12 @@ export class Track extends ClientSDK {
         const path$ = this.templateURLComponent("/track/sale")();
 
         const query$ = encodeFormQuery$({
-            projectSlug: this.options$.projectSlug,
             workspaceId: this.options$.workspaceId,
+        });
+
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
         });
 
         let security$;
@@ -185,7 +184,20 @@ export class Track extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
+        const request$ = this.createRequest$(
+            context,
+            {
+                security: securitySettings$,
+                method: "POST",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
+            options
+        );
+
+        const response = await this.do$(request$, {
             context,
             errorCodes: [
                 "400",
@@ -200,21 +212,7 @@ export class Track extends ClientSDK {
                 "500",
                 "5XX",
             ],
-        };
-        const request$ = this.createRequest$(
-            context,
-            {
-                security: securitySettings$,
-                method: "POST",
-                path: path$,
-                headers: headers$,
-                query: query$,
-                body: body$,
-            },
-            options
-        );
-
-        const response = await this.do$(request$, doOptions);
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
@@ -248,10 +246,6 @@ export class Track extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.TrackCustomerResponseBody> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -265,8 +259,12 @@ export class Track extends ClientSDK {
         const path$ = this.templateURLComponent("/track/customer")();
 
         const query$ = encodeFormQuery$({
-            projectSlug: this.options$.projectSlug,
             workspaceId: this.options$.workspaceId,
+        });
+
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
         });
 
         let security$;
@@ -284,7 +282,20 @@ export class Track extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
+        const request$ = this.createRequest$(
+            context,
+            {
+                security: securitySettings$,
+                method: "POST",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
+            options
+        );
+
+        const response = await this.do$(request$, {
             context,
             errorCodes: [
                 "400",
@@ -299,21 +310,7 @@ export class Track extends ClientSDK {
                 "500",
                 "5XX",
             ],
-        };
-        const request$ = this.createRequest$(
-            context,
-            {
-                security: securitySettings$,
-                method: "POST",
-                path: path$,
-                headers: headers$,
-                query: query$,
-                body: body$,
-            },
-            options
-        );
-
-        const response = await this.do$(request$, doOptions);
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },

@@ -3,7 +3,7 @@
  */
 
 import { SDKHooks } from "../hooks/hooks.js";
-import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config.js";
+import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import { encodeFormQuery as encodeFormQuery$ } from "../lib/encodings.js";
 import { HTTPClient } from "../lib/http.js";
 import * as schemas$ from "../lib/schemas.js";
@@ -47,9 +47,6 @@ export class QRCodes extends ClientSDK {
      */
     async get(request: operations.GetQRCodeRequest, options?: RequestOptions): Promise<string> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "image/png");
 
         const payload$ = schemas$.parse(
             input$,
@@ -69,6 +66,10 @@ export class QRCodes extends ClientSDK {
             url: payload$.url,
         });
 
+        const headers$ = new Headers({
+            Accept: "image/png",
+        });
+
         let security$;
         if (typeof this.options$.token === "function") {
             security$ = { token: await this.options$.token() };
@@ -84,7 +85,20 @@ export class QRCodes extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
+        const request$ = this.createRequest$(
+            context,
+            {
+                security: securitySettings$,
+                method: "GET",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
+            options
+        );
+
+        const response = await this.do$(request$, {
             context,
             errorCodes: [
                 "400",
@@ -99,21 +113,7 @@ export class QRCodes extends ClientSDK {
                 "500",
                 "5XX",
             ],
-        };
-        const request$ = this.createRequest$(
-            context,
-            {
-                security: securitySettings$,
-                method: "GET",
-                path: path$,
-                headers: headers$,
-                query: query$,
-                body: body$,
-            },
-            options
-        );
-
-        const response = await this.do$(request$, doOptions);
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },

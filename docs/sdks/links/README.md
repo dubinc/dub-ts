@@ -5,7 +5,7 @@
 
 * [list](#list) - Retrieve a list of links
 * [create](#create) - Create a new link
-* [count](#count) - Retrieve the number of links
+* [count](#count) - Retrieve links count
 * [get](#get) - Retrieve a link
 * [delete](#delete) - Delete a link
 * [update](#update) - Update a link
@@ -15,7 +15,7 @@
 
 ## list
 
-Retrieve a list of links for the authenticated workspace. The list will be paginated and the provided query parameters allow filtering the returned links.
+Retrieve a paginated list of links for the authenticated workspace.
 
 ### Example Usage
 
@@ -117,7 +117,7 @@ run();
 
 ## count
 
-Retrieve the number of links for the authenticated workspace. The provided query parameters allow filtering the returned links.
+Retrieve the number of links for the authenticated workspace.
 
 ### Example Usage
 
