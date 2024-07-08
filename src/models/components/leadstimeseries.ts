@@ -16,19 +16,37 @@ export type LeadsTimeseries = {
 };
 
 /** @internal */
+export const LeadsTimeseries$inboundSchema: z.ZodType<LeadsTimeseries, z.ZodTypeDef, unknown> =
+    z.object({
+        start: z.string(),
+        leads: z.number(),
+    });
+
+/** @internal */
+export type LeadsTimeseries$Outbound = {
+    start: string;
+    leads: number;
+};
+
+/** @internal */
+export const LeadsTimeseries$outboundSchema: z.ZodType<
+    LeadsTimeseries$Outbound,
+    z.ZodTypeDef,
+    LeadsTimeseries
+> = z.object({
+    start: z.string(),
+    leads: z.number(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace LeadsTimeseries$ {
-    export const inboundSchema: z.ZodType<LeadsTimeseries, z.ZodTypeDef, unknown> = z.object({
-        start: z.string(),
-        leads: z.number(),
-    });
-
-    export type Outbound = {
-        start: string;
-        leads: number;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LeadsTimeseries> = z.object({
-        start: z.string(),
-        leads: z.number(),
-    });
+    /** @deprecated use `LeadsTimeseries$inboundSchema` instead. */
+    export const inboundSchema = LeadsTimeseries$inboundSchema;
+    /** @deprecated use `LeadsTimeseries$outboundSchema` instead. */
+    export const outboundSchema = LeadsTimeseries$outboundSchema;
+    /** @deprecated use `LeadsTimeseries$Outbound` instead. */
+    export type Outbound = LeadsTimeseries$Outbound;
 }

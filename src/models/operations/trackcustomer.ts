@@ -41,70 +41,127 @@ export type TrackCustomerResponseBody = {
 };
 
 /** @internal */
+export const TrackCustomerGlobals$inboundSchema: z.ZodType<
+    TrackCustomerGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    workspaceId: z.string().optional(),
+});
+
+/** @internal */
+export type TrackCustomerGlobals$Outbound = {
+    workspaceId?: string | undefined;
+};
+
+/** @internal */
+export const TrackCustomerGlobals$outboundSchema: z.ZodType<
+    TrackCustomerGlobals$Outbound,
+    z.ZodTypeDef,
+    TrackCustomerGlobals
+> = z.object({
+    workspaceId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace TrackCustomerGlobals$ {
-    export const inboundSchema: z.ZodType<TrackCustomerGlobals, z.ZodTypeDef, unknown> = z.object({
-        workspaceId: z.string().optional(),
-    });
-
-    export type Outbound = {
-        workspaceId?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TrackCustomerGlobals> = z.object(
-        {
-            workspaceId: z.string().optional(),
-        }
-    );
+    /** @deprecated use `TrackCustomerGlobals$inboundSchema` instead. */
+    export const inboundSchema = TrackCustomerGlobals$inboundSchema;
+    /** @deprecated use `TrackCustomerGlobals$outboundSchema` instead. */
+    export const outboundSchema = TrackCustomerGlobals$outboundSchema;
+    /** @deprecated use `TrackCustomerGlobals$Outbound` instead. */
+    export type Outbound = TrackCustomerGlobals$Outbound;
 }
 
 /** @internal */
+export const TrackCustomerRequestBody$inboundSchema: z.ZodType<
+    TrackCustomerRequestBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    customerId: z.string(),
+    customerName: z.string().optional(),
+    customerEmail: z.string().optional(),
+    customerAvatar: z.string().optional(),
+});
+
+/** @internal */
+export type TrackCustomerRequestBody$Outbound = {
+    customerId: string;
+    customerName?: string | undefined;
+    customerEmail?: string | undefined;
+    customerAvatar?: string | undefined;
+};
+
+/** @internal */
+export const TrackCustomerRequestBody$outboundSchema: z.ZodType<
+    TrackCustomerRequestBody$Outbound,
+    z.ZodTypeDef,
+    TrackCustomerRequestBody
+> = z.object({
+    customerId: z.string(),
+    customerName: z.string().optional(),
+    customerEmail: z.string().optional(),
+    customerAvatar: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace TrackCustomerRequestBody$ {
-    export const inboundSchema: z.ZodType<TrackCustomerRequestBody, z.ZodTypeDef, unknown> =
-        z.object({
-            customerId: z.string(),
-            customerName: z.string().optional(),
-            customerEmail: z.string().optional(),
-            customerAvatar: z.string().optional(),
-        });
-
-    export type Outbound = {
-        customerId: string;
-        customerName?: string | undefined;
-        customerEmail?: string | undefined;
-        customerAvatar?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TrackCustomerRequestBody> =
-        z.object({
-            customerId: z.string(),
-            customerName: z.string().optional(),
-            customerEmail: z.string().optional(),
-            customerAvatar: z.string().optional(),
-        });
+    /** @deprecated use `TrackCustomerRequestBody$inboundSchema` instead. */
+    export const inboundSchema = TrackCustomerRequestBody$inboundSchema;
+    /** @deprecated use `TrackCustomerRequestBody$outboundSchema` instead. */
+    export const outboundSchema = TrackCustomerRequestBody$outboundSchema;
+    /** @deprecated use `TrackCustomerRequestBody$Outbound` instead. */
+    export type Outbound = TrackCustomerRequestBody$Outbound;
 }
 
 /** @internal */
+export const TrackCustomerResponseBody$inboundSchema: z.ZodType<
+    TrackCustomerResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    customerId: z.string(),
+    customerName: z.nullable(z.string()),
+    customerEmail: z.nullable(z.string()),
+    customerAvatar: z.nullable(z.string()),
+});
+
+/** @internal */
+export type TrackCustomerResponseBody$Outbound = {
+    customerId: string;
+    customerName: string | null;
+    customerEmail: string | null;
+    customerAvatar: string | null;
+};
+
+/** @internal */
+export const TrackCustomerResponseBody$outboundSchema: z.ZodType<
+    TrackCustomerResponseBody$Outbound,
+    z.ZodTypeDef,
+    TrackCustomerResponseBody
+> = z.object({
+    customerId: z.string(),
+    customerName: z.nullable(z.string()),
+    customerEmail: z.nullable(z.string()),
+    customerAvatar: z.nullable(z.string()),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace TrackCustomerResponseBody$ {
-    export const inboundSchema: z.ZodType<TrackCustomerResponseBody, z.ZodTypeDef, unknown> =
-        z.object({
-            customerId: z.string(),
-            customerName: z.nullable(z.string()),
-            customerEmail: z.nullable(z.string()),
-            customerAvatar: z.nullable(z.string()),
-        });
-
-    export type Outbound = {
-        customerId: string;
-        customerName: string | null;
-        customerEmail: string | null;
-        customerAvatar: string | null;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TrackCustomerResponseBody> =
-        z.object({
-            customerId: z.string(),
-            customerName: z.nullable(z.string()),
-            customerEmail: z.nullable(z.string()),
-            customerAvatar: z.nullable(z.string()),
-        });
+    /** @deprecated use `TrackCustomerResponseBody$inboundSchema` instead. */
+    export const inboundSchema = TrackCustomerResponseBody$inboundSchema;
+    /** @deprecated use `TrackCustomerResponseBody$outboundSchema` instead. */
+    export const outboundSchema = TrackCustomerResponseBody$outboundSchema;
+    /** @deprecated use `TrackCustomerResponseBody$Outbound` instead. */
+    export type Outbound = TrackCustomerResponseBody$Outbound;
 }

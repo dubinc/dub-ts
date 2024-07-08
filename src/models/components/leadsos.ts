@@ -16,19 +16,32 @@ export type LeadsOS = {
 };
 
 /** @internal */
+export const LeadsOS$inboundSchema: z.ZodType<LeadsOS, z.ZodTypeDef, unknown> = z.object({
+    os: z.string(),
+    leads: z.number(),
+});
+
+/** @internal */
+export type LeadsOS$Outbound = {
+    os: string;
+    leads: number;
+};
+
+/** @internal */
+export const LeadsOS$outboundSchema: z.ZodType<LeadsOS$Outbound, z.ZodTypeDef, LeadsOS> = z.object({
+    os: z.string(),
+    leads: z.number(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace LeadsOS$ {
-    export const inboundSchema: z.ZodType<LeadsOS, z.ZodTypeDef, unknown> = z.object({
-        os: z.string(),
-        leads: z.number(),
-    });
-
-    export type Outbound = {
-        os: string;
-        leads: number;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LeadsOS> = z.object({
-        os: z.string(),
-        leads: z.number(),
-    });
+    /** @deprecated use `LeadsOS$inboundSchema` instead. */
+    export const inboundSchema = LeadsOS$inboundSchema;
+    /** @deprecated use `LeadsOS$outboundSchema` instead. */
+    export const outboundSchema = LeadsOS$outboundSchema;
+    /** @deprecated use `LeadsOS$Outbound` instead. */
+    export type Outbound = LeadsOS$Outbound;
 }

@@ -16,19 +16,37 @@ export type ClicksDevices = {
 };
 
 /** @internal */
+export const ClicksDevices$inboundSchema: z.ZodType<ClicksDevices, z.ZodTypeDef, unknown> =
+    z.object({
+        device: z.string(),
+        clicks: z.number(),
+    });
+
+/** @internal */
+export type ClicksDevices$Outbound = {
+    device: string;
+    clicks: number;
+};
+
+/** @internal */
+export const ClicksDevices$outboundSchema: z.ZodType<
+    ClicksDevices$Outbound,
+    z.ZodTypeDef,
+    ClicksDevices
+> = z.object({
+    device: z.string(),
+    clicks: z.number(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ClicksDevices$ {
-    export const inboundSchema: z.ZodType<ClicksDevices, z.ZodTypeDef, unknown> = z.object({
-        device: z.string(),
-        clicks: z.number(),
-    });
-
-    export type Outbound = {
-        device: string;
-        clicks: number;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ClicksDevices> = z.object({
-        device: z.string(),
-        clicks: z.number(),
-    });
+    /** @deprecated use `ClicksDevices$inboundSchema` instead. */
+    export const inboundSchema = ClicksDevices$inboundSchema;
+    /** @deprecated use `ClicksDevices$outboundSchema` instead. */
+    export const outboundSchema = ClicksDevices$outboundSchema;
+    /** @deprecated use `ClicksDevices$Outbound` instead. */
+    export type Outbound = ClicksDevices$Outbound;
 }

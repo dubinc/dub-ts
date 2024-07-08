@@ -52,7 +52,7 @@ export class Analytics extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.RetrieveAnalyticsRequest$.outboundSchema.parse(value$),
+            (value$) => operations.RetrieveAnalyticsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -137,16 +137,16 @@ export class Analytics extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.RetrieveAnalyticsResponseBody>()
-            .json(200, operations.RetrieveAnalyticsResponseBody$)
-            .json(400, errors.BadRequest$, { err: true })
-            .json(401, errors.Unauthorized$, { err: true })
-            .json(403, errors.Forbidden$, { err: true })
-            .json(404, errors.NotFound$, { err: true })
-            .json(409, errors.Conflict$, { err: true })
-            .json(410, errors.InviteExpired$, { err: true })
-            .json(422, errors.UnprocessableEntity$, { err: true })
-            .json(429, errors.RateLimitExceeded$, { err: true })
-            .json(500, errors.InternalServerError$, { err: true })
+            .json(200, operations.RetrieveAnalyticsResponseBody$inboundSchema)
+            .json(400, errors.BadRequest$inboundSchema, { err: true })
+            .json(401, errors.Unauthorized$inboundSchema, { err: true })
+            .json(403, errors.Forbidden$inboundSchema, { err: true })
+            .json(404, errors.NotFound$inboundSchema, { err: true })
+            .json(409, errors.Conflict$inboundSchema, { err: true })
+            .json(410, errors.InviteExpired$inboundSchema, { err: true })
+            .json(422, errors.UnprocessableEntity$inboundSchema, { err: true })
+            .json(429, errors.RateLimitExceeded$inboundSchema, { err: true })
+            .json(500, errors.InternalServerError$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 

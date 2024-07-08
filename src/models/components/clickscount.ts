@@ -12,16 +12,33 @@ export type ClicksCount = {
 };
 
 /** @internal */
+export const ClicksCount$inboundSchema: z.ZodType<ClicksCount, z.ZodTypeDef, unknown> = z.object({
+    clicks: z.number(),
+});
+
+/** @internal */
+export type ClicksCount$Outbound = {
+    clicks: number;
+};
+
+/** @internal */
+export const ClicksCount$outboundSchema: z.ZodType<
+    ClicksCount$Outbound,
+    z.ZodTypeDef,
+    ClicksCount
+> = z.object({
+    clicks: z.number(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ClicksCount$ {
-    export const inboundSchema: z.ZodType<ClicksCount, z.ZodTypeDef, unknown> = z.object({
-        clicks: z.number(),
-    });
-
-    export type Outbound = {
-        clicks: number;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ClicksCount> = z.object({
-        clicks: z.number(),
-    });
+    /** @deprecated use `ClicksCount$inboundSchema` instead. */
+    export const inboundSchema = ClicksCount$inboundSchema;
+    /** @deprecated use `ClicksCount$outboundSchema` instead. */
+    export const outboundSchema = ClicksCount$outboundSchema;
+    /** @deprecated use `ClicksCount$Outbound` instead. */
+    export type Outbound = ClicksCount$Outbound;
 }

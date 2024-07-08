@@ -49,80 +49,129 @@ export class InviteExpired extends Error {
     data$: InviteExpiredData;
 
     constructor(err: InviteExpiredData) {
-        super("");
+        const message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : `API error occurred: ${JSON.stringify(err)}`;
+        super(message);
         this.data$ = err;
 
         this.error = err.error;
-
-        this.message =
-            "message" in err && typeof err.message === "string"
-                ? err.message
-                : "API error occurred";
 
         this.name = "InviteExpired";
     }
 }
 
 /** @internal */
+export const InviteExpiredCode$inboundSchema: z.ZodNativeEnum<typeof InviteExpiredCode> =
+    z.nativeEnum(InviteExpiredCode);
+
+/** @internal */
+export const InviteExpiredCode$outboundSchema: z.ZodNativeEnum<typeof InviteExpiredCode> =
+    InviteExpiredCode$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace InviteExpiredCode$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof InviteExpiredCode> =
-        z.nativeEnum(InviteExpiredCode);
-    export const outboundSchema: z.ZodNativeEnum<typeof InviteExpiredCode> = inboundSchema;
+    /** @deprecated use `InviteExpiredCode$inboundSchema` instead. */
+    export const inboundSchema = InviteExpiredCode$inboundSchema;
+    /** @deprecated use `InviteExpiredCode$outboundSchema` instead. */
+    export const outboundSchema = InviteExpiredCode$outboundSchema;
 }
 
 /** @internal */
+export const InviteExpiredError$inboundSchema: z.ZodType<
+    InviteExpiredError,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        code: InviteExpiredCode$inboundSchema,
+        message: z.string(),
+        doc_url: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            doc_url: "docUrl",
+        });
+    });
+
+/** @internal */
+export type InviteExpiredError$Outbound = {
+    code: string;
+    message: string;
+    doc_url?: string | undefined;
+};
+
+/** @internal */
+export const InviteExpiredError$outboundSchema: z.ZodType<
+    InviteExpiredError$Outbound,
+    z.ZodTypeDef,
+    InviteExpiredError
+> = z
+    .object({
+        code: InviteExpiredCode$outboundSchema,
+        message: z.string(),
+        docUrl: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            docUrl: "doc_url",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace InviteExpiredError$ {
-    export const inboundSchema: z.ZodType<InviteExpiredError, z.ZodTypeDef, unknown> = z
-        .object({
-            code: InviteExpiredCode$.inboundSchema,
-            message: z.string(),
-            doc_url: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                doc_url: "docUrl",
-            });
-        });
-
-    export type Outbound = {
-        code: string;
-        message: string;
-        doc_url?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, InviteExpiredError> = z
-        .object({
-            code: InviteExpiredCode$.outboundSchema,
-            message: z.string(),
-            docUrl: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                docUrl: "doc_url",
-            });
-        });
+    /** @deprecated use `InviteExpiredError$inboundSchema` instead. */
+    export const inboundSchema = InviteExpiredError$inboundSchema;
+    /** @deprecated use `InviteExpiredError$outboundSchema` instead. */
+    export const outboundSchema = InviteExpiredError$outboundSchema;
+    /** @deprecated use `InviteExpiredError$Outbound` instead. */
+    export type Outbound = InviteExpiredError$Outbound;
 }
 
 /** @internal */
-export namespace InviteExpired$ {
-    export const inboundSchema: z.ZodType<InviteExpired, z.ZodTypeDef, unknown> = z
-        .object({
-            error: z.lazy(() => InviteExpiredError$.inboundSchema),
+export const InviteExpired$inboundSchema: z.ZodType<InviteExpired, z.ZodTypeDef, unknown> = z
+    .object({
+        error: z.lazy(() => InviteExpiredError$inboundSchema),
+    })
+    .transform((v) => {
+        return new InviteExpired(v);
+    });
+
+/** @internal */
+export type InviteExpired$Outbound = {
+    error: InviteExpiredError$Outbound;
+};
+
+/** @internal */
+export const InviteExpired$outboundSchema: z.ZodType<
+    InviteExpired$Outbound,
+    z.ZodTypeDef,
+    InviteExpired
+> = z
+    .instanceof(InviteExpired)
+    .transform((v) => v.data$)
+    .pipe(
+        z.object({
+            error: z.lazy(() => InviteExpiredError$outboundSchema),
         })
-        .transform((v) => {
-            return new InviteExpired(v);
-        });
+    );
 
-    export type Outbound = {
-        error: InviteExpiredError$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, InviteExpired> = z
-        .instanceof(InviteExpired)
-        .transform((v) => v.data$)
-        .pipe(
-            z.object({
-                error: z.lazy(() => InviteExpiredError$.outboundSchema),
-            })
-        );
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace InviteExpired$ {
+    /** @deprecated use `InviteExpired$inboundSchema` instead. */
+    export const inboundSchema = InviteExpired$inboundSchema;
+    /** @deprecated use `InviteExpired$outboundSchema` instead. */
+    export const outboundSchema = InviteExpired$outboundSchema;
+    /** @deprecated use `InviteExpired$Outbound` instead. */
+    export type Outbound = InviteExpired$Outbound;
 }

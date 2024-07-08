@@ -16,19 +16,37 @@ export type LeadsReferers = {
 };
 
 /** @internal */
+export const LeadsReferers$inboundSchema: z.ZodType<LeadsReferers, z.ZodTypeDef, unknown> =
+    z.object({
+        referer: z.string(),
+        leads: z.number(),
+    });
+
+/** @internal */
+export type LeadsReferers$Outbound = {
+    referer: string;
+    leads: number;
+};
+
+/** @internal */
+export const LeadsReferers$outboundSchema: z.ZodType<
+    LeadsReferers$Outbound,
+    z.ZodTypeDef,
+    LeadsReferers
+> = z.object({
+    referer: z.string(),
+    leads: z.number(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace LeadsReferers$ {
-    export const inboundSchema: z.ZodType<LeadsReferers, z.ZodTypeDef, unknown> = z.object({
-        referer: z.string(),
-        leads: z.number(),
-    });
-
-    export type Outbound = {
-        referer: string;
-        leads: number;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LeadsReferers> = z.object({
-        referer: z.string(),
-        leads: z.number(),
-    });
+    /** @deprecated use `LeadsReferers$inboundSchema` instead. */
+    export const inboundSchema = LeadsReferers$inboundSchema;
+    /** @deprecated use `LeadsReferers$outboundSchema` instead. */
+    export const outboundSchema = LeadsReferers$outboundSchema;
+    /** @deprecated use `LeadsReferers$Outbound` instead. */
+    export type Outbound = LeadsReferers$Outbound;
 }

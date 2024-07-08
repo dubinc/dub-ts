@@ -277,26 +277,56 @@ export type LeadsCountries = {
 };
 
 /** @internal */
+export const LeadsCountriesCountry$inboundSchema: z.ZodNativeEnum<typeof LeadsCountriesCountry> =
+    z.nativeEnum(LeadsCountriesCountry);
+
+/** @internal */
+export const LeadsCountriesCountry$outboundSchema: z.ZodNativeEnum<typeof LeadsCountriesCountry> =
+    LeadsCountriesCountry$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace LeadsCountriesCountry$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof LeadsCountriesCountry> =
-        z.nativeEnum(LeadsCountriesCountry);
-    export const outboundSchema: z.ZodNativeEnum<typeof LeadsCountriesCountry> = inboundSchema;
+    /** @deprecated use `LeadsCountriesCountry$inboundSchema` instead. */
+    export const inboundSchema = LeadsCountriesCountry$inboundSchema;
+    /** @deprecated use `LeadsCountriesCountry$outboundSchema` instead. */
+    export const outboundSchema = LeadsCountriesCountry$outboundSchema;
 }
 
 /** @internal */
+export const LeadsCountries$inboundSchema: z.ZodType<LeadsCountries, z.ZodTypeDef, unknown> =
+    z.object({
+        country: LeadsCountriesCountry$inboundSchema,
+        leads: z.number(),
+    });
+
+/** @internal */
+export type LeadsCountries$Outbound = {
+    country: string;
+    leads: number;
+};
+
+/** @internal */
+export const LeadsCountries$outboundSchema: z.ZodType<
+    LeadsCountries$Outbound,
+    z.ZodTypeDef,
+    LeadsCountries
+> = z.object({
+    country: LeadsCountriesCountry$outboundSchema,
+    leads: z.number(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace LeadsCountries$ {
-    export const inboundSchema: z.ZodType<LeadsCountries, z.ZodTypeDef, unknown> = z.object({
-        country: LeadsCountriesCountry$.inboundSchema,
-        leads: z.number(),
-    });
-
-    export type Outbound = {
-        country: string;
-        leads: number;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LeadsCountries> = z.object({
-        country: LeadsCountriesCountry$.outboundSchema,
-        leads: z.number(),
-    });
+    /** @deprecated use `LeadsCountries$inboundSchema` instead. */
+    export const inboundSchema = LeadsCountries$inboundSchema;
+    /** @deprecated use `LeadsCountries$outboundSchema` instead. */
+    export const outboundSchema = LeadsCountries$outboundSchema;
+    /** @deprecated use `LeadsCountries$Outbound` instead. */
+    export type Outbound = LeadsCountries$Outbound;
 }

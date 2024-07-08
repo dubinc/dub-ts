@@ -20,22 +20,39 @@ export type SalesTopUrls = {
 };
 
 /** @internal */
+export const SalesTopUrls$inboundSchema: z.ZodType<SalesTopUrls, z.ZodTypeDef, unknown> = z.object({
+    url: z.string(),
+    sales: z.number(),
+    amount: z.number(),
+});
+
+/** @internal */
+export type SalesTopUrls$Outbound = {
+    url: string;
+    sales: number;
+    amount: number;
+};
+
+/** @internal */
+export const SalesTopUrls$outboundSchema: z.ZodType<
+    SalesTopUrls$Outbound,
+    z.ZodTypeDef,
+    SalesTopUrls
+> = z.object({
+    url: z.string(),
+    sales: z.number(),
+    amount: z.number(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace SalesTopUrls$ {
-    export const inboundSchema: z.ZodType<SalesTopUrls, z.ZodTypeDef, unknown> = z.object({
-        url: z.string(),
-        sales: z.number(),
-        amount: z.number(),
-    });
-
-    export type Outbound = {
-        url: string;
-        sales: number;
-        amount: number;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SalesTopUrls> = z.object({
-        url: z.string(),
-        sales: z.number(),
-        amount: z.number(),
-    });
+    /** @deprecated use `SalesTopUrls$inboundSchema` instead. */
+    export const inboundSchema = SalesTopUrls$inboundSchema;
+    /** @deprecated use `SalesTopUrls$outboundSchema` instead. */
+    export const outboundSchema = SalesTopUrls$outboundSchema;
+    /** @deprecated use `SalesTopUrls$Outbound` instead. */
+    export type Outbound = SalesTopUrls$Outbound;
 }

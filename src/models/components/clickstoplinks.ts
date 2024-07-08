@@ -42,37 +42,55 @@ export type ClicksTopLinks = {
 };
 
 /** @internal */
+export const ClicksTopLinks$inboundSchema: z.ZodType<ClicksTopLinks, z.ZodTypeDef, unknown> =
+    z.object({
+        link: z.string(),
+        id: z.string(),
+        domain: z.string(),
+        key: z.string(),
+        shortLink: z.string(),
+        url: z.string(),
+        createdAt: z.string(),
+        clicks: z.number(),
+    });
+
+/** @internal */
+export type ClicksTopLinks$Outbound = {
+    link: string;
+    id: string;
+    domain: string;
+    key: string;
+    shortLink: string;
+    url: string;
+    createdAt: string;
+    clicks: number;
+};
+
+/** @internal */
+export const ClicksTopLinks$outboundSchema: z.ZodType<
+    ClicksTopLinks$Outbound,
+    z.ZodTypeDef,
+    ClicksTopLinks
+> = z.object({
+    link: z.string(),
+    id: z.string(),
+    domain: z.string(),
+    key: z.string(),
+    shortLink: z.string(),
+    url: z.string(),
+    createdAt: z.string(),
+    clicks: z.number(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ClicksTopLinks$ {
-    export const inboundSchema: z.ZodType<ClicksTopLinks, z.ZodTypeDef, unknown> = z.object({
-        link: z.string(),
-        id: z.string(),
-        domain: z.string(),
-        key: z.string(),
-        shortLink: z.string(),
-        url: z.string(),
-        createdAt: z.string(),
-        clicks: z.number(),
-    });
-
-    export type Outbound = {
-        link: string;
-        id: string;
-        domain: string;
-        key: string;
-        shortLink: string;
-        url: string;
-        createdAt: string;
-        clicks: number;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ClicksTopLinks> = z.object({
-        link: z.string(),
-        id: z.string(),
-        domain: z.string(),
-        key: z.string(),
-        shortLink: z.string(),
-        url: z.string(),
-        createdAt: z.string(),
-        clicks: z.number(),
-    });
+    /** @deprecated use `ClicksTopLinks$inboundSchema` instead. */
+    export const inboundSchema = ClicksTopLinks$inboundSchema;
+    /** @deprecated use `ClicksTopLinks$outboundSchema` instead. */
+    export const outboundSchema = ClicksTopLinks$outboundSchema;
+    /** @deprecated use `ClicksTopLinks$Outbound` instead. */
+    export type Outbound = ClicksTopLinks$Outbound;
 }

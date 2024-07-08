@@ -35,7 +35,7 @@ const webWorkerLike =
 const isBrowserLike =
     webWorkerLike ||
     (typeof navigator !== "undefined" && "serviceWorker" in navigator) ||
-    typeof window === "object";
+    (typeof window === "object" && typeof window.document !== "undefined");
 
 export class ClientSDK {
     private readonly client: HTTPClient;

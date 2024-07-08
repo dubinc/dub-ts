@@ -106,117 +106,185 @@ export type BulkUpdateLinksRequestBody = {
 };
 
 /** @internal */
+export const BulkUpdateLinksTagIds$inboundSchema: z.ZodType<
+    BulkUpdateLinksTagIds,
+    z.ZodTypeDef,
+    unknown
+> = z.union([z.string(), z.array(z.string())]);
+
+/** @internal */
+export type BulkUpdateLinksTagIds$Outbound = string | Array<string>;
+
+/** @internal */
+export const BulkUpdateLinksTagIds$outboundSchema: z.ZodType<
+    BulkUpdateLinksTagIds$Outbound,
+    z.ZodTypeDef,
+    BulkUpdateLinksTagIds
+> = z.union([z.string(), z.array(z.string())]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace BulkUpdateLinksTagIds$ {
-    export const inboundSchema: z.ZodType<BulkUpdateLinksTagIds, z.ZodTypeDef, unknown> = z.union([
-        z.string(),
-        z.array(z.string()),
-    ]);
-
-    export type Outbound = string | Array<string>;
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, BulkUpdateLinksTagIds> = z.union(
-        [z.string(), z.array(z.string())]
-    );
+    /** @deprecated use `BulkUpdateLinksTagIds$inboundSchema` instead. */
+    export const inboundSchema = BulkUpdateLinksTagIds$inboundSchema;
+    /** @deprecated use `BulkUpdateLinksTagIds$outboundSchema` instead. */
+    export const outboundSchema = BulkUpdateLinksTagIds$outboundSchema;
+    /** @deprecated use `BulkUpdateLinksTagIds$Outbound` instead. */
+    export type Outbound = BulkUpdateLinksTagIds$Outbound;
 }
 
 /** @internal */
+export const BulkUpdateLinksTagNames$inboundSchema: z.ZodType<
+    BulkUpdateLinksTagNames,
+    z.ZodTypeDef,
+    unknown
+> = z.union([z.string(), z.array(z.string())]);
+
+/** @internal */
+export type BulkUpdateLinksTagNames$Outbound = string | Array<string>;
+
+/** @internal */
+export const BulkUpdateLinksTagNames$outboundSchema: z.ZodType<
+    BulkUpdateLinksTagNames$Outbound,
+    z.ZodTypeDef,
+    BulkUpdateLinksTagNames
+> = z.union([z.string(), z.array(z.string())]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace BulkUpdateLinksTagNames$ {
-    export const inboundSchema: z.ZodType<BulkUpdateLinksTagNames, z.ZodTypeDef, unknown> = z.union(
-        [z.string(), z.array(z.string())]
-    );
-
-    export type Outbound = string | Array<string>;
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, BulkUpdateLinksTagNames> =
-        z.union([z.string(), z.array(z.string())]);
+    /** @deprecated use `BulkUpdateLinksTagNames$inboundSchema` instead. */
+    export const inboundSchema = BulkUpdateLinksTagNames$inboundSchema;
+    /** @deprecated use `BulkUpdateLinksTagNames$outboundSchema` instead. */
+    export const outboundSchema = BulkUpdateLinksTagNames$outboundSchema;
+    /** @deprecated use `BulkUpdateLinksTagNames$Outbound` instead. */
+    export type Outbound = BulkUpdateLinksTagNames$Outbound;
 }
 
 /** @internal */
+export const Data$inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z.object({
+    url: z.string().optional(),
+    trackConversion: z.boolean().default(false),
+    archived: z.boolean().default(false),
+    publicStats: z.boolean().default(false),
+    tagId: z.nullable(z.string()).optional(),
+    tagIds: z.union([z.string(), z.array(z.string())]).optional(),
+    tagNames: z.union([z.string(), z.array(z.string())]).optional(),
+    comments: z.nullable(z.string()).optional(),
+    expiresAt: z.nullable(z.string()).optional(),
+    expiredUrl: z.nullable(z.string()).optional(),
+    password: z.nullable(z.string()).optional(),
+    proxy: z.boolean().default(false),
+    title: z.nullable(z.string()).optional(),
+    description: z.nullable(z.string()).optional(),
+    image: z.nullable(z.string()).optional(),
+    rewrite: z.boolean().default(false),
+    ios: z.nullable(z.string()).optional(),
+    android: z.nullable(z.string()).optional(),
+    geo: z.nullable(components.LinkGeoTargeting$inboundSchema).optional(),
+    doIndex: z.boolean().default(false),
+});
+
+/** @internal */
+export type Data$Outbound = {
+    url?: string | undefined;
+    trackConversion: boolean;
+    archived: boolean;
+    publicStats: boolean;
+    tagId?: string | null | undefined;
+    tagIds?: string | Array<string> | undefined;
+    tagNames?: string | Array<string> | undefined;
+    comments?: string | null | undefined;
+    expiresAt?: string | null | undefined;
+    expiredUrl?: string | null | undefined;
+    password?: string | null | undefined;
+    proxy: boolean;
+    title?: string | null | undefined;
+    description?: string | null | undefined;
+    image?: string | null | undefined;
+    rewrite: boolean;
+    ios?: string | null | undefined;
+    android?: string | null | undefined;
+    geo?: components.LinkGeoTargeting$Outbound | null | undefined;
+    doIndex: boolean;
+};
+
+/** @internal */
+export const Data$outboundSchema: z.ZodType<Data$Outbound, z.ZodTypeDef, Data> = z.object({
+    url: z.string().optional(),
+    trackConversion: z.boolean().default(false),
+    archived: z.boolean().default(false),
+    publicStats: z.boolean().default(false),
+    tagId: z.nullable(z.string()).optional(),
+    tagIds: z.union([z.string(), z.array(z.string())]).optional(),
+    tagNames: z.union([z.string(), z.array(z.string())]).optional(),
+    comments: z.nullable(z.string()).optional(),
+    expiresAt: z.nullable(z.string()).optional(),
+    expiredUrl: z.nullable(z.string()).optional(),
+    password: z.nullable(z.string()).optional(),
+    proxy: z.boolean().default(false),
+    title: z.nullable(z.string()).optional(),
+    description: z.nullable(z.string()).optional(),
+    image: z.nullable(z.string()).optional(),
+    rewrite: z.boolean().default(false),
+    ios: z.nullable(z.string()).optional(),
+    android: z.nullable(z.string()).optional(),
+    geo: z.nullable(components.LinkGeoTargeting$outboundSchema).optional(),
+    doIndex: z.boolean().default(false),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Data$ {
-    export const inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z.object({
-        url: z.string().optional(),
-        trackConversion: z.boolean().default(false),
-        archived: z.boolean().default(false),
-        publicStats: z.boolean().default(false),
-        tagId: z.nullable(z.string()).optional(),
-        tagIds: z.union([z.string(), z.array(z.string())]).optional(),
-        tagNames: z.union([z.string(), z.array(z.string())]).optional(),
-        comments: z.nullable(z.string()).optional(),
-        expiresAt: z.nullable(z.string()).optional(),
-        expiredUrl: z.nullable(z.string()).optional(),
-        password: z.nullable(z.string()).optional(),
-        proxy: z.boolean().default(false),
-        title: z.nullable(z.string()).optional(),
-        description: z.nullable(z.string()).optional(),
-        image: z.nullable(z.string()).optional(),
-        rewrite: z.boolean().default(false),
-        ios: z.nullable(z.string()).optional(),
-        android: z.nullable(z.string()).optional(),
-        geo: z.nullable(components.LinkGeoTargeting$.inboundSchema).optional(),
-        doIndex: z.boolean().default(false),
-    });
-
-    export type Outbound = {
-        url?: string | undefined;
-        trackConversion: boolean;
-        archived: boolean;
-        publicStats: boolean;
-        tagId?: string | null | undefined;
-        tagIds?: string | Array<string> | undefined;
-        tagNames?: string | Array<string> | undefined;
-        comments?: string | null | undefined;
-        expiresAt?: string | null | undefined;
-        expiredUrl?: string | null | undefined;
-        password?: string | null | undefined;
-        proxy: boolean;
-        title?: string | null | undefined;
-        description?: string | null | undefined;
-        image?: string | null | undefined;
-        rewrite: boolean;
-        ios?: string | null | undefined;
-        android?: string | null | undefined;
-        geo?: components.LinkGeoTargeting$.Outbound | null | undefined;
-        doIndex: boolean;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Data> = z.object({
-        url: z.string().optional(),
-        trackConversion: z.boolean().default(false),
-        archived: z.boolean().default(false),
-        publicStats: z.boolean().default(false),
-        tagId: z.nullable(z.string()).optional(),
-        tagIds: z.union([z.string(), z.array(z.string())]).optional(),
-        tagNames: z.union([z.string(), z.array(z.string())]).optional(),
-        comments: z.nullable(z.string()).optional(),
-        expiresAt: z.nullable(z.string()).optional(),
-        expiredUrl: z.nullable(z.string()).optional(),
-        password: z.nullable(z.string()).optional(),
-        proxy: z.boolean().default(false),
-        title: z.nullable(z.string()).optional(),
-        description: z.nullable(z.string()).optional(),
-        image: z.nullable(z.string()).optional(),
-        rewrite: z.boolean().default(false),
-        ios: z.nullable(z.string()).optional(),
-        android: z.nullable(z.string()).optional(),
-        geo: z.nullable(components.LinkGeoTargeting$.outboundSchema).optional(),
-        doIndex: z.boolean().default(false),
-    });
+    /** @deprecated use `Data$inboundSchema` instead. */
+    export const inboundSchema = Data$inboundSchema;
+    /** @deprecated use `Data$outboundSchema` instead. */
+    export const outboundSchema = Data$outboundSchema;
+    /** @deprecated use `Data$Outbound` instead. */
+    export type Outbound = Data$Outbound;
 }
 
 /** @internal */
+export const BulkUpdateLinksRequestBody$inboundSchema: z.ZodType<
+    BulkUpdateLinksRequestBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    linkIds: z.array(z.string()),
+    data: z.lazy(() => Data$inboundSchema),
+});
+
+/** @internal */
+export type BulkUpdateLinksRequestBody$Outbound = {
+    linkIds: Array<string>;
+    data: Data$Outbound;
+};
+
+/** @internal */
+export const BulkUpdateLinksRequestBody$outboundSchema: z.ZodType<
+    BulkUpdateLinksRequestBody$Outbound,
+    z.ZodTypeDef,
+    BulkUpdateLinksRequestBody
+> = z.object({
+    linkIds: z.array(z.string()),
+    data: z.lazy(() => Data$outboundSchema),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace BulkUpdateLinksRequestBody$ {
-    export const inboundSchema: z.ZodType<BulkUpdateLinksRequestBody, z.ZodTypeDef, unknown> =
-        z.object({
-            linkIds: z.array(z.string()),
-            data: z.lazy(() => Data$.inboundSchema),
-        });
-
-    export type Outbound = {
-        linkIds: Array<string>;
-        data: Data$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, BulkUpdateLinksRequestBody> =
-        z.object({
-            linkIds: z.array(z.string()),
-            data: z.lazy(() => Data$.outboundSchema),
-        });
+    /** @deprecated use `BulkUpdateLinksRequestBody$inboundSchema` instead. */
+    export const inboundSchema = BulkUpdateLinksRequestBody$inboundSchema;
+    /** @deprecated use `BulkUpdateLinksRequestBody$outboundSchema` instead. */
+    export const outboundSchema = BulkUpdateLinksRequestBody$outboundSchema;
+    /** @deprecated use `BulkUpdateLinksRequestBody$Outbound` instead. */
+    export type Outbound = BulkUpdateLinksRequestBody$Outbound;
 }

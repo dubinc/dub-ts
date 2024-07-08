@@ -29,49 +29,103 @@ export type DeleteLinkResponseBody = {
 };
 
 /** @internal */
+export const DeleteLinkGlobals$inboundSchema: z.ZodType<DeleteLinkGlobals, z.ZodTypeDef, unknown> =
+    z.object({
+        workspaceId: z.string().optional(),
+    });
+
+/** @internal */
+export type DeleteLinkGlobals$Outbound = {
+    workspaceId?: string | undefined;
+};
+
+/** @internal */
+export const DeleteLinkGlobals$outboundSchema: z.ZodType<
+    DeleteLinkGlobals$Outbound,
+    z.ZodTypeDef,
+    DeleteLinkGlobals
+> = z.object({
+    workspaceId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace DeleteLinkGlobals$ {
-    export const inboundSchema: z.ZodType<DeleteLinkGlobals, z.ZodTypeDef, unknown> = z.object({
-        workspaceId: z.string().optional(),
-    });
-
-    export type Outbound = {
-        workspaceId?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteLinkGlobals> = z.object({
-        workspaceId: z.string().optional(),
-    });
+    /** @deprecated use `DeleteLinkGlobals$inboundSchema` instead. */
+    export const inboundSchema = DeleteLinkGlobals$inboundSchema;
+    /** @deprecated use `DeleteLinkGlobals$outboundSchema` instead. */
+    export const outboundSchema = DeleteLinkGlobals$outboundSchema;
+    /** @deprecated use `DeleteLinkGlobals$Outbound` instead. */
+    export type Outbound = DeleteLinkGlobals$Outbound;
 }
 
 /** @internal */
+export const DeleteLinkRequest$inboundSchema: z.ZodType<DeleteLinkRequest, z.ZodTypeDef, unknown> =
+    z.object({
+        linkId: z.string(),
+    });
+
+/** @internal */
+export type DeleteLinkRequest$Outbound = {
+    linkId: string;
+};
+
+/** @internal */
+export const DeleteLinkRequest$outboundSchema: z.ZodType<
+    DeleteLinkRequest$Outbound,
+    z.ZodTypeDef,
+    DeleteLinkRequest
+> = z.object({
+    linkId: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace DeleteLinkRequest$ {
-    export const inboundSchema: z.ZodType<DeleteLinkRequest, z.ZodTypeDef, unknown> = z.object({
-        linkId: z.string(),
-    });
-
-    export type Outbound = {
-        linkId: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteLinkRequest> = z.object({
-        linkId: z.string(),
-    });
+    /** @deprecated use `DeleteLinkRequest$inboundSchema` instead. */
+    export const inboundSchema = DeleteLinkRequest$inboundSchema;
+    /** @deprecated use `DeleteLinkRequest$outboundSchema` instead. */
+    export const outboundSchema = DeleteLinkRequest$outboundSchema;
+    /** @deprecated use `DeleteLinkRequest$Outbound` instead. */
+    export type Outbound = DeleteLinkRequest$Outbound;
 }
 
 /** @internal */
+export const DeleteLinkResponseBody$inboundSchema: z.ZodType<
+    DeleteLinkResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    id: z.string(),
+});
+
+/** @internal */
+export type DeleteLinkResponseBody$Outbound = {
+    id: string;
+};
+
+/** @internal */
+export const DeleteLinkResponseBody$outboundSchema: z.ZodType<
+    DeleteLinkResponseBody$Outbound,
+    z.ZodTypeDef,
+    DeleteLinkResponseBody
+> = z.object({
+    id: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace DeleteLinkResponseBody$ {
-    export const inboundSchema: z.ZodType<DeleteLinkResponseBody, z.ZodTypeDef, unknown> = z.object(
-        {
-            id: z.string(),
-        }
-    );
-
-    export type Outbound = {
-        id: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteLinkResponseBody> =
-        z.object({
-            id: z.string(),
-        });
+    /** @deprecated use `DeleteLinkResponseBody$inboundSchema` instead. */
+    export const inboundSchema = DeleteLinkResponseBody$inboundSchema;
+    /** @deprecated use `DeleteLinkResponseBody$outboundSchema` instead. */
+    export const outboundSchema = DeleteLinkResponseBody$outboundSchema;
+    /** @deprecated use `DeleteLinkResponseBody$Outbound` instead. */
+    export type Outbound = DeleteLinkResponseBody$Outbound;
 }

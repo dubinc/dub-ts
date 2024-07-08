@@ -79,92 +79,168 @@ export type GetLinksRequest = {
 };
 
 /** @internal */
+export const GetLinksGlobals$inboundSchema: z.ZodType<GetLinksGlobals, z.ZodTypeDef, unknown> =
+    z.object({
+        workspaceId: z.string().optional(),
+    });
+
+/** @internal */
+export type GetLinksGlobals$Outbound = {
+    workspaceId?: string | undefined;
+};
+
+/** @internal */
+export const GetLinksGlobals$outboundSchema: z.ZodType<
+    GetLinksGlobals$Outbound,
+    z.ZodTypeDef,
+    GetLinksGlobals
+> = z.object({
+    workspaceId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetLinksGlobals$ {
-    export const inboundSchema: z.ZodType<GetLinksGlobals, z.ZodTypeDef, unknown> = z.object({
-        workspaceId: z.string().optional(),
-    });
-
-    export type Outbound = {
-        workspaceId?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLinksGlobals> = z.object({
-        workspaceId: z.string().optional(),
-    });
+    /** @deprecated use `GetLinksGlobals$inboundSchema` instead. */
+    export const inboundSchema = GetLinksGlobals$inboundSchema;
+    /** @deprecated use `GetLinksGlobals$outboundSchema` instead. */
+    export const outboundSchema = GetLinksGlobals$outboundSchema;
+    /** @deprecated use `GetLinksGlobals$Outbound` instead. */
+    export type Outbound = GetLinksGlobals$Outbound;
 }
 
 /** @internal */
+export const QueryParamTagIds$inboundSchema: z.ZodType<QueryParamTagIds, z.ZodTypeDef, unknown> =
+    z.union([z.string(), z.array(z.string())]);
+
+/** @internal */
+export type QueryParamTagIds$Outbound = string | Array<string>;
+
+/** @internal */
+export const QueryParamTagIds$outboundSchema: z.ZodType<
+    QueryParamTagIds$Outbound,
+    z.ZodTypeDef,
+    QueryParamTagIds
+> = z.union([z.string(), z.array(z.string())]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace QueryParamTagIds$ {
-    export const inboundSchema: z.ZodType<QueryParamTagIds, z.ZodTypeDef, unknown> = z.union([
-        z.string(),
-        z.array(z.string()),
-    ]);
-
-    export type Outbound = string | Array<string>;
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, QueryParamTagIds> = z.union([
-        z.string(),
-        z.array(z.string()),
-    ]);
+    /** @deprecated use `QueryParamTagIds$inboundSchema` instead. */
+    export const inboundSchema = QueryParamTagIds$inboundSchema;
+    /** @deprecated use `QueryParamTagIds$outboundSchema` instead. */
+    export const outboundSchema = QueryParamTagIds$outboundSchema;
+    /** @deprecated use `QueryParamTagIds$Outbound` instead. */
+    export type Outbound = QueryParamTagIds$Outbound;
 }
 
 /** @internal */
+export const QueryParamTagNames$inboundSchema: z.ZodType<
+    QueryParamTagNames,
+    z.ZodTypeDef,
+    unknown
+> = z.union([z.string(), z.array(z.string())]);
+
+/** @internal */
+export type QueryParamTagNames$Outbound = string | Array<string>;
+
+/** @internal */
+export const QueryParamTagNames$outboundSchema: z.ZodType<
+    QueryParamTagNames$Outbound,
+    z.ZodTypeDef,
+    QueryParamTagNames
+> = z.union([z.string(), z.array(z.string())]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace QueryParamTagNames$ {
-    export const inboundSchema: z.ZodType<QueryParamTagNames, z.ZodTypeDef, unknown> = z.union([
-        z.string(),
-        z.array(z.string()),
-    ]);
-
-    export type Outbound = string | Array<string>;
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, QueryParamTagNames> = z.union([
-        z.string(),
-        z.array(z.string()),
-    ]);
+    /** @deprecated use `QueryParamTagNames$inboundSchema` instead. */
+    export const inboundSchema = QueryParamTagNames$inboundSchema;
+    /** @deprecated use `QueryParamTagNames$outboundSchema` instead. */
+    export const outboundSchema = QueryParamTagNames$outboundSchema;
+    /** @deprecated use `QueryParamTagNames$Outbound` instead. */
+    export type Outbound = QueryParamTagNames$Outbound;
 }
 
 /** @internal */
+export const Sort$inboundSchema: z.ZodNativeEnum<typeof Sort> = z.nativeEnum(Sort);
+
+/** @internal */
+export const Sort$outboundSchema: z.ZodNativeEnum<typeof Sort> = Sort$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Sort$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof Sort> = z.nativeEnum(Sort);
-    export const outboundSchema: z.ZodNativeEnum<typeof Sort> = inboundSchema;
+    /** @deprecated use `Sort$inboundSchema` instead. */
+    export const inboundSchema = Sort$inboundSchema;
+    /** @deprecated use `Sort$outboundSchema` instead. */
+    export const outboundSchema = Sort$outboundSchema;
 }
 
 /** @internal */
+export const GetLinksRequest$inboundSchema: z.ZodType<GetLinksRequest, z.ZodTypeDef, unknown> =
+    z.object({
+        domain: z.string().optional(),
+        tagId: z.string().optional(),
+        tagIds: z.union([z.string(), z.array(z.string())]).optional(),
+        tagNames: z.union([z.string(), z.array(z.string())]).optional(),
+        search: z.string().optional(),
+        userId: z.string().optional(),
+        showArchived: z.boolean().default(false),
+        withTags: z.boolean().default(false),
+        sort: Sort$inboundSchema.default("createdAt"),
+        page: z.number().int().optional(),
+    });
+
+/** @internal */
+export type GetLinksRequest$Outbound = {
+    domain?: string | undefined;
+    tagId?: string | undefined;
+    tagIds?: string | Array<string> | undefined;
+    tagNames?: string | Array<string> | undefined;
+    search?: string | undefined;
+    userId?: string | undefined;
+    showArchived: boolean;
+    withTags: boolean;
+    sort: string;
+    page?: number | undefined;
+};
+
+/** @internal */
+export const GetLinksRequest$outboundSchema: z.ZodType<
+    GetLinksRequest$Outbound,
+    z.ZodTypeDef,
+    GetLinksRequest
+> = z.object({
+    domain: z.string().optional(),
+    tagId: z.string().optional(),
+    tagIds: z.union([z.string(), z.array(z.string())]).optional(),
+    tagNames: z.union([z.string(), z.array(z.string())]).optional(),
+    search: z.string().optional(),
+    userId: z.string().optional(),
+    showArchived: z.boolean().default(false),
+    withTags: z.boolean().default(false),
+    sort: Sort$outboundSchema.default("createdAt"),
+    page: z.number().int().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetLinksRequest$ {
-    export const inboundSchema: z.ZodType<GetLinksRequest, z.ZodTypeDef, unknown> = z.object({
-        domain: z.string().optional(),
-        tagId: z.string().optional(),
-        tagIds: z.union([z.string(), z.array(z.string())]).optional(),
-        tagNames: z.union([z.string(), z.array(z.string())]).optional(),
-        search: z.string().optional(),
-        userId: z.string().optional(),
-        showArchived: z.boolean().default(false),
-        withTags: z.boolean().default(false),
-        sort: Sort$.inboundSchema.default("createdAt"),
-        page: z.number().int().optional(),
-    });
-
-    export type Outbound = {
-        domain?: string | undefined;
-        tagId?: string | undefined;
-        tagIds?: string | Array<string> | undefined;
-        tagNames?: string | Array<string> | undefined;
-        search?: string | undefined;
-        userId?: string | undefined;
-        showArchived: boolean;
-        withTags: boolean;
-        sort: string;
-        page?: number | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLinksRequest> = z.object({
-        domain: z.string().optional(),
-        tagId: z.string().optional(),
-        tagIds: z.union([z.string(), z.array(z.string())]).optional(),
-        tagNames: z.union([z.string(), z.array(z.string())]).optional(),
-        search: z.string().optional(),
-        userId: z.string().optional(),
-        showArchived: z.boolean().default(false),
-        withTags: z.boolean().default(false),
-        sort: Sort$.outboundSchema.default("createdAt"),
-        page: z.number().int().optional(),
-    });
+    /** @deprecated use `GetLinksRequest$inboundSchema` instead. */
+    export const inboundSchema = GetLinksRequest$inboundSchema;
+    /** @deprecated use `GetLinksRequest$outboundSchema` instead. */
+    export const outboundSchema = GetLinksRequest$outboundSchema;
+    /** @deprecated use `GetLinksRequest$Outbound` instead. */
+    export type Outbound = GetLinksRequest$Outbound;
 }

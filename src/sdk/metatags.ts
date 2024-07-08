@@ -51,7 +51,7 @@ export class Metatags extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetMetatagsRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetMetatagsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -97,7 +97,7 @@ export class Metatags extends ClientSDK {
         const response = await this.do$(request$, { context, errorCodes: ["4XX", "5XX"] });
 
         const [result$] = await this.matcher<operations.GetMetatagsResponseBody>()
-            .json(200, operations.GetMetatagsResponseBody$)
+            .json(200, operations.GetMetatagsResponseBody$inboundSchema)
             .fail(["4XX", "5XX"])
             .match(response);
 

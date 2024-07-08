@@ -44,40 +44,57 @@ export type DomainSchema = {
 };
 
 /** @internal */
+export const DomainSchema$inboundSchema: z.ZodType<DomainSchema, z.ZodTypeDef, unknown> = z.object({
+    id: z.string(),
+    slug: z.string(),
+    verified: z.boolean().default(false),
+    primary: z.boolean().default(false),
+    archived: z.boolean().default(false),
+    placeholder: z.string().default("https://dub.co/help/article/what-is-dub"),
+    expiredUrl: z.nullable(z.string()),
+    createdAt: z.string(),
+    updatedAt: z.string(),
+});
+
+/** @internal */
+export type DomainSchema$Outbound = {
+    id: string;
+    slug: string;
+    verified: boolean;
+    primary: boolean;
+    archived: boolean;
+    placeholder: string;
+    expiredUrl: string | null;
+    createdAt: string;
+    updatedAt: string;
+};
+
+/** @internal */
+export const DomainSchema$outboundSchema: z.ZodType<
+    DomainSchema$Outbound,
+    z.ZodTypeDef,
+    DomainSchema
+> = z.object({
+    id: z.string(),
+    slug: z.string(),
+    verified: z.boolean().default(false),
+    primary: z.boolean().default(false),
+    archived: z.boolean().default(false),
+    placeholder: z.string().default("https://dub.co/help/article/what-is-dub"),
+    expiredUrl: z.nullable(z.string()),
+    createdAt: z.string(),
+    updatedAt: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace DomainSchema$ {
-    export const inboundSchema: z.ZodType<DomainSchema, z.ZodTypeDef, unknown> = z.object({
-        id: z.string(),
-        slug: z.string(),
-        verified: z.boolean().default(false),
-        primary: z.boolean().default(false),
-        archived: z.boolean().default(false),
-        placeholder: z.string().default("https://dub.co/help/article/what-is-dub"),
-        expiredUrl: z.nullable(z.string()),
-        createdAt: z.string(),
-        updatedAt: z.string(),
-    });
-
-    export type Outbound = {
-        id: string;
-        slug: string;
-        verified: boolean;
-        primary: boolean;
-        archived: boolean;
-        placeholder: string;
-        expiredUrl: string | null;
-        createdAt: string;
-        updatedAt: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DomainSchema> = z.object({
-        id: z.string(),
-        slug: z.string(),
-        verified: z.boolean().default(false),
-        primary: z.boolean().default(false),
-        archived: z.boolean().default(false),
-        placeholder: z.string().default("https://dub.co/help/article/what-is-dub"),
-        expiredUrl: z.nullable(z.string()),
-        createdAt: z.string(),
-        updatedAt: z.string(),
-    });
+    /** @deprecated use `DomainSchema$inboundSchema` instead. */
+    export const inboundSchema = DomainSchema$inboundSchema;
+    /** @deprecated use `DomainSchema$outboundSchema` instead. */
+    export const outboundSchema = DomainSchema$outboundSchema;
+    /** @deprecated use `DomainSchema$Outbound` instead. */
+    export type Outbound = DomainSchema$Outbound;
 }

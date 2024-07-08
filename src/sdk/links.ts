@@ -58,7 +58,7 @@ export class Links extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetLinksRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetLinksRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -133,16 +133,16 @@ export class Links extends ClientSDK {
         };
 
         const [result$] = await this.matcher<Array<components.LinkSchema>>()
-            .json(200, z.array(components.LinkSchema$.inboundSchema))
-            .json(400, errors.BadRequest$, { err: true })
-            .json(401, errors.Unauthorized$, { err: true })
-            .json(403, errors.Forbidden$, { err: true })
-            .json(404, errors.NotFound$, { err: true })
-            .json(409, errors.Conflict$, { err: true })
-            .json(410, errors.InviteExpired$, { err: true })
-            .json(422, errors.UnprocessableEntity$, { err: true })
-            .json(429, errors.RateLimitExceeded$, { err: true })
-            .json(500, errors.InternalServerError$, { err: true })
+            .json(200, z.array(components.LinkSchema$inboundSchema))
+            .json(400, errors.BadRequest$inboundSchema, { err: true })
+            .json(401, errors.Unauthorized$inboundSchema, { err: true })
+            .json(403, errors.Forbidden$inboundSchema, { err: true })
+            .json(404, errors.NotFound$inboundSchema, { err: true })
+            .json(409, errors.Conflict$inboundSchema, { err: true })
+            .json(410, errors.InviteExpired$inboundSchema, { err: true })
+            .json(422, errors.UnprocessableEntity$inboundSchema, { err: true })
+            .json(429, errors.RateLimitExceeded$inboundSchema, { err: true })
+            .json(500, errors.InternalServerError$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -163,7 +163,7 @@ export class Links extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.CreateLinkRequestBody$.outboundSchema.optional().parse(value$),
+            (value$) => operations.CreateLinkRequestBody$outboundSchema.optional().parse(value$),
             "Input validation failed"
         );
         const body$ =
@@ -230,16 +230,16 @@ export class Links extends ClientSDK {
         };
 
         const [result$] = await this.matcher<components.LinkSchema>()
-            .json(200, components.LinkSchema$)
-            .json(400, errors.BadRequest$, { err: true })
-            .json(401, errors.Unauthorized$, { err: true })
-            .json(403, errors.Forbidden$, { err: true })
-            .json(404, errors.NotFound$, { err: true })
-            .json(409, errors.Conflict$, { err: true })
-            .json(410, errors.InviteExpired$, { err: true })
-            .json(422, errors.UnprocessableEntity$, { err: true })
-            .json(429, errors.RateLimitExceeded$, { err: true })
-            .json(500, errors.InternalServerError$, { err: true })
+            .json(200, components.LinkSchema$inboundSchema)
+            .json(400, errors.BadRequest$inboundSchema, { err: true })
+            .json(401, errors.Unauthorized$inboundSchema, { err: true })
+            .json(403, errors.Forbidden$inboundSchema, { err: true })
+            .json(404, errors.NotFound$inboundSchema, { err: true })
+            .json(409, errors.Conflict$inboundSchema, { err: true })
+            .json(410, errors.InviteExpired$inboundSchema, { err: true })
+            .json(422, errors.UnprocessableEntity$inboundSchema, { err: true })
+            .json(429, errors.RateLimitExceeded$inboundSchema, { err: true })
+            .json(500, errors.InternalServerError$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -260,7 +260,7 @@ export class Links extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetLinksCountRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetLinksCountRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -335,15 +335,15 @@ export class Links extends ClientSDK {
 
         const [result$] = await this.matcher<number>()
             .json(200, z.number())
-            .json(400, errors.BadRequest$, { err: true })
-            .json(401, errors.Unauthorized$, { err: true })
-            .json(403, errors.Forbidden$, { err: true })
-            .json(404, errors.NotFound$, { err: true })
-            .json(409, errors.Conflict$, { err: true })
-            .json(410, errors.InviteExpired$, { err: true })
-            .json(422, errors.UnprocessableEntity$, { err: true })
-            .json(429, errors.RateLimitExceeded$, { err: true })
-            .json(500, errors.InternalServerError$, { err: true })
+            .json(400, errors.BadRequest$inboundSchema, { err: true })
+            .json(401, errors.Unauthorized$inboundSchema, { err: true })
+            .json(403, errors.Forbidden$inboundSchema, { err: true })
+            .json(404, errors.NotFound$inboundSchema, { err: true })
+            .json(409, errors.Conflict$inboundSchema, { err: true })
+            .json(410, errors.InviteExpired$inboundSchema, { err: true })
+            .json(422, errors.UnprocessableEntity$inboundSchema, { err: true })
+            .json(429, errors.RateLimitExceeded$inboundSchema, { err: true })
+            .json(500, errors.InternalServerError$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -364,7 +364,7 @@ export class Links extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetLinkInfoRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetLinkInfoRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -433,16 +433,16 @@ export class Links extends ClientSDK {
         };
 
         const [result$] = await this.matcher<components.LinkSchema>()
-            .json(200, components.LinkSchema$)
-            .json(400, errors.BadRequest$, { err: true })
-            .json(401, errors.Unauthorized$, { err: true })
-            .json(403, errors.Forbidden$, { err: true })
-            .json(404, errors.NotFound$, { err: true })
-            .json(409, errors.Conflict$, { err: true })
-            .json(410, errors.InviteExpired$, { err: true })
-            .json(422, errors.UnprocessableEntity$, { err: true })
-            .json(429, errors.RateLimitExceeded$, { err: true })
-            .json(500, errors.InternalServerError$, { err: true })
+            .json(200, components.LinkSchema$inboundSchema)
+            .json(400, errors.BadRequest$inboundSchema, { err: true })
+            .json(401, errors.Unauthorized$inboundSchema, { err: true })
+            .json(403, errors.Forbidden$inboundSchema, { err: true })
+            .json(404, errors.NotFound$inboundSchema, { err: true })
+            .json(409, errors.Conflict$inboundSchema, { err: true })
+            .json(410, errors.InviteExpired$inboundSchema, { err: true })
+            .json(422, errors.UnprocessableEntity$inboundSchema, { err: true })
+            .json(429, errors.RateLimitExceeded$inboundSchema, { err: true })
+            .json(500, errors.InternalServerError$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -465,7 +465,7 @@ export class Links extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.DeleteLinkRequest$.outboundSchema.parse(value$),
+            (value$) => operations.DeleteLinkRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -536,16 +536,16 @@ export class Links extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.DeleteLinkResponseBody>()
-            .json(200, operations.DeleteLinkResponseBody$)
-            .json(400, errors.BadRequest$, { err: true })
-            .json(401, errors.Unauthorized$, { err: true })
-            .json(403, errors.Forbidden$, { err: true })
-            .json(404, errors.NotFound$, { err: true })
-            .json(409, errors.Conflict$, { err: true })
-            .json(410, errors.InviteExpired$, { err: true })
-            .json(422, errors.UnprocessableEntity$, { err: true })
-            .json(429, errors.RateLimitExceeded$, { err: true })
-            .json(500, errors.InternalServerError$, { err: true })
+            .json(200, operations.DeleteLinkResponseBody$inboundSchema)
+            .json(400, errors.BadRequest$inboundSchema, { err: true })
+            .json(401, errors.Unauthorized$inboundSchema, { err: true })
+            .json(403, errors.Forbidden$inboundSchema, { err: true })
+            .json(404, errors.NotFound$inboundSchema, { err: true })
+            .json(409, errors.Conflict$inboundSchema, { err: true })
+            .json(410, errors.InviteExpired$inboundSchema, { err: true })
+            .json(422, errors.UnprocessableEntity$inboundSchema, { err: true })
+            .json(429, errors.RateLimitExceeded$inboundSchema, { err: true })
+            .json(500, errors.InternalServerError$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -570,7 +570,7 @@ export class Links extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.UpdateLinkRequest$.outboundSchema.parse(value$),
+            (value$) => operations.UpdateLinkRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.RequestBody, { explode: true });
@@ -642,16 +642,16 @@ export class Links extends ClientSDK {
         };
 
         const [result$] = await this.matcher<components.LinkSchema>()
-            .json(200, components.LinkSchema$)
-            .json(400, errors.BadRequest$, { err: true })
-            .json(401, errors.Unauthorized$, { err: true })
-            .json(403, errors.Forbidden$, { err: true })
-            .json(404, errors.NotFound$, { err: true })
-            .json(409, errors.Conflict$, { err: true })
-            .json(410, errors.InviteExpired$, { err: true })
-            .json(422, errors.UnprocessableEntity$, { err: true })
-            .json(429, errors.RateLimitExceeded$, { err: true })
-            .json(500, errors.InternalServerError$, { err: true })
+            .json(200, components.LinkSchema$inboundSchema)
+            .json(400, errors.BadRequest$inboundSchema, { err: true })
+            .json(401, errors.Unauthorized$inboundSchema, { err: true })
+            .json(403, errors.Forbidden$inboundSchema, { err: true })
+            .json(404, errors.NotFound$inboundSchema, { err: true })
+            .json(409, errors.Conflict$inboundSchema, { err: true })
+            .json(410, errors.InviteExpired$inboundSchema, { err: true })
+            .json(422, errors.UnprocessableEntity$inboundSchema, { err: true })
+            .json(429, errors.RateLimitExceeded$inboundSchema, { err: true })
+            .json(500, errors.InternalServerError$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -672,7 +672,7 @@ export class Links extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => z.array(operations.RequestBody$.outboundSchema).optional().parse(value$),
+            (value$) => z.array(operations.RequestBody$outboundSchema).optional().parse(value$),
             "Input validation failed"
         );
         const body$ =
@@ -739,16 +739,16 @@ export class Links extends ClientSDK {
         };
 
         const [result$] = await this.matcher<Array<components.LinkSchema>>()
-            .json(200, z.array(components.LinkSchema$.inboundSchema))
-            .json(400, errors.BadRequest$, { err: true })
-            .json(401, errors.Unauthorized$, { err: true })
-            .json(403, errors.Forbidden$, { err: true })
-            .json(404, errors.NotFound$, { err: true })
-            .json(409, errors.Conflict$, { err: true })
-            .json(410, errors.InviteExpired$, { err: true })
-            .json(422, errors.UnprocessableEntity$, { err: true })
-            .json(429, errors.RateLimitExceeded$, { err: true })
-            .json(500, errors.InternalServerError$, { err: true })
+            .json(200, z.array(components.LinkSchema$inboundSchema))
+            .json(400, errors.BadRequest$inboundSchema, { err: true })
+            .json(401, errors.Unauthorized$inboundSchema, { err: true })
+            .json(403, errors.Forbidden$inboundSchema, { err: true })
+            .json(404, errors.NotFound$inboundSchema, { err: true })
+            .json(409, errors.Conflict$inboundSchema, { err: true })
+            .json(410, errors.InviteExpired$inboundSchema, { err: true })
+            .json(422, errors.UnprocessableEntity$inboundSchema, { err: true })
+            .json(429, errors.RateLimitExceeded$inboundSchema, { err: true })
+            .json(500, errors.InternalServerError$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -770,7 +770,7 @@ export class Links extends ClientSDK {
         const payload$ = schemas$.parse(
             input$,
             (value$) =>
-                operations.BulkUpdateLinksRequestBody$.outboundSchema.optional().parse(value$),
+                operations.BulkUpdateLinksRequestBody$outboundSchema.optional().parse(value$),
             "Input validation failed"
         );
         const body$ =
@@ -835,16 +835,16 @@ export class Links extends ClientSDK {
         };
 
         const [result$] = await this.matcher<Array<components.LinkSchema>>()
-            .json(200, z.array(components.LinkSchema$.inboundSchema))
-            .json(400, errors.BadRequest$, { err: true })
-            .json(401, errors.Unauthorized$, { err: true })
-            .json(403, errors.Forbidden$, { err: true })
-            .json(404, errors.NotFound$, { err: true })
-            .json(409, errors.Conflict$, { err: true })
-            .json(410, errors.InviteExpired$, { err: true })
-            .json(422, errors.UnprocessableEntity$, { err: true })
-            .json(429, errors.RateLimitExceeded$, { err: true })
-            .json(500, errors.InternalServerError$, { err: true })
+            .json(200, z.array(components.LinkSchema$inboundSchema))
+            .json(400, errors.BadRequest$inboundSchema, { err: true })
+            .json(401, errors.Unauthorized$inboundSchema, { err: true })
+            .json(403, errors.Forbidden$inboundSchema, { err: true })
+            .json(404, errors.NotFound$inboundSchema, { err: true })
+            .json(409, errors.Conflict$inboundSchema, { err: true })
+            .json(410, errors.InviteExpired$inboundSchema, { err: true })
+            .json(422, errors.UnprocessableEntity$inboundSchema, { err: true })
+            .json(429, errors.RateLimitExceeded$inboundSchema, { err: true })
+            .json(500, errors.InternalServerError$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -865,7 +865,7 @@ export class Links extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.UpsertLinkRequestBody$.outboundSchema.optional().parse(value$),
+            (value$) => operations.UpsertLinkRequestBody$outboundSchema.optional().parse(value$),
             "Input validation failed"
         );
         const body$ =
@@ -932,16 +932,16 @@ export class Links extends ClientSDK {
         };
 
         const [result$] = await this.matcher<components.LinkSchema>()
-            .json(200, components.LinkSchema$)
-            .json(400, errors.BadRequest$, { err: true })
-            .json(401, errors.Unauthorized$, { err: true })
-            .json(403, errors.Forbidden$, { err: true })
-            .json(404, errors.NotFound$, { err: true })
-            .json(409, errors.Conflict$, { err: true })
-            .json(410, errors.InviteExpired$, { err: true })
-            .json(422, errors.UnprocessableEntity$, { err: true })
-            .json(429, errors.RateLimitExceeded$, { err: true })
-            .json(500, errors.InternalServerError$, { err: true })
+            .json(200, components.LinkSchema$inboundSchema)
+            .json(400, errors.BadRequest$inboundSchema, { err: true })
+            .json(401, errors.Unauthorized$inboundSchema, { err: true })
+            .json(403, errors.Forbidden$inboundSchema, { err: true })
+            .json(404, errors.NotFound$inboundSchema, { err: true })
+            .json(409, errors.Conflict$inboundSchema, { err: true })
+            .json(410, errors.InviteExpired$inboundSchema, { err: true })
+            .json(422, errors.UnprocessableEntity$inboundSchema, { err: true })
+            .json(429, errors.RateLimitExceeded$inboundSchema, { err: true })
+            .json(500, errors.InternalServerError$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 

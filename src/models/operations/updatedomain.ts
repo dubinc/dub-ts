@@ -40,72 +40,133 @@ export type UpdateDomainRequest = {
 };
 
 /** @internal */
+export const UpdateDomainGlobals$inboundSchema: z.ZodType<
+    UpdateDomainGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    workspaceId: z.string().optional(),
+});
+
+/** @internal */
+export type UpdateDomainGlobals$Outbound = {
+    workspaceId?: string | undefined;
+};
+
+/** @internal */
+export const UpdateDomainGlobals$outboundSchema: z.ZodType<
+    UpdateDomainGlobals$Outbound,
+    z.ZodTypeDef,
+    UpdateDomainGlobals
+> = z.object({
+    workspaceId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UpdateDomainGlobals$ {
-    export const inboundSchema: z.ZodType<UpdateDomainGlobals, z.ZodTypeDef, unknown> = z.object({
-        workspaceId: z.string().optional(),
-    });
-
-    export type Outbound = {
-        workspaceId?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateDomainGlobals> = z.object({
-        workspaceId: z.string().optional(),
-    });
+    /** @deprecated use `UpdateDomainGlobals$inboundSchema` instead. */
+    export const inboundSchema = UpdateDomainGlobals$inboundSchema;
+    /** @deprecated use `UpdateDomainGlobals$outboundSchema` instead. */
+    export const outboundSchema = UpdateDomainGlobals$outboundSchema;
+    /** @deprecated use `UpdateDomainGlobals$Outbound` instead. */
+    export type Outbound = UpdateDomainGlobals$Outbound;
 }
 
 /** @internal */
+export const UpdateDomainRequestBody$inboundSchema: z.ZodType<
+    UpdateDomainRequestBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    slug: z.string().optional(),
+    expiredUrl: z.nullable(z.string()).optional(),
+    archived: z.boolean().default(false),
+    placeholder: z.nullable(z.string().default("https://dub.co/help/article/what-is-dub")),
+});
+
+/** @internal */
+export type UpdateDomainRequestBody$Outbound = {
+    slug?: string | undefined;
+    expiredUrl?: string | null | undefined;
+    archived: boolean;
+    placeholder: string | null;
+};
+
+/** @internal */
+export const UpdateDomainRequestBody$outboundSchema: z.ZodType<
+    UpdateDomainRequestBody$Outbound,
+    z.ZodTypeDef,
+    UpdateDomainRequestBody
+> = z.object({
+    slug: z.string().optional(),
+    expiredUrl: z.nullable(z.string()).optional(),
+    archived: z.boolean().default(false),
+    placeholder: z.nullable(z.string().default("https://dub.co/help/article/what-is-dub")),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UpdateDomainRequestBody$ {
-    export const inboundSchema: z.ZodType<UpdateDomainRequestBody, z.ZodTypeDef, unknown> =
-        z.object({
-            slug: z.string().optional(),
-            expiredUrl: z.nullable(z.string()).optional(),
-            archived: z.boolean().default(false),
-            placeholder: z.nullable(z.string().default("https://dub.co/help/article/what-is-dub")),
-        });
-
-    export type Outbound = {
-        slug?: string | undefined;
-        expiredUrl?: string | null | undefined;
-        archived: boolean;
-        placeholder: string | null;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateDomainRequestBody> =
-        z.object({
-            slug: z.string().optional(),
-            expiredUrl: z.nullable(z.string()).optional(),
-            archived: z.boolean().default(false),
-            placeholder: z.nullable(z.string().default("https://dub.co/help/article/what-is-dub")),
-        });
+    /** @deprecated use `UpdateDomainRequestBody$inboundSchema` instead. */
+    export const inboundSchema = UpdateDomainRequestBody$inboundSchema;
+    /** @deprecated use `UpdateDomainRequestBody$outboundSchema` instead. */
+    export const outboundSchema = UpdateDomainRequestBody$outboundSchema;
+    /** @deprecated use `UpdateDomainRequestBody$Outbound` instead. */
+    export type Outbound = UpdateDomainRequestBody$Outbound;
 }
 
 /** @internal */
+export const UpdateDomainRequest$inboundSchema: z.ZodType<
+    UpdateDomainRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        slug: z.string(),
+        RequestBody: z.lazy(() => UpdateDomainRequestBody$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            RequestBody: "requestBody",
+        });
+    });
+
+/** @internal */
+export type UpdateDomainRequest$Outbound = {
+    slug: string;
+    RequestBody?: UpdateDomainRequestBody$Outbound | undefined;
+};
+
+/** @internal */
+export const UpdateDomainRequest$outboundSchema: z.ZodType<
+    UpdateDomainRequest$Outbound,
+    z.ZodTypeDef,
+    UpdateDomainRequest
+> = z
+    .object({
+        slug: z.string(),
+        requestBody: z.lazy(() => UpdateDomainRequestBody$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            requestBody: "RequestBody",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UpdateDomainRequest$ {
-    export const inboundSchema: z.ZodType<UpdateDomainRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            slug: z.string(),
-            RequestBody: z.lazy(() => UpdateDomainRequestBody$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                RequestBody: "requestBody",
-            });
-        });
-
-    export type Outbound = {
-        slug: string;
-        RequestBody?: UpdateDomainRequestBody$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateDomainRequest> = z
-        .object({
-            slug: z.string(),
-            requestBody: z.lazy(() => UpdateDomainRequestBody$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                requestBody: "RequestBody",
-            });
-        });
+    /** @deprecated use `UpdateDomainRequest$inboundSchema` instead. */
+    export const inboundSchema = UpdateDomainRequest$inboundSchema;
+    /** @deprecated use `UpdateDomainRequest$outboundSchema` instead. */
+    export const outboundSchema = UpdateDomainRequest$outboundSchema;
+    /** @deprecated use `UpdateDomainRequest$Outbound` instead. */
+    export type Outbound = UpdateDomainRequest$Outbound;
 }

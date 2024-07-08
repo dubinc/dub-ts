@@ -31,42 +31,82 @@ export type CreateDomainRequestBody = {
 };
 
 /** @internal */
+export const CreateDomainGlobals$inboundSchema: z.ZodType<
+    CreateDomainGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    workspaceId: z.string().optional(),
+});
+
+/** @internal */
+export type CreateDomainGlobals$Outbound = {
+    workspaceId?: string | undefined;
+};
+
+/** @internal */
+export const CreateDomainGlobals$outboundSchema: z.ZodType<
+    CreateDomainGlobals$Outbound,
+    z.ZodTypeDef,
+    CreateDomainGlobals
+> = z.object({
+    workspaceId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateDomainGlobals$ {
-    export const inboundSchema: z.ZodType<CreateDomainGlobals, z.ZodTypeDef, unknown> = z.object({
-        workspaceId: z.string().optional(),
-    });
-
-    export type Outbound = {
-        workspaceId?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateDomainGlobals> = z.object({
-        workspaceId: z.string().optional(),
-    });
+    /** @deprecated use `CreateDomainGlobals$inboundSchema` instead. */
+    export const inboundSchema = CreateDomainGlobals$inboundSchema;
+    /** @deprecated use `CreateDomainGlobals$outboundSchema` instead. */
+    export const outboundSchema = CreateDomainGlobals$outboundSchema;
+    /** @deprecated use `CreateDomainGlobals$Outbound` instead. */
+    export type Outbound = CreateDomainGlobals$Outbound;
 }
 
 /** @internal */
+export const CreateDomainRequestBody$inboundSchema: z.ZodType<
+    CreateDomainRequestBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    slug: z.string(),
+    expiredUrl: z.nullable(z.string()).optional(),
+    archived: z.boolean().default(false),
+    placeholder: z.nullable(z.string().default("https://dub.co/help/article/what-is-dub")),
+});
+
+/** @internal */
+export type CreateDomainRequestBody$Outbound = {
+    slug: string;
+    expiredUrl?: string | null | undefined;
+    archived: boolean;
+    placeholder: string | null;
+};
+
+/** @internal */
+export const CreateDomainRequestBody$outboundSchema: z.ZodType<
+    CreateDomainRequestBody$Outbound,
+    z.ZodTypeDef,
+    CreateDomainRequestBody
+> = z.object({
+    slug: z.string(),
+    expiredUrl: z.nullable(z.string()).optional(),
+    archived: z.boolean().default(false),
+    placeholder: z.nullable(z.string().default("https://dub.co/help/article/what-is-dub")),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateDomainRequestBody$ {
-    export const inboundSchema: z.ZodType<CreateDomainRequestBody, z.ZodTypeDef, unknown> =
-        z.object({
-            slug: z.string(),
-            expiredUrl: z.nullable(z.string()).optional(),
-            archived: z.boolean().default(false),
-            placeholder: z.nullable(z.string().default("https://dub.co/help/article/what-is-dub")),
-        });
-
-    export type Outbound = {
-        slug: string;
-        expiredUrl?: string | null | undefined;
-        archived: boolean;
-        placeholder: string | null;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateDomainRequestBody> =
-        z.object({
-            slug: z.string(),
-            expiredUrl: z.nullable(z.string()).optional(),
-            archived: z.boolean().default(false),
-            placeholder: z.nullable(z.string().default("https://dub.co/help/article/what-is-dub")),
-        });
+    /** @deprecated use `CreateDomainRequestBody$inboundSchema` instead. */
+    export const inboundSchema = CreateDomainRequestBody$inboundSchema;
+    /** @deprecated use `CreateDomainRequestBody$outboundSchema` instead. */
+    export const outboundSchema = CreateDomainRequestBody$outboundSchema;
+    /** @deprecated use `CreateDomainRequestBody$Outbound` instead. */
+    export type Outbound = CreateDomainRequestBody$Outbound;
 }

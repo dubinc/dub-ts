@@ -12,16 +12,30 @@ export type LeadsCount = {
 };
 
 /** @internal */
+export const LeadsCount$inboundSchema: z.ZodType<LeadsCount, z.ZodTypeDef, unknown> = z.object({
+    leads: z.number(),
+});
+
+/** @internal */
+export type LeadsCount$Outbound = {
+    leads: number;
+};
+
+/** @internal */
+export const LeadsCount$outboundSchema: z.ZodType<LeadsCount$Outbound, z.ZodTypeDef, LeadsCount> =
+    z.object({
+        leads: z.number(),
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace LeadsCount$ {
-    export const inboundSchema: z.ZodType<LeadsCount, z.ZodTypeDef, unknown> = z.object({
-        leads: z.number(),
-    });
-
-    export type Outbound = {
-        leads: number;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LeadsCount> = z.object({
-        leads: z.number(),
-    });
+    /** @deprecated use `LeadsCount$inboundSchema` instead. */
+    export const inboundSchema = LeadsCount$inboundSchema;
+    /** @deprecated use `LeadsCount$outboundSchema` instead. */
+    export const outboundSchema = LeadsCount$outboundSchema;
+    /** @deprecated use `LeadsCount$Outbound` instead. */
+    export type Outbound = LeadsCount$Outbound;
 }

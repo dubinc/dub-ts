@@ -4,7 +4,7 @@
 
 import { SDKHooks } from "../hooks/hooks.js";
 import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
-import { encodeSimple as encodeSimple$ } from "../lib/encodings.js";
+import { encodeJSON as encodeJSON$, encodeSimple as encodeSimple$ } from "../lib/encodings.js";
 import { HTTPClient } from "../lib/http.js";
 import * as schemas$ from "../lib/schemas.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -53,7 +53,7 @@ export class Workspaces extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetWorkspaceRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetWorkspaceRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -122,16 +122,16 @@ export class Workspaces extends ClientSDK {
         };
 
         const [result$] = await this.matcher<components.WorkspaceSchema>()
-            .json(200, components.WorkspaceSchema$)
-            .json(400, errors.BadRequest$, { err: true })
-            .json(401, errors.Unauthorized$, { err: true })
-            .json(403, errors.Forbidden$, { err: true })
-            .json(404, errors.NotFound$, { err: true })
-            .json(409, errors.Conflict$, { err: true })
-            .json(410, errors.InviteExpired$, { err: true })
-            .json(422, errors.UnprocessableEntity$, { err: true })
-            .json(429, errors.RateLimitExceeded$, { err: true })
-            .json(500, errors.InternalServerError$, { err: true })
+            .json(200, components.WorkspaceSchema$inboundSchema)
+            .json(400, errors.BadRequest$inboundSchema, { err: true })
+            .json(401, errors.Unauthorized$inboundSchema, { err: true })
+            .json(403, errors.Forbidden$inboundSchema, { err: true })
+            .json(404, errors.NotFound$inboundSchema, { err: true })
+            .json(409, errors.Conflict$inboundSchema, { err: true })
+            .json(410, errors.InviteExpired$inboundSchema, { err: true })
+            .json(422, errors.UnprocessableEntity$inboundSchema, { err: true })
+            .json(429, errors.RateLimitExceeded$inboundSchema, { err: true })
+            .json(500, errors.InternalServerError$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -145,17 +145,21 @@ export class Workspaces extends ClientSDK {
      * Update a workspace by ID or slug.
      */
     async update(
-        request: operations.UpdateWorkspaceRequest,
+        idOrSlug: string,
+        requestBody?: operations.UpdateWorkspaceRequestBody | undefined,
         options?: RequestOptions
     ): Promise<components.WorkspaceSchema> {
-        const input$ = request;
+        const input$: operations.UpdateWorkspaceRequest = {
+            idOrSlug: idOrSlug,
+            requestBody: requestBody,
+        };
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.UpdateWorkspaceRequest$.outboundSchema.parse(value$),
+            (value$) => operations.UpdateWorkspaceRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = null;
+        const body$ = encodeJSON$("body", payload$.RequestBody, { explode: true });
 
         const pathParams$ = {
             idOrSlug: encodeSimple$("idOrSlug", payload$.idOrSlug, {
@@ -168,6 +172,7 @@ export class Workspaces extends ClientSDK {
         const query$ = "";
 
         const headers$ = new Headers({
+            "Content-Type": "application/json",
             Accept: "application/json",
         });
 
@@ -221,16 +226,16 @@ export class Workspaces extends ClientSDK {
         };
 
         const [result$] = await this.matcher<components.WorkspaceSchema>()
-            .json(200, components.WorkspaceSchema$)
-            .json(400, errors.BadRequest$, { err: true })
-            .json(401, errors.Unauthorized$, { err: true })
-            .json(403, errors.Forbidden$, { err: true })
-            .json(404, errors.NotFound$, { err: true })
-            .json(409, errors.Conflict$, { err: true })
-            .json(410, errors.InviteExpired$, { err: true })
-            .json(422, errors.UnprocessableEntity$, { err: true })
-            .json(429, errors.RateLimitExceeded$, { err: true })
-            .json(500, errors.InternalServerError$, { err: true })
+            .json(200, components.WorkspaceSchema$inboundSchema)
+            .json(400, errors.BadRequest$inboundSchema, { err: true })
+            .json(401, errors.Unauthorized$inboundSchema, { err: true })
+            .json(403, errors.Forbidden$inboundSchema, { err: true })
+            .json(404, errors.NotFound$inboundSchema, { err: true })
+            .json(409, errors.Conflict$inboundSchema, { err: true })
+            .json(410, errors.InviteExpired$inboundSchema, { err: true })
+            .json(422, errors.UnprocessableEntity$inboundSchema, { err: true })
+            .json(429, errors.RateLimitExceeded$inboundSchema, { err: true })
+            .json(500, errors.InternalServerError$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 

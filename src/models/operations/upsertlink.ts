@@ -124,129 +124,196 @@ export type UpsertLinkRequestBody = {
 };
 
 /** @internal */
+export const UpsertLinkGlobals$inboundSchema: z.ZodType<UpsertLinkGlobals, z.ZodTypeDef, unknown> =
+    z.object({
+        workspaceId: z.string().optional(),
+    });
+
+/** @internal */
+export type UpsertLinkGlobals$Outbound = {
+    workspaceId?: string | undefined;
+};
+
+/** @internal */
+export const UpsertLinkGlobals$outboundSchema: z.ZodType<
+    UpsertLinkGlobals$Outbound,
+    z.ZodTypeDef,
+    UpsertLinkGlobals
+> = z.object({
+    workspaceId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UpsertLinkGlobals$ {
-    export const inboundSchema: z.ZodType<UpsertLinkGlobals, z.ZodTypeDef, unknown> = z.object({
-        workspaceId: z.string().optional(),
-    });
-
-    export type Outbound = {
-        workspaceId?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpsertLinkGlobals> = z.object({
-        workspaceId: z.string().optional(),
-    });
+    /** @deprecated use `UpsertLinkGlobals$inboundSchema` instead. */
+    export const inboundSchema = UpsertLinkGlobals$inboundSchema;
+    /** @deprecated use `UpsertLinkGlobals$outboundSchema` instead. */
+    export const outboundSchema = UpsertLinkGlobals$outboundSchema;
+    /** @deprecated use `UpsertLinkGlobals$Outbound` instead. */
+    export type Outbound = UpsertLinkGlobals$Outbound;
 }
 
 /** @internal */
+export const UpsertLinkTagIds$inboundSchema: z.ZodType<UpsertLinkTagIds, z.ZodTypeDef, unknown> =
+    z.union([z.string(), z.array(z.string())]);
+
+/** @internal */
+export type UpsertLinkTagIds$Outbound = string | Array<string>;
+
+/** @internal */
+export const UpsertLinkTagIds$outboundSchema: z.ZodType<
+    UpsertLinkTagIds$Outbound,
+    z.ZodTypeDef,
+    UpsertLinkTagIds
+> = z.union([z.string(), z.array(z.string())]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UpsertLinkTagIds$ {
-    export const inboundSchema: z.ZodType<UpsertLinkTagIds, z.ZodTypeDef, unknown> = z.union([
-        z.string(),
-        z.array(z.string()),
-    ]);
-
-    export type Outbound = string | Array<string>;
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpsertLinkTagIds> = z.union([
-        z.string(),
-        z.array(z.string()),
-    ]);
+    /** @deprecated use `UpsertLinkTagIds$inboundSchema` instead. */
+    export const inboundSchema = UpsertLinkTagIds$inboundSchema;
+    /** @deprecated use `UpsertLinkTagIds$outboundSchema` instead. */
+    export const outboundSchema = UpsertLinkTagIds$outboundSchema;
+    /** @deprecated use `UpsertLinkTagIds$Outbound` instead. */
+    export type Outbound = UpsertLinkTagIds$Outbound;
 }
 
 /** @internal */
+export const UpsertLinkTagNames$inboundSchema: z.ZodType<
+    UpsertLinkTagNames,
+    z.ZodTypeDef,
+    unknown
+> = z.union([z.string(), z.array(z.string())]);
+
+/** @internal */
+export type UpsertLinkTagNames$Outbound = string | Array<string>;
+
+/** @internal */
+export const UpsertLinkTagNames$outboundSchema: z.ZodType<
+    UpsertLinkTagNames$Outbound,
+    z.ZodTypeDef,
+    UpsertLinkTagNames
+> = z.union([z.string(), z.array(z.string())]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UpsertLinkTagNames$ {
-    export const inboundSchema: z.ZodType<UpsertLinkTagNames, z.ZodTypeDef, unknown> = z.union([
-        z.string(),
-        z.array(z.string()),
-    ]);
-
-    export type Outbound = string | Array<string>;
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpsertLinkTagNames> = z.union([
-        z.string(),
-        z.array(z.string()),
-    ]);
+    /** @deprecated use `UpsertLinkTagNames$inboundSchema` instead. */
+    export const inboundSchema = UpsertLinkTagNames$inboundSchema;
+    /** @deprecated use `UpsertLinkTagNames$outboundSchema` instead. */
+    export const outboundSchema = UpsertLinkTagNames$outboundSchema;
+    /** @deprecated use `UpsertLinkTagNames$Outbound` instead. */
+    export type Outbound = UpsertLinkTagNames$Outbound;
 }
 
 /** @internal */
+export const UpsertLinkRequestBody$inboundSchema: z.ZodType<
+    UpsertLinkRequestBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    url: z.string(),
+    domain: z.string().optional(),
+    key: z.string().optional(),
+    externalId: z.nullable(z.string()).optional(),
+    prefix: z.string().optional(),
+    trackConversion: z.boolean().default(false),
+    archived: z.boolean().default(false),
+    publicStats: z.boolean().default(false),
+    tagId: z.nullable(z.string()).optional(),
+    tagIds: z.union([z.string(), z.array(z.string())]).optional(),
+    tagNames: z.union([z.string(), z.array(z.string())]).optional(),
+    comments: z.nullable(z.string()).optional(),
+    expiresAt: z.nullable(z.string()).optional(),
+    expiredUrl: z.nullable(z.string()).optional(),
+    password: z.nullable(z.string()).optional(),
+    proxy: z.boolean().default(false),
+    title: z.nullable(z.string()).optional(),
+    description: z.nullable(z.string()).optional(),
+    image: z.nullable(z.string()).optional(),
+    rewrite: z.boolean().default(false),
+    ios: z.nullable(z.string()).optional(),
+    android: z.nullable(z.string()).optional(),
+    geo: z.nullable(components.LinkGeoTargeting$inboundSchema).optional(),
+    doIndex: z.boolean().default(false),
+});
+
+/** @internal */
+export type UpsertLinkRequestBody$Outbound = {
+    url: string;
+    domain?: string | undefined;
+    key?: string | undefined;
+    externalId?: string | null | undefined;
+    prefix?: string | undefined;
+    trackConversion: boolean;
+    archived: boolean;
+    publicStats: boolean;
+    tagId?: string | null | undefined;
+    tagIds?: string | Array<string> | undefined;
+    tagNames?: string | Array<string> | undefined;
+    comments?: string | null | undefined;
+    expiresAt?: string | null | undefined;
+    expiredUrl?: string | null | undefined;
+    password?: string | null | undefined;
+    proxy: boolean;
+    title?: string | null | undefined;
+    description?: string | null | undefined;
+    image?: string | null | undefined;
+    rewrite: boolean;
+    ios?: string | null | undefined;
+    android?: string | null | undefined;
+    geo?: components.LinkGeoTargeting$Outbound | null | undefined;
+    doIndex: boolean;
+};
+
+/** @internal */
+export const UpsertLinkRequestBody$outboundSchema: z.ZodType<
+    UpsertLinkRequestBody$Outbound,
+    z.ZodTypeDef,
+    UpsertLinkRequestBody
+> = z.object({
+    url: z.string(),
+    domain: z.string().optional(),
+    key: z.string().optional(),
+    externalId: z.nullable(z.string()).optional(),
+    prefix: z.string().optional(),
+    trackConversion: z.boolean().default(false),
+    archived: z.boolean().default(false),
+    publicStats: z.boolean().default(false),
+    tagId: z.nullable(z.string()).optional(),
+    tagIds: z.union([z.string(), z.array(z.string())]).optional(),
+    tagNames: z.union([z.string(), z.array(z.string())]).optional(),
+    comments: z.nullable(z.string()).optional(),
+    expiresAt: z.nullable(z.string()).optional(),
+    expiredUrl: z.nullable(z.string()).optional(),
+    password: z.nullable(z.string()).optional(),
+    proxy: z.boolean().default(false),
+    title: z.nullable(z.string()).optional(),
+    description: z.nullable(z.string()).optional(),
+    image: z.nullable(z.string()).optional(),
+    rewrite: z.boolean().default(false),
+    ios: z.nullable(z.string()).optional(),
+    android: z.nullable(z.string()).optional(),
+    geo: z.nullable(components.LinkGeoTargeting$outboundSchema).optional(),
+    doIndex: z.boolean().default(false),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UpsertLinkRequestBody$ {
-    export const inboundSchema: z.ZodType<UpsertLinkRequestBody, z.ZodTypeDef, unknown> = z.object({
-        url: z.string(),
-        domain: z.string().optional(),
-        key: z.string().optional(),
-        externalId: z.nullable(z.string()).optional(),
-        prefix: z.string().optional(),
-        trackConversion: z.boolean().default(false),
-        archived: z.boolean().default(false),
-        publicStats: z.boolean().default(false),
-        tagId: z.nullable(z.string()).optional(),
-        tagIds: z.union([z.string(), z.array(z.string())]).optional(),
-        tagNames: z.union([z.string(), z.array(z.string())]).optional(),
-        comments: z.nullable(z.string()).optional(),
-        expiresAt: z.nullable(z.string()).optional(),
-        expiredUrl: z.nullable(z.string()).optional(),
-        password: z.nullable(z.string()).optional(),
-        proxy: z.boolean().default(false),
-        title: z.nullable(z.string()).optional(),
-        description: z.nullable(z.string()).optional(),
-        image: z.nullable(z.string()).optional(),
-        rewrite: z.boolean().default(false),
-        ios: z.nullable(z.string()).optional(),
-        android: z.nullable(z.string()).optional(),
-        geo: z.nullable(components.LinkGeoTargeting$.inboundSchema).optional(),
-        doIndex: z.boolean().default(false),
-    });
-
-    export type Outbound = {
-        url: string;
-        domain?: string | undefined;
-        key?: string | undefined;
-        externalId?: string | null | undefined;
-        prefix?: string | undefined;
-        trackConversion: boolean;
-        archived: boolean;
-        publicStats: boolean;
-        tagId?: string | null | undefined;
-        tagIds?: string | Array<string> | undefined;
-        tagNames?: string | Array<string> | undefined;
-        comments?: string | null | undefined;
-        expiresAt?: string | null | undefined;
-        expiredUrl?: string | null | undefined;
-        password?: string | null | undefined;
-        proxy: boolean;
-        title?: string | null | undefined;
-        description?: string | null | undefined;
-        image?: string | null | undefined;
-        rewrite: boolean;
-        ios?: string | null | undefined;
-        android?: string | null | undefined;
-        geo?: components.LinkGeoTargeting$.Outbound | null | undefined;
-        doIndex: boolean;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpsertLinkRequestBody> =
-        z.object({
-            url: z.string(),
-            domain: z.string().optional(),
-            key: z.string().optional(),
-            externalId: z.nullable(z.string()).optional(),
-            prefix: z.string().optional(),
-            trackConversion: z.boolean().default(false),
-            archived: z.boolean().default(false),
-            publicStats: z.boolean().default(false),
-            tagId: z.nullable(z.string()).optional(),
-            tagIds: z.union([z.string(), z.array(z.string())]).optional(),
-            tagNames: z.union([z.string(), z.array(z.string())]).optional(),
-            comments: z.nullable(z.string()).optional(),
-            expiresAt: z.nullable(z.string()).optional(),
-            expiredUrl: z.nullable(z.string()).optional(),
-            password: z.nullable(z.string()).optional(),
-            proxy: z.boolean().default(false),
-            title: z.nullable(z.string()).optional(),
-            description: z.nullable(z.string()).optional(),
-            image: z.nullable(z.string()).optional(),
-            rewrite: z.boolean().default(false),
-            ios: z.nullable(z.string()).optional(),
-            android: z.nullable(z.string()).optional(),
-            geo: z.nullable(components.LinkGeoTargeting$.outboundSchema).optional(),
-            doIndex: z.boolean().default(false),
-        });
+    /** @deprecated use `UpsertLinkRequestBody$inboundSchema` instead. */
+    export const inboundSchema = UpsertLinkRequestBody$inboundSchema;
+    /** @deprecated use `UpsertLinkRequestBody$outboundSchema` instead. */
+    export const outboundSchema = UpsertLinkRequestBody$outboundSchema;
+    /** @deprecated use `UpsertLinkRequestBody$Outbound` instead. */
+    export type Outbound = UpsertLinkRequestBody$Outbound;
 }

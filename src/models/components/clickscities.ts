@@ -281,29 +281,58 @@ export type ClicksCities = {
 };
 
 /** @internal */
+export const ClicksCitiesCountry$inboundSchema: z.ZodNativeEnum<typeof ClicksCitiesCountry> =
+    z.nativeEnum(ClicksCitiesCountry);
+
+/** @internal */
+export const ClicksCitiesCountry$outboundSchema: z.ZodNativeEnum<typeof ClicksCitiesCountry> =
+    ClicksCitiesCountry$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ClicksCitiesCountry$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof ClicksCitiesCountry> =
-        z.nativeEnum(ClicksCitiesCountry);
-    export const outboundSchema: z.ZodNativeEnum<typeof ClicksCitiesCountry> = inboundSchema;
+    /** @deprecated use `ClicksCitiesCountry$inboundSchema` instead. */
+    export const inboundSchema = ClicksCitiesCountry$inboundSchema;
+    /** @deprecated use `ClicksCitiesCountry$outboundSchema` instead. */
+    export const outboundSchema = ClicksCitiesCountry$outboundSchema;
 }
 
 /** @internal */
+export const ClicksCities$inboundSchema: z.ZodType<ClicksCities, z.ZodTypeDef, unknown> = z.object({
+    city: z.string(),
+    country: ClicksCitiesCountry$inboundSchema,
+    clicks: z.number(),
+});
+
+/** @internal */
+export type ClicksCities$Outbound = {
+    city: string;
+    country: string;
+    clicks: number;
+};
+
+/** @internal */
+export const ClicksCities$outboundSchema: z.ZodType<
+    ClicksCities$Outbound,
+    z.ZodTypeDef,
+    ClicksCities
+> = z.object({
+    city: z.string(),
+    country: ClicksCitiesCountry$outboundSchema,
+    clicks: z.number(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ClicksCities$ {
-    export const inboundSchema: z.ZodType<ClicksCities, z.ZodTypeDef, unknown> = z.object({
-        city: z.string(),
-        country: ClicksCitiesCountry$.inboundSchema,
-        clicks: z.number(),
-    });
-
-    export type Outbound = {
-        city: string;
-        country: string;
-        clicks: number;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ClicksCities> = z.object({
-        city: z.string(),
-        country: ClicksCitiesCountry$.outboundSchema,
-        clicks: z.number(),
-    });
+    /** @deprecated use `ClicksCities$inboundSchema` instead. */
+    export const inboundSchema = ClicksCities$inboundSchema;
+    /** @deprecated use `ClicksCities$outboundSchema` instead. */
+    export const outboundSchema = ClicksCities$outboundSchema;
+    /** @deprecated use `ClicksCities$Outbound` instead. */
+    export type Outbound = ClicksCities$Outbound;
 }

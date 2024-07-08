@@ -49,79 +49,121 @@ export class Conflict extends Error {
     data$: ConflictData;
 
     constructor(err: ConflictData) {
-        super("");
+        const message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : `API error occurred: ${JSON.stringify(err)}`;
+        super(message);
         this.data$ = err;
 
         this.error = err.error;
-
-        this.message =
-            "message" in err && typeof err.message === "string"
-                ? err.message
-                : "API error occurred";
 
         this.name = "Conflict";
     }
 }
 
 /** @internal */
+export const ConflictCode$inboundSchema: z.ZodNativeEnum<typeof ConflictCode> =
+    z.nativeEnum(ConflictCode);
+
+/** @internal */
+export const ConflictCode$outboundSchema: z.ZodNativeEnum<typeof ConflictCode> =
+    ConflictCode$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ConflictCode$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof ConflictCode> = z.nativeEnum(ConflictCode);
-    export const outboundSchema: z.ZodNativeEnum<typeof ConflictCode> = inboundSchema;
+    /** @deprecated use `ConflictCode$inboundSchema` instead. */
+    export const inboundSchema = ConflictCode$inboundSchema;
+    /** @deprecated use `ConflictCode$outboundSchema` instead. */
+    export const outboundSchema = ConflictCode$outboundSchema;
 }
 
 /** @internal */
+export const ConflictError$inboundSchema: z.ZodType<ConflictError, z.ZodTypeDef, unknown> = z
+    .object({
+        code: ConflictCode$inboundSchema,
+        message: z.string(),
+        doc_url: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            doc_url: "docUrl",
+        });
+    });
+
+/** @internal */
+export type ConflictError$Outbound = {
+    code: string;
+    message: string;
+    doc_url?: string | undefined;
+};
+
+/** @internal */
+export const ConflictError$outboundSchema: z.ZodType<
+    ConflictError$Outbound,
+    z.ZodTypeDef,
+    ConflictError
+> = z
+    .object({
+        code: ConflictCode$outboundSchema,
+        message: z.string(),
+        docUrl: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            docUrl: "doc_url",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ConflictError$ {
-    export const inboundSchema: z.ZodType<ConflictError, z.ZodTypeDef, unknown> = z
-        .object({
-            code: ConflictCode$.inboundSchema,
-            message: z.string(),
-            doc_url: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                doc_url: "docUrl",
-            });
-        });
-
-    export type Outbound = {
-        code: string;
-        message: string;
-        doc_url?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ConflictError> = z
-        .object({
-            code: ConflictCode$.outboundSchema,
-            message: z.string(),
-            docUrl: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                docUrl: "doc_url",
-            });
-        });
+    /** @deprecated use `ConflictError$inboundSchema` instead. */
+    export const inboundSchema = ConflictError$inboundSchema;
+    /** @deprecated use `ConflictError$outboundSchema` instead. */
+    export const outboundSchema = ConflictError$outboundSchema;
+    /** @deprecated use `ConflictError$Outbound` instead. */
+    export type Outbound = ConflictError$Outbound;
 }
 
 /** @internal */
-export namespace Conflict$ {
-    export const inboundSchema: z.ZodType<Conflict, z.ZodTypeDef, unknown> = z
-        .object({
-            error: z.lazy(() => ConflictError$.inboundSchema),
+export const Conflict$inboundSchema: z.ZodType<Conflict, z.ZodTypeDef, unknown> = z
+    .object({
+        error: z.lazy(() => ConflictError$inboundSchema),
+    })
+    .transform((v) => {
+        return new Conflict(v);
+    });
+
+/** @internal */
+export type Conflict$Outbound = {
+    error: ConflictError$Outbound;
+};
+
+/** @internal */
+export const Conflict$outboundSchema: z.ZodType<Conflict$Outbound, z.ZodTypeDef, Conflict> = z
+    .instanceof(Conflict)
+    .transform((v) => v.data$)
+    .pipe(
+        z.object({
+            error: z.lazy(() => ConflictError$outboundSchema),
         })
-        .transform((v) => {
-            return new Conflict(v);
-        });
+    );
 
-    export type Outbound = {
-        error: ConflictError$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Conflict> = z
-        .instanceof(Conflict)
-        .transform((v) => v.data$)
-        .pipe(
-            z.object({
-                error: z.lazy(() => ConflictError$.outboundSchema),
-            })
-        );
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Conflict$ {
+    /** @deprecated use `Conflict$inboundSchema` instead. */
+    export const inboundSchema = Conflict$inboundSchema;
+    /** @deprecated use `Conflict$outboundSchema` instead. */
+    export const outboundSchema = Conflict$outboundSchema;
+    /** @deprecated use `Conflict$Outbound` instead. */
+    export type Outbound = Conflict$Outbound;
 }

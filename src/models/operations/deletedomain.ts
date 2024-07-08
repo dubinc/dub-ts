@@ -29,48 +29,109 @@ export type DeleteDomainResponseBody = {
 };
 
 /** @internal */
+export const DeleteDomainGlobals$inboundSchema: z.ZodType<
+    DeleteDomainGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    workspaceId: z.string().optional(),
+});
+
+/** @internal */
+export type DeleteDomainGlobals$Outbound = {
+    workspaceId?: string | undefined;
+};
+
+/** @internal */
+export const DeleteDomainGlobals$outboundSchema: z.ZodType<
+    DeleteDomainGlobals$Outbound,
+    z.ZodTypeDef,
+    DeleteDomainGlobals
+> = z.object({
+    workspaceId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace DeleteDomainGlobals$ {
-    export const inboundSchema: z.ZodType<DeleteDomainGlobals, z.ZodTypeDef, unknown> = z.object({
-        workspaceId: z.string().optional(),
-    });
-
-    export type Outbound = {
-        workspaceId?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteDomainGlobals> = z.object({
-        workspaceId: z.string().optional(),
-    });
+    /** @deprecated use `DeleteDomainGlobals$inboundSchema` instead. */
+    export const inboundSchema = DeleteDomainGlobals$inboundSchema;
+    /** @deprecated use `DeleteDomainGlobals$outboundSchema` instead. */
+    export const outboundSchema = DeleteDomainGlobals$outboundSchema;
+    /** @deprecated use `DeleteDomainGlobals$Outbound` instead. */
+    export type Outbound = DeleteDomainGlobals$Outbound;
 }
 
 /** @internal */
+export const DeleteDomainRequest$inboundSchema: z.ZodType<
+    DeleteDomainRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    slug: z.string(),
+});
+
+/** @internal */
+export type DeleteDomainRequest$Outbound = {
+    slug: string;
+};
+
+/** @internal */
+export const DeleteDomainRequest$outboundSchema: z.ZodType<
+    DeleteDomainRequest$Outbound,
+    z.ZodTypeDef,
+    DeleteDomainRequest
+> = z.object({
+    slug: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace DeleteDomainRequest$ {
-    export const inboundSchema: z.ZodType<DeleteDomainRequest, z.ZodTypeDef, unknown> = z.object({
-        slug: z.string(),
-    });
-
-    export type Outbound = {
-        slug: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteDomainRequest> = z.object({
-        slug: z.string(),
-    });
+    /** @deprecated use `DeleteDomainRequest$inboundSchema` instead. */
+    export const inboundSchema = DeleteDomainRequest$inboundSchema;
+    /** @deprecated use `DeleteDomainRequest$outboundSchema` instead. */
+    export const outboundSchema = DeleteDomainRequest$outboundSchema;
+    /** @deprecated use `DeleteDomainRequest$Outbound` instead. */
+    export type Outbound = DeleteDomainRequest$Outbound;
 }
 
 /** @internal */
+export const DeleteDomainResponseBody$inboundSchema: z.ZodType<
+    DeleteDomainResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    slug: z.string(),
+});
+
+/** @internal */
+export type DeleteDomainResponseBody$Outbound = {
+    slug: string;
+};
+
+/** @internal */
+export const DeleteDomainResponseBody$outboundSchema: z.ZodType<
+    DeleteDomainResponseBody$Outbound,
+    z.ZodTypeDef,
+    DeleteDomainResponseBody
+> = z.object({
+    slug: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace DeleteDomainResponseBody$ {
-    export const inboundSchema: z.ZodType<DeleteDomainResponseBody, z.ZodTypeDef, unknown> =
-        z.object({
-            slug: z.string(),
-        });
-
-    export type Outbound = {
-        slug: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteDomainResponseBody> =
-        z.object({
-            slug: z.string(),
-        });
+    /** @deprecated use `DeleteDomainResponseBody$inboundSchema` instead. */
+    export const inboundSchema = DeleteDomainResponseBody$inboundSchema;
+    /** @deprecated use `DeleteDomainResponseBody$outboundSchema` instead. */
+    export const outboundSchema = DeleteDomainResponseBody$outboundSchema;
+    /** @deprecated use `DeleteDomainResponseBody$Outbound` instead. */
+    export type Outbound = DeleteDomainResponseBody$Outbound;
 }

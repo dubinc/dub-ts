@@ -185,213 +185,305 @@ export type RetrieveAnalyticsResponseBody =
     | Array<components.SalesTopUrls>;
 
 /** @internal */
+export const RetrieveAnalyticsGlobals$inboundSchema: z.ZodType<
+    RetrieveAnalyticsGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    workspaceId: z.string().optional(),
+});
+
+/** @internal */
+export type RetrieveAnalyticsGlobals$Outbound = {
+    workspaceId?: string | undefined;
+};
+
+/** @internal */
+export const RetrieveAnalyticsGlobals$outboundSchema: z.ZodType<
+    RetrieveAnalyticsGlobals$Outbound,
+    z.ZodTypeDef,
+    RetrieveAnalyticsGlobals
+> = z.object({
+    workspaceId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveAnalyticsGlobals$ {
-    export const inboundSchema: z.ZodType<RetrieveAnalyticsGlobals, z.ZodTypeDef, unknown> =
-        z.object({
-            workspaceId: z.string().optional(),
-        });
-
-    export type Outbound = {
-        workspaceId?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveAnalyticsGlobals> =
-        z.object({
-            workspaceId: z.string().optional(),
-        });
+    /** @deprecated use `RetrieveAnalyticsGlobals$inboundSchema` instead. */
+    export const inboundSchema = RetrieveAnalyticsGlobals$inboundSchema;
+    /** @deprecated use `RetrieveAnalyticsGlobals$outboundSchema` instead. */
+    export const outboundSchema = RetrieveAnalyticsGlobals$outboundSchema;
+    /** @deprecated use `RetrieveAnalyticsGlobals$Outbound` instead. */
+    export type Outbound = RetrieveAnalyticsGlobals$Outbound;
 }
 
 /** @internal */
+export const Event$inboundSchema: z.ZodNativeEnum<typeof Event> = z.nativeEnum(Event);
+
+/** @internal */
+export const Event$outboundSchema: z.ZodNativeEnum<typeof Event> = Event$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Event$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof Event> = z.nativeEnum(Event);
-    export const outboundSchema: z.ZodNativeEnum<typeof Event> = inboundSchema;
+    /** @deprecated use `Event$inboundSchema` instead. */
+    export const inboundSchema = Event$inboundSchema;
+    /** @deprecated use `Event$outboundSchema` instead. */
+    export const outboundSchema = Event$outboundSchema;
 }
 
 /** @internal */
+export const QueryParamGroupBy$inboundSchema: z.ZodNativeEnum<typeof QueryParamGroupBy> =
+    z.nativeEnum(QueryParamGroupBy);
+
+/** @internal */
+export const QueryParamGroupBy$outboundSchema: z.ZodNativeEnum<typeof QueryParamGroupBy> =
+    QueryParamGroupBy$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace QueryParamGroupBy$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof QueryParamGroupBy> =
-        z.nativeEnum(QueryParamGroupBy);
-    export const outboundSchema: z.ZodNativeEnum<typeof QueryParamGroupBy> = inboundSchema;
+    /** @deprecated use `QueryParamGroupBy$inboundSchema` instead. */
+    export const inboundSchema = QueryParamGroupBy$inboundSchema;
+    /** @deprecated use `QueryParamGroupBy$outboundSchema` instead. */
+    export const outboundSchema = QueryParamGroupBy$outboundSchema;
 }
 
 /** @internal */
+export const Interval$inboundSchema: z.ZodNativeEnum<typeof Interval> = z.nativeEnum(Interval);
+
+/** @internal */
+export const Interval$outboundSchema: z.ZodNativeEnum<typeof Interval> = Interval$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Interval$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof Interval> = z.nativeEnum(Interval);
-    export const outboundSchema: z.ZodNativeEnum<typeof Interval> = inboundSchema;
+    /** @deprecated use `Interval$inboundSchema` instead. */
+    export const inboundSchema = Interval$inboundSchema;
+    /** @deprecated use `Interval$outboundSchema` instead. */
+    export const outboundSchema = Interval$outboundSchema;
 }
 
 /** @internal */
+export const RetrieveAnalyticsRequest$inboundSchema: z.ZodType<
+    RetrieveAnalyticsRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    event: Event$inboundSchema.default("clicks"),
+    groupBy: QueryParamGroupBy$inboundSchema.default("count"),
+    domain: z.string().optional(),
+    key: z.string().optional(),
+    linkId: z.string().optional(),
+    externalId: z.string().optional(),
+    interval: Interval$inboundSchema.optional(),
+    start: z.string().optional(),
+    end: z.string().optional(),
+    timezone: z.string().default("UTC"),
+    country: components.CountryCode$inboundSchema.optional(),
+    city: z.string().optional(),
+    device: z.string().optional(),
+    browser: z.string().optional(),
+    os: z.string().optional(),
+    referer: z.string().optional(),
+    url: z.string().optional(),
+    tagId: z.string().optional(),
+    qr: z.boolean().optional(),
+    root: z.boolean().optional(),
+});
+
+/** @internal */
+export type RetrieveAnalyticsRequest$Outbound = {
+    event: string;
+    groupBy: string;
+    domain?: string | undefined;
+    key?: string | undefined;
+    linkId?: string | undefined;
+    externalId?: string | undefined;
+    interval?: string | undefined;
+    start?: string | undefined;
+    end?: string | undefined;
+    timezone: string;
+    country?: string | undefined;
+    city?: string | undefined;
+    device?: string | undefined;
+    browser?: string | undefined;
+    os?: string | undefined;
+    referer?: string | undefined;
+    url?: string | undefined;
+    tagId?: string | undefined;
+    qr?: boolean | undefined;
+    root?: boolean | undefined;
+};
+
+/** @internal */
+export const RetrieveAnalyticsRequest$outboundSchema: z.ZodType<
+    RetrieveAnalyticsRequest$Outbound,
+    z.ZodTypeDef,
+    RetrieveAnalyticsRequest
+> = z.object({
+    event: Event$outboundSchema.default("clicks"),
+    groupBy: QueryParamGroupBy$outboundSchema.default("count"),
+    domain: z.string().optional(),
+    key: z.string().optional(),
+    linkId: z.string().optional(),
+    externalId: z.string().optional(),
+    interval: Interval$outboundSchema.optional(),
+    start: z.string().optional(),
+    end: z.string().optional(),
+    timezone: z.string().default("UTC"),
+    country: components.CountryCode$outboundSchema.optional(),
+    city: z.string().optional(),
+    device: z.string().optional(),
+    browser: z.string().optional(),
+    os: z.string().optional(),
+    referer: z.string().optional(),
+    url: z.string().optional(),
+    tagId: z.string().optional(),
+    qr: z.boolean().optional(),
+    root: z.boolean().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveAnalyticsRequest$ {
-    export const inboundSchema: z.ZodType<RetrieveAnalyticsRequest, z.ZodTypeDef, unknown> =
-        z.object({
-            event: Event$.inboundSchema.default("clicks"),
-            groupBy: QueryParamGroupBy$.inboundSchema.default("count"),
-            domain: z.string().optional(),
-            key: z.string().optional(),
-            linkId: z.string().optional(),
-            externalId: z.string().optional(),
-            interval: Interval$.inboundSchema.optional(),
-            start: z.string().optional(),
-            end: z.string().optional(),
-            timezone: z.string().default("UTC"),
-            country: components.CountryCode$.inboundSchema.optional(),
-            city: z.string().optional(),
-            device: z.string().optional(),
-            browser: z.string().optional(),
-            os: z.string().optional(),
-            referer: z.string().optional(),
-            url: z.string().optional(),
-            tagId: z.string().optional(),
-            qr: z.boolean().optional(),
-            root: z.boolean().optional(),
-        });
-
-    export type Outbound = {
-        event: string;
-        groupBy: string;
-        domain?: string | undefined;
-        key?: string | undefined;
-        linkId?: string | undefined;
-        externalId?: string | undefined;
-        interval?: string | undefined;
-        start?: string | undefined;
-        end?: string | undefined;
-        timezone: string;
-        country?: string | undefined;
-        city?: string | undefined;
-        device?: string | undefined;
-        browser?: string | undefined;
-        os?: string | undefined;
-        referer?: string | undefined;
-        url?: string | undefined;
-        tagId?: string | undefined;
-        qr?: boolean | undefined;
-        root?: boolean | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveAnalyticsRequest> =
-        z.object({
-            event: Event$.outboundSchema.default("clicks"),
-            groupBy: QueryParamGroupBy$.outboundSchema.default("count"),
-            domain: z.string().optional(),
-            key: z.string().optional(),
-            linkId: z.string().optional(),
-            externalId: z.string().optional(),
-            interval: Interval$.outboundSchema.optional(),
-            start: z.string().optional(),
-            end: z.string().optional(),
-            timezone: z.string().default("UTC"),
-            country: components.CountryCode$.outboundSchema.optional(),
-            city: z.string().optional(),
-            device: z.string().optional(),
-            browser: z.string().optional(),
-            os: z.string().optional(),
-            referer: z.string().optional(),
-            url: z.string().optional(),
-            tagId: z.string().optional(),
-            qr: z.boolean().optional(),
-            root: z.boolean().optional(),
-        });
+    /** @deprecated use `RetrieveAnalyticsRequest$inboundSchema` instead. */
+    export const inboundSchema = RetrieveAnalyticsRequest$inboundSchema;
+    /** @deprecated use `RetrieveAnalyticsRequest$outboundSchema` instead. */
+    export const outboundSchema = RetrieveAnalyticsRequest$outboundSchema;
+    /** @deprecated use `RetrieveAnalyticsRequest$Outbound` instead. */
+    export type Outbound = RetrieveAnalyticsRequest$Outbound;
 }
 
 /** @internal */
-export namespace RetrieveAnalyticsResponseBody$ {
-    export const inboundSchema: z.ZodType<RetrieveAnalyticsResponseBody, z.ZodTypeDef, unknown> =
-        z.union([
-            components.ClicksCount$.inboundSchema,
-            components.LeadsCount$.inboundSchema,
-            components.SalesCount$.inboundSchema,
-            z.array(components.ClicksTimeseries$.inboundSchema),
-            z.array(components.ClicksCountries$.inboundSchema),
-            z.array(components.ClicksCities$.inboundSchema),
-            z.array(components.ClicksDevices$.inboundSchema),
-            z.array(components.ClicksBrowsers$.inboundSchema),
-            z.array(components.ClicksOS$.inboundSchema),
-            z.array(components.ClicksReferers$.inboundSchema),
-            z.array(components.ClicksTopLinks$.inboundSchema),
-            z.array(components.ClicksTopUrls$.inboundSchema),
-            z.array(components.LeadsTimeseries$.inboundSchema),
-            z.array(components.LeadsCountries$.inboundSchema),
-            z.array(components.LeadsCities$.inboundSchema),
-            z.array(components.LeadsDevices$.inboundSchema),
-            z.array(components.LeadsBrowsers$.inboundSchema),
-            z.array(components.LeadsOS$.inboundSchema),
-            z.array(components.LeadsReferers$.inboundSchema),
-            z.array(components.LeadsTopLinks$.inboundSchema),
-            z.array(components.LeadsTopUrls$.inboundSchema),
-            z.array(components.SalesTimeseries$.inboundSchema),
-            z.array(components.SalesCountries$.inboundSchema),
-            z.array(components.SalesCities$.inboundSchema),
-            z.array(components.SalesDevices$.inboundSchema),
-            z.array(components.SalesBrowsers$.inboundSchema),
-            z.array(components.SalesOS$.inboundSchema),
-            z.array(components.SalesReferers$.inboundSchema),
-            z.array(components.SalesTopLinks$.inboundSchema),
-            z.array(components.SalesTopUrls$.inboundSchema),
-        ]);
+export const RetrieveAnalyticsResponseBody$inboundSchema: z.ZodType<
+    RetrieveAnalyticsResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    components.ClicksCount$inboundSchema,
+    components.LeadsCount$inboundSchema,
+    components.SalesCount$inboundSchema,
+    z.array(components.ClicksTimeseries$inboundSchema),
+    z.array(components.ClicksCountries$inboundSchema),
+    z.array(components.ClicksCities$inboundSchema),
+    z.array(components.ClicksDevices$inboundSchema),
+    z.array(components.ClicksBrowsers$inboundSchema),
+    z.array(components.ClicksOS$inboundSchema),
+    z.array(components.ClicksReferers$inboundSchema),
+    z.array(components.ClicksTopLinks$inboundSchema),
+    z.array(components.ClicksTopUrls$inboundSchema),
+    z.array(components.LeadsTimeseries$inboundSchema),
+    z.array(components.LeadsCountries$inboundSchema),
+    z.array(components.LeadsCities$inboundSchema),
+    z.array(components.LeadsDevices$inboundSchema),
+    z.array(components.LeadsBrowsers$inboundSchema),
+    z.array(components.LeadsOS$inboundSchema),
+    z.array(components.LeadsReferers$inboundSchema),
+    z.array(components.LeadsTopLinks$inboundSchema),
+    z.array(components.LeadsTopUrls$inboundSchema),
+    z.array(components.SalesTimeseries$inboundSchema),
+    z.array(components.SalesCountries$inboundSchema),
+    z.array(components.SalesCities$inboundSchema),
+    z.array(components.SalesDevices$inboundSchema),
+    z.array(components.SalesBrowsers$inboundSchema),
+    z.array(components.SalesOS$inboundSchema),
+    z.array(components.SalesReferers$inboundSchema),
+    z.array(components.SalesTopLinks$inboundSchema),
+    z.array(components.SalesTopUrls$inboundSchema),
+]);
 
-    export type Outbound =
-        | components.ClicksCount$.Outbound
-        | components.LeadsCount$.Outbound
-        | components.SalesCount$.Outbound
-        | Array<components.ClicksTimeseries$.Outbound>
-        | Array<components.ClicksCountries$.Outbound>
-        | Array<components.ClicksCities$.Outbound>
-        | Array<components.ClicksDevices$.Outbound>
-        | Array<components.ClicksBrowsers$.Outbound>
-        | Array<components.ClicksOS$.Outbound>
-        | Array<components.ClicksReferers$.Outbound>
-        | Array<components.ClicksTopLinks$.Outbound>
-        | Array<components.ClicksTopUrls$.Outbound>
-        | Array<components.LeadsTimeseries$.Outbound>
-        | Array<components.LeadsCountries$.Outbound>
-        | Array<components.LeadsCities$.Outbound>
-        | Array<components.LeadsDevices$.Outbound>
-        | Array<components.LeadsBrowsers$.Outbound>
-        | Array<components.LeadsOS$.Outbound>
-        | Array<components.LeadsReferers$.Outbound>
-        | Array<components.LeadsTopLinks$.Outbound>
-        | Array<components.LeadsTopUrls$.Outbound>
-        | Array<components.SalesTimeseries$.Outbound>
-        | Array<components.SalesCountries$.Outbound>
-        | Array<components.SalesCities$.Outbound>
-        | Array<components.SalesDevices$.Outbound>
-        | Array<components.SalesBrowsers$.Outbound>
-        | Array<components.SalesOS$.Outbound>
-        | Array<components.SalesReferers$.Outbound>
-        | Array<components.SalesTopLinks$.Outbound>
-        | Array<components.SalesTopUrls$.Outbound>;
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveAnalyticsResponseBody> =
-        z.union([
-            components.ClicksCount$.outboundSchema,
-            components.LeadsCount$.outboundSchema,
-            components.SalesCount$.outboundSchema,
-            z.array(components.ClicksTimeseries$.outboundSchema),
-            z.array(components.ClicksCountries$.outboundSchema),
-            z.array(components.ClicksCities$.outboundSchema),
-            z.array(components.ClicksDevices$.outboundSchema),
-            z.array(components.ClicksBrowsers$.outboundSchema),
-            z.array(components.ClicksOS$.outboundSchema),
-            z.array(components.ClicksReferers$.outboundSchema),
-            z.array(components.ClicksTopLinks$.outboundSchema),
-            z.array(components.ClicksTopUrls$.outboundSchema),
-            z.array(components.LeadsTimeseries$.outboundSchema),
-            z.array(components.LeadsCountries$.outboundSchema),
-            z.array(components.LeadsCities$.outboundSchema),
-            z.array(components.LeadsDevices$.outboundSchema),
-            z.array(components.LeadsBrowsers$.outboundSchema),
-            z.array(components.LeadsOS$.outboundSchema),
-            z.array(components.LeadsReferers$.outboundSchema),
-            z.array(components.LeadsTopLinks$.outboundSchema),
-            z.array(components.LeadsTopUrls$.outboundSchema),
-            z.array(components.SalesTimeseries$.outboundSchema),
-            z.array(components.SalesCountries$.outboundSchema),
-            z.array(components.SalesCities$.outboundSchema),
-            z.array(components.SalesDevices$.outboundSchema),
-            z.array(components.SalesBrowsers$.outboundSchema),
-            z.array(components.SalesOS$.outboundSchema),
-            z.array(components.SalesReferers$.outboundSchema),
-            z.array(components.SalesTopLinks$.outboundSchema),
-            z.array(components.SalesTopUrls$.outboundSchema),
-        ]);
+/** @internal */
+export type RetrieveAnalyticsResponseBody$Outbound =
+    | components.ClicksCount$Outbound
+    | components.LeadsCount$Outbound
+    | components.SalesCount$Outbound
+    | Array<components.ClicksTimeseries$Outbound>
+    | Array<components.ClicksCountries$Outbound>
+    | Array<components.ClicksCities$Outbound>
+    | Array<components.ClicksDevices$Outbound>
+    | Array<components.ClicksBrowsers$Outbound>
+    | Array<components.ClicksOS$Outbound>
+    | Array<components.ClicksReferers$Outbound>
+    | Array<components.ClicksTopLinks$Outbound>
+    | Array<components.ClicksTopUrls$Outbound>
+    | Array<components.LeadsTimeseries$Outbound>
+    | Array<components.LeadsCountries$Outbound>
+    | Array<components.LeadsCities$Outbound>
+    | Array<components.LeadsDevices$Outbound>
+    | Array<components.LeadsBrowsers$Outbound>
+    | Array<components.LeadsOS$Outbound>
+    | Array<components.LeadsReferers$Outbound>
+    | Array<components.LeadsTopLinks$Outbound>
+    | Array<components.LeadsTopUrls$Outbound>
+    | Array<components.SalesTimeseries$Outbound>
+    | Array<components.SalesCountries$Outbound>
+    | Array<components.SalesCities$Outbound>
+    | Array<components.SalesDevices$Outbound>
+    | Array<components.SalesBrowsers$Outbound>
+    | Array<components.SalesOS$Outbound>
+    | Array<components.SalesReferers$Outbound>
+    | Array<components.SalesTopLinks$Outbound>
+    | Array<components.SalesTopUrls$Outbound>;
+
+/** @internal */
+export const RetrieveAnalyticsResponseBody$outboundSchema: z.ZodType<
+    RetrieveAnalyticsResponseBody$Outbound,
+    z.ZodTypeDef,
+    RetrieveAnalyticsResponseBody
+> = z.union([
+    components.ClicksCount$outboundSchema,
+    components.LeadsCount$outboundSchema,
+    components.SalesCount$outboundSchema,
+    z.array(components.ClicksTimeseries$outboundSchema),
+    z.array(components.ClicksCountries$outboundSchema),
+    z.array(components.ClicksCities$outboundSchema),
+    z.array(components.ClicksDevices$outboundSchema),
+    z.array(components.ClicksBrowsers$outboundSchema),
+    z.array(components.ClicksOS$outboundSchema),
+    z.array(components.ClicksReferers$outboundSchema),
+    z.array(components.ClicksTopLinks$outboundSchema),
+    z.array(components.ClicksTopUrls$outboundSchema),
+    z.array(components.LeadsTimeseries$outboundSchema),
+    z.array(components.LeadsCountries$outboundSchema),
+    z.array(components.LeadsCities$outboundSchema),
+    z.array(components.LeadsDevices$outboundSchema),
+    z.array(components.LeadsBrowsers$outboundSchema),
+    z.array(components.LeadsOS$outboundSchema),
+    z.array(components.LeadsReferers$outboundSchema),
+    z.array(components.LeadsTopLinks$outboundSchema),
+    z.array(components.LeadsTopUrls$outboundSchema),
+    z.array(components.SalesTimeseries$outboundSchema),
+    z.array(components.SalesCountries$outboundSchema),
+    z.array(components.SalesCities$outboundSchema),
+    z.array(components.SalesDevices$outboundSchema),
+    z.array(components.SalesBrowsers$outboundSchema),
+    z.array(components.SalesOS$outboundSchema),
+    z.array(components.SalesReferers$outboundSchema),
+    z.array(components.SalesTopLinks$outboundSchema),
+    z.array(components.SalesTopUrls$outboundSchema),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RetrieveAnalyticsResponseBody$ {
+    /** @deprecated use `RetrieveAnalyticsResponseBody$inboundSchema` instead. */
+    export const inboundSchema = RetrieveAnalyticsResponseBody$inboundSchema;
+    /** @deprecated use `RetrieveAnalyticsResponseBody$outboundSchema` instead. */
+    export const outboundSchema = RetrieveAnalyticsResponseBody$outboundSchema;
+    /** @deprecated use `RetrieveAnalyticsResponseBody$Outbound` instead. */
+    export type Outbound = RetrieveAnalyticsResponseBody$Outbound;
 }

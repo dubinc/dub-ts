@@ -49,83 +49,149 @@ export type UpdateTagRequestBody = {
 
 export type UpdateTagRequest = {
     /**
-     * The ID of the tag
+     * The ID of the tag to update.
      */
     id: string;
     requestBody?: UpdateTagRequestBody | undefined;
 };
 
 /** @internal */
+export const UpdateTagGlobals$inboundSchema: z.ZodType<UpdateTagGlobals, z.ZodTypeDef, unknown> =
+    z.object({
+        workspaceId: z.string().optional(),
+    });
+
+/** @internal */
+export type UpdateTagGlobals$Outbound = {
+    workspaceId?: string | undefined;
+};
+
+/** @internal */
+export const UpdateTagGlobals$outboundSchema: z.ZodType<
+    UpdateTagGlobals$Outbound,
+    z.ZodTypeDef,
+    UpdateTagGlobals
+> = z.object({
+    workspaceId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UpdateTagGlobals$ {
-    export const inboundSchema: z.ZodType<UpdateTagGlobals, z.ZodTypeDef, unknown> = z.object({
-        workspaceId: z.string().optional(),
-    });
-
-    export type Outbound = {
-        workspaceId?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateTagGlobals> = z.object({
-        workspaceId: z.string().optional(),
-    });
+    /** @deprecated use `UpdateTagGlobals$inboundSchema` instead. */
+    export const inboundSchema = UpdateTagGlobals$inboundSchema;
+    /** @deprecated use `UpdateTagGlobals$outboundSchema` instead. */
+    export const outboundSchema = UpdateTagGlobals$outboundSchema;
+    /** @deprecated use `UpdateTagGlobals$Outbound` instead. */
+    export type Outbound = UpdateTagGlobals$Outbound;
 }
 
 /** @internal */
+export const UpdateTagColor$inboundSchema: z.ZodNativeEnum<typeof UpdateTagColor> =
+    z.nativeEnum(UpdateTagColor);
+
+/** @internal */
+export const UpdateTagColor$outboundSchema: z.ZodNativeEnum<typeof UpdateTagColor> =
+    UpdateTagColor$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UpdateTagColor$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof UpdateTagColor> =
-        z.nativeEnum(UpdateTagColor);
-    export const outboundSchema: z.ZodNativeEnum<typeof UpdateTagColor> = inboundSchema;
+    /** @deprecated use `UpdateTagColor$inboundSchema` instead. */
+    export const inboundSchema = UpdateTagColor$inboundSchema;
+    /** @deprecated use `UpdateTagColor$outboundSchema` instead. */
+    export const outboundSchema = UpdateTagColor$outboundSchema;
 }
 
 /** @internal */
+export const UpdateTagRequestBody$inboundSchema: z.ZodType<
+    UpdateTagRequestBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    name: z.string().optional(),
+    color: UpdateTagColor$inboundSchema.optional(),
+    tag: z.string().optional(),
+});
+
+/** @internal */
+export type UpdateTagRequestBody$Outbound = {
+    name?: string | undefined;
+    color?: string | undefined;
+    tag?: string | undefined;
+};
+
+/** @internal */
+export const UpdateTagRequestBody$outboundSchema: z.ZodType<
+    UpdateTagRequestBody$Outbound,
+    z.ZodTypeDef,
+    UpdateTagRequestBody
+> = z.object({
+    name: z.string().optional(),
+    color: UpdateTagColor$outboundSchema.optional(),
+    tag: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UpdateTagRequestBody$ {
-    export const inboundSchema: z.ZodType<UpdateTagRequestBody, z.ZodTypeDef, unknown> = z.object({
-        name: z.string().optional(),
-        color: UpdateTagColor$.inboundSchema.optional(),
-        tag: z.string().optional(),
+    /** @deprecated use `UpdateTagRequestBody$inboundSchema` instead. */
+    export const inboundSchema = UpdateTagRequestBody$inboundSchema;
+    /** @deprecated use `UpdateTagRequestBody$outboundSchema` instead. */
+    export const outboundSchema = UpdateTagRequestBody$outboundSchema;
+    /** @deprecated use `UpdateTagRequestBody$Outbound` instead. */
+    export type Outbound = UpdateTagRequestBody$Outbound;
+}
+
+/** @internal */
+export const UpdateTagRequest$inboundSchema: z.ZodType<UpdateTagRequest, z.ZodTypeDef, unknown> = z
+    .object({
+        id: z.string(),
+        RequestBody: z.lazy(() => UpdateTagRequestBody$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            RequestBody: "requestBody",
+        });
     });
 
-    export type Outbound = {
-        name?: string | undefined;
-        color?: string | undefined;
-        tag?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateTagRequestBody> = z.object(
-        {
-            name: z.string().optional(),
-            color: UpdateTagColor$.outboundSchema.optional(),
-            tag: z.string().optional(),
-        }
-    );
-}
+/** @internal */
+export type UpdateTagRequest$Outbound = {
+    id: string;
+    RequestBody?: UpdateTagRequestBody$Outbound | undefined;
+};
 
 /** @internal */
+export const UpdateTagRequest$outboundSchema: z.ZodType<
+    UpdateTagRequest$Outbound,
+    z.ZodTypeDef,
+    UpdateTagRequest
+> = z
+    .object({
+        id: z.string(),
+        requestBody: z.lazy(() => UpdateTagRequestBody$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            requestBody: "RequestBody",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UpdateTagRequest$ {
-    export const inboundSchema: z.ZodType<UpdateTagRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            id: z.string(),
-            RequestBody: z.lazy(() => UpdateTagRequestBody$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                RequestBody: "requestBody",
-            });
-        });
-
-    export type Outbound = {
-        id: string;
-        RequestBody?: UpdateTagRequestBody$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateTagRequest> = z
-        .object({
-            id: z.string(),
-            requestBody: z.lazy(() => UpdateTagRequestBody$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                requestBody: "RequestBody",
-            });
-        });
+    /** @deprecated use `UpdateTagRequest$inboundSchema` instead. */
+    export const inboundSchema = UpdateTagRequest$inboundSchema;
+    /** @deprecated use `UpdateTagRequest$outboundSchema` instead. */
+    export const outboundSchema = UpdateTagRequest$outboundSchema;
+    /** @deprecated use `UpdateTagRequest$Outbound` instead. */
+    export type Outbound = UpdateTagRequest$Outbound;
 }
