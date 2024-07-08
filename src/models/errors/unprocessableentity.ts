@@ -49,80 +49,135 @@ export class UnprocessableEntity extends Error {
     data$: UnprocessableEntityData;
 
     constructor(err: UnprocessableEntityData) {
-        super("");
+        const message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : `API error occurred: ${JSON.stringify(err)}`;
+        super(message);
         this.data$ = err;
 
         this.error = err.error;
-
-        this.message =
-            "message" in err && typeof err.message === "string"
-                ? err.message
-                : "API error occurred";
 
         this.name = "UnprocessableEntity";
     }
 }
 
 /** @internal */
+export const UnprocessableEntityCode$inboundSchema: z.ZodNativeEnum<
+    typeof UnprocessableEntityCode
+> = z.nativeEnum(UnprocessableEntityCode);
+
+/** @internal */
+export const UnprocessableEntityCode$outboundSchema: z.ZodNativeEnum<
+    typeof UnprocessableEntityCode
+> = UnprocessableEntityCode$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnprocessableEntityCode$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof UnprocessableEntityCode> =
-        z.nativeEnum(UnprocessableEntityCode);
-    export const outboundSchema: z.ZodNativeEnum<typeof UnprocessableEntityCode> = inboundSchema;
+    /** @deprecated use `UnprocessableEntityCode$inboundSchema` instead. */
+    export const inboundSchema = UnprocessableEntityCode$inboundSchema;
+    /** @deprecated use `UnprocessableEntityCode$outboundSchema` instead. */
+    export const outboundSchema = UnprocessableEntityCode$outboundSchema;
 }
 
 /** @internal */
+export const UnprocessableEntityError$inboundSchema: z.ZodType<
+    UnprocessableEntityError,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        code: UnprocessableEntityCode$inboundSchema,
+        message: z.string(),
+        doc_url: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            doc_url: "docUrl",
+        });
+    });
+
+/** @internal */
+export type UnprocessableEntityError$Outbound = {
+    code: string;
+    message: string;
+    doc_url?: string | undefined;
+};
+
+/** @internal */
+export const UnprocessableEntityError$outboundSchema: z.ZodType<
+    UnprocessableEntityError$Outbound,
+    z.ZodTypeDef,
+    UnprocessableEntityError
+> = z
+    .object({
+        code: UnprocessableEntityCode$outboundSchema,
+        message: z.string(),
+        docUrl: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            docUrl: "doc_url",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnprocessableEntityError$ {
-    export const inboundSchema: z.ZodType<UnprocessableEntityError, z.ZodTypeDef, unknown> = z
-        .object({
-            code: UnprocessableEntityCode$.inboundSchema,
-            message: z.string(),
-            doc_url: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                doc_url: "docUrl",
-            });
-        });
-
-    export type Outbound = {
-        code: string;
-        message: string;
-        doc_url?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnprocessableEntityError> = z
-        .object({
-            code: UnprocessableEntityCode$.outboundSchema,
-            message: z.string(),
-            docUrl: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                docUrl: "doc_url",
-            });
-        });
+    /** @deprecated use `UnprocessableEntityError$inboundSchema` instead. */
+    export const inboundSchema = UnprocessableEntityError$inboundSchema;
+    /** @deprecated use `UnprocessableEntityError$outboundSchema` instead. */
+    export const outboundSchema = UnprocessableEntityError$outboundSchema;
+    /** @deprecated use `UnprocessableEntityError$Outbound` instead. */
+    export type Outbound = UnprocessableEntityError$Outbound;
 }
 
 /** @internal */
-export namespace UnprocessableEntity$ {
-    export const inboundSchema: z.ZodType<UnprocessableEntity, z.ZodTypeDef, unknown> = z
-        .object({
-            error: z.lazy(() => UnprocessableEntityError$.inboundSchema),
+export const UnprocessableEntity$inboundSchema: z.ZodType<
+    UnprocessableEntity,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        error: z.lazy(() => UnprocessableEntityError$inboundSchema),
+    })
+    .transform((v) => {
+        return new UnprocessableEntity(v);
+    });
+
+/** @internal */
+export type UnprocessableEntity$Outbound = {
+    error: UnprocessableEntityError$Outbound;
+};
+
+/** @internal */
+export const UnprocessableEntity$outboundSchema: z.ZodType<
+    UnprocessableEntity$Outbound,
+    z.ZodTypeDef,
+    UnprocessableEntity
+> = z
+    .instanceof(UnprocessableEntity)
+    .transform((v) => v.data$)
+    .pipe(
+        z.object({
+            error: z.lazy(() => UnprocessableEntityError$outboundSchema),
         })
-        .transform((v) => {
-            return new UnprocessableEntity(v);
-        });
+    );
 
-    export type Outbound = {
-        error: UnprocessableEntityError$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnprocessableEntity> = z
-        .instanceof(UnprocessableEntity)
-        .transform((v) => v.data$)
-        .pipe(
-            z.object({
-                error: z.lazy(() => UnprocessableEntityError$.outboundSchema),
-            })
-        );
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UnprocessableEntity$ {
+    /** @deprecated use `UnprocessableEntity$inboundSchema` instead. */
+    export const inboundSchema = UnprocessableEntity$inboundSchema;
+    /** @deprecated use `UnprocessableEntity$outboundSchema` instead. */
+    export const outboundSchema = UnprocessableEntity$outboundSchema;
+    /** @deprecated use `UnprocessableEntity$Outbound` instead. */
+    export type Outbound = UnprocessableEntity$Outbound;
 }

@@ -1,20 +1,20 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: bdbe0b838757272c0b9e043ea9c5cb5f
+  docChecksum: 15f8f5e148453cdd9612beaac38125e3
   docVersion: 0.0.1
-  speakeasyVersion: 1.326.3
-  generationVersion: 2.359.6
-  releaseVersion: 0.31.1
-  configChecksum: ebfc9e3ac69db1d429d7eb3d3905df22
-  repoURL: https://github.com/dubinc/dub-node.git
-  installationURL: https://github.com/dubinc/dub-node
+  speakeasyVersion: 1.330.0
+  generationVersion: 2.361.10
+  releaseVersion: 0.31.2
+  configChecksum: 61aab169d7b645e8a92fe307d9950e4a
+  repoURL: https://github.com/dubinc/dub-ts.git
+  installationURL: https://github.com/dubinc/dub-ts
   published: true
 features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.5
-    core: 3.11.3
+    core: 3.11.5
     deprecations: 2.81.1
     examples: 2.81.4
     flattening: 2.81.1
@@ -260,6 +260,7 @@ generatedFiles:
   - docs/models/operations/retrieveanalyticsrequest.md
   - docs/models/operations/retrieveanalyticsresponsebody.md
   - docs/models/operations/getworkspacerequest.md
+  - docs/models/operations/updateworkspacerequestbody.md
   - docs/models/operations/updateworkspacerequest.md
   - docs/models/operations/gettagsglobals.md
   - docs/models/operations/gettagsrequest.md

@@ -20,22 +20,35 @@ export type SalesOS = {
 };
 
 /** @internal */
+export const SalesOS$inboundSchema: z.ZodType<SalesOS, z.ZodTypeDef, unknown> = z.object({
+    os: z.string(),
+    sales: z.number(),
+    amount: z.number(),
+});
+
+/** @internal */
+export type SalesOS$Outbound = {
+    os: string;
+    sales: number;
+    amount: number;
+};
+
+/** @internal */
+export const SalesOS$outboundSchema: z.ZodType<SalesOS$Outbound, z.ZodTypeDef, SalesOS> = z.object({
+    os: z.string(),
+    sales: z.number(),
+    amount: z.number(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace SalesOS$ {
-    export const inboundSchema: z.ZodType<SalesOS, z.ZodTypeDef, unknown> = z.object({
-        os: z.string(),
-        sales: z.number(),
-        amount: z.number(),
-    });
-
-    export type Outbound = {
-        os: string;
-        sales: number;
-        amount: number;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SalesOS> = z.object({
-        os: z.string(),
-        sales: z.number(),
-        amount: z.number(),
-    });
+    /** @deprecated use `SalesOS$inboundSchema` instead. */
+    export const inboundSchema = SalesOS$inboundSchema;
+    /** @deprecated use `SalesOS$outboundSchema` instead. */
+    export const outboundSchema = SalesOS$outboundSchema;
+    /** @deprecated use `SalesOS$Outbound` instead. */
+    export type Outbound = SalesOS$Outbound;
 }

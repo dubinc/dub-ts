@@ -30,39 +30,79 @@ export type GetMetatagsResponseBody = {
 };
 
 /** @internal */
+export const GetMetatagsRequest$inboundSchema: z.ZodType<
+    GetMetatagsRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    url: z.string(),
+});
+
+/** @internal */
+export type GetMetatagsRequest$Outbound = {
+    url: string;
+};
+
+/** @internal */
+export const GetMetatagsRequest$outboundSchema: z.ZodType<
+    GetMetatagsRequest$Outbound,
+    z.ZodTypeDef,
+    GetMetatagsRequest
+> = z.object({
+    url: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetMetatagsRequest$ {
-    export const inboundSchema: z.ZodType<GetMetatagsRequest, z.ZodTypeDef, unknown> = z.object({
-        url: z.string(),
-    });
-
-    export type Outbound = {
-        url: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetMetatagsRequest> = z.object({
-        url: z.string(),
-    });
+    /** @deprecated use `GetMetatagsRequest$inboundSchema` instead. */
+    export const inboundSchema = GetMetatagsRequest$inboundSchema;
+    /** @deprecated use `GetMetatagsRequest$outboundSchema` instead. */
+    export const outboundSchema = GetMetatagsRequest$outboundSchema;
+    /** @deprecated use `GetMetatagsRequest$Outbound` instead. */
+    export type Outbound = GetMetatagsRequest$Outbound;
 }
 
 /** @internal */
+export const GetMetatagsResponseBody$inboundSchema: z.ZodType<
+    GetMetatagsResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    title: z.nullable(z.string()),
+    description: z.nullable(z.string()),
+    image: z.nullable(z.string()),
+});
+
+/** @internal */
+export type GetMetatagsResponseBody$Outbound = {
+    title: string | null;
+    description: string | null;
+    image: string | null;
+};
+
+/** @internal */
+export const GetMetatagsResponseBody$outboundSchema: z.ZodType<
+    GetMetatagsResponseBody$Outbound,
+    z.ZodTypeDef,
+    GetMetatagsResponseBody
+> = z.object({
+    title: z.nullable(z.string()),
+    description: z.nullable(z.string()),
+    image: z.nullable(z.string()),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetMetatagsResponseBody$ {
-    export const inboundSchema: z.ZodType<GetMetatagsResponseBody, z.ZodTypeDef, unknown> =
-        z.object({
-            title: z.nullable(z.string()),
-            description: z.nullable(z.string()),
-            image: z.nullable(z.string()),
-        });
-
-    export type Outbound = {
-        title: string | null;
-        description: string | null;
-        image: string | null;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetMetatagsResponseBody> =
-        z.object({
-            title: z.nullable(z.string()),
-            description: z.nullable(z.string()),
-            image: z.nullable(z.string()),
-        });
+    /** @deprecated use `GetMetatagsResponseBody$inboundSchema` instead. */
+    export const inboundSchema = GetMetatagsResponseBody$inboundSchema;
+    /** @deprecated use `GetMetatagsResponseBody$outboundSchema` instead. */
+    export const outboundSchema = GetMetatagsResponseBody$outboundSchema;
+    /** @deprecated use `GetMetatagsResponseBody$Outbound` instead. */
+    export type Outbound = GetMetatagsResponseBody$Outbound;
 }

@@ -285,32 +285,61 @@ export type SalesCities = {
 };
 
 /** @internal */
+export const SalesCitiesCountry$inboundSchema: z.ZodNativeEnum<typeof SalesCitiesCountry> =
+    z.nativeEnum(SalesCitiesCountry);
+
+/** @internal */
+export const SalesCitiesCountry$outboundSchema: z.ZodNativeEnum<typeof SalesCitiesCountry> =
+    SalesCitiesCountry$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace SalesCitiesCountry$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof SalesCitiesCountry> =
-        z.nativeEnum(SalesCitiesCountry);
-    export const outboundSchema: z.ZodNativeEnum<typeof SalesCitiesCountry> = inboundSchema;
+    /** @deprecated use `SalesCitiesCountry$inboundSchema` instead. */
+    export const inboundSchema = SalesCitiesCountry$inboundSchema;
+    /** @deprecated use `SalesCitiesCountry$outboundSchema` instead. */
+    export const outboundSchema = SalesCitiesCountry$outboundSchema;
 }
 
 /** @internal */
+export const SalesCities$inboundSchema: z.ZodType<SalesCities, z.ZodTypeDef, unknown> = z.object({
+    city: z.string(),
+    country: SalesCitiesCountry$inboundSchema,
+    sales: z.number(),
+    amount: z.number(),
+});
+
+/** @internal */
+export type SalesCities$Outbound = {
+    city: string;
+    country: string;
+    sales: number;
+    amount: number;
+};
+
+/** @internal */
+export const SalesCities$outboundSchema: z.ZodType<
+    SalesCities$Outbound,
+    z.ZodTypeDef,
+    SalesCities
+> = z.object({
+    city: z.string(),
+    country: SalesCitiesCountry$outboundSchema,
+    sales: z.number(),
+    amount: z.number(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace SalesCities$ {
-    export const inboundSchema: z.ZodType<SalesCities, z.ZodTypeDef, unknown> = z.object({
-        city: z.string(),
-        country: SalesCitiesCountry$.inboundSchema,
-        sales: z.number(),
-        amount: z.number(),
-    });
-
-    export type Outbound = {
-        city: string;
-        country: string;
-        sales: number;
-        amount: number;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SalesCities> = z.object({
-        city: z.string(),
-        country: SalesCitiesCountry$.outboundSchema,
-        sales: z.number(),
-        amount: z.number(),
-    });
+    /** @deprecated use `SalesCities$inboundSchema` instead. */
+    export const inboundSchema = SalesCities$inboundSchema;
+    /** @deprecated use `SalesCities$outboundSchema` instead. */
+    export const outboundSchema = SalesCities$outboundSchema;
+    /** @deprecated use `SalesCities$Outbound` instead. */
+    export type Outbound = SalesCities$Outbound;
 }

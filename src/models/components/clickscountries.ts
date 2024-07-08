@@ -277,25 +277,54 @@ export type ClicksCountries = {
 };
 
 /** @internal */
+export const Country$inboundSchema: z.ZodNativeEnum<typeof Country> = z.nativeEnum(Country);
+
+/** @internal */
+export const Country$outboundSchema: z.ZodNativeEnum<typeof Country> = Country$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Country$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof Country> = z.nativeEnum(Country);
-    export const outboundSchema: z.ZodNativeEnum<typeof Country> = inboundSchema;
+    /** @deprecated use `Country$inboundSchema` instead. */
+    export const inboundSchema = Country$inboundSchema;
+    /** @deprecated use `Country$outboundSchema` instead. */
+    export const outboundSchema = Country$outboundSchema;
 }
 
 /** @internal */
+export const ClicksCountries$inboundSchema: z.ZodType<ClicksCountries, z.ZodTypeDef, unknown> =
+    z.object({
+        country: Country$inboundSchema,
+        clicks: z.number(),
+    });
+
+/** @internal */
+export type ClicksCountries$Outbound = {
+    country: string;
+    clicks: number;
+};
+
+/** @internal */
+export const ClicksCountries$outboundSchema: z.ZodType<
+    ClicksCountries$Outbound,
+    z.ZodTypeDef,
+    ClicksCountries
+> = z.object({
+    country: Country$outboundSchema,
+    clicks: z.number(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ClicksCountries$ {
-    export const inboundSchema: z.ZodType<ClicksCountries, z.ZodTypeDef, unknown> = z.object({
-        country: Country$.inboundSchema,
-        clicks: z.number(),
-    });
-
-    export type Outbound = {
-        country: string;
-        clicks: number;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ClicksCountries> = z.object({
-        country: Country$.outboundSchema,
-        clicks: z.number(),
-    });
+    /** @deprecated use `ClicksCountries$inboundSchema` instead. */
+    export const inboundSchema = ClicksCountries$inboundSchema;
+    /** @deprecated use `ClicksCountries$outboundSchema` instead. */
+    export const outboundSchema = ClicksCountries$outboundSchema;
+    /** @deprecated use `ClicksCountries$Outbound` instead. */
+    export type Outbound = ClicksCountries$Outbound;
 }

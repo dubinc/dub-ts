@@ -49,32 +49,43 @@ export class Unauthorized extends Error {
     data$: UnauthorizedData;
 
     constructor(err: UnauthorizedData) {
-        super("");
+        const message =
+            "message" in err && typeof err.message === "string"
+                ? err.message
+                : `API error occurred: ${JSON.stringify(err)}`;
+        super(message);
         this.data$ = err;
 
         this.error = err.error;
-
-        this.message =
-            "message" in err && typeof err.message === "string"
-                ? err.message
-                : "API error occurred";
 
         this.name = "Unauthorized";
     }
 }
 
 /** @internal */
+export const UnauthorizedCode$inboundSchema: z.ZodNativeEnum<typeof UnauthorizedCode> =
+    z.nativeEnum(UnauthorizedCode);
+
+/** @internal */
+export const UnauthorizedCode$outboundSchema: z.ZodNativeEnum<typeof UnauthorizedCode> =
+    UnauthorizedCode$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnauthorizedCode$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof UnauthorizedCode> =
-        z.nativeEnum(UnauthorizedCode);
-    export const outboundSchema: z.ZodNativeEnum<typeof UnauthorizedCode> = inboundSchema;
+    /** @deprecated use `UnauthorizedCode$inboundSchema` instead. */
+    export const inboundSchema = UnauthorizedCode$inboundSchema;
+    /** @deprecated use `UnauthorizedCode$outboundSchema` instead. */
+    export const outboundSchema = UnauthorizedCode$outboundSchema;
 }
 
 /** @internal */
-export namespace UnauthorizedError$ {
-    export const inboundSchema: z.ZodType<UnauthorizedError, z.ZodTypeDef, unknown> = z
+export const UnauthorizedError$inboundSchema: z.ZodType<UnauthorizedError, z.ZodTypeDef, unknown> =
+    z
         .object({
-            code: UnauthorizedCode$.inboundSchema,
+            code: UnauthorizedCode$inboundSchema,
             message: z.string(),
             doc_url: z.string().optional(),
         })
@@ -84,45 +95,80 @@ export namespace UnauthorizedError$ {
             });
         });
 
-    export type Outbound = {
-        code: string;
-        message: string;
-        doc_url?: string | undefined;
-    };
+/** @internal */
+export type UnauthorizedError$Outbound = {
+    code: string;
+    message: string;
+    doc_url?: string | undefined;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnauthorizedError> = z
-        .object({
-            code: UnauthorizedCode$.outboundSchema,
-            message: z.string(),
-            docUrl: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                docUrl: "doc_url",
-            });
+/** @internal */
+export const UnauthorizedError$outboundSchema: z.ZodType<
+    UnauthorizedError$Outbound,
+    z.ZodTypeDef,
+    UnauthorizedError
+> = z
+    .object({
+        code: UnauthorizedCode$outboundSchema,
+        message: z.string(),
+        docUrl: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            docUrl: "doc_url",
         });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UnauthorizedError$ {
+    /** @deprecated use `UnauthorizedError$inboundSchema` instead. */
+    export const inboundSchema = UnauthorizedError$inboundSchema;
+    /** @deprecated use `UnauthorizedError$outboundSchema` instead. */
+    export const outboundSchema = UnauthorizedError$outboundSchema;
+    /** @deprecated use `UnauthorizedError$Outbound` instead. */
+    export type Outbound = UnauthorizedError$Outbound;
 }
 
 /** @internal */
-export namespace Unauthorized$ {
-    export const inboundSchema: z.ZodType<Unauthorized, z.ZodTypeDef, unknown> = z
-        .object({
-            error: z.lazy(() => UnauthorizedError$.inboundSchema),
+export const Unauthorized$inboundSchema: z.ZodType<Unauthorized, z.ZodTypeDef, unknown> = z
+    .object({
+        error: z.lazy(() => UnauthorizedError$inboundSchema),
+    })
+    .transform((v) => {
+        return new Unauthorized(v);
+    });
+
+/** @internal */
+export type Unauthorized$Outbound = {
+    error: UnauthorizedError$Outbound;
+};
+
+/** @internal */
+export const Unauthorized$outboundSchema: z.ZodType<
+    Unauthorized$Outbound,
+    z.ZodTypeDef,
+    Unauthorized
+> = z
+    .instanceof(Unauthorized)
+    .transform((v) => v.data$)
+    .pipe(
+        z.object({
+            error: z.lazy(() => UnauthorizedError$outboundSchema),
         })
-        .transform((v) => {
-            return new Unauthorized(v);
-        });
+    );
 
-    export type Outbound = {
-        error: UnauthorizedError$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Unauthorized> = z
-        .instanceof(Unauthorized)
-        .transform((v) => v.data$)
-        .pipe(
-            z.object({
-                error: z.lazy(() => UnauthorizedError$.outboundSchema),
-            })
-        );
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Unauthorized$ {
+    /** @deprecated use `Unauthorized$inboundSchema` instead. */
+    export const inboundSchema = Unauthorized$inboundSchema;
+    /** @deprecated use `Unauthorized$outboundSchema` instead. */
+    export const outboundSchema = Unauthorized$outboundSchema;
+    /** @deprecated use `Unauthorized$Outbound` instead. */
+    export type Outbound = Unauthorized$Outbound;
 }

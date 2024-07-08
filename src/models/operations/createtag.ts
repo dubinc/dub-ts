@@ -47,45 +47,93 @@ export type CreateTagRequestBody = {
 };
 
 /** @internal */
+export const CreateTagGlobals$inboundSchema: z.ZodType<CreateTagGlobals, z.ZodTypeDef, unknown> =
+    z.object({
+        workspaceId: z.string().optional(),
+    });
+
+/** @internal */
+export type CreateTagGlobals$Outbound = {
+    workspaceId?: string | undefined;
+};
+
+/** @internal */
+export const CreateTagGlobals$outboundSchema: z.ZodType<
+    CreateTagGlobals$Outbound,
+    z.ZodTypeDef,
+    CreateTagGlobals
+> = z.object({
+    workspaceId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateTagGlobals$ {
-    export const inboundSchema: z.ZodType<CreateTagGlobals, z.ZodTypeDef, unknown> = z.object({
-        workspaceId: z.string().optional(),
-    });
-
-    export type Outbound = {
-        workspaceId?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateTagGlobals> = z.object({
-        workspaceId: z.string().optional(),
-    });
+    /** @deprecated use `CreateTagGlobals$inboundSchema` instead. */
+    export const inboundSchema = CreateTagGlobals$inboundSchema;
+    /** @deprecated use `CreateTagGlobals$outboundSchema` instead. */
+    export const outboundSchema = CreateTagGlobals$outboundSchema;
+    /** @deprecated use `CreateTagGlobals$Outbound` instead. */
+    export type Outbound = CreateTagGlobals$Outbound;
 }
 
 /** @internal */
+export const Color$inboundSchema: z.ZodNativeEnum<typeof Color> = z.nativeEnum(Color);
+
+/** @internal */
+export const Color$outboundSchema: z.ZodNativeEnum<typeof Color> = Color$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Color$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof Color> = z.nativeEnum(Color);
-    export const outboundSchema: z.ZodNativeEnum<typeof Color> = inboundSchema;
+    /** @deprecated use `Color$inboundSchema` instead. */
+    export const inboundSchema = Color$inboundSchema;
+    /** @deprecated use `Color$outboundSchema` instead. */
+    export const outboundSchema = Color$outboundSchema;
 }
 
 /** @internal */
+export const CreateTagRequestBody$inboundSchema: z.ZodType<
+    CreateTagRequestBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    name: z.string().optional(),
+    color: Color$inboundSchema.optional(),
+    tag: z.string().optional(),
+});
+
+/** @internal */
+export type CreateTagRequestBody$Outbound = {
+    name?: string | undefined;
+    color?: string | undefined;
+    tag?: string | undefined;
+};
+
+/** @internal */
+export const CreateTagRequestBody$outboundSchema: z.ZodType<
+    CreateTagRequestBody$Outbound,
+    z.ZodTypeDef,
+    CreateTagRequestBody
+> = z.object({
+    name: z.string().optional(),
+    color: Color$outboundSchema.optional(),
+    tag: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateTagRequestBody$ {
-    export const inboundSchema: z.ZodType<CreateTagRequestBody, z.ZodTypeDef, unknown> = z.object({
-        name: z.string().optional(),
-        color: Color$.inboundSchema.optional(),
-        tag: z.string().optional(),
-    });
-
-    export type Outbound = {
-        name?: string | undefined;
-        color?: string | undefined;
-        tag?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateTagRequestBody> = z.object(
-        {
-            name: z.string().optional(),
-            color: Color$.outboundSchema.optional(),
-            tag: z.string().optional(),
-        }
-    );
+    /** @deprecated use `CreateTagRequestBody$inboundSchema` instead. */
+    export const inboundSchema = CreateTagRequestBody$inboundSchema;
+    /** @deprecated use `CreateTagRequestBody$outboundSchema` instead. */
+    export const outboundSchema = CreateTagRequestBody$outboundSchema;
+    /** @deprecated use `CreateTagRequestBody$Outbound` instead. */
+    export type Outbound = CreateTagRequestBody$Outbound;
 }

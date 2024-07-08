@@ -12,16 +12,37 @@ export type GetWorkspaceRequest = {
 };
 
 /** @internal */
+export const GetWorkspaceRequest$inboundSchema: z.ZodType<
+    GetWorkspaceRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    idOrSlug: z.string(),
+});
+
+/** @internal */
+export type GetWorkspaceRequest$Outbound = {
+    idOrSlug: string;
+};
+
+/** @internal */
+export const GetWorkspaceRequest$outboundSchema: z.ZodType<
+    GetWorkspaceRequest$Outbound,
+    z.ZodTypeDef,
+    GetWorkspaceRequest
+> = z.object({
+    idOrSlug: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetWorkspaceRequest$ {
-    export const inboundSchema: z.ZodType<GetWorkspaceRequest, z.ZodTypeDef, unknown> = z.object({
-        idOrSlug: z.string(),
-    });
-
-    export type Outbound = {
-        idOrSlug: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetWorkspaceRequest> = z.object({
-        idOrSlug: z.string(),
-    });
+    /** @deprecated use `GetWorkspaceRequest$inboundSchema` instead. */
+    export const inboundSchema = GetWorkspaceRequest$inboundSchema;
+    /** @deprecated use `GetWorkspaceRequest$outboundSchema` instead. */
+    export const outboundSchema = GetWorkspaceRequest$outboundSchema;
+    /** @deprecated use `GetWorkspaceRequest$Outbound` instead. */
+    export type Outbound = GetWorkspaceRequest$Outbound;
 }

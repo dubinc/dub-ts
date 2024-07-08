@@ -266,7 +266,20 @@ export const CountryCode = {
 export type CountryCode = ClosedEnum<typeof CountryCode>;
 
 /** @internal */
+export const CountryCode$inboundSchema: z.ZodNativeEnum<typeof CountryCode> =
+    z.nativeEnum(CountryCode);
+
+/** @internal */
+export const CountryCode$outboundSchema: z.ZodNativeEnum<typeof CountryCode> =
+    CountryCode$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CountryCode$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof CountryCode> = z.nativeEnum(CountryCode);
-    export const outboundSchema: z.ZodNativeEnum<typeof CountryCode> = inboundSchema;
+    /** @deprecated use `CountryCode$inboundSchema` instead. */
+    export const inboundSchema = CountryCode$inboundSchema;
+    /** @deprecated use `CountryCode$outboundSchema` instead. */
+    export const outboundSchema = CountryCode$outboundSchema;
 }

@@ -124,129 +124,193 @@ export type CreateLinkRequestBody = {
 };
 
 /** @internal */
+export const CreateLinkGlobals$inboundSchema: z.ZodType<CreateLinkGlobals, z.ZodTypeDef, unknown> =
+    z.object({
+        workspaceId: z.string().optional(),
+    });
+
+/** @internal */
+export type CreateLinkGlobals$Outbound = {
+    workspaceId?: string | undefined;
+};
+
+/** @internal */
+export const CreateLinkGlobals$outboundSchema: z.ZodType<
+    CreateLinkGlobals$Outbound,
+    z.ZodTypeDef,
+    CreateLinkGlobals
+> = z.object({
+    workspaceId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateLinkGlobals$ {
-    export const inboundSchema: z.ZodType<CreateLinkGlobals, z.ZodTypeDef, unknown> = z.object({
-        workspaceId: z.string().optional(),
-    });
-
-    export type Outbound = {
-        workspaceId?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateLinkGlobals> = z.object({
-        workspaceId: z.string().optional(),
-    });
+    /** @deprecated use `CreateLinkGlobals$inboundSchema` instead. */
+    export const inboundSchema = CreateLinkGlobals$inboundSchema;
+    /** @deprecated use `CreateLinkGlobals$outboundSchema` instead. */
+    export const outboundSchema = CreateLinkGlobals$outboundSchema;
+    /** @deprecated use `CreateLinkGlobals$Outbound` instead. */
+    export type Outbound = CreateLinkGlobals$Outbound;
 }
 
 /** @internal */
+export const TagIds$inboundSchema: z.ZodType<TagIds, z.ZodTypeDef, unknown> = z.union([
+    z.string(),
+    z.array(z.string()),
+]);
+
+/** @internal */
+export type TagIds$Outbound = string | Array<string>;
+
+/** @internal */
+export const TagIds$outboundSchema: z.ZodType<TagIds$Outbound, z.ZodTypeDef, TagIds> = z.union([
+    z.string(),
+    z.array(z.string()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace TagIds$ {
-    export const inboundSchema: z.ZodType<TagIds, z.ZodTypeDef, unknown> = z.union([
-        z.string(),
-        z.array(z.string()),
-    ]);
-
-    export type Outbound = string | Array<string>;
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TagIds> = z.union([
-        z.string(),
-        z.array(z.string()),
-    ]);
+    /** @deprecated use `TagIds$inboundSchema` instead. */
+    export const inboundSchema = TagIds$inboundSchema;
+    /** @deprecated use `TagIds$outboundSchema` instead. */
+    export const outboundSchema = TagIds$outboundSchema;
+    /** @deprecated use `TagIds$Outbound` instead. */
+    export type Outbound = TagIds$Outbound;
 }
 
 /** @internal */
+export const TagNames$inboundSchema: z.ZodType<TagNames, z.ZodTypeDef, unknown> = z.union([
+    z.string(),
+    z.array(z.string()),
+]);
+
+/** @internal */
+export type TagNames$Outbound = string | Array<string>;
+
+/** @internal */
+export const TagNames$outboundSchema: z.ZodType<TagNames$Outbound, z.ZodTypeDef, TagNames> =
+    z.union([z.string(), z.array(z.string())]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace TagNames$ {
-    export const inboundSchema: z.ZodType<TagNames, z.ZodTypeDef, unknown> = z.union([
-        z.string(),
-        z.array(z.string()),
-    ]);
-
-    export type Outbound = string | Array<string>;
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TagNames> = z.union([
-        z.string(),
-        z.array(z.string()),
-    ]);
+    /** @deprecated use `TagNames$inboundSchema` instead. */
+    export const inboundSchema = TagNames$inboundSchema;
+    /** @deprecated use `TagNames$outboundSchema` instead. */
+    export const outboundSchema = TagNames$outboundSchema;
+    /** @deprecated use `TagNames$Outbound` instead. */
+    export type Outbound = TagNames$Outbound;
 }
 
 /** @internal */
+export const CreateLinkRequestBody$inboundSchema: z.ZodType<
+    CreateLinkRequestBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    url: z.string(),
+    domain: z.string().optional(),
+    key: z.string().optional(),
+    externalId: z.nullable(z.string()).optional(),
+    prefix: z.string().optional(),
+    trackConversion: z.boolean().default(false),
+    archived: z.boolean().default(false),
+    publicStats: z.boolean().default(false),
+    tagId: z.nullable(z.string()).optional(),
+    tagIds: z.union([z.string(), z.array(z.string())]).optional(),
+    tagNames: z.union([z.string(), z.array(z.string())]).optional(),
+    comments: z.nullable(z.string()).optional(),
+    expiresAt: z.nullable(z.string()).optional(),
+    expiredUrl: z.nullable(z.string()).optional(),
+    password: z.nullable(z.string()).optional(),
+    proxy: z.boolean().default(false),
+    title: z.nullable(z.string()).optional(),
+    description: z.nullable(z.string()).optional(),
+    image: z.nullable(z.string()).optional(),
+    rewrite: z.boolean().default(false),
+    ios: z.nullable(z.string()).optional(),
+    android: z.nullable(z.string()).optional(),
+    geo: z.nullable(components.LinkGeoTargeting$inboundSchema).optional(),
+    doIndex: z.boolean().default(false),
+});
+
+/** @internal */
+export type CreateLinkRequestBody$Outbound = {
+    url: string;
+    domain?: string | undefined;
+    key?: string | undefined;
+    externalId?: string | null | undefined;
+    prefix?: string | undefined;
+    trackConversion: boolean;
+    archived: boolean;
+    publicStats: boolean;
+    tagId?: string | null | undefined;
+    tagIds?: string | Array<string> | undefined;
+    tagNames?: string | Array<string> | undefined;
+    comments?: string | null | undefined;
+    expiresAt?: string | null | undefined;
+    expiredUrl?: string | null | undefined;
+    password?: string | null | undefined;
+    proxy: boolean;
+    title?: string | null | undefined;
+    description?: string | null | undefined;
+    image?: string | null | undefined;
+    rewrite: boolean;
+    ios?: string | null | undefined;
+    android?: string | null | undefined;
+    geo?: components.LinkGeoTargeting$Outbound | null | undefined;
+    doIndex: boolean;
+};
+
+/** @internal */
+export const CreateLinkRequestBody$outboundSchema: z.ZodType<
+    CreateLinkRequestBody$Outbound,
+    z.ZodTypeDef,
+    CreateLinkRequestBody
+> = z.object({
+    url: z.string(),
+    domain: z.string().optional(),
+    key: z.string().optional(),
+    externalId: z.nullable(z.string()).optional(),
+    prefix: z.string().optional(),
+    trackConversion: z.boolean().default(false),
+    archived: z.boolean().default(false),
+    publicStats: z.boolean().default(false),
+    tagId: z.nullable(z.string()).optional(),
+    tagIds: z.union([z.string(), z.array(z.string())]).optional(),
+    tagNames: z.union([z.string(), z.array(z.string())]).optional(),
+    comments: z.nullable(z.string()).optional(),
+    expiresAt: z.nullable(z.string()).optional(),
+    expiredUrl: z.nullable(z.string()).optional(),
+    password: z.nullable(z.string()).optional(),
+    proxy: z.boolean().default(false),
+    title: z.nullable(z.string()).optional(),
+    description: z.nullable(z.string()).optional(),
+    image: z.nullable(z.string()).optional(),
+    rewrite: z.boolean().default(false),
+    ios: z.nullable(z.string()).optional(),
+    android: z.nullable(z.string()).optional(),
+    geo: z.nullable(components.LinkGeoTargeting$outboundSchema).optional(),
+    doIndex: z.boolean().default(false),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateLinkRequestBody$ {
-    export const inboundSchema: z.ZodType<CreateLinkRequestBody, z.ZodTypeDef, unknown> = z.object({
-        url: z.string(),
-        domain: z.string().optional(),
-        key: z.string().optional(),
-        externalId: z.nullable(z.string()).optional(),
-        prefix: z.string().optional(),
-        trackConversion: z.boolean().default(false),
-        archived: z.boolean().default(false),
-        publicStats: z.boolean().default(false),
-        tagId: z.nullable(z.string()).optional(),
-        tagIds: z.union([z.string(), z.array(z.string())]).optional(),
-        tagNames: z.union([z.string(), z.array(z.string())]).optional(),
-        comments: z.nullable(z.string()).optional(),
-        expiresAt: z.nullable(z.string()).optional(),
-        expiredUrl: z.nullable(z.string()).optional(),
-        password: z.nullable(z.string()).optional(),
-        proxy: z.boolean().default(false),
-        title: z.nullable(z.string()).optional(),
-        description: z.nullable(z.string()).optional(),
-        image: z.nullable(z.string()).optional(),
-        rewrite: z.boolean().default(false),
-        ios: z.nullable(z.string()).optional(),
-        android: z.nullable(z.string()).optional(),
-        geo: z.nullable(components.LinkGeoTargeting$.inboundSchema).optional(),
-        doIndex: z.boolean().default(false),
-    });
-
-    export type Outbound = {
-        url: string;
-        domain?: string | undefined;
-        key?: string | undefined;
-        externalId?: string | null | undefined;
-        prefix?: string | undefined;
-        trackConversion: boolean;
-        archived: boolean;
-        publicStats: boolean;
-        tagId?: string | null | undefined;
-        tagIds?: string | Array<string> | undefined;
-        tagNames?: string | Array<string> | undefined;
-        comments?: string | null | undefined;
-        expiresAt?: string | null | undefined;
-        expiredUrl?: string | null | undefined;
-        password?: string | null | undefined;
-        proxy: boolean;
-        title?: string | null | undefined;
-        description?: string | null | undefined;
-        image?: string | null | undefined;
-        rewrite: boolean;
-        ios?: string | null | undefined;
-        android?: string | null | undefined;
-        geo?: components.LinkGeoTargeting$.Outbound | null | undefined;
-        doIndex: boolean;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateLinkRequestBody> =
-        z.object({
-            url: z.string(),
-            domain: z.string().optional(),
-            key: z.string().optional(),
-            externalId: z.nullable(z.string()).optional(),
-            prefix: z.string().optional(),
-            trackConversion: z.boolean().default(false),
-            archived: z.boolean().default(false),
-            publicStats: z.boolean().default(false),
-            tagId: z.nullable(z.string()).optional(),
-            tagIds: z.union([z.string(), z.array(z.string())]).optional(),
-            tagNames: z.union([z.string(), z.array(z.string())]).optional(),
-            comments: z.nullable(z.string()).optional(),
-            expiresAt: z.nullable(z.string()).optional(),
-            expiredUrl: z.nullable(z.string()).optional(),
-            password: z.nullable(z.string()).optional(),
-            proxy: z.boolean().default(false),
-            title: z.nullable(z.string()).optional(),
-            description: z.nullable(z.string()).optional(),
-            image: z.nullable(z.string()).optional(),
-            rewrite: z.boolean().default(false),
-            ios: z.nullable(z.string()).optional(),
-            android: z.nullable(z.string()).optional(),
-            geo: z.nullable(components.LinkGeoTargeting$.outboundSchema).optional(),
-            doIndex: z.boolean().default(false),
-        });
+    /** @deprecated use `CreateLinkRequestBody$inboundSchema` instead. */
+    export const inboundSchema = CreateLinkRequestBody$inboundSchema;
+    /** @deprecated use `CreateLinkRequestBody$outboundSchema` instead. */
+    export const outboundSchema = CreateLinkRequestBody$outboundSchema;
+    /** @deprecated use `CreateLinkRequestBody$Outbound` instead. */
+    export type Outbound = CreateLinkRequestBody$Outbound;
 }

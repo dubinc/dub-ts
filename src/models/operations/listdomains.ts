@@ -14,27 +14,67 @@ export type ListDomainsGlobals = {
 export type ListDomainsRequest = {};
 
 /** @internal */
+export const ListDomainsGlobals$inboundSchema: z.ZodType<
+    ListDomainsGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    workspaceId: z.string().optional(),
+});
+
+/** @internal */
+export type ListDomainsGlobals$Outbound = {
+    workspaceId?: string | undefined;
+};
+
+/** @internal */
+export const ListDomainsGlobals$outboundSchema: z.ZodType<
+    ListDomainsGlobals$Outbound,
+    z.ZodTypeDef,
+    ListDomainsGlobals
+> = z.object({
+    workspaceId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListDomainsGlobals$ {
-    export const inboundSchema: z.ZodType<ListDomainsGlobals, z.ZodTypeDef, unknown> = z.object({
-        workspaceId: z.string().optional(),
-    });
-
-    export type Outbound = {
-        workspaceId?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListDomainsGlobals> = z.object({
-        workspaceId: z.string().optional(),
-    });
+    /** @deprecated use `ListDomainsGlobals$inboundSchema` instead. */
+    export const inboundSchema = ListDomainsGlobals$inboundSchema;
+    /** @deprecated use `ListDomainsGlobals$outboundSchema` instead. */
+    export const outboundSchema = ListDomainsGlobals$outboundSchema;
+    /** @deprecated use `ListDomainsGlobals$Outbound` instead. */
+    export type Outbound = ListDomainsGlobals$Outbound;
 }
 
 /** @internal */
+export const ListDomainsRequest$inboundSchema: z.ZodType<
+    ListDomainsRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type ListDomainsRequest$Outbound = {};
+
+/** @internal */
+export const ListDomainsRequest$outboundSchema: z.ZodType<
+    ListDomainsRequest$Outbound,
+    z.ZodTypeDef,
+    ListDomainsRequest
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListDomainsRequest$ {
-    export const inboundSchema: z.ZodType<ListDomainsRequest, z.ZodTypeDef, unknown> = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListDomainsRequest> = z.object(
-        {}
-    );
+    /** @deprecated use `ListDomainsRequest$inboundSchema` instead. */
+    export const inboundSchema = ListDomainsRequest$inboundSchema;
+    /** @deprecated use `ListDomainsRequest$outboundSchema` instead. */
+    export const outboundSchema = ListDomainsRequest$outboundSchema;
+    /** @deprecated use `ListDomainsRequest$Outbound` instead. */
+    export type Outbound = ListDomainsRequest$Outbound;
 }

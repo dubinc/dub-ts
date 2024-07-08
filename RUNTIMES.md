@@ -3,7 +3,7 @@
 This SDK is intended to be used in JavaScript runtimes that support the following features:
 
 * [Web Fetch API][web-fetch]
-* [Web Streams API](web-streams) and in particular `ReadableStream`
+* [Web Streams API][web-streams] and in particular `ReadableStream`
 * [Async iterables][async-iter] using `Symbol.asyncIterator`
 
 [web-fetch]: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API

@@ -20,22 +20,40 @@ export type SalesReferers = {
 };
 
 /** @internal */
+export const SalesReferers$inboundSchema: z.ZodType<SalesReferers, z.ZodTypeDef, unknown> =
+    z.object({
+        referer: z.string(),
+        sales: z.number(),
+        amount: z.number(),
+    });
+
+/** @internal */
+export type SalesReferers$Outbound = {
+    referer: string;
+    sales: number;
+    amount: number;
+};
+
+/** @internal */
+export const SalesReferers$outboundSchema: z.ZodType<
+    SalesReferers$Outbound,
+    z.ZodTypeDef,
+    SalesReferers
+> = z.object({
+    referer: z.string(),
+    sales: z.number(),
+    amount: z.number(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace SalesReferers$ {
-    export const inboundSchema: z.ZodType<SalesReferers, z.ZodTypeDef, unknown> = z.object({
-        referer: z.string(),
-        sales: z.number(),
-        amount: z.number(),
-    });
-
-    export type Outbound = {
-        referer: string;
-        sales: number;
-        amount: number;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SalesReferers> = z.object({
-        referer: z.string(),
-        sales: z.number(),
-        amount: z.number(),
-    });
+    /** @deprecated use `SalesReferers$inboundSchema` instead. */
+    export const inboundSchema = SalesReferers$inboundSchema;
+    /** @deprecated use `SalesReferers$outboundSchema` instead. */
+    export const outboundSchema = SalesReferers$outboundSchema;
+    /** @deprecated use `SalesReferers$Outbound` instead. */
+    export type Outbound = SalesReferers$Outbound;
 }

@@ -47,37 +47,66 @@ export type GetQRCodeRequest = {
 };
 
 /** @internal */
+export const Level$inboundSchema: z.ZodNativeEnum<typeof Level> = z.nativeEnum(Level);
+
+/** @internal */
+export const Level$outboundSchema: z.ZodNativeEnum<typeof Level> = Level$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Level$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof Level> = z.nativeEnum(Level);
-    export const outboundSchema: z.ZodNativeEnum<typeof Level> = inboundSchema;
+    /** @deprecated use `Level$inboundSchema` instead. */
+    export const inboundSchema = Level$inboundSchema;
+    /** @deprecated use `Level$outboundSchema` instead. */
+    export const outboundSchema = Level$outboundSchema;
 }
 
 /** @internal */
+export const GetQRCodeRequest$inboundSchema: z.ZodType<GetQRCodeRequest, z.ZodTypeDef, unknown> =
+    z.object({
+        url: z.string(),
+        size: z.number().default(600),
+        level: Level$inboundSchema.default("L"),
+        fgColor: z.string().default("#000000"),
+        bgColor: z.string().default("#FFFFFF"),
+        includeMargin: z.boolean().default(false),
+    });
+
+/** @internal */
+export type GetQRCodeRequest$Outbound = {
+    url: string;
+    size: number;
+    level: string;
+    fgColor: string;
+    bgColor: string;
+    includeMargin: boolean;
+};
+
+/** @internal */
+export const GetQRCodeRequest$outboundSchema: z.ZodType<
+    GetQRCodeRequest$Outbound,
+    z.ZodTypeDef,
+    GetQRCodeRequest
+> = z.object({
+    url: z.string(),
+    size: z.number().default(600),
+    level: Level$outboundSchema.default("L"),
+    fgColor: z.string().default("#000000"),
+    bgColor: z.string().default("#FFFFFF"),
+    includeMargin: z.boolean().default(false),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetQRCodeRequest$ {
-    export const inboundSchema: z.ZodType<GetQRCodeRequest, z.ZodTypeDef, unknown> = z.object({
-        url: z.string(),
-        size: z.number().default(600),
-        level: Level$.inboundSchema.default("L"),
-        fgColor: z.string().default("#000000"),
-        bgColor: z.string().default("#FFFFFF"),
-        includeMargin: z.boolean().default(false),
-    });
-
-    export type Outbound = {
-        url: string;
-        size: number;
-        level: string;
-        fgColor: string;
-        bgColor: string;
-        includeMargin: boolean;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetQRCodeRequest> = z.object({
-        url: z.string(),
-        size: z.number().default(600),
-        level: Level$.outboundSchema.default("L"),
-        fgColor: z.string().default("#000000"),
-        bgColor: z.string().default("#FFFFFF"),
-        includeMargin: z.boolean().default(false),
-    });
+    /** @deprecated use `GetQRCodeRequest$inboundSchema` instead. */
+    export const inboundSchema = GetQRCodeRequest$inboundSchema;
+    /** @deprecated use `GetQRCodeRequest$outboundSchema` instead. */
+    export const outboundSchema = GetQRCodeRequest$outboundSchema;
+    /** @deprecated use `GetQRCodeRequest$Outbound` instead. */
+    export type Outbound = GetQRCodeRequest$Outbound;
 }

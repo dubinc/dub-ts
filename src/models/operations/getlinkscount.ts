@@ -77,108 +77,219 @@ export type GetLinksCountRequest = {
 };
 
 /** @internal */
+export const GetLinksCountGlobals$inboundSchema: z.ZodType<
+    GetLinksCountGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    workspaceId: z.string().optional(),
+});
+
+/** @internal */
+export type GetLinksCountGlobals$Outbound = {
+    workspaceId?: string | undefined;
+};
+
+/** @internal */
+export const GetLinksCountGlobals$outboundSchema: z.ZodType<
+    GetLinksCountGlobals$Outbound,
+    z.ZodTypeDef,
+    GetLinksCountGlobals
+> = z.object({
+    workspaceId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetLinksCountGlobals$ {
-    export const inboundSchema: z.ZodType<GetLinksCountGlobals, z.ZodTypeDef, unknown> = z.object({
-        workspaceId: z.string().optional(),
-    });
-
-    export type Outbound = {
-        workspaceId?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLinksCountGlobals> = z.object(
-        {
-            workspaceId: z.string().optional(),
-        }
-    );
+    /** @deprecated use `GetLinksCountGlobals$inboundSchema` instead. */
+    export const inboundSchema = GetLinksCountGlobals$inboundSchema;
+    /** @deprecated use `GetLinksCountGlobals$outboundSchema` instead. */
+    export const outboundSchema = GetLinksCountGlobals$outboundSchema;
+    /** @deprecated use `GetLinksCountGlobals$Outbound` instead. */
+    export type Outbound = GetLinksCountGlobals$Outbound;
 }
 
 /** @internal */
+export const GetLinksCountQueryParamTagIds$inboundSchema: z.ZodType<
+    GetLinksCountQueryParamTagIds,
+    z.ZodTypeDef,
+    unknown
+> = z.union([z.string(), z.array(z.string())]);
+
+/** @internal */
+export type GetLinksCountQueryParamTagIds$Outbound = string | Array<string>;
+
+/** @internal */
+export const GetLinksCountQueryParamTagIds$outboundSchema: z.ZodType<
+    GetLinksCountQueryParamTagIds$Outbound,
+    z.ZodTypeDef,
+    GetLinksCountQueryParamTagIds
+> = z.union([z.string(), z.array(z.string())]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetLinksCountQueryParamTagIds$ {
-    export const inboundSchema: z.ZodType<GetLinksCountQueryParamTagIds, z.ZodTypeDef, unknown> =
-        z.union([z.string(), z.array(z.string())]);
-
-    export type Outbound = string | Array<string>;
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLinksCountQueryParamTagIds> =
-        z.union([z.string(), z.array(z.string())]);
+    /** @deprecated use `GetLinksCountQueryParamTagIds$inboundSchema` instead. */
+    export const inboundSchema = GetLinksCountQueryParamTagIds$inboundSchema;
+    /** @deprecated use `GetLinksCountQueryParamTagIds$outboundSchema` instead. */
+    export const outboundSchema = GetLinksCountQueryParamTagIds$outboundSchema;
+    /** @deprecated use `GetLinksCountQueryParamTagIds$Outbound` instead. */
+    export type Outbound = GetLinksCountQueryParamTagIds$Outbound;
 }
 
 /** @internal */
+export const GetLinksCountQueryParamTagNames$inboundSchema: z.ZodType<
+    GetLinksCountQueryParamTagNames,
+    z.ZodTypeDef,
+    unknown
+> = z.union([z.string(), z.array(z.string())]);
+
+/** @internal */
+export type GetLinksCountQueryParamTagNames$Outbound = string | Array<string>;
+
+/** @internal */
+export const GetLinksCountQueryParamTagNames$outboundSchema: z.ZodType<
+    GetLinksCountQueryParamTagNames$Outbound,
+    z.ZodTypeDef,
+    GetLinksCountQueryParamTagNames
+> = z.union([z.string(), z.array(z.string())]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetLinksCountQueryParamTagNames$ {
-    export const inboundSchema: z.ZodType<GetLinksCountQueryParamTagNames, z.ZodTypeDef, unknown> =
-        z.union([z.string(), z.array(z.string())]);
-
-    export type Outbound = string | Array<string>;
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        GetLinksCountQueryParamTagNames
-    > = z.union([z.string(), z.array(z.string())]);
+    /** @deprecated use `GetLinksCountQueryParamTagNames$inboundSchema` instead. */
+    export const inboundSchema = GetLinksCountQueryParamTagNames$inboundSchema;
+    /** @deprecated use `GetLinksCountQueryParamTagNames$outboundSchema` instead. */
+    export const outboundSchema = GetLinksCountQueryParamTagNames$outboundSchema;
+    /** @deprecated use `GetLinksCountQueryParamTagNames$Outbound` instead. */
+    export type Outbound = GetLinksCountQueryParamTagNames$Outbound;
 }
 
 /** @internal */
+export const Two$inboundSchema: z.ZodNativeEnum<typeof Two> = z.nativeEnum(Two);
+
+/** @internal */
+export const Two$outboundSchema: z.ZodNativeEnum<typeof Two> = Two$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Two$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof Two> = z.nativeEnum(Two);
-    export const outboundSchema: z.ZodNativeEnum<typeof Two> = inboundSchema;
+    /** @deprecated use `Two$inboundSchema` instead. */
+    export const inboundSchema = Two$inboundSchema;
+    /** @deprecated use `Two$outboundSchema` instead. */
+    export const outboundSchema = Two$outboundSchema;
 }
 
 /** @internal */
+export const One$inboundSchema: z.ZodNativeEnum<typeof One> = z.nativeEnum(One);
+
+/** @internal */
+export const One$outboundSchema: z.ZodNativeEnum<typeof One> = One$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace One$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof One> = z.nativeEnum(One);
-    export const outboundSchema: z.ZodNativeEnum<typeof One> = inboundSchema;
+    /** @deprecated use `One$inboundSchema` instead. */
+    export const inboundSchema = One$inboundSchema;
+    /** @deprecated use `One$outboundSchema` instead. */
+    export const outboundSchema = One$outboundSchema;
 }
 
 /** @internal */
+export const GroupBy$inboundSchema: z.ZodType<GroupBy, z.ZodTypeDef, unknown> = z.union([
+    One$inboundSchema,
+    Two$inboundSchema,
+]);
+
+/** @internal */
+export type GroupBy$Outbound = string | string;
+
+/** @internal */
+export const GroupBy$outboundSchema: z.ZodType<GroupBy$Outbound, z.ZodTypeDef, GroupBy> = z.union([
+    One$outboundSchema,
+    Two$outboundSchema,
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GroupBy$ {
-    export const inboundSchema: z.ZodType<GroupBy, z.ZodTypeDef, unknown> = z.union([
-        One$.inboundSchema,
-        Two$.inboundSchema,
-    ]);
-
-    export type Outbound = string | string;
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GroupBy> = z.union([
-        One$.outboundSchema,
-        Two$.outboundSchema,
-    ]);
+    /** @deprecated use `GroupBy$inboundSchema` instead. */
+    export const inboundSchema = GroupBy$inboundSchema;
+    /** @deprecated use `GroupBy$outboundSchema` instead. */
+    export const outboundSchema = GroupBy$outboundSchema;
+    /** @deprecated use `GroupBy$Outbound` instead. */
+    export type Outbound = GroupBy$Outbound;
 }
 
 /** @internal */
+export const GetLinksCountRequest$inboundSchema: z.ZodType<
+    GetLinksCountRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    domain: z.string().optional(),
+    tagId: z.string().optional(),
+    tagIds: z.union([z.string(), z.array(z.string())]).optional(),
+    tagNames: z.union([z.string(), z.array(z.string())]).optional(),
+    search: z.string().optional(),
+    userId: z.string().optional(),
+    showArchived: z.boolean().default(false),
+    withTags: z.boolean().default(false),
+    groupBy: z.union([One$inboundSchema, Two$inboundSchema]).optional(),
+});
+
+/** @internal */
+export type GetLinksCountRequest$Outbound = {
+    domain?: string | undefined;
+    tagId?: string | undefined;
+    tagIds?: string | Array<string> | undefined;
+    tagNames?: string | Array<string> | undefined;
+    search?: string | undefined;
+    userId?: string | undefined;
+    showArchived: boolean;
+    withTags: boolean;
+    groupBy?: string | string | undefined;
+};
+
+/** @internal */
+export const GetLinksCountRequest$outboundSchema: z.ZodType<
+    GetLinksCountRequest$Outbound,
+    z.ZodTypeDef,
+    GetLinksCountRequest
+> = z.object({
+    domain: z.string().optional(),
+    tagId: z.string().optional(),
+    tagIds: z.union([z.string(), z.array(z.string())]).optional(),
+    tagNames: z.union([z.string(), z.array(z.string())]).optional(),
+    search: z.string().optional(),
+    userId: z.string().optional(),
+    showArchived: z.boolean().default(false),
+    withTags: z.boolean().default(false),
+    groupBy: z.union([One$outboundSchema, Two$outboundSchema]).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetLinksCountRequest$ {
-    export const inboundSchema: z.ZodType<GetLinksCountRequest, z.ZodTypeDef, unknown> = z.object({
-        domain: z.string().optional(),
-        tagId: z.string().optional(),
-        tagIds: z.union([z.string(), z.array(z.string())]).optional(),
-        tagNames: z.union([z.string(), z.array(z.string())]).optional(),
-        search: z.string().optional(),
-        userId: z.string().optional(),
-        showArchived: z.boolean().default(false),
-        withTags: z.boolean().default(false),
-        groupBy: z.union([One$.inboundSchema, Two$.inboundSchema]).optional(),
-    });
-
-    export type Outbound = {
-        domain?: string | undefined;
-        tagId?: string | undefined;
-        tagIds?: string | Array<string> | undefined;
-        tagNames?: string | Array<string> | undefined;
-        search?: string | undefined;
-        userId?: string | undefined;
-        showArchived: boolean;
-        withTags: boolean;
-        groupBy?: string | string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetLinksCountRequest> = z.object(
-        {
-            domain: z.string().optional(),
-            tagId: z.string().optional(),
-            tagIds: z.union([z.string(), z.array(z.string())]).optional(),
-            tagNames: z.union([z.string(), z.array(z.string())]).optional(),
-            search: z.string().optional(),
-            userId: z.string().optional(),
-            showArchived: z.boolean().default(false),
-            withTags: z.boolean().default(false),
-            groupBy: z.union([One$.outboundSchema, Two$.outboundSchema]).optional(),
-        }
-    );
+    /** @deprecated use `GetLinksCountRequest$inboundSchema` instead. */
+    export const inboundSchema = GetLinksCountRequest$inboundSchema;
+    /** @deprecated use `GetLinksCountRequest$outboundSchema` instead. */
+    export const outboundSchema = GetLinksCountRequest$outboundSchema;
+    /** @deprecated use `GetLinksCountRequest$Outbound` instead. */
+    export type Outbound = GetLinksCountRequest$Outbound;
 }

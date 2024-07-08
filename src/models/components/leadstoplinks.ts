@@ -42,37 +42,55 @@ export type LeadsTopLinks = {
 };
 
 /** @internal */
+export const LeadsTopLinks$inboundSchema: z.ZodType<LeadsTopLinks, z.ZodTypeDef, unknown> =
+    z.object({
+        link: z.string(),
+        id: z.string(),
+        domain: z.string(),
+        key: z.string(),
+        shortLink: z.string(),
+        url: z.string(),
+        createdAt: z.string(),
+        leads: z.number(),
+    });
+
+/** @internal */
+export type LeadsTopLinks$Outbound = {
+    link: string;
+    id: string;
+    domain: string;
+    key: string;
+    shortLink: string;
+    url: string;
+    createdAt: string;
+    leads: number;
+};
+
+/** @internal */
+export const LeadsTopLinks$outboundSchema: z.ZodType<
+    LeadsTopLinks$Outbound,
+    z.ZodTypeDef,
+    LeadsTopLinks
+> = z.object({
+    link: z.string(),
+    id: z.string(),
+    domain: z.string(),
+    key: z.string(),
+    shortLink: z.string(),
+    url: z.string(),
+    createdAt: z.string(),
+    leads: z.number(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace LeadsTopLinks$ {
-    export const inboundSchema: z.ZodType<LeadsTopLinks, z.ZodTypeDef, unknown> = z.object({
-        link: z.string(),
-        id: z.string(),
-        domain: z.string(),
-        key: z.string(),
-        shortLink: z.string(),
-        url: z.string(),
-        createdAt: z.string(),
-        leads: z.number(),
-    });
-
-    export type Outbound = {
-        link: string;
-        id: string;
-        domain: string;
-        key: string;
-        shortLink: string;
-        url: string;
-        createdAt: string;
-        leads: number;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LeadsTopLinks> = z.object({
-        link: z.string(),
-        id: z.string(),
-        domain: z.string(),
-        key: z.string(),
-        shortLink: z.string(),
-        url: z.string(),
-        createdAt: z.string(),
-        leads: z.number(),
-    });
+    /** @deprecated use `LeadsTopLinks$inboundSchema` instead. */
+    export const inboundSchema = LeadsTopLinks$inboundSchema;
+    /** @deprecated use `LeadsTopLinks$outboundSchema` instead. */
+    export const outboundSchema = LeadsTopLinks$outboundSchema;
+    /** @deprecated use `LeadsTopLinks$Outbound` instead. */
+    export type Outbound = LeadsTopLinks$Outbound;
 }

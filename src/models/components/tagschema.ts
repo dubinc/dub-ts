@@ -38,28 +38,53 @@ export type TagSchema = {
 };
 
 /** @internal */
+export const Color$inboundSchema: z.ZodNativeEnum<typeof Color> = z.nativeEnum(Color);
+
+/** @internal */
+export const Color$outboundSchema: z.ZodNativeEnum<typeof Color> = Color$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Color$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof Color> = z.nativeEnum(Color);
-    export const outboundSchema: z.ZodNativeEnum<typeof Color> = inboundSchema;
+    /** @deprecated use `Color$inboundSchema` instead. */
+    export const inboundSchema = Color$inboundSchema;
+    /** @deprecated use `Color$outboundSchema` instead. */
+    export const outboundSchema = Color$outboundSchema;
 }
 
 /** @internal */
+export const TagSchema$inboundSchema: z.ZodType<TagSchema, z.ZodTypeDef, unknown> = z.object({
+    id: z.string(),
+    name: z.string(),
+    color: Color$inboundSchema,
+});
+
+/** @internal */
+export type TagSchema$Outbound = {
+    id: string;
+    name: string;
+    color: string;
+};
+
+/** @internal */
+export const TagSchema$outboundSchema: z.ZodType<TagSchema$Outbound, z.ZodTypeDef, TagSchema> =
+    z.object({
+        id: z.string(),
+        name: z.string(),
+        color: Color$outboundSchema,
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace TagSchema$ {
-    export const inboundSchema: z.ZodType<TagSchema, z.ZodTypeDef, unknown> = z.object({
-        id: z.string(),
-        name: z.string(),
-        color: Color$.inboundSchema,
-    });
-
-    export type Outbound = {
-        id: string;
-        name: string;
-        color: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TagSchema> = z.object({
-        id: z.string(),
-        name: z.string(),
-        color: Color$.outboundSchema,
-    });
+    /** @deprecated use `TagSchema$inboundSchema` instead. */
+    export const inboundSchema = TagSchema$inboundSchema;
+    /** @deprecated use `TagSchema$outboundSchema` instead. */
+    export const outboundSchema = TagSchema$outboundSchema;
+    /** @deprecated use `TagSchema$Outbound` instead. */
+    export type Outbound = TagSchema$Outbound;
 }

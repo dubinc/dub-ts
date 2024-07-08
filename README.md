@@ -62,7 +62,7 @@ const dub = new Dub({
 
 async function run() {
     const result = await dub.links.create({
-        url: "https://google/com",
+        url: "https://google.com",
     });
 
     // Handle the result
@@ -84,7 +84,7 @@ const dub = new Dub({
 
 async function run() {
     const result = await dub.links.upsert({
-        url: "https://google/com",
+        url: "https://google.com",
     });
 
     // Handle the result
