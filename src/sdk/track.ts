@@ -4,10 +4,7 @@
 
 import { SDKHooks } from "../hooks/hooks.js";
 import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
-import {
-    encodeFormQuery as encodeFormQuery$,
-    encodeJSON as encodeJSON$,
-} from "../lib/encodings.js";
+import { encodeJSON as encodeJSON$ } from "../lib/encodings.js";
 import { HTTPClient } from "../lib/http.js";
 import * as schemas$ from "../lib/schemas.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -63,9 +60,7 @@ export class Track extends ClientSDK {
 
         const path$ = this.templateURLComponent("/track/lead")();
 
-        const query$ = encodeFormQuery$({
-            workspaceId: this.options$.workspaceId,
-        });
+        const query$ = "";
 
         const headers$ = new Headers({
             "Content-Type": "application/json",
@@ -160,9 +155,7 @@ export class Track extends ClientSDK {
 
         const path$ = this.templateURLComponent("/track/sale")();
 
-        const query$ = encodeFormQuery$({
-            workspaceId: this.options$.workspaceId,
-        });
+        const query$ = "";
 
         const headers$ = new Headers({
             "Content-Type": "application/json",
@@ -257,9 +250,7 @@ export class Track extends ClientSDK {
 
         const path$ = this.templateURLComponent("/track/customer")();
 
-        const query$ = encodeFormQuery$({
-            workspaceId: this.options$.workspaceId,
-        });
+        const query$ = "";
 
         const headers$ = new Headers({
             "Content-Type": "application/json",

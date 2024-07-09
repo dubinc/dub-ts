@@ -5,13 +5,6 @@
 import { ClosedEnum } from "../../types/enums.js";
 import * as z from "zod";
 
-export type CreateTagGlobals = {
-    /**
-     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    workspaceId?: string | undefined;
-};
-
 /**
  * The color of the tag. If not provided, a random color will be used from the list: red, yellow, green, blue, purple, pink, brown.
  */
@@ -45,39 +38,6 @@ export type CreateTagRequestBody = {
      */
     tag?: string | undefined;
 };
-
-/** @internal */
-export const CreateTagGlobals$inboundSchema: z.ZodType<CreateTagGlobals, z.ZodTypeDef, unknown> =
-    z.object({
-        workspaceId: z.string().optional(),
-    });
-
-/** @internal */
-export type CreateTagGlobals$Outbound = {
-    workspaceId?: string | undefined;
-};
-
-/** @internal */
-export const CreateTagGlobals$outboundSchema: z.ZodType<
-    CreateTagGlobals$Outbound,
-    z.ZodTypeDef,
-    CreateTagGlobals
-> = z.object({
-    workspaceId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateTagGlobals$ {
-    /** @deprecated use `CreateTagGlobals$inboundSchema` instead. */
-    export const inboundSchema = CreateTagGlobals$inboundSchema;
-    /** @deprecated use `CreateTagGlobals$outboundSchema` instead. */
-    export const outboundSchema = CreateTagGlobals$outboundSchema;
-    /** @deprecated use `CreateTagGlobals$Outbound` instead. */
-    export type Outbound = CreateTagGlobals$Outbound;
-}
 
 /** @internal */
 export const Color$inboundSchema: z.ZodNativeEnum<typeof Color> = z.nativeEnum(Color);

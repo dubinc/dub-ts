@@ -80,7 +80,6 @@ export class Analytics extends ClientSDK {
             tagId: payload$.tagId,
             timezone: payload$.timezone,
             url: payload$.url,
-            workspaceId: this.options$.workspaceId,
         });
 
         const headers$ = new Headers({

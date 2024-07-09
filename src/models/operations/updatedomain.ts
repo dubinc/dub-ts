@@ -5,13 +5,6 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
-export type UpdateDomainGlobals = {
-    /**
-     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    workspaceId?: string | undefined;
-};
-
 export type UpdateDomainRequestBody = {
     /**
      * Name of the domain.
@@ -38,42 +31,6 @@ export type UpdateDomainRequest = {
     slug: string;
     requestBody?: UpdateDomainRequestBody | undefined;
 };
-
-/** @internal */
-export const UpdateDomainGlobals$inboundSchema: z.ZodType<
-    UpdateDomainGlobals,
-    z.ZodTypeDef,
-    unknown
-> = z.object({
-    workspaceId: z.string().optional(),
-});
-
-/** @internal */
-export type UpdateDomainGlobals$Outbound = {
-    workspaceId?: string | undefined;
-};
-
-/** @internal */
-export const UpdateDomainGlobals$outboundSchema: z.ZodType<
-    UpdateDomainGlobals$Outbound,
-    z.ZodTypeDef,
-    UpdateDomainGlobals
-> = z.object({
-    workspaceId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateDomainGlobals$ {
-    /** @deprecated use `UpdateDomainGlobals$inboundSchema` instead. */
-    export const inboundSchema = UpdateDomainGlobals$inboundSchema;
-    /** @deprecated use `UpdateDomainGlobals$outboundSchema` instead. */
-    export const outboundSchema = UpdateDomainGlobals$outboundSchema;
-    /** @deprecated use `UpdateDomainGlobals$Outbound` instead. */
-    export type Outbound = UpdateDomainGlobals$Outbound;
-}
 
 /** @internal */
 export const UpdateDomainRequestBody$inboundSchema: z.ZodType<

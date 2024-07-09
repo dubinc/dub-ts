@@ -4,13 +4,6 @@
 
 import * as z from "zod";
 
-export type DeleteDomainGlobals = {
-    /**
-     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    workspaceId?: string | undefined;
-};
-
 export type DeleteDomainRequest = {
     /**
      * The domain name.
@@ -27,42 +20,6 @@ export type DeleteDomainResponseBody = {
      */
     slug: string;
 };
-
-/** @internal */
-export const DeleteDomainGlobals$inboundSchema: z.ZodType<
-    DeleteDomainGlobals,
-    z.ZodTypeDef,
-    unknown
-> = z.object({
-    workspaceId: z.string().optional(),
-});
-
-/** @internal */
-export type DeleteDomainGlobals$Outbound = {
-    workspaceId?: string | undefined;
-};
-
-/** @internal */
-export const DeleteDomainGlobals$outboundSchema: z.ZodType<
-    DeleteDomainGlobals$Outbound,
-    z.ZodTypeDef,
-    DeleteDomainGlobals
-> = z.object({
-    workspaceId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteDomainGlobals$ {
-    /** @deprecated use `DeleteDomainGlobals$inboundSchema` instead. */
-    export const inboundSchema = DeleteDomainGlobals$inboundSchema;
-    /** @deprecated use `DeleteDomainGlobals$outboundSchema` instead. */
-    export const outboundSchema = DeleteDomainGlobals$outboundSchema;
-    /** @deprecated use `DeleteDomainGlobals$Outbound` instead. */
-    export type Outbound = DeleteDomainGlobals$Outbound;
-}
 
 /** @internal */
 export const DeleteDomainRequest$inboundSchema: z.ZodType<

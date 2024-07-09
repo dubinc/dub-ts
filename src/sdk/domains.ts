@@ -4,11 +4,7 @@
 
 import { SDKHooks } from "../hooks/hooks.js";
 import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
-import {
-    encodeFormQuery as encodeFormQuery$,
-    encodeJSON as encodeJSON$,
-    encodeSimple as encodeSimple$,
-} from "../lib/encodings.js";
+import { encodeJSON as encodeJSON$, encodeSimple as encodeSimple$ } from "../lib/encodings.js";
 import { HTTPClient } from "../lib/http.js";
 import * as schemas$ from "../lib/schemas.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -50,18 +46,10 @@ export class Domains extends ClientSDK {
      * @remarks
      * Retrieve a list of domains associated with the authenticated workspace.
      */
-    async list(
-        request?: operations.ListDomainsRequest | undefined,
-        options?: RequestOptions
-    ): Promise<Array<components.DomainSchema>> {
-        const input$ = typeof request === "undefined" ? {} : request;
-        void input$; // request input is unused
-
+    async list(options?: RequestOptions): Promise<Array<components.DomainSchema>> {
         const path$ = this.templateURLComponent("/domains")();
 
-        const query$ = encodeFormQuery$({
-            workspaceId: this.options$.workspaceId,
-        });
+        const query$ = "";
 
         const headers$ = new Headers({
             Accept: "application/json",
@@ -154,9 +142,7 @@ export class Domains extends ClientSDK {
 
         const path$ = this.templateURLComponent("/domains")();
 
-        const query$ = encodeFormQuery$({
-            workspaceId: this.options$.workspaceId,
-        });
+        const query$ = "";
 
         const headers$ = new Headers({
             "Content-Type": "application/json",
@@ -255,9 +241,7 @@ export class Domains extends ClientSDK {
         };
         const path$ = this.templateURLComponent("/domains/{slug}")(pathParams$);
 
-        const query$ = encodeFormQuery$({
-            workspaceId: this.options$.workspaceId,
-        });
+        const query$ = "";
 
         const headers$ = new Headers({
             Accept: "application/json",
@@ -357,9 +341,7 @@ export class Domains extends ClientSDK {
         };
         const path$ = this.templateURLComponent("/domains/{slug}")(pathParams$);
 
-        const query$ = encodeFormQuery$({
-            workspaceId: this.options$.workspaceId,
-        });
+        const query$ = "";
 
         const headers$ = new Headers({
             "Content-Type": "application/json",

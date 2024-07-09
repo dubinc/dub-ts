@@ -5,13 +5,6 @@
 import * as components from "../components/index.js";
 import * as z from "zod";
 
-export type BulkCreateLinksGlobals = {
-    /**
-     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    workspaceId?: string | undefined;
-};
-
 /**
  * The unique IDs of the tags assigned to the short link.
  */
@@ -122,42 +115,6 @@ export type RequestBody = {
      */
     doIndex?: boolean | undefined;
 };
-
-/** @internal */
-export const BulkCreateLinksGlobals$inboundSchema: z.ZodType<
-    BulkCreateLinksGlobals,
-    z.ZodTypeDef,
-    unknown
-> = z.object({
-    workspaceId: z.string().optional(),
-});
-
-/** @internal */
-export type BulkCreateLinksGlobals$Outbound = {
-    workspaceId?: string | undefined;
-};
-
-/** @internal */
-export const BulkCreateLinksGlobals$outboundSchema: z.ZodType<
-    BulkCreateLinksGlobals$Outbound,
-    z.ZodTypeDef,
-    BulkCreateLinksGlobals
-> = z.object({
-    workspaceId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BulkCreateLinksGlobals$ {
-    /** @deprecated use `BulkCreateLinksGlobals$inboundSchema` instead. */
-    export const inboundSchema = BulkCreateLinksGlobals$inboundSchema;
-    /** @deprecated use `BulkCreateLinksGlobals$outboundSchema` instead. */
-    export const outboundSchema = BulkCreateLinksGlobals$outboundSchema;
-    /** @deprecated use `BulkCreateLinksGlobals$Outbound` instead. */
-    export type Outbound = BulkCreateLinksGlobals$Outbound;
-}
 
 /** @internal */
 export const BulkCreateLinksTagIds$inboundSchema: z.ZodType<

@@ -76,7 +76,6 @@ export class Links extends ClientSDK {
             tagNames: payload$.tagNames,
             userId: payload$.userId,
             withTags: payload$.withTags,
-            workspaceId: this.options$.workspaceId,
         });
 
         const headers$ = new Headers({
@@ -171,9 +170,7 @@ export class Links extends ClientSDK {
 
         const path$ = this.templateURLComponent("/links")();
 
-        const query$ = encodeFormQuery$({
-            workspaceId: this.options$.workspaceId,
-        });
+        const query$ = "";
 
         const headers$ = new Headers({
             "Content-Type": "application/json",
@@ -277,7 +274,6 @@ export class Links extends ClientSDK {
             tagNames: payload$.tagNames,
             userId: payload$.userId,
             withTags: payload$.withTags,
-            workspaceId: this.options$.workspaceId,
         });
 
         const headers$ = new Headers({
@@ -376,7 +372,6 @@ export class Links extends ClientSDK {
             externalId: payload$.externalId,
             key: payload$.key,
             linkId: payload$.linkId,
-            workspaceId: this.options$.workspaceId,
         });
 
         const headers$ = new Headers({
@@ -478,9 +473,7 @@ export class Links extends ClientSDK {
         };
         const path$ = this.templateURLComponent("/links/{linkId}")(pathParams$);
 
-        const query$ = encodeFormQuery$({
-            workspaceId: this.options$.workspaceId,
-        });
+        const query$ = "";
 
         const headers$ = new Headers({
             Accept: "application/json",
@@ -583,9 +576,7 @@ export class Links extends ClientSDK {
         };
         const path$ = this.templateURLComponent("/links/{linkId}")(pathParams$);
 
-        const query$ = encodeFormQuery$({
-            workspaceId: this.options$.workspaceId,
-        });
+        const query$ = "";
 
         const headers$ = new Headers({
             "Content-Type": "application/json",
@@ -680,9 +671,7 @@ export class Links extends ClientSDK {
 
         const path$ = this.templateURLComponent("/links/bulk")();
 
-        const query$ = encodeFormQuery$({
-            workspaceId: this.options$.workspaceId,
-        });
+        const query$ = "";
 
         const headers$ = new Headers({
             "Content-Type": "application/json",
@@ -873,9 +862,7 @@ export class Links extends ClientSDK {
 
         const path$ = this.templateURLComponent("/links/upsert")();
 
-        const query$ = encodeFormQuery$({
-            workspaceId: this.options$.workspaceId,
-        });
+        const query$ = "";
 
         const headers$ = new Headers({
             "Content-Type": "application/json",

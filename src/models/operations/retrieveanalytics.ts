@@ -6,13 +6,6 @@ import { ClosedEnum } from "../../types/enums.js";
 import * as components from "../components/index.js";
 import * as z from "zod";
 
-export type RetrieveAnalyticsGlobals = {
-    /**
-     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    workspaceId?: string | undefined;
-};
-
 /**
  * The type of event to retrieve analytics for. Defaults to 'clicks'.
  */
@@ -183,42 +176,6 @@ export type RetrieveAnalyticsResponseBody =
     | Array<components.SalesReferers>
     | Array<components.SalesTopLinks>
     | Array<components.SalesTopUrls>;
-
-/** @internal */
-export const RetrieveAnalyticsGlobals$inboundSchema: z.ZodType<
-    RetrieveAnalyticsGlobals,
-    z.ZodTypeDef,
-    unknown
-> = z.object({
-    workspaceId: z.string().optional(),
-});
-
-/** @internal */
-export type RetrieveAnalyticsGlobals$Outbound = {
-    workspaceId?: string | undefined;
-};
-
-/** @internal */
-export const RetrieveAnalyticsGlobals$outboundSchema: z.ZodType<
-    RetrieveAnalyticsGlobals$Outbound,
-    z.ZodTypeDef,
-    RetrieveAnalyticsGlobals
-> = z.object({
-    workspaceId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveAnalyticsGlobals$ {
-    /** @deprecated use `RetrieveAnalyticsGlobals$inboundSchema` instead. */
-    export const inboundSchema = RetrieveAnalyticsGlobals$inboundSchema;
-    /** @deprecated use `RetrieveAnalyticsGlobals$outboundSchema` instead. */
-    export const outboundSchema = RetrieveAnalyticsGlobals$outboundSchema;
-    /** @deprecated use `RetrieveAnalyticsGlobals$Outbound` instead. */
-    export type Outbound = RetrieveAnalyticsGlobals$Outbound;
-}
 
 /** @internal */
 export const Event$inboundSchema: z.ZodNativeEnum<typeof Event> = z.nativeEnum(Event);
