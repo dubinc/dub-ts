@@ -6,13 +6,6 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { ClosedEnum } from "../../types/enums.js";
 import * as z from "zod";
 
-export type UpdateTagGlobals = {
-    /**
-     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    workspaceId?: string | undefined;
-};
-
 /**
  * The color of the tag. If not provided, a random color will be used from the list: red, yellow, green, blue, purple, pink, brown.
  */
@@ -54,39 +47,6 @@ export type UpdateTagRequest = {
     id: string;
     requestBody?: UpdateTagRequestBody | undefined;
 };
-
-/** @internal */
-export const UpdateTagGlobals$inboundSchema: z.ZodType<UpdateTagGlobals, z.ZodTypeDef, unknown> =
-    z.object({
-        workspaceId: z.string().optional(),
-    });
-
-/** @internal */
-export type UpdateTagGlobals$Outbound = {
-    workspaceId?: string | undefined;
-};
-
-/** @internal */
-export const UpdateTagGlobals$outboundSchema: z.ZodType<
-    UpdateTagGlobals$Outbound,
-    z.ZodTypeDef,
-    UpdateTagGlobals
-> = z.object({
-    workspaceId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateTagGlobals$ {
-    /** @deprecated use `UpdateTagGlobals$inboundSchema` instead. */
-    export const inboundSchema = UpdateTagGlobals$inboundSchema;
-    /** @deprecated use `UpdateTagGlobals$outboundSchema` instead. */
-    export const outboundSchema = UpdateTagGlobals$outboundSchema;
-    /** @deprecated use `UpdateTagGlobals$Outbound` instead. */
-    export type Outbound = UpdateTagGlobals$Outbound;
-}
 
 /** @internal */
 export const UpdateTagColor$inboundSchema: z.ZodNativeEnum<typeof UpdateTagColor> =

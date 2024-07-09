@@ -6,13 +6,6 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as components from "../components/index.js";
 import * as z from "zod";
 
-export type UpdateLinkGlobals = {
-    /**
-     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    workspaceId?: string | undefined;
-};
-
 /**
  * The unique IDs of the tags assigned to the short link.
  */
@@ -128,39 +121,6 @@ export type UpdateLinkRequest = {
     linkId: string;
     requestBody?: UpdateLinkRequestBody | undefined;
 };
-
-/** @internal */
-export const UpdateLinkGlobals$inboundSchema: z.ZodType<UpdateLinkGlobals, z.ZodTypeDef, unknown> =
-    z.object({
-        workspaceId: z.string().optional(),
-    });
-
-/** @internal */
-export type UpdateLinkGlobals$Outbound = {
-    workspaceId?: string | undefined;
-};
-
-/** @internal */
-export const UpdateLinkGlobals$outboundSchema: z.ZodType<
-    UpdateLinkGlobals$Outbound,
-    z.ZodTypeDef,
-    UpdateLinkGlobals
-> = z.object({
-    workspaceId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateLinkGlobals$ {
-    /** @deprecated use `UpdateLinkGlobals$inboundSchema` instead. */
-    export const inboundSchema = UpdateLinkGlobals$inboundSchema;
-    /** @deprecated use `UpdateLinkGlobals$outboundSchema` instead. */
-    export const outboundSchema = UpdateLinkGlobals$outboundSchema;
-    /** @deprecated use `UpdateLinkGlobals$Outbound` instead. */
-    export type Outbound = UpdateLinkGlobals$Outbound;
-}
 
 /** @internal */
 export const UpdateLinkTagIds$inboundSchema: z.ZodType<UpdateLinkTagIds, z.ZodTypeDef, unknown> =

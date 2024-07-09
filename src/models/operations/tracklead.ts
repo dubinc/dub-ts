@@ -4,13 +4,6 @@
 
 import * as z from "zod";
 
-export type TrackLeadGlobals = {
-    /**
-     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    workspaceId?: string | undefined;
-};
-
 export type TrackLeadRequestBody = {
     /**
      * The ID of the click in th Dub. You can read this value from `dclid` cookie.
@@ -54,39 +47,6 @@ export type TrackLeadResponseBody = {
     customerAvatar: string | null;
     metadata?: { [k: string]: any } | undefined;
 };
-
-/** @internal */
-export const TrackLeadGlobals$inboundSchema: z.ZodType<TrackLeadGlobals, z.ZodTypeDef, unknown> =
-    z.object({
-        workspaceId: z.string().optional(),
-    });
-
-/** @internal */
-export type TrackLeadGlobals$Outbound = {
-    workspaceId?: string | undefined;
-};
-
-/** @internal */
-export const TrackLeadGlobals$outboundSchema: z.ZodType<
-    TrackLeadGlobals$Outbound,
-    z.ZodTypeDef,
-    TrackLeadGlobals
-> = z.object({
-    workspaceId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TrackLeadGlobals$ {
-    /** @deprecated use `TrackLeadGlobals$inboundSchema` instead. */
-    export const inboundSchema = TrackLeadGlobals$inboundSchema;
-    /** @deprecated use `TrackLeadGlobals$outboundSchema` instead. */
-    export const outboundSchema = TrackLeadGlobals$outboundSchema;
-    /** @deprecated use `TrackLeadGlobals$Outbound` instead. */
-    export type Outbound = TrackLeadGlobals$Outbound;
-}
 
 /** @internal */
 export const TrackLeadRequestBody$inboundSchema: z.ZodType<

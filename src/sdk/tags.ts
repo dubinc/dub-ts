@@ -4,11 +4,7 @@
 
 import { SDKHooks } from "../hooks/hooks.js";
 import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
-import {
-    encodeFormQuery as encodeFormQuery$,
-    encodeJSON as encodeJSON$,
-    encodeSimple as encodeSimple$,
-} from "../lib/encodings.js";
+import { encodeJSON as encodeJSON$, encodeSimple as encodeSimple$ } from "../lib/encodings.js";
 import { HTTPClient } from "../lib/http.js";
 import * as schemas$ from "../lib/schemas.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -50,18 +46,10 @@ export class Tags extends ClientSDK {
      * @remarks
      * Retrieve a list of tags for the authenticated workspace.
      */
-    async list(
-        request?: operations.GetTagsRequest | undefined,
-        options?: RequestOptions
-    ): Promise<Array<components.TagSchema>> {
-        const input$ = typeof request === "undefined" ? {} : request;
-        void input$; // request input is unused
-
+    async list(options?: RequestOptions): Promise<Array<components.TagSchema>> {
         const path$ = this.templateURLComponent("/tags")();
 
-        const query$ = encodeFormQuery$({
-            workspaceId: this.options$.workspaceId,
-        });
+        const query$ = "";
 
         const headers$ = new Headers({
             Accept: "application/json",
@@ -154,9 +142,7 @@ export class Tags extends ClientSDK {
 
         const path$ = this.templateURLComponent("/tags")();
 
-        const query$ = encodeFormQuery$({
-            workspaceId: this.options$.workspaceId,
-        });
+        const query$ = "";
 
         const headers$ = new Headers({
             "Content-Type": "application/json",
@@ -257,9 +243,7 @@ export class Tags extends ClientSDK {
         };
         const path$ = this.templateURLComponent("/tags/{id}")(pathParams$);
 
-        const query$ = encodeFormQuery$({
-            workspaceId: this.options$.workspaceId,
-        });
+        const query$ = "";
 
         const headers$ = new Headers({
             "Content-Type": "application/json",

@@ -4,13 +4,6 @@
 
 import * as z from "zod";
 
-export type TrackCustomerGlobals = {
-    /**
-     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    workspaceId?: string | undefined;
-};
-
 export type TrackCustomerRequestBody = {
     /**
      * This is the unique identifier for the customer in the client's app. This is used to track the customer's journey.
@@ -39,42 +32,6 @@ export type TrackCustomerResponseBody = {
     customerEmail: string | null;
     customerAvatar: string | null;
 };
-
-/** @internal */
-export const TrackCustomerGlobals$inboundSchema: z.ZodType<
-    TrackCustomerGlobals,
-    z.ZodTypeDef,
-    unknown
-> = z.object({
-    workspaceId: z.string().optional(),
-});
-
-/** @internal */
-export type TrackCustomerGlobals$Outbound = {
-    workspaceId?: string | undefined;
-};
-
-/** @internal */
-export const TrackCustomerGlobals$outboundSchema: z.ZodType<
-    TrackCustomerGlobals$Outbound,
-    z.ZodTypeDef,
-    TrackCustomerGlobals
-> = z.object({
-    workspaceId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TrackCustomerGlobals$ {
-    /** @deprecated use `TrackCustomerGlobals$inboundSchema` instead. */
-    export const inboundSchema = TrackCustomerGlobals$inboundSchema;
-    /** @deprecated use `TrackCustomerGlobals$outboundSchema` instead. */
-    export const outboundSchema = TrackCustomerGlobals$outboundSchema;
-    /** @deprecated use `TrackCustomerGlobals$Outbound` instead. */
-    export type Outbound = TrackCustomerGlobals$Outbound;
-}
 
 /** @internal */
 export const TrackCustomerRequestBody$inboundSchema: z.ZodType<

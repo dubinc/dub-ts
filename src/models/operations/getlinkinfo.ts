@@ -4,13 +4,6 @@
 
 import * as z from "zod";
 
-export type GetLinkInfoGlobals = {
-    /**
-     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    workspaceId?: string | undefined;
-};
-
 export type GetLinkInfoRequest = {
     domain?: string | undefined;
     /**
@@ -26,42 +19,6 @@ export type GetLinkInfoRequest = {
      */
     externalId?: string | undefined;
 };
-
-/** @internal */
-export const GetLinkInfoGlobals$inboundSchema: z.ZodType<
-    GetLinkInfoGlobals,
-    z.ZodTypeDef,
-    unknown
-> = z.object({
-    workspaceId: z.string().optional(),
-});
-
-/** @internal */
-export type GetLinkInfoGlobals$Outbound = {
-    workspaceId?: string | undefined;
-};
-
-/** @internal */
-export const GetLinkInfoGlobals$outboundSchema: z.ZodType<
-    GetLinkInfoGlobals$Outbound,
-    z.ZodTypeDef,
-    GetLinkInfoGlobals
-> = z.object({
-    workspaceId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetLinkInfoGlobals$ {
-    /** @deprecated use `GetLinkInfoGlobals$inboundSchema` instead. */
-    export const inboundSchema = GetLinkInfoGlobals$inboundSchema;
-    /** @deprecated use `GetLinkInfoGlobals$outboundSchema` instead. */
-    export const outboundSchema = GetLinkInfoGlobals$outboundSchema;
-    /** @deprecated use `GetLinkInfoGlobals$Outbound` instead. */
-    export type Outbound = GetLinkInfoGlobals$Outbound;
-}
 
 /** @internal */
 export const GetLinkInfoRequest$inboundSchema: z.ZodType<

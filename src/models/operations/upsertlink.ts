@@ -5,13 +5,6 @@
 import * as components from "../components/index.js";
 import * as z from "zod";
 
-export type UpsertLinkGlobals = {
-    /**
-     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    workspaceId?: string | undefined;
-};
-
 /**
  * The unique IDs of the tags assigned to the short link.
  */
@@ -122,39 +115,6 @@ export type UpsertLinkRequestBody = {
      */
     doIndex?: boolean | undefined;
 };
-
-/** @internal */
-export const UpsertLinkGlobals$inboundSchema: z.ZodType<UpsertLinkGlobals, z.ZodTypeDef, unknown> =
-    z.object({
-        workspaceId: z.string().optional(),
-    });
-
-/** @internal */
-export type UpsertLinkGlobals$Outbound = {
-    workspaceId?: string | undefined;
-};
-
-/** @internal */
-export const UpsertLinkGlobals$outboundSchema: z.ZodType<
-    UpsertLinkGlobals$Outbound,
-    z.ZodTypeDef,
-    UpsertLinkGlobals
-> = z.object({
-    workspaceId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpsertLinkGlobals$ {
-    /** @deprecated use `UpsertLinkGlobals$inboundSchema` instead. */
-    export const inboundSchema = UpsertLinkGlobals$inboundSchema;
-    /** @deprecated use `UpsertLinkGlobals$outboundSchema` instead. */
-    export const outboundSchema = UpsertLinkGlobals$outboundSchema;
-    /** @deprecated use `UpsertLinkGlobals$Outbound` instead. */
-    export type Outbound = UpsertLinkGlobals$Outbound;
-}
 
 /** @internal */
 export const UpsertLinkTagIds$inboundSchema: z.ZodType<UpsertLinkTagIds, z.ZodTypeDef, unknown> =

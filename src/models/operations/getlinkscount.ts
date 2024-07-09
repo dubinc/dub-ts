@@ -5,13 +5,6 @@
 import { ClosedEnum } from "../../types/enums.js";
 import * as z from "zod";
 
-export type GetLinksCountGlobals = {
-    /**
-     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    workspaceId?: string | undefined;
-};
-
 /**
  * The tag IDs to filter the links by.
  */
@@ -75,42 +68,6 @@ export type GetLinksCountRequest = {
      */
     groupBy?: One | Two | undefined;
 };
-
-/** @internal */
-export const GetLinksCountGlobals$inboundSchema: z.ZodType<
-    GetLinksCountGlobals,
-    z.ZodTypeDef,
-    unknown
-> = z.object({
-    workspaceId: z.string().optional(),
-});
-
-/** @internal */
-export type GetLinksCountGlobals$Outbound = {
-    workspaceId?: string | undefined;
-};
-
-/** @internal */
-export const GetLinksCountGlobals$outboundSchema: z.ZodType<
-    GetLinksCountGlobals$Outbound,
-    z.ZodTypeDef,
-    GetLinksCountGlobals
-> = z.object({
-    workspaceId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetLinksCountGlobals$ {
-    /** @deprecated use `GetLinksCountGlobals$inboundSchema` instead. */
-    export const inboundSchema = GetLinksCountGlobals$inboundSchema;
-    /** @deprecated use `GetLinksCountGlobals$outboundSchema` instead. */
-    export const outboundSchema = GetLinksCountGlobals$outboundSchema;
-    /** @deprecated use `GetLinksCountGlobals$Outbound` instead. */
-    export type Outbound = GetLinksCountGlobals$Outbound;
-}
 
 /** @internal */
 export const GetLinksCountQueryParamTagIds$inboundSchema: z.ZodType<

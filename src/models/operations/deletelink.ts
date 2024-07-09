@@ -4,13 +4,6 @@
 
 import * as z from "zod";
 
-export type DeleteLinkGlobals = {
-    /**
-     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    workspaceId?: string | undefined;
-};
-
 export type DeleteLinkRequest = {
     /**
      * The id of the link to delete. You may use either `linkId` (obtained via `/links/info` endpoint) or `externalId` prefixed with `ext_`.
@@ -27,39 +20,6 @@ export type DeleteLinkResponseBody = {
      */
     id: string;
 };
-
-/** @internal */
-export const DeleteLinkGlobals$inboundSchema: z.ZodType<DeleteLinkGlobals, z.ZodTypeDef, unknown> =
-    z.object({
-        workspaceId: z.string().optional(),
-    });
-
-/** @internal */
-export type DeleteLinkGlobals$Outbound = {
-    workspaceId?: string | undefined;
-};
-
-/** @internal */
-export const DeleteLinkGlobals$outboundSchema: z.ZodType<
-    DeleteLinkGlobals$Outbound,
-    z.ZodTypeDef,
-    DeleteLinkGlobals
-> = z.object({
-    workspaceId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteLinkGlobals$ {
-    /** @deprecated use `DeleteLinkGlobals$inboundSchema` instead. */
-    export const inboundSchema = DeleteLinkGlobals$inboundSchema;
-    /** @deprecated use `DeleteLinkGlobals$outboundSchema` instead. */
-    export const outboundSchema = DeleteLinkGlobals$outboundSchema;
-    /** @deprecated use `DeleteLinkGlobals$Outbound` instead. */
-    export type Outbound = DeleteLinkGlobals$Outbound;
-}
 
 /** @internal */
 export const DeleteLinkRequest$inboundSchema: z.ZodType<DeleteLinkRequest, z.ZodTypeDef, unknown> =

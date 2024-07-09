@@ -4,13 +4,6 @@
 
 import * as z from "zod";
 
-export type CreateDomainGlobals = {
-    /**
-     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    workspaceId?: string | undefined;
-};
-
 export type CreateDomainRequestBody = {
     /**
      * Name of the domain.
@@ -29,42 +22,6 @@ export type CreateDomainRequestBody = {
      */
     placeholder?: string | null | undefined;
 };
-
-/** @internal */
-export const CreateDomainGlobals$inboundSchema: z.ZodType<
-    CreateDomainGlobals,
-    z.ZodTypeDef,
-    unknown
-> = z.object({
-    workspaceId: z.string().optional(),
-});
-
-/** @internal */
-export type CreateDomainGlobals$Outbound = {
-    workspaceId?: string | undefined;
-};
-
-/** @internal */
-export const CreateDomainGlobals$outboundSchema: z.ZodType<
-    CreateDomainGlobals$Outbound,
-    z.ZodTypeDef,
-    CreateDomainGlobals
-> = z.object({
-    workspaceId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDomainGlobals$ {
-    /** @deprecated use `CreateDomainGlobals$inboundSchema` instead. */
-    export const inboundSchema = CreateDomainGlobals$inboundSchema;
-    /** @deprecated use `CreateDomainGlobals$outboundSchema` instead. */
-    export const outboundSchema = CreateDomainGlobals$outboundSchema;
-    /** @deprecated use `CreateDomainGlobals$Outbound` instead. */
-    export type Outbound = CreateDomainGlobals$Outbound;
-}
 
 /** @internal */
 export const CreateDomainRequestBody$inboundSchema: z.ZodType<

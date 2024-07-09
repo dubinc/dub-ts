@@ -5,13 +5,6 @@
 import * as components from "../components/index.js";
 import * as z from "zod";
 
-export type CreateLinkGlobals = {
-    /**
-     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    workspaceId?: string | undefined;
-};
-
 /**
  * The unique IDs of the tags assigned to the short link.
  */
@@ -122,39 +115,6 @@ export type CreateLinkRequestBody = {
      */
     doIndex?: boolean | undefined;
 };
-
-/** @internal */
-export const CreateLinkGlobals$inboundSchema: z.ZodType<CreateLinkGlobals, z.ZodTypeDef, unknown> =
-    z.object({
-        workspaceId: z.string().optional(),
-    });
-
-/** @internal */
-export type CreateLinkGlobals$Outbound = {
-    workspaceId?: string | undefined;
-};
-
-/** @internal */
-export const CreateLinkGlobals$outboundSchema: z.ZodType<
-    CreateLinkGlobals$Outbound,
-    z.ZodTypeDef,
-    CreateLinkGlobals
-> = z.object({
-    workspaceId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateLinkGlobals$ {
-    /** @deprecated use `CreateLinkGlobals$inboundSchema` instead. */
-    export const inboundSchema = CreateLinkGlobals$inboundSchema;
-    /** @deprecated use `CreateLinkGlobals$outboundSchema` instead. */
-    export const outboundSchema = CreateLinkGlobals$outboundSchema;
-    /** @deprecated use `CreateLinkGlobals$Outbound` instead. */
-    export type Outbound = CreateLinkGlobals$Outbound;
-}
 
 /** @internal */
 export const TagIds$inboundSchema: z.ZodType<TagIds, z.ZodTypeDef, unknown> = z.union([

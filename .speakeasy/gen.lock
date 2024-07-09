@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: 15f8f5e148453cdd9612beaac38125e3
+  docChecksum: 2dc0e57ebc2df7985435f1560ba8e4cc
   docVersion: 0.0.1
   speakeasyVersion: 1.330.0
   generationVersion: 2.361.10
-  releaseVersion: 0.31.2
-  configChecksum: 61aab169d7b645e8a92fe307d9950e4a
+  releaseVersion: 0.32.0
+  configChecksum: f8bc783f51e9b5b1da613e86edefc63a
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -22,8 +22,6 @@ features:
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.4
-    globals: 2.82.1
-    hiddenGlobals: 0.1.0
     nameOverrides: 2.81.2
     nullables: 0.1.0
     responseFormat: 0.2.3
@@ -123,10 +121,8 @@ generatedFiles:
   - src/models/operations/retrieveanalytics.ts
   - src/models/operations/getworkspace.ts
   - src/models/operations/updateworkspace.ts
-  - src/models/operations/gettags.ts
   - src/models/operations/createtag.ts
   - src/models/operations/updatetag.ts
-  - src/models/operations/listdomains.ts
   - src/models/operations/createdomain.ts
   - src/models/operations/deletedomain.ts
   - src/models/operations/updatedomain.ts
@@ -213,33 +209,26 @@ generatedFiles:
   - docs/models/errors/internalservererrorcode.md
   - docs/models/errors/internalservererrorerror.md
   - docs/models/errors/internalservererror.md
-  - docs/models/operations/getlinksglobals.md
   - docs/models/operations/queryparamtagids.md
   - docs/models/operations/queryparamtagnames.md
   - docs/models/operations/sort.md
   - docs/models/operations/getlinksrequest.md
-  - docs/models/operations/createlinkglobals.md
   - docs/models/operations/tagids.md
   - docs/models/operations/tagnames.md
   - docs/models/operations/createlinkrequestbody.md
-  - docs/models/operations/getlinkscountglobals.md
   - docs/models/operations/getlinkscountqueryparamtagids.md
   - docs/models/operations/getlinkscountqueryparamtagnames.md
   - docs/models/operations/two.md
   - docs/models/operations/one.md
   - docs/models/operations/groupby.md
   - docs/models/operations/getlinkscountrequest.md
-  - docs/models/operations/getlinkinfoglobals.md
   - docs/models/operations/getlinkinforequest.md
-  - docs/models/operations/deletelinkglobals.md
   - docs/models/operations/deletelinkrequest.md
   - docs/models/operations/deletelinkresponsebody.md
-  - docs/models/operations/updatelinkglobals.md
   - docs/models/operations/updatelinktagids.md
   - docs/models/operations/updatelinktagnames.md
   - docs/models/operations/updatelinkrequestbody.md
   - docs/models/operations/updatelinkrequest.md
-  - docs/models/operations/bulkcreatelinksglobals.md
   - docs/models/operations/bulkcreatelinkstagids.md
   - docs/models/operations/bulkcreatelinkstagnames.md
   - docs/models/operations/requestbody.md
@@ -247,13 +236,11 @@ generatedFiles:
   - docs/models/operations/bulkupdatelinkstagnames.md
   - docs/models/operations/data.md
   - docs/models/operations/bulkupdatelinksrequestbody.md
-  - docs/models/operations/upsertlinkglobals.md
   - docs/models/operations/upsertlinktagids.md
   - docs/models/operations/upsertlinktagnames.md
   - docs/models/operations/upsertlinkrequestbody.md
   - docs/models/operations/level.md
   - docs/models/operations/getqrcoderequest.md
-  - docs/models/operations/retrieveanalyticsglobals.md
   - docs/models/operations/event.md
   - docs/models/operations/queryparamgroupby.md
   - docs/models/operations/interval.md
@@ -262,33 +249,21 @@ generatedFiles:
   - docs/models/operations/getworkspacerequest.md
   - docs/models/operations/updateworkspacerequestbody.md
   - docs/models/operations/updateworkspacerequest.md
-  - docs/models/operations/gettagsglobals.md
-  - docs/models/operations/gettagsrequest.md
-  - docs/models/operations/createtagglobals.md
   - docs/models/operations/color.md
   - docs/models/operations/createtagrequestbody.md
-  - docs/models/operations/updatetagglobals.md
   - docs/models/operations/updatetagcolor.md
   - docs/models/operations/updatetagrequestbody.md
   - docs/models/operations/updatetagrequest.md
-  - docs/models/operations/listdomainsglobals.md
-  - docs/models/operations/listdomainsrequest.md
-  - docs/models/operations/createdomainglobals.md
   - docs/models/operations/createdomainrequestbody.md
-  - docs/models/operations/deletedomainglobals.md
   - docs/models/operations/deletedomainrequest.md
   - docs/models/operations/deletedomainresponsebody.md
-  - docs/models/operations/updatedomainglobals.md
   - docs/models/operations/updatedomainrequestbody.md
   - docs/models/operations/updatedomainrequest.md
-  - docs/models/operations/trackleadglobals.md
   - docs/models/operations/trackleadrequestbody.md
   - docs/models/operations/trackleadresponsebody.md
-  - docs/models/operations/tracksaleglobals.md
   - docs/models/operations/paymentprocessor.md
   - docs/models/operations/tracksalerequestbody.md
   - docs/models/operations/tracksaleresponsebody.md
-  - docs/models/operations/trackcustomerglobals.md
   - docs/models/operations/trackcustomerrequestbody.md
   - docs/models/operations/trackcustomerresponsebody.md
   - docs/models/operations/getmetatagsrequest.md

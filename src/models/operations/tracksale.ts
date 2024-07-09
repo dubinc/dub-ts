@@ -5,13 +5,6 @@
 import { ClosedEnum } from "../../types/enums.js";
 import * as z from "zod";
 
-export type TrackSaleGlobals = {
-    /**
-     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    workspaceId?: string | undefined;
-};
-
 /**
  * The payment processor via which the sale was made.
  */
@@ -68,39 +61,6 @@ export type TrackSaleResponseBody = {
     currency: string;
     metadata: { [k: string]: any } | null;
 };
-
-/** @internal */
-export const TrackSaleGlobals$inboundSchema: z.ZodType<TrackSaleGlobals, z.ZodTypeDef, unknown> =
-    z.object({
-        workspaceId: z.string().optional(),
-    });
-
-/** @internal */
-export type TrackSaleGlobals$Outbound = {
-    workspaceId?: string | undefined;
-};
-
-/** @internal */
-export const TrackSaleGlobals$outboundSchema: z.ZodType<
-    TrackSaleGlobals$Outbound,
-    z.ZodTypeDef,
-    TrackSaleGlobals
-> = z.object({
-    workspaceId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TrackSaleGlobals$ {
-    /** @deprecated use `TrackSaleGlobals$inboundSchema` instead. */
-    export const inboundSchema = TrackSaleGlobals$inboundSchema;
-    /** @deprecated use `TrackSaleGlobals$outboundSchema` instead. */
-    export const outboundSchema = TrackSaleGlobals$outboundSchema;
-    /** @deprecated use `TrackSaleGlobals$Outbound` instead. */
-    export type Outbound = TrackSaleGlobals$Outbound;
-}
 
 /** @internal */
 export const PaymentProcessor$inboundSchema: z.ZodNativeEnum<typeof PaymentProcessor> =
