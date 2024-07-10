@@ -49,10 +49,7 @@ export class Forbidden extends Error {
     data$: ForbiddenData;
 
     constructor(err: ForbiddenData) {
-        const message =
-            "message" in err && typeof err.message === "string"
-                ? err.message
-                : `API error occurred: ${JSON.stringify(err)}`;
+        const message = err.error?.message || "API error occurred";
         super(message);
         this.data$ = err;
 
