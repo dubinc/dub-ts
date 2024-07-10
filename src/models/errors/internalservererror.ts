@@ -49,10 +49,7 @@ export class InternalServerError extends Error {
     data$: InternalServerErrorData;
 
     constructor(err: InternalServerErrorData) {
-        const message =
-            "message" in err && typeof err.message === "string"
-                ? err.message
-                : `API error occurred: ${JSON.stringify(err)}`;
+        const message = err.error?.message || "API error occurred";
         super(message);
         this.data$ = err;
 
