@@ -50,6 +50,10 @@ export type Domains = {
      * Whether the domain is the primary domain for the workspace.
      */
     primary?: boolean | undefined;
+    /**
+     * Whether the domain is verified.
+     */
+    verified?: boolean | undefined;
 };
 
 export type WorkspaceSchema = {
@@ -201,18 +205,21 @@ export namespace Users$ {
 export const Domains$inboundSchema: z.ZodType<Domains, z.ZodTypeDef, unknown> = z.object({
     slug: z.string(),
     primary: z.boolean().default(false),
+    verified: z.boolean().default(false),
 });
 
 /** @internal */
 export type Domains$Outbound = {
     slug: string;
     primary: boolean;
+    verified: boolean;
 };
 
 /** @internal */
 export const Domains$outboundSchema: z.ZodType<Domains$Outbound, z.ZodTypeDef, Domains> = z.object({
     slug: z.string(),
     primary: z.boolean().default(false),
+    verified: z.boolean().default(false),
 });
 
 /**

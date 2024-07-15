@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: d074e83422312242c953b9123b5c20aa
+  docChecksum: fe340caa479dc343bdc532bc03f01fa9
   docVersion: 0.0.1
-  speakeasyVersion: 1.331.0
-  generationVersion: 2.365.0
-  releaseVersion: 0.33.1
-  configChecksum: 9f7985d2e0bfc4ac382f89059ae148e7
+  speakeasyVersion: 1.335.0
+  generationVersion: 2.370.2
+  releaseVersion: 0.34.0
+  configChecksum: 373253cf89d2842fd54713b0a3240d1b
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -15,6 +15,7 @@ features:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.5
     core: 3.11.6
+    defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     errors: 2.81.11
     examples: 2.81.4
@@ -26,6 +27,7 @@ features:
     nameOverrides: 2.81.2
     nullables: 0.1.0
     responseFormat: 0.2.3
+    retries: 2.83.0
     sdkHooks: 0.1.0
     unions: 2.85.5
 generatedFiles:
@@ -270,6 +272,7 @@ generatedFiles:
   - docs/models/operations/getmetatagsrequest.md
   - docs/models/operations/getmetatagsresponsebody.md
   - docs/sdks/dub/README.md
+  - docs/lib/utils/retryconfig.md
   - docs/sdks/links/README.md
   - docs/sdks/qrcodes/README.md
   - docs/sdks/analytics/README.md

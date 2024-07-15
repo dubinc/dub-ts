@@ -376,6 +376,74 @@ run();
 ```
 <!-- End Authentication [security] -->
 
+<!-- Start Retries [retries] -->
+## Retries
+
+Some of the endpoints in this SDK support retries.  If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API.  However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
+
+To change the default retry strategy for a single API call, simply provide a retryConfig object to the call:
+```typescript
+import { Dub } from "dub";
+
+const dub = new Dub({
+    token: "DUB_API_KEY",
+});
+
+async function run() {
+    const result = await dub.links.list(
+        {},
+        {
+            retries: {
+                strategy: "backoff",
+                backoff: {
+                    initialInterval: 1,
+                    maxInterval: 50,
+                    exponent: 1.1,
+                    maxElapsedTime: 100,
+                },
+                retryConnectionErrors: false,
+            },
+        }
+    );
+
+    // Handle the result
+    console.log(result);
+}
+
+run();
+
+```
+
+If you'd like to override the default retry strategy for all operations that support retries, you can provide a retryConfig at SDK initialization:
+```typescript
+import { Dub } from "dub";
+
+const dub = new Dub({
+    retryConfig: {
+        strategy: "backoff",
+        backoff: {
+            initialInterval: 1,
+            maxInterval: 50,
+            exponent: 1.1,
+            maxElapsedTime: 100,
+        },
+        retryConnectionErrors: false,
+    },
+    token: "DUB_API_KEY",
+});
+
+async function run() {
+    const result = await dub.links.list({});
+
+    // Handle the result
+    console.log(result);
+}
+
+run();
+
+```
+<!-- End Retries [retries] -->
+
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
 # Development

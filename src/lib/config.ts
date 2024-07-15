@@ -32,6 +32,7 @@ export type SDKOptions = {
      * Allows overriding the default retry config used by the SDK
      */
     retryConfig?: RetryConfig;
+    timeoutMs?: number;
 };
 
 export function serverURLFromOptions(options: SDKOptions): URL | null {
@@ -54,7 +55,7 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 export const SDK_METADATA = {
     language: "typescript",
     openapiDocVersion: "0.0.1",
-    sdkVersion: "0.33.1",
-    genVersion: "2.365.0",
-    userAgent: "speakeasy-sdk/typescript 0.33.1 2.365.0 0.0.1 dub",
+    sdkVersion: "0.34.0",
+    genVersion: "2.370.2",
+    userAgent: "speakeasy-sdk/typescript 0.34.0 2.370.2 0.0.1 dub",
 } as const;
