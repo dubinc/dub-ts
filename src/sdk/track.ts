@@ -91,6 +91,7 @@ export class Track extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -110,6 +111,8 @@ export class Track extends ClientSDK {
                 "500",
                 "5XX",
             ],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -186,6 +189,7 @@ export class Track extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -205,6 +209,8 @@ export class Track extends ClientSDK {
                 "500",
                 "5XX",
             ],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -281,6 +287,7 @@ export class Track extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -300,6 +307,8 @@ export class Track extends ClientSDK {
                 "500",
                 "5XX",
             ],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {

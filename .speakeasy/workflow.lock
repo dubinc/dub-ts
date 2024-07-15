@@ -1,9 +1,9 @@
-speakeasyVersion: 1.331.0
+speakeasyVersion: 1.335.0
 sources:
     my-first-source:
         sourceNamespace: my-first-source
-        sourceRevisionDigest: sha256:e1e68f7b0e9eeae9a475f074d1a3ab40f645ef0c1e2e5048814d2fa33525a934
-        sourceBlobDigest: sha256:8825882143b30b4f502db2dc38980687693dd9160b395766d3cba5992b870e1a
+        sourceRevisionDigest: sha256:1ec3e6ad051d13bb5efea8893b21b00f717f9b21b9a15113304b91819d032086
+        sourceBlobDigest: sha256:03d1d461c38fed7b684ede8f8fba6b6ba546fdbd372f013dbe3abf1d39c6c8c7
         tags:
             - latest
             - main
@@ -11,10 +11,10 @@ targets:
     my-first-target:
         source: my-first-source
         sourceNamespace: my-first-source
-        sourceRevisionDigest: sha256:e1e68f7b0e9eeae9a475f074d1a3ab40f645ef0c1e2e5048814d2fa33525a934
-        sourceBlobDigest: sha256:8825882143b30b4f502db2dc38980687693dd9160b395766d3cba5992b870e1a
+        sourceRevisionDigest: sha256:1ec3e6ad051d13bb5efea8893b21b00f717f9b21b9a15113304b91819d032086
+        sourceBlobDigest: sha256:03d1d461c38fed7b684ede8f8fba6b6ba546fdbd372f013dbe3abf1d39c6c8c7
         codeSamplesNamespace: code-samples-typescript-my-first-target
-        codeSamplesRevisionDigest: sha256:c03838aba53ca1c630ac5cbe25b4926cf67280b704514912d0c49bb9de46d442
+        codeSamplesRevisionDigest: sha256:576f788cd4fddb5eb86edf4cbec59f39cf4c03230c1150a75770f6786e7fe15d
         outLocation: /github/workspace/repo
 workflow:
     workflowVersion: 1.0.0

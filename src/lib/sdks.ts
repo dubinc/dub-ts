@@ -4,6 +4,7 @@
 
 import { ResponseMatcher, HTTPClient, matchStatusCode } from "./http.js";
 import { SecurityState, resolveSecurity, resolveGlobalSecurity } from "./security.js";
+import { retry, RetryConfig } from "./retries.js";
 import { pathToFunc } from "./url.js";
 import { encodeForm } from "./encodings.js";
 import { stringToBase64 } from "./base64.js";
@@ -12,6 +13,24 @@ import { SDKHooks } from "../hooks/hooks.js";
 import { HookContext } from "../hooks/types.js";
 
 export type RequestOptions = {
+    /**
+     * Sets a timeout, in milliseconds, on HTTP requests made by an SDK method. If
+     * `fetchOptions.signal` is set then it will take precedence over this option.
+     */
+    timeoutMs?: number;
+    /**
+     * Set or override a retry policy on HTTP calls.
+     */
+    retries?: RetryConfig;
+    /**
+     * Specifies the status codes which should be retried using the given retry policy.
+     */
+    retryCodes?: string[];
+    /**
+     * Sets various request options on the `fetch` call made by an SDK method.
+     *
+     * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options|Request}
+     */
     fetchOptions?: Omit<RequestInit, "method" | "body">;
 };
 
@@ -24,6 +43,7 @@ type RequestConfig = {
     headers?: HeadersInit;
     security?: SecurityState | null;
     uaHeader?: string;
+    timeoutMs?: number;
 };
 
 const gt: unknown = typeof globalThis === "undefined" ? null : globalThis;
@@ -119,10 +139,20 @@ export class ClientSDK {
             headers.set(conf.uaHeader ?? "user-agent", SDK_METADATA.userAgent);
         }
 
+        let fetchOptions = options?.fetchOptions;
+        if (!fetchOptions?.signal && conf.timeoutMs && conf.timeoutMs > 0) {
+            const timeoutSignal = AbortSignal.timeout(conf.timeoutMs);
+            if (!fetchOptions) {
+                fetchOptions = { signal: timeoutSignal };
+            } else {
+                fetchOptions.signal = timeoutSignal;
+            }
+        }
+
         const input = this.hooks$.beforeCreateRequest(context, {
             url: reqURL,
             options: {
-                ...options?.fetchOptions,
+                ...fetchOptions,
                 body: conf.body ?? null,
                 headers,
                 method,
@@ -133,27 +163,40 @@ export class ClientSDK {
     }
 
     protected async do$(
-        req: Request,
+        request: Request,
         options: {
             context: HookContext;
             errorCodes: number | string | (number | string)[];
+            retryConfig?: RetryConfig | undefined;
+            retryCodes?: string[] | undefined;
         }
     ): Promise<Response> {
         const { context, errorCodes } = options;
+        const retryConfig = options.retryConfig || { strategy: "none" };
+        const retryCodes = options.retryCodes || [];
 
-        let response = await this.client.request(await this.hooks$.beforeRequest(context, req));
+        return retry(
+            async () => {
+                const req = request.clone();
 
-        if (matchStatusCode(response, errorCodes)) {
-            const result = await this.hooks$.afterError(context, response, null);
-            if (result.error) {
-                throw result.error;
-            }
-            response = result.response || response;
-        } else {
-            response = await this.hooks$.afterSuccess(context, response);
-        }
+                let response = await this.client.request(
+                    await this.hooks$.beforeRequest(context, req)
+                );
 
-        return response;
+                if (matchStatusCode(response, errorCodes)) {
+                    const result = await this.hooks$.afterError(context, response, null);
+                    if (result.error) {
+                        throw result.error;
+                    }
+                    response = result.response || response;
+                } else {
+                    response = await this.hooks$.afterSuccess(context, response);
+                }
+
+                return response;
+            },
+            { config: retryConfig, statusCodes: retryCodes }
+        );
     }
 
     protected matcher<Result>(): ResponseMatcher<Result> {
