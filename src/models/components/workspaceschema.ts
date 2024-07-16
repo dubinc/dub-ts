@@ -134,9 +134,9 @@ export type WorkspaceSchema = {
      */
     inviteCode: string | null;
     /**
-     * Whether the workspace is enrolled in the beta testing program.
+     * The feature flags of the workspace, indicating which features are enabled.
      */
-    betaTester?: boolean | undefined;
+    flags?: { [k: string]: boolean } | undefined;
 };
 
 /** @internal */
@@ -257,7 +257,7 @@ export const WorkspaceSchema$inboundSchema: z.ZodType<WorkspaceSchema, z.ZodType
         users: z.array(z.lazy(() => Users$inboundSchema)),
         domains: z.array(z.lazy(() => Domains$inboundSchema)),
         inviteCode: z.nullable(z.string()),
-        betaTester: z.boolean().optional(),
+        flags: z.record(z.boolean()).optional(),
     });
 
 /** @internal */
@@ -281,7 +281,7 @@ export type WorkspaceSchema$Outbound = {
     users: Array<Users$Outbound>;
     domains: Array<Domains$Outbound>;
     inviteCode: string | null;
-    betaTester?: boolean | undefined;
+    flags?: { [k: string]: boolean } | undefined;
 };
 
 /** @internal */
@@ -309,7 +309,7 @@ export const WorkspaceSchema$outboundSchema: z.ZodType<
     users: z.array(z.lazy(() => Users$outboundSchema)),
     domains: z.array(z.lazy(() => Domains$outboundSchema)),
     inviteCode: z.nullable(z.string()),
-    betaTester: z.boolean().optional(),
+    flags: z.record(z.boolean()).optional(),
 });
 
 /**
