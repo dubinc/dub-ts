@@ -284,6 +284,7 @@ type ResponsePredicateMatch<Result> = {
     key: string | undefined;
     err: boolean;
     fail: boolean;
+    sseSentinel?: string | undefined;
 };
 
 type ResponsePredicateOptions = {
@@ -291,6 +292,8 @@ type ResponsePredicateOptions = {
     ctype?: string;
     /** Pass HTTP headers to deserializer. */
     hdrs?: boolean;
+    /** A value for an SSE event's data field that indicates a stream should be terminated. */
+    sseSentinel?: string;
 } & (
     | {
           /** The result key to store the deserialized value into. */
@@ -326,6 +329,7 @@ export class ResponseMatcher<Result> {
         const key = opts?.key;
         const err = !!opts?.err;
         const fail = !!opts?.fail;
+        const sseSentinel = opts?.sseSentinel;
         this.predicates.push({
             method,
             codes,
@@ -335,6 +339,7 @@ export class ResponseMatcher<Result> {
             key,
             err,
             fail,
+            sseSentinel,
         });
         return this;
     }

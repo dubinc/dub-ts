@@ -325,6 +325,10 @@ export type LinkSchema = {
      */
     image: string | null;
     /**
+     * The custom link preview video (og:video). Will be used for Custom Social Media Cards if `proxy` is true. Learn more: https://d.to/og
+     */
+    video: string | null;
+    /**
      * Whether the short link uses link cloaking.
      */
     rewrite?: boolean | undefined;
@@ -1732,6 +1736,7 @@ export const LinkSchema$inboundSchema: z.ZodType<LinkSchema, z.ZodTypeDef, unkno
         title: z.nullable(z.string()),
         description: z.nullable(z.string()),
         image: z.nullable(z.string()),
+        video: z.nullable(z.string()),
         rewrite: z.boolean().default(false),
         doIndex: z.boolean().default(false),
         ios: z.nullable(z.string()),
@@ -1784,6 +1789,7 @@ export type LinkSchema$Outbound = {
     title: string | null;
     description: string | null;
     image: string | null;
+    video: string | null;
     rewrite: boolean;
     doIndex: boolean;
     ios: string | null;
@@ -1828,6 +1834,7 @@ export const LinkSchema$outboundSchema: z.ZodType<LinkSchema$Outbound, z.ZodType
         title: z.nullable(z.string()),
         description: z.nullable(z.string()),
         image: z.nullable(z.string()),
+        video: z.nullable(z.string()),
         rewrite: z.boolean().default(false),
         doIndex: z.boolean().default(false),
         ios: z.nullable(z.string()),

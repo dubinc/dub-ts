@@ -212,6 +212,24 @@ export function encodeDeepObject(
     return "";
   }
 
+  if (!isPlainObject(value)) {
+    throw new EncodingError(
+      `Value of parameter '${key}' which uses deepObject encoding must be an object`,
+    );
+  }
+
+  return encodeDeepObjectObject(key, value, options);
+}
+
+export function encodeDeepObjectObject(
+  key: string,
+  value: unknown,
+  options?: { charEncoding?: "percent" | "none" },
+): string {
+  if (value == null) {
+    return "";
+  }
+
   let out = "";
 
   const encodeString = (v: string) => {
@@ -219,9 +237,7 @@ export function encodeDeepObject(
   };
 
   if (!isPlainObject(value)) {
-    throw new EncodingError(
-      `Value of parameter '${key}' which uses deepObject encoding must be an object`,
-    );
+    throw new EncodingError(`Expected parameter '${key}' to be an object.`);
   }
 
   Object.entries(value).forEach(([ck, cv]) => {
@@ -232,9 +248,11 @@ export function encodeDeepObject(
     const pk = `${key}[${ck}]`;
 
     if (isPlainObject(cv)) {
-      throw new EncodingError(
-        `Value of parameter field '${pk}' cannot be an array or object.`,
-      );
+      const objOut = encodeDeepObjectObject(pk, cv, options);
+
+      out += `&${objOut}`;
+
+      return;
     }
 
     const pairs: unknown[] = Array.isArray(cv) ? cv : [cv];

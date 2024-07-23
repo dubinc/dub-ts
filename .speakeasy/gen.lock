@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: d0b5f8295789a6e5094c2a864663e7e5
+  docChecksum: ff99d725530dd92bf929c57a1840df75
   docVersion: 0.0.1
-  speakeasyVersion: 1.335.2
-  generationVersion: 2.372.3
-  releaseVersion: 0.34.1
-  configChecksum: 3d38f32021ee5bb84ac709fb6f9eef4f
+  speakeasyVersion: 1.345.1
+  generationVersion: 2.378.1
+  releaseVersion: 0.34.2
+  configChecksum: 05c888c383b927e166d2748c59ac9908
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -14,10 +14,10 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.5
-    core: 3.11.6
+    core: 3.11.8
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
-    errors: 2.81.11
+    errors: 2.81.12
     examples: 2.81.4
     flattening: 2.81.1
     globalSecurity: 2.82.9
@@ -29,7 +29,7 @@ features:
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.1.0
-    unions: 2.85.5
+    unions: 2.85.6
 generatedFiles:
   - src/sdk/links.ts
   - src/sdk/qrcodes.ts
@@ -286,3 +286,4 @@ generatedFiles:
   - src/hooks/hooks.ts
   - src/hooks/types.ts
   - src/hooks/index.ts
+  - CONTRIBUTING.md
