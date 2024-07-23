@@ -84,17 +84,21 @@ export type UpdateLinkRequestBody = {
      */
     proxy?: boolean | undefined;
     /**
-     * The title of the short link generated via `api.dub.co/metatags`. Will be used for Custom Social Media Cards if `proxy` is true.
+     * The custom link preview title (og:title). Will be used for Custom Social Media Cards if `proxy` is true. Learn more: https://d.to/og
      */
     title?: string | null | undefined;
     /**
-     * The description of the short link generated via `api.dub.co/metatags`. Will be used for Custom Social Media Cards if `proxy` is true.
+     * The custom link preview description (og:description). Will be used for Custom Social Media Cards if `proxy` is true. Learn more: https://d.to/og
      */
     description?: string | null | undefined;
     /**
-     * The image of the short link generated via `api.dub.co/metatags`. Will be used for Custom Social Media Cards if `proxy` is true.
+     * The custom link preview image (og:image). Will be used for Custom Social Media Cards if `proxy` is true. Learn more: https://d.to/og
      */
     image?: string | null | undefined;
+    /**
+     * The custom link preview video (og:video). Will be used for Custom Social Media Cards if `proxy` is true. Learn more: https://d.to/og
+     */
+    video?: string | null | undefined;
     /**
      * Whether the short link uses link cloaking.
      */
@@ -204,6 +208,7 @@ export const UpdateLinkRequestBody$inboundSchema: z.ZodType<
     title: z.nullable(z.string()).optional(),
     description: z.nullable(z.string()).optional(),
     image: z.nullable(z.string()).optional(),
+    video: z.nullable(z.string()).optional(),
     rewrite: z.boolean().default(false),
     ios: z.nullable(z.string()).optional(),
     android: z.nullable(z.string()).optional(),
@@ -232,6 +237,7 @@ export type UpdateLinkRequestBody$Outbound = {
     title?: string | null | undefined;
     description?: string | null | undefined;
     image?: string | null | undefined;
+    video?: string | null | undefined;
     rewrite: boolean;
     ios?: string | null | undefined;
     android?: string | null | undefined;
@@ -264,6 +270,7 @@ export const UpdateLinkRequestBody$outboundSchema: z.ZodType<
     title: z.nullable(z.string()).optional(),
     description: z.nullable(z.string()).optional(),
     image: z.nullable(z.string()).optional(),
+    video: z.nullable(z.string()).optional(),
     rewrite: z.boolean().default(false),
     ios: z.nullable(z.string()).optional(),
     android: z.nullable(z.string()).optional(),
