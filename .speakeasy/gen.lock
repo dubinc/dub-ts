@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: ff99d725530dd92bf929c57a1840df75
+  docChecksum: abaf709df8818e2099256e8478ab3dc0
   docVersion: 0.0.1
-  speakeasyVersion: 1.345.1
-  generationVersion: 2.378.1
-  releaseVersion: 0.34.2
-  configChecksum: 05c888c383b927e166d2748c59ac9908
+  speakeasyVersion: 1.346.0
+  generationVersion: 2.379.3
+  releaseVersion: 0.34.3
+  configChecksum: 2a417b659305f8044e69809317284db7
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.5
-    core: 3.11.8
+    core: 3.11.10
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     errors: 2.81.12
@@ -221,6 +221,7 @@ generatedFiles:
   - docs/models/operations/createlinkrequestbody.md
   - docs/models/operations/getlinkscountqueryparamtagids.md
   - docs/models/operations/getlinkscountqueryparamtagnames.md
+  - docs/models/operations/three.md
   - docs/models/operations/two.md
   - docs/models/operations/one.md
   - docs/models/operations/groupby.md
