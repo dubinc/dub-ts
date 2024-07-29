@@ -232,8 +232,9 @@ async function run() {
         }
     }
 
-    // Handle the result
-    console.log(result);
+    for await (const page of result) {
+        // handle page
+    }
 }
 
 run();
@@ -263,8 +264,9 @@ const dub = new Dub({
 async function run() {
     const result = await dub.links.list({});
 
-    // Handle the result
-    console.log(result);
+    for await (const page of result) {
+        // handle page
+    }
 }
 
 run();
@@ -287,8 +289,9 @@ const dub = new Dub({
 async function run() {
     const result = await dub.links.list({});
 
-    // Handle the result
-    console.log(result);
+    for await (const page of result) {
+        // handle page
+    }
 }
 
 run();
@@ -367,8 +370,9 @@ const dub = new Dub({
 async function run() {
     const result = await dub.links.list({});
 
-    // Handle the result
-    console.log(result);
+    for await (const page of result) {
+        // handle page
+    }
 }
 
 run();
@@ -406,8 +410,9 @@ async function run() {
         }
     );
 
-    // Handle the result
-    console.log(result);
+    for await (const page of result) {
+        // handle page
+    }
 }
 
 run();
@@ -435,14 +440,47 @@ const dub = new Dub({
 async function run() {
     const result = await dub.links.list({});
 
-    // Handle the result
-    console.log(result);
+    for await (const page of result) {
+        // handle page
+    }
 }
 
 run();
 
 ```
 <!-- End Retries [retries] -->
+
+<!-- Start Pagination [pagination] -->
+## Pagination
+
+Some of the endpoints in this SDK support pagination. To use pagination, you
+make your SDK calls as usual, but the returned response object will also be an
+async iterable that can be consumed using the [`for await...of`][for-await-of]
+syntax.
+
+[for-await-of]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of
+
+Here's an example of one such pagination call:
+
+```typescript
+import { Dub } from "dub";
+
+const dub = new Dub({
+    token: "DUB_API_KEY",
+});
+
+async function run() {
+    const result = await dub.links.list({});
+
+    for await (const page of result) {
+        // handle page
+    }
+}
+
+run();
+
+```
+<!-- End Pagination [pagination] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

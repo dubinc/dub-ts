@@ -1,6 +1,6 @@
 # SalesCountriesCountry
 
-The 2-letter country code: https://d.to/geo
+The 2-letter ISO 3166-1 country code for the country associated with the location of the user. Learn more: https://d.to/geo
 
 
 ## Values

@@ -29,8 +29,9 @@ const dub = new Dub({
 async function run() {
   const result = await dub.links.list({});
 
-  // Handle the result
-  console.log(result)
+  for await (const page of result) {
+    // handle page
+  }
 }
 
 run();
@@ -48,7 +49,7 @@ run();
 
 ### Response
 
-**Promise\<[components.LinkSchema[]](../../models/.md)\>**
+**Promise\<[operations.GetLinksResponse](../../models/operations/getlinksresponse.md)\>**
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
