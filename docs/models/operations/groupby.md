@@ -17,3 +17,9 @@ const value: operations.One = /* values here */
 const value: operations.Two = /* values here */
 ```
 
+### `operations.Three`
+
+```typescript
+const value: operations.Three = /* values here */
+```
+
