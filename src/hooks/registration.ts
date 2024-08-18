@@ -1,6 +1,6 @@
-import { injectAPIKey } from "./auth";
-import { overrideBaseURL } from "./base-url";
-import { Hooks } from "./types";
+import { injectAPIKey } from "./auth.js";
+import { overrideBaseURL } from "./base-url.js";
+import { Hooks } from "./types.js";
 
 /*
  * This file is only ever generated once on the first generation and then is free to be modified.
@@ -9,10 +9,10 @@ import { Hooks } from "./types";
  */
 
 export function initHooks(hooks: Hooks) {
-    // Add hooks by calling hooks.register{ClientInit/BeforeRequest/AfterSuccess/AfterError}Hook
-    // with an instance of a hook that implements that specific Hook interface
-    // Hooks are registered per SDK instance, and are valid for the lifetime of the SDK instance
+  // Add hooks by calling hooks.register{ClientInit/BeforeRequest/AfterSuccess/AfterError}Hook
+  // with an instance of a hook that implements that specific Hook interface
+  // Hooks are registered per SDK instance, and are valid for the lifetime of the SDK instance
 
-    hooks.registerBeforeRequestHook(injectAPIKey);
-    hooks.registerBeforeRequestHook(overrideBaseURL);
+  hooks.registerBeforeRequestHook(injectAPIKey);
+  hooks.registerBeforeRequestHook(overrideBaseURL);
 }
