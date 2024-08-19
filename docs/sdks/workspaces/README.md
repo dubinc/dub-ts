@@ -31,6 +31,39 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { DubCore } from "dub/core.js";
+import { workspacesGet } from "dub/funcs/workspacesGet.js";
+
+// Use `DubCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const dub = new DubCore({
+  token: "DUB_API_KEY",
+});
+
+async function run() {
+  const res = await workspacesGet(dub, {
+    idOrSlug: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -73,7 +106,38 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.workspaces.update("<value>", {});
+  const result = await dub.workspaces.update("<value>");
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { DubCore } from "dub/core.js";
+import { workspacesUpdate } from "dub/funcs/workspacesUpdate.js";
+
+// Use `DubCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const dub = new DubCore({
+  token: "DUB_API_KEY",
+});
+
+async function run() {
+  const res = await workspacesUpdate(dub, "<value>");
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)

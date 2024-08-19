@@ -2,6 +2,13 @@
 
 The field to group the links by.
 
+## Example Usage
+
+```typescript
+import { GroupBy } from "dub/models/operations";
+
+let value: GroupBy = "tagId";
+```
 
 ## Supported Types
 

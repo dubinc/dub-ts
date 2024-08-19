@@ -1,5 +1,39 @@
 # WorkspaceSchema
 
+## Example Usage
+
+```typescript
+import { WorkspaceSchema } from "dub/models/components";
+
+let value: WorkspaceSchema = {
+    id: "<id>",
+    name: "<value>",
+    slug: "<value>",
+    usage: 3015.75,
+    usageLimit: 7160.75,
+    linksUsage: 6601.74,
+    linksLimit: 2879.91,
+    domainsLimit: 2900.77,
+    tagsLimit: 3834.62,
+    usersLimit: 6180.16,
+    plan: "business max",
+    stripeId: "<value>",
+    billingCycleStart: 4287.69,
+    stripeConnectId: "<value>",
+    createdAt: "<value>",
+    users: [
+        {
+            role: "member",
+        },
+    ],
+    domains: [
+        {
+            slug: "acme.com",
+        },
+    ],
+    inviteCode: "<value>",
+};
+```
 
 ## Fields
 

@@ -1,5 +1,14 @@
 # UpdateDomainRequest
 
+## Example Usage
+
+```typescript
+import { UpdateDomainRequest } from "dub/models/operations";
+
+let value: UpdateDomainRequest = {
+    slug: "acme.com",
+};
+```
 
 ## Fields
 

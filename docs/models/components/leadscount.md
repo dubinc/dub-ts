@@ -1,5 +1,14 @@
 # LeadsCount
 
+## Example Usage
+
+```typescript
+import { LeadsCount } from "dub/models/components";
+
+let value: LeadsCount = {
+    leads: 5666.02,
+};
+```
 
 ## Fields
 

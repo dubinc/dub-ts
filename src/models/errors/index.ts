@@ -5,6 +5,7 @@
 export * from "./badrequest.js";
 export * from "./conflict.js";
 export * from "./forbidden.js";
+export * from "./httpclienterrors.js";
 export * from "./internalservererror.js";
 export * from "./inviteexpired.js";
 export * from "./notfound.js";

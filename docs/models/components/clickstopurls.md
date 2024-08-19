@@ -1,5 +1,15 @@
 # ClicksTopUrls
 
+## Example Usage
+
+```typescript
+import { ClicksTopUrls } from "dub/models/components";
+
+let value: ClicksTopUrls = {
+    url: "https://beautiful-crab.net",
+    clicks: 5651.89,
+};
+```
 
 ## Fields
 

@@ -2,9 +2,16 @@
 
 A short code indicating the error code returned.
 
+## Example Usage
+
+```typescript
+import { RateLimitExceededCode } from "dub/models/errors";
+
+let value: RateLimitExceededCode = "rate_limit_exceeded";
+```
 
 ## Values
 
-| Name                | Value               |
-| ------------------- | ------------------- |
-| `RateLimitExceeded` | rate_limit_exceeded |
+```typescript
+"rate_limit_exceeded"
+```

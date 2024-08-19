@@ -1,5 +1,14 @@
 # UpsertLinkRequestBody
 
+## Example Usage
+
+```typescript
+import { UpsertLinkRequestBody } from "dub/models/operations";
+
+let value: UpsertLinkRequestBody = {
+    url: "https://google.com",
+};
+```
 
 ## Fields
 

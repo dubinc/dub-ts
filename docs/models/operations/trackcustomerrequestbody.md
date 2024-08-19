@@ -1,5 +1,14 @@
 # TrackCustomerRequestBody
 
+## Example Usage
+
+```typescript
+import { TrackCustomerRequestBody } from "dub/models/operations";
+
+let value: TrackCustomerRequestBody = {
+    customerId: "<value>",
+};
+```
 
 ## Fields
 

@@ -1,5 +1,15 @@
 # LeadsReferers
 
+## Example Usage
+
+```typescript
+import { LeadsReferers } from "dub/models/components";
+
+let value: LeadsReferers = {
+    referer: "<value>",
+    leads: 8423.42,
+};
+```
 
 ## Fields
 

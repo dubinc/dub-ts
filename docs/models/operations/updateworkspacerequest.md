@@ -1,5 +1,14 @@
 # UpdateWorkspaceRequest
 
+## Example Usage
+
+```typescript
+import { UpdateWorkspaceRequest } from "dub/models/operations";
+
+let value: UpdateWorkspaceRequest = {
+    idOrSlug: "<value>",
+};
+```
 
 ## Fields
 

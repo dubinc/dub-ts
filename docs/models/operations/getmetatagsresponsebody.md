@@ -2,6 +2,17 @@
 
 The retrieved metatags
 
+## Example Usage
+
+```typescript
+import { GetMetatagsResponseBody } from "dub/models/operations";
+
+let value: GetMetatagsResponseBody = {
+    title: "Dub.co - Link Management for Modern Marketing Teams",
+    description: "Dub.co is the open-source link management infrastructure ...",
+    image: "https://assets.dub.co/thumbnail.jpg",
+};
+```
 
 ## Fields
 

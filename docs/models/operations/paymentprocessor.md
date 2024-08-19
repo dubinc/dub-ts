@@ -2,11 +2,16 @@
 
 The payment processor via which the sale was made.
 
+## Example Usage
+
+```typescript
+import { PaymentProcessor } from "dub/models/operations";
+
+let value: PaymentProcessor = "stripe";
+```
 
 ## Values
 
-| Name      | Value     |
-| --------- | --------- |
-| `Stripe`  | stripe    |
-| `Shopify` | shopify   |
-| `Paddle`  | paddle    |
+```typescript
+"stripe" | "shopify" | "paddle"
+```

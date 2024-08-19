@@ -1,5 +1,17 @@
 # SalesCities
 
+## Example Usage
+
+```typescript
+import { SalesCities } from "dub/models/components";
+
+let value: SalesCities = {
+    city: "Joliet",
+    country: "EG",
+    sales: 7561.07,
+    amount: 5761.57,
+};
+```
 
 ## Fields
 

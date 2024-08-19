@@ -2,15 +2,16 @@
 
 The plan of the workspace.
 
+## Example Usage
+
+```typescript
+import { Plan } from "dub/models/components";
+
+let value: Plan = "business plus";
+```
 
 ## Values
 
-| Name            | Value           |
-| --------------- | --------------- |
-| `Free`          | free            |
-| `Pro`           | pro             |
-| `Business`      | business        |
-| `BusinessPlus`  | business plus   |
-| `BusinessExtra` | business extra  |
-| `BusinessMax`   | business max    |
-| `Enterprise`    | enterprise      |
+```typescript
+"free" | "pro" | "business" | "business plus" | "business extra" | "business max" | "enterprise"
+```

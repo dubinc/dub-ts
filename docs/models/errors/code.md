@@ -2,9 +2,16 @@
 
 A short code indicating the error code returned.
 
+## Example Usage
+
+```typescript
+import { Code } from "dub/models/errors";
+
+let value: Code = "bad_request";
+```
 
 ## Values
 
-| Name         | Value        |
-| ------------ | ------------ |
-| `BadRequest` | bad_request  |
+```typescript
+"bad_request"
+```

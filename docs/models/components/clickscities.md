@@ -1,5 +1,16 @@
 # ClicksCities
 
+## Example Usage
+
+```typescript
+import { ClicksCities } from "dub/models/components";
+
+let value: ClicksCities = {
+    city: "New Ivahfort",
+    country: "AD",
+    clicks: 391.87,
+};
+```
 
 ## Fields
 

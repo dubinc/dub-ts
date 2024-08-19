@@ -40,6 +40,9 @@ yarn add dub zod
 # Note that Yarn does not install peer dependencies automatically. You will need
 # to install zod as shown above.
 ```
+
+> [!NOTE]
+> This package is published with CommonJS and ES Modules (ESM) support.
 <!-- End SDK Installation [installation] -->
 
 <!-- Start Requirements [requirements] -->
@@ -61,9 +64,7 @@ const dub = new Dub({
 });
 
 async function run() {
-    const result = await dub.links.create({
-        url: "https://google.com",
-    });
+    const result = await dub.links.create();
 
     // Handle the result
     console.log(result);
@@ -83,9 +84,7 @@ const dub = new Dub({
 });
 
 async function run() {
-    const result = await dub.links.upsert({
-        url: "https://google.com",
-    });
+    const result = await dub.links.upsert();
 
     // Handle the result
     console.log(result);
@@ -118,6 +117,10 @@ run();
 ### [analytics](docs/sdks/analytics/README.md)
 
 * [retrieve](docs/sdks/analytics/README.md#retrieve) - Retrieve analytics for a link, a domain, or the authenticated workspace.
+
+### [events](docs/sdks/events/README.md)
+
+* [list](docs/sdks/events/README.md#list) - Retrieve a list of events
 
 ### [workspaces](docs/sdks/workspaces/README.md)
 
@@ -180,7 +183,7 @@ const dub = new Dub({
 async function run() {
     let result;
     try {
-        result = await dub.links.list({});
+        result = await dub.links.list();
     } catch (err) {
         switch (true) {
             case err instanceof SDKValidationError: {
@@ -262,7 +265,7 @@ const dub = new Dub({
 });
 
 async function run() {
-    const result = await dub.links.list({});
+    const result = await dub.links.list();
 
     for await (const page of result) {
         // handle page
@@ -287,7 +290,7 @@ const dub = new Dub({
 });
 
 async function run() {
-    const result = await dub.links.list({});
+    const result = await dub.links.list();
 
     for await (const page of result) {
         // handle page
@@ -368,7 +371,7 @@ const dub = new Dub({
 });
 
 async function run() {
-    const result = await dub.links.list({});
+    const result = await dub.links.list();
 
     for await (const page of result) {
         // handle page
@@ -394,21 +397,18 @@ const dub = new Dub({
 });
 
 async function run() {
-    const result = await dub.links.list(
-        {},
-        {
-            retries: {
-                strategy: "backoff",
-                backoff: {
-                    initialInterval: 1,
-                    maxInterval: 50,
-                    exponent: 1.1,
-                    maxElapsedTime: 100,
-                },
-                retryConnectionErrors: false,
+    const result = await dub.links.list({
+        retries: {
+            strategy: "backoff",
+            backoff: {
+                initialInterval: 1,
+                maxInterval: 50,
+                exponent: 1.1,
+                maxElapsedTime: 100,
             },
-        }
-    );
+            retryConnectionErrors: false,
+        },
+    });
 
     for await (const page of result) {
         // handle page
@@ -438,7 +438,7 @@ const dub = new Dub({
 });
 
 async function run() {
-    const result = await dub.links.list({});
+    const result = await dub.links.list();
 
     for await (const page of result) {
         // handle page
@@ -470,7 +470,7 @@ const dub = new Dub({
 });
 
 async function run() {
-    const result = await dub.links.list({});
+    const result = await dub.links.list();
 
     for await (const page of result) {
         // handle page
@@ -481,6 +481,68 @@ run();
 
 ```
 <!-- End Pagination [pagination] -->
+
+<!-- Start Standalone functions [standalone-funcs] -->
+## Standalone functions
+
+All the methods listed above are available as standalone functions. These
+functions are ideal for use in applications running in the browser, serverless
+runtimes or other environments where application bundle size is a primary
+concern. When using a bundler to build your application, all unused
+functionality will be either excluded from the final bundle or tree-shaken away.
+
+To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
+
+<details>
+
+<summary>Available standalone functions</summary>
+
+- [analyticsRetrieve](docs/sdks/analytics/README.md#retrieve)
+- [domainsCreate](docs/sdks/domains/README.md#create)
+- [domainsDelete](docs/sdks/domains/README.md#delete)
+- [domainsList](docs/sdks/domains/README.md#list)
+- [domainsUpdate](docs/sdks/domains/README.md#update)
+- [eventsList](docs/sdks/events/README.md#list)
+- [linksCount](docs/sdks/links/README.md#count)
+- [linksCreateMany](docs/sdks/links/README.md#createmany)
+- [linksCreate](docs/sdks/links/README.md#create)
+- [linksDelete](docs/sdks/links/README.md#delete)
+- [linksGet](docs/sdks/links/README.md#get)
+- [linksList](docs/sdks/links/README.md#list)
+- [linksUpdateMany](docs/sdks/links/README.md#updatemany)
+- [linksUpdate](docs/sdks/links/README.md#update)
+- [linksUpsert](docs/sdks/links/README.md#upsert)
+- [metatagsGet](docs/sdks/metatags/README.md#get)
+- [qrCodesGet](docs/sdks/qrcodes/README.md#get)
+- [tagsCreate](docs/sdks/tags/README.md#create)
+- [tagsList](docs/sdks/tags/README.md#list)
+- [tagsUpdate](docs/sdks/tags/README.md#update)
+- [trackCustomer](docs/sdks/track/README.md#customer)
+- [trackLead](docs/sdks/track/README.md#lead)
+- [trackSale](docs/sdks/track/README.md#sale)
+- [workspacesGet](docs/sdks/workspaces/README.md#get)
+- [workspacesUpdate](docs/sdks/workspaces/README.md#update)
+
+
+</details>
+<!-- End Standalone functions [standalone-funcs] -->
+
+<!-- Start Debugging [debug] -->
+## Debugging
+
+You can setup your SDK to emit debug logs for SDK requests and responses.
+
+You can pass a logger that matches `console`'s interface as an SDK option.
+
+> [!WARNING]
+> Beware that debug logging will reveal secrets, like API tokens in headers, in log messages printed to a console or files. It's recommended to use this feature only during local development and not in production.
+
+```typescript
+import { Dub } from "dub";
+
+const sdk = new Dub({ debugLogger: console });
+```
+<!-- End Debugging [debug] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

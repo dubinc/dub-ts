@@ -1,5 +1,14 @@
 # DeleteDomainRequest
 
+## Example Usage
+
+```typescript
+import { DeleteDomainRequest } from "dub/models/operations";
+
+let value: DeleteDomainRequest = {
+    slug: "acme.com",
+};
+```
 
 ## Fields
 

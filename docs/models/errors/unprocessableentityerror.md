@@ -1,5 +1,15 @@
 # UnprocessableEntityError
 
+## Example Usage
+
+```typescript
+import { UnprocessableEntityError } from "dub/models/errors";
+
+let value: UnprocessableEntityError = {
+    code: "unprocessable_entity",
+    message: "The requested resource was not found.",
+};
+```
 
 ## Fields
 

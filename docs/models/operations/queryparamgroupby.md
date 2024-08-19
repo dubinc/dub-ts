@@ -2,20 +2,16 @@
 
 The parameter to group the analytics data points by. Defaults to 'count' if undefined.
 
+## Example Usage
+
+```typescript
+import { QueryParamGroupBy } from "dub/models/operations";
+
+let value: QueryParamGroupBy = "count";
+```
 
 ## Values
 
-| Name         | Value        |
-| ------------ | ------------ |
-| `Count`      | count        |
-| `Timeseries` | timeseries   |
-| `Continents` | continents   |
-| `Countries`  | countries    |
-| `Cities`     | cities       |
-| `Devices`    | devices      |
-| `Browsers`   | browsers     |
-| `Os`         | os           |
-| `Referers`   | referers     |
-| `TopLinks`   | top_links    |
-| `TopUrls`    | top_urls     |
-| `Trigger`    | trigger      |
+```typescript
+"count" | "timeseries" | "continents" | "countries" | "cities" | "devices" | "browsers" | "os" | "referers" | "top_links" | "top_urls" | "trigger"
+```

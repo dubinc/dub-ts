@@ -1,5 +1,15 @@
 # ClicksOS
 
+## Example Usage
+
+```typescript
+import { ClicksOS } from "dub/models/components";
+
+let value: ClicksOS = {
+    os: "<value>",
+    clicks: 9795.87,
+};
+```
 
 ## Fields
 

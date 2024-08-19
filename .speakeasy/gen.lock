@@ -1,27 +1,27 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: e0d1746d131c608a54c04b32762b2faa
+  docChecksum: f10061c7787170c0db643f22823c9aa9
   docVersion: 0.0.1
-  speakeasyVersion: 1.348.1
-  generationVersion: 2.380.1
-  releaseVersion: 0.35.0
-  configChecksum: 87fbf74009c30c7040a96a9987cec680
+  speakeasyVersion: 1.376.0
+  generationVersion: 2.402.5
+  releaseVersion: 0.36.0
+  configChecksum: fcb98e68ac4052e8890047fc6babe86f
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
 features:
   typescript:
     additionalDependencies: 0.1.0
-    constsAndDefaults: 0.1.5
-    core: 3.11.11
+    constsAndDefaults: 0.1.10
+    core: 3.14.1
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
-    envVarSecurityUsage: 0.1.0
-    errors: 2.81.12
+    envVarSecurityUsage: 0.1.1
+    errors: 2.82.1
     examples: 2.81.4
     flattening: 2.81.1
-    globalSecurity: 2.82.9
+    globalSecurity: 2.82.11
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.4
@@ -31,11 +31,37 @@ features:
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.1.0
-    unions: 2.85.6
+    unions: 2.85.7
 generatedFiles:
+  - src/funcs/linksList.ts
+  - src/funcs/linksCreate.ts
+  - src/funcs/linksCount.ts
+  - src/funcs/linksGet.ts
+  - src/funcs/linksDelete.ts
+  - src/funcs/linksUpdate.ts
+  - src/funcs/linksCreateMany.ts
+  - src/funcs/linksUpdateMany.ts
+  - src/funcs/linksUpsert.ts
+  - src/funcs/qrCodesGet.ts
+  - src/funcs/analyticsRetrieve.ts
+  - src/funcs/eventsList.ts
+  - src/funcs/workspacesGet.ts
+  - src/funcs/workspacesUpdate.ts
+  - src/funcs/tagsList.ts
+  - src/funcs/tagsCreate.ts
+  - src/funcs/tagsUpdate.ts
+  - src/funcs/domainsList.ts
+  - src/funcs/domainsCreate.ts
+  - src/funcs/domainsDelete.ts
+  - src/funcs/domainsUpdate.ts
+  - src/funcs/trackLead.ts
+  - src/funcs/trackSale.ts
+  - src/funcs/trackCustomer.ts
+  - src/funcs/metatagsGet.ts
   - src/sdk/links.ts
   - src/sdk/qrcodes.ts
   - src/sdk/analytics.ts
+  - src/sdk/events.ts
   - src/sdk/workspaces.ts
   - src/sdk/tags.ts
   - src/sdk/domains.ts
@@ -44,15 +70,19 @@ generatedFiles:
   - src/sdk/sdk.ts
   - .eslintrc.cjs
   - .npmignore
+  - FUNCTIONS.md
   - RUNTIMES.md
   - jsr.json
   - package.json
+  - src/core.ts
   - src/lib/base64.ts
   - src/lib/config.ts
   - src/lib/dlv.ts
   - src/lib/encodings.ts
   - src/lib/http.ts
   - src/lib/is-plain-object.ts
+  - src/lib/logger.ts
+  - src/lib/matchers.ts
   - src/lib/primitives.ts
   - src/lib/retries.ts
   - src/lib/schemas.ts
@@ -60,10 +90,13 @@ generatedFiles:
   - src/lib/security.ts
   - src/lib/url.ts
   - src/sdk/index.ts
+  - src/models/errors/httpclienterrors.ts
   - src/models/errors/sdkerror.ts
   - src/models/errors/sdkvalidationerror.ts
   - src/types/blobs.ts
+  - src/types/constdatetime.ts
   - src/types/enums.ts
+  - src/types/fp.ts
   - src/types/index.ts
   - src/types/operations.ts
   - src/types/rfcdate.ts
@@ -79,6 +112,7 @@ generatedFiles:
   - src/models/operations/upsertlink.ts
   - src/models/operations/getqrcode.ts
   - src/models/operations/retrieveanalytics.ts
+  - src/models/operations/listevents.ts
   - src/models/operations/getworkspace.ts
   - src/models/operations/updateworkspace.ts
   - src/models/operations/createtag.ts
@@ -126,6 +160,7 @@ generatedFiles:
   - src/models/components/salestopurls.ts
   - src/models/components/countrycode.ts
   - src/models/components/continentcode.ts
+  - src/models/components/clickevents.ts
   - src/models/components/workspaceschema.ts
   - src/models/components/domainschema.ts
   - src/models/components/security.ts
@@ -180,6 +215,11 @@ generatedFiles:
   - docs/models/operations/interval.md
   - docs/models/operations/retrieveanalyticsrequest.md
   - docs/models/operations/retrieveanalyticsresponsebody.md
+  - docs/models/operations/queryparamevent.md
+  - docs/models/operations/queryparaminterval.md
+  - docs/models/operations/order.md
+  - docs/models/operations/sortby.md
+  - docs/models/operations/listeventsrequest.md
   - docs/models/operations/getworkspacerequest.md
   - docs/models/operations/updateworkspacerequestbody.md
   - docs/models/operations/updateworkspacerequest.md
@@ -247,6 +287,7 @@ generatedFiles:
   - docs/models/components/salestopurls.md
   - docs/models/components/countrycode.md
   - docs/models/components/continentcode.md
+  - docs/models/components/clickevents.md
   - docs/models/components/plan.md
   - docs/models/components/role.md
   - docs/models/components/users.md
@@ -286,6 +327,7 @@ generatedFiles:
   - docs/sdks/links/README.md
   - docs/sdks/qrcodes/README.md
   - docs/sdks/analytics/README.md
+  - docs/sdks/events/README.md
   - docs/sdks/workspaces/README.md
   - docs/sdks/tags/README.md
   - docs/sdks/domains/README.md

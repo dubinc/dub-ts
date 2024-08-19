@@ -1,5 +1,15 @@
 # LeadsBrowsers
 
+## Example Usage
+
+```typescript
+import { LeadsBrowsers } from "dub/models/components";
+
+let value: LeadsBrowsers = {
+    browser: "<value>",
+    leads: 93.56,
+};
+```
 
 ## Fields
 

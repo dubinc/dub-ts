@@ -1,5 +1,16 @@
 # SalesTopUrls
 
+## Example Usage
+
+```typescript
+import { SalesTopUrls } from "dub/models/components";
+
+let value: SalesTopUrls = {
+    url: "https://imaginative-grandmother.net",
+    sales: 8811.04,
+    amount: 2497.96,
+};
+```
 
 ## Fields
 

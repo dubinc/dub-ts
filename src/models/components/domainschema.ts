@@ -47,9 +47,9 @@ export type DomainSchema = {
 export const DomainSchema$inboundSchema: z.ZodType<DomainSchema, z.ZodTypeDef, unknown> = z.object({
     id: z.string(),
     slug: z.string(),
-    verified: z.boolean().default(false),
-    primary: z.boolean().default(false),
-    archived: z.boolean().default(false),
+    verified: z.boolean(),
+    primary: z.boolean(),
+    archived: z.boolean(),
     placeholder: z.string().default("https://dub.co/help/article/what-is-dub"),
     expiredUrl: z.nullable(z.string()),
     createdAt: z.string(),

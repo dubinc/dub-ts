@@ -1,5 +1,14 @@
 # GetWorkspaceRequest
 
+## Example Usage
+
+```typescript
+import { GetWorkspaceRequest } from "dub/models/operations";
+
+let value: GetWorkspaceRequest = {
+    idOrSlug: "<value>",
+};
+```
 
 ## Fields
 

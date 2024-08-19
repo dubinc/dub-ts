@@ -1,5 +1,15 @@
 # ClicksTimeseries
 
+## Example Usage
+
+```typescript
+import { ClicksTimeseries } from "dub/models/components";
+
+let value: ClicksTimeseries = {
+    start: "<value>",
+    clicks: 9764.6,
+};
+```
 
 ## Fields
 

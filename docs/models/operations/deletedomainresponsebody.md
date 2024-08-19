@@ -2,6 +2,15 @@
 
 The domain was deleted.
 
+## Example Usage
+
+```typescript
+import { DeleteDomainResponseBody } from "dub/models/operations";
+
+let value: DeleteDomainResponseBody = {
+    slug: "acme.com",
+};
+```
 
 ## Fields
 

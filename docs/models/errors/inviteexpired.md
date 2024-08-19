@@ -2,6 +2,13 @@
 
 This response is sent when the requested content has been permanently deleted from server, with no forwarding address.
 
+## Example Usage
+
+```typescript
+import { InviteExpired } from "dub/models/errors";
+
+// No examples available for this model
+```
 
 ## Fields
 

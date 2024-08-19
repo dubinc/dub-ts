@@ -1,5 +1,16 @@
 # LeadsCities
 
+## Example Usage
+
+```typescript
+import { LeadsCities } from "dub/models/components";
+
+let value: LeadsCities = {
+    city: "Fort Kiraton",
+    country: "WF",
+    leads: 2777.18,
+};
+```
 
 ## Fields
 

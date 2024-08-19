@@ -1,5 +1,16 @@
 # TrackSaleRequestBody
 
+## Example Usage
+
+```typescript
+import { TrackSaleRequestBody } from "dub/models/operations";
+
+let value: TrackSaleRequestBody = {
+    customerId: "<value>",
+    amount: 60225,
+    paymentProcessor: "paddle",
+};
+```
 
 ## Fields
 

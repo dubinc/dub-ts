@@ -1,5 +1,21 @@
 # LeadsTopLinks
 
+## Example Usage
+
+```typescript
+import { LeadsTopLinks } from "dub/models/components";
+
+let value: LeadsTopLinks = {
+    link: "<value>",
+    id: "<id>",
+    domain: "compassionate-penguin.net",
+    key: "<key>",
+    shortLink: "<value>",
+    url: "https://flat-directive.biz",
+    createdAt: "<value>",
+    leads: 3978.21,
+};
+```
 
 ## Fields
 

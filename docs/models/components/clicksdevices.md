@@ -1,5 +1,15 @@
 # ClicksDevices
 
+## Example Usage
+
+```typescript
+import { ClicksDevices } from "dub/models/components";
+
+let value: ClicksDevices = {
+    device: "<value>",
+    clicks: 4417.11,
+};
+```
 
 ## Fields
 

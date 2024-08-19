@@ -2,12 +2,16 @@
 
 The type of event to retrieve analytics for. Defaults to 'clicks'.
 
+## Example Usage
+
+```typescript
+import { Event } from "dub/models/operations";
+
+let value: Event = "clicks";
+```
 
 ## Values
 
-| Name        | Value       |
-| ----------- | ----------- |
-| `Clicks`    | clicks      |
-| `Leads`     | leads       |
-| `Sales`     | sales       |
-| `Composite` | composite   |
+```typescript
+"clicks" | "leads" | "sales" | "composite"
+```

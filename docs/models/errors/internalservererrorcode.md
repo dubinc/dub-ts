@@ -2,9 +2,16 @@
 
 A short code indicating the error code returned.
 
+## Example Usage
+
+```typescript
+import { InternalServerErrorCode } from "dub/models/errors";
+
+let value: InternalServerErrorCode = "internal_server_error";
+```
 
 ## Values
 
-| Name                  | Value                 |
-| --------------------- | --------------------- |
-| `InternalServerError` | internal_server_error |
+```typescript
+"internal_server_error"
+```
