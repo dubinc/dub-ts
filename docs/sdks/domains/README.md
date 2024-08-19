@@ -22,7 +22,39 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.domains.list({});
+  const result = await dub.domains.list();
+
+  for await (const page of result) {
+    // handle page
+  }
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { DubCore } from "dub/core.js";
+import { domainsList } from "dub/funcs/domainsList.js";
+
+// Use `DubCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const dub = new DubCore({
+  token: "DUB_API_KEY",
+});
+
+async function run() {
+  const res = await domainsList(dub);
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   for await (const page of result) {
     // handle page
@@ -74,9 +106,38 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.domains.create({
-    slug: "acme.com",
-  });
+  const result = await dub.domains.create();
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { DubCore } from "dub/core.js";
+import { domainsCreate } from "dub/funcs/domainsCreate.js";
+
+// Use `DubCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const dub = new DubCore({
+  token: "DUB_API_KEY",
+});
+
+async function run() {
+  const res = await domainsCreate(dub);
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -136,6 +197,37 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { DubCore } from "dub/core.js";
+import { domainsDelete } from "dub/funcs/domainsDelete.js";
+
+// Use `DubCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const dub = new DubCore({
+  token: "DUB_API_KEY",
+});
+
+async function run() {
+  const res = await domainsDelete(dub, "acme.com");
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
@@ -178,7 +270,38 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.domains.update("acme.com", {});
+  const result = await dub.domains.update("acme.com");
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { DubCore } from "dub/core.js";
+import { domainsUpdate } from "dub/funcs/domainsUpdate.js";
+
+// Use `DubCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const dub = new DubCore({
+  token: "DUB_API_KEY",
+});
+
+async function run() {
+  const res = await domainsUpdate(dub, "acme.com");
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)

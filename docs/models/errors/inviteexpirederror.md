@@ -1,5 +1,15 @@
 # InviteExpiredError
 
+## Example Usage
+
+```typescript
+import { InviteExpiredError } from "dub/models/errors";
+
+let value: InviteExpiredError = {
+    code: "invite_expired",
+    message: "The requested resource was not found.",
+};
+```
 
 ## Fields
 

@@ -1,5 +1,15 @@
 # ClicksCountries
 
+## Example Usage
+
+```typescript
+import { ClicksCountries } from "dub/models/components";
+
+let value: ClicksCountries = {
+    country: "LB",
+    clicks: 5096.24,
+};
+```
 
 ## Fields
 

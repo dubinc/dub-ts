@@ -1,5 +1,12 @@
 # GetLinksRequest
 
+## Example Usage
+
+```typescript
+import { GetLinksRequest } from "dub/models/operations";
+
+let value: GetLinksRequest = {};
+```
 
 ## Fields
 

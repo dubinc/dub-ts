@@ -31,7 +31,7 @@ export const CreateDomainRequestBody$inboundSchema: z.ZodType<
 > = z.object({
     slug: z.string(),
     expiredUrl: z.nullable(z.string()).optional(),
-    archived: z.boolean().default(false),
+    archived: z.boolean(),
     placeholder: z.nullable(z.string().default("https://dub.co/help/article/what-is-dub")),
 });
 

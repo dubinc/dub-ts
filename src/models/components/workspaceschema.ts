@@ -204,8 +204,8 @@ export namespace Users$ {
 /** @internal */
 export const Domains$inboundSchema: z.ZodType<Domains, z.ZodTypeDef, unknown> = z.object({
     slug: z.string(),
-    primary: z.boolean().default(false),
-    verified: z.boolean().default(false),
+    primary: z.boolean(),
+    verified: z.boolean(),
 });
 
 /** @internal */

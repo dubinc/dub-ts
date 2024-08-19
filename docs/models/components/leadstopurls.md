@@ -1,5 +1,15 @@
 # LeadsTopUrls
 
+## Example Usage
+
+```typescript
+import { LeadsTopUrls } from "dub/models/components";
+
+let value: LeadsTopUrls = {
+    url: "https://musty-algebra.com",
+    leads: 8289.4,
+};
+```
 
 ## Fields
 

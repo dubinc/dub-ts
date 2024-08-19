@@ -2,11 +2,16 @@
 
 The field to sort the links by. The default is `createdAt`, and sort order is always descending.
 
+## Example Usage
+
+```typescript
+import { Sort } from "dub/models/operations";
+
+let value: Sort = "lastClicked";
+```
 
 ## Values
 
-| Name          | Value         |
-| ------------- | ------------- |
-| `CreatedAt`   | createdAt     |
-| `Clicks`      | clicks        |
-| `LastClicked` | lastClicked   |
+```typescript
+"createdAt" | "clicks" | "lastClicked"
+```

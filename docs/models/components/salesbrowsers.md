@@ -1,5 +1,16 @@
 # SalesBrowsers
 
+## Example Usage
+
+```typescript
+import { SalesBrowsers } from "dub/models/components";
+
+let value: SalesBrowsers = {
+    browser: "<value>",
+    sales: 8960.39,
+    amount: 5722.52,
+};
+```
 
 ## Fields
 

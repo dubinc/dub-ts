@@ -1,5 +1,18 @@
 # DomainSchema
 
+## Example Usage
+
+```typescript
+import { DomainSchema } from "dub/models/components";
+
+let value: DomainSchema = {
+    id: "<id>",
+    slug: "acme.com",
+    expiredUrl: "https://acme.com/expired",
+    createdAt: "<value>",
+    updatedAt: "<value>",
+};
+```
 
 ## Fields
 

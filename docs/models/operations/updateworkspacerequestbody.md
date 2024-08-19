@@ -1,5 +1,12 @@
 # UpdateWorkspaceRequestBody
 
+## Example Usage
+
+```typescript
+import { UpdateWorkspaceRequestBody } from "dub/models/operations";
+
+let value: UpdateWorkspaceRequestBody = {};
+```
 
 ## Fields
 

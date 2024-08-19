@@ -1,5 +1,12 @@
 # UpdateTagRequestBody
 
+## Example Usage
+
+```typescript
+import { UpdateTagRequestBody } from "dub/models/operations";
+
+let value: UpdateTagRequestBody = {};
+```
 
 ## Fields
 

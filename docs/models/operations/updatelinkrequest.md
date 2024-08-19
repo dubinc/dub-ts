@@ -1,5 +1,14 @@
 # UpdateLinkRequest
 
+## Example Usage
+
+```typescript
+import { UpdateLinkRequest } from "dub/models/operations";
+
+let value: UpdateLinkRequest = {
+    linkId: "<value>",
+};
+```
 
 ## Fields
 

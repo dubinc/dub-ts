@@ -27,7 +27,39 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.links.list({});
+  const result = await dub.links.list();
+
+  for await (const page of result) {
+    // handle page
+  }
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { DubCore } from "dub/core.js";
+import { linksList } from "dub/funcs/linksList.js";
+
+// Use `DubCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const dub = new DubCore({
+  token: "DUB_API_KEY",
+});
+
+async function run() {
+  const res = await linksList(dub);
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   for await (const page of result) {
     // handle page
@@ -79,9 +111,38 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.links.create({
-    url: "https://google.com",
-  });
+  const result = await dub.links.create();
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { DubCore } from "dub/core.js";
+import { linksCreate } from "dub/funcs/linksCreate.js";
+
+// Use `DubCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const dub = new DubCore({
+  token: "DUB_API_KEY",
+});
+
+async function run() {
+  const res = await linksCreate(dub);
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -132,7 +193,38 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.links.count({});
+  const result = await dub.links.count();
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { DubCore } from "dub/core.js";
+import { linksCount } from "dub/funcs/linksCount.js";
+
+// Use `DubCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const dub = new DubCore({
+  token: "DUB_API_KEY",
+});
+
+async function run() {
+  const res = await linksCount(dub);
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -183,7 +275,38 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.links.get({});
+  const result = await dub.links.get();
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { DubCore } from "dub/core.js";
+import { linksGet } from "dub/funcs/linksGet.js";
+
+// Use `DubCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const dub = new DubCore({
+  token: "DUB_API_KEY",
+});
+
+async function run() {
+  const res = await linksGet(dub);
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -243,6 +366,37 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { DubCore } from "dub/core.js";
+import { linksDelete } from "dub/funcs/linksDelete.js";
+
+// Use `DubCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const dub = new DubCore({
+  token: "DUB_API_KEY",
+});
+
+async function run() {
+  const res = await linksDelete(dub, "<value>");
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -285,7 +439,38 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.links.update("<value>", {});
+  const result = await dub.links.update("<value>");
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { DubCore } from "dub/core.js";
+import { linksUpdate } from "dub/funcs/linksUpdate.js";
+
+// Use `DubCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const dub = new DubCore({
+  token: "DUB_API_KEY",
+});
+
+async function run() {
+  const res = await linksUpdate(dub, "<value>");
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -337,11 +522,38 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.links.createMany([
-    {
-      url: "https://google.com",
-    },
-  ]);
+  const result = await dub.links.createMany();
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { DubCore } from "dub/core.js";
+import { linksCreateMany } from "dub/funcs/linksCreateMany.js";
+
+// Use `DubCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const dub = new DubCore({
+  token: "DUB_API_KEY",
+});
+
+async function run() {
+  const res = await linksCreateMany(dub);
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -392,12 +604,38 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.links.updateMany({
-    linkIds: [
-      "<value>",
-    ],
-    data: {},
-  });
+  const result = await dub.links.updateMany();
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { DubCore } from "dub/core.js";
+import { linksUpdateMany } from "dub/funcs/linksUpdateMany.js";
+
+// Use `DubCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const dub = new DubCore({
+  token: "DUB_API_KEY",
+});
+
+async function run() {
+  const res = await linksUpdateMany(dub);
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -448,9 +686,38 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.links.upsert({
-    url: "https://google.com",
-  });
+  const result = await dub.links.upsert();
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { DubCore } from "dub/core.js";
+import { linksUpsert } from "dub/funcs/linksUpsert.js";
+
+// Use `DubCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const dub = new DubCore({
+  token: "DUB_API_KEY",
+});
+
+async function run() {
+  const res = await linksUpsert(dub);
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)

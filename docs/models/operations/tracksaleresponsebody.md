@@ -2,6 +2,23 @@
 
 A sale was tracked.
 
+## Example Usage
+
+```typescript
+import { TrackSaleResponseBody } from "dub/models/operations";
+
+let value: TrackSaleResponseBody = {
+    eventName: "<value>",
+    customerId: "<value>",
+    amount: 6667.67,
+    paymentProcessor: "<value>",
+    invoiceId: "<value>",
+    currency: "Guarani",
+    metadata: {
+        key: "<value>",
+    },
+};
+```
 
 ## Fields
 

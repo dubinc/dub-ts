@@ -1,5 +1,50 @@
 # LinkSchema
 
+## Example Usage
+
+```typescript
+import { LinkSchema } from "dub/models/components";
+
+let value: LinkSchema = {
+    id: "<id>",
+    domain: "questionable-clockwork.biz",
+    key: "<key>",
+    externalId: "<value>",
+    url: "http://colorless-ribbon.biz",
+    expiresAt: "<value>",
+    expiredUrl: "https://gummy-expedition.name",
+    password: "J_40_X9HMN80Aa_",
+    title: "<value>",
+    description: "Fully-configurable bi-directional product",
+    image: "https://loremflickr.com/640/480",
+    video: "<value>",
+    ios: "<value>",
+    android: "<value>",
+    geo: {},
+    tagId: "<value>",
+    tags: [
+        {
+            id: "<id>",
+            name: "<value>",
+            color: "yellow",
+        },
+    ],
+    comments: "<value>",
+    shortLink: "https://happy-pink.net",
+    qrCode: "http://bumpy-overview.org",
+    utmSource: "<value>",
+    utmMedium: "<value>",
+    utmCampaign: "<value>",
+    utmTerm: "<value>",
+    utmContent: "<value>",
+    userId: "<value>",
+    workspaceId: "<value>",
+    lastClicked: "<value>",
+    createdAt: "<value>",
+    updatedAt: "<value>",
+    projectId: "<value>",
+};
+```
 
 ## Fields
 

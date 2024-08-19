@@ -16,6 +16,7 @@ export * from "./getmetatags.js";
 export * from "./getqrcode.js";
 export * from "./getworkspace.js";
 export * from "./listdomains.js";
+export * from "./listevents.js";
 export * from "./retrieveanalytics.js";
 export * from "./trackcustomer.js";
 export * from "./tracklead.js";

@@ -1,5 +1,15 @@
 # BulkUpdateLinksRequestBody
 
+## Example Usage
+
+```typescript
+import { BulkUpdateLinksRequestBody } from "dub/models/operations";
+
+let value: BulkUpdateLinksRequestBody = {
+    linkIds: ["<value>"],
+    data: {},
+};
+```
 
 ## Fields
 

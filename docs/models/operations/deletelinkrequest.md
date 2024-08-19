@@ -1,5 +1,14 @@
 # DeleteLinkRequest
 
+## Example Usage
+
+```typescript
+import { DeleteLinkRequest } from "dub/models/operations";
+
+let value: DeleteLinkRequest = {
+    linkId: "<value>",
+};
+```
 
 ## Fields
 

@@ -1,5 +1,14 @@
 # RequestBody
 
+## Example Usage
+
+```typescript
+import { RequestBody } from "dub/models/operations";
+
+let value: RequestBody = {
+    url: "https://google.com",
+};
+```
 
 ## Fields
 

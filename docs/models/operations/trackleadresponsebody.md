@@ -2,6 +2,20 @@
 
 A lead was tracked.
 
+## Example Usage
+
+```typescript
+import { TrackLeadResponseBody } from "dub/models/operations";
+
+let value: TrackLeadResponseBody = {
+    clickId: "<value>",
+    eventName: "<value>",
+    customerId: "<value>",
+    customerName: "<value>",
+    customerEmail: "<value>",
+    customerAvatar: "<value>",
+};
+```
 
 ## Fields
 

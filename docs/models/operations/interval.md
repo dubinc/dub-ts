@@ -2,16 +2,16 @@
 
 The interval to retrieve analytics for. Takes precedence over start and end. If undefined, defaults to 24h.
 
+## Example Usage
+
+```typescript
+import { Interval } from "dub/models/operations";
+
+let value: Interval = "30d";
+```
 
 ## Values
 
-| Name            | Value           |
-| --------------- | --------------- |
-| `TwentyFourh`   | 24h             |
-| `Sevend`        | 7d              |
-| `Thirtyd`       | 30d             |
-| `Ninetyd`       | 90d             |
-| `Ytd`           | ytd             |
-| `Oney`          | 1y              |
-| `All`           | all             |
-| `AllUnfiltered` | all_unfiltered  |
+```typescript
+"24h" | "7d" | "30d" | "90d" | "ytd" | "1y" | "all" | "all_unfiltered"
+```

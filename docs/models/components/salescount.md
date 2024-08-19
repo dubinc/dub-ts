@@ -1,5 +1,15 @@
 # SalesCount
 
+## Example Usage
+
+```typescript
+import { SalesCount } from "dub/models/components";
+
+let value: SalesCount = {
+    sales: 3698.08,
+    amount: 46.95,
+};
+```
 
 ## Fields
 

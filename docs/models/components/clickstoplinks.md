@@ -1,5 +1,21 @@
 # ClicksTopLinks
 
+## Example Usage
+
+```typescript
+import { ClicksTopLinks } from "dub/models/components";
+
+let value: ClicksTopLinks = {
+    link: "<value>",
+    id: "<id>",
+    domain: "grown-edge.info",
+    key: "<key>",
+    shortLink: "<value>",
+    url: "http://reliable-evaluation.org",
+    createdAt: "<value>",
+    clicks: 4142.63,
+};
+```
 
 ## Fields
 

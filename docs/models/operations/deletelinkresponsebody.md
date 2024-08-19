@@ -2,6 +2,15 @@
 
 The deleted link
 
+## Example Usage
+
+```typescript
+import { DeleteLinkResponseBody } from "dub/models/operations";
+
+let value: DeleteLinkResponseBody = {
+    id: "<id>",
+};
+```
 
 ## Fields
 

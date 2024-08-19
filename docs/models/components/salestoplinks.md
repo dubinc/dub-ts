@@ -1,5 +1,22 @@
 # SalesTopLinks
 
+## Example Usage
+
+```typescript
+import { SalesTopLinks } from "dub/models/components";
+
+let value: SalesTopLinks = {
+    link: "<value>",
+    id: "<id>",
+    domain: "raw-icing.info",
+    key: "<key>",
+    shortLink: "<value>",
+    url: "https://wonderful-proof-reader.com",
+    createdAt: "<value>",
+    sales: 2974.37,
+    amount: 7670.24,
+};
+```
 
 ## Fields
 

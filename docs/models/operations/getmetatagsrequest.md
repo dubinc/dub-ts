@@ -1,5 +1,14 @@
 # GetMetatagsRequest
 
+## Example Usage
+
+```typescript
+import { GetMetatagsRequest } from "dub/models/operations";
+
+let value: GetMetatagsRequest = {
+    url: "https://dub.co",
+};
+```
 
 ## Fields
 

@@ -1,5 +1,15 @@
 # RateLimitExceededError
 
+## Example Usage
+
+```typescript
+import { RateLimitExceededError } from "dub/models/errors";
+
+let value: RateLimitExceededError = {
+    code: "rate_limit_exceeded",
+    message: "The requested resource was not found.",
+};
+```
 
 ## Fields
 

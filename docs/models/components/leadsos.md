@@ -1,5 +1,15 @@
 # LeadsOS
 
+## Example Usage
+
+```typescript
+import { LeadsOS } from "dub/models/components";
+
+let value: LeadsOS = {
+    os: "<value>",
+    leads: 6674.11,
+};
+```
 
 ## Fields
 

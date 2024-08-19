@@ -1,5 +1,15 @@
 # ClicksReferers
 
+## Example Usage
+
+```typescript
+import { ClicksReferers } from "dub/models/components";
+
+let value: ClicksReferers = {
+    referer: "<value>",
+    clicks: 1201.96,
+};
+```
 
 ## Fields
 

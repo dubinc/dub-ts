@@ -1,5 +1,15 @@
 # LeadsCountries
 
+## Example Usage
+
+```typescript
+import { LeadsCountries } from "dub/models/components";
+
+let value: LeadsCountries = {
+    country: "MY",
+    leads: 5232.48,
+};
+```
 
 ## Fields
 

@@ -1,5 +1,12 @@
 # ListDomainsRequest
 
+## Example Usage
+
+```typescript
+import { ListDomainsRequest } from "dub/models/operations";
+
+let value: ListDomainsRequest = {};
+```
 
 ## Fields
 

@@ -21,11 +21,38 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.track.lead({
-    clickId: "<value>",
-    eventName: "Sign up",
-    customerId: "<value>",
-  });
+  const result = await dub.track.lead();
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { DubCore } from "dub/core.js";
+import { trackLead } from "dub/funcs/trackLead.js";
+
+// Use `DubCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const dub = new DubCore({
+  token: "DUB_API_KEY",
+});
+
+async function run() {
+  const res = await trackLead(dub);
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -76,11 +103,38 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.track.sale({
-    customerId: "<value>",
-    amount: 996500,
-    paymentProcessor: "shopify",
-  });
+  const result = await dub.track.sale();
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { DubCore } from "dub/core.js";
+import { trackSale } from "dub/funcs/trackSale.js";
+
+// Use `DubCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const dub = new DubCore({
+  token: "DUB_API_KEY",
+});
+
+async function run() {
+  const res = await trackSale(dub);
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -131,9 +185,38 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.track.customer({
-    customerId: "<value>",
-  });
+  const result = await dub.track.customer();
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { DubCore } from "dub/core.js";
+import { trackCustomer } from "dub/funcs/trackCustomer.js";
+
+// Use `DubCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const dub = new DubCore({
+  token: "DUB_API_KEY",
+});
+
+async function run() {
+  const res = await trackCustomer(dub);
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)

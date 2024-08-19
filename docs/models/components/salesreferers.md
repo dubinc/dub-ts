@@ -1,5 +1,16 @@
 # SalesReferers
 
+## Example Usage
+
+```typescript
+import { SalesReferers } from "dub/models/components";
+
+let value: SalesReferers = {
+    referer: "<value>",
+    sales: 8915.55,
+    amount: 9527.49,
+};
+```
 
 ## Fields
 

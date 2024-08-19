@@ -1,5 +1,12 @@
 # UpdateDomainRequestBody
 
+## Example Usage
+
+```typescript
+import { UpdateDomainRequestBody } from "dub/models/operations";
+
+let value: UpdateDomainRequestBody = {};
+```
 
 ## Fields
 

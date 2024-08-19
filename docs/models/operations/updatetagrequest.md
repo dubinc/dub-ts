@@ -1,5 +1,14 @@
 # UpdateTagRequest
 
+## Example Usage
+
+```typescript
+import { UpdateTagRequest } from "dub/models/operations";
+
+let value: UpdateTagRequest = {
+    id: "<id>",
+};
+```
 
 ## Fields
 

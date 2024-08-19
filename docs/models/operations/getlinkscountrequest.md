@@ -1,5 +1,12 @@
 # GetLinksCountRequest
 
+## Example Usage
+
+```typescript
+import { GetLinksCountRequest } from "dub/models/operations";
+
+let value: GetLinksCountRequest = {};
+```
 
 ## Fields
 

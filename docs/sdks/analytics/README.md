@@ -19,7 +19,38 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.analytics.retrieve({});
+  const result = await dub.analytics.retrieve();
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { DubCore } from "dub/core.js";
+import { analyticsRetrieve } from "dub/funcs/analyticsRetrieve.js";
+
+// Use `DubCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const dub = new DubCore({
+  token: "DUB_API_KEY",
+});
+
+async function run() {
+  const res = await analyticsRetrieve(dub);
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)

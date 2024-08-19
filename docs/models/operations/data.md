@@ -1,5 +1,12 @@
 # Data
 
+## Example Usage
+
+```typescript
+import { Data } from "dub/models/operations";
+
+let value: Data = {};
+```
 
 ## Fields
 

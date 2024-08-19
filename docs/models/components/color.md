@@ -2,15 +2,16 @@
 
 The color of the tag.
 
+## Example Usage
+
+```typescript
+import { Color } from "dub/models/components";
+
+let value: Color = "purple";
+```
 
 ## Values
 
-| Name     | Value    |
-| -------- | -------- |
-| `Red`    | red      |
-| `Yellow` | yellow   |
-| `Green`  | green    |
-| `Blue`   | blue     |
-| `Purple` | purple   |
-| `Pink`   | pink     |
-| `Brown`  | brown    |
+```typescript
+"red" | "yellow" | "green" | "blue" | "purple" | "pink" | "brown"
+```

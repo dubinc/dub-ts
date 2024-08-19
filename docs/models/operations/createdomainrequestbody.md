@@ -1,5 +1,14 @@
 # CreateDomainRequestBody
 
+## Example Usage
+
+```typescript
+import { CreateDomainRequestBody } from "dub/models/operations";
+
+let value: CreateDomainRequestBody = {
+    slug: "acme.com",
+};
+```
 
 ## Fields
 

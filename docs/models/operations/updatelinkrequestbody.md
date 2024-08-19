@@ -1,5 +1,12 @@
 # UpdateLinkRequestBody
 
+## Example Usage
+
+```typescript
+import { UpdateLinkRequestBody } from "dub/models/operations";
+
+let value: UpdateLinkRequestBody = {};
+```
 
 ## Fields
 

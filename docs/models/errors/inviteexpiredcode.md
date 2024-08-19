@@ -2,9 +2,16 @@
 
 A short code indicating the error code returned.
 
+## Example Usage
+
+```typescript
+import { InviteExpiredCode } from "dub/models/errors";
+
+let value: InviteExpiredCode = "invite_expired";
+```
 
 ## Values
 
-| Name            | Value           |
-| --------------- | --------------- |
-| `InviteExpired` | invite_expired  |
+```typescript
+"invite_expired"
+```

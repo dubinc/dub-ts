@@ -1,5 +1,16 @@
 # TagSchema
 
+## Example Usage
+
+```typescript
+import { TagSchema } from "dub/models/components";
+
+let value: TagSchema = {
+    id: "<id>",
+    name: "<value>",
+    color: "red",
+};
+```
 
 ## Fields
 

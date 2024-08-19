@@ -1,5 +1,12 @@
 # CreateTagRequestBody
 
+## Example Usage
+
+```typescript
+import { CreateTagRequestBody } from "dub/models/operations";
+
+let value: CreateTagRequestBody = {};
+```
 
 ## Fields
 

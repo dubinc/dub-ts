@@ -1,5 +1,14 @@
 # GetQRCodeRequest
 
+## Example Usage
+
+```typescript
+import { GetQRCodeRequest } from "dub/models/operations";
+
+let value: GetQRCodeRequest = {
+    url: "https://jolly-cowboy.name",
+};
+```
 
 ## Fields
 

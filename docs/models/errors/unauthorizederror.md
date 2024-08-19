@@ -1,5 +1,15 @@
 # UnauthorizedError
 
+## Example Usage
+
+```typescript
+import { UnauthorizedError } from "dub/models/errors";
+
+let value: UnauthorizedError = {
+    code: "unauthorized",
+    message: "The requested resource was not found.",
+};
+```
 
 ## Fields
 

@@ -1,5 +1,12 @@
 # RetrieveAnalyticsRequest
 
+## Example Usage
+
+```typescript
+import { RetrieveAnalyticsRequest } from "dub/models/operations";
+
+let value: RetrieveAnalyticsRequest = {};
+```
 
 ## Fields
 

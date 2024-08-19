@@ -1,5 +1,12 @@
 # GetLinkInfoRequest
 
+## Example Usage
+
+```typescript
+import { GetLinkInfoRequest } from "dub/models/operations";
+
+let value: GetLinkInfoRequest = {};
+```
 
 ## Fields
 

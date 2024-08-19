@@ -1,5 +1,15 @@
 # InternalServerErrorError
 
+## Example Usage
+
+```typescript
+import { InternalServerErrorError } from "dub/models/errors";
+
+let value: InternalServerErrorError = {
+    code: "internal_server_error",
+    message: "The requested resource was not found.",
+};
+```
 
 ## Fields
 
