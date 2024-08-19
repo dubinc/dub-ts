@@ -35,7 +35,7 @@ typescript:
   inputModelSuffix: input
   maxMethodParams: 0
   methodArguments: infer-optional-args
-  moduleFormat: commonjs
+  moduleFormat: dual
   outputModelSuffix: output
   packageName: dub
   responseFormat: flat
