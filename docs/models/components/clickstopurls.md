@@ -6,8 +6,8 @@
 import { ClicksTopUrls } from "dub/models/components";
 
 let value: ClicksTopUrls = {
-    url: "https://beautiful-crab.net",
-    clicks: 5651.89,
+    url: "http://wooden-cabin.info",
+    clicks: 2961.4,
 };
 ```
 

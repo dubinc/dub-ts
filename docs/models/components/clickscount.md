@@ -6,7 +6,7 @@
 import { ClicksCount } from "dub/models/components";
 
 let value: ClicksCount = {
-    clicks: 9719.45,
+    clicks: 9495.72,
 };
 ```
 

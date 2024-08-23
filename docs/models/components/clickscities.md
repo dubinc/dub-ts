@@ -6,9 +6,9 @@
 import { ClicksCities } from "dub/models/components";
 
 let value: ClicksCities = {
-    city: "New Ivahfort",
-    country: "AD",
-    clicks: 391.87,
+    city: "Smithamchester",
+    country: "BT",
+    clicks: 9719.45,
 };
 ```
 

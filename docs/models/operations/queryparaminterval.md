@@ -7,7 +7,7 @@ The interval to retrieve analytics for. Takes precedence over start and end. If 
 ```typescript
 import { QueryParamInterval } from "dub/models/operations";
 
-let value: QueryParamInterval = "30d";
+let value: QueryParamInterval = "24h";
 ```
 
 ## Values

@@ -90,6 +90,14 @@ export type WorkspaceSchema = {
      */
     linksLimit: number;
     /**
+     * The dollar amount of tracked revenue in the current billing cycle (in cents).
+     */
+    salesUsage: number;
+    /**
+     * The limit of tracked revenue in the current billing cycle (in cents).
+     */
+    salesLimit: number;
+    /**
      * The domains limit of the workspace.
      */
     domainsLimit: number;
@@ -133,6 +141,10 @@ export type WorkspaceSchema = {
      * The invite code of the workspace.
      */
     inviteCode: string | null;
+    /**
+     * Whether the workspace has conversion tracking enabled (d.to/conversions).
+     */
+    conversionEnabled: boolean;
     /**
      * The feature flags of the workspace, indicating which features are enabled.
      */
@@ -246,6 +258,8 @@ export const WorkspaceSchema$inboundSchema: z.ZodType<WorkspaceSchema, z.ZodType
         usageLimit: z.number(),
         linksUsage: z.number(),
         linksLimit: z.number(),
+        salesUsage: z.number(),
+        salesLimit: z.number(),
         domainsLimit: z.number(),
         tagsLimit: z.number(),
         usersLimit: z.number(),
@@ -257,6 +271,7 @@ export const WorkspaceSchema$inboundSchema: z.ZodType<WorkspaceSchema, z.ZodType
         users: z.array(z.lazy(() => Users$inboundSchema)),
         domains: z.array(z.lazy(() => Domains$inboundSchema)),
         inviteCode: z.nullable(z.string()),
+        conversionEnabled: z.boolean(),
         flags: z.record(z.boolean()).optional(),
     });
 
@@ -270,6 +285,8 @@ export type WorkspaceSchema$Outbound = {
     usageLimit: number;
     linksUsage: number;
     linksLimit: number;
+    salesUsage: number;
+    salesLimit: number;
     domainsLimit: number;
     tagsLimit: number;
     usersLimit: number;
@@ -281,6 +298,7 @@ export type WorkspaceSchema$Outbound = {
     users: Array<Users$Outbound>;
     domains: Array<Domains$Outbound>;
     inviteCode: string | null;
+    conversionEnabled: boolean;
     flags?: { [k: string]: boolean } | undefined;
 };
 
@@ -298,6 +316,8 @@ export const WorkspaceSchema$outboundSchema: z.ZodType<
     usageLimit: z.number(),
     linksUsage: z.number(),
     linksLimit: z.number(),
+    salesUsage: z.number(),
+    salesLimit: z.number(),
     domainsLimit: z.number(),
     tagsLimit: z.number(),
     usersLimit: z.number(),
@@ -309,6 +329,7 @@ export const WorkspaceSchema$outboundSchema: z.ZodType<
     users: z.array(z.lazy(() => Users$outboundSchema)),
     domains: z.array(z.lazy(() => Domains$outboundSchema)),
     inviteCode: z.nullable(z.string()),
+    conversionEnabled: z.boolean(),
     flags: z.record(z.boolean()).optional(),
 });
 

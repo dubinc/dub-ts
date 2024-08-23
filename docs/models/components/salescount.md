@@ -6,8 +6,8 @@
 import { SalesCount } from "dub/models/components";
 
 let value: SalesCount = {
-    sales: 3698.08,
-    amount: 46.95,
+    sales: 1317.97,
+    amount: 6471.74,
 };
 ```
 

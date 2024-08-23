@@ -6,8 +6,8 @@
 import { ClicksCountries } from "dub/models/components";
 
 let value: ClicksCountries = {
-    country: "LB",
-    clicks: 5096.24,
+    country: "TW",
+    clicks: 135.71,
 };
 ```
 

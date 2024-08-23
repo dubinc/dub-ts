@@ -10,10 +10,10 @@ import { TrackSaleResponseBody } from "dub/models/operations";
 let value: TrackSaleResponseBody = {
     eventName: "<value>",
     customerId: "<value>",
-    amount: 6667.67,
+    amount: 9437.49,
     paymentProcessor: "<value>",
     invoiceId: "<value>",
-    currency: "Guarani",
+    currency: "European Monetary Unit (E.M.U.-6)",
     metadata: {
         key: "<value>",
     },

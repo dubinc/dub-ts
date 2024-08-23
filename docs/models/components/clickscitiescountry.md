@@ -7,7 +7,7 @@ The 2-letter country code of the city: https://d.to/geo
 ```typescript
 import { ClicksCitiesCountry } from "dub/models/components";
 
-let value: ClicksCitiesCountry = "BL";
+let value: ClicksCitiesCountry = "BT";
 ```
 
 ## Values

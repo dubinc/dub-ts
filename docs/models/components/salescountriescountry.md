@@ -7,7 +7,7 @@ The 2-letter ISO 3166-1 country code for the country associated with the locatio
 ```typescript
 import { SalesCountriesCountry } from "dub/models/components";
 
-let value: SalesCountriesCountry = "MA";
+let value: SalesCountriesCountry = "FR";
 ```
 
 ## Values

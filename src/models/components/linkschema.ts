@@ -419,6 +419,10 @@ export type LinkSchema = {
      */
     sales?: number | undefined;
     /**
+     * [BETA]: The total dollar amount of sales the short links has generated (in cents).
+     */
+    saleAmount?: number | undefined;
+    /**
      * The date and time when the short link was created.
      */
     createdAt: string;
@@ -1759,6 +1763,7 @@ export const LinkSchema$inboundSchema: z.ZodType<LinkSchema, z.ZodTypeDef, unkno
         lastClicked: z.nullable(z.string()),
         leads: z.number().default(0),
         sales: z.number().default(0),
+        saleAmount: z.number().default(0),
         createdAt: z.string(),
         updatedAt: z.string(),
         projectId: z.string(),
@@ -1812,6 +1817,7 @@ export type LinkSchema$Outbound = {
     lastClicked: string | null;
     leads: number;
     sales: number;
+    saleAmount: number;
     createdAt: string;
     updatedAt: string;
     projectId: string;
@@ -1857,6 +1863,7 @@ export const LinkSchema$outboundSchema: z.ZodType<LinkSchema$Outbound, z.ZodType
         lastClicked: z.nullable(z.string()),
         leads: z.number().default(0),
         sales: z.number().default(0),
+        saleAmount: z.number().default(0),
         createdAt: z.string(),
         updatedAt: z.string(),
         projectId: z.string(),

@@ -7,8 +7,8 @@ import { SalesOS } from "dub/models/components";
 
 let value: SalesOS = {
     os: "<value>",
-    sales: 6389.21,
-    amount: 2230.81,
+    sales: 7037.37,
+    amount: 7351.94,
 };
 ```
 

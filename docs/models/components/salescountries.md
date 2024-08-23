@@ -6,9 +6,9 @@
 import { SalesCountries } from "dub/models/components";
 
 let value: SalesCountries = {
-    country: "ET",
-    sales: 7037.37,
-    amount: 7351.94,
+    country: "EE",
+    sales: 1831.91,
+    amount: 3978.21,
 };
 ```
 

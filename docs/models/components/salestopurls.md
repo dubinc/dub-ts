@@ -6,9 +6,9 @@
 import { SalesTopUrls } from "dub/models/components";
 
 let value: SalesTopUrls = {
-    url: "https://imaginative-grandmother.net",
-    sales: 8811.04,
-    amount: 2497.96,
+    url: "http://unimportant-venture.net",
+    sales: 4471.25,
+    amount: 4491.98,
 };
 ```
 
