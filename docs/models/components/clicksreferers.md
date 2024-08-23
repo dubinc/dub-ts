@@ -7,7 +7,7 @@ import { ClicksReferers } from "dub/models/components";
 
 let value: ClicksReferers = {
     referer: "<value>",
-    clicks: 1201.96,
+    clicks: 5096.24,
 };
 ```
 

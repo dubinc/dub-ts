@@ -7,8 +7,8 @@ import { SalesTimeseries } from "dub/models/components";
 
 let value: SalesTimeseries = {
     start: "<value>",
-    sales: 1464.41,
-    amount: 6778.17,
+    sales: 7163.27,
+    amount: 8413.86,
 };
 ```
 

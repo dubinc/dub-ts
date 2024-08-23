@@ -7,15 +7,15 @@ import { LinkSchema } from "dub/models/components";
 
 let value: LinkSchema = {
     id: "<id>",
-    domain: "questionable-clockwork.biz",
+    domain: "reckless-illustration.info",
     key: "<key>",
     externalId: "<value>",
-    url: "http://colorless-ribbon.biz",
+    url: "https://innocent-thinking.net",
     expiresAt: "<value>",
-    expiredUrl: "https://gummy-expedition.name",
-    password: "J_40_X9HMN80Aa_",
+    expiredUrl: "http://back-warrior.net",
+    password: "_14ChZCWJ_40_X9",
     title: "<value>",
-    description: "Fully-configurable bi-directional product",
+    description: "Inverse holistic info-mediaries",
     image: "https://loremflickr.com/640/480",
     video: "<value>",
     ios: "<value>",
@@ -30,8 +30,8 @@ let value: LinkSchema = {
         },
     ],
     comments: "<value>",
-    shortLink: "https://happy-pink.net",
-    qrCode: "http://bumpy-overview.org",
+    shortLink: "https://cultivated-feather.com",
+    qrCode: "https://profuse-ethernet.com",
     utmSource: "<value>",
     utmMedium: "<value>",
     utmCampaign: "<value>",
@@ -87,6 +87,7 @@ let value: LinkSchema = {
 | `lastClicked`                                                                                                                                                                                                                | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The date and time when the short link was last clicked.                                                                                                                                                                      |
 | `leads`                                                                                                                                                                                                                      | *number*                                                                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                           | [BETA]: The number of leads the short links has generated.                                                                                                                                                                   |
 | `sales`                                                                                                                                                                                                                      | *number*                                                                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                           | [BETA]: The number of sales the short links has generated.                                                                                                                                                                   |
+| `saleAmount`                                                                                                                                                                                                                 | *number*                                                                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                           | [BETA]: The total dollar amount of sales the short links has generated (in cents).                                                                                                                                           |
 | `createdAt`                                                                                                                                                                                                                  | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The date and time when the short link was created.                                                                                                                                                                           |
 | `updatedAt`                                                                                                                                                                                                                  | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The date and time when the short link was last updated.                                                                                                                                                                      |
 | ~~`projectId`~~                                                                                                                                                                                                              | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible.<br/><br/>The project ID of the short link. This field is deprecated – use `workspaceId` instead.     |

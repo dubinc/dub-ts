@@ -7,7 +7,7 @@ import { LeadsOS } from "dub/models/components";
 
 let value: LeadsOS = {
     os: "<value>",
-    leads: 6674.11,
+    leads: 8651.03,
 };
 ```
 

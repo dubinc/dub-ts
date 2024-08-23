@@ -8,12 +8,12 @@ import { LeadsTopLinks } from "dub/models/components";
 let value: LeadsTopLinks = {
     link: "<value>",
     id: "<id>",
-    domain: "compassionate-penguin.net",
+    domain: "lumpy-loincloth.org",
     key: "<key>",
     shortLink: "<value>",
-    url: "https://flat-directive.biz",
+    url: "http://vain-moose.com",
     createdAt: "<value>",
-    leads: 3978.21,
+    leads: 9292.97,
 };
 ```
 

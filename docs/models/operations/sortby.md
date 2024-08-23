@@ -5,7 +5,7 @@
 ```typescript
 import { SortBy } from "dub/models/operations";
 
-let value: SortBy = "timestamp";
+let value: SortBy = "amount";
 ```
 
 ## Values

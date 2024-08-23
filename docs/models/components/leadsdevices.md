@@ -7,7 +7,7 @@ import { LeadsDevices } from "dub/models/components";
 
 let value: LeadsDevices = {
     device: "<value>",
-    leads: 3185.69,
+    leads: 5651.89,
 };
 ```
 

@@ -7,7 +7,7 @@ The 2-letter ISO 3166-1 country code for the country associated with the locatio
 ```typescript
 import { LeadsCountriesCountry } from "dub/models/components";
 
-let value: LeadsCountriesCountry = "EE";
+let value: LeadsCountriesCountry = "QA";
 ```
 
 ## Values

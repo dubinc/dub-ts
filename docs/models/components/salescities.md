@@ -6,10 +6,10 @@
 import { SalesCities } from "dub/models/components";
 
 let value: SalesCities = {
-    city: "Joliet",
-    country: "EG",
-    sales: 7561.07,
-    amount: 5761.57,
+    city: "Aiyanaville",
+    country: "TZ",
+    sales: 3698.08,
+    amount: 46.95,
 };
 ```
 

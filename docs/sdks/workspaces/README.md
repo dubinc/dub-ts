@@ -1,6 +1,8 @@
 # Workspaces
 (*workspaces*)
 
+## Overview
+
 ### Available Operations
 
 * [get](#get) - Retrieve a workspace
@@ -30,7 +32,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -73,10 +74,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[components.WorkspaceSchema](../../models/components/workspaceschema.md)\>**
+
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -91,6 +92,7 @@ run();
 | errors.RateLimitExceeded   | 429                        | application/json           |
 | errors.InternalServerError | 500                        | application/json           |
 | errors.SDKError            | 4xx-5xx                    | */*                        |
+
 
 ## update
 
@@ -114,7 +116,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -156,10 +157,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[components.WorkspaceSchema](../../models/components/workspaceschema.md)\>**
+
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
