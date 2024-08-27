@@ -40,7 +40,7 @@ export const UpdateDomainRequestBody$inboundSchema: z.ZodType<
 > = z.object({
     slug: z.string().optional(),
     expiredUrl: z.nullable(z.string()).optional(),
-    archived: z.boolean(),
+    archived: z.boolean().default(false),
     placeholder: z.nullable(z.string().default("https://dub.co/help/article/what-is-dub")),
 });
 

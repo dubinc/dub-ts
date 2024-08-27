@@ -74,6 +74,26 @@ export type WorkspaceSchema = {
      */
     logo?: string | null | undefined;
     /**
+     * The plan of the workspace.
+     */
+    plan: Plan;
+    /**
+     * The Stripe ID of the workspace.
+     */
+    stripeId: string | null;
+    /**
+     * The date and time when the billing cycle starts for the workspace.
+     */
+    billingCycleStart: number;
+    /**
+     * [BETA]: The Stripe Connect ID of the workspace.
+     */
+    stripeConnectId: string | null;
+    /**
+     * The invite code of the workspace.
+     */
+    inviteCode: string | null;
+    /**
      * The usage of the workspace.
      */
     usage: number;
@@ -110,21 +130,25 @@ export type WorkspaceSchema = {
      */
     usersLimit: number;
     /**
-     * The plan of the workspace.
+     * The AI usage of the workspace.
      */
-    plan: Plan;
+    aiUsage: number;
     /**
-     * The Stripe ID of the workspace.
+     * The AI limit of the workspace.
      */
-    stripeId: string | null;
+    aiLimit: number;
     /**
-     * The date and time when the billing cycle starts for the workspace.
+     * The ID of the referral link of the workspace.
      */
-    billingCycleStart: number;
+    referralLinkId: string | null;
     /**
-     * [BETA]: The Stripe Connect ID of the workspace.
+     * The number of signups referred by the workspace.
      */
-    stripeConnectId: string | null;
+    referredSignups: number;
+    /**
+     * Whether the workspace has conversion tracking enabled (d.to/conversions).
+     */
+    conversionEnabled: boolean;
     /**
      * The date and time when the workspace was created.
      */
@@ -137,14 +161,6 @@ export type WorkspaceSchema = {
      * The domains of the workspace.
      */
     domains: Array<Domains>;
-    /**
-     * The invite code of the workspace.
-     */
-    inviteCode: string | null;
-    /**
-     * Whether the workspace has conversion tracking enabled (d.to/conversions).
-     */
-    conversionEnabled: boolean;
     /**
      * The feature flags of the workspace, indicating which features are enabled.
      */
@@ -216,8 +232,8 @@ export namespace Users$ {
 /** @internal */
 export const Domains$inboundSchema: z.ZodType<Domains, z.ZodTypeDef, unknown> = z.object({
     slug: z.string(),
-    primary: z.boolean(),
-    verified: z.boolean(),
+    primary: z.boolean().default(false),
+    verified: z.boolean().default(false),
 });
 
 /** @internal */
@@ -254,6 +270,11 @@ export const WorkspaceSchema$inboundSchema: z.ZodType<WorkspaceSchema, z.ZodType
         name: z.string(),
         slug: z.string(),
         logo: z.nullable(z.string()).default(null),
+        plan: Plan$inboundSchema,
+        stripeId: z.nullable(z.string()),
+        billingCycleStart: z.number(),
+        stripeConnectId: z.nullable(z.string()),
+        inviteCode: z.nullable(z.string()),
         usage: z.number(),
         usageLimit: z.number(),
         linksUsage: z.number(),
@@ -263,15 +284,14 @@ export const WorkspaceSchema$inboundSchema: z.ZodType<WorkspaceSchema, z.ZodType
         domainsLimit: z.number(),
         tagsLimit: z.number(),
         usersLimit: z.number(),
-        plan: Plan$inboundSchema,
-        stripeId: z.nullable(z.string()),
-        billingCycleStart: z.number(),
-        stripeConnectId: z.nullable(z.string()),
+        aiUsage: z.number(),
+        aiLimit: z.number(),
+        referralLinkId: z.nullable(z.string()),
+        referredSignups: z.number(),
+        conversionEnabled: z.boolean(),
         createdAt: z.string(),
         users: z.array(z.lazy(() => Users$inboundSchema)),
         domains: z.array(z.lazy(() => Domains$inboundSchema)),
-        inviteCode: z.nullable(z.string()),
-        conversionEnabled: z.boolean(),
         flags: z.record(z.boolean()).optional(),
     });
 
@@ -281,6 +301,11 @@ export type WorkspaceSchema$Outbound = {
     name: string;
     slug: string;
     logo: string | null;
+    plan: string;
+    stripeId: string | null;
+    billingCycleStart: number;
+    stripeConnectId: string | null;
+    inviteCode: string | null;
     usage: number;
     usageLimit: number;
     linksUsage: number;
@@ -290,15 +315,14 @@ export type WorkspaceSchema$Outbound = {
     domainsLimit: number;
     tagsLimit: number;
     usersLimit: number;
-    plan: string;
-    stripeId: string | null;
-    billingCycleStart: number;
-    stripeConnectId: string | null;
+    aiUsage: number;
+    aiLimit: number;
+    referralLinkId: string | null;
+    referredSignups: number;
+    conversionEnabled: boolean;
     createdAt: string;
     users: Array<Users$Outbound>;
     domains: Array<Domains$Outbound>;
-    inviteCode: string | null;
-    conversionEnabled: boolean;
     flags?: { [k: string]: boolean } | undefined;
 };
 
@@ -312,6 +336,11 @@ export const WorkspaceSchema$outboundSchema: z.ZodType<
     name: z.string(),
     slug: z.string(),
     logo: z.nullable(z.string()).default(null),
+    plan: Plan$outboundSchema,
+    stripeId: z.nullable(z.string()),
+    billingCycleStart: z.number(),
+    stripeConnectId: z.nullable(z.string()),
+    inviteCode: z.nullable(z.string()),
     usage: z.number(),
     usageLimit: z.number(),
     linksUsage: z.number(),
@@ -321,15 +350,14 @@ export const WorkspaceSchema$outboundSchema: z.ZodType<
     domainsLimit: z.number(),
     tagsLimit: z.number(),
     usersLimit: z.number(),
-    plan: Plan$outboundSchema,
-    stripeId: z.nullable(z.string()),
-    billingCycleStart: z.number(),
-    stripeConnectId: z.nullable(z.string()),
+    aiUsage: z.number(),
+    aiLimit: z.number(),
+    referralLinkId: z.nullable(z.string()),
+    referredSignups: z.number(),
+    conversionEnabled: z.boolean(),
     createdAt: z.string(),
     users: z.array(z.lazy(() => Users$outboundSchema)),
     domains: z.array(z.lazy(() => Domains$outboundSchema)),
-    inviteCode: z.nullable(z.string()),
-    conversionEnabled: z.boolean(),
     flags: z.record(z.boolean()).optional(),
 });
 
