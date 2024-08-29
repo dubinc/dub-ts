@@ -6,9 +6,9 @@
 import { LeadsCities } from "dub/models/components";
 
 let value: LeadsCities = {
-    city: "Beaumont",
-    country: "CU",
-    leads: 6924.72,
+    city: "Arnoldoshire",
+    country: "FO",
+    leads: 3185.69,
 };
 ```
 

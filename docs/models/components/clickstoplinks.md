@@ -8,12 +8,12 @@ import { ClicksTopLinks } from "dub/models/components";
 let value: ClicksTopLinks = {
     link: "<value>",
     id: "<id>",
-    domain: "witty-avocado.name",
+    domain: "lazy-butterfly.net",
     key: "<key>",
     shortLink: "<value>",
-    url: "http://shadowy-alfalfa.com",
+    url: "http://unacceptable-hare.org",
     createdAt: "<value>",
-    clicks: 4417.11,
+    clicks: 641.47,
 };
 ```
 

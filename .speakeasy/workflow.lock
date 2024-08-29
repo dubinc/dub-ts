@@ -1,8 +1,8 @@
-speakeasyVersion: 1.379.0
+speakeasyVersion: 1.383.2
 sources:
     my-first-source:
         sourceNamespace: my-first-source
-        sourceRevisionDigest: sha256:322cbecd335aca740d2478d6e2311797a48c55ab262431689da861c1cea5e2d4
+        sourceRevisionDigest: sha256:a0f115af2d9dc2b6740308876e5059b69042c27a94bdfcf21654ebc40d0a1876
         sourceBlobDigest: sha256:60c8fb4ef34c80869c5b32ce1fe353138ae7ec1785ca158577f0f934460e5e9d
         tags:
             - latest
@@ -11,10 +11,10 @@ targets:
     my-first-target:
         source: my-first-source
         sourceNamespace: my-first-source
-        sourceRevisionDigest: sha256:322cbecd335aca740d2478d6e2311797a48c55ab262431689da861c1cea5e2d4
+        sourceRevisionDigest: sha256:a0f115af2d9dc2b6740308876e5059b69042c27a94bdfcf21654ebc40d0a1876
         sourceBlobDigest: sha256:60c8fb4ef34c80869c5b32ce1fe353138ae7ec1785ca158577f0f934460e5e9d
         codeSamplesNamespace: code-samples-typescript-my-first-target
-        codeSamplesRevisionDigest: sha256:ee875b87f228ec46a2d398490ee469e0eecdc4410b8016023d85911e8c22a2d7
+        codeSamplesRevisionDigest: sha256:85410a52e0480053d6fe40950afa035b020f8e9b29c71da4d48a3af583d6e727
         outLocation: /github/workspace/repo
 workflow:
     workflowVersion: 1.0.0

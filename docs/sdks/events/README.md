@@ -71,7 +71,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ClickEvents[]](../../models/.md)\>**
+**Promise\<[operations.ListEventsResponseBody](../../models/operations/listeventsresponsebody.md)\>**
 
 ### Errors
 

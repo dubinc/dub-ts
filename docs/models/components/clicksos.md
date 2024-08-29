@@ -7,7 +7,7 @@ import { ClicksOS } from "dub/models/components";
 
 let value: ClicksOS = {
     os: "<value>",
-    clicks: 4686.51,
+    clicks: 3594.44,
 };
 ```
 

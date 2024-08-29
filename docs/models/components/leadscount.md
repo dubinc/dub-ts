@@ -6,7 +6,7 @@
 import { LeadsCount } from "dub/models/components";
 
 let value: LeadsCount = {
-    leads: 4808.94,
+    leads: 2653.89,
 };
 ```
 

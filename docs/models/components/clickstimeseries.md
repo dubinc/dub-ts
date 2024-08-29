@@ -7,7 +7,7 @@ import { ClicksTimeseries } from "dub/models/components";
 
 let value: ClicksTimeseries = {
     start: "<value>",
-    clicks: 3687.25,
+    clicks: 5096.24,
 };
 ```
 

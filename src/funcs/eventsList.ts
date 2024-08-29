@@ -9,7 +9,6 @@ import * as schemas$ from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
-import * as components from "../models/components/index.js";
 import {
     ConnectionError,
     InvalidRequestError,
@@ -22,7 +21,6 @@ import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
-import * as z from "zod";
 
 /**
  * Retrieve a list of events
@@ -36,7 +34,7 @@ export async function eventsList(
     options?: RequestOptions
 ): Promise<
     Result<
-        Array<components.ClickEvents>,
+        operations.ListEventsResponseBody,
         | errors.BadRequest
         | errors.Unauthorized
         | errors.Forbidden
@@ -144,7 +142,7 @@ export async function eventsList(
     };
 
     const [result$] = await m$.match<
-        Array<components.ClickEvents>,
+        operations.ListEventsResponseBody,
         | errors.BadRequest
         | errors.Unauthorized
         | errors.Forbidden
@@ -162,7 +160,7 @@ export async function eventsList(
         | RequestTimeoutError
         | ConnectionError
     >(
-        m$.json(200, z.array(components.ClickEvents$inboundSchema)),
+        m$.json(200, operations.ListEventsResponseBody$inboundSchema),
         m$.jsonErr(400, errors.BadRequest$inboundSchema),
         m$.jsonErr(401, errors.Unauthorized$inboundSchema),
         m$.jsonErr(403, errors.Forbidden$inboundSchema),

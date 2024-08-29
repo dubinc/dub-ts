@@ -4,7 +4,6 @@
 
 import { eventsList } from "../funcs/eventsList.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
@@ -18,7 +17,7 @@ export class Events extends ClientSDK {
     async list(
         request?: operations.ListEventsRequest | undefined,
         options?: RequestOptions
-    ): Promise<Array<components.ClickEvents>> {
+    ): Promise<operations.ListEventsResponseBody> {
         return unwrapAsync(eventsList(this, request, options));
     }
 }

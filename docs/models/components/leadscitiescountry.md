@@ -7,7 +7,7 @@ The 2-letter country code of the city: https://d.to/geo
 ```typescript
 import { LeadsCitiesCountry } from "dub/models/components";
 
-let value: LeadsCitiesCountry = "IL";
+let value: LeadsCitiesCountry = "VG";
 ```
 
 ## Values

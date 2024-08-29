@@ -7,7 +7,7 @@ import { ClicksBrowsers } from "dub/models/components";
 
 let value: ClicksBrowsers = {
     browser: "<value>",
-    clicks: 8781.94,
+    clicks: 1201.96,
 };
 ```
 

@@ -6,9 +6,9 @@
 import { SalesTopUrls } from "dub/models/components";
 
 let value: SalesTopUrls = {
-    url: "http://unimportant-venture.net",
-    sales: 4471.25,
-    amount: 4491.98,
+    url: "http://quizzical-synergy.biz",
+    sales: 5812.73,
+    amount: 3132.18,
 };
 ```
 
