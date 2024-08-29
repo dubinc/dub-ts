@@ -71,13 +71,20 @@ type SecurityInputOAuth2ClientCredentials = {
     fieldName: string;
 };
 
+type SecurityInputCustom = {
+    type: "http:custom";
+    value: any | null | undefined;
+    fieldName: string;
+};
+
 export type SecurityInput =
     | SecurityInputBasic
     | SecurityInputBearer
     | SecurityInputAPIKey
     | SecurityInputOAuth2
     | SecurityInputOAuth2ClientCredentials
-    | SecurityInputOIDC;
+    | SecurityInputOIDC
+    | SecurityInputCustom;
 
 export function resolveSecurity(...options: SecurityInput[][]): SecurityState | null {
     const state: SecurityState = {
@@ -93,6 +100,8 @@ export function resolveSecurity(...options: SecurityInput[][]): SecurityState | 
                 return false;
             } else if (o.type === "http:basic") {
                 return o.value.username != null || o.value.password != null;
+            } else if (o.type === "http:custom") {
+                return null;
             } else if (typeof o.value === "string") {
                 return !!o.value;
             } else {
@@ -125,6 +134,8 @@ export function resolveSecurity(...options: SecurityInput[][]): SecurityState | 
                 break;
             case "http:basic":
                 applyBasic(state, spec);
+                break;
+            case "http:custom":
                 break;
             case "http:bearer":
                 applyBearer(state, spec);

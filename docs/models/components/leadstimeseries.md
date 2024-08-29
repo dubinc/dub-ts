@@ -7,7 +7,7 @@ import { LeadsTimeseries } from "dub/models/components";
 
 let value: LeadsTimeseries = {
     start: "<value>",
-    leads: 1187.27,
+    leads: 5089.69,
 };
 ```
 

@@ -7,8 +7,8 @@ import { SalesReferers } from "dub/models/components";
 
 let value: SalesReferers = {
     referer: "<value>",
-    sales: 2884.76,
-    amount: 9621.89,
+    sales: 6800.56,
+    amount: 4471.25,
 };
 ```
 

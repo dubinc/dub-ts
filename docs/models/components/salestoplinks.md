@@ -8,13 +8,13 @@ import { SalesTopLinks } from "dub/models/components";
 let value: SalesTopLinks = {
     link: "<value>",
     id: "<id>",
-    domain: "infantile-demur.net",
+    domain: "irritating-standardisation.org",
     key: "<key>",
     shortLink: "<value>",
-    url: "https://humming-networking.org",
+    url: "https://chilly-effacement.net",
     createdAt: "<value>",
-    sales: 5722.52,
-    amount: 6389.21,
+    sales: 8137.98,
+    amount: 4118.2,
 };
 ```
 

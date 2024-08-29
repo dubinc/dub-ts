@@ -1,26 +1,31 @@
-# ClickEvents
+# LeadEvents
 
 ## Example Usage
 
 ```typescript
-import { ClickEvents } from "dub/models/components";
+import { LeadEvents } from "dub/models/components";
 
-let value: ClickEvents = {
+let value: LeadEvents = {
     timestamp: "<value>",
+    eventId: "<value>",
+    eventName: "<value>",
+    customerName: "<value>",
+    customerEmail: "<value>",
+    customerAvatar: "<value>",
     clickId: "<value>",
     linkId: "<value>",
-    domain: "repentant-nectar.net",
+    domain: "formal-racist.name",
     key: "<key>",
-    url: "https://lost-mailman.org",
+    url: "http://flawed-gherkin.name",
     continent: "<value>",
-    country: "Denmark",
-    city: "Huelsview",
+    country: "Saint Helena",
+    city: "Shainaville",
     device: "<value>",
     browser: "<value>",
     os: "<value>",
     referer: "<value>",
-    ip: "158.155.121.4",
-    qr: 4701.32,
+    qr: 1028.63,
+    ip: "76.23.145.90",
 };
 ```
 
@@ -29,6 +34,11 @@ let value: ClickEvents = {
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `timestamp`        | *string*           | :heavy_check_mark: | N/A                |
+| `eventId`          | *string*           | :heavy_check_mark: | N/A                |
+| `eventName`        | *string*           | :heavy_check_mark: | N/A                |
+| `customerName`     | *string*           | :heavy_check_mark: | N/A                |
+| `customerEmail`    | *string*           | :heavy_check_mark: | N/A                |
+| `customerAvatar`   | *string*           | :heavy_check_mark: | N/A                |
 | `clickId`          | *string*           | :heavy_check_mark: | N/A                |
 | `linkId`           | *string*           | :heavy_check_mark: | N/A                |
 | `domain`           | *string*           | :heavy_check_mark: | N/A                |
@@ -41,5 +51,5 @@ let value: ClickEvents = {
 | `browser`          | *string*           | :heavy_check_mark: | N/A                |
 | `os`               | *string*           | :heavy_check_mark: | N/A                |
 | `referer`          | *string*           | :heavy_check_mark: | N/A                |
-| `ip`               | *string*           | :heavy_check_mark: | N/A                |
 | `qr`               | *number*           | :heavy_check_mark: | N/A                |
+| `ip`               | *string*           | :heavy_check_mark: | N/A                |

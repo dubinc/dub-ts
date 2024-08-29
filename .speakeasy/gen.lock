@@ -3,10 +3,10 @@ id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
   docChecksum: eed7a2ad5cc93c07aac35e5c6d536a9a
   docVersion: 0.0.1
-  speakeasyVersion: 1.379.0
-  generationVersion: 2.404.3
-  releaseVersion: 0.36.2
-  configChecksum: 86679e2ae8440cbbdab511e2ad23d6c7
+  speakeasyVersion: 1.383.2
+  generationVersion: 2.407.0
+  releaseVersion: 0.36.3
+  configChecksum: bc3855c23170e45cabffea97af693c35
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -18,7 +18,7 @@ features:
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     envVarSecurityUsage: 0.1.1
-    errors: 2.82.1
+    errors: 2.82.2
     examples: 2.81.4
     flattening: 2.81.1
     globalSecurity: 2.82.11
@@ -161,6 +161,8 @@ generatedFiles:
   - src/models/components/countrycode.ts
   - src/models/components/continentcode.ts
   - src/models/components/clickevents.ts
+  - src/models/components/leadevents.ts
+  - src/models/components/saleevents.ts
   - src/models/components/workspaceschema.ts
   - src/models/components/domainschema.ts
   - src/models/components/security.ts
@@ -220,6 +222,7 @@ generatedFiles:
   - docs/models/operations/order.md
   - docs/models/operations/sortby.md
   - docs/models/operations/listeventsrequest.md
+  - docs/models/operations/listeventsresponsebody.md
   - docs/models/operations/getworkspacerequest.md
   - docs/models/operations/updateworkspacerequestbody.md
   - docs/models/operations/updateworkspacerequest.md
@@ -288,6 +291,8 @@ generatedFiles:
   - docs/models/components/countrycode.md
   - docs/models/components/continentcode.md
   - docs/models/components/clickevents.md
+  - docs/models/components/leadevents.md
+  - docs/models/components/saleevents.md
   - docs/models/components/plan.md
   - docs/models/components/role.md
   - docs/models/components/users.md

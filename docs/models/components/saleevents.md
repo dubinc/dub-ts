@@ -1,26 +1,34 @@
-# ClickEvents
+# SaleEvents
 
 ## Example Usage
 
 ```typescript
-import { ClickEvents } from "dub/models/components";
+import { SaleEvents } from "dub/models/components";
 
-let value: ClickEvents = {
+let value: SaleEvents = {
     timestamp: "<value>",
+    eventId: "<value>",
+    eventName: "<value>",
+    customerName: "<value>",
+    customerEmail: "<value>",
+    customerAvatar: "<value>",
+    paymentProcessor: "<value>",
+    invoiceId: "<value>",
+    amount: 5908.73,
     clickId: "<value>",
     linkId: "<value>",
-    domain: "repentant-nectar.net",
+    domain: "murky-monotheism.com",
     key: "<key>",
-    url: "https://lost-mailman.org",
+    url: "https://wide-eyed-perspective.biz",
     continent: "<value>",
-    country: "Denmark",
-    city: "Huelsview",
+    country: "Italy",
+    city: "Fort Brown",
     device: "<value>",
     browser: "<value>",
     os: "<value>",
     referer: "<value>",
-    ip: "158.155.121.4",
-    qr: 4701.32,
+    qr: 3675.62,
+    ip: "24.111.251.228",
 };
 ```
 
@@ -29,6 +37,14 @@ let value: ClickEvents = {
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `timestamp`        | *string*           | :heavy_check_mark: | N/A                |
+| `eventId`          | *string*           | :heavy_check_mark: | N/A                |
+| `eventName`        | *string*           | :heavy_check_mark: | N/A                |
+| `customerName`     | *string*           | :heavy_check_mark: | N/A                |
+| `customerEmail`    | *string*           | :heavy_check_mark: | N/A                |
+| `customerAvatar`   | *string*           | :heavy_check_mark: | N/A                |
+| `paymentProcessor` | *string*           | :heavy_check_mark: | N/A                |
+| `invoiceId`        | *string*           | :heavy_check_mark: | N/A                |
+| `amount`           | *number*           | :heavy_check_mark: | N/A                |
 | `clickId`          | *string*           | :heavy_check_mark: | N/A                |
 | `linkId`           | *string*           | :heavy_check_mark: | N/A                |
 | `domain`           | *string*           | :heavy_check_mark: | N/A                |
@@ -41,5 +57,5 @@ let value: ClickEvents = {
 | `browser`          | *string*           | :heavy_check_mark: | N/A                |
 | `os`               | *string*           | :heavy_check_mark: | N/A                |
 | `referer`          | *string*           | :heavy_check_mark: | N/A                |
-| `ip`               | *string*           | :heavy_check_mark: | N/A                |
 | `qr`               | *number*           | :heavy_check_mark: | N/A                |
+| `ip`               | *string*           | :heavy_check_mark: | N/A                |

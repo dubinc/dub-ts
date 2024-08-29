@@ -137,6 +137,14 @@ export type ListEventsRequest = {
     sortBy?: SortBy | undefined;
 };
 
+/**
+ * A list of events
+ */
+export type ListEventsResponseBody =
+    | Array<components.ClickEvents>
+    | Array<components.LeadEvents>
+    | Array<components.SaleEvents>;
+
 /** @internal */
 export const QueryParamEvent$inboundSchema: z.ZodNativeEnum<typeof QueryParamEvent> =
     z.nativeEnum(QueryParamEvent);
@@ -309,4 +317,45 @@ export namespace ListEventsRequest$ {
     export const outboundSchema = ListEventsRequest$outboundSchema;
     /** @deprecated use `ListEventsRequest$Outbound` instead. */
     export type Outbound = ListEventsRequest$Outbound;
+}
+
+/** @internal */
+export const ListEventsResponseBody$inboundSchema: z.ZodType<
+    ListEventsResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.array(components.ClickEvents$inboundSchema),
+    z.array(components.LeadEvents$inboundSchema),
+    z.array(components.SaleEvents$inboundSchema),
+]);
+
+/** @internal */
+export type ListEventsResponseBody$Outbound =
+    | Array<components.ClickEvents$Outbound>
+    | Array<components.LeadEvents$Outbound>
+    | Array<components.SaleEvents$Outbound>;
+
+/** @internal */
+export const ListEventsResponseBody$outboundSchema: z.ZodType<
+    ListEventsResponseBody$Outbound,
+    z.ZodTypeDef,
+    ListEventsResponseBody
+> = z.union([
+    z.array(components.ClickEvents$outboundSchema),
+    z.array(components.LeadEvents$outboundSchema),
+    z.array(components.SaleEvents$outboundSchema),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListEventsResponseBody$ {
+    /** @deprecated use `ListEventsResponseBody$inboundSchema` instead. */
+    export const inboundSchema = ListEventsResponseBody$inboundSchema;
+    /** @deprecated use `ListEventsResponseBody$outboundSchema` instead. */
+    export const outboundSchema = ListEventsResponseBody$outboundSchema;
+    /** @deprecated use `ListEventsResponseBody$Outbound` instead. */
+    export type Outbound = ListEventsResponseBody$Outbound;
 }

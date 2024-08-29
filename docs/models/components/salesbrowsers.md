@@ -7,8 +7,8 @@ import { SalesBrowsers } from "dub/models/components";
 
 let value: SalesBrowsers = {
     browser: "<value>",
-    sales: 5696.18,
-    amount: 2700.08,
+    sales: 6389.21,
+    amount: 2230.81,
 };
 ```
 
