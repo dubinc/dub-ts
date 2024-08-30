@@ -1,13 +1,13 @@
-# Country
+# AnalyticsCitiesCountry
 
-The 2-letter ISO 3166-1 country code for the country associated with the location of the user. Learn more: https://d.to/geo
+The 2-letter country code of the city: https://d.to/geo
 
 ## Example Usage
 
 ```typescript
-import { Country } from "dub/models/components";
+import { AnalyticsCitiesCountry } from "dub/models/components";
 
-let value: Country = "LB";
+let value: AnalyticsCitiesCountry = "BL";
 ```
 
 ## Values

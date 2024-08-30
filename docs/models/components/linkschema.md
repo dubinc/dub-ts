@@ -7,12 +7,12 @@ import { LinkSchema } from "dub/models/components";
 
 let value: LinkSchema = {
     id: "<id>",
-    domain: "sick-escort.name",
+    domain: "colorless-ribbon.biz",
     key: "<key>",
     externalId: "<value>",
-    url: "http://general-mobster.com",
+    url: "https://gummy-expedition.name",
     expiresAt: "<value>",
-    expiredUrl: "http://political-woodwind.org",
+    expiredUrl: "http://insidious-parole.org",
     password: "_40_X9HMN80Aa_j",
     title: "<value>",
     description: "Distributed value-added framework",

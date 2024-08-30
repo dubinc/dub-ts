@@ -151,36 +151,16 @@ export type RetrieveAnalyticsRequest = {
  * Analytics data
  */
 export type RetrieveAnalyticsResponseBody =
-    | components.ClicksCount
-    | components.LeadsCount
-    | components.SalesCount
-    | Array<components.ClicksTimeseries>
-    | Array<components.ClicksCountries>
-    | Array<components.ClicksCities>
-    | Array<components.ClicksDevices>
-    | Array<components.ClicksBrowsers>
-    | Array<components.ClicksOS>
-    | Array<components.ClicksReferers>
-    | Array<components.ClicksTopLinks>
-    | Array<components.ClicksTopUrls>
-    | Array<components.LeadsTimeseries>
-    | Array<components.LeadsCountries>
-    | Array<components.LeadsCities>
-    | Array<components.LeadsDevices>
-    | Array<components.LeadsBrowsers>
-    | Array<components.LeadsOS>
-    | Array<components.LeadsReferers>
-    | Array<components.LeadsTopLinks>
-    | Array<components.LeadsTopUrls>
-    | Array<components.SalesTimeseries>
-    | Array<components.SalesCountries>
-    | Array<components.SalesCities>
-    | Array<components.SalesDevices>
-    | Array<components.SalesBrowsers>
-    | Array<components.SalesOS>
-    | Array<components.SalesReferers>
-    | Array<components.SalesTopLinks>
-    | Array<components.SalesTopUrls>;
+    | components.AnalyticsCount
+    | Array<components.AnalyticsTimeseries>
+    | Array<components.AnalyticsCountries>
+    | Array<components.AnalyticsCities>
+    | Array<components.AnalyticsDevices>
+    | Array<components.AnalyticsBrowsers>
+    | Array<components.AnalyticsOS>
+    | Array<components.AnalyticsReferers>
+    | Array<components.AnalyticsTopLinks>
+    | Array<components.AnalyticsTopUrls>;
 
 /** @internal */
 export const Event$inboundSchema: z.ZodNativeEnum<typeof Event> = z.nativeEnum(Event);
@@ -337,70 +317,30 @@ export const RetrieveAnalyticsResponseBody$inboundSchema: z.ZodType<
     z.ZodTypeDef,
     unknown
 > = z.union([
-    components.ClicksCount$inboundSchema,
-    components.LeadsCount$inboundSchema,
-    components.SalesCount$inboundSchema,
-    z.array(components.ClicksTimeseries$inboundSchema),
-    z.array(components.ClicksCountries$inboundSchema),
-    z.array(components.ClicksCities$inboundSchema),
-    z.array(components.ClicksDevices$inboundSchema),
-    z.array(components.ClicksBrowsers$inboundSchema),
-    z.array(components.ClicksOS$inboundSchema),
-    z.array(components.ClicksReferers$inboundSchema),
-    z.array(components.ClicksTopLinks$inboundSchema),
-    z.array(components.ClicksTopUrls$inboundSchema),
-    z.array(components.LeadsTimeseries$inboundSchema),
-    z.array(components.LeadsCountries$inboundSchema),
-    z.array(components.LeadsCities$inboundSchema),
-    z.array(components.LeadsDevices$inboundSchema),
-    z.array(components.LeadsBrowsers$inboundSchema),
-    z.array(components.LeadsOS$inboundSchema),
-    z.array(components.LeadsReferers$inboundSchema),
-    z.array(components.LeadsTopLinks$inboundSchema),
-    z.array(components.LeadsTopUrls$inboundSchema),
-    z.array(components.SalesTimeseries$inboundSchema),
-    z.array(components.SalesCountries$inboundSchema),
-    z.array(components.SalesCities$inboundSchema),
-    z.array(components.SalesDevices$inboundSchema),
-    z.array(components.SalesBrowsers$inboundSchema),
-    z.array(components.SalesOS$inboundSchema),
-    z.array(components.SalesReferers$inboundSchema),
-    z.array(components.SalesTopLinks$inboundSchema),
-    z.array(components.SalesTopUrls$inboundSchema),
+    components.AnalyticsCount$inboundSchema,
+    z.array(components.AnalyticsTimeseries$inboundSchema),
+    z.array(components.AnalyticsCountries$inboundSchema),
+    z.array(components.AnalyticsCities$inboundSchema),
+    z.array(components.AnalyticsDevices$inboundSchema),
+    z.array(components.AnalyticsBrowsers$inboundSchema),
+    z.array(components.AnalyticsOS$inboundSchema),
+    z.array(components.AnalyticsReferers$inboundSchema),
+    z.array(components.AnalyticsTopLinks$inboundSchema),
+    z.array(components.AnalyticsTopUrls$inboundSchema),
 ]);
 
 /** @internal */
 export type RetrieveAnalyticsResponseBody$Outbound =
-    | components.ClicksCount$Outbound
-    | components.LeadsCount$Outbound
-    | components.SalesCount$Outbound
-    | Array<components.ClicksTimeseries$Outbound>
-    | Array<components.ClicksCountries$Outbound>
-    | Array<components.ClicksCities$Outbound>
-    | Array<components.ClicksDevices$Outbound>
-    | Array<components.ClicksBrowsers$Outbound>
-    | Array<components.ClicksOS$Outbound>
-    | Array<components.ClicksReferers$Outbound>
-    | Array<components.ClicksTopLinks$Outbound>
-    | Array<components.ClicksTopUrls$Outbound>
-    | Array<components.LeadsTimeseries$Outbound>
-    | Array<components.LeadsCountries$Outbound>
-    | Array<components.LeadsCities$Outbound>
-    | Array<components.LeadsDevices$Outbound>
-    | Array<components.LeadsBrowsers$Outbound>
-    | Array<components.LeadsOS$Outbound>
-    | Array<components.LeadsReferers$Outbound>
-    | Array<components.LeadsTopLinks$Outbound>
-    | Array<components.LeadsTopUrls$Outbound>
-    | Array<components.SalesTimeseries$Outbound>
-    | Array<components.SalesCountries$Outbound>
-    | Array<components.SalesCities$Outbound>
-    | Array<components.SalesDevices$Outbound>
-    | Array<components.SalesBrowsers$Outbound>
-    | Array<components.SalesOS$Outbound>
-    | Array<components.SalesReferers$Outbound>
-    | Array<components.SalesTopLinks$Outbound>
-    | Array<components.SalesTopUrls$Outbound>;
+    | components.AnalyticsCount$Outbound
+    | Array<components.AnalyticsTimeseries$Outbound>
+    | Array<components.AnalyticsCountries$Outbound>
+    | Array<components.AnalyticsCities$Outbound>
+    | Array<components.AnalyticsDevices$Outbound>
+    | Array<components.AnalyticsBrowsers$Outbound>
+    | Array<components.AnalyticsOS$Outbound>
+    | Array<components.AnalyticsReferers$Outbound>
+    | Array<components.AnalyticsTopLinks$Outbound>
+    | Array<components.AnalyticsTopUrls$Outbound>;
 
 /** @internal */
 export const RetrieveAnalyticsResponseBody$outboundSchema: z.ZodType<
@@ -408,36 +348,16 @@ export const RetrieveAnalyticsResponseBody$outboundSchema: z.ZodType<
     z.ZodTypeDef,
     RetrieveAnalyticsResponseBody
 > = z.union([
-    components.ClicksCount$outboundSchema,
-    components.LeadsCount$outboundSchema,
-    components.SalesCount$outboundSchema,
-    z.array(components.ClicksTimeseries$outboundSchema),
-    z.array(components.ClicksCountries$outboundSchema),
-    z.array(components.ClicksCities$outboundSchema),
-    z.array(components.ClicksDevices$outboundSchema),
-    z.array(components.ClicksBrowsers$outboundSchema),
-    z.array(components.ClicksOS$outboundSchema),
-    z.array(components.ClicksReferers$outboundSchema),
-    z.array(components.ClicksTopLinks$outboundSchema),
-    z.array(components.ClicksTopUrls$outboundSchema),
-    z.array(components.LeadsTimeseries$outboundSchema),
-    z.array(components.LeadsCountries$outboundSchema),
-    z.array(components.LeadsCities$outboundSchema),
-    z.array(components.LeadsDevices$outboundSchema),
-    z.array(components.LeadsBrowsers$outboundSchema),
-    z.array(components.LeadsOS$outboundSchema),
-    z.array(components.LeadsReferers$outboundSchema),
-    z.array(components.LeadsTopLinks$outboundSchema),
-    z.array(components.LeadsTopUrls$outboundSchema),
-    z.array(components.SalesTimeseries$outboundSchema),
-    z.array(components.SalesCountries$outboundSchema),
-    z.array(components.SalesCities$outboundSchema),
-    z.array(components.SalesDevices$outboundSchema),
-    z.array(components.SalesBrowsers$outboundSchema),
-    z.array(components.SalesOS$outboundSchema),
-    z.array(components.SalesReferers$outboundSchema),
-    z.array(components.SalesTopLinks$outboundSchema),
-    z.array(components.SalesTopUrls$outboundSchema),
+    components.AnalyticsCount$outboundSchema,
+    z.array(components.AnalyticsTimeseries$outboundSchema),
+    z.array(components.AnalyticsCountries$outboundSchema),
+    z.array(components.AnalyticsCities$outboundSchema),
+    z.array(components.AnalyticsDevices$outboundSchema),
+    z.array(components.AnalyticsBrowsers$outboundSchema),
+    z.array(components.AnalyticsOS$outboundSchema),
+    z.array(components.AnalyticsReferers$outboundSchema),
+    z.array(components.AnalyticsTopLinks$outboundSchema),
+    z.array(components.AnalyticsTopUrls$outboundSchema),
 ]);
 
 /**

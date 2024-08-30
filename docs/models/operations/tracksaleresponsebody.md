@@ -10,10 +10,10 @@ import { TrackSaleResponseBody } from "dub/models/operations";
 let value: TrackSaleResponseBody = {
     eventName: "<value>",
     customerId: "<value>",
-    amount: 3581.52,
+    saleAmount: 2103.82,
     paymentProcessor: "<value>",
     invoiceId: "<value>",
-    currency: "Pula",
+    currency: "New Israeli Sheqel",
     metadata: {
         key: "<value>",
     },
@@ -26,7 +26,7 @@ let value: TrackSaleResponseBody = {
 | --------------------- | --------------------- | --------------------- | --------------------- |
 | `eventName`           | *string*              | :heavy_check_mark:    | N/A                   |
 | `customerId`          | *string*              | :heavy_check_mark:    | N/A                   |
-| `amount`              | *number*              | :heavy_check_mark:    | N/A                   |
+| `saleAmount`          | *number*              | :heavy_check_mark:    | N/A                   |
 | `paymentProcessor`    | *string*              | :heavy_check_mark:    | N/A                   |
 | `invoiceId`           | *string*              | :heavy_check_mark:    | N/A                   |
 | `currency`            | *string*              | :heavy_check_mark:    | N/A                   |
