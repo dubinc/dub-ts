@@ -10,41 +10,46 @@ import { ListEventsResponseBody } from "dub/models/operations";
 let value: ListEventsResponseBody = [
     {
         timestamp: "<value>",
+        eventId: "<value>",
+        eventName: "<value>",
+        customerName: "<value>",
+        customerEmail: "<value>",
+        customerAvatar: "<value>",
         clickId: "<value>",
         linkId: "<value>",
-        domain: "passionate-crewman.name",
+        domain: "crazy-ophthalmologist.biz",
         key: "<key>",
-        url: "http://wary-thistle.net",
+        url: "https://hoarse-upper.org",
         continent: "<value>",
-        country: "Jordan",
-        city: "New Humberto",
+        country: "Palestinian Territory",
+        city: "Floyfurt",
         device: "<value>",
         browser: "<value>",
         os: "<value>",
         referer: "<value>",
+        qr: 4370.32,
         ip: "231.178.25.15",
-        qr: 9698.1,
     },
 ];
 ```
 
 ## Supported Types
 
-### `components.ClickEvents[]`
+### `components.ClickEvent[]`
 
 ```typescript
-const value: components.ClickEvents[] = /* values here */
+const value: components.ClickEvent[] = /* values here */
 ```
 
-### `components.LeadEvents[]`
+### `components.LeadEvent[]`
 
 ```typescript
-const value: components.LeadEvents[] = /* values here */
+const value: components.LeadEvent[] = /* values here */
 ```
 
-### `components.SaleEvents[]`
+### `components.SaleEvent[]`
 
 ```typescript
-const value: components.SaleEvents[] = /* values here */
+const value: components.SaleEvent[] = /* values here */
 ```
 

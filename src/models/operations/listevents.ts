@@ -46,7 +46,6 @@ export type Order = ClosedEnum<typeof Order>;
 
 export const SortBy = {
     Timestamp: "timestamp",
-    Amount: "amount",
 } as const;
 export type SortBy = ClosedEnum<typeof SortBy>;
 
@@ -141,9 +140,9 @@ export type ListEventsRequest = {
  * A list of events
  */
 export type ListEventsResponseBody =
-    | Array<components.ClickEvents>
-    | Array<components.LeadEvents>
-    | Array<components.SaleEvents>;
+    | Array<components.ClickEvent>
+    | Array<components.LeadEvent>
+    | Array<components.SaleEvent>;
 
 /** @internal */
 export const QueryParamEvent$inboundSchema: z.ZodNativeEnum<typeof QueryParamEvent> =
@@ -325,16 +324,16 @@ export const ListEventsResponseBody$inboundSchema: z.ZodType<
     z.ZodTypeDef,
     unknown
 > = z.union([
-    z.array(components.ClickEvents$inboundSchema),
-    z.array(components.LeadEvents$inboundSchema),
-    z.array(components.SaleEvents$inboundSchema),
+    z.array(components.ClickEvent$inboundSchema),
+    z.array(components.LeadEvent$inboundSchema),
+    z.array(components.SaleEvent$inboundSchema),
 ]);
 
 /** @internal */
 export type ListEventsResponseBody$Outbound =
-    | Array<components.ClickEvents$Outbound>
-    | Array<components.LeadEvents$Outbound>
-    | Array<components.SaleEvents$Outbound>;
+    | Array<components.ClickEvent$Outbound>
+    | Array<components.LeadEvent$Outbound>
+    | Array<components.SaleEvent$Outbound>;
 
 /** @internal */
 export const ListEventsResponseBody$outboundSchema: z.ZodType<
@@ -342,9 +341,9 @@ export const ListEventsResponseBody$outboundSchema: z.ZodType<
     z.ZodTypeDef,
     ListEventsResponseBody
 > = z.union([
-    z.array(components.ClickEvents$outboundSchema),
-    z.array(components.LeadEvents$outboundSchema),
-    z.array(components.SaleEvents$outboundSchema),
+    z.array(components.ClickEvent$outboundSchema),
+    z.array(components.LeadEvent$outboundSchema),
+    z.array(components.SaleEvent$outboundSchema),
 ]);
 
 /**

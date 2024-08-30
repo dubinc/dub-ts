@@ -55,7 +55,7 @@ export type TrackSaleRequestBody = {
 export type TrackSaleResponseBody = {
     eventName: string;
     customerId: string;
-    amount: number;
+    saleAmount: number;
     paymentProcessor: string;
     invoiceId: string | null;
     currency: string;
@@ -143,7 +143,7 @@ export const TrackSaleResponseBody$inboundSchema: z.ZodType<
 > = z.object({
     eventName: z.string(),
     customerId: z.string(),
-    amount: z.number(),
+    saleAmount: z.number(),
     paymentProcessor: z.string(),
     invoiceId: z.nullable(z.string()),
     currency: z.string(),
@@ -154,7 +154,7 @@ export const TrackSaleResponseBody$inboundSchema: z.ZodType<
 export type TrackSaleResponseBody$Outbound = {
     eventName: string;
     customerId: string;
-    amount: number;
+    saleAmount: number;
     paymentProcessor: string;
     invoiceId: string | null;
     currency: string;
@@ -169,7 +169,7 @@ export const TrackSaleResponseBody$outboundSchema: z.ZodType<
 > = z.object({
     eventName: z.string(),
     customerId: z.string(),
-    amount: z.number(),
+    saleAmount: z.number(),
     paymentProcessor: z.string(),
     invoiceId: z.nullable(z.string()),
     currency: z.string(),

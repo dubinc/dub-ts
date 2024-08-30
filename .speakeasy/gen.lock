@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: eed7a2ad5cc93c07aac35e5c6d536a9a
+  docChecksum: abed920cccc8244d0df01a66b937f143
   docVersion: 0.0.1
-  speakeasyVersion: 1.383.2
-  generationVersion: 2.407.0
-  releaseVersion: 0.36.3
-  configChecksum: bc3855c23170e45cabffea97af693c35
+  speakeasyVersion: 1.384.0
+  generationVersion: 2.407.1
+  releaseVersion: 0.36.4
+  configChecksum: 5f21af4261287aad0b0371d243f4d2c0
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -128,41 +128,21 @@ generatedFiles:
   - src/models/components/linkschema.ts
   - src/models/components/tagschema.ts
   - src/models/components/linkgeotargeting.ts
-  - src/models/components/clickscount.ts
-  - src/models/components/clickstimeseries.ts
-  - src/models/components/clickscountries.ts
-  - src/models/components/clickscities.ts
-  - src/models/components/clicksdevices.ts
-  - src/models/components/clicksbrowsers.ts
-  - src/models/components/clicksos.ts
-  - src/models/components/clicksreferers.ts
-  - src/models/components/clickstoplinks.ts
-  - src/models/components/clickstopurls.ts
-  - src/models/components/leadscount.ts
-  - src/models/components/leadstimeseries.ts
-  - src/models/components/leadscountries.ts
-  - src/models/components/leadscities.ts
-  - src/models/components/leadsdevices.ts
-  - src/models/components/leadsbrowsers.ts
-  - src/models/components/leadsos.ts
-  - src/models/components/leadsreferers.ts
-  - src/models/components/leadstoplinks.ts
-  - src/models/components/leadstopurls.ts
-  - src/models/components/salescount.ts
-  - src/models/components/salestimeseries.ts
-  - src/models/components/salescountries.ts
-  - src/models/components/salescities.ts
-  - src/models/components/salesdevices.ts
-  - src/models/components/salesbrowsers.ts
-  - src/models/components/salesos.ts
-  - src/models/components/salesreferers.ts
-  - src/models/components/salestoplinks.ts
-  - src/models/components/salestopurls.ts
+  - src/models/components/analyticscount.ts
+  - src/models/components/analyticstimeseries.ts
+  - src/models/components/analyticscountries.ts
+  - src/models/components/analyticscities.ts
+  - src/models/components/analyticsdevices.ts
+  - src/models/components/analyticsbrowsers.ts
+  - src/models/components/analyticsos.ts
+  - src/models/components/analyticsreferers.ts
+  - src/models/components/analyticstoplinks.ts
+  - src/models/components/analyticstopurls.ts
   - src/models/components/countrycode.ts
   - src/models/components/continentcode.ts
-  - src/models/components/clickevents.ts
-  - src/models/components/leadevents.ts
-  - src/models/components/saleevents.ts
+  - src/models/components/clickevent.ts
+  - src/models/components/leadevent.ts
+  - src/models/components/saleevent.ts
   - src/models/components/workspaceschema.ts
   - src/models/components/domainschema.ts
   - src/models/components/security.ts
@@ -252,47 +232,27 @@ generatedFiles:
   - docs/models/components/color.md
   - docs/models/components/tagschema.md
   - docs/models/components/linkgeotargeting.md
-  - docs/models/components/clickscount.md
-  - docs/models/components/clickstimeseries.md
+  - docs/models/components/analyticscount.md
+  - docs/models/components/analyticstimeseries.md
   - docs/models/components/country.md
-  - docs/models/components/clickscountries.md
-  - docs/models/components/clickscitiescountry.md
-  - docs/models/components/clickscities.md
-  - docs/models/components/clicksdevices.md
-  - docs/models/components/clicksbrowsers.md
-  - docs/models/components/clicksos.md
-  - docs/models/components/clicksreferers.md
-  - docs/models/components/clickstoplinks.md
-  - docs/models/components/clickstopurls.md
-  - docs/models/components/leadscount.md
-  - docs/models/components/leadstimeseries.md
-  - docs/models/components/leadscountriescountry.md
-  - docs/models/components/leadscountries.md
-  - docs/models/components/leadscitiescountry.md
-  - docs/models/components/leadscities.md
-  - docs/models/components/leadsdevices.md
-  - docs/models/components/leadsbrowsers.md
-  - docs/models/components/leadsos.md
-  - docs/models/components/leadsreferers.md
-  - docs/models/components/leadstoplinks.md
-  - docs/models/components/leadstopurls.md
-  - docs/models/components/salescount.md
-  - docs/models/components/salestimeseries.md
-  - docs/models/components/salescountriescountry.md
-  - docs/models/components/salescountries.md
-  - docs/models/components/salescitiescountry.md
-  - docs/models/components/salescities.md
-  - docs/models/components/salesdevices.md
-  - docs/models/components/salesbrowsers.md
-  - docs/models/components/salesos.md
-  - docs/models/components/salesreferers.md
-  - docs/models/components/salestoplinks.md
-  - docs/models/components/salestopurls.md
+  - docs/models/components/city.md
+  - docs/models/components/analyticscountries.md
+  - docs/models/components/analyticscitiescountry.md
+  - docs/models/components/analyticscities.md
+  - docs/models/components/analyticsdevices.md
+  - docs/models/components/analyticsbrowsers.md
+  - docs/models/components/analyticsos.md
+  - docs/models/components/analyticsreferers.md
+  - docs/models/components/analyticstoplinks.md
+  - docs/models/components/analyticstopurls.md
   - docs/models/components/countrycode.md
   - docs/models/components/continentcode.md
-  - docs/models/components/clickevents.md
-  - docs/models/components/leadevents.md
-  - docs/models/components/saleevents.md
+  - docs/models/components/event.md
+  - docs/models/components/clickevent.md
+  - docs/models/components/leadeventevent.md
+  - docs/models/components/leadevent.md
+  - docs/models/components/saleeventevent.md
+  - docs/models/components/saleevent.md
   - docs/models/components/plan.md
   - docs/models/components/role.md
   - docs/models/components/users.md
