@@ -12,7 +12,7 @@ export const Event = {
 export type Event = ClosedEnum<typeof Event>;
 
 export type ClickEvent = {
-    event?: Event | undefined;
+    event: Event;
     timestamp: string;
     clickId: string;
     linkId: string;
@@ -50,7 +50,7 @@ export namespace Event$ {
 /** @internal */
 export const ClickEvent$inboundSchema: z.ZodType<ClickEvent, z.ZodTypeDef, unknown> = z
     .object({
-        event: Event$inboundSchema.default("click"),
+        event: Event$inboundSchema,
         timestamp: z.string(),
         click_id: z.string(),
         link_id: z.string(),
@@ -97,7 +97,7 @@ export type ClickEvent$Outbound = {
 /** @internal */
 export const ClickEvent$outboundSchema: z.ZodType<ClickEvent$Outbound, z.ZodTypeDef, ClickEvent> = z
     .object({
-        event: Event$outboundSchema.default("click"),
+        event: Event$outboundSchema,
         timestamp: z.string(),
         clickId: z.string(),
         linkId: z.string(),

@@ -9,6 +9,7 @@ import { ListEventsResponseBody } from "dub/models/operations";
 
 let value: ListEventsResponseBody = [
     {
+        event: "lead",
         timestamp: "<value>",
         eventId: "<value>",
         eventName: "<value>",

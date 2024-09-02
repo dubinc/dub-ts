@@ -109,6 +109,7 @@ run();
 * [delete](docs/sdks/links/README.md#delete) - Delete a link
 * [update](docs/sdks/links/README.md#update) - Update a link
 * [createMany](docs/sdks/links/README.md#createmany) - Bulk create links
+* [deleteMany](docs/sdks/links/README.md#deletemany) - Bulk delete links
 * [updateMany](docs/sdks/links/README.md#updatemany) - Bulk update links
 * [upsert](docs/sdks/links/README.md#upsert) - Upsert a link
 
@@ -535,6 +536,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [linksCount](docs/sdks/links/README.md#count)
 - [linksCreateMany](docs/sdks/links/README.md#createmany)
 - [linksCreate](docs/sdks/links/README.md#create)
+- [linksDeleteMany](docs/sdks/links/README.md#deletemany)
 - [linksDelete](docs/sdks/links/README.md#delete)
 - [linksGet](docs/sdks/links/README.md#get)
 - [linksList](docs/sdks/links/README.md#list)
