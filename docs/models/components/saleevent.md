@@ -6,6 +6,7 @@
 import { SaleEvent } from "dub/models/components";
 
 let value: SaleEvent = {
+    event: "sale",
     timestamp: "<value>",
     eventId: "<value>",
     eventName: "<value>",
@@ -14,21 +15,21 @@ let value: SaleEvent = {
     customerAvatar: "<value>",
     paymentProcessor: "<value>",
     invoiceId: "<value>",
-    saleAmount: 1856.36,
+    saleAmount: 7670.24,
     clickId: "<value>",
     linkId: "<value>",
-    domain: "raw-venue.info",
+    domain: "stupendous-handmaiden.info",
     key: "<key>",
-    url: "https://left-cousin.net",
+    url: "https://unaware-department.name",
     continent: "<value>",
-    country: "United States Minor Outlying Islands",
-    city: "Lake Shania",
+    country: "Gambia",
+    city: "West Jordan",
     device: "<value>",
     browser: "<value>",
     os: "<value>",
     referer: "<value>",
-    qr: 2539.41,
-    ip: "80.54.245.132",
+    qr: 6925.32,
+    ip: "150.185.168.128",
 };
 ```
 
@@ -36,7 +37,7 @@ let value: SaleEvent = {
 
 | Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `event`                                                                | [components.SaleEventEvent](../../models/components/saleeventevent.md) | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `event`                                                                | [components.SaleEventEvent](../../models/components/saleeventevent.md) | :heavy_check_mark:                                                     | N/A                                                                    |
 | `timestamp`                                                            | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
 | `eventId`                                                              | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
 | `eventName`                                                            | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |

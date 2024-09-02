@@ -6,21 +6,22 @@
 import { ClickEvent } from "dub/models/components";
 
 let value: ClickEvent = {
+    event: "click",
     timestamp: "<value>",
     clickId: "<value>",
     linkId: "<value>",
-    domain: "overlooked-terminal.net",
+    domain: "damp-sousaphone.info",
     key: "<key>",
-    url: "https://knobby-crack.info",
+    url: "http://costly-poncho.name",
     continent: "<value>",
-    country: "Northern Mariana Islands",
-    city: "East Lansing",
+    country: "Estonia",
+    city: "Riceboro",
     device: "<value>",
     browser: "<value>",
     os: "<value>",
     referer: "<value>",
-    ip: "35.5.58.194",
-    qr: 8815.86,
+    ip: "246.110.63.193",
+    qr: 5761.57,
 };
 ```
 
@@ -28,7 +29,7 @@ let value: ClickEvent = {
 
 | Field                                                | Type                                                 | Required                                             | Description                                          |
 | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `event`                                              | [components.Event](../../models/components/event.md) | :heavy_minus_sign:                                   | N/A                                                  |
+| `event`                                              | [components.Event](../../models/components/event.md) | :heavy_check_mark:                                   | N/A                                                  |
 | `timestamp`                                          | *string*                                             | :heavy_check_mark:                                   | N/A                                                  |
 | `clickId`                                            | *string*                                             | :heavy_check_mark:                                   | N/A                                                  |
 | `linkId`                                             | *string*                                             | :heavy_check_mark:                                   | N/A                                                  |

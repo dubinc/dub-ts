@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: 721d398075627f52145125ad6074cef5
+  docChecksum: 4b38427d599ff9991821aff7767f96aa
   docVersion: 0.0.1
-  speakeasyVersion: 1.385.0
+  speakeasyVersion: 1.386.0
   generationVersion: 2.407.2
-  releaseVersion: 0.36.5
-  configChecksum: e666a606c0f8be020895069f3b30dcf9
+  releaseVersion: 0.36.6
+  configChecksum: ef2d637732a6f37eb86b2df2149f9040
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -40,6 +40,7 @@ generatedFiles:
   - src/funcs/linksDelete.ts
   - src/funcs/linksUpdate.ts
   - src/funcs/linksCreateMany.ts
+  - src/funcs/linksDeleteMany.ts
   - src/funcs/linksUpdateMany.ts
   - src/funcs/linksUpsert.ts
   - src/funcs/qrCodesGet.ts
@@ -108,6 +109,7 @@ generatedFiles:
   - src/models/operations/deletelink.ts
   - src/models/operations/updatelink.ts
   - src/models/operations/bulkcreatelinks.ts
+  - src/models/operations/bulkdeletelinks.ts
   - src/models/operations/bulkupdatelinks.ts
   - src/models/operations/upsertlink.ts
   - src/models/operations/getqrcode.ts
@@ -183,6 +185,8 @@ generatedFiles:
   - docs/models/operations/bulkcreatelinkstagids.md
   - docs/models/operations/bulkcreatelinkstagnames.md
   - docs/models/operations/requestbody.md
+  - docs/models/operations/bulkdeletelinksrequest.md
+  - docs/models/operations/bulkdeletelinksresponsebody.md
   - docs/models/operations/bulkupdatelinkstagids.md
   - docs/models/operations/bulkupdatelinkstagnames.md
   - docs/models/operations/data.md
@@ -219,18 +223,13 @@ generatedFiles:
   - docs/models/operations/updatedomainrequestbody.md
   - docs/models/operations/updatedomainrequest.md
   - docs/models/operations/trackleadrequestbody.md
-  - docs/models/operations/customer.md
   - docs/models/operations/click.md
-  - docs/models/operations/geo.md
-  - docs/models/operations/link.md
+  - docs/models/operations/customer.md
   - docs/models/operations/trackleadresponsebody.md
   - docs/models/operations/paymentprocessor.md
   - docs/models/operations/tracksalerequestbody.md
   - docs/models/operations/tracksalecustomer.md
   - docs/models/operations/sale.md
-  - docs/models/operations/tracksaleclick.md
-  - docs/models/operations/tracksalegeo.md
-  - docs/models/operations/tracksalelink.md
   - docs/models/operations/tracksaleresponsebody.md
   - docs/models/operations/trackcustomerrequestbody.md
   - docs/models/operations/trackcustomerresponsebody.md

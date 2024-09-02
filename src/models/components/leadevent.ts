@@ -12,7 +12,7 @@ export const LeadEventEvent = {
 export type LeadEventEvent = ClosedEnum<typeof LeadEventEvent>;
 
 export type LeadEvent = {
-    event?: LeadEventEvent | undefined;
+    event: LeadEventEvent;
     timestamp: string;
     eventId: string;
     eventName: string;
@@ -57,7 +57,7 @@ export namespace LeadEventEvent$ {
 /** @internal */
 export const LeadEvent$inboundSchema: z.ZodType<LeadEvent, z.ZodTypeDef, unknown> = z
     .object({
-        event: LeadEventEvent$inboundSchema.default("lead"),
+        event: LeadEventEvent$inboundSchema,
         timestamp: z.string(),
         event_id: z.string(),
         event_name: z.string(),
@@ -119,7 +119,7 @@ export type LeadEvent$Outbound = {
 /** @internal */
 export const LeadEvent$outboundSchema: z.ZodType<LeadEvent$Outbound, z.ZodTypeDef, LeadEvent> = z
     .object({
-        event: LeadEventEvent$outboundSchema.default("lead"),
+        event: LeadEventEvent$outboundSchema,
         timestamp: z.string(),
         eventId: z.string(),
         eventName: z.string(),

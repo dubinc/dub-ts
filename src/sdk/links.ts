@@ -6,6 +6,7 @@ import { linksCount } from "../funcs/linksCount.js";
 import { linksCreate } from "../funcs/linksCreate.js";
 import { linksCreateMany } from "../funcs/linksCreateMany.js";
 import { linksDelete } from "../funcs/linksDelete.js";
+import { linksDeleteMany } from "../funcs/linksDeleteMany.js";
 import { linksGet } from "../funcs/linksGet.js";
 import { linksList } from "../funcs/linksList.js";
 import { linksUpdate } from "../funcs/linksUpdate.js";
@@ -108,6 +109,19 @@ export class Links extends ClientSDK {
         options?: RequestOptions
     ): Promise<Array<components.LinkSchema>> {
         return unwrapAsync(linksCreateMany(this, request, options));
+    }
+
+    /**
+     * Bulk delete links
+     *
+     * @remarks
+     * Bulk delete up to 100 links for the authenticated workspace.
+     */
+    async deleteMany(
+        request: operations.BulkDeleteLinksRequest,
+        options?: RequestOptions
+    ): Promise<operations.BulkDeleteLinksResponseBody> {
+        return unwrapAsync(linksDeleteMany(this, request, options));
     }
 
     /**

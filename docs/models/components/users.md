@@ -6,7 +6,7 @@
 import { Users } from "dub/models/components";
 
 let value: Users = {
-    role: "member",
+    role: "owner",
 };
 ```
 

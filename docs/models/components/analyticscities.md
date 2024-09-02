@@ -6,8 +6,8 @@
 import { AnalyticsCities } from "dub/models/components";
 
 let value: AnalyticsCities = {
-    city: "Plainfield",
-    country: "BL",
+    city: "Fort Drewborough",
+    country: "DZ",
 };
 ```
 

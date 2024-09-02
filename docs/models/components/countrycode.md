@@ -7,7 +7,7 @@ The country to retrieve analytics for.
 ```typescript
 import { CountryCode } from "dub/models/components";
 
-let value: CountryCode = "PL";
+let value: CountryCode = "MD";
 ```
 
 ## Values

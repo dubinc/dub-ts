@@ -6,18 +6,22 @@
 import { Sale } from "dub/models/operations";
 
 let value: Sale = {
-    amount: 7670.24,
+    amount: 2088.76,
+    currency: "Kina",
     paymentProcessor: "<value>",
     invoiceId: "<value>",
-    currency: "New Taiwan Dollar",
+    metadata: {
+        key: "<value>",
+    },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `amount`           | *number*           | :heavy_check_mark: | N/A                |
-| `paymentProcessor` | *string*           | :heavy_check_mark: | N/A                |
-| `invoiceId`        | *string*           | :heavy_check_mark: | N/A                |
-| `currency`         | *string*           | :heavy_check_mark: | N/A                |
+| Field                 | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `amount`              | *number*              | :heavy_check_mark:    | N/A                   |
+| `currency`            | *string*              | :heavy_check_mark:    | N/A                   |
+| `paymentProcessor`    | *string*              | :heavy_check_mark:    | N/A                   |
+| `invoiceId`           | *string*              | :heavy_check_mark:    | N/A                   |
+| `metadata`            | Record<string, *any*> | :heavy_check_mark:    | N/A                   |

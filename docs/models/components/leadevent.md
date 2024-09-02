@@ -6,6 +6,7 @@
 import { LeadEvent } from "dub/models/components";
 
 let value: LeadEvent = {
+    event: "lead",
     timestamp: "<value>",
     eventId: "<value>",
     eventName: "<value>",
@@ -14,18 +15,18 @@ let value: LeadEvent = {
     customerAvatar: "<value>",
     clickId: "<value>",
     linkId: "<value>",
-    domain: "fumbling-throne.info",
+    domain: "humming-networking.org",
     key: "<key>",
-    url: "https://old-expansionism.net",
+    url: "https://portly-cribbage.org",
     continent: "<value>",
-    country: "Macao",
-    city: "Abbottside",
+    country: "Uruguay",
+    city: "Kingport",
     device: "<value>",
     browser: "<value>",
     os: "<value>",
     referer: "<value>",
-    qr: 3118.6,
-    ip: "70.108.204.226",
+    qr: 8464.09,
+    ip: "250.179.29.76",
 };
 ```
 
@@ -33,7 +34,7 @@ let value: LeadEvent = {
 
 | Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `event`                                                                | [components.LeadEventEvent](../../models/components/leadeventevent.md) | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `event`                                                                | [components.LeadEventEvent](../../models/components/leadeventevent.md) | :heavy_check_mark:                                                     | N/A                                                                    |
 | `timestamp`                                                            | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
 | `eventId`                                                              | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
 | `eventName`                                                            | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
