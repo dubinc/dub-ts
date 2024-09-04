@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: 4b38427d599ff9991821aff7767f96aa
+  docChecksum: e79768bd6535cef0d8d78eefb5ac63e1
   docVersion: 0.0.1
-  speakeasyVersion: 1.386.0
-  generationVersion: 2.407.2
-  releaseVersion: 0.36.6
-  configChecksum: ef2d637732a6f37eb86b2df2149f9040
+  speakeasyVersion: 1.390.1
+  generationVersion: 2.409.0
+  releaseVersion: 0.37.0
+  configChecksum: 98f7e82ebf8b9aa7b9e8891dd189d754
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.14.2
+    core: 3.16.0
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     envVarSecurityUsage: 0.1.1
@@ -80,6 +80,7 @@ generatedFiles:
   - src/lib/config.ts
   - src/lib/dlv.ts
   - src/lib/encodings.ts
+  - src/lib/files.ts
   - src/lib/http.ts
   - src/lib/is-plain-object.ts
   - src/lib/logger.ts
@@ -101,6 +102,7 @@ generatedFiles:
   - src/types/index.ts
   - src/types/operations.ts
   - src/types/rfcdate.ts
+  - src/types/streams.ts
   - tsconfig.json
   - src/models/operations/getlinks.ts
   - src/models/operations/createlink.ts

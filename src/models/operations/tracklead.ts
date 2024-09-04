@@ -63,9 +63,9 @@ export const TrackLeadRequestBody$inboundSchema: z.ZodType<
     clickId: z.string(),
     eventName: z.string(),
     customerId: z.string(),
-    customerName: z.nullable(z.string()).optional(),
-    customerEmail: z.nullable(z.string()).optional(),
-    customerAvatar: z.nullable(z.string()).optional(),
+    customerName: z.nullable(z.string()).default(null),
+    customerEmail: z.nullable(z.string()).default(null),
+    customerAvatar: z.nullable(z.string()).default(null),
     metadata: z.nullable(z.record(z.any())).optional(),
 });
 
@@ -74,9 +74,9 @@ export type TrackLeadRequestBody$Outbound = {
     clickId: string;
     eventName: string;
     customerId: string;
-    customerName?: string | null | undefined;
-    customerEmail?: string | null | undefined;
-    customerAvatar?: string | null | undefined;
+    customerName: string | null;
+    customerEmail: string | null;
+    customerAvatar: string | null;
     metadata?: { [k: string]: any } | null | undefined;
 };
 
@@ -89,9 +89,9 @@ export const TrackLeadRequestBody$outboundSchema: z.ZodType<
     clickId: z.string(),
     eventName: z.string(),
     customerId: z.string(),
-    customerName: z.nullable(z.string()).optional(),
-    customerEmail: z.nullable(z.string()).optional(),
-    customerAvatar: z.nullable(z.string()).optional(),
+    customerName: z.nullable(z.string()).default(null),
+    customerEmail: z.nullable(z.string()).default(null),
+    customerAvatar: z.nullable(z.string()).default(null),
     metadata: z.nullable(z.record(z.any())).optional(),
 });
 

@@ -186,7 +186,7 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.tags.update("<value>");
+  const result = await dub.tags.update("<id>");
 
   // Handle the result
   console.log(result)
@@ -210,7 +210,7 @@ const dub = new DubCore({
 });
 
 async function run() {
-  const res = await tagsUpdate(dub, "<value>");
+  const res = await tagsUpdate(dub, "<id>");
 
   if (!res.ok) {
     throw res.error;
