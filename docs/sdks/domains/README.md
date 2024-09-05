@@ -25,7 +25,7 @@ const dub = new Dub({
 
 async function run() {
   const result = await dub.domains.list();
-
+  
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -111,7 +111,7 @@ const dub = new Dub({
 
 async function run() {
   const result = await dub.domains.create();
-
+  
   // Handle the result
   console.log(result)
 }
@@ -193,7 +193,7 @@ const dub = new Dub({
 
 async function run() {
   const result = await dub.domains.delete("acme.com");
-
+  
   // Handle the result
   console.log(result)
 }
@@ -275,7 +275,7 @@ const dub = new Dub({
 
 async function run() {
   const result = await dub.domains.update("acme.com");
-
+  
   // Handle the result
   console.log(result)
 }

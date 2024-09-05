@@ -24,7 +24,7 @@ const dub = new Dub({
 
 async function run() {
   const result = await dub.tags.list();
-
+  
   // Handle the result
   console.log(result)
 }
@@ -105,7 +105,7 @@ const dub = new Dub({
 
 async function run() {
   const result = await dub.tags.create();
-
+  
   // Handle the result
   console.log(result)
 }
@@ -187,7 +187,7 @@ const dub = new Dub({
 
 async function run() {
   const result = await dub.tags.update("<id>");
-
+  
   // Handle the result
   console.log(result)
 }

@@ -7,7 +7,7 @@ The unique name of the tags assigned to the short link (case insensitive).
 ```typescript
 import { GetLinksCountQueryParamTagNames } from "dub/models/operations";
 
-let value: GetLinksCountQueryParamTagNames = ["<value>"];
+let value: GetLinksCountQueryParamTagNames = "<value>";
 ```
 
 ## Supported Types

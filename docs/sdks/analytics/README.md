@@ -22,7 +22,7 @@ const dub = new Dub({
 
 async function run() {
   const result = await dub.analytics.retrieve();
-
+  
   // Handle the result
   console.log(result)
 }

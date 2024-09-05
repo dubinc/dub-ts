@@ -9,7 +9,7 @@ import { RetrieveAnalyticsResponseBody } from "dub/models/operations";
 
 let value: RetrieveAnalyticsResponseBody = [
     {
-        browser: "<value>",
+        start: "<value>",
     },
 ];
 ```

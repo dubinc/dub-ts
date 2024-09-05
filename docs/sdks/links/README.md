@@ -31,7 +31,7 @@ const dub = new Dub({
 
 async function run() {
   const result = await dub.links.list();
-
+  
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -117,7 +117,7 @@ const dub = new Dub({
 
 async function run() {
   const result = await dub.links.create();
-
+  
   // Handle the result
   console.log(result)
 }
@@ -199,7 +199,7 @@ const dub = new Dub({
 
 async function run() {
   const result = await dub.links.count();
-
+  
   // Handle the result
   console.log(result)
 }
@@ -281,7 +281,7 @@ const dub = new Dub({
 
 async function run() {
   const result = await dub.links.get();
-
+  
   // Handle the result
   console.log(result)
 }
@@ -363,7 +363,7 @@ const dub = new Dub({
 
 async function run() {
   const result = await dub.links.delete("<value>");
-
+  
   // Handle the result
   console.log(result)
 }
@@ -445,7 +445,7 @@ const dub = new Dub({
 
 async function run() {
   const result = await dub.links.update("<value>");
-
+  
   // Handle the result
   console.log(result)
 }
@@ -528,7 +528,7 @@ const dub = new Dub({
 
 async function run() {
   const result = await dub.links.createMany();
-
+  
   // Handle the result
   console.log(result)
 }
@@ -610,9 +610,12 @@ const dub = new Dub({
 
 async function run() {
   const result = await dub.links.deleteMany({
-    linkIds: "clux0rgak00011...,clux0rgak00022...",
+    linkIds: [
+      "clux0rgak00011...",
+      "clux0rgak00022...",
+    ],
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -636,7 +639,10 @@ const dub = new DubCore({
 
 async function run() {
   const res = await linksDeleteMany(dub, {
-    linkIds: "clux0rgak00011...,clux0rgak00022...",
+    linkIds: [
+      "clux0rgak00011...",
+      "clux0rgak00022...",
+    ],
   });
 
   if (!res.ok) {
@@ -696,7 +702,7 @@ const dub = new Dub({
 
 async function run() {
   const result = await dub.links.updateMany();
-
+  
   // Handle the result
   console.log(result)
 }
@@ -778,7 +784,7 @@ const dub = new Dub({
 
 async function run() {
   const result = await dub.links.upsert();
-
+  
   // Handle the result
   console.log(result)
 }

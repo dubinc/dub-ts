@@ -68,9 +68,12 @@ export async function linksDeleteMany(
 
     const path$ = pathToFunc("/links/bulk")();
 
-    const query$ = encodeFormQuery$({
-        linkIds: payload$.linkIds,
-    });
+    const query$ = encodeFormQuery$(
+        {
+            linkIds: payload$.linkIds,
+        },
+        { explode: false }
+    );
 
     const headers$ = new Headers({
         Accept: "application/json",

@@ -6,7 +6,7 @@
 import { AnalyticsTopUrls } from "dub/models/components";
 
 let value: AnalyticsTopUrls = {
-    url: "http://delightful-graph.name",
+    url: "https://agile-clamp.net",
 };
 ```
 
