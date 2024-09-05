@@ -8,7 +8,7 @@ export type BulkDeleteLinksRequest = {
     /**
      * Comma-separated list of link IDs to delete. Maximum of 100 IDs. Non-existing IDs will be ignored.
      */
-    linkIds: string;
+    linkIds: Array<string>;
 };
 
 /**
@@ -27,12 +27,12 @@ export const BulkDeleteLinksRequest$inboundSchema: z.ZodType<
     z.ZodTypeDef,
     unknown
 > = z.object({
-    linkIds: z.string(),
+    linkIds: z.array(z.string()),
 });
 
 /** @internal */
 export type BulkDeleteLinksRequest$Outbound = {
-    linkIds: string;
+    linkIds: Array<string>;
 };
 
 /** @internal */
@@ -41,7 +41,7 @@ export const BulkDeleteLinksRequest$outboundSchema: z.ZodType<
     z.ZodTypeDef,
     BulkDeleteLinksRequest
 > = z.object({
-    linkIds: z.string(),
+    linkIds: z.array(z.string()),
 });
 
 /**

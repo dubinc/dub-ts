@@ -7,7 +7,7 @@ The unique name of the tags assigned to the short link (case insensitive).
 ```typescript
 import { BulkCreateLinksTagNames } from "dub/models/operations";
 
-let value: BulkCreateLinksTagNames = ["<value>"];
+let value: BulkCreateLinksTagNames = "<value>";
 ```
 
 ## Supported Types

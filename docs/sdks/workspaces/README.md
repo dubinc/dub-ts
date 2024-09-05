@@ -25,7 +25,7 @@ async function run() {
   const result = await dub.workspaces.get({
     idOrSlug: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -109,7 +109,7 @@ const dub = new Dub({
 
 async function run() {
   const result = await dub.workspaces.update("<value>");
-
+  
   // Handle the result
   console.log(result)
 }

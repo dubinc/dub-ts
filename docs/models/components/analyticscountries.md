@@ -6,7 +6,7 @@
 import { AnalyticsCountries } from "dub/models/components";
 
 let value: AnalyticsCountries = {
-    country: "VG",
+    country: "FO",
 };
 ```
 

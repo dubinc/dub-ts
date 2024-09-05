@@ -24,7 +24,7 @@ async function run() {
   const result = await dub.metatags.get({
     url: "https://dub.co",
   });
-
+  
   // Handle the result
   console.log(result)
 }
