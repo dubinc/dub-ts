@@ -5,54 +5,58 @@
 import * as z from "zod";
 
 export type CreateDomainRequestBody = {
-    /**
-     * Name of the domain.
-     */
-    slug: string;
-    /**
-     * Redirect users to a specific URL when any link under this domain has expired.
-     */
-    expiredUrl?: string | null | undefined;
-    /**
-     * Whether to archive this domain. `false` will unarchive a previously archived domain.
-     */
-    archived?: boolean | undefined;
-    /**
-     * Provide context to your teammates in the link creation modal by showing them an example of a link to be shortened.
-     */
-    placeholder?: string | null | undefined;
+  /**
+   * Name of the domain.
+   */
+  slug: string;
+  /**
+   * Redirect users to a specific URL when any link under this domain has expired.
+   */
+  expiredUrl?: string | null | undefined;
+  /**
+   * Whether to archive this domain. `false` will unarchive a previously archived domain.
+   */
+  archived?: boolean | undefined;
+  /**
+   * Provide context to your teammates in the link creation modal by showing them an example of a link to be shortened.
+   */
+  placeholder?: string | null | undefined;
 };
 
 /** @internal */
 export const CreateDomainRequestBody$inboundSchema: z.ZodType<
-    CreateDomainRequestBody,
-    z.ZodTypeDef,
-    unknown
+  CreateDomainRequestBody,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    slug: z.string(),
-    expiredUrl: z.nullable(z.string()).optional(),
-    archived: z.boolean().default(false),
-    placeholder: z.nullable(z.string().default("https://dub.co/help/article/what-is-dub")),
+  slug: z.string(),
+  expiredUrl: z.nullable(z.string()).optional(),
+  archived: z.boolean().default(false),
+  placeholder: z.nullable(
+    z.string().default("https://dub.co/help/article/what-is-dub"),
+  ),
 });
 
 /** @internal */
 export type CreateDomainRequestBody$Outbound = {
-    slug: string;
-    expiredUrl?: string | null | undefined;
-    archived: boolean;
-    placeholder: string | null;
+  slug: string;
+  expiredUrl?: string | null | undefined;
+  archived: boolean;
+  placeholder: string | null;
 };
 
 /** @internal */
 export const CreateDomainRequestBody$outboundSchema: z.ZodType<
-    CreateDomainRequestBody$Outbound,
-    z.ZodTypeDef,
-    CreateDomainRequestBody
+  CreateDomainRequestBody$Outbound,
+  z.ZodTypeDef,
+  CreateDomainRequestBody
 > = z.object({
-    slug: z.string(),
-    expiredUrl: z.nullable(z.string()).optional(),
-    archived: z.boolean().default(false),
-    placeholder: z.nullable(z.string().default("https://dub.co/help/article/what-is-dub")),
+  slug: z.string(),
+  expiredUrl: z.nullable(z.string()).optional(),
+  archived: z.boolean().default(false),
+  placeholder: z.nullable(
+    z.string().default("https://dub.co/help/article/what-is-dub"),
+  ),
 });
 
 /**
@@ -60,10 +64,10 @@ export const CreateDomainRequestBody$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace CreateDomainRequestBody$ {
-    /** @deprecated use `CreateDomainRequestBody$inboundSchema` instead. */
-    export const inboundSchema = CreateDomainRequestBody$inboundSchema;
-    /** @deprecated use `CreateDomainRequestBody$outboundSchema` instead. */
-    export const outboundSchema = CreateDomainRequestBody$outboundSchema;
-    /** @deprecated use `CreateDomainRequestBody$Outbound` instead. */
-    export type Outbound = CreateDomainRequestBody$Outbound;
+  /** @deprecated use `CreateDomainRequestBody$inboundSchema` instead. */
+  export const inboundSchema = CreateDomainRequestBody$inboundSchema;
+  /** @deprecated use `CreateDomainRequestBody$outboundSchema` instead. */
+  export const outboundSchema = CreateDomainRequestBody$outboundSchema;
+  /** @deprecated use `CreateDomainRequestBody$Outbound` instead. */
+  export type Outbound = CreateDomainRequestBody$Outbound;
 }

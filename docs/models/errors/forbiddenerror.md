@@ -6,8 +6,8 @@
 import { ForbiddenError } from "dub/models/errors";
 
 let value: ForbiddenError = {
-    code: "forbidden",
-    message: "The requested resource was not found.",
+  code: "forbidden",
+  message: "The requested resource was not found.",
 };
 ```
 

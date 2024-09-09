@@ -8,16 +8,20 @@ import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Metatags extends ClientSDK {
-    /**
-     * Retrieve the metatags for a URL
-     *
-     * @remarks
-     * Retrieve the metatags for a URL.
-     */
-    async get(
-        request: operations.GetMetatagsRequest,
-        options?: RequestOptions
-    ): Promise<operations.GetMetatagsResponseBody> {
-        return unwrapAsync(metatagsGet(this, request, options));
-    }
+  /**
+   * Retrieve the metatags for a URL
+   *
+   * @remarks
+   * Retrieve the metatags for a URL.
+   */
+  async get(
+    request: operations.GetMetatagsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.GetMetatagsResponseBody> {
+    return unwrapAsync(metatagsGet(
+      this,
+      request,
+      options,
+    ));
+  }
 }

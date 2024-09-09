@@ -14,48 +14,48 @@ import { Track } from "./track.js";
 import { Workspaces } from "./workspaces.js";
 
 export class Dub extends ClientSDK {
-    private _links?: Links;
-    get links(): Links {
-        return (this._links ??= new Links(this.options$));
-    }
+  private _links?: Links;
+  get links(): Links {
+    return (this._links ??= new Links(this.options$));
+  }
 
-    private _qrCodes?: QRCodes;
-    get qrCodes(): QRCodes {
-        return (this._qrCodes ??= new QRCodes(this.options$));
-    }
+  private _qrCodes?: QRCodes;
+  get qrCodes(): QRCodes {
+    return (this._qrCodes ??= new QRCodes(this.options$));
+  }
 
-    private _analytics?: Analytics;
-    get analytics(): Analytics {
-        return (this._analytics ??= new Analytics(this.options$));
-    }
+  private _analytics?: Analytics;
+  get analytics(): Analytics {
+    return (this._analytics ??= new Analytics(this.options$));
+  }
 
-    private _events?: Events;
-    get events(): Events {
-        return (this._events ??= new Events(this.options$));
-    }
+  private _events?: Events;
+  get events(): Events {
+    return (this._events ??= new Events(this.options$));
+  }
 
-    private _workspaces?: Workspaces;
-    get workspaces(): Workspaces {
-        return (this._workspaces ??= new Workspaces(this.options$));
-    }
+  private _workspaces?: Workspaces;
+  get workspaces(): Workspaces {
+    return (this._workspaces ??= new Workspaces(this.options$));
+  }
 
-    private _tags?: Tags;
-    get tags(): Tags {
-        return (this._tags ??= new Tags(this.options$));
-    }
+  private _tags?: Tags;
+  get tags(): Tags {
+    return (this._tags ??= new Tags(this.options$));
+  }
 
-    private _domains?: Domains;
-    get domains(): Domains {
-        return (this._domains ??= new Domains(this.options$));
-    }
+  private _domains?: Domains;
+  get domains(): Domains {
+    return (this._domains ??= new Domains(this.options$));
+  }
 
-    private _track?: Track;
-    get track(): Track {
-        return (this._track ??= new Track(this.options$));
-    }
+  private _track?: Track;
+  get track(): Track {
+    return (this._track ??= new Track(this.options$));
+  }
 
-    private _metatags?: Metatags;
-    get metatags(): Metatags {
-        return (this._metatags ??= new Metatags(this.options$));
-    }
+  private _metatags?: Metatags;
+  get metatags(): Metatags {
+    return (this._metatags ??= new Metatags(this.options$));
+  }
 }

@@ -6,7 +6,7 @@
 import { Click } from "dub/models/operations";
 
 let value: Click = {
-    id: "<id>",
+  id: "<id>",
 };
 ```
 

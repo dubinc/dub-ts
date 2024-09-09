@@ -48,7 +48,7 @@ const dub = new DubCore({
 
 async function run() {
   const res = await qrCodesGet(dub, {
-    url: "https://tremendous-inevitable.net",
+    url: "https://brief-micronutrient.org",
   });
 
   if (!res.ok) {

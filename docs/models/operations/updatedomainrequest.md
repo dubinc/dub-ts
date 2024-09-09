@@ -6,7 +6,7 @@
 import { UpdateDomainRequest } from "dub/models/operations";
 
 let value: UpdateDomainRequest = {
-    slug: "acme.com",
+  slug: "acme.com",
 };
 ```
 

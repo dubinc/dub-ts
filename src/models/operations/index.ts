@@ -10,6 +10,7 @@ export * from "./createlink.js";
 export * from "./createtag.js";
 export * from "./deletedomain.js";
 export * from "./deletelink.js";
+export * from "./deletetag.js";
 export * from "./getlinkinfo.js";
 export * from "./getlinks.js";
 export * from "./getlinkscount.js";

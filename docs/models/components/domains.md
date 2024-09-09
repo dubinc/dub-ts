@@ -6,7 +6,7 @@
 import { Domains } from "dub/models/components";
 
 let value: Domains = {
-    slug: "acme.com",
+  slug: "acme.com",
 };
 ```
 

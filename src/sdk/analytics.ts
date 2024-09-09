@@ -8,16 +8,20 @@ import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Analytics extends ClientSDK {
-    /**
-     * Retrieve analytics for a link, a domain, or the authenticated workspace.
-     *
-     * @remarks
-     * Retrieve analytics for a link, a domain, or the authenticated workspace. The response type depends on the `event` and `type` query parameters.
-     */
-    async retrieve(
-        request?: operations.RetrieveAnalyticsRequest | undefined,
-        options?: RequestOptions
-    ): Promise<operations.RetrieveAnalyticsResponseBody> {
-        return unwrapAsync(analyticsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve analytics for a link, a domain, or the authenticated workspace.
+   *
+   * @remarks
+   * Retrieve analytics for a link, a domain, or the authenticated workspace. The response type depends on the `event` and `type` query parameters.
+   */
+  async retrieve(
+    request?: operations.RetrieveAnalyticsRequest | undefined,
+    options?: RequestOptions,
+  ): Promise<operations.RetrieveAnalyticsResponseBody> {
+    return unwrapAsync(analyticsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

@@ -6,7 +6,10 @@
 import { BulkDeleteLinksRequest } from "dub/models/operations";
 
 let value: BulkDeleteLinksRequest = {
-    linkIds: ["clux0rgak00011...", "clux0rgak00022..."],
+  linkIds: [
+    "clux0rgak00011...",
+    "clux0rgak00022...",
+  ],
 };
 ```
 

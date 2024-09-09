@@ -7,7 +7,9 @@ The unique IDs of the tags assigned to the short link.
 ```typescript
 import { TagIds } from "dub/models/operations";
 
-let value: TagIds = ["clux0rgak00011..."];
+let value: TagIds = [
+  "clux0rgak00011...",
+];
 ```
 
 ## Supported Types

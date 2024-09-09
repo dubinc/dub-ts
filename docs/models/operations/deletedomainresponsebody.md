@@ -8,7 +8,7 @@ The domain was deleted.
 import { DeleteDomainResponseBody } from "dub/models/operations";
 
 let value: DeleteDomainResponseBody = {
-    slug: "acme.com",
+  slug: "acme.com",
 };
 ```
 

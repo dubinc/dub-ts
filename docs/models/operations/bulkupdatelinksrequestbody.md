@@ -6,8 +6,10 @@
 import { BulkUpdateLinksRequestBody } from "dub/models/operations";
 
 let value: BulkUpdateLinksRequestBody = {
-    linkIds: ["<value>"],
-    data: {},
+  linkIds: [
+    "<value>",
+  ],
+  data: {},
 };
 ```
 

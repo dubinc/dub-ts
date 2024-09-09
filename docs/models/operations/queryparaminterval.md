@@ -1,6 +1,6 @@
 # QueryParamInterval
 
-The interval to retrieve analytics for. Takes precedence over start and end. If undefined, defaults to 24h.
+The interval to retrieve events for. Takes precedence over start and end. If undefined, defaults to 24h.
 
 ## Example Usage
 
@@ -13,5 +13,5 @@ let value: QueryParamInterval = "7d";
 ## Values
 
 ```typescript
-"24h" | "7d" | "30d" | "90d" | "ytd" | "1y" | "all" | "all_unfiltered"
+"24h" | "7d" | "30d" | "90d" | "ytd" | "1y" | "all"
 ```

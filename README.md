@@ -62,14 +62,14 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 import { Dub } from "dub";
 
 const dub = new Dub({
-    token: "DUB_API_KEY",
+  token: "DUB_API_KEY",
 });
 
 async function run() {
-    const result = await dub.links.create();
+  const result = await dub.links.create();
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -82,14 +82,14 @@ run();
 import { Dub } from "dub";
 
 const dub = new Dub({
-    token: "DUB_API_KEY",
+  token: "DUB_API_KEY",
 });
 
 async function run() {
-    const result = await dub.links.upsert();
+  const result = await dub.links.upsert();
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -134,6 +134,7 @@ run();
 
 * [list](docs/sdks/tags/README.md#list) - Retrieve a list of tags
 * [create](docs/sdks/tags/README.md#create) - Create a new tag
+* [delete](docs/sdks/tags/README.md#delete) - Delete a tag
 * [update](docs/sdks/tags/README.md#update) - Update a tag
 
 ### [domains](docs/sdks/domains/README.md)
@@ -178,90 +179,90 @@ Validation errors can also occur when either method arguments or data returned f
 ```typescript
 import { Dub } from "dub";
 import {
-    BadRequest,
-    Conflict,
-    Forbidden,
-    InternalServerError,
-    InviteExpired,
-    NotFound,
-    RateLimitExceeded,
-    SDKValidationError,
-    Unauthorized,
-    UnprocessableEntity,
+  BadRequest,
+  Conflict,
+  Forbidden,
+  InternalServerError,
+  InviteExpired,
+  NotFound,
+  RateLimitExceeded,
+  SDKValidationError,
+  Unauthorized,
+  UnprocessableEntity,
 } from "dub/models/errors";
 
 const dub = new Dub({
-    token: "DUB_API_KEY",
+  token: "DUB_API_KEY",
 });
 
 async function run() {
-    let result;
-    try {
-        result = await dub.links.list();
+  let result;
+  try {
+    result = await dub.links.list();
 
-        for await (const page of result) {
-            // Handle the page
-            console.log(page);
-        }
-    } catch (err) {
-        switch (true) {
-            case err instanceof SDKValidationError: {
-                // Validation errors can be pretty-printed
-                console.error(err.pretty());
-                // Raw value may also be inspected
-                console.error(err.rawValue);
-                return;
-            }
-            case err instanceof BadRequest: {
-                // Handle err.data$: BadRequestData
-                console.error(err);
-                return;
-            }
-            case err instanceof Unauthorized: {
-                // Handle err.data$: UnauthorizedData
-                console.error(err);
-                return;
-            }
-            case err instanceof Forbidden: {
-                // Handle err.data$: ForbiddenData
-                console.error(err);
-                return;
-            }
-            case err instanceof NotFound: {
-                // Handle err.data$: NotFoundData
-                console.error(err);
-                return;
-            }
-            case err instanceof Conflict: {
-                // Handle err.data$: ConflictData
-                console.error(err);
-                return;
-            }
-            case err instanceof InviteExpired: {
-                // Handle err.data$: InviteExpiredData
-                console.error(err);
-                return;
-            }
-            case err instanceof UnprocessableEntity: {
-                // Handle err.data$: UnprocessableEntityData
-                console.error(err);
-                return;
-            }
-            case err instanceof RateLimitExceeded: {
-                // Handle err.data$: RateLimitExceededData
-                console.error(err);
-                return;
-            }
-            case err instanceof InternalServerError: {
-                // Handle err.data$: InternalServerErrorData
-                console.error(err);
-                return;
-            }
-            default: {
-                throw err;
-            }
-        }
+    for await (const page of result) {
+      // Handle the page
+      console.log(page);
     }
+  } catch (err) {
+    switch (true) {
+      case (err instanceof SDKValidationError): {
+        // Validation errors can be pretty-printed
+        console.error(err.pretty());
+        // Raw value may also be inspected
+        console.error(err.rawValue);
+        return;
+      }
+      case (err instanceof BadRequest): {
+        // Handle err.data$: BadRequestData
+        console.error(err);
+        return;
+      }
+      case (err instanceof Unauthorized): {
+        // Handle err.data$: UnauthorizedData
+        console.error(err);
+        return;
+      }
+      case (err instanceof Forbidden): {
+        // Handle err.data$: ForbiddenData
+        console.error(err);
+        return;
+      }
+      case (err instanceof NotFound): {
+        // Handle err.data$: NotFoundData
+        console.error(err);
+        return;
+      }
+      case (err instanceof Conflict): {
+        // Handle err.data$: ConflictData
+        console.error(err);
+        return;
+      }
+      case (err instanceof InviteExpired): {
+        // Handle err.data$: InviteExpiredData
+        console.error(err);
+        return;
+      }
+      case (err instanceof UnprocessableEntity): {
+        // Handle err.data$: UnprocessableEntityData
+        console.error(err);
+        return;
+      }
+      case (err instanceof RateLimitExceeded): {
+        // Handle err.data$: RateLimitExceededData
+        console.error(err);
+        return;
+      }
+      case (err instanceof InternalServerError): {
+        // Handle err.data$: InternalServerErrorData
+        console.error(err);
+        return;
+      }
+      default: {
+        throw err;
+      }
+    }
+  }
 }
 
 run();
@@ -284,17 +285,17 @@ You can override the default server globally by passing a server index to the `s
 import { Dub } from "dub";
 
 const dub = new Dub({
-    serverIdx: 0,
-    token: "DUB_API_KEY",
+  serverIdx: 0,
+  token: "DUB_API_KEY",
 });
 
 async function run() {
-    const result = await dub.links.list();
+  const result = await dub.links.list();
 
-    for await (const page of result) {
-        // Handle the page
-        console.log(page);
-    }
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -310,17 +311,17 @@ The default server can also be overridden globally by passing a URL to the `serv
 import { Dub } from "dub";
 
 const dub = new Dub({
-    serverURL: "https://api.dub.co",
-    token: "DUB_API_KEY",
+  serverURL: "https://api.dub.co",
+  token: "DUB_API_KEY",
 });
 
 async function run() {
-    const result = await dub.links.list();
+  const result = await dub.links.list();
 
-    for await (const page of result) {
-        // Handle the page
-        console.log(page);
-    }
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -393,16 +394,16 @@ To authenticate with the API the `token` parameter must be set when initializing
 import { Dub } from "dub";
 
 const dub = new Dub({
-    token: "DUB_API_KEY",
+  token: "DUB_API_KEY",
 });
 
 async function run() {
-    const result = await dub.links.list();
+  const result = await dub.links.list();
 
-    for await (const page of result) {
-        // Handle the page
-        console.log(page);
-    }
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -420,27 +421,27 @@ To change the default retry strategy for a single API call, simply provide a ret
 import { Dub } from "dub";
 
 const dub = new Dub({
-    token: "DUB_API_KEY",
+  token: "DUB_API_KEY",
 });
 
 async function run() {
-    const result = await dub.links.list({
-        retries: {
-            strategy: "backoff",
-            backoff: {
-                initialInterval: 1,
-                maxInterval: 50,
-                exponent: 1.1,
-                maxElapsedTime: 100,
-            },
-            retryConnectionErrors: false,
-        },
-    });
+  const result = await dub.links.list({
+    retries: {
+      strategy: "backoff",
+      backoff: {
+        initialInterval: 1,
+        maxInterval: 50,
+        exponent: 1.1,
+        maxElapsedTime: 100,
+      },
+      retryConnectionErrors: false,
+    },
+  });
 
-    for await (const page of result) {
-        // Handle the page
-        console.log(page);
-    }
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -452,26 +453,26 @@ If you'd like to override the default retry strategy for all operations that sup
 import { Dub } from "dub";
 
 const dub = new Dub({
-    retryConfig: {
-        strategy: "backoff",
-        backoff: {
-            initialInterval: 1,
-            maxInterval: 50,
-            exponent: 1.1,
-            maxElapsedTime: 100,
-        },
-        retryConnectionErrors: false,
+  retryConfig: {
+    strategy: "backoff",
+    backoff: {
+      initialInterval: 1,
+      maxInterval: 50,
+      exponent: 1.1,
+      maxElapsedTime: 100,
     },
-    token: "DUB_API_KEY",
+    retryConnectionErrors: false,
+  },
+  token: "DUB_API_KEY",
 });
 
 async function run() {
-    const result = await dub.links.list();
+  const result = await dub.links.list();
 
-    for await (const page of result) {
-        // Handle the page
-        console.log(page);
-    }
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -495,16 +496,16 @@ Here's an example of one such pagination call:
 import { Dub } from "dub";
 
 const dub = new Dub({
-    token: "DUB_API_KEY",
+  token: "DUB_API_KEY",
 });
 
 async function run() {
-    const result = await dub.links.list();
+  const result = await dub.links.list();
 
-    for await (const page of result) {
-        // Handle the page
-        console.log(page);
-    }
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -546,6 +547,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [metatagsGet](docs/sdks/metatags/README.md#get)
 - [qrCodesGet](docs/sdks/qrcodes/README.md#get)
 - [tagsCreate](docs/sdks/tags/README.md#create)
+- [tagsDelete](docs/sdks/tags/README.md#delete)
 - [tagsList](docs/sdks/tags/README.md#list)
 - [tagsUpdate](docs/sdks/tags/README.md#update)
 - [trackCustomer](docs/sdks/track/README.md#customer)

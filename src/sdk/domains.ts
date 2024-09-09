@@ -13,56 +13,73 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Domains extends ClientSDK {
-    /**
-     * Retrieve a list of domains
-     *
-     * @remarks
-     * Retrieve a list of domains associated with the authenticated workspace.
-     */
-    async list(
-        request?: operations.ListDomainsRequest | undefined,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListDomainsResponse>> {
-        return unwrapResultIterator(domainsList(this, request, options));
-    }
+  /**
+   * Retrieve a list of domains
+   *
+   * @remarks
+   * Retrieve a list of domains associated with the authenticated workspace.
+   */
+  async list(
+    request?: operations.ListDomainsRequest | undefined,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListDomainsResponse>> {
+    return unwrapResultIterator(domainsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create a domain
-     *
-     * @remarks
-     * Create a domain for the authenticated workspace.
-     */
-    async create(
-        request?: operations.CreateDomainRequestBody | undefined,
-        options?: RequestOptions
-    ): Promise<components.DomainSchema> {
-        return unwrapAsync(domainsCreate(this, request, options));
-    }
+  /**
+   * Create a domain
+   *
+   * @remarks
+   * Create a domain for the authenticated workspace.
+   */
+  async create(
+    request?: operations.CreateDomainRequestBody | undefined,
+    options?: RequestOptions,
+  ): Promise<components.DomainSchema> {
+    return unwrapAsync(domainsCreate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Delete a domain
-     *
-     * @remarks
-     * Delete a domain from a workspace. It cannot be undone. This will also delete all the links associated with the domain.
-     */
-    async delete(
-        slug: string,
-        options?: RequestOptions
-    ): Promise<operations.DeleteDomainResponseBody> {
-        return unwrapAsync(domainsDelete(this, slug, options));
-    }
+  /**
+   * Delete a domain
+   *
+   * @remarks
+   * Delete a domain from a workspace. It cannot be undone. This will also delete all the links associated with the domain.
+   */
+  async delete(
+    slug: string,
+    options?: RequestOptions,
+  ): Promise<operations.DeleteDomainResponseBody> {
+    return unwrapAsync(domainsDelete(
+      this,
+      slug,
+      options,
+    ));
+  }
 
-    /**
-     * Update a domain
-     *
-     * @remarks
-     * Update a domain for the authenticated workspace.
-     */
-    async update(
-        slug: string,
-        requestBody?: operations.UpdateDomainRequestBody | undefined,
-        options?: RequestOptions
-    ): Promise<components.DomainSchema> {
-        return unwrapAsync(domainsUpdate(this, slug, requestBody, options));
-    }
+  /**
+   * Update a domain
+   *
+   * @remarks
+   * Update a domain for the authenticated workspace.
+   */
+  async update(
+    slug: string,
+    requestBody?: operations.UpdateDomainRequestBody | undefined,
+    options?: RequestOptions,
+  ): Promise<components.DomainSchema> {
+    return unwrapAsync(domainsUpdate(
+      this,
+      slug,
+      requestBody,
+      options,
+    ));
+  }
 }

@@ -3,14 +3,14 @@
 import { Dub } from "dub";
 
 const dub = new Dub({
-    token: "DUB_API_KEY",
+  token: "DUB_API_KEY",
 });
 
 async function run() {
-    const result = await dub.links.create();
+  const result = await dub.links.create();
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -21,14 +21,14 @@ run();
 import { Dub } from "dub";
 
 const dub = new Dub({
-    token: "DUB_API_KEY",
+  token: "DUB_API_KEY",
 });
 
 async function run() {
-    const result = await dub.links.upsert();
+  const result = await dub.links.upsert();
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();

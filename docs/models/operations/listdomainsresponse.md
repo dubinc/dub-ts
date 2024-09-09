@@ -6,15 +6,15 @@
 import { ListDomainsResponse } from "dub/models/operations";
 
 let value: ListDomainsResponse = {
-    result: [
-        {
-            id: "<id>",
-            slug: "acme.com",
-            expiredUrl: "https://acme.com/expired",
-            createdAt: "<value>",
-            updatedAt: "<value>",
-        },
-    ],
+  result: [
+    {
+      id: "<id>",
+      slug: "acme.com",
+      expiredUrl: "https://acme.com/expired",
+      createdAt: "<value>",
+      updatedAt: "<value>",
+    },
+  ],
 };
 ```
 

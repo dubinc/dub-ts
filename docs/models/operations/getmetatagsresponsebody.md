@@ -8,9 +8,9 @@ The retrieved metatags
 import { GetMetatagsResponseBody } from "dub/models/operations";
 
 let value: GetMetatagsResponseBody = {
-    title: "Dub.co - Link Management for Modern Marketing Teams",
-    description: "Dub.co is the open-source link management infrastructure ...",
-    image: "https://assets.dub.co/thumbnail.jpg",
+  title: "Dub.co - Link Management for Modern Marketing Teams",
+  description: "Dub.co is the open-source link management infrastructure ...",
+  image: "https://assets.dub.co/thumbnail.jpg",
 };
 ```
 

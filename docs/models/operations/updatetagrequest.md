@@ -6,7 +6,7 @@
 import { UpdateTagRequest } from "dub/models/operations";
 
 let value: UpdateTagRequest = {
-    id: "<id>",
+  id: "<id>",
 };
 ```
 
