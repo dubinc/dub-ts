@@ -5,43 +5,43 @@
 import * as z from "zod";
 
 export type BulkDeleteLinksRequest = {
-    /**
-     * Comma-separated list of link IDs to delete. Maximum of 100 IDs. Non-existing IDs will be ignored.
-     */
-    linkIds: Array<string>;
+  /**
+   * Comma-separated list of link IDs to delete. Maximum of 100 IDs. Non-existing IDs will be ignored.
+   */
+  linkIds: Array<string>;
 };
 
 /**
  * The deleted links count.
  */
 export type BulkDeleteLinksResponseBody = {
-    /**
-     * The number of links deleted.
-     */
-    deletedCount: number;
+  /**
+   * The number of links deleted.
+   */
+  deletedCount: number;
 };
 
 /** @internal */
 export const BulkDeleteLinksRequest$inboundSchema: z.ZodType<
-    BulkDeleteLinksRequest,
-    z.ZodTypeDef,
-    unknown
+  BulkDeleteLinksRequest,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    linkIds: z.array(z.string()),
+  linkIds: z.array(z.string()),
 });
 
 /** @internal */
 export type BulkDeleteLinksRequest$Outbound = {
-    linkIds: Array<string>;
+  linkIds: Array<string>;
 };
 
 /** @internal */
 export const BulkDeleteLinksRequest$outboundSchema: z.ZodType<
-    BulkDeleteLinksRequest$Outbound,
-    z.ZodTypeDef,
-    BulkDeleteLinksRequest
+  BulkDeleteLinksRequest$Outbound,
+  z.ZodTypeDef,
+  BulkDeleteLinksRequest
 > = z.object({
-    linkIds: z.array(z.string()),
+  linkIds: z.array(z.string()),
 });
 
 /**
@@ -49,35 +49,35 @@ export const BulkDeleteLinksRequest$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace BulkDeleteLinksRequest$ {
-    /** @deprecated use `BulkDeleteLinksRequest$inboundSchema` instead. */
-    export const inboundSchema = BulkDeleteLinksRequest$inboundSchema;
-    /** @deprecated use `BulkDeleteLinksRequest$outboundSchema` instead. */
-    export const outboundSchema = BulkDeleteLinksRequest$outboundSchema;
-    /** @deprecated use `BulkDeleteLinksRequest$Outbound` instead. */
-    export type Outbound = BulkDeleteLinksRequest$Outbound;
+  /** @deprecated use `BulkDeleteLinksRequest$inboundSchema` instead. */
+  export const inboundSchema = BulkDeleteLinksRequest$inboundSchema;
+  /** @deprecated use `BulkDeleteLinksRequest$outboundSchema` instead. */
+  export const outboundSchema = BulkDeleteLinksRequest$outboundSchema;
+  /** @deprecated use `BulkDeleteLinksRequest$Outbound` instead. */
+  export type Outbound = BulkDeleteLinksRequest$Outbound;
 }
 
 /** @internal */
 export const BulkDeleteLinksResponseBody$inboundSchema: z.ZodType<
-    BulkDeleteLinksResponseBody,
-    z.ZodTypeDef,
-    unknown
+  BulkDeleteLinksResponseBody,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    deletedCount: z.number(),
+  deletedCount: z.number(),
 });
 
 /** @internal */
 export type BulkDeleteLinksResponseBody$Outbound = {
-    deletedCount: number;
+  deletedCount: number;
 };
 
 /** @internal */
 export const BulkDeleteLinksResponseBody$outboundSchema: z.ZodType<
-    BulkDeleteLinksResponseBody$Outbound,
-    z.ZodTypeDef,
-    BulkDeleteLinksResponseBody
+  BulkDeleteLinksResponseBody$Outbound,
+  z.ZodTypeDef,
+  BulkDeleteLinksResponseBody
 > = z.object({
-    deletedCount: z.number(),
+  deletedCount: z.number(),
 });
 
 /**
@@ -85,10 +85,10 @@ export const BulkDeleteLinksResponseBody$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace BulkDeleteLinksResponseBody$ {
-    /** @deprecated use `BulkDeleteLinksResponseBody$inboundSchema` instead. */
-    export const inboundSchema = BulkDeleteLinksResponseBody$inboundSchema;
-    /** @deprecated use `BulkDeleteLinksResponseBody$outboundSchema` instead. */
-    export const outboundSchema = BulkDeleteLinksResponseBody$outboundSchema;
-    /** @deprecated use `BulkDeleteLinksResponseBody$Outbound` instead. */
-    export type Outbound = BulkDeleteLinksResponseBody$Outbound;
+  /** @deprecated use `BulkDeleteLinksResponseBody$inboundSchema` instead. */
+  export const inboundSchema = BulkDeleteLinksResponseBody$inboundSchema;
+  /** @deprecated use `BulkDeleteLinksResponseBody$outboundSchema` instead. */
+  export const outboundSchema = BulkDeleteLinksResponseBody$outboundSchema;
+  /** @deprecated use `BulkDeleteLinksResponseBody$Outbound` instead. */
+  export type Outbound = BulkDeleteLinksResponseBody$Outbound;
 }

@@ -6,7 +6,7 @@
 import { AnalyticsTimeseries } from "dub/models/components";
 
 let value: AnalyticsTimeseries = {
-    start: "<value>",
+  start: "<value>",
 };
 ```
 

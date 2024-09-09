@@ -8,13 +8,20 @@ import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class QRCodes extends ClientSDK {
-    /**
-     * Retrieve a QR code
-     *
-     * @remarks
-     * Retrieve a QR code for a link.
-     */
-    async get(request: operations.GetQRCodeRequest, options?: RequestOptions): Promise<string> {
-        return unwrapAsync(qrCodesGet(this, request, options));
-    }
+  /**
+   * Retrieve a QR code
+   *
+   * @remarks
+   * Retrieve a QR code for a link.
+   */
+  async get(
+    request: operations.GetQRCodeRequest,
+    options?: RequestOptions,
+  ): Promise<string> {
+    return unwrapAsync(qrCodesGet(
+      this,
+      request,
+      options,
+    ));
+  }
 }

@@ -6,13 +6,13 @@
 import { AnalyticsTopLinks } from "dub/models/components";
 
 let value: AnalyticsTopLinks = {
-    link: "<value>",
-    id: "<id>",
-    domain: "sandy-spruce.biz",
-    key: "<key>",
-    shortLink: "<value>",
-    url: "http://delightful-graph.name",
-    createdAt: "<value>",
+  link: "<value>",
+  id: "<id>",
+  domain: "milky-vibrissae.biz",
+  key: "<key>",
+  shortLink: "<value>",
+  url: "https://humble-hello.name",
+  createdAt: "<value>",
 };
 ```
 

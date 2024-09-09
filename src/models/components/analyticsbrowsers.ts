@@ -5,58 +5,61 @@
 import * as z from "zod";
 
 export type AnalyticsBrowsers = {
-    /**
-     * The name of the browser
-     */
-    browser: string;
-    /**
-     * The number of clicks from this browser
-     */
-    clicks?: number | undefined;
-    /**
-     * The number of leads from this browser
-     */
-    leads?: number | undefined;
-    /**
-     * The number of sales from this browser
-     */
-    sales?: number | undefined;
-    /**
-     * The total amount of sales from this browser
-     */
-    saleAmount?: number | undefined;
+  /**
+   * The name of the browser
+   */
+  browser: string;
+  /**
+   * The number of clicks from this browser
+   */
+  clicks?: number | undefined;
+  /**
+   * The number of leads from this browser
+   */
+  leads?: number | undefined;
+  /**
+   * The number of sales from this browser
+   */
+  sales?: number | undefined;
+  /**
+   * The total amount of sales from this browser
+   */
+  saleAmount?: number | undefined;
 };
 
 /** @internal */
-export const AnalyticsBrowsers$inboundSchema: z.ZodType<AnalyticsBrowsers, z.ZodTypeDef, unknown> =
-    z.object({
-        browser: z.string(),
-        clicks: z.number().default(0),
-        leads: z.number().default(0),
-        sales: z.number().default(0),
-        saleAmount: z.number().default(0),
-    });
+export const AnalyticsBrowsers$inboundSchema: z.ZodType<
+  AnalyticsBrowsers,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  browser: z.string(),
+  clicks: z.number().default(0),
+  leads: z.number().default(0),
+  sales: z.number().default(0),
+  saleAmount: z.number().default(0),
+});
 
 /** @internal */
 export type AnalyticsBrowsers$Outbound = {
-    browser: string;
-    clicks: number;
-    leads: number;
-    sales: number;
-    saleAmount: number;
+  browser: string;
+  clicks: number;
+  leads: number;
+  sales: number;
+  saleAmount: number;
 };
 
 /** @internal */
 export const AnalyticsBrowsers$outboundSchema: z.ZodType<
-    AnalyticsBrowsers$Outbound,
-    z.ZodTypeDef,
-    AnalyticsBrowsers
+  AnalyticsBrowsers$Outbound,
+  z.ZodTypeDef,
+  AnalyticsBrowsers
 > = z.object({
-    browser: z.string(),
-    clicks: z.number().default(0),
-    leads: z.number().default(0),
-    sales: z.number().default(0),
-    saleAmount: z.number().default(0),
+  browser: z.string(),
+  clicks: z.number().default(0),
+  leads: z.number().default(0),
+  sales: z.number().default(0),
+  saleAmount: z.number().default(0),
 });
 
 /**
@@ -64,10 +67,10 @@ export const AnalyticsBrowsers$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace AnalyticsBrowsers$ {
-    /** @deprecated use `AnalyticsBrowsers$inboundSchema` instead. */
-    export const inboundSchema = AnalyticsBrowsers$inboundSchema;
-    /** @deprecated use `AnalyticsBrowsers$outboundSchema` instead. */
-    export const outboundSchema = AnalyticsBrowsers$outboundSchema;
-    /** @deprecated use `AnalyticsBrowsers$Outbound` instead. */
-    export type Outbound = AnalyticsBrowsers$Outbound;
+  /** @deprecated use `AnalyticsBrowsers$inboundSchema` instead. */
+  export const inboundSchema = AnalyticsBrowsers$inboundSchema;
+  /** @deprecated use `AnalyticsBrowsers$outboundSchema` instead. */
+  export const outboundSchema = AnalyticsBrowsers$outboundSchema;
+  /** @deprecated use `AnalyticsBrowsers$Outbound` instead. */
+  export type Outbound = AnalyticsBrowsers$Outbound;
 }

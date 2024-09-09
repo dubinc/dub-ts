@@ -6,10 +6,10 @@
 import { Customer } from "dub/models/operations";
 
 let value: Customer = {
-    id: "<id>",
-    name: "<value>",
-    email: "Nestor.Halvorson@gmail.com",
-    avatar: "https://loremflickr.com/640/480",
+  id: "<id>",
+  name: "<value>",
+  email: "Harry21@hotmail.com",
+  avatar: "https://loremflickr.com/640/480",
 };
 ```
 

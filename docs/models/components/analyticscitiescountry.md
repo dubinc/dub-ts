@@ -7,7 +7,7 @@ The 2-letter country code of the city: https://d.to/geo
 ```typescript
 import { AnalyticsCitiesCountry } from "dub/models/components";
 
-let value: AnalyticsCitiesCountry = "DE";
+let value: AnalyticsCitiesCountry = "RE";
 ```
 
 ## Values

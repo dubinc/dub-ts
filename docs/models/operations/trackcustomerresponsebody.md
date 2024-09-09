@@ -8,10 +8,10 @@ A customer was tracked.
 import { TrackCustomerResponseBody } from "dub/models/operations";
 
 let value: TrackCustomerResponseBody = {
-    customerId: "<value>",
-    customerName: "<value>",
-    customerEmail: "<value>",
-    customerAvatar: "<value>",
+  customerId: "<value>",
+  customerName: "<value>",
+  customerEmail: "<value>",
+  customerAvatar: "<value>",
 };
 ```
 

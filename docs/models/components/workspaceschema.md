@@ -6,39 +6,38 @@
 import { WorkspaceSchema } from "dub/models/components";
 
 let value: WorkspaceSchema = {
-    id: "<id>",
-    name: "<value>",
-    slug: "<value>",
-    plan: "business extra",
-    stripeId: "<value>",
-    billingCycleStart: 4748.67,
-    stripeConnectId: "<value>",
-    inviteCode: "<value>",
-    usage: 191.93,
-    usageLimit: 4701.32,
-    linksUsage: 3015.75,
-    linksLimit: 7160.75,
-    salesUsage: 6601.74,
-    salesLimit: 2879.91,
-    domainsLimit: 2900.77,
-    tagsLimit: 3834.62,
-    usersLimit: 6180.16,
-    aiUsage: 7491.7,
-    aiLimit: 4287.69,
-    referralLinkId: "<value>",
-    referredSignups: 8784.53,
-    conversionEnabled: false,
-    createdAt: "<value>",
-    users: [
-        {
-            role: "owner",
-        },
-    ],
-    domains: [
-        {
-            slug: "acme.com",
-        },
-    ],
+  id: "<id>",
+  name: "<value>",
+  slug: "<value>",
+  plan: "business max",
+  stripeId: "<value>",
+  billingCycleStart: 8472.76,
+  stripeConnectId: "<value>",
+  inviteCode: "<value>",
+  usage: 7774.08,
+  usageLimit: 6813.59,
+  linksUsage: 2594.22,
+  linksLimit: 1783.67,
+  salesUsage: 3738.13,
+  salesLimit: 698.59,
+  domainsLimit: 5876,
+  tagsLimit: 96.88,
+  usersLimit: 2728.22,
+  aiUsage: 8920.5,
+  aiLimit: 3708.53,
+  referralLinkId: "<value>",
+  conversionEnabled: false,
+  createdAt: "<value>",
+  users: [
+    {
+      role: "owner",
+    },
+  ],
+  domains: [
+    {
+      slug: "acme.com",
+    },
+  ],
 };
 ```
 
@@ -67,7 +66,6 @@ let value: WorkspaceSchema = {
 | `aiUsage`                                                                     | *number*                                                                      | :heavy_check_mark:                                                            | The AI usage of the workspace.                                                |
 | `aiLimit`                                                                     | *number*                                                                      | :heavy_check_mark:                                                            | The AI limit of the workspace.                                                |
 | `referralLinkId`                                                              | *string*                                                                      | :heavy_check_mark:                                                            | The ID of the referral link of the workspace.                                 |
-| `referredSignups`                                                             | *number*                                                                      | :heavy_check_mark:                                                            | The number of signups referred by the workspace.                              |
 | `conversionEnabled`                                                           | *boolean*                                                                     | :heavy_check_mark:                                                            | Whether the workspace has conversion tracking enabled (d.to/conversions).     |
 | `createdAt`                                                                   | *string*                                                                      | :heavy_check_mark:                                                            | The date and time when the workspace was created.                             |
 | `users`                                                                       | [components.Users](../../models/components/users.md)[]                        | :heavy_check_mark:                                                            | The role of the authenticated user in the workspace.                          |

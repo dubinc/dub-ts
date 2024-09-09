@@ -6,7 +6,7 @@
 import { RequestBody } from "dub/models/operations";
 
 let value: RequestBody = {
-    url: "https://google.com",
+  url: "https://google.com",
 };
 ```
 

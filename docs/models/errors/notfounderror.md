@@ -6,8 +6,8 @@
 import { NotFoundError } from "dub/models/errors";
 
 let value: NotFoundError = {
-    code: "not_found",
-    message: "The requested resource was not found.",
+  code: "not_found",
+  message: "The requested resource was not found.",
 };
 ```
 

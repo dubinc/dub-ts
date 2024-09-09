@@ -6,7 +6,7 @@
 import { CreateDomainRequestBody } from "dub/models/operations";
 
 let value: CreateDomainRequestBody = {
-    slug: "acme.com",
+  slug: "acme.com",
 };
 ```
 

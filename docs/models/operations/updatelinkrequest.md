@@ -6,7 +6,7 @@
 import { UpdateLinkRequest } from "dub/models/operations";
 
 let value: UpdateLinkRequest = {
-    linkId: "<value>",
+  linkId: "<value>",
 };
 ```
 

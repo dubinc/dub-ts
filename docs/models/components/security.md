@@ -6,7 +6,7 @@
 import { Security } from "dub/models/components";
 
 let value: Security = {
-    token: "DUB_API_KEY",
+  token: "DUB_API_KEY",
 };
 ```
 

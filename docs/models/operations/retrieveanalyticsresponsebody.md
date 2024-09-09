@@ -8,9 +8,9 @@ Analytics data
 import { RetrieveAnalyticsResponseBody } from "dub/models/operations";
 
 let value: RetrieveAnalyticsResponseBody = [
-    {
-        start: "<value>",
-    },
+  {
+    start: "<value>",
+  },
 ];
 ```
 

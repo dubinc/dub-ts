@@ -5,51 +5,51 @@
 import * as z from "zod";
 
 export type GetMetatagsRequest = {
-    /**
-     * The URL to retrieve metatags for.
-     */
-    url: string;
+  /**
+   * The URL to retrieve metatags for.
+   */
+  url: string;
 };
 
 /**
  * The retrieved metatags
  */
 export type GetMetatagsResponseBody = {
-    /**
-     * The meta title tag for the URL.
-     */
-    title: string | null;
-    /**
-     * The meta description tag for the URL.
-     */
-    description: string | null;
-    /**
-     * The OpenGraph image for the URL.
-     */
-    image: string | null;
+  /**
+   * The meta title tag for the URL.
+   */
+  title: string | null;
+  /**
+   * The meta description tag for the URL.
+   */
+  description: string | null;
+  /**
+   * The OpenGraph image for the URL.
+   */
+  image: string | null;
 };
 
 /** @internal */
 export const GetMetatagsRequest$inboundSchema: z.ZodType<
-    GetMetatagsRequest,
-    z.ZodTypeDef,
-    unknown
+  GetMetatagsRequest,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    url: z.string(),
+  url: z.string(),
 });
 
 /** @internal */
 export type GetMetatagsRequest$Outbound = {
-    url: string;
+  url: string;
 };
 
 /** @internal */
 export const GetMetatagsRequest$outboundSchema: z.ZodType<
-    GetMetatagsRequest$Outbound,
-    z.ZodTypeDef,
-    GetMetatagsRequest
+  GetMetatagsRequest$Outbound,
+  z.ZodTypeDef,
+  GetMetatagsRequest
 > = z.object({
-    url: z.string(),
+  url: z.string(),
 });
 
 /**
@@ -57,41 +57,41 @@ export const GetMetatagsRequest$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace GetMetatagsRequest$ {
-    /** @deprecated use `GetMetatagsRequest$inboundSchema` instead. */
-    export const inboundSchema = GetMetatagsRequest$inboundSchema;
-    /** @deprecated use `GetMetatagsRequest$outboundSchema` instead. */
-    export const outboundSchema = GetMetatagsRequest$outboundSchema;
-    /** @deprecated use `GetMetatagsRequest$Outbound` instead. */
-    export type Outbound = GetMetatagsRequest$Outbound;
+  /** @deprecated use `GetMetatagsRequest$inboundSchema` instead. */
+  export const inboundSchema = GetMetatagsRequest$inboundSchema;
+  /** @deprecated use `GetMetatagsRequest$outboundSchema` instead. */
+  export const outboundSchema = GetMetatagsRequest$outboundSchema;
+  /** @deprecated use `GetMetatagsRequest$Outbound` instead. */
+  export type Outbound = GetMetatagsRequest$Outbound;
 }
 
 /** @internal */
 export const GetMetatagsResponseBody$inboundSchema: z.ZodType<
-    GetMetatagsResponseBody,
-    z.ZodTypeDef,
-    unknown
+  GetMetatagsResponseBody,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    title: z.nullable(z.string()),
-    description: z.nullable(z.string()),
-    image: z.nullable(z.string()),
+  title: z.nullable(z.string()),
+  description: z.nullable(z.string()),
+  image: z.nullable(z.string()),
 });
 
 /** @internal */
 export type GetMetatagsResponseBody$Outbound = {
-    title: string | null;
-    description: string | null;
-    image: string | null;
+  title: string | null;
+  description: string | null;
+  image: string | null;
 };
 
 /** @internal */
 export const GetMetatagsResponseBody$outboundSchema: z.ZodType<
-    GetMetatagsResponseBody$Outbound,
-    z.ZodTypeDef,
-    GetMetatagsResponseBody
+  GetMetatagsResponseBody$Outbound,
+  z.ZodTypeDef,
+  GetMetatagsResponseBody
 > = z.object({
-    title: z.nullable(z.string()),
-    description: z.nullable(z.string()),
-    image: z.nullable(z.string()),
+  title: z.nullable(z.string()),
+  description: z.nullable(z.string()),
+  image: z.nullable(z.string()),
 });
 
 /**
@@ -99,10 +99,10 @@ export const GetMetatagsResponseBody$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace GetMetatagsResponseBody$ {
-    /** @deprecated use `GetMetatagsResponseBody$inboundSchema` instead. */
-    export const inboundSchema = GetMetatagsResponseBody$inboundSchema;
-    /** @deprecated use `GetMetatagsResponseBody$outboundSchema` instead. */
-    export const outboundSchema = GetMetatagsResponseBody$outboundSchema;
-    /** @deprecated use `GetMetatagsResponseBody$Outbound` instead. */
-    export type Outbound = GetMetatagsResponseBody$Outbound;
+  /** @deprecated use `GetMetatagsResponseBody$inboundSchema` instead. */
+  export const inboundSchema = GetMetatagsResponseBody$inboundSchema;
+  /** @deprecated use `GetMetatagsResponseBody$outboundSchema` instead. */
+  export const outboundSchema = GetMetatagsResponseBody$outboundSchema;
+  /** @deprecated use `GetMetatagsResponseBody$Outbound` instead. */
+  export type Outbound = GetMetatagsResponseBody$Outbound;
 }

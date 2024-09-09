@@ -6,7 +6,7 @@
 import { DeleteDomainRequest } from "dub/models/operations";
 
 let value: DeleteDomainRequest = {
-    slug: "acme.com",
+  slug: "acme.com",
 };
 ```
 

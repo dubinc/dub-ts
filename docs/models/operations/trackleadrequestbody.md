@@ -6,9 +6,9 @@
 import { TrackLeadRequestBody } from "dub/models/operations";
 
 let value: TrackLeadRequestBody = {
-    clickId: "<value>",
-    eventName: "Sign up",
-    customerId: "<value>",
+  clickId: "<value>",
+  eventName: "Sign up",
+  customerId: "<value>",
 };
 ```
 

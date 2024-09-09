@@ -10,42 +10,54 @@ import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Track extends ClientSDK {
-    /**
-     * Track a lead
-     *
-     * @remarks
-     * Track a lead for a short link.
-     */
-    async lead(
-        request?: operations.TrackLeadRequestBody | undefined,
-        options?: RequestOptions
-    ): Promise<operations.TrackLeadResponseBody> {
-        return unwrapAsync(trackLead(this, request, options));
-    }
+  /**
+   * Track a lead
+   *
+   * @remarks
+   * Track a lead for a short link.
+   */
+  async lead(
+    request?: operations.TrackLeadRequestBody | undefined,
+    options?: RequestOptions,
+  ): Promise<operations.TrackLeadResponseBody> {
+    return unwrapAsync(trackLead(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Track a sale
-     *
-     * @remarks
-     * Track a sale for a short link.
-     */
-    async sale(
-        request?: operations.TrackSaleRequestBody | undefined,
-        options?: RequestOptions
-    ): Promise<operations.TrackSaleResponseBody> {
-        return unwrapAsync(trackSale(this, request, options));
-    }
+  /**
+   * Track a sale
+   *
+   * @remarks
+   * Track a sale for a short link.
+   */
+  async sale(
+    request?: operations.TrackSaleRequestBody | undefined,
+    options?: RequestOptions,
+  ): Promise<operations.TrackSaleResponseBody> {
+    return unwrapAsync(trackSale(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Track a customer
-     *
-     * @remarks
-     * Track a customer for an authenticated workspace.
-     */
-    async customer(
-        request?: operations.TrackCustomerRequestBody | undefined,
-        options?: RequestOptions
-    ): Promise<operations.TrackCustomerResponseBody> {
-        return unwrapAsync(trackCustomer(this, request, options));
-    }
+  /**
+   * Track a customer
+   *
+   * @remarks
+   * Track a customer for an authenticated workspace.
+   */
+  async customer(
+    request?: operations.TrackCustomerRequestBody | undefined,
+    options?: RequestOptions,
+  ): Promise<operations.TrackCustomerResponseBody> {
+    return unwrapAsync(trackCustomer(
+      this,
+      request,
+      options,
+    ));
+  }
 }

@@ -8,15 +8,15 @@ A lead was tracked.
 import { TrackLeadResponseBody } from "dub/models/operations";
 
 let value: TrackLeadResponseBody = {
-    click: {
-        id: "<id>",
-    },
-    customer: {
-        id: "<id>",
-        name: "<value>",
-        email: "Keyon_Batz@gmail.com",
-        avatar: "https://loremflickr.com/640/480",
-    },
+  click: {
+    id: "<id>",
+  },
+  customer: {
+    id: "<id>",
+    name: "<value>",
+    email: "Kennedi.Mante50@hotmail.com",
+    avatar: "https://loremflickr.com/640/480",
+  },
 };
 ```
 

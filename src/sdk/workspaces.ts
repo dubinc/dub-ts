@@ -10,30 +10,39 @@ import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Workspaces extends ClientSDK {
-    /**
-     * Retrieve a workspace
-     *
-     * @remarks
-     * Retrieve a workspace for the authenticated user.
-     */
-    async get(
-        request: operations.GetWorkspaceRequest,
-        options?: RequestOptions
-    ): Promise<components.WorkspaceSchema> {
-        return unwrapAsync(workspacesGet(this, request, options));
-    }
+  /**
+   * Retrieve a workspace
+   *
+   * @remarks
+   * Retrieve a workspace for the authenticated user.
+   */
+  async get(
+    request: operations.GetWorkspaceRequest,
+    options?: RequestOptions,
+  ): Promise<components.WorkspaceSchema> {
+    return unwrapAsync(workspacesGet(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Update a workspace
-     *
-     * @remarks
-     * Update a workspace by ID or slug.
-     */
-    async update(
-        idOrSlug: string,
-        requestBody?: operations.UpdateWorkspaceRequestBody | undefined,
-        options?: RequestOptions
-    ): Promise<components.WorkspaceSchema> {
-        return unwrapAsync(workspacesUpdate(this, idOrSlug, requestBody, options));
-    }
+  /**
+   * Update a workspace
+   *
+   * @remarks
+   * Update a workspace by ID or slug.
+   */
+  async update(
+    idOrSlug: string,
+    requestBody?: operations.UpdateWorkspaceRequestBody | undefined,
+    options?: RequestOptions,
+  ): Promise<components.WorkspaceSchema> {
+    return unwrapAsync(workspacesUpdate(
+      this,
+      idOrSlug,
+      requestBody,
+      options,
+    ));
+  }
 }

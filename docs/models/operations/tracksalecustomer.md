@@ -6,10 +6,10 @@
 import { TrackSaleCustomer } from "dub/models/operations";
 
 let value: TrackSaleCustomer = {
-    id: "<id>",
-    name: "<value>",
-    email: "Cordie99@yahoo.com",
-    avatar: "https://loremflickr.com/640/480",
+  id: "<id>",
+  name: "<value>",
+  email: "Kira.Boehm31@hotmail.com",
+  avatar: "https://loremflickr.com/640/480",
 };
 ```
 

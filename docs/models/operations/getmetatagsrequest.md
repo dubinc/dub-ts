@@ -6,7 +6,7 @@
 import { GetMetatagsRequest } from "dub/models/operations";
 
 let value: GetMetatagsRequest = {
-    url: "https://dub.co",
+  url: "https://dub.co",
 };
 ```
 

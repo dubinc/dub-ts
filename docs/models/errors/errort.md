@@ -6,8 +6,8 @@
 import { ErrorT } from "dub/models/errors";
 
 let value: ErrorT = {
-    code: "bad_request",
-    message: "The requested resource was not found.",
+  code: "bad_request",
+  message: "The requested resource was not found.",
 };
 ```
 

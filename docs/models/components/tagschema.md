@@ -6,9 +6,9 @@
 import { TagSchema } from "dub/models/components";
 
 let value: TagSchema = {
-    id: "<id>",
-    name: "<value>",
-    color: "red",
+  id: "<id>",
+  name: "<value>",
+  color: "green",
 };
 ```
 

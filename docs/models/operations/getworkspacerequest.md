@@ -6,7 +6,7 @@
 import { GetWorkspaceRequest } from "dub/models/operations";
 
 let value: GetWorkspaceRequest = {
-    idOrSlug: "<value>",
+  idOrSlug: "<value>",
 };
 ```
 

@@ -8,16 +8,20 @@ import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Events extends ClientSDK {
-    /**
-     * Retrieve a list of events
-     *
-     * @remarks
-     * Retrieve a paginated list of events for the authenticated workspace.
-     */
-    async list(
-        request?: operations.ListEventsRequest | undefined,
-        options?: RequestOptions
-    ): Promise<operations.ListEventsResponseBody> {
-        return unwrapAsync(eventsList(this, request, options));
-    }
+  /**
+   * Retrieve a list of events
+   *
+   * @remarks
+   * Retrieve a paginated list of events for the authenticated workspace.
+   */
+  async list(
+    request?: operations.ListEventsRequest | undefined,
+    options?: RequestOptions,
+  ): Promise<operations.ListEventsResponseBody> {
+    return unwrapAsync(eventsList(
+      this,
+      request,
+      options,
+    ));
+  }
 }

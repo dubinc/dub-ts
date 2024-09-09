@@ -6,8 +6,8 @@
 import { ConflictError } from "dub/models/errors";
 
 let value: ConflictError = {
-    code: "conflict",
-    message: "The requested resource was not found.",
+  code: "conflict",
+  message: "The requested resource was not found.",
 };
 ```
 

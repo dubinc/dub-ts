@@ -5,58 +5,61 @@
 import * as z from "zod";
 
 export type AnalyticsTopUrls = {
-    /**
-     * The destination URL
-     */
-    url: string;
-    /**
-     * The number of clicks from this URL
-     */
-    clicks?: number | undefined;
-    /**
-     * The number of leads from this URL
-     */
-    leads?: number | undefined;
-    /**
-     * The number of sales from this URL
-     */
-    sales?: number | undefined;
-    /**
-     * The total amount of sales from this URL
-     */
-    saleAmount?: number | undefined;
+  /**
+   * The destination URL
+   */
+  url: string;
+  /**
+   * The number of clicks from this URL
+   */
+  clicks?: number | undefined;
+  /**
+   * The number of leads from this URL
+   */
+  leads?: number | undefined;
+  /**
+   * The number of sales from this URL
+   */
+  sales?: number | undefined;
+  /**
+   * The total amount of sales from this URL
+   */
+  saleAmount?: number | undefined;
 };
 
 /** @internal */
-export const AnalyticsTopUrls$inboundSchema: z.ZodType<AnalyticsTopUrls, z.ZodTypeDef, unknown> =
-    z.object({
-        url: z.string(),
-        clicks: z.number().default(0),
-        leads: z.number().default(0),
-        sales: z.number().default(0),
-        saleAmount: z.number().default(0),
-    });
+export const AnalyticsTopUrls$inboundSchema: z.ZodType<
+  AnalyticsTopUrls,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  url: z.string(),
+  clicks: z.number().default(0),
+  leads: z.number().default(0),
+  sales: z.number().default(0),
+  saleAmount: z.number().default(0),
+});
 
 /** @internal */
 export type AnalyticsTopUrls$Outbound = {
-    url: string;
-    clicks: number;
-    leads: number;
-    sales: number;
-    saleAmount: number;
+  url: string;
+  clicks: number;
+  leads: number;
+  sales: number;
+  saleAmount: number;
 };
 
 /** @internal */
 export const AnalyticsTopUrls$outboundSchema: z.ZodType<
-    AnalyticsTopUrls$Outbound,
-    z.ZodTypeDef,
-    AnalyticsTopUrls
+  AnalyticsTopUrls$Outbound,
+  z.ZodTypeDef,
+  AnalyticsTopUrls
 > = z.object({
-    url: z.string(),
-    clicks: z.number().default(0),
-    leads: z.number().default(0),
-    sales: z.number().default(0),
-    saleAmount: z.number().default(0),
+  url: z.string(),
+  clicks: z.number().default(0),
+  leads: z.number().default(0),
+  sales: z.number().default(0),
+  saleAmount: z.number().default(0),
 });
 
 /**
@@ -64,10 +67,10 @@ export const AnalyticsTopUrls$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace AnalyticsTopUrls$ {
-    /** @deprecated use `AnalyticsTopUrls$inboundSchema` instead. */
-    export const inboundSchema = AnalyticsTopUrls$inboundSchema;
-    /** @deprecated use `AnalyticsTopUrls$outboundSchema` instead. */
-    export const outboundSchema = AnalyticsTopUrls$outboundSchema;
-    /** @deprecated use `AnalyticsTopUrls$Outbound` instead. */
-    export type Outbound = AnalyticsTopUrls$Outbound;
+  /** @deprecated use `AnalyticsTopUrls$inboundSchema` instead. */
+  export const inboundSchema = AnalyticsTopUrls$inboundSchema;
+  /** @deprecated use `AnalyticsTopUrls$outboundSchema` instead. */
+  export const outboundSchema = AnalyticsTopUrls$outboundSchema;
+  /** @deprecated use `AnalyticsTopUrls$Outbound` instead. */
+  export type Outbound = AnalyticsTopUrls$Outbound;
 }

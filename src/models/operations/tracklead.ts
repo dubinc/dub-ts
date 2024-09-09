@@ -5,94 +5,94 @@
 import * as z from "zod";
 
 export type TrackLeadRequestBody = {
-    /**
-     * The ID of the click in th Dub. You can read this value from `dclid` cookie.
-     */
-    clickId: string;
-    /**
-     * The name of the event to track.
-     */
-    eventName: string;
-    /**
-     * This is the unique identifier for the customer in the client's app. This is used to track the customer's journey.
-     */
-    customerId: string;
-    /**
-     * Name of the customer in the client's app.
-     */
-    customerName?: string | null | undefined;
-    /**
-     * Email of the customer in the client's app.
-     */
-    customerEmail?: string | null | undefined;
-    /**
-     * Avatar of the customer in the client's app.
-     */
-    customerAvatar?: string | null | undefined;
-    /**
-     * Additional metadata to be stored with the lead event
-     */
-    metadata?: { [k: string]: any } | null | undefined;
+  /**
+   * The ID of the click in th Dub. You can read this value from `dclid` cookie.
+   */
+  clickId: string;
+  /**
+   * The name of the event to track.
+   */
+  eventName: string;
+  /**
+   * This is the unique identifier for the customer in the client's app. This is used to track the customer's journey.
+   */
+  customerId: string;
+  /**
+   * Name of the customer in the client's app.
+   */
+  customerName?: string | null | undefined;
+  /**
+   * Email of the customer in the client's app.
+   */
+  customerEmail?: string | null | undefined;
+  /**
+   * Avatar of the customer in the client's app.
+   */
+  customerAvatar?: string | null | undefined;
+  /**
+   * Additional metadata to be stored with the lead event
+   */
+  metadata?: { [k: string]: any } | null | undefined;
 };
 
 export type Click = {
-    id: string;
+  id: string;
 };
 
 export type Customer = {
-    id: string;
-    name: string | null;
-    email: string | null;
-    avatar: string | null;
+  id: string;
+  name: string | null;
+  email: string | null;
+  avatar: string | null;
 };
 
 /**
  * A lead was tracked.
  */
 export type TrackLeadResponseBody = {
-    click: Click;
-    customer: Customer;
+  click: Click;
+  customer: Customer;
 };
 
 /** @internal */
 export const TrackLeadRequestBody$inboundSchema: z.ZodType<
-    TrackLeadRequestBody,
-    z.ZodTypeDef,
-    unknown
+  TrackLeadRequestBody,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    clickId: z.string(),
-    eventName: z.string(),
-    customerId: z.string(),
-    customerName: z.nullable(z.string()).default(null),
-    customerEmail: z.nullable(z.string()).default(null),
-    customerAvatar: z.nullable(z.string()).default(null),
-    metadata: z.nullable(z.record(z.any())).optional(),
+  clickId: z.string(),
+  eventName: z.string(),
+  customerId: z.string(),
+  customerName: z.nullable(z.string()).default(null),
+  customerEmail: z.nullable(z.string()).default(null),
+  customerAvatar: z.nullable(z.string()).default(null),
+  metadata: z.nullable(z.record(z.any())).optional(),
 });
 
 /** @internal */
 export type TrackLeadRequestBody$Outbound = {
-    clickId: string;
-    eventName: string;
-    customerId: string;
-    customerName: string | null;
-    customerEmail: string | null;
-    customerAvatar: string | null;
-    metadata?: { [k: string]: any } | null | undefined;
+  clickId: string;
+  eventName: string;
+  customerId: string;
+  customerName: string | null;
+  customerEmail: string | null;
+  customerAvatar: string | null;
+  metadata?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
 export const TrackLeadRequestBody$outboundSchema: z.ZodType<
-    TrackLeadRequestBody$Outbound,
-    z.ZodTypeDef,
-    TrackLeadRequestBody
+  TrackLeadRequestBody$Outbound,
+  z.ZodTypeDef,
+  TrackLeadRequestBody
 > = z.object({
-    clickId: z.string(),
-    eventName: z.string(),
-    customerId: z.string(),
-    customerName: z.nullable(z.string()).default(null),
-    customerEmail: z.nullable(z.string()).default(null),
-    customerAvatar: z.nullable(z.string()).default(null),
-    metadata: z.nullable(z.record(z.any())).optional(),
+  clickId: z.string(),
+  eventName: z.string(),
+  customerId: z.string(),
+  customerName: z.nullable(z.string()).default(null),
+  customerEmail: z.nullable(z.string()).default(null),
+  customerAvatar: z.nullable(z.string()).default(null),
+  metadata: z.nullable(z.record(z.any())).optional(),
 });
 
 /**
@@ -100,27 +100,32 @@ export const TrackLeadRequestBody$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace TrackLeadRequestBody$ {
-    /** @deprecated use `TrackLeadRequestBody$inboundSchema` instead. */
-    export const inboundSchema = TrackLeadRequestBody$inboundSchema;
-    /** @deprecated use `TrackLeadRequestBody$outboundSchema` instead. */
-    export const outboundSchema = TrackLeadRequestBody$outboundSchema;
-    /** @deprecated use `TrackLeadRequestBody$Outbound` instead. */
-    export type Outbound = TrackLeadRequestBody$Outbound;
+  /** @deprecated use `TrackLeadRequestBody$inboundSchema` instead. */
+  export const inboundSchema = TrackLeadRequestBody$inboundSchema;
+  /** @deprecated use `TrackLeadRequestBody$outboundSchema` instead. */
+  export const outboundSchema = TrackLeadRequestBody$outboundSchema;
+  /** @deprecated use `TrackLeadRequestBody$Outbound` instead. */
+  export type Outbound = TrackLeadRequestBody$Outbound;
 }
 
 /** @internal */
-export const Click$inboundSchema: z.ZodType<Click, z.ZodTypeDef, unknown> = z.object({
+export const Click$inboundSchema: z.ZodType<Click, z.ZodTypeDef, unknown> = z
+  .object({
     id: z.string(),
-});
+  });
 
 /** @internal */
 export type Click$Outbound = {
-    id: string;
+  id: string;
 };
 
 /** @internal */
-export const Click$outboundSchema: z.ZodType<Click$Outbound, z.ZodTypeDef, Click> = z.object({
-    id: z.string(),
+export const Click$outboundSchema: z.ZodType<
+  Click$Outbound,
+  z.ZodTypeDef,
+  Click
+> = z.object({
+  id: z.string(),
 });
 
 /**
@@ -128,76 +133,83 @@ export const Click$outboundSchema: z.ZodType<Click$Outbound, z.ZodTypeDef, Click
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace Click$ {
-    /** @deprecated use `Click$inboundSchema` instead. */
-    export const inboundSchema = Click$inboundSchema;
-    /** @deprecated use `Click$outboundSchema` instead. */
-    export const outboundSchema = Click$outboundSchema;
-    /** @deprecated use `Click$Outbound` instead. */
-    export type Outbound = Click$Outbound;
+  /** @deprecated use `Click$inboundSchema` instead. */
+  export const inboundSchema = Click$inboundSchema;
+  /** @deprecated use `Click$outboundSchema` instead. */
+  export const outboundSchema = Click$outboundSchema;
+  /** @deprecated use `Click$Outbound` instead. */
+  export type Outbound = Click$Outbound;
 }
 
 /** @internal */
-export const Customer$inboundSchema: z.ZodType<Customer, z.ZodTypeDef, unknown> = z.object({
-    id: z.string(),
-    name: z.nullable(z.string()),
-    email: z.nullable(z.string()),
-    avatar: z.nullable(z.string()),
+export const Customer$inboundSchema: z.ZodType<
+  Customer,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  name: z.nullable(z.string()),
+  email: z.nullable(z.string()),
+  avatar: z.nullable(z.string()),
 });
 
 /** @internal */
 export type Customer$Outbound = {
-    id: string;
-    name: string | null;
-    email: string | null;
-    avatar: string | null;
+  id: string;
+  name: string | null;
+  email: string | null;
+  avatar: string | null;
 };
 
 /** @internal */
-export const Customer$outboundSchema: z.ZodType<Customer$Outbound, z.ZodTypeDef, Customer> =
-    z.object({
-        id: z.string(),
-        name: z.nullable(z.string()),
-        email: z.nullable(z.string()),
-        avatar: z.nullable(z.string()),
-    });
+export const Customer$outboundSchema: z.ZodType<
+  Customer$Outbound,
+  z.ZodTypeDef,
+  Customer
+> = z.object({
+  id: z.string(),
+  name: z.nullable(z.string()),
+  email: z.nullable(z.string()),
+  avatar: z.nullable(z.string()),
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace Customer$ {
-    /** @deprecated use `Customer$inboundSchema` instead. */
-    export const inboundSchema = Customer$inboundSchema;
-    /** @deprecated use `Customer$outboundSchema` instead. */
-    export const outboundSchema = Customer$outboundSchema;
-    /** @deprecated use `Customer$Outbound` instead. */
-    export type Outbound = Customer$Outbound;
+  /** @deprecated use `Customer$inboundSchema` instead. */
+  export const inboundSchema = Customer$inboundSchema;
+  /** @deprecated use `Customer$outboundSchema` instead. */
+  export const outboundSchema = Customer$outboundSchema;
+  /** @deprecated use `Customer$Outbound` instead. */
+  export type Outbound = Customer$Outbound;
 }
 
 /** @internal */
 export const TrackLeadResponseBody$inboundSchema: z.ZodType<
-    TrackLeadResponseBody,
-    z.ZodTypeDef,
-    unknown
+  TrackLeadResponseBody,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    click: z.lazy(() => Click$inboundSchema),
-    customer: z.lazy(() => Customer$inboundSchema),
+  click: z.lazy(() => Click$inboundSchema),
+  customer: z.lazy(() => Customer$inboundSchema),
 });
 
 /** @internal */
 export type TrackLeadResponseBody$Outbound = {
-    click: Click$Outbound;
-    customer: Customer$Outbound;
+  click: Click$Outbound;
+  customer: Customer$Outbound;
 };
 
 /** @internal */
 export const TrackLeadResponseBody$outboundSchema: z.ZodType<
-    TrackLeadResponseBody$Outbound,
-    z.ZodTypeDef,
-    TrackLeadResponseBody
+  TrackLeadResponseBody$Outbound,
+  z.ZodTypeDef,
+  TrackLeadResponseBody
 > = z.object({
-    click: z.lazy(() => Click$outboundSchema),
-    customer: z.lazy(() => Customer$outboundSchema),
+  click: z.lazy(() => Click$outboundSchema),
+  customer: z.lazy(() => Customer$outboundSchema),
 });
 
 /**
@@ -205,10 +217,10 @@ export const TrackLeadResponseBody$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace TrackLeadResponseBody$ {
-    /** @deprecated use `TrackLeadResponseBody$inboundSchema` instead. */
-    export const inboundSchema = TrackLeadResponseBody$inboundSchema;
-    /** @deprecated use `TrackLeadResponseBody$outboundSchema` instead. */
-    export const outboundSchema = TrackLeadResponseBody$outboundSchema;
-    /** @deprecated use `TrackLeadResponseBody$Outbound` instead. */
-    export type Outbound = TrackLeadResponseBody$Outbound;
+  /** @deprecated use `TrackLeadResponseBody$inboundSchema` instead. */
+  export const inboundSchema = TrackLeadResponseBody$inboundSchema;
+  /** @deprecated use `TrackLeadResponseBody$outboundSchema` instead. */
+  export const outboundSchema = TrackLeadResponseBody$outboundSchema;
+  /** @deprecated use `TrackLeadResponseBody$Outbound` instead. */
+  export type Outbound = TrackLeadResponseBody$Outbound;
 }

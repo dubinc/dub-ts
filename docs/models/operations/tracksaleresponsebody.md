@@ -8,22 +8,22 @@ A sale was tracked.
 import { TrackSaleResponseBody } from "dub/models/operations";
 
 let value: TrackSaleResponseBody = {
-    eventName: "<value>",
-    customer: {
-        id: "<id>",
-        name: "<value>",
-        email: "Harvey.Konopelski@gmail.com",
-        avatar: "https://loremflickr.com/640/480",
+  eventName: "<value>",
+  customer: {
+    id: "<id>",
+    name: "<value>",
+    email: "Brendon_OConnell28@hotmail.com",
+    avatar: "https://loremflickr.com/640/480",
+  },
+  sale: {
+    amount: 2647.3,
+    currency: "Cuban Peso",
+    paymentProcessor: "<value>",
+    invoiceId: "<value>",
+    metadata: {
+      "key": "<value>",
     },
-    sale: {
-        amount: 6235.1,
-        currency: "Chilean Peso",
-        paymentProcessor: "<value>",
-        invoiceId: "<value>",
-        metadata: {
-            key: "<value>",
-        },
-    },
+  },
 };
 ```
 

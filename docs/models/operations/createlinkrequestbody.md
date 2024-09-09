@@ -6,7 +6,7 @@
 import { CreateLinkRequestBody } from "dub/models/operations";
 
 let value: CreateLinkRequestBody = {
-    url: "https://google.com",
+  url: "https://google.com",
 };
 ```
 
