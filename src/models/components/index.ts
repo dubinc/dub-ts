@@ -22,4 +22,5 @@ export * from "./linkschema.js";
 export * from "./saleevent.js";
 export * from "./security.js";
 export * from "./tagschema.js";
+export * from "./webhookevent.js";
 export * from "./workspaceschema.js";
