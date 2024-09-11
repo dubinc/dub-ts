@@ -22,7 +22,7 @@ export type AnalyticsDevices = {
    */
   sales?: number | undefined;
   /**
-   * The total amount of sales from this device
+   * The total amount of sales from this device, in cents
    */
   saleAmount?: number | undefined;
 };

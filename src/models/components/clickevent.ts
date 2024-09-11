@@ -390,10 +390,7 @@ export type Link = {
    * The UTM content of the short link.
    */
   utmContent: string | null;
-  /**
-   * The user ID of the creator of the short link.
-   */
-  userId: string;
+  userId: string | null;
   /**
    * The workspace ID of the short link.
    */
@@ -1916,7 +1913,7 @@ export const Link$inboundSchema: z.ZodType<Link, z.ZodTypeDef, unknown> = z
     utm_campaign: z.nullable(z.string()),
     utm_term: z.nullable(z.string()),
     utm_content: z.nullable(z.string()),
-    userId: z.string(),
+    userId: z.nullable(z.string()),
     workspaceId: z.string(),
     clicks: z.number().default(0),
     lastClicked: z.string(),
@@ -1969,7 +1966,7 @@ export type Link$Outbound = {
   utm_campaign: string | null;
   utm_term: string | null;
   utm_content: string | null;
-  userId: string;
+  userId: string | null;
   workspaceId: string;
   clicks: number;
   lastClicked: string;
@@ -2015,7 +2012,7 @@ export const Link$outboundSchema: z.ZodType<Link$Outbound, z.ZodTypeDef, Link> =
     utmCampaign: z.nullable(z.string()),
     utmTerm: z.nullable(z.string()),
     utmContent: z.nullable(z.string()),
-    userId: z.string(),
+    userId: z.nullable(z.string()),
     workspaceId: z.string(),
     clicks: z.number().default(0),
     lastClicked: z.string(),

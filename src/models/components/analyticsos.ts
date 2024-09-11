@@ -22,7 +22,7 @@ export type AnalyticsOS = {
    */
   sales?: number | undefined;
   /**
-   * The total amount of sales from this OS
+   * The total amount of sales from this OS, in cents
    */
   saleAmount?: number | undefined;
 };

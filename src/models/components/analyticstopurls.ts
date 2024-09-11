@@ -22,7 +22,7 @@ export type AnalyticsTopUrls = {
    */
   sales?: number | undefined;
   /**
-   * The total amount of sales from this URL
+   * The total amount of sales from this URL, in cents
    */
   saleAmount?: number | undefined;
 };

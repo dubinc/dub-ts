@@ -18,7 +18,7 @@ export type AnalyticsCount = {
    */
   sales?: number | undefined;
   /**
-   * The total amount of sales
+   * The total amount of sales, in cents
    */
   saleAmount?: number | undefined;
 };

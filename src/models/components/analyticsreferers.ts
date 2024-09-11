@@ -22,7 +22,7 @@ export type AnalyticsReferers = {
    */
   sales?: number | undefined;
   /**
-   * The total amount of sales from this referer
+   * The total amount of sales from this referer, in cents
    */
   saleAmount?: number | undefined;
 };

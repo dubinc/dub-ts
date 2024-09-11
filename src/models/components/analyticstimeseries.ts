@@ -22,7 +22,7 @@ export type AnalyticsTimeseries = {
    */
   sales?: number | undefined;
   /**
-   * The total amount of sales in the interval
+   * The total amount of sales in the interval, in cents
    */
   saleAmount?: number | undefined;
 };
