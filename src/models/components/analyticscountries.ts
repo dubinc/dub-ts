@@ -289,7 +289,7 @@ export type AnalyticsCountries = {
    */
   sales?: number | undefined;
   /**
-   * The total amount of sales from this country
+   * The total amount of sales from this country, in cents
    */
   saleAmount?: number | undefined;
 };

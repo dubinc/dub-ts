@@ -22,7 +22,7 @@ export type AnalyticsBrowsers = {
    */
   sales?: number | undefined;
   /**
-   * The total amount of sales from this browser
+   * The total amount of sales from this browser, in cents
    */
   saleAmount?: number | undefined;
 };

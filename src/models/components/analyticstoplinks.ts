@@ -48,7 +48,7 @@ export type AnalyticsTopLinks = {
    */
   sales?: number | undefined;
   /**
-   * The total amount of sales from this link
+   * The total amount of sales from this link, in cents
    */
   saleAmount?: number | undefined;
 };

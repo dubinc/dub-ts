@@ -287,7 +287,7 @@ export type AnalyticsCities = {
    */
   sales?: number | undefined;
   /**
-   * The total amount of sales from this city
+   * The total amount of sales from this city, in cents
    */
   saleAmount?: number | undefined;
 };
