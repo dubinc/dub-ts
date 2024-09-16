@@ -26,7 +26,7 @@ export class Links extends ClientSDK {
    * Retrieve a paginated list of links for the authenticated workspace.
    */
   async list(
-    request?: operations.GetLinksRequest | undefined,
+    request: operations.GetLinksRequest,
     options?: RequestOptions,
   ): Promise<PageIterator<operations.GetLinksResponse>> {
     return unwrapResultIterator(linksList(
@@ -60,7 +60,7 @@ export class Links extends ClientSDK {
    * Retrieve the number of links for the authenticated workspace.
    */
   async count(
-    request?: operations.GetLinksCountRequest | undefined,
+    request: operations.GetLinksCountRequest,
     options?: RequestOptions,
   ): Promise<number> {
     return unwrapAsync(linksCount(
@@ -77,7 +77,7 @@ export class Links extends ClientSDK {
    * Retrieve the info for a link.
    */
   async get(
-    request?: operations.GetLinkInfoRequest | undefined,
+    request: operations.GetLinkInfoRequest,
     options?: RequestOptions,
   ): Promise<components.LinkSchema> {
     return unwrapAsync(linksGet(

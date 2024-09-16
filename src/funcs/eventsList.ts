@@ -30,7 +30,7 @@ import { Result } from "../types/fp.js";
  */
 export async function eventsList(
   client$: DubCore,
-  request?: operations.ListEventsRequest | undefined,
+  request: operations.ListEventsRequest,
   options?: RequestOptions,
 ): Promise<
   Result<
@@ -53,7 +53,7 @@ export async function eventsList(
     | ConnectionError
   >
 > {
-  const input$ = typeof request === "undefined" ? {} : request;
+  const input$ = request;
 
   const parsed$ = schemas$.safeParse(
     input$,

@@ -146,6 +146,10 @@ export type WorkspaceSchema = {
    */
   conversionEnabled: boolean;
   /**
+   * Whether the workspace has claimed a free .link domain. (dub.link/free)
+   */
+  dotLinkClaimed: boolean;
+  /**
    * The date and time when the workspace was created.
    */
   createdAt: string;
@@ -303,6 +307,7 @@ export const WorkspaceSchema$inboundSchema: z.ZodType<
   aiLimit: z.number(),
   referralLinkId: z.nullable(z.string()),
   conversionEnabled: z.boolean(),
+  dotLinkClaimed: z.boolean(),
   createdAt: z.string(),
   users: z.array(z.lazy(() => Users$inboundSchema)),
   domains: z.array(z.lazy(() => Domains$inboundSchema)),
@@ -333,6 +338,7 @@ export type WorkspaceSchema$Outbound = {
   aiLimit: number;
   referralLinkId: string | null;
   conversionEnabled: boolean;
+  dotLinkClaimed: boolean;
   createdAt: string;
   users: Array<Users$Outbound>;
   domains: Array<Domains$Outbound>;
@@ -367,6 +373,7 @@ export const WorkspaceSchema$outboundSchema: z.ZodType<
   aiLimit: z.number(),
   referralLinkId: z.nullable(z.string()),
   conversionEnabled: z.boolean(),
+  dotLinkClaimed: z.boolean(),
   createdAt: z.string(),
   users: z.array(z.lazy(() => Users$outboundSchema)),
   domains: z.array(z.lazy(() => Domains$outboundSchema)),

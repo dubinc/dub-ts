@@ -36,7 +36,7 @@ import {
  */
 export async function domainsList(
   client$: DubCore,
-  request?: operations.ListDomainsRequest | undefined,
+  request: operations.ListDomainsRequest,
   options?: RequestOptions,
 ): Promise<
   PageIterator<
@@ -61,7 +61,7 @@ export async function domainsList(
     >
   >
 > {
-  const input$ = typeof request === "undefined" ? {} : request;
+  const input$ = request;
 
   const parsed$ = schemas$.safeParse(
     input$,

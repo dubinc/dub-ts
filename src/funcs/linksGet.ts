@@ -31,7 +31,7 @@ import { Result } from "../types/fp.js";
  */
 export async function linksGet(
   client$: DubCore,
-  request?: operations.GetLinkInfoRequest | undefined,
+  request: operations.GetLinkInfoRequest,
   options?: RequestOptions,
 ): Promise<
   Result<
@@ -54,7 +54,7 @@ export async function linksGet(
     | ConnectionError
   >
 > {
-  const input$ = typeof request === "undefined" ? {} : request;
+  const input$ = request;
 
   const parsed$ = schemas$.safeParse(
     input$,

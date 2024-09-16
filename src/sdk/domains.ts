@@ -20,7 +20,7 @@ export class Domains extends ClientSDK {
    * Retrieve a list of domains associated with the authenticated workspace.
    */
   async list(
-    request?: operations.ListDomainsRequest | undefined,
+    request: operations.ListDomainsRequest,
     options?: RequestOptions,
   ): Promise<PageIterator<operations.ListDomainsResponse>> {
     return unwrapResultIterator(domainsList(

@@ -31,7 +31,7 @@ import { Result } from "../types/fp.js";
  */
 export async function linksCount(
   client$: DubCore,
-  request?: operations.GetLinksCountRequest | undefined,
+  request: operations.GetLinksCountRequest,
   options?: RequestOptions,
 ): Promise<
   Result<
@@ -54,7 +54,7 @@ export async function linksCount(
     | ConnectionError
   >
 > {
-  const input$ = typeof request === "undefined" ? {} : request;
+  const input$ = request;
 
   const parsed$ = schemas$.safeParse(
     input$,
