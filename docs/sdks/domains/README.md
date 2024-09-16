@@ -24,7 +24,7 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.domains.list();
+  const result = await dub.domains.list({});
   
   for await (const page of result) {
     // Handle the page
@@ -50,7 +50,7 @@ const dub = new DubCore({
 });
 
 async function run() {
-  const res = await domainsList(dub);
+  const res = await domainsList(dub, {});
 
   if (!res.ok) {
     throw res.error;

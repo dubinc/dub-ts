@@ -1,6 +1,6 @@
 {
   "name": "dub",
-  "version": "0.39.0",
+  "version": "0.40.0",
   "author": "Dub",
   "tshy": {
     "exports": {
@@ -22,7 +22,7 @@
   "scripts": {
     "lint": "eslint --max-warnings=0 src",
     "build": "tshy",
-    "prepare": "npm run build"
+    "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
     "zod": ">= 3"

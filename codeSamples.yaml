@@ -8,13 +8,13 @@ actions:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "retrieveAnalytics"
-          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.analytics.retrieve();\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.analytics.retrieve({});\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
   - target: $["paths"]["/domains"]["get"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "listDomains"
-          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.domains.list();\n  \n  for await (const page of result) {\n    // Handle the page\n    console.log(page);\n  }\n}\n\nrun();"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.domains.list({});\n  \n  for await (const page of result) {\n    // Handle the page\n    console.log(page);\n  }\n}\n\nrun();"
   - target: $["paths"]["/domains"]["post"]
     update:
       "x-codeSamples":
@@ -38,13 +38,13 @@ actions:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "listEvents"
-          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.events.list();\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.events.list({});\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
   - target: $["paths"]["/links"]["get"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "getLinks"
-          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.links.list();\n  \n  for await (const page of result) {\n    // Handle the page\n    console.log(page);\n  }\n}\n\nrun();"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.links.list({});\n  \n  for await (const page of result) {\n    // Handle the page\n    console.log(page);\n  }\n}\n\nrun();"
   - target: $["paths"]["/links"]["post"]
     update:
       "x-codeSamples":
@@ -74,13 +74,13 @@ actions:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "getLinksCount"
-          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.links.count();\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.links.count({});\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
   - target: $["paths"]["/links/info"]["get"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "getLinkInfo"
-          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.links.get();\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.links.get({});\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
   - target: $["paths"]["/links/upsert"]["put"]
     update:
       "x-codeSamples":

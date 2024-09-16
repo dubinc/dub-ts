@@ -4,6 +4,24 @@
 
 import * as z from "zod";
 
+/**
+ * The registered domain record.
+ */
+export type RegisteredDomain = {
+  /**
+   * The ID of the registered domain record.
+   */
+  id: string;
+  /**
+   * The date the domain was created.
+   */
+  createdAt: string;
+  /**
+   * The date the domain expires.
+   */
+  expiresAt: string;
+};
+
 export type DomainSchema = {
   /**
    * The unique identifier of the domain.
@@ -41,7 +59,53 @@ export type DomainSchema = {
    * The date the domain was last updated.
    */
   updatedAt: string;
+  /**
+   * The registered domain record.
+   */
+  registeredDomain?: RegisteredDomain | null | undefined;
 };
+
+/** @internal */
+export const RegisteredDomain$inboundSchema: z.ZodType<
+  RegisteredDomain,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  createdAt: z.string(),
+  expiresAt: z.string(),
+});
+
+/** @internal */
+export type RegisteredDomain$Outbound = {
+  id: string;
+  createdAt: string;
+  expiresAt: string;
+};
+
+/** @internal */
+export const RegisteredDomain$outboundSchema: z.ZodType<
+  RegisteredDomain$Outbound,
+  z.ZodTypeDef,
+  RegisteredDomain
+> = z.object({
+  id: z.string(),
+  createdAt: z.string(),
+  expiresAt: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RegisteredDomain$ {
+  /** @deprecated use `RegisteredDomain$inboundSchema` instead. */
+  export const inboundSchema = RegisteredDomain$inboundSchema;
+  /** @deprecated use `RegisteredDomain$outboundSchema` instead. */
+  export const outboundSchema = RegisteredDomain$outboundSchema;
+  /** @deprecated use `RegisteredDomain$Outbound` instead. */
+  export type Outbound = RegisteredDomain$Outbound;
+}
 
 /** @internal */
 export const DomainSchema$inboundSchema: z.ZodType<
@@ -58,6 +122,8 @@ export const DomainSchema$inboundSchema: z.ZodType<
   expiredUrl: z.nullable(z.string()),
   createdAt: z.string(),
   updatedAt: z.string(),
+  registeredDomain: z.nullable(z.lazy(() => RegisteredDomain$inboundSchema))
+    .optional(),
 });
 
 /** @internal */
@@ -71,6 +137,7 @@ export type DomainSchema$Outbound = {
   expiredUrl: string | null;
   createdAt: string;
   updatedAt: string;
+  registeredDomain?: RegisteredDomain$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -88,6 +155,8 @@ export const DomainSchema$outboundSchema: z.ZodType<
   expiredUrl: z.nullable(z.string()),
   createdAt: z.string(),
   updatedAt: z.string(),
+  registeredDomain: z.nullable(z.lazy(() => RegisteredDomain$outboundSchema))
+    .optional(),
 });
 
 /**

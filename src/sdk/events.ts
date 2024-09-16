@@ -15,7 +15,7 @@ export class Events extends ClientSDK {
    * Retrieve a paginated list of events for the authenticated workspace.
    */
   async list(
-    request?: operations.ListEventsRequest | undefined,
+    request: operations.ListEventsRequest,
     options?: RequestOptions,
   ): Promise<operations.ListEventsResponseBody> {
     return unwrapAsync(eventsList(

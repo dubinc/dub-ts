@@ -30,7 +30,7 @@ import { Result } from "../types/fp.js";
  */
 export async function analyticsRetrieve(
   client$: DubCore,
-  request?: operations.RetrieveAnalyticsRequest | undefined,
+  request: operations.RetrieveAnalyticsRequest,
   options?: RequestOptions,
 ): Promise<
   Result<
@@ -53,7 +53,7 @@ export async function analyticsRetrieve(
     | ConnectionError
   >
 > {
-  const input$ = typeof request === "undefined" ? {} : request;
+  const input$ = request;
 
   const parsed$ = schemas$.safeParse(
     input$,

@@ -36,7 +36,7 @@ import {
  */
 export async function linksList(
   client$: DubCore,
-  request?: operations.GetLinksRequest | undefined,
+  request: operations.GetLinksRequest,
   options?: RequestOptions,
 ): Promise<
   PageIterator<
@@ -61,7 +61,7 @@ export async function linksList(
     >
   >
 > {
-  const input$ = typeof request === "undefined" ? {} : request;
+  const input$ = request;
 
   const parsed$ = schemas$.safeParse(
     input$,

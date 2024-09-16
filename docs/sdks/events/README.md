@@ -21,7 +21,7 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.events.list();
+  const result = await dub.events.list({});
   
   // Handle the result
   console.log(result)
@@ -45,7 +45,7 @@ const dub = new DubCore({
 });
 
 async function run() {
-  const res = await eventsList(dub);
+  const res = await eventsList(dub, {});
 
   if (!res.ok) {
     throw res.error;

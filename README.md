@@ -100,6 +100,25 @@ run();
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
+<details open>
+<summary>Available methods</summary>
+
+### [analytics](docs/sdks/analytics/README.md)
+
+* [retrieve](docs/sdks/analytics/README.md#retrieve) - Retrieve analytics for a link, a domain, or the authenticated workspace.
+
+### [domains](docs/sdks/domains/README.md)
+
+* [list](docs/sdks/domains/README.md#list) - Retrieve a list of domains
+* [create](docs/sdks/domains/README.md#create) - Create a domain
+* [delete](docs/sdks/domains/README.md#delete) - Delete a domain
+* [update](docs/sdks/domains/README.md#update) - Update a domain
+
+
+### [events](docs/sdks/events/README.md)
+
+* [list](docs/sdks/events/README.md#list) - Retrieve a list of events
+
 ### [links](docs/sdks/links/README.md)
 
 * [list](docs/sdks/links/README.md#list) - Retrieve a list of links
@@ -113,22 +132,13 @@ run();
 * [updateMany](docs/sdks/links/README.md#updatemany) - Bulk update links
 * [upsert](docs/sdks/links/README.md#upsert) - Upsert a link
 
+### [metatags](docs/sdks/metatags/README.md)
+
+* [get](docs/sdks/metatags/README.md#get) - Retrieve the metatags for a URL
+
 ### [qrCodes](docs/sdks/qrcodes/README.md)
 
 * [get](docs/sdks/qrcodes/README.md#get) - Retrieve a QR code
-
-### [analytics](docs/sdks/analytics/README.md)
-
-* [retrieve](docs/sdks/analytics/README.md#retrieve) - Retrieve analytics for a link, a domain, or the authenticated workspace.
-
-### [events](docs/sdks/events/README.md)
-
-* [list](docs/sdks/events/README.md#list) - Retrieve a list of events
-
-### [workspaces](docs/sdks/workspaces/README.md)
-
-* [get](docs/sdks/workspaces/README.md#get) - Retrieve a workspace
-* [update](docs/sdks/workspaces/README.md#update) - Update a workspace
 
 ### [tags](docs/sdks/tags/README.md)
 
@@ -137,22 +147,18 @@ run();
 * [delete](docs/sdks/tags/README.md#delete) - Delete a tag
 * [update](docs/sdks/tags/README.md#update) - Update a tag
 
-### [domains](docs/sdks/domains/README.md)
-
-* [list](docs/sdks/domains/README.md#list) - Retrieve a list of domains
-* [create](docs/sdks/domains/README.md#create) - Create a domain
-* [delete](docs/sdks/domains/README.md#delete) - Delete a domain
-* [update](docs/sdks/domains/README.md#update) - Update a domain
-
 ### [track](docs/sdks/track/README.md)
 
 * [lead](docs/sdks/track/README.md#lead) - Track a lead
 * [sale](docs/sdks/track/README.md#sale) - Track a sale
 * [customer](docs/sdks/track/README.md#customer) - Track a customer
 
-### [metatags](docs/sdks/metatags/README.md)
+### [workspaces](docs/sdks/workspaces/README.md)
 
-* [get](docs/sdks/metatags/README.md#get) - Retrieve the metatags for a URL
+* [get](docs/sdks/workspaces/README.md#get) - Retrieve a workspace
+* [update](docs/sdks/workspaces/README.md#update) - Update a workspace
+
+</details>
 <!-- End Available Resources and Operations [operations] -->
 
 <!-- Start Error Handling [errors] -->
@@ -198,7 +204,7 @@ const dub = new Dub({
 async function run() {
   let result;
   try {
-    result = await dub.links.list();
+    result = await dub.links.list({});
 
     for await (const page of result) {
       // Handle the page
@@ -290,7 +296,7 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.links.list();
+  const result = await dub.links.list({});
 
   for await (const page of result) {
     // Handle the page
@@ -316,7 +322,7 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.links.list();
+  const result = await dub.links.list({});
 
   for await (const page of result) {
     // Handle the page
@@ -398,7 +404,7 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.links.list();
+  const result = await dub.links.list({});
 
   for await (const page of result) {
     // Handle the page
@@ -425,7 +431,7 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.links.list({
+  const result = await dub.links.list({}, {
     retries: {
       strategy: "backoff",
       backoff: {
@@ -467,7 +473,7 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.links.list();
+  const result = await dub.links.list({});
 
   for await (const page of result) {
     // Handle the page
@@ -500,7 +506,7 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.links.list();
+  const result = await dub.links.list({});
 
   for await (const page of result) {
     // Handle the page
