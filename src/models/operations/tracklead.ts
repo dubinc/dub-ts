@@ -6,7 +6,7 @@ import * as z from "zod";
 
 export type TrackLeadRequestBody = {
   /**
-   * The ID of the click in th Dub. You can read this value from `dclid` cookie.
+   * The ID of the click in th Dub. You can read this value from `dub_id` cookie.
    */
   clickId: string;
   /**
