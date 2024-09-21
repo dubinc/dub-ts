@@ -423,6 +423,7 @@ export type SaleEventClick = {
 };
 
 export type SaleEventCustomer = {
+  id: string;
   name: string;
   email: string;
   avatar: string;
@@ -465,24 +466,6 @@ export type SaleEvent = {
   click: SaleEventClick;
   customer: SaleEventCustomer;
   sale: Sale;
-  /**
-   * Deprecated. Use `customer.name` instead.
-   *
-   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-   */
-  customerName: string;
-  /**
-   * Deprecated. Use `customer.email` instead.
-   *
-   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-   */
-  customerEmail: string;
-  /**
-   * Deprecated. Use `customer.avatar` instead.
-   *
-   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-   */
-  customerAvatar: string;
   /**
    * Deprecated. Use `sale.amount` instead.
    *
@@ -2133,6 +2116,7 @@ export const SaleEventCustomer$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  id: z.string(),
   name: z.string(),
   email: z.string(),
   avatar: z.string(),
@@ -2140,6 +2124,7 @@ export const SaleEventCustomer$inboundSchema: z.ZodType<
 
 /** @internal */
 export type SaleEventCustomer$Outbound = {
+  id: string;
   name: string;
   email: string;
   avatar: string;
@@ -2151,6 +2136,7 @@ export const SaleEventCustomer$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   SaleEventCustomer
 > = z.object({
+  id: z.string(),
   name: z.string(),
   email: z.string(),
   avatar: z.string(),
@@ -2240,9 +2226,6 @@ export const SaleEvent$inboundSchema: z.ZodType<
   click: z.lazy(() => SaleEventClick$inboundSchema),
   customer: z.lazy(() => SaleEventCustomer$inboundSchema),
   sale: z.lazy(() => Sale$inboundSchema),
-  customer_name: z.string(),
-  customer_email: z.string(),
-  customer_avatar: z.string(),
   saleAmount: z.number(),
   invoice_id: z.string(),
   payment_processor: z.string(),
@@ -2261,9 +2244,6 @@ export const SaleEvent$inboundSchema: z.ZodType<
   ip: z.string(),
 }).transform((v) => {
   return remap$(v, {
-    "customer_name": "customerName",
-    "customer_email": "customerEmail",
-    "customer_avatar": "customerAvatar",
     "invoice_id": "invoiceId",
     "payment_processor": "paymentProcessor",
     "click_id": "clickId",
@@ -2281,9 +2261,6 @@ export type SaleEvent$Outbound = {
   click: SaleEventClick$Outbound;
   customer: SaleEventCustomer$Outbound;
   sale: Sale$Outbound;
-  customer_name: string;
-  customer_email: string;
-  customer_avatar: string;
   saleAmount: number;
   invoice_id: string;
   payment_processor: string;
@@ -2316,9 +2293,6 @@ export const SaleEvent$outboundSchema: z.ZodType<
   click: z.lazy(() => SaleEventClick$outboundSchema),
   customer: z.lazy(() => SaleEventCustomer$outboundSchema),
   sale: z.lazy(() => Sale$outboundSchema),
-  customerName: z.string(),
-  customerEmail: z.string(),
-  customerAvatar: z.string(),
   saleAmount: z.number(),
   invoiceId: z.string(),
   paymentProcessor: z.string(),
@@ -2337,9 +2311,6 @@ export const SaleEvent$outboundSchema: z.ZodType<
   ip: z.string(),
 }).transform((v) => {
   return remap$(v, {
-    customerName: "customer_name",
-    customerEmail: "customer_email",
-    customerAvatar: "customer_avatar",
     invoiceId: "invoice_id",
     paymentProcessor: "payment_processor",
     clickId: "click_id",

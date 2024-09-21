@@ -3,9 +3,9 @@
  */
 
 import { DubCore } from "../core.js";
-import { encodeFormQuery as encodeFormQuery$ } from "../lib/encodings.js";
-import * as m$ from "../lib/matchers.js";
-import * as schemas$ from "../lib/schemas.js";
+import { encodeFormQuery } from "../lib/encodings.js";
+import * as M from "../lib/matchers.js";
+import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
@@ -35,8 +35,8 @@ import {
  * Retrieve a paginated list of links for the authenticated workspace.
  */
 export async function linksList(
-  client$: DubCore,
-  request: operations.GetLinksRequest,
+  client: DubCore,
+  request?: operations.GetLinksRequest | undefined,
   options?: RequestOptions,
 ): Promise<
   PageIterator<
@@ -61,63 +61,64 @@ export async function linksList(
     >
   >
 > {
-  const input$ = request;
+  const input = request;
 
-  const parsed$ = schemas$.safeParse(
-    input$,
-    (value$) => operations.GetLinksRequest$outboundSchema.parse(value$),
+  const parsed = safeParse(
+    input,
+    (value) =>
+      operations.GetLinksRequest$outboundSchema.optional().parse(value),
     "Input validation failed",
   );
-  if (!parsed$.ok) {
-    return haltIterator(parsed$);
+  if (!parsed.ok) {
+    return haltIterator(parsed);
   }
-  const payload$ = parsed$.value;
-  const body$ = null;
+  const payload = parsed.value;
+  const body = null;
 
-  const path$ = pathToFunc("/links")();
+  const path = pathToFunc("/links")();
 
-  const query$ = encodeFormQuery$({
-    "domain": payload$.domain,
-    "page": payload$.page,
-    "pageSize": payload$.pageSize,
-    "search": payload$.search,
-    "showArchived": payload$.showArchived,
-    "sort": payload$.sort,
-    "tagId": payload$.tagId,
-    "tagIds": payload$.tagIds,
-    "tagNames": payload$.tagNames,
-    "userId": payload$.userId,
-    "withTags": payload$.withTags,
+  const query = encodeFormQuery({
+    "domain": payload?.domain,
+    "page": payload?.page,
+    "pageSize": payload?.pageSize,
+    "search": payload?.search,
+    "showArchived": payload?.showArchived,
+    "sort": payload?.sort,
+    "tagId": payload?.tagId,
+    "tagIds": payload?.tagIds,
+    "tagNames": payload?.tagNames,
+    "userId": payload?.userId,
+    "withTags": payload?.withTags,
   });
 
-  const headers$ = new Headers({
+  const headers = new Headers({
     Accept: "application/json",
   });
 
-  const token$ = await extractSecurity(client$.options$.token);
-  const security$ = token$ == null ? {} : { token: token$ };
+  const secConfig = await extractSecurity(client._options.token);
+  const securityInput = secConfig == null ? {} : { token: secConfig };
   const context = {
     operationID: "getLinks",
     oAuth2Scopes: [],
-    securitySource: client$.options$.token,
+    securitySource: client._options.token,
   };
-  const securitySettings$ = resolveGlobalSecurity(security$);
+  const requestSecurity = resolveGlobalSecurity(securityInput);
 
-  const requestRes = client$.createRequest$(context, {
-    security: securitySettings$,
+  const requestRes = client._createRequest(context, {
+    security: requestSecurity,
     method: "GET",
-    path: path$,
-    headers: headers$,
-    query: query$,
-    body: body$,
-    timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
+    path: path,
+    headers: headers,
+    query: query,
+    body: body,
+    timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
     return haltIterator(requestRes);
   }
-  const request$ = requestRes.value;
+  const req = requestRes.value;
 
-  const doResult = await client$.do$(request$, {
+  const doResult = await client._do(req, {
     context,
     errorCodes: [
       "400",
@@ -133,7 +134,7 @@ export async function linksList(
       "5XX",
     ],
     retryConfig: options?.retries
-      || client$.options$.retryConfig,
+      || client._options.retryConfig,
     retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
   });
   if (!doResult.ok) {
@@ -141,11 +142,11 @@ export async function linksList(
   }
   const response = doResult.value;
 
-  const responseFields$ = {
-    HttpMeta: { Response: response, Request: request$ },
+  const responseFields = {
+    HttpMeta: { Response: response, Request: req },
   };
 
-  const [result$, raw$] = await m$.match<
+  const [result, raw] = await M.match<
     operations.GetLinksResponse,
     | errors.BadRequest
     | errors.Unauthorized
@@ -164,20 +165,20 @@ export async function linksList(
     | RequestTimeoutError
     | ConnectionError
   >(
-    m$.json(200, operations.GetLinksResponse$inboundSchema, { key: "Result" }),
-    m$.jsonErr(400, errors.BadRequest$inboundSchema),
-    m$.jsonErr(401, errors.Unauthorized$inboundSchema),
-    m$.jsonErr(403, errors.Forbidden$inboundSchema),
-    m$.jsonErr(404, errors.NotFound$inboundSchema),
-    m$.jsonErr(409, errors.Conflict$inboundSchema),
-    m$.jsonErr(410, errors.InviteExpired$inboundSchema),
-    m$.jsonErr(422, errors.UnprocessableEntity$inboundSchema),
-    m$.jsonErr(429, errors.RateLimitExceeded$inboundSchema),
-    m$.jsonErr(500, errors.InternalServerError$inboundSchema),
-    m$.fail(["4XX", "5XX"]),
-  )(response, { extraFields: responseFields$ });
-  if (!result$.ok) {
-    return haltIterator(result$);
+    M.json(200, operations.GetLinksResponse$inboundSchema, { key: "Result" }),
+    M.jsonErr(400, errors.BadRequest$inboundSchema),
+    M.jsonErr(401, errors.Unauthorized$inboundSchema),
+    M.jsonErr(403, errors.Forbidden$inboundSchema),
+    M.jsonErr(404, errors.NotFound$inboundSchema),
+    M.jsonErr(409, errors.Conflict$inboundSchema),
+    M.jsonErr(410, errors.InviteExpired$inboundSchema),
+    M.jsonErr(422, errors.UnprocessableEntity$inboundSchema),
+    M.jsonErr(429, errors.RateLimitExceeded$inboundSchema),
+    M.jsonErr(500, errors.InternalServerError$inboundSchema),
+    M.fail(["4XX", "5XX"]),
+  )(response, { extraFields: responseFields });
+  if (!result.ok) {
+    return haltIterator(result);
   }
 
   const nextFunc = (
@@ -203,7 +204,7 @@ export async function linksList(
       | ConnectionError
     >
   > => {
-    const page = input$.page || 0;
+    const page = input?.page || 0;
     const nextPage = page + 1;
 
     if (!responseData) {
@@ -215,22 +216,22 @@ export async function linksList(
     if (!Array.isArray(results) || !results.length) {
       return () => null;
     }
-    const limit = input$.pageSize || 0;
+    const limit = input?.pageSize || 0;
     if (results.length < limit) {
       return () => null;
     }
 
     return () =>
       linksList(
-        client$,
+        client,
         {
-          ...input$,
+          ...input,
           page: nextPage,
         },
         options,
       );
   };
 
-  const page$ = { ...result$, next: nextFunc(raw$) };
-  return { ...page$, ...createPageIterator(page$, (v) => !v.ok) };
+  const page = { ...result, next: nextFunc(raw) };
+  return { ...page, ...createPageIterator(page, (v) => !v.ok) };
 }

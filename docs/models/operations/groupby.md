@@ -7,7 +7,7 @@ The field to group the links by.
 ```typescript
 import { GroupBy } from "dub/models/operations";
 
-let value: GroupBy = "tagId";
+let value: GroupBy = "userId";
 ```
 
 ## Supported Types

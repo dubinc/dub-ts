@@ -6,8 +6,8 @@
 import { Sale } from "dub/models/components";
 
 let value: Sale = {
-  amount: 368584,
-  paymentProcessor: "shopify",
+  amount: 446394,
+  paymentProcessor: "paddle",
 };
 ```
 

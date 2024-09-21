@@ -7,7 +7,7 @@ The level of error correction to use for the QR code. Defaults to `L` if not pro
 ```typescript
 import { Level } from "dub/models/operations";
 
-let value: Level = "Q";
+let value: Level = "M";
 ```
 
 ## Values

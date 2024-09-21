@@ -7,7 +7,7 @@ The color of the tag.
 ```typescript
 import { Color } from "dub/models/components";
 
-let value: Color = "purple";
+let value: Color = "yellow";
 ```
 
 ## Values

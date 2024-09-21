@@ -9,7 +9,13 @@ import { RetrieveAnalyticsResponseBody } from "dub/models/operations";
 
 let value: RetrieveAnalyticsResponseBody = [
   {
-    start: "<value>",
+    link: "<value>",
+    id: "<id>",
+    domain: "suburban-birdbath.name",
+    key: "<key>",
+    shortLink: "<value>",
+    url: "https://everlasting-riser.org",
+    createdAt: "<value>",
   },
 ];
 ```

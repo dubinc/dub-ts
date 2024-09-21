@@ -20,23 +20,6 @@ import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Links extends ClientSDK {
   /**
-   * Retrieve a list of links
-   *
-   * @remarks
-   * Retrieve a paginated list of links for the authenticated workspace.
-   */
-  async list(
-    request: operations.GetLinksRequest,
-    options?: RequestOptions,
-  ): Promise<PageIterator<operations.GetLinksResponse>> {
-    return unwrapResultIterator(linksList(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
    * Create a new link
    *
    * @remarks
@@ -54,13 +37,30 @@ export class Links extends ClientSDK {
   }
 
   /**
+   * Retrieve a list of links
+   *
+   * @remarks
+   * Retrieve a paginated list of links for the authenticated workspace.
+   */
+  async list(
+    request?: operations.GetLinksRequest | undefined,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.GetLinksResponse>> {
+    return unwrapResultIterator(linksList(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Retrieve links count
    *
    * @remarks
    * Retrieve the number of links for the authenticated workspace.
    */
   async count(
-    request: operations.GetLinksCountRequest,
+    request?: operations.GetLinksCountRequest | undefined,
     options?: RequestOptions,
   ): Promise<number> {
     return unwrapAsync(linksCount(
@@ -77,29 +77,12 @@ export class Links extends ClientSDK {
    * Retrieve the info for a link.
    */
   async get(
-    request: operations.GetLinkInfoRequest,
+    request?: operations.GetLinkInfoRequest | undefined,
     options?: RequestOptions,
   ): Promise<components.LinkSchema> {
     return unwrapAsync(linksGet(
       this,
       request,
-      options,
-    ));
-  }
-
-  /**
-   * Delete a link
-   *
-   * @remarks
-   * Delete a link for the authenticated workspace.
-   */
-  async delete(
-    linkId: string,
-    options?: RequestOptions,
-  ): Promise<operations.DeleteLinkResponseBody> {
-    return unwrapAsync(linksDelete(
-      this,
-      linkId,
       options,
     ));
   }
@@ -124,6 +107,23 @@ export class Links extends ClientSDK {
   }
 
   /**
+   * Delete a link
+   *
+   * @remarks
+   * Delete a link for the authenticated workspace.
+   */
+  async delete(
+    linkId: string,
+    options?: RequestOptions,
+  ): Promise<operations.DeleteLinkResponseBody> {
+    return unwrapAsync(linksDelete(
+      this,
+      linkId,
+      options,
+    ));
+  }
+
+  /**
    * Bulk create links
    *
    * @remarks
@@ -141,23 +141,6 @@ export class Links extends ClientSDK {
   }
 
   /**
-   * Bulk delete links
-   *
-   * @remarks
-   * Bulk delete up to 100 links for the authenticated workspace.
-   */
-  async deleteMany(
-    request: operations.BulkDeleteLinksRequest,
-    options?: RequestOptions,
-  ): Promise<operations.BulkDeleteLinksResponseBody> {
-    return unwrapAsync(linksDeleteMany(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
    * Bulk update links
    *
    * @remarks
@@ -168,6 +151,23 @@ export class Links extends ClientSDK {
     options?: RequestOptions,
   ): Promise<Array<components.LinkSchema>> {
     return unwrapAsync(linksUpdateMany(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Bulk delete links
+   *
+   * @remarks
+   * Bulk delete up to 100 links for the authenticated workspace.
+   */
+  async deleteMany(
+    request: operations.BulkDeleteLinksRequest,
+    options?: RequestOptions,
+  ): Promise<operations.BulkDeleteLinksResponseBody> {
+    return unwrapAsync(linksDeleteMany(
       this,
       request,
       options,

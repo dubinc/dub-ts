@@ -11,28 +11,28 @@ let value: LeadEvent = {
   eventName: "<value>",
   click: {
     id: "<id>",
-    url: "http://true-epee.biz",
+    url: "https://responsible-dusk.com",
     continent: "<value>",
-    country: "Isle of Man",
-    city: "Torpberg",
+    country: "Heard Island and McDonald Islands",
+    city: "Cleveland Heights",
     device: "<value>",
     browser: "<value>",
     os: "<value>",
     referer: "<value>",
-    ip: "174.243.116.175",
+    ip: "bada:f8df:f7ad:53bf:adca:eccd:b3d8:195c",
   },
   link: {
     id: "<id>",
-    domain: "left-cousin.net",
+    domain: "animated-velocity.info",
     key: "<key>",
     externalId: "<value>",
-    url: "https://elliptical-rediscovery.org",
+    url: "https://aggressive-convection.info/",
     expiresAt: "<value>",
-    expiredUrl: "http://frizzy-counter.org",
-    password: "RMd4IfDM52Xmsga",
+    expiredUrl: "https://buzzing-underneath.org",
+    password: "L7I869G0Ok7_8RI",
     title: "<value>",
-    description: "Open-architected didactic benchmark",
-    image: "https://loremflickr.com/640/480",
+    description: "Optional directional orchestration",
+    image: "https://picsum.photos/seed/2elOZYUiZf/1660/1442",
     video: "<value>",
     ios: "<value>",
     android: "<value>",
@@ -42,12 +42,12 @@ let value: LeadEvent = {
       {
         id: "<id>",
         name: "<value>",
-        color: "yellow",
+        color: "red",
       },
     ],
     comments: "<value>",
-    shortLink: "https://rotten-grandfather.info",
-    qrCode: "https://teeming-combine.biz",
+    shortLink: "https://equatorial-polyester.com",
+    qrCode: "https://unconscious-dress.info",
     utmSource: "<value>",
     utmMedium: "<value>",
     utmCampaign: "<value>",
@@ -61,26 +61,24 @@ let value: LeadEvent = {
     projectId: "<value>",
   },
   customer: {
+    id: "<id>",
     name: "<value>",
-    email: "Casimir35@gmail.com",
-    avatar: "https://loremflickr.com/640/480",
+    email: "Nelle30@yahoo.com",
+    avatar: "https://picsum.photos/seed/RWKHYZs4/951/2010",
   },
-  customerName: "<value>",
-  customerEmail: "<value>",
-  customerAvatar: "<value>",
   clickId: "<value>",
   linkId: "<value>",
-  domain: "scared-underpass.com",
+  domain: "frail-circumference.info",
   key: "<key>",
-  url: "https://short-review.com",
+  url: "https://pertinent-godfather.org/",
   continent: "<value>",
-  country: "Trinidad and Tobago",
-  city: "North Nellie",
+  country: "Venezuela",
+  city: "Dorothystead",
   device: "<value>",
   browser: "<value>",
   os: "<value>",
-  qr: 5521.93,
-  ip: "187.149.11.246",
+  qr: 8967.61,
+  ip: "141.69.116.102",
 };
 ```
 
@@ -95,9 +93,6 @@ let value: LeadEvent = {
 | `click`                                                                                                                                                             | [components.LeadEventClick](../../models/components/leadeventclick.md)                                                                                              | :heavy_check_mark:                                                                                                                                                  | N/A                                                                                                                                                                 |
 | `link`                                                                                                                                                              | [components.LeadEventLink](../../models/components/leadeventlink.md)                                                                                                | :heavy_check_mark:                                                                                                                                                  | N/A                                                                                                                                                                 |
 | `customer`                                                                                                                                                          | [components.Customer](../../models/components/customer.md)                                                                                                          | :heavy_check_mark:                                                                                                                                                  | N/A                                                                                                                                                                 |
-| ~~`customerName`~~                                                                                                                                                  | *string*                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                  | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible.<br/><br/>Deprecated. Use `customer.name` instead. |
-| ~~`customerEmail`~~                                                                                                                                                 | *string*                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                  | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible.<br/><br/>Deprecated. Use `customer.email` instead. |
-| ~~`customerAvatar`~~                                                                                                                                                | *string*                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                  | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible.<br/><br/>Deprecated. Use `customer.avatar` instead. |
 | ~~`clickId`~~                                                                                                                                                       | *string*                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                  | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible.<br/><br/>Deprecated. Use `click.id` instead. |
 | ~~`linkId`~~                                                                                                                                                        | *string*                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                  | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible.<br/><br/>Deprecated. Use `link.id` instead. |
 | ~~`domain`~~                                                                                                                                                        | *string*                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                  | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible.<br/><br/>Deprecated. Use `link.domain` instead. |
