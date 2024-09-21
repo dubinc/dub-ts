@@ -16,46 +16,46 @@ import { Workspaces } from "./workspaces.js";
 export class Dub extends ClientSDK {
   private _links?: Links;
   get links(): Links {
-    return (this._links ??= new Links(this.options$));
+    return (this._links ??= new Links(this._options));
   }
 
   private _qrCodes?: QRCodes;
   get qrCodes(): QRCodes {
-    return (this._qrCodes ??= new QRCodes(this.options$));
+    return (this._qrCodes ??= new QRCodes(this._options));
   }
 
   private _analytics?: Analytics;
   get analytics(): Analytics {
-    return (this._analytics ??= new Analytics(this.options$));
+    return (this._analytics ??= new Analytics(this._options));
   }
 
   private _events?: Events;
   get events(): Events {
-    return (this._events ??= new Events(this.options$));
+    return (this._events ??= new Events(this._options));
   }
 
   private _workspaces?: Workspaces;
   get workspaces(): Workspaces {
-    return (this._workspaces ??= new Workspaces(this.options$));
+    return (this._workspaces ??= new Workspaces(this._options));
   }
 
   private _tags?: Tags;
   get tags(): Tags {
-    return (this._tags ??= new Tags(this.options$));
+    return (this._tags ??= new Tags(this._options));
   }
 
   private _domains?: Domains;
   get domains(): Domains {
-    return (this._domains ??= new Domains(this.options$));
+    return (this._domains ??= new Domains(this._options));
   }
 
   private _track?: Track;
   get track(): Track {
-    return (this._track ??= new Track(this.options$));
+    return (this._track ??= new Track(this._options));
   }
 
   private _metatags?: Metatags;
   get metatags(): Metatags {
-    return (this._metatags ??= new Metatags(this.options$));
+    return (this._metatags ??= new Metatags(this._options));
   }
 }

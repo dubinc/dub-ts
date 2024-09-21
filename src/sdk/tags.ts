@@ -13,21 +13,6 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class Tags extends ClientSDK {
   /**
-   * Retrieve a list of tags
-   *
-   * @remarks
-   * Retrieve a list of tags for the authenticated workspace.
-   */
-  async list(
-    options?: RequestOptions,
-  ): Promise<Array<components.TagSchema>> {
-    return unwrapAsync(tagsList(
-      this,
-      options,
-    ));
-  }
-
-  /**
    * Create a new tag
    *
    * @remarks
@@ -45,18 +30,16 @@ export class Tags extends ClientSDK {
   }
 
   /**
-   * Delete a tag
+   * Retrieve a list of tags
    *
    * @remarks
-   * Delete a tag from the workspace. All existing links will still work, but they will no longer be associated with this tag.
+   * Retrieve a list of tags for the authenticated workspace.
    */
-  async delete(
-    id: string,
+  async list(
     options?: RequestOptions,
-  ): Promise<operations.DeleteTagResponseBody> {
-    return unwrapAsync(tagsDelete(
+  ): Promise<Array<components.TagSchema>> {
+    return unwrapAsync(tagsList(
       this,
-      id,
       options,
     ));
   }
@@ -76,6 +59,23 @@ export class Tags extends ClientSDK {
       this,
       id,
       requestBody,
+      options,
+    ));
+  }
+
+  /**
+   * Delete a tag
+   *
+   * @remarks
+   * Delete a tag from the workspace. All existing links will still work, but they will no longer be associated with this tag.
+   */
+  async delete(
+    id: string,
+    options?: RequestOptions,
+  ): Promise<operations.DeleteTagResponseBody> {
+    return unwrapAsync(tagsDelete(
+      this,
+      id,
       options,
     ));
   }

@@ -423,6 +423,7 @@ export type LeadEventLink = {
 };
 
 export type Customer = {
+  id: string;
   name: string;
   email: string;
   avatar: string;
@@ -436,24 +437,6 @@ export type LeadEvent = {
   click: LeadEventClick;
   link: LeadEventLink;
   customer: Customer;
-  /**
-   * Deprecated. Use `customer.name` instead.
-   *
-   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-   */
-  customerName: string;
-  /**
-   * Deprecated. Use `customer.email` instead.
-   *
-   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-   */
-  customerEmail: string;
-  /**
-   * Deprecated. Use `customer.avatar` instead.
-   *
-   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-   */
-  customerAvatar: string;
   /**
    * Deprecated. Use `click.id` instead.
    *
@@ -2088,6 +2071,7 @@ export const Customer$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  id: z.string(),
   name: z.string(),
   email: z.string(),
   avatar: z.string(),
@@ -2095,6 +2079,7 @@ export const Customer$inboundSchema: z.ZodType<
 
 /** @internal */
 export type Customer$Outbound = {
+  id: string;
   name: string;
   email: string;
   avatar: string;
@@ -2106,6 +2091,7 @@ export const Customer$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Customer
 > = z.object({
+  id: z.string(),
   name: z.string(),
   email: z.string(),
   avatar: z.string(),
@@ -2137,9 +2123,6 @@ export const LeadEvent$inboundSchema: z.ZodType<
   click: z.lazy(() => LeadEventClick$inboundSchema),
   link: z.lazy(() => LeadEventLink$inboundSchema),
   customer: z.lazy(() => Customer$inboundSchema),
-  customer_name: z.string(),
-  customer_email: z.string(),
-  customer_avatar: z.string(),
   click_id: z.string(),
   link_id: z.string(),
   domain: z.string(),
@@ -2155,9 +2138,6 @@ export const LeadEvent$inboundSchema: z.ZodType<
   ip: z.string(),
 }).transform((v) => {
   return remap$(v, {
-    "customer_name": "customerName",
-    "customer_email": "customerEmail",
-    "customer_avatar": "customerAvatar",
     "click_id": "clickId",
     "link_id": "linkId",
   });
@@ -2172,9 +2152,6 @@ export type LeadEvent$Outbound = {
   click: LeadEventClick$Outbound;
   link: LeadEventLink$Outbound;
   customer: Customer$Outbound;
-  customer_name: string;
-  customer_email: string;
-  customer_avatar: string;
   click_id: string;
   link_id: string;
   domain: string;
@@ -2203,9 +2180,6 @@ export const LeadEvent$outboundSchema: z.ZodType<
   click: z.lazy(() => LeadEventClick$outboundSchema),
   link: z.lazy(() => LeadEventLink$outboundSchema),
   customer: z.lazy(() => Customer$outboundSchema),
-  customerName: z.string(),
-  customerEmail: z.string(),
-  customerAvatar: z.string(),
   clickId: z.string(),
   linkId: z.string(),
   domain: z.string(),
@@ -2221,9 +2195,6 @@ export const LeadEvent$outboundSchema: z.ZodType<
   ip: z.string(),
 }).transform((v) => {
   return remap$(v, {
-    customerName: "customer_name",
-    customerEmail: "customer_email",
-    customerAvatar: "customer_avatar",
     clickId: "click_id",
     linkId: "link_id",
   });

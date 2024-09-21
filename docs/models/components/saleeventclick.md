@@ -7,15 +7,15 @@ import { SaleEventClick } from "dub/models/components";
 
 let value: SaleEventClick = {
   id: "<id>",
-  url: "https://thick-confectionery.name",
+  url: "https://stylish-language.info",
   continent: "<value>",
-  country: "Samoa",
-  city: "Fort Faehaven",
+  country: "Senegal",
+  city: "South Josiechester",
   device: "<value>",
   browser: "<value>",
   os: "<value>",
   referer: "<value>",
-  ip: "37.199.251.252",
+  ip: "58.105.159.227",
 };
 ```
 
