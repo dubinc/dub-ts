@@ -20,6 +20,7 @@ let value: Two = {
       browser: "<value>",
       os: "<value>",
       referer: "<value>",
+      refererUrl: "<value>",
       ip: "124.253.233.30",
     },
     link: {

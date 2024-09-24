@@ -33,6 +33,7 @@ export const QueryParamGroupBy = {
   Browsers: "browsers",
   Os: "os",
   Referers: "referers",
+  RefererUrls: "referer_urls",
   TopLinks: "top_links",
   TopUrls: "top_urls",
   Trigger: "trigger",
@@ -129,6 +130,10 @@ export type RetrieveAnalyticsRequest = {
    * The referer to retrieve analytics for.
    */
   referer?: string | undefined;
+  /**
+   * The full referer URL to retrieve analytics for.
+   */
+  refererUrl?: string | undefined;
   /**
    * The URL to retrieve analytics for.
    */
@@ -245,6 +250,7 @@ export const RetrieveAnalyticsRequest$inboundSchema: z.ZodType<
   browser: z.string().optional(),
   os: z.string().optional(),
   referer: z.string().optional(),
+  refererUrl: z.string().optional(),
   url: z.string().optional(),
   tagId: z.string().optional(),
   qr: z.boolean().optional(),
@@ -270,6 +276,7 @@ export type RetrieveAnalyticsRequest$Outbound = {
   browser?: string | undefined;
   os?: string | undefined;
   referer?: string | undefined;
+  refererUrl?: string | undefined;
   url?: string | undefined;
   tagId?: string | undefined;
   qr?: boolean | undefined;
@@ -299,6 +306,7 @@ export const RetrieveAnalyticsRequest$outboundSchema: z.ZodType<
   browser: z.string().optional(),
   os: z.string().optional(),
   referer: z.string().optional(),
+  refererUrl: z.string().optional(),
   url: z.string().optional(),
   tagId: z.string().optional(),
   qr: z.boolean().optional(),

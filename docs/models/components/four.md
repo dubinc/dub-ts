@@ -27,6 +27,7 @@ let value: Four = {
       browser: "<value>",
       os: "<value>",
       referer: "<value>",
+      refererUrl: "<value>",
       ip: "221.160.102.106",
     },
     link: {

@@ -16,6 +16,7 @@ let value: WebhookEventData = {
     browser: "<value>",
     os: "<value>",
     referer: "<value>",
+    refererUrl: "<value>",
     ip: "136.180.243.177",
   },
   link: {

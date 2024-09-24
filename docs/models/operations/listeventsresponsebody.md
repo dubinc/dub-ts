@@ -20,6 +20,7 @@ let value: ListEventsResponseBody = [
       browser: "<value>",
       os: "<value>",
       referer: "<value>",
+      refererUrl: "<value>",
       ip: "201.69.227.42",
     },
     link: {

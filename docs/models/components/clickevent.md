@@ -17,6 +17,7 @@ let value: ClickEvent = {
     browser: "<value>",
     os: "<value>",
     referer: "<value>",
+    refererUrl: "<value>",
     ip: "2eff:3d3d:2cbc:81f9:fdfc:07a3:b140:b47e",
   },
   link: {

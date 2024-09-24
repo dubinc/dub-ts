@@ -88,6 +88,7 @@ export async function eventsList(
     "page": payload?.page,
     "qr": payload?.qr,
     "referer": payload?.referer,
+    "refererUrl": payload?.refererUrl,
     "root": payload?.root,
     "sortBy": payload?.sortBy,
     "start": payload?.start,

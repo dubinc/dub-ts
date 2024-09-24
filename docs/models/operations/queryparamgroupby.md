@@ -13,5 +13,5 @@ let value: QueryParamGroupBy = "timeseries";
 ## Values
 
 ```typescript
-"count" | "timeseries" | "continents" | "countries" | "cities" | "devices" | "browsers" | "os" | "referers" | "top_links" | "top_urls" | "trigger"
+"count" | "timeseries" | "continents" | "countries" | "cities" | "devices" | "browsers" | "os" | "referers" | "referer_urls" | "top_links" | "top_urls" | "trigger"
 ```

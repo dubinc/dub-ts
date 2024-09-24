@@ -58,6 +58,7 @@ let value: SaleEvent = {
     browser: "<value>",
     os: "<value>",
     referer: "<value>",
+    refererUrl: "<value>",
     ip: "127.148.61.43",
   },
   customer: {

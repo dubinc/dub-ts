@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: bf87a4d4951f97782f297e956ac66cd2
+  docChecksum: 73565d11bf5d47913d55941f5c1c5b59
   docVersion: 0.0.1
-  speakeasyVersion: 1.401.2
-  generationVersion: 2.421.3
-  releaseVersion: 0.41.0
-  configChecksum: 44a688509a09efbe03743dec14c0eac5
+  speakeasyVersion: 1.402.0
+  generationVersion: 2.422.6
+  releaseVersion: 0.41.1
+  configChecksum: 86fd68d9e59d56b190b59d3fe999899f
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -649,6 +649,7 @@ examples:
           browser: "Chrome"
           os: "Windows"
           referer: "google.com"
+          refererUrl: "https://dub.co/blog"
       responses:
         "200":
           application/json: []
@@ -680,6 +681,7 @@ examples:
           browser: "Chrome"
           os: "Windows"
           referer: "google.com"
+          refererUrl: "https://dub.co/blog"
       responses:
         "200":
           application/json: []
