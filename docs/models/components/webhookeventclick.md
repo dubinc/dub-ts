@@ -15,6 +15,7 @@ let value: WebhookEventClick = {
   browser: "<value>",
   os: "<value>",
   referer: "<value>",
+  refererUrl: "<value>",
   ip: "205.140.121.172",
 };
 ```
@@ -32,5 +33,6 @@ let value: WebhookEventClick = {
 | `browser`          | *string*           | :heavy_check_mark: | N/A                |
 | `os`               | *string*           | :heavy_check_mark: | N/A                |
 | `referer`          | *string*           | :heavy_check_mark: | N/A                |
+| `refererUrl`       | *string*           | :heavy_check_mark: | N/A                |
 | `qr`               | *boolean*          | :heavy_minus_sign: | N/A                |
 | `ip`               | *string*           | :heavy_check_mark: | N/A                |

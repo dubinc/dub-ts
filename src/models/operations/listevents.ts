@@ -113,6 +113,10 @@ export type ListEventsRequest = {
    */
   referer?: string | undefined;
   /**
+   * The full referer URL to retrieve analytics for.
+   */
+  refererUrl?: string | undefined;
+  /**
    * The URL to retrieve analytics for.
    */
   url?: string | undefined;
@@ -245,6 +249,7 @@ export const ListEventsRequest$inboundSchema: z.ZodType<
   browser: z.string().optional(),
   os: z.string().optional(),
   referer: z.string().optional(),
+  refererUrl: z.string().optional(),
   url: z.string().optional(),
   tagId: z.string().optional(),
   qr: z.boolean().optional(),
@@ -273,6 +278,7 @@ export type ListEventsRequest$Outbound = {
   browser?: string | undefined;
   os?: string | undefined;
   referer?: string | undefined;
+  refererUrl?: string | undefined;
   url?: string | undefined;
   tagId?: string | undefined;
   qr?: boolean | undefined;
@@ -305,6 +311,7 @@ export const ListEventsRequest$outboundSchema: z.ZodType<
   browser: z.string().optional(),
   os: z.string().optional(),
   referer: z.string().optional(),
+  refererUrl: z.string().optional(),
   url: z.string().optional(),
   tagId: z.string().optional(),
   qr: z.boolean().optional(),

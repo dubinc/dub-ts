@@ -34,6 +34,7 @@ export type WebhookEvent4Click = {
   browser: string;
   os: string;
   referer: string;
+  refererUrl: string;
   qr?: boolean | undefined;
   ip: string;
 };
@@ -473,6 +474,7 @@ export type WebhookEvent3Click = {
   browser: string;
   os: string;
   referer: string;
+  refererUrl: string;
   qr?: boolean | undefined;
   ip: string;
 };
@@ -897,6 +899,7 @@ export type WebhookEventClick = {
   browser: string;
   os: string;
   referer: string;
+  refererUrl: string;
   qr?: boolean | undefined;
   ip: string;
 };
@@ -1805,6 +1808,7 @@ export const WebhookEvent4Click$inboundSchema: z.ZodType<
   browser: z.string(),
   os: z.string(),
   referer: z.string(),
+  refererUrl: z.string(),
   qr: z.boolean().optional(),
   ip: z.string(),
 });
@@ -1820,6 +1824,7 @@ export type WebhookEvent4Click$Outbound = {
   browser: string;
   os: string;
   referer: string;
+  refererUrl: string;
   qr?: boolean | undefined;
   ip: string;
 };
@@ -1839,6 +1844,7 @@ export const WebhookEvent4Click$outboundSchema: z.ZodType<
   browser: z.string(),
   os: z.string(),
   referer: z.string(),
+  refererUrl: z.string(),
   qr: z.boolean().optional(),
   ip: z.string(),
 });
@@ -3530,6 +3536,7 @@ export const WebhookEvent3Click$inboundSchema: z.ZodType<
   browser: z.string(),
   os: z.string(),
   referer: z.string(),
+  refererUrl: z.string(),
   qr: z.boolean().optional(),
   ip: z.string(),
 });
@@ -3545,6 +3552,7 @@ export type WebhookEvent3Click$Outbound = {
   browser: string;
   os: string;
   referer: string;
+  refererUrl: string;
   qr?: boolean | undefined;
   ip: string;
 };
@@ -3564,6 +3572,7 @@ export const WebhookEvent3Click$outboundSchema: z.ZodType<
   browser: z.string(),
   os: z.string(),
   referer: z.string(),
+  refererUrl: z.string(),
   qr: z.boolean().optional(),
   ip: z.string(),
 });
@@ -5165,6 +5174,7 @@ export const WebhookEventClick$inboundSchema: z.ZodType<
   browser: z.string(),
   os: z.string(),
   referer: z.string(),
+  refererUrl: z.string(),
   qr: z.boolean().optional(),
   ip: z.string(),
 });
@@ -5180,6 +5190,7 @@ export type WebhookEventClick$Outbound = {
   browser: string;
   os: string;
   referer: string;
+  refererUrl: string;
   qr?: boolean | undefined;
   ip: string;
 };
@@ -5199,6 +5210,7 @@ export const WebhookEventClick$outboundSchema: z.ZodType<
   browser: z.string(),
   os: z.string(),
   referer: z.string(),
+  refererUrl: z.string(),
   qr: z.boolean().optional(),
   ip: z.string(),
 });

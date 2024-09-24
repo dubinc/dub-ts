@@ -15,6 +15,7 @@ let value: LeadEventClick = {
   browser: "<value>",
   os: "<value>",
   referer: "<value>",
+  refererUrl: "<value>",
   ip: "ad1c:cf65:20ee:b6c1:afd7:f5ee:bdd6:cd07",
 };
 ```
@@ -32,5 +33,6 @@ let value: LeadEventClick = {
 | `browser`          | *string*           | :heavy_check_mark: | N/A                |
 | `os`               | *string*           | :heavy_check_mark: | N/A                |
 | `referer`          | *string*           | :heavy_check_mark: | N/A                |
+| `refererUrl`       | *string*           | :heavy_check_mark: | N/A                |
 | `qr`               | *boolean*          | :heavy_minus_sign: | N/A                |
 | `ip`               | *string*           | :heavy_check_mark: | N/A                |

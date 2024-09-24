@@ -19,6 +19,7 @@ let value: LeadEvent = {
     browser: "<value>",
     os: "<value>",
     referer: "<value>",
+    refererUrl: "<value>",
     ip: "bada:f8df:f7ad:53bf:adca:eccd:b3d8:195c",
   },
   link: {

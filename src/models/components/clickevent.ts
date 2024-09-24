@@ -27,6 +27,7 @@ export type Click = {
   browser: string;
   os: string;
   referer: string;
+  refererUrl: string;
   qr?: boolean | undefined;
   ip: string;
 };
@@ -539,6 +540,7 @@ export const Click$inboundSchema: z.ZodType<Click, z.ZodTypeDef, unknown> = z
     browser: z.string(),
     os: z.string(),
     referer: z.string(),
+    refererUrl: z.string(),
     qr: z.boolean().optional(),
     ip: z.string(),
   });
@@ -554,6 +556,7 @@ export type Click$Outbound = {
   browser: string;
   os: string;
   referer: string;
+  refererUrl: string;
   qr?: boolean | undefined;
   ip: string;
 };
@@ -573,6 +576,7 @@ export const Click$outboundSchema: z.ZodType<
   browser: z.string(),
   os: z.string(),
   referer: z.string(),
+  refererUrl: z.string(),
   qr: z.boolean().optional(),
   ip: z.string(),
 });

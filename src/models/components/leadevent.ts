@@ -27,6 +27,7 @@ export type LeadEventClick = {
   browser: string;
   os: string;
   referer: string;
+  refererUrl: string;
   qr?: boolean | undefined;
   ip: string;
 };
@@ -553,6 +554,7 @@ export const LeadEventClick$inboundSchema: z.ZodType<
   browser: z.string(),
   os: z.string(),
   referer: z.string(),
+  refererUrl: z.string(),
   qr: z.boolean().optional(),
   ip: z.string(),
 });
@@ -568,6 +570,7 @@ export type LeadEventClick$Outbound = {
   browser: string;
   os: string;
   referer: string;
+  refererUrl: string;
   qr?: boolean | undefined;
   ip: string;
 };
@@ -587,6 +590,7 @@ export const LeadEventClick$outboundSchema: z.ZodType<
   browser: z.string(),
   os: z.string(),
   referer: z.string(),
+  refererUrl: z.string(),
   qr: z.boolean().optional(),
   ip: z.string(),
 });

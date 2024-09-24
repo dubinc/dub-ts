@@ -27,6 +27,7 @@ let value: Three = {
       browser: "<value>",
       os: "<value>",
       referer: "<value>",
+      refererUrl: "<value>",
       ip: "f85e:2fee:948f:eedb:e688:ce60:86ed:ce7c",
     },
     link: {

@@ -15,6 +15,7 @@ let value: WebhookEvent3Click = {
   browser: "<value>",
   os: "<value>",
   referer: "<value>",
+  refererUrl: "<value>",
   ip: "4b66:debf:cead:c4a0:75ba:2be5:ed0a:f0db",
 };
 ```
@@ -32,5 +33,6 @@ let value: WebhookEvent3Click = {
 | `browser`          | *string*           | :heavy_check_mark: | N/A                |
 | `os`               | *string*           | :heavy_check_mark: | N/A                |
 | `referer`          | *string*           | :heavy_check_mark: | N/A                |
+| `refererUrl`       | *string*           | :heavy_check_mark: | N/A                |
 | `qr`               | *boolean*          | :heavy_minus_sign: | N/A                |
 | `ip`               | *string*           | :heavy_check_mark: | N/A                |
