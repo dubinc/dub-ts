@@ -7,7 +7,7 @@ The interval to retrieve analytics for. Takes precedence over start and end. If 
 ```typescript
 import { Interval } from "dub/models/operations";
 
-let value: Interval = "90d";
+let value: Interval = "all";
 ```
 
 ## Values

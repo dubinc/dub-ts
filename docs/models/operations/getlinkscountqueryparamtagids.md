@@ -7,9 +7,7 @@ The tag IDs to filter the links by.
 ```typescript
 import { GetLinksCountQueryParamTagIds } from "dub/models/operations";
 
-let value: GetLinksCountQueryParamTagIds = [
-  "<value>",
-];
+let value: GetLinksCountQueryParamTagIds = "<value>";
 ```
 
 ## Supported Types

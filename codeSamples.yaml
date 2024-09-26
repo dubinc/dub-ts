@@ -8,160 +8,160 @@ actions:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "retrieveAnalytics"
-          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.analytics.retrieve();\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.analytics.retrieve();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/domains"]["get"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "listDomains"
-          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.domains.list();\n  \n  for await (const page of result) {\n    // Handle the page\n    console.log(page);\n  }\n}\n\nrun();"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.domains.list();\n\n  for await (const page of result) {\n    // Handle the page\n    console.log(page);\n  }\n}\n\nrun();"
   - target: $["paths"]["/domains"]["post"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "createDomain"
-          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.domains.create();\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.domains.create();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/domains/{slug}"]["delete"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "deleteDomain"
-          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.domains.delete(\"acme.com\");\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.domains.delete(\"acme.com\");\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/domains/{slug}"]["patch"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "updateDomain"
-          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.domains.update(\"acme.com\");\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.domains.update(\"acme.com\");\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/events"]["get"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "listEvents"
-          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.events.list();\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.events.list();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/links"]["get"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "getLinks"
-          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.links.list();\n  \n  for await (const page of result) {\n    // Handle the page\n    console.log(page);\n  }\n}\n\nrun();"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.links.list();\n\n  for await (const page of result) {\n    // Handle the page\n    console.log(page);\n  }\n}\n\nrun();"
   - target: $["paths"]["/links"]["post"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "createLink"
-          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.links.create();\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.links.create();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/links/bulk"]["delete"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "bulkDeleteLinks"
-          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.links.deleteMany({\n    linkIds: [\n      \"clux0rgak00011...\",\n      \"clux0rgak00022...\",\n    ],\n  });\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.links.deleteMany({\n    linkIds: [\n      \"clux0rgak00011...\",\n      \"clux0rgak00022...\",\n    ],\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/links/bulk"]["patch"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "bulkUpdateLinks"
-          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.links.updateMany();\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.links.updateMany();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/links/bulk"]["post"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "bulkCreateLinks"
-          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.links.createMany();\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.links.createMany();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/links/count"]["get"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "getLinksCount"
-          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.links.count();\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.links.count();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/links/info"]["get"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "getLinkInfo"
-          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.links.get();\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.links.get();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/links/upsert"]["put"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "upsertLink"
-          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.links.upsert();\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.links.upsert();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/links/{linkId}"]["delete"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "deleteLink"
-          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.links.delete(\"<value>\");\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.links.delete(\"<value>\");\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/links/{linkId}"]["patch"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "updateLink"
-          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.links.update(\"<value>\");\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.links.update(\"<value>\");\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/metatags"]["get"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "getMetatags"
-          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.metatags.get({\n    url: \"https://dub.co\",\n  });\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.metatags.get({\n    url: \"https://dub.co\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/qr"]["get"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "getQRCode"
-          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.qrCodes.get({\n    url: \"https://normal-making.name\",\n  });\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.qrCodes.get({\n    url: \"https://normal-making.name\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/tags"]["get"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "getTags"
-          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.tags.list();\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.tags.list();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/tags"]["post"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "createTag"
-          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.tags.create();\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.tags.create();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/tags/{id}"]["delete"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "deleteTag"
-          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.tags.delete(\"<id>\");\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.tags.delete(\"<id>\");\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/tags/{id}"]["patch"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "updateTag"
-          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.tags.update(\"<id>\");\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.tags.update(\"<id>\");\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/track/customer"]["post"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "trackCustomer"
-          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.track.customer();\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.track.customer();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/track/lead"]["post"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "trackLead"
-          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.track.lead();\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.track.lead();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/track/sale"]["post"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "trackSale"
-          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.track.sale();\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.track.sale();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/workspaces/{idOrSlug}"]["get"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "getWorkspace"
-          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.workspaces.get({\n    idOrSlug: \"<value>\",\n  });\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.workspaces.get({\n    idOrSlug: \"<value>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/workspaces/{idOrSlug}"]["patch"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "updateWorkspace"
-          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.workspaces.update(\"<value>\");\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.workspaces.update(\"<value>\");\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"

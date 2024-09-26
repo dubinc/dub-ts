@@ -7,7 +7,9 @@ The unique name of the tags assigned to the short link (case insensitive).
 ```typescript
 import { TagNames } from "dub/models/operations";
 
-let value: TagNames = "<value>";
+let value: TagNames = [
+  "<value>",
+];
 ```
 
 ## Supported Types

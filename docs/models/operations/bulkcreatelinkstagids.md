@@ -7,7 +7,9 @@ The unique IDs of the tags assigned to the short link.
 ```typescript
 import { BulkCreateLinksTagIds } from "dub/models/operations";
 
-let value: BulkCreateLinksTagIds = "[\"clux0rgak00011...\"]";
+let value: BulkCreateLinksTagIds = [
+  "clux0rgak00011...",
+];
 ```
 
 ## Supported Types

@@ -7,17 +7,7 @@ Analytics data
 ```typescript
 import { RetrieveAnalyticsResponseBody } from "dub/models/operations";
 
-let value: RetrieveAnalyticsResponseBody = [
-  {
-    link: "<value>",
-    id: "<id>",
-    domain: "suburban-birdbath.name",
-    key: "<key>",
-    shortLink: "<value>",
-    url: "https://everlasting-riser.org",
-    createdAt: "<value>",
-  },
-];
+let value: RetrieveAnalyticsResponseBody = {};
 ```
 
 ## Supported Types
