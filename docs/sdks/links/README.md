@@ -31,9 +31,9 @@ const dub = new Dub({
 
 async function run() {
   const result = await dub.links.create();
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -63,7 +63,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -113,7 +113,7 @@ const dub = new Dub({
 
 async function run() {
   const result = await dub.links.list();
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -199,9 +199,9 @@ const dub = new Dub({
 
 async function run() {
   const result = await dub.links.count();
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -231,7 +231,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -281,9 +281,9 @@ const dub = new Dub({
 
 async function run() {
   const result = await dub.links.get();
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -313,7 +313,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -363,9 +363,9 @@ const dub = new Dub({
 
 async function run() {
   const result = await dub.links.update("<value>");
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -395,7 +395,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -446,9 +446,9 @@ const dub = new Dub({
 
 async function run() {
   const result = await dub.links.delete("<value>");
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -478,7 +478,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -528,9 +528,9 @@ const dub = new Dub({
 
 async function run() {
   const result = await dub.links.createMany();
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -560,7 +560,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -610,9 +610,9 @@ const dub = new Dub({
 
 async function run() {
   const result = await dub.links.updateMany();
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -642,7 +642,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -697,9 +697,9 @@ async function run() {
       "clux0rgak00022...",
     ],
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -734,7 +734,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -784,9 +784,9 @@ const dub = new Dub({
 
 async function run() {
   const result = await dub.links.upsert();
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -816,7 +816,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();

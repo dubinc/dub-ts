@@ -24,9 +24,9 @@ const dub = new Dub({
 
 async function run() {
   const result = await dub.track.lead();
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -56,7 +56,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -106,9 +106,9 @@ const dub = new Dub({
 
 async function run() {
   const result = await dub.track.sale();
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -138,7 +138,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -188,9 +188,9 @@ const dub = new Dub({
 
 async function run() {
   const result = await dub.track.customer();
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -220,7 +220,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();

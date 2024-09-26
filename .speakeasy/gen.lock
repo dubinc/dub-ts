@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: 73565d11bf5d47913d55941f5c1c5b59
+  docChecksum: b6e0f68b0350f243f5aab5565767940a
   docVersion: 0.0.1
-  speakeasyVersion: 1.402.0
-  generationVersion: 2.422.6
-  releaseVersion: 0.41.1
-  configChecksum: 86fd68d9e59d56b190b59d3fe999899f
+  speakeasyVersion: 1.402.14
+  generationVersion: 2.422.22
+  releaseVersion: 0.41.2
+  configChecksum: f00fd20a5f06fbdb78c87483809a20e7
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.17.6
+    core: 3.17.7
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     enumUnions: 0.1.0

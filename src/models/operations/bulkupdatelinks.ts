@@ -123,6 +123,10 @@ export type Data = {
    * The UTM content of the short link. If set, this will populate or override the UTM content in the destination URL.
    */
   utmContent?: string | null | undefined;
+  /**
+   * The referral tag of the short link. If set, this will populate or override the `ref` query parameter in the destination URL.
+   */
+  ref?: string | null | undefined;
 };
 
 export type BulkUpdateLinksRequestBody = {
@@ -219,6 +223,7 @@ export const Data$inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z
     utm_campaign: z.nullable(z.string()).optional(),
     utm_term: z.nullable(z.string()).optional(),
     utm_content: z.nullable(z.string()).optional(),
+    ref: z.nullable(z.string()).optional(),
   }).transform((v) => {
     return remap$(v, {
       "utm_source": "utmSource",
@@ -257,6 +262,7 @@ export type Data$Outbound = {
   utm_campaign?: string | null | undefined;
   utm_term?: string | null | undefined;
   utm_content?: string | null | undefined;
+  ref?: string | null | undefined;
 };
 
 /** @internal */
@@ -288,6 +294,7 @@ export const Data$outboundSchema: z.ZodType<Data$Outbound, z.ZodTypeDef, Data> =
     utmCampaign: z.nullable(z.string()).optional(),
     utmTerm: z.nullable(z.string()).optional(),
     utmContent: z.nullable(z.string()).optional(),
+    ref: z.nullable(z.string()).optional(),
   }).transform((v) => {
     return remap$(v, {
       utmSource: "utm_source",

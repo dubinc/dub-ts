@@ -12,8 +12,8 @@ let value: TrackSaleResponseBody = {
   customer: {
     id: "<id>",
     name: "<value>",
-    email: "Christy9@yahoo.com",
-    avatar: "https://loremflickr.com/3932/1794?lock=1058759709975844",
+    email: "Mark.Christiansen57@yahoo.com",
+    avatar: "https://picsum.photos/seed/QYr27/37/3711",
   },
   sale: {
     amount: 3816.54,

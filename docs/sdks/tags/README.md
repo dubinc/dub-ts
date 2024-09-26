@@ -25,9 +25,9 @@ const dub = new Dub({
 
 async function run() {
   const result = await dub.tags.create();
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -57,7 +57,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -107,9 +107,9 @@ const dub = new Dub({
 
 async function run() {
   const result = await dub.tags.list();
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -139,7 +139,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -188,9 +188,9 @@ const dub = new Dub({
 
 async function run() {
   const result = await dub.tags.update("<id>");
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -220,7 +220,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -271,9 +271,9 @@ const dub = new Dub({
 
 async function run() {
   const result = await dub.tags.delete("<id>");
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -303,7 +303,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
