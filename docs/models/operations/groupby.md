@@ -2,31 +2,24 @@
 
 The field to group the links by.
 
-## Example Usage
-
-```typescript
-import { GroupBy } from "dub/models/operations";
-
-let value: GroupBy = "domain";
-```
 
 ## Supported Types
 
 ### `operations.One`
 
 ```typescript
-const value: operations.One = /* values here */
+const value: operations.One = "domain";
 ```
 
 ### `operations.Two`
 
 ```typescript
-const value: operations.Two = /* values here */
+const value: operations.Two = "tagId";
 ```
 
 ### `operations.Three`
 
 ```typescript
-const value: operations.Three = /* values here */
+const value: operations.Three = "userId";
 ```
 

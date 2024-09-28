@@ -2,33 +2,45 @@
 
 A list of events
 
-## Example Usage
+
+## Supported Types
+
+### `components.ClickEvent[]`
 
 ```typescript
-import { ListEventsResponseBody } from "dub/models/operations";
-
-let value: ListEventsResponseBody = [
+const value: components.ClickEvent[] = [
   {
-    event: "sale",
-    eventId: "<value>",
-    eventName: "<value>",
+    event: "click",
+    click: {
+      id: "<id>",
+      url: "https://junior-blossom.info",
+      continent: "North America",
+      country: "French Polynesia",
+      city: "Waipahu",
+      device: "Desktop",
+      browser: "Chrome",
+      os: "Android",
+      referer: "limited-climb.biz",
+      refererUrl: "https://scratchy-nectarine.net",
+      ip: "37.177.183.218",
+    },
     link: {
       id: "<id>",
-      domain: "unimportant-shipper.com",
+      domain: "outlying-masterpiece.info",
       key: "<key>",
-      externalId: "<value>",
-      url: "https://difficult-dream.name/",
+      externalId: "<id>",
+      url: "https://those-icebreaker.info",
       expiresAt: "<value>",
-      expiredUrl: "https://salty-forager.com/",
-      password: "u4ku0cpVNSMi11J",
+      expiredUrl: "https://stable-pine.info/",
+      password: "Pvt2qQbuZah7Pt3",
       title: "<value>",
-      description: "Function-based analyzing software",
-      image: "https://picsum.photos/seed/LgmdM/3086/2176",
-      video: "<value>",
+      description: "spook numeric round apropos separate impish whenever",
+      image: "https://loremflickr.com/520/3946?lock=6962715327146878",
+      video: "https://picsum.videos/seed/1egXLG4Nb/1410/1953",
       ios: "<value>",
-      android: "<value>",
+      android: "<id>",
       geo: {},
-      tagId: "<value>",
+      tagId: "<id>",
       tags: [
         {
           id: "<id>",
@@ -36,81 +48,210 @@ let value: ListEventsResponseBody = [
           color: "yellow",
         },
       ],
-      comments: "<value>",
-      shortLink: "https://quintessential-bakeware.net",
-      qrCode: "https://unsung-republican.name",
+      comments:
+        "amid far-off beloved decent whoa lively publicity briskly oof hence unhappy um even phooey rowdy whenever following delightfully",
+      shortLink: "https://guilty-numeric.com",
+      qrCode: "https://alive-cruelty.biz/",
       utmSource: "<value>",
       utmMedium: "<value>",
       utmCampaign: "<value>",
       utmTerm: "<value>",
       utmContent: "<value>",
-      userId: "<value>",
-      workspaceId: "<value>",
+      userId: "<id>",
+      workspaceId: "<id>",
       lastClicked: "<value>",
       createdAt: "<value>",
       updatedAt: "<value>",
-      projectId: "<value>",
+      projectId: "<id>",
     },
-    click: {
-      id: "<id>",
-      url: "https://flickering-management.biz",
-      continent: "<value>",
-      country: "Vietnam",
-      city: "North Erica",
-      device: "<value>",
-      browser: "<value>",
-      os: "<value>",
-      referer: "<value>",
-      refererUrl: "<value>",
-      ip: "0cdf:dffc:da0d:fb73:bafd:c2a6:b6cc:6d9e",
-    },
-    customer: {
-      id: "<id>",
-      name: "<value>",
-      email: "Maxie_Daniel-Douglas@gmail.com",
-      avatar: "https://loremflickr.com/2439/851?lock=1009453761893957",
-    },
-    sale: {
-      amount: 321422,
-      paymentProcessor: "stripe",
-    },
-    saleAmount: 4446.25,
-    invoiceId: "<value>",
-    paymentProcessor: "<value>",
-    clickId: "<value>",
-    linkId: "<value>",
-    domain: "vibrant-conservative.info",
+    clickId: "<id>",
+    linkId: "<id>",
+    domain: "wilted-euphonium.org",
     key: "<key>",
-    url: "https://webbed-certification.org",
-    continent: "<value>",
-    country: "Belarus",
-    city: "Jackelineberg",
-    device: "<value>",
-    browser: "<value>",
-    os: "<value>",
-    qr: 3474.60,
-    ip: "221.244.132.222",
+    url: "https://tough-petticoat.com/",
+    continent: "Africa",
+    country: "Anguilla",
+    city: "East Pablocester",
+    device: "Desktop",
+    browser: "Firefox",
+    os: "BeOS",
+    qr: 723.21,
+    ip: "2f9e:3f11:cb55:aedc:d2cf:29af:28ad:d2bd",
   },
 ];
-```
-
-## Supported Types
-
-### `components.ClickEvent[]`
-
-```typescript
-const value: components.ClickEvent[] = /* values here */
 ```
 
 ### `components.LeadEvent[]`
 
 ```typescript
-const value: components.LeadEvent[] = /* values here */
+const value: components.LeadEvent[] = [
+  {
+    event: "lead",
+    eventId: "<id>",
+    eventName: "<value>",
+    click: {
+      id: "<id>",
+      url: "https://terrible-intent.name",
+      continent: "Africa",
+      country: "Panama",
+      city: "Lake Jodieshire",
+      device: "Desktop",
+      browser: "Firefox",
+      os: "BeOS",
+      referer: "mild-simple.name",
+      refererUrl: "https://unconscious-avalanche.org",
+      ip: "193.144.85.245",
+    },
+    link: {
+      id: "<id>",
+      domain: "tempting-editor.biz",
+      key: "<key>",
+      externalId: "<id>",
+      url: "https://granular-coal.org/",
+      expiresAt: "<value>",
+      expiredUrl: "https://turbulent-impact.net",
+      password: "CrwTNS7EkapKRI4",
+      title: "<value>",
+      description: "near duster ack circa zowie boohoo responsible up aside",
+      image: "https://loremflickr.com/2365/1104?lock=6174768797763861",
+      video: "https://loremflickr.com/1795/2897?lock=4775647863449915",
+      ios: "<value>",
+      android: "<id>",
+      geo: {},
+      tagId: "<id>",
+      tags: [
+        {
+          id: "<id>",
+          name: "<value>",
+          color: "red",
+        },
+      ],
+      comments: "supposing elastic inasmuch ew detective divert despite",
+      shortLink: "https://strict-dead.info/",
+      qrCode: "https://staid-crest.info",
+      utmSource: "<value>",
+      utmMedium: "<value>",
+      utmCampaign: "<value>",
+      utmTerm: "<value>",
+      utmContent: "<value>",
+      userId: "<id>",
+      workspaceId: "<id>",
+      lastClicked: "<value>",
+      createdAt: "<value>",
+      updatedAt: "<value>",
+      projectId: "<id>",
+    },
+    customer: {
+      id: "<id>",
+      name: "<value>",
+      email: "Astrid_Hammes@gmail.com",
+      avatar: "https://picsum.photos/seed/16Dwa/3763/939",
+    },
+    clickId: "<id>",
+    linkId: "<id>",
+    domain: "crazy-loaf.org",
+    key: "<key>",
+    url: "https://far-off-case.name/",
+    continent: "South America",
+    country: "Democratic Republic of the Congo",
+    city: "Sydneycester",
+    device: "Mobile",
+    browser: "Firefox",
+    os: "WebOS",
+    qr: 7284.78,
+    ip: "72.52.235.14",
+  },
+];
 ```
 
 ### `components.SaleEvent[]`
 
 ```typescript
-const value: components.SaleEvent[] = /* values here */
+const value: components.SaleEvent[] = [
+  {
+    event: "sale",
+    eventId: "<id>",
+    eventName: "<value>",
+    link: {
+      id: "<id>",
+      domain: "grim-pomelo.name",
+      key: "<key>",
+      externalId: "<id>",
+      url: "https://caring-chapel.net/",
+      expiresAt: "<value>",
+      expiredUrl: "https://gripping-gerbil.info/",
+      password: "aZjqHsrChBuWRrD",
+      title: "<value>",
+      description: "disrespect scented gadzooks newsprint once numeracy",
+      image: "https://picsum.photos/seed/0zqCQrdn95/1311/948",
+      video: "https://loremflickr.com/1504/2503?lock=8247749678749059",
+      ios: "<value>",
+      android: "<id>",
+      geo: {},
+      tagId: "<id>",
+      tags: [
+        {
+          id: "<id>",
+          name: "<value>",
+          color: "purple",
+        },
+      ],
+      comments:
+        "till ready openly geez gee little supplier exactly chasuble beard onto aw nervously boohoo whether",
+      shortLink: "https://practical-declaration.net",
+      qrCode: "https://our-hunger.net/",
+      utmSource: "<value>",
+      utmMedium: "<value>",
+      utmCampaign: "<value>",
+      utmTerm: "<value>",
+      utmContent: "<value>",
+      userId: "<id>",
+      workspaceId: "<id>",
+      lastClicked: "<value>",
+      createdAt: "<value>",
+      updatedAt: "<value>",
+      projectId: "<id>",
+    },
+    click: {
+      id: "<id>",
+      url: "https://ignorant-intervention.com/",
+      continent: "Asia",
+      country: "Tunisia",
+      city: "Demetriusstad",
+      device: "Desktop",
+      browser: "Chrome",
+      os: "WebOS",
+      referer: "profuse-airline.name",
+      refererUrl: "https://witty-scenario.com/",
+      ip: "125.46.180.215",
+    },
+    customer: {
+      id: "<id>",
+      name: "<value>",
+      email: "Brent.Wyman17@gmail.com",
+      avatar: "https://picsum.photos/seed/MjDJzaZO/3605/3241",
+    },
+    sale: {
+      amount: 490627,
+      paymentProcessor: "shopify",
+    },
+    saleAmount: 7600.76,
+    invoiceId: "<id>",
+    paymentProcessor: "<value>",
+    clickId: "<id>",
+    linkId: "<id>",
+    domain: "lavish-redesign.net",
+    key: "<key>",
+    url: "https://deserted-nectarine.name/",
+    continent: "Australia",
+    country: "Austria",
+    city: "Lindview",
+    device: "Mobile",
+    browser: "Chrome",
+    os: "Linux",
+    qr: 6397.27,
+    ip: "77.65.124.198",
+  },
+];
 ```
 
