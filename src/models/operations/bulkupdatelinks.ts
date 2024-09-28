@@ -130,7 +130,14 @@ export type Data = {
 };
 
 export type BulkUpdateLinksRequestBody = {
-  linkIds: Array<string>;
+  /**
+   * The IDs of the links to update. Takes precedence over `externalIds`.
+   */
+  linkIds?: Array<string> | undefined;
+  /**
+   * The external IDs of the links to update as stored in your database.
+   */
+  externalIds?: Array<string> | undefined;
   data: Data;
 };
 
@@ -324,13 +331,15 @@ export const BulkUpdateLinksRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  linkIds: z.array(z.string()),
+  linkIds: z.array(z.string()).optional(),
+  externalIds: z.array(z.string()).optional(),
   data: z.lazy(() => Data$inboundSchema),
 });
 
 /** @internal */
 export type BulkUpdateLinksRequestBody$Outbound = {
-  linkIds: Array<string>;
+  linkIds?: Array<string> | undefined;
+  externalIds?: Array<string> | undefined;
   data: Data$Outbound;
 };
 
@@ -340,7 +349,8 @@ export const BulkUpdateLinksRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   BulkUpdateLinksRequestBody
 > = z.object({
-  linkIds: z.array(z.string()),
+  linkIds: z.array(z.string()).optional(),
+  externalIds: z.array(z.string()).optional(),
   data: z.lazy(() => Data$outboundSchema),
 });
 

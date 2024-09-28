@@ -2,25 +2,20 @@
 
 The tag IDs to filter the links by.
 
-## Example Usage
-
-```typescript
-import { GetLinksCountQueryParamTagIds } from "dub/models/operations";
-
-let value: GetLinksCountQueryParamTagIds = "<value>";
-```
 
 ## Supported Types
 
 ### `string`
 
 ```typescript
-const value: string = /* values here */
+const value: string = "<value>";
 ```
 
 ### `string[]`
 
 ```typescript
-const value: string[] = /* values here */
+const value: string[] = [
+  "<value>",
+];
 ```
 

@@ -6,7 +6,7 @@
 import { TrackCustomerRequestBody } from "dub/models/operations";
 
 let value: TrackCustomerRequestBody = {
-  customerId: "<value>",
+  customerId: "<id>",
 };
 ```
 

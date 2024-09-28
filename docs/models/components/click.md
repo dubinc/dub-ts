@@ -7,16 +7,16 @@ import { Click } from "dub/models/components";
 
 let value: Click = {
   id: "<id>",
-  url: "https://glaring-hawk.com/",
-  continent: "<value>",
-  country: "Papua New Guinea",
-  city: "Dimitristad",
-  device: "<value>",
-  browser: "<value>",
-  os: "<value>",
-  referer: "<value>",
-  refererUrl: "<value>",
-  ip: "147.237.81.170",
+  url: "https://lumbering-fork.org/",
+  continent: "North America",
+  country: "Saint Helena",
+  city: "Binghamton",
+  device: "Mobile",
+  browser: "Firefox",
+  os: "Symbian",
+  referer: "frail-designation.com",
+  refererUrl: "https://vengeful-pile.net/",
+  ip: "150.16.124.250",
 };
 ```
 

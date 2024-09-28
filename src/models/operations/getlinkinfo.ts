@@ -15,7 +15,7 @@ export type GetLinkInfoRequest = {
    */
   linkId?: string | undefined;
   /**
-   * This is the ID of the link in the your database. Must be prefixed with `ext_` when passed as a query parameter.
+   * This is the ID of the link in the your database.
    */
   externalId?: string | undefined;
 };

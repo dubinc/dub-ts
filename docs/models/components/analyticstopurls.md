@@ -6,7 +6,7 @@
 import { AnalyticsTopUrls } from "dub/models/components";
 
 let value: AnalyticsTopUrls = {
-  url: "https://showy-antelope.biz",
+  url: "https://complete-provision.info",
 };
 ```
 
