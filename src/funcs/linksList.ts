@@ -61,10 +61,8 @@ export async function linksList(
     >
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.GetLinksRequest$outboundSchema.optional().parse(value),
     "Input validation failed",
@@ -204,7 +202,7 @@ export async function linksList(
       | ConnectionError
     >
   > => {
-    const page = input?.page || 0;
+    const page = request?.page || 0;
     const nextPage = page + 1;
 
     if (!responseData) {
@@ -216,7 +214,7 @@ export async function linksList(
     if (!Array.isArray(results) || !results.length) {
       return () => null;
     }
-    const limit = input?.pageSize || 0;
+    const limit = request?.pageSize || 0;
     if (results.length < limit) {
       return () => null;
     }
@@ -225,7 +223,7 @@ export async function linksList(
       linksList(
         client,
         {
-          ...input,
+          ...request,
           page: nextPage,
         },
         options,

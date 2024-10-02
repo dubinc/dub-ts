@@ -42,6 +42,10 @@ export type UpsertLinkRequestBody = {
    */
   trackConversion?: boolean | undefined;
   /**
+   * The identifier of the short link that is unique across your workspace. If set, it can be used to identify your short link for client-side click tracking.
+   */
+  identifier?: string | null | undefined;
+  /**
    * Whether the short link is archived.
    */
   archived?: boolean | undefined;
@@ -217,6 +221,7 @@ export const UpsertLinkRequestBody$inboundSchema: z.ZodType<
   externalId: z.nullable(z.string()).optional(),
   prefix: z.string().optional(),
   trackConversion: z.boolean().default(false),
+  identifier: z.nullable(z.string()).optional(),
   archived: z.boolean().default(false),
   publicStats: z.boolean().default(false),
   tagId: z.nullable(z.string()).optional(),
@@ -260,6 +265,7 @@ export type UpsertLinkRequestBody$Outbound = {
   externalId?: string | null | undefined;
   prefix?: string | undefined;
   trackConversion: boolean;
+  identifier?: string | null | undefined;
   archived: boolean;
   publicStats: boolean;
   tagId?: string | null | undefined;
@@ -299,6 +305,7 @@ export const UpsertLinkRequestBody$outboundSchema: z.ZodType<
   externalId: z.nullable(z.string()).optional(),
   prefix: z.string().optional(),
   trackConversion: z.boolean().default(false),
+  identifier: z.nullable(z.string()).optional(),
   archived: z.boolean().default(false),
   publicStats: z.boolean().default(false),
   tagId: z.nullable(z.string()).optional(),

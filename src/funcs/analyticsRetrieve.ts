@@ -53,10 +53,8 @@ export async function analyticsRetrieve(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.RetrieveAnalyticsRequest$outboundSchema.optional().parse(
         value,

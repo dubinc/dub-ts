@@ -53,10 +53,8 @@ export async function linksDeleteMany(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.BulkDeleteLinksRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

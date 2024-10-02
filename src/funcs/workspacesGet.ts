@@ -54,10 +54,8 @@ export async function workspacesGet(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.GetWorkspaceRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

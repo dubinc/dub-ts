@@ -54,10 +54,8 @@ export async function qrCodesGet(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.GetQRCodeRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

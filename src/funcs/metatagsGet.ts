@@ -43,10 +43,8 @@ export async function metatagsGet(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.GetMetatagsRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

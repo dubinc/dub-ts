@@ -54,10 +54,8 @@ export async function domainsCreate(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.CreateDomainRequestBody$outboundSchema.optional().parse(value),
     "Input validation failed",

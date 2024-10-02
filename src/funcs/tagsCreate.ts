@@ -54,10 +54,8 @@ export async function tagsCreate(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.CreateTagRequestBody$outboundSchema.optional().parse(value),
     "Input validation failed",

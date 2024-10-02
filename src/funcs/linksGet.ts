@@ -54,10 +54,8 @@ export async function linksGet(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.GetLinkInfoRequest$outboundSchema.optional().parse(value),
     "Input validation failed",

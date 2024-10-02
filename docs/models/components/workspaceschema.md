@@ -39,6 +39,7 @@ let value: WorkspaceSchema = {
       slug: "acme.com",
     },
   ],
+  publishableKey: "<value>",
 };
 ```
 
@@ -73,3 +74,4 @@ let value: WorkspaceSchema = {
 | `users`                                                                       | [components.Users](../../models/components/users.md)[]                        | :heavy_check_mark:                                                            | The role of the authenticated user in the workspace.                          |
 | `domains`                                                                     | [components.Domains](../../models/components/domains.md)[]                    | :heavy_check_mark:                                                            | The domains of the workspace.                                                 |
 | `flags`                                                                       | Record<string, *boolean*>                                                     | :heavy_minus_sign:                                                            | The feature flags of the workspace, indicating which features are enabled.    |
+| `publishableKey`                                                              | *string*                                                                      | :heavy_check_mark:                                                            | The publishable key of the workspace.                                         |
