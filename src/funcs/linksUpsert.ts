@@ -54,10 +54,8 @@ export async function linksUpsert(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.UpsertLinkRequestBody$outboundSchema.optional().parse(value),
     "Input validation failed",

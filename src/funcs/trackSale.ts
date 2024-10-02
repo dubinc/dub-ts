@@ -53,10 +53,8 @@ export async function trackSale(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.TrackSaleRequestBody$outboundSchema.optional().parse(value),
     "Input validation failed",

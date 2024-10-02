@@ -55,10 +55,8 @@ export async function linksCreateMany(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       z.array(operations.RequestBody$outboundSchema).optional().parse(value),
     "Input validation failed",

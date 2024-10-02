@@ -55,10 +55,8 @@ export async function linksUpdateMany(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.BulkUpdateLinksRequestBody$outboundSchema.optional().parse(
         value,

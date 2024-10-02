@@ -165,6 +165,10 @@ export type WorkspaceSchema = {
    * The feature flags of the workspace, indicating which features are enabled.
    */
   flags?: { [k: string]: boolean } | undefined;
+  /**
+   * The publishable key of the workspace.
+   */
+  publishableKey: string | null;
 };
 
 /** @internal */
@@ -312,6 +316,7 @@ export const WorkspaceSchema$inboundSchema: z.ZodType<
   users: z.array(z.lazy(() => Users$inboundSchema)),
   domains: z.array(z.lazy(() => Domains$inboundSchema)),
   flags: z.record(z.boolean()).optional(),
+  publishableKey: z.nullable(z.string()),
 });
 
 /** @internal */
@@ -343,6 +348,7 @@ export type WorkspaceSchema$Outbound = {
   users: Array<Users$Outbound>;
   domains: Array<Domains$Outbound>;
   flags?: { [k: string]: boolean } | undefined;
+  publishableKey: string | null;
 };
 
 /** @internal */
@@ -378,6 +384,7 @@ export const WorkspaceSchema$outboundSchema: z.ZodType<
   users: z.array(z.lazy(() => Users$outboundSchema)),
   domains: z.array(z.lazy(() => Domains$outboundSchema)),
   flags: z.record(z.boolean()).optional(),
+  publishableKey: z.nullable(z.string()),
 });
 
 /**

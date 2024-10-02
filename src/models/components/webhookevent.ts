@@ -308,12 +308,16 @@ export type WebhookEvent4Link = {
    * The short link slug. If not provided, a random 7-character slug will be generated.
    */
   key: string;
-  /**
-   * This is the ID of the link in your database. If set, it can be used to identify the link in the future. Must be prefixed with 'ext_' when passed as a query parameter.
-   */
-  externalId: string | null;
   url: string;
   trackConversion?: boolean | undefined;
+  /**
+   * This is the ID of the link in your database that is unique across your workspace. If set, it can be used to identify the link in future API requests. Must be prefixed with 'ext_' when passed as a query parameter.
+   */
+  externalId: string | null;
+  /**
+   * The identifier of the short link that is unique across your workspace. If set, it can be used to identify your short link for client-side click tracking.
+   */
+  identifier: string | null;
   archived?: boolean | undefined;
   expiresAt: string;
   /**
@@ -748,12 +752,16 @@ export type WebhookEvent3Link = {
    * The short link slug. If not provided, a random 7-character slug will be generated.
    */
   key: string;
-  /**
-   * This is the ID of the link in your database. If set, it can be used to identify the link in the future. Must be prefixed with 'ext_' when passed as a query parameter.
-   */
-  externalId: string | null;
   url: string;
   trackConversion?: boolean | undefined;
+  /**
+   * This is the ID of the link in your database that is unique across your workspace. If set, it can be used to identify the link in future API requests. Must be prefixed with 'ext_' when passed as a query parameter.
+   */
+  externalId: string | null;
+  /**
+   * The identifier of the short link that is unique across your workspace. If set, it can be used to identify your short link for client-side click tracking.
+   */
+  identifier: string | null;
   archived?: boolean | undefined;
   expiresAt: string;
   /**
@@ -1173,12 +1181,16 @@ export type WebhookEventLink = {
    * The short link slug. If not provided, a random 7-character slug will be generated.
    */
   key: string;
-  /**
-   * This is the ID of the link in your database. If set, it can be used to identify the link in the future. Must be prefixed with 'ext_' when passed as a query parameter.
-   */
-  externalId: string | null;
   url: string;
   trackConversion?: boolean | undefined;
+  /**
+   * This is the ID of the link in your database that is unique across your workspace. If set, it can be used to identify the link in future API requests. Must be prefixed with 'ext_' when passed as a query parameter.
+   */
+  externalId: string | null;
+  /**
+   * The identifier of the short link that is unique across your workspace. If set, it can be used to identify your short link for client-side click tracking.
+   */
+  identifier: string | null;
   archived?: boolean | undefined;
   expiresAt: string;
   /**
@@ -1593,12 +1605,16 @@ export type Data = {
    * The short link slug. If not provided, a random 7-character slug will be generated.
    */
   key: string;
-  /**
-   * This is the ID of the link in your database. If set, it can be used to identify the link in the future. Must be prefixed with 'ext_' when passed as a query parameter.
-   */
-  externalId: string | null;
   url: string;
   trackConversion?: boolean | undefined;
+  /**
+   * This is the ID of the link in your database that is unique across your workspace. If set, it can be used to identify the link in future API requests. Must be prefixed with 'ext_' when passed as a query parameter.
+   */
+  externalId: string | null;
+  /**
+   * The identifier of the short link that is unique across your workspace. If set, it can be used to identify your short link for client-side click tracking.
+   */
+  identifier: string | null;
   archived?: boolean | undefined;
   expiresAt: string;
   /**
@@ -3160,9 +3176,10 @@ export const WebhookEvent4Link$inboundSchema: z.ZodType<
   id: z.string(),
   domain: z.string(),
   key: z.string(),
-  externalId: z.nullable(z.string()),
   url: z.string(),
   trackConversion: z.boolean().optional(),
+  externalId: z.nullable(z.string()),
+  identifier: z.nullable(z.string()),
   archived: z.boolean().optional(),
   expiresAt: z.string(),
   expiredUrl: z.nullable(z.string()),
@@ -3213,9 +3230,10 @@ export type WebhookEvent4Link$Outbound = {
   id: string;
   domain: string;
   key: string;
-  externalId: string | null;
   url: string;
   trackConversion?: boolean | undefined;
+  externalId: string | null;
+  identifier: string | null;
   archived?: boolean | undefined;
   expiresAt: string;
   expiredUrl: string | null;
@@ -3262,9 +3280,10 @@ export const WebhookEvent4Link$outboundSchema: z.ZodType<
   id: z.string(),
   domain: z.string(),
   key: z.string(),
-  externalId: z.nullable(z.string()),
   url: z.string(),
   trackConversion: z.boolean().optional(),
+  externalId: z.nullable(z.string()),
+  identifier: z.nullable(z.string()),
   archived: z.boolean().optional(),
   expiresAt: z.string(),
   expiredUrl: z.nullable(z.string()),
@@ -4888,9 +4907,10 @@ export const WebhookEvent3Link$inboundSchema: z.ZodType<
   id: z.string(),
   domain: z.string(),
   key: z.string(),
-  externalId: z.nullable(z.string()),
   url: z.string(),
   trackConversion: z.boolean().optional(),
+  externalId: z.nullable(z.string()),
+  identifier: z.nullable(z.string()),
   archived: z.boolean().optional(),
   expiresAt: z.string(),
   expiredUrl: z.nullable(z.string()),
@@ -4941,9 +4961,10 @@ export type WebhookEvent3Link$Outbound = {
   id: string;
   domain: string;
   key: string;
-  externalId: string | null;
   url: string;
   trackConversion?: boolean | undefined;
+  externalId: string | null;
+  identifier: string | null;
   archived?: boolean | undefined;
   expiresAt: string;
   expiredUrl: string | null;
@@ -4990,9 +5011,10 @@ export const WebhookEvent3Link$outboundSchema: z.ZodType<
   id: z.string(),
   domain: z.string(),
   key: z.string(),
-  externalId: z.nullable(z.string()),
   url: z.string(),
   trackConversion: z.boolean().optional(),
+  externalId: z.nullable(z.string()),
+  identifier: z.nullable(z.string()),
   archived: z.boolean().optional(),
   expiresAt: z.string(),
   expiredUrl: z.nullable(z.string()),
@@ -6526,9 +6548,10 @@ export const WebhookEventLink$inboundSchema: z.ZodType<
   id: z.string(),
   domain: z.string(),
   key: z.string(),
-  externalId: z.nullable(z.string()),
   url: z.string(),
   trackConversion: z.boolean().optional(),
+  externalId: z.nullable(z.string()),
+  identifier: z.nullable(z.string()),
   archived: z.boolean().optional(),
   expiresAt: z.string(),
   expiredUrl: z.nullable(z.string()),
@@ -6579,9 +6602,10 @@ export type WebhookEventLink$Outbound = {
   id: string;
   domain: string;
   key: string;
-  externalId: string | null;
   url: string;
   trackConversion?: boolean | undefined;
+  externalId: string | null;
+  identifier: string | null;
   archived?: boolean | undefined;
   expiresAt: string;
   expiredUrl: string | null;
@@ -6628,9 +6652,10 @@ export const WebhookEventLink$outboundSchema: z.ZodType<
   id: z.string(),
   domain: z.string(),
   key: z.string(),
-  externalId: z.nullable(z.string()),
   url: z.string(),
   trackConversion: z.boolean().optional(),
+  externalId: z.nullable(z.string()),
+  identifier: z.nullable(z.string()),
   archived: z.boolean().optional(),
   expiresAt: z.string(),
   expiredUrl: z.nullable(z.string()),
@@ -8153,9 +8178,10 @@ export const Data$inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z
     id: z.string(),
     domain: z.string(),
     key: z.string(),
-    externalId: z.nullable(z.string()),
     url: z.string(),
     trackConversion: z.boolean().optional(),
+    externalId: z.nullable(z.string()),
+    identifier: z.nullable(z.string()),
     archived: z.boolean().optional(),
     expiresAt: z.string(),
     expiredUrl: z.nullable(z.string()),
@@ -8206,9 +8232,10 @@ export type Data$Outbound = {
   id: string;
   domain: string;
   key: string;
-  externalId: string | null;
   url: string;
   trackConversion?: boolean | undefined;
+  externalId: string | null;
+  identifier: string | null;
   archived?: boolean | undefined;
   expiresAt: string;
   expiredUrl: string | null;
@@ -8252,9 +8279,10 @@ export const Data$outboundSchema: z.ZodType<Data$Outbound, z.ZodTypeDef, Data> =
     id: z.string(),
     domain: z.string(),
     key: z.string(),
-    externalId: z.nullable(z.string()),
     url: z.string(),
     trackConversion: z.boolean().optional(),
+    externalId: z.nullable(z.string()),
+    identifier: z.nullable(z.string()),
     archived: z.boolean().optional(),
     expiresAt: z.string(),
     expiredUrl: z.nullable(z.string()),

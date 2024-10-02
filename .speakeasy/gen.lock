@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: 596f43d83d9b42d6000040c93ba5018d
+  docChecksum: ababac2d9647ce276a0165b7766b1087
   docVersion: 0.0.1
-  speakeasyVersion: 1.404.5
-  generationVersion: 2.426.2
-  releaseVersion: 0.42.0
-  configChecksum: ed39e9667468bdf10ea72c83e14cbcba
+  speakeasyVersion: 1.405.10
+  generationVersion: 2.429.0
+  releaseVersion: 0.43.0
+  configChecksum: c50a7a8016a79d1eb64db414400b4364
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -14,14 +14,14 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.18.0
+    core: 3.18.2
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.1.1
-    errors: 2.82.2
+    errors: 2.82.3
     examples: 2.81.4
-    flattening: 2.81.1
+    flattening: 2.82.0
     globalSecurity: 2.82.11
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
@@ -397,7 +397,7 @@ examples:
     speakeasy-default-create-link:
       responses:
         "200":
-          application/json: {"id": "<id>", "domain": "lighthearted-kilogram.name", "key": "<key>", "externalId": "<value>", "url": "https://impartial-dump.com", "expiresAt": "<value>", "expiredUrl": "https://big-young.net", "password": "DuL1dlrnUXohO_B", "title": "<value>", "description": "Ameliorated demand-driven superstructure", "image": "https://loremflickr.com/640/480", "video": "<value>", "ios": "<value>", "android": "<value>", "tagId": "<value>", "tags": [], "comments": "<value>", "shortLink": "http://massive-cup.biz", "qrCode": "http://safe-bankruptcy.net", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<value>", "workspaceId": "<value>", "lastClicked": "<value>", "createdAt": "<value>", "updatedAt": "<value>", "projectId": "<value>"}
+          application/json: {"id": "<id>", "domain": "lighthearted-kilogram.name", "key": "<key>", "url": "https://impartial-dump.com", "externalId": "<value>", "identifier": "<value>", "expiresAt": "<value>", "expiredUrl": "https://big-young.net", "password": "DuL1dlrnUXohO_B", "title": "<value>", "description": "Ameliorated demand-driven superstructure", "image": "https://loremflickr.com/640/480", "video": "<value>", "ios": "<value>", "android": "<value>", "tagId": "<value>", "tags": [], "comments": "<value>", "shortLink": "http://massive-cup.biz", "qrCode": "http://safe-bankruptcy.net", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<value>", "workspaceId": "<value>", "lastClicked": "<value>", "createdAt": "<value>", "updatedAt": "<value>", "projectId": "<value>"}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -447,7 +447,7 @@ examples:
           externalId: "123456"
       responses:
         "200":
-          application/json: {"id": "<id>", "domain": "ringed-blow.name", "key": "<key>", "externalId": "<value>", "url": "https://monumental-spaghetti.name", "expiresAt": "<value>", "expiredUrl": "http://wiggly-substitution.info", "password": "fKH9v5zJBmg5IWA", "title": "<value>", "description": "Optional reciprocal projection", "image": "https://loremflickr.com/640/480", "video": "<value>", "ios": "<value>", "android": "<value>", "tagId": "<value>", "tags": [], "comments": "<value>", "shortLink": "https://hefty-festival.net", "qrCode": "https://pale-civilisation.name", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<value>", "workspaceId": "<value>", "lastClicked": "<value>", "createdAt": "<value>", "updatedAt": "<value>", "projectId": "<value>"}
+          application/json: {"id": "<id>", "domain": "ringed-blow.name", "key": "<key>", "url": "https://monumental-spaghetti.name", "externalId": "<value>", "identifier": "<value>", "expiresAt": "<value>", "expiredUrl": "http://wiggly-substitution.info", "password": "fKH9v5zJBmg5IWA", "title": "<value>", "description": "Optional reciprocal projection", "image": "https://loremflickr.com/640/480", "video": "<value>", "ios": "<value>", "android": "<value>", "tagId": "<value>", "tags": [], "comments": "<value>", "shortLink": "https://hefty-festival.net", "qrCode": "https://pale-civilisation.name", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<value>", "workspaceId": "<value>", "lastClicked": "<value>", "createdAt": "<value>", "updatedAt": "<value>", "projectId": "<value>"}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -499,7 +499,7 @@ examples:
           linkId: "<value>"
       responses:
         "200":
-          application/json: {"id": "<id>", "domain": "tidy-amazon.name", "key": "<key>", "externalId": "<value>", "url": "http://grand-pupa.org", "expiresAt": "<value>", "expiredUrl": "http://plastic-powder.info", "password": "KvPKDk8CkuAMJjb", "title": "<value>", "description": "User-friendly foreground interface", "image": "https://loremflickr.com/640/480", "video": "<value>", "ios": "<value>", "android": "<value>", "tagId": "<value>", "tags": [], "comments": "<value>", "shortLink": "http://glossy-roller.info", "qrCode": "https://poor-howard.com", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<value>", "workspaceId": "<value>", "lastClicked": "<value>", "createdAt": "<value>", "updatedAt": "<value>", "projectId": "<value>"}
+          application/json: {"id": "<id>", "domain": "tidy-amazon.name", "key": "<key>", "url": "http://grand-pupa.org", "externalId": "<value>", "identifier": "<value>", "expiresAt": "<value>", "expiredUrl": "http://plastic-powder.info", "password": "KvPKDk8CkuAMJjb", "title": "<value>", "description": "User-friendly foreground interface", "image": "https://loremflickr.com/640/480", "video": "<value>", "ios": "<value>", "android": "<value>", "tagId": "<value>", "tags": [], "comments": "<value>", "shortLink": "http://glossy-roller.info", "qrCode": "https://poor-howard.com", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<value>", "workspaceId": "<value>", "lastClicked": "<value>", "createdAt": "<value>", "updatedAt": "<value>", "projectId": "<value>"}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -594,7 +594,7 @@ examples:
     speakeasy-default-upsert-link:
       responses:
         "200":
-          application/json: {"id": "<id>", "domain": "monthly-hometown.info", "key": "<key>", "externalId": "<value>", "url": "https://honored-equality.info", "expiresAt": "<value>", "expiredUrl": "https://eminent-acknowledgment.net", "password": "wZDcrQrPcHBWicB", "title": "<value>", "description": "Re-engineered 24 hour structure", "image": "https://loremflickr.com/640/480", "video": "<value>", "ios": "<value>", "android": "<value>", "tagId": "<value>", "tags": [], "comments": "<value>", "shortLink": "http://nocturnal-spirituality.com", "qrCode": "https://potable-app.org", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<value>", "workspaceId": "<value>", "lastClicked": "<value>", "createdAt": "<value>", "updatedAt": "<value>", "projectId": "<value>"}
+          application/json: {"id": "<id>", "domain": "monthly-hometown.info", "key": "<key>", "url": "https://honored-equality.info", "externalId": "<value>", "identifier": "<value>", "expiresAt": "<value>", "expiredUrl": "https://eminent-acknowledgment.net", "password": "wZDcrQrPcHBWicB", "title": "<value>", "description": "Re-engineered 24 hour structure", "image": "https://loremflickr.com/640/480", "video": "<value>", "ios": "<value>", "android": "<value>", "tagId": "<value>", "tags": [], "comments": "<value>", "shortLink": "http://nocturnal-spirituality.com", "qrCode": "https://potable-app.org", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<value>", "workspaceId": "<value>", "lastClicked": "<value>", "createdAt": "<value>", "updatedAt": "<value>", "projectId": "<value>"}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -710,7 +710,7 @@ examples:
           idOrSlug: "<value>"
       responses:
         "200":
-          application/json: {"id": "<id>", "name": "<value>", "slug": "<value>", "plan": "business extra", "stripeId": "<value>", "billingCycleStart": "900.65", "stripeConnectId": "<value>", "inviteCode": "<value>", "usage": "5588.34", "usageLimit": "8441.99", "linksUsage": "5442.21", "linksLimit": "8306.36", "salesUsage": "5212.35", "salesLimit": "785.92", "domainsLimit": "9699.61", "tagsLimit": "8661.61", "usersLimit": "4580.49", "aiUsage": "7352.87", "aiLimit": "4508.24", "referralLinkId": "<value>", "conversionEnabled": true, "dotLinkClaimed": true, "createdAt": "<value>", "users": [], "domains": []}
+          application/json: {"id": "<id>", "name": "<value>", "slug": "<value>", "plan": "business extra", "stripeId": "<value>", "billingCycleStart": "900.65", "stripeConnectId": "<value>", "inviteCode": "<value>", "usage": "5588.34", "usageLimit": "8441.99", "linksUsage": "5442.21", "linksLimit": "8306.36", "salesUsage": "5212.35", "salesLimit": "785.92", "domainsLimit": "9699.61", "tagsLimit": "8661.61", "usersLimit": "4580.49", "aiUsage": "7352.87", "aiLimit": "4508.24", "referralLinkId": "<value>", "conversionEnabled": true, "dotLinkClaimed": true, "createdAt": "<value>", "users": [], "domains": [], "publishableKey": "<value>"}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -736,7 +736,7 @@ examples:
           idOrSlug: "<value>"
       responses:
         "200":
-          application/json: {"id": "<id>", "name": "<value>", "slug": "<value>", "plan": "enterprise", "stripeId": "<value>", "billingCycleStart": "245.55", "stripeConnectId": "<value>", "inviteCode": "<value>", "usage": "5971.29", "usageLimit": "156.52", "linksUsage": "3446.2", "linksLimit": "7084.55", "salesUsage": "9914.64", "salesLimit": "2703.24", "domainsLimit": "6276.9", "tagsLimit": "6841.99", "usersLimit": "4888.52", "aiUsage": "4430.76", "aiLimit": "9840.08", "referralLinkId": "<value>", "conversionEnabled": true, "dotLinkClaimed": false, "createdAt": "<value>", "users": [], "domains": []}
+          application/json: {"id": "<id>", "name": "<value>", "slug": "<value>", "plan": "enterprise", "stripeId": "<value>", "billingCycleStart": "245.55", "stripeConnectId": "<value>", "inviteCode": "<value>", "usage": "5971.29", "usageLimit": "156.52", "linksUsage": "3446.2", "linksLimit": "7084.55", "salesUsage": "9914.64", "salesLimit": "2703.24", "domainsLimit": "6276.9", "tagsLimit": "6841.99", "usersLimit": "4888.52", "aiUsage": "4430.76", "aiLimit": "9840.08", "referralLinkId": "<value>", "conversionEnabled": true, "dotLinkClaimed": false, "createdAt": "<value>", "users": [], "domains": [], "publishableKey": "<value>"}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":

@@ -286,12 +286,16 @@ export type SaleEventLink = {
    * The short link slug. If not provided, a random 7-character slug will be generated.
    */
   key: string;
-  /**
-   * This is the ID of the link in your database. If set, it can be used to identify the link in the future. Must be prefixed with 'ext_' when passed as a query parameter.
-   */
-  externalId: string | null;
   url: string;
   trackConversion?: boolean | undefined;
+  /**
+   * This is the ID of the link in your database that is unique across your workspace. If set, it can be used to identify the link in future API requests. Must be prefixed with 'ext_' when passed as a query parameter.
+   */
+  externalId: string | null;
+  /**
+   * The identifier of the short link that is unique across your workspace. If set, it can be used to identify your short link for client-side click tracking.
+   */
+  identifier: string | null;
   archived?: boolean | undefined;
   expiresAt: string;
   /**
@@ -1882,9 +1886,10 @@ export const SaleEventLink$inboundSchema: z.ZodType<
   id: z.string(),
   domain: z.string(),
   key: z.string(),
-  externalId: z.nullable(z.string()),
   url: z.string(),
   trackConversion: z.boolean().optional(),
+  externalId: z.nullable(z.string()),
+  identifier: z.nullable(z.string()),
   archived: z.boolean().optional(),
   expiresAt: z.string(),
   expiredUrl: z.nullable(z.string()),
@@ -1935,9 +1940,10 @@ export type SaleEventLink$Outbound = {
   id: string;
   domain: string;
   key: string;
-  externalId: string | null;
   url: string;
   trackConversion?: boolean | undefined;
+  externalId: string | null;
+  identifier: string | null;
   archived?: boolean | undefined;
   expiresAt: string;
   expiredUrl: string | null;
@@ -1984,9 +1990,10 @@ export const SaleEventLink$outboundSchema: z.ZodType<
   id: z.string(),
   domain: z.string(),
   key: z.string(),
-  externalId: z.nullable(z.string()),
   url: z.string(),
   trackConversion: z.boolean().optional(),
+  externalId: z.nullable(z.string()),
+  identifier: z.nullable(z.string()),
   archived: z.boolean().optional(),
   expiresAt: z.string(),
   expiredUrl: z.nullable(z.string()),

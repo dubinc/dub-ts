@@ -53,10 +53,8 @@ export async function trackCustomer(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.TrackCustomerRequestBody$outboundSchema.optional().parse(
         value,

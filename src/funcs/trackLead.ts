@@ -53,10 +53,8 @@ export async function trackLead(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.TrackLeadRequestBody$outboundSchema.optional().parse(value),
     "Input validation failed",
