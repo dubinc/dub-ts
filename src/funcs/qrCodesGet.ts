@@ -72,6 +72,7 @@ export async function qrCodesGet(
     "fgColor": payload.fgColor,
     "includeMargin": payload.includeMargin,
     "level": payload.level,
+    "logo": payload.logo,
     "size": payload.size,
     "url": payload.url,
   });

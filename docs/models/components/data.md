@@ -7,18 +7,18 @@ import { Data } from "dub/models/components";
 
 let value: Data = {
   id: "<id>",
-  domain: "intrepid-role.com",
+  domain: "ill-fated-molasses.net",
   key: "<key>",
-  url: "https://clear-cut-ostrich.info/",
+  url: "https://well-groomed-electronics.biz",
   externalId: "<id>",
   identifier: "<value>",
   expiresAt: "<value>",
-  expiredUrl: "https://fond-jump.net",
-  password: "TTzT1ejLPPfR1JC",
+  expiredUrl: "https://steep-creator.name",
+  password: "gBJWMhJAZj0gXPb",
   title: "<value>",
-  description: "blissfully drat incidentally cosset storyboard noted grounded",
-  image: "https://loremflickr.com/1215/858?lock=5635902810883578",
-  video: "https://loremflickr.com/2023/940?lock=170245687979181",
+  description: "ferociously where loyally beyond onto if carefully",
+  image: "https://loremflickr.com/3617/1798?lock=5348746019564716",
+  video: "https://picsum.videos/seed/evidS9h/2150/794",
   ios: "<value>",
   android: "<id>",
   geo: {},
@@ -27,12 +27,12 @@ let value: Data = {
     {
       id: "<id>",
       name: "<value>",
-      color: "pink",
+      color: "green",
     },
   ],
-  comments: "even pish reapply vivid honesty majestically whereas pantyhose",
-  shortLink: "https://careless-cutover.name/",
-  qrCode: "https://admired-nun.com",
+  comments: "indeed stool safely after ah boo oxidise hard-to-find before",
+  shortLink: "https://dark-importance.org/",
+  qrCode: "https://that-deed.net",
   utmSource: "<value>",
   utmMedium: "<value>",
   utmCampaign: "<value>",
@@ -71,7 +71,7 @@ let value: Data = {
 | `doIndex`                                                                                                                                                                                                                    | *boolean*                                                                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                           | N/A                                                                                                                                                                                                                          |
 | `ios`                                                                                                                                                                                                                        | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The iOS destination URL for the short link for iOS device targeting.                                                                                                                                                         |
 | `android`                                                                                                                                                                                                                    | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The Android destination URL for the short link for Android device targeting.                                                                                                                                                 |
-| `geo`                                                                                                                                                                                                                        | [components.WebhookEventGeo](../../models/components/webhookeventgeo.md)                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | Geo targeting information for the short link in JSON format `{[COUNTRY]: https://example.com }`. Learn more: https://d.to/geo                                                                                                |
+| `geo`                                                                                                                                                                                                                        | [components.LinkWebhookEventGeo](../../models/components/linkwebhookeventgeo.md)                                                                                                                                             | :heavy_check_mark:                                                                                                                                                                                                           | Geo targeting information for the short link in JSON format `{[COUNTRY]: https://example.com }`. Learn more: https://d.to/geo                                                                                                |
 | `publicStats`                                                                                                                                                                                                                | *boolean*                                                                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                           | N/A                                                                                                                                                                                                                          |
 | ~~`tagId`~~                                                                                                                                                                                                                  | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible.<br/><br/>The unique ID of the tag assigned to the short link. This field is deprecated – use `tags` instead. |
 | `tags`                                                                                                                                                                                                                       | [components.TagSchema](../../models/components/tagschema.md)[]                                                                                                                                                               | :heavy_check_mark:                                                                                                                                                                                                           | The tags assigned to the short link.                                                                                                                                                                                         |

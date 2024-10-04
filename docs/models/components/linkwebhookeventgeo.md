@@ -1,13 +1,13 @@
-# WebhookEvent3Geo
+# LinkWebhookEventGeo
 
 Geo targeting information for the short link in JSON format `{[COUNTRY]: https://example.com }`. Learn more: https://d.to/geo
 
 ## Example Usage
 
 ```typescript
-import { WebhookEvent3Geo } from "dub/models/components";
+import { LinkWebhookEventGeo } from "dub/models/components";
 
-let value: WebhookEvent3Geo = {};
+let value: LinkWebhookEventGeo = {};
 ```
 
 ## Fields

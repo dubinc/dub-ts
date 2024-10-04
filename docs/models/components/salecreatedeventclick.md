@@ -1,22 +1,22 @@
-# WebhookEventClick
+# SaleCreatedEventClick
 
 ## Example Usage
 
 ```typescript
-import { WebhookEventClick } from "dub/models/components";
+import { SaleCreatedEventClick } from "dub/models/components";
 
-let value: WebhookEventClick = {
+let value: SaleCreatedEventClick = {
   id: "<id>",
-  url: "https://another-hepatitis.org/",
-  continent: "Antarctica",
-  country: "Central African Republic",
-  city: "Charlottesville",
-  device: "Desktop",
-  browser: "Safari",
-  os: "Linux",
-  referer: "energetic-grouper.net",
-  refererUrl: "https://angelic-collaboration.org",
-  ip: "cb00:fca3:aee0:a0f9:f866:a4dc:ff4f:10ef",
+  url: "https://lucky-sweatshop.com",
+  continent: "North America",
+  country: "Cameroon",
+  city: "Fountain Valley",
+  device: "Mobile",
+  browser: "Chrome",
+  os: "WebOS",
+  referer: "earnest-tomb.name",
+  refererUrl: "https://faraway-commercial.net/",
+  ip: "70.243.205.150",
 };
 ```
 

@@ -1,15 +1,15 @@
-# WebhookEventCustomer
+# LeadCreatedEventCustomer
 
 ## Example Usage
 
 ```typescript
-import { WebhookEventCustomer } from "dub/models/components";
+import { LeadCreatedEventCustomer } from "dub/models/components";
 
-let value: WebhookEventCustomer = {
+let value: LeadCreatedEventCustomer = {
   id: "<id>",
   name: "<value>",
-  email: "Jalen3@gmail.com",
-  avatar: "https://picsum.photos/seed/p5E1uG/3095/1436",
+  email: "Carter0@gmail.com",
+  avatar: "https://loremflickr.com/1343/2719?lock=3546929172228842",
 };
 ```
 
