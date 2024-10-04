@@ -1,13 +1,13 @@
-# WebhookEventSale
+# SaleCreatedEventSale
 
 ## Example Usage
 
 ```typescript
-import { WebhookEventSale } from "dub/models/components";
+import { SaleCreatedEventSale } from "dub/models/components";
 
-let value: WebhookEventSale = {
-  amount: 47.87,
-  currency: "Tugrik",
+let value: SaleCreatedEventSale = {
+  amount: 8478.05,
+  currency: "Hryvnia",
   paymentProcessor: "<value>",
   invoiceId: "<id>",
 };

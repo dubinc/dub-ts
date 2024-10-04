@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: ababac2d9647ce276a0165b7766b1087
+  docChecksum: 32f1dd826074cba3a0425f3497496ac1
   docVersion: 0.0.1
-  speakeasyVersion: 1.405.10
+  speakeasyVersion: 1.409.0
   generationVersion: 2.429.0
-  releaseVersion: 0.43.0
-  configChecksum: c50a7a8016a79d1eb64db414400b4364
+  releaseVersion: 0.43.1
+  configChecksum: d91acd6f9347df3d6bcf3fdd455ba816
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -68,25 +68,45 @@ generatedFiles:
   - docs/models/components/domains.md
   - docs/models/components/domainschema.md
   - docs/models/components/event.md
-  - docs/models/components/event1.md
-  - docs/models/components/event2.md
-  - docs/models/components/event3.md
-  - docs/models/components/four.md
   - docs/models/components/geo.md
+  - docs/models/components/leadcreatedevent.md
+  - docs/models/components/leadcreatedeventclick.md
+  - docs/models/components/leadcreatedeventcustomer.md
+  - docs/models/components/leadcreatedeventdata.md
+  - docs/models/components/leadcreatedeventevent.md
+  - docs/models/components/leadcreatedeventgeo.md
+  - docs/models/components/leadcreatedeventlink.md
   - docs/models/components/leadevent.md
   - docs/models/components/leadeventclick.md
   - docs/models/components/leadeventevent.md
   - docs/models/components/leadeventgeo.md
   - docs/models/components/leadeventlink.md
   - docs/models/components/link.md
+  - docs/models/components/linkclickedevent.md
+  - docs/models/components/linkclickedeventclick.md
+  - docs/models/components/linkclickedeventdata.md
+  - docs/models/components/linkclickedeventevent.md
+  - docs/models/components/linkclickedeventgeo.md
+  - docs/models/components/linkclickedeventlink.md
   - docs/models/components/linkgeotargeting.md
   - docs/models/components/linkschema.md
+  - docs/models/components/linkwebhookevent.md
+  - docs/models/components/linkwebhookeventevent.md
+  - docs/models/components/linkwebhookeventgeo.md
   - docs/models/components/one.md
   - docs/models/components/paymentprocessor.md
   - docs/models/components/plan.md
   - docs/models/components/registereddomain.md
   - docs/models/components/role.md
   - docs/models/components/sale.md
+  - docs/models/components/salecreatedevent.md
+  - docs/models/components/salecreatedeventclick.md
+  - docs/models/components/salecreatedeventcustomer.md
+  - docs/models/components/salecreatedeventdata.md
+  - docs/models/components/salecreatedeventevent.md
+  - docs/models/components/salecreatedeventgeo.md
+  - docs/models/components/salecreatedeventlink.md
+  - docs/models/components/salecreatedeventsale.md
   - docs/models/components/saleevent.md
   - docs/models/components/saleeventclick.md
   - docs/models/components/saleeventcustomer.md
@@ -99,26 +119,6 @@ generatedFiles:
   - docs/models/components/two.md
   - docs/models/components/users.md
   - docs/models/components/webhookevent.md
-  - docs/models/components/webhookevent2event.md
-  - docs/models/components/webhookevent2geo.md
-  - docs/models/components/webhookevent3click.md
-  - docs/models/components/webhookevent3data.md
-  - docs/models/components/webhookevent3event.md
-  - docs/models/components/webhookevent3geo.md
-  - docs/models/components/webhookevent3link.md
-  - docs/models/components/webhookevent4click.md
-  - docs/models/components/webhookevent4customer.md
-  - docs/models/components/webhookevent4data.md
-  - docs/models/components/webhookevent4event.md
-  - docs/models/components/webhookevent4geo.md
-  - docs/models/components/webhookevent4link.md
-  - docs/models/components/webhookeventclick.md
-  - docs/models/components/webhookeventcustomer.md
-  - docs/models/components/webhookeventdata.md
-  - docs/models/components/webhookeventevent.md
-  - docs/models/components/webhookeventgeo.md
-  - docs/models/components/webhookeventlink.md
-  - docs/models/components/webhookeventsale.md
   - docs/models/components/workspaceschema.md
   - docs/models/errors/badrequest.md
   - docs/models/errors/code.md
@@ -297,9 +297,13 @@ generatedFiles:
   - src/models/components/countrycode.ts
   - src/models/components/domainschema.ts
   - src/models/components/index.ts
+  - src/models/components/leadcreatedevent.ts
   - src/models/components/leadevent.ts
+  - src/models/components/linkclickedevent.ts
   - src/models/components/linkgeotargeting.ts
   - src/models/components/linkschema.ts
+  - src/models/components/linkwebhookevent.ts
+  - src/models/components/salecreatedevent.ts
   - src/models/components/saleevent.ts
   - src/models/components/security.ts
   - src/models/components/tagschema.ts

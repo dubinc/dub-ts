@@ -1,24 +1,25 @@
-# WebhookEventLink
+# LinkClickedEventLink
 
 ## Example Usage
 
 ```typescript
-import { WebhookEventLink } from "dub/models/components";
+import { LinkClickedEventLink } from "dub/models/components";
 
-let value: WebhookEventLink = {
+let value: LinkClickedEventLink = {
   id: "<id>",
-  domain: "crazy-hutch.info",
+  domain: "mean-disposer.info",
   key: "<key>",
-  url: "https://powerless-sand.info",
+  url: "https://warlike-saloon.info",
   externalId: "<id>",
   identifier: "<value>",
   expiresAt: "<value>",
-  expiredUrl: "https://shocked-reconsideration.com",
-  password: "CEFxVduKnvBxBPx",
+  expiredUrl: "https://similar-hawk.info",
+  password: "fpkZkHhGUL9uEEI",
   title: "<value>",
-  description: "cute abaft willow hidden along wrathful allegation",
-  image: "https://picsum.photos/seed/iiSeyZ/404/1683",
-  video: "https://picsum.videos/seed/nH4T5nxgEy/2914/1346",
+  description:
+    "and wonderful cutlet pitiful brr retrospectivity armoire reservation even",
+  image: "https://picsum.photos/seed/QRBzzi/779/3528",
+  video: "https://loremflickr.com/2475/975?lock=3719527025332864",
   ios: "<value>",
   android: "<id>",
   geo: {},
@@ -27,13 +28,13 @@ let value: WebhookEventLink = {
     {
       id: "<id>",
       name: "<value>",
-      color: "pink",
+      color: "purple",
     },
   ],
   comments:
-    "breakable quicker maroon woot aboard unto ick hurtful forceful yuck",
-  shortLink: "https://emotional-nectarine.com",
-  qrCode: "https://deserted-accelerator.biz",
+    "powerfully potentially athwart broadcast whoever triangular past except hepatitis pro collaboration wisely account ah",
+  shortLink: "https://shallow-councilman.org/",
+  qrCode: "https://willing-willow.biz",
   utmSource: "<value>",
   utmMedium: "<value>",
   utmCampaign: "<value>",
@@ -72,7 +73,7 @@ let value: WebhookEventLink = {
 | `doIndex`                                                                                                                                                                                                                    | *boolean*                                                                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                           | N/A                                                                                                                                                                                                                          |
 | `ios`                                                                                                                                                                                                                        | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The iOS destination URL for the short link for iOS device targeting.                                                                                                                                                         |
 | `android`                                                                                                                                                                                                                    | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The Android destination URL for the short link for Android device targeting.                                                                                                                                                 |
-| `geo`                                                                                                                                                                                                                        | [components.WebhookEvent2Geo](../../models/components/webhookevent2geo.md)                                                                                                                                                   | :heavy_check_mark:                                                                                                                                                                                                           | Geo targeting information for the short link in JSON format `{[COUNTRY]: https://example.com }`. Learn more: https://d.to/geo                                                                                                |
+| `geo`                                                                                                                                                                                                                        | [components.LinkClickedEventGeo](../../models/components/linkclickedeventgeo.md)                                                                                                                                             | :heavy_check_mark:                                                                                                                                                                                                           | Geo targeting information for the short link in JSON format `{[COUNTRY]: https://example.com }`. Learn more: https://d.to/geo                                                                                                |
 | `publicStats`                                                                                                                                                                                                                | *boolean*                                                                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                           | N/A                                                                                                                                                                                                                          |
 | ~~`tagId`~~                                                                                                                                                                                                                  | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible.<br/><br/>The unique ID of the tag assigned to the short link. This field is deprecated – use `tags` instead. |
 | `tags`                                                                                                                                                                                                                       | [components.TagSchema](../../models/components/tagschema.md)[]                                                                                                                                                               | :heavy_check_mark:                                                                                                                                                                                                           | The tags assigned to the short link.                                                                                                                                                                                         |

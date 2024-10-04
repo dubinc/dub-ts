@@ -25,6 +25,10 @@ export type GetQRCodeRequest = {
    */
   url: string;
   /**
+   * The logo to include in the QR code. Defaults to `https://assets.dub.co/logo.png` if not provided.
+   */
+  logo?: string | undefined;
+  /**
    * The size of the QR code in pixels. Defaults to `600` if not provided.
    */
   size?: number | undefined;
@@ -73,6 +77,7 @@ export const GetQRCodeRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   url: z.string(),
+  logo: z.string().default("https://assets.dub.co/logo.png"),
   size: z.number().default(600),
   level: Level$inboundSchema.default("L"),
   fgColor: z.string().default("#000000"),
@@ -83,6 +88,7 @@ export const GetQRCodeRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type GetQRCodeRequest$Outbound = {
   url: string;
+  logo: string;
   size: number;
   level: string;
   fgColor: string;
@@ -97,6 +103,7 @@ export const GetQRCodeRequest$outboundSchema: z.ZodType<
   GetQRCodeRequest
 > = z.object({
   url: z.string(),
+  logo: z.string().default("https://assets.dub.co/logo.png"),
   size: z.number().default(600),
   level: Level$outboundSchema.default("L"),
   fgColor: z.string().default("#000000"),

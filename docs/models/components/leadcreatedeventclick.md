@@ -1,22 +1,22 @@
-# WebhookEvent3Click
+# LeadCreatedEventClick
 
 ## Example Usage
 
 ```typescript
-import { WebhookEvent3Click } from "dub/models/components";
+import { LeadCreatedEventClick } from "dub/models/components";
 
-let value: WebhookEvent3Click = {
+let value: LeadCreatedEventClick = {
   id: "<id>",
-  url: "https://creative-responsibility.net",
-  continent: "Australia",
-  country: "Moldova",
-  city: "New Georgianahaven",
-  device: "Desktop",
-  browser: "Firefox",
-  os: "iOS",
-  referer: "ugly-disappointment.com",
-  refererUrl: "https://indelible-mountain.com",
-  ip: "dd08:fe3a:fb0d:528c:0cbb:9cad:8df0:b8ea",
+  url: "https://substantial-conversation.net/",
+  continent: "Antarctica",
+  country: "Brunei Darussalam",
+  city: "Nashville-Davidson",
+  device: "Mobile",
+  browser: "Chrome",
+  os: "BeOS",
+  referer: "waterlogged-gray.org",
+  refererUrl: "https://glum-yeast.org/",
+  ip: "214.87.250.217",
 };
 ```
 

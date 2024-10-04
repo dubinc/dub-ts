@@ -5,27 +5,27 @@ Webhook event schema
 
 ## Supported Types
 
-### `components.One`
+### `components.LinkWebhookEvent`
 
 ```typescript
-const value: components.One = {
+const value: components.LinkWebhookEvent = {
   id: "<id>",
   event: "link.updated",
   createdAt: "<value>",
   data: {
     id: "<id>",
-    domain: "silent-testing.biz",
+    domain: "poor-litter.info",
     key: "<key>",
-    url: "https://insidious-appliance.name",
+    url: "https://definitive-commodity.info",
     externalId: "<id>",
     identifier: "<value>",
     expiresAt: "<value>",
-    expiredUrl: "https://afraid-integer.com/",
-    password: "SPztdW83WSFmfbP",
+    expiredUrl: "https://blond-starboard.net/",
+    password: "TiD5kp_nvhVpT6P",
     title: "<value>",
-    description: "apricot adjudge fibre",
-    image: "https://loremflickr.com/103/2544?lock=993313469878024",
-    video: "https://picsum.videos/seed/9r8Ku/635/573",
+    description: "superficial fluctuate candid",
+    image: "https://picsum.photos/seed/RQjBqU/1934/1255",
+    video: "https://picsum.videos/seed/cHMuBd/750/2791",
     ios: "<value>",
     android: "<id>",
     geo: {},
@@ -34,12 +34,12 @@ const value: components.One = {
       {
         id: "<id>",
         name: "<value>",
-        color: "brown",
+        color: "blue",
       },
     ],
-    comments: "what sermon cloudy silver out",
-    shortLink: "https://pink-daddy.info",
-    qrCode: "https://direct-reach.net",
+    comments: "of for physical next but vacation",
+    shortLink: "https://chubby-mathematics.net",
+    qrCode: "https://altruistic-publicity.net",
     utmSource: "<value>",
     utmMedium: "<value>",
     utmCampaign: "<value>",
@@ -55,187 +55,41 @@ const value: components.One = {
 };
 ```
 
-### `components.Two`
+### `components.LinkClickedEvent`
 
 ```typescript
-const value: components.Two = {
+const value: components.LinkClickedEvent = {
   id: "<id>",
   event: "link.clicked",
   createdAt: "<value>",
   data: {
     click: {
       id: "<id>",
-      url: "https://tiny-declaration.name",
-      continent: "South America",
-      country: "Philippines",
-      city: "Dale City",
-      device: "Mobile",
-      browser: "Chrome",
-      os: "Blackberry",
-      referer: "mixed-optimal.name",
-      refererUrl: "https://steel-bar.org",
-      ip: "43.236.200.107",
-    },
-    link: {
-      id: "<id>",
-      domain: "peaceful-decryption.info",
-      key: "<key>",
-      url: "https://slimy-hose.net/",
-      externalId: "<id>",
-      identifier: "<value>",
-      expiresAt: "<value>",
-      expiredUrl: "https://idolized-hunt.name",
-      password: "3qiS0ruflB4LG8U",
-      title: "<value>",
-      description: "upward inside during arrange",
-      image: "https://picsum.photos/seed/7hetzJ3qVs/3371/2228",
-      video: "https://loremflickr.com/3270/448?lock=6623866312215278",
-      ios: "<value>",
-      android: "<id>",
-      geo: {},
-      tagId: "<id>",
-      tags: [
-        {
-          id: "<id>",
-          name: "<value>",
-          color: "purple",
-        },
-      ],
-      comments:
-        "whoever following up drive tectonics emotional catalyze why tomatillo premise vicinity meh",
-      shortLink: "https://motionless-corral.net",
-      qrCode: "https://motionless-appliance.info/",
-      utmSource: "<value>",
-      utmMedium: "<value>",
-      utmCampaign: "<value>",
-      utmTerm: "<value>",
-      utmContent: "<value>",
-      userId: "<id>",
-      workspaceId: "<id>",
-      lastClicked: "<value>",
-      createdAt: "<value>",
-      updatedAt: "<value>",
-      projectId: "<id>",
-    },
-  },
-};
-```
-
-### `components.Three`
-
-```typescript
-const value: components.Three = {
-  id: "<id>",
-  event: "lead.created",
-  createdAt: "<value>",
-  data: {
-    eventName: "<value>",
-    customer: {
-      id: "<id>",
-      name: "<value>",
-      email: "Brittany_Lind46@hotmail.com",
-      avatar: "https://picsum.photos/seed/B4cC6I/584/1103",
-    },
-    click: {
-      id: "<id>",
-      url: "https://flimsy-surface.net/",
-      continent: "Africa",
-      country: "Norway",
-      city: "Fort Candidafurt",
-      device: "Desktop",
-      browser: "Safari",
-      os: "Android",
-      referer: "overcooked-celsius.info",
-      refererUrl: "https://somber-masterpiece.net",
-      ip: "670c:faf9:a39e:906e:89c5:dcb5:1630:6be8",
-    },
-    link: {
-      id: "<id>",
-      domain: "downright-metal.net",
-      key: "<key>",
-      url: "https://timely-dividend.name",
-      externalId: "<id>",
-      identifier: "<value>",
-      expiresAt: "<value>",
-      expiredUrl: "https://gloomy-pocket-watch.com/",
-      password: "mEZI_sqjgb38l_s",
-      title: "<value>",
-      description: "definite unit supplier jazz gladly aha eyeliner meh",
-      image: "https://picsum.photos/seed/n3CVoY/2365/2719",
-      video: "https://picsum.videos/seed/FDbceJuF/2391/845",
-      ios: "<value>",
-      android: "<id>",
-      geo: {},
-      tagId: "<id>",
-      tags: [
-        {
-          id: "<id>",
-          name: "<value>",
-          color: "pink",
-        },
-      ],
-      comments:
-        "shush while gentle worth aha formal loaf gadzooks necklace mmm indeed but exacerbate accessorise",
-      shortLink: "https://ruddy-hygienic.org/",
-      qrCode: "https://flawed-gift.org",
-      utmSource: "<value>",
-      utmMedium: "<value>",
-      utmCampaign: "<value>",
-      utmTerm: "<value>",
-      utmContent: "<value>",
-      userId: "<id>",
-      workspaceId: "<id>",
-      lastClicked: "<value>",
-      createdAt: "<value>",
-      updatedAt: "<value>",
-      projectId: "<id>",
-    },
-  },
-};
-```
-
-### `components.Four`
-
-```typescript
-const value: components.Four = {
-  id: "<id>",
-  event: "sale.created",
-  createdAt: "<value>",
-  data: {
-    eventName: "<value>",
-    customer: {
-      id: "<id>",
-      name: "<value>",
-      email: "Friedrich23@yahoo.com",
-      avatar: "https://loremflickr.com/1682/2792?lock=8474557665880699",
-    },
-    click: {
-      id: "<id>",
-      url: "https://crushing-corral.biz/",
-      continent: "Antarctica",
-      country: "Cameroon",
-      city: "Erdmanburgh",
+      url: "https://messy-impostor.name",
+      continent: "Europe",
+      country: "Turks and Caicos Islands",
+      city: "Torphycester",
       device: "Desktop",
       browser: "Firefox",
-      os: "Symbian",
-      referer: "helpless-epic.com",
-      refererUrl: "https://entire-roadway.com/",
-      ip: "71.73.216.202",
+      os: "Android",
+      referer: "foolhardy-fork.biz",
+      refererUrl: "https://rich-draft.com",
+      ip: "147.47.2.237",
     },
     link: {
       id: "<id>",
-      domain: "ordinary-electronics.biz",
+      domain: "mysterious-boulevard.org",
       key: "<key>",
-      url: "https://showy-going.name",
+      url: "https://key-appliance.com",
       externalId: "<id>",
       identifier: "<value>",
       expiresAt: "<value>",
-      expiredUrl: "https://pushy-lox.com",
-      password: "14CeblcO4WVT0wY",
+      expiredUrl: "https://unfit-chops.net/",
+      password: "Lz0fZ2SzdOXti6k",
       title: "<value>",
-      description: "gray funny executor hunt till",
-      image: "https://picsum.photos/seed/NlJHZ6/2192/3180",
-      video: "https://picsum.videos/seed/KumLnCT90/9/2991",
+      description: "voluntarily plus mmm suspension",
+      image: "https://loremflickr.com/111/2641?lock=7127230607558813",
+      video: "https://picsum.videos/seed/OtwfBiza/2885/1920",
       ios: "<value>",
       android: "<id>",
       geo: {},
@@ -248,9 +102,156 @@ const value: components.Four = {
         },
       ],
       comments:
-        "sugary incline regarding behind about after hence belabor search controvert mozzarella solemnly sinful meanwhile skyline up heating",
-      shortLink: "https://kosher-stock.name/",
-      qrCode: "https://secret-assist.org",
+        "for perfectly midwife loyalty descent and provided mash out throughout with",
+      shortLink: "https://sandy-fuel.info/",
+      qrCode: "https://grown-unibody.biz/",
+      utmSource: "<value>",
+      utmMedium: "<value>",
+      utmCampaign: "<value>",
+      utmTerm: "<value>",
+      utmContent: "<value>",
+      userId: "<id>",
+      workspaceId: "<id>",
+      lastClicked: "<value>",
+      createdAt: "<value>",
+      updatedAt: "<value>",
+      projectId: "<id>",
+    },
+  },
+};
+```
+
+### `components.LeadCreatedEvent`
+
+```typescript
+const value: components.LeadCreatedEvent = {
+  id: "<id>",
+  event: "lead.created",
+  createdAt: "<value>",
+  data: {
+    eventName: "<value>",
+    customer: {
+      id: "<id>",
+      name: "<value>",
+      email: "Kristy_Kozey@gmail.com",
+      avatar: "https://picsum.photos/seed/JXpm2bebK/2442/2182",
+    },
+    click: {
+      id: "<id>",
+      url: "https://raw-slide.biz",
+      continent: "Asia",
+      country: "Pitcairn Islands",
+      city: "North Howell",
+      device: "Mobile",
+      browser: "Firefox",
+      os: "Android",
+      referer: "wrong-parade.info",
+      refererUrl: "https://splendid-procurement.org/",
+      ip: "29.185.52.45",
+    },
+    link: {
+      id: "<id>",
+      domain: "gleaming-skean.name",
+      key: "<key>",
+      url: "https://left-plugin.name/",
+      externalId: "<id>",
+      identifier: "<value>",
+      expiresAt: "<value>",
+      expiredUrl: "https://eminent-stay.name",
+      password: "dItY8fWkoqHIx_T",
+      title: "<value>",
+      description: "stranger lest veg certainly punctual",
+      image: "https://picsum.photos/seed/XwN3q/3763/2302",
+      video: "https://picsum.videos/seed/r0XXd2wW/1028/1068",
+      ios: "<value>",
+      android: "<id>",
+      geo: {},
+      tagId: "<id>",
+      tags: [
+        {
+          id: "<id>",
+          name: "<value>",
+          color: "brown",
+        },
+      ],
+      comments:
+        "ew frightfully silver unless save unlawful vague override shakily rewarding woot yet amid sweatshop",
+      shortLink: "https://massive-deployment.info/",
+      qrCode: "https://wry-midwife.net/",
+      utmSource: "<value>",
+      utmMedium: "<value>",
+      utmCampaign: "<value>",
+      utmTerm: "<value>",
+      utmContent: "<value>",
+      userId: "<id>",
+      workspaceId: "<id>",
+      lastClicked: "<value>",
+      createdAt: "<value>",
+      updatedAt: "<value>",
+      projectId: "<id>",
+    },
+  },
+};
+```
+
+### `components.SaleCreatedEvent`
+
+```typescript
+const value: components.SaleCreatedEvent = {
+  id: "<id>",
+  event: "sale.created",
+  createdAt: "<value>",
+  data: {
+    eventName: "<value>",
+    customer: {
+      id: "<id>",
+      name: "<value>",
+      email: "Frederic.Boehm@gmail.com",
+      avatar: "https://loremflickr.com/3353/3742?lock=2336231664935715",
+    },
+    click: {
+      id: "<id>",
+      url: "https://abandoned-battle.biz/",
+      continent: "Australia",
+      country: "Dominica",
+      city: "Fort Wayne",
+      device: "Mobile",
+      browser: "Safari",
+      os: "iOS",
+      referer: "enchanted-elver.net",
+      refererUrl: "https://hurtful-interviewer.name/",
+      ip: "5757:27d6:8eab:b2a2:5378:e5ab:ba6a:449a",
+    },
+    link: {
+      id: "<id>",
+      domain: "monumental-synergy.net",
+      key: "<key>",
+      url: "https://oddball-nudge.org/",
+      externalId: "<id>",
+      identifier: "<value>",
+      expiresAt: "<value>",
+      expiredUrl: "https://multicolored-creature.com/",
+      password: "XjjG835ABu2iLmy",
+      title: "<value>",
+      description:
+        "antagonize obstruct overburden mountain wrongly plan psst promptly ha",
+      image: "https://picsum.photos/seed/eLDXg9jfKJ/2897/767",
+      video: "https://picsum.videos/seed/wEvhhjbTRs/2679/866",
+      ios: "<value>",
+      android: "<id>",
+      geo: {},
+      tagId: "<id>",
+      tags: [
+        {
+          id: "<id>",
+          name: "<value>",
+          color: "green",
+        },
+      ],
+      comments:
+        "modulo plugin meaty frizz strait barring after plus lest generally save why nor ocelot baggy horn evince black though opposite",
+      shortLink: "https://spirited-heartache.name/",
+      qrCode: "https://kaleidoscopic-vibration.net",
       utmSource: "<value>",
       utmMedium: "<value>",
       utmCampaign: "<value>",
@@ -264,8 +265,8 @@ const value: components.Four = {
       projectId: "<id>",
     },
     sale: {
-      amount: 7062.08,
-      currency: "Rufiyaa",
+      amount: 8264.30,
+      currency: "CFA Franc BCEAO",
       paymentProcessor: "<value>",
       invoiceId: "<id>",
     },

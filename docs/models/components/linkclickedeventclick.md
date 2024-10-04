@@ -1,22 +1,22 @@
-# WebhookEvent4Click
+# LinkClickedEventClick
 
 ## Example Usage
 
 ```typescript
-import { WebhookEvent4Click } from "dub/models/components";
+import { LinkClickedEventClick } from "dub/models/components";
 
-let value: WebhookEvent4Click = {
+let value: LinkClickedEventClick = {
   id: "<id>",
-  url: "https://neat-waterspout.com",
-  continent: "North America",
-  country: "El Salvador",
-  city: "East Patience",
+  url: "https://creamy-blowgun.net",
+  continent: "South America",
+  country: "Lao People's Democratic Republic",
+  city: "Bernierburgh",
   device: "Desktop",
-  browser: "Safari",
-  os: "Blackberry",
-  referer: "bare-siege.name",
-  refererUrl: "https://simplistic-meander.org",
-  ip: "140.75.247.57",
+  browser: "Firefox",
+  os: "Linux",
+  referer: "bare-euphonium.net",
+  refererUrl: "https://gracious-soup.biz",
+  ip: "143.122.114.39",
 };
 ```
 

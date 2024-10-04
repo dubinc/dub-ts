@@ -26,7 +26,7 @@ const value: components.AnalyticsTimeseries[] = [
 ```typescript
 const value: components.AnalyticsCountries[] = [
   {
-    country: "AL",
+    country: "NP",
   },
 ];
 ```
@@ -36,8 +36,8 @@ const value: components.AnalyticsCountries[] = [
 ```typescript
 const value: components.AnalyticsCities[] = [
   {
-    city: "Gainesville",
-    country: "AQ",
+    city: "Jamarfield",
+    country: "TK",
   },
 ];
 ```
@@ -57,7 +57,7 @@ const value: components.AnalyticsDevices[] = [
 ```typescript
 const value: components.AnalyticsBrowsers[] = [
   {
-    browser: "Safari",
+    browser: "Chrome",
   },
 ];
 ```
@@ -67,7 +67,7 @@ const value: components.AnalyticsBrowsers[] = [
 ```typescript
 const value: components.AnalyticsOS[] = [
   {
-    os: "Blackberry",
+    os: "WebOS",
   },
 ];
 ```
@@ -77,7 +77,7 @@ const value: components.AnalyticsOS[] = [
 ```typescript
 const value: components.AnalyticsReferers[] = [
   {
-    referer: "illustrious-straw.info",
+    referer: "all-government.info",
   },
 ];
 ```
@@ -89,10 +89,10 @@ const value: components.AnalyticsTopLinks[] = [
   {
     link: "<value>",
     id: "<id>",
-    domain: "narrow-toothpick.net",
+    domain: "meaty-disconnection.info",
     key: "<key>",
     shortLink: "<value>",
-    url: "https://sour-tennis.net/",
+    url: "https://firm-silk.com",
     createdAt: "<value>",
   },
 ];
@@ -103,7 +103,7 @@ const value: components.AnalyticsTopLinks[] = [
 ```typescript
 const value: components.AnalyticsTopUrls[] = [
   {
-    url: "https://superior-beret.biz/",
+    url: "https://valuable-instruction.com/",
   },
 ];
 ```
