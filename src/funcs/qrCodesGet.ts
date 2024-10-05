@@ -70,6 +70,7 @@ export async function qrCodesGet(
   const query = encodeFormQuery({
     "bgColor": payload.bgColor,
     "fgColor": payload.fgColor,
+    "hideLogo": payload.hideLogo,
     "includeMargin": payload.includeMargin,
     "level": payload.level,
     "logo": payload.logo,
