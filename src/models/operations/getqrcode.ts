@@ -25,7 +25,7 @@ export type GetQRCodeRequest = {
    */
   url: string;
   /**
-   * The logo to include in the QR code. Defaults to `https://assets.dub.co/logo.png` if not provided.
+   * The logo to include in the QR code. Can only be used with a paid plan on Dub.co.
    */
   logo?: string | undefined;
   /**
@@ -44,6 +44,10 @@ export type GetQRCodeRequest = {
    * The background color of the QR code in hex format. Defaults to `#ffffff` if not provided.
    */
   bgColor?: string | undefined;
+  /**
+   * Whether to hide the logo in the QR code. Can only be used with a paid plan on Dub.co.
+   */
+  hideLogo?: boolean | undefined;
   /**
    * Whether to include a margin around the QR code. Defaults to `false` if not provided.
    */
@@ -77,22 +81,24 @@ export const GetQRCodeRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   url: z.string(),
-  logo: z.string().default("https://assets.dub.co/logo.png"),
+  logo: z.string().optional(),
   size: z.number().default(600),
   level: Level$inboundSchema.default("L"),
   fgColor: z.string().default("#000000"),
   bgColor: z.string().default("#FFFFFF"),
+  hideLogo: z.boolean().default(false),
   includeMargin: z.boolean().default(false),
 });
 
 /** @internal */
 export type GetQRCodeRequest$Outbound = {
   url: string;
-  logo: string;
+  logo?: string | undefined;
   size: number;
   level: string;
   fgColor: string;
   bgColor: string;
+  hideLogo: boolean;
   includeMargin: boolean;
 };
 
@@ -103,11 +109,12 @@ export const GetQRCodeRequest$outboundSchema: z.ZodType<
   GetQRCodeRequest
 > = z.object({
   url: z.string(),
-  logo: z.string().default("https://assets.dub.co/logo.png"),
+  logo: z.string().optional(),
   size: z.number().default(600),
   level: Level$outboundSchema.default("L"),
   fgColor: z.string().default("#000000"),
   bgColor: z.string().default("#FFFFFF"),
+  hideLogo: z.boolean().default(false),
   includeMargin: z.boolean().default(false),
 });
 
