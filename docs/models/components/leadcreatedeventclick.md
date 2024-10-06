@@ -7,16 +7,16 @@ import { LeadCreatedEventClick } from "dub/models/components";
 
 let value: LeadCreatedEventClick = {
   id: "<id>",
-  url: "https://substantial-conversation.net/",
-  continent: "Antarctica",
-  country: "Brunei Darussalam",
-  city: "Nashville-Davidson",
+  url: "https://unripe-flame.name/",
+  continent: "Africa",
+  country: "Netherlands",
+  city: "Fort Gloria",
   device: "Mobile",
   browser: "Chrome",
   os: "BeOS",
-  referer: "waterlogged-gray.org",
-  refererUrl: "https://glum-yeast.org/",
-  ip: "214.87.250.217",
+  referer: "straight-developmental.org",
+  refererUrl: "https://sleepy-importance.org/",
+  ip: "16.57.254.85",
 };
 ```
 

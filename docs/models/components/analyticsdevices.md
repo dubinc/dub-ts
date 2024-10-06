@@ -6,7 +6,7 @@
 import { AnalyticsDevices } from "dub/models/components";
 
 let value: AnalyticsDevices = {
-  device: "Mobile",
+  device: "Desktop",
 };
 ```
 

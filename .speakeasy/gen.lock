@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: 5c400b20334e45bb5625715215fcbff4
+  docChecksum: 8620b0f24a0133906ad7b91d73cc1651
   docVersion: 0.0.1
-  speakeasyVersion: 1.409.0
-  generationVersion: 2.429.0
-  releaseVersion: 0.43.3
-  configChecksum: ec80578595ad0acd89ed81495d2e0161
+  speakeasyVersion: 1.410.0
+  generationVersion: 2.434.1
+  releaseVersion: 0.43.4
+  configChecksum: d38f99cccff85bc9082fcad380640249
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -47,19 +47,23 @@ generatedFiles:
   - docs/models/components/analyticsbrowsers.md
   - docs/models/components/analyticscities.md
   - docs/models/components/analyticscitiescountry.md
+  - docs/models/components/analyticscontinents.md
   - docs/models/components/analyticscount.md
   - docs/models/components/analyticscountries.md
   - docs/models/components/analyticsdevices.md
   - docs/models/components/analyticsos.md
   - docs/models/components/analyticsreferers.md
+  - docs/models/components/analyticsrefererurls.md
   - docs/models/components/analyticstimeseries.md
   - docs/models/components/analyticstoplinks.md
   - docs/models/components/analyticstopurls.md
+  - docs/models/components/analyticstriggers.md
   - docs/models/components/city.md
   - docs/models/components/click.md
   - docs/models/components/clickevent.md
   - docs/models/components/clickeventgeo.md
   - docs/models/components/color.md
+  - docs/models/components/continent.md
   - docs/models/components/continentcode.md
   - docs/models/components/country.md
   - docs/models/components/countrycode.md
@@ -116,6 +120,7 @@ generatedFiles:
   - docs/models/components/security.md
   - docs/models/components/tagschema.md
   - docs/models/components/three.md
+  - docs/models/components/trigger.md
   - docs/models/components/two.md
   - docs/models/components/users.md
   - docs/models/components/webhookevent.md
@@ -286,14 +291,17 @@ generatedFiles:
   - src/lib/url.ts
   - src/models/components/analyticsbrowsers.ts
   - src/models/components/analyticscities.ts
+  - src/models/components/analyticscontinents.ts
   - src/models/components/analyticscount.ts
   - src/models/components/analyticscountries.ts
   - src/models/components/analyticsdevices.ts
   - src/models/components/analyticsos.ts
   - src/models/components/analyticsreferers.ts
+  - src/models/components/analyticsrefererurls.ts
   - src/models/components/analyticstimeseries.ts
   - src/models/components/analyticstoplinks.ts
   - src/models/components/analyticstopurls.ts
+  - src/models/components/analyticstriggers.ts
   - src/models/components/clickevent.ts
   - src/models/components/continentcode.ts
   - src/models/components/countrycode.ts

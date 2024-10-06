@@ -4,14 +4,17 @@
 
 export * from "./analyticsbrowsers.js";
 export * from "./analyticscities.js";
+export * from "./analyticscontinents.js";
 export * from "./analyticscount.js";
 export * from "./analyticscountries.js";
 export * from "./analyticsdevices.js";
 export * from "./analyticsos.js";
 export * from "./analyticsreferers.js";
+export * from "./analyticsrefererurls.js";
 export * from "./analyticstimeseries.js";
 export * from "./analyticstoplinks.js";
 export * from "./analyticstopurls.js";
+export * from "./analyticstriggers.js";
 export * from "./clickevent.js";
 export * from "./continentcode.js";
 export * from "./countrycode.js";

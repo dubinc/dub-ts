@@ -7,7 +7,7 @@ The field to sort the links by. The default is `createdAt`, and sort order is al
 ```typescript
 import { Sort } from "dub/models/operations";
 
-let value: Sort = "lastClicked";
+let value: Sort = "createdAt";
 ```
 
 ## Values
