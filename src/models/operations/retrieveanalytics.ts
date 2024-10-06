@@ -175,12 +175,15 @@ export type RetrieveAnalyticsRequest = {
 export type RetrieveAnalyticsResponseBody =
   | components.AnalyticsCount
   | Array<components.AnalyticsTimeseries>
+  | Array<components.AnalyticsContinents>
   | Array<components.AnalyticsCountries>
   | Array<components.AnalyticsCities>
   | Array<components.AnalyticsDevices>
   | Array<components.AnalyticsBrowsers>
   | Array<components.AnalyticsOS>
+  | Array<components.AnalyticsTriggers>
   | Array<components.AnalyticsReferers>
+  | Array<components.AnalyticsRefererUrls>
   | Array<components.AnalyticsTopLinks>
   | Array<components.AnalyticsTopUrls>;
 
@@ -373,12 +376,15 @@ export const RetrieveAnalyticsResponseBody$inboundSchema: z.ZodType<
 > = z.union([
   components.AnalyticsCount$inboundSchema,
   z.array(components.AnalyticsTimeseries$inboundSchema),
+  z.array(components.AnalyticsContinents$inboundSchema),
   z.array(components.AnalyticsCountries$inboundSchema),
   z.array(components.AnalyticsCities$inboundSchema),
   z.array(components.AnalyticsDevices$inboundSchema),
   z.array(components.AnalyticsBrowsers$inboundSchema),
   z.array(components.AnalyticsOS$inboundSchema),
+  z.array(components.AnalyticsTriggers$inboundSchema),
   z.array(components.AnalyticsReferers$inboundSchema),
+  z.array(components.AnalyticsRefererUrls$inboundSchema),
   z.array(components.AnalyticsTopLinks$inboundSchema),
   z.array(components.AnalyticsTopUrls$inboundSchema),
 ]);
@@ -387,12 +393,15 @@ export const RetrieveAnalyticsResponseBody$inboundSchema: z.ZodType<
 export type RetrieveAnalyticsResponseBody$Outbound =
   | components.AnalyticsCount$Outbound
   | Array<components.AnalyticsTimeseries$Outbound>
+  | Array<components.AnalyticsContinents$Outbound>
   | Array<components.AnalyticsCountries$Outbound>
   | Array<components.AnalyticsCities$Outbound>
   | Array<components.AnalyticsDevices$Outbound>
   | Array<components.AnalyticsBrowsers$Outbound>
   | Array<components.AnalyticsOS$Outbound>
+  | Array<components.AnalyticsTriggers$Outbound>
   | Array<components.AnalyticsReferers$Outbound>
+  | Array<components.AnalyticsRefererUrls$Outbound>
   | Array<components.AnalyticsTopLinks$Outbound>
   | Array<components.AnalyticsTopUrls$Outbound>;
 
@@ -404,12 +413,15 @@ export const RetrieveAnalyticsResponseBody$outboundSchema: z.ZodType<
 > = z.union([
   components.AnalyticsCount$outboundSchema,
   z.array(components.AnalyticsTimeseries$outboundSchema),
+  z.array(components.AnalyticsContinents$outboundSchema),
   z.array(components.AnalyticsCountries$outboundSchema),
   z.array(components.AnalyticsCities$outboundSchema),
   z.array(components.AnalyticsDevices$outboundSchema),
   z.array(components.AnalyticsBrowsers$outboundSchema),
   z.array(components.AnalyticsOS$outboundSchema),
+  z.array(components.AnalyticsTriggers$outboundSchema),
   z.array(components.AnalyticsReferers$outboundSchema),
+  z.array(components.AnalyticsRefererUrls$outboundSchema),
   z.array(components.AnalyticsTopLinks$outboundSchema),
   z.array(components.AnalyticsTopUrls$outboundSchema),
 ]);

@@ -7,7 +7,7 @@ The color of the tag. If not provided, a random color will be used from the list
 ```typescript
 import { Color } from "dub/models/operations";
 
-let value: Color = "green";
+let value: Color = "purple";
 ```
 
 ## Values

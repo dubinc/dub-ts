@@ -21,12 +21,22 @@ const value: components.AnalyticsTimeseries[] = [
 ];
 ```
 
+### `components.AnalyticsContinents[]`
+
+```typescript
+const value: components.AnalyticsContinents[] = [
+  {
+    continent: "OC",
+  },
+];
+```
+
 ### `components.AnalyticsCountries[]`
 
 ```typescript
 const value: components.AnalyticsCountries[] = [
   {
-    country: "IE",
+    country: "AS",
   },
 ];
 ```
@@ -36,8 +46,8 @@ const value: components.AnalyticsCountries[] = [
 ```typescript
 const value: components.AnalyticsCities[] = [
   {
-    city: "Percivalhaven",
-    country: "PG",
+    city: "Fort Janickton",
+    country: "NE",
   },
 ];
 ```
@@ -57,7 +67,7 @@ const value: components.AnalyticsDevices[] = [
 ```typescript
 const value: components.AnalyticsBrowsers[] = [
   {
-    browser: "Safari",
+    browser: "Chrome",
   },
 ];
 ```
@@ -67,7 +77,17 @@ const value: components.AnalyticsBrowsers[] = [
 ```typescript
 const value: components.AnalyticsOS[] = [
   {
-    os: "Windows",
+    os: "Android",
+  },
+];
+```
+
+### `components.AnalyticsTriggers[]`
+
+```typescript
+const value: components.AnalyticsTriggers[] = [
+  {
+    trigger: "link",
   },
 ];
 ```
@@ -77,7 +97,17 @@ const value: components.AnalyticsOS[] = [
 ```typescript
 const value: components.AnalyticsReferers[] = [
   {
-    referer: "ill-hydrocarbon.name",
+    referer: "powerless-synergy.info",
+  },
+];
+```
+
+### `components.AnalyticsRefererUrls[]`
+
+```typescript
+const value: components.AnalyticsRefererUrls[] = [
+  {
+    refererUrl: "https://circular-heartbeat.biz/",
   },
 ];
 ```
@@ -89,10 +119,10 @@ const value: components.AnalyticsTopLinks[] = [
   {
     link: "<value>",
     id: "<id>",
-    domain: "familiar-help.net",
+    domain: "useless-custody.info",
     key: "<key>",
     shortLink: "<value>",
-    url: "https://stylish-adrenalin.com/",
+    url: "https://gracious-phrase.name",
     createdAt: "<value>",
   },
 ];
@@ -103,7 +133,7 @@ const value: components.AnalyticsTopLinks[] = [
 ```typescript
 const value: components.AnalyticsTopUrls[] = [
   {
-    url: "https://limp-assist.name",
+    url: "https://swift-newsletter.info",
   },
 ];
 ```
