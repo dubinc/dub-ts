@@ -8,8 +8,8 @@ import { Customer } from "dub/models/operations";
 let value: Customer = {
   id: "<id>",
   name: "<value>",
-  email: "Ramiro_Lindgren@hotmail.com",
-  avatar: "https://loremflickr.com/2947/2303?lock=8880240947389389",
+  email: "Genevieve14@gmail.com",
+  avatar: "https://picsum.photos/seed/NpFcblwI/2439/117",
 };
 ```
 

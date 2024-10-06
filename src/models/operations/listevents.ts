@@ -36,6 +36,18 @@ export const QueryParamInterval = {
  */
 export type QueryParamInterval = ClosedEnum<typeof QueryParamInterval>;
 
+/**
+ * The trigger to retrieve analytics for. If undefined, return both QR and link clicks.
+ */
+export const QueryParamTrigger = {
+  Qr: "qr",
+  Link: "link",
+} as const;
+/**
+ * The trigger to retrieve analytics for. If undefined, return both QR and link clicks.
+ */
+export type QueryParamTrigger = ClosedEnum<typeof QueryParamTrigger>;
+
 export const Order = {
   Asc: "asc",
   Desc: "desc",
@@ -109,6 +121,10 @@ export type ListEventsRequest = {
    */
   os?: string | undefined;
   /**
+   * The trigger to retrieve analytics for. If undefined, return both QR and link clicks.
+   */
+  trigger?: QueryParamTrigger | undefined;
+  /**
    * The referer to retrieve analytics for.
    */
   referer?: string | undefined;
@@ -125,7 +141,7 @@ export type ListEventsRequest = {
    */
   tagId?: string | undefined;
   /**
-   * Filter for QR code scans. If true, filter for QR codes only. If false, filter for links only. If undefined, return both.
+   * Deprecated. Use the `trigger` field instead. Filter for QR code scans. If true, filter for QR codes only. If false, filter for links only. If undefined, return both.
    */
   qr?: boolean | undefined;
   /**
@@ -189,6 +205,27 @@ export namespace QueryParamInterval$ {
 }
 
 /** @internal */
+export const QueryParamTrigger$inboundSchema: z.ZodNativeEnum<
+  typeof QueryParamTrigger
+> = z.nativeEnum(QueryParamTrigger);
+
+/** @internal */
+export const QueryParamTrigger$outboundSchema: z.ZodNativeEnum<
+  typeof QueryParamTrigger
+> = QueryParamTrigger$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace QueryParamTrigger$ {
+  /** @deprecated use `QueryParamTrigger$inboundSchema` instead. */
+  export const inboundSchema = QueryParamTrigger$inboundSchema;
+  /** @deprecated use `QueryParamTrigger$outboundSchema` instead. */
+  export const outboundSchema = QueryParamTrigger$outboundSchema;
+}
+
+/** @internal */
 export const Order$inboundSchema: z.ZodNativeEnum<typeof Order> = z.nativeEnum(
   Order,
 );
@@ -248,6 +285,7 @@ export const ListEventsRequest$inboundSchema: z.ZodType<
   device: z.string().optional(),
   browser: z.string().optional(),
   os: z.string().optional(),
+  trigger: QueryParamTrigger$inboundSchema.optional(),
   referer: z.string().optional(),
   refererUrl: z.string().optional(),
   url: z.string().optional(),
@@ -277,6 +315,7 @@ export type ListEventsRequest$Outbound = {
   device?: string | undefined;
   browser?: string | undefined;
   os?: string | undefined;
+  trigger?: string | undefined;
   referer?: string | undefined;
   refererUrl?: string | undefined;
   url?: string | undefined;
@@ -310,6 +349,7 @@ export const ListEventsRequest$outboundSchema: z.ZodType<
   device: z.string().optional(),
   browser: z.string().optional(),
   os: z.string().optional(),
+  trigger: QueryParamTrigger$outboundSchema.optional(),
   referer: z.string().optional(),
   refererUrl: z.string().optional(),
   url: z.string().optional(),

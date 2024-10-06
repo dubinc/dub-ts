@@ -92,6 +92,7 @@ export async function eventsList(
     "start": payload?.start,
     "tagId": payload?.tagId,
     "timezone": payload?.timezone,
+    "trigger": payload?.trigger,
     "url": payload?.url,
   });
 

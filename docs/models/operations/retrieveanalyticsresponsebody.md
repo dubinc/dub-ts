@@ -26,7 +26,7 @@ const value: components.AnalyticsTimeseries[] = [
 ```typescript
 const value: components.AnalyticsCountries[] = [
   {
-    country: "NP",
+    country: "IE",
   },
 ];
 ```
@@ -36,8 +36,8 @@ const value: components.AnalyticsCountries[] = [
 ```typescript
 const value: components.AnalyticsCities[] = [
   {
-    city: "Jamarfield",
-    country: "TK",
+    city: "Percivalhaven",
+    country: "PG",
   },
 ];
 ```
@@ -47,7 +47,7 @@ const value: components.AnalyticsCities[] = [
 ```typescript
 const value: components.AnalyticsDevices[] = [
   {
-    device: "Mobile",
+    device: "Desktop",
   },
 ];
 ```
@@ -57,7 +57,7 @@ const value: components.AnalyticsDevices[] = [
 ```typescript
 const value: components.AnalyticsBrowsers[] = [
   {
-    browser: "Chrome",
+    browser: "Safari",
   },
 ];
 ```
@@ -67,7 +67,7 @@ const value: components.AnalyticsBrowsers[] = [
 ```typescript
 const value: components.AnalyticsOS[] = [
   {
-    os: "WebOS",
+    os: "Windows",
   },
 ];
 ```
@@ -77,7 +77,7 @@ const value: components.AnalyticsOS[] = [
 ```typescript
 const value: components.AnalyticsReferers[] = [
   {
-    referer: "all-government.info",
+    referer: "ill-hydrocarbon.name",
   },
 ];
 ```
@@ -89,10 +89,10 @@ const value: components.AnalyticsTopLinks[] = [
   {
     link: "<value>",
     id: "<id>",
-    domain: "meaty-disconnection.info",
+    domain: "familiar-help.net",
     key: "<key>",
     shortLink: "<value>",
-    url: "https://firm-silk.com",
+    url: "https://stylish-adrenalin.com/",
     createdAt: "<value>",
   },
 ];
@@ -103,7 +103,7 @@ const value: components.AnalyticsTopLinks[] = [
 ```typescript
 const value: components.AnalyticsTopUrls[] = [
   {
-    url: "https://valuable-instruction.com/",
+    url: "https://limp-assist.name",
   },
 ];
 ```

@@ -1,6 +1,6 @@
 # QueryParamGroupBy
 
-The parameter to group the analytics data points by. Defaults to 'count' if undefined.
+The parameter to group the analytics data points by. Defaults to `count` if undefined. Note that `trigger` is deprecated (use `triggers` instead), but kept for backwards compatibility.
 
 ## Example Usage
 
@@ -13,5 +13,5 @@ let value: QueryParamGroupBy = "timeseries";
 ## Values
 
 ```typescript
-"count" | "timeseries" | "continents" | "countries" | "cities" | "devices" | "browsers" | "os" | "referers" | "referer_urls" | "top_links" | "top_urls" | "trigger"
+"count" | "timeseries" | "continents" | "countries" | "cities" | "devices" | "browsers" | "os" | "trigger" | "triggers" | "referers" | "referer_urls" | "top_links" | "top_urls"
 ```
