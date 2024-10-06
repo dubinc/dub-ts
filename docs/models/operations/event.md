@@ -1,6 +1,6 @@
 # Event
 
-The type of event to retrieve analytics for. Defaults to 'clicks'.
+The type of event to retrieve analytics for. Defaults to `clicks`.
 
 ## Example Usage
 

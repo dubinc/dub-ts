@@ -7,7 +7,7 @@ import { ClosedEnum } from "../../types/enums.js";
 import * as components from "../components/index.js";
 
 /**
- * The type of event to retrieve analytics for. Defaults to 'clicks'.
+ * The type of event to retrieve analytics for. Defaults to `clicks`.
  */
 export const Event = {
   Clicks: "clicks",
@@ -16,12 +16,12 @@ export const Event = {
   Composite: "composite",
 } as const;
 /**
- * The type of event to retrieve analytics for. Defaults to 'clicks'.
+ * The type of event to retrieve analytics for. Defaults to `clicks`.
  */
 export type Event = ClosedEnum<typeof Event>;
 
 /**
- * The parameter to group the analytics data points by. Defaults to 'count' if undefined.
+ * The parameter to group the analytics data points by. Defaults to `count` if undefined. Note that `trigger` is deprecated (use `triggers` instead), but kept for backwards compatibility.
  */
 export const QueryParamGroupBy = {
   Count: "count",
@@ -32,14 +32,15 @@ export const QueryParamGroupBy = {
   Devices: "devices",
   Browsers: "browsers",
   Os: "os",
+  Trigger: "trigger",
+  Triggers: "triggers",
   Referers: "referers",
   RefererUrls: "referer_urls",
   TopLinks: "top_links",
   TopUrls: "top_urls",
-  Trigger: "trigger",
 } as const;
 /**
- * The parameter to group the analytics data points by. Defaults to 'count' if undefined.
+ * The parameter to group the analytics data points by. Defaults to `count` if undefined. Note that `trigger` is deprecated (use `triggers` instead), but kept for backwards compatibility.
  */
 export type QueryParamGroupBy = ClosedEnum<typeof QueryParamGroupBy>;
 
@@ -61,13 +62,25 @@ export const Interval = {
  */
 export type Interval = ClosedEnum<typeof Interval>;
 
+/**
+ * The trigger to retrieve analytics for. If undefined, return both QR and link clicks.
+ */
+export const Trigger = {
+  Qr: "qr",
+  Link: "link",
+} as const;
+/**
+ * The trigger to retrieve analytics for. If undefined, return both QR and link clicks.
+ */
+export type Trigger = ClosedEnum<typeof Trigger>;
+
 export type RetrieveAnalyticsRequest = {
   /**
-   * The type of event to retrieve analytics for. Defaults to 'clicks'.
+   * The type of event to retrieve analytics for. Defaults to `clicks`.
    */
   event?: Event | undefined;
   /**
-   * The parameter to group the analytics data points by. Defaults to 'count' if undefined.
+   * The parameter to group the analytics data points by. Defaults to `count` if undefined. Note that `trigger` is deprecated (use `triggers` instead), but kept for backwards compatibility.
    */
   groupBy?: QueryParamGroupBy | undefined;
   /**
@@ -127,6 +140,10 @@ export type RetrieveAnalyticsRequest = {
    */
   os?: string | undefined;
   /**
+   * The trigger to retrieve analytics for. If undefined, return both QR and link clicks.
+   */
+  trigger?: Trigger | undefined;
+  /**
    * The referer to retrieve analytics for.
    */
   referer?: string | undefined;
@@ -143,7 +160,7 @@ export type RetrieveAnalyticsRequest = {
    */
   tagId?: string | undefined;
   /**
-   * Filter for QR code scans. If true, filter for QR codes only. If false, filter for links only. If undefined, return both.
+   * Deprecated. Use the `trigger` field instead. Filter for QR code scans. If true, filter for QR codes only. If false, filter for links only. If undefined, return both.
    */
   qr?: boolean | undefined;
   /**
@@ -228,6 +245,25 @@ export namespace Interval$ {
 }
 
 /** @internal */
+export const Trigger$inboundSchema: z.ZodNativeEnum<typeof Trigger> = z
+  .nativeEnum(Trigger);
+
+/** @internal */
+export const Trigger$outboundSchema: z.ZodNativeEnum<typeof Trigger> =
+  Trigger$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Trigger$ {
+  /** @deprecated use `Trigger$inboundSchema` instead. */
+  export const inboundSchema = Trigger$inboundSchema;
+  /** @deprecated use `Trigger$outboundSchema` instead. */
+  export const outboundSchema = Trigger$outboundSchema;
+}
+
+/** @internal */
 export const RetrieveAnalyticsRequest$inboundSchema: z.ZodType<
   RetrieveAnalyticsRequest,
   z.ZodTypeDef,
@@ -249,6 +285,7 @@ export const RetrieveAnalyticsRequest$inboundSchema: z.ZodType<
   device: z.string().optional(),
   browser: z.string().optional(),
   os: z.string().optional(),
+  trigger: Trigger$inboundSchema.optional(),
   referer: z.string().optional(),
   refererUrl: z.string().optional(),
   url: z.string().optional(),
@@ -275,6 +312,7 @@ export type RetrieveAnalyticsRequest$Outbound = {
   device?: string | undefined;
   browser?: string | undefined;
   os?: string | undefined;
+  trigger?: string | undefined;
   referer?: string | undefined;
   refererUrl?: string | undefined;
   url?: string | undefined;
@@ -305,6 +343,7 @@ export const RetrieveAnalyticsRequest$outboundSchema: z.ZodType<
   device: z.string().optional(),
   browser: z.string().optional(),
   os: z.string().optional(),
+  trigger: Trigger$outboundSchema.optional(),
   referer: z.string().optional(),
   refererUrl: z.string().optional(),
   url: z.string().optional(),
