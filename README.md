@@ -550,34 +550,33 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 <summary>Available standalone functions</summary>
 
-- [analyticsRetrieve](docs/sdks/analytics/README.md#retrieve)
-- [domainsCreate](docs/sdks/domains/README.md#create)
-- [domainsDelete](docs/sdks/domains/README.md#delete)
-- [domainsList](docs/sdks/domains/README.md#list)
-- [domainsUpdate](docs/sdks/domains/README.md#update)
-- [eventsList](docs/sdks/events/README.md#list)
-- [linksCount](docs/sdks/links/README.md#count)
-- [linksCreateMany](docs/sdks/links/README.md#createmany)
-- [linksCreate](docs/sdks/links/README.md#create)
-- [linksDeleteMany](docs/sdks/links/README.md#deletemany)
-- [linksDelete](docs/sdks/links/README.md#delete)
-- [linksGet](docs/sdks/links/README.md#get)
-- [linksList](docs/sdks/links/README.md#list)
-- [linksUpdateMany](docs/sdks/links/README.md#updatemany)
-- [linksUpdate](docs/sdks/links/README.md#update)
-- [linksUpsert](docs/sdks/links/README.md#upsert)
-- [metatagsGet](docs/sdks/metatags/README.md#get)
-- [qrCodesGet](docs/sdks/qrcodes/README.md#get)
-- [tagsCreate](docs/sdks/tags/README.md#create)
-- [tagsDelete](docs/sdks/tags/README.md#delete)
-- [tagsList](docs/sdks/tags/README.md#list)
-- [tagsUpdate](docs/sdks/tags/README.md#update)
-- [trackCustomer](docs/sdks/track/README.md#customer)
-- [trackLead](docs/sdks/track/README.md#lead)
-- [trackSale](docs/sdks/track/README.md#sale)
-- [workspacesGet](docs/sdks/workspaces/README.md#get)
-- [workspacesUpdate](docs/sdks/workspaces/README.md#update)
-
+- [`analyticsRetrieve`](docs/sdks/analytics/README.md#retrieve) - Retrieve analytics for a link, a domain, or the authenticated workspace.
+- [`domainsCreate`](docs/sdks/domains/README.md#create) - Create a domain
+- [`domainsDelete`](docs/sdks/domains/README.md#delete) - Delete a domain
+- [`domainsList`](docs/sdks/domains/README.md#list) - Retrieve a list of domains
+- [`domainsUpdate`](docs/sdks/domains/README.md#update) - Update a domain
+- [`eventsList`](docs/sdks/events/README.md#list) - Retrieve a list of events
+- [`linksCount`](docs/sdks/links/README.md#count) - Retrieve links count
+- [`linksCreate`](docs/sdks/links/README.md#create) - Create a new link
+- [`linksCreateMany`](docs/sdks/links/README.md#createmany) - Bulk create links
+- [`linksDelete`](docs/sdks/links/README.md#delete) - Delete a link
+- [`linksDeleteMany`](docs/sdks/links/README.md#deletemany) - Bulk delete links
+- [`linksGet`](docs/sdks/links/README.md#get) - Retrieve a link
+- [`linksList`](docs/sdks/links/README.md#list) - Retrieve a list of links
+- [`linksUpdate`](docs/sdks/links/README.md#update) - Update a link
+- [`linksUpdateMany`](docs/sdks/links/README.md#updatemany) - Bulk update links
+- [`linksUpsert`](docs/sdks/links/README.md#upsert) - Upsert a link
+- [`metatagsGet`](docs/sdks/metatags/README.md#get) - Retrieve the metatags for a URL
+- [`qrCodesGet`](docs/sdks/qrcodes/README.md#get) - Retrieve a QR code
+- [`tagsCreate`](docs/sdks/tags/README.md#create) - Create a new tag
+- [`tagsDelete`](docs/sdks/tags/README.md#delete) - Delete a tag
+- [`tagsList`](docs/sdks/tags/README.md#list) - Retrieve a list of tags
+- [`tagsUpdate`](docs/sdks/tags/README.md#update) - Update a tag
+- [`trackCustomer`](docs/sdks/track/README.md#customer) - Track a customer
+- [`trackLead`](docs/sdks/track/README.md#lead) - Track a lead
+- [`trackSale`](docs/sdks/track/README.md#sale) - Track a sale
+- [`workspacesGet`](docs/sdks/workspaces/README.md#get) - Retrieve a workspace
+- [`workspacesUpdate`](docs/sdks/workspaces/README.md#update) - Update a workspace
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->
