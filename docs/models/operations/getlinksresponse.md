@@ -32,6 +32,9 @@ let value: GetLinksResponse = {
           color: "pink",
         },
       ],
+      webhookIds: [
+        "<value>",
+      ],
       comments:
         "attend lazy kick when reckon vice towards saturate though when plus save dapper untimely",
       shortLink: "https://trusting-mouser.info/",

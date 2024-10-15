@@ -11,8 +11,14 @@ let value: ListDomainsResponse = {
       id: "<id>",
       slug: "acme.com",
       expiredUrl: "https://acme.com/expired",
+      notFoundUrl: "https://acme.com/not-found",
       createdAt: "<value>",
       updatedAt: "<value>",
+      registeredDomain: {
+        id: "<id>",
+        createdAt: "<value>",
+        expiresAt: "<value>",
+      },
     },
   ],
 };

@@ -45,6 +45,9 @@ let value: ClickEvent = {
         color: "green",
       },
     ],
+    webhookIds: [
+      "<value>",
+    ],
     comments:
       "gadzooks blindly um platypus fund positively stylish barge card joshingly overload nor justly pity during ha lest gloss bide daintily",
     shortLink: "https://ironclad-litter.info/",

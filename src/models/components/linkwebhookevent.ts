@@ -361,6 +361,10 @@ export type Data = {
    */
   tags: Array<TagSchema> | null;
   /**
+   * The IDs of the webhooks that the short link is associated with.
+   */
+  webhookIds: Array<string>;
+  /**
    * The comments for the short link.
    */
   comments: string | null;
@@ -1836,6 +1840,7 @@ export const Data$inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z
     publicStats: z.boolean().optional(),
     tagId: z.nullable(z.string()),
     tags: z.nullable(z.array(TagSchema$inboundSchema)),
+    webhookIds: z.array(z.string()),
     comments: z.nullable(z.string()),
     shortLink: z.string(),
     qrCode: z.string(),
@@ -1890,6 +1895,7 @@ export type Data$Outbound = {
   publicStats?: boolean | undefined;
   tagId: string | null;
   tags: Array<TagSchema$Outbound> | null;
+  webhookIds: Array<string>;
   comments: string | null;
   shortLink: string;
   qrCode: string;
@@ -1937,6 +1943,7 @@ export const Data$outboundSchema: z.ZodType<Data$Outbound, z.ZodTypeDef, Data> =
     publicStats: z.boolean().optional(),
     tagId: z.nullable(z.string()),
     tags: z.nullable(z.array(TagSchema$outboundSchema)),
+    webhookIds: z.array(z.string()),
     comments: z.nullable(z.string()),
     shortLink: z.string(),
     qrCode: z.string(),

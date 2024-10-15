@@ -51,6 +51,9 @@ let value: SaleCreatedEventData = {
         color: "pink",
       },
     ],
+    webhookIds: [
+      "<value>",
+    ],
     comments:
       "shush while gentle worth aha formal loaf gadzooks necklace mmm indeed but exacerbate accessorise",
     shortLink: "https://ruddy-hygienic.org/",
