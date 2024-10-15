@@ -35,6 +35,9 @@ let value: SaleEvent = {
         color: "purple",
       },
     ],
+    webhookIds: [
+      "<value>",
+    ],
     comments: "where daintily role infatuated ew lazily",
     shortLink: "https://surprised-sticker.com",
     qrCode: "https://gripping-coordination.net/",

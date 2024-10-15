@@ -57,6 +57,9 @@ let value: SaleCreatedEvent = {
           color: "yellow",
         },
       ],
+      webhookIds: [
+        "<value>",
+      ],
       comments: "sans beside spork where christen",
       shortLink: "https://annual-boulevard.org",
       qrCode: "https://blank-instruction.com/",

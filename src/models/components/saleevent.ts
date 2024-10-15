@@ -349,6 +349,10 @@ export type SaleEventLink = {
    */
   tags: Array<TagSchema> | null;
   /**
+   * The IDs of the webhooks that the short link is associated with.
+   */
+  webhookIds: Array<string>;
+  /**
    * The comments for the short link.
    */
   comments: string | null;
@@ -1907,6 +1911,7 @@ export const SaleEventLink$inboundSchema: z.ZodType<
   publicStats: z.boolean().optional(),
   tagId: z.nullable(z.string()),
   tags: z.nullable(z.array(TagSchema$inboundSchema)),
+  webhookIds: z.array(z.string()),
   comments: z.nullable(z.string()),
   shortLink: z.string(),
   qrCode: z.string(),
@@ -1961,6 +1966,7 @@ export type SaleEventLink$Outbound = {
   publicStats?: boolean | undefined;
   tagId: string | null;
   tags: Array<TagSchema$Outbound> | null;
+  webhookIds: Array<string>;
   comments: string | null;
   shortLink: string;
   qrCode: string;
@@ -2011,6 +2017,7 @@ export const SaleEventLink$outboundSchema: z.ZodType<
   publicStats: z.boolean().optional(),
   tagId: z.nullable(z.string()),
   tags: z.nullable(z.array(TagSchema$outboundSchema)),
+  webhookIds: z.array(z.string()),
   comments: z.nullable(z.string()),
   shortLink: z.string(),
   qrCode: z.string(),

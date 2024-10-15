@@ -147,6 +147,10 @@ export type UpdateLinkRequestBody = {
    * The referral tag of the short link. If set, this will populate or override the `ref` query parameter in the destination URL.
    */
   ref?: string | null | undefined;
+  /**
+   * An array of webhook IDs to trigger when the link is clicked. These webhooks will receive click event data.
+   */
+  webhookIds?: Array<string> | null | undefined;
 };
 
 export type UpdateLinkRequest = {
@@ -255,6 +259,7 @@ export const UpdateLinkRequestBody$inboundSchema: z.ZodType<
   utm_term: z.nullable(z.string()).optional(),
   utm_content: z.nullable(z.string()).optional(),
   ref: z.nullable(z.string()).optional(),
+  webhookIds: z.nullable(z.array(z.string())).optional(),
 }).transform((v) => {
   return remap$(v, {
     "utm_source": "utmSource",
@@ -299,6 +304,7 @@ export type UpdateLinkRequestBody$Outbound = {
   utm_term?: string | null | undefined;
   utm_content?: string | null | undefined;
   ref?: string | null | undefined;
+  webhookIds?: Array<string> | null | undefined;
 };
 
 /** @internal */
@@ -339,6 +345,7 @@ export const UpdateLinkRequestBody$outboundSchema: z.ZodType<
   utmTerm: z.nullable(z.string()).optional(),
   utmContent: z.nullable(z.string()).optional(),
   ref: z.nullable(z.string()).optional(),
+  webhookIds: z.nullable(z.array(z.string())).optional(),
 }).transform((v) => {
   return remap$(v, {
     utmSource: "utm_source",

@@ -65,7 +65,7 @@ export type GetLinksCountRequest = {
    */
   showArchived?: boolean | undefined;
   /**
-   * Whether to include tags in the response. Defaults to `false` if not provided.
+   * DEPRECATED. Filter for links that have at least one tag assigned to them.
    */
   withTags?: boolean | undefined;
   /**

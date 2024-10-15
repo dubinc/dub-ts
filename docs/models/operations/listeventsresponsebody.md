@@ -50,6 +50,9 @@ const value: components.ClickEvent[] = [
           color: "purple",
         },
       ],
+      webhookIds: [
+        "<value>",
+      ],
       comments:
         "as serpentine surprisingly orange think encode jubilantly hm scram",
       shortLink: "https://lumbering-viability.net/",
@@ -129,6 +132,9 @@ const value: components.LeadEvent[] = [
           color: "blue",
         },
       ],
+      webhookIds: [
+        "<value>",
+      ],
       comments: "accompanist sport calmly afore wire",
       shortLink: "https://baggy-smog.net/",
       qrCode: "https://expensive-integer.org/",
@@ -199,6 +205,9 @@ const value: components.SaleEvent[] = [
           name: "<value>",
           color: "red",
         },
+      ],
+      webhookIds: [
+        "<value>",
       ],
       comments: "tectonics for off bah revere a aha",
       shortLink: "https://staid-crest.info",

@@ -15,6 +15,10 @@ export type UpdateDomainRequestBody = {
    */
   expiredUrl?: string | null | undefined;
   /**
+   * Redirect users to a specific URL when a link under this domain doesn't exist.
+   */
+  notFoundUrl?: string | null | undefined;
+  /**
    * Whether to archive this domain. `false` will unarchive a previously archived domain.
    */
   archived?: boolean | undefined;
@@ -40,6 +44,7 @@ export const UpdateDomainRequestBody$inboundSchema: z.ZodType<
 > = z.object({
   slug: z.string().optional(),
   expiredUrl: z.nullable(z.string()).optional(),
+  notFoundUrl: z.nullable(z.string()).optional(),
   archived: z.boolean().default(false),
   placeholder: z.nullable(
     z.string().default("https://dub.co/help/article/what-is-dub"),
@@ -50,6 +55,7 @@ export const UpdateDomainRequestBody$inboundSchema: z.ZodType<
 export type UpdateDomainRequestBody$Outbound = {
   slug?: string | undefined;
   expiredUrl?: string | null | undefined;
+  notFoundUrl?: string | null | undefined;
   archived: boolean;
   placeholder: string | null;
 };
@@ -62,6 +68,7 @@ export const UpdateDomainRequestBody$outboundSchema: z.ZodType<
 > = z.object({
   slug: z.string().optional(),
   expiredUrl: z.nullable(z.string()).optional(),
+  notFoundUrl: z.nullable(z.string()).optional(),
   archived: z.boolean().default(false),
   placeholder: z.nullable(
     z.string().default("https://dub.co/help/article/what-is-dub"),

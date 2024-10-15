@@ -52,6 +52,10 @@ export type DomainSchema = {
    */
   expiredUrl: string | null;
   /**
+   * The URL to redirect to when a link under this domain doesn't exist.
+   */
+  notFoundUrl: string | null;
+  /**
    * The date the domain was created.
    */
   createdAt: string;
@@ -62,7 +66,7 @@ export type DomainSchema = {
   /**
    * The registered domain record.
    */
-  registeredDomain?: RegisteredDomain | null | undefined;
+  registeredDomain: RegisteredDomain | null;
 };
 
 /** @internal */
@@ -120,10 +124,10 @@ export const DomainSchema$inboundSchema: z.ZodType<
   archived: z.boolean().default(false),
   placeholder: z.string().default("https://dub.co/help/article/what-is-dub"),
   expiredUrl: z.nullable(z.string()),
+  notFoundUrl: z.nullable(z.string()),
   createdAt: z.string(),
   updatedAt: z.string(),
-  registeredDomain: z.nullable(z.lazy(() => RegisteredDomain$inboundSchema))
-    .optional(),
+  registeredDomain: z.nullable(z.lazy(() => RegisteredDomain$inboundSchema)),
 });
 
 /** @internal */
@@ -135,9 +139,10 @@ export type DomainSchema$Outbound = {
   archived: boolean;
   placeholder: string;
   expiredUrl: string | null;
+  notFoundUrl: string | null;
   createdAt: string;
   updatedAt: string;
-  registeredDomain?: RegisteredDomain$Outbound | null | undefined;
+  registeredDomain: RegisteredDomain$Outbound | null;
 };
 
 /** @internal */
@@ -153,10 +158,10 @@ export const DomainSchema$outboundSchema: z.ZodType<
   archived: z.boolean().default(false),
   placeholder: z.string().default("https://dub.co/help/article/what-is-dub"),
   expiredUrl: z.nullable(z.string()),
+  notFoundUrl: z.nullable(z.string()),
   createdAt: z.string(),
   updatedAt: z.string(),
-  registeredDomain: z.nullable(z.lazy(() => RegisteredDomain$outboundSchema))
-    .optional(),
+  registeredDomain: z.nullable(z.lazy(() => RegisteredDomain$outboundSchema)),
 });
 
 /**
