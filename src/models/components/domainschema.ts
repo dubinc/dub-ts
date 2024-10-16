@@ -46,7 +46,7 @@ export type DomainSchema = {
   /**
    * Provide context to your teammates in the link creation modal by showing them an example of a link to be shortened.
    */
-  placeholder?: string | undefined;
+  placeholder: string | null;
   /**
    * The URL to redirect to when a link under this domain has expired.
    */
@@ -122,7 +122,7 @@ export const DomainSchema$inboundSchema: z.ZodType<
   verified: z.boolean().default(false),
   primary: z.boolean().default(false),
   archived: z.boolean().default(false),
-  placeholder: z.string().default("https://dub.co/help/article/what-is-dub"),
+  placeholder: z.nullable(z.string()),
   expiredUrl: z.nullable(z.string()),
   notFoundUrl: z.nullable(z.string()),
   createdAt: z.string(),
@@ -137,7 +137,7 @@ export type DomainSchema$Outbound = {
   verified: boolean;
   primary: boolean;
   archived: boolean;
-  placeholder: string;
+  placeholder: string | null;
   expiredUrl: string | null;
   notFoundUrl: string | null;
   createdAt: string;
@@ -156,7 +156,7 @@ export const DomainSchema$outboundSchema: z.ZodType<
   verified: z.boolean().default(false),
   primary: z.boolean().default(false),
   archived: z.boolean().default(false),
-  placeholder: z.string().default("https://dub.co/help/article/what-is-dub"),
+  placeholder: z.nullable(z.string()),
   expiredUrl: z.nullable(z.string()),
   notFoundUrl: z.nullable(z.string()),
   createdAt: z.string(),
