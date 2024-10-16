@@ -10,6 +10,7 @@ let value: ListDomainsResponse = {
     {
       id: "<id>",
       slug: "acme.com",
+      placeholder: "https://dub.co/help/article/what-is-dub",
       expiredUrl: "https://acme.com/expired",
       notFoundUrl: "https://acme.com/not-found",
       createdAt: "<value>",
