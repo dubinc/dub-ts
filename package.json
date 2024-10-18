@@ -1,6 +1,6 @@
 {
   "name": "dub",
-  "version": "0.43.7",
+  "version": "0.43.8",
   "author": "Dub",
   "tshy": {
     "exports": {
