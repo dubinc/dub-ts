@@ -74,6 +74,10 @@ export type WorkspaceSchema = {
    */
   logo?: string | null | undefined;
   /**
+   * The invite code of the workspace.
+   */
+  inviteCode: string | null;
+  /**
    * The plan of the workspace.
    */
   plan: Plan;
@@ -86,13 +90,13 @@ export type WorkspaceSchema = {
    */
   billingCycleStart: number;
   /**
+   * The date and time when the payment failed for the workspace.
+   */
+  paymentFailedAt: string | null;
+  /**
    * [BETA]: The Stripe Connect ID of the workspace.
    */
   stripeConnectId: string | null;
-  /**
-   * The invite code of the workspace.
-   */
-  inviteCode: string | null;
   /**
    * The usage of the workspace.
    */
@@ -293,11 +297,12 @@ export const WorkspaceSchema$inboundSchema: z.ZodType<
   name: z.string(),
   slug: z.string(),
   logo: z.nullable(z.string()).default(null),
+  inviteCode: z.nullable(z.string()),
   plan: Plan$inboundSchema,
   stripeId: z.nullable(z.string()),
   billingCycleStart: z.number(),
+  paymentFailedAt: z.nullable(z.string()),
   stripeConnectId: z.nullable(z.string()),
-  inviteCode: z.nullable(z.string()),
   usage: z.number(),
   usageLimit: z.number(),
   linksUsage: z.number(),
@@ -325,11 +330,12 @@ export type WorkspaceSchema$Outbound = {
   name: string;
   slug: string;
   logo: string | null;
+  inviteCode: string | null;
   plan: string;
   stripeId: string | null;
   billingCycleStart: number;
+  paymentFailedAt: string | null;
   stripeConnectId: string | null;
-  inviteCode: string | null;
   usage: number;
   usageLimit: number;
   linksUsage: number;
@@ -361,11 +367,12 @@ export const WorkspaceSchema$outboundSchema: z.ZodType<
   name: z.string(),
   slug: z.string(),
   logo: z.nullable(z.string()).default(null),
+  inviteCode: z.nullable(z.string()),
   plan: Plan$outboundSchema,
   stripeId: z.nullable(z.string()),
   billingCycleStart: z.number(),
+  paymentFailedAt: z.nullable(z.string()),
   stripeConnectId: z.nullable(z.string()),
-  inviteCode: z.nullable(z.string()),
   usage: z.number(),
   usageLimit: z.number(),
   linksUsage: z.number(),
