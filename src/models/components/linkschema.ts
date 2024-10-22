@@ -405,7 +405,7 @@ export type LinkSchema = {
   /**
    * The user ID of the creator of the short link.
    */
-  userId: string;
+  userId: string | null;
   /**
    * The workspace ID of the short link.
    */
@@ -1768,7 +1768,7 @@ export const LinkSchema$inboundSchema: z.ZodType<
   utm_campaign: z.nullable(z.string()),
   utm_term: z.nullable(z.string()),
   utm_content: z.nullable(z.string()),
-  userId: z.string(),
+  userId: z.nullable(z.string()),
   workspaceId: z.string(),
   clicks: z.number().default(0),
   lastClicked: z.nullable(z.string()),
@@ -1823,7 +1823,7 @@ export type LinkSchema$Outbound = {
   utm_campaign: string | null;
   utm_term: string | null;
   utm_content: string | null;
-  userId: string;
+  userId: string | null;
   workspaceId: string;
   clicks: number;
   lastClicked: string | null;
@@ -1874,7 +1874,7 @@ export const LinkSchema$outboundSchema: z.ZodType<
   utmCampaign: z.nullable(z.string()),
   utmTerm: z.nullable(z.string()),
   utmContent: z.nullable(z.string()),
-  userId: z.string(),
+  userId: z.nullable(z.string()),
   workspaceId: z.string(),
   clicks: z.number().default(0),
   lastClicked: z.nullable(z.string()),
