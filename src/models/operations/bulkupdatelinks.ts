@@ -30,7 +30,9 @@ export type Data = {
    */
   archived?: boolean | undefined;
   /**
-   * Whether the short link's stats are publicly accessible.
+   * Deprecated: Use `dashboard` instead. Whether the short link's stats are publicly accessible.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   publicStats?: boolean | undefined;
   /**
