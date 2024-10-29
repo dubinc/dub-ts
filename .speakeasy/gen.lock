@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: 84fdf907d3c202599cf0ffcfc39094f8
+  docChecksum: 82aaffb8b85f5d349c96f40e961bfb78
   docVersion: 0.0.1
-  speakeasyVersion: 1.422.1
-  generationVersion: 2.438.15
-  releaseVersion: 0.43.10
-  configChecksum: a64c75ee65cb17f4002b48c8c78117ea
+  speakeasyVersion: 1.423.1
+  generationVersion: 2.442.11
+  releaseVersion: 0.44.0
+  configChecksum: e5fb55bb5d09ab2d65c24078e2694c22
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -34,6 +34,7 @@ features:
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.1.0
+    tests: 0.7.0
     unions: 2.85.7
 generatedFiles:
   - .eslintrc.cjs
