@@ -46,9 +46,7 @@ export const UpdateDomainRequestBody$inboundSchema: z.ZodType<
   expiredUrl: z.nullable(z.string()).optional(),
   notFoundUrl: z.nullable(z.string()).optional(),
   archived: z.boolean().default(false),
-  placeholder: z.nullable(
-    z.string().default("https://dub.co/help/article/what-is-dub"),
-  ),
+  placeholder: z.nullable(z.string()).optional(),
 });
 
 /** @internal */
@@ -57,7 +55,7 @@ export type UpdateDomainRequestBody$Outbound = {
   expiredUrl?: string | null | undefined;
   notFoundUrl?: string | null | undefined;
   archived: boolean;
-  placeholder: string | null;
+  placeholder?: string | null | undefined;
 };
 
 /** @internal */
@@ -70,9 +68,7 @@ export const UpdateDomainRequestBody$outboundSchema: z.ZodType<
   expiredUrl: z.nullable(z.string()).optional(),
   notFoundUrl: z.nullable(z.string()).optional(),
   archived: z.boolean().default(false),
-  placeholder: z.nullable(
-    z.string().default("https://dub.co/help/article/what-is-dub"),
-  ),
+  placeholder: z.nullable(z.string()).optional(),
 });
 
 /**
