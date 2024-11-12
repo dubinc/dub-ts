@@ -74,6 +74,11 @@ export const Trigger = {
  */
 export type Trigger = ClosedEnum<typeof Trigger>;
 
+/**
+ * The tag IDs to retrieve analytics for.
+ */
+export type RetrieveAnalyticsQueryParamTagIds = string | Array<string>;
+
 export type RetrieveAnalyticsRequest = {
   /**
    * The type of event to retrieve analytics for. Defaults to `clicks`.
@@ -156,9 +161,13 @@ export type RetrieveAnalyticsRequest = {
    */
   url?: string | undefined;
   /**
-   * The tag ID to retrieve analytics for.
+   * Deprecated. Use `tagIds` instead. The tag ID to retrieve analytics for.
    */
   tagId?: string | undefined;
+  /**
+   * The tag IDs to retrieve analytics for.
+   */
+  tagIds?: string | Array<string> | undefined;
   /**
    * Deprecated. Use the `trigger` field instead. Filter for QR code scans. If true, filter for QR codes only. If false, filter for links only. If undefined, return both.
    */
@@ -267,6 +276,37 @@ export namespace Trigger$ {
 }
 
 /** @internal */
+export const RetrieveAnalyticsQueryParamTagIds$inboundSchema: z.ZodType<
+  RetrieveAnalyticsQueryParamTagIds,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.string(), z.array(z.string())]);
+
+/** @internal */
+export type RetrieveAnalyticsQueryParamTagIds$Outbound = string | Array<string>;
+
+/** @internal */
+export const RetrieveAnalyticsQueryParamTagIds$outboundSchema: z.ZodType<
+  RetrieveAnalyticsQueryParamTagIds$Outbound,
+  z.ZodTypeDef,
+  RetrieveAnalyticsQueryParamTagIds
+> = z.union([z.string(), z.array(z.string())]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RetrieveAnalyticsQueryParamTagIds$ {
+  /** @deprecated use `RetrieveAnalyticsQueryParamTagIds$inboundSchema` instead. */
+  export const inboundSchema = RetrieveAnalyticsQueryParamTagIds$inboundSchema;
+  /** @deprecated use `RetrieveAnalyticsQueryParamTagIds$outboundSchema` instead. */
+  export const outboundSchema =
+    RetrieveAnalyticsQueryParamTagIds$outboundSchema;
+  /** @deprecated use `RetrieveAnalyticsQueryParamTagIds$Outbound` instead. */
+  export type Outbound = RetrieveAnalyticsQueryParamTagIds$Outbound;
+}
+
+/** @internal */
 export const RetrieveAnalyticsRequest$inboundSchema: z.ZodType<
   RetrieveAnalyticsRequest,
   z.ZodTypeDef,
@@ -293,6 +333,7 @@ export const RetrieveAnalyticsRequest$inboundSchema: z.ZodType<
   refererUrl: z.string().optional(),
   url: z.string().optional(),
   tagId: z.string().optional(),
+  tagIds: z.union([z.string(), z.array(z.string())]).optional(),
   qr: z.boolean().optional(),
   root: z.boolean().optional(),
 });
@@ -320,6 +361,7 @@ export type RetrieveAnalyticsRequest$Outbound = {
   refererUrl?: string | undefined;
   url?: string | undefined;
   tagId?: string | undefined;
+  tagIds?: string | Array<string> | undefined;
   qr?: boolean | undefined;
   root?: boolean | undefined;
 };
@@ -351,6 +393,7 @@ export const RetrieveAnalyticsRequest$outboundSchema: z.ZodType<
   refererUrl: z.string().optional(),
   url: z.string().optional(),
   tagId: z.string().optional(),
+  tagIds: z.union([z.string(), z.array(z.string())]).optional(),
   qr: z.boolean().optional(),
   root: z.boolean().optional(),
 });

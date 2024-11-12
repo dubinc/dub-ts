@@ -11,8 +11,9 @@ generation:
     requestResponseComponentNamesFeb2024: true
   auth:
     oAuth2ClientCredentialsEnabled: false
+    oAuth2PasswordEnabled: false
 typescript:
-  version: 0.44.0
+  version: 0.45.0
   additionalDependencies:
     dependencies: {}
     devDependencies:
@@ -22,6 +23,7 @@ typescript:
   additionalPackageJSON: {}
   author: Dub
   clientServerStatusCodesAsErrors: true
+  defaultErrorName: SDKError
   enumFormat: union
   flattenGlobalSecurity: true
   flatteningOrder: body-first
