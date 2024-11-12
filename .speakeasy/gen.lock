@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: 82aaffb8b85f5d349c96f40e961bfb78
+  docChecksum: 34bf2c8628db0d6fa3a73fc90d888f0c
   docVersion: 0.0.1
-  speakeasyVersion: 1.423.1
-  generationVersion: 2.442.11
-  releaseVersion: 0.44.0
-  configChecksum: e5fb55bb5d09ab2d65c24078e2694c22
+  speakeasyVersion: 1.438.1
+  generationVersion: 2.457.2
+  releaseVersion: 0.45.0
+  configChecksum: 03f47cb50ce27a3c7fc3cdbc6d7c1844
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -14,12 +14,12 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.18.2
+    core: 3.18.3
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     enumUnions: 0.1.0
-    envVarSecurityUsage: 0.1.1
-    errors: 2.82.3
+    envVarSecurityUsage: 0.1.2
+    errors: 2.84.0
     examples: 2.81.4
     flattening: 2.82.0
     globalSecurity: 2.82.11
@@ -33,9 +33,9 @@ features:
     pagination: 2.82.7
     responseFormat: 0.2.3
     retries: 2.83.0
-    sdkHooks: 0.1.0
+    sdkHooks: 0.2.0
     tests: 0.7.0
-    unions: 2.85.7
+    unions: 2.85.8
 generatedFiles:
   - .eslintrc.cjs
   - .gitattributes
@@ -189,6 +189,7 @@ generatedFiles:
   - docs/models/operations/level.md
   - docs/models/operations/listdomainsrequest.md
   - docs/models/operations/listdomainsresponse.md
+  - docs/models/operations/listeventsqueryparamtagids.md
   - docs/models/operations/listeventsrequest.md
   - docs/models/operations/listeventsresponsebody.md
   - docs/models/operations/one.md
@@ -201,6 +202,7 @@ generatedFiles:
   - docs/models/operations/queryparamtagnames.md
   - docs/models/operations/queryparamtrigger.md
   - docs/models/operations/requestbody.md
+  - docs/models/operations/retrieveanalyticsqueryparamtagids.md
   - docs/models/operations/retrieveanalyticsrequest.md
   - docs/models/operations/retrieveanalyticsresponsebody.md
   - docs/models/operations/sale.md

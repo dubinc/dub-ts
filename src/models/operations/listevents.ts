@@ -48,6 +48,11 @@ export const QueryParamTrigger = {
  */
 export type QueryParamTrigger = ClosedEnum<typeof QueryParamTrigger>;
 
+/**
+ * The tag IDs to retrieve analytics for.
+ */
+export type ListEventsQueryParamTagIds = string | Array<string>;
+
 export const Order = {
   Asc: "asc",
   Desc: "desc",
@@ -137,9 +142,13 @@ export type ListEventsRequest = {
    */
   url?: string | undefined;
   /**
-   * The tag ID to retrieve analytics for.
+   * Deprecated. Use `tagIds` instead. The tag ID to retrieve analytics for.
    */
   tagId?: string | undefined;
+  /**
+   * The tag IDs to retrieve analytics for.
+   */
+  tagIds?: string | Array<string> | undefined;
   /**
    * Deprecated. Use the `trigger` field instead. Filter for QR code scans. If true, filter for QR codes only. If false, filter for links only. If undefined, return both.
    */
@@ -226,6 +235,36 @@ export namespace QueryParamTrigger$ {
 }
 
 /** @internal */
+export const ListEventsQueryParamTagIds$inboundSchema: z.ZodType<
+  ListEventsQueryParamTagIds,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.string(), z.array(z.string())]);
+
+/** @internal */
+export type ListEventsQueryParamTagIds$Outbound = string | Array<string>;
+
+/** @internal */
+export const ListEventsQueryParamTagIds$outboundSchema: z.ZodType<
+  ListEventsQueryParamTagIds$Outbound,
+  z.ZodTypeDef,
+  ListEventsQueryParamTagIds
+> = z.union([z.string(), z.array(z.string())]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListEventsQueryParamTagIds$ {
+  /** @deprecated use `ListEventsQueryParamTagIds$inboundSchema` instead. */
+  export const inboundSchema = ListEventsQueryParamTagIds$inboundSchema;
+  /** @deprecated use `ListEventsQueryParamTagIds$outboundSchema` instead. */
+  export const outboundSchema = ListEventsQueryParamTagIds$outboundSchema;
+  /** @deprecated use `ListEventsQueryParamTagIds$Outbound` instead. */
+  export type Outbound = ListEventsQueryParamTagIds$Outbound;
+}
+
+/** @internal */
 export const Order$inboundSchema: z.ZodNativeEnum<typeof Order> = z.nativeEnum(
   Order,
 );
@@ -290,6 +329,7 @@ export const ListEventsRequest$inboundSchema: z.ZodType<
   refererUrl: z.string().optional(),
   url: z.string().optional(),
   tagId: z.string().optional(),
+  tagIds: z.union([z.string(), z.array(z.string())]).optional(),
   qr: z.boolean().optional(),
   root: z.boolean().optional(),
   page: z.number().default(1),
@@ -320,6 +360,7 @@ export type ListEventsRequest$Outbound = {
   refererUrl?: string | undefined;
   url?: string | undefined;
   tagId?: string | undefined;
+  tagIds?: string | Array<string> | undefined;
   qr?: boolean | undefined;
   root?: boolean | undefined;
   page: number;
@@ -354,6 +395,7 @@ export const ListEventsRequest$outboundSchema: z.ZodType<
   refererUrl: z.string().optional(),
   url: z.string().optional(),
   tagId: z.string().optional(),
+  tagIds: z.union([z.string(), z.array(z.string())]).optional(),
   qr: z.boolean().optional(),
   root: z.boolean().optional(),
   page: z.number().default(1),

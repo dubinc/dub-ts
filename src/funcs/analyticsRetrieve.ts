@@ -90,6 +90,7 @@ export async function analyticsRetrieve(
     "root": payload?.root,
     "start": payload?.start,
     "tagId": payload?.tagId,
+    "tagIds": payload?.tagIds,
     "timezone": payload?.timezone,
     "trigger": payload?.trigger,
     "url": payload?.url,
@@ -101,12 +102,20 @@ export async function analyticsRetrieve(
 
   const secConfig = await extractSecurity(client._options.token);
   const securityInput = secConfig == null ? {} : { token: secConfig };
+  const requestSecurity = resolveGlobalSecurity(securityInput);
+
   const context = {
     operationID: "retrieveAnalytics",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.token,
+    retryConfig: options?.retries
+      || client._options.retryConfig
+      || { strategy: "none" },
+    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
   };
-  const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
@@ -137,9 +146,8 @@ export async function analyticsRetrieve(
       "500",
       "5XX",
     ],
-    retryConfig: options?.retries
-      || client._options.retryConfig,
-    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+    retryConfig: context.retryConfig,
+    retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
     return doResult;
