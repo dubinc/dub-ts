@@ -7,16 +7,16 @@ import { LinkClickedEventClick } from "dub/models/components";
 
 let value: LinkClickedEventClick = {
   id: "<id>",
-  url: "https://velvety-pulse.net",
-  continent: "South America",
-  country: "New Caledonia",
-  city: "Leannahaven",
+  url: "https://tender-strait.name/",
+  continent: "Australia",
+  country: "Mexico",
+  city: "New Dedric",
   device: "Desktop",
-  browser: "Safari",
+  browser: "Firefox",
   os: "Blackberry",
-  referer: "frugal-adult.biz",
-  refererUrl: "https://ornate-drug.info",
-  ip: "299b:b8a1:09d6:3e38:a558:be03:fdcb:00fc",
+  referer: "poor-viability.name",
+  refererUrl: "https://damaged-bourgeoisie.biz/",
+  ip: "cd8c:b6d3:a3a8:9526:5afc:2c10:75de:faed",
 };
 ```
 

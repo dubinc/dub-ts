@@ -27,6 +27,8 @@ import { Result } from "../types/fp.js";
  *
  * @remarks
  * Track a customer for an authenticated workspace.
+ *
+ * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export async function trackCustomer(
   client: DubCore,

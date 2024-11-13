@@ -6,7 +6,7 @@
 import { GetQRCodeRequest } from "dub/models/operations";
 
 let value: GetQRCodeRequest = {
-  url: "https://ill-hydrocarbon.name/",
+  url: "https://simple-dead.com/",
 };
 ```
 

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: 34bf2c8628db0d6fa3a73fc90d888f0c
+  docChecksum: 373f4c3f0a911b7ea9a64ea083111854
   docVersion: 0.0.1
   speakeasyVersion: 1.438.1
   generationVersion: 2.457.2
-  releaseVersion: 0.45.0
-  configChecksum: 03f47cb50ce27a3c7fc3cdbc6d7c1844
+  releaseVersion: 0.45.1
+  configChecksum: 7efc177b75235f2844c2fcbdb8e0d2e8
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -162,11 +162,15 @@ generatedFiles:
   - docs/models/operations/bulkupdatelinkstagnames.md
   - docs/models/operations/click.md
   - docs/models/operations/color.md
+  - docs/models/operations/createcustomerrequestbody.md
+  - docs/models/operations/createcustomerresponsebody.md
   - docs/models/operations/createdomainrequestbody.md
   - docs/models/operations/createlinkrequestbody.md
   - docs/models/operations/createtagrequestbody.md
   - docs/models/operations/customer.md
   - docs/models/operations/data.md
+  - docs/models/operations/deletecustomerrequest.md
+  - docs/models/operations/deletecustomerresponsebody.md
   - docs/models/operations/deletedomainrequest.md
   - docs/models/operations/deletedomainresponsebody.md
   - docs/models/operations/deletelinkrequest.md
@@ -174,6 +178,8 @@ generatedFiles:
   - docs/models/operations/deletetagrequest.md
   - docs/models/operations/deletetagresponsebody.md
   - docs/models/operations/event.md
+  - docs/models/operations/getcustomerrequest.md
+  - docs/models/operations/getcustomerresponsebody.md
   - docs/models/operations/getlinkinforequest.md
   - docs/models/operations/getlinkscountqueryparamtagids.md
   - docs/models/operations/getlinkscountqueryparamtagnames.md
@@ -202,6 +208,7 @@ generatedFiles:
   - docs/models/operations/queryparamtagnames.md
   - docs/models/operations/queryparamtrigger.md
   - docs/models/operations/requestbody.md
+  - docs/models/operations/responsebody.md
   - docs/models/operations/retrieveanalyticsqueryparamtagids.md
   - docs/models/operations/retrieveanalyticsrequest.md
   - docs/models/operations/retrieveanalyticsresponsebody.md
@@ -220,6 +227,9 @@ generatedFiles:
   - docs/models/operations/tracksaleresponsebody.md
   - docs/models/operations/trigger.md
   - docs/models/operations/two.md
+  - docs/models/operations/updatecustomerrequest.md
+  - docs/models/operations/updatecustomerrequestbody.md
+  - docs/models/operations/updatecustomerresponsebody.md
   - docs/models/operations/updatedomainrequest.md
   - docs/models/operations/updatedomainrequestbody.md
   - docs/models/operations/updatelinkrequest.md
@@ -235,6 +245,7 @@ generatedFiles:
   - docs/models/operations/upsertlinktagids.md
   - docs/models/operations/upsertlinktagnames.md
   - docs/sdks/analytics/README.md
+  - docs/sdks/customers/README.md
   - docs/sdks/domains/README.md
   - docs/sdks/dub/README.md
   - docs/sdks/events/README.md
@@ -248,6 +259,11 @@ generatedFiles:
   - package.json
   - src/core.ts
   - src/funcs/analyticsRetrieve.ts
+  - src/funcs/customersCreate.ts
+  - src/funcs/customersDelete.ts
+  - src/funcs/customersGet.ts
+  - src/funcs/customersList.ts
+  - src/funcs/customersUpdate.ts
   - src/funcs/domainsCreate.ts
   - src/funcs/domainsDelete.ts
   - src/funcs/domainsList.ts
@@ -338,12 +354,16 @@ generatedFiles:
   - src/models/operations/bulkcreatelinks.ts
   - src/models/operations/bulkdeletelinks.ts
   - src/models/operations/bulkupdatelinks.ts
+  - src/models/operations/createcustomer.ts
   - src/models/operations/createdomain.ts
   - src/models/operations/createlink.ts
   - src/models/operations/createtag.ts
+  - src/models/operations/deletecustomer.ts
   - src/models/operations/deletedomain.ts
   - src/models/operations/deletelink.ts
   - src/models/operations/deletetag.ts
+  - src/models/operations/getcustomer.ts
+  - src/models/operations/getcustomers.ts
   - src/models/operations/getlinkinfo.ts
   - src/models/operations/getlinks.ts
   - src/models/operations/getlinkscount.ts
@@ -357,12 +377,14 @@ generatedFiles:
   - src/models/operations/trackcustomer.ts
   - src/models/operations/tracklead.ts
   - src/models/operations/tracksale.ts
+  - src/models/operations/updatecustomer.ts
   - src/models/operations/updatedomain.ts
   - src/models/operations/updatelink.ts
   - src/models/operations/updatetag.ts
   - src/models/operations/updateworkspace.ts
   - src/models/operations/upsertlink.ts
   - src/sdk/analytics.ts
+  - src/sdk/customers.ts
   - src/sdk/domains.ts
   - src/sdk/events.ts
   - src/sdk/index.ts
@@ -727,7 +749,7 @@ examples:
           idOrSlug: "<value>"
       responses:
         "200":
-          application/json: {"id": "<id>", "name": "<value>", "slug": "<value>", "inviteCode": "<value>", "plan": "business extra", "stripeId": "<value>", "billingCycleStart": "900.65", "paymentFailedAt": "<value>", "stripeConnectId": "<value>", "usage": "5588.34", "usageLimit": "8441.99", "linksUsage": "5442.21", "linksLimit": "8306.36", "salesUsage": "5212.35", "salesLimit": "785.92", "domainsLimit": "9699.61", "tagsLimit": "8661.61", "usersLimit": "4580.49", "aiUsage": "7352.87", "aiLimit": "4508.24", "referralLinkId": "<value>", "conversionEnabled": true, "dotLinkClaimed": true, "createdAt": "<value>", "users": [], "domains": [], "publishableKey": "<value>"}
+          application/json: {"id": "<id>", "name": "<value>", "slug": "<value>", "inviteCode": "<value>", "plan": "business extra", "stripeId": "<value>", "billingCycleStart": "900.65", "paymentFailedAt": "<value>", "stripeConnectId": "<value>", "usage": "5588.34", "usageLimit": "8441.99", "linksUsage": "5442.21", "linksLimit": "8306.36", "salesUsage": "5212.35", "salesLimit": "785.92", "domainsLimit": "9699.61", "tagsLimit": "8661.61", "usersLimit": "4580.49", "aiUsage": "7352.87", "aiLimit": "4508.24", "referralLinkId": "<value>", "conversionEnabled": true, "dotLinkClaimed": true, "createdAt": "<value>", "users": [], "domains": [], "publishableKey": "<value>", "bankAccountName": "<value>", "partialAccountNumber": "<value>", "routingNumber": "<value>", "bankAccountVerified": false}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -753,7 +775,7 @@ examples:
           idOrSlug: "<value>"
       responses:
         "200":
-          application/json: {"id": "<id>", "name": "<value>", "slug": "<value>", "inviteCode": "<value>", "plan": "enterprise", "stripeId": "<value>", "billingCycleStart": "245.55", "paymentFailedAt": "<value>", "stripeConnectId": "<value>", "usage": "5971.29", "usageLimit": "156.52", "linksUsage": "3446.2", "linksLimit": "7084.55", "salesUsage": "9914.64", "salesLimit": "2703.24", "domainsLimit": "6276.9", "tagsLimit": "6841.99", "usersLimit": "4888.52", "aiUsage": "4430.76", "aiLimit": "9840.08", "referralLinkId": "<value>", "conversionEnabled": true, "dotLinkClaimed": false, "createdAt": "<value>", "users": [], "domains": [], "publishableKey": "<value>"}
+          application/json: {"id": "<id>", "name": "<value>", "slug": "<value>", "inviteCode": "<value>", "plan": "enterprise", "stripeId": "<value>", "billingCycleStart": "245.55", "paymentFailedAt": "<value>", "stripeConnectId": "<value>", "usage": "5971.29", "usageLimit": "156.52", "linksUsage": "3446.2", "linksLimit": "7084.55", "salesUsage": "9914.64", "salesLimit": "2703.24", "domainsLimit": "6276.9", "tagsLimit": "6841.99", "usersLimit": "4888.52", "aiUsage": "4430.76", "aiLimit": "9840.08", "referralLinkId": "<value>", "conversionEnabled": true, "dotLinkClaimed": false, "createdAt": "<value>", "users": [], "domains": [], "publishableKey": "<value>", "bankAccountName": "<value>", "partialAccountNumber": "<value>", "routingNumber": "<value>", "bankAccountVerified": false}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -976,7 +998,7 @@ examples:
     speakeasy-default-track-lead:
       responses:
         "200":
-          application/json: {"click": {"id": "<id>"}, "customer": {"id": "<id>", "name": "<value>", "email": "Katelin24@hotmail.com", "avatar": "https://loremflickr.com/640/480"}}
+          application/json: {"click": {"id": "<id>"}, "customer": {"name": "<value>", "email": "Katelin24@hotmail.com", "avatar": "https://loremflickr.com/640/480", "externalId": "<id>"}}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -999,7 +1021,7 @@ examples:
     speakeasy-default-track-sale:
       responses:
         "200":
-          application/json: {"eventName": "<value>", "customer": {"id": "<id>", "name": "<value>", "email": "Hoyt_Volkman@hotmail.com", "avatar": "https://loremflickr.com/640/480"}, "sale": {"amount": "59.37", "currency": "Leone", "paymentProcessor": "<value>", "invoiceId": "<value>", "metadata": {"key": "<value>", "key1": "<value>", "key2": "<value>"}}}
+          application/json: {"eventName": "<value>", "customer": {"id": "<id>", "name": "<value>", "email": "Hoyt_Volkman@hotmail.com", "avatar": "https://loremflickr.com/640/480", "externalId": "<id>"}, "sale": {"amount": "59.37", "currency": "Leone", "paymentProcessor": "<value>", "invoiceId": "<value>", "metadata": {"key": "<value>", "key1": "<value>", "key2": "<value>"}}}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1049,3 +1071,127 @@ examples:
       responses:
         "200":
           application/json: {"title": "Dub.co - Link Management for Modern Marketing Teams", "description": "Dub.co is the open-source link management infrastructure ...", "image": "https://assets.dub.co/thumbnail.jpg"}
+  getCustomers:
+    speakeasy-default-get-customers:
+      responses:
+        "200":
+          application/json: [{"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "<value>"}, {"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "<value>"}, {"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "<value>"}]
+        "400":
+          application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
+        "401":
+          application/json: {"error": {"code": "unauthorized", "message": "The requested resource was not found."}}
+        "403":
+          application/json: {"error": {"code": "forbidden", "message": "The requested resource was not found."}}
+        "404":
+          application/json: {"error": {"code": "not_found", "message": "The requested resource was not found."}}
+        "409":
+          application/json: {"error": {"code": "conflict", "message": "The requested resource was not found."}}
+        "410":
+          application/json: {"error": {"code": "invite_expired", "message": "The requested resource was not found."}}
+        "422":
+          application/json: {"error": {"code": "unprocessable_entity", "message": "The requested resource was not found."}}
+        "429":
+          application/json: {"error": {"code": "rate_limit_exceeded", "message": "The requested resource was not found."}}
+        "500":
+          application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
+  createCustomer:
+    speakeasy-default-create-customer:
+      responses:
+        "201":
+          application/json: {"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "<value>"}
+        "400":
+          application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
+        "401":
+          application/json: {"error": {"code": "unauthorized", "message": "The requested resource was not found."}}
+        "403":
+          application/json: {"error": {"code": "forbidden", "message": "The requested resource was not found."}}
+        "404":
+          application/json: {"error": {"code": "not_found", "message": "The requested resource was not found."}}
+        "409":
+          application/json: {"error": {"code": "conflict", "message": "The requested resource was not found."}}
+        "410":
+          application/json: {"error": {"code": "invite_expired", "message": "The requested resource was not found."}}
+        "422":
+          application/json: {"error": {"code": "unprocessable_entity", "message": "The requested resource was not found."}}
+        "429":
+          application/json: {"error": {"code": "rate_limit_exceeded", "message": "The requested resource was not found."}}
+        "500":
+          application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
+  getCustomer:
+    speakeasy-default-get-customer:
+      parameters:
+        path:
+          id: "<id>"
+      responses:
+        "200":
+          application/json: {"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "<value>"}
+        "400":
+          application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
+        "401":
+          application/json: {"error": {"code": "unauthorized", "message": "The requested resource was not found."}}
+        "403":
+          application/json: {"error": {"code": "forbidden", "message": "The requested resource was not found."}}
+        "404":
+          application/json: {"error": {"code": "not_found", "message": "The requested resource was not found."}}
+        "409":
+          application/json: {"error": {"code": "conflict", "message": "The requested resource was not found."}}
+        "410":
+          application/json: {"error": {"code": "invite_expired", "message": "The requested resource was not found."}}
+        "422":
+          application/json: {"error": {"code": "unprocessable_entity", "message": "The requested resource was not found."}}
+        "429":
+          application/json: {"error": {"code": "rate_limit_exceeded", "message": "The requested resource was not found."}}
+        "500":
+          application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
+  updateCustomer:
+    speakeasy-default-update-customer:
+      parameters:
+        path:
+          id: "<id>"
+      responses:
+        "200":
+          application/json: {"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "<value>"}
+        "400":
+          application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
+        "401":
+          application/json: {"error": {"code": "unauthorized", "message": "The requested resource was not found."}}
+        "403":
+          application/json: {"error": {"code": "forbidden", "message": "The requested resource was not found."}}
+        "404":
+          application/json: {"error": {"code": "not_found", "message": "The requested resource was not found."}}
+        "409":
+          application/json: {"error": {"code": "conflict", "message": "The requested resource was not found."}}
+        "410":
+          application/json: {"error": {"code": "invite_expired", "message": "The requested resource was not found."}}
+        "422":
+          application/json: {"error": {"code": "unprocessable_entity", "message": "The requested resource was not found."}}
+        "429":
+          application/json: {"error": {"code": "rate_limit_exceeded", "message": "The requested resource was not found."}}
+        "500":
+          application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
+  deleteCustomer:
+    speakeasy-default-delete-customer:
+      parameters:
+        path:
+          id: "<id>"
+      responses:
+        "200":
+          application/json: {"id": "<id>"}
+        "400":
+          application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
+        "401":
+          application/json: {"error": {"code": "unauthorized", "message": "The requested resource was not found."}}
+        "403":
+          application/json: {"error": {"code": "forbidden", "message": "The requested resource was not found."}}
+        "404":
+          application/json: {"error": {"code": "not_found", "message": "The requested resource was not found."}}
+        "409":
+          application/json: {"error": {"code": "conflict", "message": "The requested resource was not found."}}
+        "410":
+          application/json: {"error": {"code": "invite_expired", "message": "The requested resource was not found."}}
+        "422":
+          application/json: {"error": {"code": "unprocessable_entity", "message": "The requested resource was not found."}}
+        "429":
+          application/json: {"error": {"code": "rate_limit_exceeded", "message": "The requested resource was not found."}}
+        "500":
+          application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}

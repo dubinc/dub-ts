@@ -7,17 +7,19 @@ import { LeadCreatedEventCustomer } from "dub/models/components";
 
 let value: LeadCreatedEventCustomer = {
   id: "<id>",
+  externalId: "<id>",
   name: "<value>",
-  email: "Eveline_Stanton-Ullrich29@hotmail.com",
-  avatar: "https://picsum.photos/seed/xrcyhx/2111/2686",
+  createdAt: "<value>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | N/A                |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `email`            | *string*           | :heavy_check_mark: | N/A                |
-| `avatar`           | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                   | Type                                                    | Required                                                | Description                                             |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| `id`                                                    | *string*                                                | :heavy_check_mark:                                      | The unique identifier of the customer in Dub.           |
+| `externalId`                                            | *string*                                                | :heavy_check_mark:                                      | Unique identifier for the customer in the client's app. |
+| `name`                                                  | *string*                                                | :heavy_check_mark:                                      | Name of the customer.                                   |
+| `email`                                                 | *string*                                                | :heavy_minus_sign:                                      | Email of the customer.                                  |
+| `avatar`                                                | *string*                                                | :heavy_minus_sign:                                      | Avatar URL of the customer.                             |
+| `createdAt`                                             | *string*                                                | :heavy_check_mark:                                      | The date the customer was created.                      |

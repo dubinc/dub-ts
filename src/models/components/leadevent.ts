@@ -432,10 +432,30 @@ export type LeadEventLink = {
 };
 
 export type Customer = {
+  /**
+   * The unique identifier of the customer in Dub.
+   */
   id: string;
+  /**
+   * Unique identifier for the customer in the client's app.
+   */
+  externalId: string;
+  /**
+   * Name of the customer.
+   */
   name: string;
-  email: string;
-  avatar: string;
+  /**
+   * Email of the customer.
+   */
+  email?: string | null | undefined;
+  /**
+   * Avatar URL of the customer.
+   */
+  avatar?: string | null | undefined;
+  /**
+   * The date the customer was created.
+   */
+  createdAt: string;
 };
 
 export type LeadEvent = {
@@ -2090,17 +2110,21 @@ export const Customer$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: z.string(),
+  externalId: z.string(),
   name: z.string(),
-  email: z.string(),
-  avatar: z.string(),
+  email: z.nullable(z.string()).optional(),
+  avatar: z.nullable(z.string()).optional(),
+  createdAt: z.string(),
 });
 
 /** @internal */
 export type Customer$Outbound = {
   id: string;
+  externalId: string;
   name: string;
-  email: string;
-  avatar: string;
+  email?: string | null | undefined;
+  avatar?: string | null | undefined;
+  createdAt: string;
 };
 
 /** @internal */
@@ -2110,9 +2134,11 @@ export const Customer$outboundSchema: z.ZodType<
   Customer
 > = z.object({
   id: z.string(),
+  externalId: z.string(),
   name: z.string(),
-  email: z.string(),
-  avatar: z.string(),
+  email: z.nullable(z.string()).optional(),
+  avatar: z.nullable(z.string()).optional(),
+  createdAt: z.string(),
 });
 
 /**

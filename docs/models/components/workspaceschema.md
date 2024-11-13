@@ -10,22 +10,22 @@ let value: WorkspaceSchema = {
   name: "<value>",
   slug: "<value>",
   inviteCode: "<value>",
-  plan: "business max",
+  plan: "business extra",
   stripeId: "<id>",
-  billingCycleStart: 7716.03,
+  billingCycleStart: 4877.65,
   paymentFailedAt: "<value>",
   stripeConnectId: "<id>",
-  usage: 5439.21,
-  usageLimit: 9793.25,
-  linksUsage: 726.00,
-  linksLimit: 7666.69,
-  salesUsage: 2663.70,
-  salesLimit: 3685.99,
-  domainsLimit: 2192.79,
-  tagsLimit: 7890.38,
-  usersLimit: 1442.40,
-  aiUsage: 8400.17,
-  aiLimit: 6615.78,
+  usage: 133.16,
+  usageLimit: 6062.62,
+  linksUsage: 9890.88,
+  linksLimit: 8181.01,
+  salesUsage: 3406.05,
+  salesLimit: 1520.47,
+  domainsLimit: 7840.59,
+  tagsLimit: 7439.38,
+  usersLimit: 9670.47,
+  aiUsage: 8748.42,
+  aiLimit: 5556.63,
   referralLinkId: "<id>",
   conversionEnabled: false,
   dotLinkClaimed: false,
@@ -41,6 +41,10 @@ let value: WorkspaceSchema = {
     },
   ],
   publishableKey: "<value>",
+  bankAccountName: "<value>",
+  partialAccountNumber: "<value>",
+  routingNumber: "<value>",
+  bankAccountVerified: false,
 };
 ```
 
@@ -57,7 +61,7 @@ let value: WorkspaceSchema = {
 | `stripeId`                                                                    | *string*                                                                      | :heavy_check_mark:                                                            | The Stripe ID of the workspace.                                               |
 | `billingCycleStart`                                                           | *number*                                                                      | :heavy_check_mark:                                                            | The date and time when the billing cycle starts for the workspace.            |
 | `paymentFailedAt`                                                             | *string*                                                                      | :heavy_check_mark:                                                            | The date and time when the payment failed for the workspace.                  |
-| `stripeConnectId`                                                             | *string*                                                                      | :heavy_check_mark:                                                            | [BETA]: The Stripe Connect ID of the workspace.                               |
+| `stripeConnectId`                                                             | *string*                                                                      | :heavy_check_mark:                                                            | [BETA – Dub Conversions]: The Stripe Connect ID of the workspace.             |
 | `usage`                                                                       | *number*                                                                      | :heavy_check_mark:                                                            | The usage of the workspace.                                                   |
 | `usageLimit`                                                                  | *number*                                                                      | :heavy_check_mark:                                                            | The usage limit of the workspace.                                             |
 | `linksUsage`                                                                  | *number*                                                                      | :heavy_check_mark:                                                            | The links usage of the workspace.                                             |
@@ -77,3 +81,7 @@ let value: WorkspaceSchema = {
 | `domains`                                                                     | [components.Domains](../../models/components/domains.md)[]                    | :heavy_check_mark:                                                            | The domains of the workspace.                                                 |
 | `flags`                                                                       | Record<string, *boolean*>                                                     | :heavy_minus_sign:                                                            | The feature flags of the workspace, indicating which features are enabled.    |
 | `publishableKey`                                                              | *string*                                                                      | :heavy_check_mark:                                                            | The publishable key of the workspace.                                         |
+| `bankAccountName`                                                             | *string*                                                                      | :heavy_check_mark:                                                            | [BETA – Dub Partners]: The name of the connected bank account.                |
+| `partialAccountNumber`                                                        | *string*                                                                      | :heavy_check_mark:                                                            | [BETA – Dub Partners]: The partial account number of the bank account.        |
+| `routingNumber`                                                               | *string*                                                                      | :heavy_check_mark:                                                            | [BETA – Dub Partners]: The routing number of the bank account.                |
+| `bankAccountVerified`                                                         | *boolean*                                                                     | :heavy_check_mark:                                                            | [BETA – Dub Partners]: Whether the bank account is verified.                  |
