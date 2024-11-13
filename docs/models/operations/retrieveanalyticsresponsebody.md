@@ -26,7 +26,7 @@ const value: components.AnalyticsTimeseries[] = [
 ```typescript
 const value: components.AnalyticsContinents[] = [
   {
-    continent: "OC",
+    continent: "AS",
   },
 ];
 ```
@@ -36,7 +36,7 @@ const value: components.AnalyticsContinents[] = [
 ```typescript
 const value: components.AnalyticsCountries[] = [
   {
-    country: "AS",
+    country: "HU",
   },
 ];
 ```
@@ -46,8 +46,8 @@ const value: components.AnalyticsCountries[] = [
 ```typescript
 const value: components.AnalyticsCities[] = [
   {
-    city: "Fort Janickton",
-    country: "NE",
+    city: "Lake Andersoncester",
+    country: "CR",
   },
 ];
 ```
@@ -67,7 +67,7 @@ const value: components.AnalyticsDevices[] = [
 ```typescript
 const value: components.AnalyticsBrowsers[] = [
   {
-    browser: "Chrome",
+    browser: "Firefox",
   },
 ];
 ```
@@ -77,7 +77,7 @@ const value: components.AnalyticsBrowsers[] = [
 ```typescript
 const value: components.AnalyticsOS[] = [
   {
-    os: "Android",
+    os: "Symbian",
   },
 ];
 ```
@@ -87,7 +87,7 @@ const value: components.AnalyticsOS[] = [
 ```typescript
 const value: components.AnalyticsTriggers[] = [
   {
-    trigger: "link",
+    trigger: "qr",
   },
 ];
 ```
@@ -97,7 +97,7 @@ const value: components.AnalyticsTriggers[] = [
 ```typescript
 const value: components.AnalyticsReferers[] = [
   {
-    referer: "powerless-synergy.info",
+    referer: "troubled-bar.name",
   },
 ];
 ```
@@ -107,7 +107,7 @@ const value: components.AnalyticsReferers[] = [
 ```typescript
 const value: components.AnalyticsRefererUrls[] = [
   {
-    refererUrl: "https://circular-heartbeat.biz/",
+    refererUrl: "https://hot-celsius.com",
   },
 ];
 ```
@@ -119,10 +119,10 @@ const value: components.AnalyticsTopLinks[] = [
   {
     link: "<value>",
     id: "<id>",
-    domain: "useless-custody.info",
+    domain: "ignorant-remark.org",
     key: "<key>",
     shortLink: "<value>",
-    url: "https://gracious-phrase.name",
+    url: "https://free-fold.com/",
     createdAt: "<value>",
   },
 ];
@@ -133,7 +133,7 @@ const value: components.AnalyticsTopLinks[] = [
 ```typescript
 const value: components.AnalyticsTopUrls[] = [
   {
-    url: "https://swift-newsletter.info",
+    url: "https://powerless-opera.com/",
   },
 ];
 ```

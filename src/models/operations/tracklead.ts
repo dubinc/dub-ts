@@ -16,7 +16,13 @@ export type TrackLeadRequestBody = {
   /**
    * This is the unique identifier for the customer in the client's app. This is used to track the customer's journey.
    */
-  customerId: string;
+  externalId?: string | undefined;
+  /**
+   * This is the unique identifier for the customer in the client's app. This is used to track the customer's journey.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  customerId?: string | null | undefined;
   /**
    * Name of the customer in the client's app.
    */
@@ -40,10 +46,10 @@ export type Click = {
 };
 
 export type Customer = {
-  id: string;
   name: string | null;
   email: string | null;
   avatar: string | null;
+  externalId: string | null;
 };
 
 /**
@@ -62,7 +68,8 @@ export const TrackLeadRequestBody$inboundSchema: z.ZodType<
 > = z.object({
   clickId: z.string(),
   eventName: z.string(),
-  customerId: z.string(),
+  externalId: z.string().default(""),
+  customerId: z.nullable(z.string()).default(null),
   customerName: z.nullable(z.string()).default(null),
   customerEmail: z.nullable(z.string()).default(null),
   customerAvatar: z.nullable(z.string()).default(null),
@@ -73,7 +80,8 @@ export const TrackLeadRequestBody$inboundSchema: z.ZodType<
 export type TrackLeadRequestBody$Outbound = {
   clickId: string;
   eventName: string;
-  customerId: string;
+  externalId: string;
+  customerId: string | null;
   customerName: string | null;
   customerEmail: string | null;
   customerAvatar: string | null;
@@ -88,7 +96,8 @@ export const TrackLeadRequestBody$outboundSchema: z.ZodType<
 > = z.object({
   clickId: z.string(),
   eventName: z.string(),
-  customerId: z.string(),
+  externalId: z.string().default(""),
+  customerId: z.nullable(z.string()).default(null),
   customerName: z.nullable(z.string()).default(null),
   customerEmail: z.nullable(z.string()).default(null),
   customerAvatar: z.nullable(z.string()).default(null),
@@ -147,18 +156,18 @@ export const Customer$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
   name: z.nullable(z.string()),
   email: z.nullable(z.string()),
   avatar: z.nullable(z.string()),
+  externalId: z.nullable(z.string()),
 });
 
 /** @internal */
 export type Customer$Outbound = {
-  id: string;
   name: string | null;
   email: string | null;
   avatar: string | null;
+  externalId: string | null;
 };
 
 /** @internal */
@@ -167,10 +176,10 @@ export const Customer$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Customer
 > = z.object({
-  id: z.string(),
   name: z.nullable(z.string()),
   email: z.nullable(z.string()),
   avatar: z.nullable(z.string()),
+  externalId: z.nullable(z.string()),
 });
 
 /**

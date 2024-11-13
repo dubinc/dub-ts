@@ -22,7 +22,13 @@ export type TrackSaleRequestBody = {
   /**
    * This is the unique identifier for the customer in the client's app. This is used to track the customer's journey.
    */
-  customerId: string;
+  externalId?: string | undefined;
+  /**
+   * This is the unique identifier for the customer in the client's app. This is used to track the customer's journey.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  customerId?: string | null | undefined;
   /**
    * The amount of the sale. Should be passed in cents.
    */
@@ -54,6 +60,7 @@ export type TrackSaleCustomer = {
   name: string | null;
   email: string | null;
   avatar: string | null;
+  externalId: string | null;
 };
 
 export type Sale = {
@@ -100,7 +107,8 @@ export const TrackSaleRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  customerId: z.string(),
+  externalId: z.string().default(""),
+  customerId: z.nullable(z.string()).default(null),
   amount: z.number().int(),
   paymentProcessor: PaymentProcessor$inboundSchema,
   eventName: z.string().default("Purchase"),
@@ -111,7 +119,8 @@ export const TrackSaleRequestBody$inboundSchema: z.ZodType<
 
 /** @internal */
 export type TrackSaleRequestBody$Outbound = {
-  customerId: string;
+  externalId: string;
+  customerId: string | null;
   amount: number;
   paymentProcessor: string;
   eventName: string;
@@ -126,7 +135,8 @@ export const TrackSaleRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TrackSaleRequestBody
 > = z.object({
-  customerId: z.string(),
+  externalId: z.string().default(""),
+  customerId: z.nullable(z.string()).default(null),
   amount: z.number().int(),
   paymentProcessor: PaymentProcessor$outboundSchema,
   eventName: z.string().default("Purchase"),
@@ -158,6 +168,7 @@ export const TrackSaleCustomer$inboundSchema: z.ZodType<
   name: z.nullable(z.string()),
   email: z.nullable(z.string()),
   avatar: z.nullable(z.string()),
+  externalId: z.nullable(z.string()),
 });
 
 /** @internal */
@@ -166,6 +177,7 @@ export type TrackSaleCustomer$Outbound = {
   name: string | null;
   email: string | null;
   avatar: string | null;
+  externalId: string | null;
 };
 
 /** @internal */
@@ -178,6 +190,7 @@ export const TrackSaleCustomer$outboundSchema: z.ZodType<
   name: z.nullable(z.string()),
   email: z.nullable(z.string()),
   avatar: z.nullable(z.string()),
+  externalId: z.nullable(z.string()),
 });
 
 /**

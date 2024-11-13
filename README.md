@@ -124,6 +124,14 @@ run();
 
 * [retrieve](docs/sdks/analytics/README.md#retrieve) - Retrieve analytics for a link, a domain, or the authenticated workspace.
 
+### [customers](docs/sdks/customers/README.md)
+
+* [list](docs/sdks/customers/README.md#list) - Get a list of customers
+* [create](docs/sdks/customers/README.md#create) - Create a customer
+* [get](docs/sdks/customers/README.md#get) - Get a customer
+* [update](docs/sdks/customers/README.md#update) - Update a customer
+* [delete](docs/sdks/customers/README.md#delete) - Delete a customer
+
 ### [domains](docs/sdks/domains/README.md)
 
 * [create](docs/sdks/domains/README.md#create) - Create a domain
@@ -168,7 +176,7 @@ run();
 
 * [lead](docs/sdks/track/README.md#lead) - Track a lead
 * [sale](docs/sdks/track/README.md#sale) - Track a sale
-* [customer](docs/sdks/track/README.md#customer) - Track a customer
+* [~~customer~~](docs/sdks/track/README.md#customer) - Track a customer :warning: **Deprecated**
 
 ### [workspaces](docs/sdks/workspaces/README.md)
 
@@ -522,6 +530,11 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 <summary>Available standalone functions</summary>
 
 - [`analyticsRetrieve`](docs/sdks/analytics/README.md#retrieve) - Retrieve analytics for a link, a domain, or the authenticated workspace.
+- [`customersCreate`](docs/sdks/customers/README.md#create) - Create a customer
+- [`customersDelete`](docs/sdks/customers/README.md#delete) - Delete a customer
+- [`customersGet`](docs/sdks/customers/README.md#get) - Get a customer
+- [`customersList`](docs/sdks/customers/README.md#list) - Get a list of customers
+- [`customersUpdate`](docs/sdks/customers/README.md#update) - Update a customer
 - [`domainsCreate`](docs/sdks/domains/README.md#create) - Create a domain
 - [`domainsDelete`](docs/sdks/domains/README.md#delete) - Delete a domain
 - [`domainsList`](docs/sdks/domains/README.md#list) - Retrieve a list of domains
@@ -543,11 +556,11 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`tagsDelete`](docs/sdks/tags/README.md#delete) - Delete a tag
 - [`tagsList`](docs/sdks/tags/README.md#list) - Retrieve a list of tags
 - [`tagsUpdate`](docs/sdks/tags/README.md#update) - Update a tag
-- [`trackCustomer`](docs/sdks/track/README.md#customer) - Track a customer
 - [`trackLead`](docs/sdks/track/README.md#lead) - Track a lead
 - [`trackSale`](docs/sdks/track/README.md#sale) - Track a sale
 - [`workspacesGet`](docs/sdks/workspaces/README.md#get) - Retrieve a workspace
 - [`workspacesUpdate`](docs/sdks/workspaces/README.md#update) - Update a workspace
+- ~~[`trackCustomer`](docs/sdks/track/README.md#customer)~~ - Track a customer :warning: **Deprecated**
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->

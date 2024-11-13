@@ -7,16 +7,16 @@ import { LeadCreatedEventClick } from "dub/models/components";
 
 let value: LeadCreatedEventClick = {
   id: "<id>",
-  url: "https://unripe-flame.name/",
-  continent: "Africa",
-  country: "Netherlands",
-  city: "Fort Gloria",
-  device: "Mobile",
-  browser: "Chrome",
-  os: "BeOS",
-  referer: "straight-developmental.org",
-  refererUrl: "https://sleepy-importance.org/",
-  ip: "16.57.254.85",
+  url: "https://first-vanadyl.info",
+  continent: "Europe",
+  country: "Cote d'Ivoire",
+  city: "Santa Cruz",
+  device: "Desktop",
+  browser: "Safari",
+  os: "Windows",
+  referer: "sleepy-importance.org",
+  refererUrl: "https://big-decryption.org/",
+  ip: "41.206.11.17",
 };
 ```
 

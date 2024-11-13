@@ -94,7 +94,7 @@ export type WorkspaceSchema = {
    */
   paymentFailedAt: string | null;
   /**
-   * [BETA]: The Stripe Connect ID of the workspace.
+   * [BETA – Dub Conversions]: The Stripe Connect ID of the workspace.
    */
   stripeConnectId: string | null;
   /**
@@ -173,6 +173,22 @@ export type WorkspaceSchema = {
    * The publishable key of the workspace.
    */
   publishableKey: string | null;
+  /**
+   * [BETA – Dub Partners]: The name of the connected bank account.
+   */
+  bankAccountName: string | null;
+  /**
+   * [BETA – Dub Partners]: The partial account number of the bank account.
+   */
+  partialAccountNumber: string | null;
+  /**
+   * [BETA – Dub Partners]: The routing number of the bank account.
+   */
+  routingNumber: string | null;
+  /**
+   * [BETA – Dub Partners]: Whether the bank account is verified.
+   */
+  bankAccountVerified: boolean;
 };
 
 /** @internal */
@@ -322,6 +338,10 @@ export const WorkspaceSchema$inboundSchema: z.ZodType<
   domains: z.array(z.lazy(() => Domains$inboundSchema)),
   flags: z.record(z.boolean()).optional(),
   publishableKey: z.nullable(z.string()),
+  bankAccountName: z.nullable(z.string()),
+  partialAccountNumber: z.nullable(z.string()),
+  routingNumber: z.nullable(z.string()),
+  bankAccountVerified: z.boolean(),
 });
 
 /** @internal */
@@ -355,6 +375,10 @@ export type WorkspaceSchema$Outbound = {
   domains: Array<Domains$Outbound>;
   flags?: { [k: string]: boolean } | undefined;
   publishableKey: string | null;
+  bankAccountName: string | null;
+  partialAccountNumber: string | null;
+  routingNumber: string | null;
+  bankAccountVerified: boolean;
 };
 
 /** @internal */
@@ -392,6 +416,10 @@ export const WorkspaceSchema$outboundSchema: z.ZodType<
   domains: z.array(z.lazy(() => Domains$outboundSchema)),
   flags: z.record(z.boolean()).optional(),
   publishableKey: z.nullable(z.string()),
+  bankAccountName: z.nullable(z.string()),
+  partialAccountNumber: z.nullable(z.string()),
+  routingNumber: z.nullable(z.string()),
+  bankAccountVerified: z.boolean(),
 });
 
 /**

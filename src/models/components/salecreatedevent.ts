@@ -18,10 +18,30 @@ export const SaleCreatedEventEvent = {
 export type SaleCreatedEventEvent = ClosedEnum<typeof SaleCreatedEventEvent>;
 
 export type SaleCreatedEventCustomer = {
+  /**
+   * The unique identifier of the customer in Dub.
+   */
   id: string;
-  name: string | null;
-  email: string | null;
-  avatar: string | null;
+  /**
+   * Unique identifier for the customer in the client's app.
+   */
+  externalId: string;
+  /**
+   * Name of the customer.
+   */
+  name: string;
+  /**
+   * Email of the customer.
+   */
+  email?: string | null | undefined;
+  /**
+   * Avatar URL of the customer.
+   */
+  avatar?: string | null | undefined;
+  /**
+   * The date the customer was created.
+   */
+  createdAt: string;
 };
 
 export type SaleCreatedEventClick = {
@@ -491,17 +511,21 @@ export const SaleCreatedEventCustomer$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: z.string(),
-  name: z.nullable(z.string()),
-  email: z.nullable(z.string()),
-  avatar: z.nullable(z.string()),
+  externalId: z.string(),
+  name: z.string(),
+  email: z.nullable(z.string()).optional(),
+  avatar: z.nullable(z.string()).optional(),
+  createdAt: z.string(),
 });
 
 /** @internal */
 export type SaleCreatedEventCustomer$Outbound = {
   id: string;
-  name: string | null;
-  email: string | null;
-  avatar: string | null;
+  externalId: string;
+  name: string;
+  email?: string | null | undefined;
+  avatar?: string | null | undefined;
+  createdAt: string;
 };
 
 /** @internal */
@@ -511,9 +535,11 @@ export const SaleCreatedEventCustomer$outboundSchema: z.ZodType<
   SaleCreatedEventCustomer
 > = z.object({
   id: z.string(),
-  name: z.nullable(z.string()),
-  email: z.nullable(z.string()),
-  avatar: z.nullable(z.string()),
+  externalId: z.string(),
+  name: z.string(),
+  email: z.nullable(z.string()).optional(),
+  avatar: z.nullable(z.string()).optional(),
+  createdAt: z.string(),
 });
 
 /**
