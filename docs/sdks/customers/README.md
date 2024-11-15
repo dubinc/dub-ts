@@ -5,15 +5,15 @@
 
 ### Available Operations
 
-* [list](#list) - Get a list of customers
+* [list](#list) - Retrieve a list of customers
 * [create](#create) - Create a customer
-* [get](#get) - Get a customer
+* [get](#get) - Retrieve a customer
 * [update](#update) - Update a customer
 * [delete](#delete) - Delete a customer
 
 ## list
 
-Get a list of customers for the authenticated workspace.
+Retrieve a list of customers for the authenticated workspace.
 
 ### Example Usage
 
@@ -174,7 +174,7 @@ run();
 
 ## get
 
-Get a customer by ID for the authenticated workspace.
+Retrieve a customer by ID for the authenticated workspace.
 
 ### Example Usage
 

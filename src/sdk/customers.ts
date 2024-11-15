@@ -13,10 +13,10 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class Customers extends ClientSDK {
   /**
-   * Get a list of customers
+   * Retrieve a list of customers
    *
    * @remarks
-   * Get a list of customers for the authenticated workspace.
+   * Retrieve a list of customers for the authenticated workspace.
    */
   async list(
     options?: RequestOptions,
@@ -45,10 +45,10 @@ export class Customers extends ClientSDK {
   }
 
   /**
-   * Get a customer
+   * Retrieve a customer
    *
    * @remarks
-   * Get a customer by ID for the authenticated workspace.
+   * Retrieve a customer by ID for the authenticated workspace.
    */
   async get(
     request: operations.GetCustomerRequest,
