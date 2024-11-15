@@ -22,10 +22,10 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Get a list of customers
+ * Retrieve a list of customers
  *
  * @remarks
- * Get a list of customers for the authenticated workspace.
+ * Retrieve a list of customers for the authenticated workspace.
  */
 export async function customersList(
   client: DubCore,
