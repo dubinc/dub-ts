@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UpdateCustomerRequestBody = {
   /**
@@ -107,6 +110,24 @@ export namespace UpdateCustomerRequestBody$ {
   export type Outbound = UpdateCustomerRequestBody$Outbound;
 }
 
+export function updateCustomerRequestBodyToJSON(
+  updateCustomerRequestBody: UpdateCustomerRequestBody,
+): string {
+  return JSON.stringify(
+    UpdateCustomerRequestBody$outboundSchema.parse(updateCustomerRequestBody),
+  );
+}
+
+export function updateCustomerRequestBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateCustomerRequestBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateCustomerRequestBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateCustomerRequestBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const UpdateCustomerRequest$inboundSchema: z.ZodType<
   UpdateCustomerRequest,
@@ -153,6 +174,24 @@ export namespace UpdateCustomerRequest$ {
   export const outboundSchema = UpdateCustomerRequest$outboundSchema;
   /** @deprecated use `UpdateCustomerRequest$Outbound` instead. */
   export type Outbound = UpdateCustomerRequest$Outbound;
+}
+
+export function updateCustomerRequestToJSON(
+  updateCustomerRequest: UpdateCustomerRequest,
+): string {
+  return JSON.stringify(
+    UpdateCustomerRequest$outboundSchema.parse(updateCustomerRequest),
+  );
+}
+
+export function updateCustomerRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateCustomerRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateCustomerRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateCustomerRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -204,4 +243,22 @@ export namespace UpdateCustomerResponseBody$ {
   export const outboundSchema = UpdateCustomerResponseBody$outboundSchema;
   /** @deprecated use `UpdateCustomerResponseBody$Outbound` instead. */
   export type Outbound = UpdateCustomerResponseBody$Outbound;
+}
+
+export function updateCustomerResponseBodyToJSON(
+  updateCustomerResponseBody: UpdateCustomerResponseBody,
+): string {
+  return JSON.stringify(
+    UpdateCustomerResponseBody$outboundSchema.parse(updateCustomerResponseBody),
+  );
+}
+
+export function updateCustomerResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateCustomerResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateCustomerResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateCustomerResponseBody' from JSON`,
+  );
 }

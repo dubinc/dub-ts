@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The unique IDs of the tags assigned to the short link.
@@ -182,6 +185,20 @@ export namespace TagIds$ {
   export type Outbound = TagIds$Outbound;
 }
 
+export function tagIdsToJSON(tagIds: TagIds): string {
+  return JSON.stringify(TagIds$outboundSchema.parse(tagIds));
+}
+
+export function tagIdsFromJSON(
+  jsonString: string,
+): SafeParseResult<TagIds, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TagIds$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TagIds' from JSON`,
+  );
+}
+
 /** @internal */
 export const TagNames$inboundSchema: z.ZodType<
   TagNames,
@@ -210,6 +227,20 @@ export namespace TagNames$ {
   export const outboundSchema = TagNames$outboundSchema;
   /** @deprecated use `TagNames$Outbound` instead. */
   export type Outbound = TagNames$Outbound;
+}
+
+export function tagNamesToJSON(tagNames: TagNames): string {
+  return JSON.stringify(TagNames$outboundSchema.parse(tagNames));
+}
+
+export function tagNamesFromJSON(
+  jsonString: string,
+): SafeParseResult<TagNames, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TagNames$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TagNames' from JSON`,
+  );
 }
 
 /** @internal */
@@ -358,4 +389,22 @@ export namespace CreateLinkRequestBody$ {
   export const outboundSchema = CreateLinkRequestBody$outboundSchema;
   /** @deprecated use `CreateLinkRequestBody$Outbound` instead. */
   export type Outbound = CreateLinkRequestBody$Outbound;
+}
+
+export function createLinkRequestBodyToJSON(
+  createLinkRequestBody: CreateLinkRequestBody,
+): string {
+  return JSON.stringify(
+    CreateLinkRequestBody$outboundSchema.parse(createLinkRequestBody),
+  );
+}
+
+export function createLinkRequestBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateLinkRequestBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateLinkRequestBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateLinkRequestBody' from JSON`,
+  );
 }

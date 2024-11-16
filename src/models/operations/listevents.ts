@@ -3,8 +3,11 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The type of event to retrieve analytics for. Defaults to 'clicks'.
@@ -90,11 +93,11 @@ export type ListEventsRequest = {
    */
   interval?: QueryParamInterval | undefined;
   /**
-   * The start date and time when to retrieve analytics from.
+   * The start date and time when to retrieve analytics from. Takes precedence over `interval`.
    */
   start?: string | undefined;
   /**
-   * The end date and time when to retrieve analytics from. If not provided, defaults to the current date.
+   * The end date and time when to retrieve analytics from. If not provided, defaults to the current date. Takes precedence over `interval`.
    */
   end?: string | undefined;
   /**
@@ -264,6 +267,24 @@ export namespace ListEventsQueryParamTagIds$ {
   export type Outbound = ListEventsQueryParamTagIds$Outbound;
 }
 
+export function listEventsQueryParamTagIdsToJSON(
+  listEventsQueryParamTagIds: ListEventsQueryParamTagIds,
+): string {
+  return JSON.stringify(
+    ListEventsQueryParamTagIds$outboundSchema.parse(listEventsQueryParamTagIds),
+  );
+}
+
+export function listEventsQueryParamTagIdsFromJSON(
+  jsonString: string,
+): SafeParseResult<ListEventsQueryParamTagIds, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListEventsQueryParamTagIds$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListEventsQueryParamTagIds' from JSON`,
+  );
+}
+
 /** @internal */
 export const Order$inboundSchema: z.ZodNativeEnum<typeof Order> = z.nativeEnum(
   Order,
@@ -417,6 +438,24 @@ export namespace ListEventsRequest$ {
   export type Outbound = ListEventsRequest$Outbound;
 }
 
+export function listEventsRequestToJSON(
+  listEventsRequest: ListEventsRequest,
+): string {
+  return JSON.stringify(
+    ListEventsRequest$outboundSchema.parse(listEventsRequest),
+  );
+}
+
+export function listEventsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListEventsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListEventsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListEventsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListEventsResponseBody$inboundSchema: z.ZodType<
   ListEventsResponseBody,
@@ -456,4 +495,22 @@ export namespace ListEventsResponseBody$ {
   export const outboundSchema = ListEventsResponseBody$outboundSchema;
   /** @deprecated use `ListEventsResponseBody$Outbound` instead. */
   export type Outbound = ListEventsResponseBody$Outbound;
+}
+
+export function listEventsResponseBodyToJSON(
+  listEventsResponseBody: ListEventsResponseBody,
+): string {
+  return JSON.stringify(
+    ListEventsResponseBody$outboundSchema.parse(listEventsResponseBody),
+  );
+}
+
+export function listEventsResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<ListEventsResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListEventsResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListEventsResponseBody' from JSON`,
+  );
 }

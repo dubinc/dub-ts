@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
  * A short code indicating the error code returned.
@@ -130,6 +133,24 @@ export namespace InternalServerErrorError$ {
   export const outboundSchema = InternalServerErrorError$outboundSchema;
   /** @deprecated use `InternalServerErrorError$Outbound` instead. */
   export type Outbound = InternalServerErrorError$Outbound;
+}
+
+export function internalServerErrorErrorToJSON(
+  internalServerErrorError: InternalServerErrorError,
+): string {
+  return JSON.stringify(
+    InternalServerErrorError$outboundSchema.parse(internalServerErrorError),
+  );
+}
+
+export function internalServerErrorErrorFromJSON(
+  jsonString: string,
+): SafeParseResult<InternalServerErrorError, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => InternalServerErrorError$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InternalServerErrorError' from JSON`,
+  );
 }
 
 /** @internal */

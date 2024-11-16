@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
  * A short code indicating the error code returned.
@@ -128,6 +131,20 @@ export namespace ForbiddenError$ {
   export const outboundSchema = ForbiddenError$outboundSchema;
   /** @deprecated use `ForbiddenError$Outbound` instead. */
   export type Outbound = ForbiddenError$Outbound;
+}
+
+export function forbiddenErrorToJSON(forbiddenError: ForbiddenError): string {
+  return JSON.stringify(ForbiddenError$outboundSchema.parse(forbiddenError));
+}
+
+export function forbiddenErrorFromJSON(
+  jsonString: string,
+): SafeParseResult<ForbiddenError, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ForbiddenError$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ForbiddenError' from JSON`,
+  );
 }
 
 /** @internal */

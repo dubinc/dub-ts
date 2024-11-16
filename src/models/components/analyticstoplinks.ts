@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AnalyticsTopLinks = {
   /**
@@ -117,4 +120,22 @@ export namespace AnalyticsTopLinks$ {
   export const outboundSchema = AnalyticsTopLinks$outboundSchema;
   /** @deprecated use `AnalyticsTopLinks$Outbound` instead. */
   export type Outbound = AnalyticsTopLinks$Outbound;
+}
+
+export function analyticsTopLinksToJSON(
+  analyticsTopLinks: AnalyticsTopLinks,
+): string {
+  return JSON.stringify(
+    AnalyticsTopLinks$outboundSchema.parse(analyticsTopLinks),
+  );
+}
+
+export function analyticsTopLinksFromJSON(
+  jsonString: string,
+): SafeParseResult<AnalyticsTopLinks, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AnalyticsTopLinks$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AnalyticsTopLinks' from JSON`,
+  );
 }

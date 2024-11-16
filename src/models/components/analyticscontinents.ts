@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The 2-letter ISO 3166-1 code representing the continent associated with the location of the user.
@@ -110,4 +113,22 @@ export namespace AnalyticsContinents$ {
   export const outboundSchema = AnalyticsContinents$outboundSchema;
   /** @deprecated use `AnalyticsContinents$Outbound` instead. */
   export type Outbound = AnalyticsContinents$Outbound;
+}
+
+export function analyticsContinentsToJSON(
+  analyticsContinents: AnalyticsContinents,
+): string {
+  return JSON.stringify(
+    AnalyticsContinents$outboundSchema.parse(analyticsContinents),
+  );
+}
+
+export function analyticsContinentsFromJSON(
+  jsonString: string,
+): SafeParseResult<AnalyticsContinents, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AnalyticsContinents$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AnalyticsContinents' from JSON`,
+  );
 }

@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The unique IDs of the tags assigned to the short link.
@@ -185,6 +188,24 @@ export namespace UpsertLinkTagIds$ {
   export type Outbound = UpsertLinkTagIds$Outbound;
 }
 
+export function upsertLinkTagIdsToJSON(
+  upsertLinkTagIds: UpsertLinkTagIds,
+): string {
+  return JSON.stringify(
+    UpsertLinkTagIds$outboundSchema.parse(upsertLinkTagIds),
+  );
+}
+
+export function upsertLinkTagIdsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpsertLinkTagIds, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpsertLinkTagIds$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpsertLinkTagIds' from JSON`,
+  );
+}
+
 /** @internal */
 export const UpsertLinkTagNames$inboundSchema: z.ZodType<
   UpsertLinkTagNames,
@@ -213,6 +234,24 @@ export namespace UpsertLinkTagNames$ {
   export const outboundSchema = UpsertLinkTagNames$outboundSchema;
   /** @deprecated use `UpsertLinkTagNames$Outbound` instead. */
   export type Outbound = UpsertLinkTagNames$Outbound;
+}
+
+export function upsertLinkTagNamesToJSON(
+  upsertLinkTagNames: UpsertLinkTagNames,
+): string {
+  return JSON.stringify(
+    UpsertLinkTagNames$outboundSchema.parse(upsertLinkTagNames),
+  );
+}
+
+export function upsertLinkTagNamesFromJSON(
+  jsonString: string,
+): SafeParseResult<UpsertLinkTagNames, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpsertLinkTagNames$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpsertLinkTagNames' from JSON`,
+  );
 }
 
 /** @internal */
@@ -361,4 +400,22 @@ export namespace UpsertLinkRequestBody$ {
   export const outboundSchema = UpsertLinkRequestBody$outboundSchema;
   /** @deprecated use `UpsertLinkRequestBody$Outbound` instead. */
   export type Outbound = UpsertLinkRequestBody$Outbound;
+}
+
+export function upsertLinkRequestBodyToJSON(
+  upsertLinkRequestBody: UpsertLinkRequestBody,
+): string {
+  return JSON.stringify(
+    UpsertLinkRequestBody$outboundSchema.parse(upsertLinkRequestBody),
+  );
+}
+
+export function upsertLinkRequestBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<UpsertLinkRequestBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpsertLinkRequestBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpsertLinkRequestBody' from JSON`,
+  );
 }

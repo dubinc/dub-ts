@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UpdateDomainRequestBody = {
   /**
@@ -84,6 +87,24 @@ export namespace UpdateDomainRequestBody$ {
   export type Outbound = UpdateDomainRequestBody$Outbound;
 }
 
+export function updateDomainRequestBodyToJSON(
+  updateDomainRequestBody: UpdateDomainRequestBody,
+): string {
+  return JSON.stringify(
+    UpdateDomainRequestBody$outboundSchema.parse(updateDomainRequestBody),
+  );
+}
+
+export function updateDomainRequestBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateDomainRequestBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateDomainRequestBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateDomainRequestBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const UpdateDomainRequest$inboundSchema: z.ZodType<
   UpdateDomainRequest,
@@ -129,4 +150,22 @@ export namespace UpdateDomainRequest$ {
   export const outboundSchema = UpdateDomainRequest$outboundSchema;
   /** @deprecated use `UpdateDomainRequest$Outbound` instead. */
   export type Outbound = UpdateDomainRequest$Outbound;
+}
+
+export function updateDomainRequestToJSON(
+  updateDomainRequest: UpdateDomainRequest,
+): string {
+  return JSON.stringify(
+    UpdateDomainRequest$outboundSchema.parse(updateDomainRequest),
+  );
+}
+
+export function updateDomainRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateDomainRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateDomainRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateDomainRequest' from JSON`,
+  );
 }

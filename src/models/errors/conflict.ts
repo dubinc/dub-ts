@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
  * A short code indicating the error code returned.
@@ -126,6 +129,20 @@ export namespace ConflictError$ {
   export const outboundSchema = ConflictError$outboundSchema;
   /** @deprecated use `ConflictError$Outbound` instead. */
   export type Outbound = ConflictError$Outbound;
+}
+
+export function conflictErrorToJSON(conflictError: ConflictError): string {
+  return JSON.stringify(ConflictError$outboundSchema.parse(conflictError));
+}
+
+export function conflictErrorFromJSON(
+  jsonString: string,
+): SafeParseResult<ConflictError, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ConflictError$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ConflictError' from JSON`,
+  );
 }
 
 /** @internal */

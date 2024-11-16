@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
  * A short code indicating the error code returned.
@@ -124,6 +127,20 @@ export namespace ErrorT$ {
   export const outboundSchema = ErrorT$outboundSchema;
   /** @deprecated use `ErrorT$Outbound` instead. */
   export type Outbound = ErrorT$Outbound;
+}
+
+export function errorTToJSON(errorT: ErrorT): string {
+  return JSON.stringify(ErrorT$outboundSchema.parse(errorT));
+}
+
+export function errorTFromJSON(
+  jsonString: string,
+): SafeParseResult<ErrorT, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ErrorT$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ErrorT' from JSON`,
+  );
 }
 
 /** @internal */

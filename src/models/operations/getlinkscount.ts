@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The tag IDs to filter the links by.
@@ -104,6 +107,26 @@ export namespace GetLinksCountQueryParamTagIds$ {
   export type Outbound = GetLinksCountQueryParamTagIds$Outbound;
 }
 
+export function getLinksCountQueryParamTagIdsToJSON(
+  getLinksCountQueryParamTagIds: GetLinksCountQueryParamTagIds,
+): string {
+  return JSON.stringify(
+    GetLinksCountQueryParamTagIds$outboundSchema.parse(
+      getLinksCountQueryParamTagIds,
+    ),
+  );
+}
+
+export function getLinksCountQueryParamTagIdsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetLinksCountQueryParamTagIds, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetLinksCountQueryParamTagIds$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetLinksCountQueryParamTagIds' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetLinksCountQueryParamTagNames$inboundSchema: z.ZodType<
   GetLinksCountQueryParamTagNames,
@@ -132,6 +155,26 @@ export namespace GetLinksCountQueryParamTagNames$ {
   export const outboundSchema = GetLinksCountQueryParamTagNames$outboundSchema;
   /** @deprecated use `GetLinksCountQueryParamTagNames$Outbound` instead. */
   export type Outbound = GetLinksCountQueryParamTagNames$Outbound;
+}
+
+export function getLinksCountQueryParamTagNamesToJSON(
+  getLinksCountQueryParamTagNames: GetLinksCountQueryParamTagNames,
+): string {
+  return JSON.stringify(
+    GetLinksCountQueryParamTagNames$outboundSchema.parse(
+      getLinksCountQueryParamTagNames,
+    ),
+  );
+}
+
+export function getLinksCountQueryParamTagNamesFromJSON(
+  jsonString: string,
+): SafeParseResult<GetLinksCountQueryParamTagNames, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetLinksCountQueryParamTagNames$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetLinksCountQueryParamTagNames' from JSON`,
+  );
 }
 
 /** @internal */
@@ -217,6 +260,20 @@ export namespace GroupBy$ {
   export type Outbound = GroupBy$Outbound;
 }
 
+export function groupByToJSON(groupBy: GroupBy): string {
+  return JSON.stringify(GroupBy$outboundSchema.parse(groupBy));
+}
+
+export function groupByFromJSON(
+  jsonString: string,
+): SafeParseResult<GroupBy, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GroupBy$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GroupBy' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetLinksCountRequest$inboundSchema: z.ZodType<
   GetLinksCountRequest,
@@ -280,4 +337,22 @@ export namespace GetLinksCountRequest$ {
   export const outboundSchema = GetLinksCountRequest$outboundSchema;
   /** @deprecated use `GetLinksCountRequest$Outbound` instead. */
   export type Outbound = GetLinksCountRequest$Outbound;
+}
+
+export function getLinksCountRequestToJSON(
+  getLinksCountRequest: GetLinksCountRequest,
+): string {
+  return JSON.stringify(
+    GetLinksCountRequest$outboundSchema.parse(getLinksCountRequest),
+  );
+}
+
+export function getLinksCountRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetLinksCountRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetLinksCountRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetLinksCountRequest' from JSON`,
+  );
 }

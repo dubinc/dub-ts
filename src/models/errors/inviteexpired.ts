@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
  * A short code indicating the error code returned.
@@ -128,6 +131,24 @@ export namespace InviteExpiredError$ {
   export const outboundSchema = InviteExpiredError$outboundSchema;
   /** @deprecated use `InviteExpiredError$Outbound` instead. */
   export type Outbound = InviteExpiredError$Outbound;
+}
+
+export function inviteExpiredErrorToJSON(
+  inviteExpiredError: InviteExpiredError,
+): string {
+  return JSON.stringify(
+    InviteExpiredError$outboundSchema.parse(inviteExpiredError),
+  );
+}
+
+export function inviteExpiredErrorFromJSON(
+  jsonString: string,
+): SafeParseResult<InviteExpiredError, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => InviteExpiredError$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InviteExpiredError' from JSON`,
+  );
 }
 
 /** @internal */

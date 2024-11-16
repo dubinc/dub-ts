@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UpdateWorkspaceRequestBody = {
   name?: string | undefined;
@@ -57,6 +60,24 @@ export namespace UpdateWorkspaceRequestBody$ {
   export type Outbound = UpdateWorkspaceRequestBody$Outbound;
 }
 
+export function updateWorkspaceRequestBodyToJSON(
+  updateWorkspaceRequestBody: UpdateWorkspaceRequestBody,
+): string {
+  return JSON.stringify(
+    UpdateWorkspaceRequestBody$outboundSchema.parse(updateWorkspaceRequestBody),
+  );
+}
+
+export function updateWorkspaceRequestBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateWorkspaceRequestBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateWorkspaceRequestBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateWorkspaceRequestBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const UpdateWorkspaceRequest$inboundSchema: z.ZodType<
   UpdateWorkspaceRequest,
@@ -104,4 +125,22 @@ export namespace UpdateWorkspaceRequest$ {
   export const outboundSchema = UpdateWorkspaceRequest$outboundSchema;
   /** @deprecated use `UpdateWorkspaceRequest$Outbound` instead. */
   export type Outbound = UpdateWorkspaceRequest$Outbound;
+}
+
+export function updateWorkspaceRequestToJSON(
+  updateWorkspaceRequest: UpdateWorkspaceRequest,
+): string {
+  return JSON.stringify(
+    UpdateWorkspaceRequest$outboundSchema.parse(updateWorkspaceRequest),
+  );
+}
+
+export function updateWorkspaceRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateWorkspaceRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateWorkspaceRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateWorkspaceRequest' from JSON`,
+  );
 }

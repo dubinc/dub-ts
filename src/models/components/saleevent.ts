@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   TagSchema,
   TagSchema$inboundSchema,
@@ -1901,6 +1904,20 @@ export namespace SaleEventGeo$ {
   export type Outbound = SaleEventGeo$Outbound;
 }
 
+export function saleEventGeoToJSON(saleEventGeo: SaleEventGeo): string {
+  return JSON.stringify(SaleEventGeo$outboundSchema.parse(saleEventGeo));
+}
+
+export function saleEventGeoFromJSON(
+  jsonString: string,
+): SafeParseResult<SaleEventGeo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SaleEventGeo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SaleEventGeo' from JSON`,
+  );
+}
+
 /** @internal */
 export const SaleEventLink$inboundSchema: z.ZodType<
   SaleEventLink,
@@ -2079,6 +2096,20 @@ export namespace SaleEventLink$ {
   export type Outbound = SaleEventLink$Outbound;
 }
 
+export function saleEventLinkToJSON(saleEventLink: SaleEventLink): string {
+  return JSON.stringify(SaleEventLink$outboundSchema.parse(saleEventLink));
+}
+
+export function saleEventLinkFromJSON(
+  jsonString: string,
+): SafeParseResult<SaleEventLink, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SaleEventLink$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SaleEventLink' from JSON`,
+  );
+}
+
 /** @internal */
 export const SaleEventClick$inboundSchema: z.ZodType<
   SaleEventClick,
@@ -2148,6 +2179,20 @@ export namespace SaleEventClick$ {
   export type Outbound = SaleEventClick$Outbound;
 }
 
+export function saleEventClickToJSON(saleEventClick: SaleEventClick): string {
+  return JSON.stringify(SaleEventClick$outboundSchema.parse(saleEventClick));
+}
+
+export function saleEventClickFromJSON(
+  jsonString: string,
+): SafeParseResult<SaleEventClick, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SaleEventClick$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SaleEventClick' from JSON`,
+  );
+}
+
 /** @internal */
 export const SaleEventCustomer$inboundSchema: z.ZodType<
   SaleEventCustomer,
@@ -2197,6 +2242,24 @@ export namespace SaleEventCustomer$ {
   export const outboundSchema = SaleEventCustomer$outboundSchema;
   /** @deprecated use `SaleEventCustomer$Outbound` instead. */
   export type Outbound = SaleEventCustomer$Outbound;
+}
+
+export function saleEventCustomerToJSON(
+  saleEventCustomer: SaleEventCustomer,
+): string {
+  return JSON.stringify(
+    SaleEventCustomer$outboundSchema.parse(saleEventCustomer),
+  );
+}
+
+export function saleEventCustomerFromJSON(
+  jsonString: string,
+): SafeParseResult<SaleEventCustomer, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SaleEventCustomer$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SaleEventCustomer' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2254,6 +2317,20 @@ export namespace Sale$ {
   export const outboundSchema = Sale$outboundSchema;
   /** @deprecated use `Sale$Outbound` instead. */
   export type Outbound = Sale$Outbound;
+}
+
+export function saleToJSON(sale: Sale): string {
+  return JSON.stringify(Sale$outboundSchema.parse(sale));
+}
+
+export function saleFromJSON(
+  jsonString: string,
+): SafeParseResult<Sale, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Sale$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Sale' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2373,4 +2450,18 @@ export namespace SaleEvent$ {
   export const outboundSchema = SaleEvent$outboundSchema;
   /** @deprecated use `SaleEvent$Outbound` instead. */
   export type Outbound = SaleEvent$Outbound;
+}
+
+export function saleEventToJSON(saleEvent: SaleEvent): string {
+  return JSON.stringify(SaleEvent$outboundSchema.parse(saleEvent));
+}
+
+export function saleEventFromJSON(
+  jsonString: string,
+): SafeParseResult<SaleEvent, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SaleEvent$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SaleEvent' from JSON`,
+  );
 }

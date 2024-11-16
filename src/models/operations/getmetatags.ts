@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetMetatagsRequest = {
   /**
@@ -65,6 +68,24 @@ export namespace GetMetatagsRequest$ {
   export type Outbound = GetMetatagsRequest$Outbound;
 }
 
+export function getMetatagsRequestToJSON(
+  getMetatagsRequest: GetMetatagsRequest,
+): string {
+  return JSON.stringify(
+    GetMetatagsRequest$outboundSchema.parse(getMetatagsRequest),
+  );
+}
+
+export function getMetatagsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetMetatagsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetMetatagsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMetatagsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetMetatagsResponseBody$inboundSchema: z.ZodType<
   GetMetatagsResponseBody,
@@ -105,4 +126,22 @@ export namespace GetMetatagsResponseBody$ {
   export const outboundSchema = GetMetatagsResponseBody$outboundSchema;
   /** @deprecated use `GetMetatagsResponseBody$Outbound` instead. */
   export type Outbound = GetMetatagsResponseBody$Outbound;
+}
+
+export function getMetatagsResponseBodyToJSON(
+  getMetatagsResponseBody: GetMetatagsResponseBody,
+): string {
+  return JSON.stringify(
+    GetMetatagsResponseBody$outboundSchema.parse(getMetatagsResponseBody),
+  );
+}
+
+export function getMetatagsResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetMetatagsResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetMetatagsResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMetatagsResponseBody' from JSON`,
+  );
 }

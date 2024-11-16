@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   TagSchema,
   TagSchema$inboundSchema,
@@ -555,6 +558,24 @@ export namespace SaleCreatedEventCustomer$ {
   export type Outbound = SaleCreatedEventCustomer$Outbound;
 }
 
+export function saleCreatedEventCustomerToJSON(
+  saleCreatedEventCustomer: SaleCreatedEventCustomer,
+): string {
+  return JSON.stringify(
+    SaleCreatedEventCustomer$outboundSchema.parse(saleCreatedEventCustomer),
+  );
+}
+
+export function saleCreatedEventCustomerFromJSON(
+  jsonString: string,
+): SafeParseResult<SaleCreatedEventCustomer, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SaleCreatedEventCustomer$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SaleCreatedEventCustomer' from JSON`,
+  );
+}
+
 /** @internal */
 export const SaleCreatedEventClick$inboundSchema: z.ZodType<
   SaleCreatedEventClick,
@@ -622,6 +643,24 @@ export namespace SaleCreatedEventClick$ {
   export const outboundSchema = SaleCreatedEventClick$outboundSchema;
   /** @deprecated use `SaleCreatedEventClick$Outbound` instead. */
   export type Outbound = SaleCreatedEventClick$Outbound;
+}
+
+export function saleCreatedEventClickToJSON(
+  saleCreatedEventClick: SaleCreatedEventClick,
+): string {
+  return JSON.stringify(
+    SaleCreatedEventClick$outboundSchema.parse(saleCreatedEventClick),
+  );
+}
+
+export function saleCreatedEventClickFromJSON(
+  jsonString: string,
+): SafeParseResult<SaleCreatedEventClick, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SaleCreatedEventClick$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SaleCreatedEventClick' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1913,6 +1952,24 @@ export namespace SaleCreatedEventGeo$ {
   export type Outbound = SaleCreatedEventGeo$Outbound;
 }
 
+export function saleCreatedEventGeoToJSON(
+  saleCreatedEventGeo: SaleCreatedEventGeo,
+): string {
+  return JSON.stringify(
+    SaleCreatedEventGeo$outboundSchema.parse(saleCreatedEventGeo),
+  );
+}
+
+export function saleCreatedEventGeoFromJSON(
+  jsonString: string,
+): SafeParseResult<SaleCreatedEventGeo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SaleCreatedEventGeo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SaleCreatedEventGeo' from JSON`,
+  );
+}
+
 /** @internal */
 export const SaleCreatedEventLink$inboundSchema: z.ZodType<
   SaleCreatedEventLink,
@@ -2091,6 +2148,24 @@ export namespace SaleCreatedEventLink$ {
   export type Outbound = SaleCreatedEventLink$Outbound;
 }
 
+export function saleCreatedEventLinkToJSON(
+  saleCreatedEventLink: SaleCreatedEventLink,
+): string {
+  return JSON.stringify(
+    SaleCreatedEventLink$outboundSchema.parse(saleCreatedEventLink),
+  );
+}
+
+export function saleCreatedEventLinkFromJSON(
+  jsonString: string,
+): SafeParseResult<SaleCreatedEventLink, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SaleCreatedEventLink$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SaleCreatedEventLink' from JSON`,
+  );
+}
+
 /** @internal */
 export const SaleCreatedEventSale$inboundSchema: z.ZodType<
   SaleCreatedEventSale,
@@ -2134,6 +2209,24 @@ export namespace SaleCreatedEventSale$ {
   export const outboundSchema = SaleCreatedEventSale$outboundSchema;
   /** @deprecated use `SaleCreatedEventSale$Outbound` instead. */
   export type Outbound = SaleCreatedEventSale$Outbound;
+}
+
+export function saleCreatedEventSaleToJSON(
+  saleCreatedEventSale: SaleCreatedEventSale,
+): string {
+  return JSON.stringify(
+    SaleCreatedEventSale$outboundSchema.parse(saleCreatedEventSale),
+  );
+}
+
+export function saleCreatedEventSaleFromJSON(
+  jsonString: string,
+): SafeParseResult<SaleCreatedEventSale, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SaleCreatedEventSale$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SaleCreatedEventSale' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2184,6 +2277,24 @@ export namespace SaleCreatedEventData$ {
   export type Outbound = SaleCreatedEventData$Outbound;
 }
 
+export function saleCreatedEventDataToJSON(
+  saleCreatedEventData: SaleCreatedEventData,
+): string {
+  return JSON.stringify(
+    SaleCreatedEventData$outboundSchema.parse(saleCreatedEventData),
+  );
+}
+
+export function saleCreatedEventDataFromJSON(
+  jsonString: string,
+): SafeParseResult<SaleCreatedEventData, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SaleCreatedEventData$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SaleCreatedEventData' from JSON`,
+  );
+}
+
 /** @internal */
 export const SaleCreatedEvent$inboundSchema: z.ZodType<
   SaleCreatedEvent,
@@ -2227,4 +2338,22 @@ export namespace SaleCreatedEvent$ {
   export const outboundSchema = SaleCreatedEvent$outboundSchema;
   /** @deprecated use `SaleCreatedEvent$Outbound` instead. */
   export type Outbound = SaleCreatedEvent$Outbound;
+}
+
+export function saleCreatedEventToJSON(
+  saleCreatedEvent: SaleCreatedEvent,
+): string {
+  return JSON.stringify(
+    SaleCreatedEvent$outboundSchema.parse(saleCreatedEvent),
+  );
+}
+
+export function saleCreatedEventFromJSON(
+  jsonString: string,
+): SafeParseResult<SaleCreatedEvent, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SaleCreatedEvent$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SaleCreatedEvent' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DeleteTagRequest = {
   /**
@@ -57,6 +60,24 @@ export namespace DeleteTagRequest$ {
   export type Outbound = DeleteTagRequest$Outbound;
 }
 
+export function deleteTagRequestToJSON(
+  deleteTagRequest: DeleteTagRequest,
+): string {
+  return JSON.stringify(
+    DeleteTagRequest$outboundSchema.parse(deleteTagRequest),
+  );
+}
+
+export function deleteTagRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteTagRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteTagRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteTagRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const DeleteTagResponseBody$inboundSchema: z.ZodType<
   DeleteTagResponseBody,
@@ -91,4 +112,22 @@ export namespace DeleteTagResponseBody$ {
   export const outboundSchema = DeleteTagResponseBody$outboundSchema;
   /** @deprecated use `DeleteTagResponseBody$Outbound` instead. */
   export type Outbound = DeleteTagResponseBody$Outbound;
+}
+
+export function deleteTagResponseBodyToJSON(
+  deleteTagResponseBody: DeleteTagResponseBody,
+): string {
+  return JSON.stringify(
+    DeleteTagResponseBody$outboundSchema.parse(deleteTagResponseBody),
+  );
+}
+
+export function deleteTagResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteTagResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteTagResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteTagResponseBody' from JSON`,
+  );
 }

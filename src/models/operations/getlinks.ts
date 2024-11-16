@@ -4,8 +4,11 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The tag IDs to filter the links by.
@@ -111,6 +114,24 @@ export namespace QueryParamTagIds$ {
   export type Outbound = QueryParamTagIds$Outbound;
 }
 
+export function queryParamTagIdsToJSON(
+  queryParamTagIds: QueryParamTagIds,
+): string {
+  return JSON.stringify(
+    QueryParamTagIds$outboundSchema.parse(queryParamTagIds),
+  );
+}
+
+export function queryParamTagIdsFromJSON(
+  jsonString: string,
+): SafeParseResult<QueryParamTagIds, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => QueryParamTagIds$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'QueryParamTagIds' from JSON`,
+  );
+}
+
 /** @internal */
 export const QueryParamTagNames$inboundSchema: z.ZodType<
   QueryParamTagNames,
@@ -139,6 +160,24 @@ export namespace QueryParamTagNames$ {
   export const outboundSchema = QueryParamTagNames$outboundSchema;
   /** @deprecated use `QueryParamTagNames$Outbound` instead. */
   export type Outbound = QueryParamTagNames$Outbound;
+}
+
+export function queryParamTagNamesToJSON(
+  queryParamTagNames: QueryParamTagNames,
+): string {
+  return JSON.stringify(
+    QueryParamTagNames$outboundSchema.parse(queryParamTagNames),
+  );
+}
+
+export function queryParamTagNamesFromJSON(
+  jsonString: string,
+): SafeParseResult<QueryParamTagNames, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => QueryParamTagNames$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'QueryParamTagNames' from JSON`,
+  );
 }
 
 /** @internal */
@@ -227,6 +266,22 @@ export namespace GetLinksRequest$ {
   export type Outbound = GetLinksRequest$Outbound;
 }
 
+export function getLinksRequestToJSON(
+  getLinksRequest: GetLinksRequest,
+): string {
+  return JSON.stringify(GetLinksRequest$outboundSchema.parse(getLinksRequest));
+}
+
+export function getLinksRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetLinksRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetLinksRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetLinksRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetLinksResponse$inboundSchema: z.ZodType<
   GetLinksResponse,
@@ -269,4 +324,22 @@ export namespace GetLinksResponse$ {
   export const outboundSchema = GetLinksResponse$outboundSchema;
   /** @deprecated use `GetLinksResponse$Outbound` instead. */
   export type Outbound = GetLinksResponse$Outbound;
+}
+
+export function getLinksResponseToJSON(
+  getLinksResponse: GetLinksResponse,
+): string {
+  return JSON.stringify(
+    GetLinksResponse$outboundSchema.parse(getLinksResponse),
+  );
+}
+
+export function getLinksResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetLinksResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetLinksResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetLinksResponse' from JSON`,
+  );
 }

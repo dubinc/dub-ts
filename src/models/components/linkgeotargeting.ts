@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Geo targeting information for the short link in JSON format `{[COUNTRY]: https://example.com }`.
@@ -1548,4 +1551,22 @@ export namespace LinkGeoTargeting$ {
   export const outboundSchema = LinkGeoTargeting$outboundSchema;
   /** @deprecated use `LinkGeoTargeting$Outbound` instead. */
   export type Outbound = LinkGeoTargeting$Outbound;
+}
+
+export function linkGeoTargetingToJSON(
+  linkGeoTargeting: LinkGeoTargeting,
+): string {
+  return JSON.stringify(
+    LinkGeoTargeting$outboundSchema.parse(linkGeoTargeting),
+  );
+}
+
+export function linkGeoTargetingFromJSON(
+  jsonString: string,
+): SafeParseResult<LinkGeoTargeting, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LinkGeoTargeting$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LinkGeoTargeting' from JSON`,
+  );
 }

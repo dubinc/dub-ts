@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AnalyticsBrowsers = {
   /**
@@ -73,4 +76,22 @@ export namespace AnalyticsBrowsers$ {
   export const outboundSchema = AnalyticsBrowsers$outboundSchema;
   /** @deprecated use `AnalyticsBrowsers$Outbound` instead. */
   export type Outbound = AnalyticsBrowsers$Outbound;
+}
+
+export function analyticsBrowsersToJSON(
+  analyticsBrowsers: AnalyticsBrowsers,
+): string {
+  return JSON.stringify(
+    AnalyticsBrowsers$outboundSchema.parse(analyticsBrowsers),
+  );
+}
+
+export function analyticsBrowsersFromJSON(
+  jsonString: string,
+): SafeParseResult<AnalyticsBrowsers, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AnalyticsBrowsers$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AnalyticsBrowsers' from JSON`,
+  );
 }

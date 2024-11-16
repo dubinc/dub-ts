@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   TagSchema,
   TagSchema$inboundSchema,
@@ -522,6 +525,24 @@ export namespace LinkWebhookEventEvent$ {
   export const outboundSchema = LinkWebhookEventEvent$outboundSchema;
   /** @deprecated use `LinkWebhookEventEvent$Outbound` instead. */
   export type Outbound = LinkWebhookEventEvent$Outbound;
+}
+
+export function linkWebhookEventEventToJSON(
+  linkWebhookEventEvent: LinkWebhookEventEvent,
+): string {
+  return JSON.stringify(
+    LinkWebhookEventEvent$outboundSchema.parse(linkWebhookEventEvent),
+  );
+}
+
+export function linkWebhookEventEventFromJSON(
+  jsonString: string,
+): SafeParseResult<LinkWebhookEventEvent, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LinkWebhookEventEvent$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LinkWebhookEventEvent' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1813,6 +1834,24 @@ export namespace LinkWebhookEventGeo$ {
   export type Outbound = LinkWebhookEventGeo$Outbound;
 }
 
+export function linkWebhookEventGeoToJSON(
+  linkWebhookEventGeo: LinkWebhookEventGeo,
+): string {
+  return JSON.stringify(
+    LinkWebhookEventGeo$outboundSchema.parse(linkWebhookEventGeo),
+  );
+}
+
+export function linkWebhookEventGeoFromJSON(
+  jsonString: string,
+): SafeParseResult<LinkWebhookEventGeo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LinkWebhookEventGeo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LinkWebhookEventGeo' from JSON`,
+  );
+}
+
 /** @internal */
 export const Data$inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z
   .object({
@@ -1985,6 +2024,20 @@ export namespace Data$ {
   export type Outbound = Data$Outbound;
 }
 
+export function dataToJSON(data: Data): string {
+  return JSON.stringify(Data$outboundSchema.parse(data));
+}
+
+export function dataFromJSON(
+  jsonString: string,
+): SafeParseResult<Data, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Data$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Data' from JSON`,
+  );
+}
+
 /** @internal */
 export const LinkWebhookEvent$inboundSchema: z.ZodType<
   LinkWebhookEvent,
@@ -2032,4 +2085,22 @@ export namespace LinkWebhookEvent$ {
   export const outboundSchema = LinkWebhookEvent$outboundSchema;
   /** @deprecated use `LinkWebhookEvent$Outbound` instead. */
   export type Outbound = LinkWebhookEvent$Outbound;
+}
+
+export function linkWebhookEventToJSON(
+  linkWebhookEvent: LinkWebhookEvent,
+): string {
+  return JSON.stringify(
+    LinkWebhookEvent$outboundSchema.parse(linkWebhookEvent),
+  );
+}
+
+export function linkWebhookEventFromJSON(
+  jsonString: string,
+): SafeParseResult<LinkWebhookEvent, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LinkWebhookEvent$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LinkWebhookEvent' from JSON`,
+  );
 }

@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The level of error correction to use for the QR code. Defaults to `L` if not provided.
@@ -129,4 +132,22 @@ export namespace GetQRCodeRequest$ {
   export const outboundSchema = GetQRCodeRequest$outboundSchema;
   /** @deprecated use `GetQRCodeRequest$Outbound` instead. */
   export type Outbound = GetQRCodeRequest$Outbound;
+}
+
+export function getQRCodeRequestToJSON(
+  getQRCodeRequest: GetQRCodeRequest,
+): string {
+  return JSON.stringify(
+    GetQRCodeRequest$outboundSchema.parse(getQRCodeRequest),
+  );
+}
+
+export function getQRCodeRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetQRCodeRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetQRCodeRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetQRCodeRequest' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The registered domain record.
@@ -111,6 +114,24 @@ export namespace RegisteredDomain$ {
   export type Outbound = RegisteredDomain$Outbound;
 }
 
+export function registeredDomainToJSON(
+  registeredDomain: RegisteredDomain,
+): string {
+  return JSON.stringify(
+    RegisteredDomain$outboundSchema.parse(registeredDomain),
+  );
+}
+
+export function registeredDomainFromJSON(
+  jsonString: string,
+): SafeParseResult<RegisteredDomain, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RegisteredDomain$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RegisteredDomain' from JSON`,
+  );
+}
+
 /** @internal */
 export const DomainSchema$inboundSchema: z.ZodType<
   DomainSchema,
@@ -175,4 +196,18 @@ export namespace DomainSchema$ {
   export const outboundSchema = DomainSchema$outboundSchema;
   /** @deprecated use `DomainSchema$Outbound` instead. */
   export type Outbound = DomainSchema$Outbound;
+}
+
+export function domainSchemaToJSON(domainSchema: DomainSchema): string {
+  return JSON.stringify(DomainSchema$outboundSchema.parse(domainSchema));
+}
+
+export function domainSchemaFromJSON(
+  jsonString: string,
+): SafeParseResult<DomainSchema, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DomainSchema$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DomainSchema' from JSON`,
+  );
 }

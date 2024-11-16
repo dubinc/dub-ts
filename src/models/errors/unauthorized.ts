@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
  * A short code indicating the error code returned.
@@ -128,6 +131,24 @@ export namespace UnauthorizedError$ {
   export const outboundSchema = UnauthorizedError$outboundSchema;
   /** @deprecated use `UnauthorizedError$Outbound` instead. */
   export type Outbound = UnauthorizedError$Outbound;
+}
+
+export function unauthorizedErrorToJSON(
+  unauthorizedError: UnauthorizedError,
+): string {
+  return JSON.stringify(
+    UnauthorizedError$outboundSchema.parse(unauthorizedError),
+  );
+}
+
+export function unauthorizedErrorFromJSON(
+  jsonString: string,
+): SafeParseResult<UnauthorizedError, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UnauthorizedError$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnauthorizedError' from JSON`,
+  );
 }
 
 /** @internal */

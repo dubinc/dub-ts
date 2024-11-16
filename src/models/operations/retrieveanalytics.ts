@@ -3,8 +3,11 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The type of event to retrieve analytics for. Defaults to `clicks`.
@@ -45,7 +48,7 @@ export const QueryParamGroupBy = {
 export type QueryParamGroupBy = ClosedEnum<typeof QueryParamGroupBy>;
 
 /**
- * The interval to retrieve analytics for. Takes precedence over start and end. If undefined, defaults to 24h.
+ * The interval to retrieve analytics for. If undefined, defaults to 24h.
  */
 export const Interval = {
   TwentyFourh: "24h",
@@ -58,7 +61,7 @@ export const Interval = {
   AllUnfiltered: "all_unfiltered",
 } as const;
 /**
- * The interval to retrieve analytics for. Takes precedence over start and end. If undefined, defaults to 24h.
+ * The interval to retrieve analytics for. If undefined, defaults to 24h.
  */
 export type Interval = ClosedEnum<typeof Interval>;
 
@@ -105,15 +108,15 @@ export type RetrieveAnalyticsRequest = {
    */
   externalId?: string | undefined;
   /**
-   * The interval to retrieve analytics for. Takes precedence over start and end. If undefined, defaults to 24h.
+   * The interval to retrieve analytics for. If undefined, defaults to 24h.
    */
   interval?: Interval | undefined;
   /**
-   * The start date and time when to retrieve analytics from.
+   * The start date and time when to retrieve analytics from. Takes precedence over `interval`.
    */
   start?: string | undefined;
   /**
-   * The end date and time when to retrieve analytics from. If not provided, defaults to the current date.
+   * The end date and time when to retrieve analytics from. If not provided, defaults to the current date. Takes precedence over `interval`.
    */
   end?: string | undefined;
   /**
@@ -306,6 +309,26 @@ export namespace RetrieveAnalyticsQueryParamTagIds$ {
   export type Outbound = RetrieveAnalyticsQueryParamTagIds$Outbound;
 }
 
+export function retrieveAnalyticsQueryParamTagIdsToJSON(
+  retrieveAnalyticsQueryParamTagIds: RetrieveAnalyticsQueryParamTagIds,
+): string {
+  return JSON.stringify(
+    RetrieveAnalyticsQueryParamTagIds$outboundSchema.parse(
+      retrieveAnalyticsQueryParamTagIds,
+    ),
+  );
+}
+
+export function retrieveAnalyticsQueryParamTagIdsFromJSON(
+  jsonString: string,
+): SafeParseResult<RetrieveAnalyticsQueryParamTagIds, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RetrieveAnalyticsQueryParamTagIds$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RetrieveAnalyticsQueryParamTagIds' from JSON`,
+  );
+}
+
 /** @internal */
 export const RetrieveAnalyticsRequest$inboundSchema: z.ZodType<
   RetrieveAnalyticsRequest,
@@ -411,6 +434,24 @@ export namespace RetrieveAnalyticsRequest$ {
   export type Outbound = RetrieveAnalyticsRequest$Outbound;
 }
 
+export function retrieveAnalyticsRequestToJSON(
+  retrieveAnalyticsRequest: RetrieveAnalyticsRequest,
+): string {
+  return JSON.stringify(
+    RetrieveAnalyticsRequest$outboundSchema.parse(retrieveAnalyticsRequest),
+  );
+}
+
+export function retrieveAnalyticsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<RetrieveAnalyticsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RetrieveAnalyticsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RetrieveAnalyticsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const RetrieveAnalyticsResponseBody$inboundSchema: z.ZodType<
   RetrieveAnalyticsResponseBody,
@@ -480,4 +521,24 @@ export namespace RetrieveAnalyticsResponseBody$ {
   export const outboundSchema = RetrieveAnalyticsResponseBody$outboundSchema;
   /** @deprecated use `RetrieveAnalyticsResponseBody$Outbound` instead. */
   export type Outbound = RetrieveAnalyticsResponseBody$Outbound;
+}
+
+export function retrieveAnalyticsResponseBodyToJSON(
+  retrieveAnalyticsResponseBody: RetrieveAnalyticsResponseBody,
+): string {
+  return JSON.stringify(
+    RetrieveAnalyticsResponseBody$outboundSchema.parse(
+      retrieveAnalyticsResponseBody,
+    ),
+  );
+}
+
+export function retrieveAnalyticsResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<RetrieveAnalyticsResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RetrieveAnalyticsResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RetrieveAnalyticsResponseBody' from JSON`,
+  );
 }

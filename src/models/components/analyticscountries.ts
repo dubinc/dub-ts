@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The 2-letter ISO 3166-1 country code for the country associated with the location of the user. Learn more: https://d.to/geo
@@ -382,4 +385,22 @@ export namespace AnalyticsCountries$ {
   export const outboundSchema = AnalyticsCountries$outboundSchema;
   /** @deprecated use `AnalyticsCountries$Outbound` instead. */
   export type Outbound = AnalyticsCountries$Outbound;
+}
+
+export function analyticsCountriesToJSON(
+  analyticsCountries: AnalyticsCountries,
+): string {
+  return JSON.stringify(
+    AnalyticsCountries$outboundSchema.parse(analyticsCountries),
+  );
+}
+
+export function analyticsCountriesFromJSON(
+  jsonString: string,
+): SafeParseResult<AnalyticsCountries, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AnalyticsCountries$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AnalyticsCountries' from JSON`,
+  );
 }

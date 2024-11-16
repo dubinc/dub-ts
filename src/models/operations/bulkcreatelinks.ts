@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The unique IDs of the tags assigned to the short link.
@@ -185,6 +188,24 @@ export namespace BulkCreateLinksTagIds$ {
   export type Outbound = BulkCreateLinksTagIds$Outbound;
 }
 
+export function bulkCreateLinksTagIdsToJSON(
+  bulkCreateLinksTagIds: BulkCreateLinksTagIds,
+): string {
+  return JSON.stringify(
+    BulkCreateLinksTagIds$outboundSchema.parse(bulkCreateLinksTagIds),
+  );
+}
+
+export function bulkCreateLinksTagIdsFromJSON(
+  jsonString: string,
+): SafeParseResult<BulkCreateLinksTagIds, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BulkCreateLinksTagIds$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BulkCreateLinksTagIds' from JSON`,
+  );
+}
+
 /** @internal */
 export const BulkCreateLinksTagNames$inboundSchema: z.ZodType<
   BulkCreateLinksTagNames,
@@ -213,6 +234,24 @@ export namespace BulkCreateLinksTagNames$ {
   export const outboundSchema = BulkCreateLinksTagNames$outboundSchema;
   /** @deprecated use `BulkCreateLinksTagNames$Outbound` instead. */
   export type Outbound = BulkCreateLinksTagNames$Outbound;
+}
+
+export function bulkCreateLinksTagNamesToJSON(
+  bulkCreateLinksTagNames: BulkCreateLinksTagNames,
+): string {
+  return JSON.stringify(
+    BulkCreateLinksTagNames$outboundSchema.parse(bulkCreateLinksTagNames),
+  );
+}
+
+export function bulkCreateLinksTagNamesFromJSON(
+  jsonString: string,
+): SafeParseResult<BulkCreateLinksTagNames, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BulkCreateLinksTagNames$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BulkCreateLinksTagNames' from JSON`,
+  );
 }
 
 /** @internal */
@@ -361,4 +400,18 @@ export namespace RequestBody$ {
   export const outboundSchema = RequestBody$outboundSchema;
   /** @deprecated use `RequestBody$Outbound` instead. */
   export type Outbound = RequestBody$Outbound;
+}
+
+export function requestBodyToJSON(requestBody: RequestBody): string {
+  return JSON.stringify(RequestBody$outboundSchema.parse(requestBody));
+}
+
+export function requestBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<RequestBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RequestBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RequestBody' from JSON`,
+  );
 }
