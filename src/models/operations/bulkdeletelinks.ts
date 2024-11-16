@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type BulkDeleteLinksRequest = {
   /**
@@ -57,6 +60,24 @@ export namespace BulkDeleteLinksRequest$ {
   export type Outbound = BulkDeleteLinksRequest$Outbound;
 }
 
+export function bulkDeleteLinksRequestToJSON(
+  bulkDeleteLinksRequest: BulkDeleteLinksRequest,
+): string {
+  return JSON.stringify(
+    BulkDeleteLinksRequest$outboundSchema.parse(bulkDeleteLinksRequest),
+  );
+}
+
+export function bulkDeleteLinksRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<BulkDeleteLinksRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BulkDeleteLinksRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BulkDeleteLinksRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const BulkDeleteLinksResponseBody$inboundSchema: z.ZodType<
   BulkDeleteLinksResponseBody,
@@ -91,4 +112,24 @@ export namespace BulkDeleteLinksResponseBody$ {
   export const outboundSchema = BulkDeleteLinksResponseBody$outboundSchema;
   /** @deprecated use `BulkDeleteLinksResponseBody$Outbound` instead. */
   export type Outbound = BulkDeleteLinksResponseBody$Outbound;
+}
+
+export function bulkDeleteLinksResponseBodyToJSON(
+  bulkDeleteLinksResponseBody: BulkDeleteLinksResponseBody,
+): string {
+  return JSON.stringify(
+    BulkDeleteLinksResponseBody$outboundSchema.parse(
+      bulkDeleteLinksResponseBody,
+    ),
+  );
+}
+
+export function bulkDeleteLinksResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<BulkDeleteLinksResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BulkDeleteLinksResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BulkDeleteLinksResponseBody' from JSON`,
+  );
 }

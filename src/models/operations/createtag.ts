@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The color of the tag. If not provided, a random color will be used from the list: red, yellow, green, blue, purple, pink, brown.
@@ -99,4 +102,22 @@ export namespace CreateTagRequestBody$ {
   export const outboundSchema = CreateTagRequestBody$outboundSchema;
   /** @deprecated use `CreateTagRequestBody$Outbound` instead. */
   export type Outbound = CreateTagRequestBody$Outbound;
+}
+
+export function createTagRequestBodyToJSON(
+  createTagRequestBody: CreateTagRequestBody,
+): string {
+  return JSON.stringify(
+    CreateTagRequestBody$outboundSchema.parse(createTagRequestBody),
+  );
+}
+
+export function createTagRequestBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateTagRequestBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateTagRequestBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateTagRequestBody' from JSON`,
+  );
 }

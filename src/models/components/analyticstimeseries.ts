@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AnalyticsTimeseries = {
   /**
@@ -73,4 +76,22 @@ export namespace AnalyticsTimeseries$ {
   export const outboundSchema = AnalyticsTimeseries$outboundSchema;
   /** @deprecated use `AnalyticsTimeseries$Outbound` instead. */
   export type Outbound = AnalyticsTimeseries$Outbound;
+}
+
+export function analyticsTimeseriesToJSON(
+  analyticsTimeseries: AnalyticsTimeseries,
+): string {
+  return JSON.stringify(
+    AnalyticsTimeseries$outboundSchema.parse(analyticsTimeseries),
+  );
+}
+
+export function analyticsTimeseriesFromJSON(
+  jsonString: string,
+): SafeParseResult<AnalyticsTimeseries, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AnalyticsTimeseries$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AnalyticsTimeseries' from JSON`,
+  );
 }

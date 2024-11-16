@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
  * A short code indicating the error code returned.
@@ -128,6 +131,24 @@ export namespace RateLimitExceededError$ {
   export const outboundSchema = RateLimitExceededError$outboundSchema;
   /** @deprecated use `RateLimitExceededError$Outbound` instead. */
   export type Outbound = RateLimitExceededError$Outbound;
+}
+
+export function rateLimitExceededErrorToJSON(
+  rateLimitExceededError: RateLimitExceededError,
+): string {
+  return JSON.stringify(
+    RateLimitExceededError$outboundSchema.parse(rateLimitExceededError),
+  );
+}
+
+export function rateLimitExceededErrorFromJSON(
+  jsonString: string,
+): SafeParseResult<RateLimitExceededError, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RateLimitExceededError$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RateLimitExceededError' from JSON`,
+  );
 }
 
 /** @internal */

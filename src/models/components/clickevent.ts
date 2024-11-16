@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   TagSchema,
   TagSchema$inboundSchema,
@@ -600,6 +603,20 @@ export namespace Click$ {
   export const outboundSchema = Click$outboundSchema;
   /** @deprecated use `Click$Outbound` instead. */
   export type Outbound = Click$Outbound;
+}
+
+export function clickToJSON(click: Click): string {
+  return JSON.stringify(Click$outboundSchema.parse(click));
+}
+
+export function clickFromJSON(
+  jsonString: string,
+): SafeParseResult<Click, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Click$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Click' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1891,6 +1908,20 @@ export namespace ClickEventGeo$ {
   export type Outbound = ClickEventGeo$Outbound;
 }
 
+export function clickEventGeoToJSON(clickEventGeo: ClickEventGeo): string {
+  return JSON.stringify(ClickEventGeo$outboundSchema.parse(clickEventGeo));
+}
+
+export function clickEventGeoFromJSON(
+  jsonString: string,
+): SafeParseResult<ClickEventGeo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ClickEventGeo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ClickEventGeo' from JSON`,
+  );
+}
+
 /** @internal */
 export const Link$inboundSchema: z.ZodType<Link, z.ZodTypeDef, unknown> = z
   .object({
@@ -2063,6 +2094,20 @@ export namespace Link$ {
   export type Outbound = Link$Outbound;
 }
 
+export function linkToJSON(link: Link): string {
+  return JSON.stringify(Link$outboundSchema.parse(link));
+}
+
+export function linkFromJSON(
+  jsonString: string,
+): SafeParseResult<Link, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Link$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Link' from JSON`,
+  );
+}
+
 /** @internal */
 export const ClickEvent$inboundSchema: z.ZodType<
   ClickEvent,
@@ -2155,4 +2200,18 @@ export namespace ClickEvent$ {
   export const outboundSchema = ClickEvent$outboundSchema;
   /** @deprecated use `ClickEvent$Outbound` instead. */
   export type Outbound = ClickEvent$Outbound;
+}
+
+export function clickEventToJSON(clickEvent: ClickEvent): string {
+  return JSON.stringify(ClickEvent$outboundSchema.parse(clickEvent));
+}
+
+export function clickEventFromJSON(
+  jsonString: string,
+): SafeParseResult<ClickEvent, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ClickEvent$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ClickEvent' from JSON`,
+  );
 }

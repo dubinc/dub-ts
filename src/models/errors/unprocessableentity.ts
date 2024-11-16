@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
  * A short code indicating the error code returned.
@@ -130,6 +133,24 @@ export namespace UnprocessableEntityError$ {
   export const outboundSchema = UnprocessableEntityError$outboundSchema;
   /** @deprecated use `UnprocessableEntityError$Outbound` instead. */
   export type Outbound = UnprocessableEntityError$Outbound;
+}
+
+export function unprocessableEntityErrorToJSON(
+  unprocessableEntityError: UnprocessableEntityError,
+): string {
+  return JSON.stringify(
+    UnprocessableEntityError$outboundSchema.parse(unprocessableEntityError),
+  );
+}
+
+export function unprocessableEntityErrorFromJSON(
+  jsonString: string,
+): SafeParseResult<UnprocessableEntityError, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UnprocessableEntityError$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnprocessableEntityError' from JSON`,
+  );
 }
 
 /** @internal */

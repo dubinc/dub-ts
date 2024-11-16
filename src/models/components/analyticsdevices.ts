@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AnalyticsDevices = {
   /**
@@ -73,4 +76,22 @@ export namespace AnalyticsDevices$ {
   export const outboundSchema = AnalyticsDevices$outboundSchema;
   /** @deprecated use `AnalyticsDevices$Outbound` instead. */
   export type Outbound = AnalyticsDevices$Outbound;
+}
+
+export function analyticsDevicesToJSON(
+  analyticsDevices: AnalyticsDevices,
+): string {
+  return JSON.stringify(
+    AnalyticsDevices$outboundSchema.parse(analyticsDevices),
+  );
+}
+
+export function analyticsDevicesFromJSON(
+  jsonString: string,
+): SafeParseResult<AnalyticsDevices, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AnalyticsDevices$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AnalyticsDevices' from JSON`,
+  );
 }

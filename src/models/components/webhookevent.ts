@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   LeadCreatedEvent,
   LeadCreatedEvent$inboundSchema,
@@ -79,4 +82,18 @@ export namespace WebhookEvent$ {
   export const outboundSchema = WebhookEvent$outboundSchema;
   /** @deprecated use `WebhookEvent$Outbound` instead. */
   export type Outbound = WebhookEvent$Outbound;
+}
+
+export function webhookEventToJSON(webhookEvent: WebhookEvent): string {
+  return JSON.stringify(WebhookEvent$outboundSchema.parse(webhookEvent));
+}
+
+export function webhookEventFromJSON(
+  jsonString: string,
+): SafeParseResult<WebhookEvent, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WebhookEvent$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WebhookEvent' from JSON`,
+  );
 }

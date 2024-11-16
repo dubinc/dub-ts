@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetLinkInfoRequest = {
   domain?: string | undefined;
@@ -63,4 +66,22 @@ export namespace GetLinkInfoRequest$ {
   export const outboundSchema = GetLinkInfoRequest$outboundSchema;
   /** @deprecated use `GetLinkInfoRequest$Outbound` instead. */
   export type Outbound = GetLinkInfoRequest$Outbound;
+}
+
+export function getLinkInfoRequestToJSON(
+  getLinkInfoRequest: GetLinkInfoRequest,
+): string {
+  return JSON.stringify(
+    GetLinkInfoRequest$outboundSchema.parse(getLinkInfoRequest),
+  );
+}
+
+export function getLinkInfoRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetLinkInfoRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetLinkInfoRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetLinkInfoRequest' from JSON`,
+  );
 }

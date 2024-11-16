@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   TagSchema,
   TagSchema$inboundSchema,
@@ -634,6 +637,20 @@ export namespace LeadEventClick$ {
   export const outboundSchema = LeadEventClick$outboundSchema;
   /** @deprecated use `LeadEventClick$Outbound` instead. */
   export type Outbound = LeadEventClick$Outbound;
+}
+
+export function leadEventClickToJSON(leadEventClick: LeadEventClick): string {
+  return JSON.stringify(LeadEventClick$outboundSchema.parse(leadEventClick));
+}
+
+export function leadEventClickFromJSON(
+  jsonString: string,
+): SafeParseResult<LeadEventClick, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LeadEventClick$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LeadEventClick' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1925,6 +1942,20 @@ export namespace LeadEventGeo$ {
   export type Outbound = LeadEventGeo$Outbound;
 }
 
+export function leadEventGeoToJSON(leadEventGeo: LeadEventGeo): string {
+  return JSON.stringify(LeadEventGeo$outboundSchema.parse(leadEventGeo));
+}
+
+export function leadEventGeoFromJSON(
+  jsonString: string,
+): SafeParseResult<LeadEventGeo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LeadEventGeo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LeadEventGeo' from JSON`,
+  );
+}
+
 /** @internal */
 export const LeadEventLink$inboundSchema: z.ZodType<
   LeadEventLink,
@@ -2103,6 +2134,20 @@ export namespace LeadEventLink$ {
   export type Outbound = LeadEventLink$Outbound;
 }
 
+export function leadEventLinkToJSON(leadEventLink: LeadEventLink): string {
+  return JSON.stringify(LeadEventLink$outboundSchema.parse(leadEventLink));
+}
+
+export function leadEventLinkFromJSON(
+  jsonString: string,
+): SafeParseResult<LeadEventLink, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LeadEventLink$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LeadEventLink' from JSON`,
+  );
+}
+
 /** @internal */
 export const Customer$inboundSchema: z.ZodType<
   Customer,
@@ -2152,6 +2197,20 @@ export namespace Customer$ {
   export const outboundSchema = Customer$outboundSchema;
   /** @deprecated use `Customer$Outbound` instead. */
   export type Outbound = Customer$Outbound;
+}
+
+export function customerToJSON(customer: Customer): string {
+  return JSON.stringify(Customer$outboundSchema.parse(customer));
+}
+
+export function customerFromJSON(
+  jsonString: string,
+): SafeParseResult<Customer, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Customer$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Customer' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2255,4 +2314,18 @@ export namespace LeadEvent$ {
   export const outboundSchema = LeadEvent$outboundSchema;
   /** @deprecated use `LeadEvent$Outbound` instead. */
   export type Outbound = LeadEvent$Outbound;
+}
+
+export function leadEventToJSON(leadEvent: LeadEvent): string {
+  return JSON.stringify(LeadEvent$outboundSchema.parse(leadEvent));
+}
+
+export function leadEventFromJSON(
+  jsonString: string,
+): SafeParseResult<LeadEvent, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LeadEvent$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LeadEvent' from JSON`,
+  );
 }

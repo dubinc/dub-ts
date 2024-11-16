@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AnalyticsCount = {
   /**
@@ -66,4 +69,18 @@ export namespace AnalyticsCount$ {
   export const outboundSchema = AnalyticsCount$outboundSchema;
   /** @deprecated use `AnalyticsCount$Outbound` instead. */
   export type Outbound = AnalyticsCount$Outbound;
+}
+
+export function analyticsCountToJSON(analyticsCount: AnalyticsCount): string {
+  return JSON.stringify(AnalyticsCount$outboundSchema.parse(analyticsCount));
+}
+
+export function analyticsCountFromJSON(
+  jsonString: string,
+): SafeParseResult<AnalyticsCount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AnalyticsCount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AnalyticsCount' from JSON`,
+  );
 }

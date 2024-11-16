@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The unique IDs of the tags assigned to the short link.
@@ -193,6 +196,24 @@ export namespace UpdateLinkTagIds$ {
   export type Outbound = UpdateLinkTagIds$Outbound;
 }
 
+export function updateLinkTagIdsToJSON(
+  updateLinkTagIds: UpdateLinkTagIds,
+): string {
+  return JSON.stringify(
+    UpdateLinkTagIds$outboundSchema.parse(updateLinkTagIds),
+  );
+}
+
+export function updateLinkTagIdsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateLinkTagIds, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateLinkTagIds$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateLinkTagIds' from JSON`,
+  );
+}
+
 /** @internal */
 export const UpdateLinkTagNames$inboundSchema: z.ZodType<
   UpdateLinkTagNames,
@@ -221,6 +242,24 @@ export namespace UpdateLinkTagNames$ {
   export const outboundSchema = UpdateLinkTagNames$outboundSchema;
   /** @deprecated use `UpdateLinkTagNames$Outbound` instead. */
   export type Outbound = UpdateLinkTagNames$Outbound;
+}
+
+export function updateLinkTagNamesToJSON(
+  updateLinkTagNames: UpdateLinkTagNames,
+): string {
+  return JSON.stringify(
+    UpdateLinkTagNames$outboundSchema.parse(updateLinkTagNames),
+  );
+}
+
+export function updateLinkTagNamesFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateLinkTagNames, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateLinkTagNames$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateLinkTagNames' from JSON`,
+  );
 }
 
 /** @internal */
@@ -371,6 +410,24 @@ export namespace UpdateLinkRequestBody$ {
   export type Outbound = UpdateLinkRequestBody$Outbound;
 }
 
+export function updateLinkRequestBodyToJSON(
+  updateLinkRequestBody: UpdateLinkRequestBody,
+): string {
+  return JSON.stringify(
+    UpdateLinkRequestBody$outboundSchema.parse(updateLinkRequestBody),
+  );
+}
+
+export function updateLinkRequestBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateLinkRequestBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateLinkRequestBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateLinkRequestBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const UpdateLinkRequest$inboundSchema: z.ZodType<
   UpdateLinkRequest,
@@ -416,4 +473,22 @@ export namespace UpdateLinkRequest$ {
   export const outboundSchema = UpdateLinkRequest$outboundSchema;
   /** @deprecated use `UpdateLinkRequest$Outbound` instead. */
   export type Outbound = UpdateLinkRequest$Outbound;
+}
+
+export function updateLinkRequestToJSON(
+  updateLinkRequest: UpdateLinkRequest,
+): string {
+  return JSON.stringify(
+    UpdateLinkRequest$outboundSchema.parse(updateLinkRequest),
+  );
+}
+
+export function updateLinkRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateLinkRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateLinkRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateLinkRequest' from JSON`,
+  );
 }

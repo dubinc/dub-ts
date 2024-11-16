@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The type of trigger method: link click or QR scan
@@ -105,4 +108,22 @@ export namespace AnalyticsTriggers$ {
   export const outboundSchema = AnalyticsTriggers$outboundSchema;
   /** @deprecated use `AnalyticsTriggers$Outbound` instead. */
   export type Outbound = AnalyticsTriggers$Outbound;
+}
+
+export function analyticsTriggersToJSON(
+  analyticsTriggers: AnalyticsTriggers,
+): string {
+  return JSON.stringify(
+    AnalyticsTriggers$outboundSchema.parse(analyticsTriggers),
+  );
+}
+
+export function analyticsTriggersFromJSON(
+  jsonString: string,
+): SafeParseResult<AnalyticsTriggers, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AnalyticsTriggers$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AnalyticsTriggers' from JSON`,
+  );
 }

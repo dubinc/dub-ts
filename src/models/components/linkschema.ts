@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   TagSchema,
   TagSchema$inboundSchema,
@@ -1729,6 +1732,20 @@ export namespace Geo$ {
   export type Outbound = Geo$Outbound;
 }
 
+export function geoToJSON(geo: Geo): string {
+  return JSON.stringify(Geo$outboundSchema.parse(geo));
+}
+
+export function geoFromJSON(
+  jsonString: string,
+): SafeParseResult<Geo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Geo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Geo' from JSON`,
+  );
+}
+
 /** @internal */
 export const LinkSchema$inboundSchema: z.ZodType<
   LinkSchema,
@@ -1905,4 +1922,18 @@ export namespace LinkSchema$ {
   export const outboundSchema = LinkSchema$outboundSchema;
   /** @deprecated use `LinkSchema$Outbound` instead. */
   export type Outbound = LinkSchema$Outbound;
+}
+
+export function linkSchemaToJSON(linkSchema: LinkSchema): string {
+  return JSON.stringify(LinkSchema$outboundSchema.parse(linkSchema));
+}
+
+export function linkSchemaFromJSON(
+  jsonString: string,
+): SafeParseResult<LinkSchema, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LinkSchema$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LinkSchema' from JSON`,
+  );
 }

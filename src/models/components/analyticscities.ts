@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The 2-letter country code of the city: https://d.to/geo
@@ -362,4 +365,20 @@ export namespace AnalyticsCities$ {
   export const outboundSchema = AnalyticsCities$outboundSchema;
   /** @deprecated use `AnalyticsCities$Outbound` instead. */
   export type Outbound = AnalyticsCities$Outbound;
+}
+
+export function analyticsCitiesToJSON(
+  analyticsCities: AnalyticsCities,
+): string {
+  return JSON.stringify(AnalyticsCities$outboundSchema.parse(analyticsCities));
+}
+
+export function analyticsCitiesFromJSON(
+  jsonString: string,
+): SafeParseResult<AnalyticsCities, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AnalyticsCities$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AnalyticsCities' from JSON`,
+  );
 }

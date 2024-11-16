@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type TrackLeadRequestBody = {
   /**
@@ -117,6 +120,24 @@ export namespace TrackLeadRequestBody$ {
   export type Outbound = TrackLeadRequestBody$Outbound;
 }
 
+export function trackLeadRequestBodyToJSON(
+  trackLeadRequestBody: TrackLeadRequestBody,
+): string {
+  return JSON.stringify(
+    TrackLeadRequestBody$outboundSchema.parse(trackLeadRequestBody),
+  );
+}
+
+export function trackLeadRequestBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<TrackLeadRequestBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TrackLeadRequestBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TrackLeadRequestBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const Click$inboundSchema: z.ZodType<Click, z.ZodTypeDef, unknown> = z
   .object({
@@ -148,6 +169,20 @@ export namespace Click$ {
   export const outboundSchema = Click$outboundSchema;
   /** @deprecated use `Click$Outbound` instead. */
   export type Outbound = Click$Outbound;
+}
+
+export function clickToJSON(click: Click): string {
+  return JSON.stringify(Click$outboundSchema.parse(click));
+}
+
+export function clickFromJSON(
+  jsonString: string,
+): SafeParseResult<Click, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Click$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Click' from JSON`,
+  );
 }
 
 /** @internal */
@@ -195,6 +230,20 @@ export namespace Customer$ {
   export type Outbound = Customer$Outbound;
 }
 
+export function customerToJSON(customer: Customer): string {
+  return JSON.stringify(Customer$outboundSchema.parse(customer));
+}
+
+export function customerFromJSON(
+  jsonString: string,
+): SafeParseResult<Customer, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Customer$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Customer' from JSON`,
+  );
+}
+
 /** @internal */
 export const TrackLeadResponseBody$inboundSchema: z.ZodType<
   TrackLeadResponseBody,
@@ -232,4 +281,22 @@ export namespace TrackLeadResponseBody$ {
   export const outboundSchema = TrackLeadResponseBody$outboundSchema;
   /** @deprecated use `TrackLeadResponseBody$Outbound` instead. */
   export type Outbound = TrackLeadResponseBody$Outbound;
+}
+
+export function trackLeadResponseBodyToJSON(
+  trackLeadResponseBody: TrackLeadResponseBody,
+): string {
+  return JSON.stringify(
+    TrackLeadResponseBody$outboundSchema.parse(trackLeadResponseBody),
+  );
+}
+
+export function trackLeadResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<TrackLeadResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TrackLeadResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TrackLeadResponseBody' from JSON`,
+  );
 }

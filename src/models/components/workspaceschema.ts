@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The plan of the workspace.
@@ -264,6 +267,20 @@ export namespace Users$ {
   export type Outbound = Users$Outbound;
 }
 
+export function usersToJSON(users: Users): string {
+  return JSON.stringify(Users$outboundSchema.parse(users));
+}
+
+export function usersFromJSON(
+  jsonString: string,
+): SafeParseResult<Users, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Users$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Users' from JSON`,
+  );
+}
+
 /** @internal */
 export const Domains$inboundSchema: z.ZodType<Domains, z.ZodTypeDef, unknown> =
   z.object({
@@ -301,6 +318,20 @@ export namespace Domains$ {
   export const outboundSchema = Domains$outboundSchema;
   /** @deprecated use `Domains$Outbound` instead. */
   export type Outbound = Domains$Outbound;
+}
+
+export function domainsToJSON(domains: Domains): string {
+  return JSON.stringify(Domains$outboundSchema.parse(domains));
+}
+
+export function domainsFromJSON(
+  jsonString: string,
+): SafeParseResult<Domains, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Domains$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Domains' from JSON`,
+  );
 }
 
 /** @internal */
@@ -433,4 +464,20 @@ export namespace WorkspaceSchema$ {
   export const outboundSchema = WorkspaceSchema$outboundSchema;
   /** @deprecated use `WorkspaceSchema$Outbound` instead. */
   export type Outbound = WorkspaceSchema$Outbound;
+}
+
+export function workspaceSchemaToJSON(
+  workspaceSchema: WorkspaceSchema,
+): string {
+  return JSON.stringify(WorkspaceSchema$outboundSchema.parse(workspaceSchema));
+}
+
+export function workspaceSchemaFromJSON(
+  jsonString: string,
+): SafeParseResult<WorkspaceSchema, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WorkspaceSchema$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WorkspaceSchema' from JSON`,
+  );
 }

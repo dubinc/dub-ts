@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
  * A short code indicating the error code returned.
@@ -126,6 +129,20 @@ export namespace NotFoundError$ {
   export const outboundSchema = NotFoundError$outboundSchema;
   /** @deprecated use `NotFoundError$Outbound` instead. */
   export type Outbound = NotFoundError$Outbound;
+}
+
+export function notFoundErrorToJSON(notFoundError: NotFoundError): string {
+  return JSON.stringify(NotFoundError$outboundSchema.parse(notFoundError));
+}
+
+export function notFoundErrorFromJSON(
+  jsonString: string,
+): SafeParseResult<NotFoundError, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => NotFoundError$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'NotFoundError' from JSON`,
+  );
 }
 
 /** @internal */

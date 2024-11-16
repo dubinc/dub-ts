@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The color of the tag. If not provided, a random color will be used from the list: red, yellow, green, blue, purple, pink, brown.
@@ -111,6 +114,24 @@ export namespace UpdateTagRequestBody$ {
   export type Outbound = UpdateTagRequestBody$Outbound;
 }
 
+export function updateTagRequestBodyToJSON(
+  updateTagRequestBody: UpdateTagRequestBody,
+): string {
+  return JSON.stringify(
+    UpdateTagRequestBody$outboundSchema.parse(updateTagRequestBody),
+  );
+}
+
+export function updateTagRequestBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateTagRequestBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateTagRequestBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateTagRequestBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const UpdateTagRequest$inboundSchema: z.ZodType<
   UpdateTagRequest,
@@ -156,4 +177,22 @@ export namespace UpdateTagRequest$ {
   export const outboundSchema = UpdateTagRequest$outboundSchema;
   /** @deprecated use `UpdateTagRequest$Outbound` instead. */
   export type Outbound = UpdateTagRequest$Outbound;
+}
+
+export function updateTagRequestToJSON(
+  updateTagRequest: UpdateTagRequest,
+): string {
+  return JSON.stringify(
+    UpdateTagRequest$outboundSchema.parse(updateTagRequest),
+  );
+}
+
+export function updateTagRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateTagRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateTagRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateTagRequest' from JSON`,
+  );
 }

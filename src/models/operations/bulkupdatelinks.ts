@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The unique IDs of the tags assigned to the short link.
@@ -177,6 +180,24 @@ export namespace BulkUpdateLinksTagIds$ {
   export type Outbound = BulkUpdateLinksTagIds$Outbound;
 }
 
+export function bulkUpdateLinksTagIdsToJSON(
+  bulkUpdateLinksTagIds: BulkUpdateLinksTagIds,
+): string {
+  return JSON.stringify(
+    BulkUpdateLinksTagIds$outboundSchema.parse(bulkUpdateLinksTagIds),
+  );
+}
+
+export function bulkUpdateLinksTagIdsFromJSON(
+  jsonString: string,
+): SafeParseResult<BulkUpdateLinksTagIds, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BulkUpdateLinksTagIds$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BulkUpdateLinksTagIds' from JSON`,
+  );
+}
+
 /** @internal */
 export const BulkUpdateLinksTagNames$inboundSchema: z.ZodType<
   BulkUpdateLinksTagNames,
@@ -205,6 +226,24 @@ export namespace BulkUpdateLinksTagNames$ {
   export const outboundSchema = BulkUpdateLinksTagNames$outboundSchema;
   /** @deprecated use `BulkUpdateLinksTagNames$Outbound` instead. */
   export type Outbound = BulkUpdateLinksTagNames$Outbound;
+}
+
+export function bulkUpdateLinksTagNamesToJSON(
+  bulkUpdateLinksTagNames: BulkUpdateLinksTagNames,
+): string {
+  return JSON.stringify(
+    BulkUpdateLinksTagNames$outboundSchema.parse(bulkUpdateLinksTagNames),
+  );
+}
+
+export function bulkUpdateLinksTagNamesFromJSON(
+  jsonString: string,
+): SafeParseResult<BulkUpdateLinksTagNames, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BulkUpdateLinksTagNames$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BulkUpdateLinksTagNames' from JSON`,
+  );
 }
 
 /** @internal */
@@ -334,6 +373,20 @@ export namespace Data$ {
   export type Outbound = Data$Outbound;
 }
 
+export function dataToJSON(data: Data): string {
+  return JSON.stringify(Data$outboundSchema.parse(data));
+}
+
+export function dataFromJSON(
+  jsonString: string,
+): SafeParseResult<Data, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Data$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Data' from JSON`,
+  );
+}
+
 /** @internal */
 export const BulkUpdateLinksRequestBody$inboundSchema: z.ZodType<
   BulkUpdateLinksRequestBody,
@@ -374,4 +427,22 @@ export namespace BulkUpdateLinksRequestBody$ {
   export const outboundSchema = BulkUpdateLinksRequestBody$outboundSchema;
   /** @deprecated use `BulkUpdateLinksRequestBody$Outbound` instead. */
   export type Outbound = BulkUpdateLinksRequestBody$Outbound;
+}
+
+export function bulkUpdateLinksRequestBodyToJSON(
+  bulkUpdateLinksRequestBody: BulkUpdateLinksRequestBody,
+): string {
+  return JSON.stringify(
+    BulkUpdateLinksRequestBody$outboundSchema.parse(bulkUpdateLinksRequestBody),
+  );
+}
+
+export function bulkUpdateLinksRequestBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<BulkUpdateLinksRequestBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BulkUpdateLinksRequestBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BulkUpdateLinksRequestBody' from JSON`,
+  );
 }

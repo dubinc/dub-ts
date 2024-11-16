@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   TagSchema,
   TagSchema$inboundSchema,
@@ -547,6 +550,24 @@ export namespace LeadCreatedEventCustomer$ {
   export type Outbound = LeadCreatedEventCustomer$Outbound;
 }
 
+export function leadCreatedEventCustomerToJSON(
+  leadCreatedEventCustomer: LeadCreatedEventCustomer,
+): string {
+  return JSON.stringify(
+    LeadCreatedEventCustomer$outboundSchema.parse(leadCreatedEventCustomer),
+  );
+}
+
+export function leadCreatedEventCustomerFromJSON(
+  jsonString: string,
+): SafeParseResult<LeadCreatedEventCustomer, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LeadCreatedEventCustomer$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LeadCreatedEventCustomer' from JSON`,
+  );
+}
+
 /** @internal */
 export const LeadCreatedEventClick$inboundSchema: z.ZodType<
   LeadCreatedEventClick,
@@ -614,6 +635,24 @@ export namespace LeadCreatedEventClick$ {
   export const outboundSchema = LeadCreatedEventClick$outboundSchema;
   /** @deprecated use `LeadCreatedEventClick$Outbound` instead. */
   export type Outbound = LeadCreatedEventClick$Outbound;
+}
+
+export function leadCreatedEventClickToJSON(
+  leadCreatedEventClick: LeadCreatedEventClick,
+): string {
+  return JSON.stringify(
+    LeadCreatedEventClick$outboundSchema.parse(leadCreatedEventClick),
+  );
+}
+
+export function leadCreatedEventClickFromJSON(
+  jsonString: string,
+): SafeParseResult<LeadCreatedEventClick, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LeadCreatedEventClick$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LeadCreatedEventClick' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1905,6 +1944,24 @@ export namespace LeadCreatedEventGeo$ {
   export type Outbound = LeadCreatedEventGeo$Outbound;
 }
 
+export function leadCreatedEventGeoToJSON(
+  leadCreatedEventGeo: LeadCreatedEventGeo,
+): string {
+  return JSON.stringify(
+    LeadCreatedEventGeo$outboundSchema.parse(leadCreatedEventGeo),
+  );
+}
+
+export function leadCreatedEventGeoFromJSON(
+  jsonString: string,
+): SafeParseResult<LeadCreatedEventGeo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LeadCreatedEventGeo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LeadCreatedEventGeo' from JSON`,
+  );
+}
+
 /** @internal */
 export const LeadCreatedEventLink$inboundSchema: z.ZodType<
   LeadCreatedEventLink,
@@ -2083,6 +2140,24 @@ export namespace LeadCreatedEventLink$ {
   export type Outbound = LeadCreatedEventLink$Outbound;
 }
 
+export function leadCreatedEventLinkToJSON(
+  leadCreatedEventLink: LeadCreatedEventLink,
+): string {
+  return JSON.stringify(
+    LeadCreatedEventLink$outboundSchema.parse(leadCreatedEventLink),
+  );
+}
+
+export function leadCreatedEventLinkFromJSON(
+  jsonString: string,
+): SafeParseResult<LeadCreatedEventLink, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LeadCreatedEventLink$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LeadCreatedEventLink' from JSON`,
+  );
+}
+
 /** @internal */
 export const LeadCreatedEventData$inboundSchema: z.ZodType<
   LeadCreatedEventData,
@@ -2128,6 +2203,24 @@ export namespace LeadCreatedEventData$ {
   export type Outbound = LeadCreatedEventData$Outbound;
 }
 
+export function leadCreatedEventDataToJSON(
+  leadCreatedEventData: LeadCreatedEventData,
+): string {
+  return JSON.stringify(
+    LeadCreatedEventData$outboundSchema.parse(leadCreatedEventData),
+  );
+}
+
+export function leadCreatedEventDataFromJSON(
+  jsonString: string,
+): SafeParseResult<LeadCreatedEventData, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LeadCreatedEventData$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LeadCreatedEventData' from JSON`,
+  );
+}
+
 /** @internal */
 export const LeadCreatedEvent$inboundSchema: z.ZodType<
   LeadCreatedEvent,
@@ -2171,4 +2264,22 @@ export namespace LeadCreatedEvent$ {
   export const outboundSchema = LeadCreatedEvent$outboundSchema;
   /** @deprecated use `LeadCreatedEvent$Outbound` instead. */
   export type Outbound = LeadCreatedEvent$Outbound;
+}
+
+export function leadCreatedEventToJSON(
+  leadCreatedEvent: LeadCreatedEvent,
+): string {
+  return JSON.stringify(
+    LeadCreatedEvent$outboundSchema.parse(leadCreatedEvent),
+  );
+}
+
+export function leadCreatedEventFromJSON(
+  jsonString: string,
+): SafeParseResult<LeadCreatedEvent, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LeadCreatedEvent$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LeadCreatedEvent' from JSON`,
+  );
 }

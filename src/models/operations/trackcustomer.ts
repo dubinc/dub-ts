@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type TrackCustomerRequestBody = {
   /**
@@ -78,6 +81,24 @@ export namespace TrackCustomerRequestBody$ {
   export type Outbound = TrackCustomerRequestBody$Outbound;
 }
 
+export function trackCustomerRequestBodyToJSON(
+  trackCustomerRequestBody: TrackCustomerRequestBody,
+): string {
+  return JSON.stringify(
+    TrackCustomerRequestBody$outboundSchema.parse(trackCustomerRequestBody),
+  );
+}
+
+export function trackCustomerRequestBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<TrackCustomerRequestBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TrackCustomerRequestBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TrackCustomerRequestBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const TrackCustomerResponseBody$inboundSchema: z.ZodType<
   TrackCustomerResponseBody,
@@ -121,4 +142,22 @@ export namespace TrackCustomerResponseBody$ {
   export const outboundSchema = TrackCustomerResponseBody$outboundSchema;
   /** @deprecated use `TrackCustomerResponseBody$Outbound` instead. */
   export type Outbound = TrackCustomerResponseBody$Outbound;
+}
+
+export function trackCustomerResponseBodyToJSON(
+  trackCustomerResponseBody: TrackCustomerResponseBody,
+): string {
+  return JSON.stringify(
+    TrackCustomerResponseBody$outboundSchema.parse(trackCustomerResponseBody),
+  );
+}
+
+export function trackCustomerResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<TrackCustomerResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TrackCustomerResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TrackCustomerResponseBody' from JSON`,
+  );
 }

@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The color of the tag.
@@ -97,4 +100,18 @@ export namespace TagSchema$ {
   export const outboundSchema = TagSchema$outboundSchema;
   /** @deprecated use `TagSchema$Outbound` instead. */
   export type Outbound = TagSchema$Outbound;
+}
+
+export function tagSchemaToJSON(tagSchema: TagSchema): string {
+  return JSON.stringify(TagSchema$outboundSchema.parse(tagSchema));
+}
+
+export function tagSchemaFromJSON(
+  jsonString: string,
+): SafeParseResult<TagSchema, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TagSchema$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TagSchema' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetCustomerRequest = {
   /**
@@ -77,6 +80,24 @@ export namespace GetCustomerRequest$ {
   export type Outbound = GetCustomerRequest$Outbound;
 }
 
+export function getCustomerRequestToJSON(
+  getCustomerRequest: GetCustomerRequest,
+): string {
+  return JSON.stringify(
+    GetCustomerRequest$outboundSchema.parse(getCustomerRequest),
+  );
+}
+
+export function getCustomerRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetCustomerRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetCustomerRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetCustomerRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetCustomerResponseBody$inboundSchema: z.ZodType<
   GetCustomerResponseBody,
@@ -126,4 +147,22 @@ export namespace GetCustomerResponseBody$ {
   export const outboundSchema = GetCustomerResponseBody$outboundSchema;
   /** @deprecated use `GetCustomerResponseBody$Outbound` instead. */
   export type Outbound = GetCustomerResponseBody$Outbound;
+}
+
+export function getCustomerResponseBodyToJSON(
+  getCustomerResponseBody: GetCustomerResponseBody,
+): string {
+  return JSON.stringify(
+    GetCustomerResponseBody$outboundSchema.parse(getCustomerResponseBody),
+  );
+}
+
+export function getCustomerResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetCustomerResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetCustomerResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetCustomerResponseBody' from JSON`,
+  );
 }
