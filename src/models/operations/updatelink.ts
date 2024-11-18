@@ -153,6 +153,10 @@ export type UpdateLinkRequestBody = {
    */
   ref?: string | null | undefined;
   /**
+   * The ID of the program the short link is associated with.
+   */
+  programId?: string | null | undefined;
+  /**
    * An array of webhook IDs to trigger when the link is clicked. These webhooks will receive click event data.
    */
   webhookIds?: Array<string> | null | undefined;
@@ -300,6 +304,7 @@ export const UpdateLinkRequestBody$inboundSchema: z.ZodType<
   utm_term: z.nullable(z.string()).optional(),
   utm_content: z.nullable(z.string()).optional(),
   ref: z.nullable(z.string()).optional(),
+  programId: z.nullable(z.string()).optional(),
   webhookIds: z.nullable(z.array(z.string())).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -345,6 +350,7 @@ export type UpdateLinkRequestBody$Outbound = {
   utm_term?: string | null | undefined;
   utm_content?: string | null | undefined;
   ref?: string | null | undefined;
+  programId?: string | null | undefined;
   webhookIds?: Array<string> | null | undefined;
 };
 
@@ -386,6 +392,7 @@ export const UpdateLinkRequestBody$outboundSchema: z.ZodType<
   utmTerm: z.nullable(z.string()).optional(),
   utmContent: z.nullable(z.string()).optional(),
   ref: z.nullable(z.string()).optional(),
+  programId: z.nullable(z.string()).optional(),
   webhookIds: z.nullable(z.array(z.string())).optional(),
 }).transform((v) => {
   return remap$(v, {
