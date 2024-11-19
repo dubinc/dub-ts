@@ -65,6 +65,7 @@ let value: LeadEvent = {
     createdAt: "<value>",
     updatedAt: "<value>",
     projectId: "<id>",
+    programId: "<id>",
   },
   customer: {
     id: "<id>",

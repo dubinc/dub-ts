@@ -63,6 +63,7 @@ let value: ClickEvent = {
     createdAt: "<value>",
     updatedAt: "<value>",
     projectId: "<id>",
+    programId: "<id>",
   },
   clickId: "<id>",
   linkId: "<id>",

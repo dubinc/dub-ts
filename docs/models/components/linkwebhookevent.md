@@ -53,6 +53,7 @@ let value: LinkWebhookEvent = {
     createdAt: "<value>",
     updatedAt: "<value>",
     projectId: "<id>",
+    programId: "<id>",
   },
 };
 ```

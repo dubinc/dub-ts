@@ -69,6 +69,7 @@ let value: SaleCreatedEventData = {
     createdAt: "<value>",
     updatedAt: "<value>",
     projectId: "<id>",
+    programId: "<id>",
   },
   sale: {
     amount: 1213.00,

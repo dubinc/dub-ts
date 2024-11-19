@@ -62,6 +62,7 @@ let value: LinkClickedEventData = {
     createdAt: "<value>",
     updatedAt: "<value>",
     projectId: "<id>",
+    programId: "<id>",
   },
 };
 ```
