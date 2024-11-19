@@ -69,6 +69,7 @@ let value: LeadCreatedEventData = {
     createdAt: "<value>",
     updatedAt: "<value>",
     projectId: "<id>",
+    programId: "<id>",
   },
 };
 ```

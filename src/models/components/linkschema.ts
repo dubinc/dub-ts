@@ -447,6 +447,10 @@ export type LinkSchema = {
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   projectId: string;
+  /**
+   * The ID of the program the short link is associated with.
+   */
+  programId: string | null;
 };
 
 /** @internal */
@@ -1795,6 +1799,7 @@ export const LinkSchema$inboundSchema: z.ZodType<
   createdAt: z.string(),
   updatedAt: z.string(),
   projectId: z.string(),
+  programId: z.nullable(z.string()),
 }).transform((v) => {
   return remap$(v, {
     "utm_source": "utmSource",
@@ -1850,6 +1855,7 @@ export type LinkSchema$Outbound = {
   createdAt: string;
   updatedAt: string;
   projectId: string;
+  programId: string | null;
 };
 
 /** @internal */
@@ -1901,6 +1907,7 @@ export const LinkSchema$outboundSchema: z.ZodType<
   createdAt: z.string(),
   updatedAt: z.string(),
   projectId: z.string(),
+  programId: z.nullable(z.string()),
 }).transform((v) => {
   return remap$(v, {
     utmSource: "utm_source",

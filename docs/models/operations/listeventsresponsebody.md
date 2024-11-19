@@ -67,6 +67,7 @@ const value: components.ClickEvent[] = [
       createdAt: "<value>",
       updatedAt: "<value>",
       projectId: "<id>",
+      programId: "<id>",
     },
     clickId: "<id>",
     linkId: "<id>",
@@ -148,6 +149,7 @@ const value: components.LeadEvent[] = [
       createdAt: "<value>",
       updatedAt: "<value>",
       projectId: "<id>",
+      programId: "<id>",
     },
     customer: {
       id: "<id>",
@@ -224,6 +226,7 @@ const value: components.SaleEvent[] = [
       createdAt: "<value>",
       updatedAt: "<value>",
       projectId: "<id>",
+      programId: "<id>",
     },
     click: {
       id: "<id>",

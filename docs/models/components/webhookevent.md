@@ -54,6 +54,7 @@ const value: components.LinkWebhookEvent = {
     createdAt: "<value>",
     updatedAt: "<value>",
     projectId: "<id>",
+    programId: "<id>",
   },
 };
 ```
@@ -123,6 +124,7 @@ const value: components.LinkClickedEvent = {
       createdAt: "<value>",
       updatedAt: "<value>",
       projectId: "<id>",
+      programId: "<id>",
     },
   },
 };
@@ -199,6 +201,7 @@ const value: components.LeadCreatedEvent = {
       createdAt: "<value>",
       updatedAt: "<value>",
       projectId: "<id>",
+      programId: "<id>",
     },
   },
 };
@@ -275,6 +278,7 @@ const value: components.SaleCreatedEvent = {
       createdAt: "<value>",
       updatedAt: "<value>",
       projectId: "<id>",
+      programId: "<id>",
     },
     sale: {
       amount: 9042.87,

@@ -53,6 +53,7 @@ let value: SaleEvent = {
     createdAt: "<value>",
     updatedAt: "<value>",
     projectId: "<id>",
+    programId: "<id>",
   },
   click: {
     id: "<id>",
