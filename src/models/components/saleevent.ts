@@ -301,9 +301,6 @@ export type SaleEventLink = {
   identifier: string | null;
   archived?: boolean | undefined;
   expiresAt: string;
-  /**
-   * The URL to redirect to when the short link has expired.
-   */
   expiredUrl: string | null;
   /**
    * The password required to access the destination URL of the short link.
