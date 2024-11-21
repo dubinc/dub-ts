@@ -52,7 +52,11 @@ export type GetQRCodeRequest = {
    */
   hideLogo?: boolean | undefined;
   /**
-   * Whether to include a margin around the QR code. Defaults to `false` if not provided.
+   * The size of the margin around the QR code. Defaults to 2 if not provided.
+   */
+  margin?: number | undefined;
+  /**
+   * DEPRECATED: Margin is included by default. Use the `margin` prop to customize the margin size.
    */
   includeMargin?: boolean | undefined;
 };
@@ -90,7 +94,8 @@ export const GetQRCodeRequest$inboundSchema: z.ZodType<
   fgColor: z.string().default("#000000"),
   bgColor: z.string().default("#FFFFFF"),
   hideLogo: z.boolean().default(false),
-  includeMargin: z.boolean().default(false),
+  margin: z.number().default(2),
+  includeMargin: z.boolean().default(true),
 });
 
 /** @internal */
@@ -102,6 +107,7 @@ export type GetQRCodeRequest$Outbound = {
   fgColor: string;
   bgColor: string;
   hideLogo: boolean;
+  margin: number;
   includeMargin: boolean;
 };
 
@@ -118,7 +124,8 @@ export const GetQRCodeRequest$outboundSchema: z.ZodType<
   fgColor: z.string().default("#000000"),
   bgColor: z.string().default("#FFFFFF"),
   hideLogo: z.boolean().default(false),
-  includeMargin: z.boolean().default(false),
+  margin: z.number().default(2),
+  includeMargin: z.boolean().default(true),
 });
 
 /**
