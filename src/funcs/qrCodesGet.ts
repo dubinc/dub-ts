@@ -74,6 +74,7 @@ export async function qrCodesGet(
     "includeMargin": payload.includeMargin,
     "level": payload.level,
     "logo": payload.logo,
+    "margin": payload.margin,
     "size": payload.size,
     "url": payload.url,
   });
