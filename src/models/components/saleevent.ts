@@ -423,9 +423,10 @@ export type SaleEventLink = {
 export type SaleEventClick = {
   id: string;
   url: string;
-  continent: string;
   country: string;
   city: string;
+  region: string;
+  continent: string;
   device: string;
   browser: string;
   os: string;
@@ -2122,9 +2123,10 @@ export const SaleEventClick$inboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   url: z.string(),
-  continent: z.string(),
   country: z.string(),
   city: z.string(),
+  region: z.string(),
+  continent: z.string(),
   device: z.string(),
   browser: z.string(),
   os: z.string(),
@@ -2138,9 +2140,10 @@ export const SaleEventClick$inboundSchema: z.ZodType<
 export type SaleEventClick$Outbound = {
   id: string;
   url: string;
-  continent: string;
   country: string;
   city: string;
+  region: string;
+  continent: string;
   device: string;
   browser: string;
   os: string;
@@ -2158,9 +2161,10 @@ export const SaleEventClick$outboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   url: z.string(),
-  continent: z.string(),
   country: z.string(),
   city: z.string(),
+  region: z.string(),
+  continent: z.string(),
   device: z.string(),
   browser: z.string(),
   os: z.string(),

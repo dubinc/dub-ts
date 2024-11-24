@@ -87,6 +87,7 @@ export async function analyticsRetrieve(
     "qr": payload?.qr,
     "referer": payload?.referer,
     "refererUrl": payload?.refererUrl,
+    "region": payload?.region,
     "root": payload?.root,
     "start": payload?.start,
     "tagId": payload?.tagId,

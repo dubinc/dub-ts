@@ -7,11 +7,11 @@ The parameter to group the analytics data points by. Defaults to `count` if unde
 ```typescript
 import { QueryParamGroupBy } from "dub/models/operations";
 
-let value: QueryParamGroupBy = "countries";
+let value: QueryParamGroupBy = "browsers";
 ```
 
 ## Values
 
 ```typescript
-"count" | "timeseries" | "continents" | "countries" | "cities" | "devices" | "browsers" | "os" | "trigger" | "triggers" | "referers" | "referer_urls" | "top_links" | "top_urls"
+"count" | "timeseries" | "continents" | "regions" | "countries" | "cities" | "devices" | "browsers" | "os" | "trigger" | "triggers" | "referers" | "referer_urls" | "top_links" | "top_urls"
 ```

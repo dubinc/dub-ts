@@ -26,7 +26,7 @@ const value: components.AnalyticsTimeseries[] = [
 ```typescript
 const value: components.AnalyticsContinents[] = [
   {
-    continent: "AS",
+    continent: "SA",
   },
 ];
 ```
@@ -36,7 +36,7 @@ const value: components.AnalyticsContinents[] = [
 ```typescript
 const value: components.AnalyticsCountries[] = [
   {
-    country: "HU",
+    country: "ER",
   },
 ];
 ```
@@ -46,8 +46,8 @@ const value: components.AnalyticsCountries[] = [
 ```typescript
 const value: components.AnalyticsCities[] = [
   {
-    city: "Lake Andersoncester",
-    country: "CR",
+    city: "Glen Burnie",
+    country: "IO",
   },
 ];
 ```
@@ -57,7 +57,7 @@ const value: components.AnalyticsCities[] = [
 ```typescript
 const value: components.AnalyticsDevices[] = [
   {
-    device: "Desktop",
+    device: "Mobile",
   },
 ];
 ```
@@ -67,7 +67,7 @@ const value: components.AnalyticsDevices[] = [
 ```typescript
 const value: components.AnalyticsBrowsers[] = [
   {
-    browser: "Firefox",
+    browser: "Safari",
   },
 ];
 ```
@@ -97,7 +97,7 @@ const value: components.AnalyticsTriggers[] = [
 ```typescript
 const value: components.AnalyticsReferers[] = [
   {
-    referer: "troubled-bar.name",
+    referer: "failing-baseboard.info",
   },
 ];
 ```
@@ -107,7 +107,7 @@ const value: components.AnalyticsReferers[] = [
 ```typescript
 const value: components.AnalyticsRefererUrls[] = [
   {
-    refererUrl: "https://hot-celsius.com",
+    refererUrl: "https://male-coil.info",
   },
 ];
 ```
@@ -119,10 +119,10 @@ const value: components.AnalyticsTopLinks[] = [
   {
     link: "<value>",
     id: "<id>",
-    domain: "ignorant-remark.org",
+    domain: "upset-in-joke.name",
     key: "<key>",
     shortLink: "<value>",
-    url: "https://free-fold.com/",
+    url: "https://idealistic-bandwidth.biz/",
     createdAt: "<value>",
   },
 ];
@@ -133,7 +133,7 @@ const value: components.AnalyticsTopLinks[] = [
 ```typescript
 const value: components.AnalyticsTopUrls[] = [
   {
-    url: "https://powerless-opera.com/",
+    url: "https://outlandish-interviewer.info/",
   },
 ];
 ```

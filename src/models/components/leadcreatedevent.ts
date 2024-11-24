@@ -50,9 +50,10 @@ export type LeadCreatedEventCustomer = {
 export type LeadCreatedEventClick = {
   id: string;
   url: string;
-  continent: string;
   country: string;
   city: string;
+  region: string;
+  continent: string;
   device: string;
   browser: string;
   os: string;
@@ -577,9 +578,10 @@ export const LeadCreatedEventClick$inboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   url: z.string(),
-  continent: z.string(),
   country: z.string(),
   city: z.string(),
+  region: z.string(),
+  continent: z.string(),
   device: z.string(),
   browser: z.string(),
   os: z.string(),
@@ -593,9 +595,10 @@ export const LeadCreatedEventClick$inboundSchema: z.ZodType<
 export type LeadCreatedEventClick$Outbound = {
   id: string;
   url: string;
-  continent: string;
   country: string;
   city: string;
+  region: string;
+  continent: string;
   device: string;
   browser: string;
   os: string;
@@ -613,9 +616,10 @@ export const LeadCreatedEventClick$outboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   url: z.string(),
-  continent: z.string(),
   country: z.string(),
   city: z.string(),
+  region: z.string(),
+  continent: z.string(),
   device: z.string(),
   browser: z.string(),
   os: z.string(),

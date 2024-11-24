@@ -5,7 +5,7 @@
 ```typescript
 import { Order } from "dub/models/operations";
 
-let value: Order = "desc";
+let value: Order = "asc";
 ```
 
 ## Values

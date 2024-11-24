@@ -7,16 +7,17 @@ import { SaleCreatedEventClick } from "dub/models/components";
 
 let value: SaleCreatedEventClick = {
   id: "<id>",
-  url: "https://impressive-fold.org",
-  continent: "Australia",
-  country: "Dominica",
-  city: "Delphineburgh",
+  url: "https://steel-babushka.org/",
+  country: "Norfolk Island",
+  city: "Palm Springs",
+  region: "<value>",
+  continent: "North America",
   device: "Desktop",
-  browser: "Safari",
-  os: "WebOS",
-  referer: "glossy-handful.net",
-  refererUrl: "https://granular-exhaust.name/",
-  ip: "0ccc:f265:aca1:9eab:26ad:9ead:9e8e:a9e0",
+  browser: "Chrome",
+  os: "Blackberry",
+  referer: "nutritious-labourer.biz",
+  refererUrl: "https://neighboring-handful.org/",
+  ip: "9e25:7ca6:d1ae:615a:6920:d16e:c7ea:180f",
 };
 ```
 
@@ -26,9 +27,10 @@ let value: SaleCreatedEventClick = {
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `id`               | *string*           | :heavy_check_mark: | N/A                |
 | `url`              | *string*           | :heavy_check_mark: | N/A                |
-| `continent`        | *string*           | :heavy_check_mark: | N/A                |
 | `country`          | *string*           | :heavy_check_mark: | N/A                |
 | `city`             | *string*           | :heavy_check_mark: | N/A                |
+| `region`           | *string*           | :heavy_check_mark: | N/A                |
+| `continent`        | *string*           | :heavy_check_mark: | N/A                |
 | `device`           | *string*           | :heavy_check_mark: | N/A                |
 | `browser`          | *string*           | :heavy_check_mark: | N/A                |
 | `os`               | *string*           | :heavy_check_mark: | N/A                |
