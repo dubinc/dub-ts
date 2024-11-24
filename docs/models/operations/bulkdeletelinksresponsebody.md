@@ -8,7 +8,7 @@ The deleted links count.
 import { BulkDeleteLinksResponseBody } from "dub/models/operations";
 
 let value: BulkDeleteLinksResponseBody = {
-  deletedCount: 6147.75,
+  deletedCount: 8371.54,
 };
 ```
 

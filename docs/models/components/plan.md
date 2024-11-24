@@ -7,7 +7,7 @@ The plan of the workspace.
 ```typescript
 import { Plan } from "dub/models/components";
 
-let value: Plan = "enterprise";
+let value: Plan = "pro";
 ```
 
 ## Values

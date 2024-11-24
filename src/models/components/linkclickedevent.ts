@@ -23,9 +23,10 @@ export type LinkClickedEventEvent = ClosedEnum<typeof LinkClickedEventEvent>;
 export type LinkClickedEventClick = {
   id: string;
   url: string;
-  continent: string;
   country: string;
   city: string;
+  region: string;
+  continent: string;
   device: string;
   browser: string;
   os: string;
@@ -479,9 +480,10 @@ export const LinkClickedEventClick$inboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   url: z.string(),
-  continent: z.string(),
   country: z.string(),
   city: z.string(),
+  region: z.string(),
+  continent: z.string(),
   device: z.string(),
   browser: z.string(),
   os: z.string(),
@@ -495,9 +497,10 @@ export const LinkClickedEventClick$inboundSchema: z.ZodType<
 export type LinkClickedEventClick$Outbound = {
   id: string;
   url: string;
-  continent: string;
   country: string;
   city: string;
+  region: string;
+  continent: string;
   device: string;
   browser: string;
   os: string;
@@ -515,9 +518,10 @@ export const LinkClickedEventClick$outboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   url: z.string(),
-  continent: z.string(),
   country: z.string(),
   city: z.string(),
+  region: z.string(),
+  continent: z.string(),
   device: z.string(),
   browser: z.string(),
   os: z.string(),

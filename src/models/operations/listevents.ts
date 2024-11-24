@@ -105,10 +105,6 @@ export type ListEventsRequest = {
    */
   timezone?: string | undefined;
   /**
-   * The continent to retrieve analytics for.
-   */
-  continent?: components.ContinentCode | undefined;
-  /**
    * The country to retrieve analytics for.
    */
   country?: components.CountryCode | undefined;
@@ -116,6 +112,14 @@ export type ListEventsRequest = {
    * The city to retrieve analytics for.
    */
   city?: string | undefined;
+  /**
+   * The ISO 3166-2 region code to retrieve analytics for.
+   */
+  region?: string | undefined;
+  /**
+   * The continent to retrieve analytics for.
+   */
+  continent?: components.ContinentCode | undefined;
   /**
    * The device to retrieve analytics for.
    */
@@ -339,9 +343,10 @@ export const ListEventsRequest$inboundSchema: z.ZodType<
   start: z.string().optional(),
   end: z.string().optional(),
   timezone: z.string().default("UTC"),
-  continent: components.ContinentCode$inboundSchema.optional(),
   country: components.CountryCode$inboundSchema.optional(),
   city: z.string().optional(),
+  region: z.string().optional(),
+  continent: components.ContinentCode$inboundSchema.optional(),
   device: z.string().optional(),
   browser: z.string().optional(),
   os: z.string().optional(),
@@ -370,9 +375,10 @@ export type ListEventsRequest$Outbound = {
   start?: string | undefined;
   end?: string | undefined;
   timezone: string;
-  continent?: string | undefined;
   country?: string | undefined;
   city?: string | undefined;
+  region?: string | undefined;
+  continent?: string | undefined;
   device?: string | undefined;
   browser?: string | undefined;
   os?: string | undefined;
@@ -405,9 +411,10 @@ export const ListEventsRequest$outboundSchema: z.ZodType<
   start: z.string().optional(),
   end: z.string().optional(),
   timezone: z.string().default("UTC"),
-  continent: components.ContinentCode$outboundSchema.optional(),
   country: components.CountryCode$outboundSchema.optional(),
   city: z.string().optional(),
+  region: z.string().optional(),
+  continent: components.ContinentCode$outboundSchema.optional(),
   device: z.string().optional(),
   browser: z.string().optional(),
   os: z.string().optional(),
