@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: be72cffee97b5924a429380aa231ccb8
+  docChecksum: eae1ba18bcf69b50e7b53142f6625750
   docVersion: 0.0.1
-  speakeasyVersion: 1.444.1
-  generationVersion: 2.461.4
-  releaseVersion: 0.45.8
-  configChecksum: 09d98cb13592a8cca244b69530838671
+  speakeasyVersion: 1.448.0
+  generationVersion: 2.466.0
+  releaseVersion: 0.46.0
+  configChecksum: 783515af62e703af9444ae1343e825b7
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.18.6
+    core: 3.18.7
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     enumUnions: 0.1.0
@@ -34,7 +34,6 @@ features:
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.2.0
-    tests: 0.7.0
     unions: 2.85.8
 generatedFiles:
   - .eslintrc.cjs
@@ -1195,3 +1194,4 @@ examples:
           application/json: {"error": {"code": "rate_limit_exceeded", "message": "The requested resource was not found."}}
         "500":
           application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
+generatedTests: {}

@@ -45,7 +45,7 @@ export class Links extends ClientSDK {
   async list(
     request?: operations.GetLinksRequest | undefined,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.GetLinksResponse>> {
+  ): Promise<PageIterator<operations.GetLinksResponse, { page: number }>> {
     return unwrapResultIterator(linksList(
       this,
       request,
