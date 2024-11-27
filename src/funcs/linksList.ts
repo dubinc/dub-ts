@@ -58,7 +58,8 @@ export async function linksList(
       | RequestAbortedError
       | RequestTimeoutError
       | ConnectionError
-    >
+    >,
+    { page: number }
   >
 > {
   const parsed = safeParse(
@@ -188,45 +189,48 @@ export async function linksList(
 
   const nextFunc = (
     responseData: unknown,
-  ): Paginator<
-    Result<
-      operations.GetLinksResponse,
-      | errors.BadRequest
-      | errors.Unauthorized
-      | errors.Forbidden
-      | errors.NotFound
-      | errors.Conflict
-      | errors.InviteExpired
-      | errors.UnprocessableEntity
-      | errors.RateLimitExceeded
-      | errors.InternalServerError
-      | SDKError
-      | SDKValidationError
-      | UnexpectedClientError
-      | InvalidRequestError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | ConnectionError
-    >
-  > => {
+  ): {
+    next: Paginator<
+      Result<
+        operations.GetLinksResponse,
+        | errors.BadRequest
+        | errors.Unauthorized
+        | errors.Forbidden
+        | errors.NotFound
+        | errors.Conflict
+        | errors.InviteExpired
+        | errors.UnprocessableEntity
+        | errors.RateLimitExceeded
+        | errors.InternalServerError
+        | SDKError
+        | SDKValidationError
+        | UnexpectedClientError
+        | InvalidRequestError
+        | RequestAbortedError
+        | RequestTimeoutError
+        | ConnectionError
+      >
+    >;
+    "~next"?: { page: number };
+  } => {
     const page = request?.page || 0;
     const nextPage = page + 1;
 
     if (!responseData) {
-      return () => null;
+      return { next: () => null };
     }
 
     const results = responseData;
 
     if (!Array.isArray(results) || !results.length) {
-      return () => null;
+      return { next: () => null };
     }
     const limit = request?.pageSize || 0;
     if (results.length < limit) {
-      return () => null;
+      return { next: () => null };
     }
 
-    return () =>
+    const nextVal = () =>
       linksList(
         client,
         {
@@ -235,8 +239,10 @@ export async function linksList(
         },
         options,
       );
+
+    return { next: nextVal, "~next": { page: nextPage } };
   };
 
-  const page = { ...result, next: nextFunc(raw) };
+  const page = { ...result, ...nextFunc(raw) };
   return { ...page, ...createPageIterator(page, (v) => !v.ok) };
 }

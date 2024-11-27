@@ -39,7 +39,7 @@ export class Domains extends ClientSDK {
   async list(
     request?: operations.ListDomainsRequest | undefined,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListDomainsResponse>> {
+  ): Promise<PageIterator<operations.ListDomainsResponse, { page: number }>> {
     return unwrapResultIterator(domainsList(
       this,
       request,

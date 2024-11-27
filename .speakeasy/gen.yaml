@@ -13,7 +13,7 @@ generation:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
 typescript:
-  version: 0.45.8
+  version: 0.46.0
   additionalDependencies:
     dependencies: {}
     devDependencies:
@@ -24,6 +24,7 @@ typescript:
   author: Dub
   clientServerStatusCodesAsErrors: true
   defaultErrorName: SDKError
+  enableReactQuery: false
   enumFormat: union
   flattenGlobalSecurity: true
   flatteningOrder: body-first

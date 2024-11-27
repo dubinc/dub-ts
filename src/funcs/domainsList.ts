@@ -58,7 +58,8 @@ export async function domainsList(
       | RequestAbortedError
       | RequestTimeoutError
       | ConnectionError
-    >
+    >,
+    { page: number }
   >
 > {
   const parsed = safeParse(
@@ -183,45 +184,48 @@ export async function domainsList(
 
   const nextFunc = (
     responseData: unknown,
-  ): Paginator<
-    Result<
-      operations.ListDomainsResponse,
-      | errors.BadRequest
-      | errors.Unauthorized
-      | errors.Forbidden
-      | errors.NotFound
-      | errors.Conflict
-      | errors.InviteExpired
-      | errors.UnprocessableEntity
-      | errors.RateLimitExceeded
-      | errors.InternalServerError
-      | SDKError
-      | SDKValidationError
-      | UnexpectedClientError
-      | InvalidRequestError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | ConnectionError
-    >
-  > => {
+  ): {
+    next: Paginator<
+      Result<
+        operations.ListDomainsResponse,
+        | errors.BadRequest
+        | errors.Unauthorized
+        | errors.Forbidden
+        | errors.NotFound
+        | errors.Conflict
+        | errors.InviteExpired
+        | errors.UnprocessableEntity
+        | errors.RateLimitExceeded
+        | errors.InternalServerError
+        | SDKError
+        | SDKValidationError
+        | UnexpectedClientError
+        | InvalidRequestError
+        | RequestAbortedError
+        | RequestTimeoutError
+        | ConnectionError
+      >
+    >;
+    "~next"?: { page: number };
+  } => {
     const page = request?.page || 0;
     const nextPage = page + 1;
 
     if (!responseData) {
-      return () => null;
+      return { next: () => null };
     }
 
     const results = responseData;
 
     if (!Array.isArray(results) || !results.length) {
-      return () => null;
+      return { next: () => null };
     }
     const limit = request?.pageSize || 0;
     if (results.length < limit) {
-      return () => null;
+      return { next: () => null };
     }
 
-    return () =>
+    const nextVal = () =>
       domainsList(
         client,
         {
@@ -230,8 +234,10 @@ export async function domainsList(
         },
         options,
       );
+
+    return { next: nextVal, "~next": { page: nextPage } };
   };
 
-  const page = { ...result, next: nextFunc(raw) };
+  const page = { ...result, ...nextFunc(raw) };
   return { ...page, ...createPageIterator(page, (v) => !v.ok) };
 }
