@@ -165,6 +165,12 @@ actions:
         - "lang": "typescript"
           "label": "updateTag"
           "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.tags.update(\"<id>\");\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/tokens/embed"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "createEmbedToken"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.embedTokens.create();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/track/lead"]["post"]
     update:
       "x-codeSamples":

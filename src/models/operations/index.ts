@@ -7,6 +7,7 @@ export * from "./bulkdeletelinks.js";
 export * from "./bulkupdatelinks.js";
 export * from "./createcustomer.js";
 export * from "./createdomain.js";
+export * from "./createembedtoken.js";
 export * from "./createlink.js";
 export * from "./createtag.js";
 export * from "./deletecustomer.js";

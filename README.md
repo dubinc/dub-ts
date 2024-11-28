@@ -13,19 +13,22 @@ Learn more about the Dub.co TypeScript SDK in the [official documentation](https
 
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
+<!-- $toc-max-depth=2 -->
+  * [SDK Installation](#sdk-installation)
+  * [Requirements](#requirements)
+  * [SDK Example Usage](#sdk-example-usage)
+  * [Available Resources and Operations](#available-resources-and-operations)
+  * [Error Handling](#error-handling)
+  * [Server Selection](#server-selection)
+  * [Custom HTTP Client](#custom-http-client)
+  * [Authentication](#authentication)
+  * [Retries](#retries)
+  * [Pagination](#pagination)
+  * [Standalone functions](#standalone-functions)
+  * [Debugging](#debugging)
+* [Development](#development)
+  * [Contributions](#contributions)
 
-* [SDK Installation](#sdk-installation)
-* [Requirements](#requirements)
-* [SDK Example Usage](#sdk-example-usage)
-* [Available Resources and Operations](#available-resources-and-operations)
-* [Standalone functions](#standalone-functions)
-* [Pagination](#pagination)
-* [Retries](#retries)
-* [Error Handling](#error-handling)
-* [Server Selection](#server-selection)
-* [Custom HTTP Client](#custom-http-client)
-* [Authentication](#authentication)
-* [Debugging](#debugging)
 <!-- End Table of Contents [toc] -->
 
 <!-- Start SDK Installation [installation] -->
@@ -139,6 +142,10 @@ run();
 * [update](docs/sdks/domains/README.md#update) - Update a domain
 * [delete](docs/sdks/domains/README.md#delete) - Delete a domain
 
+
+### [embedTokens](docs/sdks/embedtokens/README.md)
+
+* [create](docs/sdks/embedtokens/README.md#create) - Create a new embed token
 
 ### [events](docs/sdks/events/README.md)
 
@@ -539,6 +546,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`domainsDelete`](docs/sdks/domains/README.md#delete) - Delete a domain
 - [`domainsList`](docs/sdks/domains/README.md#list) - Retrieve a list of domains
 - [`domainsUpdate`](docs/sdks/domains/README.md#update) - Update a domain
+- [`embedTokensCreate`](docs/sdks/embedtokens/README.md#create) - Create a new embed token
 - [`eventsList`](docs/sdks/events/README.md#list) - Retrieve a list of events
 - [`linksCount`](docs/sdks/links/README.md#count) - Retrieve links count
 - [`linksCreate`](docs/sdks/links/README.md#create) - Create a new link
