@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: eae1ba18bcf69b50e7b53142f6625750
+  docChecksum: 756dac9e9f7f9954fef9635bbe0c7ca8
   docVersion: 0.0.1
-  speakeasyVersion: 1.448.0
-  generationVersion: 2.466.0
-  releaseVersion: 0.46.0
-  configChecksum: 783515af62e703af9444ae1343e825b7
+  speakeasyVersion: 1.448.2
+  generationVersion: 2.467.4
+  releaseVersion: 0.46.1
+  configChecksum: c57ab06d2ed7186731dba095980f9c0e
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -164,6 +164,8 @@ generatedFiles:
   - docs/models/operations/createcustomerrequestbody.md
   - docs/models/operations/createcustomerresponsebody.md
   - docs/models/operations/createdomainrequestbody.md
+  - docs/models/operations/createembedtokenrequestbody.md
+  - docs/models/operations/createembedtokenresponsebody.md
   - docs/models/operations/createlinkrequestbody.md
   - docs/models/operations/createtagrequestbody.md
   - docs/models/operations/customer.md
@@ -247,6 +249,7 @@ generatedFiles:
   - docs/sdks/customers/README.md
   - docs/sdks/domains/README.md
   - docs/sdks/dub/README.md
+  - docs/sdks/embedtokens/README.md
   - docs/sdks/events/README.md
   - docs/sdks/links/README.md
   - docs/sdks/metatags/README.md
@@ -267,6 +270,7 @@ generatedFiles:
   - src/funcs/domainsDelete.ts
   - src/funcs/domainsList.ts
   - src/funcs/domainsUpdate.ts
+  - src/funcs/embedTokensCreate.ts
   - src/funcs/eventsList.ts
   - src/funcs/linksCount.ts
   - src/funcs/linksCreate.ts
@@ -355,6 +359,7 @@ generatedFiles:
   - src/models/operations/bulkupdatelinks.ts
   - src/models/operations/createcustomer.ts
   - src/models/operations/createdomain.ts
+  - src/models/operations/createembedtoken.ts
   - src/models/operations/createlink.ts
   - src/models/operations/createtag.ts
   - src/models/operations/deletecustomer.ts
@@ -385,6 +390,7 @@ generatedFiles:
   - src/sdk/analytics.ts
   - src/sdk/customers.ts
   - src/sdk/domains.ts
+  - src/sdk/embedtokens.ts
   - src/sdk/events.ts
   - src/sdk/index.ts
   - src/sdk/links.ts
@@ -1176,6 +1182,29 @@ examples:
       responses:
         "200":
           application/json: {"id": "<id>"}
+        "400":
+          application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
+        "401":
+          application/json: {"error": {"code": "unauthorized", "message": "The requested resource was not found."}}
+        "403":
+          application/json: {"error": {"code": "forbidden", "message": "The requested resource was not found."}}
+        "404":
+          application/json: {"error": {"code": "not_found", "message": "The requested resource was not found."}}
+        "409":
+          application/json: {"error": {"code": "conflict", "message": "The requested resource was not found."}}
+        "410":
+          application/json: {"error": {"code": "invite_expired", "message": "The requested resource was not found."}}
+        "422":
+          application/json: {"error": {"code": "unprocessable_entity", "message": "The requested resource was not found."}}
+        "429":
+          application/json: {"error": {"code": "rate_limit_exceeded", "message": "The requested resource was not found."}}
+        "500":
+          application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
+  createEmbedToken:
+    speakeasy-default-create-embed-token:
+      responses:
+        "201":
+          application/json: {"publicToken": "<value>", "expires": "<value>"}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":

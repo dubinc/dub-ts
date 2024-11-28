@@ -6,6 +6,7 @@ import { ClientSDK } from "../lib/sdks.js";
 import { Analytics } from "./analytics.js";
 import { Customers } from "./customers.js";
 import { Domains } from "./domains.js";
+import { EmbedTokens } from "./embedtokens.js";
 import { Events } from "./events.js";
 import { Links } from "./links.js";
 import { Metatags } from "./metatags.js";
@@ -53,6 +54,11 @@ export class Dub extends ClientSDK {
   private _workspaces?: Workspaces;
   get workspaces(): Workspaces {
     return (this._workspaces ??= new Workspaces(this._options));
+  }
+
+  private _embedTokens?: EmbedTokens;
+  get embedTokens(): EmbedTokens {
+    return (this._embedTokens ??= new EmbedTokens(this._options));
   }
 
   private _qrCodes?: QRCodes;
