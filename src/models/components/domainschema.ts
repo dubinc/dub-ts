@@ -59,6 +59,10 @@ export type DomainSchema = {
    */
   notFoundUrl: string | null;
   /**
+   * The logo of the domain.
+   */
+  logo: string | null;
+  /**
    * The date the domain was created.
    */
   createdAt: string;
@@ -146,6 +150,7 @@ export const DomainSchema$inboundSchema: z.ZodType<
   placeholder: z.nullable(z.string()),
   expiredUrl: z.nullable(z.string()),
   notFoundUrl: z.nullable(z.string()),
+  logo: z.nullable(z.string()),
   createdAt: z.string(),
   updatedAt: z.string(),
   registeredDomain: z.nullable(z.lazy(() => RegisteredDomain$inboundSchema)),
@@ -161,6 +166,7 @@ export type DomainSchema$Outbound = {
   placeholder: string | null;
   expiredUrl: string | null;
   notFoundUrl: string | null;
+  logo: string | null;
   createdAt: string;
   updatedAt: string;
   registeredDomain: RegisteredDomain$Outbound | null;
@@ -180,6 +186,7 @@ export const DomainSchema$outboundSchema: z.ZodType<
   placeholder: z.nullable(z.string()),
   expiredUrl: z.nullable(z.string()),
   notFoundUrl: z.nullable(z.string()),
+  logo: z.nullable(z.string()),
   createdAt: z.string(),
   updatedAt: z.string(),
   registeredDomain: z.nullable(z.lazy(() => RegisteredDomain$outboundSchema)),

@@ -13,6 +13,7 @@ let value: ListDomainsResponse = {
       placeholder: "https://dub.co/help/article/what-is-dub",
       expiredUrl: "https://acme.com/expired",
       notFoundUrl: "https://acme.com/not-found",
+      logo: "<value>",
       createdAt: "<value>",
       updatedAt: "<value>",
       registeredDomain: {

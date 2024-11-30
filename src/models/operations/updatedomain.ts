@@ -29,6 +29,10 @@ export type UpdateDomainRequestBody = {
    * Provide context to your teammates in the link creation modal by showing them an example of a link to be shortened.
    */
   placeholder?: string | null | undefined;
+  /**
+   * The logo of the domain.
+   */
+  logo?: string | null | undefined;
 };
 
 export type UpdateDomainRequest = {
@@ -50,6 +54,7 @@ export const UpdateDomainRequestBody$inboundSchema: z.ZodType<
   notFoundUrl: z.nullable(z.string()).optional(),
   archived: z.boolean().default(false),
   placeholder: z.nullable(z.string()).optional(),
+  logo: z.nullable(z.string()).optional(),
 });
 
 /** @internal */
@@ -59,6 +64,7 @@ export type UpdateDomainRequestBody$Outbound = {
   notFoundUrl?: string | null | undefined;
   archived: boolean;
   placeholder?: string | null | undefined;
+  logo?: string | null | undefined;
 };
 
 /** @internal */
@@ -72,6 +78,7 @@ export const UpdateDomainRequestBody$outboundSchema: z.ZodType<
   notFoundUrl: z.nullable(z.string()).optional(),
   archived: z.boolean().default(false),
   placeholder: z.nullable(z.string()).optional(),
+  logo: z.nullable(z.string()).optional(),
 });
 
 /**

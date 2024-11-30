@@ -11,6 +11,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type UpdateWorkspaceRequestBody = {
   name?: string | undefined;
   slug?: string | undefined;
+  logo?: string | undefined;
 };
 
 export type UpdateWorkspaceRequest = {
@@ -29,12 +30,14 @@ export const UpdateWorkspaceRequestBody$inboundSchema: z.ZodType<
 > = z.object({
   name: z.string().optional(),
   slug: z.string().optional(),
+  logo: z.string().optional(),
 });
 
 /** @internal */
 export type UpdateWorkspaceRequestBody$Outbound = {
   name?: string | undefined;
   slug?: string | undefined;
+  logo?: string | undefined;
 };
 
 /** @internal */
@@ -45,6 +48,7 @@ export const UpdateWorkspaceRequestBody$outboundSchema: z.ZodType<
 > = z.object({
   name: z.string().optional(),
   slug: z.string().optional(),
+  logo: z.string().optional(),
 });
 
 /**
