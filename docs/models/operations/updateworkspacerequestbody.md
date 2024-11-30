@@ -14,3 +14,4 @@ let value: UpdateWorkspaceRequestBody = {};
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `name`             | *string*           | :heavy_minus_sign: | N/A                |
 | `slug`             | *string*           | :heavy_minus_sign: | N/A                |
+| `logo`             | *string*           | :heavy_minus_sign: | N/A                |
