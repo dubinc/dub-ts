@@ -129,11 +129,11 @@ export namespace ErrorT$ {
   export type Outbound = ErrorT$Outbound;
 }
 
-export function errorTToJSON(errorT: ErrorT): string {
+export function errorToJSON(errorT: ErrorT): string {
   return JSON.stringify(ErrorT$outboundSchema.parse(errorT));
 }
 
-export function errorTFromJSON(
+export function errorFromJSON(
   jsonString: string,
 ): SafeParseResult<ErrorT, SDKValidationError> {
   return safeParse(
