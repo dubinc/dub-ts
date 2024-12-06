@@ -145,10 +145,6 @@ export type WorkspaceSchema = {
    */
   aiLimit: number;
   /**
-   * The ID of the referral link of the workspace.
-   */
-  referralLinkId: string | null;
-  /**
    * Whether the workspace has conversion tracking enabled (d.to/conversions).
    */
   conversionEnabled: boolean;
@@ -361,7 +357,6 @@ export const WorkspaceSchema$inboundSchema: z.ZodType<
   usersLimit: z.number(),
   aiUsage: z.number(),
   aiLimit: z.number(),
-  referralLinkId: z.nullable(z.string()),
   conversionEnabled: z.boolean(),
   dotLinkClaimed: z.boolean(),
   createdAt: z.string(),
@@ -398,7 +393,6 @@ export type WorkspaceSchema$Outbound = {
   usersLimit: number;
   aiUsage: number;
   aiLimit: number;
-  referralLinkId: string | null;
   conversionEnabled: boolean;
   dotLinkClaimed: boolean;
   createdAt: string;
@@ -439,7 +433,6 @@ export const WorkspaceSchema$outboundSchema: z.ZodType<
   usersLimit: z.number(),
   aiUsage: z.number(),
   aiLimit: z.number(),
-  referralLinkId: z.nullable(z.string()),
   conversionEnabled: z.boolean(),
   dotLinkClaimed: z.boolean(),
   createdAt: z.string(),
