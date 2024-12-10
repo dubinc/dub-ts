@@ -26,7 +26,6 @@ let value: LinkClickedEventData = {
     key: "<key>",
     url: "https://sparkling-legging.name/",
     externalId: "<id>",
-    identifier: "<value>",
     expiresAt: "<value>",
     expiredUrl: "https://scientific-bowler.info",
     password: "074PRao3f_6cW5K",

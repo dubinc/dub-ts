@@ -15,7 +15,6 @@ let value: SaleEvent = {
     key: "<key>",
     url: "https://cheap-membership.info",
     externalId: "<id>",
-    identifier: "<value>",
     expiresAt: "<value>",
     expiredUrl: "https://unruly-runway.org",
     password: "QH6zBq49u4lmy5g",

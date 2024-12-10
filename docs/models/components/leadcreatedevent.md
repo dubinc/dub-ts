@@ -39,7 +39,6 @@ let value: LeadCreatedEvent = {
       key: "<key>",
       url: "https://miserable-unblinking.info",
       externalId: "<id>",
-      identifier: "<value>",
       expiresAt: "<value>",
       expiredUrl: "https://orderly-haircut.info",
       password: "vV8R87bkGlTvqUX",

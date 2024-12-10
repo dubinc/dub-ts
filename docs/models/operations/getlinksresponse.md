@@ -13,7 +13,6 @@ let value: GetLinksResponse = {
       key: "<key>",
       url: "https://spiteful-printer.com",
       externalId: "<id>",
-      identifier: "<value>",
       expiresAt: "<value>",
       expiredUrl: "https://grim-alert.name",
       password: "gFrBTxfjvoNo9sF",

@@ -296,10 +296,6 @@ export type LinkSchema = {
    */
   externalId: string | null;
   /**
-   * The identifier of the short link that is unique across your workspace. If set, it can be used to identify your short link for client-side click tracking.
-   */
-  identifier: string | null;
-  /**
    * Whether the short link is archived.
    */
   archived?: boolean | undefined;
@@ -1762,7 +1758,6 @@ export const LinkSchema$inboundSchema: z.ZodType<
   url: z.string(),
   trackConversion: z.boolean().default(false),
   externalId: z.nullable(z.string()),
-  identifier: z.nullable(z.string()),
   archived: z.boolean().default(false),
   expiresAt: z.nullable(z.string()),
   expiredUrl: z.nullable(z.string()),
@@ -1818,7 +1813,6 @@ export type LinkSchema$Outbound = {
   url: string;
   trackConversion: boolean;
   externalId: string | null;
-  identifier: string | null;
   archived: boolean;
   expiresAt: string | null;
   expiredUrl: string | null;
@@ -1870,7 +1864,6 @@ export const LinkSchema$outboundSchema: z.ZodType<
   url: z.string(),
   trackConversion: z.boolean().default(false),
   externalId: z.nullable(z.string()),
-  identifier: z.nullable(z.string()),
   archived: z.boolean().default(false),
   expiresAt: z.nullable(z.string()),
   expiredUrl: z.nullable(z.string()),

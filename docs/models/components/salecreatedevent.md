@@ -39,7 +39,6 @@ let value: SaleCreatedEvent = {
       key: "<key>",
       url: "https://specific-coliseum.org",
       externalId: "<id>",
-      identifier: "<value>",
       expiresAt: "<value>",
       expiredUrl: "https://tricky-stall.biz",
       password: "qu1hWF_Hldw8Qh6",

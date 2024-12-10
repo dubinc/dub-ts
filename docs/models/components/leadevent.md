@@ -29,7 +29,6 @@ let value: LeadEvent = {
     key: "<key>",
     url: "https://worthless-postbox.info",
     externalId: "<id>",
-    identifier: "<value>",
     expiresAt: "<value>",
     expiredUrl: "https://wealthy-chairperson.net/",
     password: "xI3CdysnwDEVFzu",
