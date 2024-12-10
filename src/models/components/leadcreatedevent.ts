@@ -338,10 +338,6 @@ export type LeadCreatedEventLink = {
    * This is the ID of the link in your database that is unique across your workspace. If set, it can be used to identify the link in future API requests. Must be prefixed with 'ext_' when passed as a query parameter.
    */
   externalId: string | null;
-  /**
-   * The identifier of the short link that is unique across your workspace. If set, it can be used to identify your short link for client-side click tracking.
-   */
-  identifier: string | null;
   archived?: boolean | undefined;
   expiresAt: string;
   expiredUrl: string | null;
@@ -1979,7 +1975,6 @@ export const LeadCreatedEventLink$inboundSchema: z.ZodType<
   url: z.string(),
   trackConversion: z.boolean().optional(),
   externalId: z.nullable(z.string()),
-  identifier: z.nullable(z.string()),
   archived: z.boolean().optional(),
   expiresAt: z.string(),
   expiredUrl: z.nullable(z.string()),
@@ -2035,7 +2030,6 @@ export type LeadCreatedEventLink$Outbound = {
   url: string;
   trackConversion?: boolean | undefined;
   externalId: string | null;
-  identifier: string | null;
   archived?: boolean | undefined;
   expiresAt: string;
   expiredUrl: string | null;
@@ -2087,7 +2081,6 @@ export const LeadCreatedEventLink$outboundSchema: z.ZodType<
   url: z.string(),
   trackConversion: z.boolean().optional(),
   externalId: z.nullable(z.string()),
-  identifier: z.nullable(z.string()),
   archived: z.boolean().optional(),
   expiresAt: z.string(),
   expiredUrl: z.nullable(z.string()),

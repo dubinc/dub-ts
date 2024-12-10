@@ -33,7 +33,6 @@ let value: SaleCreatedEventData = {
     key: "<key>",
     url: "https://striking-case.biz/",
     externalId: "<id>",
-    identifier: "<value>",
     expiresAt: "<value>",
     expiredUrl: "https://rewarding-mantua.net",
     password: "3lAfdhWbhOBjEu0",

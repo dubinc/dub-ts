@@ -33,7 +33,6 @@ let value: LeadCreatedEventData = {
     key: "<key>",
     url: "https://husky-tennis.biz",
     externalId: "<id>",
-    identifier: "<value>",
     expiresAt: "<value>",
     expiredUrl: "https://paltry-case.name",
     password: "hHuGgsPTjfWCJHo",

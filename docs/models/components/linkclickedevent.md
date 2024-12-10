@@ -32,7 +32,6 @@ let value: LinkClickedEvent = {
       key: "<key>",
       url: "https://cautious-intervention.com/",
       externalId: "<id>",
-      identifier: "<value>",
       expiresAt: "<value>",
       expiredUrl: "https://shallow-underpants.biz",
       password: "F2tojU7k5PR5OtH",

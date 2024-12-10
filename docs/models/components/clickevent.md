@@ -27,7 +27,6 @@ let value: ClickEvent = {
     key: "<key>",
     url: "https://wordy-completion.biz/",
     externalId: "<id>",
-    identifier: "<value>",
     expiresAt: "<value>",
     expiredUrl: "https://best-nougat.info",
     password: "7QCLAAY_FBenuic",

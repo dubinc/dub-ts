@@ -17,7 +17,6 @@ let value: LinkWebhookEvent = {
     key: "<key>",
     url: "https://shimmering-tuba.net/",
     externalId: "<id>",
-    identifier: "<value>",
     expiresAt: "<value>",
     expiredUrl: "https://paltry-reporter.info/",
     password: "CfpkZkHhGUL9uEE",
