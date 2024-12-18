@@ -15,6 +15,7 @@ let value: WorkspaceSchema = {
   billingCycleStart: 1663.25,
   paymentFailedAt: "<value>",
   stripeConnectId: "<id>",
+  payoutMethodId: "<id>",
   usage: 5526.86,
   usageLimit: 4137.68,
   linksUsage: 1514.86,
@@ -39,10 +40,6 @@ let value: WorkspaceSchema = {
       slug: "acme.com",
     },
   ],
-  bankAccountName: "<value>",
-  partialAccountNumber: "<value>",
-  routingNumber: "<value>",
-  bankAccountVerified: false,
 };
 ```
 
@@ -60,6 +57,7 @@ let value: WorkspaceSchema = {
 | `billingCycleStart`                                                           | *number*                                                                      | :heavy_check_mark:                                                            | The date and time when the billing cycle starts for the workspace.            |
 | `paymentFailedAt`                                                             | *string*                                                                      | :heavy_check_mark:                                                            | The date and time when the payment failed for the workspace.                  |
 | `stripeConnectId`                                                             | *string*                                                                      | :heavy_check_mark:                                                            | [BETA – Dub Conversions]: The Stripe Connect ID of the workspace.             |
+| `payoutMethodId`                                                              | *string*                                                                      | :heavy_check_mark:                                                            | [BETA – Dub Partners]: The ID of the payment method for partner payouts.      |
 | `usage`                                                                       | *number*                                                                      | :heavy_check_mark:                                                            | The usage of the workspace.                                                   |
 | `usageLimit`                                                                  | *number*                                                                      | :heavy_check_mark:                                                            | The usage limit of the workspace.                                             |
 | `linksUsage`                                                                  | *number*                                                                      | :heavy_check_mark:                                                            | The links usage of the workspace.                                             |
@@ -77,7 +75,3 @@ let value: WorkspaceSchema = {
 | `users`                                                                       | [components.Users](../../models/components/users.md)[]                        | :heavy_check_mark:                                                            | The role of the authenticated user in the workspace.                          |
 | `domains`                                                                     | [components.Domains](../../models/components/domains.md)[]                    | :heavy_check_mark:                                                            | The domains of the workspace.                                                 |
 | `flags`                                                                       | Record<string, *boolean*>                                                     | :heavy_minus_sign:                                                            | The feature flags of the workspace, indicating which features are enabled.    |
-| `bankAccountName`                                                             | *string*                                                                      | :heavy_check_mark:                                                            | [BETA – Dub Partners]: The name of the connected bank account.                |
-| `partialAccountNumber`                                                        | *string*                                                                      | :heavy_check_mark:                                                            | [BETA – Dub Partners]: The partial account number of the bank account.        |
-| `routingNumber`                                                               | *string*                                                                      | :heavy_check_mark:                                                            | [BETA – Dub Partners]: The routing number of the bank account.                |
-| `bankAccountVerified`                                                         | *boolean*                                                                     | :heavy_check_mark:                                                            | [BETA – Dub Partners]: Whether the bank account is verified.                  |
