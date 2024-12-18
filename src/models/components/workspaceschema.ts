@@ -101,6 +101,10 @@ export type WorkspaceSchema = {
    */
   stripeConnectId: string | null;
   /**
+   * [BETA – Dub Partners]: The ID of the payment method for partner payouts.
+   */
+  payoutMethodId: string | null;
+  /**
    * The usage of the workspace.
    */
   usage: number;
@@ -168,22 +172,6 @@ export type WorkspaceSchema = {
    * The feature flags of the workspace, indicating which features are enabled.
    */
   flags?: { [k: string]: boolean } | undefined;
-  /**
-   * [BETA – Dub Partners]: The name of the connected bank account.
-   */
-  bankAccountName: string | null;
-  /**
-   * [BETA – Dub Partners]: The partial account number of the bank account.
-   */
-  partialAccountNumber: string | null;
-  /**
-   * [BETA – Dub Partners]: The routing number of the bank account.
-   */
-  routingNumber: string | null;
-  /**
-   * [BETA – Dub Partners]: Whether the bank account is verified.
-   */
-  bankAccountVerified: boolean;
 };
 
 /** @internal */
@@ -342,6 +330,7 @@ export const WorkspaceSchema$inboundSchema: z.ZodType<
   billingCycleStart: z.number(),
   paymentFailedAt: z.nullable(z.string()),
   stripeConnectId: z.nullable(z.string()),
+  payoutMethodId: z.nullable(z.string()),
   usage: z.number(),
   usageLimit: z.number(),
   linksUsage: z.number(),
@@ -359,10 +348,6 @@ export const WorkspaceSchema$inboundSchema: z.ZodType<
   users: z.array(z.lazy(() => Users$inboundSchema)),
   domains: z.array(z.lazy(() => Domains$inboundSchema)),
   flags: z.record(z.boolean()).optional(),
-  bankAccountName: z.nullable(z.string()),
-  partialAccountNumber: z.nullable(z.string()),
-  routingNumber: z.nullable(z.string()),
-  bankAccountVerified: z.boolean(),
 });
 
 /** @internal */
@@ -377,6 +362,7 @@ export type WorkspaceSchema$Outbound = {
   billingCycleStart: number;
   paymentFailedAt: string | null;
   stripeConnectId: string | null;
+  payoutMethodId: string | null;
   usage: number;
   usageLimit: number;
   linksUsage: number;
@@ -394,10 +380,6 @@ export type WorkspaceSchema$Outbound = {
   users: Array<Users$Outbound>;
   domains: Array<Domains$Outbound>;
   flags?: { [k: string]: boolean } | undefined;
-  bankAccountName: string | null;
-  partialAccountNumber: string | null;
-  routingNumber: string | null;
-  bankAccountVerified: boolean;
 };
 
 /** @internal */
@@ -416,6 +398,7 @@ export const WorkspaceSchema$outboundSchema: z.ZodType<
   billingCycleStart: z.number(),
   paymentFailedAt: z.nullable(z.string()),
   stripeConnectId: z.nullable(z.string()),
+  payoutMethodId: z.nullable(z.string()),
   usage: z.number(),
   usageLimit: z.number(),
   linksUsage: z.number(),
@@ -433,10 +416,6 @@ export const WorkspaceSchema$outboundSchema: z.ZodType<
   users: z.array(z.lazy(() => Users$outboundSchema)),
   domains: z.array(z.lazy(() => Domains$outboundSchema)),
   flags: z.record(z.boolean()).optional(),
-  bankAccountName: z.nullable(z.string()),
-  partialAccountNumber: z.nullable(z.string()),
-  routingNumber: z.nullable(z.string()),
-  bankAccountVerified: z.boolean(),
 });
 
 /**

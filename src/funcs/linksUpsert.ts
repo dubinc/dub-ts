@@ -95,6 +95,7 @@ export async function linksUpsert(
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
     method: "PUT",
+    baseURL: options?.serverURL,
     path: path,
     headers: headers,
     body: body,
