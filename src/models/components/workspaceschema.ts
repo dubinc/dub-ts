@@ -157,6 +157,10 @@ export type WorkspaceSchema = {
    */
   dotLinkClaimed: boolean;
   /**
+   * Whether the workspace has Dub Partners enabled.
+   */
+  partnersEnabled: boolean;
+  /**
    * The date and time when the workspace was created.
    */
   createdAt: string;
@@ -344,6 +348,7 @@ export const WorkspaceSchema$inboundSchema: z.ZodType<
   aiLimit: z.number(),
   conversionEnabled: z.boolean(),
   dotLinkClaimed: z.boolean(),
+  partnersEnabled: z.boolean(),
   createdAt: z.string(),
   users: z.array(z.lazy(() => Users$inboundSchema)),
   domains: z.array(z.lazy(() => Domains$inboundSchema)),
@@ -376,6 +381,7 @@ export type WorkspaceSchema$Outbound = {
   aiLimit: number;
   conversionEnabled: boolean;
   dotLinkClaimed: boolean;
+  partnersEnabled: boolean;
   createdAt: string;
   users: Array<Users$Outbound>;
   domains: Array<Domains$Outbound>;
@@ -412,6 +418,7 @@ export const WorkspaceSchema$outboundSchema: z.ZodType<
   aiLimit: z.number(),
   conversionEnabled: z.boolean(),
   dotLinkClaimed: z.boolean(),
+  partnersEnabled: z.boolean(),
   createdAt: z.string(),
   users: z.array(z.lazy(() => Users$outboundSchema)),
   domains: z.array(z.lazy(() => Domains$outboundSchema)),
