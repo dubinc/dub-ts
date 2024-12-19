@@ -29,6 +29,7 @@ let value: WorkspaceSchema = {
   aiLimit: 47.87,
   conversionEnabled: false,
   dotLinkClaimed: false,
+  partnersEnabled: false,
   createdAt: "<value>",
   users: [
     {
@@ -71,6 +72,7 @@ let value: WorkspaceSchema = {
 | `aiLimit`                                                                     | *number*                                                                      | :heavy_check_mark:                                                            | The AI limit of the workspace.                                                |
 | `conversionEnabled`                                                           | *boolean*                                                                     | :heavy_check_mark:                                                            | Whether the workspace has conversion tracking enabled (d.to/conversions).     |
 | `dotLinkClaimed`                                                              | *boolean*                                                                     | :heavy_check_mark:                                                            | Whether the workspace has claimed a free .link domain. (dub.link/free)        |
+| `partnersEnabled`                                                             | *boolean*                                                                     | :heavy_check_mark:                                                            | Whether the workspace has Dub Partners enabled.                               |
 | `createdAt`                                                                   | *string*                                                                      | :heavy_check_mark:                                                            | The date and time when the workspace was created.                             |
 | `users`                                                                       | [components.Users](../../models/components/users.md)[]                        | :heavy_check_mark:                                                            | The role of the authenticated user in the workspace.                          |
 | `domains`                                                                     | [components.Domains](../../models/components/domains.md)[]                    | :heavy_check_mark:                                                            | The domains of the workspace.                                                 |
