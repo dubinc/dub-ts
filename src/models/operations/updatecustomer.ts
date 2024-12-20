@@ -60,6 +60,10 @@ export type UpdateCustomerResponseBody = {
    */
   avatar?: string | null | undefined;
   /**
+   * Country of the customer.
+   */
+  country?: string | null | undefined;
+  /**
    * The date the customer was created.
    */
   createdAt: string;
@@ -205,6 +209,7 @@ export const UpdateCustomerResponseBody$inboundSchema: z.ZodType<
   name: z.string(),
   email: z.nullable(z.string()).optional(),
   avatar: z.nullable(z.string()).optional(),
+  country: z.nullable(z.string()).optional(),
   createdAt: z.string(),
 });
 
@@ -215,6 +220,7 @@ export type UpdateCustomerResponseBody$Outbound = {
   name: string;
   email?: string | null | undefined;
   avatar?: string | null | undefined;
+  country?: string | null | undefined;
   createdAt: string;
 };
 
@@ -229,6 +235,7 @@ export const UpdateCustomerResponseBody$outboundSchema: z.ZodType<
   name: z.string(),
   email: z.nullable(z.string()).optional(),
   avatar: z.nullable(z.string()).optional(),
+  country: z.nullable(z.string()).optional(),
   createdAt: z.string(),
 });
 
