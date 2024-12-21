@@ -26,6 +26,29 @@ export type CreateCustomerRequestBody = {
   externalId: string;
 };
 
+export type CreateCustomerLink = {
+  /**
+   * The unique ID of the short link.
+   */
+  id: string;
+  /**
+   * The domain of the short link. If not provided, the primary domain for the workspace will be used (or `dub.sh` if the workspace has no domains).
+   */
+  domain: string;
+  /**
+   * The short link slug. If not provided, a random 7-character slug will be generated.
+   */
+  key: string;
+  /**
+   * The full URL of the short link, including the https protocol (e.g. `https://dub.sh/try`).
+   */
+  shortLink: string;
+  /**
+   * The ID of the program the short link is associated with.
+   */
+  programId: string | null;
+};
+
 /**
  * The customer was created.
  */
@@ -51,9 +74,14 @@ export type CreateCustomerResponseBody = {
    */
   avatar?: string | null | undefined;
   /**
+   * Country of the customer.
+   */
+  country?: string | null | undefined;
+  /**
    * The date the customer was created.
    */
   createdAt: string;
+  link?: CreateCustomerLink | null | undefined;
 };
 
 /** @internal */
@@ -120,6 +148,72 @@ export function createCustomerRequestBodyFromJSON(
 }
 
 /** @internal */
+export const CreateCustomerLink$inboundSchema: z.ZodType<
+  CreateCustomerLink,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  domain: z.string(),
+  key: z.string(),
+  shortLink: z.string(),
+  programId: z.nullable(z.string()),
+});
+
+/** @internal */
+export type CreateCustomerLink$Outbound = {
+  id: string;
+  domain: string;
+  key: string;
+  shortLink: string;
+  programId: string | null;
+};
+
+/** @internal */
+export const CreateCustomerLink$outboundSchema: z.ZodType<
+  CreateCustomerLink$Outbound,
+  z.ZodTypeDef,
+  CreateCustomerLink
+> = z.object({
+  id: z.string(),
+  domain: z.string(),
+  key: z.string(),
+  shortLink: z.string(),
+  programId: z.nullable(z.string()),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateCustomerLink$ {
+  /** @deprecated use `CreateCustomerLink$inboundSchema` instead. */
+  export const inboundSchema = CreateCustomerLink$inboundSchema;
+  /** @deprecated use `CreateCustomerLink$outboundSchema` instead. */
+  export const outboundSchema = CreateCustomerLink$outboundSchema;
+  /** @deprecated use `CreateCustomerLink$Outbound` instead. */
+  export type Outbound = CreateCustomerLink$Outbound;
+}
+
+export function createCustomerLinkToJSON(
+  createCustomerLink: CreateCustomerLink,
+): string {
+  return JSON.stringify(
+    CreateCustomerLink$outboundSchema.parse(createCustomerLink),
+  );
+}
+
+export function createCustomerLinkFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateCustomerLink, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateCustomerLink$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateCustomerLink' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateCustomerResponseBody$inboundSchema: z.ZodType<
   CreateCustomerResponseBody,
   z.ZodTypeDef,
@@ -130,7 +224,9 @@ export const CreateCustomerResponseBody$inboundSchema: z.ZodType<
   name: z.string(),
   email: z.nullable(z.string()).optional(),
   avatar: z.nullable(z.string()).optional(),
+  country: z.nullable(z.string()).optional(),
   createdAt: z.string(),
+  link: z.nullable(z.lazy(() => CreateCustomerLink$inboundSchema)).optional(),
 });
 
 /** @internal */
@@ -140,7 +236,9 @@ export type CreateCustomerResponseBody$Outbound = {
   name: string;
   email?: string | null | undefined;
   avatar?: string | null | undefined;
+  country?: string | null | undefined;
   createdAt: string;
+  link?: CreateCustomerLink$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -154,7 +252,9 @@ export const CreateCustomerResponseBody$outboundSchema: z.ZodType<
   name: z.string(),
   email: z.nullable(z.string()).optional(),
   avatar: z.nullable(z.string()).optional(),
+  country: z.nullable(z.string()).optional(),
   createdAt: z.string(),
+  link: z.nullable(z.lazy(() => CreateCustomerLink$outboundSchema)).optional(),
 });
 
 /**

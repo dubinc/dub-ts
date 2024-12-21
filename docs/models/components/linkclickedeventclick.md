@@ -7,17 +7,17 @@ import { LinkClickedEventClick } from "dub/models/components";
 
 let value: LinkClickedEventClick = {
   id: "<id>",
-  url: "https://beloved-godfather.info/",
-  country: "Turks and Caicos Islands",
-  city: "Meghanside",
+  url: "https://torn-nougat.org/",
+  country: "Egypt",
+  city: "Lake Aubreyfort",
   region: "<value>",
-  continent: "Australia",
-  device: "Desktop",
-  browser: "Chrome",
+  continent: "Antarctica",
+  device: "Mobile",
+  browser: "Safari",
   os: "WebOS",
-  referer: "unselfish-footrest.biz",
-  refererUrl: "https://hairy-pecan.biz",
-  ip: "128.236.158.53",
+  referer: "major-waist.info",
+  refererUrl: "https://front-reorganisation.info/",
+  ip: "5.78.220.205",
 };
 ```
 
