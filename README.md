@@ -183,7 +183,6 @@ run();
 
 * [lead](docs/sdks/track/README.md#lead) - Track a lead
 * [sale](docs/sdks/track/README.md#sale) - Track a sale
-* [~~customer~~](docs/sdks/track/README.md#customer) - Track a customer :warning: **Deprecated**
 
 ### [workspaces](docs/sdks/workspaces/README.md)
 
@@ -570,7 +569,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`trackSale`](docs/sdks/track/README.md#sale) - Track a sale
 - [`workspacesGet`](docs/sdks/workspaces/README.md#get) - Retrieve a workspace
 - [`workspacesUpdate`](docs/sdks/workspaces/README.md#update) - Update a workspace
-- ~~[`trackCustomer`](docs/sdks/track/README.md#customer)~~ - Track a customer :warning: **Deprecated**
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->

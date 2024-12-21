@@ -7,17 +7,17 @@ import { SaleEventClick } from "dub/models/components";
 
 let value: SaleEventClick = {
   id: "<id>",
-  url: "https://red-sermon.biz/",
-  country: "India",
-  city: "Ivyfield",
+  url: "https://discrete-litter.net/",
+  country: "Kiribati",
+  city: "Delray Beach",
   region: "<value>",
-  continent: "South America",
+  continent: "North America",
   device: "Mobile",
-  browser: "Chrome",
-  os: "WebOS",
-  referer: "biodegradable-depot.com",
-  refererUrl: "https://motionless-pillow.info/",
-  ip: "5adc:ad9c:98f2:3ca6:8ebd:409e:cc05:74ba",
+  browser: "Firefox",
+  os: "Chrome OS",
+  referer: "partial-horde.name",
+  refererUrl: "https://impolite-porter.com/",
+  ip: "217.197.72.96",
 };
 ```
 

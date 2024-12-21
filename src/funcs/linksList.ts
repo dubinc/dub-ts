@@ -214,7 +214,7 @@ export async function linksList(
     >;
     "~next"?: { page: number };
   } => {
-    const page = request?.page || 0;
+    const page = request?.page ?? 1;
     const nextPage = page + 1;
 
     if (!responseData) {
@@ -226,7 +226,7 @@ export async function linksList(
     if (!Array.isArray(results) || !results.length) {
       return { next: () => null };
     }
-    const limit = request?.pageSize || 0;
+    const limit = request?.pageSize ?? 100;
     if (results.length < limit) {
       return { next: () => null };
     }

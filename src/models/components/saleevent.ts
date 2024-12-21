@@ -432,6 +432,29 @@ export type SaleEventClick = {
   ip: string;
 };
 
+export type SaleEventCustomerLink = {
+  /**
+   * The unique ID of the short link.
+   */
+  id: string;
+  /**
+   * The domain of the short link. If not provided, the primary domain for the workspace will be used (or `dub.sh` if the workspace has no domains).
+   */
+  domain: string;
+  /**
+   * The short link slug. If not provided, a random 7-character slug will be generated.
+   */
+  key: string;
+  /**
+   * The full URL of the short link, including the https protocol (e.g. `https://dub.sh/try`).
+   */
+  shortLink: string;
+  /**
+   * The ID of the program the short link is associated with.
+   */
+  programId: string | null;
+};
+
 export type SaleEventCustomer = {
   /**
    * The unique identifier of the customer in Dub.
@@ -454,9 +477,14 @@ export type SaleEventCustomer = {
    */
   avatar?: string | null | undefined;
   /**
+   * Country of the customer.
+   */
+  country?: string | null | undefined;
+  /**
    * The date the customer was created.
    */
   createdAt: string;
+  link?: SaleEventCustomerLink | null | undefined;
 };
 
 /**
@@ -2195,6 +2223,72 @@ export function saleEventClickFromJSON(
 }
 
 /** @internal */
+export const SaleEventCustomerLink$inboundSchema: z.ZodType<
+  SaleEventCustomerLink,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  domain: z.string(),
+  key: z.string(),
+  shortLink: z.string(),
+  programId: z.nullable(z.string()),
+});
+
+/** @internal */
+export type SaleEventCustomerLink$Outbound = {
+  id: string;
+  domain: string;
+  key: string;
+  shortLink: string;
+  programId: string | null;
+};
+
+/** @internal */
+export const SaleEventCustomerLink$outboundSchema: z.ZodType<
+  SaleEventCustomerLink$Outbound,
+  z.ZodTypeDef,
+  SaleEventCustomerLink
+> = z.object({
+  id: z.string(),
+  domain: z.string(),
+  key: z.string(),
+  shortLink: z.string(),
+  programId: z.nullable(z.string()),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace SaleEventCustomerLink$ {
+  /** @deprecated use `SaleEventCustomerLink$inboundSchema` instead. */
+  export const inboundSchema = SaleEventCustomerLink$inboundSchema;
+  /** @deprecated use `SaleEventCustomerLink$outboundSchema` instead. */
+  export const outboundSchema = SaleEventCustomerLink$outboundSchema;
+  /** @deprecated use `SaleEventCustomerLink$Outbound` instead. */
+  export type Outbound = SaleEventCustomerLink$Outbound;
+}
+
+export function saleEventCustomerLinkToJSON(
+  saleEventCustomerLink: SaleEventCustomerLink,
+): string {
+  return JSON.stringify(
+    SaleEventCustomerLink$outboundSchema.parse(saleEventCustomerLink),
+  );
+}
+
+export function saleEventCustomerLinkFromJSON(
+  jsonString: string,
+): SafeParseResult<SaleEventCustomerLink, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SaleEventCustomerLink$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SaleEventCustomerLink' from JSON`,
+  );
+}
+
+/** @internal */
 export const SaleEventCustomer$inboundSchema: z.ZodType<
   SaleEventCustomer,
   z.ZodTypeDef,
@@ -2205,7 +2299,10 @@ export const SaleEventCustomer$inboundSchema: z.ZodType<
   name: z.string(),
   email: z.nullable(z.string()).optional(),
   avatar: z.nullable(z.string()).optional(),
+  country: z.nullable(z.string()).optional(),
   createdAt: z.string(),
+  link: z.nullable(z.lazy(() => SaleEventCustomerLink$inboundSchema))
+    .optional(),
 });
 
 /** @internal */
@@ -2215,7 +2312,9 @@ export type SaleEventCustomer$Outbound = {
   name: string;
   email?: string | null | undefined;
   avatar?: string | null | undefined;
+  country?: string | null | undefined;
   createdAt: string;
+  link?: SaleEventCustomerLink$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -2229,7 +2328,10 @@ export const SaleEventCustomer$outboundSchema: z.ZodType<
   name: z.string(),
   email: z.nullable(z.string()).optional(),
   avatar: z.nullable(z.string()).optional(),
+  country: z.nullable(z.string()).optional(),
   createdAt: z.string(),
+  link: z.nullable(z.lazy(() => SaleEventCustomerLink$outboundSchema))
+    .optional(),
 });
 
 /**

@@ -26,7 +26,7 @@ const value: components.AnalyticsTimeseries[] = [
 ```typescript
 const value: components.AnalyticsContinents[] = [
   {
-    continent: "SA",
+    continent: "AF",
   },
 ];
 ```
@@ -36,7 +36,7 @@ const value: components.AnalyticsContinents[] = [
 ```typescript
 const value: components.AnalyticsCountries[] = [
   {
-    country: "ER",
+    country: "IL",
   },
 ];
 ```
@@ -46,8 +46,8 @@ const value: components.AnalyticsCountries[] = [
 ```typescript
 const value: components.AnalyticsCities[] = [
   {
-    city: "Glen Burnie",
-    country: "IO",
+    city: "Jerrodville",
+    country: "HM",
   },
 ];
 ```
@@ -67,7 +67,7 @@ const value: components.AnalyticsDevices[] = [
 ```typescript
 const value: components.AnalyticsBrowsers[] = [
   {
-    browser: "Safari",
+    browser: "Firefox",
   },
 ];
 ```
@@ -77,7 +77,7 @@ const value: components.AnalyticsBrowsers[] = [
 ```typescript
 const value: components.AnalyticsOS[] = [
   {
-    os: "Symbian",
+    os: "Chrome OS",
   },
 ];
 ```
@@ -97,7 +97,7 @@ const value: components.AnalyticsTriggers[] = [
 ```typescript
 const value: components.AnalyticsReferers[] = [
   {
-    referer: "failing-baseboard.info",
+    referer: "idealistic-bandwidth.biz",
   },
 ];
 ```
@@ -107,7 +107,7 @@ const value: components.AnalyticsReferers[] = [
 ```typescript
 const value: components.AnalyticsRefererUrls[] = [
   {
-    refererUrl: "https://male-coil.info",
+    refererUrl: "https://outlandish-interviewer.info/",
   },
 ];
 ```
@@ -119,10 +119,10 @@ const value: components.AnalyticsTopLinks[] = [
   {
     link: "<value>",
     id: "<id>",
-    domain: "upset-in-joke.name",
+    domain: "stormy-populist.org",
     key: "<key>",
     shortLink: "<value>",
-    url: "https://idealistic-bandwidth.biz/",
+    url: "https://silky-bar.biz/",
     createdAt: "<value>",
   },
 ];
@@ -133,7 +133,7 @@ const value: components.AnalyticsTopLinks[] = [
 ```typescript
 const value: components.AnalyticsTopUrls[] = [
   {
-    url: "https://outlandish-interviewer.info/",
+    url: "https://soulful-petticoat.info",
   },
 ];
 ```

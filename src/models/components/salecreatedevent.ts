@@ -20,6 +20,29 @@ export const SaleCreatedEventEvent = {
 } as const;
 export type SaleCreatedEventEvent = ClosedEnum<typeof SaleCreatedEventEvent>;
 
+export type SaleCreatedEventDataLink = {
+  /**
+   * The unique ID of the short link.
+   */
+  id: string;
+  /**
+   * The domain of the short link. If not provided, the primary domain for the workspace will be used (or `dub.sh` if the workspace has no domains).
+   */
+  domain: string;
+  /**
+   * The short link slug. If not provided, a random 7-character slug will be generated.
+   */
+  key: string;
+  /**
+   * The full URL of the short link, including the https protocol (e.g. `https://dub.sh/try`).
+   */
+  shortLink: string;
+  /**
+   * The ID of the program the short link is associated with.
+   */
+  programId: string | null;
+};
+
 export type SaleCreatedEventCustomer = {
   /**
    * The unique identifier of the customer in Dub.
@@ -42,9 +65,14 @@ export type SaleCreatedEventCustomer = {
    */
   avatar?: string | null | undefined;
   /**
+   * Country of the customer.
+   */
+  country?: string | null | undefined;
+  /**
    * The date the customer was created.
    */
   createdAt: string;
+  link?: SaleCreatedEventDataLink | null | undefined;
 };
 
 export type SaleCreatedEventClick = {
@@ -506,6 +534,72 @@ export namespace SaleCreatedEventEvent$ {
 }
 
 /** @internal */
+export const SaleCreatedEventDataLink$inboundSchema: z.ZodType<
+  SaleCreatedEventDataLink,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  domain: z.string(),
+  key: z.string(),
+  shortLink: z.string(),
+  programId: z.nullable(z.string()),
+});
+
+/** @internal */
+export type SaleCreatedEventDataLink$Outbound = {
+  id: string;
+  domain: string;
+  key: string;
+  shortLink: string;
+  programId: string | null;
+};
+
+/** @internal */
+export const SaleCreatedEventDataLink$outboundSchema: z.ZodType<
+  SaleCreatedEventDataLink$Outbound,
+  z.ZodTypeDef,
+  SaleCreatedEventDataLink
+> = z.object({
+  id: z.string(),
+  domain: z.string(),
+  key: z.string(),
+  shortLink: z.string(),
+  programId: z.nullable(z.string()),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace SaleCreatedEventDataLink$ {
+  /** @deprecated use `SaleCreatedEventDataLink$inboundSchema` instead. */
+  export const inboundSchema = SaleCreatedEventDataLink$inboundSchema;
+  /** @deprecated use `SaleCreatedEventDataLink$outboundSchema` instead. */
+  export const outboundSchema = SaleCreatedEventDataLink$outboundSchema;
+  /** @deprecated use `SaleCreatedEventDataLink$Outbound` instead. */
+  export type Outbound = SaleCreatedEventDataLink$Outbound;
+}
+
+export function saleCreatedEventDataLinkToJSON(
+  saleCreatedEventDataLink: SaleCreatedEventDataLink,
+): string {
+  return JSON.stringify(
+    SaleCreatedEventDataLink$outboundSchema.parse(saleCreatedEventDataLink),
+  );
+}
+
+export function saleCreatedEventDataLinkFromJSON(
+  jsonString: string,
+): SafeParseResult<SaleCreatedEventDataLink, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SaleCreatedEventDataLink$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SaleCreatedEventDataLink' from JSON`,
+  );
+}
+
+/** @internal */
 export const SaleCreatedEventCustomer$inboundSchema: z.ZodType<
   SaleCreatedEventCustomer,
   z.ZodTypeDef,
@@ -516,7 +610,10 @@ export const SaleCreatedEventCustomer$inboundSchema: z.ZodType<
   name: z.string(),
   email: z.nullable(z.string()).optional(),
   avatar: z.nullable(z.string()).optional(),
+  country: z.nullable(z.string()).optional(),
   createdAt: z.string(),
+  link: z.nullable(z.lazy(() => SaleCreatedEventDataLink$inboundSchema))
+    .optional(),
 });
 
 /** @internal */
@@ -526,7 +623,9 @@ export type SaleCreatedEventCustomer$Outbound = {
   name: string;
   email?: string | null | undefined;
   avatar?: string | null | undefined;
+  country?: string | null | undefined;
   createdAt: string;
+  link?: SaleCreatedEventDataLink$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -540,7 +639,10 @@ export const SaleCreatedEventCustomer$outboundSchema: z.ZodType<
   name: z.string(),
   email: z.nullable(z.string()).optional(),
   avatar: z.nullable(z.string()).optional(),
+  country: z.nullable(z.string()).optional(),
   createdAt: z.string(),
+  link: z.nullable(z.lazy(() => SaleCreatedEventDataLink$outboundSchema))
+    .optional(),
 });
 
 /**

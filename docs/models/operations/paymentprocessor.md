@@ -7,7 +7,7 @@ The payment processor via which the sale was made.
 ```typescript
 import { PaymentProcessor } from "dub/models/operations";
 
-let value: PaymentProcessor = "shopify";
+let value: PaymentProcessor = "stripe";
 ```
 
 ## Values
