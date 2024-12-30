@@ -6,7 +6,7 @@
 import { AnalyticsOS } from "dub/models/components";
 
 let value: AnalyticsOS = {
-  os: "Chrome OS",
+  os: "Symbian",
 };
 ```
 

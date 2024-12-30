@@ -7,9 +7,9 @@ import { SaleEventCustomerLink } from "dub/models/components";
 
 let value: SaleEventCustomerLink = {
   id: "<id>",
-  domain: "variable-skyline.name",
+  domain: "unsightly-impostor.net",
   key: "<key>",
-  shortLink: "https://assured-hose.net/",
+  shortLink: "https://remarkable-fat.biz",
   programId: "<id>",
 };
 ```

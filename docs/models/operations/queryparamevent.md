@@ -7,7 +7,7 @@ The type of event to retrieve analytics for. Defaults to 'clicks'.
 ```typescript
 import { QueryParamEvent } from "dub/models/operations";
 
-let value: QueryParamEvent = "clicks";
+let value: QueryParamEvent = "leads";
 ```
 
 ## Values

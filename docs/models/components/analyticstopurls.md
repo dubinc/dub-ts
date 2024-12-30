@@ -6,7 +6,7 @@
 import { AnalyticsTopUrls } from "dub/models/components";
 
 let value: AnalyticsTopUrls = {
-  url: "https://happy-go-lucky-tusk.net/",
+  url: "https://super-cop-out.name/",
 };
 ```
 
