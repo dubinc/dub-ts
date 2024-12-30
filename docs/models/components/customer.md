@@ -9,7 +9,7 @@ let value: Customer = {
   id: "<id>",
   externalId: "<id>",
   name: "<value>",
-  createdAt: "<value>",
+  createdAt: "1723746292762",
 };
 ```
 
@@ -25,3 +25,5 @@ let value: Customer = {
 | `country`                                                                            | *string*                                                                             | :heavy_minus_sign:                                                                   | Country of the customer.                                                             |
 | `createdAt`                                                                          | *string*                                                                             | :heavy_check_mark:                                                                   | The date the customer was created.                                                   |
 | `link`                                                                               | [components.LeadEventCustomerLink](../../models/components/leadeventcustomerlink.md) | :heavy_minus_sign:                                                                   | N/A                                                                                  |
+| `partner`                                                                            | [components.Partner](../../models/components/partner.md)                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
+| `discount`                                                                           | [components.Discount](../../models/components/discount.md)                           | :heavy_minus_sign:                                                                   | N/A                                                                                  |

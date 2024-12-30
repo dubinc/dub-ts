@@ -9,7 +9,7 @@ let value: SaleCreatedEventCustomer = {
   id: "<id>",
   externalId: "<id>",
   name: "<value>",
-  createdAt: "<value>",
+  createdAt: "1704044329780",
 };
 ```
 
@@ -25,3 +25,5 @@ let value: SaleCreatedEventCustomer = {
 | `country`                                                                                  | *string*                                                                                   | :heavy_minus_sign:                                                                         | Country of the customer.                                                                   |
 | `createdAt`                                                                                | *string*                                                                                   | :heavy_check_mark:                                                                         | The date the customer was created.                                                         |
 | `link`                                                                                     | [components.SaleCreatedEventDataLink](../../models/components/salecreatedeventdatalink.md) | :heavy_minus_sign:                                                                         | N/A                                                                                        |
+| `partner`                                                                                  | [components.SaleCreatedEventPartner](../../models/components/salecreatedeventpartner.md)   | :heavy_minus_sign:                                                                         | N/A                                                                                        |
+| `discount`                                                                                 | [components.SaleCreatedEventDiscount](../../models/components/salecreatedeventdiscount.md) | :heavy_minus_sign:                                                                         | N/A                                                                                        |

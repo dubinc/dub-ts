@@ -36,7 +36,7 @@ const value: components.AnalyticsContinents[] = [
 ```typescript
 const value: components.AnalyticsCountries[] = [
   {
-    country: "IL",
+    country: "RS",
   },
 ];
 ```
@@ -46,8 +46,8 @@ const value: components.AnalyticsCountries[] = [
 ```typescript
 const value: components.AnalyticsCities[] = [
   {
-    city: "Jerrodville",
-    country: "HM",
+    city: "Olliebury",
+    country: "LT",
   },
 ];
 ```
@@ -67,7 +67,7 @@ const value: components.AnalyticsDevices[] = [
 ```typescript
 const value: components.AnalyticsBrowsers[] = [
   {
-    browser: "Firefox",
+    browser: "Safari",
   },
 ];
 ```
@@ -77,7 +77,7 @@ const value: components.AnalyticsBrowsers[] = [
 ```typescript
 const value: components.AnalyticsOS[] = [
   {
-    os: "Chrome OS",
+    os: "Windows",
   },
 ];
 ```
@@ -97,7 +97,7 @@ const value: components.AnalyticsTriggers[] = [
 ```typescript
 const value: components.AnalyticsReferers[] = [
   {
-    referer: "idealistic-bandwidth.biz",
+    referer: "far-off-velocity.net",
   },
 ];
 ```
@@ -107,7 +107,7 @@ const value: components.AnalyticsReferers[] = [
 ```typescript
 const value: components.AnalyticsRefererUrls[] = [
   {
-    refererUrl: "https://outlandish-interviewer.info/",
+    refererUrl: "https://black-and-white-settler.biz",
   },
 ];
 ```
@@ -119,11 +119,11 @@ const value: components.AnalyticsTopLinks[] = [
   {
     link: "<value>",
     id: "<id>",
-    domain: "stormy-populist.org",
+    domain: "creamy-summary.com",
     key: "<key>",
     shortLink: "<value>",
-    url: "https://silky-bar.biz/",
-    createdAt: "<value>",
+    url: "https://usable-director.net/",
+    createdAt: "1724707092247",
   },
 ];
 ```
@@ -133,7 +133,7 @@ const value: components.AnalyticsTopLinks[] = [
 ```typescript
 const value: components.AnalyticsTopUrls[] = [
   {
-    url: "https://soulful-petticoat.info",
+    url: "https://stained-crocodile.net/",
   },
 ];
 ```

@@ -455,6 +455,35 @@ export type LeadEventCustomerLink = {
   programId: string | null;
 };
 
+export type Partner = {
+  id: string;
+  name: string;
+  email: string;
+  image?: string | null | undefined;
+};
+
+export const Type = {
+  Percentage: "percentage",
+  Flat: "flat",
+} as const;
+export type Type = ClosedEnum<typeof Type>;
+
+export const Interval = {
+  Month: "month",
+  Year: "year",
+} as const;
+export type Interval = ClosedEnum<typeof Interval>;
+
+export type Discount = {
+  id: string;
+  couponId: string | null;
+  couponTestId: string | null;
+  amount: number;
+  type: Type;
+  duration: number | null;
+  interval: Interval | null;
+};
+
 export type Customer = {
   /**
    * The unique identifier of the customer in Dub.
@@ -485,6 +514,8 @@ export type Customer = {
    */
   createdAt: string;
   link?: LeadEventCustomerLink | null | undefined;
+  partner?: Partner | null | undefined;
+  discount?: Discount | null | undefined;
 };
 
 export type LeadEvent = {
@@ -2244,6 +2275,169 @@ export function leadEventCustomerLinkFromJSON(
 }
 
 /** @internal */
+export const Partner$inboundSchema: z.ZodType<Partner, z.ZodTypeDef, unknown> =
+  z.object({
+    id: z.string(),
+    name: z.string(),
+    email: z.string(),
+    image: z.nullable(z.string()).optional(),
+  });
+
+/** @internal */
+export type Partner$Outbound = {
+  id: string;
+  name: string;
+  email: string;
+  image?: string | null | undefined;
+};
+
+/** @internal */
+export const Partner$outboundSchema: z.ZodType<
+  Partner$Outbound,
+  z.ZodTypeDef,
+  Partner
+> = z.object({
+  id: z.string(),
+  name: z.string(),
+  email: z.string(),
+  image: z.nullable(z.string()).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Partner$ {
+  /** @deprecated use `Partner$inboundSchema` instead. */
+  export const inboundSchema = Partner$inboundSchema;
+  /** @deprecated use `Partner$outboundSchema` instead. */
+  export const outboundSchema = Partner$outboundSchema;
+  /** @deprecated use `Partner$Outbound` instead. */
+  export type Outbound = Partner$Outbound;
+}
+
+export function partnerToJSON(partner: Partner): string {
+  return JSON.stringify(Partner$outboundSchema.parse(partner));
+}
+
+export function partnerFromJSON(
+  jsonString: string,
+): SafeParseResult<Partner, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Partner$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Partner' from JSON`,
+  );
+}
+
+/** @internal */
+export const Type$inboundSchema: z.ZodNativeEnum<typeof Type> = z.nativeEnum(
+  Type,
+);
+
+/** @internal */
+export const Type$outboundSchema: z.ZodNativeEnum<typeof Type> =
+  Type$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Type$ {
+  /** @deprecated use `Type$inboundSchema` instead. */
+  export const inboundSchema = Type$inboundSchema;
+  /** @deprecated use `Type$outboundSchema` instead. */
+  export const outboundSchema = Type$outboundSchema;
+}
+
+/** @internal */
+export const Interval$inboundSchema: z.ZodNativeEnum<typeof Interval> = z
+  .nativeEnum(Interval);
+
+/** @internal */
+export const Interval$outboundSchema: z.ZodNativeEnum<typeof Interval> =
+  Interval$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Interval$ {
+  /** @deprecated use `Interval$inboundSchema` instead. */
+  export const inboundSchema = Interval$inboundSchema;
+  /** @deprecated use `Interval$outboundSchema` instead. */
+  export const outboundSchema = Interval$outboundSchema;
+}
+
+/** @internal */
+export const Discount$inboundSchema: z.ZodType<
+  Discount,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  couponId: z.nullable(z.string()),
+  couponTestId: z.nullable(z.string()),
+  amount: z.number(),
+  type: Type$inboundSchema,
+  duration: z.nullable(z.number()),
+  interval: z.nullable(Interval$inboundSchema),
+});
+
+/** @internal */
+export type Discount$Outbound = {
+  id: string;
+  couponId: string | null;
+  couponTestId: string | null;
+  amount: number;
+  type: string;
+  duration: number | null;
+  interval: string | null;
+};
+
+/** @internal */
+export const Discount$outboundSchema: z.ZodType<
+  Discount$Outbound,
+  z.ZodTypeDef,
+  Discount
+> = z.object({
+  id: z.string(),
+  couponId: z.nullable(z.string()),
+  couponTestId: z.nullable(z.string()),
+  amount: z.number(),
+  type: Type$outboundSchema,
+  duration: z.nullable(z.number()),
+  interval: z.nullable(Interval$outboundSchema),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Discount$ {
+  /** @deprecated use `Discount$inboundSchema` instead. */
+  export const inboundSchema = Discount$inboundSchema;
+  /** @deprecated use `Discount$outboundSchema` instead. */
+  export const outboundSchema = Discount$outboundSchema;
+  /** @deprecated use `Discount$Outbound` instead. */
+  export type Outbound = Discount$Outbound;
+}
+
+export function discountToJSON(discount: Discount): string {
+  return JSON.stringify(Discount$outboundSchema.parse(discount));
+}
+
+export function discountFromJSON(
+  jsonString: string,
+): SafeParseResult<Discount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Discount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Discount' from JSON`,
+  );
+}
+
+/** @internal */
 export const Customer$inboundSchema: z.ZodType<
   Customer,
   z.ZodTypeDef,
@@ -2258,6 +2452,8 @@ export const Customer$inboundSchema: z.ZodType<
   createdAt: z.string(),
   link: z.nullable(z.lazy(() => LeadEventCustomerLink$inboundSchema))
     .optional(),
+  partner: z.nullable(z.lazy(() => Partner$inboundSchema)).optional(),
+  discount: z.nullable(z.lazy(() => Discount$inboundSchema)).optional(),
 });
 
 /** @internal */
@@ -2270,6 +2466,8 @@ export type Customer$Outbound = {
   country?: string | null | undefined;
   createdAt: string;
   link?: LeadEventCustomerLink$Outbound | null | undefined;
+  partner?: Partner$Outbound | null | undefined;
+  discount?: Discount$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -2287,6 +2485,8 @@ export const Customer$outboundSchema: z.ZodType<
   createdAt: z.string(),
   link: z.nullable(z.lazy(() => LeadEventCustomerLink$outboundSchema))
     .optional(),
+  partner: z.nullable(z.lazy(() => Partner$outboundSchema)).optional(),
+  discount: z.nullable(z.lazy(() => Discount$outboundSchema)).optional(),
 });
 
 /**

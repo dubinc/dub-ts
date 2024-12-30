@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: 8242eb9b26c7e6790d67cbbd98b96b1b
+  docChecksum: b6c3f376c48f7905069b63adb30d9d19
   docVersion: 0.0.1
-  speakeasyVersion: 1.459.2
-  generationVersion: 2.483.1
-  releaseVersion: 0.46.8
-  configChecksum: 45ea4f7d62e5e97dcf681c0c81a36179
+  speakeasyVersion: 1.460.3
+  generationVersion: 2.484.0
+  releaseVersion: 0.46.9
+  configChecksum: b7383c8bec6cd454d6316e31e0ef8acc
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -22,7 +22,7 @@ features:
     errors: 2.84.0
     examples: 2.81.4
     flattening: 2.82.1
-    globalSecurity: 2.82.11
+    globalSecurity: 2.82.12
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.4
@@ -69,18 +69,24 @@ generatedFiles:
   - docs/models/components/countrycode.md
   - docs/models/components/customer.md
   - docs/models/components/data.md
+  - docs/models/components/discount.md
   - docs/models/components/domains.md
   - docs/models/components/domainschema.md
   - docs/models/components/event.md
   - docs/models/components/geo.md
+  - docs/models/components/interval.md
   - docs/models/components/leadcreatedevent.md
   - docs/models/components/leadcreatedeventclick.md
   - docs/models/components/leadcreatedeventcustomer.md
   - docs/models/components/leadcreatedeventdata.md
   - docs/models/components/leadcreatedeventdatalink.md
+  - docs/models/components/leadcreatedeventdiscount.md
   - docs/models/components/leadcreatedeventevent.md
   - docs/models/components/leadcreatedeventgeo.md
+  - docs/models/components/leadcreatedeventinterval.md
   - docs/models/components/leadcreatedeventlink.md
+  - docs/models/components/leadcreatedeventpartner.md
+  - docs/models/components/leadcreatedeventtype.md
   - docs/models/components/leadevent.md
   - docs/models/components/leadeventclick.md
   - docs/models/components/leadeventcustomerlink.md
@@ -100,6 +106,7 @@ generatedFiles:
   - docs/models/components/linkwebhookeventevent.md
   - docs/models/components/linkwebhookeventgeo.md
   - docs/models/components/one.md
+  - docs/models/components/partner.md
   - docs/models/components/paymentprocessor.md
   - docs/models/components/plan.md
   - docs/models/components/registereddomain.md
@@ -110,22 +117,31 @@ generatedFiles:
   - docs/models/components/salecreatedeventcustomer.md
   - docs/models/components/salecreatedeventdata.md
   - docs/models/components/salecreatedeventdatalink.md
+  - docs/models/components/salecreatedeventdiscount.md
   - docs/models/components/salecreatedeventevent.md
   - docs/models/components/salecreatedeventgeo.md
+  - docs/models/components/salecreatedeventinterval.md
   - docs/models/components/salecreatedeventlink.md
+  - docs/models/components/salecreatedeventpartner.md
   - docs/models/components/salecreatedeventsale.md
+  - docs/models/components/salecreatedeventtype.md
   - docs/models/components/saleevent.md
   - docs/models/components/saleeventclick.md
   - docs/models/components/saleeventcustomer.md
   - docs/models/components/saleeventcustomerlink.md
+  - docs/models/components/saleeventdiscount.md
   - docs/models/components/saleeventevent.md
   - docs/models/components/saleeventgeo.md
+  - docs/models/components/saleeventinterval.md
   - docs/models/components/saleeventlink.md
+  - docs/models/components/saleeventpartner.md
+  - docs/models/components/saleeventtype.md
   - docs/models/components/security.md
   - docs/models/components/tagschema.md
   - docs/models/components/three.md
   - docs/models/components/trigger.md
   - docs/models/components/two.md
+  - docs/models/components/type.md
   - docs/models/components/users.md
   - docs/models/components/webhookevent.md
   - docs/models/components/workspaceschema.md
@@ -165,9 +181,13 @@ generatedFiles:
   - docs/models/operations/bulkupdatelinkstagnames.md
   - docs/models/operations/click.md
   - docs/models/operations/color.md
+  - docs/models/operations/createcustomerdiscount.md
+  - docs/models/operations/createcustomerinterval.md
   - docs/models/operations/createcustomerlink.md
+  - docs/models/operations/createcustomerpartner.md
   - docs/models/operations/createcustomerrequestbody.md
   - docs/models/operations/createcustomerresponsebody.md
+  - docs/models/operations/createcustomertype.md
   - docs/models/operations/createdomainrequestbody.md
   - docs/models/operations/createembedtokenrequestbody.md
   - docs/models/operations/createembedtokenresponsebody.md
@@ -183,10 +203,16 @@ generatedFiles:
   - docs/models/operations/deletelinkresponsebody.md
   - docs/models/operations/deletetagrequest.md
   - docs/models/operations/deletetagresponsebody.md
+  - docs/models/operations/discount.md
   - docs/models/operations/event.md
+  - docs/models/operations/getcustomerdiscount.md
+  - docs/models/operations/getcustomerinterval.md
   - docs/models/operations/getcustomerlink.md
+  - docs/models/operations/getcustomerpartner.md
   - docs/models/operations/getcustomerrequest.md
   - docs/models/operations/getcustomerresponsebody.md
+  - docs/models/operations/getcustomersinterval.md
+  - docs/models/operations/getcustomertype.md
   - docs/models/operations/getlinkinforequest.md
   - docs/models/operations/getlinkscountqueryparamtagids.md
   - docs/models/operations/getlinkscountqueryparamtagnames.md
@@ -208,6 +234,7 @@ generatedFiles:
   - docs/models/operations/listeventsresponsebody.md
   - docs/models/operations/one.md
   - docs/models/operations/order.md
+  - docs/models/operations/partner.md
   - docs/models/operations/paymentprocessor.md
   - docs/models/operations/queryparamevent.md
   - docs/models/operations/queryparamgroupby.md
@@ -233,10 +260,15 @@ generatedFiles:
   - docs/models/operations/tracksaleresponsebody.md
   - docs/models/operations/trigger.md
   - docs/models/operations/two.md
+  - docs/models/operations/type.md
+  - docs/models/operations/updatecustomerdiscount.md
+  - docs/models/operations/updatecustomerinterval.md
   - docs/models/operations/updatecustomerlink.md
+  - docs/models/operations/updatecustomerpartner.md
   - docs/models/operations/updatecustomerrequest.md
   - docs/models/operations/updatecustomerrequestbody.md
   - docs/models/operations/updatecustomerresponsebody.md
+  - docs/models/operations/updatecustomertype.md
   - docs/models/operations/updatedomainrequest.md
   - docs/models/operations/updatedomainrequestbody.md
   - docs/models/operations/updatelinkrequest.md

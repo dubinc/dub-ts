@@ -6,7 +6,7 @@
 import { AnalyticsReferers } from "dub/models/components";
 
 let value: AnalyticsReferers = {
-  referer: "insistent-gerbil.info",
+  referer: "waterlogged-sediment.name",
 };
 ```
 

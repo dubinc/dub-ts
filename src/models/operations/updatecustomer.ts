@@ -5,6 +5,7 @@
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
+import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -58,6 +59,35 @@ export type UpdateCustomerLink = {
   programId: string | null;
 };
 
+export type UpdateCustomerPartner = {
+  id: string;
+  name: string;
+  email: string;
+  image?: string | null | undefined;
+};
+
+export const UpdateCustomerType = {
+  Percentage: "percentage",
+  Flat: "flat",
+} as const;
+export type UpdateCustomerType = ClosedEnum<typeof UpdateCustomerType>;
+
+export const UpdateCustomerInterval = {
+  Month: "month",
+  Year: "year",
+} as const;
+export type UpdateCustomerInterval = ClosedEnum<typeof UpdateCustomerInterval>;
+
+export type UpdateCustomerDiscount = {
+  id: string;
+  couponId: string | null;
+  couponTestId: string | null;
+  amount: number;
+  type: UpdateCustomerType;
+  duration: number | null;
+  interval: UpdateCustomerInterval | null;
+};
+
 /**
  * The customer was updated.
  */
@@ -91,6 +121,8 @@ export type UpdateCustomerResponseBody = {
    */
   createdAt: string;
   link?: UpdateCustomerLink | null | undefined;
+  partner?: UpdateCustomerPartner | null | undefined;
+  discount?: UpdateCustomerDiscount | null | undefined;
 };
 
 /** @internal */
@@ -289,6 +321,183 @@ export function updateCustomerLinkFromJSON(
 }
 
 /** @internal */
+export const UpdateCustomerPartner$inboundSchema: z.ZodType<
+  UpdateCustomerPartner,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  name: z.string(),
+  email: z.string(),
+  image: z.nullable(z.string()).optional(),
+});
+
+/** @internal */
+export type UpdateCustomerPartner$Outbound = {
+  id: string;
+  name: string;
+  email: string;
+  image?: string | null | undefined;
+};
+
+/** @internal */
+export const UpdateCustomerPartner$outboundSchema: z.ZodType<
+  UpdateCustomerPartner$Outbound,
+  z.ZodTypeDef,
+  UpdateCustomerPartner
+> = z.object({
+  id: z.string(),
+  name: z.string(),
+  email: z.string(),
+  image: z.nullable(z.string()).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateCustomerPartner$ {
+  /** @deprecated use `UpdateCustomerPartner$inboundSchema` instead. */
+  export const inboundSchema = UpdateCustomerPartner$inboundSchema;
+  /** @deprecated use `UpdateCustomerPartner$outboundSchema` instead. */
+  export const outboundSchema = UpdateCustomerPartner$outboundSchema;
+  /** @deprecated use `UpdateCustomerPartner$Outbound` instead. */
+  export type Outbound = UpdateCustomerPartner$Outbound;
+}
+
+export function updateCustomerPartnerToJSON(
+  updateCustomerPartner: UpdateCustomerPartner,
+): string {
+  return JSON.stringify(
+    UpdateCustomerPartner$outboundSchema.parse(updateCustomerPartner),
+  );
+}
+
+export function updateCustomerPartnerFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateCustomerPartner, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateCustomerPartner$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateCustomerPartner' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateCustomerType$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateCustomerType
+> = z.nativeEnum(UpdateCustomerType);
+
+/** @internal */
+export const UpdateCustomerType$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateCustomerType
+> = UpdateCustomerType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateCustomerType$ {
+  /** @deprecated use `UpdateCustomerType$inboundSchema` instead. */
+  export const inboundSchema = UpdateCustomerType$inboundSchema;
+  /** @deprecated use `UpdateCustomerType$outboundSchema` instead. */
+  export const outboundSchema = UpdateCustomerType$outboundSchema;
+}
+
+/** @internal */
+export const UpdateCustomerInterval$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateCustomerInterval
+> = z.nativeEnum(UpdateCustomerInterval);
+
+/** @internal */
+export const UpdateCustomerInterval$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateCustomerInterval
+> = UpdateCustomerInterval$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateCustomerInterval$ {
+  /** @deprecated use `UpdateCustomerInterval$inboundSchema` instead. */
+  export const inboundSchema = UpdateCustomerInterval$inboundSchema;
+  /** @deprecated use `UpdateCustomerInterval$outboundSchema` instead. */
+  export const outboundSchema = UpdateCustomerInterval$outboundSchema;
+}
+
+/** @internal */
+export const UpdateCustomerDiscount$inboundSchema: z.ZodType<
+  UpdateCustomerDiscount,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  couponId: z.nullable(z.string()),
+  couponTestId: z.nullable(z.string()),
+  amount: z.number(),
+  type: UpdateCustomerType$inboundSchema,
+  duration: z.nullable(z.number()),
+  interval: z.nullable(UpdateCustomerInterval$inboundSchema),
+});
+
+/** @internal */
+export type UpdateCustomerDiscount$Outbound = {
+  id: string;
+  couponId: string | null;
+  couponTestId: string | null;
+  amount: number;
+  type: string;
+  duration: number | null;
+  interval: string | null;
+};
+
+/** @internal */
+export const UpdateCustomerDiscount$outboundSchema: z.ZodType<
+  UpdateCustomerDiscount$Outbound,
+  z.ZodTypeDef,
+  UpdateCustomerDiscount
+> = z.object({
+  id: z.string(),
+  couponId: z.nullable(z.string()),
+  couponTestId: z.nullable(z.string()),
+  amount: z.number(),
+  type: UpdateCustomerType$outboundSchema,
+  duration: z.nullable(z.number()),
+  interval: z.nullable(UpdateCustomerInterval$outboundSchema),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateCustomerDiscount$ {
+  /** @deprecated use `UpdateCustomerDiscount$inboundSchema` instead. */
+  export const inboundSchema = UpdateCustomerDiscount$inboundSchema;
+  /** @deprecated use `UpdateCustomerDiscount$outboundSchema` instead. */
+  export const outboundSchema = UpdateCustomerDiscount$outboundSchema;
+  /** @deprecated use `UpdateCustomerDiscount$Outbound` instead. */
+  export type Outbound = UpdateCustomerDiscount$Outbound;
+}
+
+export function updateCustomerDiscountToJSON(
+  updateCustomerDiscount: UpdateCustomerDiscount,
+): string {
+  return JSON.stringify(
+    UpdateCustomerDiscount$outboundSchema.parse(updateCustomerDiscount),
+  );
+}
+
+export function updateCustomerDiscountFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateCustomerDiscount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateCustomerDiscount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateCustomerDiscount' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateCustomerResponseBody$inboundSchema: z.ZodType<
   UpdateCustomerResponseBody,
   z.ZodTypeDef,
@@ -302,6 +511,10 @@ export const UpdateCustomerResponseBody$inboundSchema: z.ZodType<
   country: z.nullable(z.string()).optional(),
   createdAt: z.string(),
   link: z.nullable(z.lazy(() => UpdateCustomerLink$inboundSchema)).optional(),
+  partner: z.nullable(z.lazy(() => UpdateCustomerPartner$inboundSchema))
+    .optional(),
+  discount: z.nullable(z.lazy(() => UpdateCustomerDiscount$inboundSchema))
+    .optional(),
 });
 
 /** @internal */
@@ -314,6 +527,8 @@ export type UpdateCustomerResponseBody$Outbound = {
   country?: string | null | undefined;
   createdAt: string;
   link?: UpdateCustomerLink$Outbound | null | undefined;
+  partner?: UpdateCustomerPartner$Outbound | null | undefined;
+  discount?: UpdateCustomerDiscount$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -330,6 +545,10 @@ export const UpdateCustomerResponseBody$outboundSchema: z.ZodType<
   country: z.nullable(z.string()).optional(),
   createdAt: z.string(),
   link: z.nullable(z.lazy(() => UpdateCustomerLink$outboundSchema)).optional(),
+  partner: z.nullable(z.lazy(() => UpdateCustomerPartner$outboundSchema))
+    .optional(),
+  discount: z.nullable(z.lazy(() => UpdateCustomerDiscount$outboundSchema))
+    .optional(),
 });
 
 /**
