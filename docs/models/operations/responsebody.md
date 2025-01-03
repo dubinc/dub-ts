@@ -9,7 +9,7 @@ let value: ResponseBody = {
   id: "<id>",
   externalId: "<id>",
   name: "<value>",
-  createdAt: "1714487690999",
+  createdAt: "1714894108424",
 };
 ```
 

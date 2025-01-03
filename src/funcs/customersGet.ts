@@ -3,7 +3,7 @@
  */
 
 import { DubCore } from "../core.js";
-import { encodeSimple } from "../lib/encodings.js";
+import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
@@ -73,6 +73,10 @@ export async function customersGet(
 
   const path = pathToFunc("/customers/{id}")(pathParams);
 
+  const query = encodeFormQuery({
+    "includeExpandedFields": payload.includeExpandedFields,
+  });
+
   const headers = new Headers({
     Accept: "application/json",
   });
@@ -100,6 +104,7 @@ export async function customersGet(
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
+    query: query,
     body: body,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);

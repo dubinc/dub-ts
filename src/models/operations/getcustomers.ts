@@ -8,6 +8,21 @@ import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+export type GetCustomersRequest = {
+  /**
+   * A case-sensitive filter on the list based on the customer's `email` field. The value must be a string.
+   */
+  email?: string | undefined;
+  /**
+   * A case-sensitive filter on the list based on the customer's `externalId` field. The value must be a string.
+   */
+  externalId?: string | undefined;
+  /**
+   * Whether to include expanded fields on the customer (`link`, `partner`, `discount`).
+   */
+  includeExpandedFields?: boolean | undefined;
+};
+
 export type Link = {
   /**
    * The unique ID of the short link.
@@ -93,6 +108,66 @@ export type ResponseBody = {
   partner?: Partner | null | undefined;
   discount?: Discount | null | undefined;
 };
+
+/** @internal */
+export const GetCustomersRequest$inboundSchema: z.ZodType<
+  GetCustomersRequest,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  email: z.string().optional(),
+  externalId: z.string().optional(),
+  includeExpandedFields: z.boolean().optional(),
+});
+
+/** @internal */
+export type GetCustomersRequest$Outbound = {
+  email?: string | undefined;
+  externalId?: string | undefined;
+  includeExpandedFields?: boolean | undefined;
+};
+
+/** @internal */
+export const GetCustomersRequest$outboundSchema: z.ZodType<
+  GetCustomersRequest$Outbound,
+  z.ZodTypeDef,
+  GetCustomersRequest
+> = z.object({
+  email: z.string().optional(),
+  externalId: z.string().optional(),
+  includeExpandedFields: z.boolean().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetCustomersRequest$ {
+  /** @deprecated use `GetCustomersRequest$inboundSchema` instead. */
+  export const inboundSchema = GetCustomersRequest$inboundSchema;
+  /** @deprecated use `GetCustomersRequest$outboundSchema` instead. */
+  export const outboundSchema = GetCustomersRequest$outboundSchema;
+  /** @deprecated use `GetCustomersRequest$Outbound` instead. */
+  export type Outbound = GetCustomersRequest$Outbound;
+}
+
+export function getCustomersRequestToJSON(
+  getCustomersRequest: GetCustomersRequest,
+): string {
+  return JSON.stringify(
+    GetCustomersRequest$outboundSchema.parse(getCustomersRequest),
+  );
+}
+
+export function getCustomersRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetCustomersRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetCustomersRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetCustomersRequest' from JSON`,
+  );
+}
 
 /** @internal */
 export const Link$inboundSchema: z.ZodType<Link, z.ZodTypeDef, unknown> = z
