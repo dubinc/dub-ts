@@ -13,6 +13,10 @@ export type GetCustomerRequest = {
    * The unique identifier of the customer in Dub.
    */
   id: string;
+  /**
+   * Whether to include expanded fields on the customer (`link`, `partner`, `discount`).
+   */
+  includeExpandedFields?: boolean | undefined;
 };
 
 export type GetCustomerLink = {
@@ -111,11 +115,13 @@ export const GetCustomerRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: z.string(),
+  includeExpandedFields: z.boolean().optional(),
 });
 
 /** @internal */
 export type GetCustomerRequest$Outbound = {
   id: string;
+  includeExpandedFields?: boolean | undefined;
 };
 
 /** @internal */
@@ -125,6 +131,7 @@ export const GetCustomerRequest$outboundSchema: z.ZodType<
   GetCustomerRequest
 > = z.object({
   id: z.string(),
+  includeExpandedFields: z.boolean().optional(),
 });
 
 /**

@@ -19,10 +19,12 @@ export class Customers extends ClientSDK {
    * Retrieve a list of customers for the authenticated workspace.
    */
   async list(
+    request?: operations.GetCustomersRequest | undefined,
     options?: RequestOptions,
   ): Promise<Array<operations.ResponseBody>> {
     return unwrapAsync(customersList(
       this,
+      request,
       options,
     ));
   }
@@ -68,14 +70,12 @@ export class Customers extends ClientSDK {
    * Update a customer for the authenticated workspace.
    */
   async update(
-    id: string,
-    requestBody?: operations.UpdateCustomerRequestBody | undefined,
+    request: operations.UpdateCustomerRequest,
     options?: RequestOptions,
   ): Promise<operations.UpdateCustomerResponseBody> {
     return unwrapAsync(customersUpdate(
       this,
-      id,
-      requestBody,
+      request,
       options,
     ));
   }

@@ -33,6 +33,10 @@ export type UpdateCustomerRequest = {
    * The unique identifier of the customer in Dub.
    */
   id: string;
+  /**
+   * Whether to include expanded fields on the customer (`link`, `partner`, `discount`).
+   */
+  includeExpandedFields?: boolean | undefined;
   requestBody?: UpdateCustomerRequestBody | undefined;
 };
 
@@ -195,6 +199,7 @@ export const UpdateCustomerRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: z.string(),
+  includeExpandedFields: z.boolean().optional(),
   RequestBody: z.lazy(() => UpdateCustomerRequestBody$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -205,6 +210,7 @@ export const UpdateCustomerRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type UpdateCustomerRequest$Outbound = {
   id: string;
+  includeExpandedFields?: boolean | undefined;
   RequestBody?: UpdateCustomerRequestBody$Outbound | undefined;
 };
 
@@ -215,6 +221,7 @@ export const UpdateCustomerRequest$outboundSchema: z.ZodType<
   UpdateCustomerRequest
 > = z.object({
   id: z.string(),
+  includeExpandedFields: z.boolean().optional(),
   requestBody: z.lazy(() => UpdateCustomerRequestBody$outboundSchema)
     .optional(),
 }).transform((v) => {

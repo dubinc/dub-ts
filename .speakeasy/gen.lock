@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: b6c3f376c48f7905069b63adb30d9d19
+  docChecksum: e904bd8a77ea57b3ba18586e860e5b93
   docVersion: 0.0.1
-  speakeasyVersion: 1.460.3
-  generationVersion: 2.484.0
-  releaseVersion: 0.46.9
-  configChecksum: b7383c8bec6cd454d6316e31e0ef8acc
+  speakeasyVersion: 1.461.0
+  generationVersion: 2.486.1
+  releaseVersion: 0.46.10
+  configChecksum: 26437af4b3c0ab585d4b14e4e02b90a4
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -212,6 +212,7 @@ generatedFiles:
   - docs/models/operations/getcustomerrequest.md
   - docs/models/operations/getcustomerresponsebody.md
   - docs/models/operations/getcustomersinterval.md
+  - docs/models/operations/getcustomersrequest.md
   - docs/models/operations/getcustomertype.md
   - docs/models/operations/getlinkinforequest.md
   - docs/models/operations/getlinkscountqueryparamtagids.md
@@ -1163,6 +1164,7 @@ examples:
       parameters:
         path:
           id: "<id>"
+        query: {}
       responses:
         "200":
           application/json: {"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "<value>"}
@@ -1189,6 +1191,7 @@ examples:
       parameters:
         path:
           id: "<id>"
+        query: {}
       responses:
         "200":
           application/json: {"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "<value>"}
