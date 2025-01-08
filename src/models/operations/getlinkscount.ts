@@ -64,6 +64,10 @@ export type GetLinksCountRequest = {
    */
   userId?: string | undefined;
   /**
+   * The ID of the tenant that created the link inside your system. If set, will only return links for the specified tenant.
+   */
+  tenantId?: string | undefined;
+  /**
    * Whether to include archived links in the response. Defaults to `false` if not provided.
    */
   showArchived?: boolean | undefined;
@@ -286,6 +290,7 @@ export const GetLinksCountRequest$inboundSchema: z.ZodType<
   tagNames: z.union([z.string(), z.array(z.string())]).optional(),
   search: z.string().optional(),
   userId: z.string().optional(),
+  tenantId: z.string().optional(),
   showArchived: z.boolean().default(false),
   withTags: z.boolean().default(false),
   groupBy: z.union([One$inboundSchema, Two$inboundSchema, Three$inboundSchema])
@@ -300,6 +305,7 @@ export type GetLinksCountRequest$Outbound = {
   tagNames?: string | Array<string> | undefined;
   search?: string | undefined;
   userId?: string | undefined;
+  tenantId?: string | undefined;
   showArchived: boolean;
   withTags: boolean;
   groupBy?: string | string | string | undefined;
@@ -317,6 +323,7 @@ export const GetLinksCountRequest$outboundSchema: z.ZodType<
   tagNames: z.union([z.string(), z.array(z.string())]).optional(),
   search: z.string().optional(),
   userId: z.string().optional(),
+  tenantId: z.string().optional(),
   showArchived: z.boolean().default(false),
   withTags: z.boolean().default(false),
   groupBy: z.union([

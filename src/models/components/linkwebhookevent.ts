@@ -304,9 +304,13 @@ export type Data = {
   url: string;
   trackConversion?: boolean | undefined;
   /**
-   * This is the ID of the link in your database that is unique across your workspace. If set, it can be used to identify the link in future API requests. Must be prefixed with 'ext_' when passed as a query parameter.
+   * The ID of the link in your database. If set, it can be used to identify the link in future API requests (must be prefixed with 'ext_' when passed as a query parameter). This key is unique across your workspace.
    */
   externalId: string | null;
+  /**
+   * The ID of the tenant that created the link inside your system. If set, it can be used to fetch all links for a tenant.
+   */
+  tenantId: string | null;
   archived?: boolean | undefined;
   expiresAt: string;
   expiredUrl: string | null;
@@ -1858,6 +1862,7 @@ export const Data$inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z
     url: z.string(),
     trackConversion: z.boolean().optional(),
     externalId: z.nullable(z.string()),
+    tenantId: z.nullable(z.string()),
     archived: z.boolean().optional(),
     expiresAt: z.string(),
     expiredUrl: z.nullable(z.string()),
@@ -1913,6 +1918,7 @@ export type Data$Outbound = {
   url: string;
   trackConversion?: boolean | undefined;
   externalId: string | null;
+  tenantId: string | null;
   archived?: boolean | undefined;
   expiresAt: string;
   expiredUrl: string | null;
@@ -1961,6 +1967,7 @@ export const Data$outboundSchema: z.ZodType<Data$Outbound, z.ZodTypeDef, Data> =
     url: z.string(),
     trackConversion: z.boolean().optional(),
     externalId: z.nullable(z.string()),
+    tenantId: z.nullable(z.string()),
     archived: z.boolean().optional(),
     expiresAt: z.string(),
     expiredUrl: z.nullable(z.string()),

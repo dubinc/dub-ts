@@ -25,6 +25,10 @@ export type Data = {
    */
   url?: string | undefined;
   /**
+   * The ID of the tenant that created the link inside your system. If set, it can be used to fetch all links for a tenant.
+   */
+  tenantId?: string | null | undefined;
+  /**
    * Whether to track conversions for the short link.
    */
   trackConversion?: boolean | undefined;
@@ -254,6 +258,7 @@ export function bulkUpdateLinksTagNamesFromJSON(
 export const Data$inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z
   .object({
     url: z.string().optional(),
+    tenantId: z.nullable(z.string()).optional(),
     trackConversion: z.boolean().default(false),
     archived: z.boolean().default(false),
     publicStats: z.boolean().default(false),
@@ -295,6 +300,7 @@ export const Data$inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z
 /** @internal */
 export type Data$Outbound = {
   url?: string | undefined;
+  tenantId?: string | null | undefined;
   trackConversion: boolean;
   archived: boolean;
   publicStats: boolean;
@@ -329,6 +335,7 @@ export type Data$Outbound = {
 export const Data$outboundSchema: z.ZodType<Data$Outbound, z.ZodTypeDef, Data> =
   z.object({
     url: z.string().optional(),
+    tenantId: z.nullable(z.string()).optional(),
     trackConversion: z.boolean().default(false),
     archived: z.boolean().default(false),
     publicStats: z.boolean().default(false),

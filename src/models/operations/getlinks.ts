@@ -59,6 +59,10 @@ export type GetLinksRequest = {
    */
   userId?: string | undefined;
   /**
+   * The ID of the tenant that created the link inside your system. If set, will only return links for the specified tenant.
+   */
+  tenantId?: string | undefined;
+  /**
    * Whether to include archived links in the response. Defaults to `false` if not provided.
    */
   showArchived?: boolean | undefined;
@@ -212,6 +216,7 @@ export const GetLinksRequest$inboundSchema: z.ZodType<
   tagNames: z.union([z.string(), z.array(z.string())]).optional(),
   search: z.string().optional(),
   userId: z.string().optional(),
+  tenantId: z.string().optional(),
   showArchived: z.boolean().default(false),
   withTags: z.boolean().default(false),
   sort: Sort$inboundSchema.default("createdAt"),
@@ -227,6 +232,7 @@ export type GetLinksRequest$Outbound = {
   tagNames?: string | Array<string> | undefined;
   search?: string | undefined;
   userId?: string | undefined;
+  tenantId?: string | undefined;
   showArchived: boolean;
   withTags: boolean;
   sort: string;
@@ -246,6 +252,7 @@ export const GetLinksRequest$outboundSchema: z.ZodType<
   tagNames: z.union([z.string(), z.array(z.string())]).optional(),
   search: z.string().optional(),
   userId: z.string().optional(),
+  tenantId: z.string().optional(),
   showArchived: z.boolean().default(false),
   withTags: z.boolean().default(false),
   sort: Sort$outboundSchema.default("createdAt"),

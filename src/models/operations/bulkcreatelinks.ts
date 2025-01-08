@@ -33,9 +33,13 @@ export type RequestBody = {
    */
   key?: string | undefined;
   /**
-   * This is the ID of the link in your database. If set, it can be used to identify the link in the future. Must be prefixed with `ext_` when passed as a query parameter.
+   * The ID of the link in your database. If set, it can be used to identify the link in future API requests (must be prefixed with 'ext_' when passed as a query parameter). This key is unique across your workspace.
    */
   externalId?: string | null | undefined;
+  /**
+   * The ID of the tenant that created the link inside your system. If set, it can be used to fetch all links for a tenant.
+   */
+  tenantId?: string | null | undefined;
   /**
    * The prefix of the short link slug for randomly-generated keys (e.g. if prefix is `/c/`, generated keys will be in the `/c/:key` format). Will be ignored if `key` is provided.
    */
@@ -264,6 +268,7 @@ export const RequestBody$inboundSchema: z.ZodType<
   domain: z.string().optional(),
   key: z.string().optional(),
   externalId: z.nullable(z.string()).optional(),
+  tenantId: z.nullable(z.string()).optional(),
   prefix: z.string().optional(),
   trackConversion: z.boolean().default(false),
   archived: z.boolean().default(false),
@@ -309,6 +314,7 @@ export type RequestBody$Outbound = {
   domain?: string | undefined;
   key?: string | undefined;
   externalId?: string | null | undefined;
+  tenantId?: string | null | undefined;
   prefix?: string | undefined;
   trackConversion: boolean;
   archived: boolean;
@@ -350,6 +356,7 @@ export const RequestBody$outboundSchema: z.ZodType<
   domain: z.string().optional(),
   key: z.string().optional(),
   externalId: z.nullable(z.string()).optional(),
+  tenantId: z.nullable(z.string()).optional(),
   prefix: z.string().optional(),
   trackConversion: z.boolean().default(false),
   archived: z.boolean().default(false),
