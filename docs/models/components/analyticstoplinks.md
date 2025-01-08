@@ -12,7 +12,7 @@ let value: AnalyticsTopLinks = {
   key: "<key>",
   shortLink: "<value>",
   url: "https://livid-king.name",
-  createdAt: "1716012578884",
+  createdAt: "1716387842609",
 };
 ```
 

@@ -76,6 +76,7 @@ export async function linksCount(
     "tagId": payload?.tagId,
     "tagIds": payload?.tagIds,
     "tagNames": payload?.tagNames,
+    "tenantId": payload?.tenantId,
     "userId": payload?.userId,
     "withTags": payload?.withTags,
   });
