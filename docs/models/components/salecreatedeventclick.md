@@ -7,17 +7,17 @@ import { SaleCreatedEventClick } from "dub/models/components";
 
 let value: SaleCreatedEventClick = {
   id: "<id>",
-  url: "https://taut-icebreaker.info/",
-  country: "Monaco",
-  city: "Ernestineboro",
+  url: "https://marvelous-hyena.com/",
+  country: "Niue",
+  city: "North Joana",
   region: "<value>",
-  continent: "Asia",
-  device: "Mobile",
-  browser: "Safari",
-  os: "MacOS",
-  referer: "shocked-pepper.name",
-  refererUrl: "https://firsthand-reporter.info/",
-  ip: "134.217.224.230",
+  continent: "South America",
+  device: "Desktop",
+  browser: "Chrome",
+  os: "Windows Phone",
+  referer: "near-advertisement.com",
+  refererUrl: "https://kooky-cassava.com",
+  ip: "70d0:233a:2393:aad0:c3e7:b0a4:ee65:3b96",
 };
 ```
 

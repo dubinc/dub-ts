@@ -162,6 +162,8 @@ export type RequestBody = {
   webhookIds?: Array<string> | null | undefined;
 };
 
+export type ResponseBody = components.LinkErrorSchema | components.LinkSchema;
+
 /** @internal */
 export const BulkCreateLinksTagIds$inboundSchema: z.ZodType<
   BulkCreateLinksTagIds,
@@ -420,5 +422,57 @@ export function requestBodyFromJSON(
     jsonString,
     (x) => RequestBody$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'RequestBody' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBody$inboundSchema: z.ZodType<
+  ResponseBody,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  components.LinkErrorSchema$inboundSchema,
+  components.LinkSchema$inboundSchema,
+]);
+
+/** @internal */
+export type ResponseBody$Outbound =
+  | components.LinkErrorSchema$Outbound
+  | components.LinkSchema$Outbound;
+
+/** @internal */
+export const ResponseBody$outboundSchema: z.ZodType<
+  ResponseBody$Outbound,
+  z.ZodTypeDef,
+  ResponseBody
+> = z.union([
+  components.LinkErrorSchema$outboundSchema,
+  components.LinkSchema$outboundSchema,
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ResponseBody$ {
+  /** @deprecated use `ResponseBody$inboundSchema` instead. */
+  export const inboundSchema = ResponseBody$inboundSchema;
+  /** @deprecated use `ResponseBody$outboundSchema` instead. */
+  export const outboundSchema = ResponseBody$outboundSchema;
+  /** @deprecated use `ResponseBody$Outbound` instead. */
+  export type Outbound = ResponseBody$Outbound;
+}
+
+export function responseBodyToJSON(responseBody: ResponseBody): string {
+  return JSON.stringify(ResponseBody$outboundSchema.parse(responseBody));
+}
+
+export function responseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBody' from JSON`,
   );
 }

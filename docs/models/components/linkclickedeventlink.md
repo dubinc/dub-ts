@@ -7,18 +7,19 @@ import { LinkClickedEventLink } from "dub/models/components";
 
 let value: LinkClickedEventLink = {
   id: "<id>",
-  domain: "live-tuber.org",
+  domain: "warlike-saloon.info",
   key: "<key>",
-  url: "https://sleepy-account.org/",
+  url: "https://similar-hawk.info",
   externalId: "<id>",
   tenantId: "<id>",
-  expiresAt: "1749449637840",
-  expiredUrl: "https://hidden-embossing.biz",
-  password: "f3sY2zKOrjOfgCE",
+  expiresAt: "1740792075533",
+  expiredUrl: "https://taut-eyeliner.net",
+  password: "ZkHhGUL9uEEIrl3",
   title: "<value>",
-  description: "however gadzooks pliers drat down glorious",
-  image: "https://picsum.photos/seed/mygCZPm5Xo/2765/1983",
-  video: "https://loremflickr.com/1174/1266?lock=8617650485784400",
+  description:
+    "meh suspiciously youthfully frenetically eek since grade waft whoever",
+  image: "https://picsum.photos/seed/zziCfbpH/1274/3368",
+  video: "https://picsum.videos/seed/95bBP/2486/3859",
   ios: "<value>",
   android: "<id>",
   geo: {},
@@ -33,9 +34,10 @@ let value: LinkClickedEventLink = {
   webhookIds: [
     "<value>",
   ],
-  comments: "cautiously depend hopeful ew stunning perspire pfft behind hmph",
-  shortLink: "https://similar-airline.com",
-  qrCode: "https://liquid-thorn.info/",
+  comments:
+    "anti fast advocate weird qualified woot concerning huzzah grouper ugh clavicle",
+  shortLink: "https://warm-tributary.com/",
+  qrCode: "https://aching-wheel.info",
   utmSource: "<value>",
   utmMedium: "<value>",
   utmCampaign: "<value>",
@@ -44,8 +46,8 @@ let value: LinkClickedEventLink = {
   userId: "<id>",
   workspaceId: "<id>",
   lastClicked: "<value>",
-  createdAt: "1713863083789",
-  updatedAt: "1736263106632",
+  createdAt: "1735691928680",
+  updatedAt: "1736472415057",
   projectId: "<id>",
   programId: "<id>",
 };
@@ -92,9 +94,9 @@ let value: LinkClickedEventLink = {
 | `workspaceId`                                                                                                                                                                                                                | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The workspace ID of the short link.                                                                                                                                                                                          |
 | `clicks`                                                                                                                                                                                                                     | *number*                                                                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                           | The number of clicks on the short link.                                                                                                                                                                                      |
 | `lastClicked`                                                                                                                                                                                                                | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | N/A                                                                                                                                                                                                                          |
-| `leads`                                                                                                                                                                                                                      | *number*                                                                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                           | [BETA]: The number of leads the short links has generated.                                                                                                                                                                   |
-| `sales`                                                                                                                                                                                                                      | *number*                                                                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                           | [BETA]: The number of sales the short links has generated.                                                                                                                                                                   |
-| `saleAmount`                                                                                                                                                                                                                 | *number*                                                                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                           | [BETA]: The total dollar amount of sales the short links has generated (in cents).                                                                                                                                           |
+| `leads`                                                                                                                                                                                                                      | *number*                                                                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                           | The number of leads the short links has generated.                                                                                                                                                                           |
+| `sales`                                                                                                                                                                                                                      | *number*                                                                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                           | The number of sales the short links has generated.                                                                                                                                                                           |
+| `saleAmount`                                                                                                                                                                                                                 | *number*                                                                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                           | The total dollar amount of sales the short links has generated (in cents).                                                                                                                                                   |
 | `createdAt`                                                                                                                                                                                                                  | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | N/A                                                                                                                                                                                                                          |
 | `updatedAt`                                                                                                                                                                                                                  | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | N/A                                                                                                                                                                                                                          |
 | ~~`projectId`~~                                                                                                                                                                                                              | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible.<br/><br/>The project ID of the short link. This field is deprecated – use `workspaceId` instead.     |

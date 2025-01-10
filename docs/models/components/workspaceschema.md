@@ -12,28 +12,28 @@ let value: WorkspaceSchema = {
   inviteCode: "<value>",
   plan: "business extra",
   stripeId: "<id>",
-  billingCycleStart: 9703.75,
+  billingCycleStart: 3842.73,
   paymentFailedAt: "<value>",
   stripeConnectId: "<id>",
   payoutMethodId: "<id>",
-  usage: 1752.76,
-  usageLimit: 2019.66,
-  linksUsage: 6937.23,
-  linksLimit: 7791.54,
-  salesUsage: 4905.49,
-  salesLimit: 6096.86,
-  domainsLimit: 2126.82,
-  tagsLimit: 4766.14,
-  usersLimit: 1120.72,
-  aiUsage: 3214.22,
-  aiLimit: 2847.80,
+  usage: 7034.07,
+  usageLimit: 3530.75,
+  linksUsage: 1544.25,
+  linksLimit: 3126.90,
+  salesUsage: 8843.24,
+  salesLimit: 9585.32,
+  domainsLimit: 2075.13,
+  tagsLimit: 7884.68,
+  usersLimit: 2733.49,
+  aiUsage: 8871.32,
+  aiLimit: 1655.46,
   conversionEnabled: false,
   dotLinkClaimed: false,
   partnersEnabled: false,
-  createdAt: "1718785864201",
+  createdAt: "1725992753135",
   users: [
     {
-      role: "member",
+      role: "owner",
     },
   ],
   domains: [
@@ -57,7 +57,7 @@ let value: WorkspaceSchema = {
 | `stripeId`                                                                    | *string*                                                                      | :heavy_check_mark:                                                            | The Stripe ID of the workspace.                                               |
 | `billingCycleStart`                                                           | *number*                                                                      | :heavy_check_mark:                                                            | The date and time when the billing cycle starts for the workspace.            |
 | `paymentFailedAt`                                                             | *string*                                                                      | :heavy_check_mark:                                                            | The date and time when the payment failed for the workspace.                  |
-| `stripeConnectId`                                                             | *string*                                                                      | :heavy_check_mark:                                                            | [BETA – Dub Conversions]: The Stripe Connect ID of the workspace.             |
+| `stripeConnectId`                                                             | *string*                                                                      | :heavy_check_mark:                                                            | The Stripe Connect ID of the workspace.                                       |
 | `payoutMethodId`                                                              | *string*                                                                      | :heavy_check_mark:                                                            | [BETA – Dub Partners]: The ID of the payment method for partner payouts.      |
 | `usage`                                                                       | *number*                                                                      | :heavy_check_mark:                                                            | The usage of the workspace.                                                   |
 | `usageLimit`                                                                  | *number*                                                                      | :heavy_check_mark:                                                            | The usage limit of the workspace.                                             |

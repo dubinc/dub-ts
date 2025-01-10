@@ -6,7 +6,7 @@
 import { AnalyticsContinents } from "dub/models/components";
 
 let value: AnalyticsContinents = {
-  continent: "SA",
+  continent: "OC",
 };
 ```
 

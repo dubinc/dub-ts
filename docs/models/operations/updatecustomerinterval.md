@@ -5,7 +5,7 @@
 ```typescript
 import { UpdateCustomerInterval } from "dub/models/operations";
 
-let value: UpdateCustomerInterval = "year";
+let value: UpdateCustomerInterval = "month";
 ```
 
 ## Values

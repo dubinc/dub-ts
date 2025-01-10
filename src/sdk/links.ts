@@ -132,7 +132,7 @@ export class Links extends ClientSDK {
   async createMany(
     request?: Array<operations.RequestBody> | undefined,
     options?: RequestOptions,
-  ): Promise<Array<components.LinkSchema>> {
+  ): Promise<Array<operations.ResponseBody>> {
     return unwrapAsync(linksCreateMany(
       this,
       request,

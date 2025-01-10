@@ -21,15 +21,46 @@ export type QueryParamTagIds = string | Array<string>;
 export type QueryParamTagNames = string | Array<string>;
 
 /**
- * The field to sort the links by. The default is `createdAt`, and sort order is always descending.
+ * The field to sort the links by. The default is `createdAt`.
+ */
+export const SortBy = {
+  CreatedAt: "createdAt",
+  Clicks: "clicks",
+  SaleAmount: "saleAmount",
+  LastClicked: "lastClicked",
+} as const;
+/**
+ * The field to sort the links by. The default is `createdAt`.
+ */
+export type SortBy = ClosedEnum<typeof SortBy>;
+
+/**
+ * The sort order. The default is `desc`.
+ */
+export const SortOrder = {
+  Asc: "asc",
+  Desc: "desc",
+} as const;
+/**
+ * The sort order. The default is `desc`.
+ */
+export type SortOrder = ClosedEnum<typeof SortOrder>;
+
+/**
+ * DEPRECATED. Use `sortBy` instead.
+ *
+ * @deprecated enum: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export const Sort = {
   CreatedAt: "createdAt",
   Clicks: "clicks",
+  SaleAmount: "saleAmount",
   LastClicked: "lastClicked",
 } as const;
 /**
- * The field to sort the links by. The default is `createdAt`, and sort order is always descending.
+ * DEPRECATED. Use `sortBy` instead.
+ *
+ * @deprecated enum: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export type Sort = ClosedEnum<typeof Sort>;
 
@@ -71,7 +102,15 @@ export type GetLinksRequest = {
    */
   withTags?: boolean | undefined;
   /**
-   * The field to sort the links by. The default is `createdAt`, and sort order is always descending.
+   * The field to sort the links by. The default is `createdAt`.
+   */
+  sortBy?: SortBy | undefined;
+  /**
+   * The sort order. The default is `desc`.
+   */
+  sortOrder?: SortOrder | undefined;
+  /**
+   * DEPRECATED. Use `sortBy` instead.
    */
   sort?: Sort | undefined;
   /**
@@ -185,6 +224,44 @@ export function queryParamTagNamesFromJSON(
 }
 
 /** @internal */
+export const SortBy$inboundSchema: z.ZodNativeEnum<typeof SortBy> = z
+  .nativeEnum(SortBy);
+
+/** @internal */
+export const SortBy$outboundSchema: z.ZodNativeEnum<typeof SortBy> =
+  SortBy$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace SortBy$ {
+  /** @deprecated use `SortBy$inboundSchema` instead. */
+  export const inboundSchema = SortBy$inboundSchema;
+  /** @deprecated use `SortBy$outboundSchema` instead. */
+  export const outboundSchema = SortBy$outboundSchema;
+}
+
+/** @internal */
+export const SortOrder$inboundSchema: z.ZodNativeEnum<typeof SortOrder> = z
+  .nativeEnum(SortOrder);
+
+/** @internal */
+export const SortOrder$outboundSchema: z.ZodNativeEnum<typeof SortOrder> =
+  SortOrder$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace SortOrder$ {
+  /** @deprecated use `SortOrder$inboundSchema` instead. */
+  export const inboundSchema = SortOrder$inboundSchema;
+  /** @deprecated use `SortOrder$outboundSchema` instead. */
+  export const outboundSchema = SortOrder$outboundSchema;
+}
+
+/** @internal */
 export const Sort$inboundSchema: z.ZodNativeEnum<typeof Sort> = z.nativeEnum(
   Sort,
 );
@@ -219,6 +296,8 @@ export const GetLinksRequest$inboundSchema: z.ZodType<
   tenantId: z.string().optional(),
   showArchived: z.boolean().default(false),
   withTags: z.boolean().default(false),
+  sortBy: SortBy$inboundSchema.default("createdAt"),
+  sortOrder: SortOrder$inboundSchema.default("desc"),
   sort: Sort$inboundSchema.default("createdAt"),
   page: z.number().default(1),
   pageSize: z.number().default(100),
@@ -235,6 +314,8 @@ export type GetLinksRequest$Outbound = {
   tenantId?: string | undefined;
   showArchived: boolean;
   withTags: boolean;
+  sortBy: string;
+  sortOrder: string;
   sort: string;
   page: number;
   pageSize: number;
@@ -255,6 +336,8 @@ export const GetLinksRequest$outboundSchema: z.ZodType<
   tenantId: z.string().optional(),
   showArchived: z.boolean().default(false),
   withTags: z.boolean().default(false),
+  sortBy: SortBy$outboundSchema.default("createdAt"),
+  sortOrder: SortOrder$outboundSchema.default("desc"),
   sort: Sort$outboundSchema.default("createdAt"),
   page: z.number().default(1),
   pageSize: z.number().default(100),

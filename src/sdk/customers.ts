@@ -21,7 +21,7 @@ export class Customers extends ClientSDK {
   async list(
     request?: operations.GetCustomersRequest | undefined,
     options?: RequestOptions,
-  ): Promise<Array<operations.ResponseBody>> {
+  ): Promise<Array<operations.GetCustomersResponseBody>> {
     return unwrapAsync(customersList(
       this,
       request,

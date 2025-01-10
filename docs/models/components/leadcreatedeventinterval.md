@@ -5,7 +5,7 @@
 ```typescript
 import { LeadCreatedEventInterval } from "dub/models/components";
 
-let value: LeadCreatedEventInterval = "month";
+let value: LeadCreatedEventInterval = "year";
 ```
 
 ## Values

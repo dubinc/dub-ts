@@ -499,15 +499,15 @@ export type SaleCreatedEventLink = {
   clicks?: number | undefined;
   lastClicked: string;
   /**
-   * [BETA]: The number of leads the short links has generated.
+   * The number of leads the short links has generated.
    */
   leads?: number | undefined;
   /**
-   * [BETA]: The number of sales the short links has generated.
+   * The number of sales the short links has generated.
    */
   sales?: number | undefined;
   /**
-   * [BETA]: The total dollar amount of sales the short links has generated (in cents).
+   * The total dollar amount of sales the short links has generated (in cents).
    */
   saleAmount?: number | undefined;
   createdAt: string;

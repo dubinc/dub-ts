@@ -90,6 +90,7 @@ export async function eventsList(
     "region": payload?.region,
     "root": payload?.root,
     "sortBy": payload?.sortBy,
+    "sortOrder": payload?.sortOrder,
     "start": payload?.start,
     "tagId": payload?.tagId,
     "tagIds": payload?.tagIds,

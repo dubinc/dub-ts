@@ -5,7 +5,7 @@
 ```typescript
 import { SaleEventInterval } from "dub/models/components";
 
-let value: SaleEventInterval = "year";
+let value: SaleEventInterval = "month";
 ```
 
 ## Values

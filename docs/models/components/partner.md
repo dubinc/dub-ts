@@ -8,7 +8,7 @@ import { Partner } from "dub/models/components";
 let value: Partner = {
   id: "<id>",
   name: "<value>",
-  email: "Janiya_Welch@gmail.com",
+  email: "Jordon_Fay59@gmail.com",
 };
 ```
 

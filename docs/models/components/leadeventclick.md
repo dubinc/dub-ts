@@ -7,17 +7,17 @@ import { LeadEventClick } from "dub/models/components";
 
 let value: LeadEventClick = {
   id: "<id>",
-  url: "https://uncommon-underneath.org/",
-  country: "Guinea",
-  city: "San Mateo",
+  url: "https://humble-sideboard.net/",
+  country: "Uruguay",
+  city: "Fort Okey",
   region: "<value>",
-  continent: "Europe",
-  device: "Desktop",
+  continent: "Asia",
+  device: "Mobile",
   browser: "Chrome",
-  os: "MacOS",
-  referer: "utter-emergent.info",
-  refererUrl: "https://spanish-starboard.com/",
-  ip: "215.209.26.40",
+  os: "BeOS",
+  referer: "chubby-custody.biz",
+  refererUrl: "https://silver-lift.info/",
+  ip: "108.16.53.238",
 };
 ```
 

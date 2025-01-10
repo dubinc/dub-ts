@@ -7,17 +7,17 @@ import { Click } from "dub/models/components";
 
 let value: Click = {
   id: "<id>",
-  url: "https://windy-version.org",
-  country: "Samoa",
-  city: "North Gwendolyn",
+  url: "https://untimely-sand.biz",
+  country: "Belarus",
+  city: "Darionville",
   region: "<value>",
-  continent: "Antarctica",
-  device: "Desktop",
+  continent: "Africa",
+  device: "Mobile",
   browser: "Chrome",
-  os: "Blackberry",
-  referer: "advanced-rust.com",
-  refererUrl: "https://brisk-pilot.biz/",
-  ip: "142.220.186.69",
+  os: "WebOS",
+  referer: "crafty-bin.com",
+  refererUrl: "https://exotic-hepatitis.name",
+  ip: "f521:65af:f683:b1fb:b58c:684a:0b1b:6cfe",
 };
 ```
 

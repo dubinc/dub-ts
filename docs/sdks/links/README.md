@@ -571,7 +571,7 @@ run();
 
 ### Response
 
-**Promise\<[components.LinkSchema[]](../../models/.md)\>**
+**Promise\<[operations.ResponseBody[]](../../models/.md)\>**
 
 ### Errors
 

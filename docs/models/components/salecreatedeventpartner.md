@@ -8,7 +8,7 @@ import { SaleCreatedEventPartner } from "dub/models/components";
 let value: SaleCreatedEventPartner = {
   id: "<id>",
   name: "<value>",
-  email: "Lillie_Ortiz@hotmail.com",
+  email: "Dena.Carter@yahoo.com",
 };
 ```
 
