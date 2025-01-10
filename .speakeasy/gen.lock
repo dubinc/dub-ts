@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: a1673689081e8ce390ebd113f53dedd4
+  docChecksum: a6a1e65c1a9ddd2d1b445252e12b8157
   docVersion: 0.0.1
-  speakeasyVersion: 1.465.0
-  generationVersion: 2.486.6
-  releaseVersion: 0.46.11
-  configChecksum: 85546426f45a37e7631ff9b6852598ec
+  speakeasyVersion: 1.467.1
+  generationVersion: 2.492.3
+  releaseVersion: 0.46.12
+  configChecksum: dfa902336db61b73370eca4535e8afab
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -20,7 +20,7 @@ features:
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.1.2
     errors: 2.84.0
-    examples: 2.81.4
+    examples: 2.81.5
     flattening: 2.82.1
     globalSecurity: 2.82.12
     globalSecurityCallbacks: 0.1.0
@@ -62,6 +62,7 @@ generatedFiles:
   - docs/models/components/click.md
   - docs/models/components/clickevent.md
   - docs/models/components/clickeventgeo.md
+  - docs/models/components/code.md
   - docs/models/components/color.md
   - docs/models/components/continent.md
   - docs/models/components/continentcode.md
@@ -100,6 +101,7 @@ generatedFiles:
   - docs/models/components/linkclickedeventevent.md
   - docs/models/components/linkclickedeventgeo.md
   - docs/models/components/linkclickedeventlink.md
+  - docs/models/components/linkerrorschema.md
   - docs/models/components/linkgeotargeting.md
   - docs/models/components/linkschema.md
   - docs/models/components/linkwebhookevent.md
@@ -213,6 +215,7 @@ generatedFiles:
   - docs/models/operations/getcustomerresponsebody.md
   - docs/models/operations/getcustomersinterval.md
   - docs/models/operations/getcustomersrequest.md
+  - docs/models/operations/getcustomersresponsebody.md
   - docs/models/operations/getcustomertype.md
   - docs/models/operations/getlinkinforequest.md
   - docs/models/operations/getlinkscountqueryparamtagids.md
@@ -240,6 +243,8 @@ generatedFiles:
   - docs/models/operations/queryparamevent.md
   - docs/models/operations/queryparamgroupby.md
   - docs/models/operations/queryparaminterval.md
+  - docs/models/operations/queryparamsortby.md
+  - docs/models/operations/queryparamsortorder.md
   - docs/models/operations/queryparamtagids.md
   - docs/models/operations/queryparamtagnames.md
   - docs/models/operations/queryparamtrigger.md
@@ -251,6 +256,7 @@ generatedFiles:
   - docs/models/operations/sale.md
   - docs/models/operations/sort.md
   - docs/models/operations/sortby.md
+  - docs/models/operations/sortorder.md
   - docs/models/operations/tagids.md
   - docs/models/operations/tagnames.md
   - docs/models/operations/three.md
@@ -370,6 +376,7 @@ generatedFiles:
   - src/models/components/leadcreatedevent.ts
   - src/models/components/leadevent.ts
   - src/models/components/linkclickedevent.ts
+  - src/models/components/linkerrorschema.ts
   - src/models/components/linkgeotargeting.ts
   - src/models/components/linkschema.ts
   - src/models/components/linkwebhookevent.ts

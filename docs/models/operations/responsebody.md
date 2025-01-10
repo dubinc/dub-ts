@@ -1,29 +1,63 @@
 # ResponseBody
 
-## Example Usage
+
+## Supported Types
+
+### `components.LinkSchema`
 
 ```typescript
-import { ResponseBody } from "dub/models/operations";
-
-let value: ResponseBody = {
+const value: components.LinkSchema = {
   id: "<id>",
+  domain: "unhealthy-doorpost.biz",
+  key: "<key>",
+  url: "https://orderly-bungalow.info",
   externalId: "<id>",
-  name: "<value>",
-  createdAt: "1715269372122",
+  tenantId: "<id>",
+  expiresAt: "1746996993737",
+  expiredUrl: "https://innocent-pasta.net",
+  password: "dw8Qh65bkuKe1jf",
+  title: "<value>",
+  description: "pfft overwork through surprisingly axe sunbathe",
+  image: "https://loremflickr.com/1970/419?lock=3754230433758555",
+  video: "https://loremflickr.com/742/3683?lock=3390037391098427",
+  ios: "<value>",
+  android: "<id>",
+  geo: {},
+  tagId: "<id>",
+  tags: [
+    {
+      id: "<id>",
+      name: "<value>",
+      color: "blue",
+    },
+  ],
+  webhookIds: [
+    "<value>",
+  ],
+  comments: "than a yet coolly but pick creature with where that",
+  shortLink: "https://recent-graffiti.org",
+  qrCode: "https://narrow-toothpick.net/",
+  utmSource: "<value>",
+  utmMedium: "<value>",
+  utmCampaign: "<value>",
+  utmTerm: "<value>",
+  utmContent: "<value>",
+  userId: "<id>",
+  workspaceId: "<id>",
+  lastClicked: "<value>",
+  createdAt: "1707976502947",
+  updatedAt: "1736507786813",
+  projectId: "<id>",
+  programId: "<id>",
 };
 ```
 
-## Fields
+### `components.LinkErrorSchema`
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `id`                                                       | *string*                                                   | :heavy_check_mark:                                         | The unique identifier of the customer in Dub.              |
-| `externalId`                                               | *string*                                                   | :heavy_check_mark:                                         | Unique identifier for the customer in the client's app.    |
-| `name`                                                     | *string*                                                   | :heavy_check_mark:                                         | Name of the customer.                                      |
-| `email`                                                    | *string*                                                   | :heavy_minus_sign:                                         | Email of the customer.                                     |
-| `avatar`                                                   | *string*                                                   | :heavy_minus_sign:                                         | Avatar URL of the customer.                                |
-| `country`                                                  | *string*                                                   | :heavy_minus_sign:                                         | Country of the customer.                                   |
-| `createdAt`                                                | *string*                                                   | :heavy_check_mark:                                         | The date the customer was created.                         |
-| `link`                                                     | [operations.Link](../../models/operations/link.md)         | :heavy_minus_sign:                                         | N/A                                                        |
-| `partner`                                                  | [operations.Partner](../../models/operations/partner.md)   | :heavy_minus_sign:                                         | N/A                                                        |
-| `discount`                                                 | [operations.Discount](../../models/operations/discount.md) | :heavy_minus_sign:                                         | N/A                                                        |
+```typescript
+const value: components.LinkErrorSchema = {
+  error: "<value>",
+  code: "conflict",
+};
+```
+

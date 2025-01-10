@@ -1,15 +1,17 @@
 # SortBy
 
+The field to sort the links by. The default is `createdAt`.
+
 ## Example Usage
 
 ```typescript
 import { SortBy } from "dub/models/operations";
 
-let value: SortBy = "timestamp";
+let value: SortBy = "clicks";
 ```
 
 ## Values
 
 ```typescript
-"timestamp"
+"createdAt" | "clicks" | "saleAmount" | "lastClicked"
 ```

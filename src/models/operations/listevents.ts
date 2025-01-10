@@ -56,16 +56,44 @@ export type QueryParamTrigger = ClosedEnum<typeof QueryParamTrigger>;
  */
 export type ListEventsQueryParamTagIds = string | Array<string>;
 
+/**
+ * The sort order. The default is `desc`.
+ */
+export const QueryParamSortOrder = {
+  Asc: "asc",
+  Desc: "desc",
+} as const;
+/**
+ * The sort order. The default is `desc`.
+ */
+export type QueryParamSortOrder = ClosedEnum<typeof QueryParamSortOrder>;
+
+/**
+ * The field to sort the events by. The default is `timestamp`.
+ */
+export const QueryParamSortBy = {
+  Timestamp: "timestamp",
+} as const;
+/**
+ * The field to sort the events by. The default is `timestamp`.
+ */
+export type QueryParamSortBy = ClosedEnum<typeof QueryParamSortBy>;
+
+/**
+ * DEPRECATED. Use `sortOrder` instead.
+ *
+ * @deprecated enum: This will be removed in a future release, please migrate away from it as soon as possible.
+ */
 export const Order = {
   Asc: "asc",
   Desc: "desc",
 } as const;
+/**
+ * DEPRECATED. Use `sortOrder` instead.
+ *
+ * @deprecated enum: This will be removed in a future release, please migrate away from it as soon as possible.
+ */
 export type Order = ClosedEnum<typeof Order>;
-
-export const SortBy = {
-  Timestamp: "timestamp",
-} as const;
-export type SortBy = ClosedEnum<typeof SortBy>;
 
 export type ListEventsRequest = {
   /**
@@ -166,8 +194,18 @@ export type ListEventsRequest = {
   root?: boolean | undefined;
   page?: number | undefined;
   limit?: number | undefined;
+  /**
+   * The sort order. The default is `desc`.
+   */
+  sortOrder?: QueryParamSortOrder | undefined;
+  /**
+   * The field to sort the events by. The default is `timestamp`.
+   */
+  sortBy?: QueryParamSortBy | undefined;
+  /**
+   * DEPRECATED. Use `sortOrder` instead.
+   */
   order?: Order | undefined;
-  sortBy?: SortBy | undefined;
 };
 
 /**
@@ -290,6 +328,48 @@ export function listEventsQueryParamTagIdsFromJSON(
 }
 
 /** @internal */
+export const QueryParamSortOrder$inboundSchema: z.ZodNativeEnum<
+  typeof QueryParamSortOrder
+> = z.nativeEnum(QueryParamSortOrder);
+
+/** @internal */
+export const QueryParamSortOrder$outboundSchema: z.ZodNativeEnum<
+  typeof QueryParamSortOrder
+> = QueryParamSortOrder$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace QueryParamSortOrder$ {
+  /** @deprecated use `QueryParamSortOrder$inboundSchema` instead. */
+  export const inboundSchema = QueryParamSortOrder$inboundSchema;
+  /** @deprecated use `QueryParamSortOrder$outboundSchema` instead. */
+  export const outboundSchema = QueryParamSortOrder$outboundSchema;
+}
+
+/** @internal */
+export const QueryParamSortBy$inboundSchema: z.ZodNativeEnum<
+  typeof QueryParamSortBy
+> = z.nativeEnum(QueryParamSortBy);
+
+/** @internal */
+export const QueryParamSortBy$outboundSchema: z.ZodNativeEnum<
+  typeof QueryParamSortBy
+> = QueryParamSortBy$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace QueryParamSortBy$ {
+  /** @deprecated use `QueryParamSortBy$inboundSchema` instead. */
+  export const inboundSchema = QueryParamSortBy$inboundSchema;
+  /** @deprecated use `QueryParamSortBy$outboundSchema` instead. */
+  export const outboundSchema = QueryParamSortBy$outboundSchema;
+}
+
+/** @internal */
 export const Order$inboundSchema: z.ZodNativeEnum<typeof Order> = z.nativeEnum(
   Order,
 );
@@ -307,25 +387,6 @@ export namespace Order$ {
   export const inboundSchema = Order$inboundSchema;
   /** @deprecated use `Order$outboundSchema` instead. */
   export const outboundSchema = Order$outboundSchema;
-}
-
-/** @internal */
-export const SortBy$inboundSchema: z.ZodNativeEnum<typeof SortBy> = z
-  .nativeEnum(SortBy);
-
-/** @internal */
-export const SortBy$outboundSchema: z.ZodNativeEnum<typeof SortBy> =
-  SortBy$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SortBy$ {
-  /** @deprecated use `SortBy$inboundSchema` instead. */
-  export const inboundSchema = SortBy$inboundSchema;
-  /** @deprecated use `SortBy$outboundSchema` instead. */
-  export const outboundSchema = SortBy$outboundSchema;
 }
 
 /** @internal */
@@ -360,8 +421,9 @@ export const ListEventsRequest$inboundSchema: z.ZodType<
   root: z.boolean().optional(),
   page: z.number().default(1),
   limit: z.number().default(100),
+  sortOrder: QueryParamSortOrder$inboundSchema.default("desc"),
+  sortBy: QueryParamSortBy$inboundSchema.default("timestamp"),
   order: Order$inboundSchema.default("desc"),
-  sortBy: SortBy$inboundSchema.default("timestamp"),
 });
 
 /** @internal */
@@ -392,8 +454,9 @@ export type ListEventsRequest$Outbound = {
   root?: boolean | undefined;
   page: number;
   limit: number;
-  order: string;
+  sortOrder: string;
   sortBy: string;
+  order: string;
 };
 
 /** @internal */
@@ -428,8 +491,9 @@ export const ListEventsRequest$outboundSchema: z.ZodType<
   root: z.boolean().optional(),
   page: z.number().default(1),
   limit: z.number().default(100),
+  sortOrder: QueryParamSortOrder$outboundSchema.default("desc"),
+  sortBy: QueryParamSortBy$outboundSchema.default("timestamp"),
   order: Order$outboundSchema.default("desc"),
-  sortBy: SortBy$outboundSchema.default("timestamp"),
 });
 
 /**

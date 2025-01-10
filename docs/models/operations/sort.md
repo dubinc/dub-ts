@@ -1,6 +1,8 @@
-# Sort
+# ~~Sort~~
 
-The field to sort the links by. The default is `createdAt`, and sort order is always descending.
+DEPRECATED. Use `sortBy` instead.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ## Example Usage
 
@@ -13,5 +15,5 @@ let value: Sort = "lastClicked";
 ## Values
 
 ```typescript
-"createdAt" | "clicks" | "lastClicked"
+"createdAt" | "clicks" | "saleAmount" | "lastClicked"
 ```

@@ -10,7 +10,6 @@ import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
-import * as components from "../models/components/index.js";
 import {
   ConnectionError,
   InvalidRequestError,
@@ -36,7 +35,7 @@ export async function linksCreateMany(
   options?: RequestOptions,
 ): Promise<
   Result<
-    Array<components.LinkSchema>,
+    Array<operations.ResponseBody>,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -135,7 +134,7 @@ export async function linksCreateMany(
   };
 
   const [result] = await M.match<
-    Array<components.LinkSchema>,
+    Array<operations.ResponseBody>,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -153,7 +152,7 @@ export async function linksCreateMany(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, z.array(components.LinkSchema$inboundSchema)),
+    M.json(200, z.array(operations.ResponseBody$inboundSchema)),
     M.jsonErr(400, errors.BadRequest$inboundSchema),
     M.jsonErr(401, errors.Unauthorized$inboundSchema),
     M.jsonErr(403, errors.Forbidden$inboundSchema),

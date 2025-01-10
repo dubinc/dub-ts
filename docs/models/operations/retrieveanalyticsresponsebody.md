@@ -26,7 +26,7 @@ const value: components.AnalyticsTimeseries[] = [
 ```typescript
 const value: components.AnalyticsContinents[] = [
   {
-    continent: "AF",
+    continent: "SA",
   },
 ];
 ```
@@ -36,7 +36,7 @@ const value: components.AnalyticsContinents[] = [
 ```typescript
 const value: components.AnalyticsCountries[] = [
   {
-    country: "RS",
+    country: "AM",
   },
 ];
 ```
@@ -46,8 +46,8 @@ const value: components.AnalyticsCountries[] = [
 ```typescript
 const value: components.AnalyticsCities[] = [
   {
-    city: "Olliebury",
-    country: "LT",
+    city: "Port Isabell",
+    country: "BZ",
   },
 ];
 ```
@@ -57,7 +57,7 @@ const value: components.AnalyticsCities[] = [
 ```typescript
 const value: components.AnalyticsDevices[] = [
   {
-    device: "Mobile",
+    device: "Desktop",
   },
 ];
 ```
@@ -77,7 +77,7 @@ const value: components.AnalyticsBrowsers[] = [
 ```typescript
 const value: components.AnalyticsOS[] = [
   {
-    os: "Windows",
+    os: "Android",
   },
 ];
 ```
@@ -87,7 +87,7 @@ const value: components.AnalyticsOS[] = [
 ```typescript
 const value: components.AnalyticsTriggers[] = [
   {
-    trigger: "qr",
+    trigger: "link",
   },
 ];
 ```
@@ -97,7 +97,7 @@ const value: components.AnalyticsTriggers[] = [
 ```typescript
 const value: components.AnalyticsReferers[] = [
   {
-    referer: "far-off-velocity.net",
+    referer: "wasteful-colon.com",
   },
 ];
 ```
@@ -107,7 +107,7 @@ const value: components.AnalyticsReferers[] = [
 ```typescript
 const value: components.AnalyticsRefererUrls[] = [
   {
-    refererUrl: "https://black-and-white-settler.biz",
+    refererUrl: "https://limited-climb.biz/",
   },
 ];
 ```
@@ -119,11 +119,11 @@ const value: components.AnalyticsTopLinks[] = [
   {
     link: "<value>",
     id: "<id>",
-    domain: "creamy-summary.com",
+    domain: "vivacious-providence.name",
     key: "<key>",
     shortLink: "<value>",
-    url: "https://usable-director.net/",
-    createdAt: "1725488773363",
+    url: "https://acceptable-cheese.net",
+    createdAt: "1727538288719",
   },
 ];
 ```
@@ -133,7 +133,7 @@ const value: components.AnalyticsTopLinks[] = [
 ```typescript
 const value: components.AnalyticsTopUrls[] = [
   {
-    url: "https://stained-crocodile.net/",
+    url: "https://outlying-masterpiece.info",
   },
 ];
 ```

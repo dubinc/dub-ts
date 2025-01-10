@@ -22,6 +22,7 @@ export * from "./domainschema.js";
 export * from "./leadcreatedevent.js";
 export * from "./leadevent.js";
 export * from "./linkclickedevent.js";
+export * from "./linkerrorschema.js";
 export * from "./linkgeotargeting.js";
 export * from "./linkschema.js";
 export * from "./linkwebhookevent.js";

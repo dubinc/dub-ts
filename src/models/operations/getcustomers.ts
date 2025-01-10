@@ -75,7 +75,7 @@ export type Discount = {
   interval: GetCustomersInterval | null;
 };
 
-export type ResponseBody = {
+export type GetCustomersResponseBody = {
   /**
    * The unique identifier of the customer in Dub.
    */
@@ -391,8 +391,8 @@ export function discountFromJSON(
 }
 
 /** @internal */
-export const ResponseBody$inboundSchema: z.ZodType<
-  ResponseBody,
+export const GetCustomersResponseBody$inboundSchema: z.ZodType<
+  GetCustomersResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -409,7 +409,7 @@ export const ResponseBody$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type ResponseBody$Outbound = {
+export type GetCustomersResponseBody$Outbound = {
   id: string;
   externalId: string;
   name: string;
@@ -423,10 +423,10 @@ export type ResponseBody$Outbound = {
 };
 
 /** @internal */
-export const ResponseBody$outboundSchema: z.ZodType<
-  ResponseBody$Outbound,
+export const GetCustomersResponseBody$outboundSchema: z.ZodType<
+  GetCustomersResponseBody$Outbound,
   z.ZodTypeDef,
-  ResponseBody
+  GetCustomersResponseBody
 > = z.object({
   id: z.string(),
   externalId: z.string(),
@@ -444,25 +444,29 @@ export const ResponseBody$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ResponseBody$ {
-  /** @deprecated use `ResponseBody$inboundSchema` instead. */
-  export const inboundSchema = ResponseBody$inboundSchema;
-  /** @deprecated use `ResponseBody$outboundSchema` instead. */
-  export const outboundSchema = ResponseBody$outboundSchema;
-  /** @deprecated use `ResponseBody$Outbound` instead. */
-  export type Outbound = ResponseBody$Outbound;
+export namespace GetCustomersResponseBody$ {
+  /** @deprecated use `GetCustomersResponseBody$inboundSchema` instead. */
+  export const inboundSchema = GetCustomersResponseBody$inboundSchema;
+  /** @deprecated use `GetCustomersResponseBody$outboundSchema` instead. */
+  export const outboundSchema = GetCustomersResponseBody$outboundSchema;
+  /** @deprecated use `GetCustomersResponseBody$Outbound` instead. */
+  export type Outbound = GetCustomersResponseBody$Outbound;
 }
 
-export function responseBodyToJSON(responseBody: ResponseBody): string {
-  return JSON.stringify(ResponseBody$outboundSchema.parse(responseBody));
+export function getCustomersResponseBodyToJSON(
+  getCustomersResponseBody: GetCustomersResponseBody,
+): string {
+  return JSON.stringify(
+    GetCustomersResponseBody$outboundSchema.parse(getCustomersResponseBody),
+  );
 }
 
-export function responseBodyFromJSON(
+export function getCustomersResponseBodyFromJSON(
   jsonString: string,
-): SafeParseResult<ResponseBody, SDKValidationError> {
+): SafeParseResult<GetCustomersResponseBody, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ResponseBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBody' from JSON`,
+    (x) => GetCustomersResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetCustomersResponseBody' from JSON`,
   );
 }

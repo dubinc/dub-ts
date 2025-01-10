@@ -6,7 +6,7 @@
 import { AnalyticsBrowsers } from "dub/models/components";
 
 let value: AnalyticsBrowsers = {
-  browser: "Firefox",
+  browser: "Chrome",
 };
 ```
 

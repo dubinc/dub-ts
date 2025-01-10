@@ -7,17 +7,17 @@ import { LeadCreatedEventClick } from "dub/models/components";
 
 let value: LeadCreatedEventClick = {
   id: "<id>",
-  url: "https://prestigious-celsius.net/",
-  country: "Kazakhstan",
-  city: "Lake Cierra",
+  url: "https://dull-feather.com/",
+  country: "Gambia",
+  city: "North Dakota",
   region: "<value>",
   continent: "Antarctica",
   device: "Desktop",
-  browser: "Safari",
-  os: "Chrome OS",
-  referer: "mindless-cappelletti.com",
-  refererUrl: "https://mindless-premier.info/",
-  ip: "8091:7fc5:89a0:02d9:c6af:b63b:3eb3:f2aa",
+  browser: "Firefox",
+  os: "MacOS",
+  referer: "shameful-flint.com",
+  refererUrl: "https://delectable-backburn.com",
+  ip: "177.164.1.203",
 };
 ```
 

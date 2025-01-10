@@ -35,7 +35,7 @@ export async function customersList(
   options?: RequestOptions,
 ): Promise<
   Result<
-    Array<operations.ResponseBody>,
+    Array<operations.GetCustomersResponseBody>,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -138,7 +138,7 @@ export async function customersList(
   };
 
   const [result] = await M.match<
-    Array<operations.ResponseBody>,
+    Array<operations.GetCustomersResponseBody>,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -156,7 +156,7 @@ export async function customersList(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, z.array(operations.ResponseBody$inboundSchema)),
+    M.json(200, z.array(operations.GetCustomersResponseBody$inboundSchema)),
     M.jsonErr(400, errors.BadRequest$inboundSchema),
     M.jsonErr(401, errors.Unauthorized$inboundSchema),
     M.jsonErr(403, errors.Forbidden$inboundSchema),

@@ -75,7 +75,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ResponseBody[]](../../models/.md)\>**
+**Promise\<[operations.GetCustomersResponseBody[]](../../models/.md)\>**
 
 ### Errors
 

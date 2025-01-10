@@ -83,6 +83,8 @@ export async function linksList(
     "search": payload?.search,
     "showArchived": payload?.showArchived,
     "sort": payload?.sort,
+    "sortBy": payload?.sortBy,
+    "sortOrder": payload?.sortOrder,
     "tagId": payload?.tagId,
     "tagIds": payload?.tagIds,
     "tagNames": payload?.tagNames,

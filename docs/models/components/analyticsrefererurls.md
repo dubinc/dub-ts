@@ -6,7 +6,7 @@
 import { AnalyticsRefererUrls } from "dub/models/components";
 
 let value: AnalyticsRefererUrls = {
-  refererUrl: "https://frank-steak.name",
+  refererUrl: "https://pointless-adult.info",
 };
 ```
 

@@ -97,7 +97,7 @@ export type WorkspaceSchema = {
    */
   paymentFailedAt: string | null;
   /**
-   * [BETA – Dub Conversions]: The Stripe Connect ID of the workspace.
+   * The Stripe Connect ID of the workspace.
    */
   stripeConnectId: string | null;
   /**

@@ -7,17 +7,17 @@ import { SaleEventClick } from "dub/models/components";
 
 let value: SaleEventClick = {
   id: "<id>",
-  url: "https://mysterious-countess.net",
-  country: "Niger",
-  city: "West Andyberg",
+  url: "https://soggy-planula.biz",
+  country: "Colombia",
+  city: "Spinkatown",
   region: "<value>",
-  continent: "Africa",
+  continent: "Europe",
   device: "Desktop",
   browser: "Safari",
-  os: "Windows",
-  referer: "candid-chainstay.biz",
-  refererUrl: "https://familiar-requirement.org/",
-  ip: "e828:6aea:edfa:28f6:2dfd:bcad:e5db:be6f",
+  os: "Android",
+  referer: "liquid-lawmaker.com",
+  refererUrl: "https://sweet-backbone.biz",
+  ip: "244.170.246.136",
 };
 ```
 
