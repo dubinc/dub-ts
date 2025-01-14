@@ -29,15 +29,15 @@ export type Data = {
    */
   tenantId?: string | null | undefined;
   /**
-   * Whether to track conversions for the short link.
+   * Whether to track conversions for the short link. Defaults to `false` if not provided.
    */
   trackConversion?: boolean | undefined;
   /**
-   * Whether the short link is archived.
+   * Whether the short link is archived. Defaults to `false` if not provided.
    */
   archived?: boolean | undefined;
   /**
-   * Deprecated: Use `dashboard` instead. Whether the short link's stats are publicly accessible.
+   * Deprecated: Use `dashboard` instead. Whether the short link's stats are publicly accessible. Defaults to `false` if not provided.
    *
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
@@ -73,7 +73,7 @@ export type Data = {
    */
   password?: string | null | undefined;
   /**
-   * Whether the short link uses Custom Social Media Cards feature.
+   * Whether the short link uses Custom Social Media Cards feature. Defaults to `false` if not provided.
    */
   proxy?: boolean | undefined;
   /**
@@ -93,7 +93,7 @@ export type Data = {
    */
   video?: string | null | undefined;
   /**
-   * Whether the short link uses link cloaking.
+   * Whether the short link uses link cloaking. Defaults to `false` if not provided.
    */
   rewrite?: boolean | undefined;
   /**
@@ -259,9 +259,9 @@ export const Data$inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z
   .object({
     url: z.string().optional(),
     tenantId: z.nullable(z.string()).optional(),
-    trackConversion: z.boolean().default(false),
-    archived: z.boolean().default(false),
-    publicStats: z.boolean().default(false),
+    trackConversion: z.boolean().optional(),
+    archived: z.boolean().optional(),
+    publicStats: z.boolean().optional(),
     tagId: z.nullable(z.string()).optional(),
     tagIds: z.union([z.string(), z.array(z.string())]).optional(),
     tagNames: z.union([z.string(), z.array(z.string())]).optional(),
@@ -269,16 +269,16 @@ export const Data$inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z
     expiresAt: z.nullable(z.string()).optional(),
     expiredUrl: z.nullable(z.string()).optional(),
     password: z.nullable(z.string()).optional(),
-    proxy: z.boolean().default(false),
+    proxy: z.boolean().optional(),
     title: z.nullable(z.string()).optional(),
     description: z.nullable(z.string()).optional(),
     image: z.nullable(z.string()).optional(),
     video: z.nullable(z.string()).optional(),
-    rewrite: z.boolean().default(false),
+    rewrite: z.boolean().optional(),
     ios: z.nullable(z.string()).optional(),
     android: z.nullable(z.string()).optional(),
     geo: z.nullable(components.LinkGeoTargeting$inboundSchema).optional(),
-    doIndex: z.boolean().default(false),
+    doIndex: z.boolean().optional(),
     utm_source: z.nullable(z.string()).optional(),
     utm_medium: z.nullable(z.string()).optional(),
     utm_campaign: z.nullable(z.string()).optional(),
@@ -301,9 +301,9 @@ export const Data$inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z
 export type Data$Outbound = {
   url?: string | undefined;
   tenantId?: string | null | undefined;
-  trackConversion: boolean;
-  archived: boolean;
-  publicStats: boolean;
+  trackConversion?: boolean | undefined;
+  archived?: boolean | undefined;
+  publicStats?: boolean | undefined;
   tagId?: string | null | undefined;
   tagIds?: string | Array<string> | undefined;
   tagNames?: string | Array<string> | undefined;
@@ -311,16 +311,16 @@ export type Data$Outbound = {
   expiresAt?: string | null | undefined;
   expiredUrl?: string | null | undefined;
   password?: string | null | undefined;
-  proxy: boolean;
+  proxy?: boolean | undefined;
   title?: string | null | undefined;
   description?: string | null | undefined;
   image?: string | null | undefined;
   video?: string | null | undefined;
-  rewrite: boolean;
+  rewrite?: boolean | undefined;
   ios?: string | null | undefined;
   android?: string | null | undefined;
   geo?: components.LinkGeoTargeting$Outbound | null | undefined;
-  doIndex: boolean;
+  doIndex?: boolean | undefined;
   utm_source?: string | null | undefined;
   utm_medium?: string | null | undefined;
   utm_campaign?: string | null | undefined;
@@ -336,9 +336,9 @@ export const Data$outboundSchema: z.ZodType<Data$Outbound, z.ZodTypeDef, Data> =
   z.object({
     url: z.string().optional(),
     tenantId: z.nullable(z.string()).optional(),
-    trackConversion: z.boolean().default(false),
-    archived: z.boolean().default(false),
-    publicStats: z.boolean().default(false),
+    trackConversion: z.boolean().optional(),
+    archived: z.boolean().optional(),
+    publicStats: z.boolean().optional(),
     tagId: z.nullable(z.string()).optional(),
     tagIds: z.union([z.string(), z.array(z.string())]).optional(),
     tagNames: z.union([z.string(), z.array(z.string())]).optional(),
@@ -346,16 +346,16 @@ export const Data$outboundSchema: z.ZodType<Data$Outbound, z.ZodTypeDef, Data> =
     expiresAt: z.nullable(z.string()).optional(),
     expiredUrl: z.nullable(z.string()).optional(),
     password: z.nullable(z.string()).optional(),
-    proxy: z.boolean().default(false),
+    proxy: z.boolean().optional(),
     title: z.nullable(z.string()).optional(),
     description: z.nullable(z.string()).optional(),
     image: z.nullable(z.string()).optional(),
     video: z.nullable(z.string()).optional(),
-    rewrite: z.boolean().default(false),
+    rewrite: z.boolean().optional(),
     ios: z.nullable(z.string()).optional(),
     android: z.nullable(z.string()).optional(),
     geo: z.nullable(components.LinkGeoTargeting$outboundSchema).optional(),
-    doIndex: z.boolean().default(false),
+    doIndex: z.boolean().optional(),
     utmSource: z.nullable(z.string()).optional(),
     utmMedium: z.nullable(z.string()).optional(),
     utmCampaign: z.nullable(z.string()).optional(),
