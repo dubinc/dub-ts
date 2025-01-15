@@ -149,7 +149,7 @@ export type WorkspaceSchema = {
    */
   aiLimit: number;
   /**
-   * Whether the workspace has conversion tracking enabled (d.to/conversions).
+   * Whether the workspace has conversion tracking enabled automatically for new links (d.to/conversions).
    */
   conversionEnabled: boolean;
   /**
@@ -176,6 +176,10 @@ export type WorkspaceSchema = {
    * The feature flags of the workspace, indicating which features are enabled.
    */
   flags?: { [k: string]: boolean } | undefined;
+  /**
+   * The miscellaneous key-value store of the workspace.
+   */
+  store: { [k: string]: any } | null;
 };
 
 /** @internal */
@@ -353,6 +357,7 @@ export const WorkspaceSchema$inboundSchema: z.ZodType<
   users: z.array(z.lazy(() => Users$inboundSchema)),
   domains: z.array(z.lazy(() => Domains$inboundSchema)),
   flags: z.record(z.boolean()).optional(),
+  store: z.nullable(z.record(z.any())),
 });
 
 /** @internal */
@@ -386,6 +391,7 @@ export type WorkspaceSchema$Outbound = {
   users: Array<Users$Outbound>;
   domains: Array<Domains$Outbound>;
   flags?: { [k: string]: boolean } | undefined;
+  store: { [k: string]: any } | null;
 };
 
 /** @internal */
@@ -423,6 +429,7 @@ export const WorkspaceSchema$outboundSchema: z.ZodType<
   users: z.array(z.lazy(() => Users$outboundSchema)),
   domains: z.array(z.lazy(() => Domains$outboundSchema)),
   flags: z.record(z.boolean()).optional(),
+  store: z.nullable(z.record(z.any())),
 });
 
 /**

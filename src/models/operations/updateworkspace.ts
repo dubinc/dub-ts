@@ -12,6 +12,7 @@ export type UpdateWorkspaceRequestBody = {
   name?: string | undefined;
   slug?: string | undefined;
   logo?: string | undefined;
+  conversionEnabled?: boolean | undefined;
 };
 
 export type UpdateWorkspaceRequest = {
@@ -31,6 +32,7 @@ export const UpdateWorkspaceRequestBody$inboundSchema: z.ZodType<
   name: z.string().optional(),
   slug: z.string().optional(),
   logo: z.string().optional(),
+  conversionEnabled: z.boolean().optional(),
 });
 
 /** @internal */
@@ -38,6 +40,7 @@ export type UpdateWorkspaceRequestBody$Outbound = {
   name?: string | undefined;
   slug?: string | undefined;
   logo?: string | undefined;
+  conversionEnabled?: boolean | undefined;
 };
 
 /** @internal */
@@ -49,6 +52,7 @@ export const UpdateWorkspaceRequestBody$outboundSchema: z.ZodType<
   name: z.string().optional(),
   slug: z.string().optional(),
   logo: z.string().optional(),
+  conversionEnabled: z.boolean().optional(),
 });
 
 /**
