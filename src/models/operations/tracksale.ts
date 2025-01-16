@@ -79,8 +79,8 @@ export type Sale = {
  */
 export type TrackSaleResponseBody = {
   eventName: string;
-  customer: TrackSaleCustomer;
-  sale: Sale;
+  customer: TrackSaleCustomer | null;
+  sale: Sale | null;
 };
 
 /** @internal */
@@ -308,15 +308,15 @@ export const TrackSaleResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   eventName: z.string(),
-  customer: z.lazy(() => TrackSaleCustomer$inboundSchema),
-  sale: z.lazy(() => Sale$inboundSchema),
+  customer: z.nullable(z.lazy(() => TrackSaleCustomer$inboundSchema)),
+  sale: z.nullable(z.lazy(() => Sale$inboundSchema)),
 });
 
 /** @internal */
 export type TrackSaleResponseBody$Outbound = {
   eventName: string;
-  customer: TrackSaleCustomer$Outbound;
-  sale: Sale$Outbound;
+  customer: TrackSaleCustomer$Outbound | null;
+  sale: Sale$Outbound | null;
 };
 
 /** @internal */
@@ -326,8 +326,8 @@ export const TrackSaleResponseBody$outboundSchema: z.ZodType<
   TrackSaleResponseBody
 > = z.object({
   eventName: z.string(),
-  customer: z.lazy(() => TrackSaleCustomer$outboundSchema),
-  sale: z.lazy(() => Sale$outboundSchema),
+  customer: z.nullable(z.lazy(() => TrackSaleCustomer$outboundSchema)),
+  sale: z.nullable(z.lazy(() => Sale$outboundSchema)),
 });
 
 /**
