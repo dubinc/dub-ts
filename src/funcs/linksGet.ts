@@ -168,7 +168,8 @@ export async function linksGet(
     M.jsonErr(422, errors.UnprocessableEntity$inboundSchema),
     M.jsonErr(429, errors.RateLimitExceeded$inboundSchema),
     M.jsonErr(500, errors.InternalServerError$inboundSchema),
-    M.fail(["4XX", "5XX"]),
+    M.fail("4XX"),
+    M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
     return result;
