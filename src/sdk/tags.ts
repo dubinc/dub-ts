@@ -36,10 +36,12 @@ export class Tags extends ClientSDK {
    * Retrieve a list of tags for the authenticated workspace.
    */
   async list(
+    request?: operations.GetTagsRequest | undefined,
     options?: RequestOptions,
   ): Promise<Array<components.TagSchema>> {
     return unwrapAsync(tagsList(
       this,
+      request,
       options,
     ));
   }

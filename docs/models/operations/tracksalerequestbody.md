@@ -6,7 +6,7 @@
 import { TrackSaleRequestBody } from "dub/models/operations";
 
 let value: TrackSaleRequestBody = {
-  amount: 637770,
+  amount: 970105,
   paymentProcessor: "shopify",
 };
 ```

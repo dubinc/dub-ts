@@ -21,6 +21,7 @@ export * from "./getlinks.js";
 export * from "./getlinkscount.js";
 export * from "./getmetatags.js";
 export * from "./getqrcode.js";
+export * from "./gettags.js";
 export * from "./getworkspace.js";
 export * from "./listdomains.js";
 export * from "./listevents.js";

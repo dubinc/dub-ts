@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: 0f2b964a8e8456417938b51c081bef2c
+  docChecksum: c7226fc27f4fb4b6c492bc7d8bb0ce6d
   docVersion: 0.0.1
   speakeasyVersion: 1.468.9
   generationVersion: 2.493.21
-  releaseVersion: 0.46.15
-  configChecksum: acf5ea8d3693dd066ba7b05ac9a02c82
+  releaseVersion: 0.46.16
+  configChecksum: 9c4d9b09c05ed50eb311b2f392b978f1
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -225,8 +225,12 @@ generatedFiles:
   - docs/models/operations/getmetatagsrequest.md
   - docs/models/operations/getmetatagsresponsebody.md
   - docs/models/operations/getqrcoderequest.md
+  - docs/models/operations/gettagsqueryparamsortby.md
+  - docs/models/operations/gettagsqueryparamsortorder.md
+  - docs/models/operations/gettagsrequest.md
   - docs/models/operations/getworkspacerequest.md
   - docs/models/operations/groupby.md
+  - docs/models/operations/ids.md
   - docs/models/operations/interval.md
   - docs/models/operations/level.md
   - docs/models/operations/link.md
@@ -417,6 +421,7 @@ generatedFiles:
   - src/models/operations/getlinkscount.ts
   - src/models/operations/getmetatags.ts
   - src/models/operations/getqrcode.ts
+  - src/models/operations/gettags.ts
   - src/models/operations/getworkspace.ts
   - src/models/operations/index.ts
   - src/models/operations/listdomains.ts
@@ -844,6 +849,10 @@ examples:
           application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
   getTags:
     speakeasy-default-get-tags:
+      parameters:
+        query:
+          page: 1
+          pageSize: 50
       responses:
         "200":
           application/json: []

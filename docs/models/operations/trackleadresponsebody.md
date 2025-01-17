@@ -13,8 +13,8 @@ let value: TrackLeadResponseBody = {
   },
   customer: {
     name: "<value>",
-    email: "Libby_Okuneva14@hotmail.com",
-    avatar: "https://loremflickr.com/3673/1419?lock=8215189336389107",
+    email: "Mariane_Swaniawski82@yahoo.com",
+    avatar: "https://loremflickr.com/687/3673?lock=1954551130111981",
     externalId: "<id>",
   },
 };
