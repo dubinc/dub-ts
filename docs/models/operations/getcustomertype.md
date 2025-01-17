@@ -5,7 +5,7 @@
 ```typescript
 import { GetCustomerType } from "dub/models/operations";
 
-let value: GetCustomerType = "flat";
+let value: GetCustomerType = "percentage";
 ```
 
 ## Values

@@ -9,9 +9,9 @@ let value: CreateCustomerDiscount = {
   id: "<id>",
   couponId: "<id>",
   couponTestId: "<id>",
-  amount: 3855.46,
+  amount: 608.42,
   type: "percentage",
-  duration: 1823.71,
+  duration: 7836.37,
   interval: "year",
 };
 ```
