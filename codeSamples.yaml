@@ -15,12 +15,6 @@ actions:
         - "lang": "typescript"
           "label": "getCustomers"
           "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.customers.list();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
-  - target: $["paths"]["/customers"]["post"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "createCustomer"
-          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.customers.create();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/customers/{id}"]["delete"]
     update:
       "x-codeSamples":
