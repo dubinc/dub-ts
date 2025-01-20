@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: c7226fc27f4fb4b6c492bc7d8bb0ce6d
+  docChecksum: 605953c660802aadc94ff70f4c51627d
   docVersion: 0.0.1
-  speakeasyVersion: 1.468.9
-  generationVersion: 2.493.21
-  releaseVersion: 0.46.16
-  configChecksum: 9c4d9b09c05ed50eb311b2f392b978f1
+  speakeasyVersion: 1.469.2
+  generationVersion: 2.493.23
+  releaseVersion: 0.46.17
+  configChecksum: c87419cf9a0003681f164c7f9ad79a19
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -458,15 +458,11 @@ generatedFiles:
   - src/types/streams.ts
   - tsconfig.json
 examples:
-  getLinks:
-    speakeasy-default-get-links:
-      parameters:
-        query:
-          page: 1
-          pageSize: 50
+  createLink:
+    speakeasy-default-create-link:
       responses:
         "200":
-          application/json: []
+          application/json: {"id": "<id>", "domain": "low-packaging.info", "key": "<key>", "url": "https://black-and-white-secrecy.org/", "trackConversion": false, "externalId": "<id>", "tenantId": "<id>", "archived": false, "expiresAt": "1737335564782", "expiredUrl": "https://brisk-seafood.net/", "password": "XhB9652A4R_UwKP", "proxy": false, "title": "<value>", "description": "demob fencing fencing vainly kookily", "image": "https://picsum.photos/seed/zicqIZPdCh/2719/290", "video": "https://loremflickr.com/2433/1085?lock=5492184885451890", "rewrite": false, "doIndex": false, "ios": "<value>", "android": "<id>", "geo": {}, "publicStats": false, "tagId": "<id>", "tags": [{"id": "<id>", "name": "<value>", "color": "pink"}, {"id": "<id>", "name": "<value>", "color": "pink"}], "webhookIds": [], "comments": "than rightfully brightly sleet where schedule insolence when warming when determined ouch scarcely ignorance", "shortLink": "https://incomparable-monster.net/", "qrCode": "https://mild-switchboard.info/", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<id>", "workspaceId": "<id>", "clicks": 0, "lastClicked": "<value>", "leads": 0, "sales": 0, "saleAmount": 0, "createdAt": "1715661698478", "updatedAt": "1737322931112", "projectId": "<id>", "programId": "<id>"}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -485,11 +481,19 @@ examples:
           application/json: {"error": {"code": "rate_limit_exceeded", "message": "The requested resource was not found."}}
         "500":
           application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
-  createLink:
-    speakeasy-default-create-link:
+  getLinks:
+    speakeasy-default-get-links:
+      parameters:
+        query:
+          showArchived: "false"
+          withTags: "false"
+          sortBy: "createdAt"
+          sortOrder: "desc"
+          page: 1
+          pageSize: 50
       responses:
         "200":
-          application/json: {"id": "<id>", "domain": "lighthearted-kilogram.name", "key": "<key>", "url": "https://impartial-dump.com", "externalId": "<value>", "tenantId": "<id>", "expiresAt": "<value>", "expiredUrl": "https://big-young.net", "password": "DuL1dlrnUXohO_B", "title": "<value>", "description": "Ameliorated demand-driven superstructure", "image": "https://loremflickr.com/640/480", "video": "<value>", "ios": "<value>", "android": "<value>", "geo": {}, "tagId": "<value>", "tags": [], "webhookIds": ["<value>"], "comments": "<value>", "shortLink": "http://massive-cup.biz", "qrCode": "http://safe-bankruptcy.net", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<value>", "workspaceId": "<value>", "lastClicked": "<value>", "createdAt": "<value>", "updatedAt": "<value>", "projectId": "<value>", "programId": "<id>"}
+          application/json: [{"id": "<id>", "domain": "neglected-plastic.biz", "key": "<key>", "url": "https://crooked-overload.name/", "trackConversion": false, "externalId": "<id>", "tenantId": "<id>", "archived": false, "expiresAt": "1737887154655", "expiredUrl": "https://breakable-bathrobe.net", "password": "QCOyVtOrvIw1vLI", "proxy": false, "title": "<value>", "description": "beside tromp worth reluctantly wound accompanist", "image": "https://picsum.photos/seed/WT1tZJLp/3243/3827", "video": "https://picsum.videos/seed/p2Pkp47W/118/2609", "rewrite": false, "doIndex": false, "ios": "<value>", "android": "<id>", "geo": {}, "publicStats": false, "tagId": "<id>", "tags": [{"id": "<id>", "name": "<value>", "color": "green"}, {"id": "<id>", "name": "<value>", "color": "green"}, {"id": "<id>", "name": "<value>", "color": "blue"}], "webhookIds": [], "comments": "commonly softly boo massive sorrowful aw strict behind along energetic oddball pasta thread vestment meanwhile likely up questionably forgery", "shortLink": "https://oblong-inspection.net", "qrCode": "https://spherical-gerbil.org/", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<id>", "workspaceId": "<id>", "clicks": 0, "lastClicked": "<value>", "leads": 0, "sales": 0, "saleAmount": 0, "createdAt": "1721443557051", "updatedAt": "1737331587293", "projectId": "<id>", "programId": "<id>"}, {"id": "<id>", "domain": "married-presume.net", "key": "<key>", "url": "https://reflecting-coast.info", "trackConversion": false, "externalId": "<id>", "tenantId": "<id>", "archived": false, "expiresAt": "1755129265296", "expiredUrl": "https://writhing-conversation.com", "password": "ZsCSHb4yMlkCXkK", "proxy": false, "title": "<value>", "description": "overcook till boo ack solicit", "image": "https://loremflickr.com/2989/2665?lock=5845099426147813", "video": "https://picsum.videos/seed/breY1MLSO6/954/73", "rewrite": false, "doIndex": false, "ios": "<value>", "android": "<id>", "geo": {}, "publicStats": false, "tagId": "<id>", "tags": [{"id": "<id>", "name": "<value>", "color": "brown"}, {"id": "<id>", "name": "<value>", "color": "red"}], "webhookIds": ["<value>"], "comments": "instead athwart before tattered gosh um what thump kettledrum configuration esteemed mysteriously legend absent brr", "shortLink": "https://well-documented-help.biz/", "qrCode": "https://untrue-lamp.info/", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<id>", "workspaceId": "<id>", "clicks": 0, "lastClicked": "<value>", "leads": 0, "sales": 0, "saleAmount": 0, "createdAt": "1729219683872", "updatedAt": "1737285395588", "projectId": "<id>", "programId": "<id>"}, {"id": "<id>", "domain": "stale-handful.com", "key": "<key>", "url": "https://lean-daughter.org", "trackConversion": false, "externalId": "<id>", "tenantId": "<id>", "archived": false, "expiresAt": "1748636795239", "expiredUrl": "https://perfumed-marketplace.com/", "password": "xsCzKbmqqqJnqbw", "proxy": false, "title": "<value>", "description": "as so yet whenever rotating hygienic mid", "image": "https://loremflickr.com/958/3484?lock=3072922795184569", "video": "https://loremflickr.com/565/2800?lock=8555441928057420", "rewrite": false, "doIndex": false, "ios": "<value>", "android": "<id>", "geo": {}, "publicStats": false, "tagId": "<id>", "tags": [{"id": "<id>", "name": "<value>", "color": "blue"}, {"id": "<id>", "name": "<value>", "color": "purple"}, {"id": "<id>", "name": "<value>", "color": "yellow"}], "webhookIds": ["<value>", "<value>"], "comments": "polished whether welcome deck gratefully for outfox pfft indeed phew rejigger overcoat when wonderful ugh before however fooey weakly", "shortLink": "https://muddy-nightlife.info/", "qrCode": "https://cloudy-tackle.net/", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<id>", "workspaceId": "<id>", "clicks": 0, "lastClicked": "<value>", "leads": 0, "sales": 0, "saleAmount": 0, "createdAt": "1714309320645", "updatedAt": "1737291744521", "projectId": "<id>", "programId": "<id>"}]
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -510,9 +514,13 @@ examples:
           application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
   getLinksCount:
     speakeasy-default-get-links-count:
+      parameters:
+        query:
+          showArchived: "false"
+          withTags: "false"
       responses:
         "200":
-          application/json: "2641.66"
+          application/json: 2641.66
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -539,33 +547,7 @@ examples:
           externalId: "123456"
       responses:
         "200":
-          application/json: {"id": "<id>", "domain": "ringed-blow.name", "key": "<key>", "url": "https://monumental-spaghetti.name", "externalId": "<value>", "tenantId": "<id>", "expiresAt": "<value>", "expiredUrl": "http://wiggly-substitution.info", "password": "fKH9v5zJBmg5IWA", "title": "<value>", "description": "Optional reciprocal projection", "image": "https://loremflickr.com/640/480", "video": "<value>", "ios": "<value>", "android": "<value>", "geo": {}, "tagId": "<value>", "tags": [], "webhookIds": ["<value>", "<value>"], "comments": "<value>", "shortLink": "https://hefty-festival.net", "qrCode": "https://pale-civilisation.name", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<value>", "workspaceId": "<value>", "lastClicked": "<value>", "createdAt": "<value>", "updatedAt": "<value>", "projectId": "<value>", "programId": "<id>"}
-        "400":
-          application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
-        "401":
-          application/json: {"error": {"code": "unauthorized", "message": "The requested resource was not found."}}
-        "403":
-          application/json: {"error": {"code": "forbidden", "message": "The requested resource was not found."}}
-        "404":
-          application/json: {"error": {"code": "not_found", "message": "The requested resource was not found."}}
-        "409":
-          application/json: {"error": {"code": "conflict", "message": "The requested resource was not found."}}
-        "410":
-          application/json: {"error": {"code": "invite_expired", "message": "The requested resource was not found."}}
-        "422":
-          application/json: {"error": {"code": "unprocessable_entity", "message": "The requested resource was not found."}}
-        "429":
-          application/json: {"error": {"code": "rate_limit_exceeded", "message": "The requested resource was not found."}}
-        "500":
-          application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
-  deleteLink:
-    speakeasy-default-delete-link:
-      parameters:
-        path:
-          linkId: "<value>"
-      responses:
-        "200":
-          application/json: {"id": "<id>"}
+          application/json: {"id": "<id>", "domain": "rural-mathematics.name", "key": "<key>", "url": "https://willing-impostor.info", "trackConversion": false, "externalId": "<id>", "tenantId": "<id>", "archived": false, "expiresAt": "1745620353868", "expiredUrl": "https://warm-hundred.net/", "password": "5UmEgZU18kgjdwK", "proxy": false, "title": "<value>", "description": "aw showboat shakily times bravely quizzically", "image": "https://picsum.photos/seed/eIfMMF/2755/1170", "video": "https://loremflickr.com/754/1831?lock=3684390672984324", "rewrite": false, "doIndex": false, "ios": "<value>", "android": "<id>", "geo": {}, "publicStats": false, "tagId": "<id>", "tags": [{"id": "<id>", "name": "<value>", "color": "green"}, {"id": "<id>", "name": "<value>", "color": "yellow"}, {"id": "<id>", "name": "<value>", "color": "red"}], "webhookIds": ["<value>", "<value>"], "comments": "scholarship to blink nifty generously", "shortLink": "https://spiffy-character.name/", "qrCode": "https://immediate-lounge.biz/", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<id>", "workspaceId": "<id>", "clicks": 0, "lastClicked": "<value>", "leads": 0, "sales": 0, "saleAmount": 0, "createdAt": "1719382908974", "updatedAt": "1737271537369", "projectId": "<id>", "programId": "<id>"}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -588,10 +570,36 @@ examples:
     speakeasy-default-update-link:
       parameters:
         path:
-          linkId: "<value>"
+          linkId: "<id>"
       responses:
         "200":
-          application/json: {"id": "<id>", "domain": "tidy-amazon.name", "key": "<key>", "url": "http://grand-pupa.org", "externalId": "<value>", "tenantId": "<id>", "expiresAt": "<value>", "expiredUrl": "http://plastic-powder.info", "password": "KvPKDk8CkuAMJjb", "title": "<value>", "description": "User-friendly foreground interface", "image": "https://loremflickr.com/640/480", "video": "<value>", "ios": "<value>", "android": "<value>", "geo": {}, "tagId": "<value>", "tags": [], "webhookIds": ["<value>", "<value>", "<value>"], "comments": "<value>", "shortLink": "http://glossy-roller.info", "qrCode": "https://poor-howard.com", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<value>", "workspaceId": "<value>", "lastClicked": "<value>", "createdAt": "<value>", "updatedAt": "<value>", "projectId": "<value>", "programId": "<id>"}
+          application/json: {"id": "<id>", "domain": "tinted-nectarine.info", "key": "<key>", "url": "https://powerless-juggernaut.org", "trackConversion": false, "externalId": "<id>", "tenantId": "<id>", "archived": false, "expiresAt": "1739037738566", "expiredUrl": "https://juvenile-exploration.biz", "password": "kuMjbGhnJP7Bopu", "proxy": false, "title": "<value>", "description": "bleak from that qualified cycle woot abseil perfumed", "image": "https://loremflickr.com/1166/1632?lock=5920233536834378", "video": "https://loremflickr.com/996/369?lock=4799093392417520", "rewrite": false, "doIndex": false, "ios": "<value>", "android": "<id>", "geo": {}, "publicStats": false, "tagId": "<id>", "tags": [{"id": "<id>", "name": "<value>", "color": "blue"}, {"id": "<id>", "name": "<value>", "color": "blue"}, {"id": "<id>", "name": "<value>", "color": "green"}], "webhookIds": [], "comments": "duh clamour urgently voluntarily scale gut readies concerning statement nice consequently provided when rim league almost forenenst instead arbitrate pulse", "shortLink": "https://impossible-typeface.net/", "qrCode": "https://worthy-effector.net", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<id>", "workspaceId": "<id>", "clicks": 0, "lastClicked": "<value>", "leads": 0, "sales": 0, "saleAmount": 0, "createdAt": "1710616171854", "updatedAt": "1737261515964", "projectId": "<id>", "programId": "<id>"}
+        "400":
+          application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
+        "401":
+          application/json: {"error": {"code": "unauthorized", "message": "The requested resource was not found."}}
+        "403":
+          application/json: {"error": {"code": "forbidden", "message": "The requested resource was not found."}}
+        "404":
+          application/json: {"error": {"code": "not_found", "message": "The requested resource was not found."}}
+        "409":
+          application/json: {"error": {"code": "conflict", "message": "The requested resource was not found."}}
+        "410":
+          application/json: {"error": {"code": "invite_expired", "message": "The requested resource was not found."}}
+        "422":
+          application/json: {"error": {"code": "unprocessable_entity", "message": "The requested resource was not found."}}
+        "429":
+          application/json: {"error": {"code": "rate_limit_exceeded", "message": "The requested resource was not found."}}
+        "500":
+          application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
+  deleteLink:
+    speakeasy-default-delete-link:
+      parameters:
+        path:
+          linkId: "<id>"
+      responses:
+        "200":
+          application/json: {"id": "<id>"}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -614,7 +622,30 @@ examples:
     speakeasy-default-bulk-create-links:
       responses:
         "200":
-          application/json: []
+          application/json: [{"error": "<value>", "code": "conflict"}, {"id": "<id>", "domain": "enlightened-sanity.info", "key": "<key>", "url": "https://flawed-plumber.name/", "trackConversion": false, "externalId": "<id>", "tenantId": "<id>", "archived": false, "expiresAt": "1757779801233", "expiredUrl": "https://devoted-quit.name", "password": "i6NXnrZ9O3zPrEC", "proxy": false, "title": "<value>", "description": "ditch what outside monthly kielbasa psst finer aw although", "image": "https://picsum.photos/seed/rlA3LwhK/1855/1563", "video": "https://picsum.videos/seed/itt7gjdv/857/1825", "rewrite": false, "doIndex": false, "ios": "<value>", "android": "<id>", "geo": {}, "publicStats": false, "tagId": "<id>", "tags": [], "webhookIds": ["<value>", "<value>", "<value>"], "comments": "beyond ha since pike gadzooks outside cardboard clavicle even supposing what longingly", "shortLink": "https://haunting-membership.net", "qrCode": "https://pointless-freckle.info", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<id>", "workspaceId": "<id>", "clicks": 0, "lastClicked": "<value>", "leads": 0, "sales": 0, "saleAmount": 0, "createdAt": "1711281279542", "updatedAt": "1737305389802", "projectId": "<id>", "programId": "<id>"}]
+        "400":
+          application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
+        "401":
+          application/json: {"error": {"code": "unauthorized", "message": "The requested resource was not found."}}
+        "403":
+          application/json: {"error": {"code": "forbidden", "message": "The requested resource was not found."}}
+        "404":
+          application/json: {"error": {"code": "not_found", "message": "The requested resource was not found."}}
+        "409":
+          application/json: {"error": {"code": "conflict", "message": "The requested resource was not found."}}
+        "410":
+          application/json: {"error": {"code": "invite_expired", "message": "The requested resource was not found."}}
+        "422":
+          application/json: {"error": {"code": "unprocessable_entity", "message": "The requested resource was not found."}}
+        "429":
+          application/json: {"error": {"code": "rate_limit_exceeded", "message": "The requested resource was not found."}}
+        "500":
+          application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
+  bulkUpdateLinks:
+    speakeasy-default-bulk-update-links:
+      responses:
+        "200":
+          application/json: [{"id": "<id>", "domain": "old-lox.org", "key": "<key>", "url": "https://angelic-cellar.org/", "trackConversion": false, "externalId": "<id>", "tenantId": "<id>", "archived": false, "expiresAt": "1746859371182", "expiredUrl": "https://yellowish-vicinity.org/", "password": "yMRdLF0naLtN5wK", "proxy": false, "title": "<value>", "description": "aboard octave since", "image": "https://loremflickr.com/2247/3258?lock=8204630610718424", "video": "https://picsum.videos/seed/L7W1CltA/399/207", "rewrite": false, "doIndex": false, "ios": "<value>", "android": "<id>", "geo": {}, "publicStats": false, "tagId": "<id>", "tags": [{"id": "<id>", "name": "<value>", "color": "green"}, {"id": "<id>", "name": "<value>", "color": "blue"}], "webhookIds": ["<value>", "<value>", "<value>"], "comments": "psst instead even brr react busily both along whereas absent why round around round beneficial however safely defensive", "shortLink": "https://inborn-trick.biz", "qrCode": "https://scientific-alliance.biz/", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<id>", "workspaceId": "<id>", "clicks": 0, "lastClicked": "<value>", "leads": 0, "sales": 0, "saleAmount": 0, "createdAt": "1723351324714", "updatedAt": "1737309780940", "projectId": "<id>", "programId": "<id>"}, {"id": "<id>", "domain": "purple-secrecy.name", "key": "<key>", "url": "https://unwilling-godparent.biz/", "trackConversion": false, "externalId": "<id>", "tenantId": "<id>", "archived": false, "expiresAt": "1761875113910", "expiredUrl": "https://weekly-formamide.name", "password": "t3Ls5KHqWZvIT9U", "proxy": false, "title": "<value>", "description": "tribe astonishing hm who blah verify soybean", "image": "https://picsum.photos/seed/DauITRrHdo/3783/3955", "video": "https://loremflickr.com/405/3655?lock=8436311567525016", "rewrite": false, "doIndex": false, "ios": "<value>", "android": "<id>", "geo": {}, "publicStats": false, "tagId": "<id>", "tags": [{"id": "<id>", "name": "<value>", "color": "green"}, {"id": "<id>", "name": "<value>", "color": "purple"}, {"id": "<id>", "name": "<value>", "color": "pink"}], "webhookIds": ["<value>"], "comments": "since cloudy dutiful heartache unto yippee custom footrest forenenst astonishing shore", "shortLink": "https://exotic-hydrolyze.name/", "qrCode": "https://giving-scale.name", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<id>", "workspaceId": "<id>", "clicks": 0, "lastClicked": "<value>", "leads": 0, "sales": 0, "saleAmount": 0, "createdAt": "1715965972445", "updatedAt": "1737265718324", "projectId": "<id>", "programId": "<id>"}]
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -640,30 +671,7 @@ examples:
           linkIds: ["clux0rgak00011...", "clux0rgak00022..."]
       responses:
         "200":
-          application/json: {"deletedCount": "5277.63"}
-        "400":
-          application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
-        "401":
-          application/json: {"error": {"code": "unauthorized", "message": "The requested resource was not found."}}
-        "403":
-          application/json: {"error": {"code": "forbidden", "message": "The requested resource was not found."}}
-        "404":
-          application/json: {"error": {"code": "not_found", "message": "The requested resource was not found."}}
-        "409":
-          application/json: {"error": {"code": "conflict", "message": "The requested resource was not found."}}
-        "410":
-          application/json: {"error": {"code": "invite_expired", "message": "The requested resource was not found."}}
-        "422":
-          application/json: {"error": {"code": "unprocessable_entity", "message": "The requested resource was not found."}}
-        "429":
-          application/json: {"error": {"code": "rate_limit_exceeded", "message": "The requested resource was not found."}}
-        "500":
-          application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
-  bulkUpdateLinks:
-    speakeasy-default-bulk-update-links:
-      responses:
-        "200":
-          application/json: []
+          application/json: {"deletedCount": 5277.63}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -686,33 +694,7 @@ examples:
     speakeasy-default-upsert-link:
       responses:
         "200":
-          application/json: {"id": "<id>", "domain": "monthly-hometown.info", "key": "<key>", "url": "https://honored-equality.info", "externalId": "<value>", "tenantId": "<id>", "expiresAt": "<value>", "expiredUrl": "https://eminent-acknowledgment.net", "password": "wZDcrQrPcHBWicB", "title": "<value>", "description": "Re-engineered 24 hour structure", "image": "https://loremflickr.com/640/480", "video": "<value>", "ios": "<value>", "android": "<value>", "geo": {}, "tagId": "<value>", "tags": [], "webhookIds": ["<value>", "<value>"], "comments": "<value>", "shortLink": "http://nocturnal-spirituality.com", "qrCode": "https://potable-app.org", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<value>", "workspaceId": "<value>", "lastClicked": "<value>", "createdAt": "<value>", "updatedAt": "<value>", "projectId": "<value>", "programId": "<id>"}
-        "400":
-          application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
-        "401":
-          application/json: {"error": {"code": "unauthorized", "message": "The requested resource was not found."}}
-        "403":
-          application/json: {"error": {"code": "forbidden", "message": "The requested resource was not found."}}
-        "404":
-          application/json: {"error": {"code": "not_found", "message": "The requested resource was not found."}}
-        "409":
-          application/json: {"error": {"code": "conflict", "message": "The requested resource was not found."}}
-        "410":
-          application/json: {"error": {"code": "invite_expired", "message": "The requested resource was not found."}}
-        "422":
-          application/json: {"error": {"code": "unprocessable_entity", "message": "The requested resource was not found."}}
-        "429":
-          application/json: {"error": {"code": "rate_limit_exceeded", "message": "The requested resource was not found."}}
-        "500":
-          application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
-  getQRCode:
-    speakeasy-default-get-QR-code:
-      parameters:
-        query:
-          url: "https://brief-micronutrient.org"
-      responses:
-        "200":
-          image/png: "<value>"
+          application/json: {"id": "<id>", "domain": "neat-instruction.info", "key": "<key>", "url": "https://entire-rubric.com/", "trackConversion": false, "externalId": "<id>", "tenantId": "<id>", "archived": false, "expiresAt": "1741966357634", "expiredUrl": "https://rubbery-lay.com/", "password": "cHWcftWRnnmyj_U", "proxy": false, "title": "<value>", "description": "likewise concerning annual instantly anti deployment", "image": "https://loremflickr.com/181/3306?lock=1275456187971812", "video": "https://picsum.videos/seed/CcMAI/2638/2080", "rewrite": false, "doIndex": false, "ios": "<value>", "android": "<id>", "geo": {}, "publicStats": false, "tagId": "<id>", "tags": [{"id": "<id>", "name": "<value>", "color": "pink"}, {"id": "<id>", "name": "<value>", "color": "purple"}, {"id": "<id>", "name": "<value>", "color": "red"}], "webhookIds": [], "comments": "clueless unless conclude daddy boohoo ideal lumpy masculinize charter geez as eulogise granny", "shortLink": "https://complicated-resource.net/", "qrCode": "https://impractical-cap.net", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<id>", "workspaceId": "<id>", "clicks": 0, "lastClicked": "<value>", "leads": 0, "sales": 0, "saleAmount": 0, "createdAt": "1731721074978", "updatedAt": "1737298961194", "projectId": "<id>", "programId": "<id>"}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -735,6 +717,8 @@ examples:
     speakeasy-default-retrieve-analytics:
       parameters:
         query:
+          event: "clicks"
+          groupBy: "count"
           timezone: "America/New_York"
           city: "New York"
           device: "Desktop"
@@ -744,7 +728,7 @@ examples:
           refererUrl: "https://dub.co/blog"
       responses:
         "200":
-          application/json: []
+          application/json: [{"city": "West Aubrey", "country": "MR", "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0}, {"city": "Creminfield", "country": "AZ", "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0}, {"city": "VonRuedenville", "country": "CF", "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0}]
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -767,6 +751,8 @@ examples:
     speakeasy-default-list-events:
       parameters:
         query:
+          event: "clicks"
+          interval: "24h"
           timezone: "America/New_York"
           city: "New York"
           device: "Desktop"
@@ -774,88 +760,13 @@ examples:
           os: "Windows"
           referer: "google.com"
           refererUrl: "https://dub.co/blog"
-      responses:
-        "200":
-          application/json: []
-        "400":
-          application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
-        "401":
-          application/json: {"error": {"code": "unauthorized", "message": "The requested resource was not found."}}
-        "403":
-          application/json: {"error": {"code": "forbidden", "message": "The requested resource was not found."}}
-        "404":
-          application/json: {"error": {"code": "not_found", "message": "The requested resource was not found."}}
-        "409":
-          application/json: {"error": {"code": "conflict", "message": "The requested resource was not found."}}
-        "410":
-          application/json: {"error": {"code": "invite_expired", "message": "The requested resource was not found."}}
-        "422":
-          application/json: {"error": {"code": "unprocessable_entity", "message": "The requested resource was not found."}}
-        "429":
-          application/json: {"error": {"code": "rate_limit_exceeded", "message": "The requested resource was not found."}}
-        "500":
-          application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
-  getWorkspace:
-    speakeasy-default-get-workspace:
-      parameters:
-        path:
-          idOrSlug: "<value>"
-      responses:
-        "200":
-          application/json: {"id": "<id>", "name": "<value>", "slug": "<value>", "inviteCode": "<value>", "plan": "business extra", "stripeId": "<value>", "billingCycleStart": "900.65", "paymentFailedAt": "<value>", "stripeConnectId": "<value>", "payoutMethodId": "<id>", "usage": "5588.34", "usageLimit": "8441.99", "linksUsage": "5442.21", "linksLimit": "8306.36", "salesUsage": "5212.35", "salesLimit": "785.92", "domainsLimit": "9699.61", "tagsLimit": "8661.61", "usersLimit": "4580.49", "aiUsage": "7352.87", "aiLimit": "4508.24", "conversionEnabled": true, "dotLinkClaimed": true, "partnersEnabled": false, "createdAt": "<value>", "users": [], "domains": [], "store": {"key": "<value>", "key1": "<value>"}}
-        "400":
-          application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
-        "401":
-          application/json: {"error": {"code": "unauthorized", "message": "The requested resource was not found."}}
-        "403":
-          application/json: {"error": {"code": "forbidden", "message": "The requested resource was not found."}}
-        "404":
-          application/json: {"error": {"code": "not_found", "message": "The requested resource was not found."}}
-        "409":
-          application/json: {"error": {"code": "conflict", "message": "The requested resource was not found."}}
-        "410":
-          application/json: {"error": {"code": "invite_expired", "message": "The requested resource was not found."}}
-        "422":
-          application/json: {"error": {"code": "unprocessable_entity", "message": "The requested resource was not found."}}
-        "429":
-          application/json: {"error": {"code": "rate_limit_exceeded", "message": "The requested resource was not found."}}
-        "500":
-          application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
-  updateWorkspace:
-    speakeasy-default-update-workspace:
-      parameters:
-        path:
-          idOrSlug: "<value>"
-      responses:
-        "200":
-          application/json: {"id": "<id>", "name": "<value>", "slug": "<value>", "inviteCode": "<value>", "plan": "enterprise", "stripeId": "<value>", "billingCycleStart": "245.55", "paymentFailedAt": "<value>", "stripeConnectId": "<value>", "payoutMethodId": "<id>", "usage": "5971.29", "usageLimit": "156.52", "linksUsage": "3446.2", "linksLimit": "7084.55", "salesUsage": "9914.64", "salesLimit": "2703.24", "domainsLimit": "6276.9", "tagsLimit": "6841.99", "usersLimit": "4888.52", "aiUsage": "4430.76", "aiLimit": "9840.08", "conversionEnabled": true, "dotLinkClaimed": false, "partnersEnabled": false, "createdAt": "<value>", "users": [], "domains": [], "store": {"key": "<value>", "key1": "<value>", "key2": "<value>"}}
-        "400":
-          application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
-        "401":
-          application/json: {"error": {"code": "unauthorized", "message": "The requested resource was not found."}}
-        "403":
-          application/json: {"error": {"code": "forbidden", "message": "The requested resource was not found."}}
-        "404":
-          application/json: {"error": {"code": "not_found", "message": "The requested resource was not found."}}
-        "409":
-          application/json: {"error": {"code": "conflict", "message": "The requested resource was not found."}}
-        "410":
-          application/json: {"error": {"code": "invite_expired", "message": "The requested resource was not found."}}
-        "422":
-          application/json: {"error": {"code": "unprocessable_entity", "message": "The requested resource was not found."}}
-        "429":
-          application/json: {"error": {"code": "rate_limit_exceeded", "message": "The requested resource was not found."}}
-        "500":
-          application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
-  getTags:
-    speakeasy-default-get-tags:
-      parameters:
-        query:
           page: 1
-          pageSize: 50
+          limit: 100
+          sortOrder: "desc"
+          sortBy: "timestamp"
       responses:
         "200":
-          application/json: []
+          application/json: [{"event": "sale", "eventId": "<id>", "eventName": "<value>", "link": {"id": "<id>", "domain": "remorseful-concentration.biz", "key": "<key>", "url": "https://primary-paintwork.com/", "externalId": "<id>", "tenantId": "<id>", "expiresAt": "1759985241601", "expiredUrl": "https://black-poetry.name/", "password": "COyVtOrvIw1vLIJ", "title": "<value>", "description": "despite er boom however when uh-huh", "image": "https://picsum.photos/seed/T1tZJLp1EG/3827/3109", "video": "https://loremflickr.com/2420/1632?lock=7470650813503352", "ios": "<value>", "android": "<id>", "geo": {}, "tagId": "<id>", "tags": [{"id": "<id>", "name": "<value>", "color": "green"}], "webhookIds": [], "comments": "tenement commonly softly boo massive sorrowful", "shortLink": "https://dense-custom.info/", "qrCode": "https://alive-lid.biz", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<id>", "workspaceId": "<id>", "clicks": 0, "lastClicked": "<value>", "leads": 0, "sales": 0, "saleAmount": 0, "createdAt": "1725398053142", "updatedAt": "1737271681141", "projectId": "<id>", "programId": "<id>"}, "click": {"id": "<id>", "url": "https://utilized-quit.net/", "country": "Togo", "city": "Cormiermouth", "region": "<value>", "continent": "North America", "device": "Mobile", "browser": "Chrome", "os": "Chrome OS", "referer": "gummy-cope.net", "refererUrl": "https://prickly-bourgeoisie.info/", "ip": "69bd:53cd:cebc:ac4b:d1e8:50e8:ee59:b0b3"}, "customer": {"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "1736153597600"}, "sale": {"amount": 625809, "invoiceId": null, "paymentProcessor": "stripe"}, "saleAmount": 1401.42, "invoice_id": "<id>", "payment_processor": "<value>", "click_id": "<id>", "link_id": "<id>", "domain": "unruly-allegation.name", "key": "<key>", "url": "https://fortunate-swim.info/", "continent": "Australia", "country": "Cook Islands", "city": "South Harryburgh", "device": "Mobile", "browser": "Safari", "os": "WebOS", "qr": 1523.03, "ip": "caf5:04dc:da9e:67cc:af3b:8caf:afbe:e39c"}, {"event": "sale", "eventId": "<id>", "eventName": "<value>", "link": {"id": "<id>", "domain": "right-window.biz", "key": "<key>", "url": "https://physical-experience.org/", "externalId": "<id>", "tenantId": "<id>", "expiresAt": "1748676595182", "expiredUrl": "https://indelible-birdbath.net", "password": "4yMlkCXkK5ppW3u", "title": "<value>", "description": "terribly gosh facilitate in", "image": "https://loremflickr.com/2596/954?lock=8527955982122580", "video": "https://loremflickr.com/3336/742?lock=2177640289466521", "ios": "<value>", "android": "<id>", "geo": {}, "tagId": "<id>", "tags": [{"id": "<id>", "name": "<value>", "color": "red"}, {"id": "<id>", "name": "<value>", "color": "pink"}, {"id": "<id>", "name": "<value>", "color": "pink"}], "webhookIds": ["<value>", "<value>", "<value>"], "comments": "up so pro pish clear-cut an mid aw disconnection which wetly typeface usable underneath putrefy ah aha", "shortLink": "https://knowledgeable-season.info", "qrCode": "https://nimble-individual.biz/", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<id>", "workspaceId": "<id>", "clicks": 0, "lastClicked": "<value>", "leads": 0, "sales": 0, "saleAmount": 0, "createdAt": "1735892318874", "updatedAt": "1737277402338", "projectId": "<id>", "programId": "<id>"}, "click": {"id": "<id>", "url": "https://perfumed-marketplace.com/", "country": "Burundi", "city": "Stockton", "region": "<value>", "continent": "Asia", "device": "Desktop", "browser": "Chrome", "os": "Symbian", "referer": "well-off-hygienic.org", "refererUrl": "https://ripe-ceramic.org", "ip": "eebc:cce9:cecf:ebeb:dfd9:15f2:a0cc:a3b1"}, "customer": {"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "1720253263696"}, "sale": {"amount": 443316, "invoiceId": null, "paymentProcessor": "paddle"}, "saleAmount": 2634.98, "invoice_id": "<id>", "payment_processor": "<value>", "click_id": "<id>", "link_id": "<id>", "domain": "next-cricket.biz", "key": "<key>", "url": "https://repentant-rust.name/", "continent": "Australia", "country": "Saint Helena", "city": "Luettgenfort", "device": "Mobile", "browser": "Safari", "os": "Chrome OS", "qr": 4390.32, "ip": "54.229.114.129"}]
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -897,14 +808,17 @@ examples:
           application/json: {"error": {"code": "rate_limit_exceeded", "message": "The requested resource was not found."}}
         "500":
           application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
-  deleteTag:
-    speakeasy-default-delete-tag:
+  getTags:
+    speakeasy-default-get-tags:
       parameters:
-        path:
-          id: "<id>"
+        query:
+          sortBy: "name"
+          sortOrder: "asc"
+          page: 1
+          pageSize: 50
       responses:
         "200":
-          application/json: {"id": "<id>"}
+          application/json: [{"id": "<id>", "name": "<value>", "color": "blue"}, {"id": "<id>", "name": "<value>", "color": "purple"}, {"id": "<id>", "name": "<value>", "color": "yellow"}]
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -949,15 +863,14 @@ examples:
           application/json: {"error": {"code": "rate_limit_exceeded", "message": "The requested resource was not found."}}
         "500":
           application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
-  listDomains:
-    speakeasy-default-list-domains:
+  deleteTag:
+    speakeasy-default-delete-tag:
       parameters:
-        query:
-          page: 1
-          pageSize: 50
+        path:
+          id: "<id>"
       responses:
         "200":
-          application/json: []
+          application/json: {"id": "<id>"}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -980,7 +893,61 @@ examples:
     speakeasy-default-create-domain:
       responses:
         "201":
-          application/json: {"id": "<id>", "slug": "acme.com", "placeholder": "https://dub.co/help/article/what-is-dub", "expiredUrl": "https://acme.com/expired", "notFoundUrl": "https://acme.com/not-found", "logo": "<value>", "createdAt": "<value>", "updatedAt": "<value>", "registeredDomain": {"id": "<id>", "createdAt": "<value>", "expiresAt": "<value>"}}
+          application/json: {"id": "<id>", "slug": "acme.com", "verified": false, "primary": false, "archived": false, "placeholder": "https://dub.co/help/article/what-is-dub", "expiredUrl": "https://acme.com/expired", "notFoundUrl": "https://acme.com/not-found", "logo": "<value>", "createdAt": "1721141917209", "updatedAt": "1737301592213", "registeredDomain": {"id": "<id>", "createdAt": "1718961780577", "expiresAt": "1741570171766"}}
+        "400":
+          application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
+        "401":
+          application/json: {"error": {"code": "unauthorized", "message": "The requested resource was not found."}}
+        "403":
+          application/json: {"error": {"code": "forbidden", "message": "The requested resource was not found."}}
+        "404":
+          application/json: {"error": {"code": "not_found", "message": "The requested resource was not found."}}
+        "409":
+          application/json: {"error": {"code": "conflict", "message": "The requested resource was not found."}}
+        "410":
+          application/json: {"error": {"code": "invite_expired", "message": "The requested resource was not found."}}
+        "422":
+          application/json: {"error": {"code": "unprocessable_entity", "message": "The requested resource was not found."}}
+        "429":
+          application/json: {"error": {"code": "rate_limit_exceeded", "message": "The requested resource was not found."}}
+        "500":
+          application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
+  listDomains:
+    speakeasy-default-list-domains:
+      parameters:
+        query:
+          archived: "false"
+          page: 1
+          pageSize: 50
+      responses:
+        "200":
+          application/json: [{"id": "<id>", "slug": "acme.com", "verified": false, "primary": false, "archived": false, "placeholder": "https://dub.co/help/article/what-is-dub", "expiredUrl": "https://acme.com/expired", "notFoundUrl": "https://acme.com/not-found", "logo": "<value>", "createdAt": "1723055598017", "updatedAt": "1737305038899", "registeredDomain": {"id": "<id>", "createdAt": "1711400984096", "expiresAt": "1744577180956"}}, {"id": "<id>", "slug": "acme.com", "verified": false, "primary": false, "archived": false, "placeholder": "https://dub.co/help/article/what-is-dub", "expiredUrl": "https://acme.com/expired", "notFoundUrl": "https://acme.com/not-found", "logo": "<value>", "createdAt": "1710616720501", "updatedAt": "1737301342398", "registeredDomain": {"id": "<id>", "createdAt": "1725960530459", "expiresAt": "1737887155183"}}, {"id": "<id>", "slug": "acme.com", "verified": false, "primary": false, "archived": false, "placeholder": "https://dub.co/help/article/what-is-dub", "expiredUrl": "https://acme.com/expired", "notFoundUrl": "https://acme.com/not-found", "logo": "<value>", "createdAt": "1728449240744", "updatedAt": "1737253875458", "registeredDomain": {"id": "<id>", "createdAt": "1707957200101", "expiresAt": "1759028328735"}}]
+        "400":
+          application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
+        "401":
+          application/json: {"error": {"code": "unauthorized", "message": "The requested resource was not found."}}
+        "403":
+          application/json: {"error": {"code": "forbidden", "message": "The requested resource was not found."}}
+        "404":
+          application/json: {"error": {"code": "not_found", "message": "The requested resource was not found."}}
+        "409":
+          application/json: {"error": {"code": "conflict", "message": "The requested resource was not found."}}
+        "410":
+          application/json: {"error": {"code": "invite_expired", "message": "The requested resource was not found."}}
+        "422":
+          application/json: {"error": {"code": "unprocessable_entity", "message": "The requested resource was not found."}}
+        "429":
+          application/json: {"error": {"code": "rate_limit_exceeded", "message": "The requested resource was not found."}}
+        "500":
+          application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
+  updateDomain:
+    speakeasy-default-update-domain:
+      parameters:
+        path:
+          slug: "acme.com"
+      responses:
+        "200":
+          application/json: {"id": "<id>", "slug": "acme.com", "verified": false, "primary": false, "archived": false, "placeholder": "https://dub.co/help/article/what-is-dub", "expiredUrl": "https://acme.com/expired", "notFoundUrl": "https://acme.com/not-found", "logo": "<value>", "createdAt": "1732838233049", "updatedAt": "1737298024402", "registeredDomain": {"id": "<id>", "createdAt": "1716664766756", "expiresAt": "1768599634209"}}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1025,37 +992,11 @@ examples:
           application/json: {"error": {"code": "rate_limit_exceeded", "message": "The requested resource was not found."}}
         "500":
           application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
-  updateDomain:
-    speakeasy-default-update-domain:
-      parameters:
-        path:
-          slug: "acme.com"
-      responses:
-        "200":
-          application/json: {"id": "<id>", "slug": "acme.com", "placeholder": "https://dub.co/help/article/what-is-dub", "expiredUrl": "https://acme.com/expired", "notFoundUrl": "https://acme.com/not-found", "logo": "<value>", "createdAt": "<value>", "updatedAt": "<value>", "registeredDomain": {"id": "<id>", "createdAt": "<value>", "expiresAt": "<value>"}}
-        "400":
-          application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
-        "401":
-          application/json: {"error": {"code": "unauthorized", "message": "The requested resource was not found."}}
-        "403":
-          application/json: {"error": {"code": "forbidden", "message": "The requested resource was not found."}}
-        "404":
-          application/json: {"error": {"code": "not_found", "message": "The requested resource was not found."}}
-        "409":
-          application/json: {"error": {"code": "conflict", "message": "The requested resource was not found."}}
-        "410":
-          application/json: {"error": {"code": "invite_expired", "message": "The requested resource was not found."}}
-        "422":
-          application/json: {"error": {"code": "unprocessable_entity", "message": "The requested resource was not found."}}
-        "429":
-          application/json: {"error": {"code": "rate_limit_exceeded", "message": "The requested resource was not found."}}
-        "500":
-          application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
   trackLead:
     speakeasy-default-track-lead:
       responses:
         "200":
-          application/json: {"click": {"id": "<id>"}, "customer": {"name": "<value>", "email": "Katelin24@hotmail.com", "avatar": "https://loremflickr.com/640/480", "externalId": "<id>"}}
+          application/json: {"click": {"id": "<id>"}, "customer": {"name": "<value>", "email": "Diego86@hotmail.com", "avatar": "https://picsum.photos/seed/fWwyl/1479/748", "externalId": "<id>"}}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1078,7 +1019,7 @@ examples:
     speakeasy-default-track-sale:
       responses:
         "200":
-          application/json: {"eventName": "<value>", "customer": {"id": "<id>", "name": "<value>", "email": "Hoyt_Volkman@hotmail.com", "avatar": "https://loremflickr.com/640/480", "externalId": "<id>"}, "sale": {"amount": "59.37", "currency": "Leone", "paymentProcessor": "<value>", "invoiceId": "<value>", "metadata": {"key": "<value>", "key1": "<value>", "key2": "<value>"}}}
+          application/json: {"eventName": "<value>", "customer": {"id": "<id>", "name": "<value>", "email": "Tavares.Rice@hotmail.com", "avatar": "https://picsum.photos/seed/6lTJH/15/2912", "externalId": "<id>"}, "sale": {"amount": 5612.49, "currency": "Bulgarian Lev", "paymentProcessor": "<value>", "invoiceId": "<id>", "metadata": {"key": "<value>", "key1": "<value>"}}}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1097,42 +1038,11 @@ examples:
           application/json: {"error": {"code": "rate_limit_exceeded", "message": "The requested resource was not found."}}
         "500":
           application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
-  trackCustomer:
-    speakeasy-default-track-customer:
-      responses:
-        "200":
-          application/json: {"customerId": "<value>", "customerName": "<value>", "customerEmail": "<value>", "customerAvatar": "<value>"}
-        "400":
-          application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
-        "401":
-          application/json: {"error": {"code": "unauthorized", "message": "The requested resource was not found."}}
-        "403":
-          application/json: {"error": {"code": "forbidden", "message": "The requested resource was not found."}}
-        "404":
-          application/json: {"error": {"code": "not_found", "message": "The requested resource was not found."}}
-        "409":
-          application/json: {"error": {"code": "conflict", "message": "The requested resource was not found."}}
-        "410":
-          application/json: {"error": {"code": "invite_expired", "message": "The requested resource was not found."}}
-        "422":
-          application/json: {"error": {"code": "unprocessable_entity", "message": "The requested resource was not found."}}
-        "429":
-          application/json: {"error": {"code": "rate_limit_exceeded", "message": "The requested resource was not found."}}
-        "500":
-          application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
-  getMetatags:
-    speakeasy-default-get-metatags:
-      parameters:
-        query:
-          url: "https://dub.co"
-      responses:
-        "200":
-          application/json: {"title": "Dub.co - Link Management for Modern Marketing Teams", "description": "Dub.co is the open-source link management infrastructure ...", "image": "https://assets.dub.co/thumbnail.jpg"}
   getCustomers:
     speakeasy-default-get-customers:
       responses:
         "200":
-          application/json: [{"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "<value>"}, {"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "<value>"}, {"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "<value>"}]
+          application/json: [{"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "1723055598100"}, {"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "1727188217082"}, {"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "1711400984180"}]
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1155,7 +1065,7 @@ examples:
     speakeasy-default-create-customer:
       responses:
         "201":
-          application/json: {"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "<value>"}
+          application/json: {"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "1721141917326"}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1182,7 +1092,7 @@ examples:
         query: {}
       responses:
         "200":
-          application/json: {"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "<value>"}
+          application/json: {"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "1727882958754"}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1209,7 +1119,7 @@ examples:
         query: {}
       responses:
         "200":
-          application/json: {"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "<value>"}
+          application/json: {"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "1732838233163"}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1254,6 +1164,58 @@ examples:
           application/json: {"error": {"code": "rate_limit_exceeded", "message": "The requested resource was not found."}}
         "500":
           application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
+  getWorkspace:
+    speakeasy-default-get-workspace:
+      parameters:
+        path:
+          idOrSlug: "<value>"
+      responses:
+        "200":
+          application/json: {"id": "<id>", "name": "<value>", "slug": "<value>", "logo": null, "inviteCode": "<value>", "plan": "business extra", "stripeId": "<id>", "billingCycleStart": 5588.34, "paymentFailedAt": "<value>", "stripeConnectId": "<id>", "payoutMethodId": "<id>", "usage": 5442.21, "usageLimit": 5212.35, "linksUsage": 9699.61, "linksLimit": 4580.49, "salesUsage": 4508.24, "salesLimit": 2627.95, "domainsLimit": 2134.57, "tagsLimit": 9371.46, "usersLimit": 4381.42, "aiUsage": 8013.73, "aiLimit": 788.88, "conversionEnabled": true, "dotLinkClaimed": true, "partnersEnabled": true, "createdAt": "1723223050196", "users": [{"role": "owner"}, {"role": "member"}, {"role": "member"}], "domains": [{"slug": "acme.com", "primary": false, "verified": false}, {"slug": "acme.com", "primary": false, "verified": false}], "store": {"key": "<value>"}}
+        "400":
+          application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
+        "401":
+          application/json: {"error": {"code": "unauthorized", "message": "The requested resource was not found."}}
+        "403":
+          application/json: {"error": {"code": "forbidden", "message": "The requested resource was not found."}}
+        "404":
+          application/json: {"error": {"code": "not_found", "message": "The requested resource was not found."}}
+        "409":
+          application/json: {"error": {"code": "conflict", "message": "The requested resource was not found."}}
+        "410":
+          application/json: {"error": {"code": "invite_expired", "message": "The requested resource was not found."}}
+        "422":
+          application/json: {"error": {"code": "unprocessable_entity", "message": "The requested resource was not found."}}
+        "429":
+          application/json: {"error": {"code": "rate_limit_exceeded", "message": "The requested resource was not found."}}
+        "500":
+          application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
+  updateWorkspace:
+    speakeasy-default-update-workspace:
+      parameters:
+        path:
+          idOrSlug: "<value>"
+      responses:
+        "200":
+          application/json: {"id": "<id>", "name": "<value>", "slug": "<value>", "logo": null, "inviteCode": "<value>", "plan": "enterprise", "stripeId": "<id>", "billingCycleStart": 5971.29, "paymentFailedAt": "<value>", "stripeConnectId": "<id>", "payoutMethodId": "<id>", "usage": 3446.2, "usageLimit": 9914.64, "linksUsage": 6276.9, "linksLimit": 4888.52, "salesUsage": 9840.08, "salesLimit": 540.62, "domainsLimit": 8965.01, "tagsLimit": 4468.63, "usersLimit": 3115.07, "aiUsage": 2494.4, "aiLimit": 1395.79, "conversionEnabled": false, "dotLinkClaimed": false, "partnersEnabled": true, "createdAt": "1720441673616", "users": [{"role": "member"}, {"role": "owner"}, {"role": "owner"}], "domains": [{"slug": "acme.com", "primary": false, "verified": false}, {"slug": "acme.com", "primary": false, "verified": false}, {"slug": "acme.com", "primary": false, "verified": false}], "store": {"key": "<value>", "key1": "<value>", "key2": "<value>"}}
+        "400":
+          application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
+        "401":
+          application/json: {"error": {"code": "unauthorized", "message": "The requested resource was not found."}}
+        "403":
+          application/json: {"error": {"code": "forbidden", "message": "The requested resource was not found."}}
+        "404":
+          application/json: {"error": {"code": "not_found", "message": "The requested resource was not found."}}
+        "409":
+          application/json: {"error": {"code": "conflict", "message": "The requested resource was not found."}}
+        "410":
+          application/json: {"error": {"code": "invite_expired", "message": "The requested resource was not found."}}
+        "422":
+          application/json: {"error": {"code": "unprocessable_entity", "message": "The requested resource was not found."}}
+        "429":
+          application/json: {"error": {"code": "rate_limit_exceeded", "message": "The requested resource was not found."}}
+        "500":
+          application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
   createEmbedToken:
     speakeasy-default-create-embed-token:
       responses:
@@ -1277,4 +1239,46 @@ examples:
           application/json: {"error": {"code": "rate_limit_exceeded", "message": "The requested resource was not found."}}
         "500":
           application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
+  getQRCode:
+    speakeasy-default-get-QR-code:
+      parameters:
+        query:
+          url: "https://normal-making.name"
+          size: 600
+          level: "L"
+          fgColor: "#000000"
+          bgColor: "#FFFFFF"
+          hideLogo: "false"
+          margin: 2
+          includeMargin: "true"
+      responses:
+        "200":
+          image/png: "<value>"
+        "400":
+          application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
+        "401":
+          application/json: {"error": {"code": "unauthorized", "message": "The requested resource was not found."}}
+        "403":
+          application/json: {"error": {"code": "forbidden", "message": "The requested resource was not found."}}
+        "404":
+          application/json: {"error": {"code": "not_found", "message": "The requested resource was not found."}}
+        "409":
+          application/json: {"error": {"code": "conflict", "message": "The requested resource was not found."}}
+        "410":
+          application/json: {"error": {"code": "invite_expired", "message": "The requested resource was not found."}}
+        "422":
+          application/json: {"error": {"code": "unprocessable_entity", "message": "The requested resource was not found."}}
+        "429":
+          application/json: {"error": {"code": "rate_limit_exceeded", "message": "The requested resource was not found."}}
+        "500":
+          application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
+  getMetatags:
+    speakeasy-default-get-metatags:
+      parameters:
+        query:
+          url: "https://dub.co"
+      responses:
+        "200":
+          application/json: {"title": "Dub.co - Link Management for Modern Marketing Teams", "description": "Dub.co is the open-source link management infrastructure ...", "image": "https://assets.dub.co/thumbnail.jpg"}
+examplesVersion: 1.0.0
 generatedTests: {}

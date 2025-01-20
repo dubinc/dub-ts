@@ -27,7 +27,9 @@ import { Result } from "../types/fp.js";
  * Create a customer
  *
  * @remarks
- * Create a customer for the authenticated workspace.
+ * [Deprecated]: Customer creation can only be done via tracking a lead event. Use the /track/lead endpoint instead.
+ *
+ * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export async function customersCreate(
   client: DubCore,

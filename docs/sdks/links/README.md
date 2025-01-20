@@ -358,7 +358,7 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.links.update("<value>");
+  const result = await dub.links.update("<id>");
 
   // Handle the result
   console.log(result);
@@ -382,7 +382,7 @@ const dub = new DubCore({
 });
 
 async function run() {
-  const res = await linksUpdate(dub, "<value>");
+  const res = await linksUpdate(dub, "<id>");
 
   if (!res.ok) {
     throw res.error;
@@ -440,7 +440,7 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.links.delete("<value>");
+  const result = await dub.links.delete("<id>");
 
   // Handle the result
   console.log(result);
@@ -464,7 +464,7 @@ const dub = new DubCore({
 });
 
 async function run() {
-  const res = await linksDelete(dub, "<value>");
+  const res = await linksDelete(dub, "<id>");
 
   if (!res.ok) {
     throw res.error;

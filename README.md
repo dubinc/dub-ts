@@ -130,7 +130,7 @@ run();
 ### [customers](docs/sdks/customers/README.md)
 
 * [list](docs/sdks/customers/README.md#list) - Retrieve a list of customers
-* [create](docs/sdks/customers/README.md#create) - Create a customer
+* [~~create~~](docs/sdks/customers/README.md#create) - Create a customer :warning: **Deprecated**
 * [get](docs/sdks/customers/README.md#get) - Retrieve a customer
 * [update](docs/sdks/customers/README.md#update) - Update a customer
 * [delete](docs/sdks/customers/README.md#delete) - Delete a customer
@@ -538,7 +538,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 <summary>Available standalone functions</summary>
 
 - [`analyticsRetrieve`](docs/sdks/analytics/README.md#retrieve) - Retrieve analytics for a link, a domain, or the authenticated workspace.
-- [`customersCreate`](docs/sdks/customers/README.md#create) - Create a customer
 - [`customersDelete`](docs/sdks/customers/README.md#delete) - Delete a customer
 - [`customersGet`](docs/sdks/customers/README.md#get) - Retrieve a customer
 - [`customersList`](docs/sdks/customers/README.md#list) - Retrieve a list of customers
@@ -569,6 +568,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`trackSale`](docs/sdks/track/README.md#sale) - Track a sale
 - [`workspacesGet`](docs/sdks/workspaces/README.md#get) - Retrieve a workspace
 - [`workspacesUpdate`](docs/sdks/workspaces/README.md#update) - Update a workspace
+- ~~[`customersCreate`](docs/sdks/customers/README.md#create)~~ - Create a customer :warning: **Deprecated**
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->
