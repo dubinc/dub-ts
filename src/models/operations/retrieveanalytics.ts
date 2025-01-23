@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod";
+import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -24,7 +25,7 @@ export const Event = {
 export type Event = ClosedEnum<typeof Event>;
 
 /**
- * The parameter to group the analytics data points by. Defaults to `count` if undefined. Note that `trigger` is deprecated (use `triggers` instead), but kept for backwards compatibility.
+ * The parameter to group the analytics data points by. Defaults to `count` if undefined.
  */
 export const QueryParamGroupBy = {
   Count: "count",
@@ -42,9 +43,14 @@ export const QueryParamGroupBy = {
   RefererUrls: "referer_urls",
   TopLinks: "top_links",
   TopUrls: "top_urls",
+  UtmSources: "utm_sources",
+  UtmMediums: "utm_mediums",
+  UtmCampaigns: "utm_campaigns",
+  UtmTerms: "utm_terms",
+  UtmContents: "utm_contents",
 } as const;
 /**
- * The parameter to group the analytics data points by. Defaults to `count` if undefined. Note that `trigger` is deprecated (use `triggers` instead), but kept for backwards compatibility.
+ * The parameter to group the analytics data points by. Defaults to `count` if undefined.
  */
 export type QueryParamGroupBy = ClosedEnum<typeof QueryParamGroupBy>;
 
@@ -89,7 +95,7 @@ export type RetrieveAnalyticsRequest = {
    */
   event?: Event | undefined;
   /**
-   * The parameter to group the analytics data points by. Defaults to `count` if undefined. Note that `trigger` is deprecated (use `triggers` instead), but kept for backwards compatibility.
+   * The parameter to group the analytics data points by. Defaults to `count` if undefined.
    */
   groupBy?: QueryParamGroupBy | undefined;
   /**
@@ -184,6 +190,26 @@ export type RetrieveAnalyticsRequest = {
    * Filter for root domains. If true, filter for domains only. If false, filter for links only. If undefined, return both.
    */
   root?: boolean | undefined;
+  /**
+   * The UTM source of the short link.
+   */
+  utmSource?: string | null | undefined;
+  /**
+   * The UTM medium of the short link.
+   */
+  utmMedium?: string | null | undefined;
+  /**
+   * The UTM campaign of the short link.
+   */
+  utmCampaign?: string | null | undefined;
+  /**
+   * The UTM term of the short link.
+   */
+  utmTerm?: string | null | undefined;
+  /**
+   * The UTM content of the short link.
+   */
+  utmContent?: string | null | undefined;
 };
 
 /**
@@ -365,6 +391,19 @@ export const RetrieveAnalyticsRequest$inboundSchema: z.ZodType<
   tagIds: z.union([z.string(), z.array(z.string())]).optional(),
   qr: z.boolean().optional(),
   root: z.boolean().optional(),
+  utm_source: z.nullable(z.string()).optional(),
+  utm_medium: z.nullable(z.string()).optional(),
+  utm_campaign: z.nullable(z.string()).optional(),
+  utm_term: z.nullable(z.string()).optional(),
+  utm_content: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "utm_source": "utmSource",
+    "utm_medium": "utmMedium",
+    "utm_campaign": "utmCampaign",
+    "utm_term": "utmTerm",
+    "utm_content": "utmContent",
+  });
 });
 
 /** @internal */
@@ -394,6 +433,11 @@ export type RetrieveAnalyticsRequest$Outbound = {
   tagIds?: string | Array<string> | undefined;
   qr?: boolean | undefined;
   root?: boolean | undefined;
+  utm_source?: string | null | undefined;
+  utm_medium?: string | null | undefined;
+  utm_campaign?: string | null | undefined;
+  utm_term?: string | null | undefined;
+  utm_content?: string | null | undefined;
 };
 
 /** @internal */
@@ -427,6 +471,19 @@ export const RetrieveAnalyticsRequest$outboundSchema: z.ZodType<
   tagIds: z.union([z.string(), z.array(z.string())]).optional(),
   qr: z.boolean().optional(),
   root: z.boolean().optional(),
+  utmSource: z.nullable(z.string()).optional(),
+  utmMedium: z.nullable(z.string()).optional(),
+  utmCampaign: z.nullable(z.string()).optional(),
+  utmTerm: z.nullable(z.string()).optional(),
+  utmContent: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    utmSource: "utm_source",
+    utmMedium: "utm_medium",
+    utmCampaign: "utm_campaign",
+    utmTerm: "utm_term",
+    utmContent: "utm_content",
+  });
 });
 
 /**

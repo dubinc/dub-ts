@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod";
+import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -192,6 +193,26 @@ export type ListEventsRequest = {
    * Filter for root domains. If true, filter for domains only. If false, filter for links only. If undefined, return both.
    */
   root?: boolean | undefined;
+  /**
+   * The UTM source of the short link.
+   */
+  utmSource?: string | null | undefined;
+  /**
+   * The UTM medium of the short link.
+   */
+  utmMedium?: string | null | undefined;
+  /**
+   * The UTM campaign of the short link.
+   */
+  utmCampaign?: string | null | undefined;
+  /**
+   * The UTM term of the short link.
+   */
+  utmTerm?: string | null | undefined;
+  /**
+   * The UTM content of the short link.
+   */
+  utmContent?: string | null | undefined;
   page?: number | undefined;
   limit?: number | undefined;
   /**
@@ -419,11 +440,24 @@ export const ListEventsRequest$inboundSchema: z.ZodType<
   tagIds: z.union([z.string(), z.array(z.string())]).optional(),
   qr: z.boolean().optional(),
   root: z.boolean().optional(),
+  utm_source: z.nullable(z.string()).optional(),
+  utm_medium: z.nullable(z.string()).optional(),
+  utm_campaign: z.nullable(z.string()).optional(),
+  utm_term: z.nullable(z.string()).optional(),
+  utm_content: z.nullable(z.string()).optional(),
   page: z.number().default(1),
   limit: z.number().default(100),
   sortOrder: QueryParamSortOrder$inboundSchema.default("desc"),
   sortBy: QueryParamSortBy$inboundSchema.default("timestamp"),
   order: Order$inboundSchema.default("desc"),
+}).transform((v) => {
+  return remap$(v, {
+    "utm_source": "utmSource",
+    "utm_medium": "utmMedium",
+    "utm_campaign": "utmCampaign",
+    "utm_term": "utmTerm",
+    "utm_content": "utmContent",
+  });
 });
 
 /** @internal */
@@ -452,6 +486,11 @@ export type ListEventsRequest$Outbound = {
   tagIds?: string | Array<string> | undefined;
   qr?: boolean | undefined;
   root?: boolean | undefined;
+  utm_source?: string | null | undefined;
+  utm_medium?: string | null | undefined;
+  utm_campaign?: string | null | undefined;
+  utm_term?: string | null | undefined;
+  utm_content?: string | null | undefined;
   page: number;
   limit: number;
   sortOrder: string;
@@ -489,11 +528,24 @@ export const ListEventsRequest$outboundSchema: z.ZodType<
   tagIds: z.union([z.string(), z.array(z.string())]).optional(),
   qr: z.boolean().optional(),
   root: z.boolean().optional(),
+  utmSource: z.nullable(z.string()).optional(),
+  utmMedium: z.nullable(z.string()).optional(),
+  utmCampaign: z.nullable(z.string()).optional(),
+  utmTerm: z.nullable(z.string()).optional(),
+  utmContent: z.nullable(z.string()).optional(),
   page: z.number().default(1),
   limit: z.number().default(100),
   sortOrder: QueryParamSortOrder$outboundSchema.default("desc"),
   sortBy: QueryParamSortBy$outboundSchema.default("timestamp"),
   order: Order$outboundSchema.default("desc"),
+}).transform((v) => {
+  return remap$(v, {
+    utmSource: "utm_source",
+    utmMedium: "utm_medium",
+    utmCampaign: "utm_campaign",
+    utmTerm: "utm_term",
+    utmContent: "utm_content",
+  });
 });
 
 /**

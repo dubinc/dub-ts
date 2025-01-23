@@ -101,10 +101,6 @@ export type WorkspaceSchema = {
    */
   stripeConnectId: string | null;
   /**
-   * [BETA – Dub Partners]: The ID of the payment method for partner payouts.
-   */
-  payoutMethodId: string | null;
-  /**
    * The usage of the workspace.
    */
   usage: number;
@@ -338,7 +334,6 @@ export const WorkspaceSchema$inboundSchema: z.ZodType<
   billingCycleStart: z.number(),
   paymentFailedAt: z.nullable(z.string()),
   stripeConnectId: z.nullable(z.string()),
-  payoutMethodId: z.nullable(z.string()),
   usage: z.number(),
   usageLimit: z.number(),
   linksUsage: z.number(),
@@ -372,7 +367,6 @@ export type WorkspaceSchema$Outbound = {
   billingCycleStart: number;
   paymentFailedAt: string | null;
   stripeConnectId: string | null;
-  payoutMethodId: string | null;
   usage: number;
   usageLimit: number;
   linksUsage: number;
@@ -410,7 +404,6 @@ export const WorkspaceSchema$outboundSchema: z.ZodType<
   billingCycleStart: z.number(),
   paymentFailedAt: z.nullable(z.string()),
   stripeConnectId: z.nullable(z.string()),
-  payoutMethodId: z.nullable(z.string()),
   usage: z.number(),
   usageLimit: z.number(),
   linksUsage: z.number(),

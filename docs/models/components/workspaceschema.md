@@ -15,7 +15,6 @@ let value: WorkspaceSchema = {
   billingCycleStart: 3842.73,
   paymentFailedAt: "<value>",
   stripeConnectId: "<id>",
-  payoutMethodId: "<id>",
   usage: 7034.07,
   usageLimit: 3530.75,
   linksUsage: 1544.25,
@@ -30,7 +29,7 @@ let value: WorkspaceSchema = {
   conversionEnabled: false,
   dotLinkClaimed: false,
   partnersEnabled: false,
-  createdAt: "1726798549422",
+  createdAt: "1727057691027",
   users: [
     {
       role: "owner",
@@ -61,7 +60,6 @@ let value: WorkspaceSchema = {
 | `billingCycleStart`                                                                                   | *number*                                                                                              | :heavy_check_mark:                                                                                    | The date and time when the billing cycle starts for the workspace.                                    |
 | `paymentFailedAt`                                                                                     | *string*                                                                                              | :heavy_check_mark:                                                                                    | The date and time when the payment failed for the workspace.                                          |
 | `stripeConnectId`                                                                                     | *string*                                                                                              | :heavy_check_mark:                                                                                    | The Stripe Connect ID of the workspace.                                                               |
-| `payoutMethodId`                                                                                      | *string*                                                                                              | :heavy_check_mark:                                                                                    | [BETA – Dub Partners]: The ID of the payment method for partner payouts.                              |
 | `usage`                                                                                               | *number*                                                                                              | :heavy_check_mark:                                                                                    | The usage of the workspace.                                                                           |
 | `usageLimit`                                                                                          | *number*                                                                                              | :heavy_check_mark:                                                                                    | The usage limit of the workspace.                                                                     |
 | `linksUsage`                                                                                          | *number*                                                                                              | :heavy_check_mark:                                                                                    | The links usage of the workspace.                                                                     |
