@@ -98,6 +98,11 @@ export async function eventsList(
     "timezone": payload?.timezone,
     "trigger": payload?.trigger,
     "url": payload?.url,
+    "utm_campaign": payload?.utm_campaign,
+    "utm_content": payload?.utm_content,
+    "utm_medium": payload?.utm_medium,
+    "utm_source": payload?.utm_source,
+    "utm_term": payload?.utm_term,
   });
 
   const headers = new Headers(compactMap({

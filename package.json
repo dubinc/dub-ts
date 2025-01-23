@@ -1,8 +1,12 @@
 {
   "name": "dub",
-  "version": "0.46.17",
+  "version": "0.46.18",
   "author": "Dub",
+  "type": "module",
   "tshy": {
+    "sourceDialects": [
+      "dub/source"
+    ],
     "exports": {
       ".": "./src/index.ts",
       "./package.json": "./package.json",
@@ -34,7 +38,7 @@
     "eslint": "^8.57.0",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.29.1",
-    "tshy": "^1.16.2",
+    "tshy": "^2.0.0",
     "typescript": "^5.4.5",
     "vitest": "1.4.0",
     "zod": "^3.23.4"
@@ -43,12 +47,11 @@
   "exports": {
     ".": {
       "import": {
-        "source": "./src/index.ts",
+        "dub/source": "./src/index.ts",
         "types": "./dist/esm/index.d.ts",
         "default": "./dist/esm/index.js"
       },
       "require": {
-        "source": "./src/index.ts",
         "types": "./dist/commonjs/index.d.ts",
         "default": "./dist/commonjs/index.js"
       }
@@ -56,72 +59,66 @@
     "./package.json": "./package.json",
     "./types": {
       "import": {
-        "source": "./src/types/index.ts",
+        "dub/source": "./src/types/index.ts",
         "types": "./dist/esm/types/index.d.ts",
         "default": "./dist/esm/types/index.js"
       },
       "require": {
-        "source": "./src/types/index.ts",
         "types": "./dist/commonjs/types/index.d.ts",
         "default": "./dist/commonjs/types/index.js"
       }
     },
     "./models/errors": {
       "import": {
-        "source": "./src/models/errors/index.ts",
+        "dub/source": "./src/models/errors/index.ts",
         "types": "./dist/esm/models/errors/index.d.ts",
         "default": "./dist/esm/models/errors/index.js"
       },
       "require": {
-        "source": "./src/models/errors/index.ts",
         "types": "./dist/commonjs/models/errors/index.d.ts",
         "default": "./dist/commonjs/models/errors/index.js"
       }
     },
     "./models/components": {
       "import": {
-        "source": "./src/models/components/index.ts",
+        "dub/source": "./src/models/components/index.ts",
         "types": "./dist/esm/models/components/index.d.ts",
         "default": "./dist/esm/models/components/index.js"
       },
       "require": {
-        "source": "./src/models/components/index.ts",
         "types": "./dist/commonjs/models/components/index.d.ts",
         "default": "./dist/commonjs/models/components/index.js"
       }
     },
     "./models/operations": {
       "import": {
-        "source": "./src/models/operations/index.ts",
+        "dub/source": "./src/models/operations/index.ts",
         "types": "./dist/esm/models/operations/index.d.ts",
         "default": "./dist/esm/models/operations/index.js"
       },
       "require": {
-        "source": "./src/models/operations/index.ts",
         "types": "./dist/commonjs/models/operations/index.d.ts",
         "default": "./dist/commonjs/models/operations/index.js"
       }
     },
     "./*.js": {
       "import": {
-        "source": "./src/*.ts",
+        "dub/source": "./src/*.ts",
         "types": "./dist/esm/*.d.ts",
         "default": "./dist/esm/*.js"
       },
       "require": {
-        "source": "./src/*.ts",
         "types": "./dist/commonjs/*.d.ts",
         "default": "./dist/commonjs/*.js"
       }
     },
     "./*": {
       "import": {
-        "source": "./src/*.ts",
+        "dub/source": "./src/*.ts",
         "types": "./dist/esm/*.d.ts",
         "default": "./dist/esm/*.js"
       },
       "require": {
-        "source": "./src/*.ts",
         "types": "./dist/commonjs/*.d.ts",
         "default": "./dist/commonjs/*.js"
       }
@@ -129,6 +126,5 @@
   },
   "main": "./dist/commonjs/index.js",
   "types": "./dist/commonjs/index.d.ts",
-  "type": "module",
   "module": "./dist/esm/index.js"
 }
