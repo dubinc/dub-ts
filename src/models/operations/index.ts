@@ -9,6 +9,7 @@ export * from "./createcustomer.js";
 export * from "./createdomain.js";
 export * from "./createembedtoken.js";
 export * from "./createlink.js";
+export * from "./createpartner.js";
 export * from "./createtag.js";
 export * from "./deletecustomer.js";
 export * from "./deletedomain.js";

@@ -1,21 +1,21 @@
-speakeasyVersion: 1.470.1
+speakeasyVersion: 1.476.2
 sources:
     my-first-source:
         sourceNamespace: my-first-source
-        sourceRevisionDigest: sha256:fb98abe621f0d157f66f06edc7a9e8e88becb2ae9d56bfaae3d4ab8ddc200050
-        sourceBlobDigest: sha256:2f976de813f654333718329c8b83b019a8ec90020cca102f257c686b338a51ce
+        sourceRevisionDigest: sha256:0247b1a176adb3ed32eed584abda0c4540d41beddde6b3b2868f0485b8190838
+        sourceBlobDigest: sha256:cb6f4266fa1867dc7c1addc33802928e6153d0ec07a01270b22fdc25cc192efa
         tags:
             - latest
-            - speakeasy-sdk-regen-1737591960
+            - speakeasy-sdk-regen-1738000696
             - 0.0.1
 targets:
     my-first-target:
         source: my-first-source
         sourceNamespace: my-first-source
-        sourceRevisionDigest: sha256:fb98abe621f0d157f66f06edc7a9e8e88becb2ae9d56bfaae3d4ab8ddc200050
-        sourceBlobDigest: sha256:2f976de813f654333718329c8b83b019a8ec90020cca102f257c686b338a51ce
+        sourceRevisionDigest: sha256:0247b1a176adb3ed32eed584abda0c4540d41beddde6b3b2868f0485b8190838
+        sourceBlobDigest: sha256:cb6f4266fa1867dc7c1addc33802928e6153d0ec07a01270b22fdc25cc192efa
         codeSamplesNamespace: code-samples-typescript-my-first-target
-        codeSamplesRevisionDigest: sha256:d0b7703617fc8ce44a835488032edcd444b9e7769f0769d5d418a29d1642ac56
+        codeSamplesRevisionDigest: sha256:b1526723e90e72dee944d5aa4d34ba07bdda3f4f2687c15a2dcb1414e0b04c87
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

@@ -129,6 +129,12 @@ actions:
         - "lang": "typescript"
           "label": "getMetatags"
           "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.metatags.get({\n    url: \"https://dub.co\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/partners"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "createPartner"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.partners.create();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/qr"]["get"]
     update:
       "x-codeSamples":

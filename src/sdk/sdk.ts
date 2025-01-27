@@ -10,6 +10,7 @@ import { EmbedTokens } from "./embedtokens.js";
 import { Events } from "./events.js";
 import { Links } from "./links.js";
 import { Metatags } from "./metatags.js";
+import { Partners } from "./partners.js";
 import { QRCodes } from "./qrcodes.js";
 import { Tags } from "./tags.js";
 import { Track } from "./track.js";
@@ -49,6 +50,11 @@ export class Dub extends ClientSDK {
   private _customers?: Customers;
   get customers(): Customers {
     return (this._customers ??= new Customers(this._options));
+  }
+
+  private _partners?: Partners;
+  get partners(): Partners {
+    return (this._partners ??= new Partners(this._options));
   }
 
   private _workspaces?: Workspaces;

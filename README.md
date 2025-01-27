@@ -168,6 +168,10 @@ run();
 
 * [get](docs/sdks/metatags/README.md#get) - Retrieve the metatags for a URL
 
+### [partners](docs/sdks/partners/README.md)
+
+* [create](docs/sdks/partners/README.md#create) - Create a new partner
+
 ### [qrCodes](docs/sdks/qrcodes/README.md)
 
 * [get](docs/sdks/qrcodes/README.md#get) - Retrieve a QR code
@@ -559,6 +563,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`linksUpdateMany`](docs/sdks/links/README.md#updatemany) - Bulk update links
 - [`linksUpsert`](docs/sdks/links/README.md#upsert) - Upsert a link
 - [`metatagsGet`](docs/sdks/metatags/README.md#get) - Retrieve the metatags for a URL
+- [`partnersCreate`](docs/sdks/partners/README.md#create) - Create a new partner
 - [`qrCodesGet`](docs/sdks/qrcodes/README.md#get) - Retrieve a QR code
 - [`tagsCreate`](docs/sdks/tags/README.md#create) - Create a new tag
 - [`tagsDelete`](docs/sdks/tags/README.md#delete) - Delete a tag
