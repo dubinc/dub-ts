@@ -11,7 +11,7 @@ let value: GetCustomerResponseBody = {
   id: "<id>",
   externalId: "<id>",
   name: "<value>",
-  createdAt: "1723075822845",
+  createdAt: "1723484561647",
 };
 ```
 
