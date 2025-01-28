@@ -10,14 +10,14 @@ import { SaleCreatedEvent } from "dub/models/components";
 let value: SaleCreatedEvent = {
   id: "<id>",
   event: "sale.created",
-  createdAt: "1727491733300",
+  createdAt: "1727574094963",
   data: {
     eventName: "<value>",
     customer: {
       id: "<id>",
       externalId: "<id>",
       name: "<value>",
-      createdAt: "1715551201281",
+      createdAt: "1715633562944",
     },
     click: {
       id: "<id>",
@@ -40,7 +40,7 @@ let value: SaleCreatedEvent = {
       url: "https://ruddy-hygienic.org/",
       externalId: "<id>",
       tenantId: "<id>",
-      expiresAt: "1766722653832",
+      expiresAt: "1766805015494",
       expiredUrl: "https://humble-tool.name/",
       password: "Dmx6nHcOz357b57",
       title: "<value>",
@@ -72,8 +72,8 @@ let value: SaleCreatedEvent = {
       userId: "<id>",
       workspaceId: "<id>",
       lastClicked: "<value>",
-      createdAt: "1730046849407",
-      updatedAt: "1737963461036",
+      createdAt: "1730129211068",
+      updatedAt: "1738045822697",
       projectId: "<id>",
       programId: "<id>",
     },
