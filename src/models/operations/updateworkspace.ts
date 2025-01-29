@@ -13,6 +13,7 @@ export type UpdateWorkspaceRequestBody = {
   slug?: string | undefined;
   logo?: string | undefined;
   conversionEnabled?: boolean | undefined;
+  allowedHostnames?: Array<string> | undefined;
 };
 
 export type UpdateWorkspaceRequest = {
@@ -33,6 +34,7 @@ export const UpdateWorkspaceRequestBody$inboundSchema: z.ZodType<
   slug: z.string().optional(),
   logo: z.string().optional(),
   conversionEnabled: z.boolean().optional(),
+  allowedHostnames: z.array(z.string()).optional(),
 });
 
 /** @internal */
@@ -41,6 +43,7 @@ export type UpdateWorkspaceRequestBody$Outbound = {
   slug?: string | undefined;
   logo?: string | undefined;
   conversionEnabled?: boolean | undefined;
+  allowedHostnames?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -53,6 +56,7 @@ export const UpdateWorkspaceRequestBody$outboundSchema: z.ZodType<
   slug: z.string().optional(),
   logo: z.string().optional(),
   conversionEnabled: z.boolean().optional(),
+  allowedHostnames: z.array(z.string()).optional(),
 });
 
 /**

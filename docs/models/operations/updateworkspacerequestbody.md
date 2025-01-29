@@ -16,3 +16,4 @@ let value: UpdateWorkspaceRequestBody = {};
 | `slug`              | *string*            | :heavy_minus_sign:  | N/A                 |
 | `logo`              | *string*            | :heavy_minus_sign:  | N/A                 |
 | `conversionEnabled` | *boolean*           | :heavy_minus_sign:  | N/A                 |
+| `allowedHostnames`  | *string*[]          | :heavy_minus_sign:  | N/A                 |
