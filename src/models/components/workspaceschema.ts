@@ -176,6 +176,10 @@ export type WorkspaceSchema = {
    * The miscellaneous key-value store of the workspace.
    */
   store: { [k: string]: any } | null;
+  /**
+   * Specifies hostnames permitted for client-side click tracking.
+   */
+  allowedHostnames: Array<string> | null;
 };
 
 /** @internal */
@@ -353,6 +357,7 @@ export const WorkspaceSchema$inboundSchema: z.ZodType<
   domains: z.array(z.lazy(() => Domains$inboundSchema)),
   flags: z.record(z.boolean()).optional(),
   store: z.nullable(z.record(z.any())),
+  allowedHostnames: z.nullable(z.array(z.string())),
 });
 
 /** @internal */
@@ -386,6 +391,7 @@ export type WorkspaceSchema$Outbound = {
   domains: Array<Domains$Outbound>;
   flags?: { [k: string]: boolean } | undefined;
   store: { [k: string]: any } | null;
+  allowedHostnames: Array<string> | null;
 };
 
 /** @internal */
@@ -423,6 +429,7 @@ export const WorkspaceSchema$outboundSchema: z.ZodType<
   domains: z.array(z.lazy(() => Domains$outboundSchema)),
   flags: z.record(z.boolean()).optional(),
   store: z.nullable(z.record(z.any())),
+  allowedHostnames: z.nullable(z.array(z.string())),
 });
 
 /**
