@@ -11,7 +11,7 @@ Webhook event schema
 const value: components.LinkWebhookEvent = {
   id: "<id>",
   event: "link.deleted",
-  createdAt: "1728669546673",
+  createdAt: "1729101648515",
   data: {
     id: "<id>",
     domain: "tempting-mentor.info",
@@ -19,7 +19,9 @@ const value: components.LinkWebhookEvent = {
     url: "https://motionless-institute.net",
     externalId: "<id>",
     tenantId: "<id>",
-    expiresAt: "1743730120355",
+    programId: "<id>",
+    partnerId: "<id>",
+    expiresAt: "1744162222198",
     expiredUrl: "https://intrepid-fax.com/",
     password: "qjTiD5kp_nvhVpT",
     title: "<value>",
@@ -52,10 +54,9 @@ const value: components.LinkWebhookEvent = {
     userId: "<id>",
     workspaceId: "<id>",
     lastClicked: "<value>",
-    createdAt: "1708478501517",
-    updatedAt: "1738077089120",
+    createdAt: "1708910603360",
+    updatedAt: "1738509190963",
     projectId: "<id>",
-    programId: "<id>",
   },
 };
 ```
@@ -66,7 +67,7 @@ const value: components.LinkWebhookEvent = {
 const value: components.LinkClickedEvent = {
   id: "<id>",
   event: "link.clicked",
-  createdAt: "1736357101666",
+  createdAt: "1736789203508",
   data: {
     click: {
       id: "<id>",
@@ -89,7 +90,9 @@ const value: components.LinkClickedEvent = {
       url: "https://mature-sightseeing.info",
       externalId: "<id>",
       tenantId: "<id>",
-      expiresAt: "1754608622019",
+      programId: "<id>",
+      partnerId: "<id>",
+      expiresAt: "1755040723862",
       expiredUrl: "https://pessimistic-euphonium.name/",
       password: "10HILeNv2AWrBoE",
       title: "<value>",
@@ -122,10 +125,9 @@ const value: components.LinkClickedEvent = {
       userId: "<id>",
       workspaceId: "<id>",
       lastClicked: "<value>",
-      createdAt: "1727443750313",
-      updatedAt: "1738030926540",
+      createdAt: "1727875852156",
+      updatedAt: "1738463028382",
       projectId: "<id>",
-      programId: "<id>",
     },
   },
 };
@@ -137,14 +139,14 @@ const value: components.LinkClickedEvent = {
 const value: components.LeadCreatedEvent = {
   id: "<id>",
   event: "lead.created",
-  createdAt: "1723672781499",
+  createdAt: "1724104883342",
   data: {
     eventName: "<value>",
     customer: {
       id: "<id>",
       externalId: "<id>",
       name: "<value>",
-      createdAt: "1717801418842",
+      createdAt: "1718233520684",
     },
     click: {
       id: "<id>",
@@ -167,7 +169,9 @@ const value: components.LeadCreatedEvent = {
       url: "https://well-documented-thread.name",
       externalId: "<id>",
       tenantId: "<id>",
-      expiresAt: "1747683091516",
+      programId: "<id>",
+      partnerId: "<id>",
+      expiresAt: "1748115193359",
       expiredUrl: "https://unpleasant-junior.com/",
       password: "8LxCjEbgw4qcCST",
       title: "<value>",
@@ -201,10 +205,9 @@ const value: components.LeadCreatedEvent = {
       userId: "<id>",
       workspaceId: "<id>",
       lastClicked: "<value>",
-      createdAt: "1711651287318",
-      updatedAt: "1738063769383",
+      createdAt: "1712083389160",
+      updatedAt: "1738495871225",
       projectId: "<id>",
-      programId: "<id>",
     },
   },
 };
@@ -216,14 +219,14 @@ const value: components.LeadCreatedEvent = {
 const value: components.SaleCreatedEvent = {
   id: "<id>",
   event: "sale.created",
-  createdAt: "1737061414811",
+  createdAt: "1737493516653",
   data: {
     eventName: "<value>",
     customer: {
       id: "<id>",
       externalId: "<id>",
       name: "<value>",
-      createdAt: "1723436930741",
+      createdAt: "1723869032583",
     },
     click: {
       id: "<id>",
@@ -246,7 +249,9 @@ const value: components.SaleCreatedEvent = {
       url: "https://smart-overcoat.org/",
       externalId: "<id>",
       tenantId: "<id>",
-      expiresAt: "1746317511096",
+      programId: "<id>",
+      partnerId: "<id>",
+      expiresAt: "1746749612939",
       expiredUrl: "https://gentle-dish.net/",
       password: "f5rSP3vrLCz6U3Z",
       title: "<value>",
@@ -279,10 +284,9 @@ const value: components.SaleCreatedEvent = {
       userId: "<id>",
       workspaceId: "<id>",
       lastClicked: "<value>",
-      createdAt: "1712401425118",
-      updatedAt: "1738089358104",
+      createdAt: "1712833526961",
+      updatedAt: "1738521459946",
       projectId: "<id>",
-      programId: "<id>",
     },
     sale: {
       amount: 789.96,

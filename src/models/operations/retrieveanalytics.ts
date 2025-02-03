@@ -115,6 +115,18 @@ export type RetrieveAnalyticsRequest = {
    */
   externalId?: string | undefined;
   /**
+   * The ID of the tenant that created the link inside your system.
+   */
+  tenantId?: string | undefined;
+  /**
+   * The ID of the program to retrieve analytics for.
+   */
+  programId?: string | undefined;
+  /**
+   * The ID of the partner to retrieve analytics for.
+   */
+  partnerId?: string | undefined;
+  /**
    * The interval to retrieve analytics for. If undefined, defaults to 24h.
    */
   interval?: Interval | undefined;
@@ -372,6 +384,9 @@ export const RetrieveAnalyticsRequest$inboundSchema: z.ZodType<
   key: z.string().optional(),
   linkId: z.string().optional(),
   externalId: z.string().optional(),
+  tenantId: z.string().optional(),
+  programId: z.string().optional(),
+  partnerId: z.string().optional(),
   interval: Interval$inboundSchema.optional(),
   start: z.string().optional(),
   end: z.string().optional(),
@@ -414,6 +429,9 @@ export type RetrieveAnalyticsRequest$Outbound = {
   key?: string | undefined;
   linkId?: string | undefined;
   externalId?: string | undefined;
+  tenantId?: string | undefined;
+  programId?: string | undefined;
+  partnerId?: string | undefined;
   interval?: string | undefined;
   start?: string | undefined;
   end?: string | undefined;
@@ -452,6 +470,9 @@ export const RetrieveAnalyticsRequest$outboundSchema: z.ZodType<
   key: z.string().optional(),
   linkId: z.string().optional(),
   externalId: z.string().optional(),
+  tenantId: z.string().optional(),
+  programId: z.string().optional(),
+  partnerId: z.string().optional(),
   interval: Interval$outboundSchema.optional(),
   start: z.string().optional(),
   end: z.string().optional(),

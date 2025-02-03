@@ -13,7 +13,9 @@ const value: components.LinkSchema = {
   url: "https://orderly-bungalow.info",
   externalId: "<id>",
   tenantId: "<id>",
-  expiresAt: "1748580326136",
+  programId: "<id>",
+  partnerId: "<id>",
+  expiresAt: "1749012427966",
   expiredUrl: "https://innocent-pasta.net",
   password: "dw8Qh65bkuKe1jf",
   title: "<value>",
@@ -45,10 +47,9 @@ const value: components.LinkSchema = {
   userId: "<id>",
   workspaceId: "<id>",
   lastClicked: "<value>",
-  createdAt: "1709559835345",
-  updatedAt: "1738091119212",
+  createdAt: "1709991937176",
+  updatedAt: "1738523221042",
   projectId: "<id>",
-  programId: "<id>",
 };
 ```
 

@@ -16,18 +16,19 @@ let value: CreatePartnerResponseBody = {
   bio: "<value>",
   stripeConnectId: "<id>",
   payoutsEnabled: false,
-  createdAt: "1726668662225",
-  updatedAt: "1738078530571",
+  createdAt: "1727100764040",
+  updatedAt: "1738510632385",
   status: "approved",
-  link: {
-    id: "<id>",
-    shortLink: "https://elegant-avalanche.com",
-    domain: "querulous-lid.org",
-    key: "<key>",
-    url: "https://svelte-pear.biz/",
-  },
+  links: [
+    {
+      id: "<id>",
+      domain: "simple-dead.com",
+      key: "<key>",
+      shortLink: "https://querulous-lid.org/",
+      url: "https://svelte-pear.biz/",
+    },
+  ],
   commissionAmount: 7369.06,
-  earnings: 7413.34,
 };
 ```
 
@@ -47,7 +48,11 @@ let value: CreatePartnerResponseBody = {
 | `createdAt`                                                                          | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
 | `updatedAt`                                                                          | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
 | `status`                                                                             | [operations.Status](../../models/operations/status.md)                               | :heavy_check_mark:                                                                   | N/A                                                                                  |
-| `link`                                                                               | [operations.CreatePartnerLink](../../models/operations/createpartnerlink.md)         | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `links`                                                                              | [operations.Links](../../models/operations/links.md)[]                               | :heavy_check_mark:                                                                   | N/A                                                                                  |
 | `discount`                                                                           | [operations.CreatePartnerDiscount](../../models/operations/createpartnerdiscount.md) | :heavy_minus_sign:                                                                   | N/A                                                                                  |
 | `commissionAmount`                                                                   | *number*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
-| `earnings`                                                                           | *number*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `earnings`                                                                           | *number*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
+| `clicks`                                                                             | *number*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
+| `leads`                                                                              | *number*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
+| `sales`                                                                              | *number*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
+| `salesAmount`                                                                        | *number*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |

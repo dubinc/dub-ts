@@ -27,7 +27,9 @@ let value: LinkClickedEventData = {
     url: "https://whopping-icebreaker.org/",
     externalId: "<id>",
     tenantId: "<id>",
-    expiresAt: "1744088776779",
+    programId: "<id>",
+    partnerId: "<id>",
+    expiresAt: "1744520878615",
     expiredUrl: "https://darling-adaptation.biz/",
     password: "GIuJbPtvCVpCFOB",
     title: "<value>",
@@ -60,10 +62,9 @@ let value: LinkClickedEventData = {
     userId: "<id>",
     workspaceId: "<id>",
     lastClicked: "<value>",
-    createdAt: "1721044660819",
-    updatedAt: "1738060500479",
+    createdAt: "1721476762655",
+    updatedAt: "1738492602316",
     projectId: "<id>",
-    programId: "<id>",
   },
 };
 ```

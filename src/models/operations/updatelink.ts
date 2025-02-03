@@ -41,6 +41,14 @@ export type UpdateLinkRequestBody = {
    */
   tenantId?: string | null | undefined;
   /**
+   * The ID of the program the short link is associated with.
+   */
+  programId?: string | null | undefined;
+  /**
+   * The ID of the partner the short link is associated with.
+   */
+  partnerId?: string | null | undefined;
+  /**
    * The prefix of the short link slug for randomly-generated keys (e.g. if prefix is `/c/`, generated keys will be in the `/c/:key` format). Will be ignored if `key` is provided.
    */
   prefix?: string | undefined;
@@ -152,10 +160,6 @@ export type UpdateLinkRequestBody = {
    * The referral tag of the short link. If set, this will populate or override the `ref` query parameter in the destination URL.
    */
   ref?: string | null | undefined;
-  /**
-   * The ID of the program the short link is associated with.
-   */
-  programId?: string | null | undefined;
   /**
    * An array of webhook IDs to trigger when the link is clicked. These webhooks will receive click event data.
    */
@@ -277,6 +281,8 @@ export const UpdateLinkRequestBody$inboundSchema: z.ZodType<
   key: z.string().optional(),
   externalId: z.nullable(z.string()).optional(),
   tenantId: z.nullable(z.string()).optional(),
+  programId: z.nullable(z.string()).optional(),
+  partnerId: z.nullable(z.string()).optional(),
   prefix: z.string().optional(),
   trackConversion: z.boolean().optional(),
   archived: z.boolean().optional(),
@@ -304,7 +310,6 @@ export const UpdateLinkRequestBody$inboundSchema: z.ZodType<
   utm_term: z.nullable(z.string()).optional(),
   utm_content: z.nullable(z.string()).optional(),
   ref: z.nullable(z.string()).optional(),
-  programId: z.nullable(z.string()).optional(),
   webhookIds: z.nullable(z.array(z.string())).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -323,6 +328,8 @@ export type UpdateLinkRequestBody$Outbound = {
   key?: string | undefined;
   externalId?: string | null | undefined;
   tenantId?: string | null | undefined;
+  programId?: string | null | undefined;
+  partnerId?: string | null | undefined;
   prefix?: string | undefined;
   trackConversion?: boolean | undefined;
   archived?: boolean | undefined;
@@ -350,7 +357,6 @@ export type UpdateLinkRequestBody$Outbound = {
   utm_term?: string | null | undefined;
   utm_content?: string | null | undefined;
   ref?: string | null | undefined;
-  programId?: string | null | undefined;
   webhookIds?: Array<string> | null | undefined;
 };
 
@@ -365,6 +371,8 @@ export const UpdateLinkRequestBody$outboundSchema: z.ZodType<
   key: z.string().optional(),
   externalId: z.nullable(z.string()).optional(),
   tenantId: z.nullable(z.string()).optional(),
+  programId: z.nullable(z.string()).optional(),
+  partnerId: z.nullable(z.string()).optional(),
   prefix: z.string().optional(),
   trackConversion: z.boolean().optional(),
   archived: z.boolean().optional(),
@@ -392,7 +400,6 @@ export const UpdateLinkRequestBody$outboundSchema: z.ZodType<
   utmTerm: z.nullable(z.string()).optional(),
   utmContent: z.nullable(z.string()).optional(),
   ref: z.nullable(z.string()).optional(),
-  programId: z.nullable(z.string()).optional(),
   webhookIds: z.nullable(z.array(z.string())).optional(),
 }).transform((v) => {
   return remap$(v, {

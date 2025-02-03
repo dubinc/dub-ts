@@ -300,6 +300,14 @@ export type LinkSchema = {
    */
   tenantId: string | null;
   /**
+   * The ID of the program the short link is associated with.
+   */
+  programId: string | null;
+  /**
+   * The ID of the partner the short link is associated with.
+   */
+  partnerId: string | null;
+  /**
    * Whether the short link is archived.
    */
   archived?: boolean | undefined;
@@ -447,10 +455,6 @@ export type LinkSchema = {
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   projectId: string;
-  /**
-   * The ID of the program the short link is associated with.
-   */
-  programId: string | null;
 };
 
 /** @internal */
@@ -1763,6 +1767,8 @@ export const LinkSchema$inboundSchema: z.ZodType<
   trackConversion: z.boolean().default(false),
   externalId: z.nullable(z.string()),
   tenantId: z.nullable(z.string()),
+  programId: z.nullable(z.string()),
+  partnerId: z.nullable(z.string()),
   archived: z.boolean().default(false),
   expiresAt: z.nullable(z.string()),
   expiredUrl: z.nullable(z.string()),
@@ -1799,7 +1805,6 @@ export const LinkSchema$inboundSchema: z.ZodType<
   createdAt: z.string(),
   updatedAt: z.string(),
   projectId: z.string(),
-  programId: z.nullable(z.string()),
 }).transform((v) => {
   return remap$(v, {
     "utm_source": "utmSource",
@@ -1819,6 +1824,8 @@ export type LinkSchema$Outbound = {
   trackConversion: boolean;
   externalId: string | null;
   tenantId: string | null;
+  programId: string | null;
+  partnerId: string | null;
   archived: boolean;
   expiresAt: string | null;
   expiredUrl: string | null;
@@ -1855,7 +1862,6 @@ export type LinkSchema$Outbound = {
   createdAt: string;
   updatedAt: string;
   projectId: string;
-  programId: string | null;
 };
 
 /** @internal */
@@ -1871,6 +1877,8 @@ export const LinkSchema$outboundSchema: z.ZodType<
   trackConversion: z.boolean().default(false),
   externalId: z.nullable(z.string()),
   tenantId: z.nullable(z.string()),
+  programId: z.nullable(z.string()),
+  partnerId: z.nullable(z.string()),
   archived: z.boolean().default(false),
   expiresAt: z.nullable(z.string()),
   expiredUrl: z.nullable(z.string()),
@@ -1907,7 +1915,6 @@ export const LinkSchema$outboundSchema: z.ZodType<
   createdAt: z.string(),
   updatedAt: z.string(),
   projectId: z.string(),
-  programId: z.nullable(z.string()),
 }).transform((v) => {
   return remap$(v, {
     utmSource: "utm_source",

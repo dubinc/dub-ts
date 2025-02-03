@@ -10,7 +10,7 @@ import { LinkWebhookEvent } from "dub/models/components";
 let value: LinkWebhookEvent = {
   id: "<id>",
   event: "link.deleted",
-  createdAt: "1708710819175",
+  createdAt: "1709142920970",
   data: {
     id: "<id>",
     domain: "spherical-violin.org",
@@ -18,7 +18,9 @@ let value: LinkWebhookEvent = {
     url: "https://cluttered-minor.biz",
     externalId: "<id>",
     tenantId: "<id>",
-    expiresAt: "1768707009856",
+    programId: "<id>",
+    partnerId: "<id>",
+    expiresAt: "1769139111650",
     expiredUrl: "https://pitiful-porter.info",
     password: "DyGlwDNI8gr1jyx",
     title: "<value>",
@@ -50,10 +52,9 @@ let value: LinkWebhookEvent = {
     userId: "<id>",
     workspaceId: "<id>",
     lastClicked: "<value>",
-    createdAt: "1732230329301",
-    updatedAt: "1738084229140",
+    createdAt: "1732662431095",
+    updatedAt: "1738516330934",
     projectId: "<id>",
-    programId: "<id>",
   },
 };
 ```

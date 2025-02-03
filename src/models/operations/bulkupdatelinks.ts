@@ -29,6 +29,14 @@ export type Data = {
    */
   tenantId?: string | null | undefined;
   /**
+   * The ID of the program the short link is associated with.
+   */
+  programId?: string | null | undefined;
+  /**
+   * The ID of the partner the short link is associated with.
+   */
+  partnerId?: string | null | undefined;
+  /**
    * Whether to track conversions for the short link. Defaults to `false` if not provided.
    */
   trackConversion?: boolean | undefined;
@@ -136,10 +144,6 @@ export type Data = {
    * The referral tag of the short link. If set, this will populate or override the `ref` query parameter in the destination URL.
    */
   ref?: string | null | undefined;
-  /**
-   * The ID of the program the short link is associated with.
-   */
-  programId?: string | null | undefined;
   /**
    * An array of webhook IDs to trigger when the link is clicked. These webhooks will receive click event data.
    */
@@ -259,6 +263,8 @@ export const Data$inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z
   .object({
     url: z.string().optional(),
     tenantId: z.nullable(z.string()).optional(),
+    programId: z.nullable(z.string()).optional(),
+    partnerId: z.nullable(z.string()).optional(),
     trackConversion: z.boolean().optional(),
     archived: z.boolean().optional(),
     publicStats: z.boolean().optional(),
@@ -285,7 +291,6 @@ export const Data$inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z
     utm_term: z.nullable(z.string()).optional(),
     utm_content: z.nullable(z.string()).optional(),
     ref: z.nullable(z.string()).optional(),
-    programId: z.nullable(z.string()).optional(),
     webhookIds: z.nullable(z.array(z.string())).optional(),
   }).transform((v) => {
     return remap$(v, {
@@ -301,6 +306,8 @@ export const Data$inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z
 export type Data$Outbound = {
   url?: string | undefined;
   tenantId?: string | null | undefined;
+  programId?: string | null | undefined;
+  partnerId?: string | null | undefined;
   trackConversion?: boolean | undefined;
   archived?: boolean | undefined;
   publicStats?: boolean | undefined;
@@ -327,7 +334,6 @@ export type Data$Outbound = {
   utm_term?: string | null | undefined;
   utm_content?: string | null | undefined;
   ref?: string | null | undefined;
-  programId?: string | null | undefined;
   webhookIds?: Array<string> | null | undefined;
 };
 
@@ -336,6 +342,8 @@ export const Data$outboundSchema: z.ZodType<Data$Outbound, z.ZodTypeDef, Data> =
   z.object({
     url: z.string().optional(),
     tenantId: z.nullable(z.string()).optional(),
+    programId: z.nullable(z.string()).optional(),
+    partnerId: z.nullable(z.string()).optional(),
     trackConversion: z.boolean().optional(),
     archived: z.boolean().optional(),
     publicStats: z.boolean().optional(),
@@ -362,7 +370,6 @@ export const Data$outboundSchema: z.ZodType<Data$Outbound, z.ZodTypeDef, Data> =
     utmTerm: z.nullable(z.string()).optional(),
     utmContent: z.nullable(z.string()).optional(),
     ref: z.nullable(z.string()).optional(),
-    programId: z.nullable(z.string()).optional(),
     webhookIds: z.nullable(z.array(z.string())).optional(),
   }).transform((v) => {
     return remap$(v, {
