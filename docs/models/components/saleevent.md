@@ -18,7 +18,7 @@ let value: SaleEvent = {
     tenantId: "<id>",
     programId: "<id>",
     partnerId: "<id>",
-    expiresAt: "1748547594220",
+    expiresAt: "1748608283602",
     expiredUrl: "https://pushy-swim.name",
     password: "gjwVIxtOegwlPc3",
     title: "<value>",
@@ -51,8 +51,8 @@ let value: SaleEvent = {
     userId: "<id>",
     workspaceId: "<id>",
     lastClicked: "<value>",
-    createdAt: "1723305322244",
-    updatedAt: "1738540999864",
+    createdAt: "1723366011600",
+    updatedAt: "1738601689220",
     projectId: "<id>",
   },
   click: {
@@ -73,7 +73,7 @@ let value: SaleEvent = {
     id: "<id>",
     externalId: "<id>",
     name: "<value>",
-    createdAt: "1715056497569",
+    createdAt: "1715117186916",
   },
   sale: {
     amount: 884622,
