@@ -35,6 +35,10 @@ export type AnalyticsTopLinks = {
    */
   url: string;
   /**
+   * The comments of the short link
+   */
+  comments?: string | null | undefined;
+  /**
    * The creation timestamp of the short link
    */
   createdAt: string;
@@ -68,6 +72,7 @@ export const AnalyticsTopLinks$inboundSchema: z.ZodType<
   key: z.string(),
   shortLink: z.string(),
   url: z.string(),
+  comments: z.nullable(z.string()).optional(),
   createdAt: z.string(),
   clicks: z.number().default(0),
   leads: z.number().default(0),
@@ -83,6 +88,7 @@ export type AnalyticsTopLinks$Outbound = {
   key: string;
   shortLink: string;
   url: string;
+  comments?: string | null | undefined;
   createdAt: string;
   clicks: number;
   leads: number;
@@ -102,6 +108,7 @@ export const AnalyticsTopLinks$outboundSchema: z.ZodType<
   key: z.string(),
   shortLink: z.string(),
   url: z.string(),
+  comments: z.nullable(z.string()).optional(),
   createdAt: z.string(),
   clicks: z.number().default(0),
   leads: z.number().default(0),

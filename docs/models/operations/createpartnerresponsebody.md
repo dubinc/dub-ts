@@ -16,8 +16,8 @@ let value: CreatePartnerResponseBody = {
   bio: "<value>",
   stripeConnectId: "<id>",
   payoutsEnabled: false,
-  createdAt: "1727100764040",
-  updatedAt: "1738510632385",
+  createdAt: "1727161453380",
+  updatedAt: "1738571321725",
   status: "approved",
   links: [
     {

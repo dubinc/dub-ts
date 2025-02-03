@@ -3,7 +3,9 @@
  */
 
 import { partnersCreate } from "../funcs/partnersCreate.js";
+import { partnersCreateLink } from "../funcs/partnersCreateLink.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
+import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
@@ -19,6 +21,23 @@ export class Partners extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.CreatePartnerResponseBody> {
     return unwrapAsync(partnersCreate(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Create a link for a partner
+   *
+   * @remarks
+   * Create a new link for a partner that is enrolled in your program
+   */
+  async createLink(
+    request?: operations.CreatePartnerLinkRequestBody | undefined,
+    options?: RequestOptions,
+  ): Promise<components.LinkSchema> {
+    return unwrapAsync(partnersCreateLink(
       this,
       request,
       options,
