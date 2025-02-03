@@ -315,6 +315,14 @@ export type LeadEventLink = {
    * The ID of the tenant that created the link inside your system. If set, it can be used to fetch all links for a tenant.
    */
   tenantId: string | null;
+  /**
+   * The ID of the program the short link is associated with.
+   */
+  programId: string | null;
+  /**
+   * The ID of the partner the short link is associated with.
+   */
+  partnerId: string | null;
   archived?: boolean | undefined;
   expiresAt: string;
   expiredUrl: string | null;
@@ -430,10 +438,6 @@ export type LeadEventLink = {
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   projectId: string;
-  /**
-   * The ID of the program the short link is associated with.
-   */
-  programId: string | null;
 };
 
 export type LeadEventCustomerLink = {
@@ -2033,6 +2037,8 @@ export const LeadEventLink$inboundSchema: z.ZodType<
   trackConversion: z.boolean().optional(),
   externalId: z.nullable(z.string()),
   tenantId: z.nullable(z.string()),
+  programId: z.nullable(z.string()),
+  partnerId: z.nullable(z.string()),
   archived: z.boolean().optional(),
   expiresAt: z.string(),
   expiredUrl: z.nullable(z.string()),
@@ -2069,7 +2075,6 @@ export const LeadEventLink$inboundSchema: z.ZodType<
   createdAt: z.string(),
   updatedAt: z.string(),
   projectId: z.string(),
-  programId: z.nullable(z.string()),
 }).transform((v) => {
   return remap$(v, {
     "utm_source": "utmSource",
@@ -2089,6 +2094,8 @@ export type LeadEventLink$Outbound = {
   trackConversion?: boolean | undefined;
   externalId: string | null;
   tenantId: string | null;
+  programId: string | null;
+  partnerId: string | null;
   archived?: boolean | undefined;
   expiresAt: string;
   expiredUrl: string | null;
@@ -2125,7 +2132,6 @@ export type LeadEventLink$Outbound = {
   createdAt: string;
   updatedAt: string;
   projectId: string;
-  programId: string | null;
 };
 
 /** @internal */
@@ -2141,6 +2147,8 @@ export const LeadEventLink$outboundSchema: z.ZodType<
   trackConversion: z.boolean().optional(),
   externalId: z.nullable(z.string()),
   tenantId: z.nullable(z.string()),
+  programId: z.nullable(z.string()),
+  partnerId: z.nullable(z.string()),
   archived: z.boolean().optional(),
   expiresAt: z.string(),
   expiredUrl: z.nullable(z.string()),
@@ -2177,7 +2185,6 @@ export const LeadEventLink$outboundSchema: z.ZodType<
   createdAt: z.string(),
   updatedAt: z.string(),
   projectId: z.string(),
-  programId: z.nullable(z.string()),
 }).transform((v) => {
   return remap$(v, {
     utmSource: "utm_source",

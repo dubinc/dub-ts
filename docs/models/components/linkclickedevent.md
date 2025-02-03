@@ -10,7 +10,7 @@ import { LinkClickedEvent } from "dub/models/components";
 let value: LinkClickedEvent = {
   id: "<id>",
   event: "link.clicked",
-  createdAt: "1709878540073",
+  createdAt: "1710310641909",
   data: {
     click: {
       id: "<id>",
@@ -33,7 +33,9 @@ let value: LinkClickedEvent = {
       url: "https://cautious-maintainer.name",
       externalId: "<id>",
       tenantId: "<id>",
-      expiresAt: "1748014341113",
+      programId: "<id>",
+      partnerId: "<id>",
+      expiresAt: "1748446442948",
       expiredUrl: "https://speedy-minister.com",
       password: "cv8joDt038kVZ7G",
       title: "<value>",
@@ -66,10 +68,9 @@ let value: LinkClickedEvent = {
       userId: "<id>",
       workspaceId: "<id>",
       lastClicked: "<value>",
-      createdAt: "1709401984532",
-      updatedAt: "1738106070264",
+      createdAt: "1709834086368",
+      updatedAt: "1738538172100",
       projectId: "<id>",
-      programId: "<id>",
     },
   },
 };

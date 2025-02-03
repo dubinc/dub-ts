@@ -8,7 +8,9 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateEmbedTokenRequestBody = {
-  linkId: string;
+  programId: string;
+  partnerId?: string | null | undefined;
+  tenantId?: string | null | undefined;
 };
 
 /**
@@ -25,12 +27,16 @@ export const CreateEmbedTokenRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  linkId: z.string(),
+  programId: z.string(),
+  partnerId: z.nullable(z.string()).optional(),
+  tenantId: z.nullable(z.string()).optional(),
 });
 
 /** @internal */
 export type CreateEmbedTokenRequestBody$Outbound = {
-  linkId: string;
+  programId: string;
+  partnerId?: string | null | undefined;
+  tenantId?: string | null | undefined;
 };
 
 /** @internal */
@@ -39,7 +45,9 @@ export const CreateEmbedTokenRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateEmbedTokenRequestBody
 > = z.object({
-  linkId: z.string(),
+  programId: z.string(),
+  partnerId: z.nullable(z.string()).optional(),
+  tenantId: z.nullable(z.string()).optional(),
 });
 
 /**

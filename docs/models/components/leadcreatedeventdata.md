@@ -11,7 +11,7 @@ let value: LeadCreatedEventData = {
     id: "<id>",
     externalId: "<id>",
     name: "<value>",
-    createdAt: "1710193528492",
+    createdAt: "1710625630284",
   },
   click: {
     id: "<id>",
@@ -34,7 +34,9 @@ let value: LeadCreatedEventData = {
     url: "https://giving-circumference.name",
     externalId: "<id>",
     tenantId: "<id>",
-    expiresAt: "1742593423048",
+    programId: "<id>",
+    partnerId: "<id>",
+    expiresAt: "1743025524839",
     expiredUrl: "https://natural-completion.net",
     password: "jLPPfR1JCVQDE72",
     title: "<value>",
@@ -67,10 +69,9 @@ let value: LeadCreatedEventData = {
     userId: "<id>",
     workspaceId: "<id>",
     lastClicked: "<value>",
-    createdAt: "1729226459126",
-    updatedAt: "1738062796500",
+    createdAt: "1729658560919",
+    updatedAt: "1738494898294",
     projectId: "<id>",
-    programId: "<id>",
   },
 };
 ```

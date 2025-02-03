@@ -292,6 +292,10 @@ export type LinkProps = {
    */
   tenantId?: string | null | undefined;
   /**
+   * The ID of the partner the short link is associated with.
+   */
+  partnerId?: string | null | undefined;
+  /**
    * The prefix of the short link slug for randomly-generated keys (e.g. if prefix is `/c/`, generated keys will be in the `/c/:key` format). Will be ignored if `key` is provided.
    */
   prefix?: string | undefined;
@@ -415,6 +419,10 @@ export type CreatePartnerRequestBody = {
    */
   description?: string | null | undefined;
   /**
+   * The ID of the partner in your system.
+   */
+  tenantId?: string | undefined;
+  /**
    * Additional properties that you can pass to the partner's short link. Will be used to override the default link properties for this partner.
    */
   linkProps?: LinkProps | undefined;
@@ -427,15 +435,11 @@ export const Status = {
 } as const;
 export type Status = ClosedEnum<typeof Status>;
 
-export type CreatePartnerLink = {
+export type Links = {
   /**
    * The unique ID of the short link.
    */
   id: string;
-  /**
-   * The full URL of the short link, including the https protocol (e.g. `https://dub.sh/try`).
-   */
-  shortLink: string;
   /**
    * The domain of the short link. If not provided, the primary domain for the workspace will be used (or `dub.sh` if the workspace has no domains).
    */
@@ -444,6 +448,10 @@ export type CreatePartnerLink = {
    * The short link slug. If not provided, a random 7-character slug will be generated.
    */
   key: string;
+  /**
+   * The full URL of the short link, including the https protocol (e.g. `https://dub.sh/try`).
+   */
+  shortLink: string;
   /**
    * The destination URL of the short link.
    */
@@ -504,10 +512,14 @@ export type CreatePartnerResponseBody = {
   createdAt: string;
   updatedAt: string;
   status: Status;
-  link: CreatePartnerLink | null;
+  links: Array<Links> | null;
   discount?: CreatePartnerDiscount | null | undefined;
   commissionAmount: number | null;
-  earnings: number;
+  earnings?: number | undefined;
+  clicks?: number | undefined;
+  leads?: number | undefined;
+  sales?: number | undefined;
+  salesAmount?: number | undefined;
 };
 
 /** @internal */
@@ -633,6 +645,7 @@ export const LinkProps$inboundSchema: z.ZodType<
 > = z.object({
   externalId: z.nullable(z.string()).optional(),
   tenantId: z.nullable(z.string()).optional(),
+  partnerId: z.nullable(z.string()).optional(),
   prefix: z.string().optional(),
   archived: z.boolean().optional(),
   tagIds: z.union([z.string(), z.array(z.string())]).optional(),
@@ -670,6 +683,7 @@ export const LinkProps$inboundSchema: z.ZodType<
 export type LinkProps$Outbound = {
   externalId?: string | null | undefined;
   tenantId?: string | null | undefined;
+  partnerId?: string | null | undefined;
   prefix?: string | undefined;
   archived?: boolean | undefined;
   tagIds?: string | Array<string> | undefined;
@@ -703,6 +717,7 @@ export const LinkProps$outboundSchema: z.ZodType<
 > = z.object({
   externalId: z.nullable(z.string()).optional(),
   tenantId: z.nullable(z.string()).optional(),
+  partnerId: z.nullable(z.string()).optional(),
   prefix: z.string().optional(),
   archived: z.boolean().optional(),
   tagIds: z.union([z.string(), z.array(z.string())]).optional(),
@@ -776,6 +791,7 @@ export const CreatePartnerRequestBody$inboundSchema: z.ZodType<
   image: z.nullable(z.string()).optional(),
   country: z.nullable(Country$inboundSchema).optional(),
   description: z.nullable(z.string()).optional(),
+  tenantId: z.string().optional(),
   linkProps: z.lazy(() => LinkProps$inboundSchema).optional(),
 });
 
@@ -788,6 +804,7 @@ export type CreatePartnerRequestBody$Outbound = {
   image?: string | null | undefined;
   country?: string | null | undefined;
   description?: string | null | undefined;
+  tenantId?: string | undefined;
   linkProps?: LinkProps$Outbound | undefined;
 };
 
@@ -804,6 +821,7 @@ export const CreatePartnerRequestBody$outboundSchema: z.ZodType<
   image: z.nullable(z.string()).optional(),
   country: z.nullable(Country$outboundSchema).optional(),
   description: z.nullable(z.string()).optional(),
+  tenantId: z.string().optional(),
   linkProps: z.lazy(() => LinkProps$outboundSchema).optional(),
 });
 
@@ -858,28 +876,25 @@ export namespace Status$ {
 }
 
 /** @internal */
-export const CreatePartnerLink$inboundSchema: z.ZodType<
-  CreatePartnerLink,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-  shortLink: z.string(),
-  domain: z.string(),
-  key: z.string(),
-  url: z.string(),
-  clicks: z.number().default(0),
-  leads: z.number().default(0),
-  sales: z.number().default(0),
-  saleAmount: z.number().default(0),
-});
+export const Links$inboundSchema: z.ZodType<Links, z.ZodTypeDef, unknown> = z
+  .object({
+    id: z.string(),
+    domain: z.string(),
+    key: z.string(),
+    shortLink: z.string(),
+    url: z.string(),
+    clicks: z.number().default(0),
+    leads: z.number().default(0),
+    sales: z.number().default(0),
+    saleAmount: z.number().default(0),
+  });
 
 /** @internal */
-export type CreatePartnerLink$Outbound = {
+export type Links$Outbound = {
   id: string;
-  shortLink: string;
   domain: string;
   key: string;
+  shortLink: string;
   url: string;
   clicks: number;
   leads: number;
@@ -888,15 +903,15 @@ export type CreatePartnerLink$Outbound = {
 };
 
 /** @internal */
-export const CreatePartnerLink$outboundSchema: z.ZodType<
-  CreatePartnerLink$Outbound,
+export const Links$outboundSchema: z.ZodType<
+  Links$Outbound,
   z.ZodTypeDef,
-  CreatePartnerLink
+  Links
 > = z.object({
   id: z.string(),
-  shortLink: z.string(),
   domain: z.string(),
   key: z.string(),
+  shortLink: z.string(),
   url: z.string(),
   clicks: z.number().default(0),
   leads: z.number().default(0),
@@ -908,30 +923,26 @@ export const CreatePartnerLink$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CreatePartnerLink$ {
-  /** @deprecated use `CreatePartnerLink$inboundSchema` instead. */
-  export const inboundSchema = CreatePartnerLink$inboundSchema;
-  /** @deprecated use `CreatePartnerLink$outboundSchema` instead. */
-  export const outboundSchema = CreatePartnerLink$outboundSchema;
-  /** @deprecated use `CreatePartnerLink$Outbound` instead. */
-  export type Outbound = CreatePartnerLink$Outbound;
+export namespace Links$ {
+  /** @deprecated use `Links$inboundSchema` instead. */
+  export const inboundSchema = Links$inboundSchema;
+  /** @deprecated use `Links$outboundSchema` instead. */
+  export const outboundSchema = Links$outboundSchema;
+  /** @deprecated use `Links$Outbound` instead. */
+  export type Outbound = Links$Outbound;
 }
 
-export function createPartnerLinkToJSON(
-  createPartnerLink: CreatePartnerLink,
-): string {
-  return JSON.stringify(
-    CreatePartnerLink$outboundSchema.parse(createPartnerLink),
-  );
+export function linksToJSON(links: Links): string {
+  return JSON.stringify(Links$outboundSchema.parse(links));
 }
 
-export function createPartnerLinkFromJSON(
+export function linksFromJSON(
   jsonString: string,
-): SafeParseResult<CreatePartnerLink, SDKValidationError> {
+): SafeParseResult<Links, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreatePartnerLink$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreatePartnerLink' from JSON`,
+    (x) => Links$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Links' from JSON`,
   );
 }
 
@@ -1067,11 +1078,15 @@ export const CreatePartnerResponseBody$inboundSchema: z.ZodType<
   createdAt: z.string(),
   updatedAt: z.string(),
   status: Status$inboundSchema,
-  link: z.nullable(z.lazy(() => CreatePartnerLink$inboundSchema)),
+  links: z.nullable(z.array(z.lazy(() => Links$inboundSchema))),
   discount: z.nullable(z.lazy(() => CreatePartnerDiscount$inboundSchema))
     .optional(),
   commissionAmount: z.nullable(z.number()),
-  earnings: z.number(),
+  earnings: z.number().default(0),
+  clicks: z.number().default(0),
+  leads: z.number().default(0),
+  sales: z.number().default(0),
+  salesAmount: z.number().default(0),
 });
 
 /** @internal */
@@ -1088,10 +1103,14 @@ export type CreatePartnerResponseBody$Outbound = {
   createdAt: string;
   updatedAt: string;
   status: string;
-  link: CreatePartnerLink$Outbound | null;
+  links: Array<Links$Outbound> | null;
   discount?: CreatePartnerDiscount$Outbound | null | undefined;
   commissionAmount: number | null;
   earnings: number;
+  clicks: number;
+  leads: number;
+  sales: number;
+  salesAmount: number;
 };
 
 /** @internal */
@@ -1112,11 +1131,15 @@ export const CreatePartnerResponseBody$outboundSchema: z.ZodType<
   createdAt: z.string(),
   updatedAt: z.string(),
   status: Status$outboundSchema,
-  link: z.nullable(z.lazy(() => CreatePartnerLink$outboundSchema)),
+  links: z.nullable(z.array(z.lazy(() => Links$outboundSchema))),
   discount: z.nullable(z.lazy(() => CreatePartnerDiscount$outboundSchema))
     .optional(),
   commissionAmount: z.nullable(z.number()),
-  earnings: z.number(),
+  earnings: z.number().default(0),
+  clicks: z.number().default(0),
+  leads: z.number().default(0),
+  sales: z.number().default(0),
+  salesAmount: z.number().default(0),
 });
 
 /**
