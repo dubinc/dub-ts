@@ -36,3 +36,4 @@ export * from "./updatelink.js";
 export * from "./updatetag.js";
 export * from "./updateworkspace.js";
 export * from "./upsertlink.js";
+export * from "./upsertpartnerlink.js";

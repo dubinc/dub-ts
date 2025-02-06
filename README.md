@@ -172,6 +172,7 @@ run();
 
 * [create](docs/sdks/partners/README.md#create) - Create a new partner
 * [createLink](docs/sdks/partners/README.md#createlink) - Create a link for a partner
+* [upsertLink](docs/sdks/partners/README.md#upsertlink) - Upsert a link for a partner
 
 ### [qrCodes](docs/sdks/qrcodes/README.md)
 
@@ -566,6 +567,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`metatagsGet`](docs/sdks/metatags/README.md#get) - Retrieve the metatags for a URL
 - [`partnersCreate`](docs/sdks/partners/README.md#create) - Create a new partner
 - [`partnersCreateLink`](docs/sdks/partners/README.md#createlink) - Create a link for a partner
+- [`partnersUpsertLink`](docs/sdks/partners/README.md#upsertlink) - Upsert a link for a partner
 - [`qrCodesGet`](docs/sdks/qrcodes/README.md#get) - Retrieve a QR code
 - [`tagsCreate`](docs/sdks/tags/README.md#create) - Create a new tag
 - [`tagsDelete`](docs/sdks/tags/README.md#delete) - Delete a tag
