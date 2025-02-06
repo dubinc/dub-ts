@@ -7,6 +7,7 @@ import { LeadCreatedEventClick } from "dub/models/components";
 
 let value: LeadCreatedEventClick = {
   id: "<id>",
+  timestamp: "<value>",
   url: "https://dull-feather.com/",
   country: "Gambia",
   city: "North Dakota",
@@ -26,6 +27,7 @@ let value: LeadCreatedEventClick = {
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `id`               | *string*           | :heavy_check_mark: | N/A                |
+| `timestamp`        | *string*           | :heavy_check_mark: | N/A                |
 | `url`              | *string*           | :heavy_check_mark: | N/A                |
 | `country`          | *string*           | :heavy_check_mark: | N/A                |
 | `city`             | *string*           | :heavy_check_mark: | N/A                |

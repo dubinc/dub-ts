@@ -7,6 +7,7 @@ import { Click } from "dub/models/components";
 
 let value: Click = {
   id: "<id>",
+  timestamp: "<value>",
   url: "https://untimely-sand.biz",
   country: "Belarus",
   city: "Darionville",
@@ -26,6 +27,7 @@ let value: Click = {
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `id`               | *string*           | :heavy_check_mark: | N/A                |
+| `timestamp`        | *string*           | :heavy_check_mark: | N/A                |
 | `url`              | *string*           | :heavy_check_mark: | N/A                |
 | `country`          | *string*           | :heavy_check_mark: | N/A                |
 | `city`             | *string*           | :heavy_check_mark: | N/A                |

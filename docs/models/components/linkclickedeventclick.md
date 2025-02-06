@@ -7,6 +7,7 @@ import { LinkClickedEventClick } from "dub/models/components";
 
 let value: LinkClickedEventClick = {
   id: "<id>",
+  timestamp: "<value>",
   url: "https://precious-sauerkraut.org/",
   country: "Slovenia",
   city: "Port Andreaneberg",
@@ -26,6 +27,7 @@ let value: LinkClickedEventClick = {
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `id`               | *string*           | :heavy_check_mark: | N/A                |
+| `timestamp`        | *string*           | :heavy_check_mark: | N/A                |
 | `url`              | *string*           | :heavy_check_mark: | N/A                |
 | `country`          | *string*           | :heavy_check_mark: | N/A                |
 | `city`             | *string*           | :heavy_check_mark: | N/A                |

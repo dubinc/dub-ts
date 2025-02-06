@@ -426,6 +426,7 @@ export type SaleEventLink = {
 
 export type SaleEventClick = {
   id: string;
+  timestamp: string;
   url: string;
   country: string;
   city: string;
@@ -2188,6 +2189,7 @@ export const SaleEventClick$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: z.string(),
+  timestamp: z.string(),
   url: z.string(),
   country: z.string(),
   city: z.string(),
@@ -2205,6 +2207,7 @@ export const SaleEventClick$inboundSchema: z.ZodType<
 /** @internal */
 export type SaleEventClick$Outbound = {
   id: string;
+  timestamp: string;
   url: string;
   country: string;
   city: string;
@@ -2226,6 +2229,7 @@ export const SaleEventClick$outboundSchema: z.ZodType<
   SaleEventClick
 > = z.object({
   id: z.string(),
+  timestamp: z.string(),
   url: z.string(),
   country: z.string(),
   city: z.string(),

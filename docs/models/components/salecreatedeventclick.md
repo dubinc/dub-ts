@@ -7,6 +7,7 @@ import { SaleCreatedEventClick } from "dub/models/components";
 
 let value: SaleCreatedEventClick = {
   id: "<id>",
+  timestamp: "<value>",
   url: "https://marvelous-hyena.com/",
   country: "Niue",
   city: "North Joana",
@@ -26,6 +27,7 @@ let value: SaleCreatedEventClick = {
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `id`               | *string*           | :heavy_check_mark: | N/A                |
+| `timestamp`        | *string*           | :heavy_check_mark: | N/A                |
 | `url`              | *string*           | :heavy_check_mark: | N/A                |
 | `country`          | *string*           | :heavy_check_mark: | N/A                |
 | `city`             | *string*           | :heavy_check_mark: | N/A                |

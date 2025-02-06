@@ -110,6 +110,7 @@ export type SaleCreatedEventCustomer = {
 
 export type SaleCreatedEventClick = {
   id: string;
+  timestamp: string;
   url: string;
   country: string;
   city: string;
@@ -911,6 +912,7 @@ export const SaleCreatedEventClick$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: z.string(),
+  timestamp: z.string(),
   url: z.string(),
   country: z.string(),
   city: z.string(),
@@ -928,6 +930,7 @@ export const SaleCreatedEventClick$inboundSchema: z.ZodType<
 /** @internal */
 export type SaleCreatedEventClick$Outbound = {
   id: string;
+  timestamp: string;
   url: string;
   country: string;
   city: string;
@@ -949,6 +952,7 @@ export const SaleCreatedEventClick$outboundSchema: z.ZodType<
   SaleCreatedEventClick
 > = z.object({
   id: z.string(),
+  timestamp: z.string(),
   url: z.string(),
   country: z.string(),
   city: z.string(),

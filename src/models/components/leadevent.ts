@@ -22,6 +22,7 @@ export type LeadEventEvent = ClosedEnum<typeof LeadEventEvent>;
 
 export type LeadEventClick = {
   id: string;
+  timestamp: string;
   url: string;
   country: string;
   city: string;
@@ -642,6 +643,7 @@ export const LeadEventClick$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: z.string(),
+  timestamp: z.string(),
   url: z.string(),
   country: z.string(),
   city: z.string(),
@@ -659,6 +661,7 @@ export const LeadEventClick$inboundSchema: z.ZodType<
 /** @internal */
 export type LeadEventClick$Outbound = {
   id: string;
+  timestamp: string;
   url: string;
   country: string;
   city: string;
@@ -680,6 +683,7 @@ export const LeadEventClick$outboundSchema: z.ZodType<
   LeadEventClick
 > = z.object({
   id: z.string(),
+  timestamp: z.string(),
   url: z.string(),
   country: z.string(),
   city: z.string(),
