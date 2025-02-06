@@ -4,6 +4,7 @@
 
 import { partnersCreate } from "../funcs/partnersCreate.js";
 import { partnersCreateLink } from "../funcs/partnersCreateLink.js";
+import { partnersUpsertLink } from "../funcs/partnersUpsertLink.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
@@ -31,13 +32,30 @@ export class Partners extends ClientSDK {
    * Create a link for a partner
    *
    * @remarks
-   * Create a new link for a partner that is enrolled in your program
+   * Create a new link for a partner that is enrolled in your program.
    */
   async createLink(
     request?: operations.CreatePartnerLinkRequestBody | undefined,
     options?: RequestOptions,
   ): Promise<components.LinkSchema> {
     return unwrapAsync(partnersCreateLink(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Upsert a link for a partner
+   *
+   * @remarks
+   * Upsert a link for a partner that is enrolled in your program. If a link with the same URL already exists, return it (or update it if there are any changes). Otherwise, a new link will be created.
+   */
+  async upsertLink(
+    request?: operations.UpsertPartnerLinkRequestBody | undefined,
+    options?: RequestOptions,
+  ): Promise<components.LinkSchema> {
+    return unwrapAsync(partnersUpsertLink(
       this,
       request,
       options,

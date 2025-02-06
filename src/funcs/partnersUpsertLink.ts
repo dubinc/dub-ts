@@ -25,14 +25,14 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Create a link for a partner
+ * Upsert a link for a partner
  *
  * @remarks
- * Create a new link for a partner that is enrolled in your program.
+ * Upsert a link for a partner that is enrolled in your program. If a link with the same URL already exists, return it (or update it if there are any changes). Otherwise, a new link will be created.
  */
-export async function partnersCreateLink(
+export async function partnersUpsertLink(
   client: DubCore,
-  request?: operations.CreatePartnerLinkRequestBody | undefined,
+  request?: operations.UpsertPartnerLinkRequestBody | undefined,
   options?: RequestOptions,
 ): Promise<
   Result<
@@ -58,7 +58,7 @@ export async function partnersCreateLink(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.CreatePartnerLinkRequestBody$outboundSchema.optional().parse(
+      operations.UpsertPartnerLinkRequestBody$outboundSchema.optional().parse(
         value,
       ),
     "Input validation failed",
@@ -71,7 +71,7 @@ export async function partnersCreateLink(
     ? null
     : encodeJSON("body", payload, { explode: true });
 
-  const path = pathToFunc("/partners/links")();
+  const path = pathToFunc("/partners/links/upsert")();
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
@@ -83,7 +83,7 @@ export async function partnersCreateLink(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    operationID: "createPartnerLink",
+    operationID: "upsertPartnerLink",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
@@ -97,7 +97,7 @@ export async function partnersCreateLink(
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
-    method: "POST",
+    method: "PUT",
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
@@ -155,7 +155,7 @@ export async function partnersCreateLink(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(201, components.LinkSchema$inboundSchema),
+    M.json(200, components.LinkSchema$inboundSchema),
     M.jsonErr(400, errors.BadRequest$inboundSchema),
     M.jsonErr(401, errors.Unauthorized$inboundSchema),
     M.jsonErr(403, errors.Forbidden$inboundSchema),
