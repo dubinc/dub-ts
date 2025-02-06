@@ -15,7 +15,7 @@ const value: components.LinkSchema = {
   tenantId: "<id>",
   programId: "<id>",
   partnerId: "<id>",
-  expiresAt: "1749073117310",
+  expiresAt: "1749271606852",
   expiredUrl: "https://innocent-pasta.net",
   password: "dw8Qh65bkuKe1jf",
   title: "<value>",
@@ -47,8 +47,8 @@ const value: components.LinkSchema = {
   userId: "<id>",
   workspaceId: "<id>",
   lastClicked: "<value>",
-  createdAt: "1710052626523",
-  updatedAt: "1738583910389",
+  createdAt: "1710251116062",
+  updatedAt: "1738782399928",
   projectId: "<id>",
 };
 ```

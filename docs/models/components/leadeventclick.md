@@ -7,6 +7,7 @@ import { LeadEventClick } from "dub/models/components";
 
 let value: LeadEventClick = {
   id: "<id>",
+  timestamp: "<value>",
   url: "https://humble-sideboard.net/",
   country: "Uruguay",
   city: "Fort Okey",
@@ -26,6 +27,7 @@ let value: LeadEventClick = {
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `id`               | *string*           | :heavy_check_mark: | N/A                |
+| `timestamp`        | *string*           | :heavy_check_mark: | N/A                |
 | `url`              | *string*           | :heavy_check_mark: | N/A                |
 | `country`          | *string*           | :heavy_check_mark: | N/A                |
 | `city`             | *string*           | :heavy_check_mark: | N/A                |

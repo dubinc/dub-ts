@@ -8,6 +8,7 @@ import { LinkClickedEventData } from "dub/models/components";
 let value: LinkClickedEventData = {
   click: {
     id: "<id>",
+    timestamp: "<value>",
     url: "https://giving-ravioli.biz/",
     country: "Switzerland",
     city: "Wainoworth",
@@ -29,7 +30,7 @@ let value: LinkClickedEventData = {
     tenantId: "<id>",
     programId: "<id>",
     partnerId: "<id>",
-    expiresAt: "1744581567952",
+    expiresAt: "1744780057512",
     expiredUrl: "https://darling-adaptation.biz/",
     password: "GIuJbPtvCVpCFOB",
     title: "<value>",
@@ -62,8 +63,8 @@ let value: LinkClickedEventData = {
     userId: "<id>",
     workspaceId: "<id>",
     lastClicked: "<value>",
-    createdAt: "1721537451992",
-    updatedAt: "1738553291653",
+    createdAt: "1721735941552",
+    updatedAt: "1738751781213",
     projectId: "<id>",
   },
 };

@@ -22,6 +22,7 @@ export type Event = ClosedEnum<typeof Event>;
 
 export type Click = {
   id: string;
+  timestamp: string;
   url: string;
   country: string;
   city: string;
@@ -549,6 +550,7 @@ export namespace Event$ {
 export const Click$inboundSchema: z.ZodType<Click, z.ZodTypeDef, unknown> = z
   .object({
     id: z.string(),
+    timestamp: z.string(),
     url: z.string(),
     country: z.string(),
     city: z.string(),
@@ -566,6 +568,7 @@ export const Click$inboundSchema: z.ZodType<Click, z.ZodTypeDef, unknown> = z
 /** @internal */
 export type Click$Outbound = {
   id: string;
+  timestamp: string;
   url: string;
   country: string;
   city: string;
@@ -587,6 +590,7 @@ export const Click$outboundSchema: z.ZodType<
   Click
 > = z.object({
   id: z.string(),
+  timestamp: z.string(),
   url: z.string(),
   country: z.string(),
   city: z.string(),
