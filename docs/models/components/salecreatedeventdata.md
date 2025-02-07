@@ -11,7 +11,7 @@ let value: SaleCreatedEventData = {
     id: "<id>",
     externalId: "<id>",
     name: "<value>",
-    createdAt: "1723959678126",
+    createdAt: "1723982006957",
   },
   click: {
     id: "<id>",
@@ -37,7 +37,7 @@ let value: SaleCreatedEventData = {
     tenantId: "<id>",
     programId: "<id>",
     partnerId: "<id>",
-    expiresAt: "1755858557064",
+    expiresAt: "1755880885895",
     expiredUrl: "https://lighthearted-bidet.com",
     password: "l9Z4dKt3x8zYNZj",
     title: "<value>",
@@ -70,8 +70,8 @@ let value: SaleCreatedEventData = {
     userId: "<id>",
     workspaceId: "<id>",
     lastClicked: "<value>",
-    createdAt: "1714002243780",
-    updatedAt: "1738821988480",
+    createdAt: "1714024572589",
+    updatedAt: "1738844317288",
     projectId: "<id>",
   },
   sale: {

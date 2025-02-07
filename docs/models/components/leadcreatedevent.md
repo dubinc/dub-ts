@@ -10,14 +10,14 @@ import { LeadCreatedEvent } from "dub/models/components";
 let value: LeadCreatedEvent = {
   id: "<id>",
   event: "lead.created",
-  createdAt: "1730501537560",
+  createdAt: "1730523866391",
   data: {
     eventName: "<value>",
     customer: {
       id: "<id>",
       externalId: "<id>",
       name: "<value>",
-      createdAt: "1720366237272",
+      createdAt: "1720388566103",
     },
     click: {
       id: "<id>",
@@ -43,7 +43,7 @@ let value: LeadCreatedEvent = {
       tenantId: "<id>",
       programId: "<id>",
       partnerId: "<id>",
-      expiresAt: "1757253439395",
+      expiresAt: "1757275768226",
       expiredUrl: "https://critical-sprinkles.net",
       password: "VPYyqKmelmwvP6S",
       title: "<value>",
@@ -75,8 +75,8 @@ let value: LeadCreatedEvent = {
       userId: "<id>",
       workspaceId: "<id>",
       lastClicked: "<value>",
-      createdAt: "1707762589011",
-      updatedAt: "1738820128978",
+      createdAt: "1707784917842",
+      updatedAt: "1738842457809",
       projectId: "<id>",
     },
   },
