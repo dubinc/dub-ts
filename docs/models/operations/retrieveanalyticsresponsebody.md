@@ -26,7 +26,7 @@ const value: components.AnalyticsTimeseries[] = [
 ```typescript
 const value: components.AnalyticsContinents[] = [
   {
-    continent: "SA",
+    continent: "AN",
   },
 ];
 ```
@@ -36,7 +36,7 @@ const value: components.AnalyticsContinents[] = [
 ```typescript
 const value: components.AnalyticsCountries[] = [
   {
-    country: "AM",
+    country: "SO",
   },
 ];
 ```
@@ -46,8 +46,8 @@ const value: components.AnalyticsCountries[] = [
 ```typescript
 const value: components.AnalyticsCities[] = [
   {
-    city: "Port Isabell",
-    country: "BZ",
+    city: "Bruenfield",
+    country: "CR",
   },
 ];
 ```
@@ -57,7 +57,7 @@ const value: components.AnalyticsCities[] = [
 ```typescript
 const value: components.AnalyticsDevices[] = [
   {
-    device: "Desktop",
+    device: "Mobile",
   },
 ];
 ```
@@ -67,7 +67,7 @@ const value: components.AnalyticsDevices[] = [
 ```typescript
 const value: components.AnalyticsBrowsers[] = [
   {
-    browser: "Safari",
+    browser: "Firefox",
   },
 ];
 ```
@@ -77,7 +77,7 @@ const value: components.AnalyticsBrowsers[] = [
 ```typescript
 const value: components.AnalyticsOS[] = [
   {
-    os: "Android",
+    os: "Chrome OS",
   },
 ];
 ```
@@ -97,7 +97,7 @@ const value: components.AnalyticsTriggers[] = [
 ```typescript
 const value: components.AnalyticsReferers[] = [
   {
-    referer: "wasteful-colon.com",
+    referer: "far-off-ethyl.biz",
   },
 ];
 ```
@@ -107,7 +107,7 @@ const value: components.AnalyticsReferers[] = [
 ```typescript
 const value: components.AnalyticsRefererUrls[] = [
   {
-    refererUrl: "https://limited-climb.biz/",
+    refererUrl: "https://orange-self-confidence.org/",
   },
 ];
 ```
@@ -119,11 +119,11 @@ const value: components.AnalyticsTopLinks[] = [
   {
     link: "<value>",
     id: "<id>",
-    domain: "vivacious-providence.name",
+    domain: "beloved-pear.name",
     key: "<key>",
     shortLink: "<value>",
-    url: "https://acceptable-cheese.net",
-    createdAt: "1729899299663",
+    url: "https://staid-tuber.net",
+    createdAt: "1713093917644",
   },
 ];
 ```
@@ -133,7 +133,7 @@ const value: components.AnalyticsTopLinks[] = [
 ```typescript
 const value: components.AnalyticsTopUrls[] = [
   {
-    url: "https://outlying-masterpiece.info",
+    url: "https://triangular-essence.com",
   },
 ];
 ```

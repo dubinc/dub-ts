@@ -9,9 +9,9 @@ let value: CreatePartnerDiscount = {
   id: "<id>",
   couponId: "<id>",
   couponTestId: "<id>",
-  amount: 3927.35,
-  type: "percentage",
-  duration: 1157.3,
+  amount: 4033.14,
+  type: "flat",
+  duration: 6654.01,
   interval: "month",
 };
 ```

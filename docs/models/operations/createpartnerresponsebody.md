@@ -10,25 +10,25 @@ import { CreatePartnerResponseBody } from "dub/models/operations";
 let value: CreatePartnerResponseBody = {
   id: "<id>",
   name: "<value>",
-  email: "Claude_Blick24@hotmail.com",
-  image: "https://picsum.photos/seed/GyIFLzOTHm/1564/2518",
-  country: "Estonia",
+  email: "Garret9@yahoo.com",
+  image: "https://picsum.photos/seed/Z99D2Onoz/765/2971",
+  country: "Gibraltar",
   bio: "<value>",
   stripeConnectId: "<id>",
   payoutsEnabled: false,
-  createdAt: "1727446340717",
-  updatedAt: "1738856209062",
-  status: "approved",
+  createdAt: "1717149779886",
+  updatedAt: "1739148870796",
+  status: "rejected",
   links: [
     {
       id: "<id>",
-      domain: "simple-dead.com",
+      domain: "soft-nucleotidase.biz",
       key: "<key>",
-      shortLink: "https://querulous-lid.org/",
-      url: "https://svelte-pear.biz/",
+      shortLink: "https://cultivated-swath.info",
+      url: "https://downright-object.org/",
     },
   ],
-  commissionAmount: 7369.06,
+  commissionAmount: 5891.01,
 };
 ```
 
@@ -55,4 +55,4 @@ let value: CreatePartnerResponseBody = {
 | `clicks`                                                                             | *number*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
 | `leads`                                                                              | *number*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
 | `sales`                                                                              | *number*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `salesAmount`                                                                        | *number*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
+| `saleAmount`                                                                         | *number*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |

@@ -142,9 +142,9 @@ export type CreatePartnerLinkRequestBody = {
    */
   tenantId?: string | null | undefined;
   /**
-   * The URL to shorten. Will throw an error if the domain doesn't match the program's default URL domain.
+   * The URL to shorten (if not provided, the program's default URL will be used). Will throw an error if the domain doesn't match the program's default URL domain.
    */
-  url: string;
+  url?: string | null | undefined;
   /**
    * The short link slug. If not provided, a random 7-character slug will be generated.
    */
@@ -405,7 +405,7 @@ export const CreatePartnerLinkRequestBody$inboundSchema: z.ZodType<
   programId: z.string(),
   partnerId: z.nullable(z.string()).optional(),
   tenantId: z.nullable(z.string()).optional(),
-  url: z.string(),
+  url: z.nullable(z.string()).optional(),
   key: z.string().optional(),
   linkProps: z.lazy(() => CreatePartnerLinkLinkProps$inboundSchema).optional(),
 });
@@ -415,7 +415,7 @@ export type CreatePartnerLinkRequestBody$Outbound = {
   programId: string;
   partnerId?: string | null | undefined;
   tenantId?: string | null | undefined;
-  url: string;
+  url?: string | null | undefined;
   key?: string | undefined;
   linkProps?: CreatePartnerLinkLinkProps$Outbound | undefined;
 };
@@ -429,7 +429,7 @@ export const CreatePartnerLinkRequestBody$outboundSchema: z.ZodType<
   programId: z.string(),
   partnerId: z.nullable(z.string()).optional(),
   tenantId: z.nullable(z.string()).optional(),
-  url: z.string(),
+  url: z.nullable(z.string()).optional(),
   key: z.string().optional(),
   linkProps: z.lazy(() => CreatePartnerLinkLinkProps$outboundSchema).optional(),
 });

@@ -7,7 +7,7 @@ Country where the partner is based.
 ```typescript
 import { Country } from "dub/models/operations";
 
-let value: Country = "MU";
+let value: Country = "EC";
 ```
 
 ## Values

@@ -28,6 +28,7 @@ export * from "./getworkspace.js";
 export * from "./listdomains.js";
 export * from "./listevents.js";
 export * from "./retrieveanalytics.js";
+export * from "./retrievepartneranalytics.js";
 export * from "./tracklead.js";
 export * from "./tracksale.js";
 export * from "./updatecustomer.js";
