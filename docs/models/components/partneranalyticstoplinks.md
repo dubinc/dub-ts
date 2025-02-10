@@ -12,7 +12,7 @@ let value: PartnerAnalyticsTopLinks = {
   key: "<key>",
   shortLink: "<value>",
   url: "https://idealistic-pressure.info",
-  createdAt: "1712551520149",
+  createdAt: "1712553837223",
 };
 ```
 

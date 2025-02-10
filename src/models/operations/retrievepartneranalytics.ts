@@ -46,10 +46,6 @@ export type RetrievePartnerAnalyticsQueryParamGroupBy = ClosedEnum<
 
 export type RetrievePartnerAnalyticsRequest = {
   /**
-   * The ID of the program to retrieve analytics for.
-   */
-  programId?: string | undefined;
-  /**
    * The ID of the partner to retrieve analytics for.
    */
   partnerId?: string | undefined;
@@ -77,6 +73,10 @@ export type RetrievePartnerAnalyticsRequest = {
    * The parameter to group the analytics data points by. Defaults to `count` if undefined.
    */
   groupBy?: RetrievePartnerAnalyticsQueryParamGroupBy | undefined;
+  /**
+   * The ID of the program to retrieve analytics for.
+   */
+  programId: string;
 };
 
 /**
@@ -139,7 +139,6 @@ export const RetrievePartnerAnalyticsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  programId: z.string().optional(),
   partnerId: z.string().optional(),
   tenantId: z.string().optional(),
   interval: RetrievePartnerAnalyticsQueryParamInterval$inboundSchema.optional(),
@@ -149,11 +148,11 @@ export const RetrievePartnerAnalyticsRequest$inboundSchema: z.ZodType<
   groupBy: RetrievePartnerAnalyticsQueryParamGroupBy$inboundSchema.default(
     "count",
   ),
+  programId: z.string(),
 });
 
 /** @internal */
 export type RetrievePartnerAnalyticsRequest$Outbound = {
-  programId?: string | undefined;
   partnerId?: string | undefined;
   tenantId?: string | undefined;
   interval?: string | undefined;
@@ -161,6 +160,7 @@ export type RetrievePartnerAnalyticsRequest$Outbound = {
   end?: string | undefined;
   timezone: string;
   groupBy: string;
+  programId: string;
 };
 
 /** @internal */
@@ -169,7 +169,6 @@ export const RetrievePartnerAnalyticsRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   RetrievePartnerAnalyticsRequest
 > = z.object({
-  programId: z.string().optional(),
   partnerId: z.string().optional(),
   tenantId: z.string().optional(),
   interval: RetrievePartnerAnalyticsQueryParamInterval$outboundSchema
@@ -180,6 +179,7 @@ export const RetrievePartnerAnalyticsRequest$outboundSchema: z.ZodType<
   groupBy: RetrievePartnerAnalyticsQueryParamGroupBy$outboundSchema.default(
     "count",
   ),
+  programId: z.string(),
 });
 
 /**

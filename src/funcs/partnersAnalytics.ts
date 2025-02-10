@@ -24,14 +24,14 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Retrieve analytics for a partner within a program.
+ * Retrieve analytics for a partner
  *
  * @remarks
  * Retrieve analytics for a partner within a program. The response type vary based on the `groupBy` query parameter.
  */
 export async function partnersAnalytics(
   client: DubCore,
-  request?: operations.RetrievePartnerAnalyticsRequest | undefined,
+  request: operations.RetrievePartnerAnalyticsRequest,
   options?: RequestOptions,
 ): Promise<
   Result<
@@ -57,8 +57,7 @@ export async function partnersAnalytics(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.RetrievePartnerAnalyticsRequest$outboundSchema.optional()
-        .parse(value),
+      operations.RetrievePartnerAnalyticsRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -70,14 +69,14 @@ export async function partnersAnalytics(
   const path = pathToFunc("/partners/analytics")();
 
   const query = encodeFormQuery({
-    "end": payload?.end,
-    "groupBy": payload?.groupBy,
-    "interval": payload?.interval,
-    "partnerId": payload?.partnerId,
-    "programId": payload?.programId,
-    "start": payload?.start,
-    "tenantId": payload?.tenantId,
-    "timezone": payload?.timezone,
+    "end": payload.end,
+    "groupBy": payload.groupBy,
+    "interval": payload.interval,
+    "partnerId": payload.partnerId,
+    "programId": payload.programId,
+    "start": payload.start,
+    "tenantId": payload.tenantId,
+    "timezone": payload.timezone,
   });
 
   const headers = new Headers(compactMap({

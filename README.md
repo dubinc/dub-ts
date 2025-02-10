@@ -173,7 +173,7 @@ run();
 * [create](docs/sdks/partners/README.md#create) - Create a new partner
 * [createLink](docs/sdks/partners/README.md#createlink) - Create a link for a partner
 * [upsertLink](docs/sdks/partners/README.md#upsertlink) - Upsert a link for a partner
-* [analytics](docs/sdks/partners/README.md#analytics) - Retrieve analytics for a partner within a program.
+* [analytics](docs/sdks/partners/README.md#analytics) - Retrieve analytics for a partner
 
 ### [qrCodes](docs/sdks/qrcodes/README.md)
 
@@ -566,7 +566,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`linksUpdateMany`](docs/sdks/links/README.md#updatemany) - Bulk update links
 - [`linksUpsert`](docs/sdks/links/README.md#upsert) - Upsert a link
 - [`metatagsGet`](docs/sdks/metatags/README.md#get) - Retrieve the metatags for a URL
-- [`partnersAnalytics`](docs/sdks/partners/README.md#analytics) - Retrieve analytics for a partner within a program.
+- [`partnersAnalytics`](docs/sdks/partners/README.md#analytics) - Retrieve analytics for a partner
 - [`partnersCreate`](docs/sdks/partners/README.md#create) - Create a new partner
 - [`partnersCreateLink`](docs/sdks/partners/README.md#createlink) - Create a link for a partner
 - [`partnersUpsertLink`](docs/sdks/partners/README.md#upsertlink) - Upsert a link for a partner
