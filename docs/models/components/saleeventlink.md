@@ -14,7 +14,7 @@ let value: SaleEventLink = {
   tenantId: "<id>",
   programId: "<id>",
   partnerId: "<id>",
-  expiresAt: "1763735763910",
+  expiresAt: "1763995020479",
   expiredUrl: "https://immense-valuable.name",
   password: "Hkbx9iLWrCuIjPk",
   title: "<value>",
@@ -48,8 +48,8 @@ let value: SaleEventLink = {
   userId: "<id>",
   workspaceId: "<id>",
   lastClicked: "<value>",
-  createdAt: "1735801661693",
-  updatedAt: "1738841285804",
+  createdAt: "1736060918262",
+  updatedAt: "1739100542373",
   projectId: "<id>",
 };
 ```

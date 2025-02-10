@@ -11,7 +11,7 @@ Webhook event schema
 const value: components.LinkWebhookEvent = {
   id: "<id>",
   event: "link.deleted",
-  createdAt: "1729447225180",
+  createdAt: "1729706481748",
   data: {
     id: "<id>",
     domain: "tempting-mentor.info",
@@ -21,7 +21,7 @@ const value: components.LinkWebhookEvent = {
     tenantId: "<id>",
     programId: "<id>",
     partnerId: "<id>",
-    expiresAt: "1744507798862",
+    expiresAt: "1744767055431",
     expiredUrl: "https://intrepid-fax.com/",
     password: "qjTiD5kp_nvhVpT",
     title: "<value>",
@@ -54,8 +54,8 @@ const value: components.LinkWebhookEvent = {
     userId: "<id>",
     workspaceId: "<id>",
     lastClicked: "<value>",
-    createdAt: "1709256180024",
-    updatedAt: "1738854767627",
+    createdAt: "1709515436593",
+    updatedAt: "1739114024196",
     projectId: "<id>",
   },
 };
@@ -67,7 +67,7 @@ const value: components.LinkWebhookEvent = {
 const value: components.LinkClickedEvent = {
   id: "<id>",
   event: "link.clicked",
-  createdAt: "1737134780172",
+  createdAt: "1737394036741",
   data: {
     click: {
       id: "<id>",
@@ -93,7 +93,7 @@ const value: components.LinkClickedEvent = {
       tenantId: "<id>",
       programId: "<id>",
       partnerId: "<id>",
-      expiresAt: "1755386300526",
+      expiresAt: "1755645557095",
       expiredUrl: "https://pessimistic-euphonium.name/",
       password: "10HILeNv2AWrBoE",
       title: "<value>",
@@ -126,8 +126,8 @@ const value: components.LinkClickedEvent = {
       userId: "<id>",
       workspaceId: "<id>",
       lastClicked: "<value>",
-      createdAt: "1728221428820",
-      updatedAt: "1738808605046",
+      createdAt: "1728480685389",
+      updatedAt: "1739067861615",
       projectId: "<id>",
     },
   },
@@ -140,14 +140,14 @@ const value: components.LinkClickedEvent = {
 const value: components.LeadCreatedEvent = {
   id: "<id>",
   event: "lead.created",
-  createdAt: "1724450460006",
+  createdAt: "1724709716575",
   data: {
     eventName: "<value>",
     customer: {
       id: "<id>",
       externalId: "<id>",
       name: "<value>",
-      createdAt: "1718579097348",
+      createdAt: "1718838353917",
     },
     click: {
       id: "<id>",
@@ -173,7 +173,7 @@ const value: components.LeadCreatedEvent = {
       tenantId: "<id>",
       programId: "<id>",
       partnerId: "<id>",
-      expiresAt: "1748460770023",
+      expiresAt: "1748720026592",
       expiredUrl: "https://unpleasant-junior.com/",
       password: "8LxCjEbgw4qcCST",
       title: "<value>",
@@ -207,8 +207,8 @@ const value: components.LeadCreatedEvent = {
       userId: "<id>",
       workspaceId: "<id>",
       lastClicked: "<value>",
-      createdAt: "1712428965824",
-      updatedAt: "1738841447889",
+      createdAt: "1712688222393",
+      updatedAt: "1739100704458",
       projectId: "<id>",
     },
   },
@@ -221,14 +221,14 @@ const value: components.LeadCreatedEvent = {
 const value: components.SaleCreatedEvent = {
   id: "<id>",
   event: "sale.created",
-  createdAt: "1737839093317",
+  createdAt: "1738098349886",
   data: {
     eventName: "<value>",
     customer: {
       id: "<id>",
       externalId: "<id>",
       name: "<value>",
-      createdAt: "1724214609247",
+      createdAt: "1724473865816",
     },
     click: {
       id: "<id>",
@@ -254,7 +254,7 @@ const value: components.SaleCreatedEvent = {
       tenantId: "<id>",
       programId: "<id>",
       partnerId: "<id>",
-      expiresAt: "1747095189603",
+      expiresAt: "1747354446172",
       expiredUrl: "https://gentle-dish.net/",
       password: "f5rSP3vrLCz6U3Z",
       title: "<value>",
@@ -287,8 +287,8 @@ const value: components.SaleCreatedEvent = {
       userId: "<id>",
       workspaceId: "<id>",
       lastClicked: "<value>",
-      createdAt: "1713179103625",
-      updatedAt: "1738867036610",
+      createdAt: "1713438360194",
+      updatedAt: "1739126293179",
       projectId: "<id>",
     },
     sale: {
