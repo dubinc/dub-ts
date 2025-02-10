@@ -9,7 +9,7 @@ DEPRECATED. Use `sortBy` instead.
 ```typescript
 import { Sort } from "dub/models/operations";
 
-let value: Sort = "lastClicked";
+let value: Sort = "clicks";
 ```
 
 ## Values

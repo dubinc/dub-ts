@@ -5,7 +5,7 @@
 ```typescript
 import { SaleCreatedEventType } from "dub/models/components";
 
-let value: SaleCreatedEventType = "flat";
+let value: SaleCreatedEventType = "percentage";
 ```
 
 ## Values

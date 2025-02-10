@@ -8,20 +8,21 @@
 ```typescript
 const value: components.LinkSchema = {
   id: "<id>",
-  domain: "unhealthy-doorpost.biz",
+  domain: "worthless-hexagon.org",
   key: "<key>",
-  url: "https://orderly-bungalow.info",
+  url: "https://medium-pleasure.info/",
   externalId: "<id>",
   tenantId: "<id>",
   programId: "<id>",
   partnerId: "<id>",
-  expiresAt: "1749358004634",
-  expiredUrl: "https://innocent-pasta.net",
-  password: "dw8Qh65bkuKe1jf",
+  expiresAt: "1743300512869",
+  expiredUrl: "https://ignorant-remark.org/",
+  password: "LAKPz9q194ulKDc",
   title: "<value>",
-  description: "pfft overwork through surprisingly axe sunbathe",
-  image: "https://loremflickr.com/1970/419?lock=3754230433758555",
-  video: "https://loremflickr.com/742/3683?lock=3390037391098427",
+  description:
+    "where that utilized too drat connect providence hmph gnash stuff",
+  image: "https://picsum.photos/seed/jGT6B/717/3396",
+  video: "https://picsum.videos/seed/e0vg4/2712/1105",
   ios: "<value>",
   android: "<id>",
   geo: {},
@@ -30,15 +31,15 @@ const value: components.LinkSchema = {
     {
       id: "<id>",
       name: "<value>",
-      color: "blue",
+      color: "brown",
     },
   ],
   webhookIds: [
     "<value>",
   ],
-  comments: "than a yet coolly but pick creature with where that",
-  shortLink: "https://recent-graffiti.org",
-  qrCode: "https://narrow-toothpick.net/",
+  comments: "absent quietly stake gaseous so tame inside meh",
+  shortLink: "https://rotating-airman.biz",
+  qrCode: "https://which-runway.net/",
   utmSource: "<value>",
   utmMedium: "<value>",
   utmCampaign: "<value>",
@@ -47,8 +48,8 @@ const value: components.LinkSchema = {
   userId: "<id>",
   workspaceId: "<id>",
   lastClicked: "<value>",
-  createdAt: "1710337513844",
-  updatedAt: "1738868797710",
+  createdAt: "1709878066799",
+  updatedAt: "1739200609946",
   projectId: "<id>",
 };
 ```
@@ -58,7 +59,7 @@ const value: components.LinkSchema = {
 ```typescript
 const value: components.LinkErrorSchema = {
   error: "<value>",
-  code: "conflict",
+  code: "not_found",
 };
 ```
 

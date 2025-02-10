@@ -7,7 +7,7 @@ The order to sort the tags by.
 ```typescript
 import { GetTagsQueryParamSortOrder } from "dub/models/operations";
 
-let value: GetTagsQueryParamSortOrder = "asc";
+let value: GetTagsQueryParamSortOrder = "desc";
 ```
 
 ## Values
