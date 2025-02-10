@@ -519,7 +519,7 @@ export type CreatePartnerResponseBody = {
   clicks?: number | undefined;
   leads?: number | undefined;
   sales?: number | undefined;
-  salesAmount?: number | undefined;
+  saleAmount?: number | undefined;
 };
 
 /** @internal */
@@ -1086,7 +1086,7 @@ export const CreatePartnerResponseBody$inboundSchema: z.ZodType<
   clicks: z.number().default(0),
   leads: z.number().default(0),
   sales: z.number().default(0),
-  salesAmount: z.number().default(0),
+  saleAmount: z.number().default(0),
 });
 
 /** @internal */
@@ -1110,7 +1110,7 @@ export type CreatePartnerResponseBody$Outbound = {
   clicks: number;
   leads: number;
   sales: number;
-  salesAmount: number;
+  saleAmount: number;
 };
 
 /** @internal */
@@ -1139,7 +1139,7 @@ export const CreatePartnerResponseBody$outboundSchema: z.ZodType<
   clicks: z.number().default(0),
   leads: z.number().default(0),
   sales: z.number().default(0),
-  salesAmount: z.number().default(0),
+  saleAmount: z.number().default(0),
 });
 
 /**

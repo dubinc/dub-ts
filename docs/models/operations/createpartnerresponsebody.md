@@ -16,8 +16,8 @@ let value: CreatePartnerResponseBody = {
   bio: "<value>",
   stripeConnectId: "<id>",
   payoutsEnabled: false,
-  createdAt: "1727446340717",
-  updatedAt: "1738856209062",
+  createdAt: "1727705597277",
+  updatedAt: "1739115465622",
   status: "approved",
   links: [
     {
@@ -55,4 +55,4 @@ let value: CreatePartnerResponseBody = {
 | `clicks`                                                                             | *number*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
 | `leads`                                                                              | *number*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
 | `sales`                                                                              | *number*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `salesAmount`                                                                        | *number*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
+| `saleAmount`                                                                         | *number*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
