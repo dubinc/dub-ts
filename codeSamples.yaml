@@ -140,7 +140,7 @@ actions:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "retrievePartnerAnalytics"
-          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.partners.analytics();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.partners.analytics({\n    programId: \"<id>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/partners/links"]["post"]
     update:
       "x-codeSamples":

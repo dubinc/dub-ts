@@ -8,7 +8,7 @@
 * [create](#create) - Create a new partner
 * [createLink](#createlink) - Create a link for a partner
 * [upsertLink](#upsertlink) - Upsert a link for a partner
-* [analytics](#analytics) - Retrieve analytics for a partner within a program.
+* [analytics](#analytics) - Retrieve analytics for a partner
 
 ## create
 
@@ -267,7 +267,9 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.partners.analytics();
+  const result = await dub.partners.analytics({
+    programId: "<id>",
+  });
 
   // Handle the result
   console.log(result);
@@ -291,7 +293,9 @@ const dub = new DubCore({
 });
 
 async function run() {
-  const res = await partnersAnalytics(dub);
+  const res = await partnersAnalytics(dub, {
+    programId: "<id>",
+  });
 
   if (!res.ok) {
     throw res.error;

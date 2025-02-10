@@ -11,7 +11,7 @@ let value: SaleCreatedEventData = {
     id: "<id>",
     externalId: "<id>",
     name: "<value>",
-    createdAt: "1734682026518",
+    createdAt: "1734684343559",
   },
   click: {
     id: "<id>",
@@ -37,7 +37,7 @@ let value: SaleCreatedEventData = {
     tenantId: "<id>",
     programId: "<id>",
     partnerId: "<id>",
-    expiresAt: "1741666556957",
+    expiresAt: "1741668874009",
     expiredUrl: "https://frank-address.com/",
     password: "qjgb38l_s_j9VQ1",
     title: "<value>",
@@ -70,8 +70,8 @@ let value: SaleCreatedEventData = {
     userId: "<id>",
     workspaceId: "<id>",
     lastClicked: "<value>",
-    createdAt: "1711506870390",
-    updatedAt: "1739133715259",
+    createdAt: "1711509187468",
+    updatedAt: "1739136032337",
     projectId: "<id>",
   },
   sale: {
