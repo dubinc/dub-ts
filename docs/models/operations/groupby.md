@@ -23,3 +23,9 @@ const value: operations.Two = "tagId";
 const value: operations.Three = "userId";
 ```
 
+### `operations.Four`
+
+```typescript
+const value: operations.Four = "folderId";
+```
+

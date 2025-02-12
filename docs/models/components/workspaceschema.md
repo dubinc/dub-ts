@@ -10,26 +10,27 @@ let value: WorkspaceSchema = {
   name: "<value>",
   slug: "<value>",
   inviteCode: "<value>",
-  plan: "pro",
+  plan: "enterprise",
   stripeId: "<id>",
-  billingCycleStart: 7884.69,
+  billingCycleStart: 1655.45,
   paymentFailedAt: "<value>",
   stripeConnectId: "<id>",
-  usage: 2733.49,
-  usageLimit: 8871.32,
-  linksUsage: 1655.45,
-  linksLimit: 6659.6,
-  salesUsage: 842.11,
-  salesLimit: 9738.94,
-  domainsLimit: 7006.34,
-  tagsLimit: 8418.16,
-  usersLimit: 5666.69,
-  aiUsage: 4768.01,
-  aiLimit: 6218.83,
+  usage: 6659.6,
+  usageLimit: 842.11,
+  linksUsage: 9738.94,
+  linksLimit: 7006.34,
+  salesUsage: 8418.16,
+  salesLimit: 5666.69,
+  domainsLimit: 4768.01,
+  tagsLimit: 6218.83,
+  foldersLimit: 5287.42,
+  usersLimit: 4693.84,
+  aiUsage: 7594.51,
+  aiLimit: 1782.01,
   conversionEnabled: false,
   dotLinkClaimed: false,
   partnersEnabled: false,
-  createdAt: "1724358268986",
+  createdAt: "1713182142147",
   users: [
     {
       role: "owner",
@@ -71,6 +72,7 @@ let value: WorkspaceSchema = {
 | `salesLimit`                                                                                          | *number*                                                                                              | :heavy_check_mark:                                                                                    | The limit of tracked revenue in the current billing cycle (in cents).                                 |                                                                                                       |
 | `domainsLimit`                                                                                        | *number*                                                                                              | :heavy_check_mark:                                                                                    | The domains limit of the workspace.                                                                   |                                                                                                       |
 | `tagsLimit`                                                                                           | *number*                                                                                              | :heavy_check_mark:                                                                                    | The tags limit of the workspace.                                                                      |                                                                                                       |
+| `foldersLimit`                                                                                        | *number*                                                                                              | :heavy_check_mark:                                                                                    | The folders limit of the workspace.                                                                   |                                                                                                       |
 | `usersLimit`                                                                                          | *number*                                                                                              | :heavy_check_mark:                                                                                    | The users limit of the workspace.                                                                     |                                                                                                       |
 | `aiUsage`                                                                                             | *number*                                                                                              | :heavy_check_mark:                                                                                    | The AI usage of the workspace.                                                                        |                                                                                                       |
 | `aiLimit`                                                                                             | *number*                                                                                              | :heavy_check_mark:                                                                                    | The AI limit of the workspace.                                                                        |                                                                                                       |

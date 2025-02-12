@@ -8,21 +8,21 @@
 ```typescript
 const value: components.LinkSchema = {
   id: "<id>",
-  domain: "worthless-hexagon.org",
+  domain: "those-icebreaker.info",
   key: "<key>",
-  url: "https://medium-pleasure.info/",
+  url: "https://stable-pine.info/",
   externalId: "<id>",
   tenantId: "<id>",
   programId: "<id>",
   partnerId: "<id>",
-  expiresAt: "1743302829947",
-  expiredUrl: "https://ignorant-remark.org/",
-  password: "LAKPz9q194ulKDc",
+  expiresAt: "1755235820132",
+  expiredUrl: "https://ultimate-confusion.org",
+  password: "QbuZah7Pt3VY_er",
   title: "<value>",
   description:
-    "where that utilized too drat connect providence hmph gnash stuff",
-  image: "https://picsum.photos/seed/jGT6B/717/3396",
-  video: "https://picsum.videos/seed/e0vg4/2712/1105",
+    "lest with properly striking inspection whoa rotating blacken thump recount",
+  image: "https://picsum.photos/seed/iimzNT/1524/2179",
+  video: "https://picsum.videos/seed/NWKaXRi7/245/2600",
   ios: "<value>",
   android: "<id>",
   geo: {},
@@ -31,15 +31,17 @@ const value: components.LinkSchema = {
     {
       id: "<id>",
       name: "<value>",
-      color: "brown",
+      color: "pink",
     },
   ],
+  folderId: "<id>",
   webhookIds: [
     "<value>",
   ],
-  comments: "absent quietly stake gaseous so tame inside meh",
-  shortLink: "https://rotating-airman.biz",
-  qrCode: "https://which-runway.net/",
+  comments:
+    "by internalise exactly nor heating weary whereas meh considering ack vastly hexagon for aboard hmph surprisingly before blindly gee limply",
+  shortLink: "https://wrong-carnival.info",
+  qrCode: "https://parallel-swath.com",
   utmSource: "<value>",
   utmMedium: "<value>",
   utmCampaign: "<value>",
@@ -48,8 +50,8 @@ const value: components.LinkSchema = {
   userId: "<id>",
   workspaceId: "<id>",
   lastClicked: "<value>",
-  createdAt: "1709880383855",
-  updatedAt: "1739202927002",
+  createdAt: "1724892737310",
+  updatedAt: "1739286295464",
   projectId: "<id>",
 };
 ```
@@ -59,7 +61,7 @@ const value: components.LinkSchema = {
 ```typescript
 const value: components.LinkErrorSchema = {
   error: "<value>",
-  code: "not_found",
+  code: "exceeded_limit",
 };
 ```
 

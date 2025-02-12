@@ -80,6 +80,7 @@ export async function analyticsRetrieve(
     "end": payload?.end,
     "event": payload?.event,
     "externalId": payload?.externalId,
+    "folderId": payload?.folderId,
     "groupBy": payload?.groupBy,
     "interval": payload?.interval,
     "key": payload?.key,

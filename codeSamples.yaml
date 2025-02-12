@@ -63,6 +63,30 @@ actions:
         - "lang": "typescript"
           "label": "listEvents"
           "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.events.list();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/folders"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "listFolders"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.folders.list();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/folders"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "createFolder"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.folders.create();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/folders/{id}"]["delete"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "deleteFolder"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.folders.delete(\"<id>\");\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/folders/{id}"]["patch"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "updateFolder"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.folders.update(\"<id>\");\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/links"]["get"]
     update:
       "x-codeSamples":

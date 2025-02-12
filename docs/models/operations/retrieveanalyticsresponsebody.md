@@ -26,7 +26,7 @@ const value: components.AnalyticsTimeseries[] = [
 ```typescript
 const value: components.AnalyticsContinents[] = [
   {
-    continent: "AN",
+    continent: "AF",
   },
 ];
 ```
@@ -36,7 +36,7 @@ const value: components.AnalyticsContinents[] = [
 ```typescript
 const value: components.AnalyticsCountries[] = [
   {
-    country: "SO",
+    country: "PW",
   },
 ];
 ```
@@ -46,8 +46,8 @@ const value: components.AnalyticsCountries[] = [
 ```typescript
 const value: components.AnalyticsCities[] = [
   {
-    city: "Bruenfield",
-    country: "CR",
+    city: "Velmaville",
+    country: "HK",
   },
 ];
 ```
@@ -77,7 +77,7 @@ const value: components.AnalyticsBrowsers[] = [
 ```typescript
 const value: components.AnalyticsOS[] = [
   {
-    os: "Chrome OS",
+    os: "WebOS",
   },
 ];
 ```
@@ -97,7 +97,7 @@ const value: components.AnalyticsTriggers[] = [
 ```typescript
 const value: components.AnalyticsReferers[] = [
   {
-    referer: "far-off-ethyl.biz",
+    referer: "rewarding-swine.com",
   },
 ];
 ```
@@ -107,7 +107,7 @@ const value: components.AnalyticsReferers[] = [
 ```typescript
 const value: components.AnalyticsRefererUrls[] = [
   {
-    refererUrl: "https://orange-self-confidence.org/",
+    refererUrl: "https://definitive-restaurant.name",
   },
 ];
 ```
@@ -119,11 +119,11 @@ const value: components.AnalyticsTopLinks[] = [
   {
     link: "<value>",
     id: "<id>",
-    domain: "beloved-pear.name",
+    domain: "granular-velocity.org",
     key: "<key>",
     shortLink: "<value>",
-    url: "https://staid-tuber.net",
-    createdAt: "1713096234736",
+    url: "https://distorted-formula.biz/",
+    createdAt: "1712822164287",
   },
 ];
 ```
@@ -133,7 +133,7 @@ const value: components.AnalyticsTopLinks[] = [
 ```typescript
 const value: components.AnalyticsTopUrls[] = [
   {
-    url: "https://triangular-essence.com",
+    url: "https://unhappy-sushi.info",
   },
 ];
 ```

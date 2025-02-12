@@ -14,7 +14,7 @@ let value: SaleEventLink = {
   tenantId: "<id>",
   programId: "<id>",
   partnerId: "<id>",
-  expiresAt: "1764067588398",
+  expiresAt: "1764167771770",
   expiredUrl: "https://immense-valuable.name",
   password: "Hkbx9iLWrCuIjPk",
   title: "<value>",
@@ -33,6 +33,7 @@ let value: SaleEventLink = {
       color: "pink",
     },
   ],
+  folderId: "<id>",
   webhookIds: [
     "<value>",
   ],
@@ -48,8 +49,8 @@ let value: SaleEventLink = {
   userId: "<id>",
   workspaceId: "<id>",
   lastClicked: "<value>",
-  createdAt: "1736133486167",
-  updatedAt: "1739173110279",
+  createdAt: "1736233669538",
+  updatedAt: "1739273293650",
   projectId: "<id>",
 };
 ```
@@ -84,6 +85,7 @@ let value: SaleEventLink = {
 | `publicStats`                                                                                                                                                                                                                | *boolean*                                                                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                           | N/A                                                                                                                                                                                                                          |
 | ~~`tagId`~~                                                                                                                                                                                                                  | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible.<br/><br/>The unique ID of the tag assigned to the short link. This field is deprecated – use `tags` instead. |
 | `tags`                                                                                                                                                                                                                       | [components.TagSchema](../../models/components/tagschema.md)[]                                                                                                                                                               | :heavy_check_mark:                                                                                                                                                                                                           | The tags assigned to the short link.                                                                                                                                                                                         |
+| `folderId`                                                                                                                                                                                                                   | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The unique ID of the folder assigned to the short link.                                                                                                                                                                      |
 | `webhookIds`                                                                                                                                                                                                                 | *string*[]                                                                                                                                                                                                                   | :heavy_check_mark:                                                                                                                                                                                                           | The IDs of the webhooks that the short link is associated with.                                                                                                                                                              |
 | `comments`                                                                                                                                                                                                                   | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The comments for the short link.                                                                                                                                                                                             |
 | `shortLink`                                                                                                                                                                                                                  | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The full URL of the short link, including the https protocol (e.g. `https://dub.sh/try`).                                                                                                                                    |

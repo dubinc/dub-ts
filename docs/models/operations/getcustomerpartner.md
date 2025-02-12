@@ -8,7 +8,7 @@ import { GetCustomerPartner } from "dub/models/operations";
 let value: GetCustomerPartner = {
   id: "<id>",
   name: "<value>",
-  email: "Vivian_Ward@hotmail.com",
+  email: "Alva.Weber@hotmail.com",
 };
 ```
 

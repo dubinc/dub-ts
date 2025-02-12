@@ -374,6 +374,10 @@ export type Link = {
    */
   tags: Array<TagSchema> | null;
   /**
+   * The unique ID of the folder assigned to the short link.
+   */
+  folderId: string | null;
+  /**
    * The IDs of the webhooks that the short link is associated with.
    */
   webhookIds: Array<string>;
@@ -1964,6 +1968,7 @@ export const Link$inboundSchema: z.ZodType<Link, z.ZodTypeDef, unknown> = z
     publicStats: z.boolean().optional(),
     tagId: z.nullable(z.string()),
     tags: z.nullable(z.array(TagSchema$inboundSchema)),
+    folderId: z.nullable(z.string()),
     webhookIds: z.array(z.string()),
     comments: z.nullable(z.string()),
     shortLink: z.string(),
@@ -2021,6 +2026,7 @@ export type Link$Outbound = {
   publicStats?: boolean | undefined;
   tagId: string | null;
   tags: Array<TagSchema$Outbound> | null;
+  folderId: string | null;
   webhookIds: Array<string>;
   comments: string | null;
   shortLink: string;
@@ -2071,6 +2077,7 @@ export const Link$outboundSchema: z.ZodType<Link$Outbound, z.ZodTypeDef, Link> =
     publicStats: z.boolean().optional(),
     tagId: z.nullable(z.string()),
     tags: z.nullable(z.array(TagSchema$outboundSchema)),
+    folderId: z.nullable(z.string()),
     webhookIds: z.array(z.string()),
     comments: z.nullable(z.string()),
     shortLink: z.string(),

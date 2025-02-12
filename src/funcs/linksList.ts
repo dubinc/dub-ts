@@ -79,6 +79,7 @@ export async function linksList(
 
   const query = encodeFormQuery({
     "domain": payload?.domain,
+    "folderId": payload?.folderId,
     "page": payload?.page,
     "pageSize": payload?.pageSize,
     "search": payload?.search,

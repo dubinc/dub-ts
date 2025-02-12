@@ -82,6 +82,10 @@ export type GetLinksRequest = {
    */
   tagNames?: string | Array<string> | undefined;
   /**
+   * The folder ID to filter the links by.
+   */
+  folderId?: string | undefined;
+  /**
    * The search term to filter the links by. The search term will be matched against the short link slug and the destination url.
    */
   search?: string | undefined;
@@ -291,6 +295,7 @@ export const GetLinksRequest$inboundSchema: z.ZodType<
   tagId: z.string().optional(),
   tagIds: z.union([z.string(), z.array(z.string())]).optional(),
   tagNames: z.union([z.string(), z.array(z.string())]).optional(),
+  folderId: z.string().optional(),
   search: z.string().optional(),
   userId: z.string().optional(),
   tenantId: z.string().optional(),
@@ -309,6 +314,7 @@ export type GetLinksRequest$Outbound = {
   tagId?: string | undefined;
   tagIds?: string | Array<string> | undefined;
   tagNames?: string | Array<string> | undefined;
+  folderId?: string | undefined;
   search?: string | undefined;
   userId?: string | undefined;
   tenantId?: string | undefined;
@@ -331,6 +337,7 @@ export const GetLinksRequest$outboundSchema: z.ZodType<
   tagId: z.string().optional(),
   tagIds: z.union([z.string(), z.array(z.string())]).optional(),
   tagNames: z.union([z.string(), z.array(z.string())]).optional(),
+  folderId: z.string().optional(),
   search: z.string().optional(),
   userId: z.string().optional(),
   tenantId: z.string().optional(),

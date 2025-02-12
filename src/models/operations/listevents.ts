@@ -31,8 +31,10 @@ export const QueryParamInterval = {
   Sevend: "7d",
   Thirtyd: "30d",
   Ninetyd: "90d",
-  Ytd: "ytd",
   Oney: "1y",
+  Mtd: "mtd",
+  Qtd: "qtd",
+  Ytd: "ytd",
   All: "all",
 } as const;
 /**
@@ -197,6 +199,10 @@ export type ListEventsRequest = {
    * The tag IDs to retrieve analytics for.
    */
   tagIds?: string | Array<string> | undefined;
+  /**
+   * The folder ID to retrieve analytics for. If not provided, return analytics for unsorted links.
+   */
+  folderId?: string | undefined;
   /**
    * Deprecated. Use the `trigger` field instead. Filter for QR code scans. If true, filter for QR codes only. If false, filter for links only. If undefined, return both.
    */
@@ -453,6 +459,7 @@ export const ListEventsRequest$inboundSchema: z.ZodType<
   url: z.string().optional(),
   tagId: z.string().optional(),
   tagIds: z.union([z.string(), z.array(z.string())]).optional(),
+  folderId: z.string().optional(),
   qr: z.boolean().optional(),
   root: z.boolean().optional(),
   utm_source: z.nullable(z.string()).optional(),
@@ -502,6 +509,7 @@ export type ListEventsRequest$Outbound = {
   url?: string | undefined;
   tagId?: string | undefined;
   tagIds?: string | Array<string> | undefined;
+  folderId?: string | undefined;
   qr?: boolean | undefined;
   root?: boolean | undefined;
   utm_source?: string | null | undefined;
@@ -547,6 +555,7 @@ export const ListEventsRequest$outboundSchema: z.ZodType<
   url: z.string().optional(),
   tagId: z.string().optional(),
   tagIds: z.union([z.string(), z.array(z.string())]).optional(),
+  folderId: z.string().optional(),
   qr: z.boolean().optional(),
   root: z.boolean().optional(),
   utmSource: z.nullable(z.string()).optional(),

@@ -462,6 +462,10 @@ export type LeadCreatedEventLink = {
    */
   tags: Array<TagSchema> | null;
   /**
+   * The unique ID of the folder assigned to the short link.
+   */
+  folderId: string | null;
+  /**
    * The IDs of the webhooks that the short link is associated with.
    */
   webhookIds: Array<string>;
@@ -2329,6 +2333,7 @@ export const LeadCreatedEventLink$inboundSchema: z.ZodType<
   publicStats: z.boolean().optional(),
   tagId: z.nullable(z.string()),
   tags: z.nullable(z.array(TagSchema$inboundSchema)),
+  folderId: z.nullable(z.string()),
   webhookIds: z.array(z.string()),
   comments: z.nullable(z.string()),
   shortLink: z.string(),
@@ -2386,6 +2391,7 @@ export type LeadCreatedEventLink$Outbound = {
   publicStats?: boolean | undefined;
   tagId: string | null;
   tags: Array<TagSchema$Outbound> | null;
+  folderId: string | null;
   webhookIds: Array<string>;
   comments: string | null;
   shortLink: string;
@@ -2439,6 +2445,7 @@ export const LeadCreatedEventLink$outboundSchema: z.ZodType<
   publicStats: z.boolean().optional(),
   tagId: z.nullable(z.string()),
   tags: z.nullable(z.array(TagSchema$outboundSchema)),
+  folderId: z.nullable(z.string()),
   webhookIds: z.array(z.string()),
   comments: z.nullable(z.string()),
   shortLink: z.string(),

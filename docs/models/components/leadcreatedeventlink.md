@@ -7,20 +7,20 @@ import { LeadCreatedEventLink } from "dub/models/components";
 
 let value: LeadCreatedEventLink = {
   id: "<id>",
-  domain: "french-birdcage.biz",
+  domain: "sorrowful-backbone.name",
   key: "<key>",
-  url: "https://snappy-mainstream.net",
+  url: "https://closed-scale.biz/",
   externalId: "<id>",
   tenantId: "<id>",
   programId: "<id>",
   partnerId: "<id>",
-  expiresAt: "1744194732744",
-  expiredUrl: "https://understated-daddy.biz",
-  password: "hn8FPjqsKJqYa29",
+  expiresAt: "1755113659318",
+  expiredUrl: "https://earnest-jury.com",
+  password: "tHwPIZiTiXt56hn",
   title: "<value>",
-  description: "fess pile rationalise toward",
-  image: "https://loremflickr.com/1969/2067?lock=970761132287053",
-  video: "https://picsum.videos/seed/Pn1q5jZ/1335/2065",
+  description: "terrible baritone defiantly fess",
+  image: "https://loremflickr.com/1316/2404?lock=6924157146122229",
+  video: "https://picsum.videos/seed/7rjD8Fsh/363/1299",
   ios: "<value>",
   android: "<id>",
   geo: {},
@@ -29,15 +29,16 @@ let value: LeadCreatedEventLink = {
     {
       id: "<id>",
       name: "<value>",
-      color: "brown",
+      color: "pink",
     },
   ],
+  folderId: "<id>",
   webhookIds: [
     "<value>",
   ],
-  comments: "quickly giving until before inside anticodon digitize tribe",
-  shortLink: "https://frail-mentor.com/",
-  qrCode: "https://awesome-glider.com/",
+  comments: "before alert ghost likewise huzzah cap well case",
+  shortLink: "https://ironclad-freckle.name/",
+  qrCode: "https://apt-lashes.com/",
   utmSource: "<value>",
   utmMedium: "<value>",
   utmCampaign: "<value>",
@@ -46,8 +47,8 @@ let value: LeadCreatedEventLink = {
   userId: "<id>",
   workspaceId: "<id>",
   lastClicked: "<value>",
-  createdAt: "1725401209146",
-  updatedAt: "1739188910778",
+  createdAt: "1709662091477",
+  updatedAt: "1739266176642",
   projectId: "<id>",
 };
 ```
@@ -82,6 +83,7 @@ let value: LeadCreatedEventLink = {
 | `publicStats`                                                                                                                                                                                                                | *boolean*                                                                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                           | N/A                                                                                                                                                                                                                          |
 | ~~`tagId`~~                                                                                                                                                                                                                  | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible.<br/><br/>The unique ID of the tag assigned to the short link. This field is deprecated – use `tags` instead. |
 | `tags`                                                                                                                                                                                                                       | [components.TagSchema](../../models/components/tagschema.md)[]                                                                                                                                                               | :heavy_check_mark:                                                                                                                                                                                                           | The tags assigned to the short link.                                                                                                                                                                                         |
+| `folderId`                                                                                                                                                                                                                   | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The unique ID of the folder assigned to the short link.                                                                                                                                                                      |
 | `webhookIds`                                                                                                                                                                                                                 | *string*[]                                                                                                                                                                                                                   | :heavy_check_mark:                                                                                                                                                                                                           | The IDs of the webhooks that the short link is associated with.                                                                                                                                                              |
 | `comments`                                                                                                                                                                                                                   | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The comments for the short link.                                                                                                                                                                                             |
 | `shortLink`                                                                                                                                                                                                                  | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The full URL of the short link, including the https protocol (e.g. `https://dub.sh/try`).                                                                                                                                    |
