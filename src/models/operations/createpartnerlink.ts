@@ -51,6 +51,10 @@ export type CreatePartnerLinkLinkProps = {
    */
   tagNames?: string | Array<string> | undefined;
   /**
+   * The unique ID existing folder to assign the short link to.
+   */
+  folderId?: string | null | undefined;
+  /**
    * The comments for the short link.
    */
   comments?: string | null | undefined;
@@ -264,6 +268,7 @@ export const CreatePartnerLinkLinkProps$inboundSchema: z.ZodType<
   archived: z.boolean().optional(),
   tagIds: z.union([z.string(), z.array(z.string())]).optional(),
   tagNames: z.union([z.string(), z.array(z.string())]).optional(),
+  folderId: z.nullable(z.string()).optional(),
   comments: z.nullable(z.string()).optional(),
   expiresAt: z.nullable(z.string()).optional(),
   expiredUrl: z.nullable(z.string()).optional(),
@@ -302,6 +307,7 @@ export type CreatePartnerLinkLinkProps$Outbound = {
   archived?: boolean | undefined;
   tagIds?: string | Array<string> | undefined;
   tagNames?: string | Array<string> | undefined;
+  folderId?: string | null | undefined;
   comments?: string | null | undefined;
   expiresAt?: string | null | undefined;
   expiredUrl?: string | null | undefined;
@@ -336,6 +342,7 @@ export const CreatePartnerLinkLinkProps$outboundSchema: z.ZodType<
   archived: z.boolean().optional(),
   tagIds: z.union([z.string(), z.array(z.string())]).optional(),
   tagNames: z.union([z.string(), z.array(z.string())]).optional(),
+  folderId: z.nullable(z.string()).optional(),
   comments: z.nullable(z.string()).optional(),
   expiresAt: z.nullable(z.string()).optional(),
   expiredUrl: z.nullable(z.string()).optional(),

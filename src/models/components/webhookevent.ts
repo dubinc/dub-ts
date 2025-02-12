@@ -25,6 +25,12 @@ import {
   LinkWebhookEvent$outboundSchema,
 } from "./linkwebhookevent.js";
 import {
+  PartnerCreatedEvent,
+  PartnerCreatedEvent$inboundSchema,
+  PartnerCreatedEvent$Outbound,
+  PartnerCreatedEvent$outboundSchema,
+} from "./partnercreatedevent.js";
+import {
   SaleCreatedEvent,
   SaleCreatedEvent$inboundSchema,
   SaleCreatedEvent$Outbound,
@@ -38,7 +44,8 @@ export type WebhookEvent =
   | LinkWebhookEvent
   | LinkClickedEvent
   | LeadCreatedEvent
-  | SaleCreatedEvent;
+  | SaleCreatedEvent
+  | PartnerCreatedEvent;
 
 /** @internal */
 export const WebhookEvent$inboundSchema: z.ZodType<
@@ -50,6 +57,7 @@ export const WebhookEvent$inboundSchema: z.ZodType<
   LinkClickedEvent$inboundSchema,
   LeadCreatedEvent$inboundSchema,
   SaleCreatedEvent$inboundSchema,
+  PartnerCreatedEvent$inboundSchema,
 ]);
 
 /** @internal */
@@ -57,7 +65,8 @@ export type WebhookEvent$Outbound =
   | LinkWebhookEvent$Outbound
   | LinkClickedEvent$Outbound
   | LeadCreatedEvent$Outbound
-  | SaleCreatedEvent$Outbound;
+  | SaleCreatedEvent$Outbound
+  | PartnerCreatedEvent$Outbound;
 
 /** @internal */
 export const WebhookEvent$outboundSchema: z.ZodType<
@@ -69,6 +78,7 @@ export const WebhookEvent$outboundSchema: z.ZodType<
   LinkClickedEvent$outboundSchema,
   LeadCreatedEvent$outboundSchema,
   SaleCreatedEvent$outboundSchema,
+  PartnerCreatedEvent$outboundSchema,
 ]);
 
 /**

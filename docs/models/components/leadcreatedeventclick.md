@@ -8,17 +8,17 @@ import { LeadCreatedEventClick } from "dub/models/components";
 let value: LeadCreatedEventClick = {
   id: "<id>",
   timestamp: "<value>",
-  url: "https://miserable-shark.name",
-  country: "Chad",
-  city: "Port Ethyl",
+  url: "https://same-mainstream.net/",
+  country: "Estonia",
+  city: "Claudineview",
   region: "<value>",
-  continent: "Australia",
-  device: "Desktop",
-  browser: "Chrome",
-  os: "Blackberry",
-  referer: "naughty-plain.biz",
-  refererUrl: "https://digital-help.name/",
-  ip: "eb92:a3ca:e684:dcb1:c52b:4bb4:a10d:9da9",
+  continent: "Europe",
+  device: "Mobile",
+  browser: "Firefox",
+  os: "Chrome OS",
+  referer: "infatuated-bug.info",
+  refererUrl: "https://our-ravioli.org/",
+  ip: "101.46.224.210",
 };
 ```
 

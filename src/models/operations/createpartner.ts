@@ -312,6 +312,10 @@ export type LinkProps = {
    */
   tagNames?: string | Array<string> | undefined;
   /**
+   * The unique ID existing folder to assign the short link to.
+   */
+  folderId?: string | null | undefined;
+  /**
    * The comments for the short link.
    */
   comments?: string | null | undefined;
@@ -474,28 +478,6 @@ export type Links = {
   saleAmount?: number | undefined;
 };
 
-export const CreatePartnerType = {
-  Percentage: "percentage",
-  Flat: "flat",
-} as const;
-export type CreatePartnerType = ClosedEnum<typeof CreatePartnerType>;
-
-export const CreatePartnerInterval = {
-  Month: "month",
-  Year: "year",
-} as const;
-export type CreatePartnerInterval = ClosedEnum<typeof CreatePartnerInterval>;
-
-export type CreatePartnerDiscount = {
-  id: string;
-  couponId: string | null;
-  couponTestId: string | null;
-  amount: number;
-  type: CreatePartnerType;
-  duration: number | null;
-  interval: CreatePartnerInterval | null;
-};
-
 /**
  * The created partner
  */
@@ -504,22 +486,18 @@ export type CreatePartnerResponseBody = {
   name: string;
   email: string | null;
   image: string | null;
+  description?: string | null | undefined;
   country: string;
-  bio: string | null;
-  stripeConnectId: string | null;
-  couponId?: string | null | undefined;
-  payoutsEnabled: boolean;
   createdAt: string;
-  updatedAt: string;
   status: Status;
+  programId: string;
+  tenantId: string | null;
   links: Array<Links> | null;
-  discount?: CreatePartnerDiscount | null | undefined;
-  commissionAmount: number | null;
-  earnings?: number | undefined;
   clicks?: number | undefined;
   leads?: number | undefined;
   sales?: number | undefined;
   saleAmount?: number | undefined;
+  earnings?: number | undefined;
 };
 
 /** @internal */
@@ -650,6 +628,7 @@ export const LinkProps$inboundSchema: z.ZodType<
   archived: z.boolean().optional(),
   tagIds: z.union([z.string(), z.array(z.string())]).optional(),
   tagNames: z.union([z.string(), z.array(z.string())]).optional(),
+  folderId: z.nullable(z.string()).optional(),
   comments: z.nullable(z.string()).optional(),
   expiresAt: z.nullable(z.string()).optional(),
   expiredUrl: z.nullable(z.string()).optional(),
@@ -688,6 +667,7 @@ export type LinkProps$Outbound = {
   archived?: boolean | undefined;
   tagIds?: string | Array<string> | undefined;
   tagNames?: string | Array<string> | undefined;
+  folderId?: string | null | undefined;
   comments?: string | null | undefined;
   expiresAt?: string | null | undefined;
   expiredUrl?: string | null | undefined;
@@ -722,6 +702,7 @@ export const LinkProps$outboundSchema: z.ZodType<
   archived: z.boolean().optional(),
   tagIds: z.union([z.string(), z.array(z.string())]).optional(),
   tagNames: z.union([z.string(), z.array(z.string())]).optional(),
+  folderId: z.nullable(z.string()).optional(),
   comments: z.nullable(z.string()).optional(),
   expiresAt: z.nullable(z.string()).optional(),
   expiredUrl: z.nullable(z.string()).optional(),
@@ -947,120 +928,6 @@ export function linksFromJSON(
 }
 
 /** @internal */
-export const CreatePartnerType$inboundSchema: z.ZodNativeEnum<
-  typeof CreatePartnerType
-> = z.nativeEnum(CreatePartnerType);
-
-/** @internal */
-export const CreatePartnerType$outboundSchema: z.ZodNativeEnum<
-  typeof CreatePartnerType
-> = CreatePartnerType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreatePartnerType$ {
-  /** @deprecated use `CreatePartnerType$inboundSchema` instead. */
-  export const inboundSchema = CreatePartnerType$inboundSchema;
-  /** @deprecated use `CreatePartnerType$outboundSchema` instead. */
-  export const outboundSchema = CreatePartnerType$outboundSchema;
-}
-
-/** @internal */
-export const CreatePartnerInterval$inboundSchema: z.ZodNativeEnum<
-  typeof CreatePartnerInterval
-> = z.nativeEnum(CreatePartnerInterval);
-
-/** @internal */
-export const CreatePartnerInterval$outboundSchema: z.ZodNativeEnum<
-  typeof CreatePartnerInterval
-> = CreatePartnerInterval$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreatePartnerInterval$ {
-  /** @deprecated use `CreatePartnerInterval$inboundSchema` instead. */
-  export const inboundSchema = CreatePartnerInterval$inboundSchema;
-  /** @deprecated use `CreatePartnerInterval$outboundSchema` instead. */
-  export const outboundSchema = CreatePartnerInterval$outboundSchema;
-}
-
-/** @internal */
-export const CreatePartnerDiscount$inboundSchema: z.ZodType<
-  CreatePartnerDiscount,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-  couponId: z.nullable(z.string()),
-  couponTestId: z.nullable(z.string()),
-  amount: z.number(),
-  type: CreatePartnerType$inboundSchema,
-  duration: z.nullable(z.number()),
-  interval: z.nullable(CreatePartnerInterval$inboundSchema),
-});
-
-/** @internal */
-export type CreatePartnerDiscount$Outbound = {
-  id: string;
-  couponId: string | null;
-  couponTestId: string | null;
-  amount: number;
-  type: string;
-  duration: number | null;
-  interval: string | null;
-};
-
-/** @internal */
-export const CreatePartnerDiscount$outboundSchema: z.ZodType<
-  CreatePartnerDiscount$Outbound,
-  z.ZodTypeDef,
-  CreatePartnerDiscount
-> = z.object({
-  id: z.string(),
-  couponId: z.nullable(z.string()),
-  couponTestId: z.nullable(z.string()),
-  amount: z.number(),
-  type: CreatePartnerType$outboundSchema,
-  duration: z.nullable(z.number()),
-  interval: z.nullable(CreatePartnerInterval$outboundSchema),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreatePartnerDiscount$ {
-  /** @deprecated use `CreatePartnerDiscount$inboundSchema` instead. */
-  export const inboundSchema = CreatePartnerDiscount$inboundSchema;
-  /** @deprecated use `CreatePartnerDiscount$outboundSchema` instead. */
-  export const outboundSchema = CreatePartnerDiscount$outboundSchema;
-  /** @deprecated use `CreatePartnerDiscount$Outbound` instead. */
-  export type Outbound = CreatePartnerDiscount$Outbound;
-}
-
-export function createPartnerDiscountToJSON(
-  createPartnerDiscount: CreatePartnerDiscount,
-): string {
-  return JSON.stringify(
-    CreatePartnerDiscount$outboundSchema.parse(createPartnerDiscount),
-  );
-}
-
-export function createPartnerDiscountFromJSON(
-  jsonString: string,
-): SafeParseResult<CreatePartnerDiscount, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreatePartnerDiscount$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreatePartnerDiscount' from JSON`,
-  );
-}
-
-/** @internal */
 export const CreatePartnerResponseBody$inboundSchema: z.ZodType<
   CreatePartnerResponseBody,
   z.ZodTypeDef,
@@ -1070,23 +937,18 @@ export const CreatePartnerResponseBody$inboundSchema: z.ZodType<
   name: z.string(),
   email: z.nullable(z.string()),
   image: z.nullable(z.string()),
+  description: z.nullable(z.string()).optional(),
   country: z.string(),
-  bio: z.nullable(z.string()),
-  stripeConnectId: z.nullable(z.string()),
-  couponId: z.nullable(z.string()).optional(),
-  payoutsEnabled: z.boolean(),
   createdAt: z.string(),
-  updatedAt: z.string(),
   status: Status$inboundSchema,
+  programId: z.string(),
+  tenantId: z.nullable(z.string()),
   links: z.nullable(z.array(z.lazy(() => Links$inboundSchema))),
-  discount: z.nullable(z.lazy(() => CreatePartnerDiscount$inboundSchema))
-    .optional(),
-  commissionAmount: z.nullable(z.number()),
-  earnings: z.number().default(0),
   clicks: z.number().default(0),
   leads: z.number().default(0),
   sales: z.number().default(0),
   saleAmount: z.number().default(0),
+  earnings: z.number().default(0),
 });
 
 /** @internal */
@@ -1095,22 +957,18 @@ export type CreatePartnerResponseBody$Outbound = {
   name: string;
   email: string | null;
   image: string | null;
+  description?: string | null | undefined;
   country: string;
-  bio: string | null;
-  stripeConnectId: string | null;
-  couponId?: string | null | undefined;
-  payoutsEnabled: boolean;
   createdAt: string;
-  updatedAt: string;
   status: string;
+  programId: string;
+  tenantId: string | null;
   links: Array<Links$Outbound> | null;
-  discount?: CreatePartnerDiscount$Outbound | null | undefined;
-  commissionAmount: number | null;
-  earnings: number;
   clicks: number;
   leads: number;
   sales: number;
   saleAmount: number;
+  earnings: number;
 };
 
 /** @internal */
@@ -1123,23 +981,18 @@ export const CreatePartnerResponseBody$outboundSchema: z.ZodType<
   name: z.string(),
   email: z.nullable(z.string()),
   image: z.nullable(z.string()),
+  description: z.nullable(z.string()).optional(),
   country: z.string(),
-  bio: z.nullable(z.string()),
-  stripeConnectId: z.nullable(z.string()),
-  couponId: z.nullable(z.string()).optional(),
-  payoutsEnabled: z.boolean(),
   createdAt: z.string(),
-  updatedAt: z.string(),
   status: Status$outboundSchema,
+  programId: z.string(),
+  tenantId: z.nullable(z.string()),
   links: z.nullable(z.array(z.lazy(() => Links$outboundSchema))),
-  discount: z.nullable(z.lazy(() => CreatePartnerDiscount$outboundSchema))
-    .optional(),
-  commissionAmount: z.nullable(z.number()),
-  earnings: z.number().default(0),
   clicks: z.number().default(0),
   leads: z.number().default(0),
   sales: z.number().default(0),
   saleAmount: z.number().default(0),
+  earnings: z.number().default(0),
 });
 
 /**

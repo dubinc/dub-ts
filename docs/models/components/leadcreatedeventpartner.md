@@ -8,7 +8,7 @@ import { LeadCreatedEventPartner } from "dub/models/components";
 let value: LeadCreatedEventPartner = {
   id: "<id>",
   name: "<value>",
-  email: "Robyn.Bergstrom@yahoo.com",
+  email: "Eli51@gmail.com",
 };
 ```
 

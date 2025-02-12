@@ -7,20 +7,20 @@ import { SaleCreatedEventLink } from "dub/models/components";
 
 let value: SaleCreatedEventLink = {
   id: "<id>",
-  domain: "empty-haversack.info",
+  domain: "well-to-do-cellar.biz",
   key: "<key>",
-  url: "https://intrepid-responsibility.net",
+  url: "https://likely-mobility.net/",
   externalId: "<id>",
   tenantId: "<id>",
   programId: "<id>",
   partnerId: "<id>",
-  expiresAt: "1751380786442",
-  expiredUrl: "https://miserly-academics.biz/",
-  password: "qiS0ruflB4LG8U2",
+  expiresAt: "1740992706675",
+  expiredUrl: "https://vain-individual.net/",
+  password: "fKjvJEyNGzpKBXG",
   title: "<value>",
-  description: "orderly pfft settle squid madly",
-  image: "https://loremflickr.com/2319/2911?lock=3838232595745195",
-  video: "https://picsum.videos/seed/hJCrF/3697/1850",
+  description: "though aw hmph er jellyfish",
+  image: "https://picsum.photos/seed/9lv8cUS/2371/223",
+  video: "https://picsum.videos/seed/0Hbkh9/490/1116",
   ios: "<value>",
   android: "<id>",
   geo: {},
@@ -29,16 +29,16 @@ let value: SaleCreatedEventLink = {
     {
       id: "<id>",
       name: "<value>",
-      color: "pink",
+      color: "red",
     },
   ],
+  folderId: "<id>",
   webhookIds: [
     "<value>",
   ],
-  comments:
-    "whoever hollow receptor aboard hence who which incidentally fully behind midwife around yowza behind before pillbox yum past mmm",
-  shortLink: "https://lanky-representation.com",
-  qrCode: "https://proud-ice-cream.com/",
+  comments: "miserably noisily thorn peter behind huzzah now",
+  shortLink: "https://somber-masterpiece.net",
+  qrCode: "https://frightened-fledgling.com",
   utmSource: "<value>",
   utmMedium: "<value>",
   utmCampaign: "<value>",
@@ -47,8 +47,8 @@ let value: SaleCreatedEventLink = {
   userId: "<id>",
   workspaceId: "<id>",
   lastClicked: "<value>",
-  createdAt: "1717675826103",
-  updatedAt: "1739191889465",
+  createdAt: "1725263261302",
+  updatedAt: "1739317600627",
   projectId: "<id>",
 };
 ```
@@ -83,6 +83,7 @@ let value: SaleCreatedEventLink = {
 | `publicStats`                                                                                                                                                                                                                | *boolean*                                                                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                           | N/A                                                                                                                                                                                                                          |
 | ~~`tagId`~~                                                                                                                                                                                                                  | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible.<br/><br/>The unique ID of the tag assigned to the short link. This field is deprecated – use `tags` instead. |
 | `tags`                                                                                                                                                                                                                       | [components.TagSchema](../../models/components/tagschema.md)[]                                                                                                                                                               | :heavy_check_mark:                                                                                                                                                                                                           | The tags assigned to the short link.                                                                                                                                                                                         |
+| `folderId`                                                                                                                                                                                                                   | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The unique ID of the folder assigned to the short link.                                                                                                                                                                      |
 | `webhookIds`                                                                                                                                                                                                                 | *string*[]                                                                                                                                                                                                                   | :heavy_check_mark:                                                                                                                                                                                                           | The IDs of the webhooks that the short link is associated with.                                                                                                                                                              |
 | `comments`                                                                                                                                                                                                                   | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The comments for the short link.                                                                                                                                                                                             |
 | `shortLink`                                                                                                                                                                                                                  | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | The full URL of the short link, including the https protocol (e.g. `https://dub.sh/try`).                                                                                                                                    |

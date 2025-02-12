@@ -18,6 +18,11 @@ export type GetLinksCountQueryParamTagIds = string | Array<string>;
  */
 export type GetLinksCountQueryParamTagNames = string | Array<string>;
 
+export const Four = {
+  FolderId: "folderId",
+} as const;
+export type Four = ClosedEnum<typeof Four>;
+
 export const Three = {
   UserId: "userId",
 } as const;
@@ -36,7 +41,7 @@ export type One = ClosedEnum<typeof One>;
 /**
  * The field to group the links by.
  */
-export type GroupBy = One | Two | Three;
+export type GroupBy = One | Two | Three | Four;
 
 export type GetLinksCountRequest = {
   /**
@@ -55,6 +60,10 @@ export type GetLinksCountRequest = {
    * The unique name of the tags assigned to the short link (case insensitive).
    */
   tagNames?: string | Array<string> | undefined;
+  /**
+   * The folder ID to filter the links by.
+   */
+  folderId?: string | undefined;
   /**
    * The search term to filter the links by. The search term will be matched against the short link slug and the destination url.
    */
@@ -78,7 +87,7 @@ export type GetLinksCountRequest = {
   /**
    * The field to group the links by.
    */
-  groupBy?: One | Two | Three | undefined;
+  groupBy?: One | Two | Three | Four | undefined;
 };
 
 /** @internal */
@@ -182,6 +191,26 @@ export function getLinksCountQueryParamTagNamesFromJSON(
 }
 
 /** @internal */
+export const Four$inboundSchema: z.ZodNativeEnum<typeof Four> = z.nativeEnum(
+  Four,
+);
+
+/** @internal */
+export const Four$outboundSchema: z.ZodNativeEnum<typeof Four> =
+  Four$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Four$ {
+  /** @deprecated use `Four$inboundSchema` instead. */
+  export const inboundSchema = Four$inboundSchema;
+  /** @deprecated use `Four$outboundSchema` instead. */
+  export const outboundSchema = Four$outboundSchema;
+}
+
+/** @internal */
 export const Three$inboundSchema: z.ZodNativeEnum<typeof Three> = z.nativeEnum(
   Three,
 );
@@ -239,17 +268,27 @@ export namespace One$ {
 
 /** @internal */
 export const GroupBy$inboundSchema: z.ZodType<GroupBy, z.ZodTypeDef, unknown> =
-  z.union([One$inboundSchema, Two$inboundSchema, Three$inboundSchema]);
+  z.union([
+    One$inboundSchema,
+    Two$inboundSchema,
+    Three$inboundSchema,
+    Four$inboundSchema,
+  ]);
 
 /** @internal */
-export type GroupBy$Outbound = string | string | string;
+export type GroupBy$Outbound = string | string | string | string;
 
 /** @internal */
 export const GroupBy$outboundSchema: z.ZodType<
   GroupBy$Outbound,
   z.ZodTypeDef,
   GroupBy
-> = z.union([One$outboundSchema, Two$outboundSchema, Three$outboundSchema]);
+> = z.union([
+  One$outboundSchema,
+  Two$outboundSchema,
+  Three$outboundSchema,
+  Four$outboundSchema,
+]);
 
 /**
  * @internal
@@ -288,13 +327,18 @@ export const GetLinksCountRequest$inboundSchema: z.ZodType<
   tagId: z.string().optional(),
   tagIds: z.union([z.string(), z.array(z.string())]).optional(),
   tagNames: z.union([z.string(), z.array(z.string())]).optional(),
+  folderId: z.string().optional(),
   search: z.string().optional(),
   userId: z.string().optional(),
   tenantId: z.string().optional(),
   showArchived: z.boolean().default(false),
   withTags: z.boolean().default(false),
-  groupBy: z.union([One$inboundSchema, Two$inboundSchema, Three$inboundSchema])
-    .optional(),
+  groupBy: z.union([
+    One$inboundSchema,
+    Two$inboundSchema,
+    Three$inboundSchema,
+    Four$inboundSchema,
+  ]).optional(),
 });
 
 /** @internal */
@@ -303,12 +347,13 @@ export type GetLinksCountRequest$Outbound = {
   tagId?: string | undefined;
   tagIds?: string | Array<string> | undefined;
   tagNames?: string | Array<string> | undefined;
+  folderId?: string | undefined;
   search?: string | undefined;
   userId?: string | undefined;
   tenantId?: string | undefined;
   showArchived: boolean;
   withTags: boolean;
-  groupBy?: string | string | string | undefined;
+  groupBy?: string | string | string | string | undefined;
 };
 
 /** @internal */
@@ -321,6 +366,7 @@ export const GetLinksCountRequest$outboundSchema: z.ZodType<
   tagId: z.string().optional(),
   tagIds: z.union([z.string(), z.array(z.string())]).optional(),
   tagNames: z.union([z.string(), z.array(z.string())]).optional(),
+  folderId: z.string().optional(),
   search: z.string().optional(),
   userId: z.string().optional(),
   tenantId: z.string().optional(),
@@ -330,6 +376,7 @@ export const GetLinksCountRequest$outboundSchema: z.ZodType<
     One$outboundSchema,
     Two$outboundSchema,
     Three$outboundSchema,
+    Four$outboundSchema,
   ]).optional(),
 });
 

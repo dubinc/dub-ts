@@ -8,6 +8,7 @@ import { Customers } from "./customers.js";
 import { Domains } from "./domains.js";
 import { EmbedTokens } from "./embedtokens.js";
 import { Events } from "./events.js";
+import { Folders } from "./folders.js";
 import { Links } from "./links.js";
 import { Metatags } from "./metatags.js";
 import { Partners } from "./partners.js";
@@ -35,6 +36,11 @@ export class Dub extends ClientSDK {
   private _tags?: Tags;
   get tags(): Tags {
     return (this._tags ??= new Tags(this._options));
+  }
+
+  private _folders?: Folders;
+  get folders(): Folders {
+    return (this._folders ??= new Folders(this._options));
   }
 
   private _domains?: Domains;

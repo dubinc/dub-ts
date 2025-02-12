@@ -71,6 +71,7 @@ export async function linksCount(
 
   const query = encodeFormQuery({
     "domain": payload?.domain,
+    "folderId": payload?.folderId,
     "groupBy": payload?.groupBy,
     "search": payload?.search,
     "showArchived": payload?.showArchived,

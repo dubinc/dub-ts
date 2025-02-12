@@ -151,6 +151,13 @@ run();
 
 * [list](docs/sdks/events/README.md#list) - Retrieve a list of events
 
+### [folders](docs/sdks/folders/README.md)
+
+* [create](docs/sdks/folders/README.md#create) - Create a new folder
+* [list](docs/sdks/folders/README.md#list) - Retrieve a list of folders
+* [update](docs/sdks/folders/README.md#update) - Update a folder
+* [delete](docs/sdks/folders/README.md#delete) - Delete a folder
+
 ### [links](docs/sdks/links/README.md)
 
 * [create](docs/sdks/links/README.md#create) - Create a new link
@@ -555,6 +562,10 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`domainsUpdate`](docs/sdks/domains/README.md#update) - Update a domain
 - [`embedTokensCreate`](docs/sdks/embedtokens/README.md#create) - Create a new embed token
 - [`eventsList`](docs/sdks/events/README.md#list) - Retrieve a list of events
+- [`foldersCreate`](docs/sdks/folders/README.md#create) - Create a new folder
+- [`foldersDelete`](docs/sdks/folders/README.md#delete) - Delete a folder
+- [`foldersList`](docs/sdks/folders/README.md#list) - Retrieve a list of folders
+- [`foldersUpdate`](docs/sdks/folders/README.md#update) - Update a folder
 - [`linksCount`](docs/sdks/links/README.md#count) - Retrieve links count
 - [`linksCreate`](docs/sdks/links/README.md#create) - Create a new link
 - [`linksCreateMany`](docs/sdks/links/README.md#createmany) - Bulk create links

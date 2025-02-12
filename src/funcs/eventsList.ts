@@ -78,6 +78,7 @@ export async function eventsList(
     "end": payload?.end,
     "event": payload?.event,
     "externalId": payload?.externalId,
+    "folderId": payload?.folderId,
     "interval": payload?.interval,
     "key": payload?.key,
     "limit": payload?.limit,

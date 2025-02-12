@@ -7,11 +7,11 @@ The interval to retrieve events for. Takes precedence over start and end. If und
 ```typescript
 import { QueryParamInterval } from "dub/models/operations";
 
-let value: QueryParamInterval = "all";
+let value: QueryParamInterval = "90d";
 ```
 
 ## Values
 
 ```typescript
-"24h" | "7d" | "30d" | "90d" | "ytd" | "1y" | "all"
+"24h" | "7d" | "30d" | "90d" | "1y" | "mtd" | "qtd" | "ytd" | "all"
 ```

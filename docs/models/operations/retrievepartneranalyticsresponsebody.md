@@ -28,11 +28,11 @@ const value: components.PartnerAnalyticsTopLinks[] = [
   {
     link: "<value>",
     id: "<id>",
-    domain: "golden-costume.name",
+    domain: "general-nun.biz",
     key: "<key>",
     shortLink: "<value>",
-    url: "https://polished-innovation.name/",
-    createdAt: "1709914131438",
+    url: "https://jealous-hose.net",
+    createdAt: "1736403557547",
   },
 ];
 ```
