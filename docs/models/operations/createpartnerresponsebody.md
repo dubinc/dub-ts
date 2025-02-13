@@ -13,7 +13,8 @@ let value: CreatePartnerResponseBody = {
   email: "Novella_Howe@yahoo.com",
   image: "https://loremflickr.com/287/3265?lock=2691322442590598",
   country: "Tuvalu",
-  createdAt: "1725425605462",
+  payoutsEnabled: false,
+  createdAt: "1725512548797",
   status: "approved",
   programId: "<id>",
   tenantId: "<id>",
@@ -39,6 +40,7 @@ let value: CreatePartnerResponseBody = {
 | `image`                                                | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
 | `description`                                          | *string*                                               | :heavy_minus_sign:                                     | N/A                                                    |
 | `country`                                              | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
+| `payoutsEnabled`                                       | *boolean*                                              | :heavy_check_mark:                                     | N/A                                                    |
 | `createdAt`                                            | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
 | `status`                                               | [operations.Status](../../models/operations/status.md) | :heavy_check_mark:                                     | N/A                                                    |
 | `programId`                                            | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |

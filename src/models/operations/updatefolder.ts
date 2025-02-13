@@ -13,8 +13,8 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
  * The access level of the folder within the workspace.
  */
 export const UpdateFolderAccessLevel = {
-  Read: "read",
   Write: "write",
+  Read: "read",
 } as const;
 /**
  * The access level of the folder within the workspace.

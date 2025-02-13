@@ -7,11 +7,11 @@ The access level of the folder within the workspace.
 ```typescript
 import { AccessLevel } from "dub/models/operations";
 
-let value: AccessLevel = "read";
+let value: AccessLevel = "write";
 ```
 
 ## Values
 
 ```typescript
-"read" | "write"
+"write" | "read"
 ```
