@@ -10,14 +10,14 @@ import { SaleCreatedEvent } from "dub/models/components";
 let value: SaleCreatedEvent = {
   id: "<id>",
   event: "sale.created",
-  createdAt: "1729023338013",
+  createdAt: "1729110281344",
   data: {
     eventName: "<value>",
     customer: {
       id: "<id>",
       externalId: "<id>",
       name: "<value>",
-      createdAt: "1715065836395",
+      createdAt: "1715152779727",
     },
     click: {
       id: "<id>",
@@ -43,7 +43,7 @@ let value: SaleCreatedEvent = {
       tenantId: "<id>",
       programId: "<id>",
       partnerId: "<id>",
-      expiresAt: "1757996257336",
+      expiresAt: "1758083200667",
       expiredUrl: "https://idealistic-language.org",
       password: "S14CeblcO4WVT0w",
       title: "<value>",
@@ -77,8 +77,8 @@ let value: SaleCreatedEvent = {
       userId: "<id>",
       workspaceId: "<id>",
       lastClicked: "<value>",
-      createdAt: "1734750558896",
-      updatedAt: "1739286364907",
+      createdAt: "1734837502227",
+      updatedAt: "1739373308238",
       projectId: "<id>",
     },
     sale: {

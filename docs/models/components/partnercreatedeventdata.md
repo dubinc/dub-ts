@@ -11,7 +11,8 @@ let value: PartnerCreatedEventData = {
   email: "Hermina_Renner@gmail.com",
   image: "https://picsum.photos/seed/xcKwNXpjhG/1069/658",
   country: "Vietnam",
-  createdAt: "1716797647692",
+  payoutsEnabled: false,
+  createdAt: "1716884591022",
   status: "pending",
   programId: "<id>",
   tenantId: "<id>",
@@ -37,6 +38,7 @@ let value: PartnerCreatedEventData = {
 | `image`                                                | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
 | `description`                                          | *string*                                               | :heavy_minus_sign:                                     | N/A                                                    |
 | `country`                                              | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
+| `payoutsEnabled`                                       | *boolean*                                              | :heavy_check_mark:                                     | N/A                                                    |
 | `createdAt`                                            | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
 | `status`                                               | [components.Status](../../models/components/status.md) | :heavy_check_mark:                                     | N/A                                                    |
 | `programId`                                            | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |

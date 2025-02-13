@@ -9,8 +9,8 @@ import { RegisteredDomain } from "dub/models/components";
 
 let value: RegisteredDomain = {
   id: "<id>",
-  createdAt: "1735875204083",
-  expiresAt: "1764741991978",
+  createdAt: "1735962147426",
+  expiresAt: "1764828935321",
 };
 ```
 
