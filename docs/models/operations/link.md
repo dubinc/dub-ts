@@ -7,9 +7,9 @@ import { Link } from "dub/models/operations";
 
 let value: Link = {
   id: "<id>",
-  domain: "hairy-tapioca.net",
+  domain: "gleaming-shoulder.info",
   key: "<key>",
-  shortLink: "https://unaware-experience.net",
+  shortLink: "https://scaly-adult.info/",
   programId: "<id>",
 };
 ```

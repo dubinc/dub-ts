@@ -26,7 +26,7 @@ const value: components.AnalyticsTimeseries[] = [
 ```typescript
 const value: components.AnalyticsContinents[] = [
   {
-    continent: "AF",
+    continent: "SA",
   },
 ];
 ```
@@ -36,7 +36,7 @@ const value: components.AnalyticsContinents[] = [
 ```typescript
 const value: components.AnalyticsCountries[] = [
   {
-    country: "PW",
+    country: "BM",
   },
 ];
 ```
@@ -46,8 +46,8 @@ const value: components.AnalyticsCountries[] = [
 ```typescript
 const value: components.AnalyticsCities[] = [
   {
-    city: "Velmaville",
-    country: "HK",
+    city: "Norwoodworth",
+    country: "BR",
   },
 ];
 ```
@@ -57,7 +57,7 @@ const value: components.AnalyticsCities[] = [
 ```typescript
 const value: components.AnalyticsDevices[] = [
   {
-    device: "Mobile",
+    device: "Desktop",
   },
 ];
 ```
@@ -67,7 +67,7 @@ const value: components.AnalyticsDevices[] = [
 ```typescript
 const value: components.AnalyticsBrowsers[] = [
   {
-    browser: "Firefox",
+    browser: "Safari",
   },
 ];
 ```
@@ -77,7 +77,7 @@ const value: components.AnalyticsBrowsers[] = [
 ```typescript
 const value: components.AnalyticsOS[] = [
   {
-    os: "WebOS",
+    os: "Windows Phone",
   },
 ];
 ```
@@ -97,7 +97,7 @@ const value: components.AnalyticsTriggers[] = [
 ```typescript
 const value: components.AnalyticsReferers[] = [
   {
-    referer: "rewarding-swine.com",
+    referer: "carefree-majority.name",
   },
 ];
 ```
@@ -107,7 +107,7 @@ const value: components.AnalyticsReferers[] = [
 ```typescript
 const value: components.AnalyticsRefererUrls[] = [
   {
-    refererUrl: "https://definitive-restaurant.name",
+    refererUrl: "https://terrible-intent.name",
   },
 ];
 ```
@@ -119,11 +119,11 @@ const value: components.AnalyticsTopLinks[] = [
   {
     link: "<value>",
     id: "<id>",
-    domain: "granular-velocity.org",
+    domain: "acidic-polyester.com",
     key: "<key>",
     shortLink: "<value>",
-    url: "https://distorted-formula.biz/",
-    createdAt: "1712909107620",
+    url: "https://measly-valley.com",
+    createdAt: "1720318945545",
   },
 ];
 ```
@@ -133,7 +133,7 @@ const value: components.AnalyticsTopLinks[] = [
 ```typescript
 const value: components.AnalyticsTopUrls[] = [
   {
-    url: "https://unhappy-sushi.info",
+    url: "https://mild-simple.name",
   },
 ];
 ```

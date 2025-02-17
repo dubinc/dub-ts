@@ -8,21 +8,20 @@
 ```typescript
 const value: components.LinkSchema = {
   id: "<id>",
-  domain: "those-icebreaker.info",
+  domain: "webbed-disposer.biz",
   key: "<key>",
-  url: "https://stable-pine.info/",
+  url: "https://homely-minor.net/",
   externalId: "<id>",
   tenantId: "<id>",
   programId: "<id>",
   partnerId: "<id>",
-  expiresAt: "1755322763465",
-  expiredUrl: "https://ultimate-confusion.org",
-  password: "QbuZah7Pt3VY_er",
+  expiresAt: "1767917390951",
+  expiredUrl: "https://putrid-mozzarella.name/",
+  password: "lzh1smknBKkrk4K",
   title: "<value>",
-  description:
-    "lest with properly striking inspection whoa rotating blacken thump recount",
-  image: "https://picsum.photos/seed/iimzNT/1524/2179",
-  video: "https://picsum.videos/seed/NWKaXRi7/245/2600",
+  description: "briskly oof hence unhappy um even phooey rowdy",
+  image: "https://picsum.photos/seed/iUMFo/3781/111",
+  video: "https://loremflickr.com/200/1041?lock=3808049225398433",
   ios: "<value>",
   android: "<id>",
   geo: {},
@@ -31,17 +30,16 @@ const value: components.LinkSchema = {
     {
       id: "<id>",
       name: "<value>",
-      color: "pink",
+      color: "blue",
     },
   ],
   folderId: "<id>",
   webhookIds: [
     "<value>",
   ],
-  comments:
-    "by internalise exactly nor heating weary whereas meh considering ack vastly hexagon for aboard hmph surprisingly before blindly gee limply",
-  shortLink: "https://wrong-carnival.info",
-  qrCode: "https://parallel-swath.com",
+  comments: "solemnly around acidic pfft drat",
+  shortLink: "https://crooked-word.com",
+  qrCode: "https://superb-sanity.biz/",
   utmSource: "<value>",
   utmMedium: "<value>",
   utmCampaign: "<value>",
@@ -50,8 +48,8 @@ const value: components.LinkSchema = {
   userId: "<id>",
   workspaceId: "<id>",
   lastClicked: "<value>",
-  createdAt: "1724979680644",
-  updatedAt: "1739373238797",
+  createdAt: "1716000695662",
+  updatedAt: "1739706599886",
   projectId: "<id>",
 };
 ```
@@ -61,7 +59,7 @@ const value: components.LinkSchema = {
 ```typescript
 const value: components.LinkErrorSchema = {
   error: "<value>",
-  code: "exceeded_limit",
+  code: "unprocessable_entity",
 };
 ```
 

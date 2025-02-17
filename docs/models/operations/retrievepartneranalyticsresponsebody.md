@@ -28,11 +28,11 @@ const value: components.PartnerAnalyticsTopLinks[] = [
   {
     link: "<value>",
     id: "<id>",
-    domain: "general-nun.biz",
+    domain: "pink-roundabout.name",
     key: "<key>",
     shortLink: "<value>",
-    url: "https://jealous-hose.net",
-    createdAt: "1736490500874",
+    url: "https://responsible-designation.info/",
+    createdAt: "1710475122514",
   },
 ];
 ```

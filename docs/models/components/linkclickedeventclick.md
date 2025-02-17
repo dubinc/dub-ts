@@ -8,17 +8,17 @@ import { LinkClickedEventClick } from "dub/models/components";
 let value: LinkClickedEventClick = {
   id: "<id>",
   timestamp: "<value>",
-  url: "https://spherical-numeracy.net/",
-  country: "Iceland",
-  city: "Jastland",
+  url: "https://well-off-archaeology.com/",
+  country: "United States of America",
+  city: "Casas Adobes",
   region: "<value>",
   continent: "Australia",
   device: "Desktop",
-  browser: "Chrome",
-  os: "BeOS",
-  referer: "icy-antelope.info",
-  refererUrl: "https://total-sediment.biz/",
-  ip: "5711:eeac:befb:6bf8:14b5:ffac:df35:f5d7",
+  browser: "Safari",
+  os: "Windows Phone",
+  referer: "sorrowful-jet.name",
+  refererUrl: "https://short-suv.com",
+  ip: "15.98.99.235",
 };
 ```
 
