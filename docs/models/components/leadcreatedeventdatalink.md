@@ -7,9 +7,9 @@ import { LeadCreatedEventDataLink } from "dub/models/components";
 
 let value: LeadCreatedEventDataLink = {
   id: "<id>",
-  domain: "big-decryption.org",
+  domain: "complete-angle.org",
   key: "<key>",
-  shortLink: "https://cute-shark.com/",
+  shortLink: "https://well-groomed-knight.name/",
   programId: "<id>",
 };
 ```

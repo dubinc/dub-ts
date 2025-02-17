@@ -5,7 +5,7 @@
 ```typescript
 import { Type } from "dub/models/operations";
 
-let value: Type = "flat";
+let value: Type = "percentage";
 ```
 
 ## Values

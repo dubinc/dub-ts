@@ -23,14 +23,15 @@ let value: WorkspaceSchema = {
   salesLimit: 5666.69,
   domainsLimit: 4768.01,
   tagsLimit: 6218.83,
-  foldersLimit: 5287.42,
-  usersLimit: 4693.84,
-  aiUsage: 7594.51,
-  aiLimit: 1782.01,
+  foldersUsage: 5287.42,
+  foldersLimit: 4693.84,
+  usersLimit: 7594.51,
+  aiUsage: 1782.01,
+  aiLimit: 1711.72,
   conversionEnabled: false,
   dotLinkClaimed: false,
   partnersEnabled: false,
-  createdAt: "1713269085460",
+  createdAt: "1721834751244",
   users: [
     {
       role: "owner",
@@ -72,6 +73,7 @@ let value: WorkspaceSchema = {
 | `salesLimit`                                                                                          | *number*                                                                                              | :heavy_check_mark:                                                                                    | The limit of tracked revenue in the current billing cycle (in cents).                                 |                                                                                                       |
 | `domainsLimit`                                                                                        | *number*                                                                                              | :heavy_check_mark:                                                                                    | The domains limit of the workspace.                                                                   |                                                                                                       |
 | `tagsLimit`                                                                                           | *number*                                                                                              | :heavy_check_mark:                                                                                    | The tags limit of the workspace.                                                                      |                                                                                                       |
+| `foldersUsage`                                                                                        | *number*                                                                                              | :heavy_check_mark:                                                                                    | The folders usage of the workspace.                                                                   |                                                                                                       |
 | `foldersLimit`                                                                                        | *number*                                                                                              | :heavy_check_mark:                                                                                    | The folders limit of the workspace.                                                                   |                                                                                                       |
 | `usersLimit`                                                                                          | *number*                                                                                              | :heavy_check_mark:                                                                                    | The users limit of the workspace.                                                                     |                                                                                                       |
 | `aiUsage`                                                                                             | *number*                                                                                              | :heavy_check_mark:                                                                                    | The AI usage of the workspace.                                                                        |                                                                                                       |

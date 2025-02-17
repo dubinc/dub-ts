@@ -7,9 +7,9 @@ import { SaleCreatedEventDataLink } from "dub/models/components";
 
 let value: SaleCreatedEventDataLink = {
   id: "<id>",
-  domain: "innocent-nephew.biz",
+  domain: "strident-descent.com",
   key: "<key>",
-  shortLink: "https://impolite-responsibility.info/",
+  shortLink: "https://deficient-alb.biz/",
   programId: "<id>",
 };
 ```

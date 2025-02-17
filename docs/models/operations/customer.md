@@ -7,8 +7,8 @@ import { Customer } from "dub/models/operations";
 
 let value: Customer = {
   name: "<value>",
-  email: "Bailey.Hand40@gmail.com",
-  avatar: "https://picsum.photos/seed/5nY0stPhM/2325/1512",
+  email: "Winnifred.OHara32@yahoo.com",
+  avatar: "https://picsum.photos/seed/C4SncvV/2058/592",
   externalId: "<id>",
 };
 ```

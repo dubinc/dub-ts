@@ -7,10 +7,10 @@ import { Links } from "dub/models/operations";
 
 let value: Links = {
   id: "<id>",
-  domain: "whirlwind-captain.org",
+  domain: "vague-casket.com",
   key: "<key>",
-  shortLink: "https://boring-peony.net/",
-  url: "https://some-grandson.name",
+  shortLink: "https://emotional-confusion.com/",
+  url: "https://damaged-impact.com",
 };
 ```
 
