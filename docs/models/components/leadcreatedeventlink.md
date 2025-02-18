@@ -14,7 +14,7 @@ let value: LeadCreatedEventLink = {
   tenantId: "<id>",
   programId: "<id>",
   partnerId: "<id>",
-  expiresAt: "1769836188156",
+  expiresAt: "1769930584659",
   expiredUrl: "https://fair-suitcase.info/",
   password: "buplOVaNGvlypZc",
   title: "<value>",
@@ -48,8 +48,8 @@ let value: LeadCreatedEventLink = {
   userId: "<id>",
   workspaceId: "<id>",
   lastClicked: "<value>",
-  createdAt: "1710034748717",
-  updatedAt: "1739719018955",
+  createdAt: "1710129145220",
+  updatedAt: "1739813415458",
   projectId: "<id>",
 };
 ```

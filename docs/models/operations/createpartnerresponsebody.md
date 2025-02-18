@@ -14,7 +14,7 @@ let value: CreatePartnerResponseBody = {
   image: "https://picsum.photos/seed/AfXatTIxGr/1639/2375",
   country: "Holy See (Vatican City State)",
   payoutsEnabled: false,
-  createdAt: "1728015663266",
+  createdAt: "1728110059764",
   status: "rejected",
   programId: "<id>",
   tenantId: "<id>",

@@ -11,7 +11,7 @@ let value: SaleCreatedEventData = {
     id: "<id>",
     externalId: "<id>",
     name: "<value>",
-    createdAt: "1729455439208",
+    createdAt: "1729549835733",
   },
   click: {
     id: "<id>",
@@ -37,7 +37,7 @@ let value: SaleCreatedEventData = {
     tenantId: "<id>",
     programId: "<id>",
     partnerId: "<id>",
-    expiresAt: "1758000016365",
+    expiresAt: "1758094412877",
     expiredUrl: "https://glass-mozzarella.net/",
     password: "EQuS14CeblcO4WV",
     title: "<value>",
@@ -70,8 +70,8 @@ let value: SaleCreatedEventData = {
     userId: "<id>",
     workspaceId: "<id>",
     lastClicked: "<value>",
-    createdAt: "1711128489286",
-    updatedAt: "1739749243144",
+    createdAt: "1711222885793",
+    updatedAt: "1739843639651",
     projectId: "<id>",
   },
   sale: {
