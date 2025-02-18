@@ -56,6 +56,10 @@ export type TrackSaleRequestBody = {
    * Additional metadata to be stored with the sale event.
    */
   metadata?: { [k: string]: any } | null | undefined;
+  /**
+   * The name of the lead event that occurred before the sale (case-sensitive).
+   */
+  leadEventName?: string | null | undefined;
 };
 
 export type TrackSaleCustomer = {
@@ -118,6 +122,7 @@ export const TrackSaleRequestBody$inboundSchema: z.ZodType<
   invoiceId: z.nullable(z.string()).default(null),
   currency: z.string().default("usd"),
   metadata: z.nullable(z.record(z.any())).optional(),
+  leadEventName: z.nullable(z.string()).default(null),
 });
 
 /** @internal */
@@ -130,6 +135,7 @@ export type TrackSaleRequestBody$Outbound = {
   invoiceId: string | null;
   currency: string;
   metadata?: { [k: string]: any } | null | undefined;
+  leadEventName: string | null;
 };
 
 /** @internal */
@@ -146,6 +152,7 @@ export const TrackSaleRequestBody$outboundSchema: z.ZodType<
   invoiceId: z.nullable(z.string()).default(null),
   currency: z.string().default("usd"),
   metadata: z.nullable(z.record(z.any())).optional(),
+  leadEventName: z.nullable(z.string()).default(null),
 });
 
 /**

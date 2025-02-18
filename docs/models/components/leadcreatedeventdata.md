@@ -11,7 +11,7 @@ let value: LeadCreatedEventData = {
     id: "<id>",
     externalId: "<id>",
     name: "<value>",
-    createdAt: "1723833563552",
+    createdAt: "1723927960056",
   },
   click: {
     id: "<id>",
@@ -37,7 +37,7 @@ let value: LeadCreatedEventData = {
     tenantId: "<id>",
     programId: "<id>",
     partnerId: "<id>",
-    expiresAt: "1763339533417",
+    expiresAt: "1763433929920",
     expiredUrl: "https://parched-bell.com",
     password: "EqMtPTKlEv3yYPh",
     title: "<value>",
@@ -71,8 +71,8 @@ let value: LeadCreatedEventData = {
     userId: "<id>",
     workspaceId: "<id>",
     lastClicked: "<value>",
-    createdAt: "1737291726522",
-    updatedAt: "1739733498495",
+    createdAt: "1737386123025",
+    updatedAt: "1739827894998",
     projectId: "<id>",
   },
 };

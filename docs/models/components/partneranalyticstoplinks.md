@@ -12,7 +12,7 @@ let value: PartnerAnalyticsTopLinks = {
   key: "<key>",
   shortLink: "<value>",
   url: "https://cruel-extension.org/",
-  createdAt: "1738444436878",
+  createdAt: "1738538833373",
 };
 ```
 

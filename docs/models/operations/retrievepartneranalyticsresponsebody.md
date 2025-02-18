@@ -32,7 +32,7 @@ const value: components.PartnerAnalyticsTopLinks[] = [
     key: "<key>",
     shortLink: "<value>",
     url: "https://responsible-designation.info/",
-    createdAt: "1710475122514",
+    createdAt: "1710569519011",
   },
 ];
 ```

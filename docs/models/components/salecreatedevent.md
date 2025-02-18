@@ -10,14 +10,14 @@ import { SaleCreatedEvent } from "dub/models/components";
 let value: SaleCreatedEvent = {
   id: "<id>",
   event: "sale.created",
-  createdAt: "1723052442233",
+  createdAt: "1723146838740",
   data: {
     eventName: "<value>",
     customer: {
       id: "<id>",
       externalId: "<id>",
       name: "<value>",
-      createdAt: "1709671139658",
+      createdAt: "1709765536164",
     },
     click: {
       id: "<id>",
@@ -43,7 +43,7 @@ let value: SaleCreatedEvent = {
       tenantId: "<id>",
       programId: "<id>",
       partnerId: "<id>",
-      expiresAt: "1748869489653",
+      expiresAt: "1748963886159",
       expiredUrl: "https://tepid-mozzarella.name",
       password: "Oh4LO9txh72WK3y",
       title: "<value>",
@@ -76,8 +76,8 @@ let value: SaleCreatedEvent = {
       userId: "<id>",
       workspaceId: "<id>",
       lastClicked: "<value>",
-      createdAt: "1712879818218",
-      updatedAt: "1739748332673",
+      createdAt: "1712974214724",
+      updatedAt: "1739842729179",
       projectId: "<id>",
     },
     sale: {
