@@ -7,7 +7,7 @@ The parameter to group the analytics data points by. Defaults to `count` if unde
 ```typescript
 import { QueryParamGroupBy } from "dub/models/operations";
 
-let value: QueryParamGroupBy = "utm_campaigns";
+let value: QueryParamGroupBy = "browsers";
 ```
 
 ## Values

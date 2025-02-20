@@ -8,17 +8,17 @@ import { SaleCreatedEventClick } from "dub/models/components";
 let value: SaleCreatedEventClick = {
   id: "<id>",
   timestamp: "<value>",
-  url: "https://antique-gown.name",
-  country: "Iran",
-  city: "Batzhaven",
+  url: "https://utilized-scenario.info/",
+  country: "Montserrat",
+  city: "South Gregory",
   region: "<value>",
-  continent: "Africa",
+  continent: "North America",
   device: "Desktop",
-  browser: "Chrome",
-  os: "Windows",
-  referer: "burdensome-step-mother.net",
-  refererUrl: "https://rosy-bend.biz",
-  ip: "15.9.50.14",
+  browser: "Safari",
+  os: "WebOS",
+  referer: "idolized-hunt.name",
+  refererUrl: "https://direct-stay.net/",
+  ip: "162.5.136.41",
 };
 ```
 

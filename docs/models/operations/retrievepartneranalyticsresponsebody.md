@@ -28,11 +28,11 @@ const value: components.PartnerAnalyticsTopLinks[] = [
   {
     link: "<value>",
     id: "<id>",
-    domain: "pink-roundabout.name",
+    domain: "dull-hope.org",
     key: "<key>",
     shortLink: "<value>",
-    url: "https://responsible-designation.info/",
-    createdAt: "1710569519011",
+    url: "https://joyous-vicinity.net",
+    createdAt: "1709931030519",
   },
 ];
 ```

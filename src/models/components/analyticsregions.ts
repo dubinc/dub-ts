@@ -9,9 +9,9 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
- * The 2-letter ISO 3166-1 country code for the country associated with the location of the user. Learn more: https://d.to/geo
+ * The 2-letter country code of the region: https://d.to/geo
  */
-export const Country = {
+export const AnalyticsRegionsCountry = {
   Af: "AF",
   Al: "AL",
   Dz: "DZ",
@@ -264,112 +264,96 @@ export const Country = {
   Xk: "XK",
 } as const;
 /**
- * The 2-letter ISO 3166-1 country code for the country associated with the location of the user. Learn more: https://d.to/geo
+ * The 2-letter country code of the region: https://d.to/geo
  */
-export type Country = ClosedEnum<typeof Country>;
+export type AnalyticsRegionsCountry = ClosedEnum<
+  typeof AnalyticsRegionsCountry
+>;
 
-export const Region = {
+export const AnalyticsRegionsCity = {
   Wildcard: "*",
 } as const;
-export type Region = ClosedEnum<typeof Region>;
+export type AnalyticsRegionsCity = ClosedEnum<typeof AnalyticsRegionsCity>;
 
-export const City = {
-  Wildcard: "*",
-} as const;
-export type City = ClosedEnum<typeof City>;
-
-export type AnalyticsCountries = {
+export type AnalyticsRegions = {
   /**
-   * The 2-letter ISO 3166-1 country code for the country associated with the location of the user. Learn more: https://d.to/geo
+   * The 2-letter country code of the region: https://d.to/geo
    */
-  country: Country;
-  region?: Region | undefined;
-  city?: City | undefined;
+  country: AnalyticsRegionsCountry;
   /**
-   * The number of clicks from this country
+   * The 2-letter ISO 3166-2 region code representing the region associated with the location of the user.
+   */
+  region: string;
+  city?: AnalyticsRegionsCity | undefined;
+  /**
+   * The number of clicks from this region
    */
   clicks?: number | undefined;
   /**
-   * The number of leads from this country
+   * The number of leads from this region
    */
   leads?: number | undefined;
   /**
-   * The number of sales from this country
+   * The number of sales from this region
    */
   sales?: number | undefined;
   /**
-   * The total amount of sales from this country, in cents
+   * The total amount of sales from this region, in cents
    */
   saleAmount?: number | undefined;
 };
 
 /** @internal */
-export const Country$inboundSchema: z.ZodNativeEnum<typeof Country> = z
-  .nativeEnum(Country);
+export const AnalyticsRegionsCountry$inboundSchema: z.ZodNativeEnum<
+  typeof AnalyticsRegionsCountry
+> = z.nativeEnum(AnalyticsRegionsCountry);
 
 /** @internal */
-export const Country$outboundSchema: z.ZodNativeEnum<typeof Country> =
-  Country$inboundSchema;
+export const AnalyticsRegionsCountry$outboundSchema: z.ZodNativeEnum<
+  typeof AnalyticsRegionsCountry
+> = AnalyticsRegionsCountry$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Country$ {
-  /** @deprecated use `Country$inboundSchema` instead. */
-  export const inboundSchema = Country$inboundSchema;
-  /** @deprecated use `Country$outboundSchema` instead. */
-  export const outboundSchema = Country$outboundSchema;
+export namespace AnalyticsRegionsCountry$ {
+  /** @deprecated use `AnalyticsRegionsCountry$inboundSchema` instead. */
+  export const inboundSchema = AnalyticsRegionsCountry$inboundSchema;
+  /** @deprecated use `AnalyticsRegionsCountry$outboundSchema` instead. */
+  export const outboundSchema = AnalyticsRegionsCountry$outboundSchema;
 }
 
 /** @internal */
-export const Region$inboundSchema: z.ZodNativeEnum<typeof Region> = z
-  .nativeEnum(Region);
+export const AnalyticsRegionsCity$inboundSchema: z.ZodNativeEnum<
+  typeof AnalyticsRegionsCity
+> = z.nativeEnum(AnalyticsRegionsCity);
 
 /** @internal */
-export const Region$outboundSchema: z.ZodNativeEnum<typeof Region> =
-  Region$inboundSchema;
+export const AnalyticsRegionsCity$outboundSchema: z.ZodNativeEnum<
+  typeof AnalyticsRegionsCity
+> = AnalyticsRegionsCity$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Region$ {
-  /** @deprecated use `Region$inboundSchema` instead. */
-  export const inboundSchema = Region$inboundSchema;
-  /** @deprecated use `Region$outboundSchema` instead. */
-  export const outboundSchema = Region$outboundSchema;
+export namespace AnalyticsRegionsCity$ {
+  /** @deprecated use `AnalyticsRegionsCity$inboundSchema` instead. */
+  export const inboundSchema = AnalyticsRegionsCity$inboundSchema;
+  /** @deprecated use `AnalyticsRegionsCity$outboundSchema` instead. */
+  export const outboundSchema = AnalyticsRegionsCity$outboundSchema;
 }
 
 /** @internal */
-export const City$inboundSchema: z.ZodNativeEnum<typeof City> = z.nativeEnum(
-  City,
-);
-
-/** @internal */
-export const City$outboundSchema: z.ZodNativeEnum<typeof City> =
-  City$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace City$ {
-  /** @deprecated use `City$inboundSchema` instead. */
-  export const inboundSchema = City$inboundSchema;
-  /** @deprecated use `City$outboundSchema` instead. */
-  export const outboundSchema = City$outboundSchema;
-}
-
-/** @internal */
-export const AnalyticsCountries$inboundSchema: z.ZodType<
-  AnalyticsCountries,
+export const AnalyticsRegions$inboundSchema: z.ZodType<
+  AnalyticsRegions,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  country: Country$inboundSchema,
-  region: Region$inboundSchema.default("*"),
-  city: City$inboundSchema.default("*"),
+  country: AnalyticsRegionsCountry$inboundSchema,
+  region: z.string(),
+  city: AnalyticsRegionsCity$inboundSchema.default("*"),
   clicks: z.number().default(0),
   leads: z.number().default(0),
   sales: z.number().default(0),
@@ -377,7 +361,7 @@ export const AnalyticsCountries$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type AnalyticsCountries$Outbound = {
+export type AnalyticsRegions$Outbound = {
   country: string;
   region: string;
   city: string;
@@ -388,14 +372,14 @@ export type AnalyticsCountries$Outbound = {
 };
 
 /** @internal */
-export const AnalyticsCountries$outboundSchema: z.ZodType<
-  AnalyticsCountries$Outbound,
+export const AnalyticsRegions$outboundSchema: z.ZodType<
+  AnalyticsRegions$Outbound,
   z.ZodTypeDef,
-  AnalyticsCountries
+  AnalyticsRegions
 > = z.object({
-  country: Country$outboundSchema,
-  region: Region$outboundSchema.default("*"),
-  city: City$outboundSchema.default("*"),
+  country: AnalyticsRegionsCountry$outboundSchema,
+  region: z.string(),
+  city: AnalyticsRegionsCity$outboundSchema.default("*"),
   clicks: z.number().default(0),
   leads: z.number().default(0),
   sales: z.number().default(0),
@@ -406,29 +390,29 @@ export const AnalyticsCountries$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace AnalyticsCountries$ {
-  /** @deprecated use `AnalyticsCountries$inboundSchema` instead. */
-  export const inboundSchema = AnalyticsCountries$inboundSchema;
-  /** @deprecated use `AnalyticsCountries$outboundSchema` instead. */
-  export const outboundSchema = AnalyticsCountries$outboundSchema;
-  /** @deprecated use `AnalyticsCountries$Outbound` instead. */
-  export type Outbound = AnalyticsCountries$Outbound;
+export namespace AnalyticsRegions$ {
+  /** @deprecated use `AnalyticsRegions$inboundSchema` instead. */
+  export const inboundSchema = AnalyticsRegions$inboundSchema;
+  /** @deprecated use `AnalyticsRegions$outboundSchema` instead. */
+  export const outboundSchema = AnalyticsRegions$outboundSchema;
+  /** @deprecated use `AnalyticsRegions$Outbound` instead. */
+  export type Outbound = AnalyticsRegions$Outbound;
 }
 
-export function analyticsCountriesToJSON(
-  analyticsCountries: AnalyticsCountries,
+export function analyticsRegionsToJSON(
+  analyticsRegions: AnalyticsRegions,
 ): string {
   return JSON.stringify(
-    AnalyticsCountries$outboundSchema.parse(analyticsCountries),
+    AnalyticsRegions$outboundSchema.parse(analyticsRegions),
   );
 }
 
-export function analyticsCountriesFromJSON(
+export function analyticsRegionsFromJSON(
   jsonString: string,
-): SafeParseResult<AnalyticsCountries, SDKValidationError> {
+): SafeParseResult<AnalyticsRegions, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => AnalyticsCountries$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AnalyticsCountries' from JSON`,
+    (x) => AnalyticsRegions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AnalyticsRegions' from JSON`,
   );
 }

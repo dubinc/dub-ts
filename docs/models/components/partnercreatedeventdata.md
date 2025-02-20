@@ -8,21 +8,21 @@ import { PartnerCreatedEventData } from "dub/models/components";
 let value: PartnerCreatedEventData = {
   id: "<id>",
   name: "<value>",
-  email: "Sven_Swaniawski@hotmail.com",
-  image: "https://picsum.photos/seed/O1orv/3178/3379",
-  country: "Dominican Republic",
+  email: "Mortimer.Anderson26@yahoo.com",
+  image: "https://picsum.photos/seed/KwNXpj/2663/3342",
+  country: "Eswatini",
   payoutsEnabled: false,
-  createdAt: "1721526230186",
+  createdAt: "1730326175418",
   status: "rejected",
   programId: "<id>",
   tenantId: "<id>",
   links: [
     {
       id: "<id>",
-      domain: "firm-silk.com",
+      domain: "foolhardy-individual.name",
       key: "<key>",
-      shortLink: "https://valuable-instruction.com/",
-      url: "https://lasting-bonfire.info",
+      shortLink: "https://experienced-verve.name",
+      url: "https://specific-coliseum.org",
     },
   ],
 };

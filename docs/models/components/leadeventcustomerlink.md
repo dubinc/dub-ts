@@ -7,9 +7,9 @@ import { LeadEventCustomerLink } from "dub/models/components";
 
 let value: LeadEventCustomerLink = {
   id: "<id>",
-  domain: "earnest-safe.com",
+  domain: "productive-unibody.net",
   key: "<key>",
-  shortLink: "https://energetic-lace.net/",
+  shortLink: "https://lustrous-convection.org",
   programId: "<id>",
 };
 ```

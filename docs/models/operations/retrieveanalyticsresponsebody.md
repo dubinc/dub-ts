@@ -36,7 +36,18 @@ const value: components.AnalyticsContinents[] = [
 ```typescript
 const value: components.AnalyticsCountries[] = [
   {
-    country: "BM",
+    country: "AI",
+  },
+];
+```
+
+### `components.AnalyticsRegions[]`
+
+```typescript
+const value: components.AnalyticsRegions[] = [
+  {
+    country: "SN",
+    region: "<value>",
   },
 ];
 ```
@@ -46,8 +57,8 @@ const value: components.AnalyticsCountries[] = [
 ```typescript
 const value: components.AnalyticsCities[] = [
   {
-    city: "Norwoodworth",
-    country: "BR",
+    country: "BS",
+    city: "Fort Ophelia",
   },
 ];
 ```
@@ -57,7 +68,7 @@ const value: components.AnalyticsCities[] = [
 ```typescript
 const value: components.AnalyticsDevices[] = [
   {
-    device: "Desktop",
+    device: "Mobile",
   },
 ];
 ```
@@ -67,7 +78,7 @@ const value: components.AnalyticsDevices[] = [
 ```typescript
 const value: components.AnalyticsBrowsers[] = [
   {
-    browser: "Safari",
+    browser: "Firefox",
   },
 ];
 ```
@@ -77,7 +88,7 @@ const value: components.AnalyticsBrowsers[] = [
 ```typescript
 const value: components.AnalyticsOS[] = [
   {
-    os: "Windows Phone",
+    os: "Windows",
   },
 ];
 ```
@@ -87,7 +98,7 @@ const value: components.AnalyticsOS[] = [
 ```typescript
 const value: components.AnalyticsTriggers[] = [
   {
-    trigger: "link",
+    trigger: "qr",
   },
 ];
 ```
@@ -97,7 +108,7 @@ const value: components.AnalyticsTriggers[] = [
 ```typescript
 const value: components.AnalyticsReferers[] = [
   {
-    referer: "carefree-majority.name",
+    referer: "lonely-hexagon.info",
   },
 ];
 ```
@@ -107,7 +118,7 @@ const value: components.AnalyticsReferers[] = [
 ```typescript
 const value: components.AnalyticsRefererUrls[] = [
   {
-    refererUrl: "https://terrible-intent.name",
+    refererUrl: "https://pricey-ice-cream.com/",
   },
 ];
 ```
@@ -119,11 +130,11 @@ const value: components.AnalyticsTopLinks[] = [
   {
     link: "<value>",
     id: "<id>",
-    domain: "acidic-polyester.com",
+    domain: "warped-couch.biz",
     key: "<key>",
     shortLink: "<value>",
-    url: "https://measly-valley.com",
-    createdAt: "1720413342055",
+    url: "https://guilty-numeric.com",
+    createdAt: "1722140926094",
   },
 ];
 ```
@@ -133,7 +144,7 @@ const value: components.AnalyticsTopLinks[] = [
 ```typescript
 const value: components.AnalyticsTopUrls[] = [
   {
-    url: "https://mild-simple.name",
+    url: "https://dull-corral.org/",
   },
 ];
 ```

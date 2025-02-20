@@ -5,7 +5,7 @@
 ```typescript
 import { Status } from "dub/models/components";
 
-let value: Status = "approved";
+let value: Status = "rejected";
 ```
 
 ## Values

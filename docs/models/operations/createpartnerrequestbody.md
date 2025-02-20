@@ -8,8 +8,8 @@ import { CreatePartnerRequestBody } from "dub/models/operations";
 let value: CreatePartnerRequestBody = {
   programId: "<id>",
   name: "<value>",
-  email: "Eldon_Baumbach-Balistreri16@gmail.com",
-  username: "Jaden_Haag86",
+  email: "Arturo.Wolff@hotmail.com",
+  username: "Reta.Sanford49",
 };
 ```
 

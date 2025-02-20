@@ -8,8 +8,8 @@ import { FolderSchema } from "dub/models/components";
 let value: FolderSchema = {
   id: "<id>",
   name: "<value>",
-  createdAt: "1715815260178",
-  updatedAt: "1739825987991",
+  createdAt: "1718049686572",
+  updatedAt: "1740059286661",
 };
 ```
 

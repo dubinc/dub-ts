@@ -8,17 +8,17 @@ import { LeadEventClick } from "dub/models/components";
 let value: LeadEventClick = {
   id: "<id>",
   timestamp: "<value>",
-  url: "https://humble-sideboard.net/",
-  country: "Uruguay",
-  city: "Fort Okey",
+  url: "https://uncommon-underneath.org/",
+  country: "Guinea",
+  city: "San Mateo",
   region: "<value>",
-  continent: "Asia",
-  device: "Mobile",
+  continent: "Europe",
+  device: "Desktop",
   browser: "Chrome",
-  os: "BeOS",
-  referer: "chubby-custody.biz",
-  refererUrl: "https://silver-lift.info/",
-  ip: "108.16.53.238",
+  os: "MacOS",
+  referer: "utter-emergent.info",
+  refererUrl: "https://spanish-starboard.com/",
+  ip: "215.209.26.40",
 };
 ```
 

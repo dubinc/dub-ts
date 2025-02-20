@@ -238,6 +238,7 @@ export type RetrieveAnalyticsResponseBody =
   | Array<components.AnalyticsTimeseries>
   | Array<components.AnalyticsContinents>
   | Array<components.AnalyticsCountries>
+  | Array<components.AnalyticsRegions>
   | Array<components.AnalyticsCities>
   | Array<components.AnalyticsDevices>
   | Array<components.AnalyticsBrowsers>
@@ -557,6 +558,7 @@ export const RetrieveAnalyticsResponseBody$inboundSchema: z.ZodType<
   z.array(components.AnalyticsTimeseries$inboundSchema),
   z.array(components.AnalyticsContinents$inboundSchema),
   z.array(components.AnalyticsCountries$inboundSchema),
+  z.array(components.AnalyticsRegions$inboundSchema),
   z.array(components.AnalyticsCities$inboundSchema),
   z.array(components.AnalyticsDevices$inboundSchema),
   z.array(components.AnalyticsBrowsers$inboundSchema),
@@ -574,6 +576,7 @@ export type RetrieveAnalyticsResponseBody$Outbound =
   | Array<components.AnalyticsTimeseries$Outbound>
   | Array<components.AnalyticsContinents$Outbound>
   | Array<components.AnalyticsCountries$Outbound>
+  | Array<components.AnalyticsRegions$Outbound>
   | Array<components.AnalyticsCities$Outbound>
   | Array<components.AnalyticsDevices$Outbound>
   | Array<components.AnalyticsBrowsers$Outbound>
@@ -594,6 +597,7 @@ export const RetrieveAnalyticsResponseBody$outboundSchema: z.ZodType<
   z.array(components.AnalyticsTimeseries$outboundSchema),
   z.array(components.AnalyticsContinents$outboundSchema),
   z.array(components.AnalyticsCountries$outboundSchema),
+  z.array(components.AnalyticsRegions$outboundSchema),
   z.array(components.AnalyticsCities$outboundSchema),
   z.array(components.AnalyticsDevices$outboundSchema),
   z.array(components.AnalyticsBrowsers$outboundSchema),

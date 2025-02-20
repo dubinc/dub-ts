@@ -8,17 +8,17 @@ import { Click } from "dub/models/components";
 let value: Click = {
   id: "<id>",
   timestamp: "<value>",
-  url: "https://untimely-sand.biz",
-  country: "Belarus",
-  city: "Darionville",
+  url: "https://grave-birdcage.info",
+  country: "Cyprus",
+  city: "North Mohammedtown",
   region: "<value>",
-  continent: "Africa",
-  device: "Mobile",
+  continent: "North America",
+  device: "Desktop",
   browser: "Chrome",
-  os: "WebOS",
-  referer: "crafty-bin.com",
-  refererUrl: "https://exotic-hepatitis.name",
-  ip: "f521:65af:f683:b1fb:b58c:684a:0b1b:6cfe",
+  os: "Windows",
+  referer: "rectangular-developmental.info",
+  refererUrl: "https://torn-railway.biz",
+  ip: "14.77.67.116",
 };
 ```
 

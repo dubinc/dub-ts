@@ -57,7 +57,7 @@ export type TrackSaleRequestBody = {
    */
   metadata?: { [k: string]: any } | null | undefined;
   /**
-   * The name of the lead event that occurred before the sale (case-sensitive).
+   * The name of the lead event that occurred before the sale (case-sensitive). This is used to associate the sale event with a particular lead event (instead of the latest lead event, which is the default behavior).
    */
   leadEventName?: string | null | undefined;
 };
