@@ -7,7 +7,7 @@ The interval to retrieve analytics for. If undefined, defaults to 24h.
 ```typescript
 import { Interval } from "dub/models/operations";
 
-let value: Interval = "7d";
+let value: Interval = "all";
 ```
 
 ## Values

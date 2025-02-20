@@ -268,15 +268,21 @@ export const AnalyticsCitiesCountry = {
  */
 export type AnalyticsCitiesCountry = ClosedEnum<typeof AnalyticsCitiesCountry>;
 
+export const AnalyticsCitiesRegion = {
+  Wildcard: "*",
+} as const;
+export type AnalyticsCitiesRegion = ClosedEnum<typeof AnalyticsCitiesRegion>;
+
 export type AnalyticsCities = {
-  /**
-   * The name of the city
-   */
-  city: string;
   /**
    * The 2-letter country code of the city: https://d.to/geo
    */
   country: AnalyticsCitiesCountry;
+  region?: AnalyticsCitiesRegion | undefined;
+  /**
+   * The name of the city
+   */
+  city: string;
   /**
    * The number of clicks from this city
    */
@@ -317,13 +323,35 @@ export namespace AnalyticsCitiesCountry$ {
 }
 
 /** @internal */
+export const AnalyticsCitiesRegion$inboundSchema: z.ZodNativeEnum<
+  typeof AnalyticsCitiesRegion
+> = z.nativeEnum(AnalyticsCitiesRegion);
+
+/** @internal */
+export const AnalyticsCitiesRegion$outboundSchema: z.ZodNativeEnum<
+  typeof AnalyticsCitiesRegion
+> = AnalyticsCitiesRegion$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace AnalyticsCitiesRegion$ {
+  /** @deprecated use `AnalyticsCitiesRegion$inboundSchema` instead. */
+  export const inboundSchema = AnalyticsCitiesRegion$inboundSchema;
+  /** @deprecated use `AnalyticsCitiesRegion$outboundSchema` instead. */
+  export const outboundSchema = AnalyticsCitiesRegion$outboundSchema;
+}
+
+/** @internal */
 export const AnalyticsCities$inboundSchema: z.ZodType<
   AnalyticsCities,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  city: z.string(),
   country: AnalyticsCitiesCountry$inboundSchema,
+  region: AnalyticsCitiesRegion$inboundSchema.default("*"),
+  city: z.string(),
   clicks: z.number().default(0),
   leads: z.number().default(0),
   sales: z.number().default(0),
@@ -332,8 +360,9 @@ export const AnalyticsCities$inboundSchema: z.ZodType<
 
 /** @internal */
 export type AnalyticsCities$Outbound = {
-  city: string;
   country: string;
+  region: string;
+  city: string;
   clicks: number;
   leads: number;
   sales: number;
@@ -346,8 +375,9 @@ export const AnalyticsCities$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AnalyticsCities
 > = z.object({
-  city: z.string(),
   country: AnalyticsCitiesCountry$outboundSchema,
+  region: AnalyticsCitiesRegion$outboundSchema.default("*"),
+  city: z.string(),
   clicks: z.number().default(0),
   leads: z.number().default(0),
   sales: z.number().default(0),

@@ -8,20 +8,20 @@
 ```typescript
 const value: components.LinkSchema = {
   id: "<id>",
-  domain: "webbed-disposer.biz",
+  domain: "fake-substitution.com",
   key: "<key>",
-  url: "https://homely-minor.net/",
+  url: "https://torn-hydrolyse.com/",
   externalId: "<id>",
   tenantId: "<id>",
   programId: "<id>",
   partnerId: "<id>",
-  expiresAt: "1768011787474",
-  expiredUrl: "https://putrid-mozzarella.name/",
-  password: "lzh1smknBKkrk4K",
+  expiresAt: "1754549800183",
+  expiredUrl: "https://giving-testing.org",
+  password: "0M7ydYdbdrXUFnq",
   title: "<value>",
-  description: "briskly oof hence unhappy um even phooey rowdy",
-  image: "https://picsum.photos/seed/iUMFo/3781/111",
-  video: "https://loremflickr.com/200/1041?lock=3808049225398433",
+  description: "unlike over brook council absent quietly",
+  image: "https://picsum.photos/seed/z8RKXNAU/2447/2140",
+  video: "https://loremflickr.com/2617/1241?lock=5443120578657445",
   ios: "<value>",
   android: "<id>",
   geo: {},
@@ -30,16 +30,17 @@ const value: components.LinkSchema = {
     {
       id: "<id>",
       name: "<value>",
-      color: "blue",
+      color: "pink",
     },
   ],
   folderId: "<id>",
   webhookIds: [
     "<value>",
   ],
-  comments: "solemnly around acidic pfft drat",
-  shortLink: "https://crooked-word.com",
-  qrCode: "https://superb-sanity.biz/",
+  comments:
+    "forsaken beloved inspection famously conservative scramble officially sticky versus shoulder whereas around generously from intensely underneath what yippee",
+  shortLink: "https://damp-galoshes.org/",
+  qrCode: "https://messy-instructor.info/",
   utmSource: "<value>",
   utmMedium: "<value>",
   utmCampaign: "<value>",
@@ -48,8 +49,8 @@ const value: components.LinkSchema = {
   userId: "<id>",
   workspaceId: "<id>",
   lastClicked: "<value>",
-  createdAt: "1716095092172",
-  updatedAt: "1739800996396",
+  createdAt: "1710447163033",
+  updatedAt: "1740004628468",
   projectId: "<id>",
 };
 ```
@@ -59,7 +60,7 @@ const value: components.LinkSchema = {
 ```typescript
 const value: components.LinkErrorSchema = {
   error: "<value>",
-  code: "unprocessable_entity",
+  code: "rate_limit_exceeded",
 };
 ```
 

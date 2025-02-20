@@ -9,13 +9,17 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type TrackLeadRequestBody = {
   /**
-   * The ID of the click in th Dub. You can read this value from `dub_id` cookie.
+   * The ID of the click in Dub. You can read this value from `dub_id` cookie.
    */
   clickId: string;
   /**
-   * The name of the event to track.
+   * The name of the lead event to track.
    */
   eventName: string;
+  /**
+   * The numerical value associated with this lead event (e.g., number of provisioned seats in a free trial). If defined as N, the lead event will be tracked N times.
+   */
+  eventQuantity?: number | null | undefined;
   /**
    * This is the unique identifier for the customer in the client's app. This is used to track the customer's journey.
    */
@@ -71,6 +75,7 @@ export const TrackLeadRequestBody$inboundSchema: z.ZodType<
 > = z.object({
   clickId: z.string(),
   eventName: z.string(),
+  eventQuantity: z.nullable(z.number()).optional(),
   externalId: z.string().default(""),
   customerId: z.nullable(z.string()).default(null),
   customerName: z.nullable(z.string()).default(null),
@@ -83,6 +88,7 @@ export const TrackLeadRequestBody$inboundSchema: z.ZodType<
 export type TrackLeadRequestBody$Outbound = {
   clickId: string;
   eventName: string;
+  eventQuantity?: number | null | undefined;
   externalId: string;
   customerId: string | null;
   customerName: string | null;
@@ -99,6 +105,7 @@ export const TrackLeadRequestBody$outboundSchema: z.ZodType<
 > = z.object({
   clickId: z.string(),
   eventName: z.string(),
+  eventQuantity: z.nullable(z.number()).optional(),
   externalId: z.string().default(""),
   customerId: z.nullable(z.string()).default(null),
   customerName: z.nullable(z.string()).default(null),

@@ -11,6 +11,7 @@ export * from "./analyticsdevices.js";
 export * from "./analyticsos.js";
 export * from "./analyticsreferers.js";
 export * from "./analyticsrefererurls.js";
+export * from "./analyticsregions.js";
 export * from "./analyticstimeseries.js";
 export * from "./analyticstoplinks.js";
 export * from "./analyticstopurls.js";

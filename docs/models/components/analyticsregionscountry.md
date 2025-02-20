@@ -1,13 +1,13 @@
-# AnalyticsCitiesCountry
+# AnalyticsRegionsCountry
 
-The 2-letter country code of the city: https://d.to/geo
+The 2-letter country code of the region: https://d.to/geo
 
 ## Example Usage
 
 ```typescript
-import { AnalyticsCitiesCountry } from "dub/models/components";
+import { AnalyticsRegionsCountry } from "dub/models/components";
 
-let value: AnalyticsCitiesCountry = "BL";
+let value: AnalyticsRegionsCountry = "BS";
 ```
 
 ## Values

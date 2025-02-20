@@ -8,11 +8,11 @@ import { PartnerAnalyticsTopLinks } from "dub/models/components";
 let value: PartnerAnalyticsTopLinks = {
   link: "<value>",
   id: "<id>",
-  domain: "pointed-going.net",
+  domain: "ruddy-vision.biz",
   key: "<key>",
   shortLink: "<value>",
-  url: "https://cruel-extension.org/",
-  createdAt: "1738538833373",
+  url: "https://round-saw.info/",
+  createdAt: "1727762297791",
 };
 ```
 

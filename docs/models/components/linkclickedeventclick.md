@@ -8,17 +8,17 @@ import { LinkClickedEventClick } from "dub/models/components";
 let value: LinkClickedEventClick = {
   id: "<id>",
   timestamp: "<value>",
-  url: "https://well-off-archaeology.com/",
-  country: "United States of America",
-  city: "Casas Adobes",
+  url: "https://bulky-cork.name/",
+  country: "South Sudan",
+  city: "Hilo",
   region: "<value>",
   continent: "Australia",
-  device: "Desktop",
-  browser: "Safari",
+  device: "Mobile",
+  browser: "Chrome",
   os: "Windows Phone",
-  referer: "sorrowful-jet.name",
-  refererUrl: "https://short-suv.com",
-  ip: "15.98.99.235",
+  referer: "defenseless-interior.biz",
+  refererUrl: "https://impartial-hovel.biz/",
+  ip: "70.61.187.183",
 };
 ```
 

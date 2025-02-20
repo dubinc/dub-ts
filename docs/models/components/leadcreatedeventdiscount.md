@@ -9,9 +9,9 @@ let value: LeadCreatedEventDiscount = {
   id: "<id>",
   couponId: "<id>",
   couponTestId: "<id>",
-  amount: 763.44,
-  type: "percentage",
-  duration: 5111.03,
+  amount: 7045.74,
+  type: "flat",
+  duration: 6761.4,
   interval: "month",
 };
 ```

@@ -8,17 +8,17 @@ import { LeadCreatedEventClick } from "dub/models/components";
 let value: LeadCreatedEventClick = {
   id: "<id>",
   timestamp: "<value>",
-  url: "https://beloved-goodwill.biz/",
-  country: "Christmas Island",
-  city: "Blancabury",
+  url: "https://informal-pendant.org/",
+  country: "Northern Mariana Islands",
+  city: "Haydenland",
   region: "<value>",
   continent: "Australia",
-  device: "Mobile",
-  browser: "Safari",
-  os: "Android",
-  referer: "frail-mentor.com",
-  refererUrl: "https://awesome-glider.com/",
-  ip: "ef44:eddc:4dd5:beee:c5f9:6ad7:641d:b510",
+  device: "Desktop",
+  browser: "Firefox",
+  os: "WebOS",
+  referer: "webbed-entry.info",
+  refererUrl: "https://ultimate-smoke.net/",
+  ip: "142.60.30.200",
 };
 ```
 

@@ -7,9 +7,9 @@ import { CreateCustomerLink } from "dub/models/operations";
 
 let value: CreateCustomerLink = {
   id: "<id>",
-  domain: "chubby-milestone.net",
+  domain: "soft-nucleotidase.biz",
   key: "<key>",
-  shortLink: "https://amazing-rubric.net",
+  shortLink: "https://cultivated-swath.info",
   programId: "<id>",
 };
 ```

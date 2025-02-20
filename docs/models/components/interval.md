@@ -5,7 +5,7 @@
 ```typescript
 import { Interval } from "dub/models/components";
 
-let value: Interval = "year";
+let value: Interval = "month";
 ```
 
 ## Values
