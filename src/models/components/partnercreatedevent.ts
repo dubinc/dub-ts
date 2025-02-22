@@ -67,7 +67,7 @@ export type PartnerCreatedEventData = {
   email: string | null;
   image: string | null;
   description?: string | null | undefined;
-  country: string;
+  country: string | null;
   payoutsEnabled: boolean;
   createdAt: string;
   status: Status;
@@ -213,7 +213,7 @@ export const PartnerCreatedEventData$inboundSchema: z.ZodType<
   email: z.nullable(z.string()),
   image: z.nullable(z.string()),
   description: z.nullable(z.string()).optional(),
-  country: z.string(),
+  country: z.nullable(z.string()),
   payoutsEnabled: z.boolean(),
   createdAt: z.string(),
   status: Status$inboundSchema,
@@ -234,7 +234,7 @@ export type PartnerCreatedEventData$Outbound = {
   email: string | null;
   image: string | null;
   description?: string | null | undefined;
-  country: string;
+  country: string | null;
   payoutsEnabled: boolean;
   createdAt: string;
   status: string;
@@ -259,7 +259,7 @@ export const PartnerCreatedEventData$outboundSchema: z.ZodType<
   email: z.nullable(z.string()),
   image: z.nullable(z.string()),
   description: z.nullable(z.string()).optional(),
-  country: z.string(),
+  country: z.nullable(z.string()),
   payoutsEnabled: z.boolean(),
   createdAt: z.string(),
   status: Status$outboundSchema,

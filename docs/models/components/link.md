@@ -14,7 +14,7 @@ let value: Link = {
   tenantId: "<id>",
   programId: "<id>",
   partnerId: "<id>",
-  expiresAt: "1762051730937",
+  expiresAt: "1762164517414",
   expiredUrl: "https://sour-disposer.info",
   password: "XD3LlRWIQSaF2vT",
   title: "<value>",
@@ -48,8 +48,8 @@ let value: Link = {
   userId: "<id>",
   workspaceId: "<id>",
   lastClicked: "<value>",
-  createdAt: "1739071104902",
-  updatedAt: "1740064293951",
+  createdAt: "1739183891380",
+  updatedAt: "1740177080428",
   projectId: "<id>",
 };
 ```

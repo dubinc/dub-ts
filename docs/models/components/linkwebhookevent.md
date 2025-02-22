@@ -10,7 +10,7 @@ import { LinkWebhookEvent } from "dub/models/components";
 let value: LinkWebhookEvent = {
   id: "<id>",
   event: "link.updated",
-  createdAt: "1728390868453",
+  createdAt: "1728503654962",
   data: {
     id: "<id>",
     domain: "spanish-step-mother.net",
@@ -20,7 +20,7 @@ let value: LinkWebhookEvent = {
     tenantId: "<id>",
     programId: "<id>",
     partnerId: "<id>",
-    expiresAt: "1759715843711",
+    expiresAt: "1759828630221",
     expiredUrl: "https://personal-exhaust.info/",
     password: "PEcwmvOb5Z3aWp9",
     title: "<value>",
@@ -53,8 +53,8 @@ let value: LinkWebhookEvent = {
     userId: "<id>",
     workspaceId: "<id>",
     lastClicked: "<value>",
-    createdAt: "1728921859278",
-    updatedAt: "1739997035696",
+    createdAt: "1729034645788",
+    updatedAt: "1740109822205",
     projectId: "<id>",
   },
 };

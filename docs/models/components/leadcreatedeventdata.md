@@ -11,7 +11,7 @@ let value: LeadCreatedEventData = {
     id: "<id>",
     externalId: "<id>",
     name: "<value>",
-    createdAt: "1721678855366",
+    createdAt: "1721791641866",
   },
   click: {
     id: "<id>",
@@ -37,7 +37,7 @@ let value: LeadCreatedEventData = {
     tenantId: "<id>",
     programId: "<id>",
     partnerId: "<id>",
-    expiresAt: "1762216175460",
+    expiresAt: "1762328961960",
     expiredUrl: "https://fatal-encouragement.name",
     password: "PQ63fE7rGdV3yeK",
     title: "<value>",
@@ -70,8 +70,8 @@ let value: LeadCreatedEventData = {
     userId: "<id>",
     workspaceId: "<id>",
     lastClicked: "<value>",
-    createdAt: "1736015097644",
-    updatedAt: "1740016216545",
+    createdAt: "1736127884144",
+    updatedAt: "1740129003045",
     projectId: "<id>",
   },
 };

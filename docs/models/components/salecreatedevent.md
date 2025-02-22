@@ -10,14 +10,14 @@ import { SaleCreatedEvent } from "dub/models/components";
 let value: SaleCreatedEvent = {
   id: "<id>",
   event: "sale.created",
-  createdAt: "1727211421785",
+  createdAt: "1727324208276",
   data: {
     eventName: "<value>",
     customer: {
       id: "<id>",
       externalId: "<id>",
       name: "<value>",
-      createdAt: "1731867657915",
+      createdAt: "1731980444407",
     },
     click: {
       id: "<id>",
@@ -43,7 +43,7 @@ let value: SaleCreatedEvent = {
       tenantId: "<id>",
       programId: "<id>",
       partnerId: "<id>",
-      expiresAt: "1749191707215",
+      expiresAt: "1749304493707",
       expiredUrl: "https://cloudy-commodity.org",
       password: "aUl3lAfdhWbhOBj",
       title: "<value>",
@@ -76,8 +76,8 @@ let value: SaleCreatedEvent = {
       userId: "<id>",
       workspaceId: "<id>",
       lastClicked: "<value>",
-      createdAt: "1732103684208",
-      updatedAt: "1740046874334",
+      createdAt: "1732216470699",
+      updatedAt: "1740159660825",
       projectId: "<id>",
     },
     sale: {
