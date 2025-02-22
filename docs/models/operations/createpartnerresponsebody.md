@@ -14,7 +14,7 @@ let value: CreatePartnerResponseBody = {
   image: "https://picsum.photos/seed/y1LIIc4Zt/678/450",
   country: "Qatar",
   payoutsEnabled: false,
-  createdAt: "1711575846022",
+  createdAt: "1711688632497",
   status: "pending",
   programId: "<id>",
   tenantId: "<id>",

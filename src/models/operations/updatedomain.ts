@@ -33,6 +33,14 @@ export type UpdateDomainRequestBody = {
    * The logo of the domain.
    */
   logo?: string | null | undefined;
+  /**
+   * assetLinks.json configuration file (for deep link support on Android).
+   */
+  assetLinks?: string | null | undefined;
+  /**
+   * apple-app-site-association configuration file (for deep link support on iOS).
+   */
+  appleAppSiteAssociation?: string | null | undefined;
 };
 
 export type UpdateDomainRequest = {
@@ -55,6 +63,8 @@ export const UpdateDomainRequestBody$inboundSchema: z.ZodType<
   archived: z.boolean().default(false),
   placeholder: z.nullable(z.string()).optional(),
   logo: z.nullable(z.string()).optional(),
+  assetLinks: z.nullable(z.string()).optional(),
+  appleAppSiteAssociation: z.nullable(z.string()).optional(),
 });
 
 /** @internal */
@@ -65,6 +75,8 @@ export type UpdateDomainRequestBody$Outbound = {
   archived: boolean;
   placeholder?: string | null | undefined;
   logo?: string | null | undefined;
+  assetLinks?: string | null | undefined;
+  appleAppSiteAssociation?: string | null | undefined;
 };
 
 /** @internal */
@@ -79,6 +91,8 @@ export const UpdateDomainRequestBody$outboundSchema: z.ZodType<
   archived: z.boolean().default(false),
   placeholder: z.nullable(z.string()).optional(),
   logo: z.nullable(z.string()).optional(),
+  assetLinks: z.nullable(z.string()).optional(),
+  appleAppSiteAssociation: z.nullable(z.string()).optional(),
 });
 
 /**
