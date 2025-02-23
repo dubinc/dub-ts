@@ -8,4 +8,4 @@ export * from "./lib/config.js";
 import { Dub } from "./sdk/index.js";
 
 /** @deprecated Use named export instead: `import { Dub } from "dub";` */
-export default Dub; // eslint-disable-line import/no-default-export
+export default Dub;
