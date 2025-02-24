@@ -21,6 +21,7 @@ import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -29,11 +30,11 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Delete a domain from a workspace. It cannot be undone. This will also delete all the links associated with the domain.
  */
-export async function domainsDelete(
+export function domainsDelete(
   client: DubCore,
   slug: string,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     operations.DeleteDomainResponseBody,
     | errors.BadRequest
@@ -54,6 +55,41 @@ export async function domainsDelete(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    slug,
+    options,
+  ));
+}
+
+async function $do(
+  client: DubCore,
+  slug: string,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      operations.DeleteDomainResponseBody,
+      | errors.BadRequest
+      | errors.Unauthorized
+      | errors.Forbidden
+      | errors.NotFound
+      | errors.Conflict
+      | errors.InviteExpired
+      | errors.UnprocessableEntity
+      | errors.RateLimitExceeded
+      | errors.InternalServerError
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const input: operations.DeleteDomainRequest = {
     slug: slug,
   };
@@ -64,7 +100,7 @@ export async function domainsDelete(
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = null;
@@ -87,6 +123,7 @@ export async function domainsDelete(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "deleteDomain",
     oAuth2Scopes: [],
 
@@ -109,7 +146,7 @@ export async function domainsDelete(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -132,7 +169,7 @@ export async function domainsDelete(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -173,8 +210,8 @@ export async function domainsDelete(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

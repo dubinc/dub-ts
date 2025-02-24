@@ -22,6 +22,7 @@ import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -30,12 +31,12 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Update a tag in the workspace.
  */
-export async function tagsUpdate(
+export function tagsUpdate(
   client: DubCore,
   id: string,
   requestBody?: operations.UpdateTagRequestBody | undefined,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     components.TagSchema,
     | errors.BadRequest
@@ -56,6 +57,43 @@ export async function tagsUpdate(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    id,
+    requestBody,
+    options,
+  ));
+}
+
+async function $do(
+  client: DubCore,
+  id: string,
+  requestBody?: operations.UpdateTagRequestBody | undefined,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      components.TagSchema,
+      | errors.BadRequest
+      | errors.Unauthorized
+      | errors.Forbidden
+      | errors.NotFound
+      | errors.Conflict
+      | errors.InviteExpired
+      | errors.UnprocessableEntity
+      | errors.RateLimitExceeded
+      | errors.InternalServerError
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const input: operations.UpdateTagRequest = {
     id: id,
     requestBody: requestBody,
@@ -67,7 +105,7 @@ export async function tagsUpdate(
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = encodeJSON("body", payload.RequestBody, { explode: true });
@@ -91,6 +129,7 @@ export async function tagsUpdate(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "updateTag",
     oAuth2Scopes: [],
 
@@ -113,7 +152,7 @@ export async function tagsUpdate(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -136,7 +175,7 @@ export async function tagsUpdate(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -177,8 +216,8 @@ export async function tagsUpdate(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

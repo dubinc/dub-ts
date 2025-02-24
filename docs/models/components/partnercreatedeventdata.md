@@ -12,7 +12,7 @@ let value: PartnerCreatedEventData = {
   image: "https://picsum.photos/seed/KwNXpj/2663/3342",
   country: "Eswatini",
   payoutsEnabled: false,
-  createdAt: "1730438961909",
+  createdAt: "1730676484934",
   status: "rejected",
   programId: "<id>",
   tenantId: "<id>",
@@ -49,3 +49,4 @@ let value: PartnerCreatedEventData = {
 | `sales`                                                | *number*                                               | :heavy_minus_sign:                                     | N/A                                                    |
 | `saleAmount`                                           | *number*                                               | :heavy_minus_sign:                                     | N/A                                                    |
 | `earnings`                                             | *number*                                               | :heavy_minus_sign:                                     | N/A                                                    |
+| `applicationId`                                        | *string*                                               | :heavy_minus_sign:                                     | N/A                                                    |

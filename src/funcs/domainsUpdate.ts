@@ -22,6 +22,7 @@ import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -30,12 +31,12 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Update a domain for the authenticated workspace.
  */
-export async function domainsUpdate(
+export function domainsUpdate(
   client: DubCore,
   slug: string,
   requestBody?: operations.UpdateDomainRequestBody | undefined,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     components.DomainSchema,
     | errors.BadRequest
@@ -56,6 +57,43 @@ export async function domainsUpdate(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    slug,
+    requestBody,
+    options,
+  ));
+}
+
+async function $do(
+  client: DubCore,
+  slug: string,
+  requestBody?: operations.UpdateDomainRequestBody | undefined,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      components.DomainSchema,
+      | errors.BadRequest
+      | errors.Unauthorized
+      | errors.Forbidden
+      | errors.NotFound
+      | errors.Conflict
+      | errors.InviteExpired
+      | errors.UnprocessableEntity
+      | errors.RateLimitExceeded
+      | errors.InternalServerError
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const input: operations.UpdateDomainRequest = {
     slug: slug,
     requestBody: requestBody,
@@ -67,7 +105,7 @@ export async function domainsUpdate(
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = encodeJSON("body", payload.RequestBody, { explode: true });
@@ -91,6 +129,7 @@ export async function domainsUpdate(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "updateDomain",
     oAuth2Scopes: [],
 
@@ -113,7 +152,7 @@ export async function domainsUpdate(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -136,7 +175,7 @@ export async function domainsUpdate(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -177,8 +216,8 @@ export async function domainsUpdate(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }
