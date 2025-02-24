@@ -11,7 +11,7 @@ let value: SaleCreatedEventData = {
     id: "<id>",
     externalId: "<id>",
     name: "<value>",
-    createdAt: "1734102314641",
+    createdAt: "1734339837689",
   },
   click: {
     id: "<id>",
@@ -37,7 +37,7 @@ let value: SaleCreatedEventData = {
     tenantId: "<id>",
     programId: "<id>",
     partnerId: "<id>",
-    expiresAt: "1740556569145",
+    expiresAt: "1740794092183",
     expiredUrl: "https://thorough-sandbar.net/",
     password: "b38l_s_j9VQ16UG",
     title: "<value>",
@@ -72,8 +72,8 @@ let value: SaleCreatedEventData = {
     userId: "<id>",
     workspaceId: "<id>",
     lastClicked: "<value>",
-    createdAt: "1733601933930",
-    updatedAt: "1740147606871",
+    createdAt: "1733839456953",
+    updatedAt: "1740385129894",
     projectId: "<id>",
   },
   sale: {

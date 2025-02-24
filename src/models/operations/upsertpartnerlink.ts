@@ -154,6 +154,10 @@ export type UpsertPartnerLinkRequestBody = {
    */
   key?: string | undefined;
   /**
+   * The comments for the short link.
+   */
+  comments?: string | null | undefined;
+  /**
    * Additional properties that you can pass to the partner's short link. Will be used to override the default link properties for this partner.
    */
   linkProps?: UpsertPartnerLinkLinkProps | undefined;
@@ -414,6 +418,7 @@ export const UpsertPartnerLinkRequestBody$inboundSchema: z.ZodType<
   tenantId: z.nullable(z.string()).optional(),
   url: z.nullable(z.string()).optional(),
   key: z.string().optional(),
+  comments: z.nullable(z.string()).optional(),
   linkProps: z.lazy(() => UpsertPartnerLinkLinkProps$inboundSchema).optional(),
 });
 
@@ -424,6 +429,7 @@ export type UpsertPartnerLinkRequestBody$Outbound = {
   tenantId?: string | null | undefined;
   url?: string | null | undefined;
   key?: string | undefined;
+  comments?: string | null | undefined;
   linkProps?: UpsertPartnerLinkLinkProps$Outbound | undefined;
 };
 
@@ -438,6 +444,7 @@ export const UpsertPartnerLinkRequestBody$outboundSchema: z.ZodType<
   tenantId: z.nullable(z.string()).optional(),
   url: z.nullable(z.string()).optional(),
   key: z.string().optional(),
+  comments: z.nullable(z.string()).optional(),
   linkProps: z.lazy(() => UpsertPartnerLinkLinkProps$outboundSchema).optional(),
 });
 

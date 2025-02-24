@@ -79,6 +79,7 @@ export type PartnerCreatedEventData = {
   sales?: number | undefined;
   saleAmount?: number | undefined;
   earnings?: number | undefined;
+  applicationId?: string | null | undefined;
 };
 
 /**
@@ -225,6 +226,7 @@ export const PartnerCreatedEventData$inboundSchema: z.ZodType<
   sales: z.number().default(0),
   saleAmount: z.number().default(0),
   earnings: z.number().default(0),
+  applicationId: z.nullable(z.string()).optional(),
 });
 
 /** @internal */
@@ -246,6 +248,7 @@ export type PartnerCreatedEventData$Outbound = {
   sales: number;
   saleAmount: number;
   earnings: number;
+  applicationId?: string | null | undefined;
 };
 
 /** @internal */
@@ -271,6 +274,7 @@ export const PartnerCreatedEventData$outboundSchema: z.ZodType<
   sales: z.number().default(0),
   saleAmount: z.number().default(0),
   earnings: z.number().default(0),
+  applicationId: z.nullable(z.string()).optional(),
 });
 
 /**

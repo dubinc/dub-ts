@@ -499,6 +499,7 @@ export type CreatePartnerResponseBody = {
   sales?: number | undefined;
   saleAmount?: number | undefined;
   earnings?: number | undefined;
+  applicationId?: string | null | undefined;
 };
 
 /** @internal */
@@ -951,6 +952,7 @@ export const CreatePartnerResponseBody$inboundSchema: z.ZodType<
   sales: z.number().default(0),
   saleAmount: z.number().default(0),
   earnings: z.number().default(0),
+  applicationId: z.nullable(z.string()).optional(),
 });
 
 /** @internal */
@@ -972,6 +974,7 @@ export type CreatePartnerResponseBody$Outbound = {
   sales: number;
   saleAmount: number;
   earnings: number;
+  applicationId?: string | null | undefined;
 };
 
 /** @internal */
@@ -997,6 +1000,7 @@ export const CreatePartnerResponseBody$outboundSchema: z.ZodType<
   sales: z.number().default(0),
   saleAmount: z.number().default(0),
   earnings: z.number().default(0),
+  applicationId: z.nullable(z.string()).optional(),
 });
 
 /**

@@ -7,15 +7,15 @@ generation:
   useClassNamesForArrayFields: true
   fixes:
     nameResolutionDec2023: true
+    nameResolutionFeb2025: false
     parameterOrderingFeb2024: true
     requestResponseComponentNamesFeb2024: true
-    nameResolutionFeb2025: false
     securityFeb2025: false
   auth:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
 typescript:
-  version: 0.55.1
+  version: 0.56.0
   additionalDependencies:
     dependencies: {}
     devDependencies:
