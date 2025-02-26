@@ -4,8 +4,21 @@
 
 import * as z from "zod";
 import { safeParse } from "../../lib/schemas.js";
+import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+
+/**
+ * The mode to use for tracking the lead event. `async` will not block the request; `wait` will block the request until the lead event is fully recorded in Dub.
+ */
+export const Mode = {
+  Async: "async",
+  Wait: "wait",
+} as const;
+/**
+ * The mode to use for tracking the lead event. `async` will not block the request; `wait` will block the request until the lead event is fully recorded in Dub.
+ */
+export type Mode = ClosedEnum<typeof Mode>;
 
 export type TrackLeadRequestBody = {
   /**
@@ -46,6 +59,10 @@ export type TrackLeadRequestBody = {
    * Additional metadata to be stored with the lead event
    */
   metadata?: { [k: string]: any } | null | undefined;
+  /**
+   * The mode to use for tracking the lead event. `async` will not block the request; `wait` will block the request until the lead event is fully recorded in Dub.
+   */
+  mode?: Mode | undefined;
 };
 
 export type Click = {
@@ -68,6 +85,26 @@ export type TrackLeadResponseBody = {
 };
 
 /** @internal */
+export const Mode$inboundSchema: z.ZodNativeEnum<typeof Mode> = z.nativeEnum(
+  Mode,
+);
+
+/** @internal */
+export const Mode$outboundSchema: z.ZodNativeEnum<typeof Mode> =
+  Mode$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Mode$ {
+  /** @deprecated use `Mode$inboundSchema` instead. */
+  export const inboundSchema = Mode$inboundSchema;
+  /** @deprecated use `Mode$outboundSchema` instead. */
+  export const outboundSchema = Mode$outboundSchema;
+}
+
+/** @internal */
 export const TrackLeadRequestBody$inboundSchema: z.ZodType<
   TrackLeadRequestBody,
   z.ZodTypeDef,
@@ -82,6 +119,7 @@ export const TrackLeadRequestBody$inboundSchema: z.ZodType<
   customerEmail: z.nullable(z.string()).default(null),
   customerAvatar: z.nullable(z.string()).default(null),
   metadata: z.nullable(z.record(z.any())).optional(),
+  mode: Mode$inboundSchema.default("async"),
 });
 
 /** @internal */
@@ -95,6 +133,7 @@ export type TrackLeadRequestBody$Outbound = {
   customerEmail: string | null;
   customerAvatar: string | null;
   metadata?: { [k: string]: any } | null | undefined;
+  mode: string;
 };
 
 /** @internal */
@@ -112,6 +151,7 @@ export const TrackLeadRequestBody$outboundSchema: z.ZodType<
   customerEmail: z.nullable(z.string()).default(null),
   customerAvatar: z.nullable(z.string()).default(null),
   metadata: z.nullable(z.record(z.any())).optional(),
+  mode: Mode$outboundSchema.default("async"),
 });
 
 /**

@@ -7,9 +7,9 @@ import { Link } from "dub/models/operations";
 
 let value: Link = {
   id: "<id>",
-  domain: "unwelcome-armoire.biz",
+  domain: "wide-eyed-pick.biz",
   key: "<key>",
-  shortLink: "https://strange-cork.net/",
+  shortLink: "https://hot-thunderbolt.com",
   programId: "<id>",
 };
 ```

@@ -14,7 +14,9 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export const PaymentProcessor = {
   Stripe: "stripe",
   Shopify: "shopify",
+  Polar: "polar",
   Paddle: "paddle",
+  Custom: "custom",
 } as const;
 /**
  * The payment processor via which the sale was made.
@@ -45,7 +47,7 @@ export type TrackSaleRequestBody = {
    */
   eventName?: string | undefined;
   /**
-   * The invoice ID of the sale.
+   * The invoice ID of the sale. Can be used as a idempotency key – only one sale event can be recorded for a given invoice ID.
    */
   invoiceId?: string | null | undefined;
   /**

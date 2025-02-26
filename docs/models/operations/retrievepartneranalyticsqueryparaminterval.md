@@ -7,7 +7,7 @@ The interval to retrieve analytics for. If undefined, defaults to 24h.
 ```typescript
 import { RetrievePartnerAnalyticsQueryParamInterval } from "dub/models/operations";
 
-let value: RetrievePartnerAnalyticsQueryParamInterval = "mtd";
+let value: RetrievePartnerAnalyticsQueryParamInterval = "90d";
 ```
 
 ## Values

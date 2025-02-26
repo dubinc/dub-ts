@@ -15,7 +15,7 @@ generation:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
 typescript:
-  version: 0.56.0
+  version: 0.57.0
   additionalDependencies:
     dependencies: {}
     devDependencies:
@@ -41,6 +41,7 @@ typescript:
       shared: models/components
       webhooks: models/webhooks
   inputModelSuffix: input
+  jsonpath: legacy
   maxMethodParams: 0
   methodArguments: infer-optional-args
   moduleFormat: dual

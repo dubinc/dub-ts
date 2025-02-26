@@ -7,9 +7,9 @@ import { GetCustomerLink } from "dub/models/operations";
 
 let value: GetCustomerLink = {
   id: "<id>",
-  domain: "blank-switchboard.info",
+  domain: "dirty-lawmaker.com",
   key: "<key>",
-  shortLink: "https://massive-travel.net/",
+  shortLink: "https://light-operating.com",
   programId: "<id>",
 };
 ```

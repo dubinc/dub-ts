@@ -13,5 +13,5 @@ let value: PaymentProcessor = "stripe";
 ## Values
 
 ```typescript
-"stripe" | "shopify" | "paddle"
+"stripe" | "shopify" | "polar" | "paddle" | "custom"
 ```

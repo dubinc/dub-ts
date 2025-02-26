@@ -7,9 +7,9 @@ import { UpdateCustomerLink } from "dub/models/operations";
 
 let value: UpdateCustomerLink = {
   id: "<id>",
-  domain: "amazing-fort.name",
+  domain: "stable-scarification.com",
   key: "<key>",
-  shortLink: "https://dramatic-circumference.info",
+  shortLink: "https://quarrelsome-kinase.com/",
   programId: "<id>",
 };
 ```

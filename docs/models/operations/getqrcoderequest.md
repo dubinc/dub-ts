@@ -6,7 +6,7 @@
 import { GetQRCodeRequest } from "dub/models/operations";
 
 let value: GetQRCodeRequest = {
-  url: "https://authorized-transom.info",
+  url: "https://spirited-apricot.net",
 };
 ```
 
