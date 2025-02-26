@@ -9,10 +9,10 @@ let value: UpdateCustomerDiscount = {
   id: "<id>",
   couponId: "<id>",
   couponTestId: "<id>",
-  amount: 787.38,
+  amount: 52.24,
   type: "percentage",
-  duration: 1676.26,
-  interval: "year",
+  duration: 1000.63,
+  interval: "month",
 };
 ```
 

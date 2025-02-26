@@ -28,11 +28,11 @@ const value: components.PartnerAnalyticsTopLinks[] = [
   {
     link: "<value>",
     id: "<id>",
-    domain: "dull-hope.org",
+    domain: "bustling-minority.name",
     key: "<key>",
     shortLink: "<value>",
-    url: "https://joyous-vicinity.net",
-    createdAt: "1710281340099",
+    url: "https://dull-hope.org/",
+    createdAt: "1732117401549",
   },
 ];
 ```

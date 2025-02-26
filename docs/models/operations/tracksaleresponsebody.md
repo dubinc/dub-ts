@@ -12,13 +12,13 @@ let value: TrackSaleResponseBody = {
   customer: {
     id: "<id>",
     name: "<value>",
-    email: "Allen69@yahoo.com",
-    avatar: "https://picsum.photos/seed/8hxOpXFj/1607/3022",
+    email: "Jeffry75@gmail.com",
+    avatar: "https://loremflickr.com/2530/567?lock=4808734280597529",
     externalId: "<id>",
   },
   sale: {
-    amount: 5614.34,
-    currency: "New Israeli Sheqel",
+    amount: 8139.32,
+    currency: "Iceland Krona",
     paymentProcessor: "<value>",
     invoiceId: "<id>",
     metadata: {
