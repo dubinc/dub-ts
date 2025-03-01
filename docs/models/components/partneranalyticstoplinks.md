@@ -12,7 +12,7 @@ let value: PartnerAnalyticsTopLinks = {
   key: "<key>",
   shortLink: "<value>",
   url: "https://round-saw.info/",
-  createdAt: "1728301010727",
+  createdAt: "1728480096724",
 };
 ```
 
