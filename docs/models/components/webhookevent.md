@@ -11,7 +11,7 @@ Webhook event schema
 const value: components.LinkWebhookEvent = {
   id: "<id>",
   event: "link.deleted",
-  createdAt: "1725438778682",
+  createdAt: "1725617864677",
   data: {
     id: "<id>",
     domain: "true-nucleotidase.info",
@@ -21,7 +21,7 @@ const value: components.LinkWebhookEvent = {
     tenantId: "<id>",
     programId: "<id>",
     partnerId: "<id>",
-    expiresAt: "1745209186864",
+    expiresAt: "1745388272858",
     expiredUrl: "https://emotional-spirit.biz",
     password: "zr9nZdVemeogQLU",
     title: "<value>",
@@ -55,8 +55,8 @@ const value: components.LinkWebhookEvent = {
     userId: "<id>",
     workspaceId: "<id>",
     lastClicked: "<value>",
-    createdAt: "1739812810058",
-    updatedAt: "1740582322328",
+    createdAt: "1739991896073",
+    updatedAt: "1740761408343",
     projectId: "<id>",
   },
 };
@@ -68,7 +68,7 @@ const value: components.LinkWebhookEvent = {
 const value: components.LinkClickedEvent = {
   id: "<id>",
   event: "link.clicked",
-  createdAt: "1732408882969",
+  createdAt: "1732587968985",
   data: {
     click: {
       id: "<id>",
@@ -94,7 +94,7 @@ const value: components.LinkClickedEvent = {
       tenantId: "<id>",
       programId: "<id>",
       partnerId: "<id>",
-      expiresAt: "1746163550478",
+      expiresAt: "1746342636507",
       expiredUrl: "https://substantial-maestro.com/",
       password: "MaTW6qVdItY8fWk",
       title: "<value>",
@@ -128,8 +128,8 @@ const value: components.LinkClickedEvent = {
       userId: "<id>",
       workspaceId: "<id>",
       lastClicked: "<value>",
-      createdAt: "1740486961559",
-      updatedAt: "1740543601759",
+      createdAt: "1740666047573",
+      updatedAt: "1740722687773",
       projectId: "<id>",
     },
   },
@@ -142,14 +142,14 @@ const value: components.LinkClickedEvent = {
 const value: components.LeadCreatedEvent = {
   id: "<id>",
   event: "lead.created",
-  createdAt: "1720219508624",
+  createdAt: "1720398594637",
   data: {
     eventName: "<value>",
     customer: {
       id: "<id>",
       externalId: "<id>",
       name: "<value>",
-      createdAt: "1717364474969",
+      createdAt: "1717543560980",
     },
     click: {
       id: "<id>",
@@ -175,7 +175,7 @@ const value: components.LeadCreatedEvent = {
       tenantId: "<id>",
       programId: "<id>",
       partnerId: "<id>",
-      expiresAt: "1766813479110",
+      expiresAt: "1766992565109",
       expiredUrl: "https://oddball-nudge.org/",
       password: "S4XjjG835ABu2iL",
       title: "<value>",
@@ -209,8 +209,8 @@ const value: components.LeadCreatedEvent = {
       userId: "<id>",
       workspaceId: "<id>",
       lastClicked: "<value>",
-      createdAt: "1738852115858",
-      updatedAt: "1740535611660",
+      createdAt: "1739031201850",
+      updatedAt: "1740714697653",
       projectId: "<id>",
     },
   },
@@ -223,14 +223,14 @@ const value: components.LeadCreatedEvent = {
 const value: components.SaleCreatedEvent = {
   id: "<id>",
   event: "sale.created",
-  createdAt: "1736907169502",
+  createdAt: "1737086255494",
   data: {
     eventName: "<value>",
     customer: {
       id: "<id>",
       externalId: "<id>",
       name: "<value>",
-      createdAt: "1711603336340",
+      createdAt: "1711782422333",
     },
     click: {
       id: "<id>",
@@ -256,7 +256,7 @@ const value: components.SaleCreatedEvent = {
       tenantId: "<id>",
       programId: "<id>",
       partnerId: "<id>",
-      expiresAt: "1763190469778",
+      expiresAt: "1763369555770",
       expiredUrl: "https://medium-independence.org",
       password: "lVqLLsKnwnPYfqj",
       title: "<value>",
@@ -290,8 +290,8 @@ const value: components.SaleCreatedEvent = {
       userId: "<id>",
       workspaceId: "<id>",
       lastClicked: "<value>",
-      createdAt: "1719648067137",
-      updatedAt: "1740532610235",
+      createdAt: "1719827153128",
+      updatedAt: "1740711696226",
       projectId: "<id>",
     },
     sale: {
@@ -310,7 +310,7 @@ const value: components.SaleCreatedEvent = {
 const value: components.PartnerCreatedEvent = {
   id: "<id>",
   event: "partner.created",
-  createdAt: "1712953395537",
+  createdAt: "1713132481528",
   data: {
     id: "<id>",
     name: "<value>",
@@ -318,7 +318,7 @@ const value: components.PartnerCreatedEvent = {
     image: "https://picsum.photos/seed/1Ec7VZg/1712/3856",
     country: "Finland",
     payoutsEnabled: false,
-    createdAt: "1714277030166",
+    createdAt: "1714456116157",
     status: "pending",
     programId: "<id>",
     tenantId: "<id>",

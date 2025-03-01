@@ -14,7 +14,7 @@ let value: CreatePartnerResponseBody = {
   image: "https://picsum.photos/seed/a6zHy1LII/665/594",
   country: "Cook Islands",
   payoutsEnabled: false,
-  createdAt: "1711290376027",
+  createdAt: "1711469461923",
   status: "rejected",
   programId: "<id>",
   tenantId: "<id>",

@@ -10,14 +10,14 @@ import { LeadCreatedEvent } from "dub/models/components";
 let value: LeadCreatedEvent = {
   id: "<id>",
   event: "lead.created",
-  createdAt: "1730973905589",
+  createdAt: "1731152991550",
   data: {
     eventName: "<value>",
     customer: {
       id: "<id>",
       externalId: "<id>",
       name: "<value>",
-      createdAt: "1721660342353",
+      createdAt: "1721839428315",
     },
     click: {
       id: "<id>",
@@ -43,7 +43,7 @@ let value: LeadCreatedEvent = {
       tenantId: "<id>",
       programId: "<id>",
       partnerId: "<id>",
-      expiresAt: "1741794546642",
+      expiresAt: "1741973632604",
       expiredUrl: "https://raw-hexagon.biz",
       password: "2XGgwICMSPztdW8",
       title: "<value>",
@@ -76,8 +76,8 @@ let value: LeadCreatedEvent = {
       userId: "<id>",
       workspaceId: "<id>",
       lastClicked: "<value>",
-      createdAt: "1730128005420",
-      updatedAt: "1740540414833",
+      createdAt: "1730307091381",
+      updatedAt: "1740719500794",
       projectId: "<id>",
     },
   },

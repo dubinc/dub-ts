@@ -15,7 +15,7 @@ const value: components.LinkSchema = {
   tenantId: "<id>",
   programId: "<id>",
   partnerId: "<id>",
-  expiresAt: "1755088513182",
+  expiresAt: "1755267599115",
   expiredUrl: "https://giving-testing.org",
   password: "0M7ydYdbdrXUFnq",
   title: "<value>",
@@ -49,8 +49,8 @@ const value: components.LinkSchema = {
   userId: "<id>",
   workspaceId: "<id>",
   lastClicked: "<value>",
-  createdAt: "1710985876002",
-  updatedAt: "1740543341437",
+  createdAt: "1711164961935",
+  updatedAt: "1740722427370",
   projectId: "<id>",
 };
 ```
