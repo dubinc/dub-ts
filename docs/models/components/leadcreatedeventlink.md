@@ -14,7 +14,7 @@ let value: LeadCreatedEventLink = {
   tenantId: "<id>",
   programId: "<id>",
   partnerId: "<id>",
-  expiresAt: "1741406790730",
+  expiresAt: "1741422451422",
   expiredUrl: "https://turbulent-detective.org/",
   password: "09sIbuplOVaNGvl",
   title: "<value>",
@@ -49,8 +49,8 @@ let value: LeadCreatedEventLink = {
   userId: "<id>",
   workspaceId: "<id>",
   lastClicked: "<value>",
-  createdAt: "1737246634995",
-  updatedAt: "1740886726848",
+  createdAt: "1737262295687",
+  updatedAt: "1740902387539",
   projectId: "<id>",
 };
 ```

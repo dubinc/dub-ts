@@ -5,6 +5,7 @@
 import { partnersAnalytics } from "../funcs/partnersAnalytics.js";
 import { partnersCreate } from "../funcs/partnersCreate.js";
 import { partnersCreateLink } from "../funcs/partnersCreateLink.js";
+import { partnersUpdateSale } from "../funcs/partnersUpdateSale.js";
 import { partnersUpsertLink } from "../funcs/partnersUpsertLink.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
@@ -74,6 +75,23 @@ export class Partners extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.RetrievePartnerAnalyticsResponseBody> {
     return unwrapAsync(partnersAnalytics(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Update a sale for a partner.
+   *
+   * @remarks
+   * Update an existing sale amount. This is useful for handling refunds (partial or full) or fraudulent sales.
+   */
+  async updateSale(
+    request?: operations.UpdatePartnerSaleRequestBody | undefined,
+    options?: RequestOptions,
+  ): Promise<operations.UpdatePartnerSaleResponseBody> {
+    return unwrapAsync(partnersUpdateSale(
       this,
       request,
       options,

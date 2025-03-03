@@ -12,7 +12,7 @@ let value: PartnerAnalyticsTopLinks = {
   key: "<key>",
   shortLink: "<value>",
   url: "https://lustrous-nudge.biz",
-  createdAt: "1724456252912",
+  createdAt: "1724471913608",
 };
 ```
 
