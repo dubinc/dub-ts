@@ -475,11 +475,11 @@ export type Partner = {
   image?: string | null | undefined;
 };
 
-export const Type = {
+export const LeadEventType = {
   Percentage: "percentage",
   Flat: "flat",
 } as const;
-export type Type = ClosedEnum<typeof Type>;
+export type LeadEventType = ClosedEnum<typeof LeadEventType>;
 
 export const Interval = {
   Month: "month",
@@ -492,7 +492,7 @@ export type Discount = {
   couponId: string | null;
   couponTestId: string | null;
   amount: number;
-  type: Type;
+  type: LeadEventType;
   duration: number | null;
   interval: Interval | null;
 };
@@ -2356,23 +2356,24 @@ export function partnerFromJSON(
 }
 
 /** @internal */
-export const Type$inboundSchema: z.ZodNativeEnum<typeof Type> = z.nativeEnum(
-  Type,
-);
+export const LeadEventType$inboundSchema: z.ZodNativeEnum<
+  typeof LeadEventType
+> = z.nativeEnum(LeadEventType);
 
 /** @internal */
-export const Type$outboundSchema: z.ZodNativeEnum<typeof Type> =
-  Type$inboundSchema;
+export const LeadEventType$outboundSchema: z.ZodNativeEnum<
+  typeof LeadEventType
+> = LeadEventType$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Type$ {
-  /** @deprecated use `Type$inboundSchema` instead. */
-  export const inboundSchema = Type$inboundSchema;
-  /** @deprecated use `Type$outboundSchema` instead. */
-  export const outboundSchema = Type$outboundSchema;
+export namespace LeadEventType$ {
+  /** @deprecated use `LeadEventType$inboundSchema` instead. */
+  export const inboundSchema = LeadEventType$inboundSchema;
+  /** @deprecated use `LeadEventType$outboundSchema` instead. */
+  export const outboundSchema = LeadEventType$outboundSchema;
 }
 
 /** @internal */
@@ -2404,7 +2405,7 @@ export const Discount$inboundSchema: z.ZodType<
   couponId: z.nullable(z.string()),
   couponTestId: z.nullable(z.string()),
   amount: z.number(),
-  type: Type$inboundSchema,
+  type: LeadEventType$inboundSchema,
   duration: z.nullable(z.number()),
   interval: z.nullable(Interval$inboundSchema),
 });
@@ -2430,7 +2431,7 @@ export const Discount$outboundSchema: z.ZodType<
   couponId: z.nullable(z.string()),
   couponTestId: z.nullable(z.string()),
   amount: z.number(),
-  type: Type$outboundSchema,
+  type: LeadEventType$outboundSchema,
   duration: z.nullable(z.number()),
   interval: z.nullable(Interval$outboundSchema),
 });

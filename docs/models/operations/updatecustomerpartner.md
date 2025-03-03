@@ -8,7 +8,7 @@ import { UpdateCustomerPartner } from "dub/models/operations";
 let value: UpdateCustomerPartner = {
   id: "<id>",
   name: "<value>",
-  email: "Lisa.DuBuque-Cremin@yahoo.com",
+  email: "Salma_Weissnat@yahoo.com",
 };
 ```
 

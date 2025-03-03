@@ -101,6 +101,10 @@ export type WorkspaceSchema = {
    */
   stripeConnectId: string | null;
   /**
+   * The total number of links in the workspace.
+   */
+  totalLinks: number;
+  /**
    * The usage of the workspace.
    */
   usage: number;
@@ -346,6 +350,7 @@ export const WorkspaceSchema$inboundSchema: z.ZodType<
   billingCycleStart: z.number(),
   paymentFailedAt: z.nullable(z.string()),
   stripeConnectId: z.nullable(z.string()),
+  totalLinks: z.number(),
   usage: z.number(),
   usageLimit: z.number(),
   linksUsage: z.number(),
@@ -382,6 +387,7 @@ export type WorkspaceSchema$Outbound = {
   billingCycleStart: number;
   paymentFailedAt: string | null;
   stripeConnectId: string | null;
+  totalLinks: number;
   usage: number;
   usageLimit: number;
   linksUsage: number;
@@ -422,6 +428,7 @@ export const WorkspaceSchema$outboundSchema: z.ZodType<
   billingCycleStart: z.number(),
   paymentFailedAt: z.nullable(z.string()),
   stripeConnectId: z.nullable(z.string()),
+  totalLinks: z.number(),
   usage: z.number(),
   usageLimit: z.number(),
   linksUsage: z.number(),

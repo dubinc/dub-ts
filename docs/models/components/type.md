@@ -5,11 +5,11 @@
 ```typescript
 import { Type } from "dub/models/components";
 
-let value: Type = "percentage";
+let value: Type = "mega";
 ```
 
 ## Values
 
 ```typescript
-"percentage" | "flat"
+"default" | "mega"
 ```

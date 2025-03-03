@@ -26,7 +26,7 @@ const value: components.AnalyticsTimeseries[] = [
 ```typescript
 const value: components.AnalyticsContinents[] = [
   {
-    continent: "SA",
+    continent: "NA",
   },
 ];
 ```
@@ -36,7 +36,7 @@ const value: components.AnalyticsContinents[] = [
 ```typescript
 const value: components.AnalyticsCountries[] = [
   {
-    country: "AI",
+    country: "CD",
   },
 ];
 ```
@@ -46,7 +46,7 @@ const value: components.AnalyticsCountries[] = [
 ```typescript
 const value: components.AnalyticsRegions[] = [
   {
-    country: "SN",
+    country: "TL",
     region: "<value>",
   },
 ];
@@ -57,8 +57,8 @@ const value: components.AnalyticsRegions[] = [
 ```typescript
 const value: components.AnalyticsCities[] = [
   {
-    country: "BS",
-    city: "Fort Ophelia",
+    country: "MK",
+    city: "Fort Crystal",
   },
 ];
 ```
@@ -88,7 +88,7 @@ const value: components.AnalyticsBrowsers[] = [
 ```typescript
 const value: components.AnalyticsOS[] = [
   {
-    os: "Windows",
+    os: "Blackberry",
   },
 ];
 ```
@@ -108,7 +108,7 @@ const value: components.AnalyticsTriggers[] = [
 ```typescript
 const value: components.AnalyticsReferers[] = [
   {
-    referer: "lonely-hexagon.info",
+    referer: "well-groomed-creature.biz",
   },
 ];
 ```
@@ -118,7 +118,7 @@ const value: components.AnalyticsReferers[] = [
 ```typescript
 const value: components.AnalyticsRefererUrls[] = [
   {
-    refererUrl: "https://pricey-ice-cream.com/",
+    refererUrl: "https://gullible-hutch.com",
   },
 ];
 ```
@@ -130,11 +130,11 @@ const value: components.AnalyticsTopLinks[] = [
   {
     link: "<value>",
     id: "<id>",
-    domain: "warped-couch.biz",
+    domain: "essential-saloon.org",
     key: "<key>",
     shortLink: "<value>",
-    url: "https://guilty-numeric.com",
-    createdAt: "1722858724969",
+    url: "https://sore-alert.com/",
+    createdAt: "1721819686603",
   },
 ];
 ```
@@ -144,7 +144,7 @@ const value: components.AnalyticsTopLinks[] = [
 ```typescript
 const value: components.AnalyticsTopUrls[] = [
   {
-    url: "https://dull-corral.org/",
+    url: "https://dazzling-order.org/",
   },
 ];
 ```
