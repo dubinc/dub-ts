@@ -38,6 +38,7 @@ export * from "./updatecustomer.js";
 export * from "./updatedomain.js";
 export * from "./updatefolder.js";
 export * from "./updatelink.js";
+export * from "./updatepartnersale.js";
 export * from "./updatetag.js";
 export * from "./updateworkspace.js";
 export * from "./upsertlink.js";

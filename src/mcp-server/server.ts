@@ -38,6 +38,7 @@ import { tool$metatagsGet } from "./tools/metatagsGet.js";
 import { tool$partnersAnalytics } from "./tools/partnersAnalytics.js";
 import { tool$partnersCreate } from "./tools/partnersCreate.js";
 import { tool$partnersCreateLink } from "./tools/partnersCreateLink.js";
+import { tool$partnersUpdateSale } from "./tools/partnersUpdateSale.js";
 import { tool$partnersUpsertLink } from "./tools/partnersUpsertLink.js";
 import { tool$qrCodesGet } from "./tools/qrCodesGet.js";
 import { tool$tagsCreate } from "./tools/tagsCreate.js";
@@ -58,7 +59,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Dub",
-    version: "0.57.2",
+    version: "0.57.3",
   });
 
   const client = new DubCore({
@@ -104,6 +105,7 @@ export function createMCPServer(deps: {
   tool(tool$partnersCreateLink);
   tool(tool$partnersUpsertLink);
   tool(tool$partnersAnalytics);
+  tool(tool$partnersUpdateSale);
   tool(tool$workspacesGet);
   tool(tool$workspacesUpdate);
   tool(tool$embedTokensCreate);
