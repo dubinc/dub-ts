@@ -8,6 +8,12 @@ import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+export const Type = {
+  Default: "default",
+  Mega: "mega",
+} as const;
+export type Type = ClosedEnum<typeof Type>;
+
 /**
  * The access level of the folder within the workspace.
  */
@@ -29,6 +35,7 @@ export type FolderSchema = {
    * The name of the folder.
    */
   name: string;
+  type: Type;
   /**
    * The access level of the folder within the workspace.
    */
@@ -46,6 +53,26 @@ export type FolderSchema = {
    */
   updatedAt: string;
 };
+
+/** @internal */
+export const Type$inboundSchema: z.ZodNativeEnum<typeof Type> = z.nativeEnum(
+  Type,
+);
+
+/** @internal */
+export const Type$outboundSchema: z.ZodNativeEnum<typeof Type> =
+  Type$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Type$ {
+  /** @deprecated use `Type$inboundSchema` instead. */
+  export const inboundSchema = Type$inboundSchema;
+  /** @deprecated use `Type$outboundSchema` instead. */
+  export const outboundSchema = Type$outboundSchema;
+}
 
 /** @internal */
 export const AccessLevel$inboundSchema: z.ZodNativeEnum<typeof AccessLevel> = z
@@ -74,6 +101,7 @@ export const FolderSchema$inboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   name: z.string(),
+  type: Type$inboundSchema,
   accessLevel: z.nullable(AccessLevel$inboundSchema).default(null),
   linkCount: z.number().default(0),
   createdAt: z.string(),
@@ -84,6 +112,7 @@ export const FolderSchema$inboundSchema: z.ZodType<
 export type FolderSchema$Outbound = {
   id: string;
   name: string;
+  type: string;
   accessLevel: string | null;
   linkCount: number;
   createdAt: string;
@@ -98,6 +127,7 @@ export const FolderSchema$outboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   name: z.string(),
+  type: Type$outboundSchema,
   accessLevel: z.nullable(AccessLevel$outboundSchema).default(null),
   linkCount: z.number().default(0),
   createdAt: z.string(),

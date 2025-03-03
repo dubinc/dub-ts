@@ -8,20 +8,20 @@
 ```typescript
 const value: components.LinkSchema = {
   id: "<id>",
-  domain: "fake-substitution.com",
+  domain: "glaring-decision.info",
   key: "<key>",
-  url: "https://torn-hydrolyse.com/",
+  url: "https://pretty-duster.org",
   externalId: "<id>",
   tenantId: "<id>",
   programId: "<id>",
   partnerId: "<id>",
-  expiresAt: "1755267599115",
-  expiredUrl: "https://giving-testing.org",
-  password: "0M7ydYdbdrXUFnq",
+  expiresAt: "1749765549364",
+  expiredUrl: "https://fatherly-sand.name",
+  password: "WL8Ztft9BhCFCm6",
   title: "<value>",
-  description: "unlike over brook council absent quietly",
-  image: "https://picsum.photos/seed/z8RKXNAU/2447/2140",
-  video: "https://loremflickr.com/2617/1241?lock=5443120578657445",
+  description: "ugh uselessly yowza whoever shallow fit",
+  image: "https://loremflickr.com/2760/2400?lock=938846191739087",
+  video: "https://loremflickr.com/558/2786?lock=3058401090769541",
   ios: "<value>",
   android: "<id>",
   geo: {},
@@ -30,7 +30,7 @@ const value: components.LinkSchema = {
     {
       id: "<id>",
       name: "<value>",
-      color: "pink",
+      color: "green",
     },
   ],
   folderId: "<id>",
@@ -38,9 +38,9 @@ const value: components.LinkSchema = {
     "<value>",
   ],
   comments:
-    "forsaken beloved inspection famously conservative scramble officially sticky versus shoulder whereas around generously from intensely underneath what yippee",
-  shortLink: "https://damp-galoshes.org/",
-  qrCode: "https://messy-instructor.info/",
+    "strictly wetly blah nutritious stall ick beside smoggy yuck nearly failing",
+  shortLink: "https://huge-cinder.com/",
+  qrCode: "https://potable-diversity.org/",
   utmSource: "<value>",
   utmMedium: "<value>",
   utmCampaign: "<value>",
@@ -49,8 +49,8 @@ const value: components.LinkSchema = {
   userId: "<id>",
   workspaceId: "<id>",
   lastClicked: "<value>",
-  createdAt: "1711164961935",
-  updatedAt: "1740722427370",
+  createdAt: "1731152515699",
+  updatedAt: "1740934645004",
   projectId: "<id>",
 };
 ```
@@ -60,7 +60,7 @@ const value: components.LinkSchema = {
 ```typescript
 const value: components.LinkErrorSchema = {
   error: "<value>",
-  code: "rate_limit_exceeded",
+  code: "invite_pending",
 };
 ```
 

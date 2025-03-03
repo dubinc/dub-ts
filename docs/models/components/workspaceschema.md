@@ -10,28 +10,29 @@ let value: WorkspaceSchema = {
   name: "<value>",
   slug: "<value>",
   inviteCode: "<value>",
-  plan: "business",
+  plan: "business plus",
   stripeId: "<id>",
-  billingCycleStart: 2847.79,
+  billingCycleStart: 9301.27,
   paymentFailedAt: "<value>",
   stripeConnectId: "<id>",
-  usage: 4446.25,
-  usageLimit: 9301.27,
-  linksUsage: 1812.67,
-  linksLimit: 4013.88,
-  salesUsage: 6155.97,
-  salesLimit: 9465.58,
-  domainsLimit: 1331.48,
-  tagsLimit: 9178.77,
-  foldersUsage: 810.53,
-  foldersLimit: 4807.41,
-  usersLimit: 4545.9,
-  aiUsage: 2096.02,
-  aiLimit: 3474.6,
+  totalLinks: 1812.67,
+  usage: 4013.88,
+  usageLimit: 6155.97,
+  linksUsage: 9465.58,
+  linksLimit: 1331.48,
+  salesUsage: 9178.77,
+  salesLimit: 810.53,
+  domainsLimit: 4807.41,
+  tagsLimit: 4545.9,
+  foldersUsage: 2096.02,
+  foldersLimit: 3474.6,
+  usersLimit: 4541.65,
+  aiUsage: 8652.12,
+  aiLimit: 9550.65,
   conversionEnabled: false,
   dotLinkClaimed: false,
   partnersEnabled: false,
-  createdAt: "1723575580433",
+  createdAt: "1725790586776",
   users: [
     {
       role: "member",
@@ -65,6 +66,7 @@ let value: WorkspaceSchema = {
 | `billingCycleStart`                                                                                   | *number*                                                                                              | :heavy_check_mark:                                                                                    | The date and time when the billing cycle starts for the workspace.                                    |                                                                                                       |
 | `paymentFailedAt`                                                                                     | *string*                                                                                              | :heavy_check_mark:                                                                                    | The date and time when the payment failed for the workspace.                                          |                                                                                                       |
 | `stripeConnectId`                                                                                     | *string*                                                                                              | :heavy_check_mark:                                                                                    | The Stripe Connect ID of the workspace.                                                               |                                                                                                       |
+| `totalLinks`                                                                                          | *number*                                                                                              | :heavy_check_mark:                                                                                    | The total number of links in the workspace.                                                           |                                                                                                       |
 | `usage`                                                                                               | *number*                                                                                              | :heavy_check_mark:                                                                                    | The usage of the workspace.                                                                           |                                                                                                       |
 | `usageLimit`                                                                                          | *number*                                                                                              | :heavy_check_mark:                                                                                    | The usage limit of the workspace.                                                                     |                                                                                                       |
 | `linksUsage`                                                                                          | *number*                                                                                              | :heavy_check_mark:                                                                                    | The links usage of the workspace.                                                                     |                                                                                                       |
