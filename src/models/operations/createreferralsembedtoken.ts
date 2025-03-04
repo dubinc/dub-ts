@@ -12,7 +12,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Country where the partner is based.
  */
-export const Country = {
+export const CreateReferralsEmbedTokenCountry = {
   Af: "AF",
   Al: "AL",
   Dz: "DZ",
@@ -267,22 +267,24 @@ export const Country = {
 /**
  * Country where the partner is based.
  */
-export type Country = ClosedEnum<typeof Country>;
+export type CreateReferralsEmbedTokenCountry = ClosedEnum<
+  typeof CreateReferralsEmbedTokenCountry
+>;
 
 /**
  * The unique IDs of the tags assigned to the short link.
  */
-export type CreatePartnerTagIds = string | Array<string>;
+export type CreateReferralsEmbedTokenTagIds = string | Array<string>;
 
 /**
  * The unique name of the tags assigned to the short link (case insensitive).
  */
-export type CreatePartnerTagNames = string | Array<string>;
+export type CreateReferralsEmbedTokenTagNames = string | Array<string>;
 
 /**
  * Additional properties that you can pass to the partner's short link. Will be used to override the default link properties for this partner.
  */
-export type LinkProps = {
+export type CreateReferralsEmbedTokenLinkProps = {
   /**
    * The ID of the link in your database. If set, it can be used to identify the link in future API requests (must be prefixed with 'ext_' when passed as a query parameter). This key is unique across your workspace.
    */
@@ -389,11 +391,7 @@ export type LinkProps = {
   ref?: string | null | undefined;
 };
 
-export type CreatePartnerRequestBody = {
-  /**
-   * The ID of the program to create a partner for.
-   */
-  programId: string;
+export type Partner = {
   /**
    * Full legal name of the partner.
    */
@@ -413,7 +411,7 @@ export type CreatePartnerRequestBody = {
   /**
    * Country where the partner is based.
    */
-  country?: Country | null | undefined;
+  country?: CreateReferralsEmbedTokenCountry | null | undefined;
   /**
    * A brief description of the partner and their background.
    */
@@ -425,197 +423,149 @@ export type CreatePartnerRequestBody = {
   /**
    * Additional properties that you can pass to the partner's short link. Will be used to override the default link properties for this partner.
    */
-  linkProps?: LinkProps | undefined;
+  linkProps?: CreateReferralsEmbedTokenLinkProps | undefined;
 };
 
-export const Status = {
-  Approved: "approved",
-  Pending: "pending",
-  Rejected: "rejected",
-} as const;
-export type Status = ClosedEnum<typeof Status>;
-
-export type Links = {
-  /**
-   * The unique ID of the short link.
-   */
-  id: string;
-  /**
-   * The domain of the short link. If not provided, the primary domain for the workspace will be used (or `dub.sh` if the workspace has no domains).
-   */
-  domain: string;
-  /**
-   * The short link slug. If not provided, a random 7-character slug will be generated.
-   */
-  key: string;
-  /**
-   * The full URL of the short link, including the https protocol (e.g. `https://dub.sh/try`).
-   */
-  shortLink: string;
-  /**
-   * The destination URL of the short link.
-   */
-  url: string;
-  /**
-   * The number of clicks on the short link.
-   */
-  clicks?: number | undefined;
-  /**
-   * The number of leads the short links has generated.
-   */
-  leads?: number | undefined;
-  /**
-   * The number of sales the short links has generated.
-   */
-  sales?: number | undefined;
-  /**
-   * The total dollar amount of sales the short links has generated (in cents).
-   */
-  saleAmount?: number | undefined;
-};
-
-/**
- * The created partner
- */
-export type CreatePartnerResponseBody = {
-  id: string;
-  name: string;
-  email: string | null;
-  image: string | null;
-  description?: string | null | undefined;
-  country: string | null;
-  payoutsEnabled: boolean;
-  createdAt: string;
-  status: Status;
+export type CreateReferralsEmbedTokenRequestBody = {
   programId: string;
-  tenantId: string | null;
-  links: Array<Links> | null;
-  clicks?: number | undefined;
-  leads?: number | undefined;
-  sales?: number | undefined;
-  saleAmount?: number | undefined;
-  earnings?: number | undefined;
-  applicationId?: string | null | undefined;
+  partnerId?: string | undefined;
+  tenantId?: string | undefined;
+  partner?: Partner | undefined;
+};
+
+/**
+ * The created public embed token.
+ */
+export type CreateReferralsEmbedTokenResponseBody = {
+  publicToken: string;
+  expires: string;
 };
 
 /** @internal */
-export const Country$inboundSchema: z.ZodNativeEnum<typeof Country> = z
-  .nativeEnum(Country);
+export const CreateReferralsEmbedTokenCountry$inboundSchema: z.ZodNativeEnum<
+  typeof CreateReferralsEmbedTokenCountry
+> = z.nativeEnum(CreateReferralsEmbedTokenCountry);
 
 /** @internal */
-export const Country$outboundSchema: z.ZodNativeEnum<typeof Country> =
-  Country$inboundSchema;
+export const CreateReferralsEmbedTokenCountry$outboundSchema: z.ZodNativeEnum<
+  typeof CreateReferralsEmbedTokenCountry
+> = CreateReferralsEmbedTokenCountry$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Country$ {
-  /** @deprecated use `Country$inboundSchema` instead. */
-  export const inboundSchema = Country$inboundSchema;
-  /** @deprecated use `Country$outboundSchema` instead. */
-  export const outboundSchema = Country$outboundSchema;
+export namespace CreateReferralsEmbedTokenCountry$ {
+  /** @deprecated use `CreateReferralsEmbedTokenCountry$inboundSchema` instead. */
+  export const inboundSchema = CreateReferralsEmbedTokenCountry$inboundSchema;
+  /** @deprecated use `CreateReferralsEmbedTokenCountry$outboundSchema` instead. */
+  export const outboundSchema = CreateReferralsEmbedTokenCountry$outboundSchema;
 }
 
 /** @internal */
-export const CreatePartnerTagIds$inboundSchema: z.ZodType<
-  CreatePartnerTagIds,
+export const CreateReferralsEmbedTokenTagIds$inboundSchema: z.ZodType<
+  CreateReferralsEmbedTokenTagIds,
   z.ZodTypeDef,
   unknown
 > = z.union([z.string(), z.array(z.string())]);
 
 /** @internal */
-export type CreatePartnerTagIds$Outbound = string | Array<string>;
+export type CreateReferralsEmbedTokenTagIds$Outbound = string | Array<string>;
 
 /** @internal */
-export const CreatePartnerTagIds$outboundSchema: z.ZodType<
-  CreatePartnerTagIds$Outbound,
+export const CreateReferralsEmbedTokenTagIds$outboundSchema: z.ZodType<
+  CreateReferralsEmbedTokenTagIds$Outbound,
   z.ZodTypeDef,
-  CreatePartnerTagIds
+  CreateReferralsEmbedTokenTagIds
 > = z.union([z.string(), z.array(z.string())]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CreatePartnerTagIds$ {
-  /** @deprecated use `CreatePartnerTagIds$inboundSchema` instead. */
-  export const inboundSchema = CreatePartnerTagIds$inboundSchema;
-  /** @deprecated use `CreatePartnerTagIds$outboundSchema` instead. */
-  export const outboundSchema = CreatePartnerTagIds$outboundSchema;
-  /** @deprecated use `CreatePartnerTagIds$Outbound` instead. */
-  export type Outbound = CreatePartnerTagIds$Outbound;
+export namespace CreateReferralsEmbedTokenTagIds$ {
+  /** @deprecated use `CreateReferralsEmbedTokenTagIds$inboundSchema` instead. */
+  export const inboundSchema = CreateReferralsEmbedTokenTagIds$inboundSchema;
+  /** @deprecated use `CreateReferralsEmbedTokenTagIds$outboundSchema` instead. */
+  export const outboundSchema = CreateReferralsEmbedTokenTagIds$outboundSchema;
+  /** @deprecated use `CreateReferralsEmbedTokenTagIds$Outbound` instead. */
+  export type Outbound = CreateReferralsEmbedTokenTagIds$Outbound;
 }
 
-export function createPartnerTagIdsToJSON(
-  createPartnerTagIds: CreatePartnerTagIds,
+export function createReferralsEmbedTokenTagIdsToJSON(
+  createReferralsEmbedTokenTagIds: CreateReferralsEmbedTokenTagIds,
 ): string {
   return JSON.stringify(
-    CreatePartnerTagIds$outboundSchema.parse(createPartnerTagIds),
+    CreateReferralsEmbedTokenTagIds$outboundSchema.parse(
+      createReferralsEmbedTokenTagIds,
+    ),
   );
 }
 
-export function createPartnerTagIdsFromJSON(
+export function createReferralsEmbedTokenTagIdsFromJSON(
   jsonString: string,
-): SafeParseResult<CreatePartnerTagIds, SDKValidationError> {
+): SafeParseResult<CreateReferralsEmbedTokenTagIds, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreatePartnerTagIds$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreatePartnerTagIds' from JSON`,
+    (x) => CreateReferralsEmbedTokenTagIds$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateReferralsEmbedTokenTagIds' from JSON`,
   );
 }
 
 /** @internal */
-export const CreatePartnerTagNames$inboundSchema: z.ZodType<
-  CreatePartnerTagNames,
+export const CreateReferralsEmbedTokenTagNames$inboundSchema: z.ZodType<
+  CreateReferralsEmbedTokenTagNames,
   z.ZodTypeDef,
   unknown
 > = z.union([z.string(), z.array(z.string())]);
 
 /** @internal */
-export type CreatePartnerTagNames$Outbound = string | Array<string>;
+export type CreateReferralsEmbedTokenTagNames$Outbound = string | Array<string>;
 
 /** @internal */
-export const CreatePartnerTagNames$outboundSchema: z.ZodType<
-  CreatePartnerTagNames$Outbound,
+export const CreateReferralsEmbedTokenTagNames$outboundSchema: z.ZodType<
+  CreateReferralsEmbedTokenTagNames$Outbound,
   z.ZodTypeDef,
-  CreatePartnerTagNames
+  CreateReferralsEmbedTokenTagNames
 > = z.union([z.string(), z.array(z.string())]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CreatePartnerTagNames$ {
-  /** @deprecated use `CreatePartnerTagNames$inboundSchema` instead. */
-  export const inboundSchema = CreatePartnerTagNames$inboundSchema;
-  /** @deprecated use `CreatePartnerTagNames$outboundSchema` instead. */
-  export const outboundSchema = CreatePartnerTagNames$outboundSchema;
-  /** @deprecated use `CreatePartnerTagNames$Outbound` instead. */
-  export type Outbound = CreatePartnerTagNames$Outbound;
+export namespace CreateReferralsEmbedTokenTagNames$ {
+  /** @deprecated use `CreateReferralsEmbedTokenTagNames$inboundSchema` instead. */
+  export const inboundSchema = CreateReferralsEmbedTokenTagNames$inboundSchema;
+  /** @deprecated use `CreateReferralsEmbedTokenTagNames$outboundSchema` instead. */
+  export const outboundSchema =
+    CreateReferralsEmbedTokenTagNames$outboundSchema;
+  /** @deprecated use `CreateReferralsEmbedTokenTagNames$Outbound` instead. */
+  export type Outbound = CreateReferralsEmbedTokenTagNames$Outbound;
 }
 
-export function createPartnerTagNamesToJSON(
-  createPartnerTagNames: CreatePartnerTagNames,
+export function createReferralsEmbedTokenTagNamesToJSON(
+  createReferralsEmbedTokenTagNames: CreateReferralsEmbedTokenTagNames,
 ): string {
   return JSON.stringify(
-    CreatePartnerTagNames$outboundSchema.parse(createPartnerTagNames),
+    CreateReferralsEmbedTokenTagNames$outboundSchema.parse(
+      createReferralsEmbedTokenTagNames,
+    ),
   );
 }
 
-export function createPartnerTagNamesFromJSON(
+export function createReferralsEmbedTokenTagNamesFromJSON(
   jsonString: string,
-): SafeParseResult<CreatePartnerTagNames, SDKValidationError> {
+): SafeParseResult<CreateReferralsEmbedTokenTagNames, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreatePartnerTagNames$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreatePartnerTagNames' from JSON`,
+    (x) => CreateReferralsEmbedTokenTagNames$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateReferralsEmbedTokenTagNames' from JSON`,
   );
 }
 
 /** @internal */
-export const LinkProps$inboundSchema: z.ZodType<
-  LinkProps,
+export const CreateReferralsEmbedTokenLinkProps$inboundSchema: z.ZodType<
+  CreateReferralsEmbedTokenLinkProps,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -656,7 +606,7 @@ export const LinkProps$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type LinkProps$Outbound = {
+export type CreateReferralsEmbedTokenLinkProps$Outbound = {
   externalId?: string | null | undefined;
   tenantId?: string | null | undefined;
   prefix?: string | undefined;
@@ -686,10 +636,10 @@ export type LinkProps$Outbound = {
 };
 
 /** @internal */
-export const LinkProps$outboundSchema: z.ZodType<
-  LinkProps$Outbound,
+export const CreateReferralsEmbedTokenLinkProps$outboundSchema: z.ZodType<
+  CreateReferralsEmbedTokenLinkProps$Outbound,
   z.ZodTypeDef,
-  LinkProps
+  CreateReferralsEmbedTokenLinkProps
 > = z.object({
   externalId: z.nullable(z.string()).optional(),
   tenantId: z.nullable(z.string()).optional(),
@@ -731,49 +681,54 @@ export const LinkProps$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace LinkProps$ {
-  /** @deprecated use `LinkProps$inboundSchema` instead. */
-  export const inboundSchema = LinkProps$inboundSchema;
-  /** @deprecated use `LinkProps$outboundSchema` instead. */
-  export const outboundSchema = LinkProps$outboundSchema;
-  /** @deprecated use `LinkProps$Outbound` instead. */
-  export type Outbound = LinkProps$Outbound;
+export namespace CreateReferralsEmbedTokenLinkProps$ {
+  /** @deprecated use `CreateReferralsEmbedTokenLinkProps$inboundSchema` instead. */
+  export const inboundSchema = CreateReferralsEmbedTokenLinkProps$inboundSchema;
+  /** @deprecated use `CreateReferralsEmbedTokenLinkProps$outboundSchema` instead. */
+  export const outboundSchema =
+    CreateReferralsEmbedTokenLinkProps$outboundSchema;
+  /** @deprecated use `CreateReferralsEmbedTokenLinkProps$Outbound` instead. */
+  export type Outbound = CreateReferralsEmbedTokenLinkProps$Outbound;
 }
 
-export function linkPropsToJSON(linkProps: LinkProps): string {
-  return JSON.stringify(LinkProps$outboundSchema.parse(linkProps));
+export function createReferralsEmbedTokenLinkPropsToJSON(
+  createReferralsEmbedTokenLinkProps: CreateReferralsEmbedTokenLinkProps,
+): string {
+  return JSON.stringify(
+    CreateReferralsEmbedTokenLinkProps$outboundSchema.parse(
+      createReferralsEmbedTokenLinkProps,
+    ),
+  );
 }
 
-export function linkPropsFromJSON(
+export function createReferralsEmbedTokenLinkPropsFromJSON(
   jsonString: string,
-): SafeParseResult<LinkProps, SDKValidationError> {
+): SafeParseResult<CreateReferralsEmbedTokenLinkProps, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => LinkProps$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LinkProps' from JSON`,
+    (x) =>
+      CreateReferralsEmbedTokenLinkProps$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateReferralsEmbedTokenLinkProps' from JSON`,
   );
 }
 
 /** @internal */
-export const CreatePartnerRequestBody$inboundSchema: z.ZodType<
-  CreatePartnerRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  programId: z.string(),
-  name: z.string(),
-  email: z.string(),
-  username: z.nullable(z.string()).optional(),
-  image: z.nullable(z.string()).optional(),
-  country: z.nullable(Country$inboundSchema).optional(),
-  description: z.nullable(z.string()).optional(),
-  tenantId: z.string().optional(),
-  linkProps: z.lazy(() => LinkProps$inboundSchema).optional(),
-});
+export const Partner$inboundSchema: z.ZodType<Partner, z.ZodTypeDef, unknown> =
+  z.object({
+    name: z.string(),
+    email: z.string(),
+    username: z.nullable(z.string()).optional(),
+    image: z.nullable(z.string()).optional(),
+    country: z.nullable(CreateReferralsEmbedTokenCountry$inboundSchema)
+      .optional(),
+    description: z.nullable(z.string()).optional(),
+    tenantId: z.string().optional(),
+    linkProps: z.lazy(() => CreateReferralsEmbedTokenLinkProps$inboundSchema)
+      .optional(),
+  });
 
 /** @internal */
-export type CreatePartnerRequestBody$Outbound = {
-  programId: string;
+export type Partner$Outbound = {
   name: string;
   email: string;
   username?: string | null | undefined;
@@ -781,248 +736,180 @@ export type CreatePartnerRequestBody$Outbound = {
   country?: string | null | undefined;
   description?: string | null | undefined;
   tenantId?: string | undefined;
-  linkProps?: LinkProps$Outbound | undefined;
+  linkProps?: CreateReferralsEmbedTokenLinkProps$Outbound | undefined;
 };
 
 /** @internal */
-export const CreatePartnerRequestBody$outboundSchema: z.ZodType<
-  CreatePartnerRequestBody$Outbound,
+export const Partner$outboundSchema: z.ZodType<
+  Partner$Outbound,
   z.ZodTypeDef,
-  CreatePartnerRequestBody
+  Partner
 > = z.object({
-  programId: z.string(),
   name: z.string(),
   email: z.string(),
   username: z.nullable(z.string()).optional(),
   image: z.nullable(z.string()).optional(),
-  country: z.nullable(Country$outboundSchema).optional(),
+  country: z.nullable(CreateReferralsEmbedTokenCountry$outboundSchema)
+    .optional(),
   description: z.nullable(z.string()).optional(),
   tenantId: z.string().optional(),
-  linkProps: z.lazy(() => LinkProps$outboundSchema).optional(),
+  linkProps: z.lazy(() => CreateReferralsEmbedTokenLinkProps$outboundSchema)
+    .optional(),
 });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CreatePartnerRequestBody$ {
-  /** @deprecated use `CreatePartnerRequestBody$inboundSchema` instead. */
-  export const inboundSchema = CreatePartnerRequestBody$inboundSchema;
-  /** @deprecated use `CreatePartnerRequestBody$outboundSchema` instead. */
-  export const outboundSchema = CreatePartnerRequestBody$outboundSchema;
-  /** @deprecated use `CreatePartnerRequestBody$Outbound` instead. */
-  export type Outbound = CreatePartnerRequestBody$Outbound;
+export namespace Partner$ {
+  /** @deprecated use `Partner$inboundSchema` instead. */
+  export const inboundSchema = Partner$inboundSchema;
+  /** @deprecated use `Partner$outboundSchema` instead. */
+  export const outboundSchema = Partner$outboundSchema;
+  /** @deprecated use `Partner$Outbound` instead. */
+  export type Outbound = Partner$Outbound;
 }
 
-export function createPartnerRequestBodyToJSON(
-  createPartnerRequestBody: CreatePartnerRequestBody,
-): string {
-  return JSON.stringify(
-    CreatePartnerRequestBody$outboundSchema.parse(createPartnerRequestBody),
-  );
+export function partnerToJSON(partner: Partner): string {
+  return JSON.stringify(Partner$outboundSchema.parse(partner));
 }
 
-export function createPartnerRequestBodyFromJSON(
+export function partnerFromJSON(
   jsonString: string,
-): SafeParseResult<CreatePartnerRequestBody, SDKValidationError> {
+): SafeParseResult<Partner, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreatePartnerRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreatePartnerRequestBody' from JSON`,
+    (x) => Partner$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Partner' from JSON`,
   );
 }
 
 /** @internal */
-export const Status$inboundSchema: z.ZodNativeEnum<typeof Status> = z
-  .nativeEnum(Status);
-
-/** @internal */
-export const Status$outboundSchema: z.ZodNativeEnum<typeof Status> =
-  Status$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Status$ {
-  /** @deprecated use `Status$inboundSchema` instead. */
-  export const inboundSchema = Status$inboundSchema;
-  /** @deprecated use `Status$outboundSchema` instead. */
-  export const outboundSchema = Status$outboundSchema;
-}
-
-/** @internal */
-export const Links$inboundSchema: z.ZodType<Links, z.ZodTypeDef, unknown> = z
-  .object({
-    id: z.string(),
-    domain: z.string(),
-    key: z.string(),
-    shortLink: z.string(),
-    url: z.string(),
-    clicks: z.number().default(0),
-    leads: z.number().default(0),
-    sales: z.number().default(0),
-    saleAmount: z.number().default(0),
-  });
-
-/** @internal */
-export type Links$Outbound = {
-  id: string;
-  domain: string;
-  key: string;
-  shortLink: string;
-  url: string;
-  clicks: number;
-  leads: number;
-  sales: number;
-  saleAmount: number;
-};
-
-/** @internal */
-export const Links$outboundSchema: z.ZodType<
-  Links$Outbound,
-  z.ZodTypeDef,
-  Links
-> = z.object({
-  id: z.string(),
-  domain: z.string(),
-  key: z.string(),
-  shortLink: z.string(),
-  url: z.string(),
-  clicks: z.number().default(0),
-  leads: z.number().default(0),
-  sales: z.number().default(0),
-  saleAmount: z.number().default(0),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Links$ {
-  /** @deprecated use `Links$inboundSchema` instead. */
-  export const inboundSchema = Links$inboundSchema;
-  /** @deprecated use `Links$outboundSchema` instead. */
-  export const outboundSchema = Links$outboundSchema;
-  /** @deprecated use `Links$Outbound` instead. */
-  export type Outbound = Links$Outbound;
-}
-
-export function linksToJSON(links: Links): string {
-  return JSON.stringify(Links$outboundSchema.parse(links));
-}
-
-export function linksFromJSON(
-  jsonString: string,
-): SafeParseResult<Links, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Links$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Links' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreatePartnerResponseBody$inboundSchema: z.ZodType<
-  CreatePartnerResponseBody,
+export const CreateReferralsEmbedTokenRequestBody$inboundSchema: z.ZodType<
+  CreateReferralsEmbedTokenRequestBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string(),
-  email: z.nullable(z.string()),
-  image: z.nullable(z.string()),
-  description: z.nullable(z.string()).optional(),
-  country: z.nullable(z.string()),
-  payoutsEnabled: z.boolean(),
-  createdAt: z.string(),
-  status: Status$inboundSchema,
   programId: z.string(),
-  tenantId: z.nullable(z.string()),
-  links: z.nullable(z.array(z.lazy(() => Links$inboundSchema))),
-  clicks: z.number().default(0),
-  leads: z.number().default(0),
-  sales: z.number().default(0),
-  saleAmount: z.number().default(0),
-  earnings: z.number().default(0),
-  applicationId: z.nullable(z.string()).optional(),
+  partnerId: z.string().optional(),
+  tenantId: z.string().optional(),
+  partner: z.lazy(() => Partner$inboundSchema).optional(),
 });
 
 /** @internal */
-export type CreatePartnerResponseBody$Outbound = {
-  id: string;
-  name: string;
-  email: string | null;
-  image: string | null;
-  description?: string | null | undefined;
-  country: string | null;
-  payoutsEnabled: boolean;
-  createdAt: string;
-  status: string;
+export type CreateReferralsEmbedTokenRequestBody$Outbound = {
   programId: string;
-  tenantId: string | null;
-  links: Array<Links$Outbound> | null;
-  clicks: number;
-  leads: number;
-  sales: number;
-  saleAmount: number;
-  earnings: number;
-  applicationId?: string | null | undefined;
+  partnerId?: string | undefined;
+  tenantId?: string | undefined;
+  partner?: Partner$Outbound | undefined;
 };
 
 /** @internal */
-export const CreatePartnerResponseBody$outboundSchema: z.ZodType<
-  CreatePartnerResponseBody$Outbound,
+export const CreateReferralsEmbedTokenRequestBody$outboundSchema: z.ZodType<
+  CreateReferralsEmbedTokenRequestBody$Outbound,
   z.ZodTypeDef,
-  CreatePartnerResponseBody
+  CreateReferralsEmbedTokenRequestBody
 > = z.object({
-  id: z.string(),
-  name: z.string(),
-  email: z.nullable(z.string()),
-  image: z.nullable(z.string()),
-  description: z.nullable(z.string()).optional(),
-  country: z.nullable(z.string()),
-  payoutsEnabled: z.boolean(),
-  createdAt: z.string(),
-  status: Status$outboundSchema,
   programId: z.string(),
-  tenantId: z.nullable(z.string()),
-  links: z.nullable(z.array(z.lazy(() => Links$outboundSchema))),
-  clicks: z.number().default(0),
-  leads: z.number().default(0),
-  sales: z.number().default(0),
-  saleAmount: z.number().default(0),
-  earnings: z.number().default(0),
-  applicationId: z.nullable(z.string()).optional(),
+  partnerId: z.string().optional(),
+  tenantId: z.string().optional(),
+  partner: z.lazy(() => Partner$outboundSchema).optional(),
 });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CreatePartnerResponseBody$ {
-  /** @deprecated use `CreatePartnerResponseBody$inboundSchema` instead. */
-  export const inboundSchema = CreatePartnerResponseBody$inboundSchema;
-  /** @deprecated use `CreatePartnerResponseBody$outboundSchema` instead. */
-  export const outboundSchema = CreatePartnerResponseBody$outboundSchema;
-  /** @deprecated use `CreatePartnerResponseBody$Outbound` instead. */
-  export type Outbound = CreatePartnerResponseBody$Outbound;
+export namespace CreateReferralsEmbedTokenRequestBody$ {
+  /** @deprecated use `CreateReferralsEmbedTokenRequestBody$inboundSchema` instead. */
+  export const inboundSchema =
+    CreateReferralsEmbedTokenRequestBody$inboundSchema;
+  /** @deprecated use `CreateReferralsEmbedTokenRequestBody$outboundSchema` instead. */
+  export const outboundSchema =
+    CreateReferralsEmbedTokenRequestBody$outboundSchema;
+  /** @deprecated use `CreateReferralsEmbedTokenRequestBody$Outbound` instead. */
+  export type Outbound = CreateReferralsEmbedTokenRequestBody$Outbound;
 }
 
-export function createPartnerResponseBodyToJSON(
-  createPartnerResponseBody: CreatePartnerResponseBody,
+export function createReferralsEmbedTokenRequestBodyToJSON(
+  createReferralsEmbedTokenRequestBody: CreateReferralsEmbedTokenRequestBody,
 ): string {
   return JSON.stringify(
-    CreatePartnerResponseBody$outboundSchema.parse(createPartnerResponseBody),
+    CreateReferralsEmbedTokenRequestBody$outboundSchema.parse(
+      createReferralsEmbedTokenRequestBody,
+    ),
   );
 }
 
-export function createPartnerResponseBodyFromJSON(
+export function createReferralsEmbedTokenRequestBodyFromJSON(
   jsonString: string,
-): SafeParseResult<CreatePartnerResponseBody, SDKValidationError> {
+): SafeParseResult<CreateReferralsEmbedTokenRequestBody, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreatePartnerResponseBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreatePartnerResponseBody' from JSON`,
+    (x) =>
+      CreateReferralsEmbedTokenRequestBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateReferralsEmbedTokenRequestBody' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateReferralsEmbedTokenResponseBody$inboundSchema: z.ZodType<
+  CreateReferralsEmbedTokenResponseBody,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  publicToken: z.string(),
+  expires: z.string(),
+});
+
+/** @internal */
+export type CreateReferralsEmbedTokenResponseBody$Outbound = {
+  publicToken: string;
+  expires: string;
+};
+
+/** @internal */
+export const CreateReferralsEmbedTokenResponseBody$outboundSchema: z.ZodType<
+  CreateReferralsEmbedTokenResponseBody$Outbound,
+  z.ZodTypeDef,
+  CreateReferralsEmbedTokenResponseBody
+> = z.object({
+  publicToken: z.string(),
+  expires: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateReferralsEmbedTokenResponseBody$ {
+  /** @deprecated use `CreateReferralsEmbedTokenResponseBody$inboundSchema` instead. */
+  export const inboundSchema =
+    CreateReferralsEmbedTokenResponseBody$inboundSchema;
+  /** @deprecated use `CreateReferralsEmbedTokenResponseBody$outboundSchema` instead. */
+  export const outboundSchema =
+    CreateReferralsEmbedTokenResponseBody$outboundSchema;
+  /** @deprecated use `CreateReferralsEmbedTokenResponseBody$Outbound` instead. */
+  export type Outbound = CreateReferralsEmbedTokenResponseBody$Outbound;
+}
+
+export function createReferralsEmbedTokenResponseBodyToJSON(
+  createReferralsEmbedTokenResponseBody: CreateReferralsEmbedTokenResponseBody,
+): string {
+  return JSON.stringify(
+    CreateReferralsEmbedTokenResponseBody$outboundSchema.parse(
+      createReferralsEmbedTokenResponseBody,
+    ),
+  );
+}
+
+export function createReferralsEmbedTokenResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateReferralsEmbedTokenResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateReferralsEmbedTokenResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateReferralsEmbedTokenResponseBody' from JSON`,
   );
 }

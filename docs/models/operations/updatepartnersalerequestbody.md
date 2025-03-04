@@ -8,7 +8,7 @@ import { UpdatePartnerSaleRequestBody } from "dub/models/operations";
 let value: UpdatePartnerSaleRequestBody = {
   programId: "<id>",
   invoiceId: "<id>",
-  amount: 8426.52,
+  amount: 5263.68,
 };
 ```
 

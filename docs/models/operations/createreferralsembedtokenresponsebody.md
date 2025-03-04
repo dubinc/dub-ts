@@ -1,13 +1,13 @@
-# CreateEmbedTokenResponseBody
+# CreateReferralsEmbedTokenResponseBody
 
 The created public embed token.
 
 ## Example Usage
 
 ```typescript
-import { CreateEmbedTokenResponseBody } from "dub/models/operations";
+import { CreateReferralsEmbedTokenResponseBody } from "dub/models/operations";
 
-let value: CreateEmbedTokenResponseBody = {
+let value: CreateReferralsEmbedTokenResponseBody = {
   publicToken: "<value>",
   expires: "<value>",
 };

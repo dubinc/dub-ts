@@ -18,7 +18,7 @@ import { tool$domainsCreate } from "./tools/domainsCreate.js";
 import { tool$domainsDelete } from "./tools/domainsDelete.js";
 import { tool$domainsList } from "./tools/domainsList.js";
 import { tool$domainsUpdate } from "./tools/domainsUpdate.js";
-import { tool$embedTokensCreate } from "./tools/embedTokensCreate.js";
+import { tool$embedTokensReferrals } from "./tools/embedTokensReferrals.js";
 import { tool$eventsList } from "./tools/eventsList.js";
 import { tool$foldersCreate } from "./tools/foldersCreate.js";
 import { tool$foldersDelete } from "./tools/foldersDelete.js";
@@ -52,6 +52,7 @@ import { tool$workspacesUpdate } from "./tools/workspacesUpdate.js";
 
 export function createMCPServer(deps: {
   logger: ConsoleLogger;
+  allowedTools?: string[] | undefined;
   scopes?: MCPScope[] | undefined;
   serverURL?: string | undefined;
   token?: SDKOptions["token"] | undefined;
@@ -59,7 +60,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Dub",
-    version: "0.57.3",
+    version: "0.58.0",
   });
 
   const client = new DubCore({
@@ -68,7 +69,14 @@ export function createMCPServer(deps: {
     serverIdx: deps.serverIdx,
   });
   const scopes = new Set(deps.scopes ?? mcpScopes);
-  const tool = createRegisterTool(deps.logger, server, client, scopes);
+  const allowedTools = deps.allowedTools && new Set(deps.allowedTools);
+  const tool = createRegisterTool(
+    deps.logger,
+    server,
+    client,
+    scopes,
+    allowedTools,
+  );
 
   tool(tool$linksCreate);
   tool(tool$linksList);
@@ -108,7 +116,7 @@ export function createMCPServer(deps: {
   tool(tool$partnersUpdateSale);
   tool(tool$workspacesGet);
   tool(tool$workspacesUpdate);
-  tool(tool$embedTokensCreate);
+  tool(tool$embedTokensReferrals);
   tool(tool$qrCodesGet);
   tool(tool$metatagsGet);
 

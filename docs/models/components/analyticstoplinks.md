@@ -12,7 +12,7 @@ let value: AnalyticsTopLinks = {
   key: "<key>",
   shortLink: "<value>",
   url: "https://confused-slipper.biz/",
-  createdAt: "1725566362251",
+  createdAt: "1725649210404",
 };
 ```
 

@@ -14,7 +14,7 @@ let value: LeadEventLink = {
   tenantId: "<id>",
   programId: "<id>",
   partnerId: "<id>",
-  expiresAt: "1744683697061",
+  expiresAt: "1744766545213",
   expiredUrl: "https://violent-grandpa.biz",
   password: "8NGDmdBvjBt52Gg",
   title: "<value>",
@@ -48,8 +48,8 @@ let value: LeadEventLink = {
   userId: "<id>",
   workspaceId: "<id>",
   lastClicked: "<value>",
-  createdAt: "1716878675403",
-  updatedAt: "1740944618120",
+  createdAt: "1716961523557",
+  updatedAt: "1741027466274",
   projectId: "<id>",
 };
 ```

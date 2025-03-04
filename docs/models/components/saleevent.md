@@ -18,7 +18,7 @@ let value: SaleEvent = {
     tenantId: "<id>",
     programId: "<id>",
     partnerId: "<id>",
-    expiresAt: "1752313122929",
+    expiresAt: "1752395971090",
     expiredUrl: "https://worthless-alliance.biz",
     password: "6Kp6OylUX3GZjHd",
     title: "<value>",
@@ -52,8 +52,8 @@ let value: SaleEvent = {
     userId: "<id>",
     workspaceId: "<id>",
     lastClicked: "<value>",
-    createdAt: "1732869447529",
-    updatedAt: "1740907942002",
+    createdAt: "1732952295691",
+    updatedAt: "1740990790164",
     projectId: "<id>",
   },
   click: {
@@ -75,7 +75,7 @@ let value: SaleEvent = {
     id: "<id>",
     externalId: "<id>",
     name: "<value>",
-    createdAt: "1711778998461",
+    createdAt: "1711861846622",
   },
   sale: {
     amount: 844471,
