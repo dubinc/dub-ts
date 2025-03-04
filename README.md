@@ -196,7 +196,7 @@ run();
 
 ### [embedTokens](docs/sdks/embedtokens/README.md)
 
-* [create](docs/sdks/embedtokens/README.md#create) - Create a new embed token
+* [referrals](docs/sdks/embedtokens/README.md#referrals) - Create a new referrals embed token
 
 ### [events](docs/sdks/events/README.md)
 
@@ -612,7 +612,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`domainsDelete`](docs/sdks/domains/README.md#delete) - Delete a domain
 - [`domainsList`](docs/sdks/domains/README.md#list) - Retrieve a list of domains
 - [`domainsUpdate`](docs/sdks/domains/README.md#update) - Update a domain
-- [`embedTokensCreate`](docs/sdks/embedtokens/README.md#create) - Create a new embed token
+- [`embedTokensReferrals`](docs/sdks/embedtokens/README.md#referrals) - Create a new referrals embed token
 - [`eventsList`](docs/sdks/events/README.md#list) - Retrieve a list of events
 - [`foldersCreate`](docs/sdks/folders/README.md#create) - Create a new folder
 - [`foldersDelete`](docs/sdks/folders/README.md#delete) - Delete a folder

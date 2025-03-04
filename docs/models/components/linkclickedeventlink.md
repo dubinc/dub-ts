@@ -14,7 +14,7 @@ let value: LinkClickedEventLink = {
   tenantId: "<id>",
   programId: "<id>",
   partnerId: "<id>",
-  expiresAt: "1762778588362",
+  expiresAt: "1762861436502",
   expiredUrl: "https://unconscious-technician.info/",
   password: "VpCFOBQ1yHfs6Vf",
   title: "<value>",
@@ -48,8 +48,8 @@ let value: LinkClickedEventLink = {
   userId: "<id>",
   workspaceId: "<id>",
   lastClicked: "<value>",
-  createdAt: "1713692394425",
-  updatedAt: "1740959698385",
+  createdAt: "1713775242539",
+  updatedAt: "1741042546499",
   projectId: "<id>",
 };
 ```

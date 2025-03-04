@@ -25,18 +25,18 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Create a new embed token
+ * Create a new referrals embed token
  *
  * @remarks
- * Create a new embed token for the referral link.
+ * Create a new referrals embed token for the given partner/tenant.
  */
-export function embedTokensCreate(
+export function embedTokensReferrals(
   client: DubCore,
-  request?: operations.CreateEmbedTokenRequestBody | undefined,
+  request?: operations.CreateReferralsEmbedTokenRequestBody | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.CreateEmbedTokenResponseBody,
+    operations.CreateReferralsEmbedTokenResponseBody,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -64,12 +64,12 @@ export function embedTokensCreate(
 
 async function $do(
   client: DubCore,
-  request?: operations.CreateEmbedTokenRequestBody | undefined,
+  request?: operations.CreateReferralsEmbedTokenRequestBody | undefined,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.CreateEmbedTokenResponseBody,
+      operations.CreateReferralsEmbedTokenResponseBody,
       | errors.BadRequest
       | errors.Unauthorized
       | errors.Forbidden
@@ -93,9 +93,8 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.CreateEmbedTokenRequestBody$outboundSchema.optional().parse(
-        value,
-      ),
+      operations.CreateReferralsEmbedTokenRequestBody$outboundSchema.optional()
+        .parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -106,7 +105,7 @@ async function $do(
     ? null
     : encodeJSON("body", payload, { explode: true });
 
-  const path = pathToFunc("/tokens/embed")();
+  const path = pathToFunc("/tokens/embed/referrals")();
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
@@ -119,7 +118,7 @@ async function $do(
 
   const context = {
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "createEmbedToken",
+    operationID: "createReferralsEmbedToken",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
@@ -173,7 +172,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.CreateEmbedTokenResponseBody,
+    operations.CreateReferralsEmbedTokenResponseBody,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -191,7 +190,7 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(201, operations.CreateEmbedTokenResponseBody$inboundSchema),
+    M.json(201, operations.CreateReferralsEmbedTokenResponseBody$inboundSchema),
     M.jsonErr(400, errors.BadRequest$inboundSchema),
     M.jsonErr(401, errors.Unauthorized$inboundSchema),
     M.jsonErr(403, errors.Forbidden$inboundSchema),

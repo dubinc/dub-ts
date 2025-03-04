@@ -10,21 +10,21 @@ import { CreatePartnerResponseBody } from "dub/models/operations";
 let value: CreatePartnerResponseBody = {
   id: "<id>",
   name: "<value>",
-  email: "Sylvia_Boyle15@gmail.com",
-  image: "https://loremflickr.com/2449/313?lock=5535038885253289",
-  country: "United Arab Emirates",
+  email: "Aimee_Gleason22@gmail.com",
+  image: "https://loremflickr.com/3637/3250?lock=5183384200862309",
+  country: "Canada",
   payoutsEnabled: false,
-  createdAt: "1738494648555",
+  createdAt: "1711784492254",
   status: "pending",
   programId: "<id>",
   tenantId: "<id>",
   links: [
     {
       id: "<id>",
-      domain: "meager-pear.org",
+      domain: "boiling-instructor.name",
       key: "<key>",
-      shortLink: "https://animated-violin.net",
-      url: "https://sticky-petticoat.org/",
+      shortLink: "https://utilized-nougat.name",
+      url: "https://vain-word.com",
     },
   ],
 };

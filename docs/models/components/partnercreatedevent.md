@@ -10,7 +10,7 @@ import { PartnerCreatedEvent } from "dub/models/components";
 let value: PartnerCreatedEvent = {
   id: "<id>",
   event: "partner.created",
-  createdAt: "1710316077428",
+  createdAt: "1710398925583",
   data: {
     id: "<id>",
     name: "<value>",
@@ -18,7 +18,7 @@ let value: PartnerCreatedEvent = {
     image: "https://loremflickr.com/200/1041?lock=3808049225398433",
     country: "Jordan",
     payoutsEnabled: false,
-    createdAt: "1710397294075",
+    createdAt: "1710480142230",
     status: "pending",
     programId: "<id>",
     tenantId: "<id>",

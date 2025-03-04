@@ -5,11 +5,11 @@
 
 ### Available Operations
 
-* [create](#create) - Create a new embed token
+* [referrals](#referrals) - Create a new referrals embed token
 
-## create
+## referrals
 
-Create a new embed token for the referral link.
+Create a new referrals embed token for the given partner/tenant.
 
 ### Example Usage
 
@@ -21,7 +21,7 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.embedTokens.create();
+  const result = await dub.embedTokens.referrals();
 
   // Handle the result
   console.log(result);
@@ -36,7 +36,7 @@ The standalone function version of this method:
 
 ```typescript
 import { DubCore } from "dub/core.js";
-import { embedTokensCreate } from "dub/funcs/embedTokensCreate.js";
+import { embedTokensReferrals } from "dub/funcs/embedTokensReferrals.js";
 
 // Use `DubCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -45,7 +45,7 @@ const dub = new DubCore({
 });
 
 async function run() {
-  const res = await embedTokensCreate(dub);
+  const res = await embedTokensReferrals(dub);
 
   if (!res.ok) {
     throw res.error;
@@ -64,14 +64,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.CreateEmbedTokenRequestBody](../../models/operations/createembedtokenrequestbody.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.CreateReferralsEmbedTokenRequestBody](../../models/operations/createreferralsembedtokenrequestbody.md)                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[operations.CreateEmbedTokenResponseBody](../../models/operations/createembedtokenresponsebody.md)\>**
+**Promise\<[operations.CreateReferralsEmbedTokenResponseBody](../../models/operations/createreferralsembedtokenresponsebody.md)\>**
 
 ### Errors
 

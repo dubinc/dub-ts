@@ -28,11 +28,11 @@ const value: components.PartnerAnalyticsTopLinks[] = [
   {
     link: "<value>",
     id: "<id>",
-    domain: "tattered-jazz.name",
+    domain: "blue-self-confidence.name",
     key: "<key>",
     shortLink: "<value>",
-    url: "https://gracious-eggplant.com/",
-    createdAt: "1727827962482",
+    url: "https://late-knuckle.org",
+    createdAt: "1724780989016",
   },
 ];
 ```

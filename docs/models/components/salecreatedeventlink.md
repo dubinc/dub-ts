@@ -14,7 +14,7 @@ let value: SaleCreatedEventLink = {
   tenantId: "<id>",
   programId: "<id>",
   partnerId: "<id>",
-  expiresAt: "1761042951762",
+  expiresAt: "1761125799914",
   expiredUrl: "https://remorseful-yogurt.com/",
   password: "in9JFQ5OntsI7S4",
   title: "<value>",
@@ -49,8 +49,8 @@ let value: SaleCreatedEventLink = {
   userId: "<id>",
   workspaceId: "<id>",
   lastClicked: "<value>",
-  createdAt: "1710896385537",
-  updatedAt: "1740892422894",
+  createdAt: "1710979233689",
+  updatedAt: "1740975271046",
   projectId: "<id>",
 };
 ```
