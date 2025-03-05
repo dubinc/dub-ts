@@ -13,8 +13,8 @@ let value: UpdatePartnerSaleResponseBody = {
   earnings: 2876.48,
   currency: "Australian Dollar",
   status: "refunded",
-  createdAt: "1736098114604",
-  updatedAt: "1741040411864",
+  createdAt: "1736172337951",
+  updatedAt: "1741114635211",
 };
 ```
 

@@ -22,7 +22,6 @@ export const RetrievePartnerAnalyticsQueryParamInterval = {
   Qtd: "qtd",
   Ytd: "ytd",
   All: "all",
-  AllUnfiltered: "all_unfiltered",
 } as const;
 /**
  * The interval to retrieve analytics for. If undefined, defaults to 24h.

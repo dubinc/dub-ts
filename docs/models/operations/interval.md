@@ -13,5 +13,5 @@ let value: Interval = "24h";
 ## Values
 
 ```typescript
-"24h" | "7d" | "30d" | "90d" | "1y" | "mtd" | "qtd" | "ytd" | "all" | "all_unfiltered"
+"24h" | "7d" | "30d" | "90d" | "1y" | "mtd" | "qtd" | "ytd" | "all"
 ```
