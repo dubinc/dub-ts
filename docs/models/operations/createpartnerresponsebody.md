@@ -14,7 +14,7 @@ let value: CreatePartnerResponseBody = {
   image: "https://loremflickr.com/3637/3250?lock=5183384200862309",
   country: "Canada",
   payoutsEnabled: false,
-  createdAt: "1711784492254",
+  createdAt: "1711858715641",
   status: "pending",
   programId: "<id>",
   tenantId: "<id>",

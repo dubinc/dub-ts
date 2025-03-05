@@ -11,7 +11,7 @@ let value: SaleCreatedEventData = {
     id: "<id>",
     externalId: "<id>",
     name: "<value>",
-    createdAt: "1729136891513",
+    createdAt: "1729211114798",
   },
   click: {
     id: "<id>",
@@ -37,7 +37,7 @@ let value: SaleCreatedEventData = {
     tenantId: "<id>",
     programId: "<id>",
     partnerId: "<id>",
-    expiresAt: "1766884017198",
+    expiresAt: "1766958240483",
     expiredUrl: "https://puny-horde.info",
     password: "1xLMSuHHLrZgedX",
     title: "<value>",
@@ -71,8 +71,8 @@ let value: SaleCreatedEventData = {
     userId: "<id>",
     workspaceId: "<id>",
     lastClicked: "<value>",
-    createdAt: "1739954544481",
-    updatedAt: "1741041120018",
+    createdAt: "1740028767766",
+    updatedAt: "1741115343303",
     projectId: "<id>",
   },
   sale: {
