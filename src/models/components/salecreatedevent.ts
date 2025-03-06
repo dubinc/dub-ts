@@ -20,60 +20,6 @@ export const SaleCreatedEventEvent = {
 } as const;
 export type SaleCreatedEventEvent = ClosedEnum<typeof SaleCreatedEventEvent>;
 
-export type SaleCreatedEventDataLink = {
-  /**
-   * The unique ID of the short link.
-   */
-  id: string;
-  /**
-   * The domain of the short link. If not provided, the primary domain for the workspace will be used (or `dub.sh` if the workspace has no domains).
-   */
-  domain: string;
-  /**
-   * The short link slug. If not provided, a random 7-character slug will be generated.
-   */
-  key: string;
-  /**
-   * The full URL of the short link, including the https protocol (e.g. `https://dub.sh/try`).
-   */
-  shortLink: string;
-  /**
-   * The ID of the program the short link is associated with.
-   */
-  programId: string | null;
-};
-
-export type SaleCreatedEventPartner = {
-  id: string;
-  name: string;
-  email: string;
-  image?: string | null | undefined;
-};
-
-export const SaleCreatedEventType = {
-  Percentage: "percentage",
-  Flat: "flat",
-} as const;
-export type SaleCreatedEventType = ClosedEnum<typeof SaleCreatedEventType>;
-
-export const SaleCreatedEventInterval = {
-  Month: "month",
-  Year: "year",
-} as const;
-export type SaleCreatedEventInterval = ClosedEnum<
-  typeof SaleCreatedEventInterval
->;
-
-export type SaleCreatedEventDiscount = {
-  id: string;
-  couponId: string | null;
-  couponTestId: string | null;
-  amount: number;
-  type: SaleCreatedEventType;
-  duration: number | null;
-  interval: SaleCreatedEventInterval | null;
-};
-
 export type SaleCreatedEventCustomer = {
   /**
    * The unique ID of the customer. You may use either the customer's `id` on Dub (obtained via `/customers` endpoint) or their `externalId` (unique ID within your system, prefixed with `ext_`, e.g. `ext_123`).
@@ -103,9 +49,6 @@ export type SaleCreatedEventCustomer = {
    * The date the customer was created.
    */
   createdAt: string;
-  link?: SaleCreatedEventDataLink | null | undefined;
-  partner?: SaleCreatedEventPartner | null | undefined;
-  discount?: SaleCreatedEventDiscount | null | undefined;
 };
 
 export type SaleCreatedEventClick = {
@@ -580,249 +523,6 @@ export namespace SaleCreatedEventEvent$ {
 }
 
 /** @internal */
-export const SaleCreatedEventDataLink$inboundSchema: z.ZodType<
-  SaleCreatedEventDataLink,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-  domain: z.string(),
-  key: z.string(),
-  shortLink: z.string(),
-  programId: z.nullable(z.string()),
-});
-
-/** @internal */
-export type SaleCreatedEventDataLink$Outbound = {
-  id: string;
-  domain: string;
-  key: string;
-  shortLink: string;
-  programId: string | null;
-};
-
-/** @internal */
-export const SaleCreatedEventDataLink$outboundSchema: z.ZodType<
-  SaleCreatedEventDataLink$Outbound,
-  z.ZodTypeDef,
-  SaleCreatedEventDataLink
-> = z.object({
-  id: z.string(),
-  domain: z.string(),
-  key: z.string(),
-  shortLink: z.string(),
-  programId: z.nullable(z.string()),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SaleCreatedEventDataLink$ {
-  /** @deprecated use `SaleCreatedEventDataLink$inboundSchema` instead. */
-  export const inboundSchema = SaleCreatedEventDataLink$inboundSchema;
-  /** @deprecated use `SaleCreatedEventDataLink$outboundSchema` instead. */
-  export const outboundSchema = SaleCreatedEventDataLink$outboundSchema;
-  /** @deprecated use `SaleCreatedEventDataLink$Outbound` instead. */
-  export type Outbound = SaleCreatedEventDataLink$Outbound;
-}
-
-export function saleCreatedEventDataLinkToJSON(
-  saleCreatedEventDataLink: SaleCreatedEventDataLink,
-): string {
-  return JSON.stringify(
-    SaleCreatedEventDataLink$outboundSchema.parse(saleCreatedEventDataLink),
-  );
-}
-
-export function saleCreatedEventDataLinkFromJSON(
-  jsonString: string,
-): SafeParseResult<SaleCreatedEventDataLink, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => SaleCreatedEventDataLink$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SaleCreatedEventDataLink' from JSON`,
-  );
-}
-
-/** @internal */
-export const SaleCreatedEventPartner$inboundSchema: z.ZodType<
-  SaleCreatedEventPartner,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  email: z.string(),
-  image: z.nullable(z.string()).optional(),
-});
-
-/** @internal */
-export type SaleCreatedEventPartner$Outbound = {
-  id: string;
-  name: string;
-  email: string;
-  image?: string | null | undefined;
-};
-
-/** @internal */
-export const SaleCreatedEventPartner$outboundSchema: z.ZodType<
-  SaleCreatedEventPartner$Outbound,
-  z.ZodTypeDef,
-  SaleCreatedEventPartner
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  email: z.string(),
-  image: z.nullable(z.string()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SaleCreatedEventPartner$ {
-  /** @deprecated use `SaleCreatedEventPartner$inboundSchema` instead. */
-  export const inboundSchema = SaleCreatedEventPartner$inboundSchema;
-  /** @deprecated use `SaleCreatedEventPartner$outboundSchema` instead. */
-  export const outboundSchema = SaleCreatedEventPartner$outboundSchema;
-  /** @deprecated use `SaleCreatedEventPartner$Outbound` instead. */
-  export type Outbound = SaleCreatedEventPartner$Outbound;
-}
-
-export function saleCreatedEventPartnerToJSON(
-  saleCreatedEventPartner: SaleCreatedEventPartner,
-): string {
-  return JSON.stringify(
-    SaleCreatedEventPartner$outboundSchema.parse(saleCreatedEventPartner),
-  );
-}
-
-export function saleCreatedEventPartnerFromJSON(
-  jsonString: string,
-): SafeParseResult<SaleCreatedEventPartner, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => SaleCreatedEventPartner$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SaleCreatedEventPartner' from JSON`,
-  );
-}
-
-/** @internal */
-export const SaleCreatedEventType$inboundSchema: z.ZodNativeEnum<
-  typeof SaleCreatedEventType
-> = z.nativeEnum(SaleCreatedEventType);
-
-/** @internal */
-export const SaleCreatedEventType$outboundSchema: z.ZodNativeEnum<
-  typeof SaleCreatedEventType
-> = SaleCreatedEventType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SaleCreatedEventType$ {
-  /** @deprecated use `SaleCreatedEventType$inboundSchema` instead. */
-  export const inboundSchema = SaleCreatedEventType$inboundSchema;
-  /** @deprecated use `SaleCreatedEventType$outboundSchema` instead. */
-  export const outboundSchema = SaleCreatedEventType$outboundSchema;
-}
-
-/** @internal */
-export const SaleCreatedEventInterval$inboundSchema: z.ZodNativeEnum<
-  typeof SaleCreatedEventInterval
-> = z.nativeEnum(SaleCreatedEventInterval);
-
-/** @internal */
-export const SaleCreatedEventInterval$outboundSchema: z.ZodNativeEnum<
-  typeof SaleCreatedEventInterval
-> = SaleCreatedEventInterval$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SaleCreatedEventInterval$ {
-  /** @deprecated use `SaleCreatedEventInterval$inboundSchema` instead. */
-  export const inboundSchema = SaleCreatedEventInterval$inboundSchema;
-  /** @deprecated use `SaleCreatedEventInterval$outboundSchema` instead. */
-  export const outboundSchema = SaleCreatedEventInterval$outboundSchema;
-}
-
-/** @internal */
-export const SaleCreatedEventDiscount$inboundSchema: z.ZodType<
-  SaleCreatedEventDiscount,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-  couponId: z.nullable(z.string()),
-  couponTestId: z.nullable(z.string()),
-  amount: z.number(),
-  type: SaleCreatedEventType$inboundSchema,
-  duration: z.nullable(z.number()),
-  interval: z.nullable(SaleCreatedEventInterval$inboundSchema),
-});
-
-/** @internal */
-export type SaleCreatedEventDiscount$Outbound = {
-  id: string;
-  couponId: string | null;
-  couponTestId: string | null;
-  amount: number;
-  type: string;
-  duration: number | null;
-  interval: string | null;
-};
-
-/** @internal */
-export const SaleCreatedEventDiscount$outboundSchema: z.ZodType<
-  SaleCreatedEventDiscount$Outbound,
-  z.ZodTypeDef,
-  SaleCreatedEventDiscount
-> = z.object({
-  id: z.string(),
-  couponId: z.nullable(z.string()),
-  couponTestId: z.nullable(z.string()),
-  amount: z.number(),
-  type: SaleCreatedEventType$outboundSchema,
-  duration: z.nullable(z.number()),
-  interval: z.nullable(SaleCreatedEventInterval$outboundSchema),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SaleCreatedEventDiscount$ {
-  /** @deprecated use `SaleCreatedEventDiscount$inboundSchema` instead. */
-  export const inboundSchema = SaleCreatedEventDiscount$inboundSchema;
-  /** @deprecated use `SaleCreatedEventDiscount$outboundSchema` instead. */
-  export const outboundSchema = SaleCreatedEventDiscount$outboundSchema;
-  /** @deprecated use `SaleCreatedEventDiscount$Outbound` instead. */
-  export type Outbound = SaleCreatedEventDiscount$Outbound;
-}
-
-export function saleCreatedEventDiscountToJSON(
-  saleCreatedEventDiscount: SaleCreatedEventDiscount,
-): string {
-  return JSON.stringify(
-    SaleCreatedEventDiscount$outboundSchema.parse(saleCreatedEventDiscount),
-  );
-}
-
-export function saleCreatedEventDiscountFromJSON(
-  jsonString: string,
-): SafeParseResult<SaleCreatedEventDiscount, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => SaleCreatedEventDiscount$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SaleCreatedEventDiscount' from JSON`,
-  );
-}
-
-/** @internal */
 export const SaleCreatedEventCustomer$inboundSchema: z.ZodType<
   SaleCreatedEventCustomer,
   z.ZodTypeDef,
@@ -835,12 +535,6 @@ export const SaleCreatedEventCustomer$inboundSchema: z.ZodType<
   avatar: z.nullable(z.string()).optional(),
   country: z.nullable(z.string()).optional(),
   createdAt: z.string(),
-  link: z.nullable(z.lazy(() => SaleCreatedEventDataLink$inboundSchema))
-    .optional(),
-  partner: z.nullable(z.lazy(() => SaleCreatedEventPartner$inboundSchema))
-    .optional(),
-  discount: z.nullable(z.lazy(() => SaleCreatedEventDiscount$inboundSchema))
-    .optional(),
 });
 
 /** @internal */
@@ -852,9 +546,6 @@ export type SaleCreatedEventCustomer$Outbound = {
   avatar?: string | null | undefined;
   country?: string | null | undefined;
   createdAt: string;
-  link?: SaleCreatedEventDataLink$Outbound | null | undefined;
-  partner?: SaleCreatedEventPartner$Outbound | null | undefined;
-  discount?: SaleCreatedEventDiscount$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -870,12 +561,6 @@ export const SaleCreatedEventCustomer$outboundSchema: z.ZodType<
   avatar: z.nullable(z.string()).optional(),
   country: z.nullable(z.string()).optional(),
   createdAt: z.string(),
-  link: z.nullable(z.lazy(() => SaleCreatedEventDataLink$outboundSchema))
-    .optional(),
-  partner: z.nullable(z.lazy(() => SaleCreatedEventPartner$outboundSchema))
-    .optional(),
-  discount: z.nullable(z.lazy(() => SaleCreatedEventDiscount$outboundSchema))
-    .optional(),
 });
 
 /**

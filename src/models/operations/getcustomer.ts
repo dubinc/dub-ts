@@ -45,8 +45,8 @@ export type GetCustomerLink = {
 export type GetCustomerPartner = {
   id: string;
   name: string;
-  email: string;
-  image?: string | null | undefined;
+  email: string | null;
+  image: string | null;
 };
 
 export const GetCustomerType = {
@@ -237,16 +237,16 @@ export const GetCustomerPartner$inboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   name: z.string(),
-  email: z.string(),
-  image: z.nullable(z.string()).optional(),
+  email: z.nullable(z.string()),
+  image: z.nullable(z.string()),
 });
 
 /** @internal */
 export type GetCustomerPartner$Outbound = {
   id: string;
   name: string;
-  email: string;
-  image?: string | null | undefined;
+  email: string | null;
+  image: string | null;
 };
 
 /** @internal */
@@ -257,8 +257,8 @@ export const GetCustomerPartner$outboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   name: z.string(),
-  email: z.string(),
-  image: z.nullable(z.string()).optional(),
+  email: z.nullable(z.string()),
+  image: z.nullable(z.string()),
 });
 
 /**

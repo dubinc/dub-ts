@@ -66,8 +66,8 @@ export type UpdateCustomerLink = {
 export type UpdateCustomerPartner = {
   id: string;
   name: string;
-  email: string;
-  image?: string | null | undefined;
+  email: string | null;
+  image: string | null;
 };
 
 export const UpdateCustomerType = {
@@ -335,16 +335,16 @@ export const UpdateCustomerPartner$inboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   name: z.string(),
-  email: z.string(),
-  image: z.nullable(z.string()).optional(),
+  email: z.nullable(z.string()),
+  image: z.nullable(z.string()),
 });
 
 /** @internal */
 export type UpdateCustomerPartner$Outbound = {
   id: string;
   name: string;
-  email: string;
-  image?: string | null | undefined;
+  email: string | null;
+  image: string | null;
 };
 
 /** @internal */
@@ -355,8 +355,8 @@ export const UpdateCustomerPartner$outboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   name: z.string(),
-  email: z.string(),
-  image: z.nullable(z.string()).optional(),
+  email: z.nullable(z.string()),
+  image: z.nullable(z.string()),
 });
 
 /**

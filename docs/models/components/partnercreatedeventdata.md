@@ -8,21 +8,21 @@ import { PartnerCreatedEventData } from "dub/models/components";
 let value: PartnerCreatedEventData = {
   id: "<id>",
   name: "<value>",
-  email: "Jazlyn26@hotmail.com",
-  image: "https://picsum.photos/seed/Ztf4pzuan/1402/493",
-  country: "Turkmenistan",
+  email: "Mya_Cruickshank@gmail.com",
+  image: "https://picsum.photos/seed/n80nKZsil/3477/248",
+  country: "Belize",
   payoutsEnabled: false,
-  createdAt: "1724082770781",
+  createdAt: "1723897042318",
   status: "pending",
   programId: "<id>",
   tenantId: "<id>",
   links: [
     {
       id: "<id>",
-      domain: "limping-going.com",
+      domain: "posh-adrenalin.name",
       key: "<key>",
-      shortLink: "https://marvelous-monocle.info/",
-      url: "https://stormy-populist.org/",
+      shortLink: "https://meager-unblinking.biz",
+      url: "https://defenseless-diver.biz",
     },
   ],
 };

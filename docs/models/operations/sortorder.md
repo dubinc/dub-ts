@@ -7,7 +7,7 @@ The sort order. The default is `desc`.
 ```typescript
 import { SortOrder } from "dub/models/operations";
 
-let value: SortOrder = "asc";
+let value: SortOrder = "desc";
 ```
 
 ## Values
