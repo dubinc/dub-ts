@@ -8,7 +8,8 @@ import { UpdateCustomerPartner } from "dub/models/operations";
 let value: UpdateCustomerPartner = {
   id: "<id>",
   name: "<value>",
-  email: "Salma_Weissnat@yahoo.com",
+  email: "Maritza23@hotmail.com",
+  image: "https://loremflickr.com/272/2300?lock=1696447967815333",
 };
 ```
 
@@ -19,4 +20,4 @@ let value: UpdateCustomerPartner = {
 | `id`               | *string*           | :heavy_check_mark: | N/A                |
 | `name`             | *string*           | :heavy_check_mark: | N/A                |
 | `email`            | *string*           | :heavy_check_mark: | N/A                |
-| `image`            | *string*           | :heavy_minus_sign: | N/A                |
+| `image`            | *string*           | :heavy_check_mark: | N/A                |

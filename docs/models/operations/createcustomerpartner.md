@@ -8,7 +8,8 @@ import { CreateCustomerPartner } from "dub/models/operations";
 let value: CreateCustomerPartner = {
   id: "<id>",
   name: "<value>",
-  email: "Audreanne22@yahoo.com",
+  email: "Jalon_Labadie0@gmail.com",
+  image: "https://loremflickr.com/2298/2156?lock=1578206416559977",
 };
 ```
 
@@ -19,4 +20,4 @@ let value: CreateCustomerPartner = {
 | `id`               | *string*           | :heavy_check_mark: | N/A                |
 | `name`             | *string*           | :heavy_check_mark: | N/A                |
 | `email`            | *string*           | :heavy_check_mark: | N/A                |
-| `image`            | *string*           | :heavy_minus_sign: | N/A                |
+| `image`            | *string*           | :heavy_check_mark: | N/A                |

@@ -7,10 +7,10 @@ import { Links } from "dub/models/components";
 
 let value: Links = {
   id: "<id>",
-  domain: "left-venom.org",
+  domain: "perky-hydrolyze.name",
   key: "<key>",
-  shortLink: "https://burdensome-avalanche.info/",
-  url: "https://experienced-toothbrush.org/",
+  shortLink: "https://fine-configuration.name",
+  url: "https://idolized-suv.net/",
 };
 ```
 

@@ -7,7 +7,7 @@ The field to sort the tags by.
 ```typescript
 import { GetTagsQueryParamSortBy } from "dub/models/operations";
 
-let value: GetTagsQueryParamSortBy = "name";
+let value: GetTagsQueryParamSortBy = "createdAt";
 ```
 
 ## Values

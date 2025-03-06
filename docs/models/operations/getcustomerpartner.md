@@ -8,7 +8,8 @@ import { GetCustomerPartner } from "dub/models/operations";
 let value: GetCustomerPartner = {
   id: "<id>",
   name: "<value>",
-  email: "Fleta.Lehner@yahoo.com",
+  email: "Cruz79@hotmail.com",
+  image: "https://picsum.photos/seed/NEJZPo/2888/3986",
 };
 ```
 
@@ -19,4 +20,4 @@ let value: GetCustomerPartner = {
 | `id`               | *string*           | :heavy_check_mark: | N/A                |
 | `name`             | *string*           | :heavy_check_mark: | N/A                |
 | `email`            | *string*           | :heavy_check_mark: | N/A                |
-| `image`            | *string*           | :heavy_minus_sign: | N/A                |
+| `image`            | *string*           | :heavy_check_mark: | N/A                |

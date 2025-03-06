@@ -12,9 +12,13 @@ export type UpdatePartnerSaleRequestBody = {
   programId: string;
   invoiceId: string;
   /**
-   * The new amount for the sale.
+   * The new absolute amount for the sale.
    */
-  amount: number;
+  amount?: number | undefined;
+  /**
+   * Modify the current sale amount: use positive values to increase the amount, negative values to decrease it.
+   */
+  modifyAmount?: number | undefined;
 };
 
 export const UpdatePartnerSaleStatus = {
@@ -38,6 +42,7 @@ export type UpdatePartnerSaleResponseBody = {
   earnings: number;
   currency: string;
   status: UpdatePartnerSaleStatus;
+  invoiceId?: string | null | undefined;
   createdAt: string;
   updatedAt: string;
 };
@@ -50,14 +55,16 @@ export const UpdatePartnerSaleRequestBody$inboundSchema: z.ZodType<
 > = z.object({
   programId: z.string(),
   invoiceId: z.string(),
-  amount: z.number(),
+  amount: z.number().optional(),
+  modifyAmount: z.number().optional(),
 });
 
 /** @internal */
 export type UpdatePartnerSaleRequestBody$Outbound = {
   programId: string;
   invoiceId: string;
-  amount: number;
+  amount?: number | undefined;
+  modifyAmount?: number | undefined;
 };
 
 /** @internal */
@@ -68,7 +75,8 @@ export const UpdatePartnerSaleRequestBody$outboundSchema: z.ZodType<
 > = z.object({
   programId: z.string(),
   invoiceId: z.string(),
-  amount: z.number(),
+  amount: z.number().optional(),
+  modifyAmount: z.number().optional(),
 });
 
 /**
@@ -136,6 +144,7 @@ export const UpdatePartnerSaleResponseBody$inboundSchema: z.ZodType<
   earnings: z.number(),
   currency: z.string(),
   status: UpdatePartnerSaleStatus$inboundSchema,
+  invoiceId: z.nullable(z.string()).optional(),
   createdAt: z.string(),
   updatedAt: z.string(),
 });
@@ -147,6 +156,7 @@ export type UpdatePartnerSaleResponseBody$Outbound = {
   earnings: number;
   currency: string;
   status: string;
+  invoiceId?: string | null | undefined;
   createdAt: string;
   updatedAt: string;
 };
@@ -162,6 +172,7 @@ export const UpdatePartnerSaleResponseBody$outboundSchema: z.ZodType<
   earnings: z.number(),
   currency: z.string(),
   status: UpdatePartnerSaleStatus$outboundSchema,
+  invoiceId: z.nullable(z.string()).optional(),
   createdAt: z.string(),
   updatedAt: z.string(),
 });

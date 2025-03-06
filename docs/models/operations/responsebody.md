@@ -8,20 +8,20 @@
 ```typescript
 const value: components.LinkSchema = {
   id: "<id>",
-  domain: "glaring-decision.info",
+  domain: "lonely-director.com",
   key: "<key>",
-  url: "https://pretty-duster.org",
+  url: "https://orderly-kinase.com/",
   externalId: "<id>",
   tenantId: "<id>",
   programId: "<id>",
   partnerId: "<id>",
-  expiresAt: "1749938281542",
-  expiredUrl: "https://fatherly-sand.name",
-  password: "WL8Ztft9BhCFCm6",
+  expiresAt: "1752955330719",
+  expiredUrl: "https://lawful-laughter.info",
+  password: "E6PXNCmczgxj_F9",
   title: "<value>",
-  description: "ugh uselessly yowza whoever shallow fit",
-  image: "https://loremflickr.com/2760/2400?lock=938846191739087",
-  video: "https://loremflickr.com/558/2786?lock=3058401090769541",
+  description: "ick meanwhile likewise excitedly ugh bakeware",
+  image: "https://picsum.photos/seed/ftWCPR/236/3293",
+  video: "https://picsum.videos/seed/rLZ7p/538/2315",
   ios: "<value>",
   android: "<id>",
   geo: {},
@@ -30,7 +30,7 @@ const value: components.LinkSchema = {
     {
       id: "<id>",
       name: "<value>",
-      color: "green",
+      color: "pink",
     },
   ],
   folderId: "<id>",
@@ -38,9 +38,9 @@ const value: components.LinkSchema = {
     "<value>",
   ],
   comments:
-    "strictly wetly blah nutritious stall ick beside smoggy yuck nearly failing",
-  shortLink: "https://huge-cinder.com/",
-  qrCode: "https://potable-diversity.org/",
+    "forenenst uproot rewarding brr even hmph joyfully and whether cafe filter abscond dependency if",
+  shortLink: "https://appropriate-cope.net",
+  qrCode: "https://numb-singing.net/",
   utmSource: "<value>",
   utmMedium: "<value>",
   utmCampaign: "<value>",
@@ -49,8 +49,8 @@ const value: components.LinkSchema = {
   userId: "<id>",
   workspaceId: "<id>",
   lastClicked: "<value>",
-  createdAt: "1731325247877",
-  updatedAt: "1741107377182",
+  createdAt: "1728735856520",
+  updatedAt: "1741210781030",
   projectId: "<id>",
 };
 ```
@@ -60,7 +60,7 @@ const value: components.LinkSchema = {
 ```typescript
 const value: components.LinkErrorSchema = {
   error: "<value>",
-  code: "invite_pending",
+  code: "bad_request",
 };
 ```
 

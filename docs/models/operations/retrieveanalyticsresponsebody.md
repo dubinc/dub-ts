@@ -26,7 +26,7 @@ const value: components.AnalyticsTimeseries[] = [
 ```typescript
 const value: components.AnalyticsContinents[] = [
   {
-    continent: "NA",
+    continent: "SA",
   },
 ];
 ```
@@ -36,7 +36,7 @@ const value: components.AnalyticsContinents[] = [
 ```typescript
 const value: components.AnalyticsCountries[] = [
   {
-    country: "CD",
+    country: "CC",
   },
 ];
 ```
@@ -46,7 +46,7 @@ const value: components.AnalyticsCountries[] = [
 ```typescript
 const value: components.AnalyticsRegions[] = [
   {
-    country: "TL",
+    country: "MK",
     region: "<value>",
   },
 ];
@@ -57,8 +57,8 @@ const value: components.AnalyticsRegions[] = [
 ```typescript
 const value: components.AnalyticsCities[] = [
   {
-    country: "MK",
-    city: "Fort Crystal",
+    country: "AI",
+    city: "Bauchchester",
   },
 ];
 ```
@@ -68,7 +68,7 @@ const value: components.AnalyticsCities[] = [
 ```typescript
 const value: components.AnalyticsDevices[] = [
   {
-    device: "Mobile",
+    device: "Desktop",
   },
 ];
 ```
@@ -88,7 +88,7 @@ const value: components.AnalyticsBrowsers[] = [
 ```typescript
 const value: components.AnalyticsOS[] = [
   {
-    os: "Blackberry",
+    os: "Android",
   },
 ];
 ```
@@ -108,7 +108,7 @@ const value: components.AnalyticsTriggers[] = [
 ```typescript
 const value: components.AnalyticsReferers[] = [
   {
-    referer: "well-groomed-creature.biz",
+    referer: "rigid-hygienic.net",
   },
 ];
 ```
@@ -118,7 +118,7 @@ const value: components.AnalyticsReferers[] = [
 ```typescript
 const value: components.AnalyticsRefererUrls[] = [
   {
-    refererUrl: "https://gullible-hutch.com",
+    refererUrl: "https://muffled-avalanche.com/",
   },
 ];
 ```
@@ -130,11 +130,11 @@ const value: components.AnalyticsTopLinks[] = [
   {
     link: "<value>",
     id: "<id>",
-    domain: "essential-saloon.org",
+    domain: "spiffy-deed.com",
     key: "<key>",
     shortLink: "<value>",
-    url: "https://sore-alert.com/",
-    createdAt: "1721992418818",
+    url: "https://coordinated-stall.name/",
+    createdAt: "1734689790209",
   },
 ];
 ```
@@ -144,7 +144,7 @@ const value: components.AnalyticsTopLinks[] = [
 ```typescript
 const value: components.AnalyticsTopUrls[] = [
   {
-    url: "https://dazzling-order.org/",
+    url: "https://powerful-tectonics.name/",
   },
 ];
 ```

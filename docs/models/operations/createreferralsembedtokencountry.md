@@ -7,7 +7,7 @@ Country where the partner is based.
 ```typescript
 import { CreateReferralsEmbedTokenCountry } from "dub/models/operations";
 
-let value: CreateReferralsEmbedTokenCountry = "EC";
+let value: CreateReferralsEmbedTokenCountry = "FK";
 ```
 
 ## Values

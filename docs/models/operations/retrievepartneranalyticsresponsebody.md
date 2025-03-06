@@ -28,11 +28,11 @@ const value: components.PartnerAnalyticsTopLinks[] = [
   {
     link: "<value>",
     id: "<id>",
-    domain: "blue-self-confidence.name",
+    domain: "descriptive-celsius.biz",
     key: "<key>",
     shortLink: "<value>",
-    url: "https://late-knuckle.org",
-    createdAt: "1724855212364",
+    url: "https://buttery-lobster.net",
+    createdAt: "1735959024240",
   },
 ];
 ```
