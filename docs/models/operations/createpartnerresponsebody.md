@@ -14,7 +14,7 @@ let value: CreatePartnerResponseBody = {
   image: "https://picsum.photos/seed/nugmAds/873/152",
   country: "Mexico",
   payoutsEnabled: false,
-  createdAt: "1714057204890",
+  createdAt: "1714135972989",
   status: "approved",
   programId: "<id>",
   tenantId: "<id>",

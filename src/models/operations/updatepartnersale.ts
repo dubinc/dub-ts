@@ -19,6 +19,10 @@ export type UpdatePartnerSaleRequestBody = {
    * Modify the current sale amount: use positive values to increase the amount, negative values to decrease it.
    */
   modifyAmount?: number | undefined;
+  /**
+   * The currency of the sale amount to update. Accepts ISO 4217 currency codes.
+   */
+  currency?: string | undefined;
 };
 
 export const UpdatePartnerSaleStatus = {
@@ -57,6 +61,7 @@ export const UpdatePartnerSaleRequestBody$inboundSchema: z.ZodType<
   invoiceId: z.string(),
   amount: z.number().optional(),
   modifyAmount: z.number().optional(),
+  currency: z.string().default("usd"),
 });
 
 /** @internal */
@@ -65,6 +70,7 @@ export type UpdatePartnerSaleRequestBody$Outbound = {
   invoiceId: string;
   amount?: number | undefined;
   modifyAmount?: number | undefined;
+  currency: string;
 };
 
 /** @internal */
@@ -77,6 +83,7 @@ export const UpdatePartnerSaleRequestBody$outboundSchema: z.ZodType<
   invoiceId: z.string(),
   amount: z.number().optional(),
   modifyAmount: z.number().optional(),
+  currency: z.string().default("usd"),
 });
 
 /**

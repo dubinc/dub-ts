@@ -15,7 +15,7 @@ const value: components.LinkSchema = {
   tenantId: "<id>",
   programId: "<id>",
   partnerId: "<id>",
-  expiresAt: "1752955330719",
+  expiresAt: "1753034098905",
   expiredUrl: "https://lawful-laughter.info",
   password: "E6PXNCmczgxj_F9",
   title: "<value>",
@@ -49,8 +49,8 @@ const value: components.LinkSchema = {
   userId: "<id>",
   workspaceId: "<id>",
   lastClicked: "<value>",
-  createdAt: "1728735856520",
-  updatedAt: "1741210781030",
+  createdAt: "1728814624726",
+  updatedAt: "1741289549236",
   projectId: "<id>",
 };
 ```
