@@ -13,8 +13,8 @@ let value: UpdatePartnerSaleResponseBody = {
   earnings: 5522.56,
   currency: "Algerian Dinar",
   status: "refunded",
-  createdAt: "1732913782963",
-  updatedAt: "1741193056401",
+  createdAt: "1732992551059",
+  updatedAt: "1741271824497",
 };
 ```
 
