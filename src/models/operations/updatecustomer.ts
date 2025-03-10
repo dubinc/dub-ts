@@ -76,20 +76,14 @@ export const UpdateCustomerType = {
 } as const;
 export type UpdateCustomerType = ClosedEnum<typeof UpdateCustomerType>;
 
-export const UpdateCustomerInterval = {
-  Month: "month",
-  Year: "year",
-} as const;
-export type UpdateCustomerInterval = ClosedEnum<typeof UpdateCustomerInterval>;
-
 export type UpdateCustomerDiscount = {
   id: string;
-  couponId: string | null;
-  couponTestId: string | null;
   amount: number;
   type: UpdateCustomerType;
-  duration: number | null;
-  interval: UpdateCustomerInterval | null;
+  maxDuration: number | null;
+  couponId: string | null;
+  couponTestId: string | null;
+  partnersCount?: number | null | undefined;
 };
 
 /**
@@ -412,50 +406,29 @@ export namespace UpdateCustomerType$ {
 }
 
 /** @internal */
-export const UpdateCustomerInterval$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateCustomerInterval
-> = z.nativeEnum(UpdateCustomerInterval);
-
-/** @internal */
-export const UpdateCustomerInterval$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateCustomerInterval
-> = UpdateCustomerInterval$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateCustomerInterval$ {
-  /** @deprecated use `UpdateCustomerInterval$inboundSchema` instead. */
-  export const inboundSchema = UpdateCustomerInterval$inboundSchema;
-  /** @deprecated use `UpdateCustomerInterval$outboundSchema` instead. */
-  export const outboundSchema = UpdateCustomerInterval$outboundSchema;
-}
-
-/** @internal */
 export const UpdateCustomerDiscount$inboundSchema: z.ZodType<
   UpdateCustomerDiscount,
   z.ZodTypeDef,
   unknown
 > = z.object({
   id: z.string(),
-  couponId: z.nullable(z.string()),
-  couponTestId: z.nullable(z.string()),
   amount: z.number(),
   type: UpdateCustomerType$inboundSchema,
-  duration: z.nullable(z.number()),
-  interval: z.nullable(UpdateCustomerInterval$inboundSchema),
+  maxDuration: z.nullable(z.number()),
+  couponId: z.nullable(z.string()),
+  couponTestId: z.nullable(z.string()),
+  partnersCount: z.nullable(z.number()).optional(),
 });
 
 /** @internal */
 export type UpdateCustomerDiscount$Outbound = {
   id: string;
-  couponId: string | null;
-  couponTestId: string | null;
   amount: number;
   type: string;
-  duration: number | null;
-  interval: string | null;
+  maxDuration: number | null;
+  couponId: string | null;
+  couponTestId: string | null;
+  partnersCount?: number | null | undefined;
 };
 
 /** @internal */
@@ -465,12 +438,12 @@ export const UpdateCustomerDiscount$outboundSchema: z.ZodType<
   UpdateCustomerDiscount
 > = z.object({
   id: z.string(),
-  couponId: z.nullable(z.string()),
-  couponTestId: z.nullable(z.string()),
   amount: z.number(),
   type: UpdateCustomerType$outboundSchema,
-  duration: z.nullable(z.number()),
-  interval: z.nullable(UpdateCustomerInterval$outboundSchema),
+  maxDuration: z.nullable(z.number()),
+  couponId: z.nullable(z.string()),
+  couponTestId: z.nullable(z.string()),
+  partnersCount: z.nullable(z.number()).optional(),
 });
 
 /**

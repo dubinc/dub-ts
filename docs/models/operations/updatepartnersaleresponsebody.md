@@ -9,12 +9,12 @@ import { UpdatePartnerSaleResponseBody } from "dub/models/operations";
 
 let value: UpdatePartnerSaleResponseBody = {
   id: "<id>",
-  amount: 9951.67,
-  earnings: 5522.56,
-  currency: "Algerian Dinar",
-  status: "refunded",
-  createdAt: "1732992551059",
-  updatedAt: "1741271824497",
+  amount: 5198.96,
+  earnings: 7360.32,
+  currency: "Cayman Islands Dollar",
+  status: "processed",
+  createdAt: "1735955795370",
+  updatedAt: "1741551505255",
 };
 ```
 
