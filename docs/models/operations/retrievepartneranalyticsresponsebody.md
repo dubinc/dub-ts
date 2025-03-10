@@ -28,11 +28,11 @@ const value: components.PartnerAnalyticsTopLinks[] = [
   {
     link: "<value>",
     id: "<id>",
-    domain: "descriptive-celsius.biz",
+    domain: "zany-bracelet.name",
     key: "<key>",
     shortLink: "<value>",
-    url: "https://buttery-lobster.net",
-    createdAt: "1736037792336",
+    url: "https://talkative-vein.org",
+    createdAt: "1727446220185",
   },
 ];
 ```

@@ -7,9 +7,9 @@ import { GetCustomerLink } from "dub/models/operations";
 
 let value: GetCustomerLink = {
   id: "<id>",
-  domain: "compassionate-dress.name",
+  domain: "abandoned-t-shirt.org",
   key: "<key>",
-  shortLink: "https://abandoned-t-shirt.org/",
+  shortLink: "https://ecstatic-responsibility.info",
   programId: "<id>",
 };
 ```
