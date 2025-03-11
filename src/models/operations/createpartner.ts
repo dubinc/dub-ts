@@ -484,7 +484,7 @@ export type CreatePartnerResponseBody = {
   image: string | null;
   description?: string | null | undefined;
   country: string | null;
-  payoutsEnabled: boolean;
+  payoutsEnabledAt: string | null;
   createdAt: string;
   status: Status;
   programId: string;
@@ -934,7 +934,7 @@ export const CreatePartnerResponseBody$inboundSchema: z.ZodType<
   image: z.nullable(z.string()),
   description: z.nullable(z.string()).optional(),
   country: z.nullable(z.string()),
-  payoutsEnabled: z.boolean(),
+  payoutsEnabledAt: z.nullable(z.string()),
   createdAt: z.string(),
   status: Status$inboundSchema,
   programId: z.string(),
@@ -956,7 +956,7 @@ export type CreatePartnerResponseBody$Outbound = {
   image: string | null;
   description?: string | null | undefined;
   country: string | null;
-  payoutsEnabled: boolean;
+  payoutsEnabledAt: string | null;
   createdAt: string;
   status: string;
   programId: string;
@@ -982,7 +982,7 @@ export const CreatePartnerResponseBody$outboundSchema: z.ZodType<
   image: z.nullable(z.string()),
   description: z.nullable(z.string()).optional(),
   country: z.nullable(z.string()),
-  payoutsEnabled: z.boolean(),
+  payoutsEnabledAt: z.nullable(z.string()),
   createdAt: z.string(),
   status: Status$outboundSchema,
   programId: z.string(),

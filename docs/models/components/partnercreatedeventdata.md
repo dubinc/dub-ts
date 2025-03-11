@@ -11,8 +11,8 @@ let value: PartnerCreatedEventData = {
   email: "Mya_Cruickshank@gmail.com",
   image: "https://picsum.photos/seed/n80nKZsil/3477/248",
   country: "Belize",
-  payoutsEnabled: false,
-  createdAt: "1724225040104",
+  payoutsEnabledAt: "<value>",
+  createdAt: "1724327423494",
   status: "pending",
   programId: "<id>",
   tenantId: "<id>",
@@ -38,7 +38,7 @@ let value: PartnerCreatedEventData = {
 | `image`                                                | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
 | `description`                                          | *string*                                               | :heavy_minus_sign:                                     | N/A                                                    |
 | `country`                                              | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
-| `payoutsEnabled`                                       | *boolean*                                              | :heavy_check_mark:                                     | N/A                                                    |
+| `payoutsEnabledAt`                                     | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
 | `createdAt`                                            | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
 | `status`                                               | [components.Status](../../models/components/status.md) | :heavy_check_mark:                                     | N/A                                                    |
 | `programId`                                            | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
