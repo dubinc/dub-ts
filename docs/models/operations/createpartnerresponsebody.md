@@ -13,8 +13,8 @@ let value: CreatePartnerResponseBody = {
   email: "Gavin.Gibson59@yahoo.com",
   image: "https://loremflickr.com/1848/2300?lock=2764939389730323",
   country: "Malta",
-  payoutsEnabled: false,
-  createdAt: "1722684399628",
+  payoutsEnabledAt: "<value>",
+  createdAt: "1722786783035",
   status: "rejected",
   programId: "<id>",
   tenantId: "<id>",
@@ -40,7 +40,7 @@ let value: CreatePartnerResponseBody = {
 | `image`                                                | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
 | `description`                                          | *string*                                               | :heavy_minus_sign:                                     | N/A                                                    |
 | `country`                                              | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
-| `payoutsEnabled`                                       | *boolean*                                              | :heavy_check_mark:                                     | N/A                                                    |
+| `payoutsEnabledAt`                                     | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
 | `createdAt`                                            | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
 | `status`                                               | [operations.Status](../../models/operations/status.md) | :heavy_check_mark:                                     | N/A                                                    |
 | `programId`                                            | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |

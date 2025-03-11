@@ -68,7 +68,7 @@ export type PartnerCreatedEventData = {
   image: string | null;
   description?: string | null | undefined;
   country: string | null;
-  payoutsEnabled: boolean;
+  payoutsEnabledAt: string | null;
   createdAt: string;
   status: Status;
   programId: string;
@@ -215,7 +215,7 @@ export const PartnerCreatedEventData$inboundSchema: z.ZodType<
   image: z.nullable(z.string()),
   description: z.nullable(z.string()).optional(),
   country: z.nullable(z.string()),
-  payoutsEnabled: z.boolean(),
+  payoutsEnabledAt: z.nullable(z.string()),
   createdAt: z.string(),
   status: Status$inboundSchema,
   programId: z.string(),
@@ -237,7 +237,7 @@ export type PartnerCreatedEventData$Outbound = {
   image: string | null;
   description?: string | null | undefined;
   country: string | null;
-  payoutsEnabled: boolean;
+  payoutsEnabledAt: string | null;
   createdAt: string;
   status: string;
   programId: string;
@@ -263,7 +263,7 @@ export const PartnerCreatedEventData$outboundSchema: z.ZodType<
   image: z.nullable(z.string()),
   description: z.nullable(z.string()).optional(),
   country: z.nullable(z.string()),
-  payoutsEnabled: z.boolean(),
+  payoutsEnabledAt: z.nullable(z.string()),
   createdAt: z.string(),
   status: Status$outboundSchema,
   programId: z.string(),

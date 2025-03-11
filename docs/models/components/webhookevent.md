@@ -11,7 +11,7 @@ Webhook event schema
 const value: components.LinkWebhookEvent = {
   id: "<id>",
   event: "link.updated",
-  createdAt: "1729257340516",
+  createdAt: "1729359724053",
   data: {
     id: "<id>",
     domain: "early-interior.com",
@@ -21,7 +21,7 @@ const value: components.LinkWebhookEvent = {
     tenantId: "<id>",
     programId: "<id>",
     partnerId: "<id>",
-    expiresAt: "1747282726576",
+    expiresAt: "1747385110113",
     expiredUrl: "https://plump-underpants.com/",
     password: "xNL4BLsRsZB3HRZ",
     title: "<value>",
@@ -55,8 +55,8 @@ const value: components.LinkWebhookEvent = {
     userId: "<id>",
     workspaceId: "<id>",
     lastClicked: "<value>",
-    createdAt: "1741047671483",
-    updatedAt: "1741480006568",
+    createdAt: "1741150054999",
+    updatedAt: "1741582390084",
     projectId: "<id>",
   },
 };
@@ -68,7 +68,7 @@ const value: components.LinkWebhookEvent = {
 const value: components.LinkClickedEvent = {
   id: "<id>",
   event: "link.clicked",
-  createdAt: "1714617184293",
+  createdAt: "1714719567808",
   data: {
     click: {
       id: "<id>",
@@ -94,7 +94,7 @@ const value: components.LinkClickedEvent = {
       tenantId: "<id>",
       programId: "<id>",
       partnerId: "<id>",
-      expiresAt: "1757246958660",
+      expiresAt: "1757349342162",
       expiredUrl: "https://corrupt-shadowbox.net/",
       password: "GR0YObnOqWgcdCF",
       title: "<value>",
@@ -128,8 +128,8 @@ const value: components.LinkClickedEvent = {
       userId: "<id>",
       workspaceId: "<id>",
       lastClicked: "<value>",
-      createdAt: "1739704077524",
-      updatedAt: "1741529603069",
+      createdAt: "1739806460999",
+      updatedAt: "1741631986545",
       projectId: "<id>",
     },
   },
@@ -142,14 +142,14 @@ const value: components.LinkClickedEvent = {
 const value: components.LeadCreatedEvent = {
   id: "<id>",
   event: "lead.created",
-  createdAt: "1729404962102",
+  createdAt: "1729507345575",
   data: {
     eventName: "<value>",
     customer: {
       id: "<id>",
       externalId: "<id>",
       name: "<value>",
-      createdAt: "1712170169866",
+      createdAt: "1712272553338",
     },
     click: {
       id: "<id>",
@@ -175,7 +175,7 @@ const value: components.LeadCreatedEvent = {
       tenantId: "<id>",
       programId: "<id>",
       partnerId: "<id>",
-      expiresAt: "1741739554451",
+      expiresAt: "1741841937914",
       expiredUrl: "https://heavenly-sanity.org/",
       password: "Ebgw4qcCSTdRjG9",
       title: "<value>",
@@ -209,8 +209,8 @@ const value: components.LeadCreatedEvent = {
       userId: "<id>",
       workspaceId: "<id>",
       lastClicked: "<value>",
-      createdAt: "1715107181937",
-      updatedAt: "1741519664002",
+      createdAt: "1715209565395",
+      updatedAt: "1741622047460",
       projectId: "<id>",
     },
   },
@@ -223,14 +223,14 @@ const value: components.LeadCreatedEvent = {
 const value: components.SaleCreatedEvent = {
   id: "<id>",
   event: "sale.created",
-  createdAt: "1740517309430",
+  createdAt: "1740619692888",
   data: {
     eventName: "<value>",
     customer: {
       id: "<id>",
       externalId: "<id>",
       name: "<value>",
-      createdAt: "1726892825361",
+      createdAt: "1726995208818",
     },
     click: {
       id: "<id>",
@@ -256,7 +256,7 @@ const value: components.SaleCreatedEvent = {
       tenantId: "<id>",
       programId: "<id>",
       partnerId: "<id>",
-      expiresAt: "1749773405718",
+      expiresAt: "1749875789174",
       expiredUrl: "https://gentle-dish.net/",
       password: "f5rSP3vrLCz6U3Z",
       title: "<value>",
@@ -290,8 +290,8 @@ const value: components.SaleCreatedEvent = {
       userId: "<id>",
       workspaceId: "<id>",
       lastClicked: "<value>",
-      createdAt: "1715857319745",
-      updatedAt: "1741545252730",
+      createdAt: "1715959703196",
+      updatedAt: "1741647636181",
       projectId: "<id>",
     },
     sale: {
@@ -310,15 +310,15 @@ const value: components.SaleCreatedEvent = {
 const value: components.PartnerCreatedEvent = {
   id: "<id>",
   event: "partner.created",
-  createdAt: "1724796101514",
+  createdAt: "1724898484964",
   data: {
     id: "<id>",
     name: "<value>",
     email: "Beverly30@yahoo.com",
     image: "https://loremflickr.com/2585/826?lock=8146876853921132",
     country: "Ethiopia",
-    payoutsEnabled: false,
-    createdAt: "1715690986089",
+    payoutsEnabledAt: "<value>",
+    createdAt: "1715793369539",
     status: "rejected",
     programId: "<id>",
     tenantId: "<id>",
