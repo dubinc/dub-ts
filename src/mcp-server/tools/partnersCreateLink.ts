@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$partnersCreateLink: ToolDefinition<typeof args> = {
-  name: "partners_create-link",
+  name: "partners-create-link",
   description: `Create a link for a partner
 
 Create a new link for a partner that is enrolled in your program.`,

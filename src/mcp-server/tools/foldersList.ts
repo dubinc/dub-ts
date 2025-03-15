@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$foldersList: ToolDefinition<typeof args> = {
-  name: "folders_list",
+  name: "folders-list",
   description: `Retrieve a list of folders
 
 Retrieve a list of folders for the authenticated workspace.`,

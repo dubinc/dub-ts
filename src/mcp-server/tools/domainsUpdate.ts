@@ -13,7 +13,7 @@ const args = {
 };
 
 export const tool$domainsUpdate: ToolDefinition<typeof args> = {
-  name: "domains_update",
+  name: "domains-update",
   description: `Update a domain
 
 Update a domain for the authenticated workspace.`,

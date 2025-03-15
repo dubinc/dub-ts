@@ -13,7 +13,7 @@ const args = {
 };
 
 export const tool$linksUpdate: ToolDefinition<typeof args> = {
-  name: "links_update",
+  name: "links-update",
   description: `Update a link
 
 Update a link for the authenticated workspace. If there's no change, returns it as it is.`,

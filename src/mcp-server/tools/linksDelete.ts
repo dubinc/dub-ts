@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$linksDelete: ToolDefinition<typeof args> = {
-  name: "links_delete",
+  name: "links-delete",
   description: `Delete a link
 
 Delete a link for the authenticated workspace.`,

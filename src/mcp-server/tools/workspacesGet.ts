@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$workspacesGet: ToolDefinition<typeof args> = {
-  name: "workspaces_get",
+  name: "workspaces-get",
   description: `Retrieve a workspace
 
 Retrieve a workspace for the authenticated user.`,

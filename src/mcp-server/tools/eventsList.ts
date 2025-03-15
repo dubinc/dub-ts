@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$eventsList: ToolDefinition<typeof args> = {
-  name: "events_list",
+  name: "events-list",
   description: `Retrieve a list of events
 
 Retrieve a paginated list of events for the authenticated workspace.`,

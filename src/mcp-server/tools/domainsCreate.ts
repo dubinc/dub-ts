@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$domainsCreate: ToolDefinition<typeof args> = {
-  name: "domains_create",
+  name: "domains-create",
   description: `Create a domain
 
 Create a domain for the authenticated workspace.`,

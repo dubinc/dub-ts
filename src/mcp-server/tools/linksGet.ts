@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$linksGet: ToolDefinition<typeof args> = {
-  name: "links_get",
+  name: "links-get",
   description: `Retrieve a link
 
 Retrieve the info for a link.`,
