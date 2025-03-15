@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$linksUpdateMany: ToolDefinition<typeof args> = {
-  name: "links_update-many",
+  name: "links-update-many",
   description: `Bulk update links
 
 Bulk update up to 100 links with the same data for the authenticated workspace.`,

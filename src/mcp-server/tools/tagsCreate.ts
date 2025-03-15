@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$tagsCreate: ToolDefinition<typeof args> = {
-  name: "tags_create",
+  name: "tags-create",
   description: `Create a new tag
 
 Create a new tag for the authenticated workspace.`,

@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$partnersUpsertLink: ToolDefinition<typeof args> = {
-  name: "partners_upsert-link",
+  name: "partners-upsert-link",
   description: `Upsert a link for a partner
 
 Upsert a link for a partner that is enrolled in your program. If a link with the same URL already exists, return it (or update it if there are any changes). Otherwise, a new link will be created.`,

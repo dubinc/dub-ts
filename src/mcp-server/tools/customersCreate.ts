@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$customersCreate: ToolDefinition<typeof args> = {
-  name: "customers_create",
+  name: "customers-create",
   description: `Create a customer
 
 [Deprecated]: Customer creation can only be done via tracking a lead event. Use the /track/lead endpoint instead.`,

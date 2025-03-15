@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$customersDelete: ToolDefinition<typeof args> = {
-  name: "customers_delete",
+  name: "customers-delete",
   description: `Delete a customer
 
 Delete a customer from a workspace.`,

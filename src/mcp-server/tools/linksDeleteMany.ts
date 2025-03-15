@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$linksDeleteMany: ToolDefinition<typeof args> = {
-  name: "links_delete-many",
+  name: "links-delete-many",
   description: `Bulk delete links
 
 Bulk delete up to 100 links for the authenticated workspace.`,
