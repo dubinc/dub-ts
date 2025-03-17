@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$linksList: ToolDefinition<typeof args> = {
-  name: "links_list",
+  name: "links-list",
   description: `Retrieve a list of links
 
 Retrieve a paginated list of links for the authenticated workspace.`,

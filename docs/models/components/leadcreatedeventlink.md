@@ -14,7 +14,7 @@ let value: LeadCreatedEventLink = {
   tenantId: "<id>",
   programId: "<id>",
   partnerId: "<id>",
-  expiresAt: "1772797571453",
+  expiresAt: "1773300309223",
   expiredUrl: "https://dreary-understanding.org/",
   password: "p4ts8Qya_VKfZA5",
   title: "<value>",
@@ -47,8 +47,8 @@ let value: LeadCreatedEventLink = {
   userId: "<id>",
   workspaceId: "<id>",
   lastClicked: "<value>",
-  createdAt: "1714208981701",
-  updatedAt: "1741644655669",
+  createdAt: "1714711719489",
+  updatedAt: "1742147393457",
   projectId: "<id>",
 };
 ```

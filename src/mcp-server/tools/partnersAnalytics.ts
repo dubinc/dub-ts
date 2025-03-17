@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$partnersAnalytics: ToolDefinition<typeof args> = {
-  name: "partners_analytics",
+  name: "partners-analytics",
   description: `Retrieve analytics for a partner
 
 Retrieve analytics for a partner within a program. The response type vary based on the \`groupBy\` query parameter.`,

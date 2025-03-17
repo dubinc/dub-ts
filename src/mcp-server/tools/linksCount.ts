@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$linksCount: ToolDefinition<typeof args> = {
-  name: "links_count",
+  name: "links-count",
   description: `Retrieve links count
 
 Retrieve the number of links for the authenticated workspace.`,

@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$foldersCreate: ToolDefinition<typeof args> = {
-  name: "folders_create",
+  name: "folders-create",
   description: `Create a new folder
 
 Create a new folder for the authenticated workspace.`,

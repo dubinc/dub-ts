@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$customersList: ToolDefinition<typeof args> = {
-  name: "customers_list",
+  name: "customers-list",
   description: `Retrieve a list of customers
 
 Retrieve a list of customers for the authenticated workspace.`,

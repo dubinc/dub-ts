@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$foldersDelete: ToolDefinition<typeof args> = {
-  name: "folders_delete",
+  name: "folders-delete",
   description: `Delete a folder
 
 Delete a folder from the workspace. All existing links will still work, but they will no longer be associated with this folder.`,

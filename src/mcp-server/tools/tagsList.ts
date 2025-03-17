@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$tagsList: ToolDefinition<typeof args> = {
-  name: "tags_list",
+  name: "tags-list",
   description: `Retrieve a list of tags
 
 Retrieve a list of tags for the authenticated workspace.`,

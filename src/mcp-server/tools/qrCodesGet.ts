@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$qrCodesGet: ToolDefinition<typeof args> = {
-  name: "QR-codes_get",
+  name: "QR-codes-get",
   description: `Retrieve a QR code
 
 Retrieve a QR code for a link.`,

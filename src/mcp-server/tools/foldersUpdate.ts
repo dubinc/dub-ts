@@ -13,7 +13,7 @@ const args = {
 };
 
 export const tool$foldersUpdate: ToolDefinition<typeof args> = {
-  name: "folders_update",
+  name: "folders-update",
   description: `Update a folder
 
 Update a folder in the workspace.`,

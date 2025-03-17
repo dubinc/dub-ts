@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$domainsDelete: ToolDefinition<typeof args> = {
-  name: "domains_delete",
+  name: "domains-delete",
   description: `Delete a domain
 
 Delete a domain from a workspace. It cannot be undone. This will also delete all the links associated with the domain.`,

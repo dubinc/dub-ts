@@ -13,7 +13,7 @@ const args = {
 };
 
 export const tool$workspacesUpdate: ToolDefinition<typeof args> = {
-  name: "workspaces_update",
+  name: "workspaces-update",
   description: `Update a workspace
 
 Update a workspace by ID or slug.`,

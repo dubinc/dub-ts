@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$domainsList: ToolDefinition<typeof args> = {
-  name: "domains_list",
+  name: "domains-list",
   description: `Retrieve a list of domains
 
 Retrieve a list of domains associated with the authenticated workspace.`,

@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$analyticsRetrieve: ToolDefinition<typeof args> = {
-  name: "analytics_retrieve",
+  name: "analytics-retrieve",
   description:
     `Retrieve analytics for a link, a domain, or the authenticated workspace.
 
