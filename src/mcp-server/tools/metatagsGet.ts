@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$metatagsGet: ToolDefinition<typeof args> = {
-  name: "metatags_get",
+  name: "metatags-get",
   description: `Retrieve the metatags for a URL
 
 Retrieve the metatags for a URL.`,

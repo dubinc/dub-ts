@@ -12,7 +12,7 @@ const args = {
 };
 
 export const tool$linksCreateMany: ToolDefinition<typeof args> = {
-  name: "links_create-many",
+  name: "links-create-many",
   description: `Bulk create links
 
 Bulk create up to 100 links for the authenticated workspace.`,

@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$tagsDelete: ToolDefinition<typeof args> = {
-  name: "tags_delete",
+  name: "tags-delete",
   description: `Delete a tag
 
 Delete a tag from the workspace. All existing links will still work, but they will no longer be associated with this tag.`,

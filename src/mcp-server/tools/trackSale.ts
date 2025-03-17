@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$trackSale: ToolDefinition<typeof args> = {
-  name: "track_sale",
+  name: "track-sale",
   description: `Track a sale
 
 Track a sale for a short link.`,

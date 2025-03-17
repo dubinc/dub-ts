@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$linksCreate: ToolDefinition<typeof args> = {
-  name: "links_create",
+  name: "links-create",
   description: `Create a new link
 
 Create a new link for the authenticated workspace.`,

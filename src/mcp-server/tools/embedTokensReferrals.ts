@@ -12,7 +12,7 @@ const args = {
 };
 
 export const tool$embedTokensReferrals: ToolDefinition<typeof args> = {
-  name: "embed-tokens_referrals",
+  name: "embed-tokens-referrals",
   description: `Create a new referrals embed token
 
 Create a new referrals embed token for the given partner/tenant.`,

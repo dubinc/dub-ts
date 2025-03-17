@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$partnersUpdateSale: ToolDefinition<typeof args> = {
-  name: "partners_update-sale",
+  name: "partners-update-sale",
   description: `Update a sale for a partner.
 
 Update an existing sale amount. This is useful for handling refunds (partial or full) or fraudulent sales.`,

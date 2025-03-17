@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$linksUpsert: ToolDefinition<typeof args> = {
-  name: "links_upsert",
+  name: "links-upsert",
   description: `Upsert a link
 
 Upsert a link for the authenticated workspace by its URL. If a link with the same URL already exists, return it (or update it if there are any changes). Otherwise, a new link will be created.`,
