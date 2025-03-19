@@ -18,6 +18,7 @@ export const Plan = {
   BusinessPlus: "business plus",
   BusinessExtra: "business extra",
   BusinessMax: "business max",
+  Advanced: "advanced",
   Enterprise: "enterprise",
 } as const;
 /**

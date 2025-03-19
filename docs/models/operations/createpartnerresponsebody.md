@@ -14,7 +14,7 @@ let value: CreatePartnerResponseBody = {
   image: "https://loremflickr.com/1848/2300?lock=2764939389730323",
   country: "Malta",
   payoutsEnabledAt: "<value>",
-  createdAt: "1723289520703",
+  createdAt: "1723462246911",
   status: "declined",
   programId: "<id>",
   tenantId: "<id>",
