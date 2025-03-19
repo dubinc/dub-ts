@@ -12,7 +12,7 @@ let value: PartnerCreatedEventData = {
   image: "https://picsum.photos/seed/n80nKZsil/3477/248",
   country: "Belize",
   payoutsEnabledAt: "<value>",
-  createdAt: "1724830161252",
+  createdAt: "1725002887506",
   status: "declined",
   programId: "<id>",
   tenantId: "<id>",
