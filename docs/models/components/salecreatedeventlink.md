@@ -14,7 +14,7 @@ let value: SaleCreatedEventLink = {
   tenantId: "<id>",
   programId: "<id>",
   partnerId: "<id>",
-  expiresAt: "1748545572009",
+  expiresAt: "1748977661551",
   expiredUrl: "https://trustworthy-cash.biz",
   password: "9c3fzW0NOjS3nSD",
   title: "<value>",
@@ -48,8 +48,8 @@ let value: SaleCreatedEventLink = {
   userId: "<id>",
   workspaceId: "<id>",
   lastClicked: "<value>",
-  createdAt: "1736016840677",
-  updatedAt: "1742306452008",
+  createdAt: "1736448930217",
+  updatedAt: "1742738541548",
   projectId: "<id>",
 };
 ```

@@ -32,6 +32,7 @@ export const UpdatePartnerSaleStatus = {
   Refunded: "refunded",
   Duplicate: "duplicate",
   Fraud: "fraud",
+  Canceled: "canceled",
 } as const;
 export type UpdatePartnerSaleStatus = ClosedEnum<
   typeof UpdatePartnerSaleStatus

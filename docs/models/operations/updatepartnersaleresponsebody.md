@@ -13,8 +13,8 @@ let value: UpdatePartnerSaleResponseBody = {
   earnings: 7360.32,
   currency: "Cayman Islands Dollar",
   status: "processed",
-  createdAt: "1736733642656",
-  updatedAt: "1742329352541",
+  createdAt: "1737165732210",
+  updatedAt: "1742761442095",
 };
 ```
 

@@ -18,7 +18,7 @@ let value: SaleEvent = {
     tenantId: "<id>",
     programId: "<id>",
     partnerId: "<id>",
-    expiresAt: "1754273170724",
+    expiresAt: "1754705260267",
     expiredUrl: "https://hateful-tenement.org",
     password: "36Kp6OylUX3GZjH",
     title: "<value>",
@@ -52,8 +52,8 @@ let value: SaleEvent = {
     userId: "<id>",
     workspaceId: "<id>",
     lastClicked: "<value>",
-    createdAt: "1719837804545",
-    updatedAt: "1742272122546",
+    createdAt: "1720269894113",
+    updatedAt: "1742704212114",
     projectId: "<id>",
   },
   click: {
@@ -75,7 +75,7 @@ let value: SaleEvent = {
     id: "<id>",
     externalId: "<id>",
     name: "<value>",
-    createdAt: "1721942687848",
+    createdAt: "1722374777425",
   },
   sale: {
     amount: 154425,
