@@ -5,11 +5,11 @@
 ```typescript
 import { Status } from "dub/models/components";
 
-let value: Status = "pending";
+let value: Status = "declined";
 ```
 
 ## Values
 
 ```typescript
-"invited" | "approved" | "rejected" | "declined" | "pending"
+"pending" | "approved" | "rejected" | "invited" | "declined" | "banned"
 ```

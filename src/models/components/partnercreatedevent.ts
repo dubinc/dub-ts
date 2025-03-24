@@ -16,11 +16,12 @@ export type PartnerCreatedEventEvent = ClosedEnum<
 >;
 
 export const Status = {
-  Invited: "invited",
+  Pending: "pending",
   Approved: "approved",
   Rejected: "rejected",
+  Invited: "invited",
   Declined: "declined",
-  Pending: "pending",
+  Banned: "banned",
 } as const;
 export type Status = ClosedEnum<typeof Status>;
 

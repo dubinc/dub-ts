@@ -11,5 +11,5 @@ let value: UpdatePartnerSaleStatus = "processed";
 ## Values
 
 ```typescript
-"pending" | "processed" | "paid" | "refunded" | "duplicate" | "fraud"
+"pending" | "processed" | "paid" | "refunded" | "duplicate" | "fraud" | "canceled"
 ```
