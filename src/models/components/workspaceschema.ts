@@ -43,6 +43,10 @@ export type Users = {
    * The role of the authenticated user in the workspace.
    */
   role: Role;
+  /**
+   * The ID of the default folder for the user in the workspace.
+   */
+  defaultFolderId: string | null;
 };
 
 export type Domains = {
@@ -239,11 +243,13 @@ export namespace Role$ {
 export const Users$inboundSchema: z.ZodType<Users, z.ZodTypeDef, unknown> = z
   .object({
     role: Role$inboundSchema,
+    defaultFolderId: z.nullable(z.string()),
   });
 
 /** @internal */
 export type Users$Outbound = {
   role: string;
+  defaultFolderId: string | null;
 };
 
 /** @internal */
@@ -253,6 +259,7 @@ export const Users$outboundSchema: z.ZodType<
   Users
 > = z.object({
   role: Role$outboundSchema,
+  defaultFolderId: z.nullable(z.string()),
 });
 
 /**
