@@ -32,10 +32,11 @@ let value: WorkspaceSchema = {
   conversionEnabled: false,
   dotLinkClaimed: false,
   partnersEnabled: false,
-  createdAt: "1733117464402",
+  createdAt: "1733290171366",
   users: [
     {
       role: "member",
+      defaultFolderId: "<id>",
     },
   ],
   domains: [

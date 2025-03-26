@@ -12,7 +12,7 @@ let value: PartnerAnalyticsTopLinks = {
   key: "<key>",
   shortLink: "<value>",
   url: "https://grizzled-circumference.net",
-  createdAt: "1734701028239",
+  createdAt: "1734873735189",
 };
 ```
 
