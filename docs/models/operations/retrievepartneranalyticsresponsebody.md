@@ -32,7 +32,7 @@ const value: components.PartnerAnalyticsTopLinks[] = [
     key: "<key>",
     shortLink: "<value>",
     url: "https://talkative-vein.org",
-    createdAt: "1728828864006",
+    createdAt: "1728915260775",
   },
 ];
 ```
