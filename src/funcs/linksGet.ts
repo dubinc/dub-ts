@@ -123,7 +123,7 @@ async function $do(
   const context = {
     baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "getLinkInfo",
-    oAuth2Scopes: null,
+    oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
 
