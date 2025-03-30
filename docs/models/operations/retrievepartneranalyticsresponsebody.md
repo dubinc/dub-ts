@@ -28,11 +28,11 @@ const value: components.PartnerAnalyticsTopLinks[] = [
   {
     link: "<value>",
     id: "<id>",
-    domain: "zany-bracelet.name",
+    domain: "live-dress.net",
     key: "<key>",
     shortLink: "<value>",
-    url: "https://talkative-vein.org",
-    createdAt: "1729088059765",
+    url: "https://nervous-netsuke.name",
+    createdAt: "1736424189130",
   },
 ];
 ```

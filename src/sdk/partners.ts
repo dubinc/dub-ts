@@ -5,6 +5,7 @@
 import { partnersAnalytics } from "../funcs/partnersAnalytics.js";
 import { partnersCreate } from "../funcs/partnersCreate.js";
 import { partnersCreateLink } from "../funcs/partnersCreateLink.js";
+import { partnersRetrieveLinks } from "../funcs/partnersRetrieveLinks.js";
 import { partnersUpdateSale } from "../funcs/partnersUpdateSale.js";
 import { partnersUpsertLink } from "../funcs/partnersUpsertLink.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -41,6 +42,23 @@ export class Partners extends ClientSDK {
     options?: RequestOptions,
   ): Promise<components.LinkSchema> {
     return unwrapAsync(partnersCreateLink(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Retrieve a partner's links.
+   *
+   * @remarks
+   * Retrieve a partner's links by their partner ID or tenant ID.
+   */
+  async retrieveLinks(
+    request: operations.RetrieveLinksRequest,
+    options?: RequestOptions,
+  ): Promise<Array<operations.RetrieveLinksResponseBody>> {
+    return unwrapAsync(partnersRetrieveLinks(
       this,
       request,
       options,
