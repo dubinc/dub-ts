@@ -293,7 +293,7 @@ export type LinkWebhookEventTestVariants = {
   percentage: number;
 };
 
-export type Data = {
+export type LinkWebhookEventLink = {
   /**
    * The unique ID of the short link.
    */
@@ -307,7 +307,7 @@ export type Data = {
    */
   key: string;
   url: string;
-  trackConversion?: boolean | undefined;
+  trackConversion: boolean;
   /**
    * The ID of the link in your database. If set, it can be used to identify the link in future API requests (must be prefixed with 'ext_' when passed as a query parameter). This key is unique across your workspace.
    */
@@ -324,14 +324,14 @@ export type Data = {
    * The ID of the partner the short link is associated with.
    */
   partnerId: string | null;
-  archived?: boolean | undefined;
+  archived: boolean;
   expiresAt: string;
   expiredUrl: string | null;
   /**
    * The password required to access the destination URL of the short link.
    */
   password: string | null;
-  proxy?: boolean | undefined;
+  proxy: boolean;
   /**
    * The title of the short link. Will be used for Custom Social Media Cards if `proxy` is true.
    */
@@ -348,8 +348,8 @@ export type Data = {
    * The custom link preview video (og:video). Will be used for Custom Social Media Cards if `proxy` is true. Learn more: https://d.to/og
    */
   video: string | null;
-  rewrite?: boolean | undefined;
-  doIndex?: boolean | undefined;
+  rewrite: boolean;
+  doIndex: boolean;
   /**
    * The iOS destination URL for the short link for iOS device targeting.
    */
@@ -362,7 +362,7 @@ export type Data = {
    * Geo targeting information for the short link in JSON format `{[COUNTRY]: https://example.com }`. Learn more: https://d.to/geo
    */
   geo: LinkWebhookEventGeo | null;
-  publicStats?: boolean | undefined;
+  publicStats: boolean;
   /**
    * The unique ID of the tag assigned to the short link. This field is deprecated – use `tags` instead.
    *
@@ -458,7 +458,7 @@ export type LinkWebhookEvent = {
   id: string;
   event: One | Two | Three;
   createdAt: string;
-  data: Data;
+  data: LinkWebhookEventLink;
 };
 
 /** @internal */
@@ -1932,95 +1932,98 @@ export function linkWebhookEventTestVariantsFromJSON(
 }
 
 /** @internal */
-export const Data$inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z
-  .object({
-    id: z.string(),
-    domain: z.string(),
-    key: z.string(),
-    url: z.string(),
-    trackConversion: z.boolean().optional(),
-    externalId: z.nullable(z.string()),
-    tenantId: z.nullable(z.string()),
-    programId: z.nullable(z.string()),
-    partnerId: z.nullable(z.string()),
-    archived: z.boolean().optional(),
-    expiresAt: z.string(),
-    expiredUrl: z.nullable(z.string()),
-    password: z.nullable(z.string()),
-    proxy: z.boolean().optional(),
-    title: z.nullable(z.string()),
-    description: z.nullable(z.string()),
-    image: z.nullable(z.string()),
-    video: z.nullable(z.string()),
-    rewrite: z.boolean().optional(),
-    doIndex: z.boolean().optional(),
-    ios: z.nullable(z.string()),
-    android: z.nullable(z.string()),
-    geo: z.nullable(z.lazy(() => LinkWebhookEventGeo$inboundSchema)),
-    publicStats: z.boolean().optional(),
-    tagId: z.nullable(z.string()),
-    tags: z.nullable(z.array(TagSchema$inboundSchema)),
-    folderId: z.nullable(z.string()),
-    webhookIds: z.array(z.string()),
-    comments: z.nullable(z.string()),
-    shortLink: z.string(),
-    qrCode: z.string(),
-    utm_source: z.nullable(z.string()),
-    utm_medium: z.nullable(z.string()),
-    utm_campaign: z.nullable(z.string()),
-    utm_term: z.nullable(z.string()),
-    utm_content: z.nullable(z.string()),
-    testVariants: z.nullable(
-      z.array(z.lazy(() => LinkWebhookEventTestVariants$inboundSchema)),
-    ).optional(),
-    testStartedAt: z.nullable(z.string()),
-    testCompletedAt: z.nullable(z.string()),
-    userId: z.nullable(z.string()),
-    workspaceId: z.string(),
-    clicks: z.number().default(0),
-    lastClicked: z.string(),
-    leads: z.number().default(0),
-    sales: z.number().default(0),
-    saleAmount: z.number().default(0),
-    createdAt: z.string(),
-    updatedAt: z.string(),
-    projectId: z.string(),
-  }).transform((v) => {
-    return remap$(v, {
-      "utm_source": "utmSource",
-      "utm_medium": "utmMedium",
-      "utm_campaign": "utmCampaign",
-      "utm_term": "utmTerm",
-      "utm_content": "utmContent",
-    });
+export const LinkWebhookEventLink$inboundSchema: z.ZodType<
+  LinkWebhookEventLink,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  domain: z.string(),
+  key: z.string(),
+  url: z.string(),
+  trackConversion: z.boolean(),
+  externalId: z.nullable(z.string()),
+  tenantId: z.nullable(z.string()),
+  programId: z.nullable(z.string()),
+  partnerId: z.nullable(z.string()),
+  archived: z.boolean(),
+  expiresAt: z.string(),
+  expiredUrl: z.nullable(z.string()),
+  password: z.nullable(z.string()),
+  proxy: z.boolean(),
+  title: z.nullable(z.string()),
+  description: z.nullable(z.string()),
+  image: z.nullable(z.string()),
+  video: z.nullable(z.string()),
+  rewrite: z.boolean(),
+  doIndex: z.boolean(),
+  ios: z.nullable(z.string()),
+  android: z.nullable(z.string()),
+  geo: z.nullable(z.lazy(() => LinkWebhookEventGeo$inboundSchema)),
+  publicStats: z.boolean(),
+  tagId: z.nullable(z.string()),
+  tags: z.nullable(z.array(TagSchema$inboundSchema)),
+  folderId: z.nullable(z.string()),
+  webhookIds: z.array(z.string()),
+  comments: z.nullable(z.string()),
+  shortLink: z.string(),
+  qrCode: z.string(),
+  utm_source: z.nullable(z.string()),
+  utm_medium: z.nullable(z.string()),
+  utm_campaign: z.nullable(z.string()),
+  utm_term: z.nullable(z.string()),
+  utm_content: z.nullable(z.string()),
+  testVariants: z.nullable(
+    z.array(z.lazy(() => LinkWebhookEventTestVariants$inboundSchema)),
+  ).optional(),
+  testStartedAt: z.nullable(z.string()),
+  testCompletedAt: z.nullable(z.string()),
+  userId: z.nullable(z.string()),
+  workspaceId: z.string(),
+  clicks: z.number().default(0),
+  lastClicked: z.string(),
+  leads: z.number().default(0),
+  sales: z.number().default(0),
+  saleAmount: z.number().default(0),
+  createdAt: z.string(),
+  updatedAt: z.string(),
+  projectId: z.string(),
+}).transform((v) => {
+  return remap$(v, {
+    "utm_source": "utmSource",
+    "utm_medium": "utmMedium",
+    "utm_campaign": "utmCampaign",
+    "utm_term": "utmTerm",
+    "utm_content": "utmContent",
   });
+});
 
 /** @internal */
-export type Data$Outbound = {
+export type LinkWebhookEventLink$Outbound = {
   id: string;
   domain: string;
   key: string;
   url: string;
-  trackConversion?: boolean | undefined;
+  trackConversion: boolean;
   externalId: string | null;
   tenantId: string | null;
   programId: string | null;
   partnerId: string | null;
-  archived?: boolean | undefined;
+  archived: boolean;
   expiresAt: string;
   expiredUrl: string | null;
   password: string | null;
-  proxy?: boolean | undefined;
+  proxy: boolean;
   title: string | null;
   description: string | null;
   image: string | null;
   video: string | null;
-  rewrite?: boolean | undefined;
-  doIndex?: boolean | undefined;
+  rewrite: boolean;
+  doIndex: boolean;
   ios: string | null;
   android: string | null;
   geo: LinkWebhookEventGeo$Outbound | null;
-  publicStats?: boolean | undefined;
+  publicStats: boolean;
   tagId: string | null;
   tags: Array<TagSchema$Outbound> | null;
   folderId: string | null;
@@ -2052,93 +2055,100 @@ export type Data$Outbound = {
 };
 
 /** @internal */
-export const Data$outboundSchema: z.ZodType<Data$Outbound, z.ZodTypeDef, Data> =
-  z.object({
-    id: z.string(),
-    domain: z.string(),
-    key: z.string(),
-    url: z.string(),
-    trackConversion: z.boolean().optional(),
-    externalId: z.nullable(z.string()),
-    tenantId: z.nullable(z.string()),
-    programId: z.nullable(z.string()),
-    partnerId: z.nullable(z.string()),
-    archived: z.boolean().optional(),
-    expiresAt: z.string(),
-    expiredUrl: z.nullable(z.string()),
-    password: z.nullable(z.string()),
-    proxy: z.boolean().optional(),
-    title: z.nullable(z.string()),
-    description: z.nullable(z.string()),
-    image: z.nullable(z.string()),
-    video: z.nullable(z.string()),
-    rewrite: z.boolean().optional(),
-    doIndex: z.boolean().optional(),
-    ios: z.nullable(z.string()),
-    android: z.nullable(z.string()),
-    geo: z.nullable(z.lazy(() => LinkWebhookEventGeo$outboundSchema)),
-    publicStats: z.boolean().optional(),
-    tagId: z.nullable(z.string()),
-    tags: z.nullable(z.array(TagSchema$outboundSchema)),
-    folderId: z.nullable(z.string()),
-    webhookIds: z.array(z.string()),
-    comments: z.nullable(z.string()),
-    shortLink: z.string(),
-    qrCode: z.string(),
-    utmSource: z.nullable(z.string()),
-    utmMedium: z.nullable(z.string()),
-    utmCampaign: z.nullable(z.string()),
-    utmTerm: z.nullable(z.string()),
-    utmContent: z.nullable(z.string()),
-    testVariants: z.nullable(
-      z.array(z.lazy(() => LinkWebhookEventTestVariants$outboundSchema)),
-    ).optional(),
-    testStartedAt: z.nullable(z.string()),
-    testCompletedAt: z.nullable(z.string()),
-    userId: z.nullable(z.string()),
-    workspaceId: z.string(),
-    clicks: z.number().default(0),
-    lastClicked: z.string(),
-    leads: z.number().default(0),
-    sales: z.number().default(0),
-    saleAmount: z.number().default(0),
-    createdAt: z.string(),
-    updatedAt: z.string(),
-    projectId: z.string(),
-  }).transform((v) => {
-    return remap$(v, {
-      utmSource: "utm_source",
-      utmMedium: "utm_medium",
-      utmCampaign: "utm_campaign",
-      utmTerm: "utm_term",
-      utmContent: "utm_content",
-    });
+export const LinkWebhookEventLink$outboundSchema: z.ZodType<
+  LinkWebhookEventLink$Outbound,
+  z.ZodTypeDef,
+  LinkWebhookEventLink
+> = z.object({
+  id: z.string(),
+  domain: z.string(),
+  key: z.string(),
+  url: z.string(),
+  trackConversion: z.boolean(),
+  externalId: z.nullable(z.string()),
+  tenantId: z.nullable(z.string()),
+  programId: z.nullable(z.string()),
+  partnerId: z.nullable(z.string()),
+  archived: z.boolean(),
+  expiresAt: z.string(),
+  expiredUrl: z.nullable(z.string()),
+  password: z.nullable(z.string()),
+  proxy: z.boolean(),
+  title: z.nullable(z.string()),
+  description: z.nullable(z.string()),
+  image: z.nullable(z.string()),
+  video: z.nullable(z.string()),
+  rewrite: z.boolean(),
+  doIndex: z.boolean(),
+  ios: z.nullable(z.string()),
+  android: z.nullable(z.string()),
+  geo: z.nullable(z.lazy(() => LinkWebhookEventGeo$outboundSchema)),
+  publicStats: z.boolean(),
+  tagId: z.nullable(z.string()),
+  tags: z.nullable(z.array(TagSchema$outboundSchema)),
+  folderId: z.nullable(z.string()),
+  webhookIds: z.array(z.string()),
+  comments: z.nullable(z.string()),
+  shortLink: z.string(),
+  qrCode: z.string(),
+  utmSource: z.nullable(z.string()),
+  utmMedium: z.nullable(z.string()),
+  utmCampaign: z.nullable(z.string()),
+  utmTerm: z.nullable(z.string()),
+  utmContent: z.nullable(z.string()),
+  testVariants: z.nullable(
+    z.array(z.lazy(() => LinkWebhookEventTestVariants$outboundSchema)),
+  ).optional(),
+  testStartedAt: z.nullable(z.string()),
+  testCompletedAt: z.nullable(z.string()),
+  userId: z.nullable(z.string()),
+  workspaceId: z.string(),
+  clicks: z.number().default(0),
+  lastClicked: z.string(),
+  leads: z.number().default(0),
+  sales: z.number().default(0),
+  saleAmount: z.number().default(0),
+  createdAt: z.string(),
+  updatedAt: z.string(),
+  projectId: z.string(),
+}).transform((v) => {
+  return remap$(v, {
+    utmSource: "utm_source",
+    utmMedium: "utm_medium",
+    utmCampaign: "utm_campaign",
+    utmTerm: "utm_term",
+    utmContent: "utm_content",
   });
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Data$ {
-  /** @deprecated use `Data$inboundSchema` instead. */
-  export const inboundSchema = Data$inboundSchema;
-  /** @deprecated use `Data$outboundSchema` instead. */
-  export const outboundSchema = Data$outboundSchema;
-  /** @deprecated use `Data$Outbound` instead. */
-  export type Outbound = Data$Outbound;
+export namespace LinkWebhookEventLink$ {
+  /** @deprecated use `LinkWebhookEventLink$inboundSchema` instead. */
+  export const inboundSchema = LinkWebhookEventLink$inboundSchema;
+  /** @deprecated use `LinkWebhookEventLink$outboundSchema` instead. */
+  export const outboundSchema = LinkWebhookEventLink$outboundSchema;
+  /** @deprecated use `LinkWebhookEventLink$Outbound` instead. */
+  export type Outbound = LinkWebhookEventLink$Outbound;
 }
 
-export function dataToJSON(data: Data): string {
-  return JSON.stringify(Data$outboundSchema.parse(data));
+export function linkWebhookEventLinkToJSON(
+  linkWebhookEventLink: LinkWebhookEventLink,
+): string {
+  return JSON.stringify(
+    LinkWebhookEventLink$outboundSchema.parse(linkWebhookEventLink),
+  );
 }
 
-export function dataFromJSON(
+export function linkWebhookEventLinkFromJSON(
   jsonString: string,
-): SafeParseResult<Data, SDKValidationError> {
+): SafeParseResult<LinkWebhookEventLink, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Data$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Data' from JSON`,
+    (x) => LinkWebhookEventLink$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LinkWebhookEventLink' from JSON`,
   );
 }
 
@@ -2151,7 +2161,7 @@ export const LinkWebhookEvent$inboundSchema: z.ZodType<
   id: z.string(),
   event: z.union([One$inboundSchema, Two$inboundSchema, Three$inboundSchema]),
   createdAt: z.string(),
-  data: z.lazy(() => Data$inboundSchema),
+  data: z.lazy(() => LinkWebhookEventLink$inboundSchema),
 });
 
 /** @internal */
@@ -2159,7 +2169,7 @@ export type LinkWebhookEvent$Outbound = {
   id: string;
   event: string | string | string;
   createdAt: string;
-  data: Data$Outbound;
+  data: LinkWebhookEventLink$Outbound;
 };
 
 /** @internal */
@@ -2175,7 +2185,7 @@ export const LinkWebhookEvent$outboundSchema: z.ZodType<
     Three$outboundSchema,
   ]),
   createdAt: z.string(),
-  data: z.lazy(() => Data$outboundSchema),
+  data: z.lazy(() => LinkWebhookEventLink$outboundSchema),
 });
 
 /**

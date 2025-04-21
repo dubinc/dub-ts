@@ -18,6 +18,7 @@ let value: SaleEventClick = {
   os: "Windows",
   referer: "live-tarragon.com",
   refererUrl: "https://negligible-stranger.net",
+  qr: false,
   ip: "dd04:a51b:ae2b:985e:244d:d4fb:b5e3:65d1",
 };
 ```
@@ -38,5 +39,5 @@ let value: SaleEventClick = {
 | `os`               | *string*           | :heavy_check_mark: | N/A                |
 | `referer`          | *string*           | :heavy_check_mark: | N/A                |
 | `refererUrl`       | *string*           | :heavy_check_mark: | N/A                |
-| `qr`               | *boolean*          | :heavy_minus_sign: | N/A                |
+| `qr`               | *boolean*          | :heavy_check_mark: | N/A                |
 | `ip`               | *string*           | :heavy_check_mark: | N/A                |

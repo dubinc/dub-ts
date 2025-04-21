@@ -18,6 +18,7 @@ let value: LeadCreatedEventClick = {
   os: "Symbian",
   referer: "shallow-import.net",
   refererUrl: "https://recent-deed.net",
+  qr: false,
   ip: "20.73.178.84",
 };
 ```
@@ -38,5 +39,5 @@ let value: LeadCreatedEventClick = {
 | `os`               | *string*           | :heavy_check_mark: | N/A                |
 | `referer`          | *string*           | :heavy_check_mark: | N/A                |
 | `refererUrl`       | *string*           | :heavy_check_mark: | N/A                |
-| `qr`               | *boolean*          | :heavy_minus_sign: | N/A                |
+| `qr`               | *boolean*          | :heavy_check_mark: | N/A                |
 | `ip`               | *string*           | :heavy_check_mark: | N/A                |

@@ -18,6 +18,7 @@ let value: LeadEventClick = {
   os: "Symbian",
   referer: "empty-draft.org",
   refererUrl: "https://esteemed-freezing.info",
+  qr: false,
   ip: "183.33.254.29",
 };
 ```
@@ -38,5 +39,5 @@ let value: LeadEventClick = {
 | `os`               | *string*           | :heavy_check_mark: | N/A                |
 | `referer`          | *string*           | :heavy_check_mark: | N/A                |
 | `refererUrl`       | *string*           | :heavy_check_mark: | N/A                |
-| `qr`               | *boolean*          | :heavy_minus_sign: | N/A                |
+| `qr`               | *boolean*          | :heavy_check_mark: | N/A                |
 | `ip`               | *string*           | :heavy_check_mark: | N/A                |

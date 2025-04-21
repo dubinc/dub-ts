@@ -33,7 +33,7 @@ export type LinkClickedEventClick = {
   os: string;
   referer: string;
   refererUrl: string;
-  qr?: boolean | undefined;
+  qr: boolean;
   ip: string;
 };
 
@@ -312,7 +312,7 @@ export type LinkClickedEventLink = {
    */
   key: string;
   url: string;
-  trackConversion?: boolean | undefined;
+  trackConversion: boolean;
   /**
    * The ID of the link in your database. If set, it can be used to identify the link in future API requests (must be prefixed with 'ext_' when passed as a query parameter). This key is unique across your workspace.
    */
@@ -329,14 +329,14 @@ export type LinkClickedEventLink = {
    * The ID of the partner the short link is associated with.
    */
   partnerId: string | null;
-  archived?: boolean | undefined;
+  archived: boolean;
   expiresAt: string;
   expiredUrl: string | null;
   /**
    * The password required to access the destination URL of the short link.
    */
   password: string | null;
-  proxy?: boolean | undefined;
+  proxy: boolean;
   /**
    * The title of the short link. Will be used for Custom Social Media Cards if `proxy` is true.
    */
@@ -353,8 +353,8 @@ export type LinkClickedEventLink = {
    * The custom link preview video (og:video). Will be used for Custom Social Media Cards if `proxy` is true. Learn more: https://d.to/og
    */
   video: string | null;
-  rewrite?: boolean | undefined;
-  doIndex?: boolean | undefined;
+  rewrite: boolean;
+  doIndex: boolean;
   /**
    * The iOS destination URL for the short link for iOS device targeting.
    */
@@ -367,7 +367,7 @@ export type LinkClickedEventLink = {
    * Geo targeting information for the short link in JSON format `{[COUNTRY]: https://example.com }`. Learn more: https://d.to/geo
    */
   geo: LinkClickedEventGeo | null;
-  publicStats?: boolean | undefined;
+  publicStats: boolean;
   /**
    * The unique ID of the tag assigned to the short link. This field is deprecated – use `tags` instead.
    *
@@ -456,7 +456,7 @@ export type LinkClickedEventLink = {
   projectId: string;
 };
 
-export type LinkClickedEventData = {
+export type Data = {
   click: LinkClickedEventClick;
   link: LinkClickedEventLink;
 };
@@ -468,7 +468,7 @@ export type LinkClickedEvent = {
   id: string;
   event: LinkClickedEventEvent;
   createdAt: string;
-  data: LinkClickedEventData;
+  data: Data;
 };
 
 /** @internal */
@@ -510,7 +510,7 @@ export const LinkClickedEventClick$inboundSchema: z.ZodType<
   os: z.string(),
   referer: z.string(),
   refererUrl: z.string(),
-  qr: z.boolean().optional(),
+  qr: z.boolean(),
   ip: z.string(),
 });
 
@@ -528,7 +528,7 @@ export type LinkClickedEventClick$Outbound = {
   os: string;
   referer: string;
   refererUrl: string;
-  qr?: boolean | undefined;
+  qr: boolean;
   ip: string;
 };
 
@@ -550,7 +550,7 @@ export const LinkClickedEventClick$outboundSchema: z.ZodType<
   os: z.string(),
   referer: z.string(),
   refererUrl: z.string(),
-  qr: z.boolean().optional(),
+  qr: z.boolean(),
   ip: z.string(),
 });
 
@@ -1961,26 +1961,26 @@ export const LinkClickedEventLink$inboundSchema: z.ZodType<
   domain: z.string(),
   key: z.string(),
   url: z.string(),
-  trackConversion: z.boolean().optional(),
+  trackConversion: z.boolean(),
   externalId: z.nullable(z.string()),
   tenantId: z.nullable(z.string()),
   programId: z.nullable(z.string()),
   partnerId: z.nullable(z.string()),
-  archived: z.boolean().optional(),
+  archived: z.boolean(),
   expiresAt: z.string(),
   expiredUrl: z.nullable(z.string()),
   password: z.nullable(z.string()),
-  proxy: z.boolean().optional(),
+  proxy: z.boolean(),
   title: z.nullable(z.string()),
   description: z.nullable(z.string()),
   image: z.nullable(z.string()),
   video: z.nullable(z.string()),
-  rewrite: z.boolean().optional(),
-  doIndex: z.boolean().optional(),
+  rewrite: z.boolean(),
+  doIndex: z.boolean(),
   ios: z.nullable(z.string()),
   android: z.nullable(z.string()),
   geo: z.nullable(z.lazy(() => LinkClickedEventGeo$inboundSchema)),
-  publicStats: z.boolean().optional(),
+  publicStats: z.boolean(),
   tagId: z.nullable(z.string()),
   tags: z.nullable(z.array(TagSchema$inboundSchema)),
   folderId: z.nullable(z.string()),
@@ -2024,26 +2024,26 @@ export type LinkClickedEventLink$Outbound = {
   domain: string;
   key: string;
   url: string;
-  trackConversion?: boolean | undefined;
+  trackConversion: boolean;
   externalId: string | null;
   tenantId: string | null;
   programId: string | null;
   partnerId: string | null;
-  archived?: boolean | undefined;
+  archived: boolean;
   expiresAt: string;
   expiredUrl: string | null;
   password: string | null;
-  proxy?: boolean | undefined;
+  proxy: boolean;
   title: string | null;
   description: string | null;
   image: string | null;
   video: string | null;
-  rewrite?: boolean | undefined;
-  doIndex?: boolean | undefined;
+  rewrite: boolean;
+  doIndex: boolean;
   ios: string | null;
   android: string | null;
   geo: LinkClickedEventGeo$Outbound | null;
-  publicStats?: boolean | undefined;
+  publicStats: boolean;
   tagId: string | null;
   tags: Array<TagSchema$Outbound> | null;
   folderId: string | null;
@@ -2084,26 +2084,26 @@ export const LinkClickedEventLink$outboundSchema: z.ZodType<
   domain: z.string(),
   key: z.string(),
   url: z.string(),
-  trackConversion: z.boolean().optional(),
+  trackConversion: z.boolean(),
   externalId: z.nullable(z.string()),
   tenantId: z.nullable(z.string()),
   programId: z.nullable(z.string()),
   partnerId: z.nullable(z.string()),
-  archived: z.boolean().optional(),
+  archived: z.boolean(),
   expiresAt: z.string(),
   expiredUrl: z.nullable(z.string()),
   password: z.nullable(z.string()),
-  proxy: z.boolean().optional(),
+  proxy: z.boolean(),
   title: z.nullable(z.string()),
   description: z.nullable(z.string()),
   image: z.nullable(z.string()),
   video: z.nullable(z.string()),
-  rewrite: z.boolean().optional(),
-  doIndex: z.boolean().optional(),
+  rewrite: z.boolean(),
+  doIndex: z.boolean(),
   ios: z.nullable(z.string()),
   android: z.nullable(z.string()),
   geo: z.nullable(z.lazy(() => LinkClickedEventGeo$outboundSchema)),
-  publicStats: z.boolean().optional(),
+  publicStats: z.boolean(),
   tagId: z.nullable(z.string()),
   tags: z.nullable(z.array(TagSchema$outboundSchema)),
   folderId: z.nullable(z.string()),
@@ -2173,59 +2173,49 @@ export function linkClickedEventLinkFromJSON(
 }
 
 /** @internal */
-export const LinkClickedEventData$inboundSchema: z.ZodType<
-  LinkClickedEventData,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  click: z.lazy(() => LinkClickedEventClick$inboundSchema),
-  link: z.lazy(() => LinkClickedEventLink$inboundSchema),
-});
+export const Data$inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z
+  .object({
+    click: z.lazy(() => LinkClickedEventClick$inboundSchema),
+    link: z.lazy(() => LinkClickedEventLink$inboundSchema),
+  });
 
 /** @internal */
-export type LinkClickedEventData$Outbound = {
+export type Data$Outbound = {
   click: LinkClickedEventClick$Outbound;
   link: LinkClickedEventLink$Outbound;
 };
 
 /** @internal */
-export const LinkClickedEventData$outboundSchema: z.ZodType<
-  LinkClickedEventData$Outbound,
-  z.ZodTypeDef,
-  LinkClickedEventData
-> = z.object({
-  click: z.lazy(() => LinkClickedEventClick$outboundSchema),
-  link: z.lazy(() => LinkClickedEventLink$outboundSchema),
-});
+export const Data$outboundSchema: z.ZodType<Data$Outbound, z.ZodTypeDef, Data> =
+  z.object({
+    click: z.lazy(() => LinkClickedEventClick$outboundSchema),
+    link: z.lazy(() => LinkClickedEventLink$outboundSchema),
+  });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace LinkClickedEventData$ {
-  /** @deprecated use `LinkClickedEventData$inboundSchema` instead. */
-  export const inboundSchema = LinkClickedEventData$inboundSchema;
-  /** @deprecated use `LinkClickedEventData$outboundSchema` instead. */
-  export const outboundSchema = LinkClickedEventData$outboundSchema;
-  /** @deprecated use `LinkClickedEventData$Outbound` instead. */
-  export type Outbound = LinkClickedEventData$Outbound;
+export namespace Data$ {
+  /** @deprecated use `Data$inboundSchema` instead. */
+  export const inboundSchema = Data$inboundSchema;
+  /** @deprecated use `Data$outboundSchema` instead. */
+  export const outboundSchema = Data$outboundSchema;
+  /** @deprecated use `Data$Outbound` instead. */
+  export type Outbound = Data$Outbound;
 }
 
-export function linkClickedEventDataToJSON(
-  linkClickedEventData: LinkClickedEventData,
-): string {
-  return JSON.stringify(
-    LinkClickedEventData$outboundSchema.parse(linkClickedEventData),
-  );
+export function dataToJSON(data: Data): string {
+  return JSON.stringify(Data$outboundSchema.parse(data));
 }
 
-export function linkClickedEventDataFromJSON(
+export function dataFromJSON(
   jsonString: string,
-): SafeParseResult<LinkClickedEventData, SDKValidationError> {
+): SafeParseResult<Data, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => LinkClickedEventData$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LinkClickedEventData' from JSON`,
+    (x) => Data$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Data' from JSON`,
   );
 }
 
@@ -2238,7 +2228,7 @@ export const LinkClickedEvent$inboundSchema: z.ZodType<
   id: z.string(),
   event: LinkClickedEventEvent$inboundSchema,
   createdAt: z.string(),
-  data: z.lazy(() => LinkClickedEventData$inboundSchema),
+  data: z.lazy(() => Data$inboundSchema),
 });
 
 /** @internal */
@@ -2246,7 +2236,7 @@ export type LinkClickedEvent$Outbound = {
   id: string;
   event: string;
   createdAt: string;
-  data: LinkClickedEventData$Outbound;
+  data: Data$Outbound;
 };
 
 /** @internal */
@@ -2258,7 +2248,7 @@ export const LinkClickedEvent$outboundSchema: z.ZodType<
   id: z.string(),
   event: LinkClickedEventEvent$outboundSchema,
   createdAt: z.string(),
-  data: z.lazy(() => LinkClickedEventData$outboundSchema),
+  data: z.lazy(() => Data$outboundSchema),
 });
 
 /**

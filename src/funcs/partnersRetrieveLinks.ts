@@ -37,7 +37,7 @@ export function partnersRetrieveLinks(
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    Array<operations.RetrieveLinksResponseBody>,
+    Array<operations.Link>,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -70,7 +70,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      Array<operations.RetrieveLinksResponseBody>,
+      Array<operations.Link>,
       | errors.BadRequest
       | errors.Unauthorized
       | errors.Forbidden
@@ -175,7 +175,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    Array<operations.RetrieveLinksResponseBody>,
+    Array<operations.Link>,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -193,7 +193,7 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, z.array(operations.RetrieveLinksResponseBody$inboundSchema)),
+    M.json(200, z.array(operations.Link$inboundSchema)),
     M.jsonErr(400, errors.BadRequest$inboundSchema),
     M.jsonErr(401, errors.Unauthorized$inboundSchema),
     M.jsonErr(403, errors.Forbidden$inboundSchema),

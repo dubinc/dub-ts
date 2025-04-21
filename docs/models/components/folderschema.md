@@ -9,8 +9,8 @@ let value: FolderSchema = {
   id: "<id>",
   name: "<value>",
   type: "mega",
-  createdAt: "1734241796722",
-  updatedAt: "1745165721786",
+  createdAt: "1734244657677",
+  updatedAt: "1745168582741",
 };
 ```
 

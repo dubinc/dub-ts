@@ -23,7 +23,7 @@ export type GetCustomersRequest = {
   includeExpandedFields?: boolean | undefined;
 };
 
-export type Link = {
+export type GetCustomersLink = {
   /**
    * The unique ID of the short link.
    */
@@ -99,7 +99,7 @@ export type GetCustomersResponseBody = {
    * The date the customer was created.
    */
   createdAt: string;
-  link?: Link | null | undefined;
+  link?: GetCustomersLink | null | undefined;
   programId?: string | null | undefined;
   partner?: GetCustomersPartner | null | undefined;
   discount?: Discount | null | undefined;
@@ -166,17 +166,20 @@ export function getCustomersRequestFromJSON(
 }
 
 /** @internal */
-export const Link$inboundSchema: z.ZodType<Link, z.ZodTypeDef, unknown> = z
-  .object({
-    id: z.string(),
-    domain: z.string(),
-    key: z.string(),
-    shortLink: z.string(),
-    programId: z.nullable(z.string()),
-  });
+export const GetCustomersLink$inboundSchema: z.ZodType<
+  GetCustomersLink,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  domain: z.string(),
+  key: z.string(),
+  shortLink: z.string(),
+  programId: z.nullable(z.string()),
+});
 
 /** @internal */
-export type Link$Outbound = {
+export type GetCustomersLink$Outbound = {
   id: string;
   domain: string;
   key: string;
@@ -185,39 +188,46 @@ export type Link$Outbound = {
 };
 
 /** @internal */
-export const Link$outboundSchema: z.ZodType<Link$Outbound, z.ZodTypeDef, Link> =
-  z.object({
-    id: z.string(),
-    domain: z.string(),
-    key: z.string(),
-    shortLink: z.string(),
-    programId: z.nullable(z.string()),
-  });
+export const GetCustomersLink$outboundSchema: z.ZodType<
+  GetCustomersLink$Outbound,
+  z.ZodTypeDef,
+  GetCustomersLink
+> = z.object({
+  id: z.string(),
+  domain: z.string(),
+  key: z.string(),
+  shortLink: z.string(),
+  programId: z.nullable(z.string()),
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Link$ {
-  /** @deprecated use `Link$inboundSchema` instead. */
-  export const inboundSchema = Link$inboundSchema;
-  /** @deprecated use `Link$outboundSchema` instead. */
-  export const outboundSchema = Link$outboundSchema;
-  /** @deprecated use `Link$Outbound` instead. */
-  export type Outbound = Link$Outbound;
+export namespace GetCustomersLink$ {
+  /** @deprecated use `GetCustomersLink$inboundSchema` instead. */
+  export const inboundSchema = GetCustomersLink$inboundSchema;
+  /** @deprecated use `GetCustomersLink$outboundSchema` instead. */
+  export const outboundSchema = GetCustomersLink$outboundSchema;
+  /** @deprecated use `GetCustomersLink$Outbound` instead. */
+  export type Outbound = GetCustomersLink$Outbound;
 }
 
-export function linkToJSON(link: Link): string {
-  return JSON.stringify(Link$outboundSchema.parse(link));
+export function getCustomersLinkToJSON(
+  getCustomersLink: GetCustomersLink,
+): string {
+  return JSON.stringify(
+    GetCustomersLink$outboundSchema.parse(getCustomersLink),
+  );
 }
 
-export function linkFromJSON(
+export function getCustomersLinkFromJSON(
   jsonString: string,
-): SafeParseResult<Link, SDKValidationError> {
+): SafeParseResult<GetCustomersLink, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Link$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Link' from JSON`,
+    (x) => GetCustomersLink$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetCustomersLink' from JSON`,
   );
 }
 
@@ -389,7 +399,7 @@ export const GetCustomersResponseBody$inboundSchema: z.ZodType<
   avatar: z.nullable(z.string()).optional(),
   country: z.nullable(z.string()).optional(),
   createdAt: z.string(),
-  link: z.nullable(z.lazy(() => Link$inboundSchema)).optional(),
+  link: z.nullable(z.lazy(() => GetCustomersLink$inboundSchema)).optional(),
   programId: z.nullable(z.string()).optional(),
   partner: z.nullable(z.lazy(() => GetCustomersPartner$inboundSchema))
     .optional(),
@@ -405,7 +415,7 @@ export type GetCustomersResponseBody$Outbound = {
   avatar?: string | null | undefined;
   country?: string | null | undefined;
   createdAt: string;
-  link?: Link$Outbound | null | undefined;
+  link?: GetCustomersLink$Outbound | null | undefined;
   programId?: string | null | undefined;
   partner?: GetCustomersPartner$Outbound | null | undefined;
   discount?: Discount$Outbound | null | undefined;
@@ -424,7 +434,7 @@ export const GetCustomersResponseBody$outboundSchema: z.ZodType<
   avatar: z.nullable(z.string()).optional(),
   country: z.nullable(z.string()).optional(),
   createdAt: z.string(),
-  link: z.nullable(z.lazy(() => Link$outboundSchema)).optional(),
+  link: z.nullable(z.lazy(() => GetCustomersLink$outboundSchema)).optional(),
   programId: z.nullable(z.string()).optional(),
   partner: z.nullable(z.lazy(() => GetCustomersPartner$outboundSchema))
     .optional(),

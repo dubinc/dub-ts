@@ -25,7 +25,7 @@ export const Status = {
 } as const;
 export type Status = ClosedEnum<typeof Status>;
 
-export type Links = {
+export type PartnerEnrolledEventLink = {
   /**
    * The unique ID of the short link.
    */
@@ -76,7 +76,7 @@ export type PartnerEnrolledEventData = {
   status: Status;
   programId: string;
   tenantId: string | null;
-  links: Array<Links> | null;
+  links: Array<PartnerEnrolledEventLink> | null;
   clicks?: number | undefined;
   leads?: number | undefined;
   sales?: number | undefined;
@@ -136,21 +136,24 @@ export namespace Status$ {
 }
 
 /** @internal */
-export const Links$inboundSchema: z.ZodType<Links, z.ZodTypeDef, unknown> = z
-  .object({
-    id: z.string(),
-    domain: z.string(),
-    key: z.string(),
-    shortLink: z.string(),
-    url: z.string(),
-    clicks: z.number().default(0),
-    leads: z.number().default(0),
-    sales: z.number().default(0),
-    saleAmount: z.number().default(0),
-  });
+export const PartnerEnrolledEventLink$inboundSchema: z.ZodType<
+  PartnerEnrolledEventLink,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  domain: z.string(),
+  key: z.string(),
+  shortLink: z.string(),
+  url: z.string(),
+  clicks: z.number().default(0),
+  leads: z.number().default(0),
+  sales: z.number().default(0),
+  saleAmount: z.number().default(0),
+});
 
 /** @internal */
-export type Links$Outbound = {
+export type PartnerEnrolledEventLink$Outbound = {
   id: string;
   domain: string;
   key: string;
@@ -163,10 +166,10 @@ export type Links$Outbound = {
 };
 
 /** @internal */
-export const Links$outboundSchema: z.ZodType<
-  Links$Outbound,
+export const PartnerEnrolledEventLink$outboundSchema: z.ZodType<
+  PartnerEnrolledEventLink$Outbound,
   z.ZodTypeDef,
-  Links
+  PartnerEnrolledEventLink
 > = z.object({
   id: z.string(),
   domain: z.string(),
@@ -183,26 +186,30 @@ export const Links$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Links$ {
-  /** @deprecated use `Links$inboundSchema` instead. */
-  export const inboundSchema = Links$inboundSchema;
-  /** @deprecated use `Links$outboundSchema` instead. */
-  export const outboundSchema = Links$outboundSchema;
-  /** @deprecated use `Links$Outbound` instead. */
-  export type Outbound = Links$Outbound;
+export namespace PartnerEnrolledEventLink$ {
+  /** @deprecated use `PartnerEnrolledEventLink$inboundSchema` instead. */
+  export const inboundSchema = PartnerEnrolledEventLink$inboundSchema;
+  /** @deprecated use `PartnerEnrolledEventLink$outboundSchema` instead. */
+  export const outboundSchema = PartnerEnrolledEventLink$outboundSchema;
+  /** @deprecated use `PartnerEnrolledEventLink$Outbound` instead. */
+  export type Outbound = PartnerEnrolledEventLink$Outbound;
 }
 
-export function linksToJSON(links: Links): string {
-  return JSON.stringify(Links$outboundSchema.parse(links));
+export function partnerEnrolledEventLinkToJSON(
+  partnerEnrolledEventLink: PartnerEnrolledEventLink,
+): string {
+  return JSON.stringify(
+    PartnerEnrolledEventLink$outboundSchema.parse(partnerEnrolledEventLink),
+  );
 }
 
-export function linksFromJSON(
+export function partnerEnrolledEventLinkFromJSON(
   jsonString: string,
-): SafeParseResult<Links, SDKValidationError> {
+): SafeParseResult<PartnerEnrolledEventLink, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Links$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Links' from JSON`,
+    (x) => PartnerEnrolledEventLink$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PartnerEnrolledEventLink' from JSON`,
   );
 }
 
@@ -223,7 +230,9 @@ export const PartnerEnrolledEventData$inboundSchema: z.ZodType<
   status: Status$inboundSchema,
   programId: z.string(),
   tenantId: z.nullable(z.string()),
-  links: z.nullable(z.array(z.lazy(() => Links$inboundSchema))),
+  links: z.nullable(
+    z.array(z.lazy(() => PartnerEnrolledEventLink$inboundSchema)),
+  ),
   clicks: z.number().default(0),
   leads: z.number().default(0),
   sales: z.number().default(0),
@@ -245,7 +254,7 @@ export type PartnerEnrolledEventData$Outbound = {
   status: string;
   programId: string;
   tenantId: string | null;
-  links: Array<Links$Outbound> | null;
+  links: Array<PartnerEnrolledEventLink$Outbound> | null;
   clicks: number;
   leads: number;
   sales: number;
@@ -271,7 +280,9 @@ export const PartnerEnrolledEventData$outboundSchema: z.ZodType<
   status: Status$outboundSchema,
   programId: z.string(),
   tenantId: z.nullable(z.string()),
-  links: z.nullable(z.array(z.lazy(() => Links$outboundSchema))),
+  links: z.nullable(
+    z.array(z.lazy(() => PartnerEnrolledEventLink$outboundSchema)),
+  ),
   clicks: z.number().default(0),
   leads: z.number().default(0),
   sales: z.number().default(0),

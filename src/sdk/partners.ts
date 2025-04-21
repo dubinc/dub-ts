@@ -57,7 +57,7 @@ export class Partners extends ClientSDK {
   async retrieveLinks(
     request: operations.RetrieveLinksRequest,
     options?: RequestOptions,
-  ): Promise<Array<operations.RetrieveLinksResponseBody>> {
+  ): Promise<Array<operations.Link>> {
     return unwrapAsync(partnersRetrieveLinks(
       this,
       request,

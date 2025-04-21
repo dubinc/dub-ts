@@ -18,6 +18,7 @@ let value: Click = {
   os: "Chrome OS",
   referer: "well-lit-perp.info",
   refererUrl: "https://urban-paintwork.biz",
+  qr: false,
   ip: "60.236.231.47",
 };
 ```
@@ -38,5 +39,5 @@ let value: Click = {
 | `os`               | *string*           | :heavy_check_mark: | N/A                |
 | `referer`          | *string*           | :heavy_check_mark: | N/A                |
 | `refererUrl`       | *string*           | :heavy_check_mark: | N/A                |
-| `qr`               | *boolean*          | :heavy_minus_sign: | N/A                |
+| `qr`               | *boolean*          | :heavy_check_mark: | N/A                |
 | `ip`               | *string*           | :heavy_check_mark: | N/A                |

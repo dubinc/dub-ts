@@ -455,7 +455,7 @@ export const Status = {
 } as const;
 export type Status = ClosedEnum<typeof Status>;
 
-export type Links = {
+export type CreatePartnerLink = {
   /**
    * The unique ID of the short link.
    */
@@ -509,7 +509,7 @@ export type CreatePartnerResponseBody = {
   status: Status;
   programId: string;
   tenantId: string | null;
-  links: Array<Links> | null;
+  links: Array<CreatePartnerLink> | null;
   clicks?: number | undefined;
   leads?: number | undefined;
   sales?: number | undefined;
@@ -942,21 +942,24 @@ export namespace Status$ {
 }
 
 /** @internal */
-export const Links$inboundSchema: z.ZodType<Links, z.ZodTypeDef, unknown> = z
-  .object({
-    id: z.string(),
-    domain: z.string(),
-    key: z.string(),
-    shortLink: z.string(),
-    url: z.string(),
-    clicks: z.number().default(0),
-    leads: z.number().default(0),
-    sales: z.number().default(0),
-    saleAmount: z.number().default(0),
-  });
+export const CreatePartnerLink$inboundSchema: z.ZodType<
+  CreatePartnerLink,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  domain: z.string(),
+  key: z.string(),
+  shortLink: z.string(),
+  url: z.string(),
+  clicks: z.number().default(0),
+  leads: z.number().default(0),
+  sales: z.number().default(0),
+  saleAmount: z.number().default(0),
+});
 
 /** @internal */
-export type Links$Outbound = {
+export type CreatePartnerLink$Outbound = {
   id: string;
   domain: string;
   key: string;
@@ -969,10 +972,10 @@ export type Links$Outbound = {
 };
 
 /** @internal */
-export const Links$outboundSchema: z.ZodType<
-  Links$Outbound,
+export const CreatePartnerLink$outboundSchema: z.ZodType<
+  CreatePartnerLink$Outbound,
   z.ZodTypeDef,
-  Links
+  CreatePartnerLink
 > = z.object({
   id: z.string(),
   domain: z.string(),
@@ -989,26 +992,30 @@ export const Links$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Links$ {
-  /** @deprecated use `Links$inboundSchema` instead. */
-  export const inboundSchema = Links$inboundSchema;
-  /** @deprecated use `Links$outboundSchema` instead. */
-  export const outboundSchema = Links$outboundSchema;
-  /** @deprecated use `Links$Outbound` instead. */
-  export type Outbound = Links$Outbound;
+export namespace CreatePartnerLink$ {
+  /** @deprecated use `CreatePartnerLink$inboundSchema` instead. */
+  export const inboundSchema = CreatePartnerLink$inboundSchema;
+  /** @deprecated use `CreatePartnerLink$outboundSchema` instead. */
+  export const outboundSchema = CreatePartnerLink$outboundSchema;
+  /** @deprecated use `CreatePartnerLink$Outbound` instead. */
+  export type Outbound = CreatePartnerLink$Outbound;
 }
 
-export function linksToJSON(links: Links): string {
-  return JSON.stringify(Links$outboundSchema.parse(links));
+export function createPartnerLinkToJSON(
+  createPartnerLink: CreatePartnerLink,
+): string {
+  return JSON.stringify(
+    CreatePartnerLink$outboundSchema.parse(createPartnerLink),
+  );
 }
 
-export function linksFromJSON(
+export function createPartnerLinkFromJSON(
   jsonString: string,
-): SafeParseResult<Links, SDKValidationError> {
+): SafeParseResult<CreatePartnerLink, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Links$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Links' from JSON`,
+    (x) => CreatePartnerLink$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreatePartnerLink' from JSON`,
   );
 }
 
@@ -1029,7 +1036,7 @@ export const CreatePartnerResponseBody$inboundSchema: z.ZodType<
   status: Status$inboundSchema,
   programId: z.string(),
   tenantId: z.nullable(z.string()),
-  links: z.nullable(z.array(z.lazy(() => Links$inboundSchema))),
+  links: z.nullable(z.array(z.lazy(() => CreatePartnerLink$inboundSchema))),
   clicks: z.number().default(0),
   leads: z.number().default(0),
   sales: z.number().default(0),
@@ -1051,7 +1058,7 @@ export type CreatePartnerResponseBody$Outbound = {
   status: string;
   programId: string;
   tenantId: string | null;
-  links: Array<Links$Outbound> | null;
+  links: Array<CreatePartnerLink$Outbound> | null;
   clicks: number;
   leads: number;
   sales: number;
@@ -1077,7 +1084,7 @@ export const CreatePartnerResponseBody$outboundSchema: z.ZodType<
   status: Status$outboundSchema,
   programId: z.string(),
   tenantId: z.nullable(z.string()),
-  links: z.nullable(z.array(z.lazy(() => Links$outboundSchema))),
+  links: z.nullable(z.array(z.lazy(() => CreatePartnerLink$outboundSchema))),
   clicks: z.number().default(0),
   leads: z.number().default(0),
   sales: z.number().default(0),

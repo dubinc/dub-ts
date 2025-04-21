@@ -1,16 +1,16 @@
-# Links
+# PartnerEnrolledEventLink
 
 ## Example Usage
 
 ```typescript
-import { Links } from "dub/models/operations";
+import { PartnerEnrolledEventLink } from "dub/models/components";
 
-let value: Links = {
+let value: PartnerEnrolledEventLink = {
   id: "<id>",
-  domain: "variable-disadvantage.info",
+  domain: "subdued-pillow.org",
   key: "<key>",
-  shortLink: "https://honored-encouragement.com",
-  url: "https://elementary-lifestyle.org/",
+  shortLink: "https://true-blossom.biz/",
+  url: "https://flashy-adrenalin.biz/",
 };
 ```
 

@@ -18,6 +18,7 @@ let value: SaleCreatedEventClick = {
   os: "Blackberry",
   referer: "distinct-instructor.org",
   refererUrl: "https://assured-apparatus.info/",
+  qr: false,
   ip: "bece:a8aa:3d01:c01d:0a81:5715:b22c:f9ec",
 };
 ```
@@ -38,5 +39,5 @@ let value: SaleCreatedEventClick = {
 | `os`               | *string*           | :heavy_check_mark: | N/A                |
 | `referer`          | *string*           | :heavy_check_mark: | N/A                |
 | `refererUrl`       | *string*           | :heavy_check_mark: | N/A                |
-| `qr`               | *boolean*          | :heavy_minus_sign: | N/A                |
+| `qr`               | *boolean*          | :heavy_check_mark: | N/A                |
 | `ip`               | *string*           | :heavy_check_mark: | N/A                |

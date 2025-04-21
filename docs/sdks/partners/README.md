@@ -242,7 +242,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveLinksResponseBody[]](../../models/.md)\>**
+**Promise\<[operations.Link[]](../../models/.md)\>**
 
 ### Errors
 

@@ -10,27 +10,33 @@ import { LinkWebhookEvent } from "dub/models/components";
 let value: LinkWebhookEvent = {
   id: "<id>",
   event: "link.deleted",
-  createdAt: "1727956057557",
+  createdAt: "1727958921597",
   data: {
     id: "<id>",
     domain: "political-birth.name",
     key: "<key>",
     url: "https://aggravating-euphonium.info",
+    trackConversion: false,
     externalId: "<id>",
     tenantId: "<id>",
     programId: "<id>",
     partnerId: "<id>",
-    expiresAt: "1752071163896",
+    archived: false,
+    expiresAt: "1752074027936",
     expiredUrl: "https://deafening-pronoun.info",
     password: "Rafvfob4pfCF6Nj",
+    proxy: false,
     title: "<value>",
     description:
       "warp sidetrack provided blah inquisitively reorganisation dish dash",
     image: "https://picsum.photos/seed/hy6ftTuJKn/2259/2652",
     video: "https://picsum.videos/seed/VJyUR/2753/3851",
+    rewrite: false,
+    doIndex: false,
     ios: "<value>",
     android: "<id>",
     geo: {},
+    publicStats: false,
     tagId: "<id>",
     tags: [
       {
@@ -56,8 +62,8 @@ let value: LinkWebhookEvent = {
     userId: "<id>",
     workspaceId: "<id>",
     lastClicked: "<value>",
-    createdAt: "1734124826615",
-    updatedAt: "1745156141131",
+    createdAt: "1734127690656",
+    updatedAt: "1745159005172",
     projectId: "<id>",
   },
 };
@@ -65,9 +71,9 @@ let value: LinkWebhookEvent = {
 
 ## Fields
 
-| Field                                              | Type                                               | Required                                           | Description                                        |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `id`                                               | *string*                                           | :heavy_check_mark:                                 | N/A                                                |
-| `event`                                            | *components.LinkWebhookEventEvent*                 | :heavy_check_mark:                                 | N/A                                                |
-| `createdAt`                                        | *string*                                           | :heavy_check_mark:                                 | N/A                                                |
-| `data`                                             | [components.Data](../../models/components/data.md) | :heavy_check_mark:                                 | N/A                                                |
+| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `id`                                                                               | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `event`                                                                            | *components.LinkWebhookEventEvent*                                                 | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `createdAt`                                                                        | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `data`                                                                             | [components.LinkWebhookEventLink](../../models/components/linkwebhookeventlink.md) | :heavy_check_mark:                                                                 | N/A                                                                                |

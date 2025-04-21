@@ -7,6 +7,7 @@ import { ClickEvent } from "dub/models/components";
 
 let value: ClickEvent = {
   event: "click",
+  timestamp: "<value>",
   click: {
     id: "<id>",
     timestamp: "<value>",
@@ -20,6 +21,7 @@ let value: ClickEvent = {
     os: "Blackberry",
     referer: "kosher-igloo.name",
     refererUrl: "https://polite-thorn.biz/",
+    qr: false,
     ip: "202.255.171.210",
   },
   link: {
@@ -27,20 +29,26 @@ let value: ClickEvent = {
     domain: "interesting-earth.info",
     key: "<key>",
     url: "https://nifty-piglet.net/",
+    trackConversion: false,
     externalId: "<id>",
     tenantId: "<id>",
     programId: "<id>",
     partnerId: "<id>",
-    expiresAt: "1760002496500",
+    archived: false,
+    expiresAt: "1760005368542",
     expiredUrl: "https://awesome-loaf.name",
     password: "APvsoMbrZcB4BkV",
+    proxy: false,
     title: "<value>",
     description: "weakly dimly aha now friendly another",
     image: "https://loremflickr.com/721/3520?lock=3183607008494758",
     video: "https://loremflickr.com/317/2786?lock=3455100821852784",
+    rewrite: false,
+    doIndex: false,
     ios: "<value>",
     android: "<id>",
     geo: {},
+    publicStats: false,
     tagId: "<id>",
     tags: [
       {
@@ -67,8 +75,8 @@ let value: ClickEvent = {
     userId: "<id>",
     workspaceId: "<id>",
     lastClicked: "<value>",
-    createdAt: "1714651415855",
-    updatedAt: "1745167142896",
+    createdAt: "1714654287897",
+    updatedAt: "1745170014938",
     projectId: "<id>",
   },
   clickId: "<id>",
@@ -92,7 +100,7 @@ let value: ClickEvent = {
 | Field                                                                                                                                                               | Type                                                                                                                                                                | Required                                                                                                                                                            | Description                                                                                                                                                         |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `event`                                                                                                                                                             | [components.Event](../../models/components/event.md)                                                                                                                | :heavy_check_mark:                                                                                                                                                  | N/A                                                                                                                                                                 |
-| `timestamp`                                                                                                                                                         | *string*                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                  | N/A                                                                                                                                                                 |
+| `timestamp`                                                                                                                                                         | *string*                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                  | N/A                                                                                                                                                                 |
 | `click`                                                                                                                                                             | [components.Click](../../models/components/click.md)                                                                                                                | :heavy_check_mark:                                                                                                                                                  | N/A                                                                                                                                                                 |
 | `link`                                                                                                                                                              | [components.Link](../../models/components/link.md)                                                                                                                  | :heavy_check_mark:                                                                                                                                                  | N/A                                                                                                                                                                 |
 | ~~`clickId`~~                                                                                                                                                       | *string*                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                  | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible.<br/><br/>Deprecated. Use `click.id` instead. |
