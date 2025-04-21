@@ -4,7 +4,7 @@
 
 import * as z from "zod";
 import { DubCore } from "../core.js";
-import { encodeFormQuery, queryJoin } from "../lib/encodings.js";
+import { encodeFormQuery } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -105,23 +105,19 @@ async function $do(
 
   const path = pathToFunc("/links/count")();
 
-  const query = queryJoin(
-    encodeFormQuery({
-      "tagIds": payload?.tagIds,
-    }, { explode: false }),
-    encodeFormQuery({
-      "domain": payload?.domain,
-      "folderId": payload?.folderId,
-      "groupBy": payload?.groupBy,
-      "search": payload?.search,
-      "showArchived": payload?.showArchived,
-      "tagId": payload?.tagId,
-      "tagNames": payload?.tagNames,
-      "tenantId": payload?.tenantId,
-      "userId": payload?.userId,
-      "withTags": payload?.withTags,
-    }),
-  );
+  const query = encodeFormQuery({
+    "domain": payload?.domain,
+    "folderId": payload?.folderId,
+    "groupBy": payload?.groupBy,
+    "search": payload?.search,
+    "showArchived": payload?.showArchived,
+    "tagId": payload?.tagId,
+    "tagIds": payload?.tagIds,
+    "tagNames": payload?.tagNames,
+    "tenantId": payload?.tenantId,
+    "userId": payload?.userId,
+    "withTags": payload?.withTags,
+  });
 
   const headers = new Headers(compactMap({
     Accept: "application/json",

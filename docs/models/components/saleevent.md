@@ -7,6 +7,7 @@ import { SaleEvent } from "dub/models/components";
 
 let value: SaleEvent = {
   event: "sale",
+  timestamp: "<value>",
   eventId: "<id>",
   eventName: "<value>",
   link: {
@@ -14,21 +15,27 @@ let value: SaleEvent = {
     domain: "perfumed-jellyfish.com",
     key: "<key>",
     url: "https://fearless-hepatitis.net",
+    trackConversion: false,
     externalId: "<id>",
     tenantId: "<id>",
     programId: "<id>",
     partnerId: "<id>",
-    expiresAt: "1754792614269",
+    archived: false,
+    expiresAt: "1754795477536",
     expiredUrl: "https://everlasting-kit.info/",
     password: "Bz5zyB93_ogUDEs",
+    proxy: false,
     title: "<value>",
     description:
       "lawmaker lest because oh repentant than poppy lasting uselessly",
     image: "https://loremflickr.com/3372/1143?lock=776589332237416",
     video: "https://picsum.videos/seed/EEkezl0cNJ/3904/1373",
+    rewrite: false,
+    doIndex: false,
     ios: "<value>",
     android: "<id>",
     geo: {},
+    publicStats: false,
     tagId: "<id>",
     tags: [
       {
@@ -55,8 +62,8 @@ let value: SaleEvent = {
     userId: "<id>",
     workspaceId: "<id>",
     lastClicked: "<value>",
-    createdAt: "1736311900522",
-    updatedAt: "1745123429912",
+    createdAt: "1736314763789",
+    updatedAt: "1745126293180",
     projectId: "<id>",
   },
   click: {
@@ -72,13 +79,14 @@ let value: SaleEvent = {
     os: "BeOS",
     referer: "circular-affiliate.info",
     refererUrl: "https://brilliant-fisherman.name/",
+    qr: false,
     ip: "19.174.83.43",
   },
   customer: {
     id: "<id>",
     externalId: "<id>",
     name: "<value>",
-    createdAt: "1729371513684",
+    createdAt: "1729374376952",
   },
   sale: {
     amount: 519436,
@@ -109,7 +117,7 @@ let value: SaleEvent = {
 | Field                                                                                                                                                               | Type                                                                                                                                                                | Required                                                                                                                                                            | Description                                                                                                                                                         |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `event`                                                                                                                                                             | [components.SaleEventEvent](../../models/components/saleeventevent.md)                                                                                              | :heavy_check_mark:                                                                                                                                                  | N/A                                                                                                                                                                 |
-| `timestamp`                                                                                                                                                         | *string*                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                  | N/A                                                                                                                                                                 |
+| `timestamp`                                                                                                                                                         | *string*                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                  | N/A                                                                                                                                                                 |
 | `eventId`                                                                                                                                                           | *string*                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                  | N/A                                                                                                                                                                 |
 | `eventName`                                                                                                                                                         | *string*                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                  | N/A                                                                                                                                                                 |
 | `link`                                                                                                                                                              | [components.SaleEventLink](../../models/components/saleeventlink.md)                                                                                                | :heavy_check_mark:                                                                                                                                                  | N/A                                                                                                                                                                 |

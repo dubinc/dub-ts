@@ -13,7 +13,7 @@ export type RetrieveLinksRequest = {
   tenantId?: string | undefined;
 };
 
-export type RetrieveLinksResponseBody = {
+export type Link = {
   /**
    * The unique ID of the short link.
    */
@@ -113,24 +113,21 @@ export function retrieveLinksRequestFromJSON(
 }
 
 /** @internal */
-export const RetrieveLinksResponseBody$inboundSchema: z.ZodType<
-  RetrieveLinksResponseBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-  domain: z.string(),
-  key: z.string(),
-  shortLink: z.string(),
-  url: z.string(),
-  clicks: z.number().default(0),
-  leads: z.number().default(0),
-  sales: z.number().default(0),
-  saleAmount: z.number().default(0),
-});
+export const Link$inboundSchema: z.ZodType<Link, z.ZodTypeDef, unknown> = z
+  .object({
+    id: z.string(),
+    domain: z.string(),
+    key: z.string(),
+    shortLink: z.string(),
+    url: z.string(),
+    clicks: z.number().default(0),
+    leads: z.number().default(0),
+    sales: z.number().default(0),
+    saleAmount: z.number().default(0),
+  });
 
 /** @internal */
-export type RetrieveLinksResponseBody$Outbound = {
+export type Link$Outbound = {
   id: string;
   domain: string;
   key: string;
@@ -143,49 +140,42 @@ export type RetrieveLinksResponseBody$Outbound = {
 };
 
 /** @internal */
-export const RetrieveLinksResponseBody$outboundSchema: z.ZodType<
-  RetrieveLinksResponseBody$Outbound,
-  z.ZodTypeDef,
-  RetrieveLinksResponseBody
-> = z.object({
-  id: z.string(),
-  domain: z.string(),
-  key: z.string(),
-  shortLink: z.string(),
-  url: z.string(),
-  clicks: z.number().default(0),
-  leads: z.number().default(0),
-  sales: z.number().default(0),
-  saleAmount: z.number().default(0),
-});
+export const Link$outboundSchema: z.ZodType<Link$Outbound, z.ZodTypeDef, Link> =
+  z.object({
+    id: z.string(),
+    domain: z.string(),
+    key: z.string(),
+    shortLink: z.string(),
+    url: z.string(),
+    clicks: z.number().default(0),
+    leads: z.number().default(0),
+    sales: z.number().default(0),
+    saleAmount: z.number().default(0),
+  });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace RetrieveLinksResponseBody$ {
-  /** @deprecated use `RetrieveLinksResponseBody$inboundSchema` instead. */
-  export const inboundSchema = RetrieveLinksResponseBody$inboundSchema;
-  /** @deprecated use `RetrieveLinksResponseBody$outboundSchema` instead. */
-  export const outboundSchema = RetrieveLinksResponseBody$outboundSchema;
-  /** @deprecated use `RetrieveLinksResponseBody$Outbound` instead. */
-  export type Outbound = RetrieveLinksResponseBody$Outbound;
+export namespace Link$ {
+  /** @deprecated use `Link$inboundSchema` instead. */
+  export const inboundSchema = Link$inboundSchema;
+  /** @deprecated use `Link$outboundSchema` instead. */
+  export const outboundSchema = Link$outboundSchema;
+  /** @deprecated use `Link$Outbound` instead. */
+  export type Outbound = Link$Outbound;
 }
 
-export function retrieveLinksResponseBodyToJSON(
-  retrieveLinksResponseBody: RetrieveLinksResponseBody,
-): string {
-  return JSON.stringify(
-    RetrieveLinksResponseBody$outboundSchema.parse(retrieveLinksResponseBody),
-  );
+export function linkToJSON(link: Link): string {
+  return JSON.stringify(Link$outboundSchema.parse(link));
 }
 
-export function retrieveLinksResponseBodyFromJSON(
+export function linkFromJSON(
   jsonString: string,
-): SafeParseResult<RetrieveLinksResponseBody, SDKValidationError> {
+): SafeParseResult<Link, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => RetrieveLinksResponseBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RetrieveLinksResponseBody' from JSON`,
+    (x) => Link$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Link' from JSON`,
   );
 }

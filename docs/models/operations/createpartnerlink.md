@@ -1,16 +1,16 @@
-# RetrieveLinksResponseBody
+# CreatePartnerLink
 
 ## Example Usage
 
 ```typescript
-import { RetrieveLinksResponseBody } from "dub/models/operations";
+import { CreatePartnerLink } from "dub/models/operations";
 
-let value: RetrieveLinksResponseBody = {
+let value: CreatePartnerLink = {
   id: "<id>",
-  domain: "colossal-commercial.org",
+  domain: "blond-lace.info",
   key: "<key>",
-  shortLink: "https://french-jogging.com",
-  url: "https://humble-circumference.org",
+  shortLink: "https://blushing-intent.biz",
+  url: "https://pleasant-bakeware.net",
 };
 ```
 

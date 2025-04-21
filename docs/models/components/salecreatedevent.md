@@ -10,14 +10,14 @@ import { SaleCreatedEvent } from "dub/models/components";
 let value: SaleCreatedEvent = {
   id: "<id>",
   event: "sale.created",
-  createdAt: "1743761941470",
+  createdAt: "1743764801451",
   data: {
     eventName: "<value>",
     customer: {
       id: "<id>",
       externalId: "<id>",
       name: "<value>",
-      createdAt: "1721693902700",
+      createdAt: "1721696762682",
     },
     click: {
       id: "<id>",
@@ -32,6 +32,7 @@ let value: SaleCreatedEvent = {
       os: "WebOS",
       referer: "tinted-duffel.info",
       refererUrl: "https://unwelcome-dulcimer.info",
+      qr: false,
       ip: "966d:9bba:ffad:5dbd:ac48:3b0a:43b0:d6c5",
     },
     link: {
@@ -39,20 +40,26 @@ let value: SaleCreatedEvent = {
       domain: "wilted-cop-out.org",
       key: "<key>",
       url: "https://cruel-decision.info/",
+      trackConversion: false,
       externalId: "<id>",
       tenantId: "<id>",
       programId: "<id>",
       partnerId: "<id>",
-      expiresAt: "1745747764126",
+      archived: false,
+      expiresAt: "1745750624107",
       expiredUrl: "https://hairy-lifestyle.biz",
       password: "8T1B2qYVgp7KA86",
+      proxy: false,
       title: "<value>",
       description: "retrospectivity pfft ah vice membership alert true",
       image: "https://loremflickr.com/88/2615?lock=6339117890650210",
       video: "https://loremflickr.com/1625/991?lock=3954887895560003",
+      rewrite: false,
+      doIndex: false,
       ios: "<value>",
       android: "<id>",
       geo: {},
+      publicStats: false,
       tagId: "<id>",
       tags: [
         {
@@ -79,8 +86,8 @@ let value: SaleCreatedEvent = {
       userId: "<id>",
       workspaceId: "<id>",
       lastClicked: "<value>",
-      createdAt: "1720487484610",
-      updatedAt: "1745188632299",
+      createdAt: "1720490344592",
+      updatedAt: "1745191492281",
       projectId: "<id>",
     },
     sale: {

@@ -1,16 +1,16 @@
-# Links
+# GetCustomersLink
 
 ## Example Usage
 
 ```typescript
-import { Links } from "dub/models/components";
+import { GetCustomersLink } from "dub/models/operations";
 
-let value: Links = {
+let value: GetCustomersLink = {
   id: "<id>",
-  domain: "variable-disadvantage.info",
+  domain: "utter-bid.info",
   key: "<key>",
-  shortLink: "https://honored-encouragement.com",
-  url: "https://elementary-lifestyle.org/",
+  shortLink: "https://good-suspension.org/",
+  programId: "<id>",
 };
 ```
 
@@ -22,8 +22,4 @@ let value: Links = {
 | `domain`                                                                                                                                        | *string*                                                                                                                                        | :heavy_check_mark:                                                                                                                              | The domain of the short link. If not provided, the primary domain for the workspace will be used (or `dub.sh` if the workspace has no domains). |
 | `key`                                                                                                                                           | *string*                                                                                                                                        | :heavy_check_mark:                                                                                                                              | The short link slug. If not provided, a random 7-character slug will be generated.                                                              |
 | `shortLink`                                                                                                                                     | *string*                                                                                                                                        | :heavy_check_mark:                                                                                                                              | The full URL of the short link, including the https protocol (e.g. `https://dub.sh/try`).                                                       |
-| `url`                                                                                                                                           | *string*                                                                                                                                        | :heavy_check_mark:                                                                                                                              | The destination URL of the short link.                                                                                                          |
-| `clicks`                                                                                                                                        | *number*                                                                                                                                        | :heavy_minus_sign:                                                                                                                              | The number of clicks on the short link.                                                                                                         |
-| `leads`                                                                                                                                         | *number*                                                                                                                                        | :heavy_minus_sign:                                                                                                                              | The number of leads the short links has generated.                                                                                              |
-| `sales`                                                                                                                                         | *number*                                                                                                                                        | :heavy_minus_sign:                                                                                                                              | The number of sales the short links has generated.                                                                                              |
-| `saleAmount`                                                                                                                                    | *number*                                                                                                                                        | :heavy_minus_sign:                                                                                                                              | The total dollar amount of sales the short links has generated (in cents).                                                                      |
+| `programId`                                                                                                                                     | *string*                                                                                                                                        | :heavy_check_mark:                                                                                                                              | The ID of the program the short link is associated with.                                                                                        |

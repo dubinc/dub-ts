@@ -10,7 +10,7 @@ import { LinkClickedEvent } from "dub/models/components";
 let value: LinkClickedEvent = {
   id: "<id>",
   event: "link.clicked",
-  createdAt: "1736871122933",
+  createdAt: "1736873981888",
   data: {
     click: {
       id: "<id>",
@@ -25,6 +25,7 @@ let value: LinkClickedEvent = {
       os: "WebOS",
       referer: "charming-fun.name",
       refererUrl: "https://corrupt-quart.info/",
+      qr: false,
       ip: "49.146.133.240",
     },
     link: {
@@ -32,20 +33,26 @@ let value: LinkClickedEvent = {
       domain: "soft-jury.biz",
       key: "<key>",
       url: "https://jaunty-advancement.biz/",
+      trackConversion: false,
       externalId: "<id>",
       tenantId: "<id>",
       programId: "<id>",
       partnerId: "<id>",
-      expiresAt: "1745231836819",
+      archived: false,
+      expiresAt: "1745234695774",
       expiredUrl: "https://same-skean.biz/",
       password: "3eYqvwIWLmIQoIm",
+      proxy: false,
       title: "<value>",
       description: "trash scrutinise reword even suburban forearm unhappy or",
       image: "https://picsum.photos/seed/DMRI0qjA/191/2602",
       video: "https://picsum.videos/seed/lSR7M8PE/2132/1908",
+      rewrite: false,
+      doIndex: false,
       ios: "<value>",
       android: "<id>",
       geo: {},
+      publicStats: false,
       tagId: "<id>",
       tags: [
         {
@@ -72,8 +79,8 @@ let value: LinkClickedEvent = {
       userId: "<id>",
       workspaceId: "<id>",
       lastClicked: "<value>",
-      createdAt: "1728381151191",
-      updatedAt: "1745199451155",
+      createdAt: "1728384010146",
+      updatedAt: "1745202310111",
       projectId: "<id>",
     },
   },
@@ -87,4 +94,4 @@ let value: LinkClickedEvent = {
 | `id`                                                                                 | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
 | `event`                                                                              | [components.LinkClickedEventEvent](../../models/components/linkclickedeventevent.md) | :heavy_check_mark:                                                                   | N/A                                                                                  |
 | `createdAt`                                                                          | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
-| `data`                                                                               | [components.LinkClickedEventData](../../models/components/linkclickedeventdata.md)   | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `data`                                                                               | [components.Data](../../models/components/data.md)                                   | :heavy_check_mark:                                                                   | N/A                                                                                  |

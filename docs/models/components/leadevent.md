@@ -7,6 +7,7 @@ import { LeadEvent } from "dub/models/components";
 
 let value: LeadEvent = {
   event: "lead",
+  timestamp: "<value>",
   eventId: "<id>",
   eventName: "<value>",
   metadata: "<value>",
@@ -23,6 +24,7 @@ let value: LeadEvent = {
     os: "Blackberry",
     referer: "familiar-cellar.net",
     refererUrl: "https://fixed-cornet.com/",
+    qr: false,
     ip: "a8d7:7994:7dcd:5d17:0dbb:ad2a:d958:82b8",
   },
   link: {
@@ -30,20 +32,26 @@ let value: LeadEvent = {
     domain: "those-swine.info",
     key: "<key>",
     url: "https://light-translation.info",
+    trackConversion: false,
     externalId: "<id>",
     tenantId: "<id>",
     programId: "<id>",
     partnerId: "<id>",
-    expiresAt: "1756666880121",
+    archived: false,
+    expiresAt: "1756669744432",
     expiredUrl: "https://same-fledgling.net",
     password: "uxed7Y4vq0I_5hn",
+    proxy: false,
     title: "<value>",
     description: "considering fake reluctantly for lest sundae",
     image: "https://loremflickr.com/1912/1641?lock=5146570774599141",
     video: "https://picsum.videos/seed/kCwNrS/1805/2463",
+    rewrite: false,
+    doIndex: false,
     ios: "<value>",
     android: "<id>",
     geo: {},
+    publicStats: false,
     tagId: "<id>",
     tags: [
       {
@@ -70,15 +78,15 @@ let value: LeadEvent = {
     userId: "<id>",
     workspaceId: "<id>",
     lastClicked: "<value>",
-    createdAt: "1740445452127",
-    updatedAt: "1745167158176",
+    createdAt: "1740448316438",
+    updatedAt: "1745170022488",
     projectId: "<id>",
   },
   customer: {
     id: "<id>",
     externalId: "<id>",
     name: "<value>",
-    createdAt: "1737600260301",
+    createdAt: "1737603124612",
   },
   clickId: "<id>",
   linkId: "<id>",
@@ -101,7 +109,7 @@ let value: LeadEvent = {
 | Field                                                                                                                                                               | Type                                                                                                                                                                | Required                                                                                                                                                            | Description                                                                                                                                                         |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `event`                                                                                                                                                             | [components.LeadEventEvent](../../models/components/leadeventevent.md)                                                                                              | :heavy_check_mark:                                                                                                                                                  | N/A                                                                                                                                                                 |
-| `timestamp`                                                                                                                                                         | *string*                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                  | N/A                                                                                                                                                                 |
+| `timestamp`                                                                                                                                                         | *string*                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                  | N/A                                                                                                                                                                 |
 | `eventId`                                                                                                                                                           | *string*                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                  | N/A                                                                                                                                                                 |
 | `eventName`                                                                                                                                                         | *string*                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                  | N/A                                                                                                                                                                 |
 | `metadata`                                                                                                                                                          | *string*                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                  | N/A                                                                                                                                                                 |

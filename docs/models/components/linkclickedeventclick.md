@@ -18,6 +18,7 @@ let value: LinkClickedEventClick = {
   os: "MacOS",
   referer: "aching-responsibility.net",
   refererUrl: "https://colorful-mathematics.name/",
+  qr: false,
   ip: "6a2c:9f92:5f92:bcef:87fb:d6ff:6c33:d076",
 };
 ```
@@ -38,5 +39,5 @@ let value: LinkClickedEventClick = {
 | `os`               | *string*           | :heavy_check_mark: | N/A                |
 | `referer`          | *string*           | :heavy_check_mark: | N/A                |
 | `refererUrl`       | *string*           | :heavy_check_mark: | N/A                |
-| `qr`               | *boolean*          | :heavy_minus_sign: | N/A                |
+| `qr`               | *boolean*          | :heavy_check_mark: | N/A                |
 | `ip`               | *string*           | :heavy_check_mark: | N/A                |

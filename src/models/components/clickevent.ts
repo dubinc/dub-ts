@@ -33,7 +33,7 @@ export type Click = {
   os: string;
   referer: string;
   refererUrl: string;
-  qr?: boolean | undefined;
+  qr: boolean;
   ip: string;
 };
 
@@ -312,7 +312,7 @@ export type Link = {
    */
   key: string;
   url: string;
-  trackConversion?: boolean | undefined;
+  trackConversion: boolean;
   /**
    * The ID of the link in your database. If set, it can be used to identify the link in future API requests (must be prefixed with 'ext_' when passed as a query parameter). This key is unique across your workspace.
    */
@@ -329,14 +329,14 @@ export type Link = {
    * The ID of the partner the short link is associated with.
    */
   partnerId: string | null;
-  archived?: boolean | undefined;
+  archived: boolean;
   expiresAt: string;
   expiredUrl: string | null;
   /**
    * The password required to access the destination URL of the short link.
    */
   password: string | null;
-  proxy?: boolean | undefined;
+  proxy: boolean;
   /**
    * The title of the short link. Will be used for Custom Social Media Cards if `proxy` is true.
    */
@@ -353,8 +353,8 @@ export type Link = {
    * The custom link preview video (og:video). Will be used for Custom Social Media Cards if `proxy` is true. Learn more: https://d.to/og
    */
   video: string | null;
-  rewrite?: boolean | undefined;
-  doIndex?: boolean | undefined;
+  rewrite: boolean;
+  doIndex: boolean;
   /**
    * The iOS destination URL for the short link for iOS device targeting.
    */
@@ -367,7 +367,7 @@ export type Link = {
    * Geo targeting information for the short link in JSON format `{[COUNTRY]: https://example.com }`. Learn more: https://d.to/geo
    */
   geo: ClickEventGeo | null;
-  publicStats?: boolean | undefined;
+  publicStats: boolean;
   /**
    * The unique ID of the tag assigned to the short link. This field is deprecated – use `tags` instead.
    *
@@ -458,7 +458,7 @@ export type Link = {
 
 export type ClickEvent = {
   event: Event;
-  timestamp?: string | undefined;
+  timestamp: string;
   click: Click;
   link: Link;
   /**
@@ -576,7 +576,7 @@ export const Click$inboundSchema: z.ZodType<Click, z.ZodTypeDef, unknown> = z
     os: z.string(),
     referer: z.string(),
     refererUrl: z.string(),
-    qr: z.boolean().optional(),
+    qr: z.boolean(),
     ip: z.string(),
   });
 
@@ -594,7 +594,7 @@ export type Click$Outbound = {
   os: string;
   referer: string;
   refererUrl: string;
-  qr?: boolean | undefined;
+  qr: boolean;
   ip: string;
 };
 
@@ -616,7 +616,7 @@ export const Click$outboundSchema: z.ZodType<
   os: z.string(),
   referer: z.string(),
   refererUrl: z.string(),
-  qr: z.boolean().optional(),
+  qr: z.boolean(),
   ip: z.string(),
 });
 
@@ -2014,26 +2014,26 @@ export const Link$inboundSchema: z.ZodType<Link, z.ZodTypeDef, unknown> = z
     domain: z.string(),
     key: z.string(),
     url: z.string(),
-    trackConversion: z.boolean().optional(),
+    trackConversion: z.boolean(),
     externalId: z.nullable(z.string()),
     tenantId: z.nullable(z.string()),
     programId: z.nullable(z.string()),
     partnerId: z.nullable(z.string()),
-    archived: z.boolean().optional(),
+    archived: z.boolean(),
     expiresAt: z.string(),
     expiredUrl: z.nullable(z.string()),
     password: z.nullable(z.string()),
-    proxy: z.boolean().optional(),
+    proxy: z.boolean(),
     title: z.nullable(z.string()),
     description: z.nullable(z.string()),
     image: z.nullable(z.string()),
     video: z.nullable(z.string()),
-    rewrite: z.boolean().optional(),
-    doIndex: z.boolean().optional(),
+    rewrite: z.boolean(),
+    doIndex: z.boolean(),
     ios: z.nullable(z.string()),
     android: z.nullable(z.string()),
     geo: z.nullable(z.lazy(() => ClickEventGeo$inboundSchema)),
-    publicStats: z.boolean().optional(),
+    publicStats: z.boolean(),
     tagId: z.nullable(z.string()),
     tags: z.nullable(z.array(TagSchema$inboundSchema)),
     folderId: z.nullable(z.string()),
@@ -2077,26 +2077,26 @@ export type Link$Outbound = {
   domain: string;
   key: string;
   url: string;
-  trackConversion?: boolean | undefined;
+  trackConversion: boolean;
   externalId: string | null;
   tenantId: string | null;
   programId: string | null;
   partnerId: string | null;
-  archived?: boolean | undefined;
+  archived: boolean;
   expiresAt: string;
   expiredUrl: string | null;
   password: string | null;
-  proxy?: boolean | undefined;
+  proxy: boolean;
   title: string | null;
   description: string | null;
   image: string | null;
   video: string | null;
-  rewrite?: boolean | undefined;
-  doIndex?: boolean | undefined;
+  rewrite: boolean;
+  doIndex: boolean;
   ios: string | null;
   android: string | null;
   geo: ClickEventGeo$Outbound | null;
-  publicStats?: boolean | undefined;
+  publicStats: boolean;
   tagId: string | null;
   tags: Array<TagSchema$Outbound> | null;
   folderId: string | null;
@@ -2131,26 +2131,26 @@ export const Link$outboundSchema: z.ZodType<Link$Outbound, z.ZodTypeDef, Link> =
     domain: z.string(),
     key: z.string(),
     url: z.string(),
-    trackConversion: z.boolean().optional(),
+    trackConversion: z.boolean(),
     externalId: z.nullable(z.string()),
     tenantId: z.nullable(z.string()),
     programId: z.nullable(z.string()),
     partnerId: z.nullable(z.string()),
-    archived: z.boolean().optional(),
+    archived: z.boolean(),
     expiresAt: z.string(),
     expiredUrl: z.nullable(z.string()),
     password: z.nullable(z.string()),
-    proxy: z.boolean().optional(),
+    proxy: z.boolean(),
     title: z.nullable(z.string()),
     description: z.nullable(z.string()),
     image: z.nullable(z.string()),
     video: z.nullable(z.string()),
-    rewrite: z.boolean().optional(),
-    doIndex: z.boolean().optional(),
+    rewrite: z.boolean(),
+    doIndex: z.boolean(),
     ios: z.nullable(z.string()),
     android: z.nullable(z.string()),
     geo: z.nullable(z.lazy(() => ClickEventGeo$outboundSchema)),
-    publicStats: z.boolean().optional(),
+    publicStats: z.boolean(),
     tagId: z.nullable(z.string()),
     tags: z.nullable(z.array(TagSchema$outboundSchema)),
     folderId: z.nullable(z.string()),
@@ -2222,7 +2222,7 @@ export const ClickEvent$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   event: Event$inboundSchema,
-  timestamp: z.string().optional(),
+  timestamp: z.string(),
   click: z.lazy(() => Click$inboundSchema),
   link: z.lazy(() => Link$inboundSchema),
   click_id: z.string(),
@@ -2248,7 +2248,7 @@ export const ClickEvent$inboundSchema: z.ZodType<
 /** @internal */
 export type ClickEvent$Outbound = {
   event: string;
-  timestamp?: string | undefined;
+  timestamp: string;
   click: Click$Outbound;
   link: Link$Outbound;
   click_id: string;
@@ -2273,7 +2273,7 @@ export const ClickEvent$outboundSchema: z.ZodType<
   ClickEvent
 > = z.object({
   event: Event$outboundSchema,
-  timestamp: z.string().optional(),
+  timestamp: z.string(),
   click: z.lazy(() => Click$outboundSchema),
   link: z.lazy(() => Link$outboundSchema),
   clickId: z.string(),
