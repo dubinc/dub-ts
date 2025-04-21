@@ -7,9 +7,9 @@ import { Discount } from "dub/models/operations";
 
 let value: Discount = {
   id: "<id>",
-  amount: 4375.86,
+  amount: 5865.89,
   type: "flat",
-  maxDuration: 2828,
+  maxDuration: 9002.36,
   couponId: "<id>",
   couponTestId: "<id>",
 };
@@ -17,13 +17,13 @@ let value: Discount = {
 
 ## Fields
 
-| Field                                              | Type                                               | Required                                           | Description                                        |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `id`                                               | *string*                                           | :heavy_check_mark:                                 | N/A                                                |
-| `amount`                                           | *number*                                           | :heavy_check_mark:                                 | N/A                                                |
-| `type`                                             | [operations.Type](../../models/operations/type.md) | :heavy_check_mark:                                 | N/A                                                |
-| `maxDuration`                                      | *number*                                           | :heavy_check_mark:                                 | N/A                                                |
-| `description`                                      | *string*                                           | :heavy_minus_sign:                                 | N/A                                                |
-| `couponId`                                         | *string*                                           | :heavy_check_mark:                                 | N/A                                                |
-| `couponTestId`                                     | *string*                                           | :heavy_check_mark:                                 | N/A                                                |
-| `partnersCount`                                    | *number*                                           | :heavy_minus_sign:                                 | N/A                                                |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `id`                                                                       | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `amount`                                                                   | *number*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `type`                                                                     | [operations.GetCustomersType](../../models/operations/getcustomerstype.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| `maxDuration`                                                              | *number*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `description`                                                              | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `couponId`                                                                 | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `couponTestId`                                                             | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `partnersCount`                                                            | *number*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |

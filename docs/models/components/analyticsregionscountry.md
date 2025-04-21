@@ -7,7 +7,7 @@ The 2-letter country code of the region: https://d.to/geo
 ```typescript
 import { AnalyticsRegionsCountry } from "dub/models/components";
 
-let value: AnalyticsRegionsCountry = "BS";
+let value: AnalyticsRegionsCountry = "SK";
 ```
 
 ## Values

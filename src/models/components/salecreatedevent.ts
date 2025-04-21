@@ -324,6 +324,11 @@ export type SaleCreatedEventGeo = {
   xk?: string | undefined;
 };
 
+export type SaleCreatedEventTestVariants = {
+  url: string;
+  percentage: number;
+};
+
 export type SaleCreatedEventLink = {
   /**
    * The unique ID of the short link.
@@ -364,15 +369,15 @@ export type SaleCreatedEventLink = {
   password: string | null;
   proxy?: boolean | undefined;
   /**
-   * The title of the short link generated via `api.dub.co/metatags`. Will be used for Custom Social Media Cards if `proxy` is true.
+   * The title of the short link. Will be used for Custom Social Media Cards if `proxy` is true.
    */
   title: string | null;
   /**
-   * The description of the short link generated via `api.dub.co/metatags`. Will be used for Custom Social Media Cards if `proxy` is true.
+   * The description of the short link. Will be used for Custom Social Media Cards if `proxy` is true.
    */
   description: string | null;
   /**
-   * The image of the short link generated via `api.dub.co/metatags`. Will be used for Custom Social Media Cards if `proxy` is true.
+   * The image of the short link. Will be used for Custom Social Media Cards if `proxy` is true.
    */
   image: string | null;
   /**
@@ -444,6 +449,12 @@ export type SaleCreatedEventLink = {
    * The UTM content of the short link.
    */
   utmContent: string | null;
+  /**
+   * An array of A/B test URLs and the percentage of traffic to send to each URL.
+   */
+  testVariants?: Array<SaleCreatedEventTestVariants> | null | undefined;
+  testStartedAt: string | null;
+  testCompletedAt: string | null;
   userId: string | null;
   /**
    * The workspace ID of the short link.
@@ -1995,6 +2006,65 @@ export function saleCreatedEventGeoFromJSON(
 }
 
 /** @internal */
+export const SaleCreatedEventTestVariants$inboundSchema: z.ZodType<
+  SaleCreatedEventTestVariants,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  url: z.string(),
+  percentage: z.number(),
+});
+
+/** @internal */
+export type SaleCreatedEventTestVariants$Outbound = {
+  url: string;
+  percentage: number;
+};
+
+/** @internal */
+export const SaleCreatedEventTestVariants$outboundSchema: z.ZodType<
+  SaleCreatedEventTestVariants$Outbound,
+  z.ZodTypeDef,
+  SaleCreatedEventTestVariants
+> = z.object({
+  url: z.string(),
+  percentage: z.number(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace SaleCreatedEventTestVariants$ {
+  /** @deprecated use `SaleCreatedEventTestVariants$inboundSchema` instead. */
+  export const inboundSchema = SaleCreatedEventTestVariants$inboundSchema;
+  /** @deprecated use `SaleCreatedEventTestVariants$outboundSchema` instead. */
+  export const outboundSchema = SaleCreatedEventTestVariants$outboundSchema;
+  /** @deprecated use `SaleCreatedEventTestVariants$Outbound` instead. */
+  export type Outbound = SaleCreatedEventTestVariants$Outbound;
+}
+
+export function saleCreatedEventTestVariantsToJSON(
+  saleCreatedEventTestVariants: SaleCreatedEventTestVariants,
+): string {
+  return JSON.stringify(
+    SaleCreatedEventTestVariants$outboundSchema.parse(
+      saleCreatedEventTestVariants,
+    ),
+  );
+}
+
+export function saleCreatedEventTestVariantsFromJSON(
+  jsonString: string,
+): SafeParseResult<SaleCreatedEventTestVariants, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SaleCreatedEventTestVariants$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SaleCreatedEventTestVariants' from JSON`,
+  );
+}
+
+/** @internal */
 export const SaleCreatedEventLink$inboundSchema: z.ZodType<
   SaleCreatedEventLink,
   z.ZodTypeDef,
@@ -2036,6 +2106,11 @@ export const SaleCreatedEventLink$inboundSchema: z.ZodType<
   utm_campaign: z.nullable(z.string()),
   utm_term: z.nullable(z.string()),
   utm_content: z.nullable(z.string()),
+  testVariants: z.nullable(
+    z.array(z.lazy(() => SaleCreatedEventTestVariants$inboundSchema)),
+  ).optional(),
+  testStartedAt: z.nullable(z.string()),
+  testCompletedAt: z.nullable(z.string()),
   userId: z.nullable(z.string()),
   workspaceId: z.string(),
   clicks: z.number().default(0),
@@ -2094,6 +2169,12 @@ export type SaleCreatedEventLink$Outbound = {
   utm_campaign: string | null;
   utm_term: string | null;
   utm_content: string | null;
+  testVariants?:
+    | Array<SaleCreatedEventTestVariants$Outbound>
+    | null
+    | undefined;
+  testStartedAt: string | null;
+  testCompletedAt: string | null;
   userId: string | null;
   workspaceId: string;
   clicks: number;
@@ -2148,6 +2229,11 @@ export const SaleCreatedEventLink$outboundSchema: z.ZodType<
   utmCampaign: z.nullable(z.string()),
   utmTerm: z.nullable(z.string()),
   utmContent: z.nullable(z.string()),
+  testVariants: z.nullable(
+    z.array(z.lazy(() => SaleCreatedEventTestVariants$outboundSchema)),
+  ).optional(),
+  testStartedAt: z.nullable(z.string()),
+  testCompletedAt: z.nullable(z.string()),
   userId: z.nullable(z.string()),
   workspaceId: z.string(),
   clicks: z.number().default(0),

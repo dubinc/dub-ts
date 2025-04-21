@@ -293,6 +293,11 @@ export type LeadEventGeo = {
   xk?: string | undefined;
 };
 
+export type LeadEventTestVariants = {
+  url: string;
+  percentage: number;
+};
+
 export type LeadEventLink = {
   /**
    * The unique ID of the short link.
@@ -333,15 +338,15 @@ export type LeadEventLink = {
   password: string | null;
   proxy?: boolean | undefined;
   /**
-   * The title of the short link generated via `api.dub.co/metatags`. Will be used for Custom Social Media Cards if `proxy` is true.
+   * The title of the short link. Will be used for Custom Social Media Cards if `proxy` is true.
    */
   title: string | null;
   /**
-   * The description of the short link generated via `api.dub.co/metatags`. Will be used for Custom Social Media Cards if `proxy` is true.
+   * The description of the short link. Will be used for Custom Social Media Cards if `proxy` is true.
    */
   description: string | null;
   /**
-   * The image of the short link generated via `api.dub.co/metatags`. Will be used for Custom Social Media Cards if `proxy` is true.
+   * The image of the short link. Will be used for Custom Social Media Cards if `proxy` is true.
    */
   image: string | null;
   /**
@@ -413,6 +418,12 @@ export type LeadEventLink = {
    * The UTM content of the short link.
    */
   utmContent: string | null;
+  /**
+   * An array of A/B test URLs and the percentage of traffic to send to each URL.
+   */
+  testVariants?: Array<LeadEventTestVariants> | null | undefined;
+  testStartedAt: string | null;
+  testCompletedAt: string | null;
   userId: string | null;
   /**
    * The workspace ID of the short link.
@@ -481,6 +492,7 @@ export type LeadEvent = {
   timestamp?: string | undefined;
   eventId: string;
   eventName: string;
+  metadata: string;
   click: LeadEventClick;
   link: LeadEventLink;
   customer: Customer;
@@ -1978,6 +1990,63 @@ export function leadEventGeoFromJSON(
 }
 
 /** @internal */
+export const LeadEventTestVariants$inboundSchema: z.ZodType<
+  LeadEventTestVariants,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  url: z.string(),
+  percentage: z.number(),
+});
+
+/** @internal */
+export type LeadEventTestVariants$Outbound = {
+  url: string;
+  percentage: number;
+};
+
+/** @internal */
+export const LeadEventTestVariants$outboundSchema: z.ZodType<
+  LeadEventTestVariants$Outbound,
+  z.ZodTypeDef,
+  LeadEventTestVariants
+> = z.object({
+  url: z.string(),
+  percentage: z.number(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace LeadEventTestVariants$ {
+  /** @deprecated use `LeadEventTestVariants$inboundSchema` instead. */
+  export const inboundSchema = LeadEventTestVariants$inboundSchema;
+  /** @deprecated use `LeadEventTestVariants$outboundSchema` instead. */
+  export const outboundSchema = LeadEventTestVariants$outboundSchema;
+  /** @deprecated use `LeadEventTestVariants$Outbound` instead. */
+  export type Outbound = LeadEventTestVariants$Outbound;
+}
+
+export function leadEventTestVariantsToJSON(
+  leadEventTestVariants: LeadEventTestVariants,
+): string {
+  return JSON.stringify(
+    LeadEventTestVariants$outboundSchema.parse(leadEventTestVariants),
+  );
+}
+
+export function leadEventTestVariantsFromJSON(
+  jsonString: string,
+): SafeParseResult<LeadEventTestVariants, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LeadEventTestVariants$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LeadEventTestVariants' from JSON`,
+  );
+}
+
+/** @internal */
 export const LeadEventLink$inboundSchema: z.ZodType<
   LeadEventLink,
   z.ZodTypeDef,
@@ -2019,6 +2088,11 @@ export const LeadEventLink$inboundSchema: z.ZodType<
   utm_campaign: z.nullable(z.string()),
   utm_term: z.nullable(z.string()),
   utm_content: z.nullable(z.string()),
+  testVariants: z.nullable(
+    z.array(z.lazy(() => LeadEventTestVariants$inboundSchema)),
+  ).optional(),
+  testStartedAt: z.nullable(z.string()),
+  testCompletedAt: z.nullable(z.string()),
   userId: z.nullable(z.string()),
   workspaceId: z.string(),
   clicks: z.number().default(0),
@@ -2077,6 +2151,9 @@ export type LeadEventLink$Outbound = {
   utm_campaign: string | null;
   utm_term: string | null;
   utm_content: string | null;
+  testVariants?: Array<LeadEventTestVariants$Outbound> | null | undefined;
+  testStartedAt: string | null;
+  testCompletedAt: string | null;
   userId: string | null;
   workspaceId: string;
   clicks: number;
@@ -2131,6 +2208,11 @@ export const LeadEventLink$outboundSchema: z.ZodType<
   utmCampaign: z.nullable(z.string()),
   utmTerm: z.nullable(z.string()),
   utmContent: z.nullable(z.string()),
+  testVariants: z.nullable(
+    z.array(z.lazy(() => LeadEventTestVariants$outboundSchema)),
+  ).optional(),
+  testStartedAt: z.nullable(z.string()),
+  testCompletedAt: z.nullable(z.string()),
   userId: z.nullable(z.string()),
   workspaceId: z.string(),
   clicks: z.number().default(0),
@@ -2256,6 +2338,7 @@ export const LeadEvent$inboundSchema: z.ZodType<
   timestamp: z.string().optional(),
   eventId: z.string(),
   eventName: z.string(),
+  metadata: z.string(),
   click: z.lazy(() => LeadEventClick$inboundSchema),
   link: z.lazy(() => LeadEventLink$inboundSchema),
   customer: z.lazy(() => Customer$inboundSchema),
@@ -2285,6 +2368,7 @@ export type LeadEvent$Outbound = {
   timestamp?: string | undefined;
   eventId: string;
   eventName: string;
+  metadata: string;
   click: LeadEventClick$Outbound;
   link: LeadEventLink$Outbound;
   customer: Customer$Outbound;
@@ -2313,6 +2397,7 @@ export const LeadEvent$outboundSchema: z.ZodType<
   timestamp: z.string().optional(),
   eventId: z.string(),
   eventName: z.string(),
+  metadata: z.string(),
   click: z.lazy(() => LeadEventClick$outboundSchema),
   link: z.lazy(() => LeadEventLink$outboundSchema),
   customer: z.lazy(() => Customer$outboundSchema),

@@ -22,11 +22,11 @@ export type Mode = ClosedEnum<typeof Mode>;
 
 export type TrackLeadRequestBody = {
   /**
-   * The ID of the click in Dub. You can read this value from `dub_id` cookie.
+   * The unique ID of the click that the lead conversion event is attributed to. You can read this value from `dub_id` cookie.
    */
   clickId: string;
   /**
-   * The name of the lead event to track.
+   * The name of the lead event to track. Can also be used as a unique identifier to associate a given lead event for a customer for a subsequent sale event (via the `leadEventName` prop in `/track/sale`).
    */
   eventName: string;
   /**
@@ -34,35 +34,29 @@ export type TrackLeadRequestBody = {
    */
   eventQuantity?: number | null | undefined;
   /**
-   * This is the unique identifier for the customer in the client's app. This is used to track the customer's journey.
+   * The unique ID of the customer in your system. Will be used to identify and attribute all future events to this customer.
    */
-  externalId?: string | undefined;
+  externalId: string;
   /**
-   * This is the unique identifier for the customer in the client's app. This is used to track the customer's journey.
-   *
-   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-   */
-  customerId?: string | null | undefined;
-  /**
-   * Name of the customer in the client's app.
+   * The name of the customer. If not passed, a random name will be generated (e.g. “Big Red Caribou”).
    */
   customerName?: string | null | undefined;
   /**
-   * Email of the customer in the client's app.
+   * The email address of the customer.
    */
   customerEmail?: string | null | undefined;
   /**
-   * Avatar of the customer in the client's app.
+   * The avatar URL of the customer.
    */
   customerAvatar?: string | null | undefined;
-  /**
-   * Additional metadata to be stored with the lead event
-   */
-  metadata?: { [k: string]: any } | null | undefined;
   /**
    * The mode to use for tracking the lead event. `async` will not block the request; `wait` will block the request until the lead event is fully recorded in Dub.
    */
   mode?: Mode | undefined;
+  /**
+   * Additional metadata to be stored with the lead event. Max 10,000 characters.
+   */
+  metadata?: { [k: string]: any } | null | undefined;
 };
 
 export type Click = {
@@ -113,13 +107,12 @@ export const TrackLeadRequestBody$inboundSchema: z.ZodType<
   clickId: z.string(),
   eventName: z.string(),
   eventQuantity: z.nullable(z.number()).optional(),
-  externalId: z.string().default(""),
-  customerId: z.nullable(z.string()).default(null),
+  externalId: z.string(),
   customerName: z.nullable(z.string()).default(null),
   customerEmail: z.nullable(z.string()).default(null),
   customerAvatar: z.nullable(z.string()).default(null),
-  metadata: z.nullable(z.record(z.any())).optional(),
   mode: Mode$inboundSchema.default("async"),
+  metadata: z.nullable(z.record(z.any())).optional(),
 });
 
 /** @internal */
@@ -128,12 +121,11 @@ export type TrackLeadRequestBody$Outbound = {
   eventName: string;
   eventQuantity?: number | null | undefined;
   externalId: string;
-  customerId: string | null;
   customerName: string | null;
   customerEmail: string | null;
   customerAvatar: string | null;
-  metadata?: { [k: string]: any } | null | undefined;
   mode: string;
+  metadata?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -145,13 +137,12 @@ export const TrackLeadRequestBody$outboundSchema: z.ZodType<
   clickId: z.string(),
   eventName: z.string(),
   eventQuantity: z.nullable(z.number()).optional(),
-  externalId: z.string().default(""),
-  customerId: z.nullable(z.string()).default(null),
+  externalId: z.string(),
   customerName: z.nullable(z.string()).default(null),
   customerEmail: z.nullable(z.string()).default(null),
   customerAvatar: z.nullable(z.string()).default(null),
-  metadata: z.nullable(z.record(z.any())).optional(),
   mode: Mode$outboundSchema.default("async"),
+  metadata: z.nullable(z.record(z.any())).optional(),
 });
 
 /**

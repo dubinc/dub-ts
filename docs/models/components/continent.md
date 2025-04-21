@@ -7,7 +7,7 @@ The 2-letter ISO 3166-1 code representing the continent associated with the loca
 ```typescript
 import { Continent } from "dub/models/components";
 
-let value: Continent = "NA";
+let value: Continent = "AN";
 ```
 
 ## Values

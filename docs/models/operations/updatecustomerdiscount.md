@@ -7,9 +7,9 @@ import { UpdateCustomerDiscount } from "dub/models/operations";
 
 let value: UpdateCustomerDiscount = {
   id: "<id>",
-  amount: 5221.85,
-  type: "percentage",
-  maxDuration: 7531.78,
+  amount: 8754.24,
+  type: "flat",
+  maxDuration: 6874.54,
   couponId: "<id>",
   couponTestId: "<id>",
 };

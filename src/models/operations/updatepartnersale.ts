@@ -25,6 +25,13 @@ export type UpdatePartnerSaleRequestBody = {
   currency?: string | undefined;
 };
 
+export const Type = {
+  Click: "click",
+  Lead: "lead",
+  Sale: "sale",
+} as const;
+export type Type = ClosedEnum<typeof Type>;
+
 export const UpdatePartnerSaleStatus = {
   Pending: "pending",
   Processed: "processed",
@@ -43,6 +50,7 @@ export type UpdatePartnerSaleStatus = ClosedEnum<
  */
 export type UpdatePartnerSaleResponseBody = {
   id: string;
+  type?: Type | undefined;
   amount: number;
   earnings: number;
   currency: string;
@@ -121,6 +129,26 @@ export function updatePartnerSaleRequestBodyFromJSON(
 }
 
 /** @internal */
+export const Type$inboundSchema: z.ZodNativeEnum<typeof Type> = z.nativeEnum(
+  Type,
+);
+
+/** @internal */
+export const Type$outboundSchema: z.ZodNativeEnum<typeof Type> =
+  Type$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Type$ {
+  /** @deprecated use `Type$inboundSchema` instead. */
+  export const inboundSchema = Type$inboundSchema;
+  /** @deprecated use `Type$outboundSchema` instead. */
+  export const outboundSchema = Type$outboundSchema;
+}
+
+/** @internal */
 export const UpdatePartnerSaleStatus$inboundSchema: z.ZodNativeEnum<
   typeof UpdatePartnerSaleStatus
 > = z.nativeEnum(UpdatePartnerSaleStatus);
@@ -148,6 +176,7 @@ export const UpdatePartnerSaleResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: z.string(),
+  type: Type$inboundSchema.optional(),
   amount: z.number(),
   earnings: z.number(),
   currency: z.string(),
@@ -160,6 +189,7 @@ export const UpdatePartnerSaleResponseBody$inboundSchema: z.ZodType<
 /** @internal */
 export type UpdatePartnerSaleResponseBody$Outbound = {
   id: string;
+  type?: string | undefined;
   amount: number;
   earnings: number;
   currency: string;
@@ -176,6 +206,7 @@ export const UpdatePartnerSaleResponseBody$outboundSchema: z.ZodType<
   UpdatePartnerSaleResponseBody
 > = z.object({
   id: z.string(),
+  type: Type$outboundSchema.optional(),
   amount: z.number(),
   earnings: z.number(),
   currency: z.string(),

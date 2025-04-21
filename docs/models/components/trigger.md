@@ -7,7 +7,7 @@ The type of trigger method: link click or QR scan
 ```typescript
 import { Trigger } from "dub/models/components";
 
-let value: Trigger = "link";
+let value: Trigger = "qr";
 ```
 
 ## Values

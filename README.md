@@ -255,10 +255,6 @@ run();
 * [deleteMany](docs/sdks/links/README.md#deletemany) - Bulk delete links
 * [upsert](docs/sdks/links/README.md#upsert) - Upsert a link
 
-### [metatags](docs/sdks/metatags/README.md)
-
-* [get](docs/sdks/metatags/README.md#get) - Retrieve the metatags for a URL
-
 ### [partners](docs/sdks/partners/README.md)
 
 * [create](docs/sdks/partners/README.md#create) - Create a new partner
@@ -662,7 +658,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`linksUpdate`](docs/sdks/links/README.md#update) - Update a link
 - [`linksUpdateMany`](docs/sdks/links/README.md#updatemany) - Bulk update links
 - [`linksUpsert`](docs/sdks/links/README.md#upsert) - Upsert a link
-- [`metatagsGet`](docs/sdks/metatags/README.md#get) - Retrieve the metatags for a URL
 - [`partnersAnalytics`](docs/sdks/partners/README.md#analytics) - Retrieve analytics for a partner
 - [`partnersCreate`](docs/sdks/partners/README.md#create) - Create a new partner
 - [`partnersCreateLink`](docs/sdks/partners/README.md#createlink) - Create a link for a partner

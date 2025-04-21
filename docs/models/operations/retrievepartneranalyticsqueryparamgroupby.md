@@ -7,7 +7,7 @@ The parameter to group the analytics data points by. Defaults to `count` if unde
 ```typescript
 import { RetrievePartnerAnalyticsQueryParamGroupBy } from "dub/models/operations";
 
-let value: RetrievePartnerAnalyticsQueryParamGroupBy = "count";
+let value: RetrievePartnerAnalyticsQueryParamGroupBy = "top_links";
 ```
 
 ## Values

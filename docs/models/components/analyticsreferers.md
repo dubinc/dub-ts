@@ -6,7 +6,7 @@
 import { AnalyticsReferers } from "dub/models/components";
 
 let value: AnalyticsReferers = {
-  referer: "frank-steak.name",
+  referer: "elegant-foodstuffs.name",
 };
 ```
 

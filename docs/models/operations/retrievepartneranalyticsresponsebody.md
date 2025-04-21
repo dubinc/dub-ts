@@ -28,11 +28,11 @@ const value: components.PartnerAnalyticsTopLinks[] = [
   {
     link: "<value>",
     id: "<id>",
-    domain: "live-dress.net",
+    domain: "outlying-chapel.info",
     key: "<key>",
     shortLink: "<value>",
-    url: "https://nervous-netsuke.name",
-    createdAt: "1736424189130",
+    url: "https://serpentine-recommendation.org/",
+    createdAt: "1725992527755",
   },
 ];
 ```

@@ -132,6 +132,10 @@ export type ListEventsRequest = {
    */
   partnerId?: string | undefined;
   /**
+   * The ID of the customer to retrieve analytics for.
+   */
+  customerId?: string | undefined;
+  /**
    * The interval to retrieve events for. Takes precedence over start and end. If undefined, defaults to 24h.
    */
   interval?: QueryParamInterval | undefined;
@@ -442,6 +446,7 @@ export const ListEventsRequest$inboundSchema: z.ZodType<
   tenantId: z.string().optional(),
   programId: z.string().optional(),
   partnerId: z.string().optional(),
+  customerId: z.string().optional(),
   interval: QueryParamInterval$inboundSchema.default("24h"),
   start: z.string().optional(),
   end: z.string().optional(),
@@ -492,6 +497,7 @@ export type ListEventsRequest$Outbound = {
   tenantId?: string | undefined;
   programId?: string | undefined;
   partnerId?: string | undefined;
+  customerId?: string | undefined;
   interval: string;
   start?: string | undefined;
   end?: string | undefined;
@@ -538,6 +544,7 @@ export const ListEventsRequest$outboundSchema: z.ZodType<
   tenantId: z.string().optional(),
   programId: z.string().optional(),
   partnerId: z.string().optional(),
+  customerId: z.string().optional(),
   interval: QueryParamInterval$outboundSchema.default("24h"),
   start: z.string().optional(),
   end: z.string().optional(),

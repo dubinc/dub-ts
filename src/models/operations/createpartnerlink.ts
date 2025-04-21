@@ -18,6 +18,11 @@ export type CreatePartnerLinkTagIds = string | Array<string>;
  */
 export type CreatePartnerLinkTagNames = string | Array<string>;
 
+export type CreatePartnerLinkTestVariants = {
+  url: string;
+  percentage: number;
+};
+
 /**
  * Additional properties that you can pass to the partner's short link. Will be used to override the default link properties for this partner.
  */
@@ -126,6 +131,18 @@ export type CreatePartnerLinkLinkProps = {
    * The referral tag of the short link. If set, this will populate or override the `ref` query parameter in the destination URL.
    */
   ref?: string | null | undefined;
+  /**
+   * An array of A/B test URLs and the percentage of traffic to send to each URL.
+   */
+  testVariants?: Array<CreatePartnerLinkTestVariants> | null | undefined;
+  /**
+   * The date and time when the tests started.
+   */
+  testStartedAt?: string | null | undefined;
+  /**
+   * The date and time when the tests were or will be completed.
+   */
+  testCompletedAt?: string | null | undefined;
 };
 
 export type CreatePartnerLinkRequestBody = {
@@ -256,6 +273,65 @@ export function createPartnerLinkTagNamesFromJSON(
 }
 
 /** @internal */
+export const CreatePartnerLinkTestVariants$inboundSchema: z.ZodType<
+  CreatePartnerLinkTestVariants,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  url: z.string(),
+  percentage: z.number(),
+});
+
+/** @internal */
+export type CreatePartnerLinkTestVariants$Outbound = {
+  url: string;
+  percentage: number;
+};
+
+/** @internal */
+export const CreatePartnerLinkTestVariants$outboundSchema: z.ZodType<
+  CreatePartnerLinkTestVariants$Outbound,
+  z.ZodTypeDef,
+  CreatePartnerLinkTestVariants
+> = z.object({
+  url: z.string(),
+  percentage: z.number(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreatePartnerLinkTestVariants$ {
+  /** @deprecated use `CreatePartnerLinkTestVariants$inboundSchema` instead. */
+  export const inboundSchema = CreatePartnerLinkTestVariants$inboundSchema;
+  /** @deprecated use `CreatePartnerLinkTestVariants$outboundSchema` instead. */
+  export const outboundSchema = CreatePartnerLinkTestVariants$outboundSchema;
+  /** @deprecated use `CreatePartnerLinkTestVariants$Outbound` instead. */
+  export type Outbound = CreatePartnerLinkTestVariants$Outbound;
+}
+
+export function createPartnerLinkTestVariantsToJSON(
+  createPartnerLinkTestVariants: CreatePartnerLinkTestVariants,
+): string {
+  return JSON.stringify(
+    CreatePartnerLinkTestVariants$outboundSchema.parse(
+      createPartnerLinkTestVariants,
+    ),
+  );
+}
+
+export function createPartnerLinkTestVariantsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreatePartnerLinkTestVariants, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreatePartnerLinkTestVariants$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreatePartnerLinkTestVariants' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreatePartnerLinkLinkProps$inboundSchema: z.ZodType<
   CreatePartnerLinkLinkProps,
   z.ZodTypeDef,
@@ -287,6 +363,11 @@ export const CreatePartnerLinkLinkProps$inboundSchema: z.ZodType<
   utm_term: z.nullable(z.string()).optional(),
   utm_content: z.nullable(z.string()).optional(),
   ref: z.nullable(z.string()).optional(),
+  testVariants: z.nullable(
+    z.array(z.lazy(() => CreatePartnerLinkTestVariants$inboundSchema)),
+  ).optional(),
+  testStartedAt: z.nullable(z.string()).optional(),
+  testCompletedAt: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "utm_source": "utmSource",
@@ -325,6 +406,12 @@ export type CreatePartnerLinkLinkProps$Outbound = {
   utm_term?: string | null | undefined;
   utm_content?: string | null | undefined;
   ref?: string | null | undefined;
+  testVariants?:
+    | Array<CreatePartnerLinkTestVariants$Outbound>
+    | null
+    | undefined;
+  testStartedAt?: string | null | undefined;
+  testCompletedAt?: string | null | undefined;
 };
 
 /** @internal */
@@ -359,6 +446,11 @@ export const CreatePartnerLinkLinkProps$outboundSchema: z.ZodType<
   utmTerm: z.nullable(z.string()).optional(),
   utmContent: z.nullable(z.string()).optional(),
   ref: z.nullable(z.string()).optional(),
+  testVariants: z.nullable(
+    z.array(z.lazy(() => CreatePartnerLinkTestVariants$outboundSchema)),
+  ).optional(),
+  testStartedAt: z.nullable(z.string()).optional(),
+  testCompletedAt: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     utmSource: "utm_source",

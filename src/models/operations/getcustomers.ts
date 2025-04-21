@@ -53,16 +53,16 @@ export type GetCustomersPartner = {
   image: string | null;
 };
 
-export const Type = {
+export const GetCustomersType = {
   Percentage: "percentage",
   Flat: "flat",
 } as const;
-export type Type = ClosedEnum<typeof Type>;
+export type GetCustomersType = ClosedEnum<typeof GetCustomersType>;
 
 export type Discount = {
   id: string;
   amount: number;
-  type: Type;
+  type: GetCustomersType;
   maxDuration: number | null;
   description?: string | null | undefined;
   couponId: string | null;
@@ -100,6 +100,7 @@ export type GetCustomersResponseBody = {
    */
   createdAt: string;
   link?: Link | null | undefined;
+  programId?: string | null | undefined;
   partner?: GetCustomersPartner | null | undefined;
   discount?: Discount | null | undefined;
 };
@@ -284,23 +285,24 @@ export function getCustomersPartnerFromJSON(
 }
 
 /** @internal */
-export const Type$inboundSchema: z.ZodNativeEnum<typeof Type> = z.nativeEnum(
-  Type,
-);
+export const GetCustomersType$inboundSchema: z.ZodNativeEnum<
+  typeof GetCustomersType
+> = z.nativeEnum(GetCustomersType);
 
 /** @internal */
-export const Type$outboundSchema: z.ZodNativeEnum<typeof Type> =
-  Type$inboundSchema;
+export const GetCustomersType$outboundSchema: z.ZodNativeEnum<
+  typeof GetCustomersType
+> = GetCustomersType$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Type$ {
-  /** @deprecated use `Type$inboundSchema` instead. */
-  export const inboundSchema = Type$inboundSchema;
-  /** @deprecated use `Type$outboundSchema` instead. */
-  export const outboundSchema = Type$outboundSchema;
+export namespace GetCustomersType$ {
+  /** @deprecated use `GetCustomersType$inboundSchema` instead. */
+  export const inboundSchema = GetCustomersType$inboundSchema;
+  /** @deprecated use `GetCustomersType$outboundSchema` instead. */
+  export const outboundSchema = GetCustomersType$outboundSchema;
 }
 
 /** @internal */
@@ -311,7 +313,7 @@ export const Discount$inboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   amount: z.number(),
-  type: Type$inboundSchema,
+  type: GetCustomersType$inboundSchema,
   maxDuration: z.nullable(z.number()),
   description: z.nullable(z.string()).optional(),
   couponId: z.nullable(z.string()),
@@ -339,7 +341,7 @@ export const Discount$outboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   amount: z.number(),
-  type: Type$outboundSchema,
+  type: GetCustomersType$outboundSchema,
   maxDuration: z.nullable(z.number()),
   description: z.nullable(z.string()).optional(),
   couponId: z.nullable(z.string()),
@@ -388,6 +390,7 @@ export const GetCustomersResponseBody$inboundSchema: z.ZodType<
   country: z.nullable(z.string()).optional(),
   createdAt: z.string(),
   link: z.nullable(z.lazy(() => Link$inboundSchema)).optional(),
+  programId: z.nullable(z.string()).optional(),
   partner: z.nullable(z.lazy(() => GetCustomersPartner$inboundSchema))
     .optional(),
   discount: z.nullable(z.lazy(() => Discount$inboundSchema)).optional(),
@@ -403,6 +406,7 @@ export type GetCustomersResponseBody$Outbound = {
   country?: string | null | undefined;
   createdAt: string;
   link?: Link$Outbound | null | undefined;
+  programId?: string | null | undefined;
   partner?: GetCustomersPartner$Outbound | null | undefined;
   discount?: Discount$Outbound | null | undefined;
 };
@@ -421,6 +425,7 @@ export const GetCustomersResponseBody$outboundSchema: z.ZodType<
   country: z.nullable(z.string()).optional(),
   createdAt: z.string(),
   link: z.nullable(z.lazy(() => Link$outboundSchema)).optional(),
+  programId: z.nullable(z.string()).optional(),
   partner: z.nullable(z.lazy(() => GetCustomersPartner$outboundSchema))
     .optional(),
   discount: z.nullable(z.lazy(() => Discount$outboundSchema)).optional(),

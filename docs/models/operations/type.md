@@ -5,11 +5,11 @@
 ```typescript
 import { Type } from "dub/models/operations";
 
-let value: Type = "flat";
+let value: Type = "click";
 ```
 
 ## Values
 
 ```typescript
-"percentage" | "flat"
+"click" | "lead" | "sale"
 ```

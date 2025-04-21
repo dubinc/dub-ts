@@ -25,17 +25,11 @@ export type PaymentProcessor = ClosedEnum<typeof PaymentProcessor>;
 
 export type TrackSaleRequestBody = {
   /**
-   * This is the unique identifier for the customer in the client's app. This is used to track the customer's journey.
+   * The unique ID of the customer in your system. Will be used to identify and attribute all future events to this customer.
    */
-  externalId?: string | undefined;
+  externalId: string;
   /**
-   * This is the unique identifier for the customer in the client's app. This is used to track the customer's journey.
-   *
-   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-   */
-  customerId?: string | null | undefined;
-  /**
-   * The amount of the sale. Should be passed in cents.
+   * The amount of the sale in cents.
    */
   amount: number;
   /**
@@ -43,7 +37,7 @@ export type TrackSaleRequestBody = {
    */
   paymentProcessor: PaymentProcessor;
   /**
-   * The name of the sale event. It can be used to track different types of event for example 'Purchase', 'Upgrade', 'Payment', etc.
+   * The name of the sale event.
    */
   eventName?: string | undefined;
   /**
@@ -55,13 +49,13 @@ export type TrackSaleRequestBody = {
    */
   currency?: string | undefined;
   /**
-   * Additional metadata to be stored with the sale event.
-   */
-  metadata?: { [k: string]: any } | null | undefined;
-  /**
    * The name of the lead event that occurred before the sale (case-sensitive). This is used to associate the sale event with a particular lead event (instead of the latest lead event, which is the default behavior).
    */
   leadEventName?: string | null | undefined;
+  /**
+   * Additional metadata to be stored with the sale event. Max 10,000 characters.
+   */
+  metadata?: { [k: string]: any } | null | undefined;
 };
 
 export type TrackSaleCustomer = {
@@ -116,28 +110,26 @@ export const TrackSaleRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  externalId: z.string().default(""),
-  customerId: z.nullable(z.string()).default(null),
+  externalId: z.string(),
   amount: z.number().int(),
   paymentProcessor: PaymentProcessor$inboundSchema,
   eventName: z.string().default("Purchase"),
   invoiceId: z.nullable(z.string()).default(null),
   currency: z.string().default("usd"),
-  metadata: z.nullable(z.record(z.any())).optional(),
   leadEventName: z.nullable(z.string()).default(null),
+  metadata: z.nullable(z.record(z.any())).optional(),
 });
 
 /** @internal */
 export type TrackSaleRequestBody$Outbound = {
   externalId: string;
-  customerId: string | null;
   amount: number;
   paymentProcessor: string;
   eventName: string;
   invoiceId: string | null;
   currency: string;
-  metadata?: { [k: string]: any } | null | undefined;
   leadEventName: string | null;
+  metadata?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -146,15 +138,14 @@ export const TrackSaleRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TrackSaleRequestBody
 > = z.object({
-  externalId: z.string().default(""),
-  customerId: z.nullable(z.string()).default(null),
+  externalId: z.string(),
   amount: z.number().int(),
   paymentProcessor: PaymentProcessor$outboundSchema,
   eventName: z.string().default("Purchase"),
   invoiceId: z.nullable(z.string()).default(null),
   currency: z.string().default("usd"),
-  metadata: z.nullable(z.record(z.any())).optional(),
   leadEventName: z.nullable(z.string()).default(null),
+  metadata: z.nullable(z.record(z.any())).optional(),
 });
 
 /**

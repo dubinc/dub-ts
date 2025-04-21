@@ -8,20 +8,21 @@
 ```typescript
 const value: components.LinkSchema = {
   id: "<id>",
-  domain: "lonely-director.com",
+  domain: "young-ecliptic.com",
   key: "<key>",
-  url: "https://orderly-kinase.com/",
+  url: "https://ripe-inspection.biz",
   externalId: "<id>",
   tenantId: "<id>",
   programId: "<id>",
   partnerId: "<id>",
-  expiresAt: "1755011765144",
-  expiredUrl: "https://lawful-laughter.info",
-  password: "E6PXNCmczgxj_F9",
+  expiresAt: "1764408369344",
+  expiredUrl: "https://hairy-printer.org/",
+  password: "atR49jLBfFjqWxm",
   title: "<value>",
-  description: "ick meanwhile likewise excitedly ugh bakeware",
-  image: "https://picsum.photos/seed/ftWCPR/236/3293",
-  video: "https://picsum.videos/seed/rLZ7p/538/2315",
+  description:
+    "consequently swerve aha likewise until versus potentially cricket",
+  image: "https://picsum.photos/seed/1XL9NFJPJ/1674/755",
+  video: "https://picsum.videos/seed/zZ6vDLAT/306/1108",
   ios: "<value>",
   android: "<id>",
   geo: {},
@@ -37,10 +38,9 @@ const value: components.LinkSchema = {
   webhookIds: [
     "<value>",
   ],
-  comments:
-    "forenenst uproot rewarding brr even hmph joyfully and whether cafe filter abscond dependency if",
-  shortLink: "https://appropriate-cope.net",
-  qrCode: "https://numb-singing.net/",
+  comments: "unless opposite verbally down than unruly potentially hmph",
+  shortLink: "https://tired-flat.name",
+  qrCode: "https://obedient-chow.biz/",
   utmSource: "<value>",
   utmMedium: "<value>",
   utmCampaign: "<value>",
@@ -49,8 +49,8 @@ const value: components.LinkSchema = {
   userId: "<id>",
   workspaceId: "<id>",
   lastClicked: "<value>",
-  createdAt: "1730792290951",
-  updatedAt: "1743267215461",
+  createdAt: "1728318750926",
+  updatedAt: "1745195583092",
   projectId: "<id>",
 };
 ```
@@ -60,7 +60,7 @@ const value: components.LinkSchema = {
 ```typescript
 const value: components.LinkErrorSchema = {
   error: "<value>",
-  code: "bad_request",
+  code: "not_found",
 };
 ```
 

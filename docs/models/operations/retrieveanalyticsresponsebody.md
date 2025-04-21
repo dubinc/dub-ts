@@ -26,7 +26,7 @@ const value: components.AnalyticsTimeseries[] = [
 ```typescript
 const value: components.AnalyticsContinents[] = [
   {
-    continent: "SA",
+    continent: "AS",
   },
 ];
 ```
@@ -36,7 +36,7 @@ const value: components.AnalyticsContinents[] = [
 ```typescript
 const value: components.AnalyticsCountries[] = [
   {
-    country: "CC",
+    country: "TR",
   },
 ];
 ```
@@ -46,7 +46,7 @@ const value: components.AnalyticsCountries[] = [
 ```typescript
 const value: components.AnalyticsRegions[] = [
   {
-    country: "MK",
+    country: "VA",
     region: "<value>",
   },
 ];
@@ -57,8 +57,8 @@ const value: components.AnalyticsRegions[] = [
 ```typescript
 const value: components.AnalyticsCities[] = [
   {
-    country: "AI",
-    city: "Bauchchester",
+    country: "IQ",
+    city: "Waco",
   },
 ];
 ```
@@ -78,7 +78,7 @@ const value: components.AnalyticsDevices[] = [
 ```typescript
 const value: components.AnalyticsBrowsers[] = [
   {
-    browser: "Firefox",
+    browser: "Safari",
   },
 ];
 ```
@@ -88,7 +88,7 @@ const value: components.AnalyticsBrowsers[] = [
 ```typescript
 const value: components.AnalyticsOS[] = [
   {
-    os: "Android",
+    os: "Windows",
   },
 ];
 ```
@@ -108,7 +108,7 @@ const value: components.AnalyticsTriggers[] = [
 ```typescript
 const value: components.AnalyticsReferers[] = [
   {
-    referer: "rigid-hygienic.net",
+    referer: "vivacious-lamp.org",
   },
 ];
 ```
@@ -118,7 +118,7 @@ const value: components.AnalyticsReferers[] = [
 ```typescript
 const value: components.AnalyticsRefererUrls[] = [
   {
-    refererUrl: "https://muffled-avalanche.com/",
+    refererUrl: "https://dazzling-signature.org",
   },
 ];
 ```
@@ -130,11 +130,11 @@ const value: components.AnalyticsTopLinks[] = [
   {
     link: "<value>",
     id: "<id>",
-    domain: "spiffy-deed.com",
+    domain: "frail-label.name",
     key: "<key>",
     shortLink: "<value>",
-    url: "https://coordinated-stall.name/",
-    createdAt: "1736746224604",
+    url: "https://gripping-bog.biz/",
+    createdAt: "1745082673230",
   },
 ];
 ```
@@ -144,7 +144,7 @@ const value: components.AnalyticsTopLinks[] = [
 ```typescript
 const value: components.AnalyticsTopUrls[] = [
   {
-    url: "https://powerful-tectonics.name/",
+    url: "https://coordinated-kettledrum.com",
   },
 ];
 ```

@@ -7,9 +7,9 @@ import { CreateCustomerLink } from "dub/models/operations";
 
 let value: CreateCustomerLink = {
   id: "<id>",
-  domain: "odd-accountability.info",
+  domain: "bowed-cassava.name",
   key: "<key>",
-  shortLink: "https://informal-creator.biz",
+  shortLink: "https://splendid-masterpiece.com",
   programId: "<id>",
 };
 ```

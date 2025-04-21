@@ -276,6 +276,11 @@ export type SaleEventGeo = {
   xk?: string | undefined;
 };
 
+export type SaleEventTestVariants = {
+  url: string;
+  percentage: number;
+};
+
 export type SaleEventLink = {
   /**
    * The unique ID of the short link.
@@ -316,15 +321,15 @@ export type SaleEventLink = {
   password: string | null;
   proxy?: boolean | undefined;
   /**
-   * The title of the short link generated via `api.dub.co/metatags`. Will be used for Custom Social Media Cards if `proxy` is true.
+   * The title of the short link. Will be used for Custom Social Media Cards if `proxy` is true.
    */
   title: string | null;
   /**
-   * The description of the short link generated via `api.dub.co/metatags`. Will be used for Custom Social Media Cards if `proxy` is true.
+   * The description of the short link. Will be used for Custom Social Media Cards if `proxy` is true.
    */
   description: string | null;
   /**
-   * The image of the short link generated via `api.dub.co/metatags`. Will be used for Custom Social Media Cards if `proxy` is true.
+   * The image of the short link. Will be used for Custom Social Media Cards if `proxy` is true.
    */
   image: string | null;
   /**
@@ -396,6 +401,12 @@ export type SaleEventLink = {
    * The UTM content of the short link.
    */
   utmContent: string | null;
+  /**
+   * An array of A/B test URLs and the percentage of traffic to send to each URL.
+   */
+  testVariants?: Array<SaleEventTestVariants> | null | undefined;
+  testStartedAt: string | null;
+  testCompletedAt: string | null;
   userId: string | null;
   /**
    * The workspace ID of the short link.
@@ -493,7 +504,7 @@ export type PaymentProcessor = ClosedEnum<typeof PaymentProcessor>;
 
 export type Sale = {
   /**
-   * The amount of the sale. Should be passed in cents.
+   * The amount of the sale in cents.
    */
   amount: number;
   /**
@@ -531,6 +542,7 @@ export type SaleEvent = {
    * Deprecated. Use `sale.paymentProcessor` instead.
    */
   paymentProcessor: string;
+  metadata: string;
   /**
    * Deprecated. Use `click.id` instead.
    *
@@ -1936,6 +1948,63 @@ export function saleEventGeoFromJSON(
 }
 
 /** @internal */
+export const SaleEventTestVariants$inboundSchema: z.ZodType<
+  SaleEventTestVariants,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  url: z.string(),
+  percentage: z.number(),
+});
+
+/** @internal */
+export type SaleEventTestVariants$Outbound = {
+  url: string;
+  percentage: number;
+};
+
+/** @internal */
+export const SaleEventTestVariants$outboundSchema: z.ZodType<
+  SaleEventTestVariants$Outbound,
+  z.ZodTypeDef,
+  SaleEventTestVariants
+> = z.object({
+  url: z.string(),
+  percentage: z.number(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace SaleEventTestVariants$ {
+  /** @deprecated use `SaleEventTestVariants$inboundSchema` instead. */
+  export const inboundSchema = SaleEventTestVariants$inboundSchema;
+  /** @deprecated use `SaleEventTestVariants$outboundSchema` instead. */
+  export const outboundSchema = SaleEventTestVariants$outboundSchema;
+  /** @deprecated use `SaleEventTestVariants$Outbound` instead. */
+  export type Outbound = SaleEventTestVariants$Outbound;
+}
+
+export function saleEventTestVariantsToJSON(
+  saleEventTestVariants: SaleEventTestVariants,
+): string {
+  return JSON.stringify(
+    SaleEventTestVariants$outboundSchema.parse(saleEventTestVariants),
+  );
+}
+
+export function saleEventTestVariantsFromJSON(
+  jsonString: string,
+): SafeParseResult<SaleEventTestVariants, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SaleEventTestVariants$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SaleEventTestVariants' from JSON`,
+  );
+}
+
+/** @internal */
 export const SaleEventLink$inboundSchema: z.ZodType<
   SaleEventLink,
   z.ZodTypeDef,
@@ -1977,6 +2046,11 @@ export const SaleEventLink$inboundSchema: z.ZodType<
   utm_campaign: z.nullable(z.string()),
   utm_term: z.nullable(z.string()),
   utm_content: z.nullable(z.string()),
+  testVariants: z.nullable(
+    z.array(z.lazy(() => SaleEventTestVariants$inboundSchema)),
+  ).optional(),
+  testStartedAt: z.nullable(z.string()),
+  testCompletedAt: z.nullable(z.string()),
   userId: z.nullable(z.string()),
   workspaceId: z.string(),
   clicks: z.number().default(0),
@@ -2035,6 +2109,9 @@ export type SaleEventLink$Outbound = {
   utm_campaign: string | null;
   utm_term: string | null;
   utm_content: string | null;
+  testVariants?: Array<SaleEventTestVariants$Outbound> | null | undefined;
+  testStartedAt: string | null;
+  testCompletedAt: string | null;
   userId: string | null;
   workspaceId: string;
   clicks: number;
@@ -2089,6 +2166,11 @@ export const SaleEventLink$outboundSchema: z.ZodType<
   utmCampaign: z.nullable(z.string()),
   utmTerm: z.nullable(z.string()),
   utmContent: z.nullable(z.string()),
+  testVariants: z.nullable(
+    z.array(z.lazy(() => SaleEventTestVariants$outboundSchema)),
+  ).optional(),
+  testStartedAt: z.nullable(z.string()),
+  testCompletedAt: z.nullable(z.string()),
   userId: z.nullable(z.string()),
   workspaceId: z.string(),
   clicks: z.number().default(0),
@@ -2385,6 +2467,7 @@ export const SaleEvent$inboundSchema: z.ZodType<
   saleAmount: z.number(),
   invoice_id: z.string(),
   payment_processor: z.string(),
+  metadata: z.string(),
   click_id: z.string(),
   link_id: z.string(),
   domain: z.string(),
@@ -2420,6 +2503,7 @@ export type SaleEvent$Outbound = {
   saleAmount: number;
   invoice_id: string;
   payment_processor: string;
+  metadata: string;
   click_id: string;
   link_id: string;
   domain: string;
@@ -2452,6 +2536,7 @@ export const SaleEvent$outboundSchema: z.ZodType<
   saleAmount: z.number(),
   invoiceId: z.string(),
   paymentProcessor: z.string(),
+  metadata: z.string(),
   clickId: z.string(),
   linkId: z.string(),
   domain: z.string(),

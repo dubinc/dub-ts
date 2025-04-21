@@ -1,28 +1,28 @@
-# PartnerCreatedEventData
+# PartnerEnrolledEventData
 
 ## Example Usage
 
 ```typescript
-import { PartnerCreatedEventData } from "dub/models/components";
+import { PartnerEnrolledEventData } from "dub/models/components";
 
-let value: PartnerCreatedEventData = {
+let value: PartnerEnrolledEventData = {
   id: "<id>",
   name: "<value>",
-  email: "Mya_Cruickshank@gmail.com",
-  image: "https://picsum.photos/seed/n80nKZsil/3477/248",
-  country: "Belize",
+  email: "Luella_Streich@hotmail.com",
+  image: "https://loremflickr.com/2147/1657?lock=6571640826873655",
+  country: "Slovenia",
   payoutsEnabledAt: "<value>",
-  createdAt: "1725953476758",
+  createdAt: "1720197990976",
   status: "invited",
   programId: "<id>",
   tenantId: "<id>",
   links: [
     {
       id: "<id>",
-      domain: "posh-adrenalin.name",
+      domain: "slight-dulcimer.name",
       key: "<key>",
-      shortLink: "https://meager-unblinking.biz",
-      url: "https://defenseless-diver.biz",
+      shortLink: "https://busy-tinderbox.org/",
+      url: "https://crafty-academics.biz/",
     },
   ],
 };

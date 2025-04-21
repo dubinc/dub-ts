@@ -288,6 +288,11 @@ export type LinkWebhookEventGeo = {
   xk?: string | undefined;
 };
 
+export type LinkWebhookEventTestVariants = {
+  url: string;
+  percentage: number;
+};
+
 export type Data = {
   /**
    * The unique ID of the short link.
@@ -328,15 +333,15 @@ export type Data = {
   password: string | null;
   proxy?: boolean | undefined;
   /**
-   * The title of the short link generated via `api.dub.co/metatags`. Will be used for Custom Social Media Cards if `proxy` is true.
+   * The title of the short link. Will be used for Custom Social Media Cards if `proxy` is true.
    */
   title: string | null;
   /**
-   * The description of the short link generated via `api.dub.co/metatags`. Will be used for Custom Social Media Cards if `proxy` is true.
+   * The description of the short link. Will be used for Custom Social Media Cards if `proxy` is true.
    */
   description: string | null;
   /**
-   * The image of the short link generated via `api.dub.co/metatags`. Will be used for Custom Social Media Cards if `proxy` is true.
+   * The image of the short link. Will be used for Custom Social Media Cards if `proxy` is true.
    */
   image: string | null;
   /**
@@ -408,6 +413,12 @@ export type Data = {
    * The UTM content of the short link.
    */
   utmContent: string | null;
+  /**
+   * An array of A/B test URLs and the percentage of traffic to send to each URL.
+   */
+  testVariants?: Array<LinkWebhookEventTestVariants> | null | undefined;
+  testStartedAt: string | null;
+  testCompletedAt: string | null;
   userId: string | null;
   /**
    * The workspace ID of the short link.
@@ -1862,6 +1873,65 @@ export function linkWebhookEventGeoFromJSON(
 }
 
 /** @internal */
+export const LinkWebhookEventTestVariants$inboundSchema: z.ZodType<
+  LinkWebhookEventTestVariants,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  url: z.string(),
+  percentage: z.number(),
+});
+
+/** @internal */
+export type LinkWebhookEventTestVariants$Outbound = {
+  url: string;
+  percentage: number;
+};
+
+/** @internal */
+export const LinkWebhookEventTestVariants$outboundSchema: z.ZodType<
+  LinkWebhookEventTestVariants$Outbound,
+  z.ZodTypeDef,
+  LinkWebhookEventTestVariants
+> = z.object({
+  url: z.string(),
+  percentage: z.number(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace LinkWebhookEventTestVariants$ {
+  /** @deprecated use `LinkWebhookEventTestVariants$inboundSchema` instead. */
+  export const inboundSchema = LinkWebhookEventTestVariants$inboundSchema;
+  /** @deprecated use `LinkWebhookEventTestVariants$outboundSchema` instead. */
+  export const outboundSchema = LinkWebhookEventTestVariants$outboundSchema;
+  /** @deprecated use `LinkWebhookEventTestVariants$Outbound` instead. */
+  export type Outbound = LinkWebhookEventTestVariants$Outbound;
+}
+
+export function linkWebhookEventTestVariantsToJSON(
+  linkWebhookEventTestVariants: LinkWebhookEventTestVariants,
+): string {
+  return JSON.stringify(
+    LinkWebhookEventTestVariants$outboundSchema.parse(
+      linkWebhookEventTestVariants,
+    ),
+  );
+}
+
+export function linkWebhookEventTestVariantsFromJSON(
+  jsonString: string,
+): SafeParseResult<LinkWebhookEventTestVariants, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LinkWebhookEventTestVariants$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LinkWebhookEventTestVariants' from JSON`,
+  );
+}
+
+/** @internal */
 export const Data$inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z
   .object({
     id: z.string(),
@@ -1900,6 +1970,11 @@ export const Data$inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z
     utm_campaign: z.nullable(z.string()),
     utm_term: z.nullable(z.string()),
     utm_content: z.nullable(z.string()),
+    testVariants: z.nullable(
+      z.array(z.lazy(() => LinkWebhookEventTestVariants$inboundSchema)),
+    ).optional(),
+    testStartedAt: z.nullable(z.string()),
+    testCompletedAt: z.nullable(z.string()),
     userId: z.nullable(z.string()),
     workspaceId: z.string(),
     clicks: z.number().default(0),
@@ -1958,6 +2033,12 @@ export type Data$Outbound = {
   utm_campaign: string | null;
   utm_term: string | null;
   utm_content: string | null;
+  testVariants?:
+    | Array<LinkWebhookEventTestVariants$Outbound>
+    | null
+    | undefined;
+  testStartedAt: string | null;
+  testCompletedAt: string | null;
   userId: string | null;
   workspaceId: string;
   clicks: number;
@@ -2009,6 +2090,11 @@ export const Data$outboundSchema: z.ZodType<Data$Outbound, z.ZodTypeDef, Data> =
     utmCampaign: z.nullable(z.string()),
     utmTerm: z.nullable(z.string()),
     utmContent: z.nullable(z.string()),
+    testVariants: z.nullable(
+      z.array(z.lazy(() => LinkWebhookEventTestVariants$outboundSchema)),
+    ).optional(),
+    testStartedAt: z.nullable(z.string()),
+    testCompletedAt: z.nullable(z.string()),
     userId: z.nullable(z.string()),
     workspaceId: z.string(),
     clicks: z.number().default(0),

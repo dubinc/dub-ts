@@ -23,7 +23,6 @@ export * from "./getcustomers.js";
 export * from "./getlinkinfo.js";
 export * from "./getlinks.js";
 export * from "./getlinkscount.js";
-export * from "./getmetatags.js";
 export * from "./getqrcode.js";
 export * from "./gettags.js";
 export * from "./getworkspace.js";

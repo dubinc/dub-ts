@@ -293,6 +293,11 @@ export type ClickEventGeo = {
   xk?: string | undefined;
 };
 
+export type ClickEventTestVariants = {
+  url: string;
+  percentage: number;
+};
+
 export type Link = {
   /**
    * The unique ID of the short link.
@@ -333,15 +338,15 @@ export type Link = {
   password: string | null;
   proxy?: boolean | undefined;
   /**
-   * The title of the short link generated via `api.dub.co/metatags`. Will be used for Custom Social Media Cards if `proxy` is true.
+   * The title of the short link. Will be used for Custom Social Media Cards if `proxy` is true.
    */
   title: string | null;
   /**
-   * The description of the short link generated via `api.dub.co/metatags`. Will be used for Custom Social Media Cards if `proxy` is true.
+   * The description of the short link. Will be used for Custom Social Media Cards if `proxy` is true.
    */
   description: string | null;
   /**
-   * The image of the short link generated via `api.dub.co/metatags`. Will be used for Custom Social Media Cards if `proxy` is true.
+   * The image of the short link. Will be used for Custom Social Media Cards if `proxy` is true.
    */
   image: string | null;
   /**
@@ -413,6 +418,12 @@ export type Link = {
    * The UTM content of the short link.
    */
   utmContent: string | null;
+  /**
+   * An array of A/B test URLs and the percentage of traffic to send to each URL.
+   */
+  testVariants?: Array<ClickEventTestVariants> | null | undefined;
+  testStartedAt: string | null;
+  testCompletedAt: string | null;
   userId: string | null;
   /**
    * The workspace ID of the short link.
@@ -1940,6 +1951,63 @@ export function clickEventGeoFromJSON(
 }
 
 /** @internal */
+export const ClickEventTestVariants$inboundSchema: z.ZodType<
+  ClickEventTestVariants,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  url: z.string(),
+  percentage: z.number(),
+});
+
+/** @internal */
+export type ClickEventTestVariants$Outbound = {
+  url: string;
+  percentage: number;
+};
+
+/** @internal */
+export const ClickEventTestVariants$outboundSchema: z.ZodType<
+  ClickEventTestVariants$Outbound,
+  z.ZodTypeDef,
+  ClickEventTestVariants
+> = z.object({
+  url: z.string(),
+  percentage: z.number(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ClickEventTestVariants$ {
+  /** @deprecated use `ClickEventTestVariants$inboundSchema` instead. */
+  export const inboundSchema = ClickEventTestVariants$inboundSchema;
+  /** @deprecated use `ClickEventTestVariants$outboundSchema` instead. */
+  export const outboundSchema = ClickEventTestVariants$outboundSchema;
+  /** @deprecated use `ClickEventTestVariants$Outbound` instead. */
+  export type Outbound = ClickEventTestVariants$Outbound;
+}
+
+export function clickEventTestVariantsToJSON(
+  clickEventTestVariants: ClickEventTestVariants,
+): string {
+  return JSON.stringify(
+    ClickEventTestVariants$outboundSchema.parse(clickEventTestVariants),
+  );
+}
+
+export function clickEventTestVariantsFromJSON(
+  jsonString: string,
+): SafeParseResult<ClickEventTestVariants, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ClickEventTestVariants$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ClickEventTestVariants' from JSON`,
+  );
+}
+
+/** @internal */
 export const Link$inboundSchema: z.ZodType<Link, z.ZodTypeDef, unknown> = z
   .object({
     id: z.string(),
@@ -1978,6 +2046,11 @@ export const Link$inboundSchema: z.ZodType<Link, z.ZodTypeDef, unknown> = z
     utm_campaign: z.nullable(z.string()),
     utm_term: z.nullable(z.string()),
     utm_content: z.nullable(z.string()),
+    testVariants: z.nullable(
+      z.array(z.lazy(() => ClickEventTestVariants$inboundSchema)),
+    ).optional(),
+    testStartedAt: z.nullable(z.string()),
+    testCompletedAt: z.nullable(z.string()),
     userId: z.nullable(z.string()),
     workspaceId: z.string(),
     clicks: z.number().default(0),
@@ -2036,6 +2109,9 @@ export type Link$Outbound = {
   utm_campaign: string | null;
   utm_term: string | null;
   utm_content: string | null;
+  testVariants?: Array<ClickEventTestVariants$Outbound> | null | undefined;
+  testStartedAt: string | null;
+  testCompletedAt: string | null;
   userId: string | null;
   workspaceId: string;
   clicks: number;
@@ -2087,6 +2163,11 @@ export const Link$outboundSchema: z.ZodType<Link$Outbound, z.ZodTypeDef, Link> =
     utmCampaign: z.nullable(z.string()),
     utmTerm: z.nullable(z.string()),
     utmContent: z.nullable(z.string()),
+    testVariants: z.nullable(
+      z.array(z.lazy(() => ClickEventTestVariants$outboundSchema)),
+    ).optional(),
+    testStartedAt: z.nullable(z.string()),
+    testCompletedAt: z.nullable(z.string()),
     userId: z.nullable(z.string()),
     workspaceId: z.string(),
     clicks: z.number().default(0),

@@ -19,6 +19,11 @@ export type UpdateLinkTagIds = string | Array<string>;
  */
 export type UpdateLinkTagNames = string | Array<string>;
 
+export type UpdateLinkTestVariants = {
+  url: string;
+  percentage: number;
+};
+
 export type UpdateLinkRequestBody = {
   /**
    * The destination URL of the short link.
@@ -168,6 +173,18 @@ export type UpdateLinkRequestBody = {
    * An array of webhook IDs to trigger when the link is clicked. These webhooks will receive click event data.
    */
   webhookIds?: Array<string> | null | undefined;
+  /**
+   * An array of A/B test URLs and the percentage of traffic to send to each URL.
+   */
+  testVariants?: Array<UpdateLinkTestVariants> | null | undefined;
+  /**
+   * The date and time when the tests started.
+   */
+  testStartedAt?: string | null | undefined;
+  /**
+   * The date and time when the tests were or will be completed.
+   */
+  testCompletedAt?: string | null | undefined;
 };
 
 export type UpdateLinkRequest = {
@@ -275,6 +292,63 @@ export function updateLinkTagNamesFromJSON(
 }
 
 /** @internal */
+export const UpdateLinkTestVariants$inboundSchema: z.ZodType<
+  UpdateLinkTestVariants,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  url: z.string(),
+  percentage: z.number(),
+});
+
+/** @internal */
+export type UpdateLinkTestVariants$Outbound = {
+  url: string;
+  percentage: number;
+};
+
+/** @internal */
+export const UpdateLinkTestVariants$outboundSchema: z.ZodType<
+  UpdateLinkTestVariants$Outbound,
+  z.ZodTypeDef,
+  UpdateLinkTestVariants
+> = z.object({
+  url: z.string(),
+  percentage: z.number(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateLinkTestVariants$ {
+  /** @deprecated use `UpdateLinkTestVariants$inboundSchema` instead. */
+  export const inboundSchema = UpdateLinkTestVariants$inboundSchema;
+  /** @deprecated use `UpdateLinkTestVariants$outboundSchema` instead. */
+  export const outboundSchema = UpdateLinkTestVariants$outboundSchema;
+  /** @deprecated use `UpdateLinkTestVariants$Outbound` instead. */
+  export type Outbound = UpdateLinkTestVariants$Outbound;
+}
+
+export function updateLinkTestVariantsToJSON(
+  updateLinkTestVariants: UpdateLinkTestVariants,
+): string {
+  return JSON.stringify(
+    UpdateLinkTestVariants$outboundSchema.parse(updateLinkTestVariants),
+  );
+}
+
+export function updateLinkTestVariantsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateLinkTestVariants, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateLinkTestVariants$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateLinkTestVariants' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateLinkRequestBody$inboundSchema: z.ZodType<
   UpdateLinkRequestBody,
   z.ZodTypeDef,
@@ -316,6 +390,11 @@ export const UpdateLinkRequestBody$inboundSchema: z.ZodType<
   utm_content: z.nullable(z.string()).optional(),
   ref: z.nullable(z.string()).optional(),
   webhookIds: z.nullable(z.array(z.string())).optional(),
+  testVariants: z.nullable(
+    z.array(z.lazy(() => UpdateLinkTestVariants$inboundSchema)),
+  ).optional(),
+  testStartedAt: z.nullable(z.string()).optional(),
+  testCompletedAt: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "utm_source": "utmSource",
@@ -364,6 +443,9 @@ export type UpdateLinkRequestBody$Outbound = {
   utm_content?: string | null | undefined;
   ref?: string | null | undefined;
   webhookIds?: Array<string> | null | undefined;
+  testVariants?: Array<UpdateLinkTestVariants$Outbound> | null | undefined;
+  testStartedAt?: string | null | undefined;
+  testCompletedAt?: string | null | undefined;
 };
 
 /** @internal */
@@ -408,6 +490,11 @@ export const UpdateLinkRequestBody$outboundSchema: z.ZodType<
   utmContent: z.nullable(z.string()).optional(),
   ref: z.nullable(z.string()).optional(),
   webhookIds: z.nullable(z.array(z.string())).optional(),
+  testVariants: z.nullable(
+    z.array(z.lazy(() => UpdateLinkTestVariants$outboundSchema)),
+  ).optional(),
+  testStartedAt: z.nullable(z.string()).optional(),
+  testCompletedAt: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     utmSource: "utm_source",

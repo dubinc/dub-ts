@@ -7,10 +7,10 @@ import { RetrieveLinksResponseBody } from "dub/models/operations";
 
 let value: RetrieveLinksResponseBody = {
   id: "<id>",
-  domain: "common-dividend.org",
+  domain: "colossal-commercial.org",
   key: "<key>",
-  shortLink: "https://muffled-saloon.net/",
-  url: "https://youthful-marketplace.biz",
+  shortLink: "https://french-jogging.com",
+  url: "https://humble-circumference.org",
 };
 ```
 

@@ -5,7 +5,7 @@
 ```typescript
 import { Status } from "dub/models/components";
 
-let value: Status = "declined";
+let value: Status = "invited";
 ```
 
 ## Values

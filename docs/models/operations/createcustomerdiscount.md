@@ -7,9 +7,9 @@ import { CreateCustomerDiscount } from "dub/models/operations";
 
 let value: CreateCustomerDiscount = {
   id: "<id>",
-  amount: 1303.91,
-  type: "percentage",
-  maxDuration: 6551.31,
+  amount: 9351.84,
+  type: "flat",
+  maxDuration: 1757.54,
   couponId: "<id>",
   couponTestId: "<id>",
 };
