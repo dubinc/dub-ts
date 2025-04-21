@@ -7,7 +7,7 @@ The sort order. The default is `desc`.
 ```typescript
 import { QueryParamSortOrder } from "dub/models/operations";
 
-let value: QueryParamSortOrder = "asc";
+let value: QueryParamSortOrder = "desc";
 ```
 
 ## Values

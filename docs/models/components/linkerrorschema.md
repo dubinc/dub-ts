@@ -7,7 +7,7 @@ import { LinkErrorSchema } from "dub/models/components";
 
 let value: LinkErrorSchema = {
   error: "<value>",
-  code: "unprocessable_entity",
+  code: "not_found",
 };
 ```
 

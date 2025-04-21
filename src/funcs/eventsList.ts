@@ -109,6 +109,7 @@ async function $do(
     "city": payload?.city,
     "continent": payload?.continent,
     "country": payload?.country,
+    "customerId": payload?.customerId,
     "device": payload?.device,
     "domain": payload?.domain,
     "end": payload?.end,

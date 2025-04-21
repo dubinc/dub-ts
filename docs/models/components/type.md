@@ -5,7 +5,7 @@
 ```typescript
 import { Type } from "dub/models/components";
 
-let value: Type = "mega";
+let value: Type = "default";
 ```
 
 ## Values

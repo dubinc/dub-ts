@@ -8,11 +8,11 @@ import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export const PartnerCreatedEventEvent = {
-  PartnerCreated: "partner.created",
+export const PartnerEnrolledEventEvent = {
+  PartnerEnrolled: "partner.enrolled",
 } as const;
-export type PartnerCreatedEventEvent = ClosedEnum<
-  typeof PartnerCreatedEventEvent
+export type PartnerEnrolledEventEvent = ClosedEnum<
+  typeof PartnerEnrolledEventEvent
 >;
 
 export const Status = {
@@ -64,7 +64,7 @@ export type Links = {
   saleAmount?: number | undefined;
 };
 
-export type PartnerCreatedEventData = {
+export type PartnerEnrolledEventData = {
   id: string;
   name: string;
   email: string | null;
@@ -86,34 +86,34 @@ export type PartnerCreatedEventData = {
 };
 
 /**
- * Triggered when a partner is created.
+ * Triggered when a partner is enrolled.
  */
-export type PartnerCreatedEvent = {
+export type PartnerEnrolledEvent = {
   id: string;
-  event: PartnerCreatedEventEvent;
+  event: PartnerEnrolledEventEvent;
   createdAt: string;
-  data: PartnerCreatedEventData;
+  data: PartnerEnrolledEventData;
 };
 
 /** @internal */
-export const PartnerCreatedEventEvent$inboundSchema: z.ZodNativeEnum<
-  typeof PartnerCreatedEventEvent
-> = z.nativeEnum(PartnerCreatedEventEvent);
+export const PartnerEnrolledEventEvent$inboundSchema: z.ZodNativeEnum<
+  typeof PartnerEnrolledEventEvent
+> = z.nativeEnum(PartnerEnrolledEventEvent);
 
 /** @internal */
-export const PartnerCreatedEventEvent$outboundSchema: z.ZodNativeEnum<
-  typeof PartnerCreatedEventEvent
-> = PartnerCreatedEventEvent$inboundSchema;
+export const PartnerEnrolledEventEvent$outboundSchema: z.ZodNativeEnum<
+  typeof PartnerEnrolledEventEvent
+> = PartnerEnrolledEventEvent$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PartnerCreatedEventEvent$ {
-  /** @deprecated use `PartnerCreatedEventEvent$inboundSchema` instead. */
-  export const inboundSchema = PartnerCreatedEventEvent$inboundSchema;
-  /** @deprecated use `PartnerCreatedEventEvent$outboundSchema` instead. */
-  export const outboundSchema = PartnerCreatedEventEvent$outboundSchema;
+export namespace PartnerEnrolledEventEvent$ {
+  /** @deprecated use `PartnerEnrolledEventEvent$inboundSchema` instead. */
+  export const inboundSchema = PartnerEnrolledEventEvent$inboundSchema;
+  /** @deprecated use `PartnerEnrolledEventEvent$outboundSchema` instead. */
+  export const outboundSchema = PartnerEnrolledEventEvent$outboundSchema;
 }
 
 /** @internal */
@@ -207,8 +207,8 @@ export function linksFromJSON(
 }
 
 /** @internal */
-export const PartnerCreatedEventData$inboundSchema: z.ZodType<
-  PartnerCreatedEventData,
+export const PartnerEnrolledEventData$inboundSchema: z.ZodType<
+  PartnerEnrolledEventData,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -233,7 +233,7 @@ export const PartnerCreatedEventData$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PartnerCreatedEventData$Outbound = {
+export type PartnerEnrolledEventData$Outbound = {
   id: string;
   name: string;
   email: string | null;
@@ -255,10 +255,10 @@ export type PartnerCreatedEventData$Outbound = {
 };
 
 /** @internal */
-export const PartnerCreatedEventData$outboundSchema: z.ZodType<
-  PartnerCreatedEventData$Outbound,
+export const PartnerEnrolledEventData$outboundSchema: z.ZodType<
+  PartnerEnrolledEventData$Outbound,
   z.ZodTypeDef,
-  PartnerCreatedEventData
+  PartnerEnrolledEventData
 > = z.object({
   id: z.string(),
   name: z.string(),
@@ -284,92 +284,92 @@ export const PartnerCreatedEventData$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PartnerCreatedEventData$ {
-  /** @deprecated use `PartnerCreatedEventData$inboundSchema` instead. */
-  export const inboundSchema = PartnerCreatedEventData$inboundSchema;
-  /** @deprecated use `PartnerCreatedEventData$outboundSchema` instead. */
-  export const outboundSchema = PartnerCreatedEventData$outboundSchema;
-  /** @deprecated use `PartnerCreatedEventData$Outbound` instead. */
-  export type Outbound = PartnerCreatedEventData$Outbound;
+export namespace PartnerEnrolledEventData$ {
+  /** @deprecated use `PartnerEnrolledEventData$inboundSchema` instead. */
+  export const inboundSchema = PartnerEnrolledEventData$inboundSchema;
+  /** @deprecated use `PartnerEnrolledEventData$outboundSchema` instead. */
+  export const outboundSchema = PartnerEnrolledEventData$outboundSchema;
+  /** @deprecated use `PartnerEnrolledEventData$Outbound` instead. */
+  export type Outbound = PartnerEnrolledEventData$Outbound;
 }
 
-export function partnerCreatedEventDataToJSON(
-  partnerCreatedEventData: PartnerCreatedEventData,
+export function partnerEnrolledEventDataToJSON(
+  partnerEnrolledEventData: PartnerEnrolledEventData,
 ): string {
   return JSON.stringify(
-    PartnerCreatedEventData$outboundSchema.parse(partnerCreatedEventData),
+    PartnerEnrolledEventData$outboundSchema.parse(partnerEnrolledEventData),
   );
 }
 
-export function partnerCreatedEventDataFromJSON(
+export function partnerEnrolledEventDataFromJSON(
   jsonString: string,
-): SafeParseResult<PartnerCreatedEventData, SDKValidationError> {
+): SafeParseResult<PartnerEnrolledEventData, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PartnerCreatedEventData$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PartnerCreatedEventData' from JSON`,
+    (x) => PartnerEnrolledEventData$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PartnerEnrolledEventData' from JSON`,
   );
 }
 
 /** @internal */
-export const PartnerCreatedEvent$inboundSchema: z.ZodType<
-  PartnerCreatedEvent,
+export const PartnerEnrolledEvent$inboundSchema: z.ZodType<
+  PartnerEnrolledEvent,
   z.ZodTypeDef,
   unknown
 > = z.object({
   id: z.string(),
-  event: PartnerCreatedEventEvent$inboundSchema,
+  event: PartnerEnrolledEventEvent$inboundSchema,
   createdAt: z.string(),
-  data: z.lazy(() => PartnerCreatedEventData$inboundSchema),
+  data: z.lazy(() => PartnerEnrolledEventData$inboundSchema),
 });
 
 /** @internal */
-export type PartnerCreatedEvent$Outbound = {
+export type PartnerEnrolledEvent$Outbound = {
   id: string;
   event: string;
   createdAt: string;
-  data: PartnerCreatedEventData$Outbound;
+  data: PartnerEnrolledEventData$Outbound;
 };
 
 /** @internal */
-export const PartnerCreatedEvent$outboundSchema: z.ZodType<
-  PartnerCreatedEvent$Outbound,
+export const PartnerEnrolledEvent$outboundSchema: z.ZodType<
+  PartnerEnrolledEvent$Outbound,
   z.ZodTypeDef,
-  PartnerCreatedEvent
+  PartnerEnrolledEvent
 > = z.object({
   id: z.string(),
-  event: PartnerCreatedEventEvent$outboundSchema,
+  event: PartnerEnrolledEventEvent$outboundSchema,
   createdAt: z.string(),
-  data: z.lazy(() => PartnerCreatedEventData$outboundSchema),
+  data: z.lazy(() => PartnerEnrolledEventData$outboundSchema),
 });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PartnerCreatedEvent$ {
-  /** @deprecated use `PartnerCreatedEvent$inboundSchema` instead. */
-  export const inboundSchema = PartnerCreatedEvent$inboundSchema;
-  /** @deprecated use `PartnerCreatedEvent$outboundSchema` instead. */
-  export const outboundSchema = PartnerCreatedEvent$outboundSchema;
-  /** @deprecated use `PartnerCreatedEvent$Outbound` instead. */
-  export type Outbound = PartnerCreatedEvent$Outbound;
+export namespace PartnerEnrolledEvent$ {
+  /** @deprecated use `PartnerEnrolledEvent$inboundSchema` instead. */
+  export const inboundSchema = PartnerEnrolledEvent$inboundSchema;
+  /** @deprecated use `PartnerEnrolledEvent$outboundSchema` instead. */
+  export const outboundSchema = PartnerEnrolledEvent$outboundSchema;
+  /** @deprecated use `PartnerEnrolledEvent$Outbound` instead. */
+  export type Outbound = PartnerEnrolledEvent$Outbound;
 }
 
-export function partnerCreatedEventToJSON(
-  partnerCreatedEvent: PartnerCreatedEvent,
+export function partnerEnrolledEventToJSON(
+  partnerEnrolledEvent: PartnerEnrolledEvent,
 ): string {
   return JSON.stringify(
-    PartnerCreatedEvent$outboundSchema.parse(partnerCreatedEvent),
+    PartnerEnrolledEvent$outboundSchema.parse(partnerEnrolledEvent),
   );
 }
 
-export function partnerCreatedEventFromJSON(
+export function partnerEnrolledEventFromJSON(
   jsonString: string,
-): SafeParseResult<PartnerCreatedEvent, SDKValidationError> {
+): SafeParseResult<PartnerEnrolledEvent, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PartnerCreatedEvent$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PartnerCreatedEvent' from JSON`,
+    (x) => PartnerEnrolledEvent$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PartnerEnrolledEvent' from JSON`,
   );
 }

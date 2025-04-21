@@ -281,6 +281,11 @@ export type CreateReferralsEmbedTokenTagIds = string | Array<string>;
  */
 export type CreateReferralsEmbedTokenTagNames = string | Array<string>;
 
+export type CreateReferralsEmbedTokenTestVariants = {
+  url: string;
+  percentage: number;
+};
+
 /**
  * Additional properties that you can pass to the partner's short link. Will be used to override the default link properties for this partner.
  */
@@ -389,6 +394,21 @@ export type CreateReferralsEmbedTokenLinkProps = {
    * The referral tag of the short link. If set, this will populate or override the `ref` query parameter in the destination URL.
    */
   ref?: string | null | undefined;
+  /**
+   * An array of A/B test URLs and the percentage of traffic to send to each URL.
+   */
+  testVariants?:
+    | Array<CreateReferralsEmbedTokenTestVariants>
+    | null
+    | undefined;
+  /**
+   * The date and time when the tests started.
+   */
+  testStartedAt?: string | null | undefined;
+  /**
+   * The date and time when the tests were or will be completed.
+   */
+  testCompletedAt?: string | null | undefined;
 };
 
 export type Partner = {
@@ -564,6 +584,68 @@ export function createReferralsEmbedTokenTagNamesFromJSON(
 }
 
 /** @internal */
+export const CreateReferralsEmbedTokenTestVariants$inboundSchema: z.ZodType<
+  CreateReferralsEmbedTokenTestVariants,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  url: z.string(),
+  percentage: z.number(),
+});
+
+/** @internal */
+export type CreateReferralsEmbedTokenTestVariants$Outbound = {
+  url: string;
+  percentage: number;
+};
+
+/** @internal */
+export const CreateReferralsEmbedTokenTestVariants$outboundSchema: z.ZodType<
+  CreateReferralsEmbedTokenTestVariants$Outbound,
+  z.ZodTypeDef,
+  CreateReferralsEmbedTokenTestVariants
+> = z.object({
+  url: z.string(),
+  percentage: z.number(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateReferralsEmbedTokenTestVariants$ {
+  /** @deprecated use `CreateReferralsEmbedTokenTestVariants$inboundSchema` instead. */
+  export const inboundSchema =
+    CreateReferralsEmbedTokenTestVariants$inboundSchema;
+  /** @deprecated use `CreateReferralsEmbedTokenTestVariants$outboundSchema` instead. */
+  export const outboundSchema =
+    CreateReferralsEmbedTokenTestVariants$outboundSchema;
+  /** @deprecated use `CreateReferralsEmbedTokenTestVariants$Outbound` instead. */
+  export type Outbound = CreateReferralsEmbedTokenTestVariants$Outbound;
+}
+
+export function createReferralsEmbedTokenTestVariantsToJSON(
+  createReferralsEmbedTokenTestVariants: CreateReferralsEmbedTokenTestVariants,
+): string {
+  return JSON.stringify(
+    CreateReferralsEmbedTokenTestVariants$outboundSchema.parse(
+      createReferralsEmbedTokenTestVariants,
+    ),
+  );
+}
+
+export function createReferralsEmbedTokenTestVariantsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateReferralsEmbedTokenTestVariants, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateReferralsEmbedTokenTestVariants$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateReferralsEmbedTokenTestVariants' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateReferralsEmbedTokenLinkProps$inboundSchema: z.ZodType<
   CreateReferralsEmbedTokenLinkProps,
   z.ZodTypeDef,
@@ -595,6 +677,11 @@ export const CreateReferralsEmbedTokenLinkProps$inboundSchema: z.ZodType<
   utm_term: z.nullable(z.string()).optional(),
   utm_content: z.nullable(z.string()).optional(),
   ref: z.nullable(z.string()).optional(),
+  testVariants: z.nullable(
+    z.array(z.lazy(() => CreateReferralsEmbedTokenTestVariants$inboundSchema)),
+  ).optional(),
+  testStartedAt: z.nullable(z.string()).optional(),
+  testCompletedAt: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "utm_source": "utmSource",
@@ -633,6 +720,12 @@ export type CreateReferralsEmbedTokenLinkProps$Outbound = {
   utm_term?: string | null | undefined;
   utm_content?: string | null | undefined;
   ref?: string | null | undefined;
+  testVariants?:
+    | Array<CreateReferralsEmbedTokenTestVariants$Outbound>
+    | null
+    | undefined;
+  testStartedAt?: string | null | undefined;
+  testCompletedAt?: string | null | undefined;
 };
 
 /** @internal */
@@ -667,6 +760,11 @@ export const CreateReferralsEmbedTokenLinkProps$outboundSchema: z.ZodType<
   utmTerm: z.nullable(z.string()).optional(),
   utmContent: z.nullable(z.string()).optional(),
   ref: z.nullable(z.string()).optional(),
+  testVariants: z.nullable(
+    z.array(z.lazy(() => CreateReferralsEmbedTokenTestVariants$outboundSchema)),
+  ).optional(),
+  testStartedAt: z.nullable(z.string()).optional(),
+  testCompletedAt: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     utmSource: "utm_source",

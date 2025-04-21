@@ -9,12 +9,12 @@ import { UpdatePartnerSaleResponseBody } from "dub/models/operations";
 
 let value: UpdatePartnerSaleResponseBody = {
   id: "<id>",
-  amount: 20.11,
-  earnings: 9736.27,
-  currency: "Hong Kong Dollar",
-  status: "paid",
-  createdAt: "1723353964140",
-  updatedAt: "1743281259251",
+  amount: 5954.36,
+  earnings: 1601.4,
+  currency: "Libyan Dinar",
+  status: "processed",
+  createdAt: "1744960732729",
+  updatedAt: "1745125850835",
 };
 ```
 
@@ -23,6 +23,7 @@ let value: UpdatePartnerSaleResponseBody = {
 | Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
 | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
 | `id`                                                                                     | *string*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `type`                                                                                   | [operations.Type](../../models/operations/type.md)                                       | :heavy_minus_sign:                                                                       | N/A                                                                                      |
 | `amount`                                                                                 | *number*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |
 | `earnings`                                                                               | *number*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |
 | `currency`                                                                               | *string*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |

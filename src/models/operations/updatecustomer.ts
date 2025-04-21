@@ -120,6 +120,7 @@ export type UpdateCustomerResponseBody = {
    */
   createdAt: string;
   link?: UpdateCustomerLink | null | undefined;
+  programId?: string | null | undefined;
   partner?: UpdateCustomerPartner | null | undefined;
   discount?: UpdateCustomerDiscount | null | undefined;
 };
@@ -495,6 +496,7 @@ export const UpdateCustomerResponseBody$inboundSchema: z.ZodType<
   country: z.nullable(z.string()).optional(),
   createdAt: z.string(),
   link: z.nullable(z.lazy(() => UpdateCustomerLink$inboundSchema)).optional(),
+  programId: z.nullable(z.string()).optional(),
   partner: z.nullable(z.lazy(() => UpdateCustomerPartner$inboundSchema))
     .optional(),
   discount: z.nullable(z.lazy(() => UpdateCustomerDiscount$inboundSchema))
@@ -511,6 +513,7 @@ export type UpdateCustomerResponseBody$Outbound = {
   country?: string | null | undefined;
   createdAt: string;
   link?: UpdateCustomerLink$Outbound | null | undefined;
+  programId?: string | null | undefined;
   partner?: UpdateCustomerPartner$Outbound | null | undefined;
   discount?: UpdateCustomerDiscount$Outbound | null | undefined;
 };
@@ -529,6 +532,7 @@ export const UpdateCustomerResponseBody$outboundSchema: z.ZodType<
   country: z.nullable(z.string()).optional(),
   createdAt: z.string(),
   link: z.nullable(z.lazy(() => UpdateCustomerLink$outboundSchema)).optional(),
+  programId: z.nullable(z.string()).optional(),
   partner: z.nullable(z.lazy(() => UpdateCustomerPartner$outboundSchema))
     .optional(),
   discount: z.nullable(z.lazy(() => UpdateCustomerDiscount$outboundSchema))

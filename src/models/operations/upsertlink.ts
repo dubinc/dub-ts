@@ -19,6 +19,11 @@ export type UpsertLinkTagIds = string | Array<string>;
  */
 export type UpsertLinkTagNames = string | Array<string>;
 
+export type UpsertLinkTestVariants = {
+  url: string;
+  percentage: number;
+};
+
 export type UpsertLinkRequestBody = {
   /**
    * The destination URL of the short link.
@@ -168,6 +173,18 @@ export type UpsertLinkRequestBody = {
    * An array of webhook IDs to trigger when the link is clicked. These webhooks will receive click event data.
    */
   webhookIds?: Array<string> | null | undefined;
+  /**
+   * An array of A/B test URLs and the percentage of traffic to send to each URL.
+   */
+  testVariants?: Array<UpsertLinkTestVariants> | null | undefined;
+  /**
+   * The date and time when the tests started.
+   */
+  testStartedAt?: string | null | undefined;
+  /**
+   * The date and time when the tests were or will be completed.
+   */
+  testCompletedAt?: string | null | undefined;
 };
 
 /** @internal */
@@ -267,6 +284,63 @@ export function upsertLinkTagNamesFromJSON(
 }
 
 /** @internal */
+export const UpsertLinkTestVariants$inboundSchema: z.ZodType<
+  UpsertLinkTestVariants,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  url: z.string(),
+  percentage: z.number(),
+});
+
+/** @internal */
+export type UpsertLinkTestVariants$Outbound = {
+  url: string;
+  percentage: number;
+};
+
+/** @internal */
+export const UpsertLinkTestVariants$outboundSchema: z.ZodType<
+  UpsertLinkTestVariants$Outbound,
+  z.ZodTypeDef,
+  UpsertLinkTestVariants
+> = z.object({
+  url: z.string(),
+  percentage: z.number(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpsertLinkTestVariants$ {
+  /** @deprecated use `UpsertLinkTestVariants$inboundSchema` instead. */
+  export const inboundSchema = UpsertLinkTestVariants$inboundSchema;
+  /** @deprecated use `UpsertLinkTestVariants$outboundSchema` instead. */
+  export const outboundSchema = UpsertLinkTestVariants$outboundSchema;
+  /** @deprecated use `UpsertLinkTestVariants$Outbound` instead. */
+  export type Outbound = UpsertLinkTestVariants$Outbound;
+}
+
+export function upsertLinkTestVariantsToJSON(
+  upsertLinkTestVariants: UpsertLinkTestVariants,
+): string {
+  return JSON.stringify(
+    UpsertLinkTestVariants$outboundSchema.parse(upsertLinkTestVariants),
+  );
+}
+
+export function upsertLinkTestVariantsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpsertLinkTestVariants, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpsertLinkTestVariants$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpsertLinkTestVariants' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpsertLinkRequestBody$inboundSchema: z.ZodType<
   UpsertLinkRequestBody,
   z.ZodTypeDef,
@@ -308,6 +382,11 @@ export const UpsertLinkRequestBody$inboundSchema: z.ZodType<
   utm_content: z.nullable(z.string()).optional(),
   ref: z.nullable(z.string()).optional(),
   webhookIds: z.nullable(z.array(z.string())).optional(),
+  testVariants: z.nullable(
+    z.array(z.lazy(() => UpsertLinkTestVariants$inboundSchema)),
+  ).optional(),
+  testStartedAt: z.nullable(z.string()).optional(),
+  testCompletedAt: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "utm_source": "utmSource",
@@ -356,6 +435,9 @@ export type UpsertLinkRequestBody$Outbound = {
   utm_content?: string | null | undefined;
   ref?: string | null | undefined;
   webhookIds?: Array<string> | null | undefined;
+  testVariants?: Array<UpsertLinkTestVariants$Outbound> | null | undefined;
+  testStartedAt?: string | null | undefined;
+  testCompletedAt?: string | null | undefined;
 };
 
 /** @internal */
@@ -400,6 +482,11 @@ export const UpsertLinkRequestBody$outboundSchema: z.ZodType<
   utmContent: z.nullable(z.string()).optional(),
   ref: z.nullable(z.string()).optional(),
   webhookIds: z.nullable(z.array(z.string())).optional(),
+  testVariants: z.nullable(
+    z.array(z.lazy(() => UpsertLinkTestVariants$outboundSchema)),
+  ).optional(),
+  testStartedAt: z.nullable(z.string()).optional(),
+  testCompletedAt: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     utmSource: "utm_source",

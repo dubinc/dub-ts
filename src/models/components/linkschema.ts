@@ -270,6 +270,11 @@ export type Geo = {
   xk?: string | undefined;
 };
 
+export type TestVariants = {
+  url: string;
+  percentage: number;
+};
+
 export type LinkSchema = {
   /**
    * The unique ID of the short link.
@@ -328,15 +333,15 @@ export type LinkSchema = {
    */
   proxy?: boolean | undefined;
   /**
-   * The title of the short link generated via `api.dub.co/metatags`. Will be used for Custom Social Media Cards if `proxy` is true.
+   * The title of the short link. Will be used for Custom Social Media Cards if `proxy` is true.
    */
   title: string | null;
   /**
-   * The description of the short link generated via `api.dub.co/metatags`. Will be used for Custom Social Media Cards if `proxy` is true.
+   * The description of the short link. Will be used for Custom Social Media Cards if `proxy` is true.
    */
   description: string | null;
   /**
-   * The image of the short link generated via `api.dub.co/metatags`. Will be used for Custom Social Media Cards if `proxy` is true.
+   * The image of the short link. Will be used for Custom Social Media Cards if `proxy` is true.
    */
   image: string | null;
   /**
@@ -417,6 +422,18 @@ export type LinkSchema = {
    * The UTM content of the short link.
    */
   utmContent: string | null;
+  /**
+   * An array of A/B test URLs and the percentage of traffic to send to each URL.
+   */
+  testVariants?: Array<TestVariants> | null | undefined;
+  /**
+   * The date and time when the tests started.
+   */
+  testStartedAt?: string | null | undefined;
+  /**
+   * The date and time when the tests were or will be completed.
+   */
+  testCompletedAt?: string | null | undefined;
   /**
    * The user ID of the creator of the short link.
    */
@@ -1759,6 +1776,59 @@ export function geoFromJSON(
 }
 
 /** @internal */
+export const TestVariants$inboundSchema: z.ZodType<
+  TestVariants,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  url: z.string(),
+  percentage: z.number(),
+});
+
+/** @internal */
+export type TestVariants$Outbound = {
+  url: string;
+  percentage: number;
+};
+
+/** @internal */
+export const TestVariants$outboundSchema: z.ZodType<
+  TestVariants$Outbound,
+  z.ZodTypeDef,
+  TestVariants
+> = z.object({
+  url: z.string(),
+  percentage: z.number(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TestVariants$ {
+  /** @deprecated use `TestVariants$inboundSchema` instead. */
+  export const inboundSchema = TestVariants$inboundSchema;
+  /** @deprecated use `TestVariants$outboundSchema` instead. */
+  export const outboundSchema = TestVariants$outboundSchema;
+  /** @deprecated use `TestVariants$Outbound` instead. */
+  export type Outbound = TestVariants$Outbound;
+}
+
+export function testVariantsToJSON(testVariants: TestVariants): string {
+  return JSON.stringify(TestVariants$outboundSchema.parse(testVariants));
+}
+
+export function testVariantsFromJSON(
+  jsonString: string,
+): SafeParseResult<TestVariants, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TestVariants$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TestVariants' from JSON`,
+  );
+}
+
+/** @internal */
 export const LinkSchema$inboundSchema: z.ZodType<
   LinkSchema,
   z.ZodTypeDef,
@@ -1800,6 +1870,10 @@ export const LinkSchema$inboundSchema: z.ZodType<
   utm_campaign: z.nullable(z.string()),
   utm_term: z.nullable(z.string()),
   utm_content: z.nullable(z.string()),
+  testVariants: z.nullable(z.array(z.lazy(() => TestVariants$inboundSchema)))
+    .optional(),
+  testStartedAt: z.nullable(z.string()).optional(),
+  testCompletedAt: z.nullable(z.string()).optional(),
   userId: z.nullable(z.string()),
   workspaceId: z.string(),
   clicks: z.number().default(0),
@@ -1858,6 +1932,9 @@ export type LinkSchema$Outbound = {
   utm_campaign: string | null;
   utm_term: string | null;
   utm_content: string | null;
+  testVariants?: Array<TestVariants$Outbound> | null | undefined;
+  testStartedAt?: string | null | undefined;
+  testCompletedAt?: string | null | undefined;
   userId: string | null;
   workspaceId: string;
   clicks: number;
@@ -1912,6 +1989,10 @@ export const LinkSchema$outboundSchema: z.ZodType<
   utmCampaign: z.nullable(z.string()),
   utmTerm: z.nullable(z.string()),
   utmContent: z.nullable(z.string()),
+  testVariants: z.nullable(z.array(z.lazy(() => TestVariants$outboundSchema)))
+    .optional(),
+  testStartedAt: z.nullable(z.string()).optional(),
+  testCompletedAt: z.nullable(z.string()).optional(),
   userId: z.nullable(z.string()),
   workspaceId: z.string(),
   clicks: z.number().default(0),

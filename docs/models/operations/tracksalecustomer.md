@@ -8,8 +8,8 @@ import { TrackSaleCustomer } from "dub/models/operations";
 let value: TrackSaleCustomer = {
   id: "<id>",
   name: "<value>",
-  email: "Tianna_Erdman88@gmail.com",
-  avatar: "https://loremflickr.com/921/2569?lock=4838468681193664",
+  email: "Kelton_Mann@gmail.com",
+  avatar: "https://loremflickr.com/3874/1373?lock=6243082390749533",
   externalId: "<id>",
 };
 ```

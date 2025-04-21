@@ -6,8 +6,8 @@
 import { SaleCreatedEventSale } from "dub/models/components";
 
 let value: SaleCreatedEventSale = {
-  amount: 4711.41,
-  currency: "Iranian Rial",
+  amount: 8772.33,
+  currency: "New Israeli Sheqel",
   paymentProcessor: "<value>",
   invoiceId: "<id>",
 };

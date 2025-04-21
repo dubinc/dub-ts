@@ -5,7 +5,7 @@
 ```typescript
 import { UpdatePartnerSaleStatus } from "dub/models/operations";
 
-let value: UpdatePartnerSaleStatus = "canceled";
+let value: UpdatePartnerSaleStatus = "paid";
 ```
 
 ## Values

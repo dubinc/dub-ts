@@ -19,6 +19,11 @@ export type BulkCreateLinksTagIds = string | Array<string>;
  */
 export type BulkCreateLinksTagNames = string | Array<string>;
 
+export type BulkCreateLinksTestVariants = {
+  url: string;
+  percentage: number;
+};
+
 export type RequestBody = {
   /**
    * The destination URL of the short link.
@@ -168,6 +173,18 @@ export type RequestBody = {
    * An array of webhook IDs to trigger when the link is clicked. These webhooks will receive click event data.
    */
   webhookIds?: Array<string> | null | undefined;
+  /**
+   * An array of A/B test URLs and the percentage of traffic to send to each URL.
+   */
+  testVariants?: Array<BulkCreateLinksTestVariants> | null | undefined;
+  /**
+   * The date and time when the tests started.
+   */
+  testStartedAt?: string | null | undefined;
+  /**
+   * The date and time when the tests were or will be completed.
+   */
+  testCompletedAt?: string | null | undefined;
 };
 
 export type ResponseBody = components.LinkErrorSchema | components.LinkSchema;
@@ -269,6 +286,65 @@ export function bulkCreateLinksTagNamesFromJSON(
 }
 
 /** @internal */
+export const BulkCreateLinksTestVariants$inboundSchema: z.ZodType<
+  BulkCreateLinksTestVariants,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  url: z.string(),
+  percentage: z.number(),
+});
+
+/** @internal */
+export type BulkCreateLinksTestVariants$Outbound = {
+  url: string;
+  percentage: number;
+};
+
+/** @internal */
+export const BulkCreateLinksTestVariants$outboundSchema: z.ZodType<
+  BulkCreateLinksTestVariants$Outbound,
+  z.ZodTypeDef,
+  BulkCreateLinksTestVariants
+> = z.object({
+  url: z.string(),
+  percentage: z.number(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace BulkCreateLinksTestVariants$ {
+  /** @deprecated use `BulkCreateLinksTestVariants$inboundSchema` instead. */
+  export const inboundSchema = BulkCreateLinksTestVariants$inboundSchema;
+  /** @deprecated use `BulkCreateLinksTestVariants$outboundSchema` instead. */
+  export const outboundSchema = BulkCreateLinksTestVariants$outboundSchema;
+  /** @deprecated use `BulkCreateLinksTestVariants$Outbound` instead. */
+  export type Outbound = BulkCreateLinksTestVariants$Outbound;
+}
+
+export function bulkCreateLinksTestVariantsToJSON(
+  bulkCreateLinksTestVariants: BulkCreateLinksTestVariants,
+): string {
+  return JSON.stringify(
+    BulkCreateLinksTestVariants$outboundSchema.parse(
+      bulkCreateLinksTestVariants,
+    ),
+  );
+}
+
+export function bulkCreateLinksTestVariantsFromJSON(
+  jsonString: string,
+): SafeParseResult<BulkCreateLinksTestVariants, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BulkCreateLinksTestVariants$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BulkCreateLinksTestVariants' from JSON`,
+  );
+}
+
+/** @internal */
 export const RequestBody$inboundSchema: z.ZodType<
   RequestBody,
   z.ZodTypeDef,
@@ -310,6 +386,11 @@ export const RequestBody$inboundSchema: z.ZodType<
   utm_content: z.nullable(z.string()).optional(),
   ref: z.nullable(z.string()).optional(),
   webhookIds: z.nullable(z.array(z.string())).optional(),
+  testVariants: z.nullable(
+    z.array(z.lazy(() => BulkCreateLinksTestVariants$inboundSchema)),
+  ).optional(),
+  testStartedAt: z.nullable(z.string()).optional(),
+  testCompletedAt: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "utm_source": "utmSource",
@@ -358,6 +439,9 @@ export type RequestBody$Outbound = {
   utm_content?: string | null | undefined;
   ref?: string | null | undefined;
   webhookIds?: Array<string> | null | undefined;
+  testVariants?: Array<BulkCreateLinksTestVariants$Outbound> | null | undefined;
+  testStartedAt?: string | null | undefined;
+  testCompletedAt?: string | null | undefined;
 };
 
 /** @internal */
@@ -402,6 +486,11 @@ export const RequestBody$outboundSchema: z.ZodType<
   utmContent: z.nullable(z.string()).optional(),
   ref: z.nullable(z.string()).optional(),
   webhookIds: z.nullable(z.array(z.string())).optional(),
+  testVariants: z.nullable(
+    z.array(z.lazy(() => BulkCreateLinksTestVariants$outboundSchema)),
+  ).optional(),
+  testStartedAt: z.nullable(z.string()).optional(),
+  testCompletedAt: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     utmSource: "utm_source",

@@ -7,7 +7,7 @@ The mode to use for tracking the lead event. `async` will not block the request;
 ```typescript
 import { Mode } from "dub/models/operations";
 
-let value: Mode = "async";
+let value: Mode = "wait";
 ```
 
 ## Values

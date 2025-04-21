@@ -10,7 +10,6 @@ import { EmbedTokens } from "./embedtokens.js";
 import { Events } from "./events.js";
 import { Folders } from "./folders.js";
 import { Links } from "./links.js";
-import { Metatags } from "./metatags.js";
 import { Partners } from "./partners.js";
 import { QRCodes } from "./qrcodes.js";
 import { Tags } from "./tags.js";
@@ -76,10 +75,5 @@ export class Dub extends ClientSDK {
   private _qrCodes?: QRCodes;
   get qrCodes(): QRCodes {
     return (this._qrCodes ??= new QRCodes(this._options));
-  }
-
-  private _metatags?: Metatags;
-  get metatags(): Metatags {
-    return (this._metatags ??= new Metatags(this._options));
   }
 }

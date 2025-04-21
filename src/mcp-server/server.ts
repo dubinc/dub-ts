@@ -11,7 +11,7 @@ import {
   createRegisterResource,
   createRegisterResourceTemplate,
 } from "./resources.js";
-import { MCPScope, mcpScopes } from "./scopes.js";
+import { MCPScope } from "./scopes.js";
 import { createRegisterTool } from "./tools.js";
 import { tool$analyticsRetrieve } from "./tools/analyticsRetrieve.js";
 import { tool$customersCreate } from "./tools/customersCreate.js";
@@ -39,7 +39,6 @@ import { tool$linksList } from "./tools/linksList.js";
 import { tool$linksUpdate } from "./tools/linksUpdate.js";
 import { tool$linksUpdateMany } from "./tools/linksUpdateMany.js";
 import { tool$linksUpsert } from "./tools/linksUpsert.js";
-import { tool$metatagsGet } from "./tools/metatagsGet.js";
 import { tool$partnersAnalytics } from "./tools/partnersAnalytics.js";
 import { tool$partnersCreate } from "./tools/partnersCreate.js";
 import { tool$partnersCreateLink } from "./tools/partnersCreateLink.js";
@@ -66,7 +65,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Dub",
-    version: "0.61.5",
+    version: "0.61.6",
   });
 
   const client = new DubCore({
@@ -75,7 +74,7 @@ export function createMCPServer(deps: {
     serverIdx: deps.serverIdx,
   });
 
-  const scopes = new Set(deps.scopes ?? mcpScopes);
+  const scopes = new Set(deps.scopes);
 
   const allowedTools = deps.allowedTools && new Set(deps.allowedTools);
   const tool = createRegisterTool(
@@ -137,7 +136,6 @@ export function createMCPServer(deps: {
   tool(tool$workspacesUpdate);
   tool(tool$embedTokensReferrals);
   tool(tool$qrCodesGet);
-  tool(tool$metatagsGet);
 
   return server;
 }
