@@ -16,7 +16,7 @@ let value: LinkClickedEventLink = {
   programId: "<id>",
   partnerId: "<id>",
   archived: false,
-  expiresAt: "1766405142433",
+  expiresAt: "1766533937188",
   expiredUrl: "https://electric-membership.org/",
   password: "JYX8h3LhxJavUsF",
   proxy: false,
@@ -55,8 +55,8 @@ let value: LinkClickedEventLink = {
   userId: "<id>",
   workspaceId: "<id>",
   lastClicked: "<value>",
-  createdAt: "1741735756181",
-  updatedAt: "1745178837166",
+  createdAt: "1741864550936",
+  updatedAt: "1745307631921",
   projectId: "<id>",
 };
 ```

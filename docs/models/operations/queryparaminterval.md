@@ -1,6 +1,6 @@
 # QueryParamInterval
 
-The interval to retrieve events for. Takes precedence over start and end. If undefined, defaults to 24h.
+The interval to retrieve analytics for. If undefined, defaults to 24h.
 
 ## Example Usage
 

@@ -11,7 +11,7 @@ let value: SaleCreatedEventData = {
     id: "<id>",
     externalId: "<id>",
     name: "<value>",
-    createdAt: "1725435789635",
+    createdAt: "1725564587033",
   },
   click: {
     id: "<id>",
@@ -40,7 +40,7 @@ let value: SaleCreatedEventData = {
     programId: "<id>",
     partnerId: "<id>",
     archived: false,
-    expiresAt: "1752400785818",
+    expiresAt: "1752529583217",
     expiredUrl: "https://rich-trash.com/",
     password: "TFRZG_gaC6N5rdF",
     proxy: false,
@@ -81,8 +81,8 @@ let value: SaleCreatedEventData = {
     userId: "<id>",
     workspaceId: "<id>",
     lastClicked: "<value>",
-    createdAt: "1720974488911",
-    updatedAt: "1745146302534",
+    createdAt: "1721103286309",
+    updatedAt: "1745275099933",
     projectId: "<id>",
   },
   sale: {
