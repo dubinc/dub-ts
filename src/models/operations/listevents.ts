@@ -24,7 +24,7 @@ export const QueryParamEvent = {
 export type QueryParamEvent = ClosedEnum<typeof QueryParamEvent>;
 
 /**
- * The interval to retrieve events for. Takes precedence over start and end. If undefined, defaults to 24h.
+ * The interval to retrieve analytics for. If undefined, defaults to 24h.
  */
 export const QueryParamInterval = {
   TwentyFourh: "24h",
@@ -38,7 +38,7 @@ export const QueryParamInterval = {
   All: "all",
 } as const;
 /**
- * The interval to retrieve events for. Takes precedence over start and end. If undefined, defaults to 24h.
+ * The interval to retrieve analytics for. If undefined, defaults to 24h.
  */
 export type QueryParamInterval = ClosedEnum<typeof QueryParamInterval>;
 
@@ -136,15 +136,15 @@ export type ListEventsRequest = {
    */
   customerId?: string | undefined;
   /**
-   * The interval to retrieve events for. Takes precedence over start and end. If undefined, defaults to 24h.
+   * The interval to retrieve analytics for. If undefined, defaults to 24h.
    */
   interval?: QueryParamInterval | undefined;
   /**
-   * The start date and time when to retrieve analytics from. Takes precedence over `interval`.
+   * The start date and time when to retrieve analytics from. If set, takes precedence over `interval`.
    */
   start?: string | undefined;
   /**
-   * The end date and time when to retrieve analytics from. If not provided, defaults to the current date. Takes precedence over `interval`.
+   * The end date and time when to retrieve analytics from. If not provided, defaults to the current date. If set along with `start`, takes precedence over `interval`.
    */
   end?: string | undefined;
   /**
@@ -447,7 +447,7 @@ export const ListEventsRequest$inboundSchema: z.ZodType<
   programId: z.string().optional(),
   partnerId: z.string().optional(),
   customerId: z.string().optional(),
-  interval: QueryParamInterval$inboundSchema.default("24h"),
+  interval: QueryParamInterval$inboundSchema.optional(),
   start: z.string().optional(),
   end: z.string().optional(),
   timezone: z.string().default("UTC"),
@@ -498,7 +498,7 @@ export type ListEventsRequest$Outbound = {
   programId?: string | undefined;
   partnerId?: string | undefined;
   customerId?: string | undefined;
-  interval: string;
+  interval?: string | undefined;
   start?: string | undefined;
   end?: string | undefined;
   timezone: string;
@@ -545,7 +545,7 @@ export const ListEventsRequest$outboundSchema: z.ZodType<
   programId: z.string().optional(),
   partnerId: z.string().optional(),
   customerId: z.string().optional(),
-  interval: QueryParamInterval$outboundSchema.default("24h"),
+  interval: QueryParamInterval$outboundSchema.optional(),
   start: z.string().optional(),
   end: z.string().optional(),
   timezone: z.string().default("UTC"),

@@ -10,7 +10,7 @@ import { PartnerEnrolledEvent } from "dub/models/components";
 let value: PartnerEnrolledEvent = {
   id: "<id>",
   event: "partner.enrolled",
-  createdAt: "1728223927177",
+  createdAt: "1728352720083",
   data: {
     id: "<id>",
     name: "<value>",
@@ -18,7 +18,7 @@ let value: PartnerEnrolledEvent = {
     image: "https://picsum.photos/seed/FPQojeSAjJ/1197/310",
     country: "Tuvalu",
     payoutsEnabledAt: "<value>",
-    createdAt: "1742779209183",
+    createdAt: "1742908002089",
     status: "rejected",
     programId: "<id>",
     tenantId: "<id>",

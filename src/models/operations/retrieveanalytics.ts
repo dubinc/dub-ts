@@ -136,11 +136,11 @@ export type RetrieveAnalyticsRequest = {
    */
   interval?: Interval | undefined;
   /**
-   * The start date and time when to retrieve analytics from. Takes precedence over `interval`.
+   * The start date and time when to retrieve analytics from. If set, takes precedence over `interval`.
    */
   start?: string | undefined;
   /**
-   * The end date and time when to retrieve analytics from. If not provided, defaults to the current date. Takes precedence over `interval`.
+   * The end date and time when to retrieve analytics from. If not provided, defaults to the current date. If set along with `start`, takes precedence over `interval`.
    */
   end?: string | undefined;
   /**
