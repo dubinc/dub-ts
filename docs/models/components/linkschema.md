@@ -14,7 +14,7 @@ let value: LinkSchema = {
   tenantId: "<id>",
   programId: "<id>",
   partnerId: "<id>",
-  expiresAt: "1771844460256",
+  expiresAt: "1772397225303",
   expiredUrl: "https://livid-midwife.name/",
   password: "Y3PMx2MIB7eQGpA",
   title: "<value>",
@@ -48,8 +48,8 @@ let value: LinkSchema = {
   userId: "<id>",
   workspaceId: "<id>",
   lastClicked: "<value>",
-  createdAt: "1727215879369",
-  updatedAt: "1745261686916",
+  createdAt: "1727768644418",
+  updatedAt: "1745814451964",
   projectId: "<id>",
 };
 ```

@@ -11,7 +11,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type UpdateWorkspaceRequestBody = {
   name?: string | undefined;
   slug?: string | undefined;
-  logo?: string | undefined;
+  logo?: string | null | undefined;
   conversionEnabled?: boolean | undefined;
   allowedHostnames?: Array<string> | undefined;
 };
@@ -32,7 +32,7 @@ export const UpdateWorkspaceRequestBody$inboundSchema: z.ZodType<
 > = z.object({
   name: z.string().optional(),
   slug: z.string().optional(),
-  logo: z.string().optional(),
+  logo: z.nullable(z.string()).optional(),
   conversionEnabled: z.boolean().optional(),
   allowedHostnames: z.array(z.string()).optional(),
 });
@@ -41,7 +41,7 @@ export const UpdateWorkspaceRequestBody$inboundSchema: z.ZodType<
 export type UpdateWorkspaceRequestBody$Outbound = {
   name?: string | undefined;
   slug?: string | undefined;
-  logo?: string | undefined;
+  logo?: string | null | undefined;
   conversionEnabled?: boolean | undefined;
   allowedHostnames?: Array<string> | undefined;
 };
@@ -54,7 +54,7 @@ export const UpdateWorkspaceRequestBody$outboundSchema: z.ZodType<
 > = z.object({
   name: z.string().optional(),
   slug: z.string().optional(),
-  logo: z.string().optional(),
+  logo: z.nullable(z.string()).optional(),
   conversionEnabled: z.boolean().optional(),
   allowedHostnames: z.array(z.string()).optional(),
 });
