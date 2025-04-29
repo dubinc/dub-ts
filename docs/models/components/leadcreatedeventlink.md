@@ -16,7 +16,7 @@ let value: LeadCreatedEventLink = {
   programId: "<id>",
   partnerId: "<id>",
   archived: false,
-  expiresAt: "1750986368468",
+  expiresAt: "1751539129777",
   expiredUrl: "https://funny-chops.org",
   password: "SBZQsQz5hk89Xw9",
   proxy: false,
@@ -57,8 +57,8 @@ let value: LeadCreatedEventLink = {
   userId: "<id>",
   workspaceId: "<id>",
   lastClicked: "<value>",
-  createdAt: "1719512694226",
-  updatedAt: "1745310306819",
+  createdAt: "1720065455562",
+  updatedAt: "1745863068155",
   projectId: "<id>",
 };
 ```

@@ -109,6 +109,9 @@ async function $do(
     "email": payload?.email,
     "externalId": payload?.externalId,
     "includeExpandedFields": payload?.includeExpandedFields,
+    "page": payload?.page,
+    "pageSize": payload?.pageSize,
+    "search": payload?.search,
   });
 
   const headers = new Headers(compactMap({

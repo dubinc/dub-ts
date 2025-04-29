@@ -10,17 +10,29 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetCustomersRequest = {
   /**
-   * A case-sensitive filter on the list based on the customer's `email` field. The value must be a string.
+   * A case-sensitive filter on the list based on the customer's `email` field. The value must be a string. Takes precedence over `externalId`.
    */
   email?: string | undefined;
   /**
-   * A case-sensitive filter on the list based on the customer's `externalId` field. The value must be a string.
+   * A case-sensitive filter on the list based on the customer's `externalId` field. The value must be a string. Takes precedence over `search`.
    */
   externalId?: string | undefined;
+  /**
+   * A search query to filter customers by email, externalId, or name. If `email` or `externalId` is provided, this will be ignored.
+   */
+  search?: string | undefined;
   /**
    * Whether to include expanded fields on the customer (`link`, `partner`, `discount`).
    */
   includeExpandedFields?: boolean | undefined;
+  /**
+   * The page number for pagination.
+   */
+  page?: number | undefined;
+  /**
+   * The number of items per page.
+   */
+  pageSize?: number | undefined;
 };
 
 export type GetCustomersLink = {
@@ -113,14 +125,20 @@ export const GetCustomersRequest$inboundSchema: z.ZodType<
 > = z.object({
   email: z.string().optional(),
   externalId: z.string().optional(),
+  search: z.string().optional(),
   includeExpandedFields: z.boolean().optional(),
+  page: z.number().default(1),
+  pageSize: z.number().default(100),
 });
 
 /** @internal */
 export type GetCustomersRequest$Outbound = {
   email?: string | undefined;
   externalId?: string | undefined;
+  search?: string | undefined;
   includeExpandedFields?: boolean | undefined;
+  page: number;
+  pageSize: number;
 };
 
 /** @internal */
@@ -131,7 +149,10 @@ export const GetCustomersRequest$outboundSchema: z.ZodType<
 > = z.object({
   email: z.string().optional(),
   externalId: z.string().optional(),
+  search: z.string().optional(),
   includeExpandedFields: z.boolean().optional(),
+  page: z.number().default(1),
+  pageSize: z.number().default(100),
 });
 
 /**
