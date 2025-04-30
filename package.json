@@ -1,6 +1,6 @@
 {
   "name": "dub",
-  "version": "0.61.9",
+  "version": "0.61.10",
   "author": "Dub",
   "type": "module",
   "bin": {

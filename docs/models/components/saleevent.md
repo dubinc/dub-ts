@@ -21,7 +21,7 @@ let value: SaleEvent = {
     programId: "<id>",
     partnerId: "<id>",
     archived: false,
-    expiresAt: "1755477036611",
+    expiresAt: "1755563442606",
     expiredUrl: "https://everlasting-kit.info/",
     password: "Bz5zyB93_ogUDEs",
     proxy: false,
@@ -62,8 +62,8 @@ let value: SaleEvent = {
     userId: "<id>",
     workspaceId: "<id>",
     lastClicked: "<value>",
-    createdAt: "1736996322871",
-    updatedAt: "1745807852261",
+    createdAt: "1737082728907",
+    updatedAt: "1745894258298",
     projectId: "<id>",
   },
   click: {
@@ -86,7 +86,7 @@ let value: SaleEvent = {
     id: "<id>",
     externalId: "<id>",
     name: "<value>",
-    createdAt: "1730055936038",
+    createdAt: "1730142342081",
   },
   sale: {
     amount: 519436,
