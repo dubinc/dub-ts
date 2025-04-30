@@ -14,7 +14,7 @@ let value: CreatePartnerResponseBody = {
   image: "https://picsum.photos/seed/dMa8Wlupt4/2565/2570",
   country: "Cote d'Ivoire",
   payoutsEnabledAt: "<value>",
-  createdAt: "1717142658866",
+  createdAt: "1717229064720",
   status: "invited",
   programId: "<id>",
   tenantId: "<id>",

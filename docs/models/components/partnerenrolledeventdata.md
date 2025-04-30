@@ -12,7 +12,7 @@ let value: PartnerEnrolledEventData = {
   image: "https://loremflickr.com/2147/1657?lock=6571640826873655",
   country: "Slovenia",
   payoutsEnabledAt: "<value>",
-  createdAt: "1720882408284",
+  createdAt: "1720968811410",
   status: "invited",
   programId: "<id>",
   tenantId: "<id>",

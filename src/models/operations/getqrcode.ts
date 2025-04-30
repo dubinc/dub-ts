@@ -28,7 +28,7 @@ export type GetQRCodeRequest = {
    */
   url: string;
   /**
-   * The logo to include in the QR code. Can only be used with a paid plan on Dub.co.
+   * The logo to include in the QR code. Can only be used with a paid plan on Dub.
    */
   logo?: string | undefined;
   /**
@@ -48,7 +48,7 @@ export type GetQRCodeRequest = {
    */
   bgColor?: string | undefined;
   /**
-   * Whether to hide the logo in the QR code. Can only be used with a paid plan on Dub.co.
+   * Whether to hide the logo in the QR code. Can only be used with a paid plan on Dub.
    */
   hideLogo?: boolean | undefined;
   /**
