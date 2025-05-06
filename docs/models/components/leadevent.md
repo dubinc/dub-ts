@@ -10,7 +10,6 @@ let value: LeadEvent = {
   timestamp: "<value>",
   eventId: "<id>",
   eventName: "<value>",
-  metadata: "<value>",
   click: {
     id: "<id>",
     timestamp: "<value>",
@@ -38,7 +37,7 @@ let value: LeadEvent = {
     programId: "<id>",
     partnerId: "<id>",
     archived: false,
-    expiresAt: "1757437699734",
+    expiresAt: "1757956105971",
     expiredUrl: "https://same-fledgling.net",
     password: "uxed7Y4vq0I_5hn",
     proxy: false,
@@ -78,15 +77,15 @@ let value: LeadEvent = {
     userId: "<id>",
     workspaceId: "<id>",
     lastClicked: "<value>",
-    createdAt: "1741216271742",
-    updatedAt: "1745937977791",
+    createdAt: "1741734677987",
+    updatedAt: "1746456384036",
     projectId: "<id>",
   },
   customer: {
     id: "<id>",
     externalId: "<id>",
     name: "<value>",
-    createdAt: "1738371079916",
+    createdAt: "1738889486161",
   },
   clickId: "<id>",
   linkId: "<id>",
@@ -112,7 +111,6 @@ let value: LeadEvent = {
 | `timestamp`                                                                                                                                                         | *string*                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                  | N/A                                                                                                                                                                 |
 | `eventId`                                                                                                                                                           | *string*                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                  | N/A                                                                                                                                                                 |
 | `eventName`                                                                                                                                                         | *string*                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                  | N/A                                                                                                                                                                 |
-| `metadata`                                                                                                                                                          | *string*                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                  | N/A                                                                                                                                                                 |
 | `click`                                                                                                                                                             | [components.LeadEventClick](../../models/components/leadeventclick.md)                                                                                              | :heavy_check_mark:                                                                                                                                                  | N/A                                                                                                                                                                 |
 | `link`                                                                                                                                                              | [components.LeadEventLink](../../models/components/leadeventlink.md)                                                                                                | :heavy_check_mark:                                                                                                                                                  | N/A                                                                                                                                                                 |
 | `customer`                                                                                                                                                          | [components.Customer](../../models/components/customer.md)                                                                                                          | :heavy_check_mark:                                                                                                                                                  | N/A                                                                                                                                                                 |

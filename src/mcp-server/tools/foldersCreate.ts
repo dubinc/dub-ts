@@ -12,9 +12,9 @@ const args = {
 
 export const tool$foldersCreate: ToolDefinition<typeof args> = {
   name: "folders-create",
-  description: `Create a new folder
+  description: `Create a folder
 
-Create a new folder for the authenticated workspace.`,
+Create a folder for the authenticated workspace.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await foldersCreate(

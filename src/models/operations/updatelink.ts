@@ -117,9 +117,6 @@ export type UpdateLinkRequestBody = {
    * The custom link preview description (og:description). Will be used for Custom Social Media Cards if `proxy` is true. Learn more: https://d.to/og
    */
   description?: string | null | undefined;
-  /**
-   * The custom link preview image (og:image). Will be used for Custom Social Media Cards if `proxy` is true. Learn more: https://d.to/og
-   */
   image?: string | null | undefined;
   /**
    * The custom link preview video (og:video). Will be used for Custom Social Media Cards if `proxy` is true. Learn more: https://d.to/og

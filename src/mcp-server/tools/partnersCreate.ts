@@ -12,9 +12,9 @@ const args = {
 
 export const tool$partnersCreate: ToolDefinition<typeof args> = {
   name: "partners-create",
-  description: `Create a new partner
+  description: `Create a partner
 
-Create a new partner for a program. If partner exists, automatically enrolls them.`,
+Create a partner for a program. If partner exists, automatically enrolls them.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await partnersCreate(

@@ -5,14 +5,14 @@
 
 ### Available Operations
 
-* [create](#create) - Create a new tag
+* [create](#create) - Create a tag
 * [list](#list) - Retrieve a list of tags
 * [update](#update) - Update a tag
 * [delete](#delete) - Delete a tag
 
 ## create
 
-Create a new tag for the authenticated workspace.
+Create a tag for the authenticated workspace.
 
 ### Example Usage
 

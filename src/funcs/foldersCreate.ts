@@ -26,10 +26,10 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Create a new folder
+ * Create a folder
  *
  * @remarks
- * Create a new folder for the authenticated workspace.
+ * Create a folder for the authenticated workspace.
  */
 export function foldersCreate(
   client: DubCore,

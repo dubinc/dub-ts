@@ -13,10 +13,10 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class Folders extends ClientSDK {
   /**
-   * Create a new folder
+   * Create a folder
    *
    * @remarks
-   * Create a new folder for the authenticated workspace.
+   * Create a folder for the authenticated workspace.
    */
   async create(
     request?: operations.CreateFolderRequestBody | undefined,

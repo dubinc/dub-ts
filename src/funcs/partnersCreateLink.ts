@@ -29,7 +29,7 @@ import { Result } from "../types/fp.js";
  * Create a link for a partner
  *
  * @remarks
- * Create a new link for a partner that is enrolled in your program.
+ * Create a link for a partner that is enrolled in your program.
  */
 export function partnersCreateLink(
   client: DubCore,

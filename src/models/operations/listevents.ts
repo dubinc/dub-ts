@@ -251,13 +251,10 @@ export type ListEventsRequest = {
   order?: Order | undefined;
 };
 
-/**
- * A list of events
- */
 export type ListEventsResponseBody =
-  | Array<components.ClickEvent>
-  | Array<components.LeadEvent>
-  | Array<components.SaleEvent>;
+  | (components.ClickEvent & { event: "click" })
+  | (components.LeadEvent & { event: "lead" })
+  | (components.SaleEvent & { event: "sale" });
 
 /** @internal */
 export const QueryParamEvent$inboundSchema: z.ZodNativeEnum<
@@ -622,16 +619,28 @@ export const ListEventsResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.array(components.ClickEvent$inboundSchema),
-  z.array(components.LeadEvent$inboundSchema),
-  z.array(components.SaleEvent$inboundSchema),
+  components.ClickEvent$inboundSchema.and(
+    z.object({ event: z.literal("click") }).transform((v) => ({
+      event: v.event,
+    })),
+  ),
+  components.LeadEvent$inboundSchema.and(
+    z.object({ event: z.literal("lead") }).transform((v) => ({
+      event: v.event,
+    })),
+  ),
+  components.SaleEvent$inboundSchema.and(
+    z.object({ event: z.literal("sale") }).transform((v) => ({
+      event: v.event,
+    })),
+  ),
 ]);
 
 /** @internal */
 export type ListEventsResponseBody$Outbound =
-  | Array<components.ClickEvent$Outbound>
-  | Array<components.LeadEvent$Outbound>
-  | Array<components.SaleEvent$Outbound>;
+  | (components.ClickEvent$Outbound & { event: "click" })
+  | (components.LeadEvent$Outbound & { event: "lead" })
+  | (components.SaleEvent$Outbound & { event: "sale" });
 
 /** @internal */
 export const ListEventsResponseBody$outboundSchema: z.ZodType<
@@ -639,9 +648,21 @@ export const ListEventsResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ListEventsResponseBody
 > = z.union([
-  z.array(components.ClickEvent$outboundSchema),
-  z.array(components.LeadEvent$outboundSchema),
-  z.array(components.SaleEvent$outboundSchema),
+  components.ClickEvent$outboundSchema.and(
+    z.object({ event: z.literal("click") }).transform((v) => ({
+      event: v.event,
+    })),
+  ),
+  components.LeadEvent$outboundSchema.and(
+    z.object({ event: z.literal("lead") }).transform((v) => ({
+      event: v.event,
+    })),
+  ),
+  components.SaleEvent$outboundSchema.and(
+    z.object({ event: z.literal("sale") }).transform((v) => ({
+      event: v.event,
+    })),
+  ),
 ]);
 
 /**

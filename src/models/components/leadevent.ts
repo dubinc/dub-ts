@@ -492,7 +492,6 @@ export type LeadEvent = {
   timestamp: string;
   eventId: string;
   eventName: string;
-  metadata: string;
   click: LeadEventClick;
   link: LeadEventLink;
   customer: Customer;
@@ -2338,7 +2337,6 @@ export const LeadEvent$inboundSchema: z.ZodType<
   timestamp: z.string(),
   eventId: z.string(),
   eventName: z.string(),
-  metadata: z.string(),
   click: z.lazy(() => LeadEventClick$inboundSchema),
   link: z.lazy(() => LeadEventLink$inboundSchema),
   customer: z.lazy(() => Customer$inboundSchema),
@@ -2368,7 +2366,6 @@ export type LeadEvent$Outbound = {
   timestamp: string;
   eventId: string;
   eventName: string;
-  metadata: string;
   click: LeadEventClick$Outbound;
   link: LeadEventLink$Outbound;
   customer: Customer$Outbound;
@@ -2397,7 +2394,6 @@ export const LeadEvent$outboundSchema: z.ZodType<
   timestamp: z.string(),
   eventId: z.string(),
   eventName: z.string(),
-  metadata: z.string(),
   click: z.lazy(() => LeadEventClick$outboundSchema),
   link: z.lazy(() => LeadEventLink$outboundSchema),
   customer: z.lazy(() => Customer$outboundSchema),

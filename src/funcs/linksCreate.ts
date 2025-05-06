@@ -26,10 +26,10 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Create a new link
+ * Create a link
  *
  * @remarks
- * Create a new link for the authenticated workspace.
+ * Create a link for the authenticated workspace.
  */
 export function linksCreate(
   client: DubCore,

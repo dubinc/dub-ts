@@ -25,10 +25,10 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Create a new referrals embed token
+ * Create a referrals embed token
  *
  * @remarks
- * Create a new referrals embed token for the given partner/tenant.
+ * Create a referrals embed token for the given partner/tenant.
  */
 export function embedTokensReferrals(
   client: DubCore,

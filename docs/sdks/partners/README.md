@@ -5,7 +5,7 @@
 
 ### Available Operations
 
-* [create](#create) - Create a new partner
+* [create](#create) - Create a partner
 * [createLink](#createlink) - Create a link for a partner
 * [retrieveLinks](#retrievelinks) - Retrieve a partner's links.
 * [upsertLink](#upsertlink) - Upsert a link for a partner
@@ -14,7 +14,7 @@
 
 ## create
 
-Create a new partner for a program. If partner exists, automatically enrolls them.
+Create a partner for a program. If partner exists, automatically enrolls them.
 
 ### Example Usage
 
@@ -95,7 +95,7 @@ run();
 
 ## createLink
 
-Create a new link for a partner that is enrolled in your program.
+Create a link for a partner that is enrolled in your program.
 
 ### Example Usage
 

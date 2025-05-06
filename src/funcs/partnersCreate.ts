@@ -25,10 +25,10 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Create a new partner
+ * Create a partner
  *
  * @remarks
- * Create a new partner for a program. If partner exists, automatically enrolls them.
+ * Create a partner for a program. If partner exists, automatically enrolls them.
  */
 export function partnersCreate(
   client: DubCore,

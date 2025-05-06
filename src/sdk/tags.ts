@@ -13,10 +13,10 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class Tags extends ClientSDK {
   /**
-   * Create a new tag
+   * Create a tag
    *
    * @remarks
-   * Create a new tag for the authenticated workspace.
+   * Create a tag for the authenticated workspace.
    */
   async create(
     request?: operations.CreateTagRequestBody | undefined,

@@ -229,7 +229,7 @@ run();
 
 ### [embedTokens](docs/sdks/embedtokens/README.md)
 
-* [referrals](docs/sdks/embedtokens/README.md#referrals) - Create a new referrals embed token
+* [referrals](docs/sdks/embedtokens/README.md#referrals) - Create a referrals embed token
 
 ### [events](docs/sdks/events/README.md)
 
@@ -237,14 +237,14 @@ run();
 
 ### [folders](docs/sdks/folders/README.md)
 
-* [create](docs/sdks/folders/README.md#create) - Create a new folder
+* [create](docs/sdks/folders/README.md#create) - Create a folder
 * [list](docs/sdks/folders/README.md#list) - Retrieve a list of folders
 * [update](docs/sdks/folders/README.md#update) - Update a folder
 * [delete](docs/sdks/folders/README.md#delete) - Delete a folder
 
 ### [links](docs/sdks/links/README.md)
 
-* [create](docs/sdks/links/README.md#create) - Create a new link
+* [create](docs/sdks/links/README.md#create) - Create a link
 * [list](docs/sdks/links/README.md#list) - Retrieve a list of links
 * [count](docs/sdks/links/README.md#count) - Retrieve links count
 * [get](docs/sdks/links/README.md#get) - Retrieve a link
@@ -257,7 +257,7 @@ run();
 
 ### [partners](docs/sdks/partners/README.md)
 
-* [create](docs/sdks/partners/README.md#create) - Create a new partner
+* [create](docs/sdks/partners/README.md#create) - Create a partner
 * [createLink](docs/sdks/partners/README.md#createlink) - Create a link for a partner
 * [retrieveLinks](docs/sdks/partners/README.md#retrievelinks) - Retrieve a partner's links.
 * [upsertLink](docs/sdks/partners/README.md#upsertlink) - Upsert a link for a partner
@@ -270,7 +270,7 @@ run();
 
 ### [tags](docs/sdks/tags/README.md)
 
-* [create](docs/sdks/tags/README.md#create) - Create a new tag
+* [create](docs/sdks/tags/README.md#create) - Create a tag
 * [list](docs/sdks/tags/README.md#list) - Retrieve a list of tags
 * [update](docs/sdks/tags/README.md#update) - Update a tag
 * [delete](docs/sdks/tags/README.md#delete) - Delete a tag
@@ -642,14 +642,14 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`domainsDelete`](docs/sdks/domains/README.md#delete) - Delete a domain
 - [`domainsList`](docs/sdks/domains/README.md#list) - Retrieve a list of domains
 - [`domainsUpdate`](docs/sdks/domains/README.md#update) - Update a domain
-- [`embedTokensReferrals`](docs/sdks/embedtokens/README.md#referrals) - Create a new referrals embed token
+- [`embedTokensReferrals`](docs/sdks/embedtokens/README.md#referrals) - Create a referrals embed token
 - [`eventsList`](docs/sdks/events/README.md#list) - Retrieve a list of events
-- [`foldersCreate`](docs/sdks/folders/README.md#create) - Create a new folder
+- [`foldersCreate`](docs/sdks/folders/README.md#create) - Create a folder
 - [`foldersDelete`](docs/sdks/folders/README.md#delete) - Delete a folder
 - [`foldersList`](docs/sdks/folders/README.md#list) - Retrieve a list of folders
 - [`foldersUpdate`](docs/sdks/folders/README.md#update) - Update a folder
 - [`linksCount`](docs/sdks/links/README.md#count) - Retrieve links count
-- [`linksCreate`](docs/sdks/links/README.md#create) - Create a new link
+- [`linksCreate`](docs/sdks/links/README.md#create) - Create a link
 - [`linksCreateMany`](docs/sdks/links/README.md#createmany) - Bulk create links
 - [`linksDelete`](docs/sdks/links/README.md#delete) - Delete a link
 - [`linksDeleteMany`](docs/sdks/links/README.md#deletemany) - Bulk delete links
@@ -659,13 +659,13 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`linksUpdateMany`](docs/sdks/links/README.md#updatemany) - Bulk update links
 - [`linksUpsert`](docs/sdks/links/README.md#upsert) - Upsert a link
 - [`partnersAnalytics`](docs/sdks/partners/README.md#analytics) - Retrieve analytics for a partner
-- [`partnersCreate`](docs/sdks/partners/README.md#create) - Create a new partner
+- [`partnersCreate`](docs/sdks/partners/README.md#create) - Create a partner
 - [`partnersCreateLink`](docs/sdks/partners/README.md#createlink) - Create a link for a partner
 - [`partnersRetrieveLinks`](docs/sdks/partners/README.md#retrievelinks) - Retrieve a partner's links.
 - [`partnersUpdateSale`](docs/sdks/partners/README.md#updatesale) - Update a sale for a partner.
 - [`partnersUpsertLink`](docs/sdks/partners/README.md#upsertlink) - Upsert a link for a partner
 - [`qrCodesGet`](docs/sdks/qrcodes/README.md#get) - Retrieve a QR code
-- [`tagsCreate`](docs/sdks/tags/README.md#create) - Create a new tag
+- [`tagsCreate`](docs/sdks/tags/README.md#create) - Create a tag
 - [`tagsDelete`](docs/sdks/tags/README.md#delete) - Delete a tag
 - [`tagsList`](docs/sdks/tags/README.md#list) - Retrieve a list of tags
 - [`tagsUpdate`](docs/sdks/tags/README.md#update) - Update a tag

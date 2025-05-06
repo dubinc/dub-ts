@@ -12,9 +12,9 @@ const args = {
 
 export const tool$linksCreate: ToolDefinition<typeof args> = {
   name: "links-create",
-  description: `Create a new link
+  description: `Create a link
 
-Create a new link for the authenticated workspace.`,
+Create a link for the authenticated workspace.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await linksCreate(

@@ -13,8 +13,10 @@ let value: CreatePartnerResponseBody = {
   email: "Ellie59@hotmail.com",
   image: "https://picsum.photos/seed/dMa8Wlupt4/2565/2570",
   country: "Cote d'Ivoire",
+  paypalEmail: "<value>",
+  stripeConnectId: "<id>",
   payoutsEnabledAt: "<value>",
-  createdAt: "1717229064720",
+  createdAt: "1717747472074",
   status: "invited",
   programId: "<id>",
   tenantId: "<id>",
@@ -40,6 +42,8 @@ let value: CreatePartnerResponseBody = {
 | `image`                                                                        | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
 | `description`                                                                  | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
 | `country`                                                                      | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `paypalEmail`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `stripeConnectId`                                                              | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
 | `payoutsEnabledAt`                                                             | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
 | `createdAt`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
 | `status`                                                                       | [operations.Status](../../models/operations/status.md)                         | :heavy_check_mark:                                                             | N/A                                                                            |

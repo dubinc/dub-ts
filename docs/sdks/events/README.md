@@ -71,7 +71,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListEventsResponseBody](../../models/operations/listeventsresponsebody.md)\>**
+**Promise\<[operations.ListEventsResponseBody[]](../../models/.md)\>**
 
 ### Errors
 
