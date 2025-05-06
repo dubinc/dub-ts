@@ -20,10 +20,10 @@ import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Links extends ClientSDK {
   /**
-   * Create a new link
+   * Create a link
    *
    * @remarks
-   * Create a new link for the authenticated workspace.
+   * Create a link for the authenticated workspace.
    */
   async create(
     request?: operations.CreateLinkRequestBody | undefined,

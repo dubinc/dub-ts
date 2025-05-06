@@ -5,14 +5,14 @@
 
 ### Available Operations
 
-* [create](#create) - Create a new folder
+* [create](#create) - Create a folder
 * [list](#list) - Retrieve a list of folders
 * [update](#update) - Update a folder
 * [delete](#delete) - Delete a folder
 
 ## create
 
-Create a new folder for the authenticated workspace.
+Create a folder for the authenticated workspace.
 
 ### Example Usage
 

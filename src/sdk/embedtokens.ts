@@ -9,10 +9,10 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class EmbedTokens extends ClientSDK {
   /**
-   * Create a new referrals embed token
+   * Create a referrals embed token
    *
    * @remarks
-   * Create a new referrals embed token for the given partner/tenant.
+   * Create a referrals embed token for the given partner/tenant.
    */
   async referrals(
     request?: operations.CreateReferralsEmbedTokenRequestBody | undefined,

@@ -13,9 +13,9 @@ const args = {
 
 export const tool$embedTokensReferrals: ToolDefinition<typeof args> = {
   name: "embed-tokens-referrals",
-  description: `Create a new referrals embed token
+  description: `Create a referrals embed token
 
-Create a new referrals embed token for the given partner/tenant.`,
+Create a referrals embed token for the given partner/tenant.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await embedTokensReferrals(

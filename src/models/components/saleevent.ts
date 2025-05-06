@@ -542,7 +542,6 @@ export type SaleEvent = {
    * Deprecated. Use `sale.paymentProcessor` instead.
    */
   paymentProcessor: string;
-  metadata: string;
   /**
    * Deprecated. Use `click.id` instead.
    *
@@ -2467,7 +2466,6 @@ export const SaleEvent$inboundSchema: z.ZodType<
   saleAmount: z.number(),
   invoice_id: z.string(),
   payment_processor: z.string(),
-  metadata: z.string(),
   click_id: z.string(),
   link_id: z.string(),
   domain: z.string(),
@@ -2503,7 +2501,6 @@ export type SaleEvent$Outbound = {
   saleAmount: number;
   invoice_id: string;
   payment_processor: string;
-  metadata: string;
   click_id: string;
   link_id: string;
   domain: string;
@@ -2536,7 +2533,6 @@ export const SaleEvent$outboundSchema: z.ZodType<
   saleAmount: z.number(),
   invoiceId: z.string(),
   paymentProcessor: z.string(),
-  metadata: z.string(),
   clickId: z.string(),
   linkId: z.string(),
   domain: z.string(),

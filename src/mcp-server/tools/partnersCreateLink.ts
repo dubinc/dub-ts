@@ -14,7 +14,7 @@ export const tool$partnersCreateLink: ToolDefinition<typeof args> = {
   name: "partners-create-link",
   description: `Create a link for a partner
 
-Create a new link for a partner that is enrolled in your program.`,
+Create a link for a partner that is enrolled in your program.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await partnersCreateLink(

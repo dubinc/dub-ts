@@ -5,7 +5,7 @@
 
 ### Available Operations
 
-* [create](#create) - Create a new link
+* [create](#create) - Create a link
 * [list](#list) - Retrieve a list of links
 * [count](#count) - Retrieve links count
 * [get](#get) - Retrieve a link
@@ -18,7 +18,7 @@
 
 ## create
 
-Create a new link for the authenticated workspace.
+Create a link for the authenticated workspace.
 
 ### Example Usage
 

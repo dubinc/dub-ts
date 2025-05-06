@@ -15,7 +15,7 @@ const value: components.LinkSchema = {
   tenantId: "<id>",
   programId: "<id>",
   partnerId: "<id>",
-  expiresAt: "1765179194055",
+  expiresAt: "1765697595872",
   expiredUrl: "https://hairy-printer.org/",
   password: "atR49jLBfFjqWxm",
   title: "<value>",
@@ -49,8 +49,8 @@ const value: components.LinkSchema = {
   userId: "<id>",
   workspaceId: "<id>",
   lastClicked: "<value>",
-  createdAt: "1729089575638",
-  updatedAt: "1745966407804",
+  createdAt: "1729607977483",
+  updatedAt: "1746484809650",
   projectId: "<id>",
 };
 ```

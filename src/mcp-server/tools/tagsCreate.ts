@@ -12,9 +12,9 @@ const args = {
 
 export const tool$tagsCreate: ToolDefinition<typeof args> = {
   name: "tags-create",
-  description: `Create a new tag
+  description: `Create a tag
 
-Create a new tag for the authenticated workspace.`,
+Create a tag for the authenticated workspace.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await tagsCreate(

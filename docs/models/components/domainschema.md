@@ -12,12 +12,12 @@ let value: DomainSchema = {
   expiredUrl: "https://acme.com/expired",
   notFoundUrl: "https://acme.com/not-found",
   logo: "<value>",
-  createdAt: "1722612165597",
-  updatedAt: "1745956004144",
+  createdAt: "1723130577854",
+  updatedAt: "1746474416400",
   registeredDomain: {
     id: "<id>",
-    createdAt: "1719661090551",
-    expiresAt: "1757516724640",
+    createdAt: "1720179502808",
+    expiresAt: "1758035136897",
   },
 };
 ```

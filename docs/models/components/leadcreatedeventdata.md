@@ -11,7 +11,7 @@ let value: LeadCreatedEventData = {
     id: "<id>",
     externalId: "<id>",
     name: "<value>",
-    createdAt: "1745583818432",
+    createdAt: "1746102227542",
   },
   click: {
     id: "<id>",
@@ -40,7 +40,7 @@ let value: LeadCreatedEventData = {
     programId: "<id>",
     partnerId: "<id>",
     archived: false,
-    expiresAt: "1750099653570",
+    expiresAt: "1750618062683",
     expiredUrl: "https://shady-lift.name/",
     password: "PHGFNj6Ztrm7Ims",
     proxy: false,
@@ -81,8 +81,8 @@ let value: LeadCreatedEventData = {
     userId: "<id>",
     workspaceId: "<id>",
     lastClicked: "<value>",
-    createdAt: "1731093677737",
-    updatedAt: "1745963354875",
+    createdAt: "1731612086855",
+    updatedAt: "1746481763992",
     projectId: "<id>",
   },
 };

@@ -11,8 +11,10 @@ let value: PartnerEnrolledEventData = {
   email: "Luella_Streich@hotmail.com",
   image: "https://loremflickr.com/2147/1657?lock=6571640826873655",
   country: "Slovenia",
+  paypalEmail: "<value>",
+  stripeConnectId: "<id>",
   payoutsEnabledAt: "<value>",
-  createdAt: "1720968811410",
+  createdAt: "1721487219303",
   status: "invited",
   programId: "<id>",
   tenantId: "<id>",
@@ -38,6 +40,8 @@ let value: PartnerEnrolledEventData = {
 | `image`                                                                                      | *string*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          |
 | `description`                                                                                | *string*                                                                                     | :heavy_minus_sign:                                                                           | N/A                                                                                          |
 | `country`                                                                                    | *string*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          |
+| `paypalEmail`                                                                                | *string*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          |
+| `stripeConnectId`                                                                            | *string*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          |
 | `payoutsEnabledAt`                                                                           | *string*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          |
 | `createdAt`                                                                                  | *string*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          |
 | `status`                                                                                     | [components.Status](../../models/components/status.md)                                       | :heavy_check_mark:                                                                           | N/A                                                                                          |

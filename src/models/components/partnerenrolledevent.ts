@@ -71,6 +71,8 @@ export type PartnerEnrolledEventData = {
   image: string | null;
   description?: string | null | undefined;
   country: string | null;
+  paypalEmail: string | null;
+  stripeConnectId: string | null;
   payoutsEnabledAt: string | null;
   createdAt: string;
   status: Status;
@@ -225,6 +227,8 @@ export const PartnerEnrolledEventData$inboundSchema: z.ZodType<
   image: z.nullable(z.string()),
   description: z.nullable(z.string()).optional(),
   country: z.nullable(z.string()),
+  paypalEmail: z.nullable(z.string()),
+  stripeConnectId: z.nullable(z.string()),
   payoutsEnabledAt: z.nullable(z.string()),
   createdAt: z.string(),
   status: Status$inboundSchema,
@@ -249,6 +253,8 @@ export type PartnerEnrolledEventData$Outbound = {
   image: string | null;
   description?: string | null | undefined;
   country: string | null;
+  paypalEmail: string | null;
+  stripeConnectId: string | null;
   payoutsEnabledAt: string | null;
   createdAt: string;
   status: string;
@@ -275,6 +281,8 @@ export const PartnerEnrolledEventData$outboundSchema: z.ZodType<
   image: z.nullable(z.string()),
   description: z.nullable(z.string()).optional(),
   country: z.nullable(z.string()),
+  paypalEmail: z.nullable(z.string()),
+  stripeConnectId: z.nullable(z.string()),
   payoutsEnabledAt: z.nullable(z.string()),
   createdAt: z.string(),
   status: Status$outboundSchema,

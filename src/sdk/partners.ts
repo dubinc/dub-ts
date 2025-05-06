@@ -15,10 +15,10 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class Partners extends ClientSDK {
   /**
-   * Create a new partner
+   * Create a partner
    *
    * @remarks
-   * Create a new partner for a program. If partner exists, automatically enrolls them.
+   * Create a partner for a program. If partner exists, automatically enrolls them.
    */
   async create(
     request?: operations.CreatePartnerRequestBody | undefined,
@@ -35,7 +35,7 @@ export class Partners extends ClientSDK {
    * Create a link for a partner
    *
    * @remarks
-   * Create a new link for a partner that is enrolled in your program.
+   * Create a link for a partner that is enrolled in your program.
    */
   async createLink(
     request?: operations.CreatePartnerLinkRequestBody | undefined,

@@ -26,10 +26,10 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Create a new tag
+ * Create a tag
  *
  * @remarks
- * Create a new tag for the authenticated workspace.
+ * Create a tag for the authenticated workspace.
  */
 export function tagsCreate(
   client: DubCore,
