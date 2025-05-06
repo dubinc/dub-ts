@@ -7,6 +7,10 @@ sourceDescriptions:
   - name: /Users/kiran/Desktop/dubinc/dub-ts/.speakeasy/temp/reformatted2878442280.json
     url: https://TBD.com
     type: openapi
+x-speakeasy-test-server:
+  baseUrl: "https://api.dub.co"
+x-speakeasy-test-security:
+  apiKey: x-env: TEST_API_KEY #TODO: add this to env variables
 workflows:
   - workflowId: createLink
     steps:
@@ -2174,10 +2178,10 @@ workflows:
             value: L
           - name: fgColor
             in: query
-            value: '#000000'
+            value: "#000000"
           - name: bgColor
             in: query
-            value: '#FFFFFF'
+            value: "#FFFFFF"
           - name: hideLogo
             in: query
             value: "false"

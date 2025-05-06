@@ -18,6 +18,8 @@ generation:
   tests:
     generateNewTests: true
     skipResponseBodyAssertions: false
+  mockServer:
+    disabled: true
 typescript:
   version: 0.61.11
   additionalDependencies:
