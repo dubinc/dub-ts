@@ -6,7 +6,7 @@ management:
   speakeasyVersion: 1.542.3
   generationVersion: 2.597.9
   releaseVersion: 0.61.11
-  configChecksum: d537a98a2f9f56dbaca258c38b054936
+  configChecksum: 2feb50512be5ac18da92c3616c07ee12
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -35,6 +35,7 @@ features:
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.2.0
+    tests: 0.16.1
     unions: 2.85.8
 generatedFiles:
   - .gitattributes
@@ -356,6 +357,21 @@ generatedFiles:
   - eslint.config.mjs
   - jsr.json
   - package.json
+  - src/__tests__/analytics.test.ts
+  - src/__tests__/assertions.ts
+  - src/__tests__/customers.test.ts
+  - src/__tests__/domains.test.ts
+  - src/__tests__/embedtokens.test.ts
+  - src/__tests__/events.test.ts
+  - src/__tests__/files.ts
+  - src/__tests__/folders.test.ts
+  - src/__tests__/links.test.ts
+  - src/__tests__/partners.test.ts
+  - src/__tests__/qrcodes.test.ts
+  - src/__tests__/tags.test.ts
+  - src/__tests__/testclient.ts
+  - src/__tests__/track.test.ts
+  - src/__tests__/workspaces.test.ts
   - src/core.ts
   - src/funcs/analyticsRetrieve.ts
   - src/funcs/customersCreate.ts
@@ -1654,4 +1670,45 @@ examples:
         "500":
           application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
 examplesVersion: 1.0.1
-generatedTests: {}
+generatedTests:
+  createLink: "2025-05-06T19:32:51+05:30"
+  getLinks: "2025-05-06T19:32:51+05:30"
+  getLinksCount: "2025-05-06T19:32:51+05:30"
+  getLinkInfo: "2025-05-06T19:32:51+05:30"
+  updateLink: "2025-05-06T19:32:51+05:30"
+  deleteLink: "2025-05-06T19:32:51+05:30"
+  bulkCreateLinks: "2025-05-06T19:32:51+05:30"
+  bulkUpdateLinks: "2025-05-06T19:32:51+05:30"
+  bulkDeleteLinks: "2025-05-06T19:32:51+05:30"
+  upsertLink: "2025-05-06T19:32:51+05:30"
+  retrieveAnalytics: "2025-05-06T19:32:51+05:30"
+  listEvents: "2025-05-06T19:32:51+05:30"
+  createTag: "2025-05-06T19:32:51+05:30"
+  getTags: "2025-05-06T19:32:51+05:30"
+  updateTag: "2025-05-06T19:32:51+05:30"
+  deleteTag: "2025-05-06T19:32:51+05:30"
+  createFolder: "2025-05-06T19:32:51+05:30"
+  listFolders: "2025-05-06T19:32:51+05:30"
+  updateFolder: "2025-05-06T19:32:51+05:30"
+  deleteFolder: "2025-05-06T19:32:51+05:30"
+  createDomain: "2025-05-06T19:32:51+05:30"
+  listDomains: "2025-05-06T19:32:51+05:30"
+  updateDomain: "2025-05-06T19:32:51+05:30"
+  deleteDomain: "2025-05-06T19:32:51+05:30"
+  trackLead: "2025-05-06T19:32:51+05:30"
+  trackSale: "2025-05-06T19:32:51+05:30"
+  getCustomers: "2025-05-06T19:32:51+05:30"
+  createCustomer: "2025-05-06T19:32:51+05:30"
+  getCustomer: "2025-05-06T19:32:51+05:30"
+  updateCustomer: "2025-05-06T19:32:51+05:30"
+  deleteCustomer: "2025-05-06T19:32:51+05:30"
+  createPartner: "2025-05-06T19:32:51+05:30"
+  createPartnerLink: "2025-05-06T19:32:51+05:30"
+  retrieveLinks: "2025-05-06T19:32:51+05:30"
+  upsertPartnerLink: "2025-05-06T19:32:51+05:30"
+  retrievePartnerAnalytics: "2025-05-06T19:32:51+05:30"
+  updatePartnerSale: "2025-05-06T19:32:51+05:30"
+  getWorkspace: "2025-05-06T19:32:51+05:30"
+  updateWorkspace: "2025-05-06T19:32:51+05:30"
+  createReferralsEmbedToken: "2025-05-06T19:32:51+05:30"
+  getQRCode: "2025-05-06T19:32:51+05:30"

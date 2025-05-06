@@ -27,6 +27,8 @@
     "url": "https://github.com/dubinc/dub-ts.git"
   },
   "scripts": {
+    "test": "vitest run src --reporter=junit --outputFile=.speakeasy/reports/tests.xml --reporter=default",
+    "check": "npm run test && npm run lint",
     "lint": "eslint --cache --max-warnings=0 src",
     "build:mcp": "bun src/mcp-server/build.mts",
     "build": "npm run build:mcp && tshy",

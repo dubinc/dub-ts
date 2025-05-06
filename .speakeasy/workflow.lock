@@ -2,20 +2,19 @@ speakeasyVersion: 1.542.3
 sources:
     my-first-source:
         sourceNamespace: my-first-source
-        sourceRevisionDigest: sha256:a882aac08633830b5efed172d9a18707fab166fe6a690a0bbf061be8ae26835b
+        sourceRevisionDigest: sha256:7080e7979cbdbe6e319cb694428c7d1a8d3d87ac80a202ff5f3cecd38a8f99d3
         sourceBlobDigest: sha256:175bb04362a90b099ecef0183043a35704ed119a2153475ffe059937ea964093
         tags:
             - latest
-            - speakeasy-sdk-regen-1746145779
             - 0.0.1
 targets:
     my-first-target:
         source: my-first-source
         sourceNamespace: my-first-source
-        sourceRevisionDigest: sha256:a882aac08633830b5efed172d9a18707fab166fe6a690a0bbf061be8ae26835b
+        sourceRevisionDigest: sha256:7080e7979cbdbe6e319cb694428c7d1a8d3d87ac80a202ff5f3cecd38a8f99d3
         sourceBlobDigest: sha256:175bb04362a90b099ecef0183043a35704ed119a2153475ffe059937ea964093
         codeSamplesNamespace: code-samples-typescript-my-first-target
-        codeSamplesRevisionDigest: sha256:5be92f2d455f25a0d6176be95326699ec9a74e6b10ac0b502ed1b1f4e28ff9f0
+        codeSamplesRevisionDigest: sha256:dded09bb4a7dcf085c5989467ba4798a3a8f917f9c77b6b11286589ca6bc5fd4
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -36,3 +35,5 @@ workflow:
                 output: codeSamples.yaml
                 registry:
                     location: registry.speakeasyapi.dev/dub/dub/code-samples-typescript-my-first-target
+            testing:
+                enabled: true

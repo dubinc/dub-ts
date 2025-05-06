@@ -17,3 +17,5 @@ targets:
             output: codeSamples.yaml
             registry:
                 location: registry.speakeasyapi.dev/dub/dub/code-samples-typescript-my-first-target
+        testing:
+            enabled: true
