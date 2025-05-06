@@ -6,7 +6,7 @@ management:
   speakeasyVersion: 1.542.3
   generationVersion: 2.597.9
   releaseVersion: 0.61.11
-  configChecksum: d537a98a2f9f56dbaca258c38b054936
+  configChecksum: 5e010c368f8a76bc233e26a245b1eba1
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -29,12 +29,14 @@ features:
     includes: 2.81.1
     mcpServer: 0.9.2
     methodArguments: 0.1.2
+    mockServer: 0.1.0
     nameOverrides: 2.81.2
     nullables: 0.1.1
     pagination: 2.83.0
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.2.0
+    tests: 0.16.1
     unions: 2.85.8
 generatedFiles:
   - .gitattributes
@@ -356,6 +358,191 @@ generatedFiles:
   - eslint.config.mjs
   - jsr.json
   - package.json
+  - src/__tests__/analytics.test.ts
+  - src/__tests__/assertions.ts
+  - src/__tests__/customers.test.ts
+  - src/__tests__/domains.test.ts
+  - src/__tests__/embedtokens.test.ts
+  - src/__tests__/events.test.ts
+  - src/__tests__/files.ts
+  - src/__tests__/folders.test.ts
+  - src/__tests__/links.test.ts
+  - src/__tests__/mockserver/.gitignore
+  - src/__tests__/mockserver/Dockerfile
+  - src/__tests__/mockserver/Makefile
+  - src/__tests__/mockserver/README.md
+  - src/__tests__/mockserver/go.mod
+  - src/__tests__/mockserver/go.sum
+  - src/__tests__/mockserver/internal/handler/assert/contenttype.go
+  - src/__tests__/mockserver/internal/handler/assert/header.go
+  - src/__tests__/mockserver/internal/handler/assert/parameter.go
+  - src/__tests__/mockserver/internal/handler/assert/pointer.go
+  - src/__tests__/mockserver/internal/handler/assert/security.go
+  - src/__tests__/mockserver/internal/handler/doc.go
+  - src/__tests__/mockserver/internal/handler/generated_handler.go
+  - src/__tests__/mockserver/internal/handler/generated_handlers.go
+  - src/__tests__/mockserver/internal/handler/pathdeletecustomersid.go
+  - src/__tests__/mockserver/internal/handler/pathdeletedomainsslug.go
+  - src/__tests__/mockserver/internal/handler/pathdeletefoldersid.go
+  - src/__tests__/mockserver/internal/handler/pathdeletelinksbulk.go
+  - src/__tests__/mockserver/internal/handler/pathdeletelinkslinkid.go
+  - src/__tests__/mockserver/internal/handler/pathdeletetagsid.go
+  - src/__tests__/mockserver/internal/handler/pathgetanalytics.go
+  - src/__tests__/mockserver/internal/handler/pathgetcustomers.go
+  - src/__tests__/mockserver/internal/handler/pathgetcustomersid.go
+  - src/__tests__/mockserver/internal/handler/pathgetdomains.go
+  - src/__tests__/mockserver/internal/handler/pathgetevents.go
+  - src/__tests__/mockserver/internal/handler/pathgetfolders.go
+  - src/__tests__/mockserver/internal/handler/pathgetlinks.go
+  - src/__tests__/mockserver/internal/handler/pathgetlinkscount.go
+  - src/__tests__/mockserver/internal/handler/pathgetlinksinfo.go
+  - src/__tests__/mockserver/internal/handler/pathgetpartnersanalytics.go
+  - src/__tests__/mockserver/internal/handler/pathgetpartnerslinks.go
+  - src/__tests__/mockserver/internal/handler/pathgetqr.go
+  - src/__tests__/mockserver/internal/handler/pathgettags.go
+  - src/__tests__/mockserver/internal/handler/pathgetworkspacesidorslug.go
+  - src/__tests__/mockserver/internal/handler/pathpatchcustomersid.go
+  - src/__tests__/mockserver/internal/handler/pathpatchdomainsslug.go
+  - src/__tests__/mockserver/internal/handler/pathpatchfoldersid.go
+  - src/__tests__/mockserver/internal/handler/pathpatchlinksbulk.go
+  - src/__tests__/mockserver/internal/handler/pathpatchlinkslinkid.go
+  - src/__tests__/mockserver/internal/handler/pathpatchpartnerssales.go
+  - src/__tests__/mockserver/internal/handler/pathpatchtagsid.go
+  - src/__tests__/mockserver/internal/handler/pathpatchworkspacesidorslug.go
+  - src/__tests__/mockserver/internal/handler/pathpostcustomers.go
+  - src/__tests__/mockserver/internal/handler/pathpostdomains.go
+  - src/__tests__/mockserver/internal/handler/pathpostfolders.go
+  - src/__tests__/mockserver/internal/handler/pathpostlinks.go
+  - src/__tests__/mockserver/internal/handler/pathpostlinksbulk.go
+  - src/__tests__/mockserver/internal/handler/pathpostpartners.go
+  - src/__tests__/mockserver/internal/handler/pathpostpartnerslinks.go
+  - src/__tests__/mockserver/internal/handler/pathposttags.go
+  - src/__tests__/mockserver/internal/handler/pathposttokensembedreferrals.go
+  - src/__tests__/mockserver/internal/handler/pathposttracklead.go
+  - src/__tests__/mockserver/internal/handler/pathposttracksale.go
+  - src/__tests__/mockserver/internal/handler/pathputlinksupsert.go
+  - src/__tests__/mockserver/internal/handler/pathputpartnerslinksupsert.go
+  - src/__tests__/mockserver/internal/handler/values/files.go
+  - src/__tests__/mockserver/internal/logging/doc.go
+  - src/__tests__/mockserver/internal/logging/formats.go
+  - src/__tests__/mockserver/internal/logging/http_file.go
+  - src/__tests__/mockserver/internal/logging/http_logger.go
+  - src/__tests__/mockserver/internal/logging/levels.go
+  - src/__tests__/mockserver/internal/logging/logger.go
+  - src/__tests__/mockserver/internal/logging/oas_operation.go
+  - src/__tests__/mockserver/internal/logging/oas_operation_call.go
+  - src/__tests__/mockserver/internal/sdk/models/components/analyticsbrowsers.go
+  - src/__tests__/mockserver/internal/sdk/models/components/analyticscities.go
+  - src/__tests__/mockserver/internal/sdk/models/components/analyticscontinents.go
+  - src/__tests__/mockserver/internal/sdk/models/components/analyticscount.go
+  - src/__tests__/mockserver/internal/sdk/models/components/analyticscountries.go
+  - src/__tests__/mockserver/internal/sdk/models/components/analyticsdevices.go
+  - src/__tests__/mockserver/internal/sdk/models/components/analyticsos.go
+  - src/__tests__/mockserver/internal/sdk/models/components/analyticsreferers.go
+  - src/__tests__/mockserver/internal/sdk/models/components/analyticsrefererurls.go
+  - src/__tests__/mockserver/internal/sdk/models/components/analyticsregions.go
+  - src/__tests__/mockserver/internal/sdk/models/components/analyticstimeseries.go
+  - src/__tests__/mockserver/internal/sdk/models/components/analyticstoplinks.go
+  - src/__tests__/mockserver/internal/sdk/models/components/analyticstopurls.go
+  - src/__tests__/mockserver/internal/sdk/models/components/analyticstriggers.go
+  - src/__tests__/mockserver/internal/sdk/models/components/clickevent.go
+  - src/__tests__/mockserver/internal/sdk/models/components/continentcode.go
+  - src/__tests__/mockserver/internal/sdk/models/components/countrycode.go
+  - src/__tests__/mockserver/internal/sdk/models/components/domainschema.go
+  - src/__tests__/mockserver/internal/sdk/models/components/folderschema.go
+  - src/__tests__/mockserver/internal/sdk/models/components/httpmetadata.go
+  - src/__tests__/mockserver/internal/sdk/models/components/leadcreatedevent.go
+  - src/__tests__/mockserver/internal/sdk/models/components/leadevent.go
+  - src/__tests__/mockserver/internal/sdk/models/components/linkclickedevent.go
+  - src/__tests__/mockserver/internal/sdk/models/components/linkerrorschema.go
+  - src/__tests__/mockserver/internal/sdk/models/components/linkgeotargeting.go
+  - src/__tests__/mockserver/internal/sdk/models/components/linkschema.go
+  - src/__tests__/mockserver/internal/sdk/models/components/linkwebhookevent.go
+  - src/__tests__/mockserver/internal/sdk/models/components/partneranalyticscount.go
+  - src/__tests__/mockserver/internal/sdk/models/components/partneranalyticstimeseries.go
+  - src/__tests__/mockserver/internal/sdk/models/components/partneranalyticstoplinks.go
+  - src/__tests__/mockserver/internal/sdk/models/components/partnerenrolledevent.go
+  - src/__tests__/mockserver/internal/sdk/models/components/salecreatedevent.go
+  - src/__tests__/mockserver/internal/sdk/models/components/saleevent.go
+  - src/__tests__/mockserver/internal/sdk/models/components/security.go
+  - src/__tests__/mockserver/internal/sdk/models/components/tagschema.go
+  - src/__tests__/mockserver/internal/sdk/models/components/webhookevent.go
+  - src/__tests__/mockserver/internal/sdk/models/components/workspaceschema.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/bulkcreatelinks.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/bulkdeletelinks.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/bulkupdatelinks.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/createcustomer.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/createdomain.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/createfolder.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/createlink.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/createpartner.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/createpartnerlink.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/createreferralsembedtoken.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/createtag.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/deletecustomer.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/deletedomain.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/deletefolder.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/deletelink.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/deletetag.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getcustomer.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getcustomers.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getlinkinfo.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getlinks.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getlinkscount.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getqrcode.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/gettags.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getworkspace.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/listdomains.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/listevents.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/listfolders.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/retrieveanalytics.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/retrievelinks.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/retrievepartneranalytics.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/tracklead.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/tracksale.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/updatecustomer.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/updatedomain.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/updatefolder.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/updatelink.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/updatepartnersale.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/updatetag.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/updateworkspace.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/upsertlink.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/upsertpartnerlink.go
+  - src/__tests__/mockserver/internal/sdk/models/sdkerrors/badrequest.go
+  - src/__tests__/mockserver/internal/sdk/models/sdkerrors/conflict.go
+  - src/__tests__/mockserver/internal/sdk/models/sdkerrors/forbidden.go
+  - src/__tests__/mockserver/internal/sdk/models/sdkerrors/internalservererror.go
+  - src/__tests__/mockserver/internal/sdk/models/sdkerrors/inviteexpired.go
+  - src/__tests__/mockserver/internal/sdk/models/sdkerrors/notfound.go
+  - src/__tests__/mockserver/internal/sdk/models/sdkerrors/ratelimitexceeded.go
+  - src/__tests__/mockserver/internal/sdk/models/sdkerrors/unauthorized.go
+  - src/__tests__/mockserver/internal/sdk/models/sdkerrors/unprocessableentity.go
+  - src/__tests__/mockserver/internal/sdk/types/bigint.go
+  - src/__tests__/mockserver/internal/sdk/types/date.go
+  - src/__tests__/mockserver/internal/sdk/types/datetime.go
+  - src/__tests__/mockserver/internal/sdk/types/decimal.go
+  - src/__tests__/mockserver/internal/sdk/types/jsonl/jsonl.go
+  - src/__tests__/mockserver/internal/sdk/types/pointers.go
+  - src/__tests__/mockserver/internal/sdk/utils/json.go
+  - src/__tests__/mockserver/internal/sdk/utils/reflect.go
+  - src/__tests__/mockserver/internal/sdk/utils/sort.go
+  - src/__tests__/mockserver/internal/server/doc.go
+  - src/__tests__/mockserver/internal/server/generated_handlers.go
+  - src/__tests__/mockserver/internal/server/internal_handlers.go
+  - src/__tests__/mockserver/internal/server/server.go
+  - src/__tests__/mockserver/internal/server/server_option.go
+  - src/__tests__/mockserver/internal/server/templates/log/index.html.tmpl
+  - src/__tests__/mockserver/internal/server/templates/log/operation.html.tmpl
+  - src/__tests__/mockserver/internal/server/templates/log/style.css.tmpl
+  - src/__tests__/mockserver/internal/tracking/requesttracker.go
+  - src/__tests__/mockserver/main.go
+  - src/__tests__/partners.test.ts
+  - src/__tests__/qrcodes.test.ts
+  - src/__tests__/tags.test.ts
+  - src/__tests__/testclient.ts
+  - src/__tests__/track.test.ts
+  - src/__tests__/workspaces.test.ts
   - src/core.ts
   - src/funcs/analyticsRetrieve.ts
   - src/funcs/customersCreate.ts
@@ -1654,4 +1841,45 @@ examples:
         "500":
           application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
 examplesVersion: 1.0.1
-generatedTests: {}
+generatedTests:
+  createLink: "2025-05-06T18:54:35+05:30"
+  getLinks: "2025-05-06T18:54:35+05:30"
+  getLinksCount: "2025-05-06T18:54:35+05:30"
+  getLinkInfo: "2025-05-06T18:54:35+05:30"
+  updateLink: "2025-05-06T18:54:35+05:30"
+  deleteLink: "2025-05-06T18:54:35+05:30"
+  bulkCreateLinks: "2025-05-06T18:54:35+05:30"
+  bulkUpdateLinks: "2025-05-06T18:54:35+05:30"
+  bulkDeleteLinks: "2025-05-06T18:54:35+05:30"
+  upsertLink: "2025-05-06T18:54:35+05:30"
+  retrieveAnalytics: "2025-05-06T18:54:35+05:30"
+  listEvents: "2025-05-06T18:54:35+05:30"
+  createTag: "2025-05-06T18:54:35+05:30"
+  getTags: "2025-05-06T18:54:35+05:30"
+  updateTag: "2025-05-06T18:54:35+05:30"
+  deleteTag: "2025-05-06T18:54:35+05:30"
+  createFolder: "2025-05-06T18:54:35+05:30"
+  listFolders: "2025-05-06T18:54:35+05:30"
+  updateFolder: "2025-05-06T18:54:35+05:30"
+  deleteFolder: "2025-05-06T18:54:35+05:30"
+  createDomain: "2025-05-06T18:54:35+05:30"
+  listDomains: "2025-05-06T18:54:35+05:30"
+  updateDomain: "2025-05-06T18:54:35+05:30"
+  deleteDomain: "2025-05-06T18:54:35+05:30"
+  trackLead: "2025-05-06T18:54:35+05:30"
+  trackSale: "2025-05-06T18:54:35+05:30"
+  getCustomers: "2025-05-06T18:54:35+05:30"
+  createCustomer: "2025-05-06T18:54:35+05:30"
+  getCustomer: "2025-05-06T18:54:35+05:30"
+  updateCustomer: "2025-05-06T18:54:35+05:30"
+  deleteCustomer: "2025-05-06T18:54:35+05:30"
+  createPartner: "2025-05-06T18:54:35+05:30"
+  createPartnerLink: "2025-05-06T18:54:35+05:30"
+  retrieveLinks: "2025-05-06T18:54:35+05:30"
+  upsertPartnerLink: "2025-05-06T18:54:35+05:30"
+  retrievePartnerAnalytics: "2025-05-06T18:54:35+05:30"
+  updatePartnerSale: "2025-05-06T18:54:35+05:30"
+  getWorkspace: "2025-05-06T18:54:35+05:30"
+  updateWorkspace: "2025-05-06T18:54:35+05:30"
+  createReferralsEmbedToken: "2025-05-06T18:54:35+05:30"
+  getQRCode: "2025-05-06T18:54:35+05:30"

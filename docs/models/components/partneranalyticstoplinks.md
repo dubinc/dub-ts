@@ -12,7 +12,7 @@ let value: PartnerAnalyticsTopLinks = {
   key: "<key>",
   shortLink: "<value>",
   url: "https://milky-exasperation.info/",
-  createdAt: "1726205056431",
+  createdAt: "1726251523975",
 };
 ```
 

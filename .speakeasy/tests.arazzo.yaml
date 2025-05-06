@@ -1,0 +1,2197 @@
+arazzo: 1.0.1
+info:
+  title: Test Suite
+  summary: Created from /Users/kiran/Desktop/dubinc/dub-ts/.speakeasy/temp/reformatted2878442280.json
+  version: 0.0.1
+sourceDescriptions:
+  - name: /Users/kiran/Desktop/dubinc/dub-ts/.speakeasy/temp/reformatted2878442280.json
+    url: https://TBD.com
+    type: openapi
+workflows:
+  - workflowId: createLink
+    steps:
+      - stepId: test
+        operationId: createLink
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "id": "\u003cid\u003e",
+                "domain": "low-packaging.info",
+                "key": "\u003ckey\u003e",
+                "url": "https://black-and-white-secrecy.org/",
+                "trackConversion": false,
+                "externalId": "\u003cid\u003e",
+                "tenantId": "\u003cid\u003e",
+                "programId": "\u003cid\u003e",
+                "partnerId": "\u003cid\u003e",
+                "archived": false,
+                "expiresAt": "1745204903696",
+                "expiredUrl": "https://brisk-seafood.net/",
+                "password": "XhB9652A4R_UwKP",
+                "proxy": false,
+                "title": "\u003cvalue\u003e",
+                "description": "demob fencing fencing vainly kookily",
+                "image": "https://picsum.photos/seed/zicqIZPdCh/2719/290",
+                "video": "https://loremflickr.com/2433/1085?lock=5492184885451890",
+                "rewrite": false,
+                "doIndex": false,
+                "ios": "\u003cvalue\u003e",
+                "android": "\u003cid\u003e",
+                "geo": {},
+                "publicStats": false,
+                "tagId": "\u003cid\u003e",
+                "tags": [
+                  {
+                    "id": "\u003cid\u003e",
+                    "name": "\u003cvalue\u003e",
+                    "color": "pink"
+                  },
+                  {
+                    "id": "\u003cid\u003e",
+                    "name": "\u003cvalue\u003e",
+                    "color": "pink"
+                  }
+                ],
+                "folderId": "\u003cid\u003e",
+                "webhookIds": [],
+                "comments": "than rightfully brightly sleet where schedule insolence when warming when determined ouch scarcely ignorance",
+                "shortLink": "https://incomparable-monster.net/",
+                "qrCode": "https://mild-switchboard.info/",
+                "utm_source": "\u003cvalue\u003e",
+                "utm_medium": "\u003cvalue\u003e",
+                "utm_campaign": "\u003cvalue\u003e",
+                "utm_term": "\u003cvalue\u003e",
+                "utm_content": "\u003cvalue\u003e",
+                "userId": "\u003cid\u003e",
+                "workspaceId": "\u003cid\u003e",
+                "clicks": 0,
+                "lastClicked": "\u003cvalue\u003e",
+                "leads": 0,
+                "sales": 0,
+                "saleAmount": 0,
+                "createdAt": "1723531037431",
+                "updatedAt": "1745192270066",
+                "projectId": "\u003cid\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: Links
+  - workflowId: getLinks
+    steps:
+      - stepId: test
+        operationId: getLinks
+        parameters:
+          - name: showArchived
+            in: query
+            value: "false"
+          - name: withTags
+            in: query
+            value: "false"
+          - name: sortBy
+            in: query
+            value: createdAt
+          - name: sortOrder
+            in: query
+            value: desc
+          - name: page
+            in: query
+            value: 1
+          - name: pageSize
+            in: query
+            value: 50
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              [
+                {
+                  "id": "\u003cid\u003e",
+                  "domain": "neglected-plastic.biz",
+                  "key": "\u003ckey\u003e",
+                  "url": "https://crooked-overload.name/",
+                  "trackConversion": false,
+                  "externalId": "\u003cid\u003e",
+                  "tenantId": "\u003cid\u003e",
+                  "programId": "\u003cid\u003e",
+                  "partnerId": "\u003cid\u003e",
+                  "archived": false,
+                  "expiresAt": "1745756493614",
+                  "expiredUrl": "https://breakable-bathrobe.net",
+                  "password": "QCOyVtOrvIw1vLI",
+                  "proxy": false,
+                  "title": "\u003cvalue\u003e",
+                  "description": "beside tromp worth reluctantly wound accompanist",
+                  "image": "https://picsum.photos/seed/WT1tZJLp/3243/3827",
+                  "video": "https://picsum.videos/seed/p2Pkp47W/118/2609",
+                  "rewrite": false,
+                  "doIndex": false,
+                  "ios": "\u003cvalue\u003e",
+                  "android": "\u003cid\u003e",
+                  "geo": {},
+                  "publicStats": false,
+                  "tagId": "\u003cid\u003e",
+                  "tags": [
+                    {
+                      "id": "\u003cid\u003e",
+                      "name": "\u003cvalue\u003e",
+                      "color": "green"
+                    },
+                    {
+                      "id": "\u003cid\u003e",
+                      "name": "\u003cvalue\u003e",
+                      "color": "green"
+                    },
+                    {
+                      "id": "\u003cid\u003e",
+                      "name": "\u003cvalue\u003e",
+                      "color": "blue"
+                    }
+                  ],
+                  "folderId": "\u003cid\u003e",
+                  "webhookIds": [],
+                  "comments": "commonly softly boo massive sorrowful aw strict behind along energetic oddball pasta thread vestment meanwhile likely up questionably forgery",
+                  "shortLink": "https://oblong-inspection.net",
+                  "qrCode": "https://spherical-gerbil.org/",
+                  "utm_source": "\u003cvalue\u003e",
+                  "utm_medium": "\u003cvalue\u003e",
+                  "utm_campaign": "\u003cvalue\u003e",
+                  "utm_term": "\u003cvalue\u003e",
+                  "utm_content": "\u003cvalue\u003e",
+                  "userId": "\u003cid\u003e",
+                  "workspaceId": "\u003cid\u003e",
+                  "clicks": 0,
+                  "lastClicked": "\u003cvalue\u003e",
+                  "leads": 0,
+                  "sales": 0,
+                  "saleAmount": 0,
+                  "createdAt": "1729312896017",
+                  "updatedAt": "1745200926259",
+                  "projectId": "\u003cid\u003e"
+                },
+                {
+                  "id": "\u003cid\u003e",
+                  "domain": "married-presume.net",
+                  "key": "\u003ckey\u003e",
+                  "url": "https://reflecting-coast.info",
+                  "trackConversion": false,
+                  "externalId": "\u003cid\u003e",
+                  "tenantId": "\u003cid\u003e",
+                  "programId": "\u003cid\u003e",
+                  "partnerId": "\u003cid\u003e",
+                  "archived": false,
+                  "expiresAt": "1762998604262",
+                  "expiredUrl": "https://writhing-conversation.com",
+                  "password": "ZsCSHb4yMlkCXkK",
+                  "proxy": false,
+                  "title": "\u003cvalue\u003e",
+                  "description": "overcook till boo ack solicit",
+                  "image": "https://loremflickr.com/2989/2665?lock=5845099426147813",
+                  "video": "https://picsum.videos/seed/breY1MLSO6/954/73",
+                  "rewrite": false,
+                  "doIndex": false,
+                  "ios": "\u003cvalue\u003e",
+                  "android": "\u003cid\u003e",
+                  "geo": {},
+                  "publicStats": false,
+                  "tagId": "\u003cid\u003e",
+                  "tags": [
+                    {
+                      "id": "\u003cid\u003e",
+                      "name": "\u003cvalue\u003e",
+                      "color": "brown"
+                    },
+                    {
+                      "id": "\u003cid\u003e",
+                      "name": "\u003cvalue\u003e",
+                      "color": "red"
+                    }
+                  ],
+                  "folderId": "\u003cid\u003e",
+                  "webhookIds": [
+                    "\u003cvalue\u003e"
+                  ],
+                  "comments": "instead athwart before tattered gosh um what thump kettledrum configuration esteemed mysteriously legend absent brr",
+                  "shortLink": "https://well-documented-help.biz/",
+                  "qrCode": "https://untrue-lamp.info/",
+                  "utm_source": "\u003cvalue\u003e",
+                  "utm_medium": "\u003cvalue\u003e",
+                  "utm_campaign": "\u003cvalue\u003e",
+                  "utm_term": "\u003cvalue\u003e",
+                  "utm_content": "\u003cvalue\u003e",
+                  "userId": "\u003cid\u003e",
+                  "workspaceId": "\u003cid\u003e",
+                  "clicks": 0,
+                  "lastClicked": "\u003cvalue\u003e",
+                  "leads": 0,
+                  "sales": 0,
+                  "saleAmount": 0,
+                  "createdAt": "1737089022845",
+                  "updatedAt": "1745154734561",
+                  "projectId": "\u003cid\u003e"
+                },
+                {
+                  "id": "\u003cid\u003e",
+                  "domain": "stale-handful.com",
+                  "key": "\u003ckey\u003e",
+                  "url": "https://lean-daughter.org",
+                  "trackConversion": false,
+                  "externalId": "\u003cid\u003e",
+                  "tenantId": "\u003cid\u003e",
+                  "programId": "\u003cid\u003e",
+                  "partnerId": "\u003cid\u003e",
+                  "archived": false,
+                  "expiresAt": "1756506134211",
+                  "expiredUrl": "https://perfumed-marketplace.com/",
+                  "password": "xsCzKbmqqqJnqbw",
+                  "proxy": false,
+                  "title": "\u003cvalue\u003e",
+                  "description": "as so yet whenever rotating hygienic mid",
+                  "image": "https://loremflickr.com/958/3484?lock=3072922795184569",
+                  "video": "https://loremflickr.com/565/2800?lock=8555441928057420",
+                  "rewrite": false,
+                  "doIndex": false,
+                  "ios": "\u003cvalue\u003e",
+                  "android": "\u003cid\u003e",
+                  "geo": {},
+                  "publicStats": false,
+                  "tagId": "\u003cid\u003e",
+                  "tags": [
+                    {
+                      "id": "\u003cid\u003e",
+                      "name": "\u003cvalue\u003e",
+                      "color": "blue"
+                    },
+                    {
+                      "id": "\u003cid\u003e",
+                      "name": "\u003cvalue\u003e",
+                      "color": "purple"
+                    },
+                    {
+                      "id": "\u003cid\u003e",
+                      "name": "\u003cvalue\u003e",
+                      "color": "yellow"
+                    }
+                  ],
+                  "folderId": "\u003cid\u003e",
+                  "webhookIds": [
+                    "\u003cvalue\u003e",
+                    "\u003cvalue\u003e"
+                  ],
+                  "comments": "polished whether welcome deck gratefully for outfox pfft indeed phew rejigger overcoat when wonderful ugh before however fooey weakly",
+                  "shortLink": "https://muddy-nightlife.info/",
+                  "qrCode": "https://cloudy-tackle.net/",
+                  "utm_source": "\u003cvalue\u003e",
+                  "utm_medium": "\u003cvalue\u003e",
+                  "utm_campaign": "\u003cvalue\u003e",
+                  "utm_term": "\u003cvalue\u003e",
+                  "utm_content": "\u003cvalue\u003e",
+                  "userId": "\u003cid\u003e",
+                  "workspaceId": "\u003cid\u003e",
+                  "clicks": 0,
+                  "lastClicked": "\u003cvalue\u003e",
+                  "leads": 0,
+                  "sales": 0,
+                  "saleAmount": 0,
+                  "createdAt": "1722178659624",
+                  "updatedAt": "1745161083500",
+                  "projectId": "\u003cid\u003e"
+                }
+              ]
+            type: simple
+    x-speakeasy-test-group: Links
+  - workflowId: getLinksCount
+    steps:
+      - stepId: test
+        operationId: getLinksCount
+        parameters:
+          - name: showArchived
+            in: query
+            value: "false"
+          - name: withTags
+            in: query
+            value: "false"
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              2641.66
+            type: simple
+    x-speakeasy-test-group: Links
+  - workflowId: getLinkInfo
+    steps:
+      - stepId: test
+        operationId: getLinkInfo
+        parameters:
+          - name: linkId
+            in: query
+            value: clux0rgak00011...
+          - name: externalId
+            in: query
+            value: "123456"
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "id": "\u003cid\u003e",
+                "domain": "rural-mathematics.name",
+                "key": "\u003ckey\u003e",
+                "url": "https://willing-impostor.info",
+                "trackConversion": false,
+                "externalId": "\u003cid\u003e",
+                "tenantId": "\u003cid\u003e",
+                "programId": "\u003cid\u003e",
+                "partnerId": "\u003cid\u003e",
+                "archived": false,
+                "expiresAt": "1753489692848",
+                "expiredUrl": "https://warm-hundred.net/",
+                "password": "5UmEgZU18kgjdwK",
+                "proxy": false,
+                "title": "\u003cvalue\u003e",
+                "description": "aw showboat shakily times bravely quizzically",
+                "image": "https://picsum.photos/seed/eIfMMF/2755/1170",
+                "video": "https://loremflickr.com/754/1831?lock=3684390672984324",
+                "rewrite": false,
+                "doIndex": false,
+                "ios": "\u003cvalue\u003e",
+                "android": "\u003cid\u003e",
+                "geo": {},
+                "publicStats": false,
+                "tagId": "\u003cid\u003e",
+                "tags": [
+                  {
+                    "id": "\u003cid\u003e",
+                    "name": "\u003cvalue\u003e",
+                    "color": "green"
+                  },
+                  {
+                    "id": "\u003cid\u003e",
+                    "name": "\u003cvalue\u003e",
+                    "color": "yellow"
+                  },
+                  {
+                    "id": "\u003cid\u003e",
+                    "name": "\u003cvalue\u003e",
+                    "color": "red"
+                  }
+                ],
+                "folderId": "\u003cid\u003e",
+                "webhookIds": [
+                  "\u003cvalue\u003e",
+                  "\u003cvalue\u003e"
+                ],
+                "comments": "scholarship to blink nifty generously",
+                "shortLink": "https://spiffy-character.name/",
+                "qrCode": "https://immediate-lounge.biz/",
+                "utm_source": "\u003cvalue\u003e",
+                "utm_medium": "\u003cvalue\u003e",
+                "utm_campaign": "\u003cvalue\u003e",
+                "utm_term": "\u003cvalue\u003e",
+                "utm_content": "\u003cvalue\u003e",
+                "userId": "\u003cid\u003e",
+                "workspaceId": "\u003cid\u003e",
+                "clicks": 0,
+                "lastClicked": "\u003cvalue\u003e",
+                "leads": 0,
+                "sales": 0,
+                "saleAmount": 0,
+                "createdAt": "1727252247964",
+                "updatedAt": "1745140876359",
+                "projectId": "\u003cid\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: Links
+  - workflowId: updateLink
+    steps:
+      - stepId: test
+        operationId: updateLink
+        parameters:
+          - name: linkId
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "id": "\u003cid\u003e",
+                "domain": "tinted-nectarine.info",
+                "key": "\u003ckey\u003e",
+                "url": "https://powerless-juggernaut.org",
+                "trackConversion": false,
+                "externalId": "\u003cid\u003e",
+                "tenantId": "\u003cid\u003e",
+                "programId": "\u003cid\u003e",
+                "partnerId": "\u003cid\u003e",
+                "archived": false,
+                "expiresAt": "1746907077556",
+                "expiredUrl": "https://juvenile-exploration.biz",
+                "password": "kuMjbGhnJP7Bopu",
+                "proxy": false,
+                "title": "\u003cvalue\u003e",
+                "description": "bleak from that qualified cycle woot abseil perfumed",
+                "image": "https://loremflickr.com/1166/1632?lock=5920233536834378",
+                "video": "https://loremflickr.com/996/369?lock=4799093392417520",
+                "rewrite": false,
+                "doIndex": false,
+                "ios": "\u003cvalue\u003e",
+                "android": "\u003cid\u003e",
+                "geo": {},
+                "publicStats": false,
+                "tagId": "\u003cid\u003e",
+                "tags": [
+                  {
+                    "id": "\u003cid\u003e",
+                    "name": "\u003cvalue\u003e",
+                    "color": "blue"
+                  },
+                  {
+                    "id": "\u003cid\u003e",
+                    "name": "\u003cvalue\u003e",
+                    "color": "blue"
+                  },
+                  {
+                    "id": "\u003cid\u003e",
+                    "name": "\u003cvalue\u003e",
+                    "color": "green"
+                  }
+                ],
+                "folderId": "\u003cid\u003e",
+                "webhookIds": [],
+                "comments": "duh clamour urgently voluntarily scale gut readies concerning statement nice consequently provided when rim league almost forenenst instead arbitrate pulse",
+                "shortLink": "https://impossible-typeface.net/",
+                "qrCode": "https://worthy-effector.net",
+                "utm_source": "\u003cvalue\u003e",
+                "utm_medium": "\u003cvalue\u003e",
+                "utm_campaign": "\u003cvalue\u003e",
+                "utm_term": "\u003cvalue\u003e",
+                "utm_content": "\u003cvalue\u003e",
+                "userId": "\u003cid\u003e",
+                "workspaceId": "\u003cid\u003e",
+                "clicks": 0,
+                "lastClicked": "\u003cvalue\u003e",
+                "leads": 0,
+                "sales": 0,
+                "saleAmount": 0,
+                "createdAt": "1718485510854",
+                "updatedAt": "1745130854965",
+                "projectId": "\u003cid\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: Links
+  - workflowId: deleteLink
+    steps:
+      - stepId: test
+        operationId: deleteLink
+        parameters:
+          - name: linkId
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "id": "\u003cid\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: Links
+  - workflowId: bulkCreateLinks
+    steps:
+      - stepId: test
+        operationId: bulkCreateLinks
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              [
+                {
+                  "error": "\u003cvalue\u003e",
+                  "code": "conflict"
+                },
+                {
+                  "id": "\u003cid\u003e",
+                  "domain": "enlightened-sanity.info",
+                  "key": "\u003ckey\u003e",
+                  "url": "https://flawed-plumber.name/",
+                  "trackConversion": false,
+                  "externalId": "\u003cid\u003e",
+                  "tenantId": "\u003cid\u003e",
+                  "programId": "\u003cid\u003e",
+                  "partnerId": "\u003cid\u003e",
+                  "archived": false,
+                  "expiresAt": "1765649140228",
+                  "expiredUrl": "https://devoted-quit.name",
+                  "password": "i6NXnrZ9O3zPrEC",
+                  "proxy": false,
+                  "title": "\u003cvalue\u003e",
+                  "description": "ditch what outside monthly kielbasa psst finer aw although",
+                  "image": "https://picsum.photos/seed/rlA3LwhK/1855/1563",
+                  "video": "https://picsum.videos/seed/itt7gjdv/857/1825",
+                  "rewrite": false,
+                  "doIndex": false,
+                  "ios": "\u003cvalue\u003e",
+                  "android": "\u003cid\u003e",
+                  "geo": {},
+                  "publicStats": false,
+                  "tagId": "\u003cid\u003e",
+                  "tags": [],
+                  "folderId": "\u003cid\u003e",
+                  "webhookIds": [
+                    "\u003cvalue\u003e",
+                    "\u003cvalue\u003e",
+                    "\u003cvalue\u003e"
+                  ],
+                  "comments": "beyond ha since pike gadzooks outside cardboard clavicle even supposing what longingly",
+                  "shortLink": "https://haunting-membership.net",
+                  "qrCode": "https://pointless-freckle.info",
+                  "utm_source": "\u003cvalue\u003e",
+                  "utm_medium": "\u003cvalue\u003e",
+                  "utm_campaign": "\u003cvalue\u003e",
+                  "utm_term": "\u003cvalue\u003e",
+                  "utm_content": "\u003cvalue\u003e",
+                  "userId": "\u003cid\u003e",
+                  "workspaceId": "\u003cid\u003e",
+                  "clicks": 0,
+                  "lastClicked": "\u003cvalue\u003e",
+                  "leads": 0,
+                  "sales": 0,
+                  "saleAmount": 0,
+                  "createdAt": "1719150618562",
+                  "updatedAt": "1745174728823",
+                  "projectId": "\u003cid\u003e"
+                }
+              ]
+            type: simple
+    x-speakeasy-test-group: Links
+  - workflowId: bulkUpdateLinks
+    steps:
+      - stepId: test
+        operationId: bulkUpdateLinks
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              [
+                {
+                  "id": "\u003cid\u003e",
+                  "domain": "old-lox.org",
+                  "key": "\u003ckey\u003e",
+                  "url": "https://angelic-cellar.org/",
+                  "trackConversion": false,
+                  "externalId": "\u003cid\u003e",
+                  "tenantId": "\u003cid\u003e",
+                  "programId": "\u003cid\u003e",
+                  "partnerId": "\u003cid\u003e",
+                  "archived": false,
+                  "expiresAt": "1754728710219",
+                  "expiredUrl": "https://yellowish-vicinity.org/",
+                  "password": "yMRdLF0naLtN5wK",
+                  "proxy": false,
+                  "title": "\u003cvalue\u003e",
+                  "description": "aboard octave since",
+                  "image": "https://loremflickr.com/2247/3258?lock=8204630610718424",
+                  "video": "https://picsum.videos/seed/L7W1CltA/399/207",
+                  "rewrite": false,
+                  "doIndex": false,
+                  "ios": "\u003cvalue\u003e",
+                  "android": "\u003cid\u003e",
+                  "geo": {},
+                  "publicStats": false,
+                  "tagId": "\u003cid\u003e",
+                  "tags": [
+                    {
+                      "id": "\u003cid\u003e",
+                      "name": "\u003cvalue\u003e",
+                      "color": "green"
+                    },
+                    {
+                      "id": "\u003cid\u003e",
+                      "name": "\u003cvalue\u003e",
+                      "color": "blue"
+                    }
+                  ],
+                  "folderId": "\u003cid\u003e",
+                  "webhookIds": [
+                    "\u003cvalue\u003e",
+                    "\u003cvalue\u003e",
+                    "\u003cvalue\u003e"
+                  ],
+                  "comments": "psst instead even brr react busily both along whereas absent why round around round beneficial however safely defensive",
+                  "shortLink": "https://inborn-trick.biz",
+                  "qrCode": "https://scientific-alliance.biz/",
+                  "utm_source": "\u003cvalue\u003e",
+                  "utm_medium": "\u003cvalue\u003e",
+                  "utm_campaign": "\u003cvalue\u003e",
+                  "utm_term": "\u003cvalue\u003e",
+                  "utm_content": "\u003cvalue\u003e",
+                  "userId": "\u003cid\u003e",
+                  "workspaceId": "\u003cid\u003e",
+                  "clicks": 0,
+                  "lastClicked": "\u003cvalue\u003e",
+                  "leads": 0,
+                  "sales": 0,
+                  "saleAmount": 0,
+                  "createdAt": "1731220663759",
+                  "updatedAt": "1745179119984",
+                  "projectId": "\u003cid\u003e"
+                },
+                {
+                  "id": "\u003cid\u003e",
+                  "domain": "purple-secrecy.name",
+                  "key": "\u003ckey\u003e",
+                  "url": "https://unwilling-godparent.biz/",
+                  "trackConversion": false,
+                  "externalId": "\u003cid\u003e",
+                  "tenantId": "\u003cid\u003e",
+                  "programId": "\u003cid\u003e",
+                  "partnerId": "\u003cid\u003e",
+                  "archived": false,
+                  "expiresAt": "1769744452954",
+                  "expiredUrl": "https://weekly-formamide.name",
+                  "password": "t3Ls5KHqWZvIT9U",
+                  "proxy": false,
+                  "title": "\u003cvalue\u003e",
+                  "description": "tribe astonishing hm who blah verify soybean",
+                  "image": "https://picsum.photos/seed/DauITRrHdo/3783/3955",
+                  "video": "https://loremflickr.com/405/3655?lock=8436311567525016",
+                  "rewrite": false,
+                  "doIndex": false,
+                  "ios": "\u003cvalue\u003e",
+                  "android": "\u003cid\u003e",
+                  "geo": {},
+                  "publicStats": false,
+                  "tagId": "\u003cid\u003e",
+                  "tags": [
+                    {
+                      "id": "\u003cid\u003e",
+                      "name": "\u003cvalue\u003e",
+                      "color": "green"
+                    },
+                    {
+                      "id": "\u003cid\u003e",
+                      "name": "\u003cvalue\u003e",
+                      "color": "purple"
+                    },
+                    {
+                      "id": "\u003cid\u003e",
+                      "name": "\u003cvalue\u003e",
+                      "color": "pink"
+                    }
+                  ],
+                  "folderId": "\u003cid\u003e",
+                  "webhookIds": [
+                    "\u003cvalue\u003e"
+                  ],
+                  "comments": "since cloudy dutiful heartache unto yippee custom footrest forenenst astonishing shore",
+                  "shortLink": "https://exotic-hydrolyze.name/",
+                  "qrCode": "https://giving-scale.name",
+                  "utm_source": "\u003cvalue\u003e",
+                  "utm_medium": "\u003cvalue\u003e",
+                  "utm_campaign": "\u003cvalue\u003e",
+                  "utm_term": "\u003cvalue\u003e",
+                  "utm_content": "\u003cvalue\u003e",
+                  "userId": "\u003cid\u003e",
+                  "workspaceId": "\u003cid\u003e",
+                  "clicks": 0,
+                  "lastClicked": "\u003cvalue\u003e",
+                  "leads": 0,
+                  "sales": 0,
+                  "saleAmount": 0,
+                  "createdAt": "1723835311463",
+                  "updatedAt": "1745135057342",
+                  "projectId": "\u003cid\u003e"
+                }
+              ]
+            type: simple
+    x-speakeasy-test-group: Links
+  - workflowId: bulkDeleteLinks
+    steps:
+      - stepId: test
+        operationId: bulkDeleteLinks
+        parameters:
+          - name: linkIds
+            in: query
+            value:
+              - clux0rgak00011...
+              - clux0rgak00022...
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "deletedCount": 5277.63
+              }
+            type: simple
+    x-speakeasy-test-group: Links
+  - workflowId: upsertLink
+    steps:
+      - stepId: test
+        operationId: upsertLink
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "id": "\u003cid\u003e",
+                "domain": "neat-instruction.info",
+                "key": "\u003ckey\u003e",
+                "url": "https://entire-rubric.com/",
+                "trackConversion": false,
+                "externalId": "\u003cid\u003e",
+                "tenantId": "\u003cid\u003e",
+                "programId": "\u003cid\u003e",
+                "partnerId": "\u003cid\u003e",
+                "archived": false,
+                "expiresAt": "1749835696638",
+                "expiredUrl": "https://rubbery-lay.com/",
+                "password": "cHWcftWRnnmyj_U",
+                "proxy": false,
+                "title": "\u003cvalue\u003e",
+                "description": "likewise concerning annual instantly anti deployment",
+                "image": "https://loremflickr.com/181/3306?lock=1275456187971812",
+                "video": "https://picsum.videos/seed/CcMAI/2638/2080",
+                "rewrite": false,
+                "doIndex": false,
+                "ios": "\u003cvalue\u003e",
+                "android": "\u003cid\u003e",
+                "geo": {},
+                "publicStats": false,
+                "tagId": "\u003cid\u003e",
+                "tags": [
+                  {
+                    "id": "\u003cid\u003e",
+                    "name": "\u003cvalue\u003e",
+                    "color": "pink"
+                  },
+                  {
+                    "id": "\u003cid\u003e",
+                    "name": "\u003cvalue\u003e",
+                    "color": "purple"
+                  },
+                  {
+                    "id": "\u003cid\u003e",
+                    "name": "\u003cvalue\u003e",
+                    "color": "red"
+                  }
+                ],
+                "folderId": "\u003cid\u003e",
+                "webhookIds": [],
+                "comments": "clueless unless conclude daddy boohoo ideal lumpy masculinize charter geez as eulogise granny",
+                "shortLink": "https://complicated-resource.net/",
+                "qrCode": "https://impractical-cap.net",
+                "utm_source": "\u003cvalue\u003e",
+                "utm_medium": "\u003cvalue\u003e",
+                "utm_campaign": "\u003cvalue\u003e",
+                "utm_term": "\u003cvalue\u003e",
+                "utm_content": "\u003cvalue\u003e",
+                "userId": "\u003cid\u003e",
+                "workspaceId": "\u003cid\u003e",
+                "clicks": 0,
+                "lastClicked": "\u003cvalue\u003e",
+                "leads": 0,
+                "sales": 0,
+                "saleAmount": 0,
+                "createdAt": "1739590413990",
+                "updatedAt": "1745168300206",
+                "projectId": "\u003cid\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: Links
+  - workflowId: retrieveAnalytics
+    steps:
+      - stepId: test
+        operationId: retrieveAnalytics
+        parameters:
+          - name: event
+            in: query
+            value: clicks
+          - name: groupBy
+            in: query
+            value: count
+          - name: timezone
+            in: query
+            value: America/New_York
+          - name: city
+            in: query
+            value: New York
+          - name: device
+            in: query
+            value: Desktop
+          - name: browser
+            in: query
+            value: Chrome
+          - name: os
+            in: query
+            value: Windows
+          - name: referer
+            in: query
+            value: google.com
+          - name: refererUrl
+            in: query
+            value: https://dub.co/blog
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              [
+                {
+                  "country": "GE",
+                  "region": "*",
+                  "city": "North Kailee",
+                  "clicks": 0,
+                  "leads": 0,
+                  "sales": 0,
+                  "saleAmount": 0
+                },
+                {
+                  "country": "PH",
+                  "region": "*",
+                  "city": "Port Anabelfort",
+                  "clicks": 0,
+                  "leads": 0,
+                  "sales": 0,
+                  "saleAmount": 0
+                },
+                {
+                  "country": "VN",
+                  "region": "*",
+                  "city": "East Anissafurt",
+                  "clicks": 0,
+                  "leads": 0,
+                  "sales": 0,
+                  "saleAmount": 0
+                }
+              ]
+            type: simple
+    x-speakeasy-test-group: Analytics
+  - workflowId: listEvents
+    steps:
+      - stepId: test
+        operationId: listEvents
+        parameters:
+          - name: event
+            in: query
+            value: clicks
+          - name: interval
+            in: query
+            value: 24h
+          - name: timezone
+            in: query
+            value: America/New_York
+          - name: city
+            in: query
+            value: New York
+          - name: device
+            in: query
+            value: Desktop
+          - name: browser
+            in: query
+            value: Chrome
+          - name: os
+            in: query
+            value: Windows
+          - name: referer
+            in: query
+            value: google.com
+          - name: refererUrl
+            in: query
+            value: https://dub.co/blog
+          - name: page
+            in: query
+            value: 1
+          - name: limit
+            in: query
+            value: 100
+          - name: sortOrder
+            in: query
+            value: desc
+          - name: sortBy
+            in: query
+            value: timestamp
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              [
+                {
+                  "event": "sale",
+                  "timestamp": "\u003cvalue\u003e",
+                  "eventId": "\u003cid\u003e",
+                  "eventName": "\u003cvalue\u003e",
+                  "link": {
+                    "id": "\u003cid\u003e",
+                    "domain": "remorseful-concentration.biz",
+                    "key": "\u003ckey\u003e",
+                    "url": "https://primary-paintwork.com/",
+                    "trackConversion": false,
+                    "externalId": "\u003cid\u003e",
+                    "tenantId": "\u003cid\u003e",
+                    "programId": "\u003cid\u003e",
+                    "partnerId": "\u003cid\u003e",
+                    "archived": true,
+                    "expiresAt": "1748133366528",
+                    "expiredUrl": "https://memorable-overcoat.com",
+                    "password": "COyVtOrvIw1vLIJ",
+                    "proxy": true,
+                    "title": "\u003cvalue\u003e",
+                    "description": "cleverly blossom defiantly",
+                    "image": "https://picsum.photos/seed/FhMx4/296/3347",
+                    "video": "https://picsum.videos/seed/gk5Gr0OXM/244/1177",
+                    "rewrite": false,
+                    "doIndex": false,
+                    "ios": "\u003cvalue\u003e",
+                    "android": "\u003cid\u003e",
+                    "geo": {},
+                    "publicStats": false,
+                    "tagId": "\u003cid\u003e",
+                    "tags": [],
+                    "folderId": "\u003cid\u003e",
+                    "webhookIds": [
+                      "\u003cvalue\u003e"
+                    ],
+                    "comments": "eek censor tenement commonly softly boo massive sorrowful aw strict behind along energetic oddball pasta thread vestment meanwhile likely up",
+                    "shortLink": "https://lucky-volleyball.biz",
+                    "qrCode": "https://discrete-omelet.net/",
+                    "utm_source": "\u003cvalue\u003e",
+                    "utm_medium": "\u003cvalue\u003e",
+                    "utm_campaign": "\u003cvalue\u003e",
+                    "utm_term": "\u003cvalue\u003e",
+                    "utm_content": "\u003cvalue\u003e",
+                    "testStartedAt": "\u003cvalue\u003e",
+                    "testCompletedAt": "\u003cvalue\u003e",
+                    "userId": "\u003cid\u003e",
+                    "workspaceId": "\u003cid\u003e",
+                    "clicks": 0,
+                    "lastClicked": "\u003cvalue\u003e",
+                    "leads": 0,
+                    "sales": 0,
+                    "saleAmount": 0,
+                    "createdAt": "1742101222652",
+                    "updatedAt": "1745952913664",
+                    "projectId": "\u003cid\u003e"
+                  },
+                  "click": {
+                    "id": "\u003cid\u003e",
+                    "timestamp": "\u003cvalue\u003e",
+                    "url": "https://watery-ecliptic.info/",
+                    "country": "Somalia",
+                    "city": "Jammiecester",
+                    "region": "\u003cvalue\u003e",
+                    "continent": "Antarctica",
+                    "device": "Mobile",
+                    "browser": "Firefox",
+                    "os": "BeOS",
+                    "referer": "male-widow.info",
+                    "refererUrl": "https://sticky-tune-up.net",
+                    "qr": true,
+                    "ip": "144.175.252.47"
+                  },
+                  "customer": {
+                    "id": "\u003cid\u003e",
+                    "externalId": "\u003cid\u003e",
+                    "name": "\u003cvalue\u003e",
+                    "createdAt": "1716443409006"
+                  },
+                  "sale": {
+                    "amount": 608798,
+                    "invoiceId": null,
+                    "paymentProcessor": "shopify"
+                  },
+                  "saleAmount": 8727.59,
+                  "invoice_id": "\u003cid\u003e",
+                  "payment_processor": "\u003cvalue\u003e",
+                  "click_id": "\u003cid\u003e",
+                  "link_id": "\u003cid\u003e",
+                  "domain": "hateful-linseed.info",
+                  "key": "\u003ckey\u003e",
+                  "url": "https://rowdy-cuckoo.org/",
+                  "continent": "South America",
+                  "country": "Georgia",
+                  "city": "Emanuelboro",
+                  "device": "Mobile",
+                  "browser": "Chrome",
+                  "os": "WebOS",
+                  "qr": 3279.73,
+                  "ip": "16.166.150.33"
+                },
+                {
+                  "event": "sale",
+                  "timestamp": "\u003cvalue\u003e",
+                  "eventId": "\u003cid\u003e",
+                  "eventName": "\u003cvalue\u003e",
+                  "link": {
+                    "id": "\u003cid\u003e",
+                    "domain": "sparkling-hydrolyze.biz",
+                    "key": "\u003ckey\u003e",
+                    "url": "https://closed-space.org/",
+                    "trackConversion": false,
+                    "externalId": "\u003cid\u003e",
+                    "tenantId": "\u003cid\u003e",
+                    "programId": "\u003cid\u003e",
+                    "partnerId": "\u003cid\u003e",
+                    "archived": true,
+                    "expiresAt": "1764217330103",
+                    "expiredUrl": "https://unkempt-conversation.com/",
+                    "password": "PMbm9rjvofBDkNA",
+                    "proxy": false,
+                    "title": "\u003cvalue\u003e",
+                    "description": "after although while",
+                    "image": "https://picsum.photos/seed/Z9T8xoAjNE/354/1907",
+                    "video": "https://loremflickr.com/1063/1000?lock=6552935322217005",
+                    "rewrite": true,
+                    "doIndex": true,
+                    "ios": "\u003cvalue\u003e",
+                    "android": "\u003cid\u003e",
+                    "geo": {},
+                    "publicStats": true,
+                    "tagId": "\u003cid\u003e",
+                    "tags": [
+                      {
+                        "id": "\u003cid\u003e",
+                        "name": "\u003cvalue\u003e",
+                        "color": "pink"
+                      }
+                    ],
+                    "folderId": "\u003cid\u003e",
+                    "webhookIds": [],
+                    "comments": "clear-cut an mid aw disconnection which wetly typeface usable underneath putrefy ah aha joint careless whoever yesterday thorny unwelcome",
+                    "shortLink": "https://upbeat-sermon.org",
+                    "qrCode": "https://plump-horde.com",
+                    "utm_source": "\u003cvalue\u003e",
+                    "utm_medium": "\u003cvalue\u003e",
+                    "utm_campaign": "\u003cvalue\u003e",
+                    "utm_term": "\u003cvalue\u003e",
+                    "utm_content": "\u003cvalue\u003e",
+                    "testStartedAt": "\u003cvalue\u003e",
+                    "testCompletedAt": "\u003cvalue\u003e",
+                    "userId": "\u003cid\u003e",
+                    "workspaceId": "\u003cid\u003e",
+                    "clicks": 0,
+                    "lastClicked": "\u003cvalue\u003e",
+                    "leads": 0,
+                    "sales": 0,
+                    "saleAmount": 0,
+                    "createdAt": "1722349814880",
+                    "updatedAt": "1745946060353",
+                    "projectId": "\u003cid\u003e"
+                  },
+                  "click": {
+                    "id": "\u003cid\u003e",
+                    "timestamp": "\u003cvalue\u003e",
+                    "url": "https://lined-address.name/",
+                    "country": "Moldova",
+                    "city": "Dachfield",
+                    "region": "\u003cvalue\u003e",
+                    "continent": "Africa",
+                    "device": "Desktop",
+                    "browser": "Firefox",
+                    "os": "Symbian",
+                    "referer": "fatherly-marketplace.biz",
+                    "refererUrl": "https://bitter-platter.net/",
+                    "qr": false,
+                    "ip": "adca:ffa9:74d9:bf7c:f4c5:d273:f1ed:be4f"
+                  },
+                  "customer": {
+                    "id": "\u003cid\u003e",
+                    "externalId": "\u003cid\u003e",
+                    "name": "\u003cvalue\u003e",
+                    "createdAt": "1743562522580"
+                  },
+                  "sale": {
+                    "amount": 478369,
+                    "invoiceId": null,
+                    "paymentProcessor": "custom"
+                  },
+                  "saleAmount": 3702.47,
+                  "invoice_id": "\u003cid\u003e",
+                  "payment_processor": "\u003cvalue\u003e",
+                  "click_id": "\u003cid\u003e",
+                  "link_id": "\u003cid\u003e",
+                  "domain": "untimely-straw.net",
+                  "key": "\u003ckey\u003e",
+                  "url": "https://definitive-cutover.com",
+                  "continent": "Africa",
+                  "country": "Angola",
+                  "city": "Ryleyport",
+                  "device": "Desktop",
+                  "browser": "Firefox",
+                  "os": "Android",
+                  "qr": 9298.29,
+                  "ip": "250.239.120.52"
+                }
+              ]
+            type: simple
+    x-speakeasy-test-group: Events
+  - workflowId: createTag
+    steps:
+      - stepId: test
+        operationId: createTag
+        successCriteria:
+          - condition: $statusCode == 201
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "id": "\u003cid\u003e",
+                "name": "\u003cvalue\u003e",
+                "color": "blue"
+              }
+            type: simple
+    x-speakeasy-test-group: Tags
+  - workflowId: getTags
+    steps:
+      - stepId: test
+        operationId: getTags
+        parameters:
+          - name: sortBy
+            in: query
+            value: name
+          - name: sortOrder
+            in: query
+            value: asc
+          - name: page
+            in: query
+            value: 1
+          - name: pageSize
+            in: query
+            value: 50
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              [
+                {
+                  "id": "\u003cid\u003e",
+                  "name": "\u003cvalue\u003e",
+                  "color": "blue"
+                },
+                {
+                  "id": "\u003cid\u003e",
+                  "name": "\u003cvalue\u003e",
+                  "color": "purple"
+                },
+                {
+                  "id": "\u003cid\u003e",
+                  "name": "\u003cvalue\u003e",
+                  "color": "yellow"
+                }
+              ]
+            type: simple
+    x-speakeasy-test-group: Tags
+  - workflowId: updateTag
+    steps:
+      - stepId: test
+        operationId: updateTag
+        parameters:
+          - name: id
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "id": "\u003cid\u003e",
+                "name": "\u003cvalue\u003e",
+                "color": "brown"
+              }
+            type: simple
+    x-speakeasy-test-group: Tags
+  - workflowId: deleteTag
+    steps:
+      - stepId: test
+        operationId: deleteTag
+        parameters:
+          - name: id
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "id": "\u003cid\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: Tags
+  - workflowId: createFolder
+    steps:
+      - stepId: test
+        operationId: createFolder
+        successCriteria:
+          - condition: $statusCode == 201
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "id": "\u003cid\u003e",
+                "name": "\u003cvalue\u003e",
+                "type": "default",
+                "accessLevel": null,
+                "linkCount": 0,
+                "createdAt": "1733799507447",
+                "updatedAt": "1745151840025"
+              }
+            type: simple
+    x-speakeasy-test-group: Folders
+  - workflowId: listFolders
+    steps:
+      - stepId: test
+        operationId: listFolders
+        parameters:
+          - name: page
+            in: query
+            value: 1
+          - name: pageSize
+            in: query
+            value: 50
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              [
+                {
+                  "id": "\u003cid\u003e",
+                  "name": "\u003cvalue\u003e",
+                  "type": "mega",
+                  "accessLevel": null,
+                  "linkCount": 0,
+                  "createdAt": "1735057556063",
+                  "updatedAt": "1745131125769"
+                },
+                {
+                  "id": "\u003cid\u003e",
+                  "name": "\u003cvalue\u003e",
+                  "type": "default",
+                  "accessLevel": null,
+                  "linkCount": 0,
+                  "createdAt": "1718486059564",
+                  "updatedAt": "1745170681461"
+                },
+                {
+                  "id": "\u003cid\u003e",
+                  "name": "\u003cvalue\u003e",
+                  "type": "mega",
+                  "accessLevel": null,
+                  "linkCount": 0,
+                  "createdAt": "1714220493247",
+                  "updatedAt": "1745177832784"
+                }
+              ]
+            type: simple
+    x-speakeasy-test-group: Folders
+  - workflowId: updateFolder
+    steps:
+      - stepId: test
+        operationId: updateFolder
+        parameters:
+          - name: id
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "id": "\u003cid\u003e",
+                "name": "\u003cvalue\u003e",
+                "type": "mega",
+                "accessLevel": null,
+                "linkCount": 0,
+                "createdAt": "1732497228221",
+                "updatedAt": "1745145546942"
+              }
+            type: simple
+    x-speakeasy-test-group: Folders
+  - workflowId: deleteFolder
+    steps:
+      - stepId: test
+        operationId: deleteFolder
+        parameters:
+          - name: id
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "id": "\u003cid\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: Folders
+  - workflowId: createDomain
+    steps:
+      - stepId: test
+        operationId: createDomain
+        successCriteria:
+          - condition: $statusCode == 201
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "id": "\u003cid\u003e",
+                "slug": "acme.com",
+                "verified": false,
+                "primary": false,
+                "archived": false,
+                "placeholder": "https://dub.co/help/article/what-is-dub",
+                "expiredUrl": "https://acme.com/expired",
+                "notFoundUrl": "https://acme.com/not-found",
+                "assetLinks": null,
+                "appleAppSiteAssociation": null,
+                "logo": "\u003cvalue\u003e",
+                "createdAt": "1729011256337",
+                "updatedAt": "1745170931342",
+                "registeredDomain": {
+                  "id": "\u003cid\u003e",
+                  "createdAt": "1726831119706",
+                  "expiresAt": "1749439510895"
+                }
+              }
+            type: simple
+    x-speakeasy-test-group: Domains
+  - workflowId: listDomains
+    steps:
+      - stepId: test
+        operationId: listDomains
+        parameters:
+          - name: archived
+            in: query
+            value: "false"
+          - name: page
+            in: query
+            value: 1
+          - name: pageSize
+            in: query
+            value: 50
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              [
+                {
+                  "id": "\u003cid\u003e",
+                  "slug": "acme.com",
+                  "verified": false,
+                  "primary": false,
+                  "archived": false,
+                  "placeholder": "https://dub.co/help/article/what-is-dub",
+                  "expiredUrl": "https://acme.com/expired",
+                  "notFoundUrl": "https://acme.com/not-found",
+                  "assetLinks": null,
+                  "appleAppSiteAssociation": null,
+                  "logo": "\u003cvalue\u003e",
+                  "createdAt": "1730924937145",
+                  "updatedAt": "1745174378027",
+                  "registeredDomain": {
+                    "id": "\u003cid\u003e",
+                    "createdAt": "1719270323225",
+                    "expiresAt": "1752446520085"
+                  }
+                },
+                {
+                  "id": "\u003cid\u003e",
+                  "slug": "acme.com",
+                  "verified": false,
+                  "primary": false,
+                  "archived": false,
+                  "placeholder": "https://dub.co/help/article/what-is-dub",
+                  "expiredUrl": "https://acme.com/expired",
+                  "notFoundUrl": "https://acme.com/not-found",
+                  "assetLinks": null,
+                  "appleAppSiteAssociation": null,
+                  "logo": "\u003cvalue\u003e",
+                  "createdAt": "1718486059629",
+                  "updatedAt": "1745170681526",
+                  "registeredDomain": {
+                    "id": "\u003cid\u003e",
+                    "createdAt": "1733829869588",
+                    "expiresAt": "1745756494312"
+                  }
+                },
+                {
+                  "id": "\u003cid\u003e",
+                  "slug": "acme.com",
+                  "verified": false,
+                  "primary": false,
+                  "archived": false,
+                  "placeholder": "https://dub.co/help/article/what-is-dub",
+                  "expiredUrl": "https://acme.com/expired",
+                  "notFoundUrl": "https://acme.com/not-found",
+                  "assetLinks": null,
+                  "appleAppSiteAssociation": null,
+                  "logo": "\u003cvalue\u003e",
+                  "createdAt": "1736318579872",
+                  "updatedAt": "1745123214586",
+                  "registeredDomain": {
+                    "id": "\u003cid\u003e",
+                    "createdAt": "1715826539230",
+                    "expiresAt": "1766897667864"
+                  }
+                }
+              ]
+            type: simple
+    x-speakeasy-test-group: Domains
+  - workflowId: updateDomain
+    steps:
+      - stepId: test
+        operationId: updateDomain
+        parameters:
+          - name: slug
+            in: path
+            value: acme.com
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "id": "\u003cid\u003e",
+                "slug": "acme.com",
+                "verified": false,
+                "primary": false,
+                "archived": false,
+                "placeholder": "https://dub.co/help/article/what-is-dub",
+                "expiredUrl": "https://acme.com/expired",
+                "notFoundUrl": "https://acme.com/not-found",
+                "assetLinks": null,
+                "appleAppSiteAssociation": null,
+                "logo": "\u003cvalue\u003e",
+                "createdAt": "1740707572178",
+                "updatedAt": "1745167363530",
+                "registeredDomain": {
+                  "id": "\u003cid\u003e",
+                  "createdAt": "1724534105884",
+                  "expiresAt": "1776468973338"
+                }
+              }
+            type: simple
+    x-speakeasy-test-group: Domains
+  - workflowId: deleteDomain
+    steps:
+      - stepId: test
+        operationId: deleteDomain
+        parameters:
+          - name: slug
+            in: path
+            value: acme.com
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "slug": "acme.com"
+              }
+            type: simple
+    x-speakeasy-test-group: Domains
+  - workflowId: trackLead
+    steps:
+      - stepId: test
+        operationId: trackLead
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "click": {
+                  "id": "\u003cid\u003e"
+                },
+                "customer": {
+                  "name": "\u003cvalue\u003e",
+                  "email": "Diego86@hotmail.com",
+                  "avatar": "https://picsum.photos/seed/fWwyl/1479/748",
+                  "externalId": "\u003cid\u003e"
+                }
+              }
+            type: simple
+    x-speakeasy-test-group: Track
+  - workflowId: trackSale
+    steps:
+      - stepId: test
+        operationId: trackSale
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "eventName": "\u003cvalue\u003e",
+                "customer": {
+                  "id": "\u003cid\u003e",
+                  "name": "\u003cvalue\u003e",
+                  "email": "Tavares.Rice@hotmail.com",
+                  "avatar": "https://picsum.photos/seed/6lTJH/15/2912",
+                  "externalId": "\u003cid\u003e"
+                },
+                "sale": {
+                  "amount": 5612.49,
+                  "currency": "Bulgarian Lev",
+                  "paymentProcessor": "\u003cvalue\u003e",
+                  "invoiceId": "\u003cid\u003e",
+                  "metadata": {
+                    "key": "\u003cvalue\u003e",
+                    "key1": "\u003cvalue\u003e"
+                  }
+                }
+              }
+            type: simple
+    x-speakeasy-test-group: Track
+  - workflowId: getCustomers
+    steps:
+      - stepId: test
+        operationId: getCustomers
+        parameters:
+          - name: page
+            in: query
+            value: 1
+          - name: pageSize
+            in: query
+            value: 50
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              [
+                {
+                  "id": "\u003cid\u003e",
+                  "externalId": "\u003cid\u003e",
+                  "name": "\u003cvalue\u003e",
+                  "createdAt": "1730924937228"
+                },
+                {
+                  "id": "\u003cid\u003e",
+                  "externalId": "\u003cid\u003e",
+                  "name": "\u003cvalue\u003e",
+                  "createdAt": "1735057556211"
+                },
+                {
+                  "id": "\u003cid\u003e",
+                  "externalId": "\u003cid\u003e",
+                  "name": "\u003cvalue\u003e",
+                  "createdAt": "1719270323308"
+                }
+              ]
+            type: simple
+    x-speakeasy-test-group: Customers
+  - workflowId: createCustomer
+    steps:
+      - stepId: test
+        operationId: createCustomer
+        successCriteria:
+          - condition: $statusCode == 201
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "id": "\u003cid\u003e",
+                "externalId": "\u003cid\u003e",
+                "name": "\u003cvalue\u003e",
+                "createdAt": "1729011256454"
+              }
+            type: simple
+    x-speakeasy-test-group: Customers
+  - workflowId: getCustomer
+    steps:
+      - stepId: test
+        operationId: getCustomer
+        parameters:
+          - name: id
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "id": "\u003cid\u003e",
+                "externalId": "\u003cid\u003e",
+                "name": "\u003cvalue\u003e",
+                "createdAt": "1735752297882"
+              }
+            type: simple
+    x-speakeasy-test-group: Customers
+  - workflowId: updateCustomer
+    steps:
+      - stepId: test
+        operationId: updateCustomer
+        parameters:
+          - name: id
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "id": "\u003cid\u003e",
+                "externalId": "\u003cid\u003e",
+                "name": "\u003cvalue\u003e",
+                "createdAt": "1740707572292"
+              }
+            type: simple
+    x-speakeasy-test-group: Customers
+  - workflowId: deleteCustomer
+    steps:
+      - stepId: test
+        operationId: deleteCustomer
+        parameters:
+          - name: id
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "id": "\u003cid\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: Customers
+  - workflowId: createPartner
+    steps:
+      - stepId: test
+        operationId: createPartner
+        successCriteria:
+          - condition: $statusCode == 201
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "id": "\u003cid\u003e",
+                "name": "\u003cvalue\u003e",
+                "email": "Loyal79@yahoo.com",
+                "image": "https://loremflickr.com/1/679?lock=7139282333236917",
+                "country": "Slovenia",
+                "paypalEmail": "\u003cvalue\u003e",
+                "stripeConnectId": "\u003cid\u003e",
+                "payoutsEnabledAt": "\u003cvalue\u003e",
+                "createdAt": "1732153215847",
+                "status": "declined",
+                "programId": "\u003cid\u003e",
+                "tenantId": "\u003cid\u003e",
+                "links": [
+                  {
+                    "id": "\u003cid\u003e",
+                    "domain": "harmful-disposer.com",
+                    "key": "\u003ckey\u003e",
+                    "shortLink": "https://each-barracks.biz/",
+                    "url": "https://blind-breastplate.name/",
+                    "clicks": 0,
+                    "leads": 0,
+                    "sales": 0,
+                    "saleAmount": 0
+                  },
+                  {
+                    "id": "\u003cid\u003e",
+                    "domain": "gripping-analogy.name",
+                    "key": "\u003ckey\u003e",
+                    "shortLink": "https://distant-advertisement.name",
+                    "url": "https://quick-witted-march.org/",
+                    "clicks": 0,
+                    "leads": 0,
+                    "sales": 0,
+                    "saleAmount": 0
+                  },
+                  {
+                    "id": "\u003cid\u003e",
+                    "domain": "kooky-kinase.biz",
+                    "key": "\u003ckey\u003e",
+                    "shortLink": "https://considerate-pressure.org",
+                    "url": "https://smooth-dash.info",
+                    "clicks": 0,
+                    "leads": 0,
+                    "sales": 0,
+                    "saleAmount": 0
+                  }
+                ],
+                "clicks": 0,
+                "leads": 0,
+                "sales": 0,
+                "saleAmount": 0,
+                "earnings": 0
+              }
+            type: simple
+    x-speakeasy-test-group: Partners
+  - workflowId: createPartnerLink
+    steps:
+      - stepId: test
+        operationId: createPartnerLink
+        successCriteria:
+          - condition: $statusCode == 201
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "id": "\u003cid\u003e",
+                "domain": "tall-making.com",
+                "key": "\u003ckey\u003e",
+                "url": "https://inferior-louse.org",
+                "trackConversion": false,
+                "externalId": "\u003cid\u003e",
+                "tenantId": "\u003cid\u003e",
+                "programId": "\u003cid\u003e",
+                "partnerId": "\u003cid\u003e",
+                "archived": false,
+                "expiresAt": "1767064420295",
+                "expiredUrl": "https://tragic-skean.biz/",
+                "password": "kPhoCRFmmigZdFo",
+                "proxy": false,
+                "title": "\u003cvalue\u003e",
+                "description": "miserably merrily stay ouch",
+                "image": "https://picsum.photos/seed/tXRBthjAFj/215/2959",
+                "video": "https://loremflickr.com/3827/1329?lock=4742285326014076",
+                "rewrite": false,
+                "doIndex": false,
+                "ios": "\u003cvalue\u003e",
+                "android": "\u003cid\u003e",
+                "geo": {},
+                "publicStats": false,
+                "tagId": "\u003cid\u003e",
+                "tags": [
+                  {
+                    "id": "\u003cid\u003e",
+                    "name": "\u003cvalue\u003e",
+                    "color": "purple"
+                  },
+                  {
+                    "id": "\u003cid\u003e",
+                    "name": "\u003cvalue\u003e",
+                    "color": "pink"
+                  },
+                  {
+                    "id": "\u003cid\u003e",
+                    "name": "\u003cvalue\u003e",
+                    "color": "red"
+                  }
+                ],
+                "folderId": "\u003cid\u003e",
+                "webhookIds": [
+                  "\u003cvalue\u003e",
+                  "\u003cvalue\u003e"
+                ],
+                "comments": "numb worriedly tinted nor utterly but meh worriedly gadzooks poorly afterwards whether penalise before academics nicely ugh whistle hungrily",
+                "shortLink": "https://likely-submitter.info/",
+                "qrCode": "https://plain-cafe.org",
+                "utm_source": "\u003cvalue\u003e",
+                "utm_medium": "\u003cvalue\u003e",
+                "utm_campaign": "\u003cvalue\u003e",
+                "utm_term": "\u003cvalue\u003e",
+                "utm_content": "\u003cvalue\u003e",
+                "userId": "\u003cid\u003e",
+                "workspaceId": "\u003cid\u003e",
+                "clicks": 0,
+                "lastClicked": "\u003cvalue\u003e",
+                "leads": 0,
+                "sales": 0,
+                "saleAmount": 0,
+                "createdAt": "1728120688101",
+                "updatedAt": "1745166802900",
+                "projectId": "\u003cid\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: Partners
+  - workflowId: retrieveLinks
+    steps:
+      - stepId: test
+        operationId: retrieveLinks
+        parameters:
+          - name: programId
+            in: query
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              [
+                {
+                  "id": "\u003cid\u003e",
+                  "domain": "deafening-jury.net",
+                  "key": "\u003ckey\u003e",
+                  "shortLink": "https://negligible-presume.net/",
+                  "url": "https://smart-fax.org",
+                  "clicks": 0,
+                  "leads": 0,
+                  "sales": 0,
+                  "saleAmount": 0
+                },
+                {
+                  "id": "\u003cid\u003e",
+                  "domain": "cavernous-sediment.com",
+                  "key": "\u003ckey\u003e",
+                  "shortLink": "https://outgoing-ad.com",
+                  "url": "https://everlasting-provision.biz/",
+                  "clicks": 0,
+                  "leads": 0,
+                  "sales": 0,
+                  "saleAmount": 0
+                }
+              ]
+            type: simple
+    x-speakeasy-test-group: Partners
+  - workflowId: upsertPartnerLink
+    steps:
+      - stepId: test
+        operationId: upsertPartnerLink
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "id": "\u003cid\u003e",
+                "domain": "internal-teriyaki.name",
+                "key": "\u003ckey\u003e",
+                "url": "https://snoopy-exasperation.name/",
+                "trackConversion": false,
+                "externalId": "\u003cid\u003e",
+                "tenantId": "\u003cid\u003e",
+                "programId": "\u003cid\u003e",
+                "partnerId": "\u003cid\u003e",
+                "archived": false,
+                "expiresAt": "1749718681016",
+                "expiredUrl": "https://trim-stump.org/",
+                "password": "aeFj89Olng6LL82",
+                "proxy": false,
+                "title": "\u003cvalue\u003e",
+                "description": "next assail unblinking gulp doting selfishly resource poppy scent",
+                "image": "https://loremflickr.com/1169/3796?lock=7016484909038829",
+                "video": "https://loremflickr.com/476/1877?lock=724230151067151",
+                "rewrite": false,
+                "doIndex": false,
+                "ios": "\u003cvalue\u003e",
+                "android": "\u003cid\u003e",
+                "geo": {},
+                "publicStats": false,
+                "tagId": "\u003cid\u003e",
+                "tags": [],
+                "folderId": "\u003cid\u003e",
+                "webhookIds": [
+                  "\u003cvalue\u003e"
+                ],
+                "comments": "ick yippee unit train fashion up out er confound redevelop",
+                "shortLink": "https://tense-interchange.com/",
+                "qrCode": "https://uncommon-accelerator.net/",
+                "utm_source": "\u003cvalue\u003e",
+                "utm_medium": "\u003cvalue\u003e",
+                "utm_campaign": "\u003cvalue\u003e",
+                "utm_term": "\u003cvalue\u003e",
+                "utm_content": "\u003cvalue\u003e",
+                "userId": "\u003cid\u003e",
+                "workspaceId": "\u003cid\u003e",
+                "clicks": 0,
+                "lastClicked": "\u003cvalue\u003e",
+                "leads": 0,
+                "sales": 0,
+                "saleAmount": 0,
+                "createdAt": "1742078907705",
+                "updatedAt": "1745166837538",
+                "projectId": "\u003cid\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: Partners
+  - workflowId: retrievePartnerAnalytics
+    steps:
+      - stepId: test
+        operationId: retrievePartnerAnalytics
+        parameters:
+          - name: timezone
+            in: query
+            value: America/New_York
+          - name: groupBy
+            in: query
+            value: count
+          - name: programId
+            in: query
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              [
+                {
+                  "link": "\u003cvalue\u003e",
+                  "id": "\u003cid\u003e",
+                  "domain": "hot-dandelion.org",
+                  "key": "\u003ckey\u003e",
+                  "shortLink": "\u003cvalue\u003e",
+                  "url": "https://everlasting-cheetah.name",
+                  "createdAt": "1718731996662",
+                  "clicks": 0,
+                  "leads": 0,
+                  "sales": 0,
+                  "saleAmount": 0,
+                  "earnings": 0
+                },
+                {
+                  "link": "\u003cvalue\u003e",
+                  "id": "\u003cid\u003e",
+                  "domain": "grizzled-ecliptic.biz",
+                  "key": "\u003ckey\u003e",
+                  "shortLink": "\u003cvalue\u003e",
+                  "url": "https://possible-interchange.info",
+                  "createdAt": "1744656764922",
+                  "clicks": 0,
+                  "leads": 0,
+                  "sales": 0,
+                  "saleAmount": 0,
+                  "earnings": 0
+                },
+                {
+                  "link": "\u003cvalue\u003e",
+                  "id": "\u003cid\u003e",
+                  "domain": "glass-wriggler.biz",
+                  "key": "\u003ckey\u003e",
+                  "shortLink": "\u003cvalue\u003e",
+                  "url": "https://light-fit.name/",
+                  "createdAt": "1716287275442",
+                  "clicks": 0,
+                  "leads": 0,
+                  "sales": 0,
+                  "saleAmount": 0,
+                  "earnings": 0
+                }
+              ]
+            type: simple
+    x-speakeasy-test-group: Partners
+  - workflowId: updatePartnerSale
+    steps:
+      - stepId: test
+        operationId: updatePartnerSale
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "id": "\u003cid\u003e",
+                "amount": 1560.34,
+                "earnings": 2256.73,
+                "currency": "Cayman Islands Dollar",
+                "status": "pending",
+                "createdAt": "1733602681459",
+                "updatedAt": "1745121352386"
+              }
+            type: simple
+    x-speakeasy-test-group: Partners
+  - workflowId: getWorkspace
+    steps:
+      - stepId: test
+        operationId: getWorkspace
+        parameters:
+          - name: idOrSlug
+            in: path
+            value: <value>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "id": "\u003cid\u003e",
+                "name": "\u003cvalue\u003e",
+                "slug": "\u003cvalue\u003e",
+                "logo": null,
+                "inviteCode": "\u003cvalue\u003e",
+                "plan": "business max",
+                "stripeId": "\u003cid\u003e",
+                "billingCycleStart": 5588.34,
+                "paymentFailedAt": "\u003cvalue\u003e",
+                "stripeConnectId": "\u003cid\u003e",
+                "totalLinks": 5442.21,
+                "usage": 5212.35,
+                "usageLimit": 9699.61,
+                "linksUsage": 4580.49,
+                "linksLimit": 4508.24,
+                "salesUsage": 2627.95,
+                "salesLimit": 2134.57,
+                "domainsLimit": 9371.46,
+                "tagsLimit": 4381.42,
+                "foldersUsage": 8013.73,
+                "foldersLimit": 788.88,
+                "usersLimit": 2199.56,
+                "aiUsage": 3134.64,
+                "aiLimit": 945.89,
+                "conversionEnabled": false,
+                "dotLinkClaimed": false,
+                "partnersEnabled": true,
+                "createdAt": "1737210463283",
+                "users": [
+                  {
+                    "role": "member",
+                    "defaultFolderId": "\u003cid\u003e"
+                  },
+                  {
+                    "role": "owner",
+                    "defaultFolderId": "\u003cid\u003e"
+                  }
+                ],
+                "domains": [
+                  {
+                    "slug": "acme.com",
+                    "primary": false,
+                    "verified": false
+                  }
+                ],
+                "store": {
+                  "key": "\u003cvalue\u003e",
+                  "key1": "\u003cvalue\u003e"
+                },
+                "allowedHostnames": [
+                  "dub.sh"
+                ]
+              }
+            type: simple
+    x-speakeasy-test-group: Workspaces
+  - workflowId: updateWorkspace
+    steps:
+      - stepId: test
+        operationId: updateWorkspace
+        parameters:
+          - name: idOrSlug
+            in: path
+            value: <value>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "id": "\u003cid\u003e",
+                "name": "\u003cvalue\u003e",
+                "slug": "\u003cvalue\u003e",
+                "logo": null,
+                "inviteCode": "\u003cvalue\u003e",
+                "plan": "advanced",
+                "stripeId": "\u003cid\u003e",
+                "billingCycleStart": 5971.29,
+                "paymentFailedAt": "\u003cvalue\u003e",
+                "stripeConnectId": "\u003cid\u003e",
+                "totalLinks": 3446.2,
+                "usage": 9914.64,
+                "usageLimit": 6276.9,
+                "linksUsage": 4888.52,
+                "linksLimit": 9840.08,
+                "salesUsage": 540.62,
+                "salesLimit": 8965.01,
+                "domainsLimit": 4468.63,
+                "tagsLimit": 3115.07,
+                "foldersUsage": 2494.4,
+                "foldersLimit": 1395.79,
+                "usersLimit": 7892.75,
+                "aiUsage": 8898.38,
+                "aiLimit": 3024.61,
+                "conversionEnabled": true,
+                "dotLinkClaimed": false,
+                "partnersEnabled": false,
+                "createdAt": "1726415064687",
+                "users": [],
+                "domains": [
+                  {
+                    "slug": "acme.com",
+                    "primary": false,
+                    "verified": false
+                  },
+                  {
+                    "slug": "acme.com",
+                    "primary": false,
+                    "verified": false
+                  },
+                  {
+                    "slug": "acme.com",
+                    "primary": false,
+                    "verified": false
+                  }
+                ],
+                "store": {
+                  "key": "\u003cvalue\u003e",
+                  "key1": "\u003cvalue\u003e",
+                  "key2": "\u003cvalue\u003e"
+                },
+                "allowedHostnames": [
+                  "dub.sh"
+                ]
+              }
+            type: simple
+    x-speakeasy-test-group: Workspaces
+  - workflowId: createReferralsEmbedToken
+    steps:
+      - stepId: test
+        operationId: createReferralsEmbedToken
+        successCriteria:
+          - condition: $statusCode == 201
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "publicToken": "\u003cvalue\u003e",
+                "expires": "\u003cvalue\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: Embed Tokens
+  - workflowId: getQRCode
+    steps:
+      - stepId: test
+        operationId: getQRCode
+        parameters:
+          - name: url
+            in: query
+            value: https://normal-making.name
+          - name: size
+            in: query
+            value: 600
+          - name: level
+            in: query
+            value: L
+          - name: fgColor
+            in: query
+            value: '#000000'
+          - name: bgColor
+            in: query
+            value: '#FFFFFF'
+          - name: hideLogo
+            in: query
+            value: "false"
+          - name: margin
+            in: query
+            value: 2
+          - name: includeMargin
+            in: query
+            value: "true"
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == image/png
+          - context: $response.body
+            condition: |
+              "\u003cvalue\u003e"
+            type: simple
+    x-speakeasy-test-group: QR Codes
