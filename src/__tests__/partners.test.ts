@@ -10,7 +10,6 @@ test("Partners Create Partner", async () => {
   const testHttpClient = createTestHTTPClient("createPartner");
 
   const dub = new Dub({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     token: "DUB_API_KEY",
   });
@@ -77,7 +76,6 @@ test("Partners Create Partner Link", async () => {
   const testHttpClient = createTestHTTPClient("createPartnerLink");
 
   const dub = new Dub({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     token: "DUB_API_KEY",
   });
@@ -158,7 +156,6 @@ test("Partners Retrieve Links", async () => {
   const testHttpClient = createTestHTTPClient("retrieveLinks");
 
   const dub = new Dub({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     token: "DUB_API_KEY",
   });
@@ -197,7 +194,6 @@ test("Partners Upsert Partner Link", async () => {
   const testHttpClient = createTestHTTPClient("upsertPartnerLink");
 
   const dub = new Dub({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     token: "DUB_API_KEY",
   });
@@ -261,7 +257,6 @@ test("Partners Retrieve Partner Analytics", async () => {
   const testHttpClient = createTestHTTPClient("retrievePartnerAnalytics");
 
   const dub = new Dub({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     token: "DUB_API_KEY",
   });
@@ -320,7 +315,6 @@ test("Partners Update Partner Sale", async () => {
   const testHttpClient = createTestHTTPClient("updatePartnerSale");
 
   const dub = new Dub({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     token: "DUB_API_KEY",
   });

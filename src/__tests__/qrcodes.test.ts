@@ -10,7 +10,6 @@ test("Qr Codes Get Qr Code", async () => {
   const testHttpClient = createTestHTTPClient("getQRCode");
 
   const dub = new Dub({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     token: "DUB_API_KEY",
   });

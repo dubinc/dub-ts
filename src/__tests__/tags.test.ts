@@ -10,7 +10,6 @@ test("Tags Create Tag", async () => {
   const testHttpClient = createTestHTTPClient("createTag");
 
   const dub = new Dub({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     token: "DUB_API_KEY",
   });
@@ -28,7 +27,6 @@ test("Tags Get Tags", async () => {
   const testHttpClient = createTestHTTPClient("getTags");
 
   const dub = new Dub({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     token: "DUB_API_KEY",
   });
@@ -58,7 +56,6 @@ test("Tags Update Tag", async () => {
   const testHttpClient = createTestHTTPClient("updateTag");
 
   const dub = new Dub({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     token: "DUB_API_KEY",
   });
@@ -76,7 +73,6 @@ test("Tags Delete Tag", async () => {
   const testHttpClient = createTestHTTPClient("deleteTag");
 
   const dub = new Dub({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     token: "DUB_API_KEY",
   });

@@ -10,7 +10,6 @@ test("Events List Events", async () => {
   const testHttpClient = createTestHTTPClient("listEvents");
 
   const dub = new Dub({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     token: "DUB_API_KEY",
   });

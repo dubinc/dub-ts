@@ -10,7 +10,6 @@ test("Domains Create Domain", async () => {
   const testHttpClient = createTestHTTPClient("createDomain");
 
   const dub = new Dub({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     token: "DUB_API_KEY",
   });
@@ -43,7 +42,6 @@ test("Domains List Domains", async () => {
   const testHttpClient = createTestHTTPClient("listDomains");
 
   const dub = new Dub({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     token: "DUB_API_KEY",
   });
@@ -119,7 +117,6 @@ test("Domains Update Domain", async () => {
   const testHttpClient = createTestHTTPClient("updateDomain");
 
   const dub = new Dub({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     token: "DUB_API_KEY",
   });
@@ -152,7 +149,6 @@ test("Domains Delete Domain", async () => {
   const testHttpClient = createTestHTTPClient("deleteDomain");
 
   const dub = new Dub({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     token: "DUB_API_KEY",
   });

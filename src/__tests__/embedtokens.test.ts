@@ -10,7 +10,6 @@ test("Embed Tokens Create Referrals Embed Token", async () => {
   const testHttpClient = createTestHTTPClient("createReferralsEmbedToken");
 
   const dub = new Dub({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     token: "DUB_API_KEY",
   });

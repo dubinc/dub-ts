@@ -10,7 +10,6 @@ test("Analytics Retrieve Analytics", async () => {
   const testHttpClient = createTestHTTPClient("retrieveAnalytics");
 
   const dub = new Dub({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     token: "DUB_API_KEY",
   });

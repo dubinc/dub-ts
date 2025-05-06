@@ -10,7 +10,6 @@ test("Customers Get Customers", async () => {
   const testHttpClient = createTestHTTPClient("getCustomers");
 
   const dub = new Dub({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     token: "DUB_API_KEY",
   });
@@ -43,7 +42,6 @@ test("Customers Create Customer", async () => {
   const testHttpClient = createTestHTTPClient("createCustomer");
 
   const dub = new Dub({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     token: "DUB_API_KEY",
   });
@@ -62,7 +60,6 @@ test("Customers Get Customer", async () => {
   const testHttpClient = createTestHTTPClient("getCustomer");
 
   const dub = new Dub({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     token: "DUB_API_KEY",
   });
@@ -83,7 +80,6 @@ test("Customers Update Customer", async () => {
   const testHttpClient = createTestHTTPClient("updateCustomer");
 
   const dub = new Dub({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     token: "DUB_API_KEY",
   });
@@ -104,7 +100,6 @@ test("Customers Delete Customer", async () => {
   const testHttpClient = createTestHTTPClient("deleteCustomer");
 
   const dub = new Dub({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     token: "DUB_API_KEY",
   });

@@ -10,7 +10,6 @@ test("Folders Create Folder", async () => {
   const testHttpClient = createTestHTTPClient("createFolder");
 
   const dub = new Dub({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     token: "DUB_API_KEY",
   });
@@ -32,7 +31,6 @@ test("Folders List Folders", async () => {
   const testHttpClient = createTestHTTPClient("listFolders");
 
   const dub = new Dub({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     token: "DUB_API_KEY",
   });
@@ -74,7 +72,6 @@ test("Folders Update Folder", async () => {
   const testHttpClient = createTestHTTPClient("updateFolder");
 
   const dub = new Dub({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     token: "DUB_API_KEY",
   });
@@ -96,7 +93,6 @@ test("Folders Delete Folder", async () => {
   const testHttpClient = createTestHTTPClient("deleteFolder");
 
   const dub = new Dub({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     token: "DUB_API_KEY",
   });

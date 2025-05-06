@@ -10,7 +10,6 @@ test("Track Track Lead", async () => {
   const testHttpClient = createTestHTTPClient("trackLead");
 
   const dub = new Dub({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     token: "DUB_API_KEY",
   });
@@ -34,7 +33,6 @@ test("Track Track Sale", async () => {
   const testHttpClient = createTestHTTPClient("trackSale");
 
   const dub = new Dub({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     token: "DUB_API_KEY",
   });

@@ -10,7 +10,6 @@ test("Links Create Link", async () => {
   const testHttpClient = createTestHTTPClient("createLink");
 
   const dub = new Dub({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     token: "DUB_API_KEY",
   });
@@ -83,7 +82,6 @@ test("Links Get Links", async () => {
   const testHttpClient = createTestHTTPClient("getLinks");
 
   const dub = new Dub({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     token: "DUB_API_KEY",
   });
@@ -294,7 +292,6 @@ test("Links Get Links Count", async () => {
   const testHttpClient = createTestHTTPClient("getLinksCount");
 
   const dub = new Dub({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     token: "DUB_API_KEY",
   });
@@ -308,7 +305,6 @@ test("Links Get Link Info", async () => {
   const testHttpClient = createTestHTTPClient("getLinkInfo");
 
   const dub = new Dub({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     token: "DUB_API_KEY",
   });
@@ -388,7 +384,6 @@ test("Links Update Link", async () => {
   const testHttpClient = createTestHTTPClient("updateLink");
 
   const dub = new Dub({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     token: "DUB_API_KEY",
   });
@@ -466,7 +461,6 @@ test("Links Delete Link", async () => {
   const testHttpClient = createTestHTTPClient("deleteLink");
 
   const dub = new Dub({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     token: "DUB_API_KEY",
   });
@@ -482,7 +476,6 @@ test("Links Bulk Create Links", async () => {
   const testHttpClient = createTestHTTPClient("bulkCreateLinks");
 
   const dub = new Dub({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     token: "DUB_API_KEY",
   });
@@ -554,7 +547,6 @@ test("Links Bulk Update Links", async () => {
   const testHttpClient = createTestHTTPClient("bulkUpdateLinks");
 
   const dub = new Dub({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     token: "DUB_API_KEY",
   });
@@ -700,7 +692,6 @@ test("Links Bulk Delete Links", async () => {
   const testHttpClient = createTestHTTPClient("bulkDeleteLinks");
 
   const dub = new Dub({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     token: "DUB_API_KEY",
   });
@@ -721,7 +712,6 @@ test("Links Upsert Link", async () => {
   const testHttpClient = createTestHTTPClient("upsertLink");
 
   const dub = new Dub({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     token: "DUB_API_KEY",
   });

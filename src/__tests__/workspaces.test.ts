@@ -10,7 +10,6 @@ test("Workspaces Get Workspace", async () => {
   const testHttpClient = createTestHTTPClient("getWorkspace");
 
   const dub = new Dub({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     token: "DUB_API_KEY",
   });
@@ -79,7 +78,6 @@ test("Workspaces Update Workspace", async () => {
   const testHttpClient = createTestHTTPClient("updateWorkspace");
 
   const dub = new Dub({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     token: "DUB_API_KEY",
   });

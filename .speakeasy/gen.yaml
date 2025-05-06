@@ -15,11 +15,11 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
+  mockServer:
+    disabled: true
   tests:
     generateNewTests: true
     skipResponseBodyAssertions: false
-  mockServer:
-    disabled: true
 typescript:
   version: 0.61.11
   additionalDependencies:
