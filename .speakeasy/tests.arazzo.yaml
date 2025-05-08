@@ -1,10 +1,10 @@
 arazzo: 1.0.1
 info:
   title: Test Suite
-  summary: Created from /Users/kiran/Desktop/dubinc/dub-ts/.speakeasy/temp/reformatted2787295440.json
+  summary: Created from /Users/kiran/Desktop/dubinc/dub-ts/.speakeasy/temp/reformatted3863751483.json
   version: 0.0.1
 sourceDescriptions:
-  - name: /Users/kiran/Desktop/dubinc/dub-ts/.speakeasy/temp/reformatted2787295440.json
+  - name: /Users/kiran/Desktop/dubinc/dub-ts/.speakeasy/temp/reformatted3863751483.json
     url: https://TBD.com
     type: openapi
 workflows:
