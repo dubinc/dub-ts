@@ -37,6 +37,10 @@ export type GetCustomerLink = {
    */
   shortLink: string;
   /**
+   * The destination URL of the short link.
+   */
+  url: string;
+  /**
    * The ID of the program the short link is associated with.
    */
   programId: string | null;
@@ -94,6 +98,14 @@ export type GetCustomerResponseBody = {
    * Country of the customer.
    */
   country?: string | null | undefined;
+  /**
+   * Total number of sales for the customer.
+   */
+  sales?: number | null | undefined;
+  /**
+   * Total amount of sales for the customer.
+   */
+  saleAmount?: number | null | undefined;
   /**
    * The date the customer was created.
    */
@@ -171,6 +183,7 @@ export const GetCustomerLink$inboundSchema: z.ZodType<
   domain: z.string(),
   key: z.string(),
   shortLink: z.string(),
+  url: z.string(),
   programId: z.nullable(z.string()),
 });
 
@@ -180,6 +193,7 @@ export type GetCustomerLink$Outbound = {
   domain: string;
   key: string;
   shortLink: string;
+  url: string;
   programId: string | null;
 };
 
@@ -193,6 +207,7 @@ export const GetCustomerLink$outboundSchema: z.ZodType<
   domain: z.string(),
   key: z.string(),
   shortLink: z.string(),
+  url: z.string(),
   programId: z.nullable(z.string()),
 });
 
@@ -396,6 +411,8 @@ export const GetCustomerResponseBody$inboundSchema: z.ZodType<
   email: z.nullable(z.string()).optional(),
   avatar: z.nullable(z.string()).optional(),
   country: z.nullable(z.string()).optional(),
+  sales: z.nullable(z.number()).optional(),
+  saleAmount: z.nullable(z.number()).optional(),
   createdAt: z.string(),
   link: z.nullable(z.lazy(() => GetCustomerLink$inboundSchema)).optional(),
   programId: z.nullable(z.string()).optional(),
@@ -413,6 +430,8 @@ export type GetCustomerResponseBody$Outbound = {
   email?: string | null | undefined;
   avatar?: string | null | undefined;
   country?: string | null | undefined;
+  sales?: number | null | undefined;
+  saleAmount?: number | null | undefined;
   createdAt: string;
   link?: GetCustomerLink$Outbound | null | undefined;
   programId?: string | null | undefined;
@@ -432,6 +451,8 @@ export const GetCustomerResponseBody$outboundSchema: z.ZodType<
   email: z.nullable(z.string()).optional(),
   avatar: z.nullable(z.string()).optional(),
   country: z.nullable(z.string()).optional(),
+  sales: z.nullable(z.number()).optional(),
+  saleAmount: z.nullable(z.number()).optional(),
   createdAt: z.string(),
   link: z.nullable(z.lazy(() => GetCustomerLink$outboundSchema)).optional(),
   programId: z.nullable(z.string()).optional(),

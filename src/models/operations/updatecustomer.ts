@@ -58,6 +58,10 @@ export type UpdateCustomerLink = {
    */
   shortLink: string;
   /**
+   * The destination URL of the short link.
+   */
+  url: string;
+  /**
    * The ID of the program the short link is associated with.
    */
   programId: string | null;
@@ -115,6 +119,14 @@ export type UpdateCustomerResponseBody = {
    * Country of the customer.
    */
   country?: string | null | undefined;
+  /**
+   * Total number of sales for the customer.
+   */
+  sales?: number | null | undefined;
+  /**
+   * Total amount of sales for the customer.
+   */
+  saleAmount?: number | null | undefined;
   /**
    * The date the customer was created.
    */
@@ -267,6 +279,7 @@ export const UpdateCustomerLink$inboundSchema: z.ZodType<
   domain: z.string(),
   key: z.string(),
   shortLink: z.string(),
+  url: z.string(),
   programId: z.nullable(z.string()),
 });
 
@@ -276,6 +289,7 @@ export type UpdateCustomerLink$Outbound = {
   domain: string;
   key: string;
   shortLink: string;
+  url: string;
   programId: string | null;
 };
 
@@ -289,6 +303,7 @@ export const UpdateCustomerLink$outboundSchema: z.ZodType<
   domain: z.string(),
   key: z.string(),
   shortLink: z.string(),
+  url: z.string(),
   programId: z.nullable(z.string()),
 });
 
@@ -494,6 +509,8 @@ export const UpdateCustomerResponseBody$inboundSchema: z.ZodType<
   email: z.nullable(z.string()).optional(),
   avatar: z.nullable(z.string()).optional(),
   country: z.nullable(z.string()).optional(),
+  sales: z.nullable(z.number()).optional(),
+  saleAmount: z.nullable(z.number()).optional(),
   createdAt: z.string(),
   link: z.nullable(z.lazy(() => UpdateCustomerLink$inboundSchema)).optional(),
   programId: z.nullable(z.string()).optional(),
@@ -511,6 +528,8 @@ export type UpdateCustomerResponseBody$Outbound = {
   email?: string | null | undefined;
   avatar?: string | null | undefined;
   country?: string | null | undefined;
+  sales?: number | null | undefined;
+  saleAmount?: number | null | undefined;
   createdAt: string;
   link?: UpdateCustomerLink$Outbound | null | undefined;
   programId?: string | null | undefined;
@@ -530,6 +549,8 @@ export const UpdateCustomerResponseBody$outboundSchema: z.ZodType<
   email: z.nullable(z.string()).optional(),
   avatar: z.nullable(z.string()).optional(),
   country: z.nullable(z.string()).optional(),
+  sales: z.nullable(z.number()).optional(),
+  saleAmount: z.nullable(z.number()).optional(),
   createdAt: z.string(),
   link: z.nullable(z.lazy(() => UpdateCustomerLink$outboundSchema)).optional(),
   programId: z.nullable(z.string()).optional(),

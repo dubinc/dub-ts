@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: a7ba8704507363fabccfcbe7aad3310c
+  docChecksum: 8a6a0e4f5b4986b7f9ed7f84fe894d95
   docVersion: 0.0.1
-  speakeasyVersion: 1.542.3
-  generationVersion: 2.597.9
-  releaseVersion: 0.61.11
-  configChecksum: d537a98a2f9f56dbaca258c38b054936
+  speakeasyVersion: 1.543.1
+  generationVersion: 2.598.21
+  releaseVersion: 0.61.12
+  configChecksum: 1a6e3e69024335dbe17d62a719024e87
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -239,6 +239,8 @@ generatedFiles:
   - docs/models/operations/getcustomerresponsebody.md
   - docs/models/operations/getcustomerslink.md
   - docs/models/operations/getcustomerspartner.md
+  - docs/models/operations/getcustomersqueryparamsortby.md
+  - docs/models/operations/getcustomersqueryparamsortorder.md
   - docs/models/operations/getcustomersrequest.md
   - docs/models/operations/getcustomersresponsebody.md
   - docs/models/operations/getcustomerstype.md
@@ -1275,6 +1277,8 @@ examples:
         query:
           page: 1
           pageSize: 50
+          sortBy: "createdAt"
+          sortOrder: "desc"
       responses:
         "200":
           application/json: [{"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "1730924937228"}, {"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "1735057556211"}, {"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "1719270323308"}]
