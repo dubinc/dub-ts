@@ -106,12 +106,16 @@ async function $do(
   const path = pathToFunc("/customers")();
 
   const query = encodeFormQuery({
+    "country": payload?.country,
     "email": payload?.email,
     "externalId": payload?.externalId,
     "includeExpandedFields": payload?.includeExpandedFields,
+    "linkId": payload?.linkId,
     "page": payload?.page,
     "pageSize": payload?.pageSize,
     "search": payload?.search,
+    "sortBy": payload?.sortBy,
+    "sortOrder": payload?.sortOrder,
   });
 
   const headers = new Headers(compactMap({

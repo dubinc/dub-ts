@@ -482,6 +482,14 @@ export type Customer = {
    */
   country?: string | null | undefined;
   /**
+   * Total number of sales for the customer.
+   */
+  sales?: number | null | undefined;
+  /**
+   * Total amount of sales for the customer.
+   */
+  saleAmount?: number | null | undefined;
+  /**
    * The date the customer was created.
    */
   createdAt: string;
@@ -2271,6 +2279,8 @@ export const Customer$inboundSchema: z.ZodType<
   email: z.nullable(z.string()).optional(),
   avatar: z.nullable(z.string()).optional(),
   country: z.nullable(z.string()).optional(),
+  sales: z.nullable(z.number()).optional(),
+  saleAmount: z.nullable(z.number()).optional(),
   createdAt: z.string(),
 });
 
@@ -2282,6 +2292,8 @@ export type Customer$Outbound = {
   email?: string | null | undefined;
   avatar?: string | null | undefined;
   country?: string | null | undefined;
+  sales?: number | null | undefined;
+  saleAmount?: number | null | undefined;
   createdAt: string;
 };
 
@@ -2297,6 +2309,8 @@ export const Customer$outboundSchema: z.ZodType<
   email: z.nullable(z.string()).optional(),
   avatar: z.nullable(z.string()).optional(),
   country: z.nullable(z.string()).optional(),
+  sales: z.nullable(z.number()).optional(),
+  saleAmount: z.nullable(z.number()).optional(),
   createdAt: z.string(),
 });
 

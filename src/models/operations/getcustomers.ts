@@ -8,6 +8,34 @@ import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+/**
+ * The field to sort the customers by. The default is `createdAt`.
+ */
+export const GetCustomersQueryParamSortBy = {
+  CreatedAt: "createdAt",
+  SaleAmount: "saleAmount",
+} as const;
+/**
+ * The field to sort the customers by. The default is `createdAt`.
+ */
+export type GetCustomersQueryParamSortBy = ClosedEnum<
+  typeof GetCustomersQueryParamSortBy
+>;
+
+/**
+ * The sort order. The default is `desc`.
+ */
+export const GetCustomersQueryParamSortOrder = {
+  Asc: "asc",
+  Desc: "desc",
+} as const;
+/**
+ * The sort order. The default is `desc`.
+ */
+export type GetCustomersQueryParamSortOrder = ClosedEnum<
+  typeof GetCustomersQueryParamSortOrder
+>;
+
 export type GetCustomersRequest = {
   /**
    * A case-sensitive filter on the list based on the customer's `email` field. The value must be a string. Takes precedence over `externalId`.
@@ -22,9 +50,25 @@ export type GetCustomersRequest = {
    */
   search?: string | undefined;
   /**
+   * A filter on the list based on the customer's `country` field.
+   */
+  country?: string | undefined;
+  /**
+   * A filter on the list based on the customer's `linkId` field (the referral link ID).
+   */
+  linkId?: string | undefined;
+  /**
    * Whether to include expanded fields on the customer (`link`, `partner`, `discount`).
    */
   includeExpandedFields?: boolean | undefined;
+  /**
+   * The field to sort the customers by. The default is `createdAt`.
+   */
+  sortBy?: GetCustomersQueryParamSortBy | undefined;
+  /**
+   * The sort order. The default is `desc`.
+   */
+  sortOrder?: GetCustomersQueryParamSortOrder | undefined;
   /**
    * The page number for pagination.
    */
@@ -52,6 +96,10 @@ export type GetCustomersLink = {
    * The full URL of the short link, including the https protocol (e.g. `https://dub.sh/try`).
    */
   shortLink: string;
+  /**
+   * The destination URL of the short link.
+   */
+  url: string;
   /**
    * The ID of the program the short link is associated with.
    */
@@ -108,6 +156,14 @@ export type GetCustomersResponseBody = {
    */
   country?: string | null | undefined;
   /**
+   * Total number of sales for the customer.
+   */
+  sales?: number | null | undefined;
+  /**
+   * Total amount of sales for the customer.
+   */
+  saleAmount?: number | null | undefined;
+  /**
    * The date the customer was created.
    */
   createdAt: string;
@@ -118,6 +174,48 @@ export type GetCustomersResponseBody = {
 };
 
 /** @internal */
+export const GetCustomersQueryParamSortBy$inboundSchema: z.ZodNativeEnum<
+  typeof GetCustomersQueryParamSortBy
+> = z.nativeEnum(GetCustomersQueryParamSortBy);
+
+/** @internal */
+export const GetCustomersQueryParamSortBy$outboundSchema: z.ZodNativeEnum<
+  typeof GetCustomersQueryParamSortBy
+> = GetCustomersQueryParamSortBy$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetCustomersQueryParamSortBy$ {
+  /** @deprecated use `GetCustomersQueryParamSortBy$inboundSchema` instead. */
+  export const inboundSchema = GetCustomersQueryParamSortBy$inboundSchema;
+  /** @deprecated use `GetCustomersQueryParamSortBy$outboundSchema` instead. */
+  export const outboundSchema = GetCustomersQueryParamSortBy$outboundSchema;
+}
+
+/** @internal */
+export const GetCustomersQueryParamSortOrder$inboundSchema: z.ZodNativeEnum<
+  typeof GetCustomersQueryParamSortOrder
+> = z.nativeEnum(GetCustomersQueryParamSortOrder);
+
+/** @internal */
+export const GetCustomersQueryParamSortOrder$outboundSchema: z.ZodNativeEnum<
+  typeof GetCustomersQueryParamSortOrder
+> = GetCustomersQueryParamSortOrder$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetCustomersQueryParamSortOrder$ {
+  /** @deprecated use `GetCustomersQueryParamSortOrder$inboundSchema` instead. */
+  export const inboundSchema = GetCustomersQueryParamSortOrder$inboundSchema;
+  /** @deprecated use `GetCustomersQueryParamSortOrder$outboundSchema` instead. */
+  export const outboundSchema = GetCustomersQueryParamSortOrder$outboundSchema;
+}
+
+/** @internal */
 export const GetCustomersRequest$inboundSchema: z.ZodType<
   GetCustomersRequest,
   z.ZodTypeDef,
@@ -126,7 +224,11 @@ export const GetCustomersRequest$inboundSchema: z.ZodType<
   email: z.string().optional(),
   externalId: z.string().optional(),
   search: z.string().optional(),
+  country: z.string().optional(),
+  linkId: z.string().optional(),
   includeExpandedFields: z.boolean().optional(),
+  sortBy: GetCustomersQueryParamSortBy$inboundSchema.default("createdAt"),
+  sortOrder: GetCustomersQueryParamSortOrder$inboundSchema.default("desc"),
   page: z.number().default(1),
   pageSize: z.number().default(100),
 });
@@ -136,7 +238,11 @@ export type GetCustomersRequest$Outbound = {
   email?: string | undefined;
   externalId?: string | undefined;
   search?: string | undefined;
+  country?: string | undefined;
+  linkId?: string | undefined;
   includeExpandedFields?: boolean | undefined;
+  sortBy: string;
+  sortOrder: string;
   page: number;
   pageSize: number;
 };
@@ -150,7 +256,11 @@ export const GetCustomersRequest$outboundSchema: z.ZodType<
   email: z.string().optional(),
   externalId: z.string().optional(),
   search: z.string().optional(),
+  country: z.string().optional(),
+  linkId: z.string().optional(),
   includeExpandedFields: z.boolean().optional(),
+  sortBy: GetCustomersQueryParamSortBy$outboundSchema.default("createdAt"),
+  sortOrder: GetCustomersQueryParamSortOrder$outboundSchema.default("desc"),
   page: z.number().default(1),
   pageSize: z.number().default(100),
 });
@@ -196,6 +306,7 @@ export const GetCustomersLink$inboundSchema: z.ZodType<
   domain: z.string(),
   key: z.string(),
   shortLink: z.string(),
+  url: z.string(),
   programId: z.nullable(z.string()),
 });
 
@@ -205,6 +316,7 @@ export type GetCustomersLink$Outbound = {
   domain: string;
   key: string;
   shortLink: string;
+  url: string;
   programId: string | null;
 };
 
@@ -218,6 +330,7 @@ export const GetCustomersLink$outboundSchema: z.ZodType<
   domain: z.string(),
   key: z.string(),
   shortLink: z.string(),
+  url: z.string(),
   programId: z.nullable(z.string()),
 });
 
@@ -419,6 +532,8 @@ export const GetCustomersResponseBody$inboundSchema: z.ZodType<
   email: z.nullable(z.string()).optional(),
   avatar: z.nullable(z.string()).optional(),
   country: z.nullable(z.string()).optional(),
+  sales: z.nullable(z.number()).optional(),
+  saleAmount: z.nullable(z.number()).optional(),
   createdAt: z.string(),
   link: z.nullable(z.lazy(() => GetCustomersLink$inboundSchema)).optional(),
   programId: z.nullable(z.string()).optional(),
@@ -435,6 +550,8 @@ export type GetCustomersResponseBody$Outbound = {
   email?: string | null | undefined;
   avatar?: string | null | undefined;
   country?: string | null | undefined;
+  sales?: number | null | undefined;
+  saleAmount?: number | null | undefined;
   createdAt: string;
   link?: GetCustomersLink$Outbound | null | undefined;
   programId?: string | null | undefined;
@@ -454,6 +571,8 @@ export const GetCustomersResponseBody$outboundSchema: z.ZodType<
   email: z.nullable(z.string()).optional(),
   avatar: z.nullable(z.string()).optional(),
   country: z.nullable(z.string()).optional(),
+  sales: z.nullable(z.number()).optional(),
+  saleAmount: z.nullable(z.number()).optional(),
   createdAt: z.string(),
   link: z.nullable(z.lazy(() => GetCustomersLink$outboundSchema)).optional(),
   programId: z.nullable(z.string()).optional(),
