@@ -1,5 +1,7 @@
 # Status
 
+The status of the partner's enrollment in the program.
+
 ## Example Usage
 
 ```typescript

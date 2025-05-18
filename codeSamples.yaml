@@ -188,7 +188,7 @@ actions:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "getQRCode"
-          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.qrCodes.get({\n    url: \"https://normal-making.name\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.qrCodes.get({\n    url: \"https://needy-newsstand.biz/\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/tags"]["get"]
     update:
       "x-codeSamples":

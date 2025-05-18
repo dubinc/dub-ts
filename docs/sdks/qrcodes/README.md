@@ -22,7 +22,7 @@ const dub = new Dub({
 
 async function run() {
   const result = await dub.qrCodes.get({
-    url: "https://normal-making.name",
+    url: "https://needy-newsstand.biz/",
   });
 
   // Handle the result
@@ -48,7 +48,7 @@ const dub = new DubCore({
 
 async function run() {
   const res = await qrCodesGet(dub, {
-    url: "https://normal-making.name",
+    url: "https://needy-newsstand.biz/",
   });
 
   if (!res.ok) {

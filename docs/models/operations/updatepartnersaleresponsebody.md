@@ -13,8 +13,8 @@ let value: UpdatePartnerSaleResponseBody = {
   earnings: 1601.4,
   currency: "Libyan Dinar",
   status: "processed",
-  createdAt: "1746509211477",
-  updatedAt: "1746674329584",
+  createdAt: "1747368359737",
+  updatedAt: "1747533477844",
 };
 ```
 
