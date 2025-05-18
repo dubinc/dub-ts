@@ -47,9 +47,21 @@ export type GetCustomerLink = {
 };
 
 export type GetCustomerPartner = {
+  /**
+   * The partner's unique ID on Dub.
+   */
   id: string;
+  /**
+   * The partner's full legal name.
+   */
   name: string;
+  /**
+   * The partner's email address. Should be a unique value across Dub.
+   */
   email: string | null;
+  /**
+   * The partner's avatar image.
+   */
   image: string | null;
 };
 
