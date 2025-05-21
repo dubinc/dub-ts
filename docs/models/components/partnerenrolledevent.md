@@ -10,7 +10,7 @@ import { PartnerEnrolledEvent } from "dub/models/components";
 let value: PartnerEnrolledEvent = {
   id: "<id>",
   event: "partner.enrolled",
-  createdAt: "1730628684720",
+  createdAt: "1718708482271",
   data: {
     id: "<id>",
     name: "<value>",
@@ -26,7 +26,7 @@ let value: PartnerEnrolledEvent = {
     paypalEmail: "<value>",
     stripeConnectId: "<id>",
     payoutsEnabledAt: "<value>",
-    createdAt: "1745183966729",
+    createdAt: "1733263764275",
     status: "rejected",
     programId: "<id>",
     tenantId: "<id>",

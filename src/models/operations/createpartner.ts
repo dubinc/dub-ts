@@ -448,7 +448,7 @@ export type CreatePartnerRequestBody = {
 /**
  * The status of the partner's enrollment in the program.
  */
-export const Status = {
+export const CreatePartnerStatus = {
   Pending: "pending",
   Approved: "approved",
   Rejected: "rejected",
@@ -459,7 +459,7 @@ export const Status = {
 /**
  * The status of the partner's enrollment in the program.
  */
-export type Status = ClosedEnum<typeof Status>;
+export type CreatePartnerStatus = ClosedEnum<typeof CreatePartnerStatus>;
 
 export type CreatePartnerLink = {
   /**
@@ -571,7 +571,7 @@ export type CreatePartnerResponseBody = {
   /**
    * The status of the partner's enrollment in the program.
    */
-  status: Status;
+  status: CreatePartnerStatus;
   /**
    * The program's unique ID on Dub.
    */
@@ -1015,22 +1015,24 @@ export function createPartnerRequestBodyFromJSON(
 }
 
 /** @internal */
-export const Status$inboundSchema: z.ZodNativeEnum<typeof Status> = z
-  .nativeEnum(Status);
+export const CreatePartnerStatus$inboundSchema: z.ZodNativeEnum<
+  typeof CreatePartnerStatus
+> = z.nativeEnum(CreatePartnerStatus);
 
 /** @internal */
-export const Status$outboundSchema: z.ZodNativeEnum<typeof Status> =
-  Status$inboundSchema;
+export const CreatePartnerStatus$outboundSchema: z.ZodNativeEnum<
+  typeof CreatePartnerStatus
+> = CreatePartnerStatus$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Status$ {
-  /** @deprecated use `Status$inboundSchema` instead. */
-  export const inboundSchema = Status$inboundSchema;
-  /** @deprecated use `Status$outboundSchema` instead. */
-  export const outboundSchema = Status$outboundSchema;
+export namespace CreatePartnerStatus$ {
+  /** @deprecated use `CreatePartnerStatus$inboundSchema` instead. */
+  export const inboundSchema = CreatePartnerStatus$inboundSchema;
+  /** @deprecated use `CreatePartnerStatus$outboundSchema` instead. */
+  export const outboundSchema = CreatePartnerStatus$outboundSchema;
 }
 
 /** @internal */
@@ -1133,7 +1135,7 @@ export const CreatePartnerResponseBody$inboundSchema: z.ZodType<
   stripeConnectId: z.nullable(z.string()),
   payoutsEnabledAt: z.nullable(z.string()),
   createdAt: z.string(),
-  status: Status$inboundSchema,
+  status: CreatePartnerStatus$inboundSchema,
   programId: z.string(),
   tenantId: z.nullable(z.string()),
   links: z.nullable(z.array(z.lazy(() => CreatePartnerLink$inboundSchema))),
@@ -1197,7 +1199,7 @@ export const CreatePartnerResponseBody$outboundSchema: z.ZodType<
   stripeConnectId: z.nullable(z.string()),
   payoutsEnabledAt: z.nullable(z.string()),
   createdAt: z.string(),
-  status: Status$outboundSchema,
+  status: CreatePartnerStatus$outboundSchema,
   programId: z.string(),
   tenantId: z.nullable(z.string()),
   links: z.nullable(z.array(z.lazy(() => CreatePartnerLink$outboundSchema))),

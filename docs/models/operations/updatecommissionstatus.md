@@ -1,11 +1,11 @@
-# UpdatePartnerSaleStatus
+# UpdateCommissionStatus
 
 ## Example Usage
 
 ```typescript
-import { UpdatePartnerSaleStatus } from "dub/models/operations";
+import { UpdateCommissionStatus } from "dub/models/operations";
 
-let value: UpdatePartnerSaleStatus = "paid";
+let value: UpdateCommissionStatus = "refunded";
 ```
 
 ## Values

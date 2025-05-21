@@ -1607,3 +1607,13 @@ Based on:
 - [typescript v0.61.13] .
 ### Releases
 - [NPM v0.61.13] https://www.npmjs.com/package/dub/v/0.61.13 - .
+
+## 2025-05-21 02:15:41
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.548.3 (2.605.6) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.61.14] .
+### Releases
+- [NPM v0.61.14] https://www.npmjs.com/package/dub/v/0.61.14 - .
