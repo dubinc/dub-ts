@@ -16,7 +16,7 @@ let value: SaleCreatedEventLink = {
   programId: "<id>",
   partnerId: "<id>",
   archived: false,
-  expiresAt: "1752217227141",
+  expiresAt: "1740297023566",
   expiredUrl: "https://shiny-pomelo.com/",
   password: "yfAQlanWPXSPKV8",
   proxy: false,
@@ -55,8 +55,8 @@ let value: SaleCreatedEventLink = {
   userId: "<id>",
   workspaceId: "<id>",
   lastClicked: "<value>",
-  createdAt: "1726205959531",
-  updatedAt: "1747568436481",
+  createdAt: "1714285755940",
+  updatedAt: "1735648232890",
   projectId: "<id>",
 };
 ```

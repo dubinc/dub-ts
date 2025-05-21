@@ -14,6 +14,8 @@ import {
 import { MCPScope } from "./scopes.js";
 import { createRegisterTool } from "./tools.js";
 import { tool$analyticsRetrieve } from "./tools/analyticsRetrieve.js";
+import { tool$commissionsList } from "./tools/commissionsList.js";
+import { tool$commissionsUpdate } from "./tools/commissionsUpdate.js";
 import { tool$customersCreate } from "./tools/customersCreate.js";
 import { tool$customersDelete } from "./tools/customersDelete.js";
 import { tool$customersGet } from "./tools/customersGet.js";
@@ -43,7 +45,6 @@ import { tool$partnersAnalytics } from "./tools/partnersAnalytics.js";
 import { tool$partnersCreate } from "./tools/partnersCreate.js";
 import { tool$partnersCreateLink } from "./tools/partnersCreateLink.js";
 import { tool$partnersRetrieveLinks } from "./tools/partnersRetrieveLinks.js";
-import { tool$partnersUpdateSale } from "./tools/partnersUpdateSale.js";
 import { tool$partnersUpsertLink } from "./tools/partnersUpsertLink.js";
 import { tool$qrCodesGet } from "./tools/qrCodesGet.js";
 import { tool$tagsCreate } from "./tools/tagsCreate.js";
@@ -65,7 +66,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Dub",
-    version: "0.61.13",
+    version: "0.61.14",
   });
 
   const client = new DubCore({
@@ -131,7 +132,8 @@ export function createMCPServer(deps: {
   tool(tool$partnersRetrieveLinks);
   tool(tool$partnersUpsertLink);
   tool(tool$partnersAnalytics);
-  tool(tool$partnersUpdateSale);
+  tool(tool$commissionsList);
+  tool(tool$commissionsUpdate);
   tool(tool$workspacesGet);
   tool(tool$workspacesUpdate);
   tool(tool$embedTokensReferrals);

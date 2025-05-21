@@ -4,6 +4,7 @@
 
 import { ClientSDK } from "../lib/sdks.js";
 import { Analytics } from "./analytics.js";
+import { Commissions } from "./commissions.js";
 import { Customers } from "./customers.js";
 import { Domains } from "./domains.js";
 import { EmbedTokens } from "./embedtokens.js";
@@ -60,6 +61,11 @@ export class Dub extends ClientSDK {
   private _partners?: Partners;
   get partners(): Partners {
     return (this._partners ??= new Partners(this._options));
+  }
+
+  private _commissions?: Commissions;
+  get commissions(): Commissions {
+    return (this._commissions ??= new Commissions(this._options));
   }
 
   private _workspaces?: Workspaces;
