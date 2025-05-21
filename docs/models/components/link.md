@@ -16,7 +16,7 @@ let value: Link = {
   programId: "<id>",
   partnerId: "<id>",
   archived: false,
-  expiresAt: "1763022850277",
+  expiresAt: "1751102647926",
   expiredUrl: "https://dearest-brief.net/",
   password: "sF2Rc3WJhIc4meW",
   proxy: false,
@@ -55,8 +55,8 @@ let value: Link = {
   userId: "<id>",
   workspaceId: "<id>",
   lastClicked: "<value>",
-  createdAt: "1733462382028",
-  updatedAt: "1747532970763",
+  createdAt: "1721542179659",
+  updatedAt: "1735612768394",
   projectId: "<id>",
 };
 ```
