@@ -3,7 +3,7 @@ speakeasyVersion: latest
 sources:
     my-first-source:
         inputs:
-            - location: https://api.dub.co
+            - location: http://api.localhost:8888
         registry:
             location: registry.speakeasyapi.dev/dub/dub/my-first-source
 targets:

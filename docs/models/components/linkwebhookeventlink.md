@@ -16,7 +16,7 @@ let value: LinkWebhookEventLink = {
   programId: "<id>",
   partnerId: "<id>",
   archived: false,
-  expiresAt: "1770127799237",
+  expiresAt: "1771834480460",
   expiredUrl: "https://sorrowful-fireplace.biz",
   password: "A_N8Ikbav2CAkYs",
   proxy: false,
@@ -55,8 +55,8 @@ let value: LinkWebhookEventLink = {
   userId: "<id>",
   workspaceId: "<id>",
   lastClicked: "<value>",
-  createdAt: "1721347144449",
-  updatedAt: "1746521033000",
+  createdAt: "1723053825678",
+  updatedAt: "1748227714229",
   projectId: "<id>",
 };
 ```

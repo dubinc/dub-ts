@@ -9,6 +9,18 @@ actions:
         - "lang": "typescript"
           "label": "retrieveAnalytics"
           "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.analytics.retrieve();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/commissions"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "listCommissions"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.commissions.list();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/commissions/{id}"]["patch"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "updateCommission"
+          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.commissions.update({\n    id: \"cm_1JVR7XRCSR0EDBAF39FZ4PMYE\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/customers"]["get"]
     update:
       "x-codeSamples":
@@ -177,12 +189,6 @@ actions:
         - "lang": "typescript"
           "label": "upsertPartnerLink"
           "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.partners.upsertLink();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
-  - target: $["paths"]["/partners/sales"]["patch"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "updatePartnerSale"
-          "source": "import { Dub } from \"dub\";\n\nconst dub = new Dub({\n  token: \"DUB_API_KEY\",\n});\n\nasync function run() {\n  const result = await dub.partners.updateSale();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/qr"]["get"]
     update:
       "x-codeSamples":

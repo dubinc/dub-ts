@@ -3,7 +3,7 @@
  */
 
 import { DubCore } from "../core.js";
-import { encodeJSON } from "../lib/encodings.js";
+import { encodeJSON, encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -25,18 +25,18 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Update a sale for a partner.
+ * Update a commission.
  *
  * @remarks
- * Update an existing sale amount. This is useful for handling refunds (partial or full) or fraudulent sales.
+ * Update an existing commission amount. This is useful for handling refunds (partial or full) or fraudulent sales.
  */
-export function partnersUpdateSale(
+export function commissionsUpdate(
   client: DubCore,
-  request?: operations.UpdatePartnerSaleRequestBody | undefined,
+  request: operations.UpdateCommissionRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.UpdatePartnerSaleResponseBody,
+    operations.UpdateCommissionResponseBody,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -64,12 +64,12 @@ export function partnersUpdateSale(
 
 async function $do(
   client: DubCore,
-  request?: operations.UpdatePartnerSaleRequestBody | undefined,
+  request: operations.UpdateCommissionRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.UpdatePartnerSaleResponseBody,
+      operations.UpdateCommissionResponseBody,
       | errors.BadRequest
       | errors.Unauthorized
       | errors.Forbidden
@@ -92,21 +92,23 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) =>
-      operations.UpdatePartnerSaleRequestBody$outboundSchema.optional().parse(
-        value,
-      ),
+    (value) => operations.UpdateCommissionRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = payload === undefined
-    ? null
-    : encodeJSON("body", payload, { explode: true });
+  const body = encodeJSON("body", payload.RequestBody, { explode: true });
 
-  const path = pathToFunc("/partners/sales")();
+  const pathParams = {
+    id: encodeSimple("id", payload.id, {
+      explode: false,
+      charEncoding: "percent",
+    }),
+  };
+
+  const path = pathToFunc("/commissions/{id}")(pathParams);
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
@@ -119,7 +121,7 @@ async function $do(
 
   const context = {
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "updatePartnerSale",
+    operationID: "updateCommission",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
@@ -173,7 +175,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.UpdatePartnerSaleResponseBody,
+    operations.UpdateCommissionResponseBody,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -191,7 +193,7 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, operations.UpdatePartnerSaleResponseBody$inboundSchema),
+    M.json(200, operations.UpdateCommissionResponseBody$inboundSchema),
     M.jsonErr(400, errors.BadRequest$inboundSchema),
     M.jsonErr(401, errors.Unauthorized$inboundSchema),
     M.jsonErr(403, errors.Forbidden$inboundSchema),

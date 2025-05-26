@@ -10,7 +10,7 @@ import { LinkWebhookEvent } from "dub/models/components";
 let value: LinkWebhookEvent = {
   id: "<id>",
   event: "link.deleted",
-  createdAt: "1729305264992",
+  createdAt: "1731011947255",
   data: {
     id: "<id>",
     domain: "political-birth.name",
@@ -22,7 +22,7 @@ let value: LinkWebhookEvent = {
     programId: "<id>",
     partnerId: "<id>",
     archived: false,
-    expiresAt: "1753420371330",
+    expiresAt: "1755127053592",
     expiredUrl: "https://deafening-pronoun.info",
     password: "Rafvfob4pfCF6Nj",
     proxy: false,
@@ -62,8 +62,8 @@ let value: LinkWebhookEvent = {
     userId: "<id>",
     workspaceId: "<id>",
     lastClicked: "<value>",
-    createdAt: "1735474034043",
-    updatedAt: "1746505348559",
+    createdAt: "1737180716305",
+    updatedAt: "1748212030821",
     projectId: "<id>",
   },
 };

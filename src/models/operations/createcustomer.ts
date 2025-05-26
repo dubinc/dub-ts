@@ -45,15 +45,31 @@ export type CreateCustomerLink = {
    */
   shortLink: string;
   /**
+   * The destination URL of the short link.
+   */
+  url: string;
+  /**
    * The ID of the program the short link is associated with.
    */
   programId: string | null;
 };
 
 export type CreateCustomerPartner = {
+  /**
+   * The partner's unique ID on Dub.
+   */
   id: string;
+  /**
+   * The partner's full legal name.
+   */
   name: string;
+  /**
+   * The partner's email address. Should be a unique value across Dub.
+   */
   email: string | null;
+  /**
+   * The partner's avatar image.
+   */
   image: string | null;
 };
 
@@ -102,6 +118,14 @@ export type CreateCustomerResponseBody = {
    * Country of the customer.
    */
   country?: string | null | undefined;
+  /**
+   * Total number of sales for the customer.
+   */
+  sales?: number | null | undefined;
+  /**
+   * Total amount of sales for the customer.
+   */
+  saleAmount?: number | null | undefined;
   /**
    * The date the customer was created.
    */
@@ -185,6 +209,7 @@ export const CreateCustomerLink$inboundSchema: z.ZodType<
   domain: z.string(),
   key: z.string(),
   shortLink: z.string(),
+  url: z.string(),
   programId: z.nullable(z.string()),
 });
 
@@ -194,6 +219,7 @@ export type CreateCustomerLink$Outbound = {
   domain: string;
   key: string;
   shortLink: string;
+  url: string;
   programId: string | null;
 };
 
@@ -207,6 +233,7 @@ export const CreateCustomerLink$outboundSchema: z.ZodType<
   domain: z.string(),
   key: z.string(),
   shortLink: z.string(),
+  url: z.string(),
   programId: z.nullable(z.string()),
 });
 
@@ -412,6 +439,8 @@ export const CreateCustomerResponseBody$inboundSchema: z.ZodType<
   email: z.nullable(z.string()).optional(),
   avatar: z.nullable(z.string()).optional(),
   country: z.nullable(z.string()).optional(),
+  sales: z.nullable(z.number()).optional(),
+  saleAmount: z.nullable(z.number()).optional(),
   createdAt: z.string(),
   link: z.nullable(z.lazy(() => CreateCustomerLink$inboundSchema)).optional(),
   programId: z.nullable(z.string()).optional(),
@@ -429,6 +458,8 @@ export type CreateCustomerResponseBody$Outbound = {
   email?: string | null | undefined;
   avatar?: string | null | undefined;
   country?: string | null | undefined;
+  sales?: number | null | undefined;
+  saleAmount?: number | null | undefined;
   createdAt: string;
   link?: CreateCustomerLink$Outbound | null | undefined;
   programId?: string | null | undefined;
@@ -448,6 +479,8 @@ export const CreateCustomerResponseBody$outboundSchema: z.ZodType<
   email: z.nullable(z.string()).optional(),
   avatar: z.nullable(z.string()).optional(),
   country: z.nullable(z.string()).optional(),
+  sales: z.nullable(z.number()).optional(),
+  saleAmount: z.nullable(z.number()).optional(),
   createdAt: z.string(),
   link: z.nullable(z.lazy(() => CreateCustomerLink$outboundSchema)).optional(),
   programId: z.nullable(z.string()).optional(),

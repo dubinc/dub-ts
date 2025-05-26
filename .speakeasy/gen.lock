@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: a7ba8704507363fabccfcbe7aad3310c
+  docChecksum: 2b47fe29b17b4d40c12623df1671b9e3
   docVersion: 0.0.1
-  speakeasyVersion: 1.542.3
-  generationVersion: 2.597.9
-  releaseVersion: 0.61.11
-  configChecksum: 2feb50512be5ac18da92c3616c07ee12
+  speakeasyVersion: 1.543.8
+  generationVersion: 2.598.22
+  releaseVersion: 0.61.19
+  configChecksum: 8a20bbf2a732e3a43b9e6d769325f572
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -25,7 +25,7 @@ features:
     globalSecurity: 2.82.13
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
-    globalServerURLs: 2.82.4
+    globalServerURLs: 2.82.5
     includes: 2.81.1
     mcpServer: 0.9.2
     methodArguments: 0.1.2
@@ -35,7 +35,7 @@ features:
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.2.0
-    tests: 0.16.1
+    tests: 0.16.2
     unions: 2.85.8
 generatedFiles:
   - .gitattributes
@@ -207,6 +207,7 @@ generatedFiles:
   - docs/models/operations/createpartnerlinktestvariants.md
   - docs/models/operations/createpartnerrequestbody.md
   - docs/models/operations/createpartnerresponsebody.md
+  - docs/models/operations/createpartnerstatus.md
   - docs/models/operations/createpartnertagids.md
   - docs/models/operations/createpartnertagnames.md
   - docs/models/operations/createpartnertestvariants.md
@@ -240,6 +241,8 @@ generatedFiles:
   - docs/models/operations/getcustomerresponsebody.md
   - docs/models/operations/getcustomerslink.md
   - docs/models/operations/getcustomerspartner.md
+  - docs/models/operations/getcustomersqueryparamsortby.md
+  - docs/models/operations/getcustomersqueryparamsortorder.md
   - docs/models/operations/getcustomersrequest.md
   - docs/models/operations/getcustomersresponsebody.md
   - docs/models/operations/getcustomerstype.md
@@ -261,6 +264,13 @@ generatedFiles:
   - docs/models/operations/level.md
   - docs/models/operations/link.md
   - docs/models/operations/linkprops.md
+  - docs/models/operations/listcommissionsqueryparaminterval.md
+  - docs/models/operations/listcommissionsqueryparamsortby.md
+  - docs/models/operations/listcommissionsqueryparamsortorder.md
+  - docs/models/operations/listcommissionsrequest.md
+  - docs/models/operations/listcommissionsresponsebody.md
+  - docs/models/operations/listcommissionsstatus.md
+  - docs/models/operations/listcommissionstype.md
   - docs/models/operations/listdomainsrequest.md
   - docs/models/operations/listdomainsresponse.md
   - docs/models/operations/listeventsqueryparamtagids.md
@@ -277,6 +287,7 @@ generatedFiles:
   - docs/models/operations/queryparaminterval.md
   - docs/models/operations/queryparamsortby.md
   - docs/models/operations/queryparamsortorder.md
+  - docs/models/operations/queryparamstatus.md
   - docs/models/operations/queryparamtagids.md
   - docs/models/operations/queryparamtagnames.md
   - docs/models/operations/queryparamtrigger.md
@@ -307,6 +318,11 @@ generatedFiles:
   - docs/models/operations/trigger.md
   - docs/models/operations/two.md
   - docs/models/operations/type.md
+  - docs/models/operations/updatecommissionrequest.md
+  - docs/models/operations/updatecommissionrequestbody.md
+  - docs/models/operations/updatecommissionresponsebody.md
+  - docs/models/operations/updatecommissionstatus.md
+  - docs/models/operations/updatecommissiontype.md
   - docs/models/operations/updatecustomerdiscount.md
   - docs/models/operations/updatecustomerlink.md
   - docs/models/operations/updatecustomerpartner.md
@@ -324,9 +340,6 @@ generatedFiles:
   - docs/models/operations/updatelinktagids.md
   - docs/models/operations/updatelinktagnames.md
   - docs/models/operations/updatelinktestvariants.md
-  - docs/models/operations/updatepartnersalerequestbody.md
-  - docs/models/operations/updatepartnersaleresponsebody.md
-  - docs/models/operations/updatepartnersalestatus.md
   - docs/models/operations/updatetagcolor.md
   - docs/models/operations/updatetagrequest.md
   - docs/models/operations/updatetagrequestbody.md
@@ -342,6 +355,7 @@ generatedFiles:
   - docs/models/operations/upsertpartnerlinktagnames.md
   - docs/models/operations/upsertpartnerlinktestvariants.md
   - docs/sdks/analytics/README.md
+  - docs/sdks/commissions/README.md
   - docs/sdks/customers/README.md
   - docs/sdks/domains/README.md
   - docs/sdks/dub/README.md
@@ -357,23 +371,14 @@ generatedFiles:
   - eslint.config.mjs
   - jsr.json
   - package.json
-  - src/__tests__/analytics.test.ts
   - src/__tests__/assertions.ts
-  - src/__tests__/customers.test.ts
-  - src/__tests__/domains.test.ts
-  - src/__tests__/embedtokens.test.ts
-  - src/__tests__/events.test.ts
   - src/__tests__/files.ts
-  - src/__tests__/folders.test.ts
-  - src/__tests__/links.test.ts
-  - src/__tests__/partners.test.ts
-  - src/__tests__/qrcodes.test.ts
   - src/__tests__/tags.test.ts
   - src/__tests__/testclient.ts
-  - src/__tests__/track.test.ts
-  - src/__tests__/workspaces.test.ts
   - src/core.ts
   - src/funcs/analyticsRetrieve.ts
+  - src/funcs/commissionsList.ts
+  - src/funcs/commissionsUpdate.ts
   - src/funcs/customersCreate.ts
   - src/funcs/customersDelete.ts
   - src/funcs/customersGet.ts
@@ -403,7 +408,6 @@ generatedFiles:
   - src/funcs/partnersCreate.ts
   - src/funcs/partnersCreateLink.ts
   - src/funcs/partnersRetrieveLinks.ts
-  - src/funcs/partnersUpdateSale.ts
   - src/funcs/partnersUpsertLink.ts
   - src/funcs/qrCodesGet.ts
   - src/funcs/tagsCreate.ts
@@ -446,6 +450,8 @@ generatedFiles:
   - src/mcp-server/shared.ts
   - src/mcp-server/tools.ts
   - src/mcp-server/tools/analyticsRetrieve.ts
+  - src/mcp-server/tools/commissionsList.ts
+  - src/mcp-server/tools/commissionsUpdate.ts
   - src/mcp-server/tools/customersCreate.ts
   - src/mcp-server/tools/customersDelete.ts
   - src/mcp-server/tools/customersGet.ts
@@ -475,7 +481,6 @@ generatedFiles:
   - src/mcp-server/tools/partnersCreate.ts
   - src/mcp-server/tools/partnersCreateLink.ts
   - src/mcp-server/tools/partnersRetrieveLinks.ts
-  - src/mcp-server/tools/partnersUpdateSale.ts
   - src/mcp-server/tools/partnersUpsertLink.ts
   - src/mcp-server/tools/qrCodesGet.ts
   - src/mcp-server/tools/tagsCreate.ts
@@ -561,6 +566,7 @@ generatedFiles:
   - src/models/operations/gettags.ts
   - src/models/operations/getworkspace.ts
   - src/models/operations/index.ts
+  - src/models/operations/listcommissions.ts
   - src/models/operations/listdomains.ts
   - src/models/operations/listevents.ts
   - src/models/operations/listfolders.ts
@@ -569,16 +575,17 @@ generatedFiles:
   - src/models/operations/retrievepartneranalytics.ts
   - src/models/operations/tracklead.ts
   - src/models/operations/tracksale.ts
+  - src/models/operations/updatecommission.ts
   - src/models/operations/updatecustomer.ts
   - src/models/operations/updatedomain.ts
   - src/models/operations/updatefolder.ts
   - src/models/operations/updatelink.ts
-  - src/models/operations/updatepartnersale.ts
   - src/models/operations/updatetag.ts
   - src/models/operations/updateworkspace.ts
   - src/models/operations/upsertlink.ts
   - src/models/operations/upsertpartnerlink.ts
   - src/sdk/analytics.ts
+  - src/sdk/commissions.ts
   - src/sdk/customers.ts
   - src/sdk/domains.ts
   - src/sdk/embedtokens.ts
@@ -607,7 +614,7 @@ examples:
     speakeasy-default-create-link:
       responses:
         "200":
-          application/json: {"id": "<id>", "domain": "low-packaging.info", "key": "<key>", "url": "https://black-and-white-secrecy.org/", "trackConversion": false, "externalId": "<id>", "tenantId": "<id>", "programId": "<id>", "partnerId": "<id>", "archived": false, "expiresAt": "1745204903696", "expiredUrl": "https://brisk-seafood.net/", "password": "XhB9652A4R_UwKP", "proxy": false, "title": "<value>", "description": "demob fencing fencing vainly kookily", "image": "https://picsum.photos/seed/zicqIZPdCh/2719/290", "video": "https://loremflickr.com/2433/1085?lock=5492184885451890", "rewrite": false, "doIndex": false, "ios": "<value>", "android": "<id>", "geo": {}, "publicStats": false, "tagId": "<id>", "tags": [{"id": "<id>", "name": "<value>", "color": "pink"}, {"id": "<id>", "name": "<value>", "color": "pink"}], "folderId": "<id>", "webhookIds": [], "comments": "than rightfully brightly sleet where schedule insolence when warming when determined ouch scarcely ignorance", "shortLink": "https://incomparable-monster.net/", "qrCode": "https://mild-switchboard.info/", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<id>", "workspaceId": "<id>", "clicks": 0, "lastClicked": "<value>", "leads": 0, "sales": 0, "saleAmount": 0, "createdAt": "1723531037431", "updatedAt": "1745192270066", "projectId": "<id>"}
+          application/json: {"id": "<id>", "domain": "low-packaging.info", "key": "<key>", "url": "https://black-and-white-secrecy.org/", "trackConversion": false, "externalId": "<id>", "tenantId": "<id>", "programId": "<id>", "partnerId": "<id>", "archived": false, "expiresAt": "1748260698160", "expiredUrl": "https://brisk-seafood.net/", "password": "XhB9652A4R_UwKP", "proxy": false, "title": "<value>", "description": "demob fencing fencing vainly kookily", "image": "https://picsum.photos/seed/zicqIZPdCh/2719/290", "video": "https://loremflickr.com/2433/1085?lock=5492184885451890", "rewrite": false, "doIndex": false, "ios": "<value>", "android": "<id>", "geo": {}, "publicStats": false, "tagId": "<id>", "tags": [{"id": "<id>", "name": "<value>", "color": "pink"}, {"id": "<id>", "name": "<value>", "color": "pink"}], "folderId": "<id>", "webhookIds": [], "comments": "than rightfully brightly sleet where schedule insolence when warming when determined ouch scarcely ignorance", "shortLink": "https://incomparable-monster.net/", "qrCode": "https://mild-switchboard.info/", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<id>", "workspaceId": "<id>", "clicks": 0, "lastClicked": "<value>", "leads": 0, "sales": 0, "saleAmount": 0, "createdAt": "1726586831855", "updatedAt": "1748248064489", "projectId": "<id>"}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -638,7 +645,7 @@ examples:
           pageSize: 50
       responses:
         "200":
-          application/json: [{"id": "<id>", "domain": "neglected-plastic.biz", "key": "<key>", "url": "https://crooked-overload.name/", "trackConversion": false, "externalId": "<id>", "tenantId": "<id>", "programId": "<id>", "partnerId": "<id>", "archived": false, "expiresAt": "1745756493614", "expiredUrl": "https://breakable-bathrobe.net", "password": "QCOyVtOrvIw1vLI", "proxy": false, "title": "<value>", "description": "beside tromp worth reluctantly wound accompanist", "image": "https://picsum.photos/seed/WT1tZJLp/3243/3827", "video": "https://picsum.videos/seed/p2Pkp47W/118/2609", "rewrite": false, "doIndex": false, "ios": "<value>", "android": "<id>", "geo": {}, "publicStats": false, "tagId": "<id>", "tags": [{"id": "<id>", "name": "<value>", "color": "green"}, {"id": "<id>", "name": "<value>", "color": "green"}, {"id": "<id>", "name": "<value>", "color": "blue"}], "folderId": "<id>", "webhookIds": [], "comments": "commonly softly boo massive sorrowful aw strict behind along energetic oddball pasta thread vestment meanwhile likely up questionably forgery", "shortLink": "https://oblong-inspection.net", "qrCode": "https://spherical-gerbil.org/", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<id>", "workspaceId": "<id>", "clicks": 0, "lastClicked": "<value>", "leads": 0, "sales": 0, "saleAmount": 0, "createdAt": "1729312896017", "updatedAt": "1745200926259", "projectId": "<id>"}, {"id": "<id>", "domain": "married-presume.net", "key": "<key>", "url": "https://reflecting-coast.info", "trackConversion": false, "externalId": "<id>", "tenantId": "<id>", "programId": "<id>", "partnerId": "<id>", "archived": false, "expiresAt": "1762998604262", "expiredUrl": "https://writhing-conversation.com", "password": "ZsCSHb4yMlkCXkK", "proxy": false, "title": "<value>", "description": "overcook till boo ack solicit", "image": "https://loremflickr.com/2989/2665?lock=5845099426147813", "video": "https://picsum.videos/seed/breY1MLSO6/954/73", "rewrite": false, "doIndex": false, "ios": "<value>", "android": "<id>", "geo": {}, "publicStats": false, "tagId": "<id>", "tags": [{"id": "<id>", "name": "<value>", "color": "brown"}, {"id": "<id>", "name": "<value>", "color": "red"}], "folderId": "<id>", "webhookIds": ["<value>"], "comments": "instead athwart before tattered gosh um what thump kettledrum configuration esteemed mysteriously legend absent brr", "shortLink": "https://well-documented-help.biz/", "qrCode": "https://untrue-lamp.info/", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<id>", "workspaceId": "<id>", "clicks": 0, "lastClicked": "<value>", "leads": 0, "sales": 0, "saleAmount": 0, "createdAt": "1737089022845", "updatedAt": "1745154734561", "projectId": "<id>"}, {"id": "<id>", "domain": "stale-handful.com", "key": "<key>", "url": "https://lean-daughter.org", "trackConversion": false, "externalId": "<id>", "tenantId": "<id>", "programId": "<id>", "partnerId": "<id>", "archived": false, "expiresAt": "1756506134211", "expiredUrl": "https://perfumed-marketplace.com/", "password": "xsCzKbmqqqJnqbw", "proxy": false, "title": "<value>", "description": "as so yet whenever rotating hygienic mid", "image": "https://loremflickr.com/958/3484?lock=3072922795184569", "video": "https://loremflickr.com/565/2800?lock=8555441928057420", "rewrite": false, "doIndex": false, "ios": "<value>", "android": "<id>", "geo": {}, "publicStats": false, "tagId": "<id>", "tags": [{"id": "<id>", "name": "<value>", "color": "blue"}, {"id": "<id>", "name": "<value>", "color": "purple"}, {"id": "<id>", "name": "<value>", "color": "yellow"}], "folderId": "<id>", "webhookIds": ["<value>", "<value>"], "comments": "polished whether welcome deck gratefully for outfox pfft indeed phew rejigger overcoat when wonderful ugh before however fooey weakly", "shortLink": "https://muddy-nightlife.info/", "qrCode": "https://cloudy-tackle.net/", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<id>", "workspaceId": "<id>", "clicks": 0, "lastClicked": "<value>", "leads": 0, "sales": 0, "saleAmount": 0, "createdAt": "1722178659624", "updatedAt": "1745161083500", "projectId": "<id>"}]
+          application/json: [{"id": "<id>", "domain": "neglected-plastic.biz", "key": "<key>", "url": "https://crooked-overload.name/", "trackConversion": false, "externalId": "<id>", "tenantId": "<id>", "programId": "<id>", "partnerId": "<id>", "archived": false, "expiresAt": "1748812288023", "expiredUrl": "https://breakable-bathrobe.net", "password": "QCOyVtOrvIw1vLI", "proxy": false, "title": "<value>", "description": "beside tromp worth reluctantly wound accompanist", "image": "https://picsum.photos/seed/WT1tZJLp/3243/3827", "video": "https://picsum.videos/seed/p2Pkp47W/118/2609", "rewrite": false, "doIndex": false, "ios": "<value>", "android": "<id>", "geo": {}, "publicStats": false, "tagId": "<id>", "tags": [{"id": "<id>", "name": "<value>", "color": "green"}, {"id": "<id>", "name": "<value>", "color": "green"}, {"id": "<id>", "name": "<value>", "color": "blue"}], "folderId": "<id>", "webhookIds": [], "comments": "commonly softly boo massive sorrowful aw strict behind along energetic oddball pasta thread vestment meanwhile likely up questionably forgery", "shortLink": "https://oblong-inspection.net", "qrCode": "https://spherical-gerbil.org/", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<id>", "workspaceId": "<id>", "clicks": 0, "lastClicked": "<value>", "leads": 0, "sales": 0, "saleAmount": 0, "createdAt": "1732368690424", "updatedAt": "1748256720666", "projectId": "<id>"}, {"id": "<id>", "domain": "married-presume.net", "key": "<key>", "url": "https://reflecting-coast.info", "trackConversion": false, "externalId": "<id>", "tenantId": "<id>", "programId": "<id>", "partnerId": "<id>", "archived": false, "expiresAt": "1766054398667", "expiredUrl": "https://writhing-conversation.com", "password": "ZsCSHb4yMlkCXkK", "proxy": false, "title": "<value>", "description": "overcook till boo ack solicit", "image": "https://loremflickr.com/2989/2665?lock=5845099426147813", "video": "https://picsum.videos/seed/breY1MLSO6/954/73", "rewrite": false, "doIndex": false, "ios": "<value>", "android": "<id>", "geo": {}, "publicStats": false, "tagId": "<id>", "tags": [{"id": "<id>", "name": "<value>", "color": "brown"}, {"id": "<id>", "name": "<value>", "color": "red"}], "folderId": "<id>", "webhookIds": ["<value>"], "comments": "instead athwart before tattered gosh um what thump kettledrum configuration esteemed mysteriously legend absent brr", "shortLink": "https://well-documented-help.biz/", "qrCode": "https://untrue-lamp.info/", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<id>", "workspaceId": "<id>", "clicks": 0, "lastClicked": "<value>", "leads": 0, "sales": 0, "saleAmount": 0, "createdAt": "1740144817240", "updatedAt": "1748210528956", "projectId": "<id>"}, {"id": "<id>", "domain": "stale-handful.com", "key": "<key>", "url": "https://lean-daughter.org", "trackConversion": false, "externalId": "<id>", "tenantId": "<id>", "programId": "<id>", "partnerId": "<id>", "archived": false, "expiresAt": "1759561928605", "expiredUrl": "https://perfumed-marketplace.com/", "password": "xsCzKbmqqqJnqbw", "proxy": false, "title": "<value>", "description": "as so yet whenever rotating hygienic mid", "image": "https://loremflickr.com/958/3484?lock=3072922795184569", "video": "https://loremflickr.com/565/2800?lock=8555441928057420", "rewrite": false, "doIndex": false, "ios": "<value>", "android": "<id>", "geo": {}, "publicStats": false, "tagId": "<id>", "tags": [{"id": "<id>", "name": "<value>", "color": "blue"}, {"id": "<id>", "name": "<value>", "color": "purple"}, {"id": "<id>", "name": "<value>", "color": "yellow"}], "folderId": "<id>", "webhookIds": ["<value>", "<value>"], "comments": "polished whether welcome deck gratefully for outfox pfft indeed phew rejigger overcoat when wonderful ugh before however fooey weakly", "shortLink": "https://muddy-nightlife.info/", "qrCode": "https://cloudy-tackle.net/", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<id>", "workspaceId": "<id>", "clicks": 0, "lastClicked": "<value>", "leads": 0, "sales": 0, "saleAmount": 0, "createdAt": "1725234454007", "updatedAt": "1748216877883", "projectId": "<id>"}]
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -692,7 +699,7 @@ examples:
           externalId: "123456"
       responses:
         "200":
-          application/json: {"id": "<id>", "domain": "rural-mathematics.name", "key": "<key>", "url": "https://willing-impostor.info", "trackConversion": false, "externalId": "<id>", "tenantId": "<id>", "programId": "<id>", "partnerId": "<id>", "archived": false, "expiresAt": "1753489692848", "expiredUrl": "https://warm-hundred.net/", "password": "5UmEgZU18kgjdwK", "proxy": false, "title": "<value>", "description": "aw showboat shakily times bravely quizzically", "image": "https://picsum.photos/seed/eIfMMF/2755/1170", "video": "https://loremflickr.com/754/1831?lock=3684390672984324", "rewrite": false, "doIndex": false, "ios": "<value>", "android": "<id>", "geo": {}, "publicStats": false, "tagId": "<id>", "tags": [{"id": "<id>", "name": "<value>", "color": "green"}, {"id": "<id>", "name": "<value>", "color": "yellow"}, {"id": "<id>", "name": "<value>", "color": "red"}], "folderId": "<id>", "webhookIds": ["<value>", "<value>"], "comments": "scholarship to blink nifty generously", "shortLink": "https://spiffy-character.name/", "qrCode": "https://immediate-lounge.biz/", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<id>", "workspaceId": "<id>", "clicks": 0, "lastClicked": "<value>", "leads": 0, "sales": 0, "saleAmount": 0, "createdAt": "1727252247964", "updatedAt": "1745140876359", "projectId": "<id>"}
+          application/json: {"id": "<id>", "domain": "rural-mathematics.name", "key": "<key>", "url": "https://willing-impostor.info", "trackConversion": false, "externalId": "<id>", "tenantId": "<id>", "programId": "<id>", "partnerId": "<id>", "archived": false, "expiresAt": "1756545487211", "expiredUrl": "https://warm-hundred.net/", "password": "5UmEgZU18kgjdwK", "proxy": false, "title": "<value>", "description": "aw showboat shakily times bravely quizzically", "image": "https://picsum.photos/seed/eIfMMF/2755/1170", "video": "https://loremflickr.com/754/1831?lock=3684390672984324", "rewrite": false, "doIndex": false, "ios": "<value>", "android": "<id>", "geo": {}, "publicStats": false, "tagId": "<id>", "tags": [{"id": "<id>", "name": "<value>", "color": "green"}, {"id": "<id>", "name": "<value>", "color": "yellow"}, {"id": "<id>", "name": "<value>", "color": "red"}], "folderId": "<id>", "webhookIds": ["<value>", "<value>"], "comments": "scholarship to blink nifty generously", "shortLink": "https://spiffy-character.name/", "qrCode": "https://immediate-lounge.biz/", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<id>", "workspaceId": "<id>", "clicks": 0, "lastClicked": "<value>", "leads": 0, "sales": 0, "saleAmount": 0, "createdAt": "1730308042313", "updatedAt": "1748196670708", "projectId": "<id>"}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -718,7 +725,7 @@ examples:
           linkId: "<id>"
       responses:
         "200":
-          application/json: {"id": "<id>", "domain": "tinted-nectarine.info", "key": "<key>", "url": "https://powerless-juggernaut.org", "trackConversion": false, "externalId": "<id>", "tenantId": "<id>", "programId": "<id>", "partnerId": "<id>", "archived": false, "expiresAt": "1746907077556", "expiredUrl": "https://juvenile-exploration.biz", "password": "kuMjbGhnJP7Bopu", "proxy": false, "title": "<value>", "description": "bleak from that qualified cycle woot abseil perfumed", "image": "https://loremflickr.com/1166/1632?lock=5920233536834378", "video": "https://loremflickr.com/996/369?lock=4799093392417520", "rewrite": false, "doIndex": false, "ios": "<value>", "android": "<id>", "geo": {}, "publicStats": false, "tagId": "<id>", "tags": [{"id": "<id>", "name": "<value>", "color": "blue"}, {"id": "<id>", "name": "<value>", "color": "blue"}, {"id": "<id>", "name": "<value>", "color": "green"}], "folderId": "<id>", "webhookIds": [], "comments": "duh clamour urgently voluntarily scale gut readies concerning statement nice consequently provided when rim league almost forenenst instead arbitrate pulse", "shortLink": "https://impossible-typeface.net/", "qrCode": "https://worthy-effector.net", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<id>", "workspaceId": "<id>", "clicks": 0, "lastClicked": "<value>", "leads": 0, "sales": 0, "saleAmount": 0, "createdAt": "1718485510854", "updatedAt": "1745130854965", "projectId": "<id>"}
+          application/json: {"id": "<id>", "domain": "tinted-nectarine.info", "key": "<key>", "url": "https://powerless-juggernaut.org", "trackConversion": false, "externalId": "<id>", "tenantId": "<id>", "programId": "<id>", "partnerId": "<id>", "archived": false, "expiresAt": "1749962871895", "expiredUrl": "https://juvenile-exploration.biz", "password": "kuMjbGhnJP7Bopu", "proxy": false, "title": "<value>", "description": "bleak from that qualified cycle woot abseil perfumed", "image": "https://loremflickr.com/1166/1632?lock=5920233536834378", "video": "https://loremflickr.com/996/369?lock=4799093392417520", "rewrite": false, "doIndex": false, "ios": "<value>", "android": "<id>", "geo": {}, "publicStats": false, "tagId": "<id>", "tags": [{"id": "<id>", "name": "<value>", "color": "blue"}, {"id": "<id>", "name": "<value>", "color": "blue"}, {"id": "<id>", "name": "<value>", "color": "green"}], "folderId": "<id>", "webhookIds": [], "comments": "duh clamour urgently voluntarily scale gut readies concerning statement nice consequently provided when rim league almost forenenst instead arbitrate pulse", "shortLink": "https://impossible-typeface.net/", "qrCode": "https://worthy-effector.net", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<id>", "workspaceId": "<id>", "clicks": 0, "lastClicked": "<value>", "leads": 0, "sales": 0, "saleAmount": 0, "createdAt": "1721541305174", "updatedAt": "1748186649284", "projectId": "<id>"}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -767,7 +774,7 @@ examples:
     speakeasy-default-bulk-create-links:
       responses:
         "200":
-          application/json: [{"error": "<value>", "code": "conflict"}, {"id": "<id>", "domain": "enlightened-sanity.info", "key": "<key>", "url": "https://flawed-plumber.name/", "trackConversion": false, "externalId": "<id>", "tenantId": "<id>", "programId": "<id>", "partnerId": "<id>", "archived": false, "expiresAt": "1765649140228", "expiredUrl": "https://devoted-quit.name", "password": "i6NXnrZ9O3zPrEC", "proxy": false, "title": "<value>", "description": "ditch what outside monthly kielbasa psst finer aw although", "image": "https://picsum.photos/seed/rlA3LwhK/1855/1563", "video": "https://picsum.videos/seed/itt7gjdv/857/1825", "rewrite": false, "doIndex": false, "ios": "<value>", "android": "<id>", "geo": {}, "publicStats": false, "tagId": "<id>", "tags": [], "folderId": "<id>", "webhookIds": ["<value>", "<value>", "<value>"], "comments": "beyond ha since pike gadzooks outside cardboard clavicle even supposing what longingly", "shortLink": "https://haunting-membership.net", "qrCode": "https://pointless-freckle.info", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<id>", "workspaceId": "<id>", "clicks": 0, "lastClicked": "<value>", "leads": 0, "sales": 0, "saleAmount": 0, "createdAt": "1719150618562", "updatedAt": "1745174728823", "projectId": "<id>"}]
+          application/json: [{"error": "<value>", "code": "conflict"}, {"id": "<id>", "domain": "enlightened-sanity.info", "key": "<key>", "url": "https://flawed-plumber.name/", "trackConversion": false, "externalId": "<id>", "tenantId": "<id>", "programId": "<id>", "partnerId": "<id>", "archived": false, "expiresAt": "1768704934530", "expiredUrl": "https://devoted-quit.name", "password": "i6NXnrZ9O3zPrEC", "proxy": false, "title": "<value>", "description": "ditch what outside monthly kielbasa psst finer aw although", "image": "https://picsum.photos/seed/rlA3LwhK/1855/1563", "video": "https://picsum.videos/seed/itt7gjdv/857/1825", "rewrite": false, "doIndex": false, "ios": "<value>", "android": "<id>", "geo": {}, "publicStats": false, "tagId": "<id>", "tags": [], "folderId": "<id>", "webhookIds": ["<value>", "<value>", "<value>"], "comments": "beyond ha since pike gadzooks outside cardboard clavicle even supposing what longingly", "shortLink": "https://haunting-membership.net", "qrCode": "https://pointless-freckle.info", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<id>", "workspaceId": "<id>", "clicks": 0, "lastClicked": "<value>", "leads": 0, "sales": 0, "saleAmount": 0, "createdAt": "1722206412836", "updatedAt": "1748230523096", "projectId": "<id>"}]
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -790,7 +797,7 @@ examples:
     speakeasy-default-bulk-update-links:
       responses:
         "200":
-          application/json: [{"id": "<id>", "domain": "old-lox.org", "key": "<key>", "url": "https://angelic-cellar.org/", "trackConversion": false, "externalId": "<id>", "tenantId": "<id>", "programId": "<id>", "partnerId": "<id>", "archived": false, "expiresAt": "1754728710219", "expiredUrl": "https://yellowish-vicinity.org/", "password": "yMRdLF0naLtN5wK", "proxy": false, "title": "<value>", "description": "aboard octave since", "image": "https://loremflickr.com/2247/3258?lock=8204630610718424", "video": "https://picsum.videos/seed/L7W1CltA/399/207", "rewrite": false, "doIndex": false, "ios": "<value>", "android": "<id>", "geo": {}, "publicStats": false, "tagId": "<id>", "tags": [{"id": "<id>", "name": "<value>", "color": "green"}, {"id": "<id>", "name": "<value>", "color": "blue"}], "folderId": "<id>", "webhookIds": ["<value>", "<value>", "<value>"], "comments": "psst instead even brr react busily both along whereas absent why round around round beneficial however safely defensive", "shortLink": "https://inborn-trick.biz", "qrCode": "https://scientific-alliance.biz/", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<id>", "workspaceId": "<id>", "clicks": 0, "lastClicked": "<value>", "leads": 0, "sales": 0, "saleAmount": 0, "createdAt": "1731220663759", "updatedAt": "1745179119984", "projectId": "<id>"}, {"id": "<id>", "domain": "purple-secrecy.name", "key": "<key>", "url": "https://unwilling-godparent.biz/", "trackConversion": false, "externalId": "<id>", "tenantId": "<id>", "programId": "<id>", "partnerId": "<id>", "archived": false, "expiresAt": "1769744452954", "expiredUrl": "https://weekly-formamide.name", "password": "t3Ls5KHqWZvIT9U", "proxy": false, "title": "<value>", "description": "tribe astonishing hm who blah verify soybean", "image": "https://picsum.photos/seed/DauITRrHdo/3783/3955", "video": "https://loremflickr.com/405/3655?lock=8436311567525016", "rewrite": false, "doIndex": false, "ios": "<value>", "android": "<id>", "geo": {}, "publicStats": false, "tagId": "<id>", "tags": [{"id": "<id>", "name": "<value>", "color": "green"}, {"id": "<id>", "name": "<value>", "color": "purple"}, {"id": "<id>", "name": "<value>", "color": "pink"}], "folderId": "<id>", "webhookIds": ["<value>"], "comments": "since cloudy dutiful heartache unto yippee custom footrest forenenst astonishing shore", "shortLink": "https://exotic-hydrolyze.name/", "qrCode": "https://giving-scale.name", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<id>", "workspaceId": "<id>", "clicks": 0, "lastClicked": "<value>", "leads": 0, "sales": 0, "saleAmount": 0, "createdAt": "1723835311463", "updatedAt": "1745135057342", "projectId": "<id>"}]
+          application/json: [{"id": "<id>", "domain": "old-lox.org", "key": "<key>", "url": "https://angelic-cellar.org/", "trackConversion": false, "externalId": "<id>", "tenantId": "<id>", "programId": "<id>", "partnerId": "<id>", "archived": false, "expiresAt": "1757784504473", "expiredUrl": "https://yellowish-vicinity.org/", "password": "yMRdLF0naLtN5wK", "proxy": false, "title": "<value>", "description": "aboard octave since", "image": "https://loremflickr.com/2247/3258?lock=8204630610718424", "video": "https://picsum.videos/seed/L7W1CltA/399/207", "rewrite": false, "doIndex": false, "ios": "<value>", "android": "<id>", "geo": {}, "publicStats": false, "tagId": "<id>", "tags": [{"id": "<id>", "name": "<value>", "color": "green"}, {"id": "<id>", "name": "<value>", "color": "blue"}], "folderId": "<id>", "webhookIds": ["<value>", "<value>", "<value>"], "comments": "psst instead even brr react busily both along whereas absent why round around round beneficial however safely defensive", "shortLink": "https://inborn-trick.biz", "qrCode": "https://scientific-alliance.biz/", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<id>", "workspaceId": "<id>", "clicks": 0, "lastClicked": "<value>", "leads": 0, "sales": 0, "saleAmount": 0, "createdAt": "1734276458003", "updatedAt": "1748234914228", "projectId": "<id>"}, {"id": "<id>", "domain": "purple-secrecy.name", "key": "<key>", "url": "https://unwilling-godparent.biz/", "trackConversion": false, "externalId": "<id>", "tenantId": "<id>", "programId": "<id>", "partnerId": "<id>", "archived": false, "expiresAt": "1772800247196", "expiredUrl": "https://weekly-formamide.name", "password": "t3Ls5KHqWZvIT9U", "proxy": false, "title": "<value>", "description": "tribe astonishing hm who blah verify soybean", "image": "https://picsum.photos/seed/DauITRrHdo/3783/3955", "video": "https://loremflickr.com/405/3655?lock=8436311567525016", "rewrite": false, "doIndex": false, "ios": "<value>", "android": "<id>", "geo": {}, "publicStats": false, "tagId": "<id>", "tags": [{"id": "<id>", "name": "<value>", "color": "green"}, {"id": "<id>", "name": "<value>", "color": "purple"}, {"id": "<id>", "name": "<value>", "color": "pink"}], "folderId": "<id>", "webhookIds": ["<value>"], "comments": "since cloudy dutiful heartache unto yippee custom footrest forenenst astonishing shore", "shortLink": "https://exotic-hydrolyze.name/", "qrCode": "https://giving-scale.name", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<id>", "workspaceId": "<id>", "clicks": 0, "lastClicked": "<value>", "leads": 0, "sales": 0, "saleAmount": 0, "createdAt": "1726891105695", "updatedAt": "1748190851574", "projectId": "<id>"}]
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -839,7 +846,7 @@ examples:
     speakeasy-default-upsert-link:
       responses:
         "200":
-          application/json: {"id": "<id>", "domain": "neat-instruction.info", "key": "<key>", "url": "https://entire-rubric.com/", "trackConversion": false, "externalId": "<id>", "tenantId": "<id>", "programId": "<id>", "partnerId": "<id>", "archived": false, "expiresAt": "1749835696638", "expiredUrl": "https://rubbery-lay.com/", "password": "cHWcftWRnnmyj_U", "proxy": false, "title": "<value>", "description": "likewise concerning annual instantly anti deployment", "image": "https://loremflickr.com/181/3306?lock=1275456187971812", "video": "https://picsum.videos/seed/CcMAI/2638/2080", "rewrite": false, "doIndex": false, "ios": "<value>", "android": "<id>", "geo": {}, "publicStats": false, "tagId": "<id>", "tags": [{"id": "<id>", "name": "<value>", "color": "pink"}, {"id": "<id>", "name": "<value>", "color": "purple"}, {"id": "<id>", "name": "<value>", "color": "red"}], "folderId": "<id>", "webhookIds": [], "comments": "clueless unless conclude daddy boohoo ideal lumpy masculinize charter geez as eulogise granny", "shortLink": "https://complicated-resource.net/", "qrCode": "https://impractical-cap.net", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<id>", "workspaceId": "<id>", "clicks": 0, "lastClicked": "<value>", "leads": 0, "sales": 0, "saleAmount": 0, "createdAt": "1739590413990", "updatedAt": "1745168300206", "projectId": "<id>"}
+          application/json: {"id": "<id>", "domain": "neat-instruction.info", "key": "<key>", "url": "https://entire-rubric.com/", "trackConversion": false, "externalId": "<id>", "tenantId": "<id>", "programId": "<id>", "partnerId": "<id>", "archived": false, "expiresAt": "1752891490854", "expiredUrl": "https://rubbery-lay.com/", "password": "cHWcftWRnnmyj_U", "proxy": false, "title": "<value>", "description": "likewise concerning annual instantly anti deployment", "image": "https://loremflickr.com/181/3306?lock=1275456187971812", "video": "https://picsum.videos/seed/CcMAI/2638/2080", "rewrite": false, "doIndex": false, "ios": "<value>", "android": "<id>", "geo": {}, "publicStats": false, "tagId": "<id>", "tags": [{"id": "<id>", "name": "<value>", "color": "pink"}, {"id": "<id>", "name": "<value>", "color": "purple"}, {"id": "<id>", "name": "<value>", "color": "red"}], "folderId": "<id>", "webhookIds": [], "comments": "clueless unless conclude daddy boohoo ideal lumpy masculinize charter geez as eulogise granny", "shortLink": "https://complicated-resource.net/", "qrCode": "https://impractical-cap.net", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<id>", "workspaceId": "<id>", "clicks": 0, "lastClicked": "<value>", "leads": 0, "sales": 0, "saleAmount": 0, "createdAt": "1742646208195", "updatedAt": "1748224094411", "projectId": "<id>"}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -873,7 +880,7 @@ examples:
           refererUrl: "https://dub.co/blog"
       responses:
         "200":
-          application/json: [{"country": "GE", "region": "*", "city": "North Kailee", "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0}, {"country": "PH", "region": "*", "city": "Port Anabelfort", "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0}, {"country": "VN", "region": "*", "city": "East Anissafurt", "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0}]
+          application/json: [{"country": "GE", "region": "<value>", "city": "North Kailee", "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0}, {"country": "PH", "region": "<value>", "city": "Port Anabelfort", "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0}, {"country": "VN", "region": "<value>", "city": "East Anissafurt", "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0}]
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -897,7 +904,6 @@ examples:
       parameters:
         query:
           event: "clicks"
-          interval: "24h"
           timezone: "America/New_York"
           city: "New York"
           device: "Desktop"
@@ -911,7 +917,7 @@ examples:
           sortBy: "timestamp"
       responses:
         "200":
-          application/json: [{"event": "sale", "timestamp": "<value>", "eventId": "<id>", "eventName": "<value>", "link": {"id": "<id>", "domain": "remorseful-concentration.biz", "key": "<key>", "url": "https://primary-paintwork.com/", "trackConversion": false, "externalId": "<id>", "tenantId": "<id>", "programId": "<id>", "partnerId": "<id>", "archived": true, "expiresAt": "1748133366528", "expiredUrl": "https://memorable-overcoat.com", "password": "COyVtOrvIw1vLIJ", "proxy": true, "title": "<value>", "description": "cleverly blossom defiantly", "image": "https://picsum.photos/seed/FhMx4/296/3347", "video": "https://picsum.videos/seed/gk5Gr0OXM/244/1177", "rewrite": false, "doIndex": false, "ios": "<value>", "android": "<id>", "geo": {}, "publicStats": false, "tagId": "<id>", "tags": [], "folderId": "<id>", "webhookIds": ["<value>"], "comments": "eek censor tenement commonly softly boo massive sorrowful aw strict behind along energetic oddball pasta thread vestment meanwhile likely up", "shortLink": "https://lucky-volleyball.biz", "qrCode": "https://discrete-omelet.net/", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "testStartedAt": "<value>", "testCompletedAt": "<value>", "userId": "<id>", "workspaceId": "<id>", "clicks": 0, "lastClicked": "<value>", "leads": 0, "sales": 0, "saleAmount": 0, "createdAt": "1742101222652", "updatedAt": "1745952913664", "projectId": "<id>"}, "click": {"id": "<id>", "timestamp": "<value>", "url": "https://watery-ecliptic.info/", "country": "Somalia", "city": "Jammiecester", "region": "<value>", "continent": "Antarctica", "device": "Mobile", "browser": "Firefox", "os": "BeOS", "referer": "male-widow.info", "refererUrl": "https://sticky-tune-up.net", "qr": true, "ip": "144.175.252.47"}, "customer": {"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "1716443409006"}, "sale": {"amount": 608798, "invoiceId": null, "paymentProcessor": "shopify"}, "saleAmount": 8727.59, "invoice_id": "<id>", "payment_processor": "<value>", "click_id": "<id>", "link_id": "<id>", "domain": "hateful-linseed.info", "key": "<key>", "url": "https://rowdy-cuckoo.org/", "continent": "South America", "country": "Georgia", "city": "Emanuelboro", "device": "Mobile", "browser": "Chrome", "os": "WebOS", "qr": 3279.73, "ip": "16.166.150.33"}, {"event": "sale", "timestamp": "<value>", "eventId": "<id>", "eventName": "<value>", "link": {"id": "<id>", "domain": "sparkling-hydrolyze.biz", "key": "<key>", "url": "https://closed-space.org/", "trackConversion": false, "externalId": "<id>", "tenantId": "<id>", "programId": "<id>", "partnerId": "<id>", "archived": true, "expiresAt": "1764217330103", "expiredUrl": "https://unkempt-conversation.com/", "password": "PMbm9rjvofBDkNA", "proxy": false, "title": "<value>", "description": "after although while", "image": "https://picsum.photos/seed/Z9T8xoAjNE/354/1907", "video": "https://loremflickr.com/1063/1000?lock=6552935322217005", "rewrite": true, "doIndex": true, "ios": "<value>", "android": "<id>", "geo": {}, "publicStats": true, "tagId": "<id>", "tags": [{"id": "<id>", "name": "<value>", "color": "pink"}], "folderId": "<id>", "webhookIds": [], "comments": "clear-cut an mid aw disconnection which wetly typeface usable underneath putrefy ah aha joint careless whoever yesterday thorny unwelcome", "shortLink": "https://upbeat-sermon.org", "qrCode": "https://plump-horde.com", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "testStartedAt": "<value>", "testCompletedAt": "<value>", "userId": "<id>", "workspaceId": "<id>", "clicks": 0, "lastClicked": "<value>", "leads": 0, "sales": 0, "saleAmount": 0, "createdAt": "1722349814880", "updatedAt": "1745946060353", "projectId": "<id>"}, "click": {"id": "<id>", "timestamp": "<value>", "url": "https://lined-address.name/", "country": "Moldova", "city": "Dachfield", "region": "<value>", "continent": "Africa", "device": "Desktop", "browser": "Firefox", "os": "Symbian", "referer": "fatherly-marketplace.biz", "refererUrl": "https://bitter-platter.net/", "qr": false, "ip": "adca:ffa9:74d9:bf7c:f4c5:d273:f1ed:be4f"}, "customer": {"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "1743562522580"}, "sale": {"amount": 478369, "invoiceId": null, "paymentProcessor": "custom"}, "saleAmount": 3702.47, "invoice_id": "<id>", "payment_processor": "<value>", "click_id": "<id>", "link_id": "<id>", "domain": "untimely-straw.net", "key": "<key>", "url": "https://definitive-cutover.com", "continent": "Africa", "country": "Angola", "city": "Ryleyport", "device": "Desktop", "browser": "Firefox", "os": "Android", "qr": 9298.29, "ip": "250.239.120.52"}]
+          application/json: [{"event": "lead", "timestamp": "<value>", "eventId": "<id>", "eventName": "<value>", "click": {"id": "<id>", "timestamp": "<value>", "url": "https://definite-deer.com", "country": "New Zealand", "city": "Auercester", "region": "<value>", "continent": "Africa", "device": "Desktop", "browser": "Safari", "os": "Chrome OS", "referer": "pricey-accountability.com", "refererUrl": "https://lovely-bench.org/", "qr": false, "ip": "a17c:0d9e:31d2:a99a:2bc9:c682:3e0d:ee1f"}, "link": {"id": "<id>", "domain": "odd-spork.net", "key": "<key>", "url": "https://bossy-coliseum.com", "trackConversion": false, "externalId": "<id>", "tenantId": "<id>", "programId": "<id>", "partnerId": "<id>", "archived": false, "expiresAt": "1752728645364", "expiredUrl": "https://fond-scale.name", "password": "h9aKnjQvMfiGbZG", "proxy": true, "title": "<value>", "description": "woot excepting gah only despite seemingly eventually ah creative", "image": "https://picsum.photos/seed/ulbP1D/1921/2957", "video": "https://picsum.videos/seed/rwTe8z/373/1885", "rewrite": false, "doIndex": false, "ios": "<value>", "android": "<id>", "geo": {}, "publicStats": false, "tagId": "<id>", "tags": [{"id": "<id>", "name": "<value>", "color": "blue"}, {"id": "<id>", "name": "<value>", "color": "blue"}, {"id": "<id>", "name": "<value>", "color": "purple"}], "folderId": "<id>", "webhookIds": [], "comments": "validity yuck until midst taxicab describe house what married owlishly which wonderfully CD", "shortLink": "https://good-natured-fundraising.com", "qrCode": "https://outstanding-celsius.net", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "testStartedAt": "<value>", "testCompletedAt": "<value>", "userId": "<id>", "workspaceId": "<id>", "clicks": 0, "lastClicked": "<value>", "leads": 0, "sales": 0, "saleAmount": 0, "createdAt": "1730804643852", "updatedAt": "1748194889199", "projectId": "<id>"}, "customer": {"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "1723402297747"}, "click_id": "<id>", "link_id": "<id>", "domain": "closed-space.org", "key": "<key>", "url": "https://brave-mixture.biz", "continent": "South America", "country": "Christmas Island", "city": "South Jamarcuschester", "device": "Mobile", "browser": "Chrome", "os": "WebOS", "qr": 2601.25, "ip": "12bd:ca78:ba26:7f0c:aeae:50ec:495f:0bad"}, {"event": "sale", "timestamp": "<value>", "eventId": "<id>", "eventName": "<value>", "link": {"id": "<id>", "domain": "cheerful-operating.org", "key": "<key>", "url": "https://live-plumber.org/", "trackConversion": false, "externalId": "<id>", "tenantId": "<id>", "programId": "<id>", "partnerId": "<id>", "archived": true, "expiresAt": "1776370642946", "expiredUrl": "https://natural-government.name/", "password": "l_88fquzaxdapYd", "proxy": true, "title": "<value>", "description": "um what thump kettledrum configuration esteemed mysteriously legend absent", "image": "https://loremflickr.com/2620/816?lock=1054946459216100", "video": "https://loremflickr.com/1458/3724?lock=2702374725680927", "rewrite": false, "doIndex": true, "ios": "<value>", "android": "<id>", "geo": {}, "publicStats": true, "tagId": "<id>", "tags": [], "folderId": "<id>", "webhookIds": ["<value>", "<value>", "<value>"], "comments": "mid next dearly competent tender right plump address loosely bathhouse nifty for second", "shortLink": "https://next-design.org/", "qrCode": "https://grouchy-characterization.net/", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "testStartedAt": "<value>", "testCompletedAt": "<value>", "userId": "<id>", "workspaceId": "<id>", "clicks": 0, "lastClicked": "<value>", "leads": 0, "sales": 0, "saleAmount": 0, "createdAt": "1718707251556", "updatedAt": "1748253631777", "projectId": "<id>"}, "click": {"id": "<id>", "timestamp": "<value>", "url": "https://menacing-peony.biz", "country": "Philippines", "city": "Largo", "region": "<value>", "continent": "South America", "device": "Desktop", "browser": "Safari", "os": "BeOS", "referer": "splendid-octave.biz", "refererUrl": "https://cluttered-character.com/", "qr": false, "ip": "a587:e2fe:a4f0:3421:4146:6e5a:de54:29e8"}, "customer": {"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "1739096273350"}, "sale": {"amount": 543675, "invoiceId": null, "paymentProcessor": "polar"}, "saleAmount": 7354.65, "invoice_id": "<id>", "payment_processor": "<value>", "click_id": "<id>", "link_id": "<id>", "domain": "improbable-hawk.name", "key": "<key>", "url": "https://pleasing-distinction.org/", "continent": "Asia", "country": "Svalbard & Jan Mayen Islands", "city": "South Catherine", "device": "Desktop", "browser": "Firefox", "os": "WebOS", "qr": 732.15, "ip": "31.8.195.23"}, {"event": "sale", "timestamp": "<value>", "eventId": "<id>", "eventName": "<value>", "link": {"id": "<id>", "domain": "feline-planula.name", "key": "<key>", "url": "https://scared-discourse.com", "trackConversion": false, "externalId": "<id>", "tenantId": "<id>", "programId": "<id>", "partnerId": "<id>", "archived": true, "expiresAt": "1761733196703", "expiredUrl": "https://pricey-assist.org/", "password": "DNBiqNvvR9DIi2U", "proxy": true, "title": "<value>", "description": "generously forgo powerfully aw ew", "image": "https://loremflickr.com/2098/684?lock=240420111853983", "video": "https://loremflickr.com/2652/791?lock=862872020558869", "rewrite": true, "doIndex": true, "ios": "<value>", "android": "<id>", "geo": {}, "publicStats": true, "tagId": "<id>", "tags": [], "folderId": "<id>", "webhookIds": ["<value>"], "comments": "mid impressionable jovially hm against descent yum recommendation nerve ah book validity notwithstanding unaccountably ah hmph truthfully whup politely", "shortLink": "https://sneaky-freight.name", "qrCode": "https://serpentine-summer.name", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "testStartedAt": "<value>", "testCompletedAt": "<value>", "userId": "<id>", "workspaceId": "<id>", "clicks": 0, "lastClicked": "<value>", "leads": 0, "sales": 0, "saleAmount": 0, "createdAt": "1720154607679", "updatedAt": "1748230781856", "projectId": "<id>"}, "click": {"id": "<id>", "timestamp": "<value>", "url": "https://clueless-fisherman.net/", "country": "Cameroon", "city": "Mosciskibury", "region": "<value>", "continent": "Europe", "device": "Mobile", "browser": "Firefox", "os": "MacOS", "referer": "sniveling-seafood.org", "refererUrl": "https://unlined-hunger.name/", "qr": false, "ip": "53.34.214.95"}, "customer": {"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "1725942377570"}, "sale": {"amount": 484583, "invoiceId": null, "paymentProcessor": "shopify"}, "saleAmount": 7737.22, "invoice_id": "<id>", "payment_processor": "<value>", "click_id": "<id>", "link_id": "<id>", "domain": "possible-address.biz", "key": "<key>", "url": "https://tiny-premium.biz/", "continent": "Australia", "country": "Rwanda", "city": "Robertborough", "device": "Desktop", "browser": "Chrome", "os": "BeOS", "qr": 9191.11, "ip": "e5e5:5ac4:fd87:7c7d:4735:ab6e:64a1:5abd"}]
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1038,7 +1044,7 @@ examples:
     speakeasy-default-create-folder:
       responses:
         "201":
-          application/json: {"id": "<id>", "name": "<value>", "type": "default", "accessLevel": null, "linkCount": 0, "createdAt": "1733799507447", "updatedAt": "1745151840025"}
+          application/json: {"id": "<id>", "name": "<value>", "type": "default", "accessLevel": null, "linkCount": 0, "createdAt": "1736855301557", "updatedAt": "1748207634135"}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1065,7 +1071,7 @@ examples:
           pageSize: 50
       responses:
         "200":
-          application/json: [{"id": "<id>", "name": "<value>", "type": "mega", "accessLevel": null, "linkCount": 0, "createdAt": "1735057556063", "updatedAt": "1745131125769"}, {"id": "<id>", "name": "<value>", "type": "default", "accessLevel": null, "linkCount": 0, "createdAt": "1718486059564", "updatedAt": "1745170681461"}, {"id": "<id>", "name": "<value>", "type": "mega", "accessLevel": null, "linkCount": 0, "createdAt": "1714220493247", "updatedAt": "1745177832784"}]
+          application/json: [{"id": "<id>", "name": "<value>", "type": "mega", "accessLevel": null, "linkCount": 0, "createdAt": "1738113350166", "updatedAt": "1748186919872"}, {"id": "<id>", "name": "<value>", "type": "default", "accessLevel": null, "linkCount": 0, "createdAt": "1721541853667", "updatedAt": "1748226475564"}, {"id": "<id>", "name": "<value>", "type": "mega", "accessLevel": null, "linkCount": 0, "createdAt": "1717276287349", "updatedAt": "1748233626886"}]
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1091,7 +1097,7 @@ examples:
           id: "<id>"
       responses:
         "200":
-          application/json: {"id": "<id>", "name": "<value>", "type": "mega", "accessLevel": null, "linkCount": 0, "createdAt": "1732497228221", "updatedAt": "1745145546942"}
+          application/json: {"id": "<id>", "name": "<value>", "type": "mega", "accessLevel": null, "linkCount": 0, "createdAt": "1735553022316", "updatedAt": "1748201341037"}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1140,7 +1146,7 @@ examples:
     speakeasy-default-create-domain:
       responses:
         "201":
-          application/json: {"id": "<id>", "slug": "acme.com", "verified": false, "primary": false, "archived": false, "placeholder": "https://dub.co/help/article/what-is-dub", "expiredUrl": "https://acme.com/expired", "notFoundUrl": "https://acme.com/not-found", "assetLinks": null, "appleAppSiteAssociation": null, "logo": "<value>", "createdAt": "1729011256337", "updatedAt": "1745170931342", "registeredDomain": {"id": "<id>", "createdAt": "1726831119706", "expiresAt": "1749439510895"}}
+          application/json: {"id": "<id>", "slug": "acme.com", "verified": false, "primary": false, "archived": false, "placeholder": "https://dub.co/help/article/what-is-dub", "expiredUrl": "https://acme.com/expired", "notFoundUrl": "https://acme.com/not-found", "assetLinks": null, "appleAppSiteAssociation": null, "logo": "<value>", "createdAt": "1732067050419", "updatedAt": "1748226725422", "registeredDomain": {"id": "<id>", "createdAt": "1729886913786", "expiresAt": "1752495304975"}}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1168,7 +1174,7 @@ examples:
           pageSize: 50
       responses:
         "200":
-          application/json: [{"id": "<id>", "slug": "acme.com", "verified": false, "primary": false, "archived": false, "placeholder": "https://dub.co/help/article/what-is-dub", "expiredUrl": "https://acme.com/expired", "notFoundUrl": "https://acme.com/not-found", "assetLinks": null, "appleAppSiteAssociation": null, "logo": "<value>", "createdAt": "1730924937145", "updatedAt": "1745174378027", "registeredDomain": {"id": "<id>", "createdAt": "1719270323225", "expiresAt": "1752446520085"}}, {"id": "<id>", "slug": "acme.com", "verified": false, "primary": false, "archived": false, "placeholder": "https://dub.co/help/article/what-is-dub", "expiredUrl": "https://acme.com/expired", "notFoundUrl": "https://acme.com/not-found", "assetLinks": null, "appleAppSiteAssociation": null, "logo": "<value>", "createdAt": "1718486059629", "updatedAt": "1745170681526", "registeredDomain": {"id": "<id>", "createdAt": "1733829869588", "expiresAt": "1745756494312"}}, {"id": "<id>", "slug": "acme.com", "verified": false, "primary": false, "archived": false, "placeholder": "https://dub.co/help/article/what-is-dub", "expiredUrl": "https://acme.com/expired", "notFoundUrl": "https://acme.com/not-found", "assetLinks": null, "appleAppSiteAssociation": null, "logo": "<value>", "createdAt": "1736318579872", "updatedAt": "1745123214586", "registeredDomain": {"id": "<id>", "createdAt": "1715826539230", "expiresAt": "1766897667864"}}]
+          application/json: [{"id": "<id>", "slug": "acme.com", "verified": false, "primary": false, "archived": false, "placeholder": "https://dub.co/help/article/what-is-dub", "expiredUrl": "https://acme.com/expired", "notFoundUrl": "https://acme.com/not-found", "assetLinks": null, "appleAppSiteAssociation": null, "logo": "<value>", "createdAt": "1733980731218", "updatedAt": "1748230172100", "registeredDomain": {"id": "<id>", "createdAt": "1722326117297", "expiresAt": "1755502314157"}}, {"id": "<id>", "slug": "acme.com", "verified": false, "primary": false, "archived": false, "placeholder": "https://dub.co/help/article/what-is-dub", "expiredUrl": "https://acme.com/expired", "notFoundUrl": "https://acme.com/not-found", "assetLinks": null, "appleAppSiteAssociation": null, "logo": "<value>", "createdAt": "1721541853702", "updatedAt": "1748226475599", "registeredDomain": {"id": "<id>", "createdAt": "1736885663660", "expiresAt": "1748812288384"}}, {"id": "<id>", "slug": "acme.com", "verified": false, "primary": false, "archived": false, "placeholder": "https://dub.co/help/article/what-is-dub", "expiredUrl": "https://acme.com/expired", "notFoundUrl": "https://acme.com/not-found", "assetLinks": null, "appleAppSiteAssociation": null, "logo": "<value>", "createdAt": "1739374373944", "updatedAt": "1748179008658", "registeredDomain": {"id": "<id>", "createdAt": "1718882333301", "expiresAt": "1769953461935"}}]
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1194,7 +1200,7 @@ examples:
           slug: "acme.com"
       responses:
         "200":
-          application/json: {"id": "<id>", "slug": "acme.com", "verified": false, "primary": false, "archived": false, "placeholder": "https://dub.co/help/article/what-is-dub", "expiredUrl": "https://acme.com/expired", "notFoundUrl": "https://acme.com/not-found", "assetLinks": null, "appleAppSiteAssociation": null, "logo": "<value>", "createdAt": "1740707572178", "updatedAt": "1745167363530", "registeredDomain": {"id": "<id>", "createdAt": "1724534105884", "expiresAt": "1776468973338"}}
+          application/json: {"id": "<id>", "slug": "acme.com", "verified": false, "primary": false, "archived": false, "placeholder": "https://dub.co/help/article/what-is-dub", "expiredUrl": "https://acme.com/expired", "notFoundUrl": "https://acme.com/not-found", "assetLinks": null, "appleAppSiteAssociation": null, "logo": "<value>", "createdAt": "1743763366242", "updatedAt": "1748223157594", "registeredDomain": {"id": "<id>", "createdAt": "1727589899948", "expiresAt": "1779524767401"}}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1289,11 +1295,13 @@ examples:
     speakeasy-default-get-customers:
       parameters:
         query:
+          sortBy: "createdAt"
+          sortOrder: "desc"
           page: 1
           pageSize: 50
       responses:
         "200":
-          application/json: [{"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "1730924937228"}, {"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "1735057556211"}, {"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "1719270323308"}]
+          application/json: [{"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "1733980731262"}, {"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "1738113350244"}, {"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "1722326117341"}]
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1316,7 +1324,7 @@ examples:
     speakeasy-default-create-customer:
       responses:
         "201":
-          application/json: {"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "1729011256454"}
+          application/json: {"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "1732067050480"}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1343,7 +1351,7 @@ examples:
         query: {}
       responses:
         "200":
-          application/json: {"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "1735752297882"}
+          application/json: {"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "1738808091901"}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1370,7 +1378,7 @@ examples:
         query: {}
       responses:
         "200":
-          application/json: {"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "1740707572292"}
+          application/json: {"id": "<id>", "externalId": "<id>", "name": "<value>", "createdAt": "1743763366302"}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1419,7 +1427,7 @@ examples:
     speakeasy-default-create-partner:
       responses:
         "201":
-          application/json: {"id": "<id>", "name": "<value>", "email": "Loyal79@yahoo.com", "image": "https://loremflickr.com/1/679?lock=7139282333236917", "country": "Slovenia", "paypalEmail": "<value>", "stripeConnectId": "<id>", "payoutsEnabledAt": "<value>", "createdAt": "1732153215847", "status": "declined", "programId": "<id>", "tenantId": "<id>", "links": [{"id": "<id>", "domain": "harmful-disposer.com", "key": "<key>", "shortLink": "https://each-barracks.biz/", "url": "https://blind-breastplate.name/", "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0}, {"id": "<id>", "domain": "gripping-analogy.name", "key": "<key>", "shortLink": "https://distant-advertisement.name", "url": "https://quick-witted-march.org/", "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0}, {"id": "<id>", "domain": "kooky-kinase.biz", "key": "<key>", "shortLink": "https://considerate-pressure.org", "url": "https://smooth-dash.info", "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0}], "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0, "earnings": 0}
+          application/json: {"id": "<id>", "name": "<value>", "email": "Loyal79@yahoo.com", "image": "https://loremflickr.com/1/679?lock=7139282333236917", "country": "Slovenia", "website": "<value>", "youtube": "<value>", "twitter": "<value>", "linkedin": "<value>", "instagram": "<value>", "tiktok": "<value>", "paypalEmail": "<value>", "stripeConnectId": "<id>", "payoutsEnabledAt": "<value>", "createdAt": "1735209009843", "status": "declined", "programId": "<id>", "tenantId": "<id>", "links": [{"id": "<id>", "domain": "harmful-disposer.com", "key": "<key>", "shortLink": "https://each-barracks.biz/", "url": "https://blind-breastplate.name/", "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0}, {"id": "<id>", "domain": "gripping-analogy.name", "key": "<key>", "shortLink": "https://distant-advertisement.name", "url": "https://quick-witted-march.org/", "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0}, {"id": "<id>", "domain": "kooky-kinase.biz", "key": "<key>", "shortLink": "https://considerate-pressure.org", "url": "https://smooth-dash.info", "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0}], "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0, "earnings": 0}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1442,7 +1450,7 @@ examples:
     speakeasy-default-create-partner-link:
       responses:
         "201":
-          application/json: {"id": "<id>", "domain": "tall-making.com", "key": "<key>", "url": "https://inferior-louse.org", "trackConversion": false, "externalId": "<id>", "tenantId": "<id>", "programId": "<id>", "partnerId": "<id>", "archived": false, "expiresAt": "1767064420295", "expiredUrl": "https://tragic-skean.biz/", "password": "kPhoCRFmmigZdFo", "proxy": false, "title": "<value>", "description": "miserably merrily stay ouch", "image": "https://picsum.photos/seed/tXRBthjAFj/215/2959", "video": "https://loremflickr.com/3827/1329?lock=4742285326014076", "rewrite": false, "doIndex": false, "ios": "<value>", "android": "<id>", "geo": {}, "publicStats": false, "tagId": "<id>", "tags": [{"id": "<id>", "name": "<value>", "color": "purple"}, {"id": "<id>", "name": "<value>", "color": "pink"}, {"id": "<id>", "name": "<value>", "color": "red"}], "folderId": "<id>", "webhookIds": ["<value>", "<value>"], "comments": "numb worriedly tinted nor utterly but meh worriedly gadzooks poorly afterwards whether penalise before academics nicely ugh whistle hungrily", "shortLink": "https://likely-submitter.info/", "qrCode": "https://plain-cafe.org", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<id>", "workspaceId": "<id>", "clicks": 0, "lastClicked": "<value>", "leads": 0, "sales": 0, "saleAmount": 0, "createdAt": "1728120688101", "updatedAt": "1745166802900", "projectId": "<id>"}
+          application/json: {"id": "<id>", "domain": "tall-making.com", "key": "<key>", "url": "https://inferior-louse.org", "trackConversion": false, "externalId": "<id>", "tenantId": "<id>", "programId": "<id>", "partnerId": "<id>", "archived": false, "expiresAt": "1770120214276", "expiredUrl": "https://tragic-skean.biz/", "password": "kPhoCRFmmigZdFo", "proxy": false, "title": "<value>", "description": "miserably merrily stay ouch", "image": "https://picsum.photos/seed/tXRBthjAFj/215/2959", "video": "https://loremflickr.com/3827/1329?lock=4742285326014076", "rewrite": false, "doIndex": false, "ios": "<value>", "android": "<id>", "geo": {}, "publicStats": false, "tagId": "<id>", "tags": [{"id": "<id>", "name": "<value>", "color": "purple"}, {"id": "<id>", "name": "<value>", "color": "pink"}, {"id": "<id>", "name": "<value>", "color": "red"}], "folderId": "<id>", "webhookIds": ["<value>", "<value>"], "comments": "numb worriedly tinted nor utterly but meh worriedly gadzooks poorly afterwards whether penalise before academics nicely ugh whistle hungrily", "shortLink": "https://likely-submitter.info/", "qrCode": "https://plain-cafe.org", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<id>", "workspaceId": "<id>", "clicks": 0, "lastClicked": "<value>", "leads": 0, "sales": 0, "saleAmount": 0, "createdAt": "1731176482071", "updatedAt": "1748222596870", "projectId": "<id>"}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1491,7 +1499,7 @@ examples:
     speakeasy-default-upsert-partner-link:
       responses:
         "200":
-          application/json: {"id": "<id>", "domain": "internal-teriyaki.name", "key": "<key>", "url": "https://snoopy-exasperation.name/", "trackConversion": false, "externalId": "<id>", "tenantId": "<id>", "programId": "<id>", "partnerId": "<id>", "archived": false, "expiresAt": "1749718681016", "expiredUrl": "https://trim-stump.org/", "password": "aeFj89Olng6LL82", "proxy": false, "title": "<value>", "description": "next assail unblinking gulp doting selfishly resource poppy scent", "image": "https://loremflickr.com/1169/3796?lock=7016484909038829", "video": "https://loremflickr.com/476/1877?lock=724230151067151", "rewrite": false, "doIndex": false, "ios": "<value>", "android": "<id>", "geo": {}, "publicStats": false, "tagId": "<id>", "tags": [], "folderId": "<id>", "webhookIds": ["<value>"], "comments": "ick yippee unit train fashion up out er confound redevelop", "shortLink": "https://tense-interchange.com/", "qrCode": "https://uncommon-accelerator.net/", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<id>", "workspaceId": "<id>", "clicks": 0, "lastClicked": "<value>", "leads": 0, "sales": 0, "saleAmount": 0, "createdAt": "1742078907705", "updatedAt": "1745166837538", "projectId": "<id>"}
+          application/json: {"id": "<id>", "domain": "internal-teriyaki.name", "key": "<key>", "url": "https://snoopy-exasperation.name/", "trackConversion": false, "externalId": "<id>", "tenantId": "<id>", "programId": "<id>", "partnerId": "<id>", "archived": false, "expiresAt": "1752774474963", "expiredUrl": "https://trim-stump.org/", "password": "aeFj89Olng6LL82", "proxy": false, "title": "<value>", "description": "next assail unblinking gulp doting selfishly resource poppy scent", "image": "https://loremflickr.com/1169/3796?lock=7016484909038829", "video": "https://loremflickr.com/476/1877?lock=724230151067151", "rewrite": false, "doIndex": false, "ios": "<value>", "android": "<id>", "geo": {}, "publicStats": false, "tagId": "<id>", "tags": [], "folderId": "<id>", "webhookIds": ["<value>"], "comments": "ick yippee unit train fashion up out er confound redevelop", "shortLink": "https://tense-interchange.com/", "qrCode": "https://uncommon-accelerator.net/", "utm_source": "<value>", "utm_medium": "<value>", "utm_campaign": "<value>", "utm_term": "<value>", "utm_content": "<value>", "userId": "<id>", "workspaceId": "<id>", "clicks": 0, "lastClicked": "<value>", "leads": 0, "sales": 0, "saleAmount": 0, "createdAt": "1745134701639", "updatedAt": "1748222631472", "projectId": "<id>"}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1519,7 +1527,7 @@ examples:
           programId: "<id>"
       responses:
         "200":
-          application/json: [{"link": "<value>", "id": "<id>", "domain": "hot-dandelion.org", "key": "<key>", "shortLink": "<value>", "url": "https://everlasting-cheetah.name", "createdAt": "1718731996662", "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0, "earnings": 0}, {"link": "<value>", "id": "<id>", "domain": "grizzled-ecliptic.biz", "key": "<key>", "shortLink": "<value>", "url": "https://possible-interchange.info", "createdAt": "1744656764922", "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0, "earnings": 0}, {"link": "<value>", "id": "<id>", "domain": "glass-wriggler.biz", "key": "<key>", "shortLink": "<value>", "url": "https://light-fit.name/", "createdAt": "1716287275442", "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0, "earnings": 0}]
+          application/json: [{"link": "<value>", "id": "<id>", "domain": "hot-dandelion.org", "key": "<key>", "shortLink": "<value>", "url": "https://everlasting-cheetah.name", "createdAt": "1721787790582", "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0, "earnings": 0}, {"link": "<value>", "id": "<id>", "domain": "grizzled-ecliptic.biz", "key": "<key>", "shortLink": "<value>", "url": "https://possible-interchange.info", "createdAt": "1747712558835", "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0, "earnings": 0}, {"link": "<value>", "id": "<id>", "domain": "glass-wriggler.biz", "key": "<key>", "shortLink": "<value>", "url": "https://light-fit.name/", "createdAt": "1719343069342", "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0, "earnings": 0}]
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1538,11 +1546,44 @@ examples:
           application/json: {"error": {"code": "rate_limit_exceeded", "message": "The requested resource was not found."}}
         "500":
           application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
-  updatePartnerSale:
-    speakeasy-default-update-partner-sale:
+  listCommissions:
+    speakeasy-default-list-commissions:
+      parameters:
+        query:
+          sortBy: "createdAt"
+          sortOrder: "desc"
+          interval: "all"
+          page: 1
+          pageSize: 50
       responses:
         "200":
-          application/json: {"id": "<id>", "amount": 1560.34, "earnings": 2256.73, "currency": "Cayman Islands Dollar", "status": "pending", "createdAt": "1733602681459", "updatedAt": "1745121352386"}
+          application/json: [{"id": "cm_1JVR7XRCSR0EDBAF39FZ4PMYE", "amount": 5472.72, "earnings": 6783.17, "currency": "Chilean Peso", "status": "processed", "createdAt": "1721541853879", "updatedAt": "1748226475776"}, {"id": "cm_1JVR7XRCSR0EDBAF39FZ4PMYE", "amount": 6393.87, "earnings": 175.77, "currency": "Russian Ruble", "status": "pending", "createdAt": "1718882333478", "updatedAt": "1748231005449"}, {"id": "cm_1JVR7XRCSR0EDBAF39FZ4PMYE", "amount": 5098.83, "earnings": 6339.11, "currency": "Afghani", "status": "pending", "createdAt": "1728319172363", "updatedAt": "1748213532920"}]
+        "400":
+          application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
+        "401":
+          application/json: {"error": {"code": "unauthorized", "message": "The requested resource was not found."}}
+        "403":
+          application/json: {"error": {"code": "forbidden", "message": "The requested resource was not found."}}
+        "404":
+          application/json: {"error": {"code": "not_found", "message": "The requested resource was not found."}}
+        "409":
+          application/json: {"error": {"code": "conflict", "message": "The requested resource was not found."}}
+        "410":
+          application/json: {"error": {"code": "invite_expired", "message": "The requested resource was not found."}}
+        "422":
+          application/json: {"error": {"code": "unprocessable_entity", "message": "The requested resource was not found."}}
+        "429":
+          application/json: {"error": {"code": "rate_limit_exceeded", "message": "The requested resource was not found."}}
+        "500":
+          application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
+  updateCommission:
+    speakeasy-default-update-commission:
+      parameters:
+        path:
+          id: "cm_1JVR7XRCSR0EDBAF39FZ4PMYE"
+      responses:
+        "200":
+          application/json: {"id": "cm_1JVR7XRCSR0EDBAF39FZ4PMYE", "amount": 8574.78, "earnings": 5971.29, "currency": "Lempira", "status": "canceled", "createdAt": "1736516787775", "updatedAt": "1748213802784"}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1568,7 +1609,7 @@ examples:
           idOrSlug: "<value>"
       responses:
         "200":
-          application/json: {"id": "<id>", "name": "<value>", "slug": "<value>", "logo": null, "inviteCode": "<value>", "plan": "business max", "stripeId": "<id>", "billingCycleStart": 5588.34, "paymentFailedAt": "<value>", "stripeConnectId": "<id>", "totalLinks": 5442.21, "usage": 5212.35, "usageLimit": 9699.61, "linksUsage": 4580.49, "linksLimit": 4508.24, "salesUsage": 2627.95, "salesLimit": 2134.57, "domainsLimit": 9371.46, "tagsLimit": 4381.42, "foldersUsage": 8013.73, "foldersLimit": 788.88, "usersLimit": 2199.56, "aiUsage": 3134.64, "aiLimit": 945.89, "conversionEnabled": false, "dotLinkClaimed": false, "partnersEnabled": true, "createdAt": "1737210463283", "users": [{"role": "member", "defaultFolderId": "<id>"}, {"role": "owner", "defaultFolderId": "<id>"}], "domains": [{"slug": "acme.com", "primary": false, "verified": false}], "store": {"key": "<value>", "key1": "<value>"}, "allowedHostnames": ["dub.sh"]}
+          application/json: {"id": "<id>", "name": "<value>", "slug": "<value>", "logo": null, "inviteCode": "<value>", "plan": "business max", "stripeId": "<id>", "billingCycleStart": 5588.34, "paymentFailedAt": "<value>", "stripeConnectId": "<id>", "totalLinks": 5442.21, "usage": 5212.35, "usageLimit": 9699.61, "linksUsage": 4580.49, "linksLimit": 4508.24, "salesUsage": 2627.95, "salesLimit": 2134.57, "domainsLimit": 9371.46, "tagsLimit": 4381.42, "foldersUsage": 8013.73, "foldersLimit": 788.88, "usersLimit": 2199.56, "aiUsage": 3134.64, "aiLimit": 945.89, "conversionEnabled": false, "dotLinkClaimed": false, "partnersEnabled": true, "createdAt": "1740266257166", "users": [{"role": "member", "defaultFolderId": "<id>"}, {"role": "owner", "defaultFolderId": "<id>"}], "domains": [{"slug": "acme.com", "primary": false, "verified": false}], "store": {"key": "<value>", "key1": "<value>"}, "allowedHostnames": ["dub.sh"]}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1594,7 +1635,7 @@ examples:
           idOrSlug: "<value>"
       responses:
         "200":
-          application/json: {"id": "<id>", "name": "<value>", "slug": "<value>", "logo": null, "inviteCode": "<value>", "plan": "advanced", "stripeId": "<id>", "billingCycleStart": 5971.29, "paymentFailedAt": "<value>", "stripeConnectId": "<id>", "totalLinks": 3446.2, "usage": 9914.64, "usageLimit": 6276.9, "linksUsage": 4888.52, "linksLimit": 9840.08, "salesUsage": 540.62, "salesLimit": 8965.01, "domainsLimit": 4468.63, "tagsLimit": 3115.07, "foldersUsage": 2494.4, "foldersLimit": 1395.79, "usersLimit": 7892.75, "aiUsage": 8898.38, "aiLimit": 3024.61, "conversionEnabled": true, "dotLinkClaimed": false, "partnersEnabled": false, "createdAt": "1726415064687", "users": [], "domains": [{"slug": "acme.com", "primary": false, "verified": false}, {"slug": "acme.com", "primary": false, "verified": false}, {"slug": "acme.com", "primary": false, "verified": false}], "store": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "allowedHostnames": ["dub.sh"]}
+          application/json: {"id": "<id>", "name": "<value>", "slug": "<value>", "logo": null, "inviteCode": "<value>", "plan": "advanced", "stripeId": "<id>", "billingCycleStart": 5971.29, "paymentFailedAt": "<value>", "stripeConnectId": "<id>", "totalLinks": 3446.2, "usage": 9914.64, "usageLimit": 6276.9, "linksUsage": 4888.52, "linksLimit": 9840.08, "salesUsage": 540.62, "salesLimit": 8965.01, "domainsLimit": 4468.63, "tagsLimit": 3115.07, "foldersUsage": 2494.4, "foldersLimit": 1395.79, "usersLimit": 7892.75, "aiUsage": 8898.38, "aiLimit": 3024.61, "conversionEnabled": true, "dotLinkClaimed": false, "partnersEnabled": false, "createdAt": "1729470858562", "users": [], "domains": [{"slug": "acme.com", "primary": false, "verified": false}, {"slug": "acme.com", "primary": false, "verified": false}, {"slug": "acme.com", "primary": false, "verified": false}], "store": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "allowedHostnames": ["dub.sh"]}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1671,44 +1712,7 @@ examples:
           application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
 examplesVersion: 1.0.1
 generatedTests:
-  createLink: "2025-05-06T22:39:46+05:30"
-  getLinks: "2025-05-06T22:39:46+05:30"
-  getLinksCount: "2025-05-06T22:39:46+05:30"
-  getLinkInfo: "2025-05-06T22:39:46+05:30"
-  updateLink: "2025-05-06T22:39:46+05:30"
-  deleteLink: "2025-05-06T22:39:46+05:30"
-  bulkCreateLinks: "2025-05-06T22:39:46+05:30"
-  bulkUpdateLinks: "2025-05-06T22:39:46+05:30"
-  bulkDeleteLinks: "2025-05-06T22:39:46+05:30"
-  upsertLink: "2025-05-06T22:39:46+05:30"
-  retrieveAnalytics: "2025-05-06T22:39:46+05:30"
-  listEvents: "2025-05-06T22:39:46+05:30"
-  createTag: "2025-05-06T22:39:46+05:30"
-  getTags: "2025-05-06T22:39:46+05:30"
-  updateTag: "2025-05-06T22:39:46+05:30"
-  deleteTag: "2025-05-06T22:39:46+05:30"
-  createFolder: "2025-05-06T22:39:46+05:30"
-  listFolders: "2025-05-06T22:39:46+05:30"
-  updateFolder: "2025-05-06T22:39:46+05:30"
-  deleteFolder: "2025-05-06T22:39:46+05:30"
-  createDomain: "2025-05-06T22:39:46+05:30"
-  listDomains: "2025-05-06T22:39:46+05:30"
-  updateDomain: "2025-05-06T22:39:46+05:30"
-  deleteDomain: "2025-05-06T22:39:46+05:30"
-  trackLead: "2025-05-06T22:39:46+05:30"
-  trackSale: "2025-05-06T22:39:46+05:30"
-  getCustomers: "2025-05-06T22:39:46+05:30"
-  createCustomer: "2025-05-06T22:39:46+05:30"
-  getCustomer: "2025-05-06T22:39:46+05:30"
-  updateCustomer: "2025-05-06T22:39:46+05:30"
-  deleteCustomer: "2025-05-06T22:39:46+05:30"
-  createPartner: "2025-05-06T22:39:46+05:30"
-  createPartnerLink: "2025-05-06T22:39:46+05:30"
-  retrieveLinks: "2025-05-06T22:39:46+05:30"
-  upsertPartnerLink: "2025-05-06T22:39:46+05:30"
-  retrievePartnerAnalytics: "2025-05-06T22:39:46+05:30"
-  updatePartnerSale: "2025-05-06T22:39:46+05:30"
-  getWorkspace: "2025-05-06T22:39:46+05:30"
-  updateWorkspace: "2025-05-06T22:39:46+05:30"
-  createReferralsEmbedToken: "2025-05-06T22:39:46+05:30"
-  getQRCode: "2025-05-06T22:39:46+05:30"
+  createTag: "2025-05-26T16:44:28+05:30"
+  getTags: "2025-05-26T16:44:28+05:30"
+  updateTag: "2025-05-26T16:44:28+05:30"
+  deleteTag: "2025-05-26T16:44:28+05:30"
