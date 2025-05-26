@@ -1,7 +1,7 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: 2b47fe29b17b4d40c12623df1671b9e3
+  docChecksum: 52a7b4d33ebbcc03c8f2af73ea47c819
   docVersion: 0.0.1
   speakeasyVersion: 1.543.8
   generationVersion: 2.598.22
@@ -1712,7 +1712,7 @@ examples:
           application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
 examplesVersion: 1.0.1
 generatedTests:
-  createTag: "2025-05-26T16:44:28+05:30"
-  getTags: "2025-05-26T16:44:28+05:30"
-  updateTag: "2025-05-26T16:44:28+05:30"
-  deleteTag: "2025-05-26T16:44:28+05:30"
+  createTag: "2025-05-26T16:48:51+05:30"
+  getTags: "2025-05-26T16:48:51+05:30"
+  updateTag: "2025-05-26T16:48:51+05:30"
+  deleteTag: "2025-05-26T16:48:51+05:30"

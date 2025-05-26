@@ -14,7 +14,7 @@ export const ServerList = [
   /**
    * Production API
    */
-  "https://api.dub.co",
+  "http://api.localhost:8888",
 ] as const;
 
 export type SDKOptions = {

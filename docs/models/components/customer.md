@@ -9,7 +9,7 @@ let value: Customer = {
   id: "<id>",
   externalId: "<id>",
   name: "<value>",
-  createdAt: "1743169095654",
+  createdAt: "1743169359329",
 };
 ```
 

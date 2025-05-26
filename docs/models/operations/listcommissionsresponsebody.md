@@ -11,8 +11,8 @@ let value: ListCommissionsResponseBody = {
   earnings: 5050.12,
   currency: "Australian Dollar",
   status: "duplicate",
-  createdAt: "1723150242695",
-  updatedAt: "1748207657990",
+  createdAt: "1723150505569",
+  updatedAt: "1748207920864",
 };
 ```
 
