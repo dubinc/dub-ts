@@ -12,6 +12,9 @@ workflows:
     steps:
       - stepId: test
         operationId: createTag
+        requestBody:
+          contentType: application/json
+          payload: {"name": "Marketing", "color": "blue"}
         successCriteria:
           - condition: $statusCode == 201
           - condition: $response.header.Content-Type == application/json
@@ -103,3 +106,8 @@ workflows:
               }
             type: simple
     x-speakeasy-test-group: Tags
+x-speakeasy-test-server:
+  baseUrl: "http://api.localhost:8888"
+x-speakeasy-test-security:
+  value:
+    token: "x-env: DUB_API_KEY"

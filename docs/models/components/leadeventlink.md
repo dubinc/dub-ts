@@ -16,7 +16,7 @@ let value: LeadEventLink = {
   programId: "<id>",
   partnerId: "<id>",
   archived: false,
-  expiresAt: "1757117105582",
+  expiresAt: "1757119247914",
   expiredUrl: "https://orange-scarification.biz",
   password: "iOeExVQQi7abjRm",
   proxy: false,
@@ -55,8 +55,8 @@ let value: LeadEventLink = {
   userId: "<id>",
   workspaceId: "<id>",
   lastClicked: "<value>",
-  createdAt: "1735756897110",
-  updatedAt: "1748237613450",
+  createdAt: "1735759039443",
+  updatedAt: "1748239755783",
   projectId: "<id>",
 };
 ```

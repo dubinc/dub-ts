@@ -11,7 +11,7 @@ Webhook event schema
 const value: components.LinkWebhookEvent = {
   id: "<id>",
   event: "link.deleted",
-  createdAt: "1735776738256",
+  createdAt: "1735778881227",
   data: {
     id: "<id>",
     domain: "exalted-pinstripe.com",
@@ -23,7 +23,7 @@ const value: components.LinkWebhookEvent = {
     programId: "<id>",
     partnerId: "<id>",
     archived: false,
-    expiresAt: "1767621753585",
+    expiresAt: "1767623896558",
     expiredUrl: "https://illustrious-jungle.org/",
     password: "DwH3aXJCJcSX4Ff",
     proxy: false,
@@ -62,8 +62,8 @@ const value: components.LinkWebhookEvent = {
     userId: "<id>",
     workspaceId: "<id>",
     lastClicked: "<value>",
-    createdAt: "1726815010043",
-    updatedAt: "1748188650634",
+    createdAt: "1726817153018",
+    updatedAt: "1748190793609",
     projectId: "<id>",
   },
 };
@@ -75,7 +75,7 @@ const value: components.LinkWebhookEvent = {
 const value: components.LinkClickedEvent = {
   id: "<id>",
   event: "link.clicked",
-  createdAt: "1745350693528",
+  createdAt: "1745352836504",
   data: {
     click: {
       id: "<id>",
@@ -104,7 +104,7 @@ const value: components.LinkClickedEvent = {
       programId: "<id>",
       partnerId: "<id>",
       archived: false,
-      expiresAt: "1762733910332",
+      expiresAt: "1762736053306",
       expiredUrl: "https://delectable-quart.com",
       password: "yG3N11IQ7NfAdxc",
       proxy: false,
@@ -144,8 +144,8 @@ const value: components.LinkClickedEvent = {
       userId: "<id>",
       workspaceId: "<id>",
       lastClicked: "<value>",
-      createdAt: "1737651356292",
-      updatedAt: "1748176671223",
+      createdAt: "1737653499250",
+      updatedAt: "1748178814180",
       projectId: "<id>",
     },
   },
@@ -158,14 +158,14 @@ const value: components.LinkClickedEvent = {
 const value: components.LeadCreatedEvent = {
   id: "<id>",
   event: "lead.created",
-  createdAt: "1744235345997",
+  createdAt: "1744237488950",
   data: {
     eventName: "<value>",
     customer: {
       id: "<id>",
       externalId: "<id>",
       name: "<value>",
-      createdAt: "1730727445511",
+      createdAt: "1730729588464",
     },
     click: {
       id: "<id>",
@@ -194,7 +194,7 @@ const value: components.LeadCreatedEvent = {
       programId: "<id>",
       partnerId: "<id>",
       archived: false,
-      expiresAt: "1774764909177",
+      expiresAt: "1774767052130",
       expiredUrl: "https://hoarse-help.name",
       password: "gsfx4xnq8zKCIO6",
       proxy: false,
@@ -235,8 +235,8 @@ const value: components.LeadCreatedEvent = {
       userId: "<id>",
       workspaceId: "<id>",
       lastClicked: "<value>",
-      createdAt: "1736187488478",
-      updatedAt: "1748199718957",
+      createdAt: "1736189631437",
+      updatedAt: "1748201861916",
       projectId: "<id>",
     },
   },
@@ -249,14 +249,14 @@ const value: components.LeadCreatedEvent = {
 const value: components.SaleCreatedEvent = {
   id: "<id>",
   event: "sale.created",
-  createdAt: "1716986221124",
+  createdAt: "1716988364092",
   data: {
     eventName: "<value>",
     customer: {
       id: "<id>",
       externalId: "<id>",
       name: "<value>",
-      createdAt: "1744693947180",
+      createdAt: "1744696090150",
     },
     click: {
       id: "<id>",
@@ -285,7 +285,7 @@ const value: components.SaleCreatedEvent = {
       programId: "<id>",
       partnerId: "<id>",
       archived: false,
-      expiresAt: "1749397820685",
+      expiresAt: "1749399963657",
       expiredUrl: "https://obedient-strategy.name/",
       password: "eXOXZ2USj7cH2Nh",
       proxy: false,
@@ -325,8 +325,8 @@ const value: components.SaleCreatedEvent = {
       userId: "<id>",
       workspaceId: "<id>",
       lastClicked: "<value>",
-      createdAt: "1727505899804",
-      updatedAt: "1748244444526",
+      createdAt: "1727508042776",
+      updatedAt: "1748246587498",
       projectId: "<id>",
     },
     sale: {
@@ -345,7 +345,7 @@ const value: components.SaleCreatedEvent = {
 const value: components.PartnerEnrolledEvent = {
   id: "<id>",
   event: "partner.enrolled",
-  createdAt: "1723265369352",
+  createdAt: "1723267512323",
   data: {
     id: "<id>",
     name: "<value>",
@@ -361,7 +361,7 @@ const value: components.PartnerEnrolledEvent = {
     paypalEmail: "<value>",
     stripeConnectId: "<id>",
     payoutsEnabledAt: "<value>",
-    createdAt: "1728047023752",
+    createdAt: "1728049166705",
     status: "rejected",
     programId: "<id>",
     tenantId: "<id>",

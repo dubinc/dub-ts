@@ -16,7 +16,7 @@ let value: SaleEventLink = {
   programId: "<id>",
   partnerId: "<id>",
   archived: false,
-  expiresAt: "1776093664993",
+  expiresAt: "1776095808131",
   expiredUrl: "https://optimal-flame.net/",
   password: "DHaXlMpWy07Hks0",
   proxy: false,
@@ -56,8 +56,8 @@ let value: SaleEventLink = {
   userId: "<id>",
   workspaceId: "<id>",
   lastClicked: "<value>",
-  createdAt: "1721616020519",
-  updatedAt: "1748224632917",
+  createdAt: "1721618163657",
+  updatedAt: "1748226776055",
   projectId: "<id>",
 };
 ```

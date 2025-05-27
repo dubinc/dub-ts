@@ -10,8 +10,9 @@ test("Tags Create Tag", async () => {
   const testHttpClient = createTestHTTPClient("createTag");
 
   const dub = new Dub({
+    serverURL: "http://api.localhost:8888",
+    token: process.env["DUB_API_KEY"] ?? "value",
     httpClient: testHttpClient,
-    token: "DUB_API_KEY",
   });
 
   const result = await dub.tags.create();
@@ -27,8 +28,9 @@ test("Tags Get Tags", async () => {
   const testHttpClient = createTestHTTPClient("getTags");
 
   const dub = new Dub({
+    serverURL: "http://api.localhost:8888",
+    token: process.env["DUB_API_KEY"] ?? "value",
     httpClient: testHttpClient,
-    token: "DUB_API_KEY",
   });
 
   const result = await dub.tags.list();
@@ -56,8 +58,9 @@ test("Tags Update Tag", async () => {
   const testHttpClient = createTestHTTPClient("updateTag");
 
   const dub = new Dub({
+    serverURL: "http://api.localhost:8888",
+    token: process.env["DUB_API_KEY"] ?? "value",
     httpClient: testHttpClient,
-    token: "DUB_API_KEY",
   });
 
   const result = await dub.tags.update("<id>");
@@ -73,8 +76,9 @@ test("Tags Delete Tag", async () => {
   const testHttpClient = createTestHTTPClient("deleteTag");
 
   const dub = new Dub({
+    serverURL: "http://api.localhost:8888",
+    token: process.env["DUB_API_KEY"] ?? "value",
     httpClient: testHttpClient,
-    token: "DUB_API_KEY",
   });
 
   const result = await dub.tags.delete("<id>");

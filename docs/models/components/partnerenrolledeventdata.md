@@ -20,7 +20,7 @@ let value: PartnerEnrolledEventData = {
   paypalEmail: "<value>",
   stripeConnectId: "<id>",
   payoutsEnabledAt: "<value>",
-  createdAt: "1723254143640",
+  createdAt: "1723256285740",
   status: "invited",
   programId: "<id>",
   tenantId: "<id>",

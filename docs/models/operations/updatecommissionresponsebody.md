@@ -13,8 +13,8 @@ let value: UpdateCommissionResponseBody = {
   earnings: 1486.93,
   currency: "Rand",
   status: "fraud",
-  createdAt: "1723448545130",
-  updatedAt: "1748236949908",
+  createdAt: "1723450687497",
+  updatedAt: "1748239092275",
 };
 ```
 

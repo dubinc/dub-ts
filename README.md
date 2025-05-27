@@ -428,7 +428,7 @@ The default server can be overridden globally by passing a URL to the `serverURL
 import { Dub } from "dub";
 
 const dub = new Dub({
-  serverURL: "http://api.localhost:8888",
+  serverURL: "https://api.dub.co",
   token: "DUB_API_KEY",
 });
 

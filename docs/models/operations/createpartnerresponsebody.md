@@ -22,7 +22,7 @@ let value: CreatePartnerResponseBody = {
   paypalEmail: "<value>",
   stripeConnectId: "<id>",
   payoutsEnabledAt: "<value>",
-  createdAt: "1719514394318",
+  createdAt: "1719516536044",
   status: "invited",
   programId: "<id>",
   tenantId: "<id>",
