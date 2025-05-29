@@ -41,10 +41,6 @@ export type FolderSchema = {
    */
   accessLevel?: AccessLevel | null | undefined;
   /**
-   * The number of links in the folder.
-   */
-  linkCount?: number | undefined;
-  /**
    * The date the folder was created.
    */
   createdAt: string;
@@ -103,7 +99,6 @@ export const FolderSchema$inboundSchema: z.ZodType<
   name: z.string(),
   type: Type$inboundSchema,
   accessLevel: z.nullable(AccessLevel$inboundSchema).default(null),
-  linkCount: z.number().default(0),
   createdAt: z.string(),
   updatedAt: z.string(),
 });
@@ -114,7 +109,6 @@ export type FolderSchema$Outbound = {
   name: string;
   type: string;
   accessLevel: string | null;
-  linkCount: number;
   createdAt: string;
   updatedAt: string;
 };
@@ -129,7 +123,6 @@ export const FolderSchema$outboundSchema: z.ZodType<
   name: z.string(),
   type: Type$outboundSchema,
   accessLevel: z.nullable(AccessLevel$outboundSchema).default(null),
-  linkCount: z.number().default(0),
   createdAt: z.string(),
   updatedAt: z.string(),
 });

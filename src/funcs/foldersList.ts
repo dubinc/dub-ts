@@ -107,7 +107,6 @@ async function $do(
   const path = pathToFunc("/folders")();
 
   const query = encodeFormQuery({
-    "includeLinkCount": payload?.includeLinkCount,
     "page": payload?.page,
     "pageSize": payload?.pageSize,
     "search": payload?.search,
