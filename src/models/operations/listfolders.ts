@@ -13,10 +13,6 @@ export type ListFoldersRequest = {
    */
   search?: string | undefined;
   /**
-   * Whether to include the link count in the response.
-   */
-  includeLinkCount?: boolean | undefined;
-  /**
    * The page number for pagination.
    */
   page?: number | undefined;
@@ -33,7 +29,6 @@ export const ListFoldersRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   search: z.string().optional(),
-  includeLinkCount: z.boolean().optional(),
   page: z.number().default(1),
   pageSize: z.number().default(50),
 });
@@ -41,7 +36,6 @@ export const ListFoldersRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type ListFoldersRequest$Outbound = {
   search?: string | undefined;
-  includeLinkCount?: boolean | undefined;
   page: number;
   pageSize: number;
 };
@@ -53,7 +47,6 @@ export const ListFoldersRequest$outboundSchema: z.ZodType<
   ListFoldersRequest
 > = z.object({
   search: z.string().optional(),
-  includeLinkCount: z.boolean().optional(),
   page: z.number().default(1),
   pageSize: z.number().default(50),
 });

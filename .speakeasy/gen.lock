@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: efdac56f4e3c654dda7366d7daef7320
+  docChecksum: a2ac297972706e86f31e833913025851
   docVersion: 0.0.1
-  speakeasyVersion: 1.548.3
-  generationVersion: 2.605.6
-  releaseVersion: 0.61.14
-  configChecksum: 4e592dd4d5a77b32096f115e3d19f71d
+  speakeasyVersion: 1.552.0
+  generationVersion: 2.610.0
+  releaseVersion: 0.61.15
+  configChecksum: 4a3d61aa16f27dc84ea7fd9b65d71ead
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -1041,7 +1041,7 @@ examples:
     speakeasy-default-create-folder:
       responses:
         "201":
-          application/json: {"id": "<id>", "name": "<value>", "type": "mega", "accessLevel": null, "linkCount": 0, "createdAt": "1737752826708", "updatedAt": "1747570134562"}
+          application/json: {"id": "<id>", "name": "<value>", "type": "mega", "accessLevel": null, "createdAt": "1737752826708", "updatedAt": "1747570134562"}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1068,7 +1068,7 @@ examples:
           pageSize: 50
       responses:
         "200":
-          application/json: [{"id": "<id>", "name": "<value>", "type": "default", "accessLevel": null, "linkCount": 0, "createdAt": "1739500764243", "updatedAt": "1747574724695"}, {"id": "<id>", "name": "<value>", "type": "default", "accessLevel": null, "linkCount": 0, "createdAt": "1739500764243", "updatedAt": "1747574724695"}]
+          application/json: [{"id": "<id>", "name": "<value>", "type": "default", "accessLevel": null, "createdAt": "1739500764243", "updatedAt": "1747574724695"}, {"id": "<id>", "name": "<value>", "type": "default", "accessLevel": null, "createdAt": "1739500764243", "updatedAt": "1747574724695"}]
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1094,7 +1094,7 @@ examples:
           id: "<id>"
       responses:
         "200":
-          application/json: {"id": "<id>", "name": "<value>", "type": "default", "accessLevel": null, "linkCount": 0, "createdAt": "1719092169263", "updatedAt": "1747578125231"}
+          application/json: {"id": "<id>", "name": "<value>", "type": "default", "accessLevel": null, "createdAt": "1719092169263", "updatedAt": "1747578125231"}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
