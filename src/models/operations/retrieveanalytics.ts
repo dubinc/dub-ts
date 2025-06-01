@@ -41,6 +41,7 @@ export const QueryParamGroupBy = {
   Triggers: "triggers",
   Referers: "referers",
   RefererUrls: "referer_urls",
+  TopPartners: "top_partners",
   TopLinks: "top_links",
   TopUrls: "top_urls",
   UtmSources: "utm_sources",
