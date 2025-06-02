@@ -168,7 +168,9 @@ export type PartnerEnrolledEventData = {
    */
   saleAmount?: number | undefined;
   /**
-   * The total earnings/commissions accrued by the partner's links.
+   * DEPRECATED: The total earnings/commissions accrued by the partner's links.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   earnings?: number | undefined;
   /**
