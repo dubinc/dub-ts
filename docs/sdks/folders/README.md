@@ -26,7 +26,6 @@ const dub = new Dub({
 async function run() {
   const result = await dub.folders.create();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -49,15 +48,12 @@ const dub = new DubCore({
 
 async function run() {
   const res = await foldersCreate(dub);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("foldersCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -107,7 +103,6 @@ const dub = new Dub({
 async function run() {
   const result = await dub.folders.list();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -130,15 +125,12 @@ const dub = new DubCore({
 
 async function run() {
   const res = await foldersList(dub);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("foldersList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -188,7 +180,6 @@ const dub = new Dub({
 async function run() {
   const result = await dub.folders.update("<id>");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -211,15 +202,12 @@ const dub = new DubCore({
 
 async function run() {
   const res = await foldersUpdate(dub, "<id>");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("foldersUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -270,7 +258,6 @@ const dub = new Dub({
 async function run() {
   const result = await dub.folders.delete("<id>");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -293,15 +280,12 @@ const dub = new DubCore({
 
 async function run() {
   const res = await foldersDelete(dub, "<id>");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("foldersDelete failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

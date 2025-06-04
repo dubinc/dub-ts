@@ -5,7 +5,9 @@
 ```typescript
 import { ListDomainsRequest } from "dub/models/operations";
 
-let value: ListDomainsRequest = {};
+let value: ListDomainsRequest = {
+  archived: false,
+};
 ```
 
 ## Fields

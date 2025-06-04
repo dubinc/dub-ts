@@ -5,6 +5,7 @@
 export * from "./bulkcreatelinks.js";
 export * from "./bulkdeletelinks.js";
 export * from "./bulkupdatelinks.js";
+export * from "./checkdomainstatus.js";
 export * from "./createcustomer.js";
 export * from "./createdomain.js";
 export * from "./createfolder.js";
@@ -30,6 +31,7 @@ export * from "./listcommissions.js";
 export * from "./listdomains.js";
 export * from "./listevents.js";
 export * from "./listfolders.js";
+export * from "./registerdomain.js";
 export * from "./retrieveanalytics.js";
 export * from "./retrievelinks.js";
 export * from "./retrievepartneranalytics.js";

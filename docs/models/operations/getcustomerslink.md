@@ -11,7 +11,7 @@ let value: GetCustomersLink = {
   key: "<key>",
   shortLink: "https://good-suspension.org/",
   url: "https://blushing-cricket.com",
-  programId: "<id>",
+  programId: null,
 };
 ```
 

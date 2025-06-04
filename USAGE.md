@@ -9,7 +9,6 @@ const dub = new Dub({
 async function run() {
   const result = await dub.links.create();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -27,7 +26,6 @@ const dub = new Dub({
 async function run() {
   const result = await dub.links.upsert();
 
-  // Handle the result
   console.log(result);
 }
 

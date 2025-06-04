@@ -24,7 +24,6 @@ const dub = new Dub({
 async function run() {
   const result = await dub.commissions.list();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -47,15 +46,12 @@ const dub = new DubCore({
 
 async function run() {
   const res = await commissionsList(dub);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("commissionsList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -107,7 +103,6 @@ async function run() {
     id: "cm_1JVR7XRCSR0EDBAF39FZ4PMYE",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -132,15 +127,12 @@ async function run() {
   const res = await commissionsUpdate(dub, {
     id: "cm_1JVR7XRCSR0EDBAF39FZ4PMYE",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("commissionsUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

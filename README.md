@@ -172,7 +172,6 @@ const dub = new Dub({
 async function run() {
   const result = await dub.links.create();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -192,7 +191,6 @@ const dub = new Dub({
 async function run() {
   const result = await dub.links.upsert();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -230,6 +228,8 @@ run();
 * [list](docs/sdks/domains/README.md#list) - Retrieve a list of domains
 * [update](docs/sdks/domains/README.md#update) - Update a domain
 * [delete](docs/sdks/domains/README.md#delete) - Delete a domain
+* [register](docs/sdks/domains/README.md#register) - Register a domain
+* [checkStatus](docs/sdks/domains/README.md#checkstatus) - Check the availability of one or more domains
 
 
 ### [embedTokens](docs/sdks/embedtokens/README.md)
@@ -295,108 +295,45 @@ run();
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-Some methods specify known errors which can be thrown. All the known errors are enumerated in the `models/errors/errors.ts` module. The known errors for a method are documented under the *Errors* tables in SDK docs. For example, the `create` method may throw the following errors:
+This table shows properties which are common on error classes. For full details see [error classes](#error-classes).
 
-| Error Type                 | Status Code | Content Type     |
-| -------------------------- | ----------- | ---------------- |
-| errors.BadRequest          | 400         | application/json |
-| errors.Unauthorized        | 401         | application/json |
-| errors.Forbidden           | 403         | application/json |
-| errors.NotFound            | 404         | application/json |
-| errors.Conflict            | 409         | application/json |
-| errors.InviteExpired       | 410         | application/json |
-| errors.UnprocessableEntity | 422         | application/json |
-| errors.RateLimitExceeded   | 429         | application/json |
-| errors.InternalServerError | 500         | application/json |
-| errors.SDKError            | 4XX, 5XX    | \*/\*            |
+| Property            | Type       | Description                                                                             |
+| ------------------- | ---------- | --------------------------------------------------------------------------------------- |
+| `error.name`        | `string`   | Error class name eg `SDKError`                                                          |
+| `error.message`     | `string`   | Error message                                                                           |
+| `error.statusCode`  | `number`   | HTTP status code eg `404`                                                               |
+| `error.contentType` | `string`   | HTTP content type eg `application/json`                                                 |
+| `error.body`        | `string`   | HTTP body. Can be empty string if no body is returned.                                  |
+| `error.rawResponse` | `Response` | Raw HTTP response. Access to headers and more.                                          |
+| `error.data$`       |            | Optional. Some errors may contain structured data. [See Error Classes](#error-classes). |
 
-If the method throws an error and it is not captured by the known errors, it will default to throwing a `SDKError`.
-
+### Example
 ```typescript
 import { Dub } from "dub";
-import {
-  BadRequest,
-  Conflict,
-  Forbidden,
-  InternalServerError,
-  InviteExpired,
-  NotFound,
-  RateLimitExceeded,
-  SDKValidationError,
-  Unauthorized,
-  UnprocessableEntity,
-} from "dub/models/errors";
+import * as errors from "dub/models/errors";
 
 const dub = new Dub({
   token: "DUB_API_KEY",
 });
 
 async function run() {
-  let result;
   try {
-    result = await dub.links.create();
+    const result = await dub.links.create();
 
-    // Handle the result
     console.log(result);
-  } catch (err) {
-    switch (true) {
-      // The server response does not match the expected SDK schema
-      case (err instanceof SDKValidationError): {
-        // Pretty-print will provide a human-readable multi-line error message
-        console.error(err.pretty());
-        // Raw value may also be inspected
-        console.error(err.rawValue);
-        return;
-      }
-      case (err instanceof BadRequest): {
-        // Handle err.data$: BadRequestData
-        console.error(err);
-        return;
-      }
-      case (err instanceof Unauthorized): {
-        // Handle err.data$: UnauthorizedData
-        console.error(err);
-        return;
-      }
-      case (err instanceof Forbidden): {
-        // Handle err.data$: ForbiddenData
-        console.error(err);
-        return;
-      }
-      case (err instanceof NotFound): {
-        // Handle err.data$: NotFoundData
-        console.error(err);
-        return;
-      }
-      case (err instanceof Conflict): {
-        // Handle err.data$: ConflictData
-        console.error(err);
-        return;
-      }
-      case (err instanceof InviteExpired): {
-        // Handle err.data$: InviteExpiredData
-        console.error(err);
-        return;
-      }
-      case (err instanceof UnprocessableEntity): {
-        // Handle err.data$: UnprocessableEntityData
-        console.error(err);
-        return;
-      }
-      case (err instanceof RateLimitExceeded): {
-        // Handle err.data$: RateLimitExceededData
-        console.error(err);
-        return;
-      }
-      case (err instanceof InternalServerError): {
-        // Handle err.data$: InternalServerErrorData
-        console.error(err);
-        return;
-      }
-      default: {
-        // Other errors such as network errors, see HTTPClientErrors for more details
-        throw err;
-      }
+  } catch (error) {
+    // Depending on the method different errors may be thrown
+    if (error instanceof errors.BadRequest) {
+      console.log(error.message);
+      console.log(error.data$.error); // errors.ErrorT
+    }
+
+    // Fallback error class, if no other more specific error class is matched
+    if (error instanceof errors.SDKError) {
+      console.log(error.message);
+      console.log(error.statusCode);
+      console.log(error.body);
+      console.log(error.rawResponse.headers);
     }
   }
 }
@@ -405,17 +342,24 @@ run();
 
 ```
 
-Validation errors can also occur when either method arguments or data returned from the server do not match the expected format. The `SDKValidationError` that is thrown as a result will capture the raw value that failed validation in an attribute called `rawValue`. Additionally, a `pretty()` method is available on this error that can be used to log a nicely formatted multi-line string since validation errors can list many issues and the plain error string may be difficult read when debugging.
-
-In some rare cases, the SDK can fail to get a response from the server or even make the request due to unexpected circumstances such as network conditions. These types of errors are captured in the `models/errors/httpclienterrors.ts` module:
-
-| HTTP Client Error                                    | Description                                          |
-| ---------------------------------------------------- | ---------------------------------------------------- |
-| RequestAbortedError                                  | HTTP request was aborted by the client               |
-| RequestTimeoutError                                  | HTTP request timed out due to an AbortSignal signal  |
-| ConnectionError                                      | HTTP client was unable to make a request to a server |
-| InvalidRequestError                                  | Any input used to create a request is invalid        |
-| UnexpectedClientError                                | Unrecognised or unexpected error                     |
+### Error Classes
+* [`BadRequest`](docs/models/errors/badrequest.md): The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing). Status code `400`.
+* [`Unauthorized`](docs/models/errors/unauthorized.md): Although the HTTP standard specifies "unauthorized", semantically this response means "unauthenticated". That is, the client must authenticate itself to get the requested response. Status code `401`.
+* [`Forbidden`](docs/models/errors/forbidden.md): The client does not have access rights to the content; that is, it is unauthorized, so the server is refusing to give the requested resource. Unlike 401 Unauthorized, the client's identity is known to the server. Status code `403`.
+* [`NotFound`](docs/models/errors/notfound.md): The server cannot find the requested resource. Status code `404`.
+* [`Conflict`](docs/models/errors/conflict.md): This response is sent when a request conflicts with the current state of the server. Status code `409`.
+* [`InviteExpired`](docs/models/errors/inviteexpired.md): This response is sent when the requested content has been permanently deleted from server, with no forwarding address. Status code `410`.
+* [`UnprocessableEntity`](docs/models/errors/unprocessableentity.md): The request was well-formed but was unable to be followed due to semantic errors. Status code `422`.
+* [`RateLimitExceeded`](docs/models/errors/ratelimitexceeded.md): The user has sent too many requests in a given amount of time ("rate limiting"). Status code `429`.
+* [`InternalServerError`](docs/models/errors/internalservererror.md): The server has encountered a situation it does not know how to handle. Status code `500`.
+* `SDKError`: The fallback error class, if no other more specific error class is matched.
+* `SDKValidationError`: Type mismatch between the data returned from the server and the structure expected by the SDK. This can also be thrown for invalid method arguments. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
+* Network errors:
+    * `ConnectionError`: HTTP client was unable to make a request to a server.
+    * `RequestTimeoutError`: HTTP request timed out due to an AbortSignal signal.
+    * `RequestAbortedError`: HTTP request was aborted by the client.
+    * `InvalidRequestError`: Any input used to create a request is invalid.
+    * `UnexpectedClientError`: Unrecognised or unexpected error.
 <!-- End Error Handling [errors] -->
 
 <!-- Start Server Selection [server] -->
@@ -435,7 +379,6 @@ const dub = new Dub({
 async function run() {
   const result = await dub.links.create();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -515,7 +458,6 @@ const dub = new Dub({
 async function run() {
   const result = await dub.links.create();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -551,7 +493,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -580,7 +521,6 @@ const dub = new Dub({
 async function run() {
   const result = await dub.links.create();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -612,7 +552,6 @@ async function run() {
   const result = await dub.links.list();
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -644,9 +583,11 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`customersGet`](docs/sdks/customers/README.md#get) - Retrieve a customer
 - [`customersList`](docs/sdks/customers/README.md#list) - Retrieve a list of customers
 - [`customersUpdate`](docs/sdks/customers/README.md#update) - Update a customer
+- [`domainsCheckStatus`](docs/sdks/domains/README.md#checkstatus) - Check the availability of one or more domains
 - [`domainsCreate`](docs/sdks/domains/README.md#create) - Create a domain
 - [`domainsDelete`](docs/sdks/domains/README.md#delete) - Delete a domain
 - [`domainsList`](docs/sdks/domains/README.md#list) - Retrieve a list of domains
+- [`domainsRegister`](docs/sdks/domains/README.md#register) - Register a domain
 - [`domainsUpdate`](docs/sdks/domains/README.md#update) - Update a domain
 - [`embedTokensReferrals`](docs/sdks/embedtokens/README.md#referrals) - Create a referrals embed token
 - [`eventsList`](docs/sdks/events/README.md#list) - Retrieve a list of events

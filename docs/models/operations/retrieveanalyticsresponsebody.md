@@ -24,11 +24,7 @@ const value: components.AnalyticsTimeseries[] = [
 ### `components.AnalyticsContinents[]`
 
 ```typescript
-const value: components.AnalyticsContinents[] = [
-  {
-    continent: "AS",
-  },
-];
+const value: components.AnalyticsContinents[] = [];
 ```
 
 ### `components.AnalyticsCountries[]`
@@ -36,7 +32,7 @@ const value: components.AnalyticsContinents[] = [
 ```typescript
 const value: components.AnalyticsCountries[] = [
   {
-    country: "TR",
+    country: "GY",
   },
 ];
 ```
@@ -44,34 +40,19 @@ const value: components.AnalyticsCountries[] = [
 ### `components.AnalyticsRegions[]`
 
 ```typescript
-const value: components.AnalyticsRegions[] = [
-  {
-    country: "VA",
-    region: "<value>",
-  },
-];
+const value: components.AnalyticsRegions[] = [];
 ```
 
 ### `components.AnalyticsCities[]`
 
 ```typescript
-const value: components.AnalyticsCities[] = [
-  {
-    country: "IQ",
-    region: "<value>",
-    city: "Waco",
-  },
-];
+const value: components.AnalyticsCities[] = [];
 ```
 
 ### `components.AnalyticsDevices[]`
 
 ```typescript
-const value: components.AnalyticsDevices[] = [
-  {
-    device: "Desktop",
-  },
-];
+const value: components.AnalyticsDevices[] = [];
 ```
 
 ### `components.AnalyticsBrowsers[]`
@@ -87,21 +68,13 @@ const value: components.AnalyticsBrowsers[] = [
 ### `components.AnalyticsOS[]`
 
 ```typescript
-const value: components.AnalyticsOS[] = [
-  {
-    os: "Windows",
-  },
-];
+const value: components.AnalyticsOS[] = [];
 ```
 
 ### `components.AnalyticsTriggers[]`
 
 ```typescript
-const value: components.AnalyticsTriggers[] = [
-  {
-    trigger: "qr",
-  },
-];
+const value: components.AnalyticsTriggers[] = [];
 ```
 
 ### `components.AnalyticsReferers[]`
@@ -109,7 +82,7 @@ const value: components.AnalyticsTriggers[] = [
 ```typescript
 const value: components.AnalyticsReferers[] = [
   {
-    referer: "vivacious-lamp.org",
+    referer: "medium-submitter.org",
   },
 ];
 ```
@@ -119,7 +92,7 @@ const value: components.AnalyticsReferers[] = [
 ```typescript
 const value: components.AnalyticsRefererUrls[] = [
   {
-    refererUrl: "https://dazzling-signature.org",
+    refererUrl: "https://sturdy-t-shirt.name/",
   },
 ];
 ```
@@ -127,17 +100,7 @@ const value: components.AnalyticsRefererUrls[] = [
 ### `components.AnalyticsTopLinks[]`
 
 ```typescript
-const value: components.AnalyticsTopLinks[] = [
-  {
-    link: "<value>",
-    id: "<id>",
-    domain: "frail-label.name",
-    key: "<key>",
-    shortLink: "<value>",
-    url: "https://gripping-bog.biz/",
-    createdAt: "1735570090103",
-  },
-];
+const value: components.AnalyticsTopLinks[] = [];
 ```
 
 ### `components.AnalyticsTopUrls[]`
@@ -145,7 +108,7 @@ const value: components.AnalyticsTopLinks[] = [
 ```typescript
 const value: components.AnalyticsTopUrls[] = [
   {
-    url: "https://coordinated-kettledrum.com",
+    url: "https://magnificent-backburn.name/",
   },
 ];
 ```

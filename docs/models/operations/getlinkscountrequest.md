@@ -5,7 +5,10 @@
 ```typescript
 import { GetLinksCountRequest } from "dub/models/operations";
 
-let value: GetLinksCountRequest = {};
+let value: GetLinksCountRequest = {
+  showArchived: false,
+  withTags: true,
+};
 ```
 
 ## Fields

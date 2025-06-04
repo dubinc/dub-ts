@@ -32,7 +32,6 @@ const dub = new Dub({
 async function run() {
   const result = await dub.links.create();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -55,15 +54,12 @@ const dub = new DubCore({
 
 async function run() {
   const res = await linksCreate(dub);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("linksCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -114,7 +110,6 @@ async function run() {
   const result = await dub.links.list();
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -138,16 +133,13 @@ const dub = new DubCore({
 
 async function run() {
   const res = await linksList(dub);
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("linksList failed:", res.error);
   }
 }
 
@@ -198,7 +190,6 @@ const dub = new Dub({
 async function run() {
   const result = await dub.links.count();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -221,15 +212,12 @@ const dub = new DubCore({
 
 async function run() {
   const res = await linksCount(dub);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("linksCount failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -279,7 +267,6 @@ const dub = new Dub({
 async function run() {
   const result = await dub.links.get();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -302,15 +289,12 @@ const dub = new DubCore({
 
 async function run() {
   const res = await linksGet(dub);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("linksGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -360,7 +344,6 @@ const dub = new Dub({
 async function run() {
   const result = await dub.links.update("<id>");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -383,15 +366,12 @@ const dub = new DubCore({
 
 async function run() {
   const res = await linksUpdate(dub, "<id>");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("linksUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -442,7 +422,6 @@ const dub = new Dub({
 async function run() {
   const result = await dub.links.delete("<id>");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -465,15 +444,12 @@ const dub = new DubCore({
 
 async function run() {
   const res = await linksDelete(dub, "<id>");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("linksDelete failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -523,7 +499,6 @@ const dub = new Dub({
 async function run() {
   const result = await dub.links.createMany();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -546,15 +521,12 @@ const dub = new DubCore({
 
 async function run() {
   const res = await linksCreateMany(dub);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("linksCreateMany failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -604,7 +576,6 @@ const dub = new Dub({
 async function run() {
   const result = await dub.links.updateMany();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -627,15 +598,12 @@ const dub = new DubCore({
 
 async function run() {
   const res = await linksUpdateMany(dub);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("linksUpdateMany failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -690,7 +658,6 @@ async function run() {
     ],
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -718,15 +685,12 @@ async function run() {
       "clux0rgak00022...",
     ],
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("linksDeleteMany failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -776,7 +740,6 @@ const dub = new Dub({
 async function run() {
   const result = await dub.links.upsert();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -799,15 +762,12 @@ const dub = new DubCore({
 
 async function run() {
   const res = await linksUpsert(dub);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("linksUpsert failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

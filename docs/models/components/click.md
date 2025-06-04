@@ -18,8 +18,8 @@ let value: Click = {
   os: "Chrome OS",
   referer: "well-lit-perp.info",
   refererUrl: "https://urban-paintwork.biz",
-  qr: false,
-  ip: "60.236.231.47",
+  qr: true,
+  ip: "236.231.47.83",
 };
 ```
 

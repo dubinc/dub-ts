@@ -18,8 +18,8 @@ let value: LeadCreatedEventClick = {
   os: "Symbian",
   referer: "shallow-import.net",
   refererUrl: "https://recent-deed.net",
-  qr: false,
-  ip: "20.73.178.84",
+  qr: true,
+  ip: "73.178.84.105",
 };
 ```
 

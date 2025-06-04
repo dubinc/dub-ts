@@ -9,21 +9,13 @@ import { TrackSaleResponseBody } from "dub/models/operations";
 
 let value: TrackSaleResponseBody = {
   eventName: "<value>",
-  customer: {
-    id: "<id>",
-    name: "<value>",
-    email: "Carmen.Larson27@gmail.com",
-    avatar: "https://picsum.photos/seed/uKaUPH/224/89",
-    externalId: "<id>",
-  },
+  customer: null,
   sale: {
-    amount: 1269.61,
-    currency: "Indian Rupee",
+    amount: 321.43,
+    currency: "Libyan Dinar",
     paymentProcessor: "<value>",
     invoiceId: "<id>",
-    metadata: {
-      "key": "<value>",
-    },
+    metadata: {},
   },
 };
 ```

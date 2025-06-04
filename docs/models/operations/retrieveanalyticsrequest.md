@@ -5,7 +5,9 @@
 ```typescript
 import { RetrieveAnalyticsRequest } from "dub/models/operations";
 
-let value: RetrieveAnalyticsRequest = {};
+let value: RetrieveAnalyticsRequest = {
+  timezone: "America/New_York",
+};
 ```
 
 ## Fields

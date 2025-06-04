@@ -6,6 +6,7 @@
 import { RetrievePartnerAnalyticsRequest } from "dub/models/operations";
 
 let value: RetrievePartnerAnalyticsRequest = {
+  timezone: "America/New_York",
   programId: "<id>",
 };
 ```

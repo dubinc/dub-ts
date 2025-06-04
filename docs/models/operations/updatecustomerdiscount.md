@@ -9,7 +9,7 @@ let value: UpdateCustomerDiscount = {
   id: "<id>",
   amount: 8754.24,
   type: "flat",
-  maxDuration: 6874.54,
+  maxDuration: 7072.5,
   couponId: "<id>",
   couponTestId: "<id>",
 };
