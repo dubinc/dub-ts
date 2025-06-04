@@ -19,7 +19,7 @@ let value: SaleCreatedEventClick = {
   referer: "distinct-instructor.org",
   refererUrl: "https://assured-apparatus.info/",
   qr: false,
-  ip: "bece:a8aa:3d01:c01d:0a81:5715:b22c:f9ec",
+  ip: "ecea:8aa3:d01c:01d0:a815:715b:22cf:9ecd",
 };
 ```
 

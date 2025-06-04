@@ -5,7 +5,9 @@
 ```typescript
 import { ListCommissionsRequest } from "dub/models/operations";
 
-let value: ListCommissionsRequest = {};
+let value: ListCommissionsRequest = {
+  pageSize: 50,
+};
 ```
 
 ## Fields

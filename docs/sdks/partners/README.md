@@ -27,7 +27,6 @@ const dub = new Dub({
 async function run() {
   const result = await dub.partners.create();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -50,15 +49,12 @@ const dub = new DubCore({
 
 async function run() {
   const res = await partnersCreate(dub);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("partnersCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -108,7 +104,6 @@ const dub = new Dub({
 async function run() {
   const result = await dub.partners.createLink();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -131,15 +126,12 @@ const dub = new DubCore({
 
 async function run() {
   const res = await partnersCreateLink(dub);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("partnersCreateLink failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -191,7 +183,6 @@ async function run() {
     programId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -216,15 +207,12 @@ async function run() {
   const res = await partnersRetrieveLinks(dub, {
     programId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("partnersRetrieveLinks failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -274,7 +262,6 @@ const dub = new Dub({
 async function run() {
   const result = await dub.partners.upsertLink();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -297,15 +284,12 @@ const dub = new DubCore({
 
 async function run() {
   const res = await partnersUpsertLink(dub);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("partnersUpsertLink failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -354,10 +338,10 @@ const dub = new Dub({
 
 async function run() {
   const result = await dub.partners.analytics({
+    timezone: "America/New_York",
     programId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -380,17 +364,15 @@ const dub = new DubCore({
 
 async function run() {
   const res = await partnersAnalytics(dub, {
+    timezone: "America/New_York",
     programId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("partnersAnalytics failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

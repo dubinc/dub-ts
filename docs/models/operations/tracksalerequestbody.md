@@ -9,6 +9,8 @@ let value: TrackSaleRequestBody = {
   externalId: "<id>",
   amount: 444461,
   paymentProcessor: "paddle",
+  eventName: "Invoice paid",
+  leadEventName: "Cloned template 1481267",
 };
 ```
 

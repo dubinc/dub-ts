@@ -27,7 +27,6 @@ const dub = new Dub({
 async function run() {
   const result = await dub.customers.list();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -50,15 +49,12 @@ const dub = new DubCore({
 
 async function run() {
   const res = await customersList(dub);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("customersList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -110,7 +106,6 @@ const dub = new Dub({
 async function run() {
   const result = await dub.customers.create();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -133,15 +128,12 @@ const dub = new DubCore({
 
 async function run() {
   const res = await customersCreate(dub);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("customersCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -193,7 +185,6 @@ async function run() {
     id: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -218,15 +209,12 @@ async function run() {
   const res = await customersGet(dub, {
     id: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("customersGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -278,7 +266,6 @@ async function run() {
     id: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -303,15 +290,12 @@ async function run() {
   const res = await customersUpdate(dub, {
     id: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("customersUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -361,7 +345,6 @@ const dub = new Dub({
 async function run() {
   const result = await dub.customers.delete("<id>");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -384,15 +367,12 @@ const dub = new DubCore({
 
 async function run() {
   const res = await customersDelete(dub, "<id>");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("customersDelete failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

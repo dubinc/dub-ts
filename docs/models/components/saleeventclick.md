@@ -19,7 +19,7 @@ let value: SaleEventClick = {
   referer: "live-tarragon.com",
   refererUrl: "https://negligible-stranger.net",
   qr: false,
-  ip: "dd04:a51b:ae2b:985e:244d:d4fb:b5e3:65d1",
+  ip: "d04a:51ba:e2b9:85e2:44dd:4fbb:5e36:5d1e",
 };
 ```
 

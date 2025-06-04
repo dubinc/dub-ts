@@ -5,7 +5,9 @@
 ```typescript
 import { ListEventsRequest } from "dub/models/operations";
 
-let value: ListEventsRequest = {};
+let value: ListEventsRequest = {
+  timezone: "America/New_York",
+};
 ```
 
 ## Fields

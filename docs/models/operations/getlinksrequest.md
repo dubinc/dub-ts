@@ -5,7 +5,11 @@
 ```typescript
 import { GetLinksRequest } from "dub/models/operations";
 
-let value: GetLinksRequest = {};
+let value: GetLinksRequest = {
+  showArchived: false,
+  withTags: false,
+  pageSize: 50,
+};
 ```
 
 ## Fields

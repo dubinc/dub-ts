@@ -5,7 +5,9 @@
 ```typescript
 import { GetTagsRequest } from "dub/models/operations";
 
-let value: GetTagsRequest = {};
+let value: GetTagsRequest = {
+  pageSize: 50,
+};
 ```
 
 ## Fields

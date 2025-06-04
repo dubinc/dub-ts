@@ -24,7 +24,6 @@ const dub = new Dub({
 async function run() {
   const result = await dub.track.lead();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -47,15 +46,12 @@ const dub = new DubCore({
 
 async function run() {
   const res = await trackLead(dub);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("trackLead failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -105,7 +101,6 @@ const dub = new Dub({
 async function run() {
   const result = await dub.track.sale();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -128,15 +123,12 @@ const dub = new DubCore({
 
 async function run() {
   const res = await trackSale(dub);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("trackSale failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

@@ -14,11 +14,7 @@ const value: components.PartnerAnalyticsCount = {};
 ### `components.PartnerAnalyticsTimeseries[]`
 
 ```typescript
-const value: components.PartnerAnalyticsTimeseries[] = [
-  {
-    start: "<value>",
-  },
-];
+const value: components.PartnerAnalyticsTimeseries[] = [];
 ```
 
 ### `components.PartnerAnalyticsTopLinks[]`
@@ -28,11 +24,11 @@ const value: components.PartnerAnalyticsTopLinks[] = [
   {
     link: "<value>",
     id: "<id>",
-    domain: "outlying-chapel.info",
+    domain: "cool-king.info",
     key: "<key>",
     shortLink: "<value>",
-    url: "https://serpentine-recommendation.org/",
-    createdAt: "1716479943282",
+    url: "https://shoddy-turret.info",
+    createdAt: "1708624574106",
   },
 ];
 ```

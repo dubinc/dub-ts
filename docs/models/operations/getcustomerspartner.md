@@ -8,8 +8,8 @@ import { GetCustomersPartner } from "dub/models/operations";
 let value: GetCustomersPartner = {
   id: "<id>",
   name: "<value>",
-  email: "Amir37@hotmail.com",
-  image: "https://picsum.photos/seed/b3zE82/3031/526",
+  email: "Tobin_Leffler-Hoeger75@gmail.com",
+  image: "https://loremflickr.com/837/765?lock=5173319329109691",
 };
 ```
 

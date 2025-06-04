@@ -21,9 +21,11 @@ import { tool$customersDelete } from "./tools/customersDelete.js";
 import { tool$customersGet } from "./tools/customersGet.js";
 import { tool$customersList } from "./tools/customersList.js";
 import { tool$customersUpdate } from "./tools/customersUpdate.js";
+import { tool$domainsCheckStatus } from "./tools/domainsCheckStatus.js";
 import { tool$domainsCreate } from "./tools/domainsCreate.js";
 import { tool$domainsDelete } from "./tools/domainsDelete.js";
 import { tool$domainsList } from "./tools/domainsList.js";
+import { tool$domainsRegister } from "./tools/domainsRegister.js";
 import { tool$domainsUpdate } from "./tools/domainsUpdate.js";
 import { tool$embedTokensReferrals } from "./tools/embedTokensReferrals.js";
 import { tool$eventsList } from "./tools/eventsList.js";
@@ -66,7 +68,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Dub",
-    version: "0.62.1",
+    version: "0.62.2",
   });
 
   const client = new DubCore({
@@ -120,6 +122,8 @@ export function createMCPServer(deps: {
   tool(tool$domainsList);
   tool(tool$domainsUpdate);
   tool(tool$domainsDelete);
+  tool(tool$domainsRegister);
+  tool(tool$domainsCheckStatus);
   tool(tool$trackLead);
   tool(tool$trackSale);
   tool(tool$customersList);

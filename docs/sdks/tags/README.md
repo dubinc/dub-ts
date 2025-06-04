@@ -26,7 +26,6 @@ const dub = new Dub({
 async function run() {
   const result = await dub.tags.create();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -49,15 +48,12 @@ const dub = new DubCore({
 
 async function run() {
   const res = await tagsCreate(dub);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("tagsCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -107,7 +103,6 @@ const dub = new Dub({
 async function run() {
   const result = await dub.tags.list();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -130,15 +125,12 @@ const dub = new DubCore({
 
 async function run() {
   const res = await tagsList(dub);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("tagsList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -188,7 +180,6 @@ const dub = new Dub({
 async function run() {
   const result = await dub.tags.update("<id>");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -211,15 +202,12 @@ const dub = new DubCore({
 
 async function run() {
   const res = await tagsUpdate(dub, "<id>");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("tagsUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -270,7 +258,6 @@ const dub = new Dub({
 async function run() {
   const result = await dub.tags.delete("<id>");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -293,15 +280,12 @@ const dub = new DubCore({
 
 async function run() {
   const res = await tagsDelete(dub, "<id>");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("tagsDelete failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

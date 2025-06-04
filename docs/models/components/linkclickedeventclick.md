@@ -19,7 +19,7 @@ let value: LinkClickedEventClick = {
   referer: "aching-responsibility.net",
   refererUrl: "https://colorful-mathematics.name/",
   qr: false,
-  ip: "6a2c:9f92:5f92:bcef:87fb:d6ff:6c33:d076",
+  ip: "187.26.215.115",
 };
 ```
 

@@ -26,7 +26,6 @@ async function run() {
     idOrSlug: "<value>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -51,15 +50,12 @@ async function run() {
   const res = await workspacesGet(dub, {
     idOrSlug: "<value>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("workspacesGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -109,7 +105,6 @@ const dub = new Dub({
 async function run() {
   const result = await dub.workspaces.update("<value>");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -132,15 +127,12 @@ const dub = new DubCore({
 
 async function run() {
   const res = await workspacesUpdate(dub, "<value>");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("workspacesUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

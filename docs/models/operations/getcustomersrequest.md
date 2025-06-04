@@ -5,7 +5,9 @@
 ```typescript
 import { GetCustomersRequest } from "dub/models/operations";
 
-let value: GetCustomersRequest = {};
+let value: GetCustomersRequest = {
+  pageSize: 50,
+};
 ```
 
 ## Fields

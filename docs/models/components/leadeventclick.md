@@ -18,8 +18,8 @@ let value: LeadEventClick = {
   os: "Symbian",
   referer: "empty-draft.org",
   refererUrl: "https://esteemed-freezing.info",
-  qr: false,
-  ip: "183.33.254.29",
+  qr: true,
+  ip: "2f22:cb58:80fc:cfc4:fa7c:beaa:aefe:b0da",
 };
 ```
 
