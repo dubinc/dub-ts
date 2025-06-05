@@ -126,13 +126,13 @@ export type WorkspaceSchema = {
    */
   linksLimit: number;
   /**
-   * The dollar amount of tracked revenue in the current billing cycle (in cents).
+   * The dollar amount of partner payouts processed in the current billing cycle (in cents).
    */
-  salesUsage: number;
+  payoutsUsage: number;
   /**
-   * The limit of tracked revenue in the current billing cycle (in cents).
+   * The max dollar amount of partner payouts that can be processed within a billing cycle (in cents).
    */
-  salesLimit: number;
+  payoutsLimit: number;
   /**
    * The domains limit of the workspace.
    */
@@ -363,8 +363,8 @@ export const WorkspaceSchema$inboundSchema: z.ZodType<
   usageLimit: z.number(),
   linksUsage: z.number(),
   linksLimit: z.number(),
-  salesUsage: z.number(),
-  salesLimit: z.number(),
+  payoutsUsage: z.number(),
+  payoutsLimit: z.number(),
   domainsLimit: z.number(),
   tagsLimit: z.number(),
   foldersUsage: z.number(),
@@ -400,8 +400,8 @@ export type WorkspaceSchema$Outbound = {
   usageLimit: number;
   linksUsage: number;
   linksLimit: number;
-  salesUsage: number;
-  salesLimit: number;
+  payoutsUsage: number;
+  payoutsLimit: number;
   domainsLimit: number;
   tagsLimit: number;
   foldersUsage: number;
@@ -441,8 +441,8 @@ export const WorkspaceSchema$outboundSchema: z.ZodType<
   usageLimit: z.number(),
   linksUsage: z.number(),
   linksLimit: z.number(),
-  salesUsage: z.number(),
-  salesLimit: z.number(),
+  payoutsUsage: z.number(),
+  payoutsLimit: z.number(),
   domainsLimit: z.number(),
   tagsLimit: z.number(),
   foldersUsage: z.number(),
