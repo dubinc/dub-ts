@@ -106,20 +106,20 @@ export type UpdateLinkRequestBody = {
    */
   password?: string | null | undefined;
   /**
-   * Whether the short link uses Custom Social Media Cards feature. Defaults to `false` if not provided.
+   * Whether the short link uses Custom Link Previews feature. Defaults to `false` if not provided.
    */
   proxy?: boolean | undefined;
   /**
-   * The custom link preview title (og:title). Will be used for Custom Social Media Cards if `proxy` is true. Learn more: https://d.to/og
+   * The custom link preview title (og:title). Will be used for Custom Link Previews if `proxy` is true. Learn more: https://d.to/og
    */
   title?: string | null | undefined;
   /**
-   * The custom link preview description (og:description). Will be used for Custom Social Media Cards if `proxy` is true. Learn more: https://d.to/og
+   * The custom link preview description (og:description). Will be used for Custom Link Previews if `proxy` is true. Learn more: https://d.to/og
    */
   description?: string | null | undefined;
   image?: string | null | undefined;
   /**
-   * The custom link preview video (og:video). Will be used for Custom Social Media Cards if `proxy` is true. Learn more: https://d.to/og
+   * The custom link preview video (og:video). Will be used for Custom Link Previews if `proxy` is true. Learn more: https://d.to/og
    */
   video?: string | null | undefined;
   /**
