@@ -329,23 +329,23 @@ export type LinkSchema = {
    */
   password: string | null;
   /**
-   * Whether the short link uses Custom Social Media Cards feature.
+   * Whether the short link uses Custom Link Previews feature.
    */
   proxy?: boolean | undefined;
   /**
-   * The title of the short link. Will be used for Custom Social Media Cards if `proxy` is true.
+   * The title of the short link. Will be used for Custom Link Previews if `proxy` is true.
    */
   title: string | null;
   /**
-   * The description of the short link. Will be used for Custom Social Media Cards if `proxy` is true.
+   * The description of the short link. Will be used for Custom Link Previews if `proxy` is true.
    */
   description: string | null;
   /**
-   * The image of the short link. Will be used for Custom Social Media Cards if `proxy` is true.
+   * The image of the short link. Will be used for Custom Link Previews if `proxy` is true.
    */
   image: string | null;
   /**
-   * The custom link preview video (og:video). Will be used for Custom Social Media Cards if `proxy` is true. Learn more: https://d.to/og
+   * The custom link preview video (og:video). Will be used for Custom Link Previews if `proxy` is true. Learn more: https://d.to/og
    */
   video: string | null;
   /**
