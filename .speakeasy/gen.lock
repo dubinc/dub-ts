@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: e450149ec16a21a87e277cf10297c22b
+  docChecksum: 28a9fb369f069cbaa3569fd28fc401c1
   docVersion: 0.0.1
-  speakeasyVersion: 1.556.2
-  generationVersion: 2.621.3
-  releaseVersion: 0.62.4
-  configChecksum: 309fa51af27fb974afb2ce068809b7fc
+  speakeasyVersion: 1.557.0
+  generationVersion: 2.623.0
+  releaseVersion: 0.63.0
+  configChecksum: 17e57aa4aa1a1426bd69e09ad9aa9300
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -19,7 +19,7 @@ features:
     deprecations: 2.81.1
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.1.2
-    errors: 2.84.1
+    errors: 2.85.0
     examples: 2.81.5
     flattening: 2.82.1
     globalSecurity: 2.82.13
@@ -534,6 +534,7 @@ generatedFiles:
   - src/models/components/workspaceschema.ts
   - src/models/errors/badrequest.ts
   - src/models/errors/conflict.ts
+  - src/models/errors/duberror.ts
   - src/models/errors/forbidden.ts
   - src/models/errors/httpclienterrors.ts
   - src/models/errors/index.ts
@@ -541,6 +542,7 @@ generatedFiles:
   - src/models/errors/inviteexpired.ts
   - src/models/errors/notfound.ts
   - src/models/errors/ratelimitexceeded.ts
+  - src/models/errors/responsevalidationerror.ts
   - src/models/errors/sdkerror.ts
   - src/models/errors/sdkvalidationerror.ts
   - src/models/errors/unauthorized.ts

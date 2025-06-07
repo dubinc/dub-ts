@@ -7,6 +7,7 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import { DubError } from "./duberror.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -45,17 +46,19 @@ export type ForbiddenData = {
 /**
  * The client does not have access rights to the content; that is, it is unauthorized, so the server is refusing to give the requested resource. Unlike 401 Unauthorized, the client's identity is known to the server.
  */
-export class Forbidden extends Error {
+export class Forbidden extends DubError {
   error: ForbiddenError;
 
   /** The original data that was passed to this error instance. */
   data$: ForbiddenData;
 
-  constructor(err: ForbiddenData) {
+  constructor(
+    err: ForbiddenData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
     const message = err.error?.message || "API error occurred";
-    super(message);
+    super(message, httpMeta);
     this.data$ = err;
-
     this.error = err.error;
 
     this.name = "Forbidden";
@@ -154,9 +157,16 @@ export const Forbidden$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   error: z.lazy(() => ForbiddenError$inboundSchema),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
-    return new Forbidden(v);
+    return new Forbidden(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */
