@@ -7,6 +7,7 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import { DubError } from "./duberror.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -45,17 +46,19 @@ export type ConflictData = {
 /**
  * This response is sent when a request conflicts with the current state of the server.
  */
-export class Conflict extends Error {
+export class Conflict extends DubError {
   error: ConflictError;
 
   /** The original data that was passed to this error instance. */
   data$: ConflictData;
 
-  constructor(err: ConflictData) {
+  constructor(
+    err: ConflictData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
     const message = err.error?.message || "API error occurred";
-    super(message);
+    super(message, httpMeta);
     this.data$ = err;
-
     this.error = err.error;
 
     this.name = "Conflict";
@@ -152,9 +155,16 @@ export const Conflict$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   error: z.lazy(() => ConflictError$inboundSchema),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
-    return new Conflict(v);
+    return new Conflict(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

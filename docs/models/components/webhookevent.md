@@ -353,7 +353,7 @@ const value: components.PartnerEnrolledEvent = {
     stripeConnectId: "<id>",
     payoutsEnabledAt: "<value>",
     createdAt: "1729967483441",
-    status: "declined",
+    status: "banned",
     programId: "<id>",
     tenantId: "<id>",
     links: [],

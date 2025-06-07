@@ -7,6 +7,7 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import { DubError } from "./duberror.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -47,17 +48,19 @@ export type InternalServerErrorData = {
 /**
  * The server has encountered a situation it does not know how to handle.
  */
-export class InternalServerError extends Error {
+export class InternalServerError extends DubError {
   error: InternalServerErrorError;
 
   /** The original data that was passed to this error instance. */
   data$: InternalServerErrorData;
 
-  constructor(err: InternalServerErrorData) {
+  constructor(
+    err: InternalServerErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
     const message = err.error?.message || "API error occurred";
-    super(message);
+    super(message, httpMeta);
     this.data$ = err;
-
     this.error = err.error;
 
     this.name = "InternalServerError";
@@ -160,9 +163,16 @@ export const InternalServerError$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   error: z.lazy(() => InternalServerErrorError$inboundSchema),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
-    return new InternalServerError(v);
+    return new InternalServerError(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

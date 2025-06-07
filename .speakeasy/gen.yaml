@@ -17,7 +17,7 @@ generation:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
 typescript:
-  version: 0.62.4
+  version: 0.63.0
   additionalDependencies:
     dependencies: {}
     devDependencies:
@@ -26,6 +26,7 @@ typescript:
     peerDependencies: {}
   additionalPackageJSON: {}
   author: Dub
+  baseErrorName: DubError
   clientServerStatusCodesAsErrors: true
   defaultErrorName: SDKError
   enableCustomCodeRegions: false
