@@ -23,7 +23,7 @@ let value: CreatePartnerResponseBody = {
   stripeConnectId: null,
   payoutsEnabledAt: "<value>",
   createdAt: "1709915734690",
-  status: "banned",
+  status: "archived",
   programId: "<id>",
   tenantId: "<id>",
   links: [],

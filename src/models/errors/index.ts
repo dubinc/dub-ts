@@ -10,6 +10,7 @@ export * from "./internalservererror.js";
 export * from "./inviteexpired.js";
 export * from "./notfound.js";
 export * from "./ratelimitexceeded.js";
+export * from "./responsevalidationerror.js";
 export * from "./sdkerror.js";
 export * from "./sdkvalidationerror.js";
 export * from "./unauthorized.js";

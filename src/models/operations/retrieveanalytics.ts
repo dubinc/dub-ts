@@ -105,15 +105,15 @@ export type RetrieveAnalyticsRequest = {
    */
   domain?: string | undefined;
   /**
-   * The short link slug.
+   * The slug of the short link to retrieve analytics for. Must be used along with the corresponding `domain` of the short link to fetch analytics for a specific short link.
    */
   key?: string | undefined;
   /**
-   * The unique ID of the short link on Dub.
+   * The unique ID of the short link on Dub to retrieve analytics for.
    */
   linkId?: string | undefined;
   /**
-   * This is the ID of the link in the your database. Must be prefixed with 'ext_' when passed as a query parameter.
+   * The ID of the link in the your database. Must be prefixed with 'ext_' when passed as a query parameter.
    */
   externalId?: string | undefined;
   /**
