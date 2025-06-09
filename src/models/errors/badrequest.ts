@@ -7,6 +7,7 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import { DubError } from "./duberror.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -45,17 +46,19 @@ export type BadRequestData = {
 /**
  * The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).
  */
-export class BadRequest extends Error {
+export class BadRequest extends DubError {
   error: ErrorT;
 
   /** The original data that was passed to this error instance. */
   data$: BadRequestData;
 
-  constructor(err: BadRequestData) {
+  constructor(
+    err: BadRequestData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
     const message = err.error?.message || "API error occurred";
-    super(message);
+    super(message, httpMeta);
     this.data$ = err;
-
     this.error = err.error;
 
     this.name = "BadRequest";
@@ -150,9 +153,16 @@ export const BadRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   error: z.lazy(() => ErrorT$inboundSchema),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
-    return new BadRequest(v);
+    return new BadRequest(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

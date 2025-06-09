@@ -13,5 +13,5 @@ let value: CreatePartnerStatus = "declined";
 ## Values
 
 ```typescript
-"pending" | "approved" | "rejected" | "invited" | "declined" | "banned"
+"pending" | "approved" | "rejected" | "invited" | "declined" | "banned" | "archived"
 ```

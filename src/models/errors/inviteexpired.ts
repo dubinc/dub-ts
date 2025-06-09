@@ -7,6 +7,7 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import { DubError } from "./duberror.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -45,17 +46,19 @@ export type InviteExpiredData = {
 /**
  * This response is sent when the requested content has been permanently deleted from server, with no forwarding address.
  */
-export class InviteExpired extends Error {
+export class InviteExpired extends DubError {
   error: InviteExpiredError;
 
   /** The original data that was passed to this error instance. */
   data$: InviteExpiredData;
 
-  constructor(err: InviteExpiredData) {
+  constructor(
+    err: InviteExpiredData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
     const message = err.error?.message || "API error occurred";
-    super(message);
+    super(message, httpMeta);
     this.data$ = err;
-
     this.error = err.error;
 
     this.name = "InviteExpired";
@@ -158,9 +161,16 @@ export const InviteExpired$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   error: z.lazy(() => InviteExpiredError$inboundSchema),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
-    return new InviteExpired(v);
+    return new InviteExpired(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */
