@@ -5,11 +5,11 @@
 ```typescript
 import { UpdateCommissionType } from "dub/models/operations";
 
-let value: UpdateCommissionType = "lead";
+let value: UpdateCommissionType = "sale";
 ```
 
 ## Values
 
 ```typescript
-"click" | "lead" | "sale"
+"click" | "lead" | "sale" | "custom"
 ```

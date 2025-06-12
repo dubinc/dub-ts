@@ -11,5 +11,5 @@ let value: ListCommissionsType = "lead";
 ## Values
 
 ```typescript
-"click" | "lead" | "sale"
+"click" | "lead" | "sale" | "custom"
 ```
