@@ -12,6 +12,7 @@ export const Type = {
   Click: "click",
   Lead: "lead",
   Sale: "sale",
+  Custom: "custom",
 } as const;
 export type Type = ClosedEnum<typeof Type>;
 
@@ -137,6 +138,7 @@ export const ListCommissionsType = {
   Click: "click",
   Lead: "lead",
   Sale: "sale",
+  Custom: "custom",
 } as const;
 export type ListCommissionsType = ClosedEnum<typeof ListCommissionsType>;
 

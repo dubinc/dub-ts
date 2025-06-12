@@ -11,5 +11,5 @@ let value: Type = "click";
 ## Values
 
 ```typescript
-"click" | "lead" | "sale"
+"click" | "lead" | "sale" | "custom"
 ```
