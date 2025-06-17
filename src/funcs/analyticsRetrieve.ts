@@ -133,7 +133,6 @@ async function $do(
     "refererUrl": payload?.refererUrl,
     "region": payload?.region,
     "root": payload?.root,
-    "sortBy": payload?.sortBy,
     "start": payload?.start,
     "tagId": payload?.tagId,
     "tagIds": payload?.tagIds,

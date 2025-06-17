@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: 2888b170a568c5574a256a458ca8e766
+  docChecksum: 1f2d4c898b6141a97115319cc3fc6712
   docVersion: 0.0.1
   speakeasyVersion: 1.563.4
   generationVersion: 2.630.6
-  releaseVersion: 0.63.3
-  configChecksum: 1a67637cca8c37d1488f728a7321afbb
+  releaseVersion: 0.63.4
+  configChecksum: 2f47712ab664dc4265bfd5ea31db9de7
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -275,7 +275,6 @@ generatedFiles:
   - docs/models/operations/listcommissionstype.md
   - docs/models/operations/listdomainsrequest.md
   - docs/models/operations/listdomainsresponse.md
-  - docs/models/operations/listeventsqueryparamsortby.md
   - docs/models/operations/listeventsqueryparamtagids.md
   - docs/models/operations/listeventsrequest.md
   - docs/models/operations/listeventsresponsebody.md

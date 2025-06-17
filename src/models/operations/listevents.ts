@@ -74,15 +74,13 @@ export type QueryParamSortOrder = ClosedEnum<typeof QueryParamSortOrder>;
 /**
  * The field to sort the events by. The default is `timestamp`.
  */
-export const ListEventsQueryParamSortBy = {
+export const QueryParamSortBy = {
   Timestamp: "timestamp",
 } as const;
 /**
  * The field to sort the events by. The default is `timestamp`.
  */
-export type ListEventsQueryParamSortBy = ClosedEnum<
-  typeof ListEventsQueryParamSortBy
->;
+export type QueryParamSortBy = ClosedEnum<typeof QueryParamSortBy>;
 
 /**
  * DEPRECATED. Use `sortOrder` instead.
@@ -246,7 +244,7 @@ export type ListEventsRequest = {
   /**
    * The field to sort the events by. The default is `timestamp`.
    */
-  sortBy?: ListEventsQueryParamSortBy | undefined;
+  sortBy?: QueryParamSortBy | undefined;
   /**
    * DEPRECATED. Use `sortOrder` instead.
    */
@@ -391,24 +389,24 @@ export namespace QueryParamSortOrder$ {
 }
 
 /** @internal */
-export const ListEventsQueryParamSortBy$inboundSchema: z.ZodNativeEnum<
-  typeof ListEventsQueryParamSortBy
-> = z.nativeEnum(ListEventsQueryParamSortBy);
+export const QueryParamSortBy$inboundSchema: z.ZodNativeEnum<
+  typeof QueryParamSortBy
+> = z.nativeEnum(QueryParamSortBy);
 
 /** @internal */
-export const ListEventsQueryParamSortBy$outboundSchema: z.ZodNativeEnum<
-  typeof ListEventsQueryParamSortBy
-> = ListEventsQueryParamSortBy$inboundSchema;
+export const QueryParamSortBy$outboundSchema: z.ZodNativeEnum<
+  typeof QueryParamSortBy
+> = QueryParamSortBy$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ListEventsQueryParamSortBy$ {
-  /** @deprecated use `ListEventsQueryParamSortBy$inboundSchema` instead. */
-  export const inboundSchema = ListEventsQueryParamSortBy$inboundSchema;
-  /** @deprecated use `ListEventsQueryParamSortBy$outboundSchema` instead. */
-  export const outboundSchema = ListEventsQueryParamSortBy$outboundSchema;
+export namespace QueryParamSortBy$ {
+  /** @deprecated use `QueryParamSortBy$inboundSchema` instead. */
+  export const inboundSchema = QueryParamSortBy$inboundSchema;
+  /** @deprecated use `QueryParamSortBy$outboundSchema` instead. */
+  export const outboundSchema = QueryParamSortBy$outboundSchema;
 }
 
 /** @internal */
@@ -474,7 +472,7 @@ export const ListEventsRequest$inboundSchema: z.ZodType<
   page: z.number().default(1),
   limit: z.number().default(100),
   sortOrder: QueryParamSortOrder$inboundSchema.default("desc"),
-  sortBy: ListEventsQueryParamSortBy$inboundSchema.default("timestamp"),
+  sortBy: QueryParamSortBy$inboundSchema.default("timestamp"),
   order: Order$inboundSchema.default("desc"),
 }).transform((v) => {
   return remap$(v, {
@@ -572,7 +570,7 @@ export const ListEventsRequest$outboundSchema: z.ZodType<
   page: z.number().default(1),
   limit: z.number().default(100),
   sortOrder: QueryParamSortOrder$outboundSchema.default("desc"),
-  sortBy: ListEventsQueryParamSortBy$outboundSchema.default("timestamp"),
+  sortBy: QueryParamSortBy$outboundSchema.default("timestamp"),
   order: Order$outboundSchema.default("desc"),
 }).transform((v) => {
   return remap$(v, {
