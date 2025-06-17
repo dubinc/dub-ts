@@ -74,13 +74,15 @@ export type QueryParamSortOrder = ClosedEnum<typeof QueryParamSortOrder>;
 /**
  * The field to sort the events by. The default is `timestamp`.
  */
-export const QueryParamSortBy = {
+export const ListEventsQueryParamSortBy = {
   Timestamp: "timestamp",
 } as const;
 /**
  * The field to sort the events by. The default is `timestamp`.
  */
-export type QueryParamSortBy = ClosedEnum<typeof QueryParamSortBy>;
+export type ListEventsQueryParamSortBy = ClosedEnum<
+  typeof ListEventsQueryParamSortBy
+>;
 
 /**
  * DEPRECATED. Use `sortOrder` instead.
@@ -244,7 +246,7 @@ export type ListEventsRequest = {
   /**
    * The field to sort the events by. The default is `timestamp`.
    */
-  sortBy?: QueryParamSortBy | undefined;
+  sortBy?: ListEventsQueryParamSortBy | undefined;
   /**
    * DEPRECATED. Use `sortOrder` instead.
    */
@@ -252,9 +254,9 @@ export type ListEventsRequest = {
 };
 
 export type ListEventsResponseBody =
-  | (components.ClickEvent & { event: "click" })
+  | (components.SaleEvent & { event: "sale" })
   | (components.LeadEvent & { event: "lead" })
-  | (components.SaleEvent & { event: "sale" });
+  | (components.ClickEvent & { event: "click" });
 
 /** @internal */
 export const QueryParamEvent$inboundSchema: z.ZodNativeEnum<
@@ -389,24 +391,24 @@ export namespace QueryParamSortOrder$ {
 }
 
 /** @internal */
-export const QueryParamSortBy$inboundSchema: z.ZodNativeEnum<
-  typeof QueryParamSortBy
-> = z.nativeEnum(QueryParamSortBy);
+export const ListEventsQueryParamSortBy$inboundSchema: z.ZodNativeEnum<
+  typeof ListEventsQueryParamSortBy
+> = z.nativeEnum(ListEventsQueryParamSortBy);
 
 /** @internal */
-export const QueryParamSortBy$outboundSchema: z.ZodNativeEnum<
-  typeof QueryParamSortBy
-> = QueryParamSortBy$inboundSchema;
+export const ListEventsQueryParamSortBy$outboundSchema: z.ZodNativeEnum<
+  typeof ListEventsQueryParamSortBy
+> = ListEventsQueryParamSortBy$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace QueryParamSortBy$ {
-  /** @deprecated use `QueryParamSortBy$inboundSchema` instead. */
-  export const inboundSchema = QueryParamSortBy$inboundSchema;
-  /** @deprecated use `QueryParamSortBy$outboundSchema` instead. */
-  export const outboundSchema = QueryParamSortBy$outboundSchema;
+export namespace ListEventsQueryParamSortBy$ {
+  /** @deprecated use `ListEventsQueryParamSortBy$inboundSchema` instead. */
+  export const inboundSchema = ListEventsQueryParamSortBy$inboundSchema;
+  /** @deprecated use `ListEventsQueryParamSortBy$outboundSchema` instead. */
+  export const outboundSchema = ListEventsQueryParamSortBy$outboundSchema;
 }
 
 /** @internal */
@@ -472,7 +474,7 @@ export const ListEventsRequest$inboundSchema: z.ZodType<
   page: z.number().default(1),
   limit: z.number().default(100),
   sortOrder: QueryParamSortOrder$inboundSchema.default("desc"),
-  sortBy: QueryParamSortBy$inboundSchema.default("timestamp"),
+  sortBy: ListEventsQueryParamSortBy$inboundSchema.default("timestamp"),
   order: Order$inboundSchema.default("desc"),
 }).transform((v) => {
   return remap$(v, {
@@ -570,7 +572,7 @@ export const ListEventsRequest$outboundSchema: z.ZodType<
   page: z.number().default(1),
   limit: z.number().default(100),
   sortOrder: QueryParamSortOrder$outboundSchema.default("desc"),
-  sortBy: QueryParamSortBy$outboundSchema.default("timestamp"),
+  sortBy: ListEventsQueryParamSortBy$outboundSchema.default("timestamp"),
   order: Order$outboundSchema.default("desc"),
 }).transform((v) => {
   return remap$(v, {
@@ -619,8 +621,8 @@ export const ListEventsResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  components.ClickEvent$inboundSchema.and(
-    z.object({ event: z.literal("click") }).transform((v) => ({
+  components.SaleEvent$inboundSchema.and(
+    z.object({ event: z.literal("sale") }).transform((v) => ({
       event: v.event,
     })),
   ),
@@ -629,8 +631,8 @@ export const ListEventsResponseBody$inboundSchema: z.ZodType<
       event: v.event,
     })),
   ),
-  components.SaleEvent$inboundSchema.and(
-    z.object({ event: z.literal("sale") }).transform((v) => ({
+  components.ClickEvent$inboundSchema.and(
+    z.object({ event: z.literal("click") }).transform((v) => ({
       event: v.event,
     })),
   ),
@@ -638,9 +640,9 @@ export const ListEventsResponseBody$inboundSchema: z.ZodType<
 
 /** @internal */
 export type ListEventsResponseBody$Outbound =
-  | (components.ClickEvent$Outbound & { event: "click" })
+  | (components.SaleEvent$Outbound & { event: "sale" })
   | (components.LeadEvent$Outbound & { event: "lead" })
-  | (components.SaleEvent$Outbound & { event: "sale" });
+  | (components.ClickEvent$Outbound & { event: "click" });
 
 /** @internal */
 export const ListEventsResponseBody$outboundSchema: z.ZodType<
@@ -648,8 +650,8 @@ export const ListEventsResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ListEventsResponseBody
 > = z.union([
-  components.ClickEvent$outboundSchema.and(
-    z.object({ event: z.literal("click") }).transform((v) => ({
+  components.SaleEvent$outboundSchema.and(
+    z.object({ event: z.literal("sale") }).transform((v) => ({
       event: v.event,
     })),
   ),
@@ -658,8 +660,8 @@ export const ListEventsResponseBody$outboundSchema: z.ZodType<
       event: v.event,
     })),
   ),
-  components.SaleEvent$outboundSchema.and(
-    z.object({ event: z.literal("sale") }).transform((v) => ({
+  components.ClickEvent$outboundSchema.and(
+    z.object({ event: z.literal("click") }).transform((v) => ({
       event: v.event,
     })),
   ),
