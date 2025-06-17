@@ -187,7 +187,7 @@ export type RequestBody = {
   testCompletedAt?: string | null | undefined;
 };
 
-export type ResponseBody = components.LinkErrorSchema | components.LinkSchema;
+export type ResponseBody = components.LinkSchema | components.LinkErrorSchema;
 
 /** @internal */
 export const BulkCreateLinksTagIds$inboundSchema: z.ZodType<
@@ -534,14 +534,14 @@ export const ResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  components.LinkErrorSchema$inboundSchema,
   components.LinkSchema$inboundSchema,
+  components.LinkErrorSchema$inboundSchema,
 ]);
 
 /** @internal */
 export type ResponseBody$Outbound =
-  | components.LinkErrorSchema$Outbound
-  | components.LinkSchema$Outbound;
+  | components.LinkSchema$Outbound
+  | components.LinkErrorSchema$Outbound;
 
 /** @internal */
 export const ResponseBody$outboundSchema: z.ZodType<
@@ -549,8 +549,8 @@ export const ResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ResponseBody
 > = z.union([
-  components.LinkErrorSchema$outboundSchema,
   components.LinkSchema$outboundSchema,
+  components.LinkErrorSchema$outboundSchema,
 ]);
 
 /**
