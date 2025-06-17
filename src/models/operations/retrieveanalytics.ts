@@ -91,13 +91,6 @@ export type Trigger = ClosedEnum<typeof Trigger>;
  */
 export type RetrieveAnalyticsQueryParamTagIds = string | Array<string>;
 
-export const QueryParamSortBy = {
-  Clicks: "clicks",
-  Leads: "leads",
-  Sales: "sales",
-} as const;
-export type QueryParamSortBy = ClosedEnum<typeof QueryParamSortBy>;
-
 export type RetrieveAnalyticsRequest = {
   /**
    * The type of event to retrieve analytics for. Defaults to `clicks`.
@@ -219,7 +212,6 @@ export type RetrieveAnalyticsRequest = {
    * Filter for root domains. If true, filter for domains only. If false, filter for links only. If undefined, return both.
    */
   root?: boolean | undefined;
-  sortBy?: QueryParamSortBy | undefined;
   /**
    * The UTM source of the short link.
    */
@@ -392,27 +384,6 @@ export function retrieveAnalyticsQueryParamTagIdsFromJSON(
 }
 
 /** @internal */
-export const QueryParamSortBy$inboundSchema: z.ZodNativeEnum<
-  typeof QueryParamSortBy
-> = z.nativeEnum(QueryParamSortBy);
-
-/** @internal */
-export const QueryParamSortBy$outboundSchema: z.ZodNativeEnum<
-  typeof QueryParamSortBy
-> = QueryParamSortBy$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace QueryParamSortBy$ {
-  /** @deprecated use `QueryParamSortBy$inboundSchema` instead. */
-  export const inboundSchema = QueryParamSortBy$inboundSchema;
-  /** @deprecated use `QueryParamSortBy$outboundSchema` instead. */
-  export const outboundSchema = QueryParamSortBy$outboundSchema;
-}
-
-/** @internal */
 export const RetrieveAnalyticsRequest$inboundSchema: z.ZodType<
   RetrieveAnalyticsRequest,
   z.ZodTypeDef,
@@ -448,7 +419,6 @@ export const RetrieveAnalyticsRequest$inboundSchema: z.ZodType<
   folderId: z.string().optional(),
   qr: z.boolean().optional(),
   root: z.boolean().optional(),
-  sortBy: QueryParamSortBy$inboundSchema.optional(),
   utm_source: z.nullable(z.string()).optional(),
   utm_medium: z.nullable(z.string()).optional(),
   utm_campaign: z.nullable(z.string()).optional(),
@@ -496,7 +466,6 @@ export type RetrieveAnalyticsRequest$Outbound = {
   folderId?: string | undefined;
   qr?: boolean | undefined;
   root?: boolean | undefined;
-  sortBy?: string | undefined;
   utm_source?: string | null | undefined;
   utm_medium?: string | null | undefined;
   utm_campaign?: string | null | undefined;
@@ -540,7 +509,6 @@ export const RetrieveAnalyticsRequest$outboundSchema: z.ZodType<
   folderId: z.string().optional(),
   qr: z.boolean().optional(),
   root: z.boolean().optional(),
-  sortBy: QueryParamSortBy$outboundSchema.optional(),
   utmSource: z.nullable(z.string()).optional(),
   utmMedium: z.nullable(z.string()).optional(),
   utmCampaign: z.nullable(z.string()).optional(),
