@@ -164,6 +164,7 @@ export type ListCommissionsResponseBody = {
   currency: string;
   status: ListCommissionsStatus;
   invoiceId?: string | null | undefined;
+  description?: string | null | undefined;
   createdAt: string;
   updatedAt: string;
 };
@@ -419,6 +420,7 @@ export const ListCommissionsResponseBody$inboundSchema: z.ZodType<
   currency: z.string(),
   status: ListCommissionsStatus$inboundSchema,
   invoiceId: z.nullable(z.string()).optional(),
+  description: z.nullable(z.string()).optional(),
   createdAt: z.string(),
   updatedAt: z.string(),
 });
@@ -432,6 +434,7 @@ export type ListCommissionsResponseBody$Outbound = {
   currency: string;
   status: string;
   invoiceId?: string | null | undefined;
+  description?: string | null | undefined;
   createdAt: string;
   updatedAt: string;
 };
@@ -449,6 +452,7 @@ export const ListCommissionsResponseBody$outboundSchema: z.ZodType<
   currency: z.string(),
   status: ListCommissionsStatus$outboundSchema,
   invoiceId: z.nullable(z.string()).optional(),
+  description: z.nullable(z.string()).optional(),
   createdAt: z.string(),
   updatedAt: z.string(),
 });
