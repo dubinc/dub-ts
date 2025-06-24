@@ -412,10 +412,6 @@ export type LinkProps = {
 
 export type CreatePartnerRequestBody = {
   /**
-   * The ID of the program to create a partner for.
-   */
-  programId: string;
-  /**
    * Full legal name of the partner.
    */
   name: string;
@@ -956,7 +952,6 @@ export const CreatePartnerRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  programId: z.string(),
   name: z.string(),
   email: z.string(),
   username: z.nullable(z.string()).optional(),
@@ -969,7 +964,6 @@ export const CreatePartnerRequestBody$inboundSchema: z.ZodType<
 
 /** @internal */
 export type CreatePartnerRequestBody$Outbound = {
-  programId: string;
   name: string;
   email: string;
   username?: string | null | undefined;
@@ -986,7 +980,6 @@ export const CreatePartnerRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreatePartnerRequestBody
 > = z.object({
-  programId: z.string(),
   name: z.string(),
   email: z.string(),
   username: z.nullable(z.string()).optional(),

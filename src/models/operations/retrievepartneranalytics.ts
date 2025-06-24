@@ -74,10 +74,6 @@ export type RetrievePartnerAnalyticsRequest = {
    * The parameter to group the analytics data points by. Defaults to `count` if undefined.
    */
   groupBy?: RetrievePartnerAnalyticsQueryParamGroupBy | undefined;
-  /**
-   * The ID of the program to retrieve analytics for.
-   */
-  programId: string;
 };
 
 /**
@@ -149,7 +145,6 @@ export const RetrievePartnerAnalyticsRequest$inboundSchema: z.ZodType<
   groupBy: RetrievePartnerAnalyticsQueryParamGroupBy$inboundSchema.default(
     "count",
   ),
-  programId: z.string(),
 });
 
 /** @internal */
@@ -161,7 +156,6 @@ export type RetrievePartnerAnalyticsRequest$Outbound = {
   end?: string | undefined;
   timezone: string;
   groupBy: string;
-  programId: string;
 };
 
 /** @internal */
@@ -180,7 +174,6 @@ export const RetrievePartnerAnalyticsRequest$outboundSchema: z.ZodType<
   groupBy: RetrievePartnerAnalyticsQueryParamGroupBy$outboundSchema.default(
     "count",
   ),
-  programId: z.string(),
 });
 
 /**

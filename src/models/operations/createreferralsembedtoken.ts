@@ -451,7 +451,6 @@ export type Partner = {
 };
 
 export type CreateReferralsEmbedTokenRequestBody = {
-  programId: string;
   partnerId?: string | undefined;
   tenantId?: string | undefined;
   partner?: Partner | undefined;
@@ -895,7 +894,6 @@ export const CreateReferralsEmbedTokenRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  programId: z.string(),
   partnerId: z.string().optional(),
   tenantId: z.string().optional(),
   partner: z.lazy(() => Partner$inboundSchema).optional(),
@@ -903,7 +901,6 @@ export const CreateReferralsEmbedTokenRequestBody$inboundSchema: z.ZodType<
 
 /** @internal */
 export type CreateReferralsEmbedTokenRequestBody$Outbound = {
-  programId: string;
   partnerId?: string | undefined;
   tenantId?: string | undefined;
   partner?: Partner$Outbound | undefined;
@@ -915,7 +912,6 @@ export const CreateReferralsEmbedTokenRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateReferralsEmbedTokenRequestBody
 > = z.object({
-  programId: z.string(),
   partnerId: z.string().optional(),
   tenantId: z.string().optional(),
   partner: z.lazy(() => Partner$outboundSchema).optional(),

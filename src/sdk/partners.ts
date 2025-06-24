@@ -88,7 +88,7 @@ export class Partners extends ClientSDK {
    * Retrieve analytics for a partner within a program. The response type vary based on the `groupBy` query parameter.
    */
   async analytics(
-    request: operations.RetrievePartnerAnalyticsRequest,
+    request?: operations.RetrievePartnerAnalyticsRequest | undefined,
     options?: RequestOptions,
   ): Promise<operations.RetrievePartnerAnalyticsResponseBody> {
     return unwrapAsync(partnersAnalytics(

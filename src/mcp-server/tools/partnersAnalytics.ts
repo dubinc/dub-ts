@@ -7,7 +7,7 @@ import * as operations from "../../models/operations/index.js";
 import { formatResult, ToolDefinition } from "../tools.js";
 
 const args = {
-  request: operations.RetrievePartnerAnalyticsRequest$inboundSchema,
+  request: operations.RetrievePartnerAnalyticsRequest$inboundSchema.optional(),
 };
 
 export const tool$partnersAnalytics: ToolDefinition<typeof args> = {
