@@ -6,6 +6,7 @@ sources:
             - location: https://api.dub.co
         registry:
             location: registry.speakeasyapi.dev/dub/dub/my-first-source
+        output: .speakeasy/out.openapi.yaml
 targets:
     my-first-target:
         target: typescript
