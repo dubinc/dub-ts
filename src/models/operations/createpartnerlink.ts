@@ -151,10 +151,6 @@ export type CreatePartnerLinkLinkProps = {
 
 export type CreatePartnerLinkRequestBody = {
   /**
-   * The ID of the program that the partner is enrolled in.
-   */
-  programId: string;
-  /**
    * The ID of the partner to create a link for. Will take precedence over `tenantId` if provided.
    */
   partnerId?: string | null | undefined;
@@ -505,7 +501,6 @@ export const CreatePartnerLinkRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  programId: z.string(),
   partnerId: z.nullable(z.string()).optional(),
   tenantId: z.nullable(z.string()).optional(),
   url: z.nullable(z.string()).optional(),
@@ -516,7 +511,6 @@ export const CreatePartnerLinkRequestBody$inboundSchema: z.ZodType<
 
 /** @internal */
 export type CreatePartnerLinkRequestBody$Outbound = {
-  programId: string;
   partnerId?: string | null | undefined;
   tenantId?: string | null | undefined;
   url?: string | null | undefined;
@@ -531,7 +525,6 @@ export const CreatePartnerLinkRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreatePartnerLinkRequestBody
 > = z.object({
-  programId: z.string(),
   partnerId: z.nullable(z.string()).optional(),
   tenantId: z.nullable(z.string()).optional(),
   url: z.nullable(z.string()).optional(),

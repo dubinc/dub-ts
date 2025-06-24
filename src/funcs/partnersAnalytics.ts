@@ -33,7 +33,7 @@ import { Result } from "../types/fp.js";
  */
 export function partnersAnalytics(
   client: DubCore,
-  request: operations.RetrievePartnerAnalyticsRequest,
+  request?: operations.RetrievePartnerAnalyticsRequest | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -66,7 +66,7 @@ export function partnersAnalytics(
 
 async function $do(
   client: DubCore,
-  request: operations.RetrievePartnerAnalyticsRequest,
+  request?: operations.RetrievePartnerAnalyticsRequest | undefined,
   options?: RequestOptions,
 ): Promise<
   [
@@ -96,7 +96,8 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.RetrievePartnerAnalyticsRequest$outboundSchema.parse(value),
+      operations.RetrievePartnerAnalyticsRequest$outboundSchema.optional()
+        .parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -108,14 +109,13 @@ async function $do(
   const path = pathToFunc("/partners/analytics")();
 
   const query = encodeFormQuery({
-    "end": payload.end,
-    "groupBy": payload.groupBy,
-    "interval": payload.interval,
-    "partnerId": payload.partnerId,
-    "programId": payload.programId,
-    "start": payload.start,
-    "tenantId": payload.tenantId,
-    "timezone": payload.timezone,
+    "end": payload?.end,
+    "groupBy": payload?.groupBy,
+    "interval": payload?.interval,
+    "partnerId": payload?.partnerId,
+    "start": payload?.start,
+    "tenantId": payload?.tenantId,
+    "timezone": payload?.timezone,
   });
 
   const headers = new Headers(compactMap({

@@ -1,21 +1,21 @@
-speakeasyVersion: 1.568.1
+speakeasyVersion: 1.568.2
 sources:
     my-first-source:
         sourceNamespace: my-first-source
-        sourceRevisionDigest: sha256:19a48526ab2bdb24777eb40588e518a8c519baa6970d35f3ae58fd37e73e12ad
-        sourceBlobDigest: sha256:a40b4be735625df821cb447186e9f082522956163e810b6c049d2b3a6ad6a538
+        sourceRevisionDigest: sha256:6c90fc9902fcc07793972d98bc2c4bf8a171dd66891668e7aabcfa84fd1d7cbc
+        sourceBlobDigest: sha256:2721ad445d1575c8192ede1ad9d4b1c09ae0491f4519d6e68e4ca7c6156db883
         tags:
             - latest
-            - speakeasy-sdk-regen-1750379462
+            - speakeasy-sdk-regen-1750798131
             - 0.0.1
 targets:
     my-first-target:
         source: my-first-source
         sourceNamespace: my-first-source
-        sourceRevisionDigest: sha256:19a48526ab2bdb24777eb40588e518a8c519baa6970d35f3ae58fd37e73e12ad
-        sourceBlobDigest: sha256:a40b4be735625df821cb447186e9f082522956163e810b6c049d2b3a6ad6a538
+        sourceRevisionDigest: sha256:6c90fc9902fcc07793972d98bc2c4bf8a171dd66891668e7aabcfa84fd1d7cbc
+        sourceBlobDigest: sha256:2721ad445d1575c8192ede1ad9d4b1c09ae0491f4519d6e68e4ca7c6156db883
         codeSamplesNamespace: code-samples-typescript-my-first-target
-        codeSamplesRevisionDigest: sha256:6f82ee8c32ef36e15206dc726d8ebaa5eeaf166a76afe775f07adad68c235da8
+        codeSamplesRevisionDigest: sha256:bfc29367a86963302e8a2ebb95971f1c1cef0b04784128064992b3d16356da88
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -23,6 +23,7 @@ workflow:
         my-first-source:
             inputs:
                 - location: https://api.dub.co
+            output: .speakeasy/out.openapi.yaml
             registry:
                 location: registry.speakeasyapi.dev/dub/dub/my-first-source
     targets:

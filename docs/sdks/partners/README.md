@@ -337,10 +337,7 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.partners.analytics({
-    timezone: "America/New_York",
-    programId: "<id>",
-  });
+  const result = await dub.partners.analytics();
 
   console.log(result);
 }
@@ -363,10 +360,7 @@ const dub = new DubCore({
 });
 
 async function run() {
-  const res = await partnersAnalytics(dub, {
-    timezone: "America/New_York",
-    programId: "<id>",
-  });
+  const res = await partnersAnalytics(dub);
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
