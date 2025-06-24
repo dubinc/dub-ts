@@ -54,10 +54,6 @@ export type UpdateLinkRequestBody = {
    */
   partnerId?: string | null | undefined;
   /**
-   * The prefix of the short link slug for randomly-generated keys (e.g. if prefix is `/c/`, generated keys will be in the `/c/:key` format). Will be ignored if `key` is provided.
-   */
-  prefix?: string | undefined;
-  /**
    * Whether to track conversions for the short link. Defaults to `false` if not provided.
    */
   trackConversion?: boolean | undefined;
@@ -358,7 +354,6 @@ export const UpdateLinkRequestBody$inboundSchema: z.ZodType<
   tenantId: z.nullable(z.string()).optional(),
   programId: z.nullable(z.string()).optional(),
   partnerId: z.nullable(z.string()).optional(),
-  prefix: z.string().optional(),
   trackConversion: z.boolean().optional(),
   archived: z.boolean().optional(),
   publicStats: z.boolean().optional(),
@@ -411,7 +406,6 @@ export type UpdateLinkRequestBody$Outbound = {
   tenantId?: string | null | undefined;
   programId?: string | null | undefined;
   partnerId?: string | null | undefined;
-  prefix?: string | undefined;
   trackConversion?: boolean | undefined;
   archived?: boolean | undefined;
   publicStats?: boolean | undefined;
@@ -458,7 +452,6 @@ export const UpdateLinkRequestBody$outboundSchema: z.ZodType<
   tenantId: z.nullable(z.string()).optional(),
   programId: z.nullable(z.string()).optional(),
   partnerId: z.nullable(z.string()).optional(),
-  prefix: z.string().optional(),
   trackConversion: z.boolean().optional(),
   archived: z.boolean().optional(),
   publicStats: z.boolean().optional(),

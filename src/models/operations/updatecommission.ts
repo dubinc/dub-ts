@@ -83,6 +83,7 @@ export type UpdateCommissionResponseBody = {
   currency: string;
   status: UpdateCommissionStatus;
   invoiceId?: string | null | undefined;
+  description?: string | null | undefined;
   createdAt: string;
   updatedAt: string;
 };
@@ -293,6 +294,7 @@ export const UpdateCommissionResponseBody$inboundSchema: z.ZodType<
   currency: z.string(),
   status: UpdateCommissionStatus$inboundSchema,
   invoiceId: z.nullable(z.string()).optional(),
+  description: z.nullable(z.string()).optional(),
   createdAt: z.string(),
   updatedAt: z.string(),
 });
@@ -306,6 +308,7 @@ export type UpdateCommissionResponseBody$Outbound = {
   currency: string;
   status: string;
   invoiceId?: string | null | undefined;
+  description?: string | null | undefined;
   createdAt: string;
   updatedAt: string;
 };
@@ -323,6 +326,7 @@ export const UpdateCommissionResponseBody$outboundSchema: z.ZodType<
   currency: z.string(),
   status: UpdateCommissionStatus$outboundSchema,
   invoiceId: z.nullable(z.string()).optional(),
+  description: z.nullable(z.string()).optional(),
   createdAt: z.string(),
   updatedAt: z.string(),
 });

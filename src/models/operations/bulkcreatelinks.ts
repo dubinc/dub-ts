@@ -38,6 +38,10 @@ export type RequestBody = {
    */
   key?: string | undefined;
   /**
+   * The length of the short link slug. Defaults to 7 if not provided. When used with `prefix`, the total length of the key will be `prefix.length + keyLength`.
+   */
+  keyLength?: number | undefined;
+  /**
    * The ID of the link in your database. If set, it can be used to identify the link in future API requests (must be prefixed with 'ext_' when passed as a query parameter). This key is unique across your workspace.
    */
   externalId?: string | null | undefined;
@@ -353,6 +357,7 @@ export const RequestBody$inboundSchema: z.ZodType<
   url: z.string(),
   domain: z.string().optional(),
   key: z.string().optional(),
+  keyLength: z.number().optional(),
   externalId: z.nullable(z.string()).optional(),
   tenantId: z.nullable(z.string()).optional(),
   programId: z.nullable(z.string()).optional(),
@@ -406,6 +411,7 @@ export type RequestBody$Outbound = {
   url: string;
   domain?: string | undefined;
   key?: string | undefined;
+  keyLength?: number | undefined;
   externalId?: string | null | undefined;
   tenantId?: string | null | undefined;
   programId?: string | null | undefined;
@@ -453,6 +459,7 @@ export const RequestBody$outboundSchema: z.ZodType<
   url: z.string(),
   domain: z.string().optional(),
   key: z.string().optional(),
+  keyLength: z.number().optional(),
   externalId: z.nullable(z.string()).optional(),
   tenantId: z.nullable(z.string()).optional(),
   programId: z.nullable(z.string()).optional(),
