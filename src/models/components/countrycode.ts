@@ -6,7 +6,7 @@ import * as z from "zod";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
- * The country to retrieve analytics for.
+ * The country to retrieve analytics for. Must be passed as a 2-letter ISO 3166-1 country code. Learn more: https://d.to/geo
  */
 export const CountryCode = {
   Af: "AF",
@@ -261,7 +261,7 @@ export const CountryCode = {
   Xk: "XK",
 } as const;
 /**
- * The country to retrieve analytics for.
+ * The country to retrieve analytics for. Must be passed as a 2-letter ISO 3166-1 country code. Learn more: https://d.to/geo
  */
 export type CountryCode = ClosedEnum<typeof CountryCode>;
 

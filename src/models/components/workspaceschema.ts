@@ -134,6 +134,10 @@ export type WorkspaceSchema = {
    */
   payoutsLimit: number;
   /**
+   * The processing fee (in decimals) for partner payouts. For card payments, an additional 0.03 is added to the fee. Learn more: https://d.to/payouts
+   */
+  payoutFee: number;
+  /**
    * The domains limit of the workspace.
    */
   domainsLimit: number;
@@ -365,6 +369,7 @@ export const WorkspaceSchema$inboundSchema: z.ZodType<
   linksLimit: z.number(),
   payoutsUsage: z.number(),
   payoutsLimit: z.number(),
+  payoutFee: z.number(),
   domainsLimit: z.number(),
   tagsLimit: z.number(),
   foldersUsage: z.number(),
@@ -402,6 +407,7 @@ export type WorkspaceSchema$Outbound = {
   linksLimit: number;
   payoutsUsage: number;
   payoutsLimit: number;
+  payoutFee: number;
   domainsLimit: number;
   tagsLimit: number;
   foldersUsage: number;
@@ -443,6 +449,7 @@ export const WorkspaceSchema$outboundSchema: z.ZodType<
   linksLimit: z.number(),
   payoutsUsage: z.number(),
   payoutsLimit: z.number(),
+  payoutFee: z.number(),
   domainsLimit: z.number(),
   tagsLimit: z.number(),
   foldersUsage: z.number(),

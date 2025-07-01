@@ -29,31 +29,31 @@ export type TrackSaleRequestBody = {
    */
   externalId: string;
   /**
-   * The amount of the sale in cents.
+   * The amount of the sale in cents (for all two-decimal currencies). If the sale is in a zero-decimal currency, pass the full integer value (e.g. `1437` JPY). Learn more: https://d.to/currency
    */
   amount: number;
+  /**
+   * The currency of the sale. Accepts ISO 4217 currency codes. Sales will be automatically converted and stored as USD at the latest exchange rates. Learn more: https://d.to/currency
+   */
+  currency?: string | undefined;
+  /**
+   * The name of the sale event. Recommended format: `Invoice paid` or `Subscription created`.
+   */
+  eventName?: string | undefined;
   /**
    * The payment processor via which the sale was made.
    */
   paymentProcessor: PaymentProcessor;
   /**
-   * The name of the sale event.
-   */
-  eventName?: string | undefined;
-  /**
    * The invoice ID of the sale. Can be used as a idempotency key – only one sale event can be recorded for a given invoice ID.
    */
   invoiceId?: string | null | undefined;
   /**
-   * The currency of the sale. Accepts ISO 4217 currency codes.
-   */
-  currency?: string | undefined;
-  /**
-   * The name of the lead event that occurred before the sale (case-sensitive). This is used to associate the sale event with a particular lead event (instead of the latest lead event, which is the default behavior).
+   * The name of the lead event that occurred before the sale (case-sensitive). This is used to associate the sale event with a particular lead event (instead of the latest lead event for a link-customer combination, which is the default behavior).
    */
   leadEventName?: string | null | undefined;
   /**
-   * Additional metadata to be stored with the sale event. Max 10,000 characters.
+   * Additional metadata to be stored with the sale event. Max 10,000 characters when stringified.
    */
   metadata?: { [k: string]: any } | null | undefined;
 };
@@ -112,10 +112,10 @@ export const TrackSaleRequestBody$inboundSchema: z.ZodType<
 > = z.object({
   externalId: z.string(),
   amount: z.number().int(),
-  paymentProcessor: PaymentProcessor$inboundSchema,
-  eventName: z.string().default("Purchase"),
-  invoiceId: z.nullable(z.string()).default(null),
   currency: z.string().default("usd"),
+  eventName: z.string().default("Purchase"),
+  paymentProcessor: PaymentProcessor$inboundSchema,
+  invoiceId: z.nullable(z.string()).default(null),
   leadEventName: z.nullable(z.string()).default(null),
   metadata: z.nullable(z.record(z.any())).optional(),
 });
@@ -124,10 +124,10 @@ export const TrackSaleRequestBody$inboundSchema: z.ZodType<
 export type TrackSaleRequestBody$Outbound = {
   externalId: string;
   amount: number;
-  paymentProcessor: string;
-  eventName: string;
-  invoiceId: string | null;
   currency: string;
+  eventName: string;
+  paymentProcessor: string;
+  invoiceId: string | null;
   leadEventName: string | null;
   metadata?: { [k: string]: any } | null | undefined;
 };
@@ -140,10 +140,10 @@ export const TrackSaleRequestBody$outboundSchema: z.ZodType<
 > = z.object({
   externalId: z.string(),
   amount: z.number().int(),
-  paymentProcessor: PaymentProcessor$outboundSchema,
-  eventName: z.string().default("Purchase"),
-  invoiceId: z.nullable(z.string()).default(null),
   currency: z.string().default("usd"),
+  eventName: z.string().default("Purchase"),
+  paymentProcessor: PaymentProcessor$outboundSchema,
+  invoiceId: z.nullable(z.string()).default(null),
   leadEventName: z.nullable(z.string()).default(null),
   metadata: z.nullable(z.record(z.any())).optional(),
 });

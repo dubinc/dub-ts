@@ -512,7 +512,7 @@ export type PaymentProcessor = ClosedEnum<typeof PaymentProcessor>;
 
 export type Sale = {
   /**
-   * The amount of the sale in cents.
+   * The amount of the sale in cents (for all two-decimal currencies). If the sale is in a zero-decimal currency, pass the full integer value (e.g. `1437` JPY). Learn more: https://d.to/currency
    */
   amount: number;
   /**

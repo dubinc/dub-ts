@@ -603,9 +603,7 @@ actions:
             });
 
             async function run() {
-              const result = await dub.partners.retrieveLinks({
-                programId: "<id>",
-              });
+              const result = await dub.partners.retrieveLinks();
 
               console.log(result);
             }

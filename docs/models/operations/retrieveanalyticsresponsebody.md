@@ -32,7 +32,7 @@ const value: components.AnalyticsContinents[] = [];
 ```typescript
 const value: components.AnalyticsCountries[] = [
   {
-    country: "GY",
+    country: "Guadeloupe",
   },
 ];
 ```

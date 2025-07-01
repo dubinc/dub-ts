@@ -54,7 +54,7 @@ export class Partners extends ClientSDK {
    * Retrieve a partner's links by their partner ID or tenant ID.
    */
   async retrieveLinks(
-    request: operations.RetrieveLinksRequest,
+    request?: operations.RetrieveLinksRequest | undefined,
     options?: RequestOptions,
   ): Promise<Array<operations.Link>> {
     return unwrapAsync(partnersRetrieveLinks(
