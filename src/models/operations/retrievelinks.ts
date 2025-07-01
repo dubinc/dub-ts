@@ -8,7 +8,6 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type RetrieveLinksRequest = {
-  programId: string;
   partnerId?: string | undefined;
   tenantId?: string | undefined;
 };
@@ -58,14 +57,12 @@ export const RetrieveLinksRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  programId: z.string(),
   partnerId: z.string().optional(),
   tenantId: z.string().optional(),
 });
 
 /** @internal */
 export type RetrieveLinksRequest$Outbound = {
-  programId: string;
   partnerId?: string | undefined;
   tenantId?: string | undefined;
 };
@@ -76,7 +73,6 @@ export const RetrieveLinksRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   RetrieveLinksRequest
 > = z.object({
-  programId: z.string(),
   partnerId: z.string().optional(),
   tenantId: z.string().optional(),
 });

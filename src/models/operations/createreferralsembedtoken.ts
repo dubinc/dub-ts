@@ -10,7 +10,7 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
- * Country where the partner is based.
+ * The partner's country of residence. Must be passed as a 2-letter ISO 3166-1 country code. Learn more: https://d.to/geo
  */
 export const CreateReferralsEmbedTokenCountry = {
   Af: "AF",
@@ -265,7 +265,7 @@ export const CreateReferralsEmbedTokenCountry = {
   Xk: "XK",
 } as const;
 /**
- * Country where the partner is based.
+ * The partner's country of residence. Must be passed as a 2-letter ISO 3166-1 country code. Learn more: https://d.to/geo
  */
 export type CreateReferralsEmbedTokenCountry = ClosedEnum<
   typeof CreateReferralsEmbedTokenCountry
@@ -417,33 +417,33 @@ export type CreateReferralsEmbedTokenLinkProps = {
 
 export type Partner = {
   /**
-   * Full legal name of the partner.
+   * The partner's full name. If undefined, the partner's email will be used in lieu of their name (e.g. `john@acme.com`)
    */
-  name: string;
+  name?: string | null | undefined;
   /**
-   * Email for the partner in your system. Partners will be able to claim their profile by signing up to Dub Partners with this email.
+   * The partner's email address. Partners will be able to claim their profile by signing up at `partners.dub.co` with this email.
    */
   email: string;
   /**
-   * A unique username for the partner in your system (max 100 characters). This will be used to create a short link for the partner using your program's default domain. If not provided, Dub will try to generate a username from the partner's name or email.
+   * The partner's unique username in your system (max 100 characters). This will be used to create a short link for the partner using your program's default domain. If not provided, Dub will try to generate a username from the partner's name or email.
    */
   username?: string | null | undefined;
   /**
-   * Avatar image for the partner – if not provided, a default avatar will be used.
+   * The partner's avatar image. If not provided, a default avatar will be used.
    */
   image?: string | null | undefined;
   /**
-   * Country where the partner is based.
+   * The partner's unique ID in your system. Useful for retrieving the partner's links and stats later on. If not provided, the partner will be created as a standalone partner.
+   */
+  tenantId?: string | undefined;
+  /**
+   * The partner's country of residence. Must be passed as a 2-letter ISO 3166-1 country code. Learn more: https://d.to/geo
    */
   country?: CreateReferralsEmbedTokenCountry | null | undefined;
   /**
-   * A brief description of the partner and their background.
+   * A brief description of the partner and their background. Max 5,000 characters.
    */
   description?: string | null | undefined;
-  /**
-   * The ID of the partner in your system.
-   */
-  tenantId?: string | undefined;
   /**
    * Additional properties that you can pass to the partner's short link. Will be used to override the default link properties for this partner.
    */
@@ -819,27 +819,27 @@ export function createReferralsEmbedTokenLinkPropsFromJSON(
 /** @internal */
 export const Partner$inboundSchema: z.ZodType<Partner, z.ZodTypeDef, unknown> =
   z.object({
-    name: z.string(),
+    name: z.nullable(z.string()).optional(),
     email: z.string(),
     username: z.nullable(z.string()).optional(),
     image: z.nullable(z.string()).optional(),
+    tenantId: z.string().optional(),
     country: z.nullable(CreateReferralsEmbedTokenCountry$inboundSchema)
       .optional(),
     description: z.nullable(z.string()).optional(),
-    tenantId: z.string().optional(),
     linkProps: z.lazy(() => CreateReferralsEmbedTokenLinkProps$inboundSchema)
       .optional(),
   });
 
 /** @internal */
 export type Partner$Outbound = {
-  name: string;
+  name?: string | null | undefined;
   email: string;
   username?: string | null | undefined;
   image?: string | null | undefined;
+  tenantId?: string | undefined;
   country?: string | null | undefined;
   description?: string | null | undefined;
-  tenantId?: string | undefined;
   linkProps?: CreateReferralsEmbedTokenLinkProps$Outbound | undefined;
 };
 
@@ -849,14 +849,14 @@ export const Partner$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Partner
 > = z.object({
-  name: z.string(),
+  name: z.nullable(z.string()).optional(),
   email: z.string(),
   username: z.nullable(z.string()).optional(),
   image: z.nullable(z.string()).optional(),
+  tenantId: z.string().optional(),
   country: z.nullable(CreateReferralsEmbedTokenCountry$outboundSchema)
     .optional(),
   description: z.nullable(z.string()).optional(),
-  tenantId: z.string().optional(),
   linkProps: z.lazy(() => CreateReferralsEmbedTokenLinkProps$outboundSchema)
     .optional(),
 });

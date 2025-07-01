@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: f8994c15ae5d35c909e4e55fbc9fbea8
+  docChecksum: 9cde19fee10d246922e255635d90eec7
   docVersion: 0.0.1
-  speakeasyVersion: 1.568.2
-  generationVersion: 2.634.2
-  releaseVersion: 0.63.6
-  configChecksum: cfc1f2d4931325e8954a0d728e2e5144
+  speakeasyVersion: 1.573.0
+  generationVersion: 2.644.1
+  releaseVersion: 0.63.7
+  configChecksum: 6d76859de2ba1e7ff3039995ec3bfa9b
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -46,7 +46,6 @@ generatedFiles:
   - docs/models/components/accesslevel.md
   - docs/models/components/analyticsbrowsers.md
   - docs/models/components/analyticscities.md
-  - docs/models/components/analyticscitiescountry.md
   - docs/models/components/analyticscontinents.md
   - docs/models/components/analyticscount.md
   - docs/models/components/analyticscountries.md
@@ -56,7 +55,6 @@ generatedFiles:
   - docs/models/components/analyticsrefererurls.md
   - docs/models/components/analyticsregions.md
   - docs/models/components/analyticsregionscity.md
-  - docs/models/components/analyticsregionscountry.md
   - docs/models/components/analyticstimeseries.md
   - docs/models/components/analyticstoplinks.md
   - docs/models/components/analyticstopurls.md
@@ -70,7 +68,6 @@ generatedFiles:
   - docs/models/components/color.md
   - docs/models/components/continent.md
   - docs/models/components/continentcode.md
-  - docs/models/components/country.md
   - docs/models/components/countrycode.md
   - docs/models/components/customer.md
   - docs/models/components/data.md
@@ -1586,7 +1583,7 @@ examples:
           idOrSlug: "<value>"
       responses:
         "200":
-          application/json: {"id": "<id>", "name": "<value>", "slug": "<value>", "logo": null, "inviteCode": "<value>", "plan": "business max", "stripeId": "<id>", "billingCycleStart": 8266.32, "paymentFailedAt": "<value>", "stripeConnectId": "<id>", "totalLinks": 1378.83, "usage": 2392.88, "usageLimit": 402.3, "linksUsage": 7273.44, "linksLimit": 9583.5, "payoutsUsage": 6544.94, "payoutsLimit": 8266.32, "domainsLimit": 9444.18, "tagsLimit": 3440.64, "foldersUsage": 9717.42, "foldersLimit": 7249.67, "usersLimit": 5932.4, "aiUsage": 4075.34, "aiLimit": 4898.74, "conversionEnabled": false, "dotLinkClaimed": false, "partnersEnabled": false, "createdAt": "1719645723163", "users": [{"role": "member", "defaultFolderId": "<id>"}, {"role": "member", "defaultFolderId": "<id>"}, {"role": "member", "defaultFolderId": "<id>"}], "domains": [{"slug": "acme.com", "primary": false, "verified": false}, {"slug": "acme.com", "primary": false, "verified": false}], "store": {"key": "<value>"}, "allowedHostnames": ["dub.sh"]}
+          application/json: {"id": "<id>", "name": "<value>", "slug": "<value>", "logo": null, "inviteCode": "<value>", "plan": "business max", "stripeId": "<id>", "billingCycleStart": 8266.32, "paymentFailedAt": "<value>", "stripeConnectId": "<id>", "totalLinks": 1378.83, "usage": 2392.88, "usageLimit": 402.3, "linksUsage": 7273.44, "linksLimit": 9583.5, "payoutsUsage": 6544.94, "payoutsLimit": 8266.32, "payoutFee": 6544.94, "domainsLimit": 9444.18, "tagsLimit": 3440.64, "foldersUsage": 9717.42, "foldersLimit": 7249.67, "usersLimit": 5932.4, "aiUsage": 4075.34, "aiLimit": 4898.74, "conversionEnabled": false, "dotLinkClaimed": false, "partnersEnabled": false, "createdAt": "1719645723163", "users": [{"role": "member", "defaultFolderId": "<id>"}, {"role": "member", "defaultFolderId": "<id>"}, {"role": "member", "defaultFolderId": "<id>"}], "domains": [{"slug": "acme.com", "primary": false, "verified": false}, {"slug": "acme.com", "primary": false, "verified": false}], "store": {"key": "<value>"}, "allowedHostnames": ["dub.sh"]}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1612,7 +1609,7 @@ examples:
           idOrSlug: "<value>"
       responses:
         "200":
-          application/json: {"id": "<id>", "name": "<value>", "slug": "<value>", "logo": null, "inviteCode": "<value>", "plan": "business", "stripeId": "<id>", "billingCycleStart": 6751.25, "paymentFailedAt": "<value>", "stripeConnectId": "<id>", "totalLinks": 217.76, "usage": 2028.85, "usageLimit": 7509.63, "linksUsage": 6390.88, "linksLimit": 5728.58, "payoutsUsage": 3164.81, "payoutsLimit": 6751.25, "domainsLimit": 5981.08, "tagsLimit": 2040.39, "foldersUsage": 9329.44, "foldersLimit": 9097.44, "usersLimit": 4731.38, "aiUsage": 7848.2, "aiLimit": 9885.62, "conversionEnabled": false, "dotLinkClaimed": false, "partnersEnabled": false, "createdAt": "1736936859523", "users": [{"role": "owner", "defaultFolderId": "<id>"}], "domains": [{"slug": "acme.com", "primary": false, "verified": false}, {"slug": "acme.com", "primary": false, "verified": false}, {"slug": "acme.com", "primary": false, "verified": false}], "store": {"key": "<value>"}, "allowedHostnames": ["dub.sh"]}
+          application/json: {"id": "<id>", "name": "<value>", "slug": "<value>", "logo": null, "inviteCode": "<value>", "plan": "business", "stripeId": "<id>", "billingCycleStart": 6751.25, "paymentFailedAt": "<value>", "stripeConnectId": "<id>", "totalLinks": 217.76, "usage": 2028.85, "usageLimit": 7509.63, "linksUsage": 6390.88, "linksLimit": 5728.58, "payoutsUsage": 3164.81, "payoutsLimit": 6751.25, "payoutFee": 3164.81, "domainsLimit": 5981.08, "tagsLimit": 2040.39, "foldersUsage": 9329.44, "foldersLimit": 9097.44, "usersLimit": 4731.38, "aiUsage": 7848.2, "aiLimit": 9885.62, "conversionEnabled": false, "dotLinkClaimed": false, "partnersEnabled": false, "createdAt": "1736936859523", "users": [{"role": "owner", "defaultFolderId": "<id>"}], "domains": [{"slug": "acme.com", "primary": false, "verified": false}, {"slug": "acme.com", "primary": false, "verified": false}, {"slug": "acme.com", "primary": false, "verified": false}], "store": {"key": "<value>"}, "allowedHostnames": ["dub.sh"]}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":

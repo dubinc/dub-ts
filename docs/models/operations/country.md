@@ -1,6 +1,6 @@
 # Country
 
-Country where the partner is based.
+The partner's country of residence. Must be passed as a 2-letter ISO 3166-1 country code. Learn more: https://d.to/geo
 
 ## Example Usage
 

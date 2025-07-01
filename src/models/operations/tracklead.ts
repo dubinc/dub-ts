@@ -30,10 +30,6 @@ export type TrackLeadRequestBody = {
    */
   eventName: string;
   /**
-   * The numerical value associated with this lead event (e.g., number of provisioned seats in a free trial). If defined as N, the lead event will be tracked N times.
-   */
-  eventQuantity?: number | null | undefined;
-  /**
    * The unique ID of the customer in your system. Will be used to identify and attribute all future events to this customer.
    */
   externalId: string;
@@ -49,6 +45,10 @@ export type TrackLeadRequestBody = {
    * The avatar URL of the customer.
    */
   customerAvatar?: string | null | undefined;
+  /**
+   * The numerical value associated with this lead event (e.g., number of provisioned seats in a free trial). If defined as N, the lead event will be tracked N times.
+   */
+  eventQuantity?: number | null | undefined;
   /**
    * The mode to use for tracking the lead event. `async` will not block the request; `wait` will block the request until the lead event is fully recorded in Dub.
    */
@@ -106,11 +106,11 @@ export const TrackLeadRequestBody$inboundSchema: z.ZodType<
 > = z.object({
   clickId: z.string(),
   eventName: z.string(),
-  eventQuantity: z.nullable(z.number()).optional(),
   externalId: z.string(),
   customerName: z.nullable(z.string()).default(null),
   customerEmail: z.nullable(z.string()).default(null),
   customerAvatar: z.nullable(z.string()).default(null),
+  eventQuantity: z.nullable(z.number()).optional(),
   mode: Mode$inboundSchema.default("async"),
   metadata: z.nullable(z.record(z.any())).optional(),
 });
@@ -119,11 +119,11 @@ export const TrackLeadRequestBody$inboundSchema: z.ZodType<
 export type TrackLeadRequestBody$Outbound = {
   clickId: string;
   eventName: string;
-  eventQuantity?: number | null | undefined;
   externalId: string;
   customerName: string | null;
   customerEmail: string | null;
   customerAvatar: string | null;
+  eventQuantity?: number | null | undefined;
   mode: string;
   metadata?: { [k: string]: any } | null | undefined;
 };
@@ -136,11 +136,11 @@ export const TrackLeadRequestBody$outboundSchema: z.ZodType<
 > = z.object({
   clickId: z.string(),
   eventName: z.string(),
-  eventQuantity: z.nullable(z.number()).optional(),
   externalId: z.string(),
   customerName: z.nullable(z.string()).default(null),
   customerEmail: z.nullable(z.string()).default(null),
   customerAvatar: z.nullable(z.string()).default(null),
+  eventQuantity: z.nullable(z.number()).optional(),
   mode: Mode$outboundSchema.default("async"),
   metadata: z.nullable(z.record(z.any())).optional(),
 });

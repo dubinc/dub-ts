@@ -179,9 +179,7 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.partners.retrieveLinks({
-    programId: "<id>",
-  });
+  const result = await dub.partners.retrieveLinks();
 
   console.log(result);
 }
@@ -204,9 +202,7 @@ const dub = new DubCore({
 });
 
 async function run() {
-  const res = await partnersRetrieveLinks(dub, {
-    programId: "<id>",
-  });
+  const res = await partnersRetrieveLinks(dub);
   if (res.ok) {
     const { value: result } = res;
     console.log(result);

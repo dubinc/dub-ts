@@ -34,7 +34,7 @@ import { Result } from "../types/fp.js";
  */
 export function partnersRetrieveLinks(
   client: DubCore,
-  request: operations.RetrieveLinksRequest,
+  request?: operations.RetrieveLinksRequest | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -67,7 +67,7 @@ export function partnersRetrieveLinks(
 
 async function $do(
   client: DubCore,
-  request: operations.RetrieveLinksRequest,
+  request?: operations.RetrieveLinksRequest | undefined,
   options?: RequestOptions,
 ): Promise<
   [
@@ -96,7 +96,8 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => operations.RetrieveLinksRequest$outboundSchema.parse(value),
+    (value) =>
+      operations.RetrieveLinksRequest$outboundSchema.optional().parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -108,9 +109,8 @@ async function $do(
   const path = pathToFunc("/partners/links")();
 
   const query = encodeFormQuery({
-    "partnerId": payload.partnerId,
-    "programId": payload.programId,
-    "tenantId": payload.tenantId,
+    "partnerId": payload?.partnerId,
+    "tenantId": payload?.tenantId,
   });
 
   const headers = new Headers(compactMap({
