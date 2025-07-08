@@ -58,7 +58,8 @@ export class UnprocessableEntity extends DubError {
     err: UnprocessableEntityData,
     httpMeta: { response: Response; request: Request; body: string },
   ) {
-    const message = err.error?.message || "API error occurred";
+    const message = err.error?.message
+      || `API error occurred: ${JSON.stringify(err)}`;
     super(message, httpMeta);
     this.data$ = err;
     this.error = err.error;
