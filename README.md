@@ -343,15 +343,15 @@ run();
 ### Error Classes
 **Primary errors:**
 * [`DubError`](./src/models/errors/duberror.ts): The base class for HTTP error responses.
-  * [`BadRequest`](docs/models/errors/badrequest.md): The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing). Status code `400`.
-  * [`Unauthorized`](docs/models/errors/unauthorized.md): Although the HTTP standard specifies "unauthorized", semantically this response means "unauthenticated". That is, the client must authenticate itself to get the requested response. Status code `401`.
-  * [`Forbidden`](docs/models/errors/forbidden.md): The client does not have access rights to the content; that is, it is unauthorized, so the server is refusing to give the requested resource. Unlike 401 Unauthorized, the client's identity is known to the server. Status code `403`.
-  * [`NotFound`](docs/models/errors/notfound.md): The server cannot find the requested resource. Status code `404`.
-  * [`Conflict`](docs/models/errors/conflict.md): This response is sent when a request conflicts with the current state of the server. Status code `409`.
-  * [`InviteExpired`](docs/models/errors/inviteexpired.md): This response is sent when the requested content has been permanently deleted from server, with no forwarding address. Status code `410`.
-  * [`UnprocessableEntity`](docs/models/errors/unprocessableentity.md): The request was well-formed but was unable to be followed due to semantic errors. Status code `422`.
-  * [`RateLimitExceeded`](docs/models/errors/ratelimitexceeded.md): The user has sent too many requests in a given amount of time ("rate limiting"). Status code `429`.
-  * [`InternalServerError`](docs/models/errors/internalservererror.md): The server has encountered a situation it does not know how to handle. Status code `500`.
+  * [`BadRequest`](./src/models/errors/badrequest.ts): The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing). Status code `400`.
+  * [`Unauthorized`](./src/models/errors/unauthorized.ts): Although the HTTP standard specifies "unauthorized", semantically this response means "unauthenticated". That is, the client must authenticate itself to get the requested response. Status code `401`.
+  * [`Forbidden`](./src/models/errors/forbidden.ts): The client does not have access rights to the content; that is, it is unauthorized, so the server is refusing to give the requested resource. Unlike 401 Unauthorized, the client's identity is known to the server. Status code `403`.
+  * [`NotFound`](./src/models/errors/notfound.ts): The server cannot find the requested resource. Status code `404`.
+  * [`Conflict`](./src/models/errors/conflict.ts): This response is sent when a request conflicts with the current state of the server. Status code `409`.
+  * [`InviteExpired`](./src/models/errors/inviteexpired.ts): This response is sent when the requested content has been permanently deleted from server, with no forwarding address. Status code `410`.
+  * [`UnprocessableEntity`](./src/models/errors/unprocessableentity.ts): The request was well-formed but was unable to be followed due to semantic errors. Status code `422`.
+  * [`RateLimitExceeded`](./src/models/errors/ratelimitexceeded.ts): The user has sent too many requests in a given amount of time ("rate limiting"). Status code `429`.
+  * [`InternalServerError`](./src/models/errors/internalservererror.ts): The server has encountered a situation it does not know how to handle. Status code `500`.
 
 <details><summary>Less common errors (6)</summary>
 

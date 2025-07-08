@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: 9cde19fee10d246922e255635d90eec7
+  docChecksum: 6e45f3521cae083a495cc5102bf01725
   docVersion: 0.0.1
-  speakeasyVersion: 1.573.0
-  generationVersion: 2.644.1
-  releaseVersion: 0.63.7
-  configChecksum: 6d76859de2ba1e7ff3039995ec3bfa9b
+  speakeasyVersion: 1.576.1
+  generationVersion: 2.651.2
+  releaseVersion: 0.64.0
+  configChecksum: 03f2a96e44ad8b571225bbb5224709ee
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -14,20 +14,20 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.21.11
+    core: 3.21.13
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.1.2
-    errors: 2.85.0
-    examples: 2.81.5
+    errors: 2.86.0
+    examples: 2.82.0
     flattening: 2.82.1
     globalSecurity: 2.82.13
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.5
     includes: 2.81.1
-    mcpServer: 0.9.2
+    mcpServer: 0.9.3
     methodArguments: 0.1.2
     nameOverrides: 2.81.2
     nullables: 0.1.1
@@ -370,6 +370,10 @@ generatedFiles:
   - docs/sdks/track/README.md
   - docs/sdks/workspaces/README.md
   - eslint.config.mjs
+  - examples/.env.template
+  - examples/README.md
+  - examples/linksCreate.example.ts
+  - examples/package.json
   - jsr.json
   - package.json
   - src/core.ts

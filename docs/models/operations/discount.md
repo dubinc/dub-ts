@@ -12,6 +12,7 @@ let value: Discount = {
   maxDuration: 2716.09,
   couponId: "<id>",
   couponTestId: "<id>",
+  default: true,
 };
 ```
 
@@ -27,3 +28,4 @@ let value: Discount = {
 | `couponId`                                                                 | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
 | `couponTestId`                                                             | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
 | `partnersCount`                                                            | *number*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `default`                                                                  | *boolean*                                                                  | :heavy_check_mark:                                                         | N/A                                                                        |

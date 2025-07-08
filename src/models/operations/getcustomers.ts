@@ -140,6 +140,7 @@ export type Discount = {
   couponId: string | null;
   couponTestId: string | null;
   partnersCount?: number | null | undefined;
+  default: boolean;
 };
 
 export type GetCustomersResponseBody = {
@@ -475,6 +476,7 @@ export const Discount$inboundSchema: z.ZodType<
   couponId: z.nullable(z.string()),
   couponTestId: z.nullable(z.string()),
   partnersCount: z.nullable(z.number()).optional(),
+  default: z.boolean(),
 });
 
 /** @internal */
@@ -487,6 +489,7 @@ export type Discount$Outbound = {
   couponId: string | null;
   couponTestId: string | null;
   partnersCount?: number | null | undefined;
+  default: boolean;
 };
 
 /** @internal */
@@ -503,6 +506,7 @@ export const Discount$outboundSchema: z.ZodType<
   couponId: z.nullable(z.string()),
   couponTestId: z.nullable(z.string()),
   partnersCount: z.nullable(z.number()).optional(),
+  default: z.boolean(),
 });
 
 /**
