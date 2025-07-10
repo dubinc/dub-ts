@@ -5,7 +5,9 @@
 ```typescript
 import { ListDomainsResponse } from "dub/models/operations";
 
-let value: ListDomainsResponse = {};
+let value: ListDomainsResponse = {
+  result: [],
+};
 ```
 
 ## Fields

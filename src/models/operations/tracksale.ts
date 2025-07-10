@@ -27,7 +27,7 @@ export type TrackSaleRequestBody = {
   /**
    * The unique ID of the customer in your system. Will be used to identify and attribute all future events to this customer.
    */
-  externalId: string;
+  customerExternalId: string;
   /**
    * The amount of the sale in cents (for all two-decimal currencies). If the sale is in a zero-decimal currency, pass the full integer value (e.g. `1437` JPY). Learn more: https://d.to/currency
    */
@@ -110,7 +110,7 @@ export const TrackSaleRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  externalId: z.string(),
+  customerExternalId: z.string(),
   amount: z.number().int(),
   currency: z.string().default("usd"),
   eventName: z.string().default("Purchase"),
@@ -122,7 +122,7 @@ export const TrackSaleRequestBody$inboundSchema: z.ZodType<
 
 /** @internal */
 export type TrackSaleRequestBody$Outbound = {
-  externalId: string;
+  customerExternalId: string;
   amount: number;
   currency: string;
   eventName: string;
@@ -138,7 +138,7 @@ export const TrackSaleRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TrackSaleRequestBody
 > = z.object({
-  externalId: z.string(),
+  customerExternalId: z.string(),
   amount: z.number().int(),
   currency: z.string().default("usd"),
   eventName: z.string().default("Purchase"),
