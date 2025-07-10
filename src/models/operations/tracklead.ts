@@ -32,7 +32,7 @@ export type TrackLeadRequestBody = {
   /**
    * The unique ID of the customer in your system. Will be used to identify and attribute all future events to this customer.
    */
-  externalId: string;
+  customerExternalId: string;
   /**
    * The name of the customer. If not passed, a random name will be generated (e.g. “Big Red Caribou”).
    */
@@ -106,7 +106,7 @@ export const TrackLeadRequestBody$inboundSchema: z.ZodType<
 > = z.object({
   clickId: z.string(),
   eventName: z.string(),
-  externalId: z.string(),
+  customerExternalId: z.string(),
   customerName: z.nullable(z.string()).default(null),
   customerEmail: z.nullable(z.string()).default(null),
   customerAvatar: z.nullable(z.string()).default(null),
@@ -119,7 +119,7 @@ export const TrackLeadRequestBody$inboundSchema: z.ZodType<
 export type TrackLeadRequestBody$Outbound = {
   clickId: string;
   eventName: string;
-  externalId: string;
+  customerExternalId: string;
   customerName: string | null;
   customerEmail: string | null;
   customerAvatar: string | null;
@@ -136,7 +136,7 @@ export const TrackLeadRequestBody$outboundSchema: z.ZodType<
 > = z.object({
   clickId: z.string(),
   eventName: z.string(),
-  externalId: z.string(),
+  customerExternalId: z.string(),
   customerName: z.nullable(z.string()).default(null),
   customerEmail: z.nullable(z.string()).default(null),
   customerAvatar: z.nullable(z.string()).default(null),
