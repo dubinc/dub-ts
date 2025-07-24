@@ -263,6 +263,7 @@ run();
 ### [partners](docs/sdks/partners/README.md)
 
 * [create](docs/sdks/partners/README.md#create) - Create a partner
+* [list](docs/sdks/partners/README.md#list) - List all partners
 * [createLink](docs/sdks/partners/README.md#createlink) - Create a link for a partner
 * [retrieveLinks](docs/sdks/partners/README.md#retrievelinks) - Retrieve a partner's links.
 * [upsertLink](docs/sdks/partners/README.md#upsertlink) - Upsert a link for a partner
@@ -617,6 +618,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`partnersAnalytics`](docs/sdks/partners/README.md#analytics) - Retrieve analytics for a partner
 - [`partnersCreate`](docs/sdks/partners/README.md#create) - Create a partner
 - [`partnersCreateLink`](docs/sdks/partners/README.md#createlink) - Create a link for a partner
+- [`partnersList`](docs/sdks/partners/README.md#list) - List all partners
 - [`partnersRetrieveLinks`](docs/sdks/partners/README.md#retrievelinks) - Retrieve a partner's links.
 - [`partnersUpsertLink`](docs/sdks/partners/README.md#upsertlink) - Upsert a link for a partner
 - [`qrCodesGet`](docs/sdks/qrcodes/README.md#get) - Retrieve a QR code

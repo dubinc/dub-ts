@@ -31,6 +31,7 @@ export * from "./listcommissions.js";
 export * from "./listdomains.js";
 export * from "./listevents.js";
 export * from "./listfolders.js";
+export * from "./listpartners.js";
 export * from "./registerdomain.js";
 export * from "./retrieveanalytics.js";
 export * from "./retrievelinks.js";

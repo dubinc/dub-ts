@@ -552,6 +552,25 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/partners"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: listPartners
+          source: |-
+            import { Dub } from "dub";
+
+            const dub = new Dub({
+              token: "DUB_API_KEY",
+            });
+
+            async function run() {
+              const result = await dub.partners.list();
+
+              console.log(result);
+            }
+
+            run();
   - target: $["paths"]["/partners"]["post"]
     update:
       x-codeSamples:

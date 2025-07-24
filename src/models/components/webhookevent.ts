@@ -7,6 +7,12 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  CommissionCreatedEvent,
+  CommissionCreatedEvent$inboundSchema,
+  CommissionCreatedEvent$Outbound,
+  CommissionCreatedEvent$outboundSchema,
+} from "./commissioncreatedevent.js";
+import {
   LeadCreatedEvent,
   LeadCreatedEvent$inboundSchema,
   LeadCreatedEvent$Outbound,
@@ -45,7 +51,8 @@ export type WebhookEvent =
   | LinkClickedEvent
   | LeadCreatedEvent
   | SaleCreatedEvent
-  | PartnerEnrolledEvent;
+  | PartnerEnrolledEvent
+  | CommissionCreatedEvent;
 
 /** @internal */
 export const WebhookEvent$inboundSchema: z.ZodType<
@@ -58,6 +65,7 @@ export const WebhookEvent$inboundSchema: z.ZodType<
   LeadCreatedEvent$inboundSchema,
   SaleCreatedEvent$inboundSchema,
   PartnerEnrolledEvent$inboundSchema,
+  CommissionCreatedEvent$inboundSchema,
 ]);
 
 /** @internal */
@@ -66,7 +74,8 @@ export type WebhookEvent$Outbound =
   | LinkClickedEvent$Outbound
   | LeadCreatedEvent$Outbound
   | SaleCreatedEvent$Outbound
-  | PartnerEnrolledEvent$Outbound;
+  | PartnerEnrolledEvent$Outbound
+  | CommissionCreatedEvent$Outbound;
 
 /** @internal */
 export const WebhookEvent$outboundSchema: z.ZodType<
@@ -79,6 +88,7 @@ export const WebhookEvent$outboundSchema: z.ZodType<
   LeadCreatedEvent$outboundSchema,
   SaleCreatedEvent$outboundSchema,
   PartnerEnrolledEvent$outboundSchema,
+  CommissionCreatedEvent$outboundSchema,
 ]);
 
 /**

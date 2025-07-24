@@ -5,6 +5,7 @@
 import { partnersAnalytics } from "../funcs/partnersAnalytics.js";
 import { partnersCreate } from "../funcs/partnersCreate.js";
 import { partnersCreateLink } from "../funcs/partnersCreateLink.js";
+import { partnersList } from "../funcs/partnersList.js";
 import { partnersRetrieveLinks } from "../funcs/partnersRetrieveLinks.js";
 import { partnersUpsertLink } from "../funcs/partnersUpsertLink.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -24,6 +25,23 @@ export class Partners extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.CreatePartnerResponseBody> {
     return unwrapAsync(partnersCreate(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List all partners
+   *
+   * @remarks
+   * List all partners for a partner program.
+   */
+  async list(
+    request?: operations.ListPartnersRequest | undefined,
+    options?: RequestOptions,
+  ): Promise<Array<operations.ListPartnersResponseBody>> {
+    return unwrapAsync(partnersList(
       this,
       request,
       options,

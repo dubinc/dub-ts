@@ -134,6 +134,7 @@ async function $do(
     "refererUrl": payload?.refererUrl,
     "region": payload?.region,
     "root": payload?.root,
+    "saleType": payload?.saleType,
     "sortBy": payload?.sortBy,
     "sortOrder": payload?.sortOrder,
     "start": payload?.start,

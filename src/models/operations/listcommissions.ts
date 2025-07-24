@@ -153,6 +153,72 @@ export const ListCommissionsStatus = {
 } as const;
 export type ListCommissionsStatus = ClosedEnum<typeof ListCommissionsStatus>;
 
+export type ListCommissionsPartner = {
+  /**
+   * The partner's unique ID on Dub.
+   */
+  id: string;
+  /**
+   * The partner's full legal name.
+   */
+  name: string;
+  /**
+   * The partner's email address. Should be a unique value across Dub.
+   */
+  email: string | null;
+  /**
+   * The partner's avatar image.
+   */
+  image: string | null;
+  /**
+   * The date when the partner enabled payouts.
+   */
+  payoutsEnabledAt: string | null;
+  /**
+   * The partner's country (required for tax purposes).
+   */
+  country: string | null;
+};
+
+export type ListCommissionsCustomer = {
+  /**
+   * The unique ID of the customer. You may use either the customer's `id` on Dub (obtained via `/customers` endpoint) or their `externalId` (unique ID within your system, prefixed with `ext_`, e.g. `ext_123`).
+   */
+  id: string;
+  /**
+   * Unique identifier for the customer in the client's app.
+   */
+  externalId: string;
+  /**
+   * Name of the customer.
+   */
+  name: string;
+  /**
+   * Email of the customer.
+   */
+  email?: string | null | undefined;
+  /**
+   * Avatar URL of the customer.
+   */
+  avatar?: string | null | undefined;
+  /**
+   * Country of the customer.
+   */
+  country?: string | null | undefined;
+  /**
+   * Total number of sales for the customer.
+   */
+  sales?: number | null | undefined;
+  /**
+   * Total amount of sales for the customer.
+   */
+  saleAmount?: number | null | undefined;
+  /**
+   * The date the customer was created.
+   */
+  createdAt: string;
+};
+
 export type ListCommissionsResponseBody = {
   /**
    * The commission's unique ID on Dub.
@@ -163,10 +229,17 @@ export type ListCommissionsResponseBody = {
   earnings: number;
   currency: string;
   status: ListCommissionsStatus;
-  invoiceId?: string | null | undefined;
-  description?: string | null | undefined;
+  invoiceId: string | null;
+  description: string | null;
+  quantity: number;
+  /**
+   * The user who created the manual commission.
+   */
+  userId?: string | null | undefined;
   createdAt: string;
   updatedAt: string;
+  partner: ListCommissionsPartner;
+  customer?: ListCommissionsCustomer | null | undefined;
 };
 
 /** @internal */
@@ -408,6 +481,153 @@ export namespace ListCommissionsStatus$ {
 }
 
 /** @internal */
+export const ListCommissionsPartner$inboundSchema: z.ZodType<
+  ListCommissionsPartner,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  name: z.string(),
+  email: z.nullable(z.string()),
+  image: z.nullable(z.string()),
+  payoutsEnabledAt: z.nullable(z.string()),
+  country: z.nullable(z.string()),
+});
+
+/** @internal */
+export type ListCommissionsPartner$Outbound = {
+  id: string;
+  name: string;
+  email: string | null;
+  image: string | null;
+  payoutsEnabledAt: string | null;
+  country: string | null;
+};
+
+/** @internal */
+export const ListCommissionsPartner$outboundSchema: z.ZodType<
+  ListCommissionsPartner$Outbound,
+  z.ZodTypeDef,
+  ListCommissionsPartner
+> = z.object({
+  id: z.string(),
+  name: z.string(),
+  email: z.nullable(z.string()),
+  image: z.nullable(z.string()),
+  payoutsEnabledAt: z.nullable(z.string()),
+  country: z.nullable(z.string()),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListCommissionsPartner$ {
+  /** @deprecated use `ListCommissionsPartner$inboundSchema` instead. */
+  export const inboundSchema = ListCommissionsPartner$inboundSchema;
+  /** @deprecated use `ListCommissionsPartner$outboundSchema` instead. */
+  export const outboundSchema = ListCommissionsPartner$outboundSchema;
+  /** @deprecated use `ListCommissionsPartner$Outbound` instead. */
+  export type Outbound = ListCommissionsPartner$Outbound;
+}
+
+export function listCommissionsPartnerToJSON(
+  listCommissionsPartner: ListCommissionsPartner,
+): string {
+  return JSON.stringify(
+    ListCommissionsPartner$outboundSchema.parse(listCommissionsPartner),
+  );
+}
+
+export function listCommissionsPartnerFromJSON(
+  jsonString: string,
+): SafeParseResult<ListCommissionsPartner, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListCommissionsPartner$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListCommissionsPartner' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListCommissionsCustomer$inboundSchema: z.ZodType<
+  ListCommissionsCustomer,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  externalId: z.string(),
+  name: z.string(),
+  email: z.nullable(z.string()).optional(),
+  avatar: z.nullable(z.string()).optional(),
+  country: z.nullable(z.string()).optional(),
+  sales: z.nullable(z.number()).optional(),
+  saleAmount: z.nullable(z.number()).optional(),
+  createdAt: z.string(),
+});
+
+/** @internal */
+export type ListCommissionsCustomer$Outbound = {
+  id: string;
+  externalId: string;
+  name: string;
+  email?: string | null | undefined;
+  avatar?: string | null | undefined;
+  country?: string | null | undefined;
+  sales?: number | null | undefined;
+  saleAmount?: number | null | undefined;
+  createdAt: string;
+};
+
+/** @internal */
+export const ListCommissionsCustomer$outboundSchema: z.ZodType<
+  ListCommissionsCustomer$Outbound,
+  z.ZodTypeDef,
+  ListCommissionsCustomer
+> = z.object({
+  id: z.string(),
+  externalId: z.string(),
+  name: z.string(),
+  email: z.nullable(z.string()).optional(),
+  avatar: z.nullable(z.string()).optional(),
+  country: z.nullable(z.string()).optional(),
+  sales: z.nullable(z.number()).optional(),
+  saleAmount: z.nullable(z.number()).optional(),
+  createdAt: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListCommissionsCustomer$ {
+  /** @deprecated use `ListCommissionsCustomer$inboundSchema` instead. */
+  export const inboundSchema = ListCommissionsCustomer$inboundSchema;
+  /** @deprecated use `ListCommissionsCustomer$outboundSchema` instead. */
+  export const outboundSchema = ListCommissionsCustomer$outboundSchema;
+  /** @deprecated use `ListCommissionsCustomer$Outbound` instead. */
+  export type Outbound = ListCommissionsCustomer$Outbound;
+}
+
+export function listCommissionsCustomerToJSON(
+  listCommissionsCustomer: ListCommissionsCustomer,
+): string {
+  return JSON.stringify(
+    ListCommissionsCustomer$outboundSchema.parse(listCommissionsCustomer),
+  );
+}
+
+export function listCommissionsCustomerFromJSON(
+  jsonString: string,
+): SafeParseResult<ListCommissionsCustomer, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListCommissionsCustomer$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListCommissionsCustomer' from JSON`,
+  );
+}
+
+/** @internal */
 export const ListCommissionsResponseBody$inboundSchema: z.ZodType<
   ListCommissionsResponseBody,
   z.ZodTypeDef,
@@ -419,10 +639,15 @@ export const ListCommissionsResponseBody$inboundSchema: z.ZodType<
   earnings: z.number(),
   currency: z.string(),
   status: ListCommissionsStatus$inboundSchema,
-  invoiceId: z.nullable(z.string()).optional(),
-  description: z.nullable(z.string()).optional(),
+  invoiceId: z.nullable(z.string()),
+  description: z.nullable(z.string()),
+  quantity: z.number(),
+  userId: z.nullable(z.string()).optional(),
   createdAt: z.string(),
   updatedAt: z.string(),
+  partner: z.lazy(() => ListCommissionsPartner$inboundSchema),
+  customer: z.nullable(z.lazy(() => ListCommissionsCustomer$inboundSchema))
+    .optional(),
 });
 
 /** @internal */
@@ -433,10 +658,14 @@ export type ListCommissionsResponseBody$Outbound = {
   earnings: number;
   currency: string;
   status: string;
-  invoiceId?: string | null | undefined;
-  description?: string | null | undefined;
+  invoiceId: string | null;
+  description: string | null;
+  quantity: number;
+  userId?: string | null | undefined;
   createdAt: string;
   updatedAt: string;
+  partner: ListCommissionsPartner$Outbound;
+  customer?: ListCommissionsCustomer$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -451,10 +680,15 @@ export const ListCommissionsResponseBody$outboundSchema: z.ZodType<
   earnings: z.number(),
   currency: z.string(),
   status: ListCommissionsStatus$outboundSchema,
-  invoiceId: z.nullable(z.string()).optional(),
-  description: z.nullable(z.string()).optional(),
+  invoiceId: z.nullable(z.string()),
+  description: z.nullable(z.string()),
+  quantity: z.number(),
+  userId: z.nullable(z.string()).optional(),
   createdAt: z.string(),
   updatedAt: z.string(),
+  partner: z.lazy(() => ListCommissionsPartner$outboundSchema),
+  customer: z.nullable(z.lazy(() => ListCommissionsCustomer$outboundSchema))
+    .optional(),
 });
 
 /**

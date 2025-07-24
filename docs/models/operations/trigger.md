@@ -7,11 +7,11 @@ The trigger to retrieve analytics for. If undefined, return both QR and link cli
 ```typescript
 import { Trigger } from "dub/models/operations";
 
-let value: Trigger = "qr";
+let value: Trigger = "link";
 ```
 
 ## Values
 
 ```typescript
-"qr" | "link"
+"qr" | "link" | "pageview" | "deeplink"
 ```

@@ -343,20 +343,46 @@ const value: components.PartnerEnrolledEvent = {
     email: "Lucile_Lebsack@hotmail.com",
     image: "https://picsum.photos/seed/pQJj2H4/1538/1429",
     country: "Switzerland",
-    website: "<value>",
-    youtube: "<value>",
-    twitter: "<value>",
-    linkedin: "<value>",
-    instagram: "<value>",
-    tiktok: "<value>",
     paypalEmail: "<value>",
     stripeConnectId: "<id>",
     payoutsEnabledAt: "<value>",
-    createdAt: "1729967483441",
-    status: "banned",
-    programId: "<id>",
+    partnerId: "<id>",
     tenantId: "<id>",
+    programId: "<id>",
+    createdAt: "1720109851453",
+    status: "rejected",
     links: [],
+  },
+};
+```
+
+### `components.CommissionCreatedEvent`
+
+```typescript
+const value: components.CommissionCreatedEvent = {
+  id: "<id>",
+  event: "commission.created",
+  createdAt: "1708661168082",
+  data: {
+    id: "cm_1JVR7XRCSR0EDBAF39FZ4PMYE",
+    amount: 3818.04,
+    earnings: 5362.14,
+    currency: "Dobra",
+    status: "pending",
+    invoiceId: "<id>",
+    description:
+      "in unearth whose notwithstanding store worse reboot very buzzing",
+    quantity: 3318.84,
+    createdAt: "1717922655598",
+    updatedAt: "1735647472347",
+    partner: {
+      id: "<id>",
+      name: "<value>",
+      email: "Tanner_Goodwin36@yahoo.com",
+      image: "https://loremflickr.com/887/2527?lock=8475978227242498",
+      payoutsEnabledAt: "<value>",
+      country: "Vanuatu",
+    },
   },
 };
 ```

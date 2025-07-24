@@ -7,7 +7,7 @@ import { Sale } from "dub/models/components";
 
 let value: Sale = {
   amount: 28367,
-  paymentProcessor: "paddle",
+  paymentProcessor: "revenuecat",
 };
 ```
 
