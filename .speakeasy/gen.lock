@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: aa92a2d401a7d3e37140aef2558f04b3
+  docChecksum: 494d7ee95fc8861b5282eb69a2752b95
   docVersion: 0.0.1
-  speakeasyVersion: 1.580.2
-  generationVersion: 2.656.5
-  releaseVersion: 0.64.1
-  configChecksum: c3a186aa4dc7c49f44add53242507ab8
+  speakeasyVersion: 1.587.1
+  generationVersion: 2.662.0
+  releaseVersion: 0.64.2
+  configChecksum: 0f8da361a0cd49659e7404b7d98d6244
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.21.14
+    core: 3.21.15
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     enumUnions: 0.1.0
@@ -59,6 +59,7 @@ generatedFiles:
   - docs/models/components/analyticstoplinks.md
   - docs/models/components/analyticstopurls.md
   - docs/models/components/analyticstriggers.md
+  - docs/models/components/bannedreason.md
   - docs/models/components/city.md
   - docs/models/components/click.md
   - docs/models/components/clickevent.md
@@ -66,6 +67,12 @@ generatedFiles:
   - docs/models/components/clickeventtestvariants.md
   - docs/models/components/code.md
   - docs/models/components/color.md
+  - docs/models/components/commissioncreatedevent.md
+  - docs/models/components/commissioncreatedeventcustomer.md
+  - docs/models/components/commissioncreatedeventdata.md
+  - docs/models/components/commissioncreatedeventevent.md
+  - docs/models/components/commissioncreatedeventstatus.md
+  - docs/models/components/commissioncreatedeventtype.md
   - docs/models/components/continent.md
   - docs/models/components/continentcode.md
   - docs/models/components/countrycode.md
@@ -106,6 +113,7 @@ generatedFiles:
   - docs/models/components/linkwebhookeventlink.md
   - docs/models/components/linkwebhookeventtestvariants.md
   - docs/models/components/one.md
+  - docs/models/components/partner.md
   - docs/models/components/partneranalyticscount.md
   - docs/models/components/partneranalyticstimeseries.md
   - docs/models/components/partneranalyticstoplinks.md
@@ -174,6 +182,7 @@ generatedFiles:
   - docs/models/errors/unprocessableentitycode.md
   - docs/models/errors/unprocessableentityerror.md
   - docs/models/operations/accesslevel.md
+  - docs/models/operations/bannedreason.md
   - docs/models/operations/bulkcreatelinkstagids.md
   - docs/models/operations/bulkcreatelinkstagnames.md
   - docs/models/operations/bulkcreatelinkstestvariants.md
@@ -263,6 +272,8 @@ generatedFiles:
   - docs/models/operations/level.md
   - docs/models/operations/link.md
   - docs/models/operations/linkprops.md
+  - docs/models/operations/listcommissionscustomer.md
+  - docs/models/operations/listcommissionspartner.md
   - docs/models/operations/listcommissionsqueryparaminterval.md
   - docs/models/operations/listcommissionsqueryparamsortby.md
   - docs/models/operations/listcommissionsqueryparamsortorder.md
@@ -276,6 +287,14 @@ generatedFiles:
   - docs/models/operations/listeventsrequest.md
   - docs/models/operations/listeventsresponsebody.md
   - docs/models/operations/listfoldersrequest.md
+  - docs/models/operations/listpartnersbannedreason.md
+  - docs/models/operations/listpartnerslink.md
+  - docs/models/operations/listpartnersqueryparamsortby.md
+  - docs/models/operations/listpartnersqueryparamsortorder.md
+  - docs/models/operations/listpartnersqueryparamstatus.md
+  - docs/models/operations/listpartnersrequest.md
+  - docs/models/operations/listpartnersresponsebody.md
+  - docs/models/operations/listpartnersstatus.md
   - docs/models/operations/mode.md
   - docs/models/operations/one.md
   - docs/models/operations/order.md
@@ -284,6 +303,7 @@ generatedFiles:
   - docs/models/operations/queryparamevent.md
   - docs/models/operations/queryparamgroupby.md
   - docs/models/operations/queryparaminterval.md
+  - docs/models/operations/queryparamsaletype.md
   - docs/models/operations/queryparamsortby.md
   - docs/models/operations/queryparamsortorder.md
   - docs/models/operations/queryparamstatus.md
@@ -303,6 +323,7 @@ generatedFiles:
   - docs/models/operations/retrievepartneranalyticsrequest.md
   - docs/models/operations/retrievepartneranalyticsresponsebody.md
   - docs/models/operations/sale.md
+  - docs/models/operations/saletype.md
   - docs/models/operations/sort.md
   - docs/models/operations/sortby.md
   - docs/models/operations/sortorder.md
@@ -319,6 +340,8 @@ generatedFiles:
   - docs/models/operations/trigger.md
   - docs/models/operations/two.md
   - docs/models/operations/type.md
+  - docs/models/operations/updatecommissioncustomer.md
+  - docs/models/operations/updatecommissionpartner.md
   - docs/models/operations/updatecommissionrequest.md
   - docs/models/operations/updatecommissionrequestbody.md
   - docs/models/operations/updatecommissionresponsebody.md
@@ -410,6 +433,7 @@ generatedFiles:
   - src/funcs/partnersAnalytics.ts
   - src/funcs/partnersCreate.ts
   - src/funcs/partnersCreateLink.ts
+  - src/funcs/partnersList.ts
   - src/funcs/partnersRetrieveLinks.ts
   - src/funcs/partnersUpsertLink.ts
   - src/funcs/qrCodesGet.ts
@@ -485,6 +509,7 @@ generatedFiles:
   - src/mcp-server/tools/partnersAnalytics.ts
   - src/mcp-server/tools/partnersCreate.ts
   - src/mcp-server/tools/partnersCreateLink.ts
+  - src/mcp-server/tools/partnersList.ts
   - src/mcp-server/tools/partnersRetrieveLinks.ts
   - src/mcp-server/tools/partnersUpsertLink.ts
   - src/mcp-server/tools/qrCodesGet.ts
@@ -511,6 +536,7 @@ generatedFiles:
   - src/models/components/analyticstopurls.ts
   - src/models/components/analyticstriggers.ts
   - src/models/components/clickevent.ts
+  - src/models/components/commissioncreatedevent.ts
   - src/models/components/continentcode.ts
   - src/models/components/countrycode.ts
   - src/models/components/domainschema.ts
@@ -578,6 +604,7 @@ generatedFiles:
   - src/models/operations/listdomains.ts
   - src/models/operations/listevents.ts
   - src/models/operations/listfolders.ts
+  - src/models/operations/listpartners.ts
   - src/models/operations/registerdomain.ts
   - src/models/operations/retrieveanalytics.ts
   - src/models/operations/retrievelinks.ts
@@ -1438,7 +1465,7 @@ examples:
     speakeasy-default-create-partner:
       responses:
         "201":
-          application/json: {"id": "<id>", "name": "<value>", "email": "Summer50@yahoo.com", "image": "https://picsum.photos/seed/w6UEY4ogD/1950/1872", "country": "Venezuela", "website": "<value>", "youtube": "<value>", "twitter": "<value>", "linkedin": "<value>", "instagram": "<value>", "tiktok": "<value>", "paypalEmail": "<value>", "stripeConnectId": "<id>", "payoutsEnabledAt": "<value>", "createdAt": "1721295968119", "status": "approved", "programId": "<id>", "tenantId": "<id>", "links": [{"id": "<id>", "domain": "stylish-deer.info", "key": "<key>", "shortLink": "https://juvenile-declaration.net", "url": "https://exhausted-editor.org", "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0}], "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0, "totalCommissions": 0, "netRevenue": 0, "earnings": 0}
+          application/json: {"id": "<id>", "name": "<value>", "email": "Summer50@yahoo.com", "image": "https://picsum.photos/seed/w6UEY4ogD/1950/1872", "country": "Venezuela", "paypalEmail": "<value>", "stripeConnectId": "<id>", "payoutsEnabledAt": "<value>", "partnerId": "<id>", "tenantId": "<id>", "programId": "<id>", "createdAt": "1721295968119", "status": "approved", "links": [{"id": "<id>", "domain": "stylish-deer.info", "key": "<key>", "shortLink": "https://juvenile-declaration.net", "url": "https://exhausted-editor.org", "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0}], "totalCommissions": 0, "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0, "netRevenue": 0}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1699,7 +1726,7 @@ examples:
           pageSize: 50
       responses:
         "200":
-          application/json: [{"id": "cm_1JVR7XRCSR0EDBAF39FZ4PMYE", "amount": 3320.11, "earnings": 7217.59, "currency": "Ethiopian Birr", "status": "refunded", "createdAt": "1725904231169", "updatedAt": "1735639009138"}, {"id": "cm_1JVR7XRCSR0EDBAF39FZ4PMYE", "amount": 3320.11, "earnings": 7217.59, "currency": "Ethiopian Birr", "status": "refunded", "createdAt": "1725904231169", "updatedAt": "1735639009138"}]
+          application/json: [{"id": "cm_1JVR7XRCSR0EDBAF39FZ4PMYE", "amount": 3320.11, "earnings": 7217.59, "currency": "Ethiopian Birr", "status": "refunded", "invoiceId": "<id>", "description": "entire apud whereas maintainer or impressionable beyond mindless", "quantity": 9385.84, "createdAt": "1725904231169", "updatedAt": "1735639009138", "partner": {"id": "<id>", "name": "<value>", "email": "Robb.Connelly98@yahoo.com", "image": "https://picsum.photos/seed/Iy5IMeaTL/492/441", "payoutsEnabledAt": "<value>", "country": "Greenland"}}, {"id": "cm_1JVR7XRCSR0EDBAF39FZ4PMYE", "amount": 3320.11, "earnings": 7217.59, "currency": "Ethiopian Birr", "status": "refunded", "invoiceId": "<id>", "description": null, "quantity": 4998.11, "createdAt": "1725904231169", "updatedAt": "1735639009138", "partner": {"id": "<id>", "name": "<value>", "email": "Robb.Connelly98@yahoo.com", "image": "https://picsum.photos/seed/Iy5IMeaTL/492/441", "payoutsEnabledAt": "<value>", "country": "Greenland"}}]
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1725,7 +1752,7 @@ examples:
           id: "cm_1JVR7XRCSR0EDBAF39FZ4PMYE"
       responses:
         "200":
-          application/json: {"id": "cm_1JVR7XRCSR0EDBAF39FZ4PMYE", "amount": 7439.54, "earnings": 3399.15, "currency": "Gourde", "status": "processed", "createdAt": "1712704982111", "updatedAt": "1735651406534"}
+          application/json: {"id": "cm_1JVR7XRCSR0EDBAF39FZ4PMYE", "amount": 7439.54, "earnings": 3399.15, "currency": "Gourde", "status": "processed", "invoiceId": "<id>", "description": "ferret heavily depot per briefly", "quantity": 4142.74, "createdAt": "1712704982111", "updatedAt": "1735651406534", "partner": {"id": "<id>", "name": "<value>", "email": "Abbey_Tromp78@gmail.com", "image": "https://picsum.photos/seed/341QLpYt/2312/3915", "payoutsEnabledAt": null, "country": "Algeria"}}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1775,6 +1802,35 @@ examples:
       responses:
         "200":
           application/json: [{"domain": "little-mallard.info", "available": false, "price": "597.79", "premium": false}]
+        "400":
+          application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
+        "401":
+          application/json: {"error": {"code": "unauthorized", "message": "The requested resource was not found."}}
+        "403":
+          application/json: {"error": {"code": "forbidden", "message": "The requested resource was not found."}}
+        "404":
+          application/json: {"error": {"code": "not_found", "message": "The requested resource was not found."}}
+        "409":
+          application/json: {"error": {"code": "conflict", "message": "The requested resource was not found."}}
+        "410":
+          application/json: {"error": {"code": "invite_expired", "message": "The requested resource was not found."}}
+        "422":
+          application/json: {"error": {"code": "unprocessable_entity", "message": "The requested resource was not found."}}
+        "429":
+          application/json: {"error": {"code": "rate_limit_exceeded", "message": "The requested resource was not found."}}
+        "500":
+          application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
+  listPartners:
+    speakeasy-default-list-partners:
+      parameters:
+        query:
+          sortBy: "saleAmount"
+          sortOrder: "desc"
+          page: 1
+          pageSize: 50
+      responses:
+        "200":
+          application/json: [{"id": "<id>", "name": "<value>", "email": "Margret.Kuvalis12@hotmail.com", "image": "https://loremflickr.com/1672/969?lock=7633694569087148", "country": "Uruguay", "paypalEmail": "<value>", "stripeConnectId": "<id>", "payoutsEnabledAt": "<value>", "partnerId": "<id>", "tenantId": "<id>", "programId": "<id>", "createdAt": "1726913447345", "status": "declined", "links": [{"id": "<id>", "domain": "scared-knuckle.info", "key": "<key>", "shortLink": "https://granular-hammock.name/", "url": "https://vivacious-finding.biz", "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0}], "totalCommissions": 0, "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0, "netRevenue": 0}]
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":

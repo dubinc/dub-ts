@@ -48,6 +48,8 @@ export type QueryParamInterval = ClosedEnum<typeof QueryParamInterval>;
 export const QueryParamTrigger = {
   Qr: "qr",
   Link: "link",
+  Pageview: "pageview",
+  Deeplink: "deeplink",
 } as const;
 /**
  * The trigger to retrieve analytics for. If undefined, return both QR and link clicks.
@@ -58,6 +60,18 @@ export type QueryParamTrigger = ClosedEnum<typeof QueryParamTrigger>;
  * The tag IDs to retrieve analytics for.
  */
 export type ListEventsQueryParamTagIds = string | Array<string>;
+
+/**
+ * Filter sales by type: 'new' for first-time purchases, 'recurring' for repeat purchases. If undefined, returns both.
+ */
+export const QueryParamSaleType = {
+  New: "new",
+  Recurring: "recurring",
+} as const;
+/**
+ * Filter sales by type: 'new' for first-time purchases, 'recurring' for repeat purchases. If undefined, returns both.
+ */
+export type QueryParamSaleType = ClosedEnum<typeof QueryParamSaleType>;
 
 /**
  * The sort order. The default is `desc`.
@@ -216,6 +230,10 @@ export type ListEventsRequest = {
    */
   root?: boolean | undefined;
   /**
+   * Filter sales by type: 'new' for first-time purchases, 'recurring' for repeat purchases. If undefined, returns both.
+   */
+  saleType?: QueryParamSaleType | undefined;
+  /**
    * The UTM source of the short link.
    */
   utmSource?: string | null | undefined;
@@ -368,6 +386,27 @@ export function listEventsQueryParamTagIdsFromJSON(
 }
 
 /** @internal */
+export const QueryParamSaleType$inboundSchema: z.ZodNativeEnum<
+  typeof QueryParamSaleType
+> = z.nativeEnum(QueryParamSaleType);
+
+/** @internal */
+export const QueryParamSaleType$outboundSchema: z.ZodNativeEnum<
+  typeof QueryParamSaleType
+> = QueryParamSaleType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace QueryParamSaleType$ {
+  /** @deprecated use `QueryParamSaleType$inboundSchema` instead. */
+  export const inboundSchema = QueryParamSaleType$inboundSchema;
+  /** @deprecated use `QueryParamSaleType$outboundSchema` instead. */
+  export const outboundSchema = QueryParamSaleType$outboundSchema;
+}
+
+/** @internal */
 export const QueryParamSortOrder$inboundSchema: z.ZodNativeEnum<
   typeof QueryParamSortOrder
 > = z.nativeEnum(QueryParamSortOrder);
@@ -464,6 +503,7 @@ export const ListEventsRequest$inboundSchema: z.ZodType<
   folderId: z.string().optional(),
   qr: z.boolean().optional(),
   root: z.boolean().optional(),
+  saleType: QueryParamSaleType$inboundSchema.optional(),
   utm_source: z.nullable(z.string()).optional(),
   utm_medium: z.nullable(z.string()).optional(),
   utm_campaign: z.nullable(z.string()).optional(),
@@ -515,6 +555,7 @@ export type ListEventsRequest$Outbound = {
   folderId?: string | undefined;
   qr?: boolean | undefined;
   root?: boolean | undefined;
+  saleType?: string | undefined;
   utm_source?: string | null | undefined;
   utm_medium?: string | null | undefined;
   utm_campaign?: string | null | undefined;
@@ -562,6 +603,7 @@ export const ListEventsRequest$outboundSchema: z.ZodType<
   folderId: z.string().optional(),
   qr: z.boolean().optional(),
   root: z.boolean().optional(),
+  saleType: QueryParamSaleType$outboundSchema.optional(),
   utmSource: z.nullable(z.string()).optional(),
   utmMedium: z.nullable(z.string()).optional(),
   utmCampaign: z.nullable(z.string()).optional(),

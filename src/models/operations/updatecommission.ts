@@ -69,6 +69,72 @@ export const UpdateCommissionStatus = {
 } as const;
 export type UpdateCommissionStatus = ClosedEnum<typeof UpdateCommissionStatus>;
 
+export type UpdateCommissionPartner = {
+  /**
+   * The partner's unique ID on Dub.
+   */
+  id: string;
+  /**
+   * The partner's full legal name.
+   */
+  name: string;
+  /**
+   * The partner's email address. Should be a unique value across Dub.
+   */
+  email: string | null;
+  /**
+   * The partner's avatar image.
+   */
+  image: string | null;
+  /**
+   * The date when the partner enabled payouts.
+   */
+  payoutsEnabledAt: string | null;
+  /**
+   * The partner's country (required for tax purposes).
+   */
+  country: string | null;
+};
+
+export type UpdateCommissionCustomer = {
+  /**
+   * The unique ID of the customer. You may use either the customer's `id` on Dub (obtained via `/customers` endpoint) or their `externalId` (unique ID within your system, prefixed with `ext_`, e.g. `ext_123`).
+   */
+  id: string;
+  /**
+   * Unique identifier for the customer in the client's app.
+   */
+  externalId: string;
+  /**
+   * Name of the customer.
+   */
+  name: string;
+  /**
+   * Email of the customer.
+   */
+  email?: string | null | undefined;
+  /**
+   * Avatar URL of the customer.
+   */
+  avatar?: string | null | undefined;
+  /**
+   * Country of the customer.
+   */
+  country?: string | null | undefined;
+  /**
+   * Total number of sales for the customer.
+   */
+  sales?: number | null | undefined;
+  /**
+   * Total amount of sales for the customer.
+   */
+  saleAmount?: number | null | undefined;
+  /**
+   * The date the customer was created.
+   */
+  createdAt: string;
+};
+
 /**
  * The updated commission.
  */
@@ -82,10 +148,17 @@ export type UpdateCommissionResponseBody = {
   earnings: number;
   currency: string;
   status: UpdateCommissionStatus;
-  invoiceId?: string | null | undefined;
-  description?: string | null | undefined;
+  invoiceId: string | null;
+  description: string | null;
+  quantity: number;
+  /**
+   * The user who created the manual commission.
+   */
+  userId?: string | null | undefined;
   createdAt: string;
   updatedAt: string;
+  partner: UpdateCommissionPartner;
+  customer?: UpdateCommissionCustomer | null | undefined;
 };
 
 /** @internal */
@@ -282,6 +355,153 @@ export namespace UpdateCommissionStatus$ {
 }
 
 /** @internal */
+export const UpdateCommissionPartner$inboundSchema: z.ZodType<
+  UpdateCommissionPartner,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  name: z.string(),
+  email: z.nullable(z.string()),
+  image: z.nullable(z.string()),
+  payoutsEnabledAt: z.nullable(z.string()),
+  country: z.nullable(z.string()),
+});
+
+/** @internal */
+export type UpdateCommissionPartner$Outbound = {
+  id: string;
+  name: string;
+  email: string | null;
+  image: string | null;
+  payoutsEnabledAt: string | null;
+  country: string | null;
+};
+
+/** @internal */
+export const UpdateCommissionPartner$outboundSchema: z.ZodType<
+  UpdateCommissionPartner$Outbound,
+  z.ZodTypeDef,
+  UpdateCommissionPartner
+> = z.object({
+  id: z.string(),
+  name: z.string(),
+  email: z.nullable(z.string()),
+  image: z.nullable(z.string()),
+  payoutsEnabledAt: z.nullable(z.string()),
+  country: z.nullable(z.string()),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateCommissionPartner$ {
+  /** @deprecated use `UpdateCommissionPartner$inboundSchema` instead. */
+  export const inboundSchema = UpdateCommissionPartner$inboundSchema;
+  /** @deprecated use `UpdateCommissionPartner$outboundSchema` instead. */
+  export const outboundSchema = UpdateCommissionPartner$outboundSchema;
+  /** @deprecated use `UpdateCommissionPartner$Outbound` instead. */
+  export type Outbound = UpdateCommissionPartner$Outbound;
+}
+
+export function updateCommissionPartnerToJSON(
+  updateCommissionPartner: UpdateCommissionPartner,
+): string {
+  return JSON.stringify(
+    UpdateCommissionPartner$outboundSchema.parse(updateCommissionPartner),
+  );
+}
+
+export function updateCommissionPartnerFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateCommissionPartner, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateCommissionPartner$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateCommissionPartner' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateCommissionCustomer$inboundSchema: z.ZodType<
+  UpdateCommissionCustomer,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  externalId: z.string(),
+  name: z.string(),
+  email: z.nullable(z.string()).optional(),
+  avatar: z.nullable(z.string()).optional(),
+  country: z.nullable(z.string()).optional(),
+  sales: z.nullable(z.number()).optional(),
+  saleAmount: z.nullable(z.number()).optional(),
+  createdAt: z.string(),
+});
+
+/** @internal */
+export type UpdateCommissionCustomer$Outbound = {
+  id: string;
+  externalId: string;
+  name: string;
+  email?: string | null | undefined;
+  avatar?: string | null | undefined;
+  country?: string | null | undefined;
+  sales?: number | null | undefined;
+  saleAmount?: number | null | undefined;
+  createdAt: string;
+};
+
+/** @internal */
+export const UpdateCommissionCustomer$outboundSchema: z.ZodType<
+  UpdateCommissionCustomer$Outbound,
+  z.ZodTypeDef,
+  UpdateCommissionCustomer
+> = z.object({
+  id: z.string(),
+  externalId: z.string(),
+  name: z.string(),
+  email: z.nullable(z.string()).optional(),
+  avatar: z.nullable(z.string()).optional(),
+  country: z.nullable(z.string()).optional(),
+  sales: z.nullable(z.number()).optional(),
+  saleAmount: z.nullable(z.number()).optional(),
+  createdAt: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateCommissionCustomer$ {
+  /** @deprecated use `UpdateCommissionCustomer$inboundSchema` instead. */
+  export const inboundSchema = UpdateCommissionCustomer$inboundSchema;
+  /** @deprecated use `UpdateCommissionCustomer$outboundSchema` instead. */
+  export const outboundSchema = UpdateCommissionCustomer$outboundSchema;
+  /** @deprecated use `UpdateCommissionCustomer$Outbound` instead. */
+  export type Outbound = UpdateCommissionCustomer$Outbound;
+}
+
+export function updateCommissionCustomerToJSON(
+  updateCommissionCustomer: UpdateCommissionCustomer,
+): string {
+  return JSON.stringify(
+    UpdateCommissionCustomer$outboundSchema.parse(updateCommissionCustomer),
+  );
+}
+
+export function updateCommissionCustomerFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateCommissionCustomer, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateCommissionCustomer$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateCommissionCustomer' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateCommissionResponseBody$inboundSchema: z.ZodType<
   UpdateCommissionResponseBody,
   z.ZodTypeDef,
@@ -293,10 +513,15 @@ export const UpdateCommissionResponseBody$inboundSchema: z.ZodType<
   earnings: z.number(),
   currency: z.string(),
   status: UpdateCommissionStatus$inboundSchema,
-  invoiceId: z.nullable(z.string()).optional(),
-  description: z.nullable(z.string()).optional(),
+  invoiceId: z.nullable(z.string()),
+  description: z.nullable(z.string()),
+  quantity: z.number(),
+  userId: z.nullable(z.string()).optional(),
   createdAt: z.string(),
   updatedAt: z.string(),
+  partner: z.lazy(() => UpdateCommissionPartner$inboundSchema),
+  customer: z.nullable(z.lazy(() => UpdateCommissionCustomer$inboundSchema))
+    .optional(),
 });
 
 /** @internal */
@@ -307,10 +532,14 @@ export type UpdateCommissionResponseBody$Outbound = {
   earnings: number;
   currency: string;
   status: string;
-  invoiceId?: string | null | undefined;
-  description?: string | null | undefined;
+  invoiceId: string | null;
+  description: string | null;
+  quantity: number;
+  userId?: string | null | undefined;
   createdAt: string;
   updatedAt: string;
+  partner: UpdateCommissionPartner$Outbound;
+  customer?: UpdateCommissionCustomer$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -325,10 +554,15 @@ export const UpdateCommissionResponseBody$outboundSchema: z.ZodType<
   earnings: z.number(),
   currency: z.string(),
   status: UpdateCommissionStatus$outboundSchema,
-  invoiceId: z.nullable(z.string()).optional(),
-  description: z.nullable(z.string()).optional(),
+  invoiceId: z.nullable(z.string()),
+  description: z.nullable(z.string()),
+  quantity: z.number(),
+  userId: z.nullable(z.string()).optional(),
   createdAt: z.string(),
   updatedAt: z.string(),
+  partner: z.lazy(() => UpdateCommissionPartner$outboundSchema),
+  customer: z.nullable(z.lazy(() => UpdateCommissionCustomer$outboundSchema))
+    .optional(),
 });
 
 /**

@@ -6,7 +6,7 @@
 import { AnalyticsTriggers } from "dub/models/components";
 
 let value: AnalyticsTriggers = {
-  trigger: "link",
+  trigger: "deeplink",
 };
 ```
 

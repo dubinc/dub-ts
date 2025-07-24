@@ -17,6 +17,7 @@ export * from "./analyticstoplinks.js";
 export * from "./analyticstopurls.js";
 export * from "./analyticstriggers.js";
 export * from "./clickevent.js";
+export * from "./commissioncreatedevent.js";
 export * from "./continentcode.js";
 export * from "./countrycode.js";
 export * from "./domainschema.js";

@@ -14,6 +14,8 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export const Trigger = {
   Qr: "qr",
   Link: "link",
+  Pageview: "pageview",
+  Deeplink: "deeplink",
 } as const;
 /**
  * The type of trigger method: link click or QR scan

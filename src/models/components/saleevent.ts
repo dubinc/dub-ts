@@ -503,6 +503,7 @@ export const PaymentProcessor = {
   Shopify: "shopify",
   Polar: "polar",
   Paddle: "paddle",
+  Revenuecat: "revenuecat",
   Custom: "custom",
 } as const;
 /**

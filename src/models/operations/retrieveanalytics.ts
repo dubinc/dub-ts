@@ -80,6 +80,8 @@ export type Interval = ClosedEnum<typeof Interval>;
 export const Trigger = {
   Qr: "qr",
   Link: "link",
+  Pageview: "pageview",
+  Deeplink: "deeplink",
 } as const;
 /**
  * The trigger to retrieve analytics for. If undefined, return both QR and link clicks.
@@ -90,6 +92,18 @@ export type Trigger = ClosedEnum<typeof Trigger>;
  * The tag IDs to retrieve analytics for.
  */
 export type RetrieveAnalyticsQueryParamTagIds = string | Array<string>;
+
+/**
+ * Filter sales by type: 'new' for first-time purchases, 'recurring' for repeat purchases. If undefined, returns both.
+ */
+export const SaleType = {
+  New: "new",
+  Recurring: "recurring",
+} as const;
+/**
+ * Filter sales by type: 'new' for first-time purchases, 'recurring' for repeat purchases. If undefined, returns both.
+ */
+export type SaleType = ClosedEnum<typeof SaleType>;
 
 export type RetrieveAnalyticsRequest = {
   /**
@@ -212,6 +226,10 @@ export type RetrieveAnalyticsRequest = {
    * Filter for root domains. If true, filter for domains only. If false, filter for links only. If undefined, return both.
    */
   root?: boolean | undefined;
+  /**
+   * Filter sales by type: 'new' for first-time purchases, 'recurring' for repeat purchases. If undefined, returns both.
+   */
+  saleType?: SaleType | undefined;
   /**
    * The UTM source of the short link.
    */
@@ -384,6 +402,25 @@ export function retrieveAnalyticsQueryParamTagIdsFromJSON(
 }
 
 /** @internal */
+export const SaleType$inboundSchema: z.ZodNativeEnum<typeof SaleType> = z
+  .nativeEnum(SaleType);
+
+/** @internal */
+export const SaleType$outboundSchema: z.ZodNativeEnum<typeof SaleType> =
+  SaleType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace SaleType$ {
+  /** @deprecated use `SaleType$inboundSchema` instead. */
+  export const inboundSchema = SaleType$inboundSchema;
+  /** @deprecated use `SaleType$outboundSchema` instead. */
+  export const outboundSchema = SaleType$outboundSchema;
+}
+
+/** @internal */
 export const RetrieveAnalyticsRequest$inboundSchema: z.ZodType<
   RetrieveAnalyticsRequest,
   z.ZodTypeDef,
@@ -419,6 +456,7 @@ export const RetrieveAnalyticsRequest$inboundSchema: z.ZodType<
   folderId: z.string().optional(),
   qr: z.boolean().optional(),
   root: z.boolean().optional(),
+  saleType: SaleType$inboundSchema.optional(),
   utm_source: z.nullable(z.string()).optional(),
   utm_medium: z.nullable(z.string()).optional(),
   utm_campaign: z.nullable(z.string()).optional(),
@@ -466,6 +504,7 @@ export type RetrieveAnalyticsRequest$Outbound = {
   folderId?: string | undefined;
   qr?: boolean | undefined;
   root?: boolean | undefined;
+  saleType?: string | undefined;
   utm_source?: string | null | undefined;
   utm_medium?: string | null | undefined;
   utm_campaign?: string | null | undefined;
@@ -509,6 +548,7 @@ export const RetrieveAnalyticsRequest$outboundSchema: z.ZodType<
   folderId: z.string().optional(),
   qr: z.boolean().optional(),
   root: z.boolean().optional(),
+  saleType: SaleType$outboundSchema.optional(),
   utmSource: z.nullable(z.string()).optional(),
   utmMedium: z.nullable(z.string()).optional(),
   utmCampaign: z.nullable(z.string()).optional(),
