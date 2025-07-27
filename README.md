@@ -655,7 +655,7 @@ const sdk = new Dub({ debugLogger: console });
 <!-- Start Summary [summary] -->
 ## Summary
 
-Dub API: Dub is link management infrastructure for companies to create marketing campaigns, link sharing features, and referral programs.
+Dub API: Dub is the modern link attribution platform for short links, conversion tracking, and affiliate programs.
 <!-- End Summary [summary] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
