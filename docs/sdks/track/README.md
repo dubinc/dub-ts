@@ -14,6 +14,7 @@ Track a lead for a short link.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="trackLead" method="post" path="/track/lead" -->
 ```typescript
 import { Dub } from "dub";
 
@@ -91,6 +92,7 @@ Track a sale for a short link.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="trackSale" method="post" path="/track/sale" -->
 ```typescript
 import { Dub } from "dub";
 

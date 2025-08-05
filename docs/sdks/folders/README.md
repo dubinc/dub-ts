@@ -16,6 +16,7 @@ Create a folder for the authenticated workspace.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createFolder" method="post" path="/folders" -->
 ```typescript
 import { Dub } from "dub";
 
@@ -93,6 +94,7 @@ Retrieve a list of folders for the authenticated workspace.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listFolders" method="get" path="/folders" -->
 ```typescript
 import { Dub } from "dub";
 
@@ -170,6 +172,7 @@ Update a folder in the workspace.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="updateFolder" method="patch" path="/folders/{id}" -->
 ```typescript
 import { Dub } from "dub";
 
@@ -248,6 +251,7 @@ Delete a folder from the workspace. All existing links will still work, but they
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="deleteFolder" method="delete" path="/folders/{id}" -->
 ```typescript
 import { Dub } from "dub";
 

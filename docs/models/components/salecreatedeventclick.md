@@ -37,6 +37,7 @@ let value: SaleCreatedEventClick = {
 | `device`           | *string*           | :heavy_check_mark: | N/A                |
 | `browser`          | *string*           | :heavy_check_mark: | N/A                |
 | `os`               | *string*           | :heavy_check_mark: | N/A                |
+| `trigger`          | *string*           | :heavy_minus_sign: | N/A                |
 | `referer`          | *string*           | :heavy_check_mark: | N/A                |
 | `refererUrl`       | *string*           | :heavy_check_mark: | N/A                |
 | `qr`               | *boolean*          | :heavy_check_mark: | N/A                |

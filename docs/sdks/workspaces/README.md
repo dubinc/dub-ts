@@ -14,6 +14,7 @@ Retrieve a workspace for the authenticated user.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getWorkspace" method="get" path="/workspaces/{idOrSlug}" -->
 ```typescript
 import { Dub } from "dub";
 
@@ -95,6 +96,7 @@ Update a workspace by ID or slug.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="updateWorkspace" method="patch" path="/workspaces/{idOrSlug}" -->
 ```typescript
 import { Dub } from "dub";
 

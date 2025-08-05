@@ -17,6 +17,7 @@ Retrieve a list of customers for the authenticated workspace.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getCustomers" method="get" path="/customers" -->
 ```typescript
 import { Dub } from "dub";
 
@@ -96,6 +97,7 @@ run();
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createCustomer" method="post" path="/customers" -->
 ```typescript
 import { Dub } from "dub";
 
@@ -173,6 +175,7 @@ Retrieve a customer by ID for the authenticated workspace.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getCustomer" method="get" path="/customers/{id}" -->
 ```typescript
 import { Dub } from "dub";
 
@@ -254,6 +257,7 @@ Update a customer for the authenticated workspace.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="updateCustomer" method="patch" path="/customers/{id}" -->
 ```typescript
 import { Dub } from "dub";
 
@@ -335,6 +339,7 @@ Delete a customer from a workspace.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="deleteCustomer" method="delete" path="/customers/{id}" -->
 ```typescript
 import { Dub } from "dub";
 

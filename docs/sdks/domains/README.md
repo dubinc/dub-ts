@@ -18,6 +18,7 @@ Create a domain for the authenticated workspace.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createDomain" method="post" path="/domains" -->
 ```typescript
 import { Dub } from "dub";
 
@@ -95,6 +96,7 @@ Retrieve a list of domains associated with the authenticated workspace.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listDomains" method="get" path="/domains" -->
 ```typescript
 import { Dub } from "dub";
 
@@ -176,6 +178,7 @@ Update a domain for the authenticated workspace.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="updateDomain" method="patch" path="/domains/{slug}" -->
 ```typescript
 import { Dub } from "dub";
 
@@ -254,6 +257,7 @@ Delete a domain from a workspace. It cannot be undone. This will also delete all
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="deleteDomain" method="delete" path="/domains/{slug}" -->
 ```typescript
 import { Dub } from "dub";
 
@@ -331,6 +335,7 @@ Register a domain for the authenticated workspace. Only available for Enterprise
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="registerDomain" method="post" path="/domains/register" -->
 ```typescript
 import { Dub } from "dub";
 
@@ -408,6 +413,7 @@ Check if a domain name is available for purchase. You can check multiple domains
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="checkDomainStatus" method="get" path="/domains/status" -->
 ```typescript
 import { Dub } from "dub";
 

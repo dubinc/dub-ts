@@ -129,6 +129,7 @@ async function $do(
     "partnerId": payload?.partnerId,
     "programId": payload?.programId,
     "qr": payload?.qr,
+    "query": payload?.query,
     "referer": payload?.referer,
     "refererUrl": payload?.refererUrl,
     "region": payload?.region,

@@ -14,6 +14,7 @@ Retrieve a list of commissions for a program.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listCommissions" method="get" path="/commissions" -->
 ```typescript
 import { Dub } from "dub";
 
@@ -91,6 +92,7 @@ Update an existing commission amount. This is useful for handling refunds (parti
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="updateCommission" method="patch" path="/commissions/{id}" -->
 ```typescript
 import { Dub } from "dub";
 

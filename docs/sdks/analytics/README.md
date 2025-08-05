@@ -13,6 +13,7 @@ Retrieve analytics for a link, a domain, or the authenticated workspace. The res
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="retrieveAnalytics" method="get" path="/analytics" -->
 ```typescript
 import { Dub } from "dub";
 

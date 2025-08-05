@@ -43,7 +43,7 @@ export const QueryParamInterval = {
 export type QueryParamInterval = ClosedEnum<typeof QueryParamInterval>;
 
 /**
- * The trigger to retrieve analytics for. If undefined, return both QR and link clicks.
+ * The trigger to retrieve analytics for. If undefined, returns all trigger types.
  */
 export const QueryParamTrigger = {
   Qr: "qr",
@@ -52,7 +52,7 @@ export const QueryParamTrigger = {
   Deeplink: "deeplink",
 } as const;
 /**
- * The trigger to retrieve analytics for. If undefined, return both QR and link clicks.
+ * The trigger to retrieve analytics for. If undefined, returns all trigger types.
  */
 export type QueryParamTrigger = ClosedEnum<typeof QueryParamTrigger>;
 
@@ -194,7 +194,7 @@ export type ListEventsRequest = {
    */
   os?: string | undefined;
   /**
-   * The trigger to retrieve analytics for. If undefined, return both QR and link clicks.
+   * The trigger to retrieve analytics for. If undefined, returns all trigger types.
    */
   trigger?: QueryParamTrigger | undefined;
   /**
@@ -210,10 +210,6 @@ export type ListEventsRequest = {
    */
   url?: string | undefined;
   /**
-   * Deprecated. Use `tagIds` instead. The tag ID to retrieve analytics for.
-   */
-  tagId?: string | undefined;
-  /**
    * The tag IDs to retrieve analytics for.
    */
   tagIds?: string | Array<string> | undefined;
@@ -222,10 +218,6 @@ export type ListEventsRequest = {
    */
   folderId?: string | undefined;
   /**
-   * Deprecated. Use the `trigger` field instead. Filter for QR code scans. If true, filter for QR codes only. If false, filter for links only. If undefined, return both.
-   */
-  qr?: boolean | undefined;
-  /**
    * Filter for root domains. If true, filter for domains only. If false, filter for links only. If undefined, return both.
    */
   root?: boolean | undefined;
@@ -233,6 +225,18 @@ export type ListEventsRequest = {
    * Filter sales by type: 'new' for first-time purchases, 'recurring' for repeat purchases. If undefined, returns both.
    */
   saleType?: QueryParamSaleType | undefined;
+  /**
+   * Search the events by a custom metadata value. Only available for lead and sale events.
+   */
+  query?: string | undefined;
+  /**
+   * Deprecated: Use `tagIds` instead. The tag ID to retrieve analytics for.
+   */
+  tagId?: string | undefined;
+  /**
+   * Deprecated: Use the `trigger` field instead. Filter for QR code scans. If true, filter for QR codes only. If false, filter for links only. If undefined, return both.
+   */
+  qr?: boolean | undefined;
   /**
    * The UTM source of the short link.
    */
@@ -498,12 +502,13 @@ export const ListEventsRequest$inboundSchema: z.ZodType<
   referer: z.string().optional(),
   refererUrl: z.string().optional(),
   url: z.string().optional(),
-  tagId: z.string().optional(),
   tagIds: z.union([z.string(), z.array(z.string())]).optional(),
   folderId: z.string().optional(),
-  qr: z.boolean().optional(),
   root: z.boolean().optional(),
   saleType: QueryParamSaleType$inboundSchema.optional(),
+  query: z.string().optional(),
+  tagId: z.string().optional(),
+  qr: z.boolean().optional(),
   utm_source: z.nullable(z.string()).optional(),
   utm_medium: z.nullable(z.string()).optional(),
   utm_campaign: z.nullable(z.string()).optional(),
@@ -550,12 +555,13 @@ export type ListEventsRequest$Outbound = {
   referer?: string | undefined;
   refererUrl?: string | undefined;
   url?: string | undefined;
-  tagId?: string | undefined;
   tagIds?: string | Array<string> | undefined;
   folderId?: string | undefined;
-  qr?: boolean | undefined;
   root?: boolean | undefined;
   saleType?: string | undefined;
+  query?: string | undefined;
+  tagId?: string | undefined;
+  qr?: boolean | undefined;
   utm_source?: string | null | undefined;
   utm_medium?: string | null | undefined;
   utm_campaign?: string | null | undefined;
@@ -598,12 +604,13 @@ export const ListEventsRequest$outboundSchema: z.ZodType<
   referer: z.string().optional(),
   refererUrl: z.string().optional(),
   url: z.string().optional(),
-  tagId: z.string().optional(),
   tagIds: z.union([z.string(), z.array(z.string())]).optional(),
   folderId: z.string().optional(),
-  qr: z.boolean().optional(),
   root: z.boolean().optional(),
   saleType: QueryParamSaleType$outboundSchema.optional(),
+  query: z.string().optional(),
+  tagId: z.string().optional(),
+  qr: z.boolean().optional(),
   utmSource: z.nullable(z.string()).optional(),
   utmMedium: z.nullable(z.string()).optional(),
   utmCampaign: z.nullable(z.string()).optional(),

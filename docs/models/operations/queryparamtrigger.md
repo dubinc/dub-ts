@@ -1,6 +1,6 @@
 # QueryParamTrigger
 
-The trigger to retrieve analytics for. If undefined, return both QR and link clicks.
+The trigger to retrieve analytics for. If undefined, returns all trigger types.
 
 ## Example Usage
 

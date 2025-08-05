@@ -13,6 +13,7 @@ Create a referrals embed token for the given partner/tenant.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createReferralsEmbedToken" method="post" path="/tokens/embed/referrals" -->
 ```typescript
 import { Dub } from "dub";
 

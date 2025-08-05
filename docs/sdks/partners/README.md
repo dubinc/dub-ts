@@ -18,6 +18,7 @@ Create a partner for a program. If partner exists, automatically enrolls them.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createPartner" method="post" path="/partners" -->
 ```typescript
 import { Dub } from "dub";
 
@@ -95,6 +96,7 @@ List all partners for a partner program.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listPartners" method="get" path="/partners" -->
 ```typescript
 import { Dub } from "dub";
 
@@ -172,6 +174,7 @@ Create a link for a partner that is enrolled in your program.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createPartnerLink" method="post" path="/partners/links" -->
 ```typescript
 import { Dub } from "dub";
 
@@ -249,6 +252,7 @@ Retrieve a partner's links by their partner ID or tenant ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="retrieveLinks" method="get" path="/partners/links" -->
 ```typescript
 import { Dub } from "dub";
 
@@ -326,6 +330,7 @@ Upsert a link for a partner that is enrolled in your program. If a link with the
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="upsertPartnerLink" method="put" path="/partners/links/upsert" -->
 ```typescript
 import { Dub } from "dub";
 
@@ -403,6 +408,7 @@ Retrieve analytics for a partner within a program. The response type vary based 
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="retrievePartnerAnalytics" method="get" path="/partners/analytics" -->
 ```typescript
 import { Dub } from "dub";
 
