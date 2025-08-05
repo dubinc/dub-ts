@@ -50,18 +50,6 @@ export type Data = {
    */
   archived?: boolean | undefined;
   /**
-   * Deprecated: Use `dashboard` instead. Whether the short link's stats are publicly accessible. Defaults to `false` if not provided.
-   *
-   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-   */
-  publicStats?: boolean | undefined;
-  /**
-   * The unique ID of the tag assigned to the short link. This field is deprecated – use `tagIds` instead.
-   *
-   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-   */
-  tagId?: string | null | undefined;
-  /**
    * The unique IDs of the tags assigned to the short link.
    */
   tagIds?: string | Array<string> | undefined;
@@ -169,6 +157,18 @@ export type Data = {
    * The date and time when the tests were or will be completed.
    */
   testCompletedAt?: string | null | undefined;
+  /**
+   * Deprecated: Use `dashboard` instead. Whether the short link's stats are publicly accessible. Defaults to `false` if not provided.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  publicStats?: boolean | undefined;
+  /**
+   * Deprecated: Use `tagIds` instead. The unique ID of the tag assigned to the short link.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  tagId?: string | null | undefined;
 };
 
 export type BulkUpdateLinksRequestBody = {
@@ -347,8 +347,6 @@ export const Data$inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z
     partnerId: z.nullable(z.string()).optional(),
     trackConversion: z.boolean().optional(),
     archived: z.boolean().optional(),
-    publicStats: z.boolean().optional(),
-    tagId: z.nullable(z.string()).optional(),
     tagIds: z.union([z.string(), z.array(z.string())]).optional(),
     tagNames: z.union([z.string(), z.array(z.string())]).optional(),
     folderId: z.nullable(z.string()).optional(),
@@ -378,6 +376,8 @@ export const Data$inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z
     ).optional(),
     testStartedAt: z.nullable(z.string()).optional(),
     testCompletedAt: z.nullable(z.string()).optional(),
+    publicStats: z.boolean().optional(),
+    tagId: z.nullable(z.string()).optional(),
   }).transform((v) => {
     return remap$(v, {
       "utm_source": "utmSource",
@@ -396,8 +396,6 @@ export type Data$Outbound = {
   partnerId?: string | null | undefined;
   trackConversion?: boolean | undefined;
   archived?: boolean | undefined;
-  publicStats?: boolean | undefined;
-  tagId?: string | null | undefined;
   tagIds?: string | Array<string> | undefined;
   tagNames?: string | Array<string> | undefined;
   folderId?: string | null | undefined;
@@ -425,6 +423,8 @@ export type Data$Outbound = {
   testVariants?: Array<BulkUpdateLinksTestVariants$Outbound> | null | undefined;
   testStartedAt?: string | null | undefined;
   testCompletedAt?: string | null | undefined;
+  publicStats?: boolean | undefined;
+  tagId?: string | null | undefined;
 };
 
 /** @internal */
@@ -436,8 +436,6 @@ export const Data$outboundSchema: z.ZodType<Data$Outbound, z.ZodTypeDef, Data> =
     partnerId: z.nullable(z.string()).optional(),
     trackConversion: z.boolean().optional(),
     archived: z.boolean().optional(),
-    publicStats: z.boolean().optional(),
-    tagId: z.nullable(z.string()).optional(),
     tagIds: z.union([z.string(), z.array(z.string())]).optional(),
     tagNames: z.union([z.string(), z.array(z.string())]).optional(),
     folderId: z.nullable(z.string()).optional(),
@@ -467,6 +465,8 @@ export const Data$outboundSchema: z.ZodType<Data$Outbound, z.ZodTypeDef, Data> =
     ).optional(),
     testStartedAt: z.nullable(z.string()).optional(),
     testCompletedAt: z.nullable(z.string()).optional(),
+    publicStats: z.boolean().optional(),
+    tagId: z.nullable(z.string()).optional(),
   }).transform((v) => {
     return remap$(v, {
       utmSource: "utm_source",

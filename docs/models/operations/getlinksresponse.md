@@ -26,8 +26,7 @@ let value: GetLinksResponse = {
       ios: "<value>",
       android: "<id>",
       geo: {},
-      tagId: "<id>",
-      tags: null,
+      tags: [],
       folderId: "<id>",
       webhookIds: [
         "<value 1>",
@@ -48,6 +47,7 @@ let value: GetLinksResponse = {
       lastClicked: "<value>",
       createdAt: "1705808460315",
       updatedAt: "1735647783788",
+      tagId: "<id>",
       projectId: "<id>",
     },
   ],

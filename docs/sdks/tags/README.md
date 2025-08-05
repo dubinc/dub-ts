@@ -16,6 +16,7 @@ Create a tag for the authenticated workspace.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createTag" method="post" path="/tags" -->
 ```typescript
 import { Dub } from "dub";
 
@@ -93,6 +94,7 @@ Retrieve a list of tags for the authenticated workspace.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getTags" method="get" path="/tags" -->
 ```typescript
 import { Dub } from "dub";
 
@@ -170,6 +172,7 @@ Update a tag in the workspace.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="updateTag" method="patch" path="/tags/{id}" -->
 ```typescript
 import { Dub } from "dub";
 
@@ -248,6 +251,7 @@ Delete a tag from the workspace. All existing links will still work, but they wi
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="deleteTag" method="delete" path="/tags/{id}" -->
 ```typescript
 import { Dub } from "dub";
 

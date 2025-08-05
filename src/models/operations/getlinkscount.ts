@@ -49,7 +49,7 @@ export type GetLinksCountRequest = {
    */
   domain?: string | undefined;
   /**
-   * Deprecated. Use `tagIds` instead. The tag ID to filter the links by.
+   * Deprecated: Use `tagIds` instead. The tag ID to filter the links by.
    */
   tagId?: string | undefined;
   /**

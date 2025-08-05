@@ -13,6 +13,7 @@ Retrieve a paginated list of events for the authenticated workspace.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listEvents" method="get" path="/events" -->
 ```typescript
 import { Dub } from "dub";
 

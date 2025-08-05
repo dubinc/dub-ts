@@ -22,6 +22,7 @@ Create a link for the authenticated workspace.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createLink" method="post" path="/links" -->
 ```typescript
 import { Dub } from "dub";
 
@@ -99,6 +100,7 @@ Retrieve a paginated list of links for the authenticated workspace.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getLinks" method="get" path="/links" -->
 ```typescript
 import { Dub } from "dub";
 
@@ -180,6 +182,7 @@ Retrieve the number of links for the authenticated workspace.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getLinksCount" method="get" path="/links/count" -->
 ```typescript
 import { Dub } from "dub";
 
@@ -257,6 +260,7 @@ Retrieve the info for a link.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getLinkInfo" method="get" path="/links/info" -->
 ```typescript
 import { Dub } from "dub";
 
@@ -334,6 +338,7 @@ Update a link for the authenticated workspace. If there's no change, returns it 
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="updateLink" method="patch" path="/links/{linkId}" -->
 ```typescript
 import { Dub } from "dub";
 
@@ -412,6 +417,7 @@ Delete a link for the authenticated workspace.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="deleteLink" method="delete" path="/links/{linkId}" -->
 ```typescript
 import { Dub } from "dub";
 
@@ -489,6 +495,7 @@ Bulk create up to 100 links for the authenticated workspace.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="bulkCreateLinks" method="post" path="/links/bulk" -->
 ```typescript
 import { Dub } from "dub";
 
@@ -566,6 +573,7 @@ Bulk update up to 100 links with the same data for the authenticated workspace.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="bulkUpdateLinks" method="patch" path="/links/bulk" -->
 ```typescript
 import { Dub } from "dub";
 
@@ -643,6 +651,7 @@ Bulk delete up to 100 links for the authenticated workspace.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="bulkDeleteLinks" method="delete" path="/links/bulk" -->
 ```typescript
 import { Dub } from "dub";
 
@@ -730,6 +739,7 @@ Upsert a link for the authenticated workspace by its URL. If a link with the sam
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="upsertLink" method="put" path="/links/upsert" -->
 ```typescript
 import { Dub } from "dub";
 

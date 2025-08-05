@@ -25,8 +25,13 @@ const value: components.LinkSchema = {
   ios: "<value>",
   android: "<id>",
   geo: {},
-  tagId: "<id>",
-  tags: [],
+  tags: [
+    {
+      id: "<id>",
+      name: "<value>",
+      color: "green",
+    },
+  ],
   folderId: "<id>",
   webhookIds: [
     "<value 1>",
@@ -45,6 +50,7 @@ const value: components.LinkSchema = {
   lastClicked: "<value>",
   createdAt: "1719829856448",
   updatedAt: "1735608809480",
+  tagId: "<id>",
   projectId: "<id>",
 };
 ```
