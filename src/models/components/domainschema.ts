@@ -16,6 +16,10 @@ export type RegisteredDomain = {
    */
   id: string;
   /**
+   * The date the domain auto-renew is disabled.
+   */
+  autoRenewalDisabledAt: string | null;
+  /**
    * The date the domain was created.
    */
   createdAt: string;
@@ -23,6 +27,10 @@ export type RegisteredDomain = {
    * The date the domain expires.
    */
   expiresAt: string;
+  /**
+   * The fee to renew the domain.
+   */
+  renewalFee: number;
 };
 
 export type DomainSchema = {
@@ -91,15 +99,19 @@ export const RegisteredDomain$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: z.string(),
+  autoRenewalDisabledAt: z.nullable(z.string()),
   createdAt: z.string(),
   expiresAt: z.string(),
+  renewalFee: z.number(),
 });
 
 /** @internal */
 export type RegisteredDomain$Outbound = {
   id: string;
+  autoRenewalDisabledAt: string | null;
   createdAt: string;
   expiresAt: string;
+  renewalFee: number;
 };
 
 /** @internal */
@@ -109,8 +121,10 @@ export const RegisteredDomain$outboundSchema: z.ZodType<
   RegisteredDomain
 > = z.object({
   id: z.string(),
+  autoRenewalDisabledAt: z.nullable(z.string()),
   createdAt: z.string(),
   expiresAt: z.string(),
+  renewalFee: z.number(),
 });
 
 /**
