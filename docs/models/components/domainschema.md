@@ -16,8 +16,10 @@ let value: DomainSchema = {
   updatedAt: "1735617512405",
   registeredDomain: {
     id: "<id>",
-    createdAt: "1730969559811",
-    expiresAt: "1759836350795",
+    autoRenewalDisabledAt: "<value>",
+    createdAt: "1728300349795",
+    expiresAt: "1749848677535",
+    renewalFee: 5772.53,
   },
 };
 ```

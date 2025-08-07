@@ -69,7 +69,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Dub",
-    version: "0.64.3",
+    version: "0.64.4",
   });
 
   const client = new DubCore({
