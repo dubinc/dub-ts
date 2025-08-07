@@ -113,6 +113,7 @@ async function $do(
     "groupBy": payload?.groupBy,
     "interval": payload?.interval,
     "partnerId": payload?.partnerId,
+    "query": payload?.query,
     "start": payload?.start,
     "tenantId": payload?.tenantId,
     "timezone": payload?.timezone,

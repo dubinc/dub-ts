@@ -71,6 +71,10 @@ export type RetrievePartnerAnalyticsRequest = {
    */
   timezone?: string | undefined;
   /**
+   * Search the events by a custom metadata value. Only available for lead and sale events.
+   */
+  query?: string | undefined;
+  /**
    * The parameter to group the analytics data points by. Defaults to `count` if undefined.
    */
   groupBy?: RetrievePartnerAnalyticsQueryParamGroupBy | undefined;
@@ -142,6 +146,7 @@ export const RetrievePartnerAnalyticsRequest$inboundSchema: z.ZodType<
   start: z.string().optional(),
   end: z.string().optional(),
   timezone: z.string().default("UTC"),
+  query: z.string().optional(),
   groupBy: RetrievePartnerAnalyticsQueryParamGroupBy$inboundSchema.default(
     "count",
   ),
@@ -155,6 +160,7 @@ export type RetrievePartnerAnalyticsRequest$Outbound = {
   start?: string | undefined;
   end?: string | undefined;
   timezone: string;
+  query?: string | undefined;
   groupBy: string;
 };
 
@@ -171,6 +177,7 @@ export const RetrievePartnerAnalyticsRequest$outboundSchema: z.ZodType<
   start: z.string().optional(),
   end: z.string().optional(),
   timezone: z.string().default("UTC"),
+  query: z.string().optional(),
   groupBy: RetrievePartnerAnalyticsQueryParamGroupBy$outboundSchema.default(
     "count",
   ),
