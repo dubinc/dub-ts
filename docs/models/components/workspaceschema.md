@@ -32,16 +32,16 @@ let value: WorkspaceSchema = {
   aiLimit: 3052.36,
   conversionEnabled: false,
   dotLinkClaimed: false,
-  partnersEnabled: false,
-  createdAt: "1711311497100",
-  users: [
+  createdAt: "1730937227918",
+  users: [],
+  domains: [
     {
-      role: "owner",
-      defaultFolderId: "<id>",
+      slug: "acme.com",
     },
   ],
-  domains: [],
-  store: {},
+  store: {
+    "key": "<value>",
+  },
   allowedHostnames: [
     "dub.sh",
   ],
@@ -79,7 +79,6 @@ let value: WorkspaceSchema = {
 | `aiLimit`                                                                                                                                         | *number*                                                                                                                                          | :heavy_check_mark:                                                                                                                                | The AI limit of the workspace.                                                                                                                    |                                                                                                                                                   |
 | `conversionEnabled`                                                                                                                               | *boolean*                                                                                                                                         | :heavy_check_mark:                                                                                                                                | Whether the workspace has conversion tracking enabled automatically for new links (d.to/conversions).                                             |                                                                                                                                                   |
 | `dotLinkClaimed`                                                                                                                                  | *boolean*                                                                                                                                         | :heavy_check_mark:                                                                                                                                | Whether the workspace has claimed a free .link domain. (dub.link/free)                                                                            |                                                                                                                                                   |
-| `partnersEnabled`                                                                                                                                 | *boolean*                                                                                                                                         | :heavy_check_mark:                                                                                                                                | Whether the workspace has Dub Partners enabled.                                                                                                   |                                                                                                                                                   |
 | `createdAt`                                                                                                                                       | *string*                                                                                                                                          | :heavy_check_mark:                                                                                                                                | The date and time when the workspace was created.                                                                                                 |                                                                                                                                                   |
 | `users`                                                                                                                                           | [components.Users](../../models/components/users.md)[]                                                                                            | :heavy_check_mark:                                                                                                                                | The role of the authenticated user in the workspace.                                                                                              |                                                                                                                                                   |
 | `domains`                                                                                                                                         | [components.Domains](../../models/components/domains.md)[]                                                                                        | :heavy_check_mark:                                                                                                                                | The domains of the workspace.                                                                                                                     |                                                                                                                                                   |

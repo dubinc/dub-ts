@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: 71247e4773066fe5b0512bd32c035c6f
+  docChecksum: 00e9cb618de1aa64fa27e627bfbce787
   docVersion: 0.0.1
-  speakeasyVersion: 1.599.0
-  generationVersion: 2.675.0
-  releaseVersion: 0.64.5
-  configChecksum: a75981bf15a2636b22821448f54bc217
+  speakeasyVersion: 1.603.2
+  generationVersion: 2.681.8
+  releaseVersion: 0.64.6
+  configChecksum: 75aad75894e35234bb01e33987141624
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -20,7 +20,7 @@ features:
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.1.2
     errors: 2.86.0
-    examples: 2.82.1
+    examples: 2.82.3
     flattening: 2.82.1
     globalSecurity: 2.82.13
     globalSecurityCallbacks: 0.1.0
@@ -63,7 +63,6 @@ generatedFiles:
   - docs/models/components/city.md
   - docs/models/components/click.md
   - docs/models/components/clickevent.md
-  - docs/models/components/clickeventgeo.md
   - docs/models/components/clickeventtestvariants.md
   - docs/models/components/code.md
   - docs/models/components/color.md
@@ -75,41 +74,34 @@ generatedFiles:
   - docs/models/components/commissioncreatedeventtype.md
   - docs/models/components/continent.md
   - docs/models/components/continentcode.md
-  - docs/models/components/countrycode.md
   - docs/models/components/customer.md
   - docs/models/components/data.md
   - docs/models/components/domains.md
   - docs/models/components/domainschema.md
   - docs/models/components/event.md
   - docs/models/components/folderschema.md
-  - docs/models/components/geo.md
   - docs/models/components/leadcreatedevent.md
   - docs/models/components/leadcreatedeventclick.md
   - docs/models/components/leadcreatedeventcustomer.md
   - docs/models/components/leadcreatedeventdata.md
   - docs/models/components/leadcreatedeventevent.md
-  - docs/models/components/leadcreatedeventgeo.md
   - docs/models/components/leadcreatedeventlink.md
   - docs/models/components/leadcreatedeventtestvariants.md
   - docs/models/components/leadevent.md
   - docs/models/components/leadeventclick.md
   - docs/models/components/leadeventevent.md
-  - docs/models/components/leadeventgeo.md
   - docs/models/components/leadeventlink.md
   - docs/models/components/leadeventtestvariants.md
   - docs/models/components/link.md
   - docs/models/components/linkclickedevent.md
   - docs/models/components/linkclickedeventclick.md
   - docs/models/components/linkclickedeventevent.md
-  - docs/models/components/linkclickedeventgeo.md
   - docs/models/components/linkclickedeventlink.md
   - docs/models/components/linkclickedeventtestvariants.md
   - docs/models/components/linkerrorschema.md
-  - docs/models/components/linkgeotargeting.md
   - docs/models/components/linkschema.md
   - docs/models/components/linkwebhookevent.md
   - docs/models/components/linkwebhookeventevent.md
-  - docs/models/components/linkwebhookeventgeo.md
   - docs/models/components/linkwebhookeventlink.md
   - docs/models/components/linkwebhookeventtestvariants.md
   - docs/models/components/one.md
@@ -132,7 +124,6 @@ generatedFiles:
   - docs/models/components/salecreatedeventcustomer.md
   - docs/models/components/salecreatedeventdata.md
   - docs/models/components/salecreatedeventevent.md
-  - docs/models/components/salecreatedeventgeo.md
   - docs/models/components/salecreatedeventlink.md
   - docs/models/components/salecreatedeventsale.md
   - docs/models/components/salecreatedeventtestvariants.md
@@ -140,7 +131,6 @@ generatedFiles:
   - docs/models/components/saleeventclick.md
   - docs/models/components/saleeventcustomer.md
   - docs/models/components/saleeventevent.md
-  - docs/models/components/saleeventgeo.md
   - docs/models/components/saleeventlink.md
   - docs/models/components/saleeventtestvariants.md
   - docs/models/components/security.md
@@ -196,7 +186,6 @@ generatedFiles:
   - docs/models/operations/checkdomainstatusresponsebody.md
   - docs/models/operations/click.md
   - docs/models/operations/color.md
-  - docs/models/operations/country.md
   - docs/models/operations/createcustomerdiscount.md
   - docs/models/operations/createcustomerlink.md
   - docs/models/operations/createcustomerpartner.md
@@ -218,7 +207,6 @@ generatedFiles:
   - docs/models/operations/createpartnertagids.md
   - docs/models/operations/createpartnertagnames.md
   - docs/models/operations/createpartnertestvariants.md
-  - docs/models/operations/createreferralsembedtokencountry.md
   - docs/models/operations/createreferralsembedtokenlinkprops.md
   - docs/models/operations/createreferralsembedtokenrequestbody.md
   - docs/models/operations/createreferralsembedtokenresponsebody.md
@@ -538,7 +526,6 @@ generatedFiles:
   - src/models/components/clickevent.ts
   - src/models/components/commissioncreatedevent.ts
   - src/models/components/continentcode.ts
-  - src/models/components/countrycode.ts
   - src/models/components/domainschema.ts
   - src/models/components/folderschema.ts
   - src/models/components/index.ts
@@ -546,7 +533,6 @@ generatedFiles:
   - src/models/components/leadevent.ts
   - src/models/components/linkclickedevent.ts
   - src/models/components/linkerrorschema.ts
-  - src/models/components/linkgeotargeting.ts
   - src/models/components/linkschema.ts
   - src/models/components/linkwebhookevent.ts
   - src/models/components/partneranalyticscount.ts
@@ -1465,7 +1451,7 @@ examples:
     speakeasy-default-create-partner:
       responses:
         "201":
-          application/json: {"id": "<id>", "name": "<value>", "email": "Summer50@yahoo.com", "image": "https://picsum.photos/seed/w6UEY4ogD/1950/1872", "country": "Venezuela", "paypalEmail": "<value>", "stripeConnectId": "<id>", "payoutsEnabledAt": "<value>", "partnerId": "<id>", "tenantId": "<id>", "programId": "<id>", "createdAt": "1721295968119", "status": "approved", "links": [{"id": "<id>", "domain": "stylish-deer.info", "key": "<key>", "shortLink": "https://juvenile-declaration.net", "url": "https://exhausted-editor.org", "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0}], "totalCommissions": 0, "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0, "netRevenue": 0}
+          application/json: {"id": "<id>", "name": "<value>", "email": "Summer50@yahoo.com", "image": "https://picsum.photos/seed/w6UEY4ogD/1950/1872", "country": "Venezuela", "paypalEmail": "<value>", "stripeConnectId": "<id>", "payoutsEnabledAt": "<value>", "partnerId": "<id>", "tenantId": "<id>", "programId": "<id>", "createdAt": "1721295968119", "status": "approved", "links": [{"id": "<id>", "domain": "stylish-deer.info", "key": "<key>", "shortLink": "https://juvenile-declaration.net", "url": "https://exhausted-editor.org", "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0}], "totalCommissions": 0, "clicks": 0, "leads": 0, "conversions": 0, "sales": 0, "saleAmount": 0, "netRevenue": 0}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1614,7 +1600,7 @@ examples:
           idOrSlug: "<value>"
       responses:
         "200":
-          application/json: {"id": "<id>", "name": "<value>", "slug": "<value>", "logo": null, "inviteCode": "<value>", "plan": "business max", "stripeId": "<id>", "billingCycleStart": 8266.32, "paymentFailedAt": "<value>", "stripeConnectId": "<id>", "totalLinks": 1378.83, "usage": 2392.88, "usageLimit": 402.3, "linksUsage": 7273.44, "linksLimit": 9583.5, "payoutsUsage": 6544.94, "payoutsLimit": 8266.32, "payoutFee": 6544.94, "domainsLimit": 9444.18, "tagsLimit": 3440.64, "foldersUsage": 9717.42, "foldersLimit": 7249.67, "usersLimit": 5932.4, "aiUsage": 4075.34, "aiLimit": 4898.74, "conversionEnabled": false, "dotLinkClaimed": false, "partnersEnabled": false, "createdAt": "1719645723163", "users": [{"role": "member", "defaultFolderId": "<id>"}, {"role": "member", "defaultFolderId": "<id>"}, {"role": "member", "defaultFolderId": "<id>"}], "domains": [{"slug": "acme.com", "primary": false, "verified": false}, {"slug": "acme.com", "primary": false, "verified": false}], "store": {"key": "<value>"}, "allowedHostnames": ["dub.sh"]}
+          application/json: {"id": "<id>", "name": "<value>", "slug": "<value>", "logo": null, "inviteCode": "<value>", "plan": "business max", "stripeId": "<id>", "billingCycleStart": 8266.32, "paymentFailedAt": "<value>", "stripeConnectId": "<id>", "totalLinks": 1378.83, "usage": 2392.88, "usageLimit": 402.3, "linksUsage": 7273.44, "linksLimit": 9583.5, "payoutsUsage": 6544.94, "payoutsLimit": 8266.32, "payoutFee": 6544.94, "domainsLimit": 9444.18, "tagsLimit": 3440.64, "foldersUsage": 9717.42, "foldersLimit": 7249.67, "usersLimit": 5932.4, "aiUsage": 4075.34, "aiLimit": 4898.74, "conversionEnabled": false, "dotLinkClaimed": false, "createdAt": "1719645723163", "users": [{"role": "member", "defaultFolderId": "<id>"}, {"role": "member", "defaultFolderId": "<id>"}, {"role": "member", "defaultFolderId": "<id>"}], "domains": [{"slug": "acme.com", "primary": false, "verified": false}, {"slug": "acme.com", "primary": false, "verified": false}], "store": {"key": "<value>"}, "allowedHostnames": ["dub.sh"]}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1640,7 +1626,7 @@ examples:
           idOrSlug: "<value>"
       responses:
         "200":
-          application/json: {"id": "<id>", "name": "<value>", "slug": "<value>", "logo": null, "inviteCode": "<value>", "plan": "business", "stripeId": "<id>", "billingCycleStart": 6751.25, "paymentFailedAt": "<value>", "stripeConnectId": "<id>", "totalLinks": 217.76, "usage": 2028.85, "usageLimit": 7509.63, "linksUsage": 6390.88, "linksLimit": 5728.58, "payoutsUsage": 3164.81, "payoutsLimit": 6751.25, "payoutFee": 3164.81, "domainsLimit": 5981.08, "tagsLimit": 2040.39, "foldersUsage": 9329.44, "foldersLimit": 9097.44, "usersLimit": 4731.38, "aiUsage": 7848.2, "aiLimit": 9885.62, "conversionEnabled": false, "dotLinkClaimed": false, "partnersEnabled": false, "createdAt": "1736936859523", "users": [{"role": "owner", "defaultFolderId": "<id>"}], "domains": [{"slug": "acme.com", "primary": false, "verified": false}, {"slug": "acme.com", "primary": false, "verified": false}, {"slug": "acme.com", "primary": false, "verified": false}], "store": {"key": "<value>"}, "allowedHostnames": ["dub.sh"]}
+          application/json: {"id": "<id>", "name": "<value>", "slug": "<value>", "logo": null, "inviteCode": "<value>", "plan": "business", "stripeId": "<id>", "billingCycleStart": 6751.25, "paymentFailedAt": "<value>", "stripeConnectId": "<id>", "totalLinks": 217.76, "usage": 2028.85, "usageLimit": 7509.63, "linksUsage": 6390.88, "linksLimit": 5728.58, "payoutsUsage": 3164.81, "payoutsLimit": 6751.25, "payoutFee": 3164.81, "domainsLimit": 5981.08, "tagsLimit": 2040.39, "foldersUsage": 9329.44, "foldersLimit": 9097.44, "usersLimit": 4731.38, "aiUsage": 7848.2, "aiLimit": 9885.62, "conversionEnabled": false, "dotLinkClaimed": false, "createdAt": "1736936859523", "users": [{"role": "owner", "defaultFolderId": "<id>"}], "domains": [{"slug": "acme.com", "primary": false, "verified": false}, {"slug": "acme.com", "primary": false, "verified": false}, {"slug": "acme.com", "primary": false, "verified": false}], "store": {"key": "<value>"}, "allowedHostnames": ["dub.sh"]}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1830,7 +1816,7 @@ examples:
           pageSize: 50
       responses:
         "200":
-          application/json: [{"id": "<id>", "name": "<value>", "email": "Margret.Kuvalis12@hotmail.com", "image": "https://loremflickr.com/1672/969?lock=7633694569087148", "country": "Uruguay", "paypalEmail": "<value>", "stripeConnectId": "<id>", "payoutsEnabledAt": "<value>", "partnerId": "<id>", "tenantId": "<id>", "programId": "<id>", "createdAt": "1726913447345", "status": "declined", "links": [{"id": "<id>", "domain": "scared-knuckle.info", "key": "<key>", "shortLink": "https://granular-hammock.name/", "url": "https://vivacious-finding.biz", "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0}], "totalCommissions": 0, "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0, "netRevenue": 0}]
+          application/json: [{"id": "<id>", "name": "<value>", "email": "Margret.Kuvalis12@hotmail.com", "image": "https://loremflickr.com/1672/969?lock=7633694569087148", "country": "Uruguay", "paypalEmail": "<value>", "stripeConnectId": "<id>", "payoutsEnabledAt": "<value>", "partnerId": "<id>", "tenantId": "<id>", "programId": "<id>", "createdAt": "1726913447345", "status": "declined", "links": [{"id": "<id>", "domain": "scared-knuckle.info", "key": "<key>", "shortLink": "https://granular-hammock.name/", "url": "https://vivacious-finding.biz", "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0}], "totalCommissions": 0, "clicks": 0, "leads": 0, "conversions": 0, "sales": 0, "saleAmount": 0, "netRevenue": 0}]
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":

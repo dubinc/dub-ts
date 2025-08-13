@@ -130,9 +130,9 @@ export type RequestBody = {
    */
   android?: string | null | undefined;
   /**
-   * Geo targeting information for the short link in JSON format `{[COUNTRY]: https://example.com }`.
+   * Geo targeting information for the short link in JSON format `{[COUNTRY]: https://example.com }`. See https://d.to/geo for more information.
    */
-  geo?: components.LinkGeoTargeting | null | undefined;
+  geo?: { [k: string]: string } | null | undefined;
   /**
    * Allow search engines to index your short link. Defaults to `false` if not provided. Learn more: https://d.to/noindex
    */
@@ -380,7 +380,7 @@ export const RequestBody$inboundSchema: z.ZodType<
   rewrite: z.boolean().optional(),
   ios: z.nullable(z.string()).optional(),
   android: z.nullable(z.string()).optional(),
-  geo: z.nullable(components.LinkGeoTargeting$inboundSchema).optional(),
+  geo: z.nullable(z.record(z.string())).optional(),
   doIndex: z.boolean().optional(),
   utm_source: z.nullable(z.string()).optional(),
   utm_medium: z.nullable(z.string()).optional(),
@@ -434,7 +434,7 @@ export type RequestBody$Outbound = {
   rewrite?: boolean | undefined;
   ios?: string | null | undefined;
   android?: string | null | undefined;
-  geo?: components.LinkGeoTargeting$Outbound | null | undefined;
+  geo?: { [k: string]: string } | null | undefined;
   doIndex?: boolean | undefined;
   utm_source?: string | null | undefined;
   utm_medium?: string | null | undefined;
@@ -482,7 +482,7 @@ export const RequestBody$outboundSchema: z.ZodType<
   rewrite: z.boolean().optional(),
   ios: z.nullable(z.string()).optional(),
   android: z.nullable(z.string()).optional(),
-  geo: z.nullable(components.LinkGeoTargeting$outboundSchema).optional(),
+  geo: z.nullable(z.record(z.string())).optional(),
   doIndex: z.boolean().optional(),
   utmSource: z.nullable(z.string()).optional(),
   utmMedium: z.nullable(z.string()).optional(),
