@@ -8,7 +8,7 @@ dotenv.config();
  * Example usage of the dub SDK
  *
  * To run this example from the examples directory:
- * npm run build && npx tsx linksCreate.ts
+ * npm run build && npx tsx linksCreate.example.ts
  */
 
 import { Dub } from "dub";

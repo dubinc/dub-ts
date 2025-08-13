@@ -163,9 +163,9 @@ export type RetrieveAnalyticsRequest = {
    */
   timezone?: string | undefined;
   /**
-   * The country to retrieve analytics for. Must be passed as a 2-letter ISO 3166-1 country code. Learn more: https://d.to/geo
+   * The country to retrieve analytics for. Must be passed as a 2-letter ISO 3166-1 country code. See https://d.to/geo for more information.
    */
-  country?: components.CountryCode | undefined;
+  country?: string | undefined;
   /**
    * The city to retrieve analytics for.
    */
@@ -444,7 +444,7 @@ export const RetrieveAnalyticsRequest$inboundSchema: z.ZodType<
   start: z.string().optional(),
   end: z.string().optional(),
   timezone: z.string().default("UTC"),
-  country: components.CountryCode$inboundSchema.optional(),
+  country: z.string().optional(),
   city: z.string().optional(),
   region: z.string().optional(),
   continent: components.ContinentCode$inboundSchema.optional(),
@@ -538,7 +538,7 @@ export const RetrieveAnalyticsRequest$outboundSchema: z.ZodType<
   start: z.string().optional(),
   end: z.string().optional(),
   timezone: z.string().default("UTC"),
-  country: components.CountryCode$outboundSchema.optional(),
+  country: z.string().optional(),
   city: z.string().optional(),
   region: z.string().optional(),
   continent: components.ContinentCode$outboundSchema.optional(),

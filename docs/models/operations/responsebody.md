@@ -24,22 +24,24 @@ const value: components.LinkSchema = {
   video: "https://picsum.videos/seed/BiaT5u/2981/1563",
   ios: "<value>",
   android: "<id>",
-  geo: {},
+  geo: {
+    "key": "https://hurtful-hospitalization.info",
+    "key1": "https://grave-fork.com",
+  },
   tags: [
     {
       id: "<id>",
       name: "<value>",
-      color: "green",
+      color: "purple",
     },
   ],
   folderId: "<id>",
   webhookIds: [
     "<value 1>",
   ],
-  comments:
-    "instantly even meaningfully glider secret amidst eek after on phooey",
-  shortLink: "https://purple-bourgeoisie.org/",
-  qrCode: "https://unsteady-quart.net/",
+  comments: "whenever nor quarrel clearly wearily and onto towards",
+  shortLink: "https://fearless-exasperation.com/",
+  qrCode: "https://infamous-pasta.com/",
   utmSource: "<value>",
   utmMedium: "<value>",
   utmCampaign: "<value>",
@@ -48,8 +50,8 @@ const value: components.LinkSchema = {
   userId: "<id>",
   workspaceId: "<id>",
   lastClicked: "<value>",
-  createdAt: "1719829856448",
-  updatedAt: "1735608809480",
+  createdAt: "1723184066807",
+  updatedAt: "1735624309631",
   tagId: "<id>",
   projectId: "<id>",
 };

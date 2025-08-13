@@ -21,7 +21,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 typescript:
-  version: 0.64.5
+  version: 0.64.6
   additionalDependencies:
     dependencies: {}
     devDependencies:
@@ -58,4 +58,5 @@ typescript:
   packageName: dub
   responseFormat: flat
   templateVersion: v2
+  usageSDKInitImports: []
   useIndexModules: true

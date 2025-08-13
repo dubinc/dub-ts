@@ -13,5 +13,5 @@ let value: ListPartnersQueryParamSortBy = "saleAmount";
 ## Values
 
 ```typescript
-"createdAt" | "clicks" | "leads" | "sales" | "saleAmount" | "commissions" | "netRevenue"
+"createdAt" | "clicks" | "leads" | "conversions" | "sales" | "saleAmount" | "commissions" | "netRevenue"
 ```
