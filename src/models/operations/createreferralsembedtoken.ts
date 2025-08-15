@@ -195,7 +195,6 @@ export type CreateReferralsEmbedTokenRequestBody = {
   partnerId?: string | undefined;
   tenantId?: string | undefined;
   partner?: Partner | undefined;
-  groupId?: string | undefined;
 };
 
 /**
@@ -619,7 +618,6 @@ export const CreateReferralsEmbedTokenRequestBody$inboundSchema: z.ZodType<
   partnerId: z.string().optional(),
   tenantId: z.string().optional(),
   partner: z.lazy(() => Partner$inboundSchema).optional(),
-  groupId: z.string().optional(),
 });
 
 /** @internal */
@@ -627,7 +625,6 @@ export type CreateReferralsEmbedTokenRequestBody$Outbound = {
   partnerId?: string | undefined;
   tenantId?: string | undefined;
   partner?: Partner$Outbound | undefined;
-  groupId?: string | undefined;
 };
 
 /** @internal */
@@ -639,7 +636,6 @@ export const CreateReferralsEmbedTokenRequestBody$outboundSchema: z.ZodType<
   partnerId: z.string().optional(),
   tenantId: z.string().optional(),
   partner: z.lazy(() => Partner$outboundSchema).optional(),
-  groupId: z.string().optional(),
 });
 
 /**
