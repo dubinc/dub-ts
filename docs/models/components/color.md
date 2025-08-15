@@ -7,11 +7,11 @@ The color of the tag.
 ```typescript
 import { Color } from "dub/models/components";
 
-let value: Color = "pink";
+let value: Color = "brown";
 ```
 
 ## Values
 
 ```typescript
-"red" | "yellow" | "green" | "blue" | "purple" | "pink" | "brown"
+"red" | "yellow" | "green" | "blue" | "purple" | "brown" | "pink"
 ```

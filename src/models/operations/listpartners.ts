@@ -212,6 +212,14 @@ export type ListPartnersResponseBody = {
    */
   payoutsEnabledAt: string | null;
   /**
+   * The program's unique ID on Dub.
+   */
+  programId: string;
+  /**
+   * The partner's group ID on Dub.
+   */
+  groupId?: string | null | undefined;
+  /**
    * The partner's unique ID on Dub.
    */
   partnerId: string;
@@ -219,10 +227,6 @@ export type ListPartnersResponseBody = {
    * The partner's unique ID within your database. Can be useful for associating the partner with a user in your database and retrieving/update their data in the future.
    */
   tenantId: string | null;
-  /**
-   * The program's unique ID on Dub.
-   */
-  programId: string;
   createdAt: string;
   /**
    * The status of the partner's enrollment in the program.
@@ -587,9 +591,10 @@ export const ListPartnersResponseBody$inboundSchema: z.ZodType<
   paypalEmail: z.nullable(z.string()),
   stripeConnectId: z.nullable(z.string()),
   payoutsEnabledAt: z.nullable(z.string()),
+  programId: z.string(),
+  groupId: z.nullable(z.string()).optional(),
   partnerId: z.string(),
   tenantId: z.nullable(z.string()),
-  programId: z.string(),
   createdAt: z.string(),
   status: ListPartnersStatus$inboundSchema,
   links: z.nullable(z.array(z.lazy(() => ListPartnersLink$inboundSchema))),
@@ -635,9 +640,10 @@ export type ListPartnersResponseBody$Outbound = {
   paypalEmail: string | null;
   stripeConnectId: string | null;
   payoutsEnabledAt: string | null;
+  programId: string;
+  groupId?: string | null | undefined;
   partnerId: string;
   tenantId: string | null;
-  programId: string;
   createdAt: string;
   status: string;
   links: Array<ListPartnersLink$Outbound> | null;
@@ -687,9 +693,10 @@ export const ListPartnersResponseBody$outboundSchema: z.ZodType<
   paypalEmail: z.nullable(z.string()),
   stripeConnectId: z.nullable(z.string()),
   payoutsEnabledAt: z.nullable(z.string()),
+  programId: z.string(),
+  groupId: z.nullable(z.string()).optional(),
   partnerId: z.string(),
   tenantId: z.nullable(z.string()),
-  programId: z.string(),
   createdAt: z.string(),
   status: ListPartnersStatus$outboundSchema,
   links: z.nullable(z.array(z.lazy(() => ListPartnersLink$outboundSchema))),

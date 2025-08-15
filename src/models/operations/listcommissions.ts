@@ -97,6 +97,10 @@ export type ListCommissionsRequest = {
    */
   partnerId?: string | undefined;
   /**
+   * Filter the list of commissions by the associated partner group.
+   */
+  groupId?: string | undefined;
+  /**
    * Filter the list of commissions by the associated invoice. Since invoiceId is unique on a per-program basis, this will only return one commission per invoice.
    */
   invoiceId?: string | undefined;
@@ -358,6 +362,7 @@ export const ListCommissionsRequest$inboundSchema: z.ZodType<
   customerId: z.string().optional(),
   payoutId: z.string().optional(),
   partnerId: z.string().optional(),
+  groupId: z.string().optional(),
   invoiceId: z.string().optional(),
   status: QueryParamStatus$inboundSchema.optional(),
   sortBy: ListCommissionsQueryParamSortBy$inboundSchema.default("createdAt"),
@@ -375,6 +380,7 @@ export type ListCommissionsRequest$Outbound = {
   customerId?: string | undefined;
   payoutId?: string | undefined;
   partnerId?: string | undefined;
+  groupId?: string | undefined;
   invoiceId?: string | undefined;
   status?: string | undefined;
   sortBy: string;
@@ -396,6 +402,7 @@ export const ListCommissionsRequest$outboundSchema: z.ZodType<
   customerId: z.string().optional(),
   payoutId: z.string().optional(),
   partnerId: z.string().optional(),
+  groupId: z.string().optional(),
   invoiceId: z.string().optional(),
   status: QueryParamStatus$outboundSchema.optional(),
   sortBy: ListCommissionsQueryParamSortBy$outboundSchema.default("createdAt"),

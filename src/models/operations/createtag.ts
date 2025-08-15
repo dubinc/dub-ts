@@ -9,7 +9,7 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
- * The color of the tag. If not provided, a random color will be used from the list: red, yellow, green, blue, purple, pink, brown.
+ * The color of the tag. If not provided, a random color will be used from the list: red, yellow, green, blue, purple, brown.
  */
 export const Color = {
   Red: "red",
@@ -17,11 +17,11 @@ export const Color = {
   Green: "green",
   Blue: "blue",
   Purple: "purple",
-  Pink: "pink",
   Brown: "brown",
+  Pink: "pink",
 } as const;
 /**
- * The color of the tag. If not provided, a random color will be used from the list: red, yellow, green, blue, purple, pink, brown.
+ * The color of the tag. If not provided, a random color will be used from the list: red, yellow, green, blue, purple, brown.
  */
 export type Color = ClosedEnum<typeof Color>;
 
@@ -31,7 +31,7 @@ export type CreateTagRequestBody = {
    */
   name?: string | undefined;
   /**
-   * The color of the tag. If not provided, a random color will be used from the list: red, yellow, green, blue, purple, pink, brown.
+   * The color of the tag. If not provided, a random color will be used from the list: red, yellow, green, blue, purple, brown.
    */
   color?: Color | undefined;
   /**

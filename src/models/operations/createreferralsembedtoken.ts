@@ -174,6 +174,10 @@ export type Partner = {
    */
   tenantId?: string | undefined;
   /**
+   * The group ID to add the partner to. If not provided, the partner will be added to the default group.
+   */
+  groupId?: string | undefined;
+  /**
    * The partner's country of residence. Must be passed as a 2-letter ISO 3166-1 country code. See https://d.to/geo for more information.
    */
   country?: string | null | undefined;
@@ -191,6 +195,7 @@ export type CreateReferralsEmbedTokenRequestBody = {
   partnerId?: string | undefined;
   tenantId?: string | undefined;
   partner?: Partner | undefined;
+  groupId?: string | undefined;
 };
 
 /**
@@ -540,6 +545,7 @@ export const Partner$inboundSchema: z.ZodType<Partner, z.ZodTypeDef, unknown> =
     username: z.nullable(z.string()).optional(),
     image: z.nullable(z.string()).optional(),
     tenantId: z.string().optional(),
+    groupId: z.string().optional(),
     country: z.nullable(z.string()).optional(),
     description: z.nullable(z.string()).optional(),
     linkProps: z.lazy(() => CreateReferralsEmbedTokenLinkProps$inboundSchema)
@@ -553,6 +559,7 @@ export type Partner$Outbound = {
   username?: string | null | undefined;
   image?: string | null | undefined;
   tenantId?: string | undefined;
+  groupId?: string | undefined;
   country?: string | null | undefined;
   description?: string | null | undefined;
   linkProps?: CreateReferralsEmbedTokenLinkProps$Outbound | undefined;
@@ -569,6 +576,7 @@ export const Partner$outboundSchema: z.ZodType<
   username: z.nullable(z.string()).optional(),
   image: z.nullable(z.string()).optional(),
   tenantId: z.string().optional(),
+  groupId: z.string().optional(),
   country: z.nullable(z.string()).optional(),
   description: z.nullable(z.string()).optional(),
   linkProps: z.lazy(() => CreateReferralsEmbedTokenLinkProps$outboundSchema)
@@ -611,6 +619,7 @@ export const CreateReferralsEmbedTokenRequestBody$inboundSchema: z.ZodType<
   partnerId: z.string().optional(),
   tenantId: z.string().optional(),
   partner: z.lazy(() => Partner$inboundSchema).optional(),
+  groupId: z.string().optional(),
 });
 
 /** @internal */
@@ -618,6 +627,7 @@ export type CreateReferralsEmbedTokenRequestBody$Outbound = {
   partnerId?: string | undefined;
   tenantId?: string | undefined;
   partner?: Partner$Outbound | undefined;
+  groupId?: string | undefined;
 };
 
 /** @internal */
@@ -629,6 +639,7 @@ export const CreateReferralsEmbedTokenRequestBody$outboundSchema: z.ZodType<
   partnerId: z.string().optional(),
   tenantId: z.string().optional(),
   partner: z.lazy(() => Partner$outboundSchema).optional(),
+  groupId: z.string().optional(),
 });
 
 /**
