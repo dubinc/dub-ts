@@ -17,8 +17,8 @@ export const Color = {
   Green: "green",
   Blue: "blue",
   Purple: "purple",
-  Pink: "pink",
   Brown: "brown",
+  Pink: "pink",
 } as const;
 /**
  * The color of the tag.

@@ -12,7 +12,6 @@ let value: CreateCustomerDiscount = {
   maxDuration: 8335.73,
   couponId: "<id>",
   couponTestId: null,
-  default: true,
 };
 ```
 
@@ -28,4 +27,3 @@ let value: CreateCustomerDiscount = {
 | `couponId`                                                                     | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
 | `couponTestId`                                                                 | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
 | `partnersCount`                                                                | *number*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `default`                                                                      | *boolean*                                                                      | :heavy_check_mark:                                                             | N/A                                                                            |

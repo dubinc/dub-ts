@@ -101,7 +101,6 @@ export type UpdateCustomerDiscount = {
   couponId: string | null;
   couponTestId: string | null;
   partnersCount?: number | null | undefined;
-  default: boolean;
 };
 
 /**
@@ -449,7 +448,6 @@ export const UpdateCustomerDiscount$inboundSchema: z.ZodType<
   couponId: z.nullable(z.string()),
   couponTestId: z.nullable(z.string()),
   partnersCount: z.nullable(z.number()).optional(),
-  default: z.boolean(),
 });
 
 /** @internal */
@@ -462,7 +460,6 @@ export type UpdateCustomerDiscount$Outbound = {
   couponId: string | null;
   couponTestId: string | null;
   partnersCount?: number | null | undefined;
-  default: boolean;
 };
 
 /** @internal */
@@ -479,7 +476,6 @@ export const UpdateCustomerDiscount$outboundSchema: z.ZodType<
   couponId: z.nullable(z.string()),
   couponTestId: z.nullable(z.string()),
   partnersCount: z.nullable(z.number()).optional(),
-  default: z.boolean(),
 });
 
 /**

@@ -111,6 +111,7 @@ async function $do(
   const query = encodeFormQuery({
     "customerId": payload?.customerId,
     "end": payload?.end,
+    "groupId": payload?.groupId,
     "interval": payload?.interval,
     "invoiceId": payload?.invoiceId,
     "page": payload?.page,

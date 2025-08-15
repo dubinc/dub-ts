@@ -172,6 +172,10 @@ export type CreatePartnerRequestBody = {
    */
   tenantId?: string | undefined;
   /**
+   * The group ID to add the partner to. If not provided, the partner will be added to the default group.
+   */
+  groupId?: string | undefined;
+  /**
    * The partner's country of residence. Must be passed as a 2-letter ISO 3166-1 country code. See https://d.to/geo for more information.
    */
   country?: string | null | undefined;
@@ -298,6 +302,14 @@ export type CreatePartnerResponseBody = {
    */
   payoutsEnabledAt: string | null;
   /**
+   * The program's unique ID on Dub.
+   */
+  programId: string;
+  /**
+   * The partner's group ID on Dub.
+   */
+  groupId?: string | null | undefined;
+  /**
    * The partner's unique ID on Dub.
    */
   partnerId: string;
@@ -305,10 +317,6 @@ export type CreatePartnerResponseBody = {
    * The partner's unique ID within your database. Can be useful for associating the partner with a user in your database and retrieving/update their data in the future.
    */
   tenantId: string | null;
-  /**
-   * The program's unique ID on Dub.
-   */
-  programId: string;
   createdAt: string;
   /**
    * The status of the partner's enrollment in the program.
@@ -718,6 +726,7 @@ export const CreatePartnerRequestBody$inboundSchema: z.ZodType<
   username: z.nullable(z.string()).optional(),
   image: z.nullable(z.string()).optional(),
   tenantId: z.string().optional(),
+  groupId: z.string().optional(),
   country: z.nullable(z.string()).optional(),
   description: z.nullable(z.string()).optional(),
   linkProps: z.lazy(() => LinkProps$inboundSchema).optional(),
@@ -730,6 +739,7 @@ export type CreatePartnerRequestBody$Outbound = {
   username?: string | null | undefined;
   image?: string | null | undefined;
   tenantId?: string | undefined;
+  groupId?: string | undefined;
   country?: string | null | undefined;
   description?: string | null | undefined;
   linkProps?: LinkProps$Outbound | undefined;
@@ -746,6 +756,7 @@ export const CreatePartnerRequestBody$outboundSchema: z.ZodType<
   username: z.nullable(z.string()).optional(),
   image: z.nullable(z.string()).optional(),
   tenantId: z.string().optional(),
+  groupId: z.string().optional(),
   country: z.nullable(z.string()).optional(),
   description: z.nullable(z.string()).optional(),
   linkProps: z.lazy(() => LinkProps$outboundSchema).optional(),
@@ -915,9 +926,10 @@ export const CreatePartnerResponseBody$inboundSchema: z.ZodType<
   paypalEmail: z.nullable(z.string()),
   stripeConnectId: z.nullable(z.string()),
   payoutsEnabledAt: z.nullable(z.string()),
+  programId: z.string(),
+  groupId: z.nullable(z.string()).optional(),
   partnerId: z.string(),
   tenantId: z.nullable(z.string()),
-  programId: z.string(),
   createdAt: z.string(),
   status: CreatePartnerStatus$inboundSchema,
   links: z.nullable(z.array(z.lazy(() => CreatePartnerLink$inboundSchema))),
@@ -963,9 +975,10 @@ export type CreatePartnerResponseBody$Outbound = {
   paypalEmail: string | null;
   stripeConnectId: string | null;
   payoutsEnabledAt: string | null;
+  programId: string;
+  groupId?: string | null | undefined;
   partnerId: string;
   tenantId: string | null;
-  programId: string;
   createdAt: string;
   status: string;
   links: Array<CreatePartnerLink$Outbound> | null;
@@ -1015,9 +1028,10 @@ export const CreatePartnerResponseBody$outboundSchema: z.ZodType<
   paypalEmail: z.nullable(z.string()),
   stripeConnectId: z.nullable(z.string()),
   payoutsEnabledAt: z.nullable(z.string()),
+  programId: z.string(),
+  groupId: z.nullable(z.string()).optional(),
   partnerId: z.string(),
   tenantId: z.nullable(z.string()),
-  programId: z.string(),
   createdAt: z.string(),
   status: CreatePartnerStatus$outboundSchema,
   links: z.nullable(z.array(z.lazy(() => CreatePartnerLink$outboundSchema))),

@@ -154,6 +154,10 @@ export type WorkspaceSchema = {
    */
   foldersLimit: number;
   /**
+   * The groups limit of the workspace.
+   */
+  groupsLimit: number;
+  /**
    * The users limit of the workspace.
    */
   usersLimit: number;
@@ -370,6 +374,7 @@ export const WorkspaceSchema$inboundSchema: z.ZodType<
   tagsLimit: z.number(),
   foldersUsage: z.number(),
   foldersLimit: z.number(),
+  groupsLimit: z.number(),
   usersLimit: z.number(),
   aiUsage: z.number(),
   aiLimit: z.number(),
@@ -407,6 +412,7 @@ export type WorkspaceSchema$Outbound = {
   tagsLimit: number;
   foldersUsage: number;
   foldersLimit: number;
+  groupsLimit: number;
   usersLimit: number;
   aiUsage: number;
   aiLimit: number;
@@ -448,6 +454,7 @@ export const WorkspaceSchema$outboundSchema: z.ZodType<
   tagsLimit: z.number(),
   foldersUsage: z.number(),
   foldersLimit: z.number(),
+  groupsLimit: z.number(),
   usersLimit: z.number(),
   aiUsage: z.number(),
   aiLimit: z.number(),

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: 00e9cb618de1aa64fa27e627bfbce787
+  docChecksum: 2a34f64885b79ea2ff260d159be85746
   docVersion: 0.0.1
-  speakeasyVersion: 1.603.2
-  generationVersion: 2.681.8
-  releaseVersion: 0.64.6
-  configChecksum: 75aad75894e35234bb01e33987141624
+  speakeasyVersion: 1.605.0
+  generationVersion: 2.684.0
+  releaseVersion: 0.65.0
+  configChecksum: 250a18966dc943fa930e8f8d184f56e8
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -27,7 +27,6 @@ features:
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.5
     includes: 2.81.1
-    mcpServer: 0.9.3
     methodArguments: 0.1.2
     nameOverrides: 2.81.2
     nullables: 0.1.1
@@ -451,64 +450,6 @@ generatedFiles:
   - src/lib/sdks.ts
   - src/lib/security.ts
   - src/lib/url.ts
-  - src/mcp-server/build.mts
-  - src/mcp-server/cli.ts
-  - src/mcp-server/cli/start/command.ts
-  - src/mcp-server/cli/start/impl.ts
-  - src/mcp-server/console-logger.ts
-  - src/mcp-server/extensions.ts
-  - src/mcp-server/mcp-server.ts
-  - src/mcp-server/prompts.ts
-  - src/mcp-server/resources.ts
-  - src/mcp-server/scopes.ts
-  - src/mcp-server/server.ts
-  - src/mcp-server/shared.ts
-  - src/mcp-server/tools.ts
-  - src/mcp-server/tools/analyticsRetrieve.ts
-  - src/mcp-server/tools/commissionsList.ts
-  - src/mcp-server/tools/commissionsUpdate.ts
-  - src/mcp-server/tools/customersCreate.ts
-  - src/mcp-server/tools/customersDelete.ts
-  - src/mcp-server/tools/customersGet.ts
-  - src/mcp-server/tools/customersList.ts
-  - src/mcp-server/tools/customersUpdate.ts
-  - src/mcp-server/tools/domainsCheckStatus.ts
-  - src/mcp-server/tools/domainsCreate.ts
-  - src/mcp-server/tools/domainsDelete.ts
-  - src/mcp-server/tools/domainsList.ts
-  - src/mcp-server/tools/domainsRegister.ts
-  - src/mcp-server/tools/domainsUpdate.ts
-  - src/mcp-server/tools/embedTokensReferrals.ts
-  - src/mcp-server/tools/eventsList.ts
-  - src/mcp-server/tools/foldersCreate.ts
-  - src/mcp-server/tools/foldersDelete.ts
-  - src/mcp-server/tools/foldersList.ts
-  - src/mcp-server/tools/foldersUpdate.ts
-  - src/mcp-server/tools/linksCount.ts
-  - src/mcp-server/tools/linksCreate.ts
-  - src/mcp-server/tools/linksCreateMany.ts
-  - src/mcp-server/tools/linksDelete.ts
-  - src/mcp-server/tools/linksDeleteMany.ts
-  - src/mcp-server/tools/linksGet.ts
-  - src/mcp-server/tools/linksList.ts
-  - src/mcp-server/tools/linksUpdate.ts
-  - src/mcp-server/tools/linksUpdateMany.ts
-  - src/mcp-server/tools/linksUpsert.ts
-  - src/mcp-server/tools/partnersAnalytics.ts
-  - src/mcp-server/tools/partnersCreate.ts
-  - src/mcp-server/tools/partnersCreateLink.ts
-  - src/mcp-server/tools/partnersList.ts
-  - src/mcp-server/tools/partnersRetrieveLinks.ts
-  - src/mcp-server/tools/partnersUpsertLink.ts
-  - src/mcp-server/tools/qrCodesGet.ts
-  - src/mcp-server/tools/tagsCreate.ts
-  - src/mcp-server/tools/tagsDelete.ts
-  - src/mcp-server/tools/tagsList.ts
-  - src/mcp-server/tools/tagsUpdate.ts
-  - src/mcp-server/tools/trackLead.ts
-  - src/mcp-server/tools/trackSale.ts
-  - src/mcp-server/tools/workspacesGet.ts
-  - src/mcp-server/tools/workspacesUpdate.ts
   - src/models/components/analyticsbrowsers.ts
   - src/models/components/analyticscities.ts
   - src/models/components/analyticscontinents.ts
@@ -1451,7 +1392,7 @@ examples:
     speakeasy-default-create-partner:
       responses:
         "201":
-          application/json: {"id": "<id>", "name": "<value>", "email": "Summer50@yahoo.com", "image": "https://picsum.photos/seed/w6UEY4ogD/1950/1872", "country": "Venezuela", "paypalEmail": "<value>", "stripeConnectId": "<id>", "payoutsEnabledAt": "<value>", "partnerId": "<id>", "tenantId": "<id>", "programId": "<id>", "createdAt": "1721295968119", "status": "approved", "links": [{"id": "<id>", "domain": "stylish-deer.info", "key": "<key>", "shortLink": "https://juvenile-declaration.net", "url": "https://exhausted-editor.org", "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0}], "totalCommissions": 0, "clicks": 0, "leads": 0, "conversions": 0, "sales": 0, "saleAmount": 0, "netRevenue": 0}
+          application/json: {"id": "<id>", "name": "<value>", "email": "Summer50@yahoo.com", "image": "https://picsum.photos/seed/w6UEY4ogD/1950/1872", "country": "Venezuela", "paypalEmail": "<value>", "stripeConnectId": "<id>", "payoutsEnabledAt": "<value>", "programId": "<id>", "partnerId": "<id>", "tenantId": "<id>", "createdAt": "1721295968119", "status": "approved", "links": [{"id": "<id>", "domain": "stylish-deer.info", "key": "<key>", "shortLink": "https://juvenile-declaration.net", "url": "https://exhausted-editor.org", "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0}], "totalCommissions": 0, "clicks": 0, "leads": 0, "conversions": 0, "sales": 0, "saleAmount": 0, "netRevenue": 0}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1600,7 +1541,7 @@ examples:
           idOrSlug: "<value>"
       responses:
         "200":
-          application/json: {"id": "<id>", "name": "<value>", "slug": "<value>", "logo": null, "inviteCode": "<value>", "plan": "business max", "stripeId": "<id>", "billingCycleStart": 8266.32, "paymentFailedAt": "<value>", "stripeConnectId": "<id>", "totalLinks": 1378.83, "usage": 2392.88, "usageLimit": 402.3, "linksUsage": 7273.44, "linksLimit": 9583.5, "payoutsUsage": 6544.94, "payoutsLimit": 8266.32, "payoutFee": 6544.94, "domainsLimit": 9444.18, "tagsLimit": 3440.64, "foldersUsage": 9717.42, "foldersLimit": 7249.67, "usersLimit": 5932.4, "aiUsage": 4075.34, "aiLimit": 4898.74, "conversionEnabled": false, "dotLinkClaimed": false, "createdAt": "1719645723163", "users": [{"role": "member", "defaultFolderId": "<id>"}, {"role": "member", "defaultFolderId": "<id>"}, {"role": "member", "defaultFolderId": "<id>"}], "domains": [{"slug": "acme.com", "primary": false, "verified": false}, {"slug": "acme.com", "primary": false, "verified": false}], "store": {"key": "<value>"}, "allowedHostnames": ["dub.sh"]}
+          application/json: {"id": "<id>", "name": "<value>", "slug": "<value>", "logo": null, "inviteCode": "<value>", "plan": "business max", "stripeId": "<id>", "billingCycleStart": 8266.32, "paymentFailedAt": "<value>", "stripeConnectId": "<id>", "totalLinks": 1378.83, "usage": 2392.88, "usageLimit": 402.3, "linksUsage": 7273.44, "linksLimit": 9583.5, "payoutsUsage": 6544.94, "payoutsLimit": 8266.32, "payoutFee": 6544.94, "domainsLimit": 9444.18, "tagsLimit": 3440.64, "foldersUsage": 9717.42, "foldersLimit": 7249.67, "groupsLimit": 6544.94, "usersLimit": 5932.4, "aiUsage": 4075.34, "aiLimit": 4898.74, "conversionEnabled": false, "dotLinkClaimed": false, "createdAt": "1719645723163", "users": [{"role": "member", "defaultFolderId": "<id>"}, {"role": "member", "defaultFolderId": "<id>"}, {"role": "member", "defaultFolderId": "<id>"}], "domains": [{"slug": "acme.com", "primary": false, "verified": false}, {"slug": "acme.com", "primary": false, "verified": false}], "store": {"key": "<value>"}, "allowedHostnames": ["dub.sh"]}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1626,7 +1567,7 @@ examples:
           idOrSlug: "<value>"
       responses:
         "200":
-          application/json: {"id": "<id>", "name": "<value>", "slug": "<value>", "logo": null, "inviteCode": "<value>", "plan": "business", "stripeId": "<id>", "billingCycleStart": 6751.25, "paymentFailedAt": "<value>", "stripeConnectId": "<id>", "totalLinks": 217.76, "usage": 2028.85, "usageLimit": 7509.63, "linksUsage": 6390.88, "linksLimit": 5728.58, "payoutsUsage": 3164.81, "payoutsLimit": 6751.25, "payoutFee": 3164.81, "domainsLimit": 5981.08, "tagsLimit": 2040.39, "foldersUsage": 9329.44, "foldersLimit": 9097.44, "usersLimit": 4731.38, "aiUsage": 7848.2, "aiLimit": 9885.62, "conversionEnabled": false, "dotLinkClaimed": false, "createdAt": "1736936859523", "users": [{"role": "owner", "defaultFolderId": "<id>"}], "domains": [{"slug": "acme.com", "primary": false, "verified": false}, {"slug": "acme.com", "primary": false, "verified": false}, {"slug": "acme.com", "primary": false, "verified": false}], "store": {"key": "<value>"}, "allowedHostnames": ["dub.sh"]}
+          application/json: {"id": "<id>", "name": "<value>", "slug": "<value>", "logo": null, "inviteCode": "<value>", "plan": "business", "stripeId": "<id>", "billingCycleStart": 6751.25, "paymentFailedAt": "<value>", "stripeConnectId": "<id>", "totalLinks": 217.76, "usage": 2028.85, "usageLimit": 7509.63, "linksUsage": 6390.88, "linksLimit": 5728.58, "payoutsUsage": 3164.81, "payoutsLimit": 6751.25, "payoutFee": 3164.81, "domainsLimit": 5981.08, "tagsLimit": 2040.39, "foldersUsage": 9329.44, "foldersLimit": 9097.44, "groupsLimit": 3164.81, "usersLimit": 4731.38, "aiUsage": 7848.2, "aiLimit": 9885.62, "conversionEnabled": false, "dotLinkClaimed": false, "createdAt": "1736936859523", "users": [{"role": "owner", "defaultFolderId": "<id>"}], "domains": [{"slug": "acme.com", "primary": false, "verified": false}, {"slug": "acme.com", "primary": false, "verified": false}, {"slug": "acme.com", "primary": false, "verified": false}], "store": {"key": "<value>"}, "allowedHostnames": ["dub.sh"]}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1816,7 +1757,7 @@ examples:
           pageSize: 50
       responses:
         "200":
-          application/json: [{"id": "<id>", "name": "<value>", "email": "Margret.Kuvalis12@hotmail.com", "image": "https://loremflickr.com/1672/969?lock=7633694569087148", "country": "Uruguay", "paypalEmail": "<value>", "stripeConnectId": "<id>", "payoutsEnabledAt": "<value>", "partnerId": "<id>", "tenantId": "<id>", "programId": "<id>", "createdAt": "1726913447345", "status": "declined", "links": [{"id": "<id>", "domain": "scared-knuckle.info", "key": "<key>", "shortLink": "https://granular-hammock.name/", "url": "https://vivacious-finding.biz", "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0}], "totalCommissions": 0, "clicks": 0, "leads": 0, "conversions": 0, "sales": 0, "saleAmount": 0, "netRevenue": 0}]
+          application/json: [{"id": "<id>", "name": "<value>", "email": "Margret.Kuvalis12@hotmail.com", "image": "https://loremflickr.com/1672/969?lock=7633694569087148", "country": "Uruguay", "paypalEmail": "<value>", "stripeConnectId": "<id>", "payoutsEnabledAt": "<value>", "programId": "<id>", "partnerId": "<id>", "tenantId": "<id>", "createdAt": "1726913447345", "status": "declined", "links": [{"id": "<id>", "domain": "scared-knuckle.info", "key": "<key>", "shortLink": "https://granular-hammock.name/", "url": "https://vivacious-finding.biz", "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0}], "totalCommissions": 0, "clicks": 0, "leads": 0, "conversions": 0, "sales": 0, "saleAmount": 0, "netRevenue": 0}]
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1837,3 +1778,4 @@ examples:
           application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## SDK Changes Detected:\n* `dub.customers.list()`:  `response.[].discount.default` **Removed** **Breaking** :warning:\n* `dub.customers.create()`:  `response.discount.default` **Removed** **Breaking** :warning:\n* `dub.customers.get()`:  `response.discount.default` **Removed** **Breaking** :warning:\n* `dub.customers.update()`:  `response.discount.default` **Removed** **Breaking** :warning:\n* `dub.partners.list()`:  `response.[].groupId` **Added**\n* `dub.partners.create()`: \n  *  `request.groupId` **Added**\n  *  `response.groupid` **Added**\n* `dub.commissions.list()`: \n  *  `request.groupId` **Added**\n* `dub.workspaces.get()`:  `response.groupslimit` **Added**\n* `dub.workspaces.update()`:  `response.groupslimit` **Added**\n* `dub.embedTokens.referrals()`:  `request` **Changed**\n"
