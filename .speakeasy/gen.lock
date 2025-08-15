@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: 2a34f64885b79ea2ff260d159be85746
+  docChecksum: 64c08a7e1037074263a9f1706320cff8
   docVersion: 0.0.1
   speakeasyVersion: 1.605.0
   generationVersion: 2.684.0
-  releaseVersion: 0.65.0
-  configChecksum: 250a18966dc943fa930e8f8d184f56e8
+  releaseVersion: 0.65.1
+  configChecksum: 3ee96118cda15697e0d6d5ad0f62f63f
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -1778,4 +1778,4 @@ examples:
           application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## SDK Changes Detected:\n* `dub.customers.list()`:  `response.[].discount.default` **Removed** **Breaking** :warning:\n* `dub.customers.create()`:  `response.discount.default` **Removed** **Breaking** :warning:\n* `dub.customers.get()`:  `response.discount.default` **Removed** **Breaking** :warning:\n* `dub.customers.update()`:  `response.discount.default` **Removed** **Breaking** :warning:\n* `dub.partners.list()`:  `response.[].groupId` **Added**\n* `dub.partners.create()`: \n  *  `request.groupId` **Added**\n  *  `response.groupid` **Added**\n* `dub.commissions.list()`: \n  *  `request.groupId` **Added**\n* `dub.workspaces.get()`:  `response.groupslimit` **Added**\n* `dub.workspaces.update()`:  `response.groupslimit` **Added**\n* `dub.embedTokens.referrals()`:  `request` **Changed**\n"
+releaseNotes: "## SDK Changes Detected:\n* `dub.embedTokens.referrals()`: \n  *  `request.groupId` **Removed** **Breaking** :warning:\n"
