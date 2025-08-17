@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: 64c08a7e1037074263a9f1706320cff8
+  docChecksum: a235acfd26dc6b8527ab58849870a5ad
   docVersion: 0.0.1
-  speakeasyVersion: 1.605.0
+  speakeasyVersion: 1.605.1
   generationVersion: 2.684.0
-  releaseVersion: 0.65.1
-  configChecksum: 3ee96118cda15697e0d6d5ad0f62f63f
+  releaseVersion: 0.66.0
+  configChecksum: 1af56bd215ea7740f0ab88f5e84fc683
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -26,6 +26,7 @@ features:
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.5
+    ignores: 2.81.1
     includes: 2.81.1
     methodArguments: 0.1.2
     nameOverrides: 2.81.2
@@ -1778,4 +1779,3 @@ examples:
           application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## SDK Changes Detected:\n* `dub.embedTokens.referrals()`: \n  *  `request.groupId` **Removed** **Breaking** :warning:\n"
