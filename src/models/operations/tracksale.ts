@@ -44,7 +44,7 @@ export type TrackSaleRequestBody = {
   /**
    * The payment processor via which the sale was made.
    */
-  paymentProcessor: PaymentProcessor;
+  paymentProcessor?: PaymentProcessor | undefined;
   /**
    * The invoice ID of the sale. Can be used as a idempotency key – only one sale event can be recorded for a given invoice ID.
    */
@@ -115,7 +115,7 @@ export const TrackSaleRequestBody$inboundSchema: z.ZodType<
   amount: z.number().int(),
   currency: z.string().default("usd"),
   eventName: z.string().default("Purchase"),
-  paymentProcessor: PaymentProcessor$inboundSchema,
+  paymentProcessor: PaymentProcessor$inboundSchema.default("custom"),
   invoiceId: z.nullable(z.string()).default(null),
   leadEventName: z.nullable(z.string()).default(null),
   metadata: z.nullable(z.record(z.any())).optional(),
@@ -143,7 +143,7 @@ export const TrackSaleRequestBody$outboundSchema: z.ZodType<
   amount: z.number().int(),
   currency: z.string().default("usd"),
   eventName: z.string().default("Purchase"),
-  paymentProcessor: PaymentProcessor$outboundSchema,
+  paymentProcessor: PaymentProcessor$outboundSchema.default("custom"),
   invoiceId: z.nullable(z.string()).default(null),
   leadEventName: z.nullable(z.string()).default(null),
   metadata: z.nullable(z.record(z.any())).optional(),
