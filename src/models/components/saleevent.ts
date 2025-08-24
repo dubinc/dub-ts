@@ -48,7 +48,7 @@ export type Sale = {
   /**
    * The payment processor via which the sale was made.
    */
-  paymentProcessor: PaymentProcessor;
+  paymentProcessor?: PaymentProcessor | undefined;
 };
 
 export type SaleEventTestVariants = {
@@ -430,7 +430,7 @@ export const Sale$inboundSchema: z.ZodType<Sale, z.ZodTypeDef, unknown> = z
   .object({
     amount: z.number().int(),
     invoiceId: z.nullable(z.string()).default(null),
-    paymentProcessor: PaymentProcessor$inboundSchema,
+    paymentProcessor: PaymentProcessor$inboundSchema.default("custom"),
   });
 
 /** @internal */
@@ -445,7 +445,7 @@ export const Sale$outboundSchema: z.ZodType<Sale$Outbound, z.ZodTypeDef, Sale> =
   z.object({
     amount: z.number().int(),
     invoiceId: z.nullable(z.string()).default(null),
-    paymentProcessor: PaymentProcessor$outboundSchema,
+    paymentProcessor: PaymentProcessor$outboundSchema.default("custom"),
   });
 
 /**
