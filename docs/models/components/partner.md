@@ -12,6 +12,12 @@ let value: Partner = {
   image: "https://picsum.photos/seed/zZ9tKq6TWE/1719/3289",
   payoutsEnabledAt: "<value>",
   country: null,
+  totalClicks: 2118.44,
+  totalLeads: 1582.91,
+  totalConversions: 3164.01,
+  totalSales: 8254.1,
+  totalSaleAmount: 9649.66,
+  totalCommissions: 5477.98,
 };
 ```
 
@@ -25,3 +31,9 @@ let value: Partner = {
 | `image`                                                           | *string*                                                          | :heavy_check_mark:                                                | The partner's avatar image.                                       |
 | `payoutsEnabledAt`                                                | *string*                                                          | :heavy_check_mark:                                                | The date when the partner enabled payouts.                        |
 | `country`                                                         | *string*                                                          | :heavy_check_mark:                                                | The partner's country (required for tax purposes).                |
+| `totalClicks`                                                     | *number*                                                          | :heavy_check_mark:                                                | N/A                                                               |
+| `totalLeads`                                                      | *number*                                                          | :heavy_check_mark:                                                | N/A                                                               |
+| `totalConversions`                                                | *number*                                                          | :heavy_check_mark:                                                | N/A                                                               |
+| `totalSales`                                                      | *number*                                                          | :heavy_check_mark:                                                | N/A                                                               |
+| `totalSaleAmount`                                                 | *number*                                                          | :heavy_check_mark:                                                | N/A                                                               |
+| `totalCommissions`                                                | *number*                                                          | :heavy_check_mark:                                                | N/A                                                               |

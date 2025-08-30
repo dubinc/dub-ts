@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: b064e9938ff571586b1d703bf639a40f
+  docChecksum: f2d78471adf5b41f29967a9b4fe89ba5
   docVersion: 0.0.1
-  speakeasyVersion: 1.606.3
-  generationVersion: 2.687.1
-  releaseVersion: 0.66.1
-  configChecksum: 4e418bd885ea49aa0c2db7cd16fc53f4
+  speakeasyVersion: 1.606.9
+  generationVersion: 2.687.13
+  releaseVersion: 0.66.2
+  configChecksum: fccf183b95a40aa07f28dfccebd74c96
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -1779,4 +1779,3 @@ examples:
           application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## SDK Changes Detected:\n* `dub.workspaces.update()`: \n  *  `requestbody.allowedHostnames` **Removed** **Breaking** :warning:\n* `dub.events.list()`:  `response.[].[sale].sale.paymentProcessor` **Changed**\n* `dub.track.sale()`: \n  *  `request.paymentProcessor` **Changed**\n"
