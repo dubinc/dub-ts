@@ -67,6 +67,10 @@ export type DomainSchema = {
    */
   notFoundUrl: string | null;
   /**
+   * The logo of the domain.
+   */
+  logo: string | null;
+  /**
    * assetLinks.json configuration file (for deep link support on Android).
    */
   assetLinks?: string | null | undefined;
@@ -74,10 +78,6 @@ export type DomainSchema = {
    * apple-app-site-association configuration file (for deep link support on iOS).
    */
   appleAppSiteAssociation?: string | null | undefined;
-  /**
-   * The logo of the domain.
-   */
-  logo: string | null;
   /**
    * The date the domain was created.
    */
@@ -172,9 +172,9 @@ export const DomainSchema$inboundSchema: z.ZodType<
   placeholder: z.nullable(z.string()),
   expiredUrl: z.nullable(z.string()),
   notFoundUrl: z.nullable(z.string()),
+  logo: z.nullable(z.string()),
   assetLinks: z.nullable(z.string()).default(null),
   appleAppSiteAssociation: z.nullable(z.string()).default(null),
-  logo: z.nullable(z.string()),
   createdAt: z.string(),
   updatedAt: z.string(),
   registeredDomain: z.nullable(z.lazy(() => RegisteredDomain$inboundSchema)),
@@ -190,9 +190,9 @@ export type DomainSchema$Outbound = {
   placeholder: string | null;
   expiredUrl: string | null;
   notFoundUrl: string | null;
+  logo: string | null;
   assetLinks: string | null;
   appleAppSiteAssociation: string | null;
-  logo: string | null;
   createdAt: string;
   updatedAt: string;
   registeredDomain: RegisteredDomain$Outbound | null;
@@ -212,9 +212,9 @@ export const DomainSchema$outboundSchema: z.ZodType<
   placeholder: z.nullable(z.string()),
   expiredUrl: z.nullable(z.string()),
   notFoundUrl: z.nullable(z.string()),
+  logo: z.nullable(z.string()),
   assetLinks: z.nullable(z.string()).default(null),
   appleAppSiteAssociation: z.nullable(z.string()).default(null),
-  logo: z.nullable(z.string()),
   createdAt: z.string(),
   updatedAt: z.string(),
   registeredDomain: z.nullable(z.lazy(() => RegisteredDomain$outboundSchema)),
