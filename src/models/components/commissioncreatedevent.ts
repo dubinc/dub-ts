@@ -63,6 +63,12 @@ export type Partner = {
    * The partner's country (required for tax purposes).
    */
   country: string | null;
+  totalClicks: number;
+  totalLeads: number;
+  totalConversions: number;
+  totalSales: number;
+  totalSaleAmount: number;
+  totalCommissions: number;
 };
 
 export type CommissionCreatedEventCustomer = {
@@ -209,6 +215,12 @@ export const Partner$inboundSchema: z.ZodType<Partner, z.ZodTypeDef, unknown> =
     image: z.nullable(z.string()),
     payoutsEnabledAt: z.nullable(z.string()),
     country: z.nullable(z.string()),
+    totalClicks: z.number(),
+    totalLeads: z.number(),
+    totalConversions: z.number(),
+    totalSales: z.number(),
+    totalSaleAmount: z.number(),
+    totalCommissions: z.number(),
   });
 
 /** @internal */
@@ -219,6 +231,12 @@ export type Partner$Outbound = {
   image: string | null;
   payoutsEnabledAt: string | null;
   country: string | null;
+  totalClicks: number;
+  totalLeads: number;
+  totalConversions: number;
+  totalSales: number;
+  totalSaleAmount: number;
+  totalCommissions: number;
 };
 
 /** @internal */
@@ -233,6 +251,12 @@ export const Partner$outboundSchema: z.ZodType<
   image: z.nullable(z.string()),
   payoutsEnabledAt: z.nullable(z.string()),
   country: z.nullable(z.string()),
+  totalClicks: z.number(),
+  totalLeads: z.number(),
+  totalConversions: z.number(),
+  totalSales: z.number(),
+  totalSaleAmount: z.number(),
+  totalCommissions: z.number(),
 });
 
 /**

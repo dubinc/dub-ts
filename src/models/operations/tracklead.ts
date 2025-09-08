@@ -9,22 +9,23 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
- * The mode to use for tracking the lead event. `async` will not block the request; `wait` will block the request until the lead event is fully recorded in Dub.
+ * The mode to use for tracking the lead event. `async` will not block the request; `wait` will block the request until the lead event is fully recorded in Dub; `deferred` will defer the lead event creation to a subsequent request.
  */
 export const Mode = {
   Async: "async",
   Wait: "wait",
+  Deferred: "deferred",
 } as const;
 /**
- * The mode to use for tracking the lead event. `async` will not block the request; `wait` will block the request until the lead event is fully recorded in Dub.
+ * The mode to use for tracking the lead event. `async` will not block the request; `wait` will block the request until the lead event is fully recorded in Dub; `deferred` will defer the lead event creation to a subsequent request.
  */
 export type Mode = ClosedEnum<typeof Mode>;
 
 export type TrackLeadRequestBody = {
   /**
-   * The unique ID of the click that the lead conversion event is attributed to. You can read this value from `dub_id` cookie.
+   * The unique ID of the click that the lead conversion event is attributed to. You can read this value from `dub_id` cookie. If not provided, Dub will try to find an existing customer with the provided `customerExternalId` and use the `clickId` from the customer if found.
    */
-  clickId: string;
+  clickId?: string | null | undefined;
   /**
    * The name of the lead event to track. Can also be used as a unique identifier to associate a given lead event for a customer for a subsequent sale event (via the `leadEventName` prop in `/track/sale`).
    */
@@ -46,13 +47,13 @@ export type TrackLeadRequestBody = {
    */
   customerAvatar?: string | null | undefined;
   /**
+   * The mode to use for tracking the lead event. `async` will not block the request; `wait` will block the request until the lead event is fully recorded in Dub; `deferred` will defer the lead event creation to a subsequent request.
+   */
+  mode?: Mode | undefined;
+  /**
    * The numerical value associated with this lead event (e.g., number of provisioned seats in a free trial). If defined as N, the lead event will be tracked N times.
    */
   eventQuantity?: number | null | undefined;
-  /**
-   * The mode to use for tracking the lead event. `async` will not block the request; `wait` will block the request until the lead event is fully recorded in Dub.
-   */
-  mode?: Mode | undefined;
   /**
    * Additional metadata to be stored with the lead event. Max 10,000 characters.
    */
@@ -104,27 +105,27 @@ export const TrackLeadRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  clickId: z.string(),
+  clickId: z.nullable(z.string()).optional(),
   eventName: z.string(),
   customerExternalId: z.string(),
   customerName: z.nullable(z.string()).default(null),
   customerEmail: z.nullable(z.string()).default(null),
   customerAvatar: z.nullable(z.string()).default(null),
-  eventQuantity: z.nullable(z.number()).optional(),
   mode: Mode$inboundSchema.default("async"),
+  eventQuantity: z.nullable(z.number()).optional(),
   metadata: z.nullable(z.record(z.any())).optional(),
 });
 
 /** @internal */
 export type TrackLeadRequestBody$Outbound = {
-  clickId: string;
+  clickId?: string | null | undefined;
   eventName: string;
   customerExternalId: string;
   customerName: string | null;
   customerEmail: string | null;
   customerAvatar: string | null;
-  eventQuantity?: number | null | undefined;
   mode: string;
+  eventQuantity?: number | null | undefined;
   metadata?: { [k: string]: any } | null | undefined;
 };
 
@@ -134,14 +135,14 @@ export const TrackLeadRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TrackLeadRequestBody
 > = z.object({
-  clickId: z.string(),
+  clickId: z.nullable(z.string()).optional(),
   eventName: z.string(),
   customerExternalId: z.string(),
   customerName: z.nullable(z.string()).default(null),
   customerEmail: z.nullable(z.string()).default(null),
   customerAvatar: z.nullable(z.string()).default(null),
-  eventQuantity: z.nullable(z.number()).optional(),
   mode: Mode$outboundSchema.default("async"),
+  eventQuantity: z.nullable(z.number()).optional(),
   metadata: z.nullable(z.record(z.any())).optional(),
 });
 

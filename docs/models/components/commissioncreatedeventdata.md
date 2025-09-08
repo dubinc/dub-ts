@@ -24,6 +24,12 @@ let value: CommissionCreatedEventData = {
     image: "https://loremflickr.com/887/2527?lock=8475978227242498",
     payoutsEnabledAt: "<value>",
     country: "Vanuatu",
+    totalClicks: 4338.81,
+    totalLeads: 9031.25,
+    totalConversions: 7982.05,
+    totalSales: 4176.67,
+    totalSaleAmount: 6883.26,
+    totalCommissions: 6180.26,
   },
 };
 ```

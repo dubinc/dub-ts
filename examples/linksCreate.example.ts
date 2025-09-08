@@ -18,7 +18,7 @@ const dub = new Dub({
 });
 
 async function main() {
-  const result = await dub.create();
+  const result = await dub.links.create();
 
   console.log(result);
 }
