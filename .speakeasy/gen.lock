@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: a750fcafa878ab0d6e15aa3e8ee9c230
+  docChecksum: 54c12f37004dd851733d9c6060b4addb
   docVersion: 0.0.1
-  speakeasyVersion: 1.613.0
-  generationVersion: 2.696.0
-  releaseVersion: 0.66.2
-  configChecksum: fccf183b95a40aa07f28dfccebd74c96
+  speakeasyVersion: 1.615.0
+  generationVersion: 2.698.0
+  releaseVersion: 0.66.3
+  configChecksum: c7275c408ba4697b971931e50f6383eb
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -1779,4 +1779,4 @@ examples:
           application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes Detected:\n* `dub.track.lead()`: \n  *  `request.clickId` **Changed**\n"
+releaseNotes: "## Typescript SDK Changes Detected:\n* `dub.track.lead()`: \n  *  `request.clickId` **Changed** **Breaking** :warning:\n* `dub.track.sale()`:  `request` **Changed**\n"

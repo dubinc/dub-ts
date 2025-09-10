@@ -23,9 +23,9 @@ export type Mode = ClosedEnum<typeof Mode>;
 
 export type TrackLeadRequestBody = {
   /**
-   * The unique ID of the click that the lead conversion event is attributed to. You can read this value from `dub_id` cookie. If not provided, Dub will try to find an existing customer with the provided `customerExternalId` and use the `clickId` from the customer if found.
+   * The unique ID of the click that the lead conversion event is attributed to. You can read this value from `dub_id` cookie. If an empty string is provided, Dub will try to find an existing customer with the provided `customerExternalId` and use the `clickId` from the customer if found.
    */
-  clickId?: string | null | undefined;
+  clickId: string;
   /**
    * The name of the lead event to track. Can also be used as a unique identifier to associate a given lead event for a customer for a subsequent sale event (via the `leadEventName` prop in `/track/sale`).
    */
@@ -105,7 +105,7 @@ export const TrackLeadRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  clickId: z.nullable(z.string()).optional(),
+  clickId: z.string(),
   eventName: z.string(),
   customerExternalId: z.string(),
   customerName: z.nullable(z.string()).default(null),
@@ -118,7 +118,7 @@ export const TrackLeadRequestBody$inboundSchema: z.ZodType<
 
 /** @internal */
 export type TrackLeadRequestBody$Outbound = {
-  clickId?: string | null | undefined;
+  clickId: string;
   eventName: string;
   customerExternalId: string;
   customerName: string | null;
@@ -135,7 +135,7 @@ export const TrackLeadRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TrackLeadRequestBody
 > = z.object({
-  clickId: z.nullable(z.string()).optional(),
+  clickId: z.string(),
   eventName: z.string(),
   customerExternalId: z.string(),
   customerName: z.nullable(z.string()).default(null),
