@@ -11,10 +11,21 @@ let value: TrackLeadResponseBody = {
   click: {
     id: "<id>",
   },
+  link: {
+    id: "<id>",
+    domain: "ignorant-outrun.info",
+    key: "<key>",
+    shortLink: "https://normal-innovation.org",
+    url: "https://spirited-chow.com/",
+    partnerId: "<id>",
+    programId: "<id>",
+    tenantId: "<id>",
+    externalId: "<id>",
+  },
   customer: {
     name: "<value>",
-    email: "Haven.Macejkovic95@yahoo.com",
-    avatar: "https://picsum.photos/seed/wkzlWj0r/597/659",
+    email: "Emmy8@hotmail.com",
+    avatar: "https://loremflickr.com/2520/643?lock=1623178356501000",
     externalId: "<id>",
   },
 };
@@ -22,7 +33,8 @@ let value: TrackLeadResponseBody = {
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `click`                                                    | [operations.Click](../../models/operations/click.md)       | :heavy_check_mark:                                         | N/A                                                        |
-| `customer`                                                 | [operations.Customer](../../models/operations/customer.md) | :heavy_check_mark:                                         | N/A                                                        |
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `click`                                                              | [operations.Click](../../models/operations/click.md)                 | :heavy_check_mark:                                                   | N/A                                                                  |
+| `link`                                                               | [operations.TrackLeadLink](../../models/operations/trackleadlink.md) | :heavy_check_mark:                                                   | N/A                                                                  |
+| `customer`                                                           | [operations.Customer](../../models/operations/customer.md)           | :heavy_check_mark:                                                   | N/A                                                                  |
