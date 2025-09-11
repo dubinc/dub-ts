@@ -64,6 +64,45 @@ export type Click = {
   id: string;
 };
 
+export type TrackLeadLink = {
+  /**
+   * The unique ID of the short link.
+   */
+  id: string;
+  /**
+   * The domain of the short link. If not provided, the primary domain for the workspace will be used (or `dub.sh` if the workspace has no domains).
+   */
+  domain: string;
+  /**
+   * The short link slug. If not provided, a random 7-character slug will be generated.
+   */
+  key: string;
+  /**
+   * The full URL of the short link, including the https protocol (e.g. `https://dub.sh/try`).
+   */
+  shortLink: string;
+  /**
+   * The destination URL of the short link.
+   */
+  url: string;
+  /**
+   * The ID of the partner the short link is associated with.
+   */
+  partnerId: string | null;
+  /**
+   * The ID of the program the short link is associated with.
+   */
+  programId: string | null;
+  /**
+   * The ID of the tenant that created the link inside your system. If set, it can be used to fetch all links for a tenant.
+   */
+  tenantId: string | null;
+  /**
+   * The ID of the link in your database. If set, it can be used to identify the link in future API requests (must be prefixed with 'ext_' when passed as a query parameter). This key is unique across your workspace.
+   */
+  externalId: string | null;
+};
+
 export type Customer = {
   name: string | null;
   email: string | null;
@@ -76,6 +115,7 @@ export type Customer = {
  */
 export type TrackLeadResponseBody = {
   click: Click;
+  link: TrackLeadLink | null;
   customer: Customer;
 };
 
@@ -225,6 +265,80 @@ export function clickFromJSON(
 }
 
 /** @internal */
+export const TrackLeadLink$inboundSchema: z.ZodType<
+  TrackLeadLink,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  domain: z.string(),
+  key: z.string(),
+  shortLink: z.string(),
+  url: z.string(),
+  partnerId: z.nullable(z.string()),
+  programId: z.nullable(z.string()),
+  tenantId: z.nullable(z.string()),
+  externalId: z.nullable(z.string()),
+});
+
+/** @internal */
+export type TrackLeadLink$Outbound = {
+  id: string;
+  domain: string;
+  key: string;
+  shortLink: string;
+  url: string;
+  partnerId: string | null;
+  programId: string | null;
+  tenantId: string | null;
+  externalId: string | null;
+};
+
+/** @internal */
+export const TrackLeadLink$outboundSchema: z.ZodType<
+  TrackLeadLink$Outbound,
+  z.ZodTypeDef,
+  TrackLeadLink
+> = z.object({
+  id: z.string(),
+  domain: z.string(),
+  key: z.string(),
+  shortLink: z.string(),
+  url: z.string(),
+  partnerId: z.nullable(z.string()),
+  programId: z.nullable(z.string()),
+  tenantId: z.nullable(z.string()),
+  externalId: z.nullable(z.string()),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TrackLeadLink$ {
+  /** @deprecated use `TrackLeadLink$inboundSchema` instead. */
+  export const inboundSchema = TrackLeadLink$inboundSchema;
+  /** @deprecated use `TrackLeadLink$outboundSchema` instead. */
+  export const outboundSchema = TrackLeadLink$outboundSchema;
+  /** @deprecated use `TrackLeadLink$Outbound` instead. */
+  export type Outbound = TrackLeadLink$Outbound;
+}
+
+export function trackLeadLinkToJSON(trackLeadLink: TrackLeadLink): string {
+  return JSON.stringify(TrackLeadLink$outboundSchema.parse(trackLeadLink));
+}
+
+export function trackLeadLinkFromJSON(
+  jsonString: string,
+): SafeParseResult<TrackLeadLink, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TrackLeadLink$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TrackLeadLink' from JSON`,
+  );
+}
+
+/** @internal */
 export const Customer$inboundSchema: z.ZodType<
   Customer,
   z.ZodTypeDef,
@@ -290,12 +404,14 @@ export const TrackLeadResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   click: z.lazy(() => Click$inboundSchema),
+  link: z.nullable(z.lazy(() => TrackLeadLink$inboundSchema)),
   customer: z.lazy(() => Customer$inboundSchema),
 });
 
 /** @internal */
 export type TrackLeadResponseBody$Outbound = {
   click: Click$Outbound;
+  link: TrackLeadLink$Outbound | null;
   customer: Customer$Outbound;
 };
 
@@ -306,6 +422,7 @@ export const TrackLeadResponseBody$outboundSchema: z.ZodType<
   TrackLeadResponseBody
 > = z.object({
   click: z.lazy(() => Click$outboundSchema),
+  link: z.nullable(z.lazy(() => TrackLeadLink$outboundSchema)),
   customer: z.lazy(() => Customer$outboundSchema),
 });
 

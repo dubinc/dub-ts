@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: 54c12f37004dd851733d9c6060b4addb
+  docChecksum: ca039d761420ae6bf30481214b90948f
   docVersion: 0.0.1
-  speakeasyVersion: 1.615.0
-  generationVersion: 2.698.0
-  releaseVersion: 0.66.3
-  configChecksum: c7275c408ba4697b971931e50f6383eb
+  speakeasyVersion: 1.615.2
+  generationVersion: 2.698.4
+  releaseVersion: 0.66.4
+  configChecksum: 64a9a77484d7ca54448b4de9b5c3efbb
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -22,7 +22,7 @@ features:
     errors: 2.86.0
     examples: 2.82.3
     flattening: 2.82.1
-    globalSecurity: 2.82.13
+    globalSecurity: 2.82.14
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.5
@@ -320,6 +320,7 @@ generatedFiles:
   - docs/models/operations/tagnames.md
   - docs/models/operations/testvariants.md
   - docs/models/operations/three.md
+  - docs/models/operations/trackleadlink.md
   - docs/models/operations/trackleadrequestbody.md
   - docs/models/operations/trackleadresponsebody.md
   - docs/models/operations/tracksalecustomer.md
@@ -1215,7 +1216,7 @@ examples:
     speakeasy-default-track-lead:
       responses:
         "200":
-          application/json: {"click": {"id": "<id>"}, "customer": {"name": "<value>", "email": "Beaulah.Hamill78@gmail.com", "avatar": "https://picsum.photos/seed/4p2vQu6/2339/955", "externalId": "<id>"}}
+          application/json: {"click": {"id": "<id>"}, "link": {"id": "<id>", "domain": "caring-editor.biz", "key": "<key>", "shortLink": "https://spotless-airbus.name/", "url": "https://quarrelsome-incandescence.com/", "partnerId": "<id>", "programId": null, "tenantId": "<id>", "externalId": "<id>"}, "customer": {"name": "<value>", "email": "Beaulah.Hamill78@gmail.com", "avatar": "https://picsum.photos/seed/4p2vQu6/2339/955", "externalId": "<id>"}}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1779,4 +1780,6 @@ examples:
           application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes Detected:\n* `dub.track.lead()`: \n  *  `request.clickId` **Changed** **Breaking** :warning:\n* `dub.track.sale()`:  `request` **Changed**\n"
+releaseNotes: |
+  ## Typescript SDK Changes Detected:
+  * `dub.track.lead()`:  `response.link` **Added**
