@@ -257,6 +257,7 @@ export type SaleCreatedEventData = {
   click: SaleCreatedEventClick;
   link: SaleCreatedEventLink;
   sale: SaleCreatedEventSale;
+  metadata: { [k: string]: any } | null;
 };
 
 /**
@@ -821,6 +822,7 @@ export const SaleCreatedEventData$inboundSchema: z.ZodType<
   click: z.lazy(() => SaleCreatedEventClick$inboundSchema),
   link: z.lazy(() => SaleCreatedEventLink$inboundSchema),
   sale: z.lazy(() => SaleCreatedEventSale$inboundSchema),
+  metadata: z.nullable(z.record(z.any())),
 });
 
 /** @internal */
@@ -830,6 +832,7 @@ export type SaleCreatedEventData$Outbound = {
   click: SaleCreatedEventClick$Outbound;
   link: SaleCreatedEventLink$Outbound;
   sale: SaleCreatedEventSale$Outbound;
+  metadata: { [k: string]: any } | null;
 };
 
 /** @internal */
@@ -843,6 +846,7 @@ export const SaleCreatedEventData$outboundSchema: z.ZodType<
   click: z.lazy(() => SaleCreatedEventClick$outboundSchema),
   link: z.lazy(() => SaleCreatedEventLink$outboundSchema),
   sale: z.lazy(() => SaleCreatedEventSale$outboundSchema),
+  metadata: z.nullable(z.record(z.any())),
 });
 
 /**
