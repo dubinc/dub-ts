@@ -257,6 +257,10 @@ export type ListEventsRequest = {
    * The UTM content of the short link.
    */
   utmContent?: string | null | undefined;
+  /**
+   * The ref of the short link.
+   */
+  ref?: string | null | undefined;
   page?: number | undefined;
   limit?: number | undefined;
   /**
@@ -514,6 +518,7 @@ export const ListEventsRequest$inboundSchema: z.ZodType<
   utm_campaign: z.nullable(z.string()).optional(),
   utm_term: z.nullable(z.string()).optional(),
   utm_content: z.nullable(z.string()).optional(),
+  ref: z.nullable(z.string()).optional(),
   page: z.number().default(1),
   limit: z.number().default(100),
   sortOrder: QueryParamSortOrder$inboundSchema.default("desc"),
@@ -567,6 +572,7 @@ export type ListEventsRequest$Outbound = {
   utm_campaign?: string | null | undefined;
   utm_term?: string | null | undefined;
   utm_content?: string | null | undefined;
+  ref?: string | null | undefined;
   page: number;
   limit: number;
   sortOrder: string;
@@ -616,6 +622,7 @@ export const ListEventsRequest$outboundSchema: z.ZodType<
   utmCampaign: z.nullable(z.string()).optional(),
   utmTerm: z.nullable(z.string()).optional(),
   utmContent: z.nullable(z.string()).optional(),
+  ref: z.nullable(z.string()).optional(),
   page: z.number().default(1),
   limit: z.number().default(100),
   sortOrder: QueryParamSortOrder$outboundSchema.default("desc"),

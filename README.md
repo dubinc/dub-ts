@@ -358,7 +358,7 @@ httpClient.addHook("requestError", (error, request) => {
   console.groupEnd();
 });
 
-const sdk = new Dub({ httpClient });
+const sdk = new Dub({ httpClient: httpClient });
 ```
 <!-- End Custom HTTP Client [http-client] -->
 

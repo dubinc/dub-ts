@@ -274,6 +274,10 @@ export type CreatePartnerResponseBody = {
    */
   name: string;
   /**
+   * If the partner profile type is a company, this is the partner's legal company name.
+   */
+  companyName: string | null;
+  /**
    * The partner's email address. Should be a unique value across Dub.
    */
   email: string | null;
@@ -919,6 +923,7 @@ export const CreatePartnerResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   name: z.string(),
+  companyName: z.nullable(z.string()),
   email: z.nullable(z.string()),
   image: z.nullable(z.string()),
   description: z.nullable(z.string()).optional(),
@@ -968,6 +973,7 @@ export const CreatePartnerResponseBody$inboundSchema: z.ZodType<
 export type CreatePartnerResponseBody$Outbound = {
   id: string;
   name: string;
+  companyName: string | null;
   email: string | null;
   image: string | null;
   description?: string | null | undefined;
@@ -1021,6 +1027,7 @@ export const CreatePartnerResponseBody$outboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   name: z.string(),
+  companyName: z.nullable(z.string()),
   email: z.nullable(z.string()),
   image: z.nullable(z.string()),
   description: z.nullable(z.string()).optional(),

@@ -249,6 +249,7 @@ export type LeadCreatedEventData = {
   customer: LeadCreatedEventCustomer;
   click: LeadCreatedEventClick;
   link: LeadCreatedEventLink;
+  metadata: { [k: string]: any } | null;
 };
 
 /**
@@ -749,6 +750,7 @@ export const LeadCreatedEventData$inboundSchema: z.ZodType<
   customer: z.lazy(() => LeadCreatedEventCustomer$inboundSchema),
   click: z.lazy(() => LeadCreatedEventClick$inboundSchema),
   link: z.lazy(() => LeadCreatedEventLink$inboundSchema),
+  metadata: z.nullable(z.record(z.any())),
 });
 
 /** @internal */
@@ -757,6 +759,7 @@ export type LeadCreatedEventData$Outbound = {
   customer: LeadCreatedEventCustomer$Outbound;
   click: LeadCreatedEventClick$Outbound;
   link: LeadCreatedEventLink$Outbound;
+  metadata: { [k: string]: any } | null;
 };
 
 /** @internal */
@@ -769,6 +772,7 @@ export const LeadCreatedEventData$outboundSchema: z.ZodType<
   customer: z.lazy(() => LeadCreatedEventCustomer$outboundSchema),
   click: z.lazy(() => LeadCreatedEventClick$outboundSchema),
   link: z.lazy(() => LeadCreatedEventLink$outboundSchema),
+  metadata: z.nullable(z.record(z.any())),
 });
 
 /**

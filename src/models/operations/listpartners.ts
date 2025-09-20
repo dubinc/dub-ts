@@ -37,7 +37,7 @@ export const ListPartnersQueryParamSortBy = {
   Conversions: "conversions",
   Sales: "sales",
   SaleAmount: "saleAmount",
-  Commissions: "commissions",
+  TotalCommissions: "totalCommissions",
   NetRevenue: "netRevenue",
 } as const;
 /**
@@ -79,17 +79,21 @@ export type ListPartnersRequest = {
    */
   sortOrder?: ListPartnersQueryParamSortOrder | undefined;
   /**
-   * A case-sensitive filter on the list based on the partner's `tenantId` field. The value must be a string. Takes precedence over `search`.
+   * Filter the partner list based on the partner's `email`. The value must be a string. Takes precedence over `search`.
+   */
+  email?: string | undefined;
+  /**
+   * Filter the partner list based on the partner's `tenantId`. The value must be a string. Takes precedence over `email` and `search`.
    */
   tenantId?: string | undefined;
-  /**
-   * Whether to include stats fields on the partner (`clicks`, `leads`, `conversions`, `sales`, `saleAmount`, `commissions`, `netRevenue`). If false, those fields will be returned as 0.
-   */
-  includeExpandedFields?: boolean | undefined;
   /**
    * A search query to filter partners by name, email, or tenantId.
    */
   search?: string | undefined;
+  /**
+   * Whether to include stats fields on the partner (`clicks`, `leads`, `conversions`, `sales`, `saleAmount`, `commissions`, `netRevenue`). If false, those fields will be returned as 0.
+   */
+  includeExpandedFields?: boolean | undefined;
   /**
    * The page number for pagination.
    */
@@ -183,6 +187,10 @@ export type ListPartnersResponseBody = {
    * The partner's full legal name.
    */
   name: string;
+  /**
+   * If the partner profile type is a company, this is the partner's legal company name.
+   */
+  companyName: string | null;
   /**
    * The partner's email address. Should be a unique value across Dub.
    */
@@ -388,9 +396,10 @@ export const ListPartnersRequest$inboundSchema: z.ZodType<
   country: z.string().optional(),
   sortBy: ListPartnersQueryParamSortBy$inboundSchema.default("saleAmount"),
   sortOrder: ListPartnersQueryParamSortOrder$inboundSchema.default("desc"),
+  email: z.string().optional(),
   tenantId: z.string().optional(),
-  includeExpandedFields: z.boolean().optional(),
   search: z.string().optional(),
+  includeExpandedFields: z.boolean().optional(),
   page: z.number().default(1),
   pageSize: z.number().default(100),
 });
@@ -401,9 +410,10 @@ export type ListPartnersRequest$Outbound = {
   country?: string | undefined;
   sortBy: string;
   sortOrder: string;
+  email?: string | undefined;
   tenantId?: string | undefined;
-  includeExpandedFields?: boolean | undefined;
   search?: string | undefined;
+  includeExpandedFields?: boolean | undefined;
   page: number;
   pageSize: number;
 };
@@ -418,9 +428,10 @@ export const ListPartnersRequest$outboundSchema: z.ZodType<
   country: z.string().optional(),
   sortBy: ListPartnersQueryParamSortBy$outboundSchema.default("saleAmount"),
   sortOrder: ListPartnersQueryParamSortOrder$outboundSchema.default("desc"),
+  email: z.string().optional(),
   tenantId: z.string().optional(),
-  includeExpandedFields: z.boolean().optional(),
   search: z.string().optional(),
+  includeExpandedFields: z.boolean().optional(),
   page: z.number().default(1),
   pageSize: z.number().default(100),
 });
@@ -584,6 +595,7 @@ export const ListPartnersResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   name: z.string(),
+  companyName: z.nullable(z.string()),
   email: z.nullable(z.string()),
   image: z.nullable(z.string()),
   description: z.nullable(z.string()).optional(),
@@ -633,6 +645,7 @@ export const ListPartnersResponseBody$inboundSchema: z.ZodType<
 export type ListPartnersResponseBody$Outbound = {
   id: string;
   name: string;
+  companyName: string | null;
   email: string | null;
   image: string | null;
   description?: string | null | undefined;
@@ -686,6 +699,7 @@ export const ListPartnersResponseBody$outboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   name: z.string(),
+  companyName: z.nullable(z.string()),
   email: z.nullable(z.string()),
   image: z.nullable(z.string()),
   description: z.nullable(z.string()).optional(),

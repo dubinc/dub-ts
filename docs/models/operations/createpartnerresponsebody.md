@@ -10,18 +10,27 @@ import { CreatePartnerResponseBody } from "dub/models/operations";
 let value: CreatePartnerResponseBody = {
   id: "<id>",
   name: "<value>",
-  email: "Bailey_Mann@gmail.com",
-  image: "https://loremflickr.com/3557/3479?lock=7072957922642121",
-  country: "Burkina Faso",
+  companyName: "Bradtke - Stark",
+  email: "Shawna_Nitzsche86@yahoo.com",
+  image: "https://picsum.photos/seed/upt4d5D/663/567",
+  country: "United States Minor Outlying Islands",
   paypalEmail: "<value>",
   stripeConnectId: "<id>",
-  payoutsEnabledAt: "<value>",
+  payoutsEnabledAt: null,
   programId: "<id>",
   partnerId: "<id>",
   tenantId: "<id>",
-  createdAt: "1719180494212",
-  status: "pending",
-  links: [],
+  createdAt: "1713803500847",
+  status: "invited",
+  links: [
+    {
+      id: "<id>",
+      domain: "substantial-asset.org",
+      key: "<key>",
+      shortLink: "https://steel-marksman.biz",
+      url: "https://incomplete-suitcase.org/",
+    },
+  ],
 };
 ```
 
@@ -31,6 +40,7 @@ let value: CreatePartnerResponseBody = {
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `id`                                                                                                                                                                 | *string*                                                                                                                                                             | :heavy_check_mark:                                                                                                                                                   | The partner's unique ID on Dub.                                                                                                                                      |
 | `name`                                                                                                                                                               | *string*                                                                                                                                                             | :heavy_check_mark:                                                                                                                                                   | The partner's full legal name.                                                                                                                                       |
+| `companyName`                                                                                                                                                        | *string*                                                                                                                                                             | :heavy_check_mark:                                                                                                                                                   | If the partner profile type is a company, this is the partner's legal company name.                                                                                  |
 | `email`                                                                                                                                                              | *string*                                                                                                                                                             | :heavy_check_mark:                                                                                                                                                   | The partner's email address. Should be a unique value across Dub.                                                                                                    |
 | `image`                                                                                                                                                              | *string*                                                                                                                                                             | :heavy_check_mark:                                                                                                                                                   | The partner's avatar image.                                                                                                                                          |
 | `description`                                                                                                                                                        | *string*                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                   | A brief description of the partner and their background.                                                                                                             |
