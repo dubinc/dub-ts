@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: ca039d761420ae6bf30481214b90948f
+  docChecksum: 2e1136299e8788ffa141b33afd2f3cbc
   docVersion: 0.0.1
-  speakeasyVersion: 1.615.2
-  generationVersion: 2.698.4
-  releaseVersion: 0.66.4
-  configChecksum: 64a9a77484d7ca54448b4de9b5c3efbb
+  speakeasyVersion: 1.631.5
+  generationVersion: 2.716.16
+  releaseVersion: 0.66.5
+  configChecksum: c4c1839185b5019695fed1dd2189a3d0
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -14,12 +14,12 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.21.22
+    core: 3.21.25
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.1.2
-    errors: 2.86.0
+    errors: 2.86.1
     examples: 2.82.3
     flattening: 2.82.1
     globalSecurity: 2.82.14
@@ -35,7 +35,7 @@ features:
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.3.0
-    unions: 2.85.11
+    unions: 2.85.12
 generatedFiles:
   - .gitattributes
   - .npmignore
@@ -70,6 +70,7 @@ generatedFiles:
   - docs/models/components/commissioncreatedeventcustomer.md
   - docs/models/components/commissioncreatedeventdata.md
   - docs/models/components/commissioncreatedeventevent.md
+  - docs/models/components/commissioncreatedeventpartner.md
   - docs/models/components/commissioncreatedeventstatus.md
   - docs/models/components/commissioncreatedeventtype.md
   - docs/models/components/continent.md
@@ -125,6 +126,7 @@ generatedFiles:
   - docs/models/components/salecreatedeventdata.md
   - docs/models/components/salecreatedeventevent.md
   - docs/models/components/salecreatedeventlink.md
+  - docs/models/components/salecreatedeventpartner.md
   - docs/models/components/salecreatedeventsale.md
   - docs/models/components/salecreatedeventtestvariants.md
   - docs/models/components/saleevent.md
@@ -1394,7 +1396,7 @@ examples:
     speakeasy-default-create-partner:
       responses:
         "201":
-          application/json: {"id": "<id>", "name": "<value>", "email": "Summer50@yahoo.com", "image": "https://picsum.photos/seed/w6UEY4ogD/1950/1872", "country": "Venezuela", "paypalEmail": "<value>", "stripeConnectId": "<id>", "payoutsEnabledAt": "<value>", "programId": "<id>", "partnerId": "<id>", "tenantId": "<id>", "createdAt": "1721295968119", "status": "approved", "links": [{"id": "<id>", "domain": "stylish-deer.info", "key": "<key>", "shortLink": "https://juvenile-declaration.net", "url": "https://exhausted-editor.org", "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0}], "totalCommissions": 0, "clicks": 0, "leads": 0, "conversions": 0, "sales": 0, "saleAmount": 0, "netRevenue": 0}
+          application/json: {"id": "<id>", "name": "<value>", "companyName": "Schowalter, Hauck and Bradtke", "email": "Summer50@yahoo.com", "image": "https://picsum.photos/seed/w6UEY4ogD/1950/1872", "country": "Venezuela", "paypalEmail": "<value>", "stripeConnectId": "<id>", "payoutsEnabledAt": "<value>", "programId": "<id>", "partnerId": "<id>", "tenantId": "<id>", "createdAt": "1721295968119", "status": "approved", "links": [{"id": "<id>", "domain": "stylish-deer.info", "key": "<key>", "shortLink": "https://juvenile-declaration.net", "url": "https://exhausted-editor.org", "clicks": 0, "leads": 0, "conversions": 0, "sales": 0, "saleAmount": 0}], "totalCommissions": 0, "clicks": 0, "leads": 0, "conversions": 0, "sales": 0, "saleAmount": 0, "netRevenue": 0}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1443,7 +1445,7 @@ examples:
           programId: "<id>"
       responses:
         "200":
-          application/json: [{"id": "<id>", "domain": "another-granny.net", "key": "<key>", "shortLink": "https://scientific-duffel.com", "url": "https://old-fashioned-bug.name", "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0}, {"id": "<id>", "domain": "another-granny.net", "key": "<key>", "shortLink": "https://scientific-duffel.com", "url": "https://old-fashioned-bug.name", "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0}]
+          application/json: [{"id": "<id>", "domain": "another-granny.net", "key": "<key>", "shortLink": "https://scientific-duffel.com", "url": "https://old-fashioned-bug.name", "clicks": 0, "leads": 0, "conversions": 0, "sales": 0, "saleAmount": 0}, {"id": "<id>", "domain": "another-granny.net", "key": "<key>", "shortLink": "https://scientific-duffel.com", "url": "https://old-fashioned-bug.name", "clicks": 0, "leads": 0, "conversions": 0, "sales": 0, "saleAmount": 0}]
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1759,7 +1761,7 @@ examples:
           pageSize: 50
       responses:
         "200":
-          application/json: [{"id": "<id>", "name": "<value>", "email": "Margret.Kuvalis12@hotmail.com", "image": "https://loremflickr.com/1672/969?lock=7633694569087148", "country": "Uruguay", "paypalEmail": "<value>", "stripeConnectId": "<id>", "payoutsEnabledAt": "<value>", "programId": "<id>", "partnerId": "<id>", "tenantId": "<id>", "createdAt": "1726913447345", "status": "declined", "links": [{"id": "<id>", "domain": "scared-knuckle.info", "key": "<key>", "shortLink": "https://granular-hammock.name/", "url": "https://vivacious-finding.biz", "clicks": 0, "leads": 0, "sales": 0, "saleAmount": 0}], "totalCommissions": 0, "clicks": 0, "leads": 0, "conversions": 0, "sales": 0, "saleAmount": 0, "netRevenue": 0}]
+          application/json: [{"id": "<id>", "name": "<value>", "companyName": "Pacocha, McClure and Kuvalis", "email": "Margret.Kuvalis12@hotmail.com", "image": "https://loremflickr.com/1672/969?lock=7633694569087148", "country": "Uruguay", "paypalEmail": "<value>", "stripeConnectId": "<id>", "payoutsEnabledAt": "<value>", "programId": "<id>", "partnerId": "<id>", "tenantId": "<id>", "createdAt": "1726913447345", "status": "declined", "links": [{"id": "<id>", "domain": "scared-knuckle.info", "key": "<key>", "shortLink": "https://granular-hammock.name/", "url": "https://vivacious-finding.biz", "clicks": 0, "leads": 0, "conversions": 0, "sales": 0, "saleAmount": 0}], "totalCommissions": 0, "clicks": 0, "leads": 0, "conversions": 0, "sales": 0, "saleAmount": 0, "netRevenue": 0}]
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1780,6 +1782,4 @@ examples:
           application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Typescript SDK Changes Detected:
-  * `dub.track.lead()`:  `response.link` **Added**
+releaseNotes: "## Typescript SDK Changes Detected:\n* `dub.partners.list()`: \n  *  `request` **Changed**\n  *  `response.[]` **Changed** **Breaking** :warning:\n* `dub.partners.create()`:  `response` **Changed** **Breaking** :warning:\n* `dub.analytics.retrieve()`: \n  *  `request.ref` **Added**\n* `dub.events.list()`: \n  *  `request.ref` **Added**\n* `dub.customers.create()`: \n  *  `request.stripeCustomerId` **Added**\n* `dub.customers.update()`: \n  *  `request.requestBody.stripeCustomerId` **Added**\n* `dub.partners.retrieveLinks()`:  `response.[].conversions` **Added**\n* `dub.commissions.list()`: \n  *  `request.tenantId` **Added**\n"

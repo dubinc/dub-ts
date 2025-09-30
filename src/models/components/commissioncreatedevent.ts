@@ -38,7 +38,7 @@ export type CommissionCreatedEventStatus = ClosedEnum<
   typeof CommissionCreatedEventStatus
 >;
 
-export type Partner = {
+export type CommissionCreatedEventPartner = {
   /**
    * The partner's unique ID on Dub.
    */
@@ -129,7 +129,7 @@ export type CommissionCreatedEventData = {
   userId?: string | null | undefined;
   createdAt: string;
   updatedAt: string;
-  partner: Partner;
+  partner: CommissionCreatedEventPartner;
   customer?: CommissionCreatedEventCustomer | null | undefined;
 };
 
@@ -207,24 +207,27 @@ export namespace CommissionCreatedEventStatus$ {
 }
 
 /** @internal */
-export const Partner$inboundSchema: z.ZodType<Partner, z.ZodTypeDef, unknown> =
-  z.object({
-    id: z.string(),
-    name: z.string(),
-    email: z.nullable(z.string()),
-    image: z.nullable(z.string()),
-    payoutsEnabledAt: z.nullable(z.string()),
-    country: z.nullable(z.string()),
-    totalClicks: z.number(),
-    totalLeads: z.number(),
-    totalConversions: z.number(),
-    totalSales: z.number(),
-    totalSaleAmount: z.number(),
-    totalCommissions: z.number(),
-  });
+export const CommissionCreatedEventPartner$inboundSchema: z.ZodType<
+  CommissionCreatedEventPartner,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  name: z.string(),
+  email: z.nullable(z.string()),
+  image: z.nullable(z.string()),
+  payoutsEnabledAt: z.nullable(z.string()),
+  country: z.nullable(z.string()),
+  totalClicks: z.number(),
+  totalLeads: z.number(),
+  totalConversions: z.number(),
+  totalSales: z.number(),
+  totalSaleAmount: z.number(),
+  totalCommissions: z.number(),
+});
 
 /** @internal */
-export type Partner$Outbound = {
+export type CommissionCreatedEventPartner$Outbound = {
   id: string;
   name: string;
   email: string | null;
@@ -240,10 +243,10 @@ export type Partner$Outbound = {
 };
 
 /** @internal */
-export const Partner$outboundSchema: z.ZodType<
-  Partner$Outbound,
+export const CommissionCreatedEventPartner$outboundSchema: z.ZodType<
+  CommissionCreatedEventPartner$Outbound,
   z.ZodTypeDef,
-  Partner
+  CommissionCreatedEventPartner
 > = z.object({
   id: z.string(),
   name: z.string(),
@@ -263,26 +266,32 @@ export const Partner$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Partner$ {
-  /** @deprecated use `Partner$inboundSchema` instead. */
-  export const inboundSchema = Partner$inboundSchema;
-  /** @deprecated use `Partner$outboundSchema` instead. */
-  export const outboundSchema = Partner$outboundSchema;
-  /** @deprecated use `Partner$Outbound` instead. */
-  export type Outbound = Partner$Outbound;
+export namespace CommissionCreatedEventPartner$ {
+  /** @deprecated use `CommissionCreatedEventPartner$inboundSchema` instead. */
+  export const inboundSchema = CommissionCreatedEventPartner$inboundSchema;
+  /** @deprecated use `CommissionCreatedEventPartner$outboundSchema` instead. */
+  export const outboundSchema = CommissionCreatedEventPartner$outboundSchema;
+  /** @deprecated use `CommissionCreatedEventPartner$Outbound` instead. */
+  export type Outbound = CommissionCreatedEventPartner$Outbound;
 }
 
-export function partnerToJSON(partner: Partner): string {
-  return JSON.stringify(Partner$outboundSchema.parse(partner));
+export function commissionCreatedEventPartnerToJSON(
+  commissionCreatedEventPartner: CommissionCreatedEventPartner,
+): string {
+  return JSON.stringify(
+    CommissionCreatedEventPartner$outboundSchema.parse(
+      commissionCreatedEventPartner,
+    ),
+  );
 }
 
-export function partnerFromJSON(
+export function commissionCreatedEventPartnerFromJSON(
   jsonString: string,
-): SafeParseResult<Partner, SDKValidationError> {
+): SafeParseResult<CommissionCreatedEventPartner, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Partner$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Partner' from JSON`,
+    (x) => CommissionCreatedEventPartner$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CommissionCreatedEventPartner' from JSON`,
   );
 }
 
@@ -384,7 +393,7 @@ export const CommissionCreatedEventData$inboundSchema: z.ZodType<
   userId: z.nullable(z.string()).optional(),
   createdAt: z.string(),
   updatedAt: z.string(),
-  partner: z.lazy(() => Partner$inboundSchema),
+  partner: z.lazy(() => CommissionCreatedEventPartner$inboundSchema),
   customer: z.nullable(
     z.lazy(() => CommissionCreatedEventCustomer$inboundSchema),
   ).optional(),
@@ -404,7 +413,7 @@ export type CommissionCreatedEventData$Outbound = {
   userId?: string | null | undefined;
   createdAt: string;
   updatedAt: string;
-  partner: Partner$Outbound;
+  partner: CommissionCreatedEventPartner$Outbound;
   customer?: CommissionCreatedEventCustomer$Outbound | null | undefined;
 };
 
@@ -426,7 +435,7 @@ export const CommissionCreatedEventData$outboundSchema: z.ZodType<
   userId: z.nullable(z.string()).optional(),
   createdAt: z.string(),
   updatedAt: z.string(),
-  partner: z.lazy(() => Partner$outboundSchema),
+  partner: z.lazy(() => CommissionCreatedEventPartner$outboundSchema),
   customer: z.nullable(
     z.lazy(() => CommissionCreatedEventCustomer$outboundSchema),
   ).optional(),

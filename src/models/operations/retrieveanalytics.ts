@@ -254,6 +254,10 @@ export type RetrieveAnalyticsRequest = {
    * The UTM content of the short link.
    */
   utmContent?: string | null | undefined;
+  /**
+   * The ref of the short link.
+   */
+  ref?: string | null | undefined;
 };
 
 /**
@@ -467,6 +471,7 @@ export const RetrieveAnalyticsRequest$inboundSchema: z.ZodType<
   utm_campaign: z.nullable(z.string()).optional(),
   utm_term: z.nullable(z.string()).optional(),
   utm_content: z.nullable(z.string()).optional(),
+  ref: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "utm_source": "utmSource",
@@ -516,6 +521,7 @@ export type RetrieveAnalyticsRequest$Outbound = {
   utm_campaign?: string | null | undefined;
   utm_term?: string | null | undefined;
   utm_content?: string | null | undefined;
+  ref?: string | null | undefined;
 };
 
 /** @internal */
@@ -561,6 +567,7 @@ export const RetrieveAnalyticsRequest$outboundSchema: z.ZodType<
   utmCampaign: z.nullable(z.string()).optional(),
   utmTerm: z.nullable(z.string()).optional(),
   utmContent: z.nullable(z.string()).optional(),
+  ref: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     utmSource: "utm_source",
