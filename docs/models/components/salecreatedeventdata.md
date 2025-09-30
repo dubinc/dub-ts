@@ -85,6 +85,10 @@ let value: SaleCreatedEventData = {
     paymentProcessor: "<value>",
     invoiceId: "<id>",
   },
+  metadata: {
+    "key": "<value>",
+    "key1": "<value>",
+  },
 };
 ```
 
@@ -97,3 +101,5 @@ let value: SaleCreatedEventData = {
 | `click`                                                                                    | [components.SaleCreatedEventClick](../../models/components/salecreatedeventclick.md)       | :heavy_check_mark:                                                                         | N/A                                                                                        |
 | `link`                                                                                     | [components.SaleCreatedEventLink](../../models/components/salecreatedeventlink.md)         | :heavy_check_mark:                                                                         | N/A                                                                                        |
 | `sale`                                                                                     | [components.SaleCreatedEventSale](../../models/components/salecreatedeventsale.md)         | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `partner`                                                                                  | [components.SaleCreatedEventPartner](../../models/components/salecreatedeventpartner.md)   | :heavy_minus_sign:                                                                         | N/A                                                                                        |
+| `metadata`                                                                                 | Record<string, *any*>                                                                      | :heavy_check_mark:                                                                         | N/A                                                                                        |

@@ -242,6 +242,10 @@ const value: components.LeadCreatedEvent = {
       tagId: "<id>",
       projectId: "<id>",
     },
+    metadata: {
+      "key": "<value>",
+      "key1": "<value>",
+    },
   },
 };
 ```
@@ -333,6 +337,9 @@ const value: components.SaleCreatedEvent = {
       paymentProcessor: "<value>",
       invoiceId: "<id>",
     },
+    metadata: {
+      "key": "<value>",
+    },
   },
 };
 ```
@@ -347,17 +354,18 @@ const value: components.PartnerEnrolledEvent = {
   data: {
     id: "<id>",
     name: "<value>",
-    email: "Lucile_Lebsack@hotmail.com",
-    image: "https://picsum.photos/seed/pQJj2H4/1538/1429",
-    country: "Switzerland",
+    companyName: "Nikolaus, Jacobs and Lebsack",
+    email: "Guido.Hoppe@yahoo.com",
+    image: "https://loremflickr.com/3404/2942?lock=434582497137521",
+    country: "Bahamas",
     paypalEmail: "<value>",
     stripeConnectId: "<id>",
     payoutsEnabledAt: "<value>",
     programId: "<id>",
     partnerId: "<id>",
     tenantId: "<id>",
-    createdAt: "1720109851453",
-    status: "rejected",
+    createdAt: "1716404467883",
+    status: "invited",
     links: [],
   },
 };

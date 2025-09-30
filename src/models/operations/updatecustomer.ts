@@ -26,6 +26,10 @@ export type UpdateCustomerRequestBody = {
    * Unique identifier for the customer in the client's app.
    */
   externalId?: string | undefined;
+  /**
+   * The customer's Stripe customer ID. Useful for attribution recurring sale events to the partner who referred the customer.
+   */
+  stripeCustomerId?: string | null | undefined;
 };
 
 export type UpdateCustomerRequest = {
@@ -159,6 +163,7 @@ export const UpdateCustomerRequestBody$inboundSchema: z.ZodType<
   name: z.nullable(z.string()).optional(),
   avatar: z.nullable(z.string()).optional(),
   externalId: z.string().optional(),
+  stripeCustomerId: z.nullable(z.string()).optional(),
 });
 
 /** @internal */
@@ -167,6 +172,7 @@ export type UpdateCustomerRequestBody$Outbound = {
   name?: string | null | undefined;
   avatar?: string | null | undefined;
   externalId?: string | undefined;
+  stripeCustomerId?: string | null | undefined;
 };
 
 /** @internal */
@@ -179,6 +185,7 @@ export const UpdateCustomerRequestBody$outboundSchema: z.ZodType<
   name: z.nullable(z.string()).optional(),
   avatar: z.nullable(z.string()).optional(),
   externalId: z.string().optional(),
+  stripeCustomerId: z.nullable(z.string()).optional(),
 });
 
 /**

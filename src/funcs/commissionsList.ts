@@ -122,6 +122,7 @@ async function $do(
     "sortOrder": payload?.sortOrder,
     "start": payload?.start,
     "status": payload?.status,
+    "tenantId": payload?.tenantId,
     "type": payload?.type,
   });
 

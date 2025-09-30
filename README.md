@@ -57,10 +57,7 @@ bun add dub
 ### Yarn
 
 ```bash
-yarn add dub zod
-
-# Note that Yarn does not install peer dependencies automatically. You will need
-# to install zod as shown above.
+yarn add dub
 ```
 
 > [!NOTE]
@@ -358,7 +355,7 @@ httpClient.addHook("requestError", (error, request) => {
   console.groupEnd();
 });
 
-const sdk = new Dub({ httpClient });
+const sdk = new Dub({ httpClient: httpClient });
 ```
 <!-- End Custom HTTP Client [http-client] -->
 

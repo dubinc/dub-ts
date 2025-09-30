@@ -90,6 +90,10 @@ let value: LeadCreatedEvent = {
       tagId: "<id>",
       projectId: "<id>",
     },
+    metadata: {
+      "key": "<value>",
+      "key1": "<value>",
+    },
   },
 };
 ```

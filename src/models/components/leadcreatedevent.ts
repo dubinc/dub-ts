@@ -244,11 +244,46 @@ export type LeadCreatedEventLink = {
   projectId: string;
 };
 
+export type Partner = {
+  /**
+   * The partner's unique ID on Dub.
+   */
+  id: string;
+  /**
+   * The partner's full legal name.
+   */
+  name: string;
+  /**
+   * The partner's email address. Should be a unique value across Dub.
+   */
+  email: string | null;
+  /**
+   * The partner's avatar image.
+   */
+  image: string | null;
+  /**
+   * The date when the partner enabled payouts.
+   */
+  payoutsEnabledAt: string | null;
+  /**
+   * The partner's country (required for tax purposes).
+   */
+  country: string | null;
+  totalClicks: number;
+  totalLeads: number;
+  totalConversions: number;
+  totalSales: number;
+  totalSaleAmount: number;
+  totalCommissions: number;
+};
+
 export type LeadCreatedEventData = {
   eventName: string;
   customer: LeadCreatedEventCustomer;
   click: LeadCreatedEventClick;
   link: LeadCreatedEventLink;
+  partner?: Partner | null | undefined;
+  metadata: { [k: string]: any } | null;
 };
 
 /**
@@ -740,6 +775,86 @@ export function leadCreatedEventLinkFromJSON(
 }
 
 /** @internal */
+export const Partner$inboundSchema: z.ZodType<Partner, z.ZodTypeDef, unknown> =
+  z.object({
+    id: z.string(),
+    name: z.string(),
+    email: z.nullable(z.string()),
+    image: z.nullable(z.string()),
+    payoutsEnabledAt: z.nullable(z.string()),
+    country: z.nullable(z.string()),
+    totalClicks: z.number(),
+    totalLeads: z.number(),
+    totalConversions: z.number(),
+    totalSales: z.number(),
+    totalSaleAmount: z.number(),
+    totalCommissions: z.number(),
+  });
+
+/** @internal */
+export type Partner$Outbound = {
+  id: string;
+  name: string;
+  email: string | null;
+  image: string | null;
+  payoutsEnabledAt: string | null;
+  country: string | null;
+  totalClicks: number;
+  totalLeads: number;
+  totalConversions: number;
+  totalSales: number;
+  totalSaleAmount: number;
+  totalCommissions: number;
+};
+
+/** @internal */
+export const Partner$outboundSchema: z.ZodType<
+  Partner$Outbound,
+  z.ZodTypeDef,
+  Partner
+> = z.object({
+  id: z.string(),
+  name: z.string(),
+  email: z.nullable(z.string()),
+  image: z.nullable(z.string()),
+  payoutsEnabledAt: z.nullable(z.string()),
+  country: z.nullable(z.string()),
+  totalClicks: z.number(),
+  totalLeads: z.number(),
+  totalConversions: z.number(),
+  totalSales: z.number(),
+  totalSaleAmount: z.number(),
+  totalCommissions: z.number(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Partner$ {
+  /** @deprecated use `Partner$inboundSchema` instead. */
+  export const inboundSchema = Partner$inboundSchema;
+  /** @deprecated use `Partner$outboundSchema` instead. */
+  export const outboundSchema = Partner$outboundSchema;
+  /** @deprecated use `Partner$Outbound` instead. */
+  export type Outbound = Partner$Outbound;
+}
+
+export function partnerToJSON(partner: Partner): string {
+  return JSON.stringify(Partner$outboundSchema.parse(partner));
+}
+
+export function partnerFromJSON(
+  jsonString: string,
+): SafeParseResult<Partner, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Partner$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Partner' from JSON`,
+  );
+}
+
+/** @internal */
 export const LeadCreatedEventData$inboundSchema: z.ZodType<
   LeadCreatedEventData,
   z.ZodTypeDef,
@@ -749,6 +864,8 @@ export const LeadCreatedEventData$inboundSchema: z.ZodType<
   customer: z.lazy(() => LeadCreatedEventCustomer$inboundSchema),
   click: z.lazy(() => LeadCreatedEventClick$inboundSchema),
   link: z.lazy(() => LeadCreatedEventLink$inboundSchema),
+  partner: z.nullable(z.lazy(() => Partner$inboundSchema)).optional(),
+  metadata: z.nullable(z.record(z.any())),
 });
 
 /** @internal */
@@ -757,6 +874,8 @@ export type LeadCreatedEventData$Outbound = {
   customer: LeadCreatedEventCustomer$Outbound;
   click: LeadCreatedEventClick$Outbound;
   link: LeadCreatedEventLink$Outbound;
+  partner?: Partner$Outbound | null | undefined;
+  metadata: { [k: string]: any } | null;
 };
 
 /** @internal */
@@ -769,6 +888,8 @@ export const LeadCreatedEventData$outboundSchema: z.ZodType<
   customer: z.lazy(() => LeadCreatedEventCustomer$outboundSchema),
   click: z.lazy(() => LeadCreatedEventClick$outboundSchema),
   link: z.lazy(() => LeadCreatedEventLink$outboundSchema),
+  partner: z.nullable(z.lazy(() => Partner$outboundSchema)).optional(),
+  metadata: z.nullable(z.record(z.any())),
 });
 
 /**
