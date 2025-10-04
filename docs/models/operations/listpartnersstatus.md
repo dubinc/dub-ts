@@ -7,11 +7,11 @@ The status of the partner's enrollment in the program.
 ```typescript
 import { ListPartnersStatus } from "dub/models/operations";
 
-let value: ListPartnersStatus = "invited";
+let value: ListPartnersStatus = "declined";
 ```
 
 ## Values
 
 ```typescript
-"pending" | "approved" | "rejected" | "invited" | "declined" | "banned" | "archived"
+"pending" | "approved" | "rejected" | "invited" | "declined" | "deactivated" | "banned" | "archived"
 ```

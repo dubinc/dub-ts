@@ -17,6 +17,7 @@ export const ListPartnersQueryParamStatus = {
   Rejected: "rejected",
   Invited: "invited",
   Declined: "declined",
+  Deactivated: "deactivated",
   Banned: "banned",
   Archived: "archived",
 } as const;
@@ -113,6 +114,7 @@ export const ListPartnersStatus = {
   Rejected: "rejected",
   Invited: "invited",
   Declined: "declined",
+  Deactivated: "deactivated",
   Banned: "banned",
   Archived: "archived",
 } as const;
