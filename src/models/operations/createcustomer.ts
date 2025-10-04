@@ -88,9 +88,9 @@ export type CreateCustomerDiscount = {
   amount: number;
   type: CreateCustomerType;
   maxDuration: number | null;
-  description?: string | null | undefined;
   couponId: string | null;
   couponTestId: string | null;
+  description?: string | null | undefined;
   partnersCount?: number | null | undefined;
 };
 
@@ -369,9 +369,9 @@ export const CreateCustomerDiscount$inboundSchema: z.ZodType<
   amount: z.number(),
   type: CreateCustomerType$inboundSchema,
   maxDuration: z.nullable(z.number()),
-  description: z.nullable(z.string()).optional(),
   couponId: z.nullable(z.string()),
   couponTestId: z.nullable(z.string()),
+  description: z.nullable(z.string()).optional(),
   partnersCount: z.nullable(z.number()).optional(),
 });
 
@@ -381,9 +381,9 @@ export type CreateCustomerDiscount$Outbound = {
   amount: number;
   type: string;
   maxDuration: number | null;
-  description?: string | null | undefined;
   couponId: string | null;
   couponTestId: string | null;
+  description?: string | null | undefined;
   partnersCount?: number | null | undefined;
 };
 
@@ -397,9 +397,9 @@ export const CreateCustomerDiscount$outboundSchema: z.ZodType<
   amount: z.number(),
   type: CreateCustomerType$outboundSchema,
   maxDuration: z.nullable(z.number()),
-  description: z.nullable(z.string()).optional(),
   couponId: z.nullable(z.string()),
   couponTestId: z.nullable(z.string()),
+  description: z.nullable(z.string()).optional(),
   partnersCount: z.nullable(z.number()).optional(),
 });
 

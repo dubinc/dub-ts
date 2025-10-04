@@ -201,6 +201,8 @@ export type WorkspaceSchema = {
    * Specifies hostnames permitted for client-side click tracking.
    */
   allowedHostnames: Array<string> | null;
+  ssoEmailDomain: string | null;
+  ssoEnforcedAt: string | null;
 };
 
 /** @internal */
@@ -386,6 +388,8 @@ export const WorkspaceSchema$inboundSchema: z.ZodType<
   flags: z.record(z.boolean()).optional(),
   store: z.nullable(z.record(z.any())),
   allowedHostnames: z.nullable(z.array(z.string())),
+  ssoEmailDomain: z.nullable(z.string()),
+  ssoEnforcedAt: z.nullable(z.string()),
 });
 
 /** @internal */
@@ -424,6 +428,8 @@ export type WorkspaceSchema$Outbound = {
   flags?: { [k: string]: boolean } | undefined;
   store: { [k: string]: any } | null;
   allowedHostnames: Array<string> | null;
+  ssoEmailDomain: string | null;
+  ssoEnforcedAt: string | null;
 };
 
 /** @internal */
@@ -466,6 +472,8 @@ export const WorkspaceSchema$outboundSchema: z.ZodType<
   flags: z.record(z.boolean()).optional(),
   store: z.nullable(z.record(z.any())),
   allowedHostnames: z.nullable(z.array(z.string())),
+  ssoEmailDomain: z.nullable(z.string()),
+  ssoEnforcedAt: z.nullable(z.string()),
 });
 
 /**
