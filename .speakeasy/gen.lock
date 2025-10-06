@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: 2e1136299e8788ffa141b33afd2f3cbc
+  docChecksum: 43797075fd9e0d4bb17d9938a972af9d
   docVersion: 0.0.1
-  speakeasyVersion: 1.631.5
-  generationVersion: 2.716.16
-  releaseVersion: 0.66.5
-  configChecksum: c4c1839185b5019695fed1dd2189a3d0
+  speakeasyVersion: 1.635.1
+  generationVersion: 2.722.2
+  releaseVersion: 0.67.0
+  configChecksum: 064bb1dff2e2470839f3ee76b4dae6a0
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.21.25
+    core: 3.21.26
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     enumUnions: 0.1.0
@@ -35,7 +35,7 @@ features:
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.3.0
-    unions: 2.85.12
+    unions: 2.86.0
 generatedFiles:
   - .gitattributes
   - .npmignore
@@ -1545,7 +1545,7 @@ examples:
           idOrSlug: "<value>"
       responses:
         "200":
-          application/json: {"id": "<id>", "name": "<value>", "slug": "<value>", "logo": null, "inviteCode": "<value>", "plan": "business max", "stripeId": "<id>", "billingCycleStart": 8266.32, "paymentFailedAt": "<value>", "stripeConnectId": "<id>", "totalLinks": 1378.83, "usage": 2392.88, "usageLimit": 402.3, "linksUsage": 7273.44, "linksLimit": 9583.5, "payoutsUsage": 6544.94, "payoutsLimit": 8266.32, "payoutFee": 6544.94, "domainsLimit": 9444.18, "tagsLimit": 3440.64, "foldersUsage": 9717.42, "foldersLimit": 7249.67, "groupsLimit": 6544.94, "usersLimit": 5932.4, "aiUsage": 4075.34, "aiLimit": 4898.74, "conversionEnabled": false, "dotLinkClaimed": false, "createdAt": "1719645723163", "users": [{"role": "member", "defaultFolderId": "<id>"}, {"role": "member", "defaultFolderId": "<id>"}, {"role": "member", "defaultFolderId": "<id>"}], "domains": [{"slug": "acme.com", "primary": false, "verified": false}, {"slug": "acme.com", "primary": false, "verified": false}], "store": {"key": "<value>"}, "allowedHostnames": ["dub.sh"]}
+          application/json: {"id": "<id>", "name": "<value>", "slug": "<value>", "logo": null, "inviteCode": "<value>", "plan": "business max", "stripeId": "<id>", "billingCycleStart": 8266.32, "paymentFailedAt": "<value>", "stripeConnectId": "<id>", "totalLinks": 1378.83, "usage": 2392.88, "usageLimit": 402.3, "linksUsage": 7273.44, "linksLimit": 9583.5, "payoutsUsage": 6544.94, "payoutsLimit": 8266.32, "payoutFee": 6544.94, "domainsLimit": 9444.18, "tagsLimit": 3440.64, "foldersUsage": 9717.42, "foldersLimit": 7249.67, "groupsLimit": 6544.94, "usersLimit": 5932.4, "aiUsage": 4075.34, "aiLimit": 4898.74, "conversionEnabled": false, "dotLinkClaimed": false, "createdAt": "1719645723163", "users": [{"role": "member", "defaultFolderId": "<id>"}, {"role": "member", "defaultFolderId": "<id>"}, {"role": "member", "defaultFolderId": "<id>"}], "domains": [{"slug": "acme.com", "primary": false, "verified": false}, {"slug": "acme.com", "primary": false, "verified": false}], "store": {"key": "<value>"}, "allowedHostnames": ["dub.sh"], "ssoEmailDomain": "<value>", "ssoEnforcedAt": "<value>"}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1571,7 +1571,7 @@ examples:
           idOrSlug: "<value>"
       responses:
         "200":
-          application/json: {"id": "<id>", "name": "<value>", "slug": "<value>", "logo": null, "inviteCode": "<value>", "plan": "business", "stripeId": "<id>", "billingCycleStart": 6751.25, "paymentFailedAt": "<value>", "stripeConnectId": "<id>", "totalLinks": 217.76, "usage": 2028.85, "usageLimit": 7509.63, "linksUsage": 6390.88, "linksLimit": 5728.58, "payoutsUsage": 3164.81, "payoutsLimit": 6751.25, "payoutFee": 3164.81, "domainsLimit": 5981.08, "tagsLimit": 2040.39, "foldersUsage": 9329.44, "foldersLimit": 9097.44, "groupsLimit": 3164.81, "usersLimit": 4731.38, "aiUsage": 7848.2, "aiLimit": 9885.62, "conversionEnabled": false, "dotLinkClaimed": false, "createdAt": "1736936859523", "users": [{"role": "owner", "defaultFolderId": "<id>"}], "domains": [{"slug": "acme.com", "primary": false, "verified": false}, {"slug": "acme.com", "primary": false, "verified": false}, {"slug": "acme.com", "primary": false, "verified": false}], "store": {"key": "<value>"}, "allowedHostnames": ["dub.sh"]}
+          application/json: {"id": "<id>", "name": "<value>", "slug": "<value>", "logo": null, "inviteCode": "<value>", "plan": "business", "stripeId": "<id>", "billingCycleStart": 6751.25, "paymentFailedAt": "<value>", "stripeConnectId": "<id>", "totalLinks": 217.76, "usage": 2028.85, "usageLimit": 7509.63, "linksUsage": 6390.88, "linksLimit": 5728.58, "payoutsUsage": 3164.81, "payoutsLimit": 6751.25, "payoutFee": 3164.81, "domainsLimit": 5981.08, "tagsLimit": 2040.39, "foldersUsage": 9329.44, "foldersLimit": 9097.44, "groupsLimit": 3164.81, "usersLimit": 4731.38, "aiUsage": 7848.2, "aiLimit": 9885.62, "conversionEnabled": false, "dotLinkClaimed": false, "createdAt": "1736936859523", "users": [{"role": "owner", "defaultFolderId": "<id>"}], "domains": [{"slug": "acme.com", "primary": false, "verified": false}, {"slug": "acme.com", "primary": false, "verified": false}, {"slug": "acme.com", "primary": false, "verified": false}], "store": {"key": "<value>"}, "allowedHostnames": ["dub.sh"], "ssoEmailDomain": "<value>", "ssoEnforcedAt": "<value>"}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1782,4 +1782,4 @@ examples:
           application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes Detected:\n* `dub.partners.list()`: \n  *  `request` **Changed**\n  *  `response.[]` **Changed** **Breaking** :warning:\n* `dub.partners.create()`:  `response` **Changed** **Breaking** :warning:\n* `dub.analytics.retrieve()`: \n  *  `request.ref` **Added**\n* `dub.events.list()`: \n  *  `request.ref` **Added**\n* `dub.customers.create()`: \n  *  `request.stripeCustomerId` **Added**\n* `dub.customers.update()`: \n  *  `request.requestBody.stripeCustomerId` **Added**\n* `dub.partners.retrieveLinks()`:  `response.[].conversions` **Added**\n* `dub.commissions.list()`: \n  *  `request.tenantId` **Added**\n"
+releaseNotes: "## Typescript SDK Changes Detected:\n* `dub.partners.list()`: \n  *  `request.status` **Changed**\n* `dub.workspaces.get()`:  `response` **Changed**\n* `dub.workspaces.update()`:  `response` **Changed**\n"

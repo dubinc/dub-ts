@@ -5,7 +5,7 @@
 
 ### Available Operations
 
-* [create](#create) - Create a partner
+* [create](#create) - Create or update a partner
 * [list](#list) - List all partners
 * [createLink](#createlink) - Create a link for a partner
 * [retrieveLinks](#retrievelinks) - Retrieve a partner's links.
@@ -14,7 +14,7 @@
 
 ## create
 
-Create a partner for a program. If partner exists, automatically enrolls them.
+Creates or updates a partner record (upsert behavior). If a partner with the same email already exists, their program enrollment will be updated with the provided tenantId. If no existing partner is found, a new partner will be created using the supplied information.
 
 ### Example Usage
 

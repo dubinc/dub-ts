@@ -136,9 +136,9 @@ export type Discount = {
   amount: number;
   type: GetCustomersType;
   maxDuration: number | null;
-  description?: string | null | undefined;
   couponId: string | null;
   couponTestId: string | null;
+  description?: string | null | undefined;
   partnersCount?: number | null | undefined;
 };
 
@@ -471,9 +471,9 @@ export const Discount$inboundSchema: z.ZodType<
   amount: z.number(),
   type: GetCustomersType$inboundSchema,
   maxDuration: z.nullable(z.number()),
-  description: z.nullable(z.string()).optional(),
   couponId: z.nullable(z.string()),
   couponTestId: z.nullable(z.string()),
+  description: z.nullable(z.string()).optional(),
   partnersCount: z.nullable(z.number()).optional(),
 });
 
@@ -483,9 +483,9 @@ export type Discount$Outbound = {
   amount: number;
   type: string;
   maxDuration: number | null;
-  description?: string | null | undefined;
   couponId: string | null;
   couponTestId: string | null;
+  description?: string | null | undefined;
   partnersCount?: number | null | undefined;
 };
 
@@ -499,9 +499,9 @@ export const Discount$outboundSchema: z.ZodType<
   amount: z.number(),
   type: GetCustomersType$outboundSchema,
   maxDuration: z.nullable(z.number()),
-  description: z.nullable(z.string()).optional(),
   couponId: z.nullable(z.string()),
   couponTestId: z.nullable(z.string()),
+  description: z.nullable(z.string()).optional(),
   partnersCount: z.nullable(z.number()).optional(),
 });
 

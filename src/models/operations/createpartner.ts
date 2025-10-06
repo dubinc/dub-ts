@@ -198,6 +198,7 @@ export const CreatePartnerStatus = {
   Rejected: "rejected",
   Invited: "invited",
   Declined: "declined",
+  Deactivated: "deactivated",
   Banned: "banned",
   Archived: "archived",
 } as const;
@@ -266,7 +267,7 @@ export const BannedReason = {
 export type BannedReason = ClosedEnum<typeof BannedReason>;
 
 /**
- * The created partner
+ * The created or updated partner
  */
 export type CreatePartnerResponseBody = {
   /**

@@ -24,6 +24,7 @@ export const Status = {
   Rejected: "rejected",
   Invited: "invited",
   Declined: "declined",
+  Deactivated: "deactivated",
   Banned: "banned",
   Archived: "archived",
 } as const;
