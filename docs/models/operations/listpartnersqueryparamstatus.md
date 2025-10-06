@@ -13,5 +13,5 @@ let value: ListPartnersQueryParamStatus = "approved";
 ## Values
 
 ```typescript
-"pending" | "approved" | "rejected" | "invited" | "declined" | "banned" | "archived"
+"pending" | "approved" | "rejected" | "invited" | "declined" | "deactivated" | "banned" | "archived"
 ```

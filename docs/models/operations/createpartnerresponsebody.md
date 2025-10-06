@@ -1,6 +1,6 @@
 # CreatePartnerResponseBody
 
-The created partner
+The created or updated partner
 
 ## Example Usage
 
@@ -21,7 +21,7 @@ let value: CreatePartnerResponseBody = {
   partnerId: "<id>",
   tenantId: "<id>",
   createdAt: "1713803500847",
-  status: "invited",
+  status: "declined",
   links: [
     {
       id: "<id>",

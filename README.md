@@ -175,7 +175,7 @@ run();
 
 ### [partners](docs/sdks/partners/README.md)
 
-* [create](docs/sdks/partners/README.md#create) - Create a partner
+* [create](docs/sdks/partners/README.md#create) - Create or update a partner
 * [list](docs/sdks/partners/README.md#list) - List all partners
 * [createLink](docs/sdks/partners/README.md#createlink) - Create a link for a partner
 * [retrieveLinks](docs/sdks/partners/README.md#retrievelinks) - Retrieve a partner's links.
@@ -529,7 +529,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`linksUpdateMany`](docs/sdks/links/README.md#updatemany) - Bulk update links
 - [`linksUpsert`](docs/sdks/links/README.md#upsert) - Upsert a link
 - [`partnersAnalytics`](docs/sdks/partners/README.md#analytics) - Retrieve analytics for a partner
-- [`partnersCreate`](docs/sdks/partners/README.md#create) - Create a partner
+- [`partnersCreate`](docs/sdks/partners/README.md#create) - Create or update a partner
 - [`partnersCreateLink`](docs/sdks/partners/README.md#createlink) - Create a link for a partner
 - [`partnersList`](docs/sdks/partners/README.md#list) - List all partners
 - [`partnersRetrieveLinks`](docs/sdks/partners/README.md#retrievelinks) - Retrieve a partner's links.
