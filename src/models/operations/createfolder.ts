@@ -26,6 +26,10 @@ export type CreateFolderRequestBody = {
    */
   name: string;
   /**
+   * The description of the folder.
+   */
+  description?: string | null | undefined;
+  /**
    * The access level of the folder within the workspace.
    */
   accessLevel?: AccessLevel | null | undefined;
@@ -57,12 +61,14 @@ export const CreateFolderRequestBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   name: z.string(),
+  description: z.nullable(z.string()).optional(),
   accessLevel: z.nullable(AccessLevel$inboundSchema).default(null),
 });
 
 /** @internal */
 export type CreateFolderRequestBody$Outbound = {
   name: string;
+  description?: string | null | undefined;
   accessLevel: string | null;
 };
 
@@ -73,6 +79,7 @@ export const CreateFolderRequestBody$outboundSchema: z.ZodType<
   CreateFolderRequestBody
 > = z.object({
   name: z.string(),
+  description: z.nullable(z.string()).optional(),
   accessLevel: z.nullable(AccessLevel$outboundSchema).default(null),
 });
 

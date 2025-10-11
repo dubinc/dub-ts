@@ -29,6 +29,10 @@ export type UpdateFolderRequestBody = {
    */
   name?: string | undefined;
   /**
+   * The description of the folder.
+   */
+  description?: string | null | undefined;
+  /**
    * The access level of the folder within the workspace.
    */
   accessLevel?: UpdateFolderAccessLevel | null | undefined;
@@ -70,12 +74,14 @@ export const UpdateFolderRequestBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   name: z.string().optional(),
+  description: z.nullable(z.string()).optional(),
   accessLevel: z.nullable(UpdateFolderAccessLevel$inboundSchema).default(null),
 });
 
 /** @internal */
 export type UpdateFolderRequestBody$Outbound = {
   name?: string | undefined;
+  description?: string | null | undefined;
   accessLevel: string | null;
 };
 
@@ -86,6 +92,7 @@ export const UpdateFolderRequestBody$outboundSchema: z.ZodType<
   UpdateFolderRequestBody
 > = z.object({
   name: z.string().optional(),
+  description: z.nullable(z.string()).optional(),
   accessLevel: z.nullable(UpdateFolderAccessLevel$outboundSchema).default(null),
 });
 
