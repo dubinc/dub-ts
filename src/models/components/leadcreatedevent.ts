@@ -269,6 +269,7 @@ export type Partner = {
    * The partner's country (required for tax purposes).
    */
   country: string | null;
+  groupId?: string | null | undefined;
   totalClicks: number;
   totalLeads: number;
   totalConversions: number;
@@ -783,6 +784,7 @@ export const Partner$inboundSchema: z.ZodType<Partner, z.ZodTypeDef, unknown> =
     image: z.nullable(z.string()),
     payoutsEnabledAt: z.nullable(z.string()),
     country: z.nullable(z.string()),
+    groupId: z.nullable(z.string()).optional(),
     totalClicks: z.number(),
     totalLeads: z.number(),
     totalConversions: z.number(),
@@ -799,6 +801,7 @@ export type Partner$Outbound = {
   image: string | null;
   payoutsEnabledAt: string | null;
   country: string | null;
+  groupId?: string | null | undefined;
   totalClicks: number;
   totalLeads: number;
   totalConversions: number;
@@ -819,6 +822,7 @@ export const Partner$outboundSchema: z.ZodType<
   image: z.nullable(z.string()),
   payoutsEnabledAt: z.nullable(z.string()),
   country: z.nullable(z.string()),
+  groupId: z.nullable(z.string()).optional(),
   totalClicks: z.number(),
   totalLeads: z.number(),
   totalConversions: z.number(),
