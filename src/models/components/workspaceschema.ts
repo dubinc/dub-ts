@@ -158,6 +158,10 @@ export type WorkspaceSchema = {
    */
   groupsLimit: number;
   /**
+   * The weekly network invites limit of the workspace.
+   */
+  networkInvitesLimit: number;
+  /**
    * The users limit of the workspace.
    */
   usersLimit: number;
@@ -377,6 +381,7 @@ export const WorkspaceSchema$inboundSchema: z.ZodType<
   foldersUsage: z.number(),
   foldersLimit: z.number(),
   groupsLimit: z.number(),
+  networkInvitesLimit: z.number(),
   usersLimit: z.number(),
   aiUsage: z.number(),
   aiLimit: z.number(),
@@ -417,6 +422,7 @@ export type WorkspaceSchema$Outbound = {
   foldersUsage: number;
   foldersLimit: number;
   groupsLimit: number;
+  networkInvitesLimit: number;
   usersLimit: number;
   aiUsage: number;
   aiLimit: number;
@@ -461,6 +467,7 @@ export const WorkspaceSchema$outboundSchema: z.ZodType<
   foldersUsage: z.number(),
   foldersLimit: z.number(),
   groupsLimit: z.number(),
+  networkInvitesLimit: z.number(),
   usersLimit: z.number(),
   aiUsage: z.number(),
   aiLimit: z.number(),

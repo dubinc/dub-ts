@@ -111,7 +111,6 @@ async function $do(
   const query = encodeFormQuery({
     "country": payload?.country,
     "email": payload?.email,
-    "includeExpandedFields": payload?.includeExpandedFields,
     "page": payload?.page,
     "pageSize": payload?.pageSize,
     "search": payload?.search,
@@ -133,7 +132,7 @@ async function $do(
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "listPartners",
-    oAuth2Scopes: [],
+    oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
 
