@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: 43797075fd9e0d4bb17d9938a972af9d
+  docChecksum: 550d25461426e3d9e04178a3fbb08a6c
   docVersion: 0.0.1
-  speakeasyVersion: 1.635.1
-  generationVersion: 2.722.2
-  releaseVersion: 0.67.0
-  configChecksum: 064bb1dff2e2470839f3ee76b4dae6a0
+  speakeasyVersion: 1.642.2
+  generationVersion: 2.731.6
+  releaseVersion: 0.68.0
+  configChecksum: 86c3daecb6e55b41c17aa42074f63ac0
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.21.26
+    core: 3.24.1
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     enumUnions: 0.1.0
@@ -101,6 +101,7 @@ generatedFiles:
   - docs/models/components/linkclickedeventtestvariants.md
   - docs/models/components/linkerrorschema.md
   - docs/models/components/linkschema.md
+  - docs/models/components/linktagschema.md
   - docs/models/components/linkwebhookevent.md
   - docs/models/components/linkwebhookeventevent.md
   - docs/models/components/linkwebhookeventlink.md
@@ -137,7 +138,6 @@ generatedFiles:
   - docs/models/components/saleeventtestvariants.md
   - docs/models/components/security.md
   - docs/models/components/status.md
-  - docs/models/components/tagschema.md
   - docs/models/components/testvariants.md
   - docs/models/components/three.md
   - docs/models/components/trigger.md
@@ -373,7 +373,6 @@ generatedFiles:
   - docs/sdks/commissions/README.md
   - docs/sdks/customers/README.md
   - docs/sdks/domains/README.md
-  - docs/sdks/dub/README.md
   - docs/sdks/embedtokens/README.md
   - docs/sdks/events/README.md
   - docs/sdks/folders/README.md
@@ -479,6 +478,7 @@ generatedFiles:
   - src/models/components/linkclickedevent.ts
   - src/models/components/linkerrorschema.ts
   - src/models/components/linkschema.ts
+  - src/models/components/linktagschema.ts
   - src/models/components/linkwebhookevent.ts
   - src/models/components/partneranalyticscount.ts
   - src/models/components/partneranalyticstimeseries.ts
@@ -487,7 +487,6 @@ generatedFiles:
   - src/models/components/salecreatedevent.ts
   - src/models/components/saleevent.ts
   - src/models/components/security.ts
-  - src/models/components/tagschema.ts
   - src/models/components/webhookevent.ts
   - src/models/components/workspaceschema.ts
   - src/models/errors/badrequest.ts
@@ -1013,7 +1012,7 @@ examples:
     speakeasy-default-create-folder:
       responses:
         "201":
-          application/json: {"id": "<id>", "name": "<value>", "type": "mega", "accessLevel": null, "createdAt": "1737752826708", "updatedAt": "1747570134562"}
+          application/json: {"id": "<id>", "name": "<value>", "description": "wedge ew slight before volleyball throughout yum overspend", "type": "mega", "accessLevel": null, "createdAt": "1737752826708", "updatedAt": "1747570134562"}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1040,7 +1039,7 @@ examples:
           pageSize: 50
       responses:
         "200":
-          application/json: [{"id": "<id>", "name": "<value>", "type": "default", "accessLevel": null, "createdAt": "1739500764243", "updatedAt": "1747574724695"}, {"id": "<id>", "name": "<value>", "type": "default", "accessLevel": null, "createdAt": "1739500764243", "updatedAt": "1747574724695"}]
+          application/json: [{"id": "<id>", "name": "<value>", "description": "igloo stock lox pressure playfully", "type": "default", "accessLevel": null, "createdAt": "1739500764243", "updatedAt": "1747574724695"}, {"id": "<id>", "name": "<value>", "description": "like exactly blah unhealthy eggplant", "type": "default", "accessLevel": null, "createdAt": "1739500764243", "updatedAt": "1747574724695"}]
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1066,7 +1065,7 @@ examples:
           id: "<id>"
       responses:
         "200":
-          application/json: {"id": "<id>", "name": "<value>", "type": "default", "accessLevel": null, "createdAt": "1719092169263", "updatedAt": "1747578125231"}
+          application/json: {"id": "<id>", "name": "<value>", "description": "ouch slather muddy", "type": "default", "accessLevel": null, "createdAt": "1719092169263", "updatedAt": "1747578125231"}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1396,7 +1395,7 @@ examples:
     speakeasy-default-create-partner:
       responses:
         "201":
-          application/json: {"id": "<id>", "name": "<value>", "companyName": "Schowalter, Hauck and Bradtke", "email": "Summer50@yahoo.com", "image": "https://picsum.photos/seed/w6UEY4ogD/1950/1872", "country": "Venezuela", "paypalEmail": "<value>", "stripeConnectId": "<id>", "payoutsEnabledAt": "<value>", "programId": "<id>", "partnerId": "<id>", "tenantId": "<id>", "createdAt": "1721295968119", "status": "approved", "links": [{"id": "<id>", "domain": "stylish-deer.info", "key": "<key>", "shortLink": "https://juvenile-declaration.net", "url": "https://exhausted-editor.org", "clicks": 0, "leads": 0, "conversions": 0, "sales": 0, "saleAmount": 0}], "totalCommissions": 0, "clicks": 0, "leads": 0, "conversions": 0, "sales": 0, "saleAmount": 0, "netRevenue": 0}
+          application/json: {"id": "<id>", "name": "<value>", "companyName": "Schowalter, Hauck and Bradtke", "email": "Summer50@yahoo.com", "image": "https://picsum.photos/seed/w6UEY4ogD/1950/1872", "country": "Venezuela", "paypalEmail": "<value>", "stripeConnectId": "<id>", "payoutsEnabledAt": "<value>", "programId": "<id>", "partnerId": "<id>", "tenantId": "<id>", "createdAt": "1721295968119", "status": "approved", "links": [{"id": "<id>", "domain": "stylish-deer.info", "key": "<key>", "shortLink": "https://juvenile-declaration.net", "url": "https://exhausted-editor.org", "clicks": 0, "leads": 0, "conversions": 0, "sales": 0, "saleAmount": 0}], "totalCommissions": 0, "totalClicks": 0, "totalLeads": 0, "totalConversions": 0, "totalSales": 0, "totalSaleAmount": 0, "netRevenue": 0}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1545,7 +1544,7 @@ examples:
           idOrSlug: "<value>"
       responses:
         "200":
-          application/json: {"id": "<id>", "name": "<value>", "slug": "<value>", "logo": null, "inviteCode": "<value>", "plan": "business max", "stripeId": "<id>", "billingCycleStart": 8266.32, "paymentFailedAt": "<value>", "stripeConnectId": "<id>", "totalLinks": 1378.83, "usage": 2392.88, "usageLimit": 402.3, "linksUsage": 7273.44, "linksLimit": 9583.5, "payoutsUsage": 6544.94, "payoutsLimit": 8266.32, "payoutFee": 6544.94, "domainsLimit": 9444.18, "tagsLimit": 3440.64, "foldersUsage": 9717.42, "foldersLimit": 7249.67, "groupsLimit": 6544.94, "usersLimit": 5932.4, "aiUsage": 4075.34, "aiLimit": 4898.74, "conversionEnabled": false, "dotLinkClaimed": false, "createdAt": "1719645723163", "users": [{"role": "member", "defaultFolderId": "<id>"}, {"role": "member", "defaultFolderId": "<id>"}, {"role": "member", "defaultFolderId": "<id>"}], "domains": [{"slug": "acme.com", "primary": false, "verified": false}, {"slug": "acme.com", "primary": false, "verified": false}], "store": {"key": "<value>"}, "allowedHostnames": ["dub.sh"], "ssoEmailDomain": "<value>", "ssoEnforcedAt": "<value>"}
+          application/json: {"id": "<id>", "name": "<value>", "slug": "<value>", "logo": null, "inviteCode": "<value>", "plan": "business max", "stripeId": "<id>", "billingCycleStart": 8266.32, "paymentFailedAt": "<value>", "stripeConnectId": "<id>", "totalLinks": 1378.83, "usage": 2392.88, "usageLimit": 402.3, "linksUsage": 7273.44, "linksLimit": 9583.5, "payoutsUsage": 6544.94, "payoutsLimit": 8266.32, "payoutFee": 6544.94, "domainsLimit": 9444.18, "tagsLimit": 3440.64, "foldersUsage": 9717.42, "foldersLimit": 7249.67, "groupsLimit": 6544.94, "networkInvitesLimit": 6544.94, "usersLimit": 5932.4, "aiUsage": 4075.34, "aiLimit": 4898.74, "conversionEnabled": false, "dotLinkClaimed": false, "createdAt": "1719645723163", "users": [{"role": "member", "defaultFolderId": "<id>"}, {"role": "member", "defaultFolderId": "<id>"}, {"role": "member", "defaultFolderId": "<id>"}], "domains": [{"slug": "acme.com", "primary": false, "verified": false}, {"slug": "acme.com", "primary": false, "verified": false}], "store": {"key": "<value>"}, "allowedHostnames": ["dub.sh"], "ssoEmailDomain": "<value>", "ssoEnforcedAt": "<value>"}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1571,7 +1570,7 @@ examples:
           idOrSlug: "<value>"
       responses:
         "200":
-          application/json: {"id": "<id>", "name": "<value>", "slug": "<value>", "logo": null, "inviteCode": "<value>", "plan": "business", "stripeId": "<id>", "billingCycleStart": 6751.25, "paymentFailedAt": "<value>", "stripeConnectId": "<id>", "totalLinks": 217.76, "usage": 2028.85, "usageLimit": 7509.63, "linksUsage": 6390.88, "linksLimit": 5728.58, "payoutsUsage": 3164.81, "payoutsLimit": 6751.25, "payoutFee": 3164.81, "domainsLimit": 5981.08, "tagsLimit": 2040.39, "foldersUsage": 9329.44, "foldersLimit": 9097.44, "groupsLimit": 3164.81, "usersLimit": 4731.38, "aiUsage": 7848.2, "aiLimit": 9885.62, "conversionEnabled": false, "dotLinkClaimed": false, "createdAt": "1736936859523", "users": [{"role": "owner", "defaultFolderId": "<id>"}], "domains": [{"slug": "acme.com", "primary": false, "verified": false}, {"slug": "acme.com", "primary": false, "verified": false}, {"slug": "acme.com", "primary": false, "verified": false}], "store": {"key": "<value>"}, "allowedHostnames": ["dub.sh"], "ssoEmailDomain": "<value>", "ssoEnforcedAt": "<value>"}
+          application/json: {"id": "<id>", "name": "<value>", "slug": "<value>", "logo": null, "inviteCode": "<value>", "plan": "business", "stripeId": "<id>", "billingCycleStart": 6751.25, "paymentFailedAt": "<value>", "stripeConnectId": "<id>", "totalLinks": 217.76, "usage": 2028.85, "usageLimit": 7509.63, "linksUsage": 6390.88, "linksLimit": 5728.58, "payoutsUsage": 3164.81, "payoutsLimit": 6751.25, "payoutFee": 3164.81, "domainsLimit": 5981.08, "tagsLimit": 2040.39, "foldersUsage": 9329.44, "foldersLimit": 9097.44, "groupsLimit": 3164.81, "networkInvitesLimit": 3164.81, "usersLimit": 4731.38, "aiUsage": 7848.2, "aiLimit": 9885.62, "conversionEnabled": false, "dotLinkClaimed": false, "createdAt": "1736936859523", "users": [{"role": "owner", "defaultFolderId": "<id>"}], "domains": [{"slug": "acme.com", "primary": false, "verified": false}, {"slug": "acme.com", "primary": false, "verified": false}, {"slug": "acme.com", "primary": false, "verified": false}], "store": {"key": "<value>"}, "allowedHostnames": ["dub.sh"], "ssoEmailDomain": "<value>", "ssoEnforcedAt": "<value>"}
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1755,13 +1754,13 @@ examples:
     speakeasy-default-list-partners:
       parameters:
         query:
-          sortBy: "saleAmount"
+          sortBy: "totalSaleAmount"
           sortOrder: "desc"
           page: 1
           pageSize: 50
       responses:
         "200":
-          application/json: [{"id": "<id>", "name": "<value>", "companyName": "Pacocha, McClure and Kuvalis", "email": "Margret.Kuvalis12@hotmail.com", "image": "https://loremflickr.com/1672/969?lock=7633694569087148", "country": "Uruguay", "paypalEmail": "<value>", "stripeConnectId": "<id>", "payoutsEnabledAt": "<value>", "programId": "<id>", "partnerId": "<id>", "tenantId": "<id>", "createdAt": "1726913447345", "status": "declined", "links": [{"id": "<id>", "domain": "scared-knuckle.info", "key": "<key>", "shortLink": "https://granular-hammock.name/", "url": "https://vivacious-finding.biz", "clicks": 0, "leads": 0, "conversions": 0, "sales": 0, "saleAmount": 0}], "totalCommissions": 0, "clicks": 0, "leads": 0, "conversions": 0, "sales": 0, "saleAmount": 0, "netRevenue": 0}]
+          application/json: [{"id": "<id>", "name": "<value>", "companyName": "Pacocha, McClure and Kuvalis", "email": "Margret.Kuvalis12@hotmail.com", "image": "https://loremflickr.com/1672/969?lock=7633694569087148", "country": "Uruguay", "paypalEmail": "<value>", "stripeConnectId": "<id>", "payoutsEnabledAt": "<value>", "programId": "<id>", "partnerId": "<id>", "tenantId": "<id>", "createdAt": "1726913447345", "status": "declined", "links": [{"id": "<id>", "domain": "scared-knuckle.info", "key": "<key>", "shortLink": "https://granular-hammock.name/", "url": "https://vivacious-finding.biz", "clicks": 0, "leads": 0, "conversions": 0, "sales": 0, "saleAmount": 0}], "totalCommissions": 0, "totalClicks": 0, "totalLeads": 0, "totalConversions": 0, "totalSales": 0, "totalSaleAmount": 0, "netRevenue": 0}]
         "400":
           application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
         "401":
@@ -1782,4 +1781,4 @@ examples:
           application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes Detected:\n* `dub.partners.list()`: \n  *  `request.status` **Changed**\n* `dub.workspaces.get()`:  `response` **Changed**\n* `dub.workspaces.update()`:  `response` **Changed**\n"
+releaseNotes: "## Typescript SDK Changes Detected:\n* `dub.partners.list()`: \n  *  `request` **Changed** **Breaking** :warning:\n  *  `response.[]` **Changed** **Breaking** :warning:\n* `dub.partners.create()`:  `response` **Changed** **Breaking** :warning:\n* `dub.analytics.retrieve()`: \n  *  `request.groupBy` **Changed**\n* `dub.folders.list()`:  `response.[].description` **Added**\n* `dub.folders.create()`: \n  *  `request.description` **Added**\n  *  `response.description` **Added**\n* `dub.folders.update()`: \n  *  `requestbody.description` **Added**\n  *  `response.description` **Added**\n* `dub.workspaces.get()`:  `response.networkinviteslimit` **Added**\n* `dub.workspaces.update()`:  `response.networkinviteslimit` **Added**\n"

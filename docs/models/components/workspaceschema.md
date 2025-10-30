@@ -28,20 +28,16 @@ let value: WorkspaceSchema = {
   foldersUsage: 4866.93,
   foldersLimit: 4756.94,
   groupsLimit: 4890.3,
-  usersLimit: 9288.07,
-  aiUsage: 3052.36,
-  aiLimit: 5273.18,
+  networkInvitesLimit: 9288.07,
+  usersLimit: 3052.36,
+  aiUsage: 5273.18,
+  aiLimit: 7323.77,
   conversionEnabled: false,
-  dotLinkClaimed: false,
-  createdAt: "1711311497100",
-  users: [
-    {
-      role: "owner",
-      defaultFolderId: "<id>",
-    },
-  ],
+  dotLinkClaimed: true,
+  createdAt: "1733557723450",
+  users: [],
   domains: [],
-  store: {},
+  store: null,
   allowedHostnames: [
     "dub.sh",
   ],
@@ -77,6 +73,7 @@ let value: WorkspaceSchema = {
 | `foldersUsage`                                                                                                                                    | *number*                                                                                                                                          | :heavy_check_mark:                                                                                                                                | The folders usage of the workspace.                                                                                                               |                                                                                                                                                   |
 | `foldersLimit`                                                                                                                                    | *number*                                                                                                                                          | :heavy_check_mark:                                                                                                                                | The folders limit of the workspace.                                                                                                               |                                                                                                                                                   |
 | `groupsLimit`                                                                                                                                     | *number*                                                                                                                                          | :heavy_check_mark:                                                                                                                                | The groups limit of the workspace.                                                                                                                |                                                                                                                                                   |
+| `networkInvitesLimit`                                                                                                                             | *number*                                                                                                                                          | :heavy_check_mark:                                                                                                                                | The weekly network invites limit of the workspace.                                                                                                |                                                                                                                                                   |
 | `usersLimit`                                                                                                                                      | *number*                                                                                                                                          | :heavy_check_mark:                                                                                                                                | The users limit of the workspace.                                                                                                                 |                                                                                                                                                   |
 | `aiUsage`                                                                                                                                         | *number*                                                                                                                                          | :heavy_check_mark:                                                                                                                                | The AI usage of the workspace.                                                                                                                    |                                                                                                                                                   |
 | `aiLimit`                                                                                                                                         | *number*                                                                                                                                          | :heavy_check_mark:                                                                                                                                | The AI limit of the workspace.                                                                                                                    |                                                                                                                                                   |

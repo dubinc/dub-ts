@@ -38,7 +38,7 @@ export function tagsCreate(
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    components.TagSchema,
+    components.LinkTagSchema,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -72,7 +72,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      components.TagSchema,
+      components.LinkTagSchema,
       | errors.BadRequest
       | errors.Unauthorized
       | errors.Forbidden
@@ -123,7 +123,7 @@ async function $do(
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "createTag",
-    oAuth2Scopes: [],
+    oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
 
@@ -177,7 +177,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    components.TagSchema,
+    components.LinkTagSchema,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -196,7 +196,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(201, components.TagSchema$inboundSchema),
+    M.json(201, components.LinkTagSchema$inboundSchema),
     M.jsonErr(400, errors.BadRequest$inboundSchema),
     M.jsonErr(401, errors.Unauthorized$inboundSchema),
     M.jsonErr(403, errors.Forbidden$inboundSchema),

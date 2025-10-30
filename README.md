@@ -144,7 +144,6 @@ run();
 * [register](docs/sdks/domains/README.md#register) - Register a domain
 * [checkStatus](docs/sdks/domains/README.md#checkstatus) - Check the availability of one or more domains
 
-
 ### [embedTokens](docs/sdks/embedtokens/README.md)
 
 * [referrals](docs/sdks/embedtokens/README.md#referrals) - Create a referrals embed token
