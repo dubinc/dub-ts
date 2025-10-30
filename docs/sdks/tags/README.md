@@ -71,7 +71,7 @@ run();
 
 ### Response
 
-**Promise\<[components.TagSchema](../../models/components/tagschema.md)\>**
+**Promise\<[components.LinkTagSchema](../../models/components/linktagschema.md)\>**
 
 ### Errors
 
@@ -149,7 +149,7 @@ run();
 
 ### Response
 
-**Promise\<[components.TagSchema[]](../../models/.md)\>**
+**Promise\<[components.LinkTagSchema[]](../../models/.md)\>**
 
 ### Errors
 
@@ -228,7 +228,7 @@ run();
 
 ### Response
 
-**Promise\<[components.TagSchema](../../models/components/tagschema.md)\>**
+**Promise\<[components.LinkTagSchema](../../models/components/linktagschema.md)\>**
 
 ### Errors
 

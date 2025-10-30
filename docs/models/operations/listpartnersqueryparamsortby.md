@@ -1,17 +1,17 @@
 # ListPartnersQueryParamSortBy
 
-The field to sort the partners by. The default is `saleAmount`.
+The field to sort the partners by. The default is `totalSaleAmount`.
 
 ## Example Usage
 
 ```typescript
 import { ListPartnersQueryParamSortBy } from "dub/models/operations";
 
-let value: ListPartnersQueryParamSortBy = "saleAmount";
+let value: ListPartnersQueryParamSortBy = "totalSaleAmount";
 ```
 
 ## Values
 
 ```typescript
-"createdAt" | "clicks" | "leads" | "conversions" | "sales" | "saleAmount" | "totalCommissions" | "netRevenue"
+"createdAt" | "totalClicks" | "totalLeads" | "totalConversions" | "totalSaleAmount" | "totalCommissions"
 ```

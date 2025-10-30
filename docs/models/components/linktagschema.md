@@ -1,14 +1,14 @@
-# TagSchema
+# LinkTagSchema
 
 ## Example Usage
 
 ```typescript
-import { TagSchema } from "dub/models/components";
+import { LinkTagSchema } from "dub/models/components";
 
-let value: TagSchema = {
+let value: LinkTagSchema = {
   id: "<id>",
   name: "<value>",
-  color: "green",
+  color: "yellow",
 };
 ```
 
