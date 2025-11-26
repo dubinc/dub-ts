@@ -129,16 +129,6 @@ export type GetCustomerResponseBody = {
 };
 
 /** @internal */
-export const GetCustomerRequest$inboundSchema: z.ZodType<
-  GetCustomerRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-  includeExpandedFields: z.boolean().optional(),
-});
-
-/** @internal */
 export type GetCustomerRequest$Outbound = {
   id: string;
   includeExpandedFields?: boolean | undefined;
@@ -154,34 +144,11 @@ export const GetCustomerRequest$outboundSchema: z.ZodType<
   includeExpandedFields: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetCustomerRequest$ {
-  /** @deprecated use `GetCustomerRequest$inboundSchema` instead. */
-  export const inboundSchema = GetCustomerRequest$inboundSchema;
-  /** @deprecated use `GetCustomerRequest$outboundSchema` instead. */
-  export const outboundSchema = GetCustomerRequest$outboundSchema;
-  /** @deprecated use `GetCustomerRequest$Outbound` instead. */
-  export type Outbound = GetCustomerRequest$Outbound;
-}
-
 export function getCustomerRequestToJSON(
   getCustomerRequest: GetCustomerRequest,
 ): string {
   return JSON.stringify(
     GetCustomerRequest$outboundSchema.parse(getCustomerRequest),
-  );
-}
-
-export function getCustomerRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetCustomerRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetCustomerRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetCustomerRequest' from JSON`,
   );
 }
 
@@ -198,49 +165,6 @@ export const GetCustomerLink$inboundSchema: z.ZodType<
   url: z.string(),
   programId: z.nullable(z.string()),
 });
-
-/** @internal */
-export type GetCustomerLink$Outbound = {
-  id: string;
-  domain: string;
-  key: string;
-  shortLink: string;
-  url: string;
-  programId: string | null;
-};
-
-/** @internal */
-export const GetCustomerLink$outboundSchema: z.ZodType<
-  GetCustomerLink$Outbound,
-  z.ZodTypeDef,
-  GetCustomerLink
-> = z.object({
-  id: z.string(),
-  domain: z.string(),
-  key: z.string(),
-  shortLink: z.string(),
-  url: z.string(),
-  programId: z.nullable(z.string()),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetCustomerLink$ {
-  /** @deprecated use `GetCustomerLink$inboundSchema` instead. */
-  export const inboundSchema = GetCustomerLink$inboundSchema;
-  /** @deprecated use `GetCustomerLink$outboundSchema` instead. */
-  export const outboundSchema = GetCustomerLink$outboundSchema;
-  /** @deprecated use `GetCustomerLink$Outbound` instead. */
-  export type Outbound = GetCustomerLink$Outbound;
-}
-
-export function getCustomerLinkToJSON(
-  getCustomerLink: GetCustomerLink,
-): string {
-  return JSON.stringify(GetCustomerLink$outboundSchema.parse(getCustomerLink));
-}
 
 export function getCustomerLinkFromJSON(
   jsonString: string,
@@ -264,47 +188,6 @@ export const GetCustomerPartner$inboundSchema: z.ZodType<
   image: z.nullable(z.string()),
 });
 
-/** @internal */
-export type GetCustomerPartner$Outbound = {
-  id: string;
-  name: string;
-  email: string | null;
-  image: string | null;
-};
-
-/** @internal */
-export const GetCustomerPartner$outboundSchema: z.ZodType<
-  GetCustomerPartner$Outbound,
-  z.ZodTypeDef,
-  GetCustomerPartner
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  email: z.nullable(z.string()),
-  image: z.nullable(z.string()),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetCustomerPartner$ {
-  /** @deprecated use `GetCustomerPartner$inboundSchema` instead. */
-  export const inboundSchema = GetCustomerPartner$inboundSchema;
-  /** @deprecated use `GetCustomerPartner$outboundSchema` instead. */
-  export const outboundSchema = GetCustomerPartner$outboundSchema;
-  /** @deprecated use `GetCustomerPartner$Outbound` instead. */
-  export type Outbound = GetCustomerPartner$Outbound;
-}
-
-export function getCustomerPartnerToJSON(
-  getCustomerPartner: GetCustomerPartner,
-): string {
-  return JSON.stringify(
-    GetCustomerPartner$outboundSchema.parse(getCustomerPartner),
-  );
-}
-
 export function getCustomerPartnerFromJSON(
   jsonString: string,
 ): SafeParseResult<GetCustomerPartner, SDKValidationError> {
@@ -321,22 +204,6 @@ export const GetCustomerType$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(GetCustomerType);
 
 /** @internal */
-export const GetCustomerType$outboundSchema: z.ZodNativeEnum<
-  typeof GetCustomerType
-> = GetCustomerType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetCustomerType$ {
-  /** @deprecated use `GetCustomerType$inboundSchema` instead. */
-  export const inboundSchema = GetCustomerType$inboundSchema;
-  /** @deprecated use `GetCustomerType$outboundSchema` instead. */
-  export const outboundSchema = GetCustomerType$outboundSchema;
-}
-
-/** @internal */
 export const GetCustomerDiscount$inboundSchema: z.ZodType<
   GetCustomerDiscount,
   z.ZodTypeDef,
@@ -351,55 +218,6 @@ export const GetCustomerDiscount$inboundSchema: z.ZodType<
   description: z.nullable(z.string()).optional(),
   partnersCount: z.nullable(z.number()).optional(),
 });
-
-/** @internal */
-export type GetCustomerDiscount$Outbound = {
-  id: string;
-  amount: number;
-  type: string;
-  maxDuration: number | null;
-  couponId: string | null;
-  couponTestId: string | null;
-  description?: string | null | undefined;
-  partnersCount?: number | null | undefined;
-};
-
-/** @internal */
-export const GetCustomerDiscount$outboundSchema: z.ZodType<
-  GetCustomerDiscount$Outbound,
-  z.ZodTypeDef,
-  GetCustomerDiscount
-> = z.object({
-  id: z.string(),
-  amount: z.number(),
-  type: GetCustomerType$outboundSchema,
-  maxDuration: z.nullable(z.number()),
-  couponId: z.nullable(z.string()),
-  couponTestId: z.nullable(z.string()),
-  description: z.nullable(z.string()).optional(),
-  partnersCount: z.nullable(z.number()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetCustomerDiscount$ {
-  /** @deprecated use `GetCustomerDiscount$inboundSchema` instead. */
-  export const inboundSchema = GetCustomerDiscount$inboundSchema;
-  /** @deprecated use `GetCustomerDiscount$outboundSchema` instead. */
-  export const outboundSchema = GetCustomerDiscount$outboundSchema;
-  /** @deprecated use `GetCustomerDiscount$Outbound` instead. */
-  export type Outbound = GetCustomerDiscount$Outbound;
-}
-
-export function getCustomerDiscountToJSON(
-  getCustomerDiscount: GetCustomerDiscount,
-): string {
-  return JSON.stringify(
-    GetCustomerDiscount$outboundSchema.parse(getCustomerDiscount),
-  );
-}
 
 export function getCustomerDiscountFromJSON(
   jsonString: string,
@@ -433,67 +251,6 @@ export const GetCustomerResponseBody$inboundSchema: z.ZodType<
   discount: z.nullable(z.lazy(() => GetCustomerDiscount$inboundSchema))
     .optional(),
 });
-
-/** @internal */
-export type GetCustomerResponseBody$Outbound = {
-  id: string;
-  externalId: string;
-  name: string;
-  email?: string | null | undefined;
-  avatar?: string | null | undefined;
-  country?: string | null | undefined;
-  sales?: number | null | undefined;
-  saleAmount?: number | null | undefined;
-  createdAt: string;
-  link?: GetCustomerLink$Outbound | null | undefined;
-  programId?: string | null | undefined;
-  partner?: GetCustomerPartner$Outbound | null | undefined;
-  discount?: GetCustomerDiscount$Outbound | null | undefined;
-};
-
-/** @internal */
-export const GetCustomerResponseBody$outboundSchema: z.ZodType<
-  GetCustomerResponseBody$Outbound,
-  z.ZodTypeDef,
-  GetCustomerResponseBody
-> = z.object({
-  id: z.string(),
-  externalId: z.string(),
-  name: z.string(),
-  email: z.nullable(z.string()).optional(),
-  avatar: z.nullable(z.string()).optional(),
-  country: z.nullable(z.string()).optional(),
-  sales: z.nullable(z.number()).optional(),
-  saleAmount: z.nullable(z.number()).optional(),
-  createdAt: z.string(),
-  link: z.nullable(z.lazy(() => GetCustomerLink$outboundSchema)).optional(),
-  programId: z.nullable(z.string()).optional(),
-  partner: z.nullable(z.lazy(() => GetCustomerPartner$outboundSchema))
-    .optional(),
-  discount: z.nullable(z.lazy(() => GetCustomerDiscount$outboundSchema))
-    .optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetCustomerResponseBody$ {
-  /** @deprecated use `GetCustomerResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetCustomerResponseBody$inboundSchema;
-  /** @deprecated use `GetCustomerResponseBody$outboundSchema` instead. */
-  export const outboundSchema = GetCustomerResponseBody$outboundSchema;
-  /** @deprecated use `GetCustomerResponseBody$Outbound` instead. */
-  export type Outbound = GetCustomerResponseBody$Outbound;
-}
-
-export function getCustomerResponseBodyToJSON(
-  getCustomerResponseBody: GetCustomerResponseBody,
-): string {
-  return JSON.stringify(
-    GetCustomerResponseBody$outboundSchema.parse(getCustomerResponseBody),
-  );
-}
 
 export function getCustomerResponseBodyFromJSON(
   jsonString: string,

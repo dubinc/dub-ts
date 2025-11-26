@@ -3,10 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The field to sort the tags by.
@@ -69,51 +66,14 @@ export type GetTagsRequest = {
 };
 
 /** @internal */
-export const GetTagsQueryParamSortBy$inboundSchema: z.ZodNativeEnum<
+export const GetTagsQueryParamSortBy$outboundSchema: z.ZodNativeEnum<
   typeof GetTagsQueryParamSortBy
 > = z.nativeEnum(GetTagsQueryParamSortBy);
 
 /** @internal */
-export const GetTagsQueryParamSortBy$outboundSchema: z.ZodNativeEnum<
-  typeof GetTagsQueryParamSortBy
-> = GetTagsQueryParamSortBy$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTagsQueryParamSortBy$ {
-  /** @deprecated use `GetTagsQueryParamSortBy$inboundSchema` instead. */
-  export const inboundSchema = GetTagsQueryParamSortBy$inboundSchema;
-  /** @deprecated use `GetTagsQueryParamSortBy$outboundSchema` instead. */
-  export const outboundSchema = GetTagsQueryParamSortBy$outboundSchema;
-}
-
-/** @internal */
-export const GetTagsQueryParamSortOrder$inboundSchema: z.ZodNativeEnum<
-  typeof GetTagsQueryParamSortOrder
-> = z.nativeEnum(GetTagsQueryParamSortOrder);
-
-/** @internal */
 export const GetTagsQueryParamSortOrder$outboundSchema: z.ZodNativeEnum<
   typeof GetTagsQueryParamSortOrder
-> = GetTagsQueryParamSortOrder$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTagsQueryParamSortOrder$ {
-  /** @deprecated use `GetTagsQueryParamSortOrder$inboundSchema` instead. */
-  export const inboundSchema = GetTagsQueryParamSortOrder$inboundSchema;
-  /** @deprecated use `GetTagsQueryParamSortOrder$outboundSchema` instead. */
-  export const outboundSchema = GetTagsQueryParamSortOrder$outboundSchema;
-}
-
-/** @internal */
-export const Ids$inboundSchema: z.ZodType<Ids, z.ZodTypeDef, unknown> = z.union(
-  [z.string(), z.array(z.string())],
-);
+> = z.nativeEnum(GetTagsQueryParamSortOrder);
 
 /** @internal */
 export type Ids$Outbound = string | Array<string>;
@@ -122,46 +82,9 @@ export type Ids$Outbound = string | Array<string>;
 export const Ids$outboundSchema: z.ZodType<Ids$Outbound, z.ZodTypeDef, Ids> = z
   .union([z.string(), z.array(z.string())]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Ids$ {
-  /** @deprecated use `Ids$inboundSchema` instead. */
-  export const inboundSchema = Ids$inboundSchema;
-  /** @deprecated use `Ids$outboundSchema` instead. */
-  export const outboundSchema = Ids$outboundSchema;
-  /** @deprecated use `Ids$Outbound` instead. */
-  export type Outbound = Ids$Outbound;
-}
-
 export function idsToJSON(ids: Ids): string {
   return JSON.stringify(Ids$outboundSchema.parse(ids));
 }
-
-export function idsFromJSON(
-  jsonString: string,
-): SafeParseResult<Ids, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Ids$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Ids' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetTagsRequest$inboundSchema: z.ZodType<
-  GetTagsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  sortBy: GetTagsQueryParamSortBy$inboundSchema.default("name"),
-  sortOrder: GetTagsQueryParamSortOrder$inboundSchema.default("asc"),
-  search: z.string().optional(),
-  ids: z.union([z.string(), z.array(z.string())]).optional(),
-  page: z.number().default(1),
-  pageSize: z.number().default(100),
-});
 
 /** @internal */
 export type GetTagsRequest$Outbound = {
@@ -187,29 +110,6 @@ export const GetTagsRequest$outboundSchema: z.ZodType<
   pageSize: z.number().default(100),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTagsRequest$ {
-  /** @deprecated use `GetTagsRequest$inboundSchema` instead. */
-  export const inboundSchema = GetTagsRequest$inboundSchema;
-  /** @deprecated use `GetTagsRequest$outboundSchema` instead. */
-  export const outboundSchema = GetTagsRequest$outboundSchema;
-  /** @deprecated use `GetTagsRequest$Outbound` instead. */
-  export type Outbound = GetTagsRequest$Outbound;
-}
-
 export function getTagsRequestToJSON(getTagsRequest: GetTagsRequest): string {
   return JSON.stringify(GetTagsRequest$outboundSchema.parse(getTagsRequest));
-}
-
-export function getTagsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetTagsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetTagsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetTagsRequest' from JSON`,
-  );
 }

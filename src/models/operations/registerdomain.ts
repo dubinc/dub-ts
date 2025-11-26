@@ -33,15 +33,6 @@ export type RegisterDomainResponseBody = {
 };
 
 /** @internal */
-export const RegisterDomainRequestBody$inboundSchema: z.ZodType<
-  RegisterDomainRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  domain: z.string(),
-});
-
-/** @internal */
 export type RegisterDomainRequestBody$Outbound = {
   domain: string;
 };
@@ -55,34 +46,11 @@ export const RegisterDomainRequestBody$outboundSchema: z.ZodType<
   domain: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RegisterDomainRequestBody$ {
-  /** @deprecated use `RegisterDomainRequestBody$inboundSchema` instead. */
-  export const inboundSchema = RegisterDomainRequestBody$inboundSchema;
-  /** @deprecated use `RegisterDomainRequestBody$outboundSchema` instead. */
-  export const outboundSchema = RegisterDomainRequestBody$outboundSchema;
-  /** @deprecated use `RegisterDomainRequestBody$Outbound` instead. */
-  export type Outbound = RegisterDomainRequestBody$Outbound;
-}
-
 export function registerDomainRequestBodyToJSON(
   registerDomainRequestBody: RegisterDomainRequestBody,
 ): string {
   return JSON.stringify(
     RegisterDomainRequestBody$outboundSchema.parse(registerDomainRequestBody),
-  );
-}
-
-export function registerDomainRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<RegisterDomainRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RegisterDomainRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RegisterDomainRequestBody' from JSON`,
   );
 }
 
@@ -96,45 +64,6 @@ export const RegisterDomainResponseBody$inboundSchema: z.ZodType<
   status: z.string(),
   expiration: z.nullable(z.number()),
 });
-
-/** @internal */
-export type RegisterDomainResponseBody$Outbound = {
-  domain: string;
-  status: string;
-  expiration: number | null;
-};
-
-/** @internal */
-export const RegisterDomainResponseBody$outboundSchema: z.ZodType<
-  RegisterDomainResponseBody$Outbound,
-  z.ZodTypeDef,
-  RegisterDomainResponseBody
-> = z.object({
-  domain: z.string(),
-  status: z.string(),
-  expiration: z.nullable(z.number()),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RegisterDomainResponseBody$ {
-  /** @deprecated use `RegisterDomainResponseBody$inboundSchema` instead. */
-  export const inboundSchema = RegisterDomainResponseBody$inboundSchema;
-  /** @deprecated use `RegisterDomainResponseBody$outboundSchema` instead. */
-  export const outboundSchema = RegisterDomainResponseBody$outboundSchema;
-  /** @deprecated use `RegisterDomainResponseBody$Outbound` instead. */
-  export type Outbound = RegisterDomainResponseBody$Outbound;
-}
-
-export function registerDomainResponseBodyToJSON(
-  registerDomainResponseBody: RegisterDomainResponseBody,
-): string {
-  return JSON.stringify(
-    RegisterDomainResponseBody$outboundSchema.parse(registerDomainResponseBody),
-  );
-}
 
 export function registerDomainResponseBodyFromJSON(
   jsonString: string,

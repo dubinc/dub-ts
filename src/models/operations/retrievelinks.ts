@@ -8,8 +8,14 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type RetrieveLinksRequest = {
-  partnerId?: string | undefined;
-  tenantId?: string | undefined;
+  /**
+   * The ID of the partner to create a link for. Will take precedence over `tenantId` if provided.
+   */
+  partnerId?: string | null | undefined;
+  /**
+   * The ID of the partner in your system. If both `partnerId` and `tenantId` are not provided, an error will be thrown.
+   */
+  tenantId?: string | null | undefined;
 };
 
 export type Link = {
@@ -56,19 +62,9 @@ export type Link = {
 };
 
 /** @internal */
-export const RetrieveLinksRequest$inboundSchema: z.ZodType<
-  RetrieveLinksRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  partnerId: z.string().optional(),
-  tenantId: z.string().optional(),
-});
-
-/** @internal */
 export type RetrieveLinksRequest$Outbound = {
-  partnerId?: string | undefined;
-  tenantId?: string | undefined;
+  partnerId?: string | null | undefined;
+  tenantId?: string | null | undefined;
 };
 
 /** @internal */
@@ -77,38 +73,15 @@ export const RetrieveLinksRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   RetrieveLinksRequest
 > = z.object({
-  partnerId: z.string().optional(),
-  tenantId: z.string().optional(),
+  partnerId: z.nullable(z.string()).optional(),
+  tenantId: z.nullable(z.string()).optional(),
 });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveLinksRequest$ {
-  /** @deprecated use `RetrieveLinksRequest$inboundSchema` instead. */
-  export const inboundSchema = RetrieveLinksRequest$inboundSchema;
-  /** @deprecated use `RetrieveLinksRequest$outboundSchema` instead. */
-  export const outboundSchema = RetrieveLinksRequest$outboundSchema;
-  /** @deprecated use `RetrieveLinksRequest$Outbound` instead. */
-  export type Outbound = RetrieveLinksRequest$Outbound;
-}
 
 export function retrieveLinksRequestToJSON(
   retrieveLinksRequest: RetrieveLinksRequest,
 ): string {
   return JSON.stringify(
     RetrieveLinksRequest$outboundSchema.parse(retrieveLinksRequest),
-  );
-}
-
-export function retrieveLinksRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<RetrieveLinksRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RetrieveLinksRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RetrieveLinksRequest' from JSON`,
   );
 }
 
@@ -126,52 +99,6 @@ export const Link$inboundSchema: z.ZodType<Link, z.ZodTypeDef, unknown> = z
     sales: z.number().default(0),
     saleAmount: z.number().default(0),
   });
-
-/** @internal */
-export type Link$Outbound = {
-  id: string;
-  domain: string;
-  key: string;
-  shortLink: string;
-  url: string;
-  clicks: number;
-  leads: number;
-  conversions: number;
-  sales: number;
-  saleAmount: number;
-};
-
-/** @internal */
-export const Link$outboundSchema: z.ZodType<Link$Outbound, z.ZodTypeDef, Link> =
-  z.object({
-    id: z.string(),
-    domain: z.string(),
-    key: z.string(),
-    shortLink: z.string(),
-    url: z.string(),
-    clicks: z.number().default(0),
-    leads: z.number().default(0),
-    conversions: z.number().default(0),
-    sales: z.number().default(0),
-    saleAmount: z.number().default(0),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Link$ {
-  /** @deprecated use `Link$inboundSchema` instead. */
-  export const inboundSchema = Link$inboundSchema;
-  /** @deprecated use `Link$outboundSchema` instead. */
-  export const outboundSchema = Link$outboundSchema;
-  /** @deprecated use `Link$Outbound` instead. */
-  export type Outbound = Link$Outbound;
-}
-
-export function linkToJSON(link: Link): string {
-  return JSON.stringify(Link$outboundSchema.parse(link));
-}
 
 export function linkFromJSON(
   jsonString: string,

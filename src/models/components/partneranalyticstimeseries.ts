@@ -45,51 +45,6 @@ export const PartnerAnalyticsTimeseries$inboundSchema: z.ZodType<
   earnings: z.number().default(0),
 });
 
-/** @internal */
-export type PartnerAnalyticsTimeseries$Outbound = {
-  start: string;
-  clicks: number;
-  leads: number;
-  sales: number;
-  saleAmount: number;
-  earnings: number;
-};
-
-/** @internal */
-export const PartnerAnalyticsTimeseries$outboundSchema: z.ZodType<
-  PartnerAnalyticsTimeseries$Outbound,
-  z.ZodTypeDef,
-  PartnerAnalyticsTimeseries
-> = z.object({
-  start: z.string(),
-  clicks: z.number().default(0),
-  leads: z.number().default(0),
-  sales: z.number().default(0),
-  saleAmount: z.number().default(0),
-  earnings: z.number().default(0),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PartnerAnalyticsTimeseries$ {
-  /** @deprecated use `PartnerAnalyticsTimeseries$inboundSchema` instead. */
-  export const inboundSchema = PartnerAnalyticsTimeseries$inboundSchema;
-  /** @deprecated use `PartnerAnalyticsTimeseries$outboundSchema` instead. */
-  export const outboundSchema = PartnerAnalyticsTimeseries$outboundSchema;
-  /** @deprecated use `PartnerAnalyticsTimeseries$Outbound` instead. */
-  export type Outbound = PartnerAnalyticsTimeseries$Outbound;
-}
-
-export function partnerAnalyticsTimeseriesToJSON(
-  partnerAnalyticsTimeseries: PartnerAnalyticsTimeseries,
-): string {
-  return JSON.stringify(
-    PartnerAnalyticsTimeseries$outboundSchema.parse(partnerAnalyticsTimeseries),
-  );
-}
-
 export function partnerAnalyticsTimeseriesFromJSON(
   jsonString: string,
 ): SafeParseResult<PartnerAnalyticsTimeseries, SDKValidationError> {

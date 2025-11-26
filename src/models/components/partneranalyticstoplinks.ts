@@ -87,67 +87,6 @@ export const PartnerAnalyticsTopLinks$inboundSchema: z.ZodType<
   earnings: z.number().default(0),
 });
 
-/** @internal */
-export type PartnerAnalyticsTopLinks$Outbound = {
-  link: string;
-  id: string;
-  domain: string;
-  key: string;
-  shortLink: string;
-  url: string;
-  comments?: string | null | undefined;
-  title?: string | null | undefined;
-  createdAt: string;
-  clicks: number;
-  leads: number;
-  sales: number;
-  saleAmount: number;
-  earnings: number;
-};
-
-/** @internal */
-export const PartnerAnalyticsTopLinks$outboundSchema: z.ZodType<
-  PartnerAnalyticsTopLinks$Outbound,
-  z.ZodTypeDef,
-  PartnerAnalyticsTopLinks
-> = z.object({
-  link: z.string(),
-  id: z.string(),
-  domain: z.string(),
-  key: z.string(),
-  shortLink: z.string(),
-  url: z.string(),
-  comments: z.nullable(z.string()).optional(),
-  title: z.nullable(z.string()).optional(),
-  createdAt: z.string(),
-  clicks: z.number().default(0),
-  leads: z.number().default(0),
-  sales: z.number().default(0),
-  saleAmount: z.number().default(0),
-  earnings: z.number().default(0),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PartnerAnalyticsTopLinks$ {
-  /** @deprecated use `PartnerAnalyticsTopLinks$inboundSchema` instead. */
-  export const inboundSchema = PartnerAnalyticsTopLinks$inboundSchema;
-  /** @deprecated use `PartnerAnalyticsTopLinks$outboundSchema` instead. */
-  export const outboundSchema = PartnerAnalyticsTopLinks$outboundSchema;
-  /** @deprecated use `PartnerAnalyticsTopLinks$Outbound` instead. */
-  export type Outbound = PartnerAnalyticsTopLinks$Outbound;
-}
-
-export function partnerAnalyticsTopLinksToJSON(
-  partnerAnalyticsTopLinks: PartnerAnalyticsTopLinks,
-): string {
-  return JSON.stringify(
-    PartnerAnalyticsTopLinks$outboundSchema.parse(partnerAnalyticsTopLinks),
-  );
-}
-
 export function partnerAnalyticsTopLinksFromJSON(
   jsonString: string,
 ): SafeParseResult<PartnerAnalyticsTopLinks, SDKValidationError> {

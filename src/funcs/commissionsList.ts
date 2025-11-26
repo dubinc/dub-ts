@@ -123,6 +123,7 @@ async function $do(
     "start": payload?.start,
     "status": payload?.status,
     "tenantId": payload?.tenantId,
+    "timezone": payload?.timezone,
     "type": payload?.type,
   });
 

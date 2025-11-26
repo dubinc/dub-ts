@@ -44,21 +44,9 @@ export type LinkTagSchema = {
 export const Color$inboundSchema: z.ZodNativeEnum<typeof Color> = z.nativeEnum(
   Color,
 );
-
 /** @internal */
 export const Color$outboundSchema: z.ZodNativeEnum<typeof Color> =
   Color$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Color$ {
-  /** @deprecated use `Color$inboundSchema` instead. */
-  export const inboundSchema = Color$inboundSchema;
-  /** @deprecated use `Color$outboundSchema` instead. */
-  export const outboundSchema = Color$outboundSchema;
-}
 
 /** @internal */
 export const LinkTagSchema$inboundSchema: z.ZodType<
@@ -70,7 +58,6 @@ export const LinkTagSchema$inboundSchema: z.ZodType<
   name: z.string(),
   color: Color$inboundSchema,
 });
-
 /** @internal */
 export type LinkTagSchema$Outbound = {
   id: string;
@@ -89,23 +76,9 @@ export const LinkTagSchema$outboundSchema: z.ZodType<
   color: Color$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LinkTagSchema$ {
-  /** @deprecated use `LinkTagSchema$inboundSchema` instead. */
-  export const inboundSchema = LinkTagSchema$inboundSchema;
-  /** @deprecated use `LinkTagSchema$outboundSchema` instead. */
-  export const outboundSchema = LinkTagSchema$outboundSchema;
-  /** @deprecated use `LinkTagSchema$Outbound` instead. */
-  export type Outbound = LinkTagSchema$Outbound;
-}
-
 export function linkTagSchemaToJSON(linkTagSchema: LinkTagSchema): string {
   return JSON.stringify(LinkTagSchema$outboundSchema.parse(linkTagSchema));
 }
-
 export function linkTagSchemaFromJSON(
   jsonString: string,
 ): SafeParseResult<LinkTagSchema, SDKValidationError> {

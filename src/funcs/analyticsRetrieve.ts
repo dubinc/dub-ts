@@ -122,6 +122,7 @@ async function $do(
     "externalId": payload?.externalId,
     "folderId": payload?.folderId,
     "groupBy": payload?.groupBy,
+    "groupId": payload?.groupId,
     "interval": payload?.interval,
     "key": payload?.key,
     "linkId": payload?.linkId,

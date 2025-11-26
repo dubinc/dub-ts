@@ -47,22 +47,6 @@ export const AnalyticsRegionsCity$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(AnalyticsRegionsCity);
 
 /** @internal */
-export const AnalyticsRegionsCity$outboundSchema: z.ZodNativeEnum<
-  typeof AnalyticsRegionsCity
-> = AnalyticsRegionsCity$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AnalyticsRegionsCity$ {
-  /** @deprecated use `AnalyticsRegionsCity$inboundSchema` instead. */
-  export const inboundSchema = AnalyticsRegionsCity$inboundSchema;
-  /** @deprecated use `AnalyticsRegionsCity$outboundSchema` instead. */
-  export const outboundSchema = AnalyticsRegionsCity$outboundSchema;
-}
-
-/** @internal */
 export const AnalyticsRegions$inboundSchema: z.ZodType<
   AnalyticsRegions,
   z.ZodTypeDef,
@@ -76,53 +60,6 @@ export const AnalyticsRegions$inboundSchema: z.ZodType<
   sales: z.number().default(0),
   saleAmount: z.number().default(0),
 });
-
-/** @internal */
-export type AnalyticsRegions$Outbound = {
-  country: string;
-  region: string;
-  city: string;
-  clicks: number;
-  leads: number;
-  sales: number;
-  saleAmount: number;
-};
-
-/** @internal */
-export const AnalyticsRegions$outboundSchema: z.ZodType<
-  AnalyticsRegions$Outbound,
-  z.ZodTypeDef,
-  AnalyticsRegions
-> = z.object({
-  country: z.string(),
-  region: z.string(),
-  city: AnalyticsRegionsCity$outboundSchema.default("*"),
-  clicks: z.number().default(0),
-  leads: z.number().default(0),
-  sales: z.number().default(0),
-  saleAmount: z.number().default(0),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AnalyticsRegions$ {
-  /** @deprecated use `AnalyticsRegions$inboundSchema` instead. */
-  export const inboundSchema = AnalyticsRegions$inboundSchema;
-  /** @deprecated use `AnalyticsRegions$outboundSchema` instead. */
-  export const outboundSchema = AnalyticsRegions$outboundSchema;
-  /** @deprecated use `AnalyticsRegions$Outbound` instead. */
-  export type Outbound = AnalyticsRegions$Outbound;
-}
-
-export function analyticsRegionsToJSON(
-  analyticsRegions: AnalyticsRegions,
-): string {
-  return JSON.stringify(
-    AnalyticsRegions$outboundSchema.parse(analyticsRegions),
-  );
-}
 
 export function analyticsRegionsFromJSON(
   jsonString: string,

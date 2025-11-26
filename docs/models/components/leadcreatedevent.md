@@ -48,6 +48,7 @@ let value: LeadCreatedEvent = {
       archived: false,
       expiresAt: "1763119226400",
       expiredUrl: "https://shimmering-traditionalism.biz/",
+      disabledAt: "<value>",
       password: null,
       proxy: false,
       title: null,
@@ -65,7 +66,7 @@ let value: LeadCreatedEvent = {
         {
           id: "<id>",
           name: "<value>",
-          color: "purple",
+          color: "blue",
         },
       ],
       folderId: "<id>",
@@ -85,14 +86,13 @@ let value: LeadCreatedEvent = {
       userId: "<id>",
       workspaceId: "<id>",
       lastClicked: "<value>",
-      createdAt: "1735078024486",
-      updatedAt: "1735677741810",
+      createdAt: "1718277940029",
+      updatedAt: "1735669799346",
       tagId: "<id>",
       projectId: "<id>",
     },
     metadata: {
       "key": "<value>",
-      "key1": "<value>",
     },
   },
 };

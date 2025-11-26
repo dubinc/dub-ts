@@ -72,21 +72,6 @@ export const Code$inboundSchema: z.ZodNativeEnum<typeof Code> = z.nativeEnum(
 );
 
 /** @internal */
-export const Code$outboundSchema: z.ZodNativeEnum<typeof Code> =
-  Code$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Code$ {
-  /** @deprecated use `Code$inboundSchema` instead. */
-  export const inboundSchema = Code$inboundSchema;
-  /** @deprecated use `Code$outboundSchema` instead. */
-  export const outboundSchema = Code$outboundSchema;
-}
-
-/** @internal */
 export const ErrorT$inboundSchema: z.ZodType<ErrorT, z.ZodTypeDef, unknown> = z
   .object({
     code: Code$inboundSchema,
@@ -97,45 +82,6 @@ export const ErrorT$inboundSchema: z.ZodType<ErrorT, z.ZodTypeDef, unknown> = z
       "doc_url": "docUrl",
     });
   });
-
-/** @internal */
-export type ErrorT$Outbound = {
-  code: string;
-  message: string;
-  doc_url?: string | undefined;
-};
-
-/** @internal */
-export const ErrorT$outboundSchema: z.ZodType<
-  ErrorT$Outbound,
-  z.ZodTypeDef,
-  ErrorT
-> = z.object({
-  code: Code$outboundSchema,
-  message: z.string(),
-  docUrl: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    docUrl: "doc_url",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ErrorT$ {
-  /** @deprecated use `ErrorT$inboundSchema` instead. */
-  export const inboundSchema = ErrorT$inboundSchema;
-  /** @deprecated use `ErrorT$outboundSchema` instead. */
-  export const outboundSchema = ErrorT$outboundSchema;
-  /** @deprecated use `ErrorT$Outbound` instead. */
-  export type Outbound = ErrorT$Outbound;
-}
-
-export function errorToJSON(errorT: ErrorT): string {
-  return JSON.stringify(ErrorT$outboundSchema.parse(errorT));
-}
 
 export function errorFromJSON(
   jsonString: string,
@@ -165,32 +111,3 @@ export const BadRequest$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type BadRequest$Outbound = {
-  error: ErrorT$Outbound;
-};
-
-/** @internal */
-export const BadRequest$outboundSchema: z.ZodType<
-  BadRequest$Outbound,
-  z.ZodTypeDef,
-  BadRequest
-> = z.instanceof(BadRequest)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    error: z.lazy(() => ErrorT$outboundSchema),
-  }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BadRequest$ {
-  /** @deprecated use `BadRequest$inboundSchema` instead. */
-  export const inboundSchema = BadRequest$inboundSchema;
-  /** @deprecated use `BadRequest$outboundSchema` instead. */
-  export const outboundSchema = BadRequest$outboundSchema;
-  /** @deprecated use `BadRequest$Outbound` instead. */
-  export type Outbound = BadRequest$Outbound;
-}

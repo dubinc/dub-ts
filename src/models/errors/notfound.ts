@@ -71,21 +71,6 @@ export const NotFoundCode$inboundSchema: z.ZodNativeEnum<typeof NotFoundCode> =
   z.nativeEnum(NotFoundCode);
 
 /** @internal */
-export const NotFoundCode$outboundSchema: z.ZodNativeEnum<typeof NotFoundCode> =
-  NotFoundCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace NotFoundCode$ {
-  /** @deprecated use `NotFoundCode$inboundSchema` instead. */
-  export const inboundSchema = NotFoundCode$inboundSchema;
-  /** @deprecated use `NotFoundCode$outboundSchema` instead. */
-  export const outboundSchema = NotFoundCode$outboundSchema;
-}
-
-/** @internal */
 export const NotFoundError$inboundSchema: z.ZodType<
   NotFoundError,
   z.ZodTypeDef,
@@ -99,45 +84,6 @@ export const NotFoundError$inboundSchema: z.ZodType<
     "doc_url": "docUrl",
   });
 });
-
-/** @internal */
-export type NotFoundError$Outbound = {
-  code: string;
-  message: string;
-  doc_url?: string | undefined;
-};
-
-/** @internal */
-export const NotFoundError$outboundSchema: z.ZodType<
-  NotFoundError$Outbound,
-  z.ZodTypeDef,
-  NotFoundError
-> = z.object({
-  code: NotFoundCode$outboundSchema,
-  message: z.string(),
-  docUrl: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    docUrl: "doc_url",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace NotFoundError$ {
-  /** @deprecated use `NotFoundError$inboundSchema` instead. */
-  export const inboundSchema = NotFoundError$inboundSchema;
-  /** @deprecated use `NotFoundError$outboundSchema` instead. */
-  export const outboundSchema = NotFoundError$outboundSchema;
-  /** @deprecated use `NotFoundError$Outbound` instead. */
-  export type Outbound = NotFoundError$Outbound;
-}
-
-export function notFoundErrorToJSON(notFoundError: NotFoundError): string {
-  return JSON.stringify(NotFoundError$outboundSchema.parse(notFoundError));
-}
 
 export function notFoundErrorFromJSON(
   jsonString: string,
@@ -167,32 +113,3 @@ export const NotFound$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type NotFound$Outbound = {
-  error: NotFoundError$Outbound;
-};
-
-/** @internal */
-export const NotFound$outboundSchema: z.ZodType<
-  NotFound$Outbound,
-  z.ZodTypeDef,
-  NotFound
-> = z.instanceof(NotFound)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    error: z.lazy(() => NotFoundError$outboundSchema),
-  }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace NotFound$ {
-  /** @deprecated use `NotFound$inboundSchema` instead. */
-  export const inboundSchema = NotFound$inboundSchema;
-  /** @deprecated use `NotFound$outboundSchema` instead. */
-  export const outboundSchema = NotFound$outboundSchema;
-  /** @deprecated use `NotFound$Outbound` instead. */
-  export type Outbound = NotFound$Outbound;
-}

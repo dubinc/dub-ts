@@ -4,9 +4,6 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The unique IDs of the tags assigned to the short link.
@@ -191,13 +188,6 @@ export type UpsertLinkRequestBody = {
 };
 
 /** @internal */
-export const UpsertLinkTagIds$inboundSchema: z.ZodType<
-  UpsertLinkTagIds,
-  z.ZodTypeDef,
-  unknown
-> = z.union([z.string(), z.array(z.string())]);
-
-/** @internal */
 export type UpsertLinkTagIds$Outbound = string | Array<string>;
 
 /** @internal */
@@ -207,19 +197,6 @@ export const UpsertLinkTagIds$outboundSchema: z.ZodType<
   UpsertLinkTagIds
 > = z.union([z.string(), z.array(z.string())]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpsertLinkTagIds$ {
-  /** @deprecated use `UpsertLinkTagIds$inboundSchema` instead. */
-  export const inboundSchema = UpsertLinkTagIds$inboundSchema;
-  /** @deprecated use `UpsertLinkTagIds$outboundSchema` instead. */
-  export const outboundSchema = UpsertLinkTagIds$outboundSchema;
-  /** @deprecated use `UpsertLinkTagIds$Outbound` instead. */
-  export type Outbound = UpsertLinkTagIds$Outbound;
-}
-
 export function upsertLinkTagIdsToJSON(
   upsertLinkTagIds: UpsertLinkTagIds,
 ): string {
@@ -227,23 +204,6 @@ export function upsertLinkTagIdsToJSON(
     UpsertLinkTagIds$outboundSchema.parse(upsertLinkTagIds),
   );
 }
-
-export function upsertLinkTagIdsFromJSON(
-  jsonString: string,
-): SafeParseResult<UpsertLinkTagIds, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpsertLinkTagIds$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpsertLinkTagIds' from JSON`,
-  );
-}
-
-/** @internal */
-export const UpsertLinkTagNames$inboundSchema: z.ZodType<
-  UpsertLinkTagNames,
-  z.ZodTypeDef,
-  unknown
-> = z.union([z.string(), z.array(z.string())]);
 
 /** @internal */
 export type UpsertLinkTagNames$Outbound = string | Array<string>;
@@ -255,19 +215,6 @@ export const UpsertLinkTagNames$outboundSchema: z.ZodType<
   UpsertLinkTagNames
 > = z.union([z.string(), z.array(z.string())]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpsertLinkTagNames$ {
-  /** @deprecated use `UpsertLinkTagNames$inboundSchema` instead. */
-  export const inboundSchema = UpsertLinkTagNames$inboundSchema;
-  /** @deprecated use `UpsertLinkTagNames$outboundSchema` instead. */
-  export const outboundSchema = UpsertLinkTagNames$outboundSchema;
-  /** @deprecated use `UpsertLinkTagNames$Outbound` instead. */
-  export type Outbound = UpsertLinkTagNames$Outbound;
-}
-
 export function upsertLinkTagNamesToJSON(
   upsertLinkTagNames: UpsertLinkTagNames,
 ): string {
@@ -275,26 +222,6 @@ export function upsertLinkTagNamesToJSON(
     UpsertLinkTagNames$outboundSchema.parse(upsertLinkTagNames),
   );
 }
-
-export function upsertLinkTagNamesFromJSON(
-  jsonString: string,
-): SafeParseResult<UpsertLinkTagNames, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpsertLinkTagNames$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpsertLinkTagNames' from JSON`,
-  );
-}
-
-/** @internal */
-export const UpsertLinkTestVariants$inboundSchema: z.ZodType<
-  UpsertLinkTestVariants,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  url: z.string(),
-  percentage: z.number(),
-});
 
 /** @internal */
 export type UpsertLinkTestVariants$Outbound = {
@@ -312,19 +239,6 @@ export const UpsertLinkTestVariants$outboundSchema: z.ZodType<
   percentage: z.number(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpsertLinkTestVariants$ {
-  /** @deprecated use `UpsertLinkTestVariants$inboundSchema` instead. */
-  export const inboundSchema = UpsertLinkTestVariants$inboundSchema;
-  /** @deprecated use `UpsertLinkTestVariants$outboundSchema` instead. */
-  export const outboundSchema = UpsertLinkTestVariants$outboundSchema;
-  /** @deprecated use `UpsertLinkTestVariants$Outbound` instead. */
-  export type Outbound = UpsertLinkTestVariants$Outbound;
-}
-
 export function upsertLinkTestVariantsToJSON(
   upsertLinkTestVariants: UpsertLinkTestVariants,
 ): string {
@@ -332,74 +246,6 @@ export function upsertLinkTestVariantsToJSON(
     UpsertLinkTestVariants$outboundSchema.parse(upsertLinkTestVariants),
   );
 }
-
-export function upsertLinkTestVariantsFromJSON(
-  jsonString: string,
-): SafeParseResult<UpsertLinkTestVariants, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpsertLinkTestVariants$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpsertLinkTestVariants' from JSON`,
-  );
-}
-
-/** @internal */
-export const UpsertLinkRequestBody$inboundSchema: z.ZodType<
-  UpsertLinkRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  url: z.string(),
-  domain: z.string().optional(),
-  key: z.string().optional(),
-  keyLength: z.number().optional(),
-  externalId: z.nullable(z.string()).optional(),
-  tenantId: z.nullable(z.string()).optional(),
-  programId: z.nullable(z.string()).optional(),
-  partnerId: z.nullable(z.string()).optional(),
-  prefix: z.string().optional(),
-  trackConversion: z.boolean().optional(),
-  archived: z.boolean().optional(),
-  tagIds: z.union([z.string(), z.array(z.string())]).optional(),
-  tagNames: z.union([z.string(), z.array(z.string())]).optional(),
-  folderId: z.nullable(z.string()).optional(),
-  comments: z.nullable(z.string()).optional(),
-  expiresAt: z.nullable(z.string()).optional(),
-  expiredUrl: z.nullable(z.string()).optional(),
-  password: z.nullable(z.string()).optional(),
-  proxy: z.boolean().optional(),
-  title: z.nullable(z.string()).optional(),
-  description: z.nullable(z.string()).optional(),
-  image: z.nullable(z.string()).optional(),
-  video: z.nullable(z.string()).optional(),
-  rewrite: z.boolean().optional(),
-  ios: z.nullable(z.string()).optional(),
-  android: z.nullable(z.string()).optional(),
-  geo: z.nullable(z.record(z.string())).optional(),
-  doIndex: z.boolean().optional(),
-  utm_source: z.nullable(z.string()).optional(),
-  utm_medium: z.nullable(z.string()).optional(),
-  utm_campaign: z.nullable(z.string()).optional(),
-  utm_term: z.nullable(z.string()).optional(),
-  utm_content: z.nullable(z.string()).optional(),
-  ref: z.nullable(z.string()).optional(),
-  webhookIds: z.nullable(z.array(z.string())).optional(),
-  testVariants: z.nullable(
-    z.array(z.lazy(() => UpsertLinkTestVariants$inboundSchema)),
-  ).optional(),
-  testStartedAt: z.nullable(z.string()).optional(),
-  testCompletedAt: z.nullable(z.string()).optional(),
-  publicStats: z.boolean().optional(),
-  tagId: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "utm_source": "utmSource",
-    "utm_medium": "utmMedium",
-    "utm_campaign": "utmCampaign",
-    "utm_term": "utmTerm",
-    "utm_content": "utmContent",
-  });
-});
 
 /** @internal */
 export type UpsertLinkRequestBody$Outbound = {
@@ -503,33 +349,10 @@ export const UpsertLinkRequestBody$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpsertLinkRequestBody$ {
-  /** @deprecated use `UpsertLinkRequestBody$inboundSchema` instead. */
-  export const inboundSchema = UpsertLinkRequestBody$inboundSchema;
-  /** @deprecated use `UpsertLinkRequestBody$outboundSchema` instead. */
-  export const outboundSchema = UpsertLinkRequestBody$outboundSchema;
-  /** @deprecated use `UpsertLinkRequestBody$Outbound` instead. */
-  export type Outbound = UpsertLinkRequestBody$Outbound;
-}
-
 export function upsertLinkRequestBodyToJSON(
   upsertLinkRequestBody: UpsertLinkRequestBody,
 ): string {
   return JSON.stringify(
     UpsertLinkRequestBody$outboundSchema.parse(upsertLinkRequestBody),
-  );
-}
-
-export function upsertLinkRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<UpsertLinkRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpsertLinkRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpsertLinkRequestBody' from JSON`,
   );
 }

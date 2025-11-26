@@ -90,6 +90,10 @@ export type WorkspaceSchema = {
    */
   plan: Plan;
   /**
+   * The tier of the workspace's plan.
+   */
+  planTier: number | null;
+  /**
    * The Stripe ID of the workspace.
    */
   stripeId: string | null;
@@ -215,39 +219,9 @@ export const Plan$inboundSchema: z.ZodNativeEnum<typeof Plan> = z.nativeEnum(
 );
 
 /** @internal */
-export const Plan$outboundSchema: z.ZodNativeEnum<typeof Plan> =
-  Plan$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Plan$ {
-  /** @deprecated use `Plan$inboundSchema` instead. */
-  export const inboundSchema = Plan$inboundSchema;
-  /** @deprecated use `Plan$outboundSchema` instead. */
-  export const outboundSchema = Plan$outboundSchema;
-}
-
-/** @internal */
 export const Role$inboundSchema: z.ZodNativeEnum<typeof Role> = z.nativeEnum(
   Role,
 );
-
-/** @internal */
-export const Role$outboundSchema: z.ZodNativeEnum<typeof Role> =
-  Role$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Role$ {
-  /** @deprecated use `Role$inboundSchema` instead. */
-  export const inboundSchema = Role$inboundSchema;
-  /** @deprecated use `Role$outboundSchema` instead. */
-  export const outboundSchema = Role$outboundSchema;
-}
 
 /** @internal */
 export const Users$inboundSchema: z.ZodType<Users, z.ZodTypeDef, unknown> = z
@@ -255,39 +229,6 @@ export const Users$inboundSchema: z.ZodType<Users, z.ZodTypeDef, unknown> = z
     role: Role$inboundSchema,
     defaultFolderId: z.nullable(z.string()),
   });
-
-/** @internal */
-export type Users$Outbound = {
-  role: string;
-  defaultFolderId: string | null;
-};
-
-/** @internal */
-export const Users$outboundSchema: z.ZodType<
-  Users$Outbound,
-  z.ZodTypeDef,
-  Users
-> = z.object({
-  role: Role$outboundSchema,
-  defaultFolderId: z.nullable(z.string()),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Users$ {
-  /** @deprecated use `Users$inboundSchema` instead. */
-  export const inboundSchema = Users$inboundSchema;
-  /** @deprecated use `Users$outboundSchema` instead. */
-  export const outboundSchema = Users$outboundSchema;
-  /** @deprecated use `Users$Outbound` instead. */
-  export type Outbound = Users$Outbound;
-}
-
-export function usersToJSON(users: Users): string {
-  return JSON.stringify(Users$outboundSchema.parse(users));
-}
 
 export function usersFromJSON(
   jsonString: string,
@@ -306,41 +247,6 @@ export const Domains$inboundSchema: z.ZodType<Domains, z.ZodTypeDef, unknown> =
     primary: z.boolean().default(false),
     verified: z.boolean().default(false),
   });
-
-/** @internal */
-export type Domains$Outbound = {
-  slug: string;
-  primary: boolean;
-  verified: boolean;
-};
-
-/** @internal */
-export const Domains$outboundSchema: z.ZodType<
-  Domains$Outbound,
-  z.ZodTypeDef,
-  Domains
-> = z.object({
-  slug: z.string(),
-  primary: z.boolean().default(false),
-  verified: z.boolean().default(false),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Domains$ {
-  /** @deprecated use `Domains$inboundSchema` instead. */
-  export const inboundSchema = Domains$inboundSchema;
-  /** @deprecated use `Domains$outboundSchema` instead. */
-  export const outboundSchema = Domains$outboundSchema;
-  /** @deprecated use `Domains$Outbound` instead. */
-  export type Outbound = Domains$Outbound;
-}
-
-export function domainsToJSON(domains: Domains): string {
-  return JSON.stringify(Domains$outboundSchema.parse(domains));
-}
 
 export function domainsFromJSON(
   jsonString: string,
@@ -364,6 +270,7 @@ export const WorkspaceSchema$inboundSchema: z.ZodType<
   logo: z.nullable(z.string()).default(null),
   inviteCode: z.nullable(z.string()),
   plan: Plan$inboundSchema,
+  planTier: z.nullable(z.number()),
   stripeId: z.nullable(z.string()),
   billingCycleStart: z.number(),
   paymentFailedAt: z.nullable(z.string()),
@@ -396,111 +303,6 @@ export const WorkspaceSchema$inboundSchema: z.ZodType<
   ssoEmailDomain: z.nullable(z.string()),
   ssoEnforcedAt: z.nullable(z.string()),
 });
-
-/** @internal */
-export type WorkspaceSchema$Outbound = {
-  id: string;
-  name: string;
-  slug: string;
-  logo: string | null;
-  inviteCode: string | null;
-  plan: string;
-  stripeId: string | null;
-  billingCycleStart: number;
-  paymentFailedAt: string | null;
-  stripeConnectId: string | null;
-  totalLinks: number;
-  usage: number;
-  usageLimit: number;
-  linksUsage: number;
-  linksLimit: number;
-  payoutsUsage: number;
-  payoutsLimit: number;
-  payoutFee: number;
-  domainsLimit: number;
-  tagsLimit: number;
-  foldersUsage: number;
-  foldersLimit: number;
-  groupsLimit: number;
-  networkInvitesLimit: number;
-  usersLimit: number;
-  aiUsage: number;
-  aiLimit: number;
-  conversionEnabled: boolean;
-  dotLinkClaimed: boolean;
-  createdAt: string;
-  users: Array<Users$Outbound>;
-  domains: Array<Domains$Outbound>;
-  flags?: { [k: string]: boolean } | undefined;
-  store: { [k: string]: any } | null;
-  allowedHostnames: Array<string> | null;
-  ssoEmailDomain: string | null;
-  ssoEnforcedAt: string | null;
-};
-
-/** @internal */
-export const WorkspaceSchema$outboundSchema: z.ZodType<
-  WorkspaceSchema$Outbound,
-  z.ZodTypeDef,
-  WorkspaceSchema
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  slug: z.string(),
-  logo: z.nullable(z.string()).default(null),
-  inviteCode: z.nullable(z.string()),
-  plan: Plan$outboundSchema,
-  stripeId: z.nullable(z.string()),
-  billingCycleStart: z.number(),
-  paymentFailedAt: z.nullable(z.string()),
-  stripeConnectId: z.nullable(z.string()),
-  totalLinks: z.number(),
-  usage: z.number(),
-  usageLimit: z.number(),
-  linksUsage: z.number(),
-  linksLimit: z.number(),
-  payoutsUsage: z.number(),
-  payoutsLimit: z.number(),
-  payoutFee: z.number(),
-  domainsLimit: z.number(),
-  tagsLimit: z.number(),
-  foldersUsage: z.number(),
-  foldersLimit: z.number(),
-  groupsLimit: z.number(),
-  networkInvitesLimit: z.number(),
-  usersLimit: z.number(),
-  aiUsage: z.number(),
-  aiLimit: z.number(),
-  conversionEnabled: z.boolean(),
-  dotLinkClaimed: z.boolean(),
-  createdAt: z.string(),
-  users: z.array(z.lazy(() => Users$outboundSchema)),
-  domains: z.array(z.lazy(() => Domains$outboundSchema)),
-  flags: z.record(z.boolean()).optional(),
-  store: z.nullable(z.record(z.any())),
-  allowedHostnames: z.nullable(z.array(z.string())),
-  ssoEmailDomain: z.nullable(z.string()),
-  ssoEnforcedAt: z.nullable(z.string()),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WorkspaceSchema$ {
-  /** @deprecated use `WorkspaceSchema$inboundSchema` instead. */
-  export const inboundSchema = WorkspaceSchema$inboundSchema;
-  /** @deprecated use `WorkspaceSchema$outboundSchema` instead. */
-  export const outboundSchema = WorkspaceSchema$outboundSchema;
-  /** @deprecated use `WorkspaceSchema$Outbound` instead. */
-  export type Outbound = WorkspaceSchema$Outbound;
-}
-
-export function workspaceSchemaToJSON(
-  workspaceSchema: WorkspaceSchema,
-): string {
-  return JSON.stringify(WorkspaceSchema$outboundSchema.parse(workspaceSchema));
-}
 
 export function workspaceSchemaFromJSON(
   jsonString: string,

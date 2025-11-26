@@ -218,6 +218,10 @@ export type ListEventsRequest = {
    */
   folderId?: string | undefined;
   /**
+   * The group ID to retrieve analytics for.
+   */
+  groupId?: string | undefined;
+  /**
    * Filter for root domains. If true, filter for domains only. If false, filter for links only. If undefined, return both.
    */
   root?: boolean | undefined;
@@ -283,74 +287,19 @@ export type ListEventsResponseBody =
   | (components.ClickEvent & { event: "click" });
 
 /** @internal */
-export const QueryParamEvent$inboundSchema: z.ZodNativeEnum<
+export const QueryParamEvent$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamEvent
 > = z.nativeEnum(QueryParamEvent);
 
 /** @internal */
-export const QueryParamEvent$outboundSchema: z.ZodNativeEnum<
-  typeof QueryParamEvent
-> = QueryParamEvent$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace QueryParamEvent$ {
-  /** @deprecated use `QueryParamEvent$inboundSchema` instead. */
-  export const inboundSchema = QueryParamEvent$inboundSchema;
-  /** @deprecated use `QueryParamEvent$outboundSchema` instead. */
-  export const outboundSchema = QueryParamEvent$outboundSchema;
-}
-
-/** @internal */
-export const QueryParamInterval$inboundSchema: z.ZodNativeEnum<
+export const QueryParamInterval$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamInterval
 > = z.nativeEnum(QueryParamInterval);
 
 /** @internal */
-export const QueryParamInterval$outboundSchema: z.ZodNativeEnum<
-  typeof QueryParamInterval
-> = QueryParamInterval$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace QueryParamInterval$ {
-  /** @deprecated use `QueryParamInterval$inboundSchema` instead. */
-  export const inboundSchema = QueryParamInterval$inboundSchema;
-  /** @deprecated use `QueryParamInterval$outboundSchema` instead. */
-  export const outboundSchema = QueryParamInterval$outboundSchema;
-}
-
-/** @internal */
-export const QueryParamTrigger$inboundSchema: z.ZodNativeEnum<
-  typeof QueryParamTrigger
-> = z.nativeEnum(QueryParamTrigger);
-
-/** @internal */
 export const QueryParamTrigger$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamTrigger
-> = QueryParamTrigger$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace QueryParamTrigger$ {
-  /** @deprecated use `QueryParamTrigger$inboundSchema` instead. */
-  export const inboundSchema = QueryParamTrigger$inboundSchema;
-  /** @deprecated use `QueryParamTrigger$outboundSchema` instead. */
-  export const outboundSchema = QueryParamTrigger$outboundSchema;
-}
-
-/** @internal */
-export const ListEventsQueryParamTagIds$inboundSchema: z.ZodType<
-  ListEventsQueryParamTagIds,
-  z.ZodTypeDef,
-  unknown
-> = z.union([z.string(), z.array(z.string())]);
+> = z.nativeEnum(QueryParamTrigger);
 
 /** @internal */
 export type ListEventsQueryParamTagIds$Outbound = string | Array<string>;
@@ -362,19 +311,6 @@ export const ListEventsQueryParamTagIds$outboundSchema: z.ZodType<
   ListEventsQueryParamTagIds
 > = z.union([z.string(), z.array(z.string())]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListEventsQueryParamTagIds$ {
-  /** @deprecated use `ListEventsQueryParamTagIds$inboundSchema` instead. */
-  export const inboundSchema = ListEventsQueryParamTagIds$inboundSchema;
-  /** @deprecated use `ListEventsQueryParamTagIds$outboundSchema` instead. */
-  export const outboundSchema = ListEventsQueryParamTagIds$outboundSchema;
-  /** @deprecated use `ListEventsQueryParamTagIds$Outbound` instead. */
-  export type Outbound = ListEventsQueryParamTagIds$Outbound;
-}
-
 export function listEventsQueryParamTagIdsToJSON(
   listEventsQueryParamTagIds: ListEventsQueryParamTagIds,
 ): string {
@@ -383,156 +319,25 @@ export function listEventsQueryParamTagIdsToJSON(
   );
 }
 
-export function listEventsQueryParamTagIdsFromJSON(
-  jsonString: string,
-): SafeParseResult<ListEventsQueryParamTagIds, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListEventsQueryParamTagIds$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListEventsQueryParamTagIds' from JSON`,
-  );
-}
-
 /** @internal */
-export const QueryParamSaleType$inboundSchema: z.ZodNativeEnum<
+export const QueryParamSaleType$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamSaleType
 > = z.nativeEnum(QueryParamSaleType);
 
 /** @internal */
-export const QueryParamSaleType$outboundSchema: z.ZodNativeEnum<
-  typeof QueryParamSaleType
-> = QueryParamSaleType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace QueryParamSaleType$ {
-  /** @deprecated use `QueryParamSaleType$inboundSchema` instead. */
-  export const inboundSchema = QueryParamSaleType$inboundSchema;
-  /** @deprecated use `QueryParamSaleType$outboundSchema` instead. */
-  export const outboundSchema = QueryParamSaleType$outboundSchema;
-}
-
-/** @internal */
-export const QueryParamSortOrder$inboundSchema: z.ZodNativeEnum<
+export const QueryParamSortOrder$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamSortOrder
 > = z.nativeEnum(QueryParamSortOrder);
 
 /** @internal */
-export const QueryParamSortOrder$outboundSchema: z.ZodNativeEnum<
-  typeof QueryParamSortOrder
-> = QueryParamSortOrder$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace QueryParamSortOrder$ {
-  /** @deprecated use `QueryParamSortOrder$inboundSchema` instead. */
-  export const inboundSchema = QueryParamSortOrder$inboundSchema;
-  /** @deprecated use `QueryParamSortOrder$outboundSchema` instead. */
-  export const outboundSchema = QueryParamSortOrder$outboundSchema;
-}
-
-/** @internal */
-export const QueryParamSortBy$inboundSchema: z.ZodNativeEnum<
+export const QueryParamSortBy$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamSortBy
 > = z.nativeEnum(QueryParamSortBy);
 
 /** @internal */
-export const QueryParamSortBy$outboundSchema: z.ZodNativeEnum<
-  typeof QueryParamSortBy
-> = QueryParamSortBy$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace QueryParamSortBy$ {
-  /** @deprecated use `QueryParamSortBy$inboundSchema` instead. */
-  export const inboundSchema = QueryParamSortBy$inboundSchema;
-  /** @deprecated use `QueryParamSortBy$outboundSchema` instead. */
-  export const outboundSchema = QueryParamSortBy$outboundSchema;
-}
-
-/** @internal */
-export const Order$inboundSchema: z.ZodNativeEnum<typeof Order> = z.nativeEnum(
+export const Order$outboundSchema: z.ZodNativeEnum<typeof Order> = z.nativeEnum(
   Order,
 );
-
-/** @internal */
-export const Order$outboundSchema: z.ZodNativeEnum<typeof Order> =
-  Order$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Order$ {
-  /** @deprecated use `Order$inboundSchema` instead. */
-  export const inboundSchema = Order$inboundSchema;
-  /** @deprecated use `Order$outboundSchema` instead. */
-  export const outboundSchema = Order$outboundSchema;
-}
-
-/** @internal */
-export const ListEventsRequest$inboundSchema: z.ZodType<
-  ListEventsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  event: QueryParamEvent$inboundSchema.default("clicks"),
-  domain: z.string().optional(),
-  key: z.string().optional(),
-  linkId: z.string().optional(),
-  externalId: z.string().optional(),
-  tenantId: z.string().optional(),
-  programId: z.string().optional(),
-  partnerId: z.string().optional(),
-  customerId: z.string().optional(),
-  interval: QueryParamInterval$inboundSchema.optional(),
-  start: z.string().optional(),
-  end: z.string().optional(),
-  timezone: z.string().default("UTC"),
-  country: z.string().optional(),
-  city: z.string().optional(),
-  region: z.string().optional(),
-  continent: components.ContinentCode$inboundSchema.optional(),
-  device: z.string().optional(),
-  browser: z.string().optional(),
-  os: z.string().optional(),
-  trigger: QueryParamTrigger$inboundSchema.optional(),
-  referer: z.string().optional(),
-  refererUrl: z.string().optional(),
-  url: z.string().optional(),
-  tagIds: z.union([z.string(), z.array(z.string())]).optional(),
-  folderId: z.string().optional(),
-  root: z.boolean().optional(),
-  saleType: QueryParamSaleType$inboundSchema.optional(),
-  query: z.string().optional(),
-  tagId: z.string().optional(),
-  qr: z.boolean().optional(),
-  utm_source: z.nullable(z.string()).optional(),
-  utm_medium: z.nullable(z.string()).optional(),
-  utm_campaign: z.nullable(z.string()).optional(),
-  utm_term: z.nullable(z.string()).optional(),
-  utm_content: z.nullable(z.string()).optional(),
-  ref: z.nullable(z.string()).optional(),
-  page: z.number().default(1),
-  limit: z.number().default(100),
-  sortOrder: QueryParamSortOrder$inboundSchema.default("desc"),
-  sortBy: QueryParamSortBy$inboundSchema.default("timestamp"),
-  order: Order$inboundSchema.default("desc"),
-}).transform((v) => {
-  return remap$(v, {
-    "utm_source": "utmSource",
-    "utm_medium": "utmMedium",
-    "utm_campaign": "utmCampaign",
-    "utm_term": "utmTerm",
-    "utm_content": "utmContent",
-  });
-});
 
 /** @internal */
 export type ListEventsRequest$Outbound = {
@@ -562,6 +367,7 @@ export type ListEventsRequest$Outbound = {
   url?: string | undefined;
   tagIds?: string | Array<string> | undefined;
   folderId?: string | undefined;
+  groupId?: string | undefined;
   root?: boolean | undefined;
   saleType?: string | undefined;
   query?: string | undefined;
@@ -612,6 +418,7 @@ export const ListEventsRequest$outboundSchema: z.ZodType<
   url: z.string().optional(),
   tagIds: z.union([z.string(), z.array(z.string())]).optional(),
   folderId: z.string().optional(),
+  groupId: z.string().optional(),
   root: z.boolean().optional(),
   saleType: QueryParamSaleType$outboundSchema.optional(),
   query: z.string().optional(),
@@ -638,34 +445,11 @@ export const ListEventsRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListEventsRequest$ {
-  /** @deprecated use `ListEventsRequest$inboundSchema` instead. */
-  export const inboundSchema = ListEventsRequest$inboundSchema;
-  /** @deprecated use `ListEventsRequest$outboundSchema` instead. */
-  export const outboundSchema = ListEventsRequest$outboundSchema;
-  /** @deprecated use `ListEventsRequest$Outbound` instead. */
-  export type Outbound = ListEventsRequest$Outbound;
-}
-
 export function listEventsRequestToJSON(
   listEventsRequest: ListEventsRequest,
 ): string {
   return JSON.stringify(
     ListEventsRequest$outboundSchema.parse(listEventsRequest),
-  );
-}
-
-export function listEventsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ListEventsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListEventsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListEventsRequest' from JSON`,
   );
 }
 
@@ -676,71 +460,15 @@ export const ListEventsResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.union([
   components.SaleEvent$inboundSchema.and(
-    z.object({ event: z.literal("sale") }).transform((v) => ({
-      event: v.event,
-    })),
+    z.object({ event: z.literal("sale") }),
   ),
   components.LeadEvent$inboundSchema.and(
-    z.object({ event: z.literal("lead") }).transform((v) => ({
-      event: v.event,
-    })),
+    z.object({ event: z.literal("lead") }),
   ),
   components.ClickEvent$inboundSchema.and(
-    z.object({ event: z.literal("click") }).transform((v) => ({
-      event: v.event,
-    })),
+    z.object({ event: z.literal("click") }),
   ),
 ]);
-
-/** @internal */
-export type ListEventsResponseBody$Outbound =
-  | (components.SaleEvent$Outbound & { event: "sale" })
-  | (components.LeadEvent$Outbound & { event: "lead" })
-  | (components.ClickEvent$Outbound & { event: "click" });
-
-/** @internal */
-export const ListEventsResponseBody$outboundSchema: z.ZodType<
-  ListEventsResponseBody$Outbound,
-  z.ZodTypeDef,
-  ListEventsResponseBody
-> = z.union([
-  components.SaleEvent$outboundSchema.and(
-    z.object({ event: z.literal("sale") }).transform((v) => ({
-      event: v.event,
-    })),
-  ),
-  components.LeadEvent$outboundSchema.and(
-    z.object({ event: z.literal("lead") }).transform((v) => ({
-      event: v.event,
-    })),
-  ),
-  components.ClickEvent$outboundSchema.and(
-    z.object({ event: z.literal("click") }).transform((v) => ({
-      event: v.event,
-    })),
-  ),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListEventsResponseBody$ {
-  /** @deprecated use `ListEventsResponseBody$inboundSchema` instead. */
-  export const inboundSchema = ListEventsResponseBody$inboundSchema;
-  /** @deprecated use `ListEventsResponseBody$outboundSchema` instead. */
-  export const outboundSchema = ListEventsResponseBody$outboundSchema;
-  /** @deprecated use `ListEventsResponseBody$Outbound` instead. */
-  export type Outbound = ListEventsResponseBody$Outbound;
-}
-
-export function listEventsResponseBodyToJSON(
-  listEventsResponseBody: ListEventsResponseBody,
-): string {
-  return JSON.stringify(
-    ListEventsResponseBody$outboundSchema.parse(listEventsResponseBody),
-  );
-}
 
 export function listEventsResponseBodyFromJSON(
   jsonString: string,

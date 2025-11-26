@@ -31,6 +31,12 @@ import {
   LinkWebhookEvent$outboundSchema,
 } from "./linkwebhookevent.js";
 import {
+  PartnerApplicationSubmittedEvent,
+  PartnerApplicationSubmittedEvent$inboundSchema,
+  PartnerApplicationSubmittedEvent$Outbound,
+  PartnerApplicationSubmittedEvent$outboundSchema,
+} from "./partnerapplicationsubmittedevent.js";
+import {
   PartnerEnrolledEvent,
   PartnerEnrolledEvent$inboundSchema,
   PartnerEnrolledEvent$Outbound,
@@ -52,6 +58,7 @@ export type WebhookEvent =
   | LeadCreatedEvent
   | SaleCreatedEvent
   | PartnerEnrolledEvent
+  | PartnerApplicationSubmittedEvent
   | CommissionCreatedEvent;
 
 /** @internal */
@@ -65,9 +72,9 @@ export const WebhookEvent$inboundSchema: z.ZodType<
   LeadCreatedEvent$inboundSchema,
   SaleCreatedEvent$inboundSchema,
   PartnerEnrolledEvent$inboundSchema,
+  PartnerApplicationSubmittedEvent$inboundSchema,
   CommissionCreatedEvent$inboundSchema,
 ]);
-
 /** @internal */
 export type WebhookEvent$Outbound =
   | LinkWebhookEvent$Outbound
@@ -75,6 +82,7 @@ export type WebhookEvent$Outbound =
   | LeadCreatedEvent$Outbound
   | SaleCreatedEvent$Outbound
   | PartnerEnrolledEvent$Outbound
+  | PartnerApplicationSubmittedEvent$Outbound
   | CommissionCreatedEvent$Outbound;
 
 /** @internal */
@@ -88,26 +96,13 @@ export const WebhookEvent$outboundSchema: z.ZodType<
   LeadCreatedEvent$outboundSchema,
   SaleCreatedEvent$outboundSchema,
   PartnerEnrolledEvent$outboundSchema,
+  PartnerApplicationSubmittedEvent$outboundSchema,
   CommissionCreatedEvent$outboundSchema,
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WebhookEvent$ {
-  /** @deprecated use `WebhookEvent$inboundSchema` instead. */
-  export const inboundSchema = WebhookEvent$inboundSchema;
-  /** @deprecated use `WebhookEvent$outboundSchema` instead. */
-  export const outboundSchema = WebhookEvent$outboundSchema;
-  /** @deprecated use `WebhookEvent$Outbound` instead. */
-  export type Outbound = WebhookEvent$Outbound;
-}
 
 export function webhookEventToJSON(webhookEvent: WebhookEvent): string {
   return JSON.stringify(WebhookEvent$outboundSchema.parse(webhookEvent));
 }
-
 export function webhookEventFromJSON(
   jsonString: string,
 ): SafeParseResult<WebhookEvent, SDKValidationError> {

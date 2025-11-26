@@ -40,49 +40,6 @@ export const PartnerAnalyticsCount$inboundSchema: z.ZodType<
   earnings: z.number().default(0),
 });
 
-/** @internal */
-export type PartnerAnalyticsCount$Outbound = {
-  clicks: number;
-  leads: number;
-  sales: number;
-  saleAmount: number;
-  earnings: number;
-};
-
-/** @internal */
-export const PartnerAnalyticsCount$outboundSchema: z.ZodType<
-  PartnerAnalyticsCount$Outbound,
-  z.ZodTypeDef,
-  PartnerAnalyticsCount
-> = z.object({
-  clicks: z.number().default(0),
-  leads: z.number().default(0),
-  sales: z.number().default(0),
-  saleAmount: z.number().default(0),
-  earnings: z.number().default(0),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PartnerAnalyticsCount$ {
-  /** @deprecated use `PartnerAnalyticsCount$inboundSchema` instead. */
-  export const inboundSchema = PartnerAnalyticsCount$inboundSchema;
-  /** @deprecated use `PartnerAnalyticsCount$outboundSchema` instead. */
-  export const outboundSchema = PartnerAnalyticsCount$outboundSchema;
-  /** @deprecated use `PartnerAnalyticsCount$Outbound` instead. */
-  export type Outbound = PartnerAnalyticsCount$Outbound;
-}
-
-export function partnerAnalyticsCountToJSON(
-  partnerAnalyticsCount: PartnerAnalyticsCount,
-): string {
-  return JSON.stringify(
-    PartnerAnalyticsCount$outboundSchema.parse(partnerAnalyticsCount),
-  );
-}
-
 export function partnerAnalyticsCountFromJSON(
   jsonString: string,
 ): SafeParseResult<PartnerAnalyticsCount, SDKValidationError> {

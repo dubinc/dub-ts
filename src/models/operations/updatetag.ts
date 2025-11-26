@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The color of the tag. If not provided, a random color will be used from the list: red, yellow, green, blue, purple, brown.
@@ -52,36 +49,9 @@ export type UpdateTagRequest = {
 };
 
 /** @internal */
-export const UpdateTagColor$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateTagColor
-> = z.nativeEnum(UpdateTagColor);
-
-/** @internal */
 export const UpdateTagColor$outboundSchema: z.ZodNativeEnum<
   typeof UpdateTagColor
-> = UpdateTagColor$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateTagColor$ {
-  /** @deprecated use `UpdateTagColor$inboundSchema` instead. */
-  export const inboundSchema = UpdateTagColor$inboundSchema;
-  /** @deprecated use `UpdateTagColor$outboundSchema` instead. */
-  export const outboundSchema = UpdateTagColor$outboundSchema;
-}
-
-/** @internal */
-export const UpdateTagRequestBody$inboundSchema: z.ZodType<
-  UpdateTagRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: z.string().optional(),
-  color: UpdateTagColor$inboundSchema.optional(),
-  tag: z.string().optional(),
-});
+> = z.nativeEnum(UpdateTagColor);
 
 /** @internal */
 export type UpdateTagRequestBody$Outbound = {
@@ -101,19 +71,6 @@ export const UpdateTagRequestBody$outboundSchema: z.ZodType<
   tag: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateTagRequestBody$ {
-  /** @deprecated use `UpdateTagRequestBody$inboundSchema` instead. */
-  export const inboundSchema = UpdateTagRequestBody$inboundSchema;
-  /** @deprecated use `UpdateTagRequestBody$outboundSchema` instead. */
-  export const outboundSchema = UpdateTagRequestBody$outboundSchema;
-  /** @deprecated use `UpdateTagRequestBody$Outbound` instead. */
-  export type Outbound = UpdateTagRequestBody$Outbound;
-}
-
 export function updateTagRequestBodyToJSON(
   updateTagRequestBody: UpdateTagRequestBody,
 ): string {
@@ -121,30 +78,6 @@ export function updateTagRequestBodyToJSON(
     UpdateTagRequestBody$outboundSchema.parse(updateTagRequestBody),
   );
 }
-
-export function updateTagRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateTagRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateTagRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateTagRequestBody' from JSON`,
-  );
-}
-
-/** @internal */
-export const UpdateTagRequest$inboundSchema: z.ZodType<
-  UpdateTagRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-  RequestBody: z.lazy(() => UpdateTagRequestBody$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 
 /** @internal */
 export type UpdateTagRequest$Outbound = {
@@ -166,33 +99,10 @@ export const UpdateTagRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateTagRequest$ {
-  /** @deprecated use `UpdateTagRequest$inboundSchema` instead. */
-  export const inboundSchema = UpdateTagRequest$inboundSchema;
-  /** @deprecated use `UpdateTagRequest$outboundSchema` instead. */
-  export const outboundSchema = UpdateTagRequest$outboundSchema;
-  /** @deprecated use `UpdateTagRequest$Outbound` instead. */
-  export type Outbound = UpdateTagRequest$Outbound;
-}
-
 export function updateTagRequestToJSON(
   updateTagRequest: UpdateTagRequest,
 ): string {
   return JSON.stringify(
     UpdateTagRequest$outboundSchema.parse(updateTagRequest),
-  );
-}
-
-export function updateTagRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateTagRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateTagRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateTagRequest' from JSON`,
   );
 }

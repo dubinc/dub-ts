@@ -132,13 +132,6 @@ export type GetLinksResponse = {
 };
 
 /** @internal */
-export const QueryParamTagIds$inboundSchema: z.ZodType<
-  QueryParamTagIds,
-  z.ZodTypeDef,
-  unknown
-> = z.union([z.string(), z.array(z.string())]);
-
-/** @internal */
 export type QueryParamTagIds$Outbound = string | Array<string>;
 
 /** @internal */
@@ -148,19 +141,6 @@ export const QueryParamTagIds$outboundSchema: z.ZodType<
   QueryParamTagIds
 > = z.union([z.string(), z.array(z.string())]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace QueryParamTagIds$ {
-  /** @deprecated use `QueryParamTagIds$inboundSchema` instead. */
-  export const inboundSchema = QueryParamTagIds$inboundSchema;
-  /** @deprecated use `QueryParamTagIds$outboundSchema` instead. */
-  export const outboundSchema = QueryParamTagIds$outboundSchema;
-  /** @deprecated use `QueryParamTagIds$Outbound` instead. */
-  export type Outbound = QueryParamTagIds$Outbound;
-}
-
 export function queryParamTagIdsToJSON(
   queryParamTagIds: QueryParamTagIds,
 ): string {
@@ -168,23 +148,6 @@ export function queryParamTagIdsToJSON(
     QueryParamTagIds$outboundSchema.parse(queryParamTagIds),
   );
 }
-
-export function queryParamTagIdsFromJSON(
-  jsonString: string,
-): SafeParseResult<QueryParamTagIds, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => QueryParamTagIds$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'QueryParamTagIds' from JSON`,
-  );
-}
-
-/** @internal */
-export const QueryParamTagNames$inboundSchema: z.ZodType<
-  QueryParamTagNames,
-  z.ZodTypeDef,
-  unknown
-> = z.union([z.string(), z.array(z.string())]);
 
 /** @internal */
 export type QueryParamTagNames$Outbound = string | Array<string>;
@@ -196,19 +159,6 @@ export const QueryParamTagNames$outboundSchema: z.ZodType<
   QueryParamTagNames
 > = z.union([z.string(), z.array(z.string())]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace QueryParamTagNames$ {
-  /** @deprecated use `QueryParamTagNames$inboundSchema` instead. */
-  export const inboundSchema = QueryParamTagNames$inboundSchema;
-  /** @deprecated use `QueryParamTagNames$outboundSchema` instead. */
-  export const outboundSchema = QueryParamTagNames$outboundSchema;
-  /** @deprecated use `QueryParamTagNames$Outbound` instead. */
-  export type Outbound = QueryParamTagNames$Outbound;
-}
-
 export function queryParamTagNamesToJSON(
   queryParamTagNames: QueryParamTagNames,
 ): string {
@@ -217,96 +167,18 @@ export function queryParamTagNamesToJSON(
   );
 }
 
-export function queryParamTagNamesFromJSON(
-  jsonString: string,
-): SafeParseResult<QueryParamTagNames, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => QueryParamTagNames$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'QueryParamTagNames' from JSON`,
-  );
-}
-
 /** @internal */
-export const SortBy$inboundSchema: z.ZodNativeEnum<typeof SortBy> = z
+export const SortBy$outboundSchema: z.ZodNativeEnum<typeof SortBy> = z
   .nativeEnum(SortBy);
 
 /** @internal */
-export const SortBy$outboundSchema: z.ZodNativeEnum<typeof SortBy> =
-  SortBy$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SortBy$ {
-  /** @deprecated use `SortBy$inboundSchema` instead. */
-  export const inboundSchema = SortBy$inboundSchema;
-  /** @deprecated use `SortBy$outboundSchema` instead. */
-  export const outboundSchema = SortBy$outboundSchema;
-}
-
-/** @internal */
-export const SortOrder$inboundSchema: z.ZodNativeEnum<typeof SortOrder> = z
+export const SortOrder$outboundSchema: z.ZodNativeEnum<typeof SortOrder> = z
   .nativeEnum(SortOrder);
 
 /** @internal */
-export const SortOrder$outboundSchema: z.ZodNativeEnum<typeof SortOrder> =
-  SortOrder$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SortOrder$ {
-  /** @deprecated use `SortOrder$inboundSchema` instead. */
-  export const inboundSchema = SortOrder$inboundSchema;
-  /** @deprecated use `SortOrder$outboundSchema` instead. */
-  export const outboundSchema = SortOrder$outboundSchema;
-}
-
-/** @internal */
-export const Sort$inboundSchema: z.ZodNativeEnum<typeof Sort> = z.nativeEnum(
+export const Sort$outboundSchema: z.ZodNativeEnum<typeof Sort> = z.nativeEnum(
   Sort,
 );
-
-/** @internal */
-export const Sort$outboundSchema: z.ZodNativeEnum<typeof Sort> =
-  Sort$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Sort$ {
-  /** @deprecated use `Sort$inboundSchema` instead. */
-  export const inboundSchema = Sort$inboundSchema;
-  /** @deprecated use `Sort$outboundSchema` instead. */
-  export const outboundSchema = Sort$outboundSchema;
-}
-
-/** @internal */
-export const GetLinksRequest$inboundSchema: z.ZodType<
-  GetLinksRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  domain: z.string().optional(),
-  tagId: z.string().optional(),
-  tagIds: z.union([z.string(), z.array(z.string())]).optional(),
-  tagNames: z.union([z.string(), z.array(z.string())]).optional(),
-  folderId: z.string().optional(),
-  search: z.string().optional(),
-  userId: z.string().optional(),
-  tenantId: z.string().optional(),
-  showArchived: z.boolean().default(false),
-  withTags: z.boolean().default(false),
-  sortBy: SortBy$inboundSchema.default("createdAt"),
-  sortOrder: SortOrder$inboundSchema.default("desc"),
-  sort: Sort$inboundSchema.default("createdAt"),
-  page: z.number().default(1),
-  pageSize: z.number().default(100),
-});
 
 /** @internal */
 export type GetLinksRequest$Outbound = {
@@ -350,33 +222,10 @@ export const GetLinksRequest$outboundSchema: z.ZodType<
   pageSize: z.number().default(100),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetLinksRequest$ {
-  /** @deprecated use `GetLinksRequest$inboundSchema` instead. */
-  export const inboundSchema = GetLinksRequest$inboundSchema;
-  /** @deprecated use `GetLinksRequest$outboundSchema` instead. */
-  export const outboundSchema = GetLinksRequest$outboundSchema;
-  /** @deprecated use `GetLinksRequest$Outbound` instead. */
-  export type Outbound = GetLinksRequest$Outbound;
-}
-
 export function getLinksRequestToJSON(
   getLinksRequest: GetLinksRequest,
 ): string {
   return JSON.stringify(GetLinksRequest$outboundSchema.parse(getLinksRequest));
-}
-
-export function getLinksRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetLinksRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetLinksRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetLinksRequest' from JSON`,
-  );
 }
 
 /** @internal */
@@ -391,45 +240,6 @@ export const GetLinksResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
-/** @internal */
-export type GetLinksResponse$Outbound = {
-  Result: Array<components.LinkSchema$Outbound>;
-};
-
-/** @internal */
-export const GetLinksResponse$outboundSchema: z.ZodType<
-  GetLinksResponse$Outbound,
-  z.ZodTypeDef,
-  GetLinksResponse
-> = z.object({
-  result: z.array(components.LinkSchema$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    result: "Result",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetLinksResponse$ {
-  /** @deprecated use `GetLinksResponse$inboundSchema` instead. */
-  export const inboundSchema = GetLinksResponse$inboundSchema;
-  /** @deprecated use `GetLinksResponse$outboundSchema` instead. */
-  export const outboundSchema = GetLinksResponse$outboundSchema;
-  /** @deprecated use `GetLinksResponse$Outbound` instead. */
-  export type Outbound = GetLinksResponse$Outbound;
-}
-
-export function getLinksResponseToJSON(
-  getLinksResponse: GetLinksResponse,
-): string {
-  return JSON.stringify(
-    GetLinksResponse$outboundSchema.parse(getLinksResponse),
-  );
-}
 
 export function getLinksResponseFromJSON(
   jsonString: string,

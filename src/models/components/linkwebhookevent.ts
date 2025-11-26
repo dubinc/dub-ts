@@ -71,6 +71,7 @@ export type LinkWebhookEventLink = {
   archived: boolean;
   expiresAt: string;
   expiredUrl: string | null;
+  disabledAt: string;
   /**
    * The password required to access the destination URL of the short link.
    */
@@ -155,8 +156,8 @@ export type LinkWebhookEventLink = {
    * An array of A/B test URLs and the percentage of traffic to send to each URL.
    */
   testVariants?: Array<LinkWebhookEventTestVariants> | null | undefined;
-  testStartedAt: string | null;
-  testCompletedAt: string | null;
+  testStartedAt: string;
+  testCompletedAt: string;
   userId: string | null;
   /**
    * The workspace ID of the short link.
@@ -213,57 +214,21 @@ export type LinkWebhookEvent = {
 export const Three$inboundSchema: z.ZodNativeEnum<typeof Three> = z.nativeEnum(
   Three,
 );
-
 /** @internal */
 export const Three$outboundSchema: z.ZodNativeEnum<typeof Three> =
   Three$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Three$ {
-  /** @deprecated use `Three$inboundSchema` instead. */
-  export const inboundSchema = Three$inboundSchema;
-  /** @deprecated use `Three$outboundSchema` instead. */
-  export const outboundSchema = Three$outboundSchema;
-}
-
 /** @internal */
 export const Two$inboundSchema: z.ZodNativeEnum<typeof Two> = z.nativeEnum(Two);
-
 /** @internal */
 export const Two$outboundSchema: z.ZodNativeEnum<typeof Two> =
   Two$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Two$ {
-  /** @deprecated use `Two$inboundSchema` instead. */
-  export const inboundSchema = Two$inboundSchema;
-  /** @deprecated use `Two$outboundSchema` instead. */
-  export const outboundSchema = Two$outboundSchema;
-}
-
 /** @internal */
 export const One$inboundSchema: z.ZodNativeEnum<typeof One> = z.nativeEnum(One);
-
 /** @internal */
 export const One$outboundSchema: z.ZodNativeEnum<typeof One> =
   One$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace One$ {
-  /** @deprecated use `One$inboundSchema` instead. */
-  export const inboundSchema = One$inboundSchema;
-  /** @deprecated use `One$outboundSchema` instead. */
-  export const outboundSchema = One$outboundSchema;
-}
 
 /** @internal */
 export const LinkWebhookEventEvent$inboundSchema: z.ZodType<
@@ -271,7 +236,6 @@ export const LinkWebhookEventEvent$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([One$inboundSchema, Two$inboundSchema, Three$inboundSchema]);
-
 /** @internal */
 export type LinkWebhookEventEvent$Outbound = string | string | string;
 
@@ -282,19 +246,6 @@ export const LinkWebhookEventEvent$outboundSchema: z.ZodType<
   LinkWebhookEventEvent
 > = z.union([One$outboundSchema, Two$outboundSchema, Three$outboundSchema]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LinkWebhookEventEvent$ {
-  /** @deprecated use `LinkWebhookEventEvent$inboundSchema` instead. */
-  export const inboundSchema = LinkWebhookEventEvent$inboundSchema;
-  /** @deprecated use `LinkWebhookEventEvent$outboundSchema` instead. */
-  export const outboundSchema = LinkWebhookEventEvent$outboundSchema;
-  /** @deprecated use `LinkWebhookEventEvent$Outbound` instead. */
-  export type Outbound = LinkWebhookEventEvent$Outbound;
-}
-
 export function linkWebhookEventEventToJSON(
   linkWebhookEventEvent: LinkWebhookEventEvent,
 ): string {
@@ -302,7 +253,6 @@ export function linkWebhookEventEventToJSON(
     LinkWebhookEventEvent$outboundSchema.parse(linkWebhookEventEvent),
   );
 }
-
 export function linkWebhookEventEventFromJSON(
   jsonString: string,
 ): SafeParseResult<LinkWebhookEventEvent, SDKValidationError> {
@@ -322,7 +272,6 @@ export const LinkWebhookEventTestVariants$inboundSchema: z.ZodType<
   url: z.string(),
   percentage: z.number(),
 });
-
 /** @internal */
 export type LinkWebhookEventTestVariants$Outbound = {
   url: string;
@@ -339,19 +288,6 @@ export const LinkWebhookEventTestVariants$outboundSchema: z.ZodType<
   percentage: z.number(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LinkWebhookEventTestVariants$ {
-  /** @deprecated use `LinkWebhookEventTestVariants$inboundSchema` instead. */
-  export const inboundSchema = LinkWebhookEventTestVariants$inboundSchema;
-  /** @deprecated use `LinkWebhookEventTestVariants$outboundSchema` instead. */
-  export const outboundSchema = LinkWebhookEventTestVariants$outboundSchema;
-  /** @deprecated use `LinkWebhookEventTestVariants$Outbound` instead. */
-  export type Outbound = LinkWebhookEventTestVariants$Outbound;
-}
-
 export function linkWebhookEventTestVariantsToJSON(
   linkWebhookEventTestVariants: LinkWebhookEventTestVariants,
 ): string {
@@ -361,7 +297,6 @@ export function linkWebhookEventTestVariantsToJSON(
     ),
   );
 }
-
 export function linkWebhookEventTestVariantsFromJSON(
   jsonString: string,
 ): SafeParseResult<LinkWebhookEventTestVariants, SDKValidationError> {
@@ -390,6 +325,7 @@ export const LinkWebhookEventLink$inboundSchema: z.ZodType<
   archived: z.boolean(),
   expiresAt: z.string(),
   expiredUrl: z.nullable(z.string()),
+  disabledAt: z.string(),
   password: z.nullable(z.string()),
   proxy: z.boolean(),
   title: z.nullable(z.string()),
@@ -416,8 +352,8 @@ export const LinkWebhookEventLink$inboundSchema: z.ZodType<
   testVariants: z.nullable(
     z.array(z.lazy(() => LinkWebhookEventTestVariants$inboundSchema)),
   ).optional(),
-  testStartedAt: z.nullable(z.string()),
-  testCompletedAt: z.nullable(z.string()),
+  testStartedAt: z.string(),
+  testCompletedAt: z.string(),
   userId: z.nullable(z.string()),
   workspaceId: z.string(),
   clicks: z.number().default(0),
@@ -439,7 +375,6 @@ export const LinkWebhookEventLink$inboundSchema: z.ZodType<
     "utm_content": "utmContent",
   });
 });
-
 /** @internal */
 export type LinkWebhookEventLink$Outbound = {
   id: string;
@@ -454,6 +389,7 @@ export type LinkWebhookEventLink$Outbound = {
   archived: boolean;
   expiresAt: string;
   expiredUrl: string | null;
+  disabledAt: string;
   password: string | null;
   proxy: boolean;
   title: string | null;
@@ -481,8 +417,8 @@ export type LinkWebhookEventLink$Outbound = {
     | Array<LinkWebhookEventTestVariants$Outbound>
     | null
     | undefined;
-  testStartedAt: string | null;
-  testCompletedAt: string | null;
+  testStartedAt: string;
+  testCompletedAt: string;
   userId: string | null;
   workspaceId: string;
   clicks: number;
@@ -515,6 +451,7 @@ export const LinkWebhookEventLink$outboundSchema: z.ZodType<
   archived: z.boolean(),
   expiresAt: z.string(),
   expiredUrl: z.nullable(z.string()),
+  disabledAt: z.string(),
   password: z.nullable(z.string()),
   proxy: z.boolean(),
   title: z.nullable(z.string()),
@@ -541,8 +478,8 @@ export const LinkWebhookEventLink$outboundSchema: z.ZodType<
   testVariants: z.nullable(
     z.array(z.lazy(() => LinkWebhookEventTestVariants$outboundSchema)),
   ).optional(),
-  testStartedAt: z.nullable(z.string()),
-  testCompletedAt: z.nullable(z.string()),
+  testStartedAt: z.string(),
+  testCompletedAt: z.string(),
   userId: z.nullable(z.string()),
   workspaceId: z.string(),
   clicks: z.number().default(0),
@@ -565,19 +502,6 @@ export const LinkWebhookEventLink$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LinkWebhookEventLink$ {
-  /** @deprecated use `LinkWebhookEventLink$inboundSchema` instead. */
-  export const inboundSchema = LinkWebhookEventLink$inboundSchema;
-  /** @deprecated use `LinkWebhookEventLink$outboundSchema` instead. */
-  export const outboundSchema = LinkWebhookEventLink$outboundSchema;
-  /** @deprecated use `LinkWebhookEventLink$Outbound` instead. */
-  export type Outbound = LinkWebhookEventLink$Outbound;
-}
-
 export function linkWebhookEventLinkToJSON(
   linkWebhookEventLink: LinkWebhookEventLink,
 ): string {
@@ -585,7 +509,6 @@ export function linkWebhookEventLinkToJSON(
     LinkWebhookEventLink$outboundSchema.parse(linkWebhookEventLink),
   );
 }
-
 export function linkWebhookEventLinkFromJSON(
   jsonString: string,
 ): SafeParseResult<LinkWebhookEventLink, SDKValidationError> {
@@ -607,7 +530,6 @@ export const LinkWebhookEvent$inboundSchema: z.ZodType<
   createdAt: z.string(),
   data: z.lazy(() => LinkWebhookEventLink$inboundSchema),
 });
-
 /** @internal */
 export type LinkWebhookEvent$Outbound = {
   id: string;
@@ -632,19 +554,6 @@ export const LinkWebhookEvent$outboundSchema: z.ZodType<
   data: z.lazy(() => LinkWebhookEventLink$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LinkWebhookEvent$ {
-  /** @deprecated use `LinkWebhookEvent$inboundSchema` instead. */
-  export const inboundSchema = LinkWebhookEvent$inboundSchema;
-  /** @deprecated use `LinkWebhookEvent$outboundSchema` instead. */
-  export const outboundSchema = LinkWebhookEvent$outboundSchema;
-  /** @deprecated use `LinkWebhookEvent$Outbound` instead. */
-  export type Outbound = LinkWebhookEvent$Outbound;
-}
-
 export function linkWebhookEventToJSON(
   linkWebhookEvent: LinkWebhookEvent,
 ): string {
@@ -652,7 +561,6 @@ export function linkWebhookEventToJSON(
     LinkWebhookEvent$outboundSchema.parse(linkWebhookEvent),
   );
 }
-
 export function linkWebhookEventFromJSON(
   jsonString: string,
 ): SafeParseResult<LinkWebhookEvent, SDKValidationError> {

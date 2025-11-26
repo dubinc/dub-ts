@@ -43,49 +43,6 @@ export const AnalyticsReferers$inboundSchema: z.ZodType<
   saleAmount: z.number().default(0),
 });
 
-/** @internal */
-export type AnalyticsReferers$Outbound = {
-  referer: string;
-  clicks: number;
-  leads: number;
-  sales: number;
-  saleAmount: number;
-};
-
-/** @internal */
-export const AnalyticsReferers$outboundSchema: z.ZodType<
-  AnalyticsReferers$Outbound,
-  z.ZodTypeDef,
-  AnalyticsReferers
-> = z.object({
-  referer: z.string(),
-  clicks: z.number().default(0),
-  leads: z.number().default(0),
-  sales: z.number().default(0),
-  saleAmount: z.number().default(0),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AnalyticsReferers$ {
-  /** @deprecated use `AnalyticsReferers$inboundSchema` instead. */
-  export const inboundSchema = AnalyticsReferers$inboundSchema;
-  /** @deprecated use `AnalyticsReferers$outboundSchema` instead. */
-  export const outboundSchema = AnalyticsReferers$outboundSchema;
-  /** @deprecated use `AnalyticsReferers$Outbound` instead. */
-  export type Outbound = AnalyticsReferers$Outbound;
-}
-
-export function analyticsReferersToJSON(
-  analyticsReferers: AnalyticsReferers,
-): string {
-  return JSON.stringify(
-    AnalyticsReferers$outboundSchema.parse(analyticsReferers),
-  );
-}
-
 export function analyticsReferersFromJSON(
   jsonString: string,
 ): SafeParseResult<AnalyticsReferers, SDKValidationError> {

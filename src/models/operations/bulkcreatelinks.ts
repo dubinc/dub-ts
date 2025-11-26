@@ -194,13 +194,6 @@ export type RequestBody = {
 export type ResponseBody = components.LinkSchema | components.LinkErrorSchema;
 
 /** @internal */
-export const BulkCreateLinksTagIds$inboundSchema: z.ZodType<
-  BulkCreateLinksTagIds,
-  z.ZodTypeDef,
-  unknown
-> = z.union([z.string(), z.array(z.string())]);
-
-/** @internal */
 export type BulkCreateLinksTagIds$Outbound = string | Array<string>;
 
 /** @internal */
@@ -210,19 +203,6 @@ export const BulkCreateLinksTagIds$outboundSchema: z.ZodType<
   BulkCreateLinksTagIds
 > = z.union([z.string(), z.array(z.string())]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BulkCreateLinksTagIds$ {
-  /** @deprecated use `BulkCreateLinksTagIds$inboundSchema` instead. */
-  export const inboundSchema = BulkCreateLinksTagIds$inboundSchema;
-  /** @deprecated use `BulkCreateLinksTagIds$outboundSchema` instead. */
-  export const outboundSchema = BulkCreateLinksTagIds$outboundSchema;
-  /** @deprecated use `BulkCreateLinksTagIds$Outbound` instead. */
-  export type Outbound = BulkCreateLinksTagIds$Outbound;
-}
-
 export function bulkCreateLinksTagIdsToJSON(
   bulkCreateLinksTagIds: BulkCreateLinksTagIds,
 ): string {
@@ -230,23 +210,6 @@ export function bulkCreateLinksTagIdsToJSON(
     BulkCreateLinksTagIds$outboundSchema.parse(bulkCreateLinksTagIds),
   );
 }
-
-export function bulkCreateLinksTagIdsFromJSON(
-  jsonString: string,
-): SafeParseResult<BulkCreateLinksTagIds, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => BulkCreateLinksTagIds$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BulkCreateLinksTagIds' from JSON`,
-  );
-}
-
-/** @internal */
-export const BulkCreateLinksTagNames$inboundSchema: z.ZodType<
-  BulkCreateLinksTagNames,
-  z.ZodTypeDef,
-  unknown
-> = z.union([z.string(), z.array(z.string())]);
 
 /** @internal */
 export type BulkCreateLinksTagNames$Outbound = string | Array<string>;
@@ -258,19 +221,6 @@ export const BulkCreateLinksTagNames$outboundSchema: z.ZodType<
   BulkCreateLinksTagNames
 > = z.union([z.string(), z.array(z.string())]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BulkCreateLinksTagNames$ {
-  /** @deprecated use `BulkCreateLinksTagNames$inboundSchema` instead. */
-  export const inboundSchema = BulkCreateLinksTagNames$inboundSchema;
-  /** @deprecated use `BulkCreateLinksTagNames$outboundSchema` instead. */
-  export const outboundSchema = BulkCreateLinksTagNames$outboundSchema;
-  /** @deprecated use `BulkCreateLinksTagNames$Outbound` instead. */
-  export type Outbound = BulkCreateLinksTagNames$Outbound;
-}
-
 export function bulkCreateLinksTagNamesToJSON(
   bulkCreateLinksTagNames: BulkCreateLinksTagNames,
 ): string {
@@ -278,26 +228,6 @@ export function bulkCreateLinksTagNamesToJSON(
     BulkCreateLinksTagNames$outboundSchema.parse(bulkCreateLinksTagNames),
   );
 }
-
-export function bulkCreateLinksTagNamesFromJSON(
-  jsonString: string,
-): SafeParseResult<BulkCreateLinksTagNames, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => BulkCreateLinksTagNames$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BulkCreateLinksTagNames' from JSON`,
-  );
-}
-
-/** @internal */
-export const BulkCreateLinksTestVariants$inboundSchema: z.ZodType<
-  BulkCreateLinksTestVariants,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  url: z.string(),
-  percentage: z.number(),
-});
 
 /** @internal */
 export type BulkCreateLinksTestVariants$Outbound = {
@@ -315,19 +245,6 @@ export const BulkCreateLinksTestVariants$outboundSchema: z.ZodType<
   percentage: z.number(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BulkCreateLinksTestVariants$ {
-  /** @deprecated use `BulkCreateLinksTestVariants$inboundSchema` instead. */
-  export const inboundSchema = BulkCreateLinksTestVariants$inboundSchema;
-  /** @deprecated use `BulkCreateLinksTestVariants$outboundSchema` instead. */
-  export const outboundSchema = BulkCreateLinksTestVariants$outboundSchema;
-  /** @deprecated use `BulkCreateLinksTestVariants$Outbound` instead. */
-  export type Outbound = BulkCreateLinksTestVariants$Outbound;
-}
-
 export function bulkCreateLinksTestVariantsToJSON(
   bulkCreateLinksTestVariants: BulkCreateLinksTestVariants,
 ): string {
@@ -337,74 +254,6 @@ export function bulkCreateLinksTestVariantsToJSON(
     ),
   );
 }
-
-export function bulkCreateLinksTestVariantsFromJSON(
-  jsonString: string,
-): SafeParseResult<BulkCreateLinksTestVariants, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => BulkCreateLinksTestVariants$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BulkCreateLinksTestVariants' from JSON`,
-  );
-}
-
-/** @internal */
-export const RequestBody$inboundSchema: z.ZodType<
-  RequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  url: z.string(),
-  domain: z.string().optional(),
-  key: z.string().optional(),
-  keyLength: z.number().optional(),
-  externalId: z.nullable(z.string()).optional(),
-  tenantId: z.nullable(z.string()).optional(),
-  programId: z.nullable(z.string()).optional(),
-  partnerId: z.nullable(z.string()).optional(),
-  prefix: z.string().optional(),
-  trackConversion: z.boolean().optional(),
-  archived: z.boolean().optional(),
-  tagIds: z.union([z.string(), z.array(z.string())]).optional(),
-  tagNames: z.union([z.string(), z.array(z.string())]).optional(),
-  folderId: z.nullable(z.string()).optional(),
-  comments: z.nullable(z.string()).optional(),
-  expiresAt: z.nullable(z.string()).optional(),
-  expiredUrl: z.nullable(z.string()).optional(),
-  password: z.nullable(z.string()).optional(),
-  proxy: z.boolean().optional(),
-  title: z.nullable(z.string()).optional(),
-  description: z.nullable(z.string()).optional(),
-  image: z.nullable(z.string()).optional(),
-  video: z.nullable(z.string()).optional(),
-  rewrite: z.boolean().optional(),
-  ios: z.nullable(z.string()).optional(),
-  android: z.nullable(z.string()).optional(),
-  geo: z.nullable(z.record(z.string())).optional(),
-  doIndex: z.boolean().optional(),
-  utm_source: z.nullable(z.string()).optional(),
-  utm_medium: z.nullable(z.string()).optional(),
-  utm_campaign: z.nullable(z.string()).optional(),
-  utm_term: z.nullable(z.string()).optional(),
-  utm_content: z.nullable(z.string()).optional(),
-  ref: z.nullable(z.string()).optional(),
-  webhookIds: z.nullable(z.array(z.string())).optional(),
-  testVariants: z.nullable(
-    z.array(z.lazy(() => BulkCreateLinksTestVariants$inboundSchema)),
-  ).optional(),
-  testStartedAt: z.nullable(z.string()).optional(),
-  testCompletedAt: z.nullable(z.string()).optional(),
-  publicStats: z.boolean().optional(),
-  tagId: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "utm_source": "utmSource",
-    "utm_medium": "utmMedium",
-    "utm_campaign": "utmCampaign",
-    "utm_term": "utmTerm",
-    "utm_content": "utmContent",
-  });
-});
 
 /** @internal */
 export type RequestBody$Outbound = {
@@ -508,31 +357,8 @@ export const RequestBody$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequestBody$ {
-  /** @deprecated use `RequestBody$inboundSchema` instead. */
-  export const inboundSchema = RequestBody$inboundSchema;
-  /** @deprecated use `RequestBody$outboundSchema` instead. */
-  export const outboundSchema = RequestBody$outboundSchema;
-  /** @deprecated use `RequestBody$Outbound` instead. */
-  export type Outbound = RequestBody$Outbound;
-}
-
 export function requestBodyToJSON(requestBody: RequestBody): string {
   return JSON.stringify(RequestBody$outboundSchema.parse(requestBody));
-}
-
-export function requestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<RequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBody' from JSON`,
-  );
 }
 
 /** @internal */
@@ -544,38 +370,6 @@ export const ResponseBody$inboundSchema: z.ZodType<
   components.LinkSchema$inboundSchema,
   components.LinkErrorSchema$inboundSchema,
 ]);
-
-/** @internal */
-export type ResponseBody$Outbound =
-  | components.LinkSchema$Outbound
-  | components.LinkErrorSchema$Outbound;
-
-/** @internal */
-export const ResponseBody$outboundSchema: z.ZodType<
-  ResponseBody$Outbound,
-  z.ZodTypeDef,
-  ResponseBody
-> = z.union([
-  components.LinkSchema$outboundSchema,
-  components.LinkErrorSchema$outboundSchema,
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBody$ {
-  /** @deprecated use `ResponseBody$inboundSchema` instead. */
-  export const inboundSchema = ResponseBody$inboundSchema;
-  /** @deprecated use `ResponseBody$outboundSchema` instead. */
-  export const outboundSchema = ResponseBody$outboundSchema;
-  /** @deprecated use `ResponseBody$Outbound` instead. */
-  export type Outbound = ResponseBody$Outbound;
-}
-
-export function responseBodyToJSON(responseBody: ResponseBody): string {
-  return JSON.stringify(ResponseBody$outboundSchema.parse(responseBody));
-}
 
 export function responseBodyFromJSON(
   jsonString: string,

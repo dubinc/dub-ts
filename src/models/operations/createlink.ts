@@ -4,9 +4,6 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The unique IDs of the tags assigned to the short link.
@@ -191,10 +188,6 @@ export type CreateLinkRequestBody = {
 };
 
 /** @internal */
-export const TagIds$inboundSchema: z.ZodType<TagIds, z.ZodTypeDef, unknown> = z
-  .union([z.string(), z.array(z.string())]);
-
-/** @internal */
 export type TagIds$Outbound = string | Array<string>;
 
 /** @internal */
@@ -204,39 +197,9 @@ export const TagIds$outboundSchema: z.ZodType<
   TagIds
 > = z.union([z.string(), z.array(z.string())]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TagIds$ {
-  /** @deprecated use `TagIds$inboundSchema` instead. */
-  export const inboundSchema = TagIds$inboundSchema;
-  /** @deprecated use `TagIds$outboundSchema` instead. */
-  export const outboundSchema = TagIds$outboundSchema;
-  /** @deprecated use `TagIds$Outbound` instead. */
-  export type Outbound = TagIds$Outbound;
-}
-
 export function tagIdsToJSON(tagIds: TagIds): string {
   return JSON.stringify(TagIds$outboundSchema.parse(tagIds));
 }
-
-export function tagIdsFromJSON(
-  jsonString: string,
-): SafeParseResult<TagIds, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TagIds$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TagIds' from JSON`,
-  );
-}
-
-/** @internal */
-export const TagNames$inboundSchema: z.ZodType<
-  TagNames,
-  z.ZodTypeDef,
-  unknown
-> = z.union([z.string(), z.array(z.string())]);
 
 /** @internal */
 export type TagNames$Outbound = string | Array<string>;
@@ -248,42 +211,9 @@ export const TagNames$outboundSchema: z.ZodType<
   TagNames
 > = z.union([z.string(), z.array(z.string())]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TagNames$ {
-  /** @deprecated use `TagNames$inboundSchema` instead. */
-  export const inboundSchema = TagNames$inboundSchema;
-  /** @deprecated use `TagNames$outboundSchema` instead. */
-  export const outboundSchema = TagNames$outboundSchema;
-  /** @deprecated use `TagNames$Outbound` instead. */
-  export type Outbound = TagNames$Outbound;
-}
-
 export function tagNamesToJSON(tagNames: TagNames): string {
   return JSON.stringify(TagNames$outboundSchema.parse(tagNames));
 }
-
-export function tagNamesFromJSON(
-  jsonString: string,
-): SafeParseResult<TagNames, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TagNames$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TagNames' from JSON`,
-  );
-}
-
-/** @internal */
-export const TestVariants$inboundSchema: z.ZodType<
-  TestVariants,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  url: z.string(),
-  percentage: z.number(),
-});
 
 /** @internal */
 export type TestVariants$Outbound = {
@@ -301,89 +231,9 @@ export const TestVariants$outboundSchema: z.ZodType<
   percentage: z.number(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TestVariants$ {
-  /** @deprecated use `TestVariants$inboundSchema` instead. */
-  export const inboundSchema = TestVariants$inboundSchema;
-  /** @deprecated use `TestVariants$outboundSchema` instead. */
-  export const outboundSchema = TestVariants$outboundSchema;
-  /** @deprecated use `TestVariants$Outbound` instead. */
-  export type Outbound = TestVariants$Outbound;
-}
-
 export function testVariantsToJSON(testVariants: TestVariants): string {
   return JSON.stringify(TestVariants$outboundSchema.parse(testVariants));
 }
-
-export function testVariantsFromJSON(
-  jsonString: string,
-): SafeParseResult<TestVariants, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TestVariants$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TestVariants' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateLinkRequestBody$inboundSchema: z.ZodType<
-  CreateLinkRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  url: z.string(),
-  domain: z.string().optional(),
-  key: z.string().optional(),
-  keyLength: z.number().optional(),
-  externalId: z.nullable(z.string()).optional(),
-  tenantId: z.nullable(z.string()).optional(),
-  programId: z.nullable(z.string()).optional(),
-  partnerId: z.nullable(z.string()).optional(),
-  prefix: z.string().optional(),
-  trackConversion: z.boolean().optional(),
-  archived: z.boolean().optional(),
-  tagIds: z.union([z.string(), z.array(z.string())]).optional(),
-  tagNames: z.union([z.string(), z.array(z.string())]).optional(),
-  folderId: z.nullable(z.string()).optional(),
-  comments: z.nullable(z.string()).optional(),
-  expiresAt: z.nullable(z.string()).optional(),
-  expiredUrl: z.nullable(z.string()).optional(),
-  password: z.nullable(z.string()).optional(),
-  proxy: z.boolean().optional(),
-  title: z.nullable(z.string()).optional(),
-  description: z.nullable(z.string()).optional(),
-  image: z.nullable(z.string()).optional(),
-  video: z.nullable(z.string()).optional(),
-  rewrite: z.boolean().optional(),
-  ios: z.nullable(z.string()).optional(),
-  android: z.nullable(z.string()).optional(),
-  geo: z.nullable(z.record(z.string())).optional(),
-  doIndex: z.boolean().optional(),
-  utm_source: z.nullable(z.string()).optional(),
-  utm_medium: z.nullable(z.string()).optional(),
-  utm_campaign: z.nullable(z.string()).optional(),
-  utm_term: z.nullable(z.string()).optional(),
-  utm_content: z.nullable(z.string()).optional(),
-  ref: z.nullable(z.string()).optional(),
-  webhookIds: z.nullable(z.array(z.string())).optional(),
-  testVariants: z.nullable(z.array(z.lazy(() => TestVariants$inboundSchema)))
-    .optional(),
-  testStartedAt: z.nullable(z.string()).optional(),
-  testCompletedAt: z.nullable(z.string()).optional(),
-  publicStats: z.boolean().optional(),
-  tagId: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "utm_source": "utmSource",
-    "utm_medium": "utmMedium",
-    "utm_campaign": "utmCampaign",
-    "utm_term": "utmTerm",
-    "utm_content": "utmContent",
-  });
-});
 
 /** @internal */
 export type CreateLinkRequestBody$Outbound = {
@@ -486,33 +336,10 @@ export const CreateLinkRequestBody$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateLinkRequestBody$ {
-  /** @deprecated use `CreateLinkRequestBody$inboundSchema` instead. */
-  export const inboundSchema = CreateLinkRequestBody$inboundSchema;
-  /** @deprecated use `CreateLinkRequestBody$outboundSchema` instead. */
-  export const outboundSchema = CreateLinkRequestBody$outboundSchema;
-  /** @deprecated use `CreateLinkRequestBody$Outbound` instead. */
-  export type Outbound = CreateLinkRequestBody$Outbound;
-}
-
 export function createLinkRequestBodyToJSON(
   createLinkRequestBody: CreateLinkRequestBody,
 ): string {
   return JSON.stringify(
     CreateLinkRequestBody$outboundSchema.parse(createLinkRequestBody),
-  );
-}
-
-export function createLinkRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateLinkRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateLinkRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateLinkRequestBody' from JSON`,
   );
 }

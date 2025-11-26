@@ -43,49 +43,6 @@ export const AnalyticsRefererUrls$inboundSchema: z.ZodType<
   saleAmount: z.number().default(0),
 });
 
-/** @internal */
-export type AnalyticsRefererUrls$Outbound = {
-  refererUrl: string;
-  clicks: number;
-  leads: number;
-  sales: number;
-  saleAmount: number;
-};
-
-/** @internal */
-export const AnalyticsRefererUrls$outboundSchema: z.ZodType<
-  AnalyticsRefererUrls$Outbound,
-  z.ZodTypeDef,
-  AnalyticsRefererUrls
-> = z.object({
-  refererUrl: z.string(),
-  clicks: z.number().default(0),
-  leads: z.number().default(0),
-  sales: z.number().default(0),
-  saleAmount: z.number().default(0),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AnalyticsRefererUrls$ {
-  /** @deprecated use `AnalyticsRefererUrls$inboundSchema` instead. */
-  export const inboundSchema = AnalyticsRefererUrls$inboundSchema;
-  /** @deprecated use `AnalyticsRefererUrls$outboundSchema` instead. */
-  export const outboundSchema = AnalyticsRefererUrls$outboundSchema;
-  /** @deprecated use `AnalyticsRefererUrls$Outbound` instead. */
-  export type Outbound = AnalyticsRefererUrls$Outbound;
-}
-
-export function analyticsRefererUrlsToJSON(
-  analyticsRefererUrls: AnalyticsRefererUrls,
-): string {
-  return JSON.stringify(
-    AnalyticsRefererUrls$outboundSchema.parse(analyticsRefererUrls),
-  );
-}
-
 export function analyticsRefererUrlsFromJSON(
   jsonString: string,
 ): SafeParseResult<AnalyticsRefererUrls, SDKValidationError> {

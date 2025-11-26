@@ -7,12 +7,7 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  LinkTagSchema,
-  LinkTagSchema$inboundSchema,
-  LinkTagSchema$Outbound,
-  LinkTagSchema$outboundSchema,
-} from "./linktagschema.js";
+import { LinkTagSchema, LinkTagSchema$inboundSchema } from "./linktagschema.js";
 
 export type TestVariants = {
   url: string;
@@ -68,6 +63,10 @@ export type LinkSchema = {
    * The URL to redirect to when the short link has expired.
    */
   expiredUrl: string | null;
+  /**
+   * The date and time when the short link was disabled. When a short link is disabled, it will redirect to its domain's not found URL, and its stats will be excluded from your overall stats.
+   */
+  disabledAt: string | null;
   /**
    * The password required to access the destination URL of the short link.
    */
@@ -236,39 +235,6 @@ export const TestVariants$inboundSchema: z.ZodType<
   percentage: z.number(),
 });
 
-/** @internal */
-export type TestVariants$Outbound = {
-  url: string;
-  percentage: number;
-};
-
-/** @internal */
-export const TestVariants$outboundSchema: z.ZodType<
-  TestVariants$Outbound,
-  z.ZodTypeDef,
-  TestVariants
-> = z.object({
-  url: z.string(),
-  percentage: z.number(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TestVariants$ {
-  /** @deprecated use `TestVariants$inboundSchema` instead. */
-  export const inboundSchema = TestVariants$inboundSchema;
-  /** @deprecated use `TestVariants$outboundSchema` instead. */
-  export const outboundSchema = TestVariants$outboundSchema;
-  /** @deprecated use `TestVariants$Outbound` instead. */
-  export type Outbound = TestVariants$Outbound;
-}
-
-export function testVariantsToJSON(testVariants: TestVariants): string {
-  return JSON.stringify(TestVariants$outboundSchema.parse(testVariants));
-}
-
 export function testVariantsFromJSON(
   jsonString: string,
 ): SafeParseResult<TestVariants, SDKValidationError> {
@@ -297,6 +263,7 @@ export const LinkSchema$inboundSchema: z.ZodType<
   archived: z.boolean().default(false),
   expiresAt: z.nullable(z.string()),
   expiredUrl: z.nullable(z.string()),
+  disabledAt: z.nullable(z.string()),
   password: z.nullable(z.string()),
   proxy: z.boolean().default(false),
   title: z.nullable(z.string()),
@@ -345,144 +312,6 @@ export const LinkSchema$inboundSchema: z.ZodType<
     "utm_content": "utmContent",
   });
 });
-
-/** @internal */
-export type LinkSchema$Outbound = {
-  id: string;
-  domain: string;
-  key: string;
-  url: string;
-  trackConversion: boolean;
-  externalId: string | null;
-  tenantId: string | null;
-  programId: string | null;
-  partnerId: string | null;
-  archived: boolean;
-  expiresAt: string | null;
-  expiredUrl: string | null;
-  password: string | null;
-  proxy: boolean;
-  title: string | null;
-  description: string | null;
-  image: string | null;
-  video: string | null;
-  rewrite: boolean;
-  doIndex: boolean;
-  ios: string | null;
-  android: string | null;
-  geo: { [k: string]: string } | null;
-  publicStats: boolean;
-  tags: Array<LinkTagSchema$Outbound> | null;
-  folderId: string | null;
-  webhookIds: Array<string>;
-  comments: string | null;
-  shortLink: string;
-  qrCode: string;
-  utm_source: string | null;
-  utm_medium: string | null;
-  utm_campaign: string | null;
-  utm_term: string | null;
-  utm_content: string | null;
-  testVariants?: Array<TestVariants$Outbound> | null | undefined;
-  testStartedAt?: string | null | undefined;
-  testCompletedAt?: string | null | undefined;
-  userId: string | null;
-  workspaceId: string;
-  clicks: number;
-  leads: number;
-  conversions: number;
-  sales: number;
-  saleAmount: number;
-  lastClicked: string | null;
-  createdAt: string;
-  updatedAt: string;
-  tagId: string | null;
-  projectId: string;
-};
-
-/** @internal */
-export const LinkSchema$outboundSchema: z.ZodType<
-  LinkSchema$Outbound,
-  z.ZodTypeDef,
-  LinkSchema
-> = z.object({
-  id: z.string(),
-  domain: z.string(),
-  key: z.string(),
-  url: z.string(),
-  trackConversion: z.boolean().default(false),
-  externalId: z.nullable(z.string()),
-  tenantId: z.nullable(z.string()),
-  programId: z.nullable(z.string()),
-  partnerId: z.nullable(z.string()),
-  archived: z.boolean().default(false),
-  expiresAt: z.nullable(z.string()),
-  expiredUrl: z.nullable(z.string()),
-  password: z.nullable(z.string()),
-  proxy: z.boolean().default(false),
-  title: z.nullable(z.string()),
-  description: z.nullable(z.string()),
-  image: z.nullable(z.string()),
-  video: z.nullable(z.string()),
-  rewrite: z.boolean().default(false),
-  doIndex: z.boolean().default(false),
-  ios: z.nullable(z.string()),
-  android: z.nullable(z.string()),
-  geo: z.nullable(z.record(z.string())),
-  publicStats: z.boolean().default(false),
-  tags: z.nullable(z.array(LinkTagSchema$outboundSchema)),
-  folderId: z.nullable(z.string()),
-  webhookIds: z.array(z.string()),
-  comments: z.nullable(z.string()),
-  shortLink: z.string(),
-  qrCode: z.string(),
-  utmSource: z.nullable(z.string()),
-  utmMedium: z.nullable(z.string()),
-  utmCampaign: z.nullable(z.string()),
-  utmTerm: z.nullable(z.string()),
-  utmContent: z.nullable(z.string()),
-  testVariants: z.nullable(z.array(z.lazy(() => TestVariants$outboundSchema)))
-    .optional(),
-  testStartedAt: z.nullable(z.string()).optional(),
-  testCompletedAt: z.nullable(z.string()).optional(),
-  userId: z.nullable(z.string()),
-  workspaceId: z.string(),
-  clicks: z.number().default(0),
-  leads: z.number().default(0),
-  conversions: z.number().default(0),
-  sales: z.number().default(0),
-  saleAmount: z.number().default(0),
-  lastClicked: z.nullable(z.string()),
-  createdAt: z.string(),
-  updatedAt: z.string(),
-  tagId: z.nullable(z.string()),
-  projectId: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    utmSource: "utm_source",
-    utmMedium: "utm_medium",
-    utmCampaign: "utm_campaign",
-    utmTerm: "utm_term",
-    utmContent: "utm_content",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LinkSchema$ {
-  /** @deprecated use `LinkSchema$inboundSchema` instead. */
-  export const inboundSchema = LinkSchema$inboundSchema;
-  /** @deprecated use `LinkSchema$outboundSchema` instead. */
-  export const outboundSchema = LinkSchema$outboundSchema;
-  /** @deprecated use `LinkSchema$Outbound` instead. */
-  export type Outbound = LinkSchema$Outbound;
-}
-
-export function linkSchemaToJSON(linkSchema: LinkSchema): string {
-  return JSON.stringify(LinkSchema$outboundSchema.parse(linkSchema));
-}
 
 export function linkSchemaFromJSON(
   jsonString: string,

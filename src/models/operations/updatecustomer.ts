@@ -154,19 +154,6 @@ export type UpdateCustomerResponseBody = {
 };
 
 /** @internal */
-export const UpdateCustomerRequestBody$inboundSchema: z.ZodType<
-  UpdateCustomerRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  email: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  avatar: z.nullable(z.string()).optional(),
-  externalId: z.string().optional(),
-  stripeCustomerId: z.nullable(z.string()).optional(),
-});
-
-/** @internal */
 export type UpdateCustomerRequestBody$Outbound = {
   email?: string | null | undefined;
   name?: string | null | undefined;
@@ -188,19 +175,6 @@ export const UpdateCustomerRequestBody$outboundSchema: z.ZodType<
   stripeCustomerId: z.nullable(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateCustomerRequestBody$ {
-  /** @deprecated use `UpdateCustomerRequestBody$inboundSchema` instead. */
-  export const inboundSchema = UpdateCustomerRequestBody$inboundSchema;
-  /** @deprecated use `UpdateCustomerRequestBody$outboundSchema` instead. */
-  export const outboundSchema = UpdateCustomerRequestBody$outboundSchema;
-  /** @deprecated use `UpdateCustomerRequestBody$Outbound` instead. */
-  export type Outbound = UpdateCustomerRequestBody$Outbound;
-}
-
 export function updateCustomerRequestBodyToJSON(
   updateCustomerRequestBody: UpdateCustomerRequestBody,
 ): string {
@@ -208,31 +182,6 @@ export function updateCustomerRequestBodyToJSON(
     UpdateCustomerRequestBody$outboundSchema.parse(updateCustomerRequestBody),
   );
 }
-
-export function updateCustomerRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateCustomerRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateCustomerRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateCustomerRequestBody' from JSON`,
-  );
-}
-
-/** @internal */
-export const UpdateCustomerRequest$inboundSchema: z.ZodType<
-  UpdateCustomerRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-  includeExpandedFields: z.boolean().optional(),
-  RequestBody: z.lazy(() => UpdateCustomerRequestBody$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 
 /** @internal */
 export type UpdateCustomerRequest$Outbound = {
@@ -257,34 +206,11 @@ export const UpdateCustomerRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateCustomerRequest$ {
-  /** @deprecated use `UpdateCustomerRequest$inboundSchema` instead. */
-  export const inboundSchema = UpdateCustomerRequest$inboundSchema;
-  /** @deprecated use `UpdateCustomerRequest$outboundSchema` instead. */
-  export const outboundSchema = UpdateCustomerRequest$outboundSchema;
-  /** @deprecated use `UpdateCustomerRequest$Outbound` instead. */
-  export type Outbound = UpdateCustomerRequest$Outbound;
-}
-
 export function updateCustomerRequestToJSON(
   updateCustomerRequest: UpdateCustomerRequest,
 ): string {
   return JSON.stringify(
     UpdateCustomerRequest$outboundSchema.parse(updateCustomerRequest),
-  );
-}
-
-export function updateCustomerRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateCustomerRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateCustomerRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateCustomerRequest' from JSON`,
   );
 }
 
@@ -301,51 +227,6 @@ export const UpdateCustomerLink$inboundSchema: z.ZodType<
   url: z.string(),
   programId: z.nullable(z.string()),
 });
-
-/** @internal */
-export type UpdateCustomerLink$Outbound = {
-  id: string;
-  domain: string;
-  key: string;
-  shortLink: string;
-  url: string;
-  programId: string | null;
-};
-
-/** @internal */
-export const UpdateCustomerLink$outboundSchema: z.ZodType<
-  UpdateCustomerLink$Outbound,
-  z.ZodTypeDef,
-  UpdateCustomerLink
-> = z.object({
-  id: z.string(),
-  domain: z.string(),
-  key: z.string(),
-  shortLink: z.string(),
-  url: z.string(),
-  programId: z.nullable(z.string()),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateCustomerLink$ {
-  /** @deprecated use `UpdateCustomerLink$inboundSchema` instead. */
-  export const inboundSchema = UpdateCustomerLink$inboundSchema;
-  /** @deprecated use `UpdateCustomerLink$outboundSchema` instead. */
-  export const outboundSchema = UpdateCustomerLink$outboundSchema;
-  /** @deprecated use `UpdateCustomerLink$Outbound` instead. */
-  export type Outbound = UpdateCustomerLink$Outbound;
-}
-
-export function updateCustomerLinkToJSON(
-  updateCustomerLink: UpdateCustomerLink,
-): string {
-  return JSON.stringify(
-    UpdateCustomerLink$outboundSchema.parse(updateCustomerLink),
-  );
-}
 
 export function updateCustomerLinkFromJSON(
   jsonString: string,
@@ -369,47 +250,6 @@ export const UpdateCustomerPartner$inboundSchema: z.ZodType<
   image: z.nullable(z.string()),
 });
 
-/** @internal */
-export type UpdateCustomerPartner$Outbound = {
-  id: string;
-  name: string;
-  email: string | null;
-  image: string | null;
-};
-
-/** @internal */
-export const UpdateCustomerPartner$outboundSchema: z.ZodType<
-  UpdateCustomerPartner$Outbound,
-  z.ZodTypeDef,
-  UpdateCustomerPartner
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  email: z.nullable(z.string()),
-  image: z.nullable(z.string()),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateCustomerPartner$ {
-  /** @deprecated use `UpdateCustomerPartner$inboundSchema` instead. */
-  export const inboundSchema = UpdateCustomerPartner$inboundSchema;
-  /** @deprecated use `UpdateCustomerPartner$outboundSchema` instead. */
-  export const outboundSchema = UpdateCustomerPartner$outboundSchema;
-  /** @deprecated use `UpdateCustomerPartner$Outbound` instead. */
-  export type Outbound = UpdateCustomerPartner$Outbound;
-}
-
-export function updateCustomerPartnerToJSON(
-  updateCustomerPartner: UpdateCustomerPartner,
-): string {
-  return JSON.stringify(
-    UpdateCustomerPartner$outboundSchema.parse(updateCustomerPartner),
-  );
-}
-
 export function updateCustomerPartnerFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateCustomerPartner, SDKValidationError> {
@@ -426,22 +266,6 @@ export const UpdateCustomerType$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(UpdateCustomerType);
 
 /** @internal */
-export const UpdateCustomerType$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateCustomerType
-> = UpdateCustomerType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateCustomerType$ {
-  /** @deprecated use `UpdateCustomerType$inboundSchema` instead. */
-  export const inboundSchema = UpdateCustomerType$inboundSchema;
-  /** @deprecated use `UpdateCustomerType$outboundSchema` instead. */
-  export const outboundSchema = UpdateCustomerType$outboundSchema;
-}
-
-/** @internal */
 export const UpdateCustomerDiscount$inboundSchema: z.ZodType<
   UpdateCustomerDiscount,
   z.ZodTypeDef,
@@ -456,55 +280,6 @@ export const UpdateCustomerDiscount$inboundSchema: z.ZodType<
   description: z.nullable(z.string()).optional(),
   partnersCount: z.nullable(z.number()).optional(),
 });
-
-/** @internal */
-export type UpdateCustomerDiscount$Outbound = {
-  id: string;
-  amount: number;
-  type: string;
-  maxDuration: number | null;
-  couponId: string | null;
-  couponTestId: string | null;
-  description?: string | null | undefined;
-  partnersCount?: number | null | undefined;
-};
-
-/** @internal */
-export const UpdateCustomerDiscount$outboundSchema: z.ZodType<
-  UpdateCustomerDiscount$Outbound,
-  z.ZodTypeDef,
-  UpdateCustomerDiscount
-> = z.object({
-  id: z.string(),
-  amount: z.number(),
-  type: UpdateCustomerType$outboundSchema,
-  maxDuration: z.nullable(z.number()),
-  couponId: z.nullable(z.string()),
-  couponTestId: z.nullable(z.string()),
-  description: z.nullable(z.string()).optional(),
-  partnersCount: z.nullable(z.number()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateCustomerDiscount$ {
-  /** @deprecated use `UpdateCustomerDiscount$inboundSchema` instead. */
-  export const inboundSchema = UpdateCustomerDiscount$inboundSchema;
-  /** @deprecated use `UpdateCustomerDiscount$outboundSchema` instead. */
-  export const outboundSchema = UpdateCustomerDiscount$outboundSchema;
-  /** @deprecated use `UpdateCustomerDiscount$Outbound` instead. */
-  export type Outbound = UpdateCustomerDiscount$Outbound;
-}
-
-export function updateCustomerDiscountToJSON(
-  updateCustomerDiscount: UpdateCustomerDiscount,
-): string {
-  return JSON.stringify(
-    UpdateCustomerDiscount$outboundSchema.parse(updateCustomerDiscount),
-  );
-}
 
 export function updateCustomerDiscountFromJSON(
   jsonString: string,
@@ -538,67 +313,6 @@ export const UpdateCustomerResponseBody$inboundSchema: z.ZodType<
   discount: z.nullable(z.lazy(() => UpdateCustomerDiscount$inboundSchema))
     .optional(),
 });
-
-/** @internal */
-export type UpdateCustomerResponseBody$Outbound = {
-  id: string;
-  externalId: string;
-  name: string;
-  email?: string | null | undefined;
-  avatar?: string | null | undefined;
-  country?: string | null | undefined;
-  sales?: number | null | undefined;
-  saleAmount?: number | null | undefined;
-  createdAt: string;
-  link?: UpdateCustomerLink$Outbound | null | undefined;
-  programId?: string | null | undefined;
-  partner?: UpdateCustomerPartner$Outbound | null | undefined;
-  discount?: UpdateCustomerDiscount$Outbound | null | undefined;
-};
-
-/** @internal */
-export const UpdateCustomerResponseBody$outboundSchema: z.ZodType<
-  UpdateCustomerResponseBody$Outbound,
-  z.ZodTypeDef,
-  UpdateCustomerResponseBody
-> = z.object({
-  id: z.string(),
-  externalId: z.string(),
-  name: z.string(),
-  email: z.nullable(z.string()).optional(),
-  avatar: z.nullable(z.string()).optional(),
-  country: z.nullable(z.string()).optional(),
-  sales: z.nullable(z.number()).optional(),
-  saleAmount: z.nullable(z.number()).optional(),
-  createdAt: z.string(),
-  link: z.nullable(z.lazy(() => UpdateCustomerLink$outboundSchema)).optional(),
-  programId: z.nullable(z.string()).optional(),
-  partner: z.nullable(z.lazy(() => UpdateCustomerPartner$outboundSchema))
-    .optional(),
-  discount: z.nullable(z.lazy(() => UpdateCustomerDiscount$outboundSchema))
-    .optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateCustomerResponseBody$ {
-  /** @deprecated use `UpdateCustomerResponseBody$inboundSchema` instead. */
-  export const inboundSchema = UpdateCustomerResponseBody$inboundSchema;
-  /** @deprecated use `UpdateCustomerResponseBody$outboundSchema` instead. */
-  export const outboundSchema = UpdateCustomerResponseBody$outboundSchema;
-  /** @deprecated use `UpdateCustomerResponseBody$Outbound` instead. */
-  export type Outbound = UpdateCustomerResponseBody$Outbound;
-}
-
-export function updateCustomerResponseBodyToJSON(
-  updateCustomerResponseBody: UpdateCustomerResponseBody,
-): string {
-  return JSON.stringify(
-    UpdateCustomerResponseBody$outboundSchema.parse(updateCustomerResponseBody),
-  );
-}
 
 export function updateCustomerResponseBodyFromJSON(
   jsonString: string,

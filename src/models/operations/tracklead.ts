@@ -120,41 +120,9 @@ export type TrackLeadResponseBody = {
 };
 
 /** @internal */
-export const Mode$inboundSchema: z.ZodNativeEnum<typeof Mode> = z.nativeEnum(
+export const Mode$outboundSchema: z.ZodNativeEnum<typeof Mode> = z.nativeEnum(
   Mode,
 );
-
-/** @internal */
-export const Mode$outboundSchema: z.ZodNativeEnum<typeof Mode> =
-  Mode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Mode$ {
-  /** @deprecated use `Mode$inboundSchema` instead. */
-  export const inboundSchema = Mode$inboundSchema;
-  /** @deprecated use `Mode$outboundSchema` instead. */
-  export const outboundSchema = Mode$outboundSchema;
-}
-
-/** @internal */
-export const TrackLeadRequestBody$inboundSchema: z.ZodType<
-  TrackLeadRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  clickId: z.string(),
-  eventName: z.string(),
-  customerExternalId: z.string(),
-  customerName: z.nullable(z.string()).default(null),
-  customerEmail: z.nullable(z.string()).default(null),
-  customerAvatar: z.nullable(z.string()).default(null),
-  mode: Mode$inboundSchema.default("async"),
-  eventQuantity: z.nullable(z.number()).optional(),
-  metadata: z.nullable(z.record(z.any())).optional(),
-});
 
 /** @internal */
 export type TrackLeadRequestBody$Outbound = {
@@ -186,19 +154,6 @@ export const TrackLeadRequestBody$outboundSchema: z.ZodType<
   metadata: z.nullable(z.record(z.any())).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TrackLeadRequestBody$ {
-  /** @deprecated use `TrackLeadRequestBody$inboundSchema` instead. */
-  export const inboundSchema = TrackLeadRequestBody$inboundSchema;
-  /** @deprecated use `TrackLeadRequestBody$outboundSchema` instead. */
-  export const outboundSchema = TrackLeadRequestBody$outboundSchema;
-  /** @deprecated use `TrackLeadRequestBody$Outbound` instead. */
-  export type Outbound = TrackLeadRequestBody$Outbound;
-}
-
 export function trackLeadRequestBodyToJSON(
   trackLeadRequestBody: TrackLeadRequestBody,
 ): string {
@@ -207,52 +162,11 @@ export function trackLeadRequestBodyToJSON(
   );
 }
 
-export function trackLeadRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<TrackLeadRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TrackLeadRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TrackLeadRequestBody' from JSON`,
-  );
-}
-
 /** @internal */
 export const Click$inboundSchema: z.ZodType<Click, z.ZodTypeDef, unknown> = z
   .object({
     id: z.string(),
   });
-
-/** @internal */
-export type Click$Outbound = {
-  id: string;
-};
-
-/** @internal */
-export const Click$outboundSchema: z.ZodType<
-  Click$Outbound,
-  z.ZodTypeDef,
-  Click
-> = z.object({
-  id: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Click$ {
-  /** @deprecated use `Click$inboundSchema` instead. */
-  export const inboundSchema = Click$inboundSchema;
-  /** @deprecated use `Click$outboundSchema` instead. */
-  export const outboundSchema = Click$outboundSchema;
-  /** @deprecated use `Click$Outbound` instead. */
-  export type Outbound = Click$Outbound;
-}
-
-export function clickToJSON(click: Click): string {
-  return JSON.stringify(Click$outboundSchema.parse(click));
-}
 
 export function clickFromJSON(
   jsonString: string,
@@ -281,53 +195,6 @@ export const TrackLeadLink$inboundSchema: z.ZodType<
   externalId: z.nullable(z.string()),
 });
 
-/** @internal */
-export type TrackLeadLink$Outbound = {
-  id: string;
-  domain: string;
-  key: string;
-  shortLink: string;
-  url: string;
-  partnerId: string | null;
-  programId: string | null;
-  tenantId: string | null;
-  externalId: string | null;
-};
-
-/** @internal */
-export const TrackLeadLink$outboundSchema: z.ZodType<
-  TrackLeadLink$Outbound,
-  z.ZodTypeDef,
-  TrackLeadLink
-> = z.object({
-  id: z.string(),
-  domain: z.string(),
-  key: z.string(),
-  shortLink: z.string(),
-  url: z.string(),
-  partnerId: z.nullable(z.string()),
-  programId: z.nullable(z.string()),
-  tenantId: z.nullable(z.string()),
-  externalId: z.nullable(z.string()),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TrackLeadLink$ {
-  /** @deprecated use `TrackLeadLink$inboundSchema` instead. */
-  export const inboundSchema = TrackLeadLink$inboundSchema;
-  /** @deprecated use `TrackLeadLink$outboundSchema` instead. */
-  export const outboundSchema = TrackLeadLink$outboundSchema;
-  /** @deprecated use `TrackLeadLink$Outbound` instead. */
-  export type Outbound = TrackLeadLink$Outbound;
-}
-
-export function trackLeadLinkToJSON(trackLeadLink: TrackLeadLink): string {
-  return JSON.stringify(TrackLeadLink$outboundSchema.parse(trackLeadLink));
-}
-
 export function trackLeadLinkFromJSON(
   jsonString: string,
 ): SafeParseResult<TrackLeadLink, SDKValidationError> {
@@ -350,43 +217,6 @@ export const Customer$inboundSchema: z.ZodType<
   externalId: z.nullable(z.string()),
 });
 
-/** @internal */
-export type Customer$Outbound = {
-  name: string | null;
-  email: string | null;
-  avatar: string | null;
-  externalId: string | null;
-};
-
-/** @internal */
-export const Customer$outboundSchema: z.ZodType<
-  Customer$Outbound,
-  z.ZodTypeDef,
-  Customer
-> = z.object({
-  name: z.nullable(z.string()),
-  email: z.nullable(z.string()),
-  avatar: z.nullable(z.string()),
-  externalId: z.nullable(z.string()),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Customer$ {
-  /** @deprecated use `Customer$inboundSchema` instead. */
-  export const inboundSchema = Customer$inboundSchema;
-  /** @deprecated use `Customer$outboundSchema` instead. */
-  export const outboundSchema = Customer$outboundSchema;
-  /** @deprecated use `Customer$Outbound` instead. */
-  export type Outbound = Customer$Outbound;
-}
-
-export function customerToJSON(customer: Customer): string {
-  return JSON.stringify(Customer$outboundSchema.parse(customer));
-}
-
 export function customerFromJSON(
   jsonString: string,
 ): SafeParseResult<Customer, SDKValidationError> {
@@ -407,45 +237,6 @@ export const TrackLeadResponseBody$inboundSchema: z.ZodType<
   link: z.nullable(z.lazy(() => TrackLeadLink$inboundSchema)),
   customer: z.lazy(() => Customer$inboundSchema),
 });
-
-/** @internal */
-export type TrackLeadResponseBody$Outbound = {
-  click: Click$Outbound;
-  link: TrackLeadLink$Outbound | null;
-  customer: Customer$Outbound;
-};
-
-/** @internal */
-export const TrackLeadResponseBody$outboundSchema: z.ZodType<
-  TrackLeadResponseBody$Outbound,
-  z.ZodTypeDef,
-  TrackLeadResponseBody
-> = z.object({
-  click: z.lazy(() => Click$outboundSchema),
-  link: z.nullable(z.lazy(() => TrackLeadLink$outboundSchema)),
-  customer: z.lazy(() => Customer$outboundSchema),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TrackLeadResponseBody$ {
-  /** @deprecated use `TrackLeadResponseBody$inboundSchema` instead. */
-  export const inboundSchema = TrackLeadResponseBody$inboundSchema;
-  /** @deprecated use `TrackLeadResponseBody$outboundSchema` instead. */
-  export const outboundSchema = TrackLeadResponseBody$outboundSchema;
-  /** @deprecated use `TrackLeadResponseBody$Outbound` instead. */
-  export type Outbound = TrackLeadResponseBody$Outbound;
-}
-
-export function trackLeadResponseBodyToJSON(
-  trackLeadResponseBody: TrackLeadResponseBody,
-): string {
-  return JSON.stringify(
-    TrackLeadResponseBody$outboundSchema.parse(trackLeadResponseBody),
-  );
-}
 
 export function trackLeadResponseBodyFromJSON(
   jsonString: string,

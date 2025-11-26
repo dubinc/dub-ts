@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateDomainRequestBody = {
   /**
@@ -43,22 +40,6 @@ export type CreateDomainRequestBody = {
 };
 
 /** @internal */
-export const CreateDomainRequestBody$inboundSchema: z.ZodType<
-  CreateDomainRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  slug: z.string(),
-  expiredUrl: z.nullable(z.string()).optional(),
-  notFoundUrl: z.nullable(z.string()).optional(),
-  archived: z.boolean().default(false),
-  placeholder: z.nullable(z.string()).optional(),
-  logo: z.nullable(z.string()).optional(),
-  assetLinks: z.nullable(z.string()).optional(),
-  appleAppSiteAssociation: z.nullable(z.string()).optional(),
-});
-
-/** @internal */
 export type CreateDomainRequestBody$Outbound = {
   slug: string;
   expiredUrl?: string | null | undefined;
@@ -86,33 +67,10 @@ export const CreateDomainRequestBody$outboundSchema: z.ZodType<
   appleAppSiteAssociation: z.nullable(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDomainRequestBody$ {
-  /** @deprecated use `CreateDomainRequestBody$inboundSchema` instead. */
-  export const inboundSchema = CreateDomainRequestBody$inboundSchema;
-  /** @deprecated use `CreateDomainRequestBody$outboundSchema` instead. */
-  export const outboundSchema = CreateDomainRequestBody$outboundSchema;
-  /** @deprecated use `CreateDomainRequestBody$Outbound` instead. */
-  export type Outbound = CreateDomainRequestBody$Outbound;
-}
-
 export function createDomainRequestBodyToJSON(
   createDomainRequestBody: CreateDomainRequestBody,
 ): string {
   return JSON.stringify(
     CreateDomainRequestBody$outboundSchema.parse(createDomainRequestBody),
-  );
-}
-
-export function createDomainRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateDomainRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateDomainRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateDomainRequestBody' from JSON`,
   );
 }

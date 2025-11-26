@@ -4,9 +4,6 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UpdateDomainRequestBody = {
   /**
@@ -52,22 +49,6 @@ export type UpdateDomainRequest = {
 };
 
 /** @internal */
-export const UpdateDomainRequestBody$inboundSchema: z.ZodType<
-  UpdateDomainRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  slug: z.string().optional(),
-  expiredUrl: z.nullable(z.string()).optional(),
-  notFoundUrl: z.nullable(z.string()).optional(),
-  archived: z.boolean().default(false),
-  placeholder: z.nullable(z.string()).optional(),
-  logo: z.nullable(z.string()).optional(),
-  assetLinks: z.nullable(z.string()).optional(),
-  appleAppSiteAssociation: z.nullable(z.string()).optional(),
-});
-
-/** @internal */
 export type UpdateDomainRequestBody$Outbound = {
   slug?: string | undefined;
   expiredUrl?: string | null | undefined;
@@ -95,19 +76,6 @@ export const UpdateDomainRequestBody$outboundSchema: z.ZodType<
   appleAppSiteAssociation: z.nullable(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateDomainRequestBody$ {
-  /** @deprecated use `UpdateDomainRequestBody$inboundSchema` instead. */
-  export const inboundSchema = UpdateDomainRequestBody$inboundSchema;
-  /** @deprecated use `UpdateDomainRequestBody$outboundSchema` instead. */
-  export const outboundSchema = UpdateDomainRequestBody$outboundSchema;
-  /** @deprecated use `UpdateDomainRequestBody$Outbound` instead. */
-  export type Outbound = UpdateDomainRequestBody$Outbound;
-}
-
 export function updateDomainRequestBodyToJSON(
   updateDomainRequestBody: UpdateDomainRequestBody,
 ): string {
@@ -115,30 +83,6 @@ export function updateDomainRequestBodyToJSON(
     UpdateDomainRequestBody$outboundSchema.parse(updateDomainRequestBody),
   );
 }
-
-export function updateDomainRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateDomainRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateDomainRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateDomainRequestBody' from JSON`,
-  );
-}
-
-/** @internal */
-export const UpdateDomainRequest$inboundSchema: z.ZodType<
-  UpdateDomainRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  slug: z.string(),
-  RequestBody: z.lazy(() => UpdateDomainRequestBody$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 
 /** @internal */
 export type UpdateDomainRequest$Outbound = {
@@ -160,33 +104,10 @@ export const UpdateDomainRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateDomainRequest$ {
-  /** @deprecated use `UpdateDomainRequest$inboundSchema` instead. */
-  export const inboundSchema = UpdateDomainRequest$inboundSchema;
-  /** @deprecated use `UpdateDomainRequest$outboundSchema` instead. */
-  export const outboundSchema = UpdateDomainRequest$outboundSchema;
-  /** @deprecated use `UpdateDomainRequest$Outbound` instead. */
-  export type Outbound = UpdateDomainRequest$Outbound;
-}
-
 export function updateDomainRequestToJSON(
   updateDomainRequest: UpdateDomainRequest,
 ): string {
   return JSON.stringify(
     UpdateDomainRequest$outboundSchema.parse(updateDomainRequest),
-  );
-}
-
-export function updateDomainRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateDomainRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateDomainRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateDomainRequest' from JSON`,
   );
 }

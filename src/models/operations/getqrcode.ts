@@ -3,10 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The level of error correction to use for the QR code. Defaults to `L` if not provided.
@@ -62,41 +59,9 @@ export type GetQRCodeRequest = {
 };
 
 /** @internal */
-export const Level$inboundSchema: z.ZodNativeEnum<typeof Level> = z.nativeEnum(
+export const Level$outboundSchema: z.ZodNativeEnum<typeof Level> = z.nativeEnum(
   Level,
 );
-
-/** @internal */
-export const Level$outboundSchema: z.ZodNativeEnum<typeof Level> =
-  Level$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Level$ {
-  /** @deprecated use `Level$inboundSchema` instead. */
-  export const inboundSchema = Level$inboundSchema;
-  /** @deprecated use `Level$outboundSchema` instead. */
-  export const outboundSchema = Level$outboundSchema;
-}
-
-/** @internal */
-export const GetQRCodeRequest$inboundSchema: z.ZodType<
-  GetQRCodeRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  url: z.string(),
-  logo: z.string().optional(),
-  size: z.number().default(600),
-  level: Level$inboundSchema.default("L"),
-  fgColor: z.string().default("#000000"),
-  bgColor: z.string().default("#FFFFFF"),
-  hideLogo: z.boolean().default(false),
-  margin: z.number().default(2),
-  includeMargin: z.boolean().default(true),
-});
 
 /** @internal */
 export type GetQRCodeRequest$Outbound = {
@@ -128,33 +93,10 @@ export const GetQRCodeRequest$outboundSchema: z.ZodType<
   includeMargin: z.boolean().default(true),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetQRCodeRequest$ {
-  /** @deprecated use `GetQRCodeRequest$inboundSchema` instead. */
-  export const inboundSchema = GetQRCodeRequest$inboundSchema;
-  /** @deprecated use `GetQRCodeRequest$outboundSchema` instead. */
-  export const outboundSchema = GetQRCodeRequest$outboundSchema;
-  /** @deprecated use `GetQRCodeRequest$Outbound` instead. */
-  export type Outbound = GetQRCodeRequest$Outbound;
-}
-
 export function getQRCodeRequestToJSON(
   getQRCodeRequest: GetQRCodeRequest,
 ): string {
   return JSON.stringify(
     GetQRCodeRequest$outboundSchema.parse(getQRCodeRequest),
-  );
-}
-
-export function getQRCodeRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetQRCodeRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetQRCodeRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetQRCodeRequest' from JSON`,
   );
 }

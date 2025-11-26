@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The access level of the folder within the workspace.
@@ -47,36 +44,9 @@ export type UpdateFolderRequest = {
 };
 
 /** @internal */
-export const UpdateFolderAccessLevel$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateFolderAccessLevel
-> = z.nativeEnum(UpdateFolderAccessLevel);
-
-/** @internal */
 export const UpdateFolderAccessLevel$outboundSchema: z.ZodNativeEnum<
   typeof UpdateFolderAccessLevel
-> = UpdateFolderAccessLevel$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateFolderAccessLevel$ {
-  /** @deprecated use `UpdateFolderAccessLevel$inboundSchema` instead. */
-  export const inboundSchema = UpdateFolderAccessLevel$inboundSchema;
-  /** @deprecated use `UpdateFolderAccessLevel$outboundSchema` instead. */
-  export const outboundSchema = UpdateFolderAccessLevel$outboundSchema;
-}
-
-/** @internal */
-export const UpdateFolderRequestBody$inboundSchema: z.ZodType<
-  UpdateFolderRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: z.string().optional(),
-  description: z.nullable(z.string()).optional(),
-  accessLevel: z.nullable(UpdateFolderAccessLevel$inboundSchema).default(null),
-});
+> = z.nativeEnum(UpdateFolderAccessLevel);
 
 /** @internal */
 export type UpdateFolderRequestBody$Outbound = {
@@ -96,19 +66,6 @@ export const UpdateFolderRequestBody$outboundSchema: z.ZodType<
   accessLevel: z.nullable(UpdateFolderAccessLevel$outboundSchema).default(null),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateFolderRequestBody$ {
-  /** @deprecated use `UpdateFolderRequestBody$inboundSchema` instead. */
-  export const inboundSchema = UpdateFolderRequestBody$inboundSchema;
-  /** @deprecated use `UpdateFolderRequestBody$outboundSchema` instead. */
-  export const outboundSchema = UpdateFolderRequestBody$outboundSchema;
-  /** @deprecated use `UpdateFolderRequestBody$Outbound` instead. */
-  export type Outbound = UpdateFolderRequestBody$Outbound;
-}
-
 export function updateFolderRequestBodyToJSON(
   updateFolderRequestBody: UpdateFolderRequestBody,
 ): string {
@@ -116,30 +73,6 @@ export function updateFolderRequestBodyToJSON(
     UpdateFolderRequestBody$outboundSchema.parse(updateFolderRequestBody),
   );
 }
-
-export function updateFolderRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFolderRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFolderRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFolderRequestBody' from JSON`,
-  );
-}
-
-/** @internal */
-export const UpdateFolderRequest$inboundSchema: z.ZodType<
-  UpdateFolderRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-  RequestBody: z.lazy(() => UpdateFolderRequestBody$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 
 /** @internal */
 export type UpdateFolderRequest$Outbound = {
@@ -161,33 +94,10 @@ export const UpdateFolderRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateFolderRequest$ {
-  /** @deprecated use `UpdateFolderRequest$inboundSchema` instead. */
-  export const inboundSchema = UpdateFolderRequest$inboundSchema;
-  /** @deprecated use `UpdateFolderRequest$outboundSchema` instead. */
-  export const outboundSchema = UpdateFolderRequest$outboundSchema;
-  /** @deprecated use `UpdateFolderRequest$Outbound` instead. */
-  export type Outbound = UpdateFolderRequest$Outbound;
-}
-
 export function updateFolderRequestToJSON(
   updateFolderRequest: UpdateFolderRequest,
 ): string {
   return JSON.stringify(
     UpdateFolderRequest$outboundSchema.parse(updateFolderRequest),
-  );
-}
-
-export function updateFolderRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFolderRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFolderRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFolderRequest' from JSON`,
   );
 }

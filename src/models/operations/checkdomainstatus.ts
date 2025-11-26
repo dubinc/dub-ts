@@ -39,10 +39,6 @@ export type CheckDomainStatusResponseBody = {
 };
 
 /** @internal */
-export const Domains$inboundSchema: z.ZodType<Domains, z.ZodTypeDef, unknown> =
-  z.union([z.string(), z.array(z.string())]);
-
-/** @internal */
 export type Domains$Outbound = string | Array<string>;
 
 /** @internal */
@@ -52,41 +48,9 @@ export const Domains$outboundSchema: z.ZodType<
   Domains
 > = z.union([z.string(), z.array(z.string())]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Domains$ {
-  /** @deprecated use `Domains$inboundSchema` instead. */
-  export const inboundSchema = Domains$inboundSchema;
-  /** @deprecated use `Domains$outboundSchema` instead. */
-  export const outboundSchema = Domains$outboundSchema;
-  /** @deprecated use `Domains$Outbound` instead. */
-  export type Outbound = Domains$Outbound;
-}
-
 export function domainsToJSON(domains: Domains): string {
   return JSON.stringify(Domains$outboundSchema.parse(domains));
 }
-
-export function domainsFromJSON(
-  jsonString: string,
-): SafeParseResult<Domains, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Domains$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Domains' from JSON`,
-  );
-}
-
-/** @internal */
-export const CheckDomainStatusRequest$inboundSchema: z.ZodType<
-  CheckDomainStatusRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  domains: z.union([z.string(), z.array(z.string())]),
-});
 
 /** @internal */
 export type CheckDomainStatusRequest$Outbound = {
@@ -102,34 +66,11 @@ export const CheckDomainStatusRequest$outboundSchema: z.ZodType<
   domains: z.union([z.string(), z.array(z.string())]),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CheckDomainStatusRequest$ {
-  /** @deprecated use `CheckDomainStatusRequest$inboundSchema` instead. */
-  export const inboundSchema = CheckDomainStatusRequest$inboundSchema;
-  /** @deprecated use `CheckDomainStatusRequest$outboundSchema` instead. */
-  export const outboundSchema = CheckDomainStatusRequest$outboundSchema;
-  /** @deprecated use `CheckDomainStatusRequest$Outbound` instead. */
-  export type Outbound = CheckDomainStatusRequest$Outbound;
-}
-
 export function checkDomainStatusRequestToJSON(
   checkDomainStatusRequest: CheckDomainStatusRequest,
 ): string {
   return JSON.stringify(
     CheckDomainStatusRequest$outboundSchema.parse(checkDomainStatusRequest),
-  );
-}
-
-export function checkDomainStatusRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CheckDomainStatusRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CheckDomainStatusRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CheckDomainStatusRequest' from JSON`,
   );
 }
 
@@ -144,49 +85,6 @@ export const CheckDomainStatusResponseBody$inboundSchema: z.ZodType<
   price: z.nullable(z.string()),
   premium: z.nullable(z.boolean()),
 });
-
-/** @internal */
-export type CheckDomainStatusResponseBody$Outbound = {
-  domain: string;
-  available: boolean;
-  price: string | null;
-  premium: boolean | null;
-};
-
-/** @internal */
-export const CheckDomainStatusResponseBody$outboundSchema: z.ZodType<
-  CheckDomainStatusResponseBody$Outbound,
-  z.ZodTypeDef,
-  CheckDomainStatusResponseBody
-> = z.object({
-  domain: z.string(),
-  available: z.boolean(),
-  price: z.nullable(z.string()),
-  premium: z.nullable(z.boolean()),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CheckDomainStatusResponseBody$ {
-  /** @deprecated use `CheckDomainStatusResponseBody$inboundSchema` instead. */
-  export const inboundSchema = CheckDomainStatusResponseBody$inboundSchema;
-  /** @deprecated use `CheckDomainStatusResponseBody$outboundSchema` instead. */
-  export const outboundSchema = CheckDomainStatusResponseBody$outboundSchema;
-  /** @deprecated use `CheckDomainStatusResponseBody$Outbound` instead. */
-  export type Outbound = CheckDomainStatusResponseBody$Outbound;
-}
-
-export function checkDomainStatusResponseBodyToJSON(
-  checkDomainStatusResponseBody: CheckDomainStatusResponseBody,
-): string {
-  return JSON.stringify(
-    CheckDomainStatusResponseBody$outboundSchema.parse(
-      checkDomainStatusResponseBody,
-    ),
-  );
-}
 
 export function checkDomainStatusResponseBodyFromJSON(
   jsonString: string,
