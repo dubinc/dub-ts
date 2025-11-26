@@ -43,49 +43,6 @@ export const AnalyticsTimeseries$inboundSchema: z.ZodType<
   saleAmount: z.number().default(0),
 });
 
-/** @internal */
-export type AnalyticsTimeseries$Outbound = {
-  start: string;
-  clicks: number;
-  leads: number;
-  sales: number;
-  saleAmount: number;
-};
-
-/** @internal */
-export const AnalyticsTimeseries$outboundSchema: z.ZodType<
-  AnalyticsTimeseries$Outbound,
-  z.ZodTypeDef,
-  AnalyticsTimeseries
-> = z.object({
-  start: z.string(),
-  clicks: z.number().default(0),
-  leads: z.number().default(0),
-  sales: z.number().default(0),
-  saleAmount: z.number().default(0),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AnalyticsTimeseries$ {
-  /** @deprecated use `AnalyticsTimeseries$inboundSchema` instead. */
-  export const inboundSchema = AnalyticsTimeseries$inboundSchema;
-  /** @deprecated use `AnalyticsTimeseries$outboundSchema` instead. */
-  export const outboundSchema = AnalyticsTimeseries$outboundSchema;
-  /** @deprecated use `AnalyticsTimeseries$Outbound` instead. */
-  export type Outbound = AnalyticsTimeseries$Outbound;
-}
-
-export function analyticsTimeseriesToJSON(
-  analyticsTimeseries: AnalyticsTimeseries,
-): string {
-  return JSON.stringify(
-    AnalyticsTimeseries$outboundSchema.parse(analyticsTimeseries),
-  );
-}
-
 export function analyticsTimeseriesFromJSON(
   jsonString: string,
 ): SafeParseResult<AnalyticsTimeseries, SDKValidationError> {

@@ -148,64 +148,28 @@ export type CommissionCreatedEvent = {
 export const CommissionCreatedEventEvent$inboundSchema: z.ZodNativeEnum<
   typeof CommissionCreatedEventEvent
 > = z.nativeEnum(CommissionCreatedEventEvent);
-
 /** @internal */
 export const CommissionCreatedEventEvent$outboundSchema: z.ZodNativeEnum<
   typeof CommissionCreatedEventEvent
 > = CommissionCreatedEventEvent$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CommissionCreatedEventEvent$ {
-  /** @deprecated use `CommissionCreatedEventEvent$inboundSchema` instead. */
-  export const inboundSchema = CommissionCreatedEventEvent$inboundSchema;
-  /** @deprecated use `CommissionCreatedEventEvent$outboundSchema` instead. */
-  export const outboundSchema = CommissionCreatedEventEvent$outboundSchema;
-}
-
 /** @internal */
 export const CommissionCreatedEventType$inboundSchema: z.ZodNativeEnum<
   typeof CommissionCreatedEventType
 > = z.nativeEnum(CommissionCreatedEventType);
-
 /** @internal */
 export const CommissionCreatedEventType$outboundSchema: z.ZodNativeEnum<
   typeof CommissionCreatedEventType
 > = CommissionCreatedEventType$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CommissionCreatedEventType$ {
-  /** @deprecated use `CommissionCreatedEventType$inboundSchema` instead. */
-  export const inboundSchema = CommissionCreatedEventType$inboundSchema;
-  /** @deprecated use `CommissionCreatedEventType$outboundSchema` instead. */
-  export const outboundSchema = CommissionCreatedEventType$outboundSchema;
-}
-
 /** @internal */
 export const CommissionCreatedEventStatus$inboundSchema: z.ZodNativeEnum<
   typeof CommissionCreatedEventStatus
 > = z.nativeEnum(CommissionCreatedEventStatus);
-
 /** @internal */
 export const CommissionCreatedEventStatus$outboundSchema: z.ZodNativeEnum<
   typeof CommissionCreatedEventStatus
 > = CommissionCreatedEventStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CommissionCreatedEventStatus$ {
-  /** @deprecated use `CommissionCreatedEventStatus$inboundSchema` instead. */
-  export const inboundSchema = CommissionCreatedEventStatus$inboundSchema;
-  /** @deprecated use `CommissionCreatedEventStatus$outboundSchema` instead. */
-  export const outboundSchema = CommissionCreatedEventStatus$outboundSchema;
-}
 
 /** @internal */
 export const CommissionCreatedEventPartner$inboundSchema: z.ZodType<
@@ -227,7 +191,6 @@ export const CommissionCreatedEventPartner$inboundSchema: z.ZodType<
   totalSaleAmount: z.number(),
   totalCommissions: z.number(),
 });
-
 /** @internal */
 export type CommissionCreatedEventPartner$Outbound = {
   id: string;
@@ -266,19 +229,6 @@ export const CommissionCreatedEventPartner$outboundSchema: z.ZodType<
   totalCommissions: z.number(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CommissionCreatedEventPartner$ {
-  /** @deprecated use `CommissionCreatedEventPartner$inboundSchema` instead. */
-  export const inboundSchema = CommissionCreatedEventPartner$inboundSchema;
-  /** @deprecated use `CommissionCreatedEventPartner$outboundSchema` instead. */
-  export const outboundSchema = CommissionCreatedEventPartner$outboundSchema;
-  /** @deprecated use `CommissionCreatedEventPartner$Outbound` instead. */
-  export type Outbound = CommissionCreatedEventPartner$Outbound;
-}
-
 export function commissionCreatedEventPartnerToJSON(
   commissionCreatedEventPartner: CommissionCreatedEventPartner,
 ): string {
@@ -288,7 +238,6 @@ export function commissionCreatedEventPartnerToJSON(
     ),
   );
 }
-
 export function commissionCreatedEventPartnerFromJSON(
   jsonString: string,
 ): SafeParseResult<CommissionCreatedEventPartner, SDKValidationError> {
@@ -315,7 +264,6 @@ export const CommissionCreatedEventCustomer$inboundSchema: z.ZodType<
   saleAmount: z.nullable(z.number()).optional(),
   createdAt: z.string(),
 });
-
 /** @internal */
 export type CommissionCreatedEventCustomer$Outbound = {
   id: string;
@@ -346,19 +294,6 @@ export const CommissionCreatedEventCustomer$outboundSchema: z.ZodType<
   createdAt: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CommissionCreatedEventCustomer$ {
-  /** @deprecated use `CommissionCreatedEventCustomer$inboundSchema` instead. */
-  export const inboundSchema = CommissionCreatedEventCustomer$inboundSchema;
-  /** @deprecated use `CommissionCreatedEventCustomer$outboundSchema` instead. */
-  export const outboundSchema = CommissionCreatedEventCustomer$outboundSchema;
-  /** @deprecated use `CommissionCreatedEventCustomer$Outbound` instead. */
-  export type Outbound = CommissionCreatedEventCustomer$Outbound;
-}
-
 export function commissionCreatedEventCustomerToJSON(
   commissionCreatedEventCustomer: CommissionCreatedEventCustomer,
 ): string {
@@ -368,7 +303,6 @@ export function commissionCreatedEventCustomerToJSON(
     ),
   );
 }
-
 export function commissionCreatedEventCustomerFromJSON(
   jsonString: string,
 ): SafeParseResult<CommissionCreatedEventCustomer, SDKValidationError> {
@@ -402,7 +336,6 @@ export const CommissionCreatedEventData$inboundSchema: z.ZodType<
     z.lazy(() => CommissionCreatedEventCustomer$inboundSchema),
   ).optional(),
 });
-
 /** @internal */
 export type CommissionCreatedEventData$Outbound = {
   id: string;
@@ -445,19 +378,6 @@ export const CommissionCreatedEventData$outboundSchema: z.ZodType<
   ).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CommissionCreatedEventData$ {
-  /** @deprecated use `CommissionCreatedEventData$inboundSchema` instead. */
-  export const inboundSchema = CommissionCreatedEventData$inboundSchema;
-  /** @deprecated use `CommissionCreatedEventData$outboundSchema` instead. */
-  export const outboundSchema = CommissionCreatedEventData$outboundSchema;
-  /** @deprecated use `CommissionCreatedEventData$Outbound` instead. */
-  export type Outbound = CommissionCreatedEventData$Outbound;
-}
-
 export function commissionCreatedEventDataToJSON(
   commissionCreatedEventData: CommissionCreatedEventData,
 ): string {
@@ -465,7 +385,6 @@ export function commissionCreatedEventDataToJSON(
     CommissionCreatedEventData$outboundSchema.parse(commissionCreatedEventData),
   );
 }
-
 export function commissionCreatedEventDataFromJSON(
   jsonString: string,
 ): SafeParseResult<CommissionCreatedEventData, SDKValidationError> {
@@ -487,7 +406,6 @@ export const CommissionCreatedEvent$inboundSchema: z.ZodType<
   createdAt: z.string(),
   data: z.lazy(() => CommissionCreatedEventData$inboundSchema),
 });
-
 /** @internal */
 export type CommissionCreatedEvent$Outbound = {
   id: string;
@@ -508,19 +426,6 @@ export const CommissionCreatedEvent$outboundSchema: z.ZodType<
   data: z.lazy(() => CommissionCreatedEventData$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CommissionCreatedEvent$ {
-  /** @deprecated use `CommissionCreatedEvent$inboundSchema` instead. */
-  export const inboundSchema = CommissionCreatedEvent$inboundSchema;
-  /** @deprecated use `CommissionCreatedEvent$outboundSchema` instead. */
-  export const outboundSchema = CommissionCreatedEvent$outboundSchema;
-  /** @deprecated use `CommissionCreatedEvent$Outbound` instead. */
-  export type Outbound = CommissionCreatedEvent$Outbound;
-}
-
 export function commissionCreatedEventToJSON(
   commissionCreatedEvent: CommissionCreatedEvent,
 ): string {
@@ -528,7 +433,6 @@ export function commissionCreatedEventToJSON(
     CommissionCreatedEvent$outboundSchema.parse(commissionCreatedEvent),
   );
 }
-
 export function commissionCreatedEventFromJSON(
   jsonString: string,
 ): SafeParseResult<CommissionCreatedEvent, SDKValidationError> {

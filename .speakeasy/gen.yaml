@@ -19,12 +19,13 @@ generation:
     hoistGlobalSecurity: true
   schemas:
     allOfMergeStrategy: shallowMerge
+  requestBodyFieldName: ""
   tests:
     generateTests: true
     generateNewTests: false
     skipResponseBodyAssertions: false
 typescript:
-  version: 0.68.0
+  version: 0.69.0
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
@@ -33,6 +34,8 @@ typescript:
       vitest: 1.4.0
     peerDependencies: {}
   additionalPackageJSON: {}
+  additionalScripts: {}
+  alwaysIncludeInboundAndOutbound: false
   author: Dub
   baseErrorName: DubError
   clientServerStatusCodesAsErrors: true
@@ -42,8 +45,11 @@ typescript:
   enableMCPServer: false
   enableReactQuery: false
   enumFormat: union
+  exportZodModelNamespace: false
   flattenGlobalSecurity: true
   flatteningOrder: body-first
+  formStringArrayEncodeMode: encoded-string
+  forwardCompatibleEnumsByDefault: false
   generateExamples: true
   imports:
     option: openapi
@@ -53,8 +59,10 @@ typescript:
       operations: models/operations
       shared: models/components
       webhooks: models/webhooks
+  inferUnionDiscriminators: true
   inputModelSuffix: input
   jsonpath: legacy
+  laxMode: strict
   maxMethodParams: 0
   methodArguments: infer-optional-args
   modelPropertyCasing: camel
@@ -64,6 +72,7 @@ typescript:
   responseFormat: flat
   sseFlatResponse: false
   templateVersion: v2
+  unionStrategy: left-to-right
   usageSDKInitImports: []
   useIndexModules: true
   zodVersion: v3

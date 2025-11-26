@@ -46,7 +46,9 @@ export const QueryParamGroupBy = {
   TopDomains: "top_domains",
   TopLinks: "top_links",
   TopUrls: "top_urls",
+  TopBaseUrls: "top_base_urls",
   TopPartners: "top_partners",
+  TopGroups: "top_groups",
   UtmSources: "utm_sources",
   UtmMediums: "utm_mediums",
   UtmCampaigns: "utm_campaigns",
@@ -218,6 +220,10 @@ export type RetrieveAnalyticsRequest = {
    */
   folderId?: string | undefined;
   /**
+   * The group ID to retrieve analytics for.
+   */
+  groupId?: string | undefined;
+  /**
    * Filter for root domains. If true, filter for domains only. If false, filter for links only. If undefined, return both.
    */
   root?: boolean | undefined;
@@ -283,90 +289,22 @@ export type RetrieveAnalyticsResponseBody =
   | Array<components.AnalyticsTopUrls>;
 
 /** @internal */
-export const Event$inboundSchema: z.ZodNativeEnum<typeof Event> = z.nativeEnum(
+export const Event$outboundSchema: z.ZodNativeEnum<typeof Event> = z.nativeEnum(
   Event,
 );
 
 /** @internal */
-export const Event$outboundSchema: z.ZodNativeEnum<typeof Event> =
-  Event$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Event$ {
-  /** @deprecated use `Event$inboundSchema` instead. */
-  export const inboundSchema = Event$inboundSchema;
-  /** @deprecated use `Event$outboundSchema` instead. */
-  export const outboundSchema = Event$outboundSchema;
-}
-
-/** @internal */
-export const QueryParamGroupBy$inboundSchema: z.ZodNativeEnum<
+export const QueryParamGroupBy$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamGroupBy
 > = z.nativeEnum(QueryParamGroupBy);
 
 /** @internal */
-export const QueryParamGroupBy$outboundSchema: z.ZodNativeEnum<
-  typeof QueryParamGroupBy
-> = QueryParamGroupBy$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace QueryParamGroupBy$ {
-  /** @deprecated use `QueryParamGroupBy$inboundSchema` instead. */
-  export const inboundSchema = QueryParamGroupBy$inboundSchema;
-  /** @deprecated use `QueryParamGroupBy$outboundSchema` instead. */
-  export const outboundSchema = QueryParamGroupBy$outboundSchema;
-}
-
-/** @internal */
-export const Interval$inboundSchema: z.ZodNativeEnum<typeof Interval> = z
+export const Interval$outboundSchema: z.ZodNativeEnum<typeof Interval> = z
   .nativeEnum(Interval);
 
 /** @internal */
-export const Interval$outboundSchema: z.ZodNativeEnum<typeof Interval> =
-  Interval$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Interval$ {
-  /** @deprecated use `Interval$inboundSchema` instead. */
-  export const inboundSchema = Interval$inboundSchema;
-  /** @deprecated use `Interval$outboundSchema` instead. */
-  export const outboundSchema = Interval$outboundSchema;
-}
-
-/** @internal */
-export const Trigger$inboundSchema: z.ZodNativeEnum<typeof Trigger> = z
+export const Trigger$outboundSchema: z.ZodNativeEnum<typeof Trigger> = z
   .nativeEnum(Trigger);
-
-/** @internal */
-export const Trigger$outboundSchema: z.ZodNativeEnum<typeof Trigger> =
-  Trigger$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Trigger$ {
-  /** @deprecated use `Trigger$inboundSchema` instead. */
-  export const inboundSchema = Trigger$inboundSchema;
-  /** @deprecated use `Trigger$outboundSchema` instead. */
-  export const outboundSchema = Trigger$outboundSchema;
-}
-
-/** @internal */
-export const RetrieveAnalyticsQueryParamTagIds$inboundSchema: z.ZodType<
-  RetrieveAnalyticsQueryParamTagIds,
-  z.ZodTypeDef,
-  unknown
-> = z.union([z.string(), z.array(z.string())]);
 
 /** @internal */
 export type RetrieveAnalyticsQueryParamTagIds$Outbound = string | Array<string>;
@@ -378,20 +316,6 @@ export const RetrieveAnalyticsQueryParamTagIds$outboundSchema: z.ZodType<
   RetrieveAnalyticsQueryParamTagIds
 > = z.union([z.string(), z.array(z.string())]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveAnalyticsQueryParamTagIds$ {
-  /** @deprecated use `RetrieveAnalyticsQueryParamTagIds$inboundSchema` instead. */
-  export const inboundSchema = RetrieveAnalyticsQueryParamTagIds$inboundSchema;
-  /** @deprecated use `RetrieveAnalyticsQueryParamTagIds$outboundSchema` instead. */
-  export const outboundSchema =
-    RetrieveAnalyticsQueryParamTagIds$outboundSchema;
-  /** @deprecated use `RetrieveAnalyticsQueryParamTagIds$Outbound` instead. */
-  export type Outbound = RetrieveAnalyticsQueryParamTagIds$Outbound;
-}
-
 export function retrieveAnalyticsQueryParamTagIdsToJSON(
   retrieveAnalyticsQueryParamTagIds: RetrieveAnalyticsQueryParamTagIds,
 ): string {
@@ -402,88 +326,9 @@ export function retrieveAnalyticsQueryParamTagIdsToJSON(
   );
 }
 
-export function retrieveAnalyticsQueryParamTagIdsFromJSON(
-  jsonString: string,
-): SafeParseResult<RetrieveAnalyticsQueryParamTagIds, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RetrieveAnalyticsQueryParamTagIds$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RetrieveAnalyticsQueryParamTagIds' from JSON`,
-  );
-}
-
 /** @internal */
-export const SaleType$inboundSchema: z.ZodNativeEnum<typeof SaleType> = z
+export const SaleType$outboundSchema: z.ZodNativeEnum<typeof SaleType> = z
   .nativeEnum(SaleType);
-
-/** @internal */
-export const SaleType$outboundSchema: z.ZodNativeEnum<typeof SaleType> =
-  SaleType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SaleType$ {
-  /** @deprecated use `SaleType$inboundSchema` instead. */
-  export const inboundSchema = SaleType$inboundSchema;
-  /** @deprecated use `SaleType$outboundSchema` instead. */
-  export const outboundSchema = SaleType$outboundSchema;
-}
-
-/** @internal */
-export const RetrieveAnalyticsRequest$inboundSchema: z.ZodType<
-  RetrieveAnalyticsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  event: Event$inboundSchema.default("clicks"),
-  groupBy: QueryParamGroupBy$inboundSchema.default("count"),
-  domain: z.string().optional(),
-  key: z.string().optional(),
-  linkId: z.string().optional(),
-  externalId: z.string().optional(),
-  tenantId: z.string().optional(),
-  programId: z.string().optional(),
-  partnerId: z.string().optional(),
-  customerId: z.string().optional(),
-  interval: Interval$inboundSchema.optional(),
-  start: z.string().optional(),
-  end: z.string().optional(),
-  timezone: z.string().default("UTC"),
-  country: z.string().optional(),
-  city: z.string().optional(),
-  region: z.string().optional(),
-  continent: components.ContinentCode$inboundSchema.optional(),
-  device: z.string().optional(),
-  browser: z.string().optional(),
-  os: z.string().optional(),
-  trigger: Trigger$inboundSchema.optional(),
-  referer: z.string().optional(),
-  refererUrl: z.string().optional(),
-  url: z.string().optional(),
-  tagIds: z.union([z.string(), z.array(z.string())]).optional(),
-  folderId: z.string().optional(),
-  root: z.boolean().optional(),
-  saleType: SaleType$inboundSchema.optional(),
-  query: z.string().optional(),
-  tagId: z.string().optional(),
-  qr: z.boolean().optional(),
-  utm_source: z.nullable(z.string()).optional(),
-  utm_medium: z.nullable(z.string()).optional(),
-  utm_campaign: z.nullable(z.string()).optional(),
-  utm_term: z.nullable(z.string()).optional(),
-  utm_content: z.nullable(z.string()).optional(),
-  ref: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "utm_source": "utmSource",
-    "utm_medium": "utmMedium",
-    "utm_campaign": "utmCampaign",
-    "utm_term": "utmTerm",
-    "utm_content": "utmContent",
-  });
-});
 
 /** @internal */
 export type RetrieveAnalyticsRequest$Outbound = {
@@ -514,6 +359,7 @@ export type RetrieveAnalyticsRequest$Outbound = {
   url?: string | undefined;
   tagIds?: string | Array<string> | undefined;
   folderId?: string | undefined;
+  groupId?: string | undefined;
   root?: boolean | undefined;
   saleType?: string | undefined;
   query?: string | undefined;
@@ -560,6 +406,7 @@ export const RetrieveAnalyticsRequest$outboundSchema: z.ZodType<
   url: z.string().optional(),
   tagIds: z.union([z.string(), z.array(z.string())]).optional(),
   folderId: z.string().optional(),
+  groupId: z.string().optional(),
   root: z.boolean().optional(),
   saleType: SaleType$outboundSchema.optional(),
   query: z.string().optional(),
@@ -581,34 +428,11 @@ export const RetrieveAnalyticsRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveAnalyticsRequest$ {
-  /** @deprecated use `RetrieveAnalyticsRequest$inboundSchema` instead. */
-  export const inboundSchema = RetrieveAnalyticsRequest$inboundSchema;
-  /** @deprecated use `RetrieveAnalyticsRequest$outboundSchema` instead. */
-  export const outboundSchema = RetrieveAnalyticsRequest$outboundSchema;
-  /** @deprecated use `RetrieveAnalyticsRequest$Outbound` instead. */
-  export type Outbound = RetrieveAnalyticsRequest$Outbound;
-}
-
 export function retrieveAnalyticsRequestToJSON(
   retrieveAnalyticsRequest: RetrieveAnalyticsRequest,
 ): string {
   return JSON.stringify(
     RetrieveAnalyticsRequest$outboundSchema.parse(retrieveAnalyticsRequest),
-  );
-}
-
-export function retrieveAnalyticsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<RetrieveAnalyticsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RetrieveAnalyticsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RetrieveAnalyticsRequest' from JSON`,
   );
 }
 
@@ -633,68 +457,6 @@ export const RetrieveAnalyticsResponseBody$inboundSchema: z.ZodType<
   z.array(components.AnalyticsTopLinks$inboundSchema),
   z.array(components.AnalyticsTopUrls$inboundSchema),
 ]);
-
-/** @internal */
-export type RetrieveAnalyticsResponseBody$Outbound =
-  | components.AnalyticsCount$Outbound
-  | Array<components.AnalyticsTimeseries$Outbound>
-  | Array<components.AnalyticsContinents$Outbound>
-  | Array<components.AnalyticsCountries$Outbound>
-  | Array<components.AnalyticsRegions$Outbound>
-  | Array<components.AnalyticsCities$Outbound>
-  | Array<components.AnalyticsDevices$Outbound>
-  | Array<components.AnalyticsBrowsers$Outbound>
-  | Array<components.AnalyticsOS$Outbound>
-  | Array<components.AnalyticsTriggers$Outbound>
-  | Array<components.AnalyticsReferers$Outbound>
-  | Array<components.AnalyticsRefererUrls$Outbound>
-  | Array<components.AnalyticsTopLinks$Outbound>
-  | Array<components.AnalyticsTopUrls$Outbound>;
-
-/** @internal */
-export const RetrieveAnalyticsResponseBody$outboundSchema: z.ZodType<
-  RetrieveAnalyticsResponseBody$Outbound,
-  z.ZodTypeDef,
-  RetrieveAnalyticsResponseBody
-> = z.union([
-  components.AnalyticsCount$outboundSchema,
-  z.array(components.AnalyticsTimeseries$outboundSchema),
-  z.array(components.AnalyticsContinents$outboundSchema),
-  z.array(components.AnalyticsCountries$outboundSchema),
-  z.array(components.AnalyticsRegions$outboundSchema),
-  z.array(components.AnalyticsCities$outboundSchema),
-  z.array(components.AnalyticsDevices$outboundSchema),
-  z.array(components.AnalyticsBrowsers$outboundSchema),
-  z.array(components.AnalyticsOS$outboundSchema),
-  z.array(components.AnalyticsTriggers$outboundSchema),
-  z.array(components.AnalyticsReferers$outboundSchema),
-  z.array(components.AnalyticsRefererUrls$outboundSchema),
-  z.array(components.AnalyticsTopLinks$outboundSchema),
-  z.array(components.AnalyticsTopUrls$outboundSchema),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveAnalyticsResponseBody$ {
-  /** @deprecated use `RetrieveAnalyticsResponseBody$inboundSchema` instead. */
-  export const inboundSchema = RetrieveAnalyticsResponseBody$inboundSchema;
-  /** @deprecated use `RetrieveAnalyticsResponseBody$outboundSchema` instead. */
-  export const outboundSchema = RetrieveAnalyticsResponseBody$outboundSchema;
-  /** @deprecated use `RetrieveAnalyticsResponseBody$Outbound` instead. */
-  export type Outbound = RetrieveAnalyticsResponseBody$Outbound;
-}
-
-export function retrieveAnalyticsResponseBodyToJSON(
-  retrieveAnalyticsResponseBody: RetrieveAnalyticsResponseBody,
-): string {
-  return JSON.stringify(
-    RetrieveAnalyticsResponseBody$outboundSchema.parse(
-      retrieveAnalyticsResponseBody,
-    ),
-  );
-}
 
 export function retrieveAnalyticsResponseBodyFromJSON(
   jsonString: string,

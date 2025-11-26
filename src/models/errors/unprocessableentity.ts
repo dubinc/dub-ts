@@ -74,22 +74,6 @@ export const UnprocessableEntityCode$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(UnprocessableEntityCode);
 
 /** @internal */
-export const UnprocessableEntityCode$outboundSchema: z.ZodNativeEnum<
-  typeof UnprocessableEntityCode
-> = UnprocessableEntityCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnprocessableEntityCode$ {
-  /** @deprecated use `UnprocessableEntityCode$inboundSchema` instead. */
-  export const inboundSchema = UnprocessableEntityCode$inboundSchema;
-  /** @deprecated use `UnprocessableEntityCode$outboundSchema` instead. */
-  export const outboundSchema = UnprocessableEntityCode$outboundSchema;
-}
-
-/** @internal */
 export const UnprocessableEntityError$inboundSchema: z.ZodType<
   UnprocessableEntityError,
   z.ZodTypeDef,
@@ -103,49 +87,6 @@ export const UnprocessableEntityError$inboundSchema: z.ZodType<
     "doc_url": "docUrl",
   });
 });
-
-/** @internal */
-export type UnprocessableEntityError$Outbound = {
-  code: string;
-  message: string;
-  doc_url?: string | undefined;
-};
-
-/** @internal */
-export const UnprocessableEntityError$outboundSchema: z.ZodType<
-  UnprocessableEntityError$Outbound,
-  z.ZodTypeDef,
-  UnprocessableEntityError
-> = z.object({
-  code: UnprocessableEntityCode$outboundSchema,
-  message: z.string(),
-  docUrl: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    docUrl: "doc_url",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnprocessableEntityError$ {
-  /** @deprecated use `UnprocessableEntityError$inboundSchema` instead. */
-  export const inboundSchema = UnprocessableEntityError$inboundSchema;
-  /** @deprecated use `UnprocessableEntityError$outboundSchema` instead. */
-  export const outboundSchema = UnprocessableEntityError$outboundSchema;
-  /** @deprecated use `UnprocessableEntityError$Outbound` instead. */
-  export type Outbound = UnprocessableEntityError$Outbound;
-}
-
-export function unprocessableEntityErrorToJSON(
-  unprocessableEntityError: UnprocessableEntityError,
-): string {
-  return JSON.stringify(
-    UnprocessableEntityError$outboundSchema.parse(unprocessableEntityError),
-  );
-}
 
 export function unprocessableEntityErrorFromJSON(
   jsonString: string,
@@ -175,32 +116,3 @@ export const UnprocessableEntity$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type UnprocessableEntity$Outbound = {
-  error: UnprocessableEntityError$Outbound;
-};
-
-/** @internal */
-export const UnprocessableEntity$outboundSchema: z.ZodType<
-  UnprocessableEntity$Outbound,
-  z.ZodTypeDef,
-  UnprocessableEntity
-> = z.instanceof(UnprocessableEntity)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    error: z.lazy(() => UnprocessableEntityError$outboundSchema),
-  }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnprocessableEntity$ {
-  /** @deprecated use `UnprocessableEntity$inboundSchema` instead. */
-  export const inboundSchema = UnprocessableEntity$inboundSchema;
-  /** @deprecated use `UnprocessableEntity$outboundSchema` instead. */
-  export const outboundSchema = UnprocessableEntity$outboundSchema;
-  /** @deprecated use `UnprocessableEntity$Outbound` instead. */
-  export type Outbound = UnprocessableEntity$Outbound;
-}

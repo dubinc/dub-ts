@@ -3,6 +3,7 @@
  */
 
 import { partnersAnalytics } from "../funcs/partnersAnalytics.js";
+import { partnersBan } from "../funcs/partnersBan.js";
 import { partnersCreate } from "../funcs/partnersCreate.js";
 import { partnersCreateLink } from "../funcs/partnersCreateLink.js";
 import { partnersList } from "../funcs/partnersList.js";
@@ -110,6 +111,23 @@ export class Partners extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.RetrievePartnerAnalyticsResponseBody> {
     return unwrapAsync(partnersAnalytics(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Ban a partner
+   *
+   * @remarks
+   * Ban a partner from your program. This will disable all links and mark all commissions as canceled.
+   */
+  async ban(
+    request?: operations.BanPartnerRequestBody | undefined,
+    options?: RequestOptions,
+  ): Promise<operations.BanPartnerResponseBody> {
+    return unwrapAsync(partnersBan(
       this,
       request,
       options,

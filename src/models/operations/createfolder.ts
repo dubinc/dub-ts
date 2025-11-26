@@ -3,10 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The access level of the folder within the workspace.
@@ -36,34 +33,8 @@ export type CreateFolderRequestBody = {
 };
 
 /** @internal */
-export const AccessLevel$inboundSchema: z.ZodNativeEnum<typeof AccessLevel> = z
+export const AccessLevel$outboundSchema: z.ZodNativeEnum<typeof AccessLevel> = z
   .nativeEnum(AccessLevel);
-
-/** @internal */
-export const AccessLevel$outboundSchema: z.ZodNativeEnum<typeof AccessLevel> =
-  AccessLevel$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccessLevel$ {
-  /** @deprecated use `AccessLevel$inboundSchema` instead. */
-  export const inboundSchema = AccessLevel$inboundSchema;
-  /** @deprecated use `AccessLevel$outboundSchema` instead. */
-  export const outboundSchema = AccessLevel$outboundSchema;
-}
-
-/** @internal */
-export const CreateFolderRequestBody$inboundSchema: z.ZodType<
-  CreateFolderRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: z.string(),
-  description: z.nullable(z.string()).optional(),
-  accessLevel: z.nullable(AccessLevel$inboundSchema).default(null),
-});
 
 /** @internal */
 export type CreateFolderRequestBody$Outbound = {
@@ -83,33 +54,10 @@ export const CreateFolderRequestBody$outboundSchema: z.ZodType<
   accessLevel: z.nullable(AccessLevel$outboundSchema).default(null),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateFolderRequestBody$ {
-  /** @deprecated use `CreateFolderRequestBody$inboundSchema` instead. */
-  export const inboundSchema = CreateFolderRequestBody$inboundSchema;
-  /** @deprecated use `CreateFolderRequestBody$outboundSchema` instead. */
-  export const outboundSchema = CreateFolderRequestBody$outboundSchema;
-  /** @deprecated use `CreateFolderRequestBody$Outbound` instead. */
-  export type Outbound = CreateFolderRequestBody$Outbound;
-}
-
 export function createFolderRequestBodyToJSON(
   createFolderRequestBody: CreateFolderRequestBody,
 ): string {
   return JSON.stringify(
     CreateFolderRequestBody$outboundSchema.parse(createFolderRequestBody),
-  );
-}
-
-export function createFolderRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateFolderRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateFolderRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateFolderRequestBody' from JSON`,
   );
 }

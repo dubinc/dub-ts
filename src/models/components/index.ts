@@ -31,6 +31,7 @@ export * from "./linkwebhookevent.js";
 export * from "./partneranalyticscount.js";
 export * from "./partneranalyticstimeseries.js";
 export * from "./partneranalyticstoplinks.js";
+export * from "./partnerapplicationsubmittedevent.js";
 export * from "./partnerenrolledevent.js";
 export * from "./salecreatedevent.js";
 export * from "./saleevent.js";

@@ -38,43 +38,6 @@ export const AnalyticsCount$inboundSchema: z.ZodType<
   saleAmount: z.number().default(0),
 });
 
-/** @internal */
-export type AnalyticsCount$Outbound = {
-  clicks: number;
-  leads: number;
-  sales: number;
-  saleAmount: number;
-};
-
-/** @internal */
-export const AnalyticsCount$outboundSchema: z.ZodType<
-  AnalyticsCount$Outbound,
-  z.ZodTypeDef,
-  AnalyticsCount
-> = z.object({
-  clicks: z.number().default(0),
-  leads: z.number().default(0),
-  sales: z.number().default(0),
-  saleAmount: z.number().default(0),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AnalyticsCount$ {
-  /** @deprecated use `AnalyticsCount$inboundSchema` instead. */
-  export const inboundSchema = AnalyticsCount$inboundSchema;
-  /** @deprecated use `AnalyticsCount$outboundSchema` instead. */
-  export const outboundSchema = AnalyticsCount$outboundSchema;
-  /** @deprecated use `AnalyticsCount$Outbound` instead. */
-  export type Outbound = AnalyticsCount$Outbound;
-}
-
-export function analyticsCountToJSON(analyticsCount: AnalyticsCount): string {
-  return JSON.stringify(AnalyticsCount$outboundSchema.parse(analyticsCount));
-}
-
 export function analyticsCountFromJSON(
   jsonString: string,
 ): SafeParseResult<AnalyticsCount, SDKValidationError> {

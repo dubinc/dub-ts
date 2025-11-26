@@ -26,20 +26,18 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Create a customer
+ * Ban a partner
  *
  * @remarks
- * [Deprecated]: Customer creation can only be done via tracking a lead event. Use the /track/lead endpoint instead.
- *
- * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
+ * Ban a partner from your program. This will disable all links and mark all commissions as canceled.
  */
-export function customersCreate(
+export function partnersBan(
   client: DubCore,
-  request?: operations.CreateCustomerRequestBody | undefined,
+  request?: operations.BanPartnerRequestBody | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.CreateCustomerResponseBody,
+    operations.BanPartnerResponseBody,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -68,12 +66,12 @@ export function customersCreate(
 
 async function $do(
   client: DubCore,
-  request?: operations.CreateCustomerRequestBody | undefined,
+  request?: operations.BanPartnerRequestBody | undefined,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.CreateCustomerResponseBody,
+      operations.BanPartnerResponseBody,
       | errors.BadRequest
       | errors.Unauthorized
       | errors.Forbidden
@@ -98,9 +96,7 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.CreateCustomerRequestBody$outboundSchema.optional().parse(
-        value,
-      ),
+      operations.BanPartnerRequestBody$outboundSchema.optional().parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -111,7 +107,7 @@ async function $do(
     ? null
     : encodeJSON("body", payload, { explode: true });
 
-  const path = pathToFunc("/customers")();
+  const path = pathToFunc("/partners/ban")();
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
@@ -125,7 +121,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "createCustomer",
+    operationID: "banPartner",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
@@ -180,7 +176,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.CreateCustomerResponseBody,
+    operations.BanPartnerResponseBody,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -199,7 +195,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(201, operations.CreateCustomerResponseBody$inboundSchema),
+    M.json(200, operations.BanPartnerResponseBody$inboundSchema),
     M.jsonErr(400, errors.BadRequest$inboundSchema),
     M.jsonErr(401, errors.Unauthorized$inboundSchema),
     M.jsonErr(403, errors.Forbidden$inboundSchema),

@@ -3,10 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The color of the tag. If not provided, a random color will be used from the list: red, yellow, green, blue, purple, brown.
@@ -43,35 +40,9 @@ export type CreateTagRequestBody = {
 };
 
 /** @internal */
-export const Color$inboundSchema: z.ZodNativeEnum<typeof Color> = z.nativeEnum(
+export const Color$outboundSchema: z.ZodNativeEnum<typeof Color> = z.nativeEnum(
   Color,
 );
-
-/** @internal */
-export const Color$outboundSchema: z.ZodNativeEnum<typeof Color> =
-  Color$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Color$ {
-  /** @deprecated use `Color$inboundSchema` instead. */
-  export const inboundSchema = Color$inboundSchema;
-  /** @deprecated use `Color$outboundSchema` instead. */
-  export const outboundSchema = Color$outboundSchema;
-}
-
-/** @internal */
-export const CreateTagRequestBody$inboundSchema: z.ZodType<
-  CreateTagRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: z.string().optional(),
-  color: Color$inboundSchema.optional(),
-  tag: z.string().optional(),
-});
 
 /** @internal */
 export type CreateTagRequestBody$Outbound = {
@@ -91,33 +62,10 @@ export const CreateTagRequestBody$outboundSchema: z.ZodType<
   tag: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateTagRequestBody$ {
-  /** @deprecated use `CreateTagRequestBody$inboundSchema` instead. */
-  export const inboundSchema = CreateTagRequestBody$inboundSchema;
-  /** @deprecated use `CreateTagRequestBody$outboundSchema` instead. */
-  export const outboundSchema = CreateTagRequestBody$outboundSchema;
-  /** @deprecated use `CreateTagRequestBody$Outbound` instead. */
-  export type Outbound = CreateTagRequestBody$Outbound;
-}
-
 export function createTagRequestBodyToJSON(
   createTagRequestBody: CreateTagRequestBody,
 ): string {
   return JSON.stringify(
     CreateTagRequestBody$outboundSchema.parse(createTagRequestBody),
-  );
-}
-
-export function createTagRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateTagRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateTagRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateTagRequestBody' from JSON`,
   );
 }

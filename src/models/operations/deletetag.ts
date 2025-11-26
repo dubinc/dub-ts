@@ -25,15 +25,6 @@ export type DeleteTagResponseBody = {
 };
 
 /** @internal */
-export const DeleteTagRequest$inboundSchema: z.ZodType<
-  DeleteTagRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-});
-
-/** @internal */
 export type DeleteTagRequest$Outbound = {
   id: string;
 };
@@ -47,34 +38,11 @@ export const DeleteTagRequest$outboundSchema: z.ZodType<
   id: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteTagRequest$ {
-  /** @deprecated use `DeleteTagRequest$inboundSchema` instead. */
-  export const inboundSchema = DeleteTagRequest$inboundSchema;
-  /** @deprecated use `DeleteTagRequest$outboundSchema` instead. */
-  export const outboundSchema = DeleteTagRequest$outboundSchema;
-  /** @deprecated use `DeleteTagRequest$Outbound` instead. */
-  export type Outbound = DeleteTagRequest$Outbound;
-}
-
 export function deleteTagRequestToJSON(
   deleteTagRequest: DeleteTagRequest,
 ): string {
   return JSON.stringify(
     DeleteTagRequest$outboundSchema.parse(deleteTagRequest),
-  );
-}
-
-export function deleteTagRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteTagRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteTagRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteTagRequest' from JSON`,
   );
 }
 
@@ -86,41 +54,6 @@ export const DeleteTagResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
 });
-
-/** @internal */
-export type DeleteTagResponseBody$Outbound = {
-  id: string;
-};
-
-/** @internal */
-export const DeleteTagResponseBody$outboundSchema: z.ZodType<
-  DeleteTagResponseBody$Outbound,
-  z.ZodTypeDef,
-  DeleteTagResponseBody
-> = z.object({
-  id: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteTagResponseBody$ {
-  /** @deprecated use `DeleteTagResponseBody$inboundSchema` instead. */
-  export const inboundSchema = DeleteTagResponseBody$inboundSchema;
-  /** @deprecated use `DeleteTagResponseBody$outboundSchema` instead. */
-  export const outboundSchema = DeleteTagResponseBody$outboundSchema;
-  /** @deprecated use `DeleteTagResponseBody$Outbound` instead. */
-  export type Outbound = DeleteTagResponseBody$Outbound;
-}
-
-export function deleteTagResponseBodyToJSON(
-  deleteTagResponseBody: DeleteTagResponseBody,
-): string {
-  return JSON.stringify(
-    DeleteTagResponseBody$outboundSchema.parse(deleteTagResponseBody),
-  );
-}
 
 export function deleteTagResponseBodyFromJSON(
   jsonString: string,

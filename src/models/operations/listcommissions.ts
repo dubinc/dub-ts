@@ -132,6 +132,7 @@ export type ListCommissionsRequest = {
    * The end date of the date range to filter the commissions by.
    */
   end?: string | undefined;
+  timezone?: string | undefined;
   /**
    * The page number for pagination.
    */
@@ -186,6 +187,10 @@ export type ListCommissionsPartner = {
    * The partner's country (required for tax purposes).
    */
   country: string | null;
+  /**
+   * The partner's group ID on Dub.
+   */
+  groupId?: string | null | undefined;
 };
 
 export type ListCommissionsCustomer = {
@@ -251,133 +256,29 @@ export type ListCommissionsResponseBody = {
 };
 
 /** @internal */
-export const Type$inboundSchema: z.ZodNativeEnum<typeof Type> = z.nativeEnum(
+export const Type$outboundSchema: z.ZodNativeEnum<typeof Type> = z.nativeEnum(
   Type,
 );
 
 /** @internal */
-export const Type$outboundSchema: z.ZodNativeEnum<typeof Type> =
-  Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Type$ {
-  /** @deprecated use `Type$inboundSchema` instead. */
-  export const inboundSchema = Type$inboundSchema;
-  /** @deprecated use `Type$outboundSchema` instead. */
-  export const outboundSchema = Type$outboundSchema;
-}
-
-/** @internal */
-export const QueryParamStatus$inboundSchema: z.ZodNativeEnum<
+export const QueryParamStatus$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamStatus
 > = z.nativeEnum(QueryParamStatus);
 
 /** @internal */
-export const QueryParamStatus$outboundSchema: z.ZodNativeEnum<
-  typeof QueryParamStatus
-> = QueryParamStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace QueryParamStatus$ {
-  /** @deprecated use `QueryParamStatus$inboundSchema` instead. */
-  export const inboundSchema = QueryParamStatus$inboundSchema;
-  /** @deprecated use `QueryParamStatus$outboundSchema` instead. */
-  export const outboundSchema = QueryParamStatus$outboundSchema;
-}
-
-/** @internal */
-export const ListCommissionsQueryParamSortBy$inboundSchema: z.ZodNativeEnum<
+export const ListCommissionsQueryParamSortBy$outboundSchema: z.ZodNativeEnum<
   typeof ListCommissionsQueryParamSortBy
 > = z.nativeEnum(ListCommissionsQueryParamSortBy);
 
 /** @internal */
-export const ListCommissionsQueryParamSortBy$outboundSchema: z.ZodNativeEnum<
-  typeof ListCommissionsQueryParamSortBy
-> = ListCommissionsQueryParamSortBy$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListCommissionsQueryParamSortBy$ {
-  /** @deprecated use `ListCommissionsQueryParamSortBy$inboundSchema` instead. */
-  export const inboundSchema = ListCommissionsQueryParamSortBy$inboundSchema;
-  /** @deprecated use `ListCommissionsQueryParamSortBy$outboundSchema` instead. */
-  export const outboundSchema = ListCommissionsQueryParamSortBy$outboundSchema;
-}
-
-/** @internal */
-export const ListCommissionsQueryParamSortOrder$inboundSchema: z.ZodNativeEnum<
+export const ListCommissionsQueryParamSortOrder$outboundSchema: z.ZodNativeEnum<
   typeof ListCommissionsQueryParamSortOrder
 > = z.nativeEnum(ListCommissionsQueryParamSortOrder);
 
 /** @internal */
-export const ListCommissionsQueryParamSortOrder$outboundSchema: z.ZodNativeEnum<
-  typeof ListCommissionsQueryParamSortOrder
-> = ListCommissionsQueryParamSortOrder$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListCommissionsQueryParamSortOrder$ {
-  /** @deprecated use `ListCommissionsQueryParamSortOrder$inboundSchema` instead. */
-  export const inboundSchema = ListCommissionsQueryParamSortOrder$inboundSchema;
-  /** @deprecated use `ListCommissionsQueryParamSortOrder$outboundSchema` instead. */
-  export const outboundSchema =
-    ListCommissionsQueryParamSortOrder$outboundSchema;
-}
-
-/** @internal */
-export const ListCommissionsQueryParamInterval$inboundSchema: z.ZodNativeEnum<
-  typeof ListCommissionsQueryParamInterval
-> = z.nativeEnum(ListCommissionsQueryParamInterval);
-
-/** @internal */
 export const ListCommissionsQueryParamInterval$outboundSchema: z.ZodNativeEnum<
   typeof ListCommissionsQueryParamInterval
-> = ListCommissionsQueryParamInterval$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListCommissionsQueryParamInterval$ {
-  /** @deprecated use `ListCommissionsQueryParamInterval$inboundSchema` instead. */
-  export const inboundSchema = ListCommissionsQueryParamInterval$inboundSchema;
-  /** @deprecated use `ListCommissionsQueryParamInterval$outboundSchema` instead. */
-  export const outboundSchema =
-    ListCommissionsQueryParamInterval$outboundSchema;
-}
-
-/** @internal */
-export const ListCommissionsRequest$inboundSchema: z.ZodType<
-  ListCommissionsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: Type$inboundSchema.optional(),
-  customerId: z.string().optional(),
-  payoutId: z.string().optional(),
-  partnerId: z.string().optional(),
-  tenantId: z.string().optional(),
-  groupId: z.string().optional(),
-  invoiceId: z.string().optional(),
-  status: QueryParamStatus$inboundSchema.optional(),
-  sortBy: ListCommissionsQueryParamSortBy$inboundSchema.default("createdAt"),
-  sortOrder: ListCommissionsQueryParamSortOrder$inboundSchema.default("desc"),
-  interval: ListCommissionsQueryParamInterval$inboundSchema.default("all"),
-  start: z.string().optional(),
-  end: z.string().optional(),
-  page: z.number().default(1),
-  pageSize: z.number().default(100),
-});
+> = z.nativeEnum(ListCommissionsQueryParamInterval);
 
 /** @internal */
 export type ListCommissionsRequest$Outbound = {
@@ -394,6 +295,7 @@ export type ListCommissionsRequest$Outbound = {
   interval: string;
   start?: string | undefined;
   end?: string | undefined;
+  timezone?: string | undefined;
   page: number;
   pageSize: number;
 };
@@ -417,22 +319,10 @@ export const ListCommissionsRequest$outboundSchema: z.ZodType<
   interval: ListCommissionsQueryParamInterval$outboundSchema.default("all"),
   start: z.string().optional(),
   end: z.string().optional(),
+  timezone: z.string().optional(),
   page: z.number().default(1),
   pageSize: z.number().default(100),
 });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListCommissionsRequest$ {
-  /** @deprecated use `ListCommissionsRequest$inboundSchema` instead. */
-  export const inboundSchema = ListCommissionsRequest$inboundSchema;
-  /** @deprecated use `ListCommissionsRequest$outboundSchema` instead. */
-  export const outboundSchema = ListCommissionsRequest$outboundSchema;
-  /** @deprecated use `ListCommissionsRequest$Outbound` instead. */
-  export type Outbound = ListCommissionsRequest$Outbound;
-}
 
 export function listCommissionsRequestToJSON(
   listCommissionsRequest: ListCommissionsRequest,
@@ -442,57 +332,15 @@ export function listCommissionsRequestToJSON(
   );
 }
 
-export function listCommissionsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ListCommissionsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListCommissionsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListCommissionsRequest' from JSON`,
-  );
-}
-
 /** @internal */
 export const ListCommissionsType$inboundSchema: z.ZodNativeEnum<
   typeof ListCommissionsType
 > = z.nativeEnum(ListCommissionsType);
 
 /** @internal */
-export const ListCommissionsType$outboundSchema: z.ZodNativeEnum<
-  typeof ListCommissionsType
-> = ListCommissionsType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListCommissionsType$ {
-  /** @deprecated use `ListCommissionsType$inboundSchema` instead. */
-  export const inboundSchema = ListCommissionsType$inboundSchema;
-  /** @deprecated use `ListCommissionsType$outboundSchema` instead. */
-  export const outboundSchema = ListCommissionsType$outboundSchema;
-}
-
-/** @internal */
 export const ListCommissionsStatus$inboundSchema: z.ZodNativeEnum<
   typeof ListCommissionsStatus
 > = z.nativeEnum(ListCommissionsStatus);
-
-/** @internal */
-export const ListCommissionsStatus$outboundSchema: z.ZodNativeEnum<
-  typeof ListCommissionsStatus
-> = ListCommissionsStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListCommissionsStatus$ {
-  /** @deprecated use `ListCommissionsStatus$inboundSchema` instead. */
-  export const inboundSchema = ListCommissionsStatus$inboundSchema;
-  /** @deprecated use `ListCommissionsStatus$outboundSchema` instead. */
-  export const outboundSchema = ListCommissionsStatus$outboundSchema;
-}
 
 /** @internal */
 export const ListCommissionsPartner$inboundSchema: z.ZodType<
@@ -506,52 +354,8 @@ export const ListCommissionsPartner$inboundSchema: z.ZodType<
   image: z.nullable(z.string()),
   payoutsEnabledAt: z.nullable(z.string()),
   country: z.nullable(z.string()),
+  groupId: z.nullable(z.string()).optional(),
 });
-
-/** @internal */
-export type ListCommissionsPartner$Outbound = {
-  id: string;
-  name: string;
-  email: string | null;
-  image: string | null;
-  payoutsEnabledAt: string | null;
-  country: string | null;
-};
-
-/** @internal */
-export const ListCommissionsPartner$outboundSchema: z.ZodType<
-  ListCommissionsPartner$Outbound,
-  z.ZodTypeDef,
-  ListCommissionsPartner
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  email: z.nullable(z.string()),
-  image: z.nullable(z.string()),
-  payoutsEnabledAt: z.nullable(z.string()),
-  country: z.nullable(z.string()),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListCommissionsPartner$ {
-  /** @deprecated use `ListCommissionsPartner$inboundSchema` instead. */
-  export const inboundSchema = ListCommissionsPartner$inboundSchema;
-  /** @deprecated use `ListCommissionsPartner$outboundSchema` instead. */
-  export const outboundSchema = ListCommissionsPartner$outboundSchema;
-  /** @deprecated use `ListCommissionsPartner$Outbound` instead. */
-  export type Outbound = ListCommissionsPartner$Outbound;
-}
-
-export function listCommissionsPartnerToJSON(
-  listCommissionsPartner: ListCommissionsPartner,
-): string {
-  return JSON.stringify(
-    ListCommissionsPartner$outboundSchema.parse(listCommissionsPartner),
-  );
-}
 
 export function listCommissionsPartnerFromJSON(
   jsonString: string,
@@ -579,57 +383,6 @@ export const ListCommissionsCustomer$inboundSchema: z.ZodType<
   saleAmount: z.nullable(z.number()).optional(),
   createdAt: z.string(),
 });
-
-/** @internal */
-export type ListCommissionsCustomer$Outbound = {
-  id: string;
-  externalId: string;
-  name: string;
-  email?: string | null | undefined;
-  avatar?: string | null | undefined;
-  country?: string | null | undefined;
-  sales?: number | null | undefined;
-  saleAmount?: number | null | undefined;
-  createdAt: string;
-};
-
-/** @internal */
-export const ListCommissionsCustomer$outboundSchema: z.ZodType<
-  ListCommissionsCustomer$Outbound,
-  z.ZodTypeDef,
-  ListCommissionsCustomer
-> = z.object({
-  id: z.string(),
-  externalId: z.string(),
-  name: z.string(),
-  email: z.nullable(z.string()).optional(),
-  avatar: z.nullable(z.string()).optional(),
-  country: z.nullable(z.string()).optional(),
-  sales: z.nullable(z.number()).optional(),
-  saleAmount: z.nullable(z.number()).optional(),
-  createdAt: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListCommissionsCustomer$ {
-  /** @deprecated use `ListCommissionsCustomer$inboundSchema` instead. */
-  export const inboundSchema = ListCommissionsCustomer$inboundSchema;
-  /** @deprecated use `ListCommissionsCustomer$outboundSchema` instead. */
-  export const outboundSchema = ListCommissionsCustomer$outboundSchema;
-  /** @deprecated use `ListCommissionsCustomer$Outbound` instead. */
-  export type Outbound = ListCommissionsCustomer$Outbound;
-}
-
-export function listCommissionsCustomerToJSON(
-  listCommissionsCustomer: ListCommissionsCustomer,
-): string {
-  return JSON.stringify(
-    ListCommissionsCustomer$outboundSchema.parse(listCommissionsCustomer),
-  );
-}
 
 export function listCommissionsCustomerFromJSON(
   jsonString: string,
@@ -663,70 +416,6 @@ export const ListCommissionsResponseBody$inboundSchema: z.ZodType<
   customer: z.nullable(z.lazy(() => ListCommissionsCustomer$inboundSchema))
     .optional(),
 });
-
-/** @internal */
-export type ListCommissionsResponseBody$Outbound = {
-  id: string;
-  type?: string | undefined;
-  amount: number;
-  earnings: number;
-  currency: string;
-  status: string;
-  invoiceId: string | null;
-  description: string | null;
-  quantity: number;
-  userId?: string | null | undefined;
-  createdAt: string;
-  updatedAt: string;
-  partner: ListCommissionsPartner$Outbound;
-  customer?: ListCommissionsCustomer$Outbound | null | undefined;
-};
-
-/** @internal */
-export const ListCommissionsResponseBody$outboundSchema: z.ZodType<
-  ListCommissionsResponseBody$Outbound,
-  z.ZodTypeDef,
-  ListCommissionsResponseBody
-> = z.object({
-  id: z.string(),
-  type: ListCommissionsType$outboundSchema.optional(),
-  amount: z.number(),
-  earnings: z.number(),
-  currency: z.string(),
-  status: ListCommissionsStatus$outboundSchema,
-  invoiceId: z.nullable(z.string()),
-  description: z.nullable(z.string()),
-  quantity: z.number(),
-  userId: z.nullable(z.string()).optional(),
-  createdAt: z.string(),
-  updatedAt: z.string(),
-  partner: z.lazy(() => ListCommissionsPartner$outboundSchema),
-  customer: z.nullable(z.lazy(() => ListCommissionsCustomer$outboundSchema))
-    .optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListCommissionsResponseBody$ {
-  /** @deprecated use `ListCommissionsResponseBody$inboundSchema` instead. */
-  export const inboundSchema = ListCommissionsResponseBody$inboundSchema;
-  /** @deprecated use `ListCommissionsResponseBody$outboundSchema` instead. */
-  export const outboundSchema = ListCommissionsResponseBody$outboundSchema;
-  /** @deprecated use `ListCommissionsResponseBody$Outbound` instead. */
-  export type Outbound = ListCommissionsResponseBody$Outbound;
-}
-
-export function listCommissionsResponseBodyToJSON(
-  listCommissionsResponseBody: ListCommissionsResponseBody,
-): string {
-  return JSON.stringify(
-    ListCommissionsResponseBody$outboundSchema.parse(
-      listCommissionsResponseBody,
-    ),
-  );
-}
 
 export function listCommissionsResponseBodyFromJSON(
   jsonString: string,

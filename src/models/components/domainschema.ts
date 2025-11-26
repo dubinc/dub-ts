@@ -105,49 +105,6 @@ export const RegisteredDomain$inboundSchema: z.ZodType<
   renewalFee: z.number(),
 });
 
-/** @internal */
-export type RegisteredDomain$Outbound = {
-  id: string;
-  autoRenewalDisabledAt: string | null;
-  createdAt: string;
-  expiresAt: string;
-  renewalFee: number;
-};
-
-/** @internal */
-export const RegisteredDomain$outboundSchema: z.ZodType<
-  RegisteredDomain$Outbound,
-  z.ZodTypeDef,
-  RegisteredDomain
-> = z.object({
-  id: z.string(),
-  autoRenewalDisabledAt: z.nullable(z.string()),
-  createdAt: z.string(),
-  expiresAt: z.string(),
-  renewalFee: z.number(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RegisteredDomain$ {
-  /** @deprecated use `RegisteredDomain$inboundSchema` instead. */
-  export const inboundSchema = RegisteredDomain$inboundSchema;
-  /** @deprecated use `RegisteredDomain$outboundSchema` instead. */
-  export const outboundSchema = RegisteredDomain$outboundSchema;
-  /** @deprecated use `RegisteredDomain$Outbound` instead. */
-  export type Outbound = RegisteredDomain$Outbound;
-}
-
-export function registeredDomainToJSON(
-  registeredDomain: RegisteredDomain,
-): string {
-  return JSON.stringify(
-    RegisteredDomain$outboundSchema.parse(registeredDomain),
-  );
-}
-
 export function registeredDomainFromJSON(
   jsonString: string,
 ): SafeParseResult<RegisteredDomain, SDKValidationError> {
@@ -179,63 +136,6 @@ export const DomainSchema$inboundSchema: z.ZodType<
   updatedAt: z.string(),
   registeredDomain: z.nullable(z.lazy(() => RegisteredDomain$inboundSchema)),
 });
-
-/** @internal */
-export type DomainSchema$Outbound = {
-  id: string;
-  slug: string;
-  verified: boolean;
-  primary: boolean;
-  archived: boolean;
-  placeholder: string | null;
-  expiredUrl: string | null;
-  notFoundUrl: string | null;
-  logo: string | null;
-  assetLinks: string | null;
-  appleAppSiteAssociation: string | null;
-  createdAt: string;
-  updatedAt: string;
-  registeredDomain: RegisteredDomain$Outbound | null;
-};
-
-/** @internal */
-export const DomainSchema$outboundSchema: z.ZodType<
-  DomainSchema$Outbound,
-  z.ZodTypeDef,
-  DomainSchema
-> = z.object({
-  id: z.string(),
-  slug: z.string(),
-  verified: z.boolean().default(false),
-  primary: z.boolean().default(false),
-  archived: z.boolean().default(false),
-  placeholder: z.nullable(z.string()),
-  expiredUrl: z.nullable(z.string()),
-  notFoundUrl: z.nullable(z.string()),
-  logo: z.nullable(z.string()),
-  assetLinks: z.nullable(z.string()).default(null),
-  appleAppSiteAssociation: z.nullable(z.string()).default(null),
-  createdAt: z.string(),
-  updatedAt: z.string(),
-  registeredDomain: z.nullable(z.lazy(() => RegisteredDomain$outboundSchema)),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DomainSchema$ {
-  /** @deprecated use `DomainSchema$inboundSchema` instead. */
-  export const inboundSchema = DomainSchema$inboundSchema;
-  /** @deprecated use `DomainSchema$outboundSchema` instead. */
-  export const outboundSchema = DomainSchema$outboundSchema;
-  /** @deprecated use `DomainSchema$Outbound` instead. */
-  export type Outbound = DomainSchema$Outbound;
-}
-
-export function domainSchemaToJSON(domainSchema: DomainSchema): string {
-  return JSON.stringify(DomainSchema$outboundSchema.parse(domainSchema));
-}
 
 export function domainSchemaFromJSON(
   jsonString: string,

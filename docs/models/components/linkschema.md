@@ -16,31 +16,31 @@ let value: LinkSchema = {
   partnerId: "<id>",
   expiresAt: "1754376068634",
   expiredUrl: "https://digital-kit.info",
-  password: "2MIB7eQGpAATarY",
+  disabledAt: "<value>",
+  password: "MIB7eQGpAATarYF",
   title: "<value>",
-  description: null,
-  image: "https://picsum.photos/seed/AUOwR7dW/1403/3689",
-  video: "https://picsum.videos/seed/BiaT5u/2981/1563",
+  description:
+    "closed ecstatic underneath meanwhile duh whoa scarcely awful old-fashioned",
+  image: "https://loremflickr.com/2872/857?lock=7021606908729973",
+  video: "https://loremflickr.com/3958/2941?lock=1680268238114943",
   ios: "<value>",
-  android: "<id>",
+  android: null,
   geo: {
-    "key": "https://hurtful-hospitalization.info",
-    "key1": "https://grave-fork.com",
+    "key": "https://personal-final.com/",
   },
   tags: [
     {
       id: "<id>",
       name: "<value>",
-      color: "purple",
+      color: "blue",
     },
   ],
   folderId: "<id>",
-  webhookIds: [
-    "<value 1>",
-  ],
-  comments: "whenever nor quarrel clearly wearily and onto towards",
-  shortLink: "https://fearless-exasperation.com/",
-  qrCode: "https://infamous-pasta.com/",
+  webhookIds: [],
+  comments:
+    "towards pasta teammate in disinherit subtle louse educated pink why mockingly forenenst excepting drat especially",
+  shortLink: "https://usable-beret.name/",
+  qrCode: "https://infatuated-advertisement.name/",
   utmSource: "<value>",
   utmMedium: "<value>",
   utmCampaign: "<value>",
@@ -49,8 +49,8 @@ let value: LinkSchema = {
   userId: "<id>",
   workspaceId: "<id>",
   lastClicked: "<value>",
-  createdAt: "1723184066807",
-  updatedAt: "1735624309631",
+  createdAt: "1726159778255",
+  updatedAt: "1735652255833",
   tagId: "<id>",
   projectId: "<id>",
 };
@@ -72,6 +72,7 @@ let value: LinkSchema = {
 | `archived`                                                                                                                                                                                                         | *boolean*                                                                                                                                                                                                          | :heavy_minus_sign:                                                                                                                                                                                                 | Whether the short link is archived.                                                                                                                                                                                |                                                                                                                                                                                                                    |
 | `expiresAt`                                                                                                                                                                                                        | *string*                                                                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                                                                 | The date and time when the short link will expire in ISO-8601 format.                                                                                                                                              |                                                                                                                                                                                                                    |
 | `expiredUrl`                                                                                                                                                                                                       | *string*                                                                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                                                                 | The URL to redirect to when the short link has expired.                                                                                                                                                            |                                                                                                                                                                                                                    |
+| `disabledAt`                                                                                                                                                                                                       | *string*                                                                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                                                                 | The date and time when the short link was disabled. When a short link is disabled, it will redirect to its domain's not found URL, and its stats will be excluded from your overall stats.                         |                                                                                                                                                                                                                    |
 | `password`                                                                                                                                                                                                         | *string*                                                                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                                                                 | The password required to access the destination URL of the short link.                                                                                                                                             |                                                                                                                                                                                                                    |
 | `proxy`                                                                                                                                                                                                            | *boolean*                                                                                                                                                                                                          | :heavy_minus_sign:                                                                                                                                                                                                 | Whether the short link uses Custom Link Previews feature.                                                                                                                                                          |                                                                                                                                                                                                                    |
 | `title`                                                                                                                                                                                                            | *string*                                                                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                                                                 | The title of the short link. Will be used for Custom Link Previews if `proxy` is true.                                                                                                                             |                                                                                                                                                                                                                    |

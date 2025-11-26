@@ -50,21 +50,6 @@ export const Trigger$inboundSchema: z.ZodNativeEnum<typeof Trigger> = z
   .nativeEnum(Trigger);
 
 /** @internal */
-export const Trigger$outboundSchema: z.ZodNativeEnum<typeof Trigger> =
-  Trigger$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Trigger$ {
-  /** @deprecated use `Trigger$inboundSchema` instead. */
-  export const inboundSchema = Trigger$inboundSchema;
-  /** @deprecated use `Trigger$outboundSchema` instead. */
-  export const outboundSchema = Trigger$outboundSchema;
-}
-
-/** @internal */
 export const AnalyticsTriggers$inboundSchema: z.ZodType<
   AnalyticsTriggers,
   z.ZodTypeDef,
@@ -76,49 +61,6 @@ export const AnalyticsTriggers$inboundSchema: z.ZodType<
   sales: z.number().default(0),
   saleAmount: z.number().default(0),
 });
-
-/** @internal */
-export type AnalyticsTriggers$Outbound = {
-  trigger: string;
-  clicks: number;
-  leads: number;
-  sales: number;
-  saleAmount: number;
-};
-
-/** @internal */
-export const AnalyticsTriggers$outboundSchema: z.ZodType<
-  AnalyticsTriggers$Outbound,
-  z.ZodTypeDef,
-  AnalyticsTriggers
-> = z.object({
-  trigger: Trigger$outboundSchema,
-  clicks: z.number().default(0),
-  leads: z.number().default(0),
-  sales: z.number().default(0),
-  saleAmount: z.number().default(0),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AnalyticsTriggers$ {
-  /** @deprecated use `AnalyticsTriggers$inboundSchema` instead. */
-  export const inboundSchema = AnalyticsTriggers$inboundSchema;
-  /** @deprecated use `AnalyticsTriggers$outboundSchema` instead. */
-  export const outboundSchema = AnalyticsTriggers$outboundSchema;
-  /** @deprecated use `AnalyticsTriggers$Outbound` instead. */
-  export type Outbound = AnalyticsTriggers$Outbound;
-}
-
-export function analyticsTriggersToJSON(
-  analyticsTriggers: AnalyticsTriggers,
-): string {
-  return JSON.stringify(
-    AnalyticsTriggers$outboundSchema.parse(analyticsTriggers),
-  );
-}
 
 export function analyticsTriggersFromJSON(
   jsonString: string,

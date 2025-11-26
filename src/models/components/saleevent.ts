@@ -8,12 +8,7 @@ import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  LinkTagSchema,
-  LinkTagSchema$inboundSchema,
-  LinkTagSchema$Outbound,
-  LinkTagSchema$outboundSchema,
-} from "./linktagschema.js";
+import { LinkTagSchema, LinkTagSchema$inboundSchema } from "./linktagschema.js";
 
 export const SaleEventEvent = {
   Sale: "sale",
@@ -90,6 +85,7 @@ export type SaleEventLink = {
   archived: boolean;
   expiresAt: string;
   expiredUrl: string | null;
+  disabledAt: string;
   /**
    * The password required to access the destination URL of the short link.
    */
@@ -174,8 +170,8 @@ export type SaleEventLink = {
    * An array of A/B test URLs and the percentage of traffic to send to each URL.
    */
   testVariants?: Array<SaleEventTestVariants> | null | undefined;
-  testStartedAt: string | null;
-  testCompletedAt: string | null;
+  testStartedAt: string;
+  testCompletedAt: string;
   userId: string | null;
   /**
    * The workspace ID of the short link.
@@ -389,41 +385,9 @@ export const SaleEventEvent$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(SaleEventEvent);
 
 /** @internal */
-export const SaleEventEvent$outboundSchema: z.ZodNativeEnum<
-  typeof SaleEventEvent
-> = SaleEventEvent$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SaleEventEvent$ {
-  /** @deprecated use `SaleEventEvent$inboundSchema` instead. */
-  export const inboundSchema = SaleEventEvent$inboundSchema;
-  /** @deprecated use `SaleEventEvent$outboundSchema` instead. */
-  export const outboundSchema = SaleEventEvent$outboundSchema;
-}
-
-/** @internal */
 export const PaymentProcessor$inboundSchema: z.ZodNativeEnum<
   typeof PaymentProcessor
 > = z.nativeEnum(PaymentProcessor);
-
-/** @internal */
-export const PaymentProcessor$outboundSchema: z.ZodNativeEnum<
-  typeof PaymentProcessor
-> = PaymentProcessor$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PaymentProcessor$ {
-  /** @deprecated use `PaymentProcessor$inboundSchema` instead. */
-  export const inboundSchema = PaymentProcessor$inboundSchema;
-  /** @deprecated use `PaymentProcessor$outboundSchema` instead. */
-  export const outboundSchema = PaymentProcessor$outboundSchema;
-}
 
 /** @internal */
 export const Sale$inboundSchema: z.ZodType<Sale, z.ZodTypeDef, unknown> = z
@@ -432,38 +396,6 @@ export const Sale$inboundSchema: z.ZodType<Sale, z.ZodTypeDef, unknown> = z
     invoiceId: z.nullable(z.string()).default(null),
     paymentProcessor: PaymentProcessor$inboundSchema.default("custom"),
   });
-
-/** @internal */
-export type Sale$Outbound = {
-  amount: number;
-  invoiceId: string | null;
-  paymentProcessor: string;
-};
-
-/** @internal */
-export const Sale$outboundSchema: z.ZodType<Sale$Outbound, z.ZodTypeDef, Sale> =
-  z.object({
-    amount: z.number().int(),
-    invoiceId: z.nullable(z.string()).default(null),
-    paymentProcessor: PaymentProcessor$outboundSchema.default("custom"),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Sale$ {
-  /** @deprecated use `Sale$inboundSchema` instead. */
-  export const inboundSchema = Sale$inboundSchema;
-  /** @deprecated use `Sale$outboundSchema` instead. */
-  export const outboundSchema = Sale$outboundSchema;
-  /** @deprecated use `Sale$Outbound` instead. */
-  export type Outbound = Sale$Outbound;
-}
-
-export function saleToJSON(sale: Sale): string {
-  return JSON.stringify(Sale$outboundSchema.parse(sale));
-}
 
 export function saleFromJSON(
   jsonString: string,
@@ -484,43 +416,6 @@ export const SaleEventTestVariants$inboundSchema: z.ZodType<
   url: z.string(),
   percentage: z.number(),
 });
-
-/** @internal */
-export type SaleEventTestVariants$Outbound = {
-  url: string;
-  percentage: number;
-};
-
-/** @internal */
-export const SaleEventTestVariants$outboundSchema: z.ZodType<
-  SaleEventTestVariants$Outbound,
-  z.ZodTypeDef,
-  SaleEventTestVariants
-> = z.object({
-  url: z.string(),
-  percentage: z.number(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SaleEventTestVariants$ {
-  /** @deprecated use `SaleEventTestVariants$inboundSchema` instead. */
-  export const inboundSchema = SaleEventTestVariants$inboundSchema;
-  /** @deprecated use `SaleEventTestVariants$outboundSchema` instead. */
-  export const outboundSchema = SaleEventTestVariants$outboundSchema;
-  /** @deprecated use `SaleEventTestVariants$Outbound` instead. */
-  export type Outbound = SaleEventTestVariants$Outbound;
-}
-
-export function saleEventTestVariantsToJSON(
-  saleEventTestVariants: SaleEventTestVariants,
-): string {
-  return JSON.stringify(
-    SaleEventTestVariants$outboundSchema.parse(saleEventTestVariants),
-  );
-}
 
 export function saleEventTestVariantsFromJSON(
   jsonString: string,
@@ -550,6 +445,7 @@ export const SaleEventLink$inboundSchema: z.ZodType<
   archived: z.boolean(),
   expiresAt: z.string(),
   expiredUrl: z.nullable(z.string()),
+  disabledAt: z.string(),
   password: z.nullable(z.string()),
   proxy: z.boolean(),
   title: z.nullable(z.string()),
@@ -576,8 +472,8 @@ export const SaleEventLink$inboundSchema: z.ZodType<
   testVariants: z.nullable(
     z.array(z.lazy(() => SaleEventTestVariants$inboundSchema)),
   ).optional(),
-  testStartedAt: z.nullable(z.string()),
-  testCompletedAt: z.nullable(z.string()),
+  testStartedAt: z.string(),
+  testCompletedAt: z.string(),
   userId: z.nullable(z.string()),
   workspaceId: z.string(),
   clicks: z.number().default(0),
@@ -599,145 +495,6 @@ export const SaleEventLink$inboundSchema: z.ZodType<
     "utm_content": "utmContent",
   });
 });
-
-/** @internal */
-export type SaleEventLink$Outbound = {
-  id: string;
-  domain: string;
-  key: string;
-  url: string;
-  trackConversion: boolean;
-  externalId: string | null;
-  tenantId: string | null;
-  programId: string | null;
-  partnerId: string | null;
-  archived: boolean;
-  expiresAt: string;
-  expiredUrl: string | null;
-  password: string | null;
-  proxy: boolean;
-  title: string | null;
-  description: string | null;
-  image: string | null;
-  video: string | null;
-  rewrite: boolean;
-  doIndex: boolean;
-  ios: string | null;
-  android: string | null;
-  geo: { [k: string]: string } | null;
-  publicStats: boolean;
-  tags: Array<LinkTagSchema$Outbound> | null;
-  folderId: string | null;
-  webhookIds: Array<string>;
-  comments: string | null;
-  shortLink: string;
-  qrCode: string;
-  utm_source: string | null;
-  utm_medium: string | null;
-  utm_campaign: string | null;
-  utm_term: string | null;
-  utm_content: string | null;
-  testVariants?: Array<SaleEventTestVariants$Outbound> | null | undefined;
-  testStartedAt: string | null;
-  testCompletedAt: string | null;
-  userId: string | null;
-  workspaceId: string;
-  clicks: number;
-  leads: number;
-  conversions: number;
-  sales: number;
-  saleAmount: number;
-  lastClicked: string;
-  createdAt: string;
-  updatedAt: string;
-  tagId: string | null;
-  projectId: string;
-};
-
-/** @internal */
-export const SaleEventLink$outboundSchema: z.ZodType<
-  SaleEventLink$Outbound,
-  z.ZodTypeDef,
-  SaleEventLink
-> = z.object({
-  id: z.string(),
-  domain: z.string(),
-  key: z.string(),
-  url: z.string(),
-  trackConversion: z.boolean(),
-  externalId: z.nullable(z.string()),
-  tenantId: z.nullable(z.string()),
-  programId: z.nullable(z.string()),
-  partnerId: z.nullable(z.string()),
-  archived: z.boolean(),
-  expiresAt: z.string(),
-  expiredUrl: z.nullable(z.string()),
-  password: z.nullable(z.string()),
-  proxy: z.boolean(),
-  title: z.nullable(z.string()),
-  description: z.nullable(z.string()),
-  image: z.nullable(z.string()),
-  video: z.nullable(z.string()),
-  rewrite: z.boolean(),
-  doIndex: z.boolean(),
-  ios: z.nullable(z.string()),
-  android: z.nullable(z.string()),
-  geo: z.nullable(z.record(z.string())),
-  publicStats: z.boolean(),
-  tags: z.nullable(z.array(LinkTagSchema$outboundSchema)),
-  folderId: z.nullable(z.string()),
-  webhookIds: z.array(z.string()),
-  comments: z.nullable(z.string()),
-  shortLink: z.string(),
-  qrCode: z.string(),
-  utmSource: z.nullable(z.string()),
-  utmMedium: z.nullable(z.string()),
-  utmCampaign: z.nullable(z.string()),
-  utmTerm: z.nullable(z.string()),
-  utmContent: z.nullable(z.string()),
-  testVariants: z.nullable(
-    z.array(z.lazy(() => SaleEventTestVariants$outboundSchema)),
-  ).optional(),
-  testStartedAt: z.nullable(z.string()),
-  testCompletedAt: z.nullable(z.string()),
-  userId: z.nullable(z.string()),
-  workspaceId: z.string(),
-  clicks: z.number().default(0),
-  leads: z.number().default(0),
-  conversions: z.number().default(0),
-  sales: z.number().default(0),
-  saleAmount: z.number().default(0),
-  lastClicked: z.string(),
-  createdAt: z.string(),
-  updatedAt: z.string(),
-  tagId: z.nullable(z.string()),
-  projectId: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    utmSource: "utm_source",
-    utmMedium: "utm_medium",
-    utmCampaign: "utm_campaign",
-    utmTerm: "utm_term",
-    utmContent: "utm_content",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SaleEventLink$ {
-  /** @deprecated use `SaleEventLink$inboundSchema` instead. */
-  export const inboundSchema = SaleEventLink$inboundSchema;
-  /** @deprecated use `SaleEventLink$outboundSchema` instead. */
-  export const outboundSchema = SaleEventLink$outboundSchema;
-  /** @deprecated use `SaleEventLink$Outbound` instead. */
-  export type Outbound = SaleEventLink$Outbound;
-}
-
-export function saleEventLinkToJSON(saleEventLink: SaleEventLink): string {
-  return JSON.stringify(SaleEventLink$outboundSchema.parse(saleEventLink));
-}
 
 export function saleEventLinkFromJSON(
   jsonString: string,
@@ -772,65 +529,6 @@ export const SaleEventClick$inboundSchema: z.ZodType<
   ip: z.string(),
 });
 
-/** @internal */
-export type SaleEventClick$Outbound = {
-  id: string;
-  timestamp: string;
-  url: string;
-  country: string;
-  city: string;
-  region: string;
-  continent: string;
-  device: string;
-  browser: string;
-  os: string;
-  trigger?: string | null | undefined;
-  referer: string;
-  refererUrl: string;
-  qr: boolean;
-  ip: string;
-};
-
-/** @internal */
-export const SaleEventClick$outboundSchema: z.ZodType<
-  SaleEventClick$Outbound,
-  z.ZodTypeDef,
-  SaleEventClick
-> = z.object({
-  id: z.string(),
-  timestamp: z.string(),
-  url: z.string(),
-  country: z.string(),
-  city: z.string(),
-  region: z.string(),
-  continent: z.string(),
-  device: z.string(),
-  browser: z.string(),
-  os: z.string(),
-  trigger: z.nullable(z.string()).optional(),
-  referer: z.string(),
-  refererUrl: z.string(),
-  qr: z.boolean(),
-  ip: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SaleEventClick$ {
-  /** @deprecated use `SaleEventClick$inboundSchema` instead. */
-  export const inboundSchema = SaleEventClick$inboundSchema;
-  /** @deprecated use `SaleEventClick$outboundSchema` instead. */
-  export const outboundSchema = SaleEventClick$outboundSchema;
-  /** @deprecated use `SaleEventClick$Outbound` instead. */
-  export type Outbound = SaleEventClick$Outbound;
-}
-
-export function saleEventClickToJSON(saleEventClick: SaleEventClick): string {
-  return JSON.stringify(SaleEventClick$outboundSchema.parse(saleEventClick));
-}
-
 export function saleEventClickFromJSON(
   jsonString: string,
 ): SafeParseResult<SaleEventClick, SDKValidationError> {
@@ -857,57 +555,6 @@ export const SaleEventCustomer$inboundSchema: z.ZodType<
   saleAmount: z.nullable(z.number()).optional(),
   createdAt: z.string(),
 });
-
-/** @internal */
-export type SaleEventCustomer$Outbound = {
-  id: string;
-  externalId: string;
-  name: string;
-  email?: string | null | undefined;
-  avatar?: string | null | undefined;
-  country?: string | null | undefined;
-  sales?: number | null | undefined;
-  saleAmount?: number | null | undefined;
-  createdAt: string;
-};
-
-/** @internal */
-export const SaleEventCustomer$outboundSchema: z.ZodType<
-  SaleEventCustomer$Outbound,
-  z.ZodTypeDef,
-  SaleEventCustomer
-> = z.object({
-  id: z.string(),
-  externalId: z.string(),
-  name: z.string(),
-  email: z.nullable(z.string()).optional(),
-  avatar: z.nullable(z.string()).optional(),
-  country: z.nullable(z.string()).optional(),
-  sales: z.nullable(z.number()).optional(),
-  saleAmount: z.nullable(z.number()).optional(),
-  createdAt: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SaleEventCustomer$ {
-  /** @deprecated use `SaleEventCustomer$inboundSchema` instead. */
-  export const inboundSchema = SaleEventCustomer$inboundSchema;
-  /** @deprecated use `SaleEventCustomer$outboundSchema` instead. */
-  export const outboundSchema = SaleEventCustomer$outboundSchema;
-  /** @deprecated use `SaleEventCustomer$Outbound` instead. */
-  export type Outbound = SaleEventCustomer$Outbound;
-}
-
-export function saleEventCustomerToJSON(
-  saleEventCustomer: SaleEventCustomer,
-): string {
-  return JSON.stringify(
-    SaleEventCustomer$outboundSchema.parse(saleEventCustomer),
-  );
-}
 
 export function saleEventCustomerFromJSON(
   jsonString: string,
@@ -958,92 +605,6 @@ export const SaleEvent$inboundSchema: z.ZodType<
     "link_id": "linkId",
   });
 });
-
-/** @internal */
-export type SaleEvent$Outbound = {
-  event: string;
-  timestamp: string;
-  eventId: string;
-  eventName: string;
-  sale: Sale$Outbound;
-  metadata?: any | null | undefined;
-  link: SaleEventLink$Outbound;
-  click: SaleEventClick$Outbound;
-  customer: SaleEventCustomer$Outbound;
-  saleAmount: number;
-  invoice_id: string;
-  payment_processor: string;
-  click_id: string;
-  link_id: string;
-  domain: string;
-  key: string;
-  url: string;
-  continent: string;
-  country: string;
-  city: string;
-  device: string;
-  browser: string;
-  os: string;
-  qr: number;
-  ip: string;
-};
-
-/** @internal */
-export const SaleEvent$outboundSchema: z.ZodType<
-  SaleEvent$Outbound,
-  z.ZodTypeDef,
-  SaleEvent
-> = z.object({
-  event: SaleEventEvent$outboundSchema,
-  timestamp: z.string(),
-  eventId: z.string(),
-  eventName: z.string(),
-  sale: z.lazy(() => Sale$outboundSchema),
-  metadata: z.nullable(z.any()).optional(),
-  link: z.lazy(() => SaleEventLink$outboundSchema),
-  click: z.lazy(() => SaleEventClick$outboundSchema),
-  customer: z.lazy(() => SaleEventCustomer$outboundSchema),
-  saleAmount: z.number(),
-  invoiceId: z.string(),
-  paymentProcessor: z.string(),
-  clickId: z.string(),
-  linkId: z.string(),
-  domain: z.string(),
-  key: z.string(),
-  url: z.string(),
-  continent: z.string(),
-  country: z.string(),
-  city: z.string(),
-  device: z.string(),
-  browser: z.string(),
-  os: z.string(),
-  qr: z.number(),
-  ip: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    invoiceId: "invoice_id",
-    paymentProcessor: "payment_processor",
-    clickId: "click_id",
-    linkId: "link_id",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SaleEvent$ {
-  /** @deprecated use `SaleEvent$inboundSchema` instead. */
-  export const inboundSchema = SaleEvent$inboundSchema;
-  /** @deprecated use `SaleEvent$outboundSchema` instead. */
-  export const outboundSchema = SaleEvent$outboundSchema;
-  /** @deprecated use `SaleEvent$Outbound` instead. */
-  export type Outbound = SaleEvent$Outbound;
-}
-
-export function saleEventToJSON(saleEvent: SaleEvent): string {
-  return JSON.stringify(SaleEvent$outboundSchema.parse(saleEvent));
-}
 
 export function saleEventFromJSON(
   jsonString: string,

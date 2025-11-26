@@ -77,6 +77,7 @@ export type LinkClickedEventLink = {
   archived: boolean;
   expiresAt: string;
   expiredUrl: string | null;
+  disabledAt: string;
   /**
    * The password required to access the destination URL of the short link.
    */
@@ -161,8 +162,8 @@ export type LinkClickedEventLink = {
    * An array of A/B test URLs and the percentage of traffic to send to each URL.
    */
   testVariants?: Array<LinkClickedEventTestVariants> | null | undefined;
-  testStartedAt: string | null;
-  testCompletedAt: string | null;
+  testStartedAt: string;
+  testCompletedAt: string;
   userId: string | null;
   /**
    * The workspace ID of the short link.
@@ -224,22 +225,10 @@ export type LinkClickedEvent = {
 export const LinkClickedEventEvent$inboundSchema: z.ZodNativeEnum<
   typeof LinkClickedEventEvent
 > = z.nativeEnum(LinkClickedEventEvent);
-
 /** @internal */
 export const LinkClickedEventEvent$outboundSchema: z.ZodNativeEnum<
   typeof LinkClickedEventEvent
 > = LinkClickedEventEvent$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LinkClickedEventEvent$ {
-  /** @deprecated use `LinkClickedEventEvent$inboundSchema` instead. */
-  export const inboundSchema = LinkClickedEventEvent$inboundSchema;
-  /** @deprecated use `LinkClickedEventEvent$outboundSchema` instead. */
-  export const outboundSchema = LinkClickedEventEvent$outboundSchema;
-}
 
 /** @internal */
 export const LinkClickedEventClick$inboundSchema: z.ZodType<
@@ -263,7 +252,6 @@ export const LinkClickedEventClick$inboundSchema: z.ZodType<
   qr: z.boolean(),
   ip: z.string(),
 });
-
 /** @internal */
 export type LinkClickedEventClick$Outbound = {
   id: string;
@@ -306,19 +294,6 @@ export const LinkClickedEventClick$outboundSchema: z.ZodType<
   ip: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LinkClickedEventClick$ {
-  /** @deprecated use `LinkClickedEventClick$inboundSchema` instead. */
-  export const inboundSchema = LinkClickedEventClick$inboundSchema;
-  /** @deprecated use `LinkClickedEventClick$outboundSchema` instead. */
-  export const outboundSchema = LinkClickedEventClick$outboundSchema;
-  /** @deprecated use `LinkClickedEventClick$Outbound` instead. */
-  export type Outbound = LinkClickedEventClick$Outbound;
-}
-
 export function linkClickedEventClickToJSON(
   linkClickedEventClick: LinkClickedEventClick,
 ): string {
@@ -326,7 +301,6 @@ export function linkClickedEventClickToJSON(
     LinkClickedEventClick$outboundSchema.parse(linkClickedEventClick),
   );
 }
-
 export function linkClickedEventClickFromJSON(
   jsonString: string,
 ): SafeParseResult<LinkClickedEventClick, SDKValidationError> {
@@ -346,7 +320,6 @@ export const LinkClickedEventTestVariants$inboundSchema: z.ZodType<
   url: z.string(),
   percentage: z.number(),
 });
-
 /** @internal */
 export type LinkClickedEventTestVariants$Outbound = {
   url: string;
@@ -363,19 +336,6 @@ export const LinkClickedEventTestVariants$outboundSchema: z.ZodType<
   percentage: z.number(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LinkClickedEventTestVariants$ {
-  /** @deprecated use `LinkClickedEventTestVariants$inboundSchema` instead. */
-  export const inboundSchema = LinkClickedEventTestVariants$inboundSchema;
-  /** @deprecated use `LinkClickedEventTestVariants$outboundSchema` instead. */
-  export const outboundSchema = LinkClickedEventTestVariants$outboundSchema;
-  /** @deprecated use `LinkClickedEventTestVariants$Outbound` instead. */
-  export type Outbound = LinkClickedEventTestVariants$Outbound;
-}
-
 export function linkClickedEventTestVariantsToJSON(
   linkClickedEventTestVariants: LinkClickedEventTestVariants,
 ): string {
@@ -385,7 +345,6 @@ export function linkClickedEventTestVariantsToJSON(
     ),
   );
 }
-
 export function linkClickedEventTestVariantsFromJSON(
   jsonString: string,
 ): SafeParseResult<LinkClickedEventTestVariants, SDKValidationError> {
@@ -414,6 +373,7 @@ export const LinkClickedEventLink$inboundSchema: z.ZodType<
   archived: z.boolean(),
   expiresAt: z.string(),
   expiredUrl: z.nullable(z.string()),
+  disabledAt: z.string(),
   password: z.nullable(z.string()),
   proxy: z.boolean(),
   title: z.nullable(z.string()),
@@ -440,8 +400,8 @@ export const LinkClickedEventLink$inboundSchema: z.ZodType<
   testVariants: z.nullable(
     z.array(z.lazy(() => LinkClickedEventTestVariants$inboundSchema)),
   ).optional(),
-  testStartedAt: z.nullable(z.string()),
-  testCompletedAt: z.nullable(z.string()),
+  testStartedAt: z.string(),
+  testCompletedAt: z.string(),
   userId: z.nullable(z.string()),
   workspaceId: z.string(),
   clicks: z.number().default(0),
@@ -463,7 +423,6 @@ export const LinkClickedEventLink$inboundSchema: z.ZodType<
     "utm_content": "utmContent",
   });
 });
-
 /** @internal */
 export type LinkClickedEventLink$Outbound = {
   id: string;
@@ -478,6 +437,7 @@ export type LinkClickedEventLink$Outbound = {
   archived: boolean;
   expiresAt: string;
   expiredUrl: string | null;
+  disabledAt: string;
   password: string | null;
   proxy: boolean;
   title: string | null;
@@ -505,8 +465,8 @@ export type LinkClickedEventLink$Outbound = {
     | Array<LinkClickedEventTestVariants$Outbound>
     | null
     | undefined;
-  testStartedAt: string | null;
-  testCompletedAt: string | null;
+  testStartedAt: string;
+  testCompletedAt: string;
   userId: string | null;
   workspaceId: string;
   clicks: number;
@@ -539,6 +499,7 @@ export const LinkClickedEventLink$outboundSchema: z.ZodType<
   archived: z.boolean(),
   expiresAt: z.string(),
   expiredUrl: z.nullable(z.string()),
+  disabledAt: z.string(),
   password: z.nullable(z.string()),
   proxy: z.boolean(),
   title: z.nullable(z.string()),
@@ -565,8 +526,8 @@ export const LinkClickedEventLink$outboundSchema: z.ZodType<
   testVariants: z.nullable(
     z.array(z.lazy(() => LinkClickedEventTestVariants$outboundSchema)),
   ).optional(),
-  testStartedAt: z.nullable(z.string()),
-  testCompletedAt: z.nullable(z.string()),
+  testStartedAt: z.string(),
+  testCompletedAt: z.string(),
   userId: z.nullable(z.string()),
   workspaceId: z.string(),
   clicks: z.number().default(0),
@@ -589,19 +550,6 @@ export const LinkClickedEventLink$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LinkClickedEventLink$ {
-  /** @deprecated use `LinkClickedEventLink$inboundSchema` instead. */
-  export const inboundSchema = LinkClickedEventLink$inboundSchema;
-  /** @deprecated use `LinkClickedEventLink$outboundSchema` instead. */
-  export const outboundSchema = LinkClickedEventLink$outboundSchema;
-  /** @deprecated use `LinkClickedEventLink$Outbound` instead. */
-  export type Outbound = LinkClickedEventLink$Outbound;
-}
-
 export function linkClickedEventLinkToJSON(
   linkClickedEventLink: LinkClickedEventLink,
 ): string {
@@ -609,7 +557,6 @@ export function linkClickedEventLinkToJSON(
     LinkClickedEventLink$outboundSchema.parse(linkClickedEventLink),
   );
 }
-
 export function linkClickedEventLinkFromJSON(
   jsonString: string,
 ): SafeParseResult<LinkClickedEventLink, SDKValidationError> {
@@ -626,7 +573,6 @@ export const Data$inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z
     click: z.lazy(() => LinkClickedEventClick$inboundSchema),
     link: z.lazy(() => LinkClickedEventLink$inboundSchema),
   });
-
 /** @internal */
 export type Data$Outbound = {
   click: LinkClickedEventClick$Outbound;
@@ -640,23 +586,9 @@ export const Data$outboundSchema: z.ZodType<Data$Outbound, z.ZodTypeDef, Data> =
     link: z.lazy(() => LinkClickedEventLink$outboundSchema),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Data$ {
-  /** @deprecated use `Data$inboundSchema` instead. */
-  export const inboundSchema = Data$inboundSchema;
-  /** @deprecated use `Data$outboundSchema` instead. */
-  export const outboundSchema = Data$outboundSchema;
-  /** @deprecated use `Data$Outbound` instead. */
-  export type Outbound = Data$Outbound;
-}
-
 export function dataToJSON(data: Data): string {
   return JSON.stringify(Data$outboundSchema.parse(data));
 }
-
 export function dataFromJSON(
   jsonString: string,
 ): SafeParseResult<Data, SDKValidationError> {
@@ -678,7 +610,6 @@ export const LinkClickedEvent$inboundSchema: z.ZodType<
   createdAt: z.string(),
   data: z.lazy(() => Data$inboundSchema),
 });
-
 /** @internal */
 export type LinkClickedEvent$Outbound = {
   id: string;
@@ -699,19 +630,6 @@ export const LinkClickedEvent$outboundSchema: z.ZodType<
   data: z.lazy(() => Data$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LinkClickedEvent$ {
-  /** @deprecated use `LinkClickedEvent$inboundSchema` instead. */
-  export const inboundSchema = LinkClickedEvent$inboundSchema;
-  /** @deprecated use `LinkClickedEvent$outboundSchema` instead. */
-  export const outboundSchema = LinkClickedEvent$outboundSchema;
-  /** @deprecated use `LinkClickedEvent$Outbound` instead. */
-  export type Outbound = LinkClickedEvent$Outbound;
-}
-
 export function linkClickedEventToJSON(
   linkClickedEvent: LinkClickedEvent,
 ): string {
@@ -719,7 +637,6 @@ export function linkClickedEventToJSON(
     LinkClickedEvent$outboundSchema.parse(linkClickedEvent),
   );
 }
-
 export function linkClickedEventFromJSON(
   jsonString: string,
 ): SafeParseResult<LinkClickedEvent, SDKValidationError> {

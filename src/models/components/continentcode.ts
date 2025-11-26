@@ -23,22 +23,6 @@ export const ContinentCode = {
 export type ContinentCode = ClosedEnum<typeof ContinentCode>;
 
 /** @internal */
-export const ContinentCode$inboundSchema: z.ZodNativeEnum<
-  typeof ContinentCode
-> = z.nativeEnum(ContinentCode);
-
-/** @internal */
 export const ContinentCode$outboundSchema: z.ZodNativeEnum<
   typeof ContinentCode
-> = ContinentCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ContinentCode$ {
-  /** @deprecated use `ContinentCode$inboundSchema` instead. */
-  export const inboundSchema = ContinentCode$inboundSchema;
-  /** @deprecated use `ContinentCode$outboundSchema` instead. */
-  export const outboundSchema = ContinentCode$outboundSchema;
-}
+> = z.nativeEnum(ContinentCode);

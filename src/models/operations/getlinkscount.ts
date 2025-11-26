@@ -3,10 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The tag IDs to filter the links by.
@@ -91,13 +88,6 @@ export type GetLinksCountRequest = {
 };
 
 /** @internal */
-export const GetLinksCountQueryParamTagIds$inboundSchema: z.ZodType<
-  GetLinksCountQueryParamTagIds,
-  z.ZodTypeDef,
-  unknown
-> = z.union([z.string(), z.array(z.string())]);
-
-/** @internal */
 export type GetLinksCountQueryParamTagIds$Outbound = string | Array<string>;
 
 /** @internal */
@@ -106,19 +96,6 @@ export const GetLinksCountQueryParamTagIds$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetLinksCountQueryParamTagIds
 > = z.union([z.string(), z.array(z.string())]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetLinksCountQueryParamTagIds$ {
-  /** @deprecated use `GetLinksCountQueryParamTagIds$inboundSchema` instead. */
-  export const inboundSchema = GetLinksCountQueryParamTagIds$inboundSchema;
-  /** @deprecated use `GetLinksCountQueryParamTagIds$outboundSchema` instead. */
-  export const outboundSchema = GetLinksCountQueryParamTagIds$outboundSchema;
-  /** @deprecated use `GetLinksCountQueryParamTagIds$Outbound` instead. */
-  export type Outbound = GetLinksCountQueryParamTagIds$Outbound;
-}
 
 export function getLinksCountQueryParamTagIdsToJSON(
   getLinksCountQueryParamTagIds: GetLinksCountQueryParamTagIds,
@@ -130,23 +107,6 @@ export function getLinksCountQueryParamTagIdsToJSON(
   );
 }
 
-export function getLinksCountQueryParamTagIdsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetLinksCountQueryParamTagIds, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetLinksCountQueryParamTagIds$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetLinksCountQueryParamTagIds' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetLinksCountQueryParamTagNames$inboundSchema: z.ZodType<
-  GetLinksCountQueryParamTagNames,
-  z.ZodTypeDef,
-  unknown
-> = z.union([z.string(), z.array(z.string())]);
-
 /** @internal */
 export type GetLinksCountQueryParamTagNames$Outbound = string | Array<string>;
 
@@ -156,19 +116,6 @@ export const GetLinksCountQueryParamTagNames$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetLinksCountQueryParamTagNames
 > = z.union([z.string(), z.array(z.string())]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetLinksCountQueryParamTagNames$ {
-  /** @deprecated use `GetLinksCountQueryParamTagNames$inboundSchema` instead. */
-  export const inboundSchema = GetLinksCountQueryParamTagNames$inboundSchema;
-  /** @deprecated use `GetLinksCountQueryParamTagNames$outboundSchema` instead. */
-  export const outboundSchema = GetLinksCountQueryParamTagNames$outboundSchema;
-  /** @deprecated use `GetLinksCountQueryParamTagNames$Outbound` instead. */
-  export type Outbound = GetLinksCountQueryParamTagNames$Outbound;
-}
 
 export function getLinksCountQueryParamTagNamesToJSON(
   getLinksCountQueryParamTagNames: GetLinksCountQueryParamTagNames,
@@ -180,100 +127,25 @@ export function getLinksCountQueryParamTagNamesToJSON(
   );
 }
 
-export function getLinksCountQueryParamTagNamesFromJSON(
-  jsonString: string,
-): SafeParseResult<GetLinksCountQueryParamTagNames, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetLinksCountQueryParamTagNames$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetLinksCountQueryParamTagNames' from JSON`,
-  );
-}
-
 /** @internal */
-export const Four$inboundSchema: z.ZodNativeEnum<typeof Four> = z.nativeEnum(
+export const Four$outboundSchema: z.ZodNativeEnum<typeof Four> = z.nativeEnum(
   Four,
 );
 
 /** @internal */
-export const Four$outboundSchema: z.ZodNativeEnum<typeof Four> =
-  Four$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Four$ {
-  /** @deprecated use `Four$inboundSchema` instead. */
-  export const inboundSchema = Four$inboundSchema;
-  /** @deprecated use `Four$outboundSchema` instead. */
-  export const outboundSchema = Four$outboundSchema;
-}
-
-/** @internal */
-export const Three$inboundSchema: z.ZodNativeEnum<typeof Three> = z.nativeEnum(
+export const Three$outboundSchema: z.ZodNativeEnum<typeof Three> = z.nativeEnum(
   Three,
 );
 
 /** @internal */
-export const Three$outboundSchema: z.ZodNativeEnum<typeof Three> =
-  Three$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Three$ {
-  /** @deprecated use `Three$inboundSchema` instead. */
-  export const inboundSchema = Three$inboundSchema;
-  /** @deprecated use `Three$outboundSchema` instead. */
-  export const outboundSchema = Three$outboundSchema;
-}
+export const Two$outboundSchema: z.ZodNativeEnum<typeof Two> = z.nativeEnum(
+  Two,
+);
 
 /** @internal */
-export const Two$inboundSchema: z.ZodNativeEnum<typeof Two> = z.nativeEnum(Two);
-
-/** @internal */
-export const Two$outboundSchema: z.ZodNativeEnum<typeof Two> =
-  Two$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Two$ {
-  /** @deprecated use `Two$inboundSchema` instead. */
-  export const inboundSchema = Two$inboundSchema;
-  /** @deprecated use `Two$outboundSchema` instead. */
-  export const outboundSchema = Two$outboundSchema;
-}
-
-/** @internal */
-export const One$inboundSchema: z.ZodNativeEnum<typeof One> = z.nativeEnum(One);
-
-/** @internal */
-export const One$outboundSchema: z.ZodNativeEnum<typeof One> =
-  One$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace One$ {
-  /** @deprecated use `One$inboundSchema` instead. */
-  export const inboundSchema = One$inboundSchema;
-  /** @deprecated use `One$outboundSchema` instead. */
-  export const outboundSchema = One$outboundSchema;
-}
-
-/** @internal */
-export const GroupBy$inboundSchema: z.ZodType<GroupBy, z.ZodTypeDef, unknown> =
-  z.union([
-    One$inboundSchema,
-    Two$inboundSchema,
-    Three$inboundSchema,
-    Four$inboundSchema,
-  ]);
+export const One$outboundSchema: z.ZodNativeEnum<typeof One> = z.nativeEnum(
+  One,
+);
 
 /** @internal */
 export type GroupBy$Outbound = string | string | string | string;
@@ -290,56 +162,9 @@ export const GroupBy$outboundSchema: z.ZodType<
   Four$outboundSchema,
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GroupBy$ {
-  /** @deprecated use `GroupBy$inboundSchema` instead. */
-  export const inboundSchema = GroupBy$inboundSchema;
-  /** @deprecated use `GroupBy$outboundSchema` instead. */
-  export const outboundSchema = GroupBy$outboundSchema;
-  /** @deprecated use `GroupBy$Outbound` instead. */
-  export type Outbound = GroupBy$Outbound;
-}
-
 export function groupByToJSON(groupBy: GroupBy): string {
   return JSON.stringify(GroupBy$outboundSchema.parse(groupBy));
 }
-
-export function groupByFromJSON(
-  jsonString: string,
-): SafeParseResult<GroupBy, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GroupBy$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GroupBy' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetLinksCountRequest$inboundSchema: z.ZodType<
-  GetLinksCountRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  domain: z.string().optional(),
-  tagId: z.string().optional(),
-  tagIds: z.union([z.string(), z.array(z.string())]).optional(),
-  tagNames: z.union([z.string(), z.array(z.string())]).optional(),
-  folderId: z.string().optional(),
-  search: z.string().optional(),
-  userId: z.string().optional(),
-  tenantId: z.string().optional(),
-  showArchived: z.boolean().default(false),
-  withTags: z.boolean().default(false),
-  groupBy: z.union([
-    One$inboundSchema,
-    Two$inboundSchema,
-    Three$inboundSchema,
-    Four$inboundSchema,
-  ]).optional(),
-});
 
 /** @internal */
 export type GetLinksCountRequest$Outbound = {
@@ -380,33 +205,10 @@ export const GetLinksCountRequest$outboundSchema: z.ZodType<
   ]).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetLinksCountRequest$ {
-  /** @deprecated use `GetLinksCountRequest$inboundSchema` instead. */
-  export const inboundSchema = GetLinksCountRequest$inboundSchema;
-  /** @deprecated use `GetLinksCountRequest$outboundSchema` instead. */
-  export const outboundSchema = GetLinksCountRequest$outboundSchema;
-  /** @deprecated use `GetLinksCountRequest$Outbound` instead. */
-  export type Outbound = GetLinksCountRequest$Outbound;
-}
-
 export function getLinksCountRequestToJSON(
   getLinksCountRequest: GetLinksCountRequest,
 ): string {
   return JSON.stringify(
     GetLinksCountRequest$outboundSchema.parse(getLinksCountRequest),
-  );
-}
-
-export function getLinksCountRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetLinksCountRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetLinksCountRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetLinksCountRequest' from JSON`,
   );
 }

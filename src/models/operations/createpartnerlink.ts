@@ -4,9 +4,6 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The unique IDs of the tags assigned to the short link.
@@ -177,13 +174,6 @@ export type CreatePartnerLinkRequestBody = {
 };
 
 /** @internal */
-export const CreatePartnerLinkTagIds$inboundSchema: z.ZodType<
-  CreatePartnerLinkTagIds,
-  z.ZodTypeDef,
-  unknown
-> = z.union([z.string(), z.array(z.string())]);
-
-/** @internal */
 export type CreatePartnerLinkTagIds$Outbound = string | Array<string>;
 
 /** @internal */
@@ -193,19 +183,6 @@ export const CreatePartnerLinkTagIds$outboundSchema: z.ZodType<
   CreatePartnerLinkTagIds
 > = z.union([z.string(), z.array(z.string())]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreatePartnerLinkTagIds$ {
-  /** @deprecated use `CreatePartnerLinkTagIds$inboundSchema` instead. */
-  export const inboundSchema = CreatePartnerLinkTagIds$inboundSchema;
-  /** @deprecated use `CreatePartnerLinkTagIds$outboundSchema` instead. */
-  export const outboundSchema = CreatePartnerLinkTagIds$outboundSchema;
-  /** @deprecated use `CreatePartnerLinkTagIds$Outbound` instead. */
-  export type Outbound = CreatePartnerLinkTagIds$Outbound;
-}
-
 export function createPartnerLinkTagIdsToJSON(
   createPartnerLinkTagIds: CreatePartnerLinkTagIds,
 ): string {
@@ -213,23 +190,6 @@ export function createPartnerLinkTagIdsToJSON(
     CreatePartnerLinkTagIds$outboundSchema.parse(createPartnerLinkTagIds),
   );
 }
-
-export function createPartnerLinkTagIdsFromJSON(
-  jsonString: string,
-): SafeParseResult<CreatePartnerLinkTagIds, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreatePartnerLinkTagIds$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreatePartnerLinkTagIds' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreatePartnerLinkTagNames$inboundSchema: z.ZodType<
-  CreatePartnerLinkTagNames,
-  z.ZodTypeDef,
-  unknown
-> = z.union([z.string(), z.array(z.string())]);
 
 /** @internal */
 export type CreatePartnerLinkTagNames$Outbound = string | Array<string>;
@@ -241,19 +201,6 @@ export const CreatePartnerLinkTagNames$outboundSchema: z.ZodType<
   CreatePartnerLinkTagNames
 > = z.union([z.string(), z.array(z.string())]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreatePartnerLinkTagNames$ {
-  /** @deprecated use `CreatePartnerLinkTagNames$inboundSchema` instead. */
-  export const inboundSchema = CreatePartnerLinkTagNames$inboundSchema;
-  /** @deprecated use `CreatePartnerLinkTagNames$outboundSchema` instead. */
-  export const outboundSchema = CreatePartnerLinkTagNames$outboundSchema;
-  /** @deprecated use `CreatePartnerLinkTagNames$Outbound` instead. */
-  export type Outbound = CreatePartnerLinkTagNames$Outbound;
-}
-
 export function createPartnerLinkTagNamesToJSON(
   createPartnerLinkTagNames: CreatePartnerLinkTagNames,
 ): string {
@@ -261,26 +208,6 @@ export function createPartnerLinkTagNamesToJSON(
     CreatePartnerLinkTagNames$outboundSchema.parse(createPartnerLinkTagNames),
   );
 }
-
-export function createPartnerLinkTagNamesFromJSON(
-  jsonString: string,
-): SafeParseResult<CreatePartnerLinkTagNames, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreatePartnerLinkTagNames$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreatePartnerLinkTagNames' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreatePartnerLinkTestVariants$inboundSchema: z.ZodType<
-  CreatePartnerLinkTestVariants,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  url: z.string(),
-  percentage: z.number(),
-});
 
 /** @internal */
 export type CreatePartnerLinkTestVariants$Outbound = {
@@ -298,19 +225,6 @@ export const CreatePartnerLinkTestVariants$outboundSchema: z.ZodType<
   percentage: z.number(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreatePartnerLinkTestVariants$ {
-  /** @deprecated use `CreatePartnerLinkTestVariants$inboundSchema` instead. */
-  export const inboundSchema = CreatePartnerLinkTestVariants$inboundSchema;
-  /** @deprecated use `CreatePartnerLinkTestVariants$outboundSchema` instead. */
-  export const outboundSchema = CreatePartnerLinkTestVariants$outboundSchema;
-  /** @deprecated use `CreatePartnerLinkTestVariants$Outbound` instead. */
-  export type Outbound = CreatePartnerLinkTestVariants$Outbound;
-}
-
 export function createPartnerLinkTestVariantsToJSON(
   createPartnerLinkTestVariants: CreatePartnerLinkTestVariants,
 ): string {
@@ -320,64 +234,6 @@ export function createPartnerLinkTestVariantsToJSON(
     ),
   );
 }
-
-export function createPartnerLinkTestVariantsFromJSON(
-  jsonString: string,
-): SafeParseResult<CreatePartnerLinkTestVariants, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreatePartnerLinkTestVariants$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreatePartnerLinkTestVariants' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreatePartnerLinkLinkProps$inboundSchema: z.ZodType<
-  CreatePartnerLinkLinkProps,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  keyLength: z.number().optional(),
-  externalId: z.nullable(z.string()).optional(),
-  tenantId: z.nullable(z.string()).optional(),
-  prefix: z.string().optional(),
-  archived: z.boolean().optional(),
-  tagIds: z.union([z.string(), z.array(z.string())]).optional(),
-  tagNames: z.union([z.string(), z.array(z.string())]).optional(),
-  folderId: z.nullable(z.string()).optional(),
-  comments: z.nullable(z.string()).optional(),
-  expiresAt: z.nullable(z.string()).optional(),
-  expiredUrl: z.nullable(z.string()).optional(),
-  password: z.nullable(z.string()).optional(),
-  proxy: z.boolean().optional(),
-  title: z.nullable(z.string()).optional(),
-  description: z.nullable(z.string()).optional(),
-  image: z.nullable(z.string()).optional(),
-  video: z.nullable(z.string()).optional(),
-  rewrite: z.boolean().optional(),
-  ios: z.nullable(z.string()).optional(),
-  android: z.nullable(z.string()).optional(),
-  doIndex: z.boolean().optional(),
-  utm_source: z.nullable(z.string()).optional(),
-  utm_medium: z.nullable(z.string()).optional(),
-  utm_campaign: z.nullable(z.string()).optional(),
-  utm_term: z.nullable(z.string()).optional(),
-  utm_content: z.nullable(z.string()).optional(),
-  ref: z.nullable(z.string()).optional(),
-  testVariants: z.nullable(
-    z.array(z.lazy(() => CreatePartnerLinkTestVariants$inboundSchema)),
-  ).optional(),
-  testStartedAt: z.nullable(z.string()).optional(),
-  testCompletedAt: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "utm_source": "utmSource",
-    "utm_medium": "utmMedium",
-    "utm_campaign": "utmCampaign",
-    "utm_term": "utmTerm",
-    "utm_content": "utmContent",
-  });
-});
 
 /** @internal */
 export type CreatePartnerLinkLinkProps$Outbound = {
@@ -464,19 +320,6 @@ export const CreatePartnerLinkLinkProps$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreatePartnerLinkLinkProps$ {
-  /** @deprecated use `CreatePartnerLinkLinkProps$inboundSchema` instead. */
-  export const inboundSchema = CreatePartnerLinkLinkProps$inboundSchema;
-  /** @deprecated use `CreatePartnerLinkLinkProps$outboundSchema` instead. */
-  export const outboundSchema = CreatePartnerLinkLinkProps$outboundSchema;
-  /** @deprecated use `CreatePartnerLinkLinkProps$Outbound` instead. */
-  export type Outbound = CreatePartnerLinkLinkProps$Outbound;
-}
-
 export function createPartnerLinkLinkPropsToJSON(
   createPartnerLinkLinkProps: CreatePartnerLinkLinkProps,
 ): string {
@@ -484,30 +327,6 @@ export function createPartnerLinkLinkPropsToJSON(
     CreatePartnerLinkLinkProps$outboundSchema.parse(createPartnerLinkLinkProps),
   );
 }
-
-export function createPartnerLinkLinkPropsFromJSON(
-  jsonString: string,
-): SafeParseResult<CreatePartnerLinkLinkProps, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreatePartnerLinkLinkProps$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreatePartnerLinkLinkProps' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreatePartnerLinkRequestBody$inboundSchema: z.ZodType<
-  CreatePartnerLinkRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  partnerId: z.nullable(z.string()).optional(),
-  tenantId: z.nullable(z.string()).optional(),
-  url: z.nullable(z.string()).optional(),
-  key: z.string().optional(),
-  comments: z.nullable(z.string()).optional(),
-  linkProps: z.lazy(() => CreatePartnerLinkLinkProps$inboundSchema).optional(),
-});
 
 /** @internal */
 export type CreatePartnerLinkRequestBody$Outbound = {
@@ -533,19 +352,6 @@ export const CreatePartnerLinkRequestBody$outboundSchema: z.ZodType<
   linkProps: z.lazy(() => CreatePartnerLinkLinkProps$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreatePartnerLinkRequestBody$ {
-  /** @deprecated use `CreatePartnerLinkRequestBody$inboundSchema` instead. */
-  export const inboundSchema = CreatePartnerLinkRequestBody$inboundSchema;
-  /** @deprecated use `CreatePartnerLinkRequestBody$outboundSchema` instead. */
-  export const outboundSchema = CreatePartnerLinkRequestBody$outboundSchema;
-  /** @deprecated use `CreatePartnerLinkRequestBody$Outbound` instead. */
-  export type Outbound = CreatePartnerLinkRequestBody$Outbound;
-}
-
 export function createPartnerLinkRequestBodyToJSON(
   createPartnerLinkRequestBody: CreatePartnerLinkRequestBody,
 ): string {
@@ -553,15 +359,5 @@ export function createPartnerLinkRequestBodyToJSON(
     CreatePartnerLinkRequestBody$outboundSchema.parse(
       createPartnerLinkRequestBody,
     ),
-  );
-}
-
-export function createPartnerLinkRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<CreatePartnerLinkRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreatePartnerLinkRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreatePartnerLinkRequestBody' from JSON`,
   );
 }

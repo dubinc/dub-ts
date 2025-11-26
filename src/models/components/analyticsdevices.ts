@@ -43,49 +43,6 @@ export const AnalyticsDevices$inboundSchema: z.ZodType<
   saleAmount: z.number().default(0),
 });
 
-/** @internal */
-export type AnalyticsDevices$Outbound = {
-  device: string;
-  clicks: number;
-  leads: number;
-  sales: number;
-  saleAmount: number;
-};
-
-/** @internal */
-export const AnalyticsDevices$outboundSchema: z.ZodType<
-  AnalyticsDevices$Outbound,
-  z.ZodTypeDef,
-  AnalyticsDevices
-> = z.object({
-  device: z.string(),
-  clicks: z.number().default(0),
-  leads: z.number().default(0),
-  sales: z.number().default(0),
-  saleAmount: z.number().default(0),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AnalyticsDevices$ {
-  /** @deprecated use `AnalyticsDevices$inboundSchema` instead. */
-  export const inboundSchema = AnalyticsDevices$inboundSchema;
-  /** @deprecated use `AnalyticsDevices$outboundSchema` instead. */
-  export const outboundSchema = AnalyticsDevices$outboundSchema;
-  /** @deprecated use `AnalyticsDevices$Outbound` instead. */
-  export type Outbound = AnalyticsDevices$Outbound;
-}
-
-export function analyticsDevicesToJSON(
-  analyticsDevices: AnalyticsDevices,
-): string {
-  return JSON.stringify(
-    AnalyticsDevices$outboundSchema.parse(analyticsDevices),
-  );
-}
-
 export function analyticsDevicesFromJSON(
   jsonString: string,
 ): SafeParseResult<AnalyticsDevices, SDKValidationError> {

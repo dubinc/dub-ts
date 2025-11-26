@@ -33,18 +33,6 @@ export type ListDomainsResponse = {
 };
 
 /** @internal */
-export const ListDomainsRequest$inboundSchema: z.ZodType<
-  ListDomainsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  archived: z.boolean().default(false),
-  search: z.string().optional(),
-  page: z.number().default(1),
-  pageSize: z.number().default(50),
-});
-
-/** @internal */
 export type ListDomainsRequest$Outbound = {
   archived: boolean;
   search?: string | undefined;
@@ -64,34 +52,11 @@ export const ListDomainsRequest$outboundSchema: z.ZodType<
   pageSize: z.number().default(50),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListDomainsRequest$ {
-  /** @deprecated use `ListDomainsRequest$inboundSchema` instead. */
-  export const inboundSchema = ListDomainsRequest$inboundSchema;
-  /** @deprecated use `ListDomainsRequest$outboundSchema` instead. */
-  export const outboundSchema = ListDomainsRequest$outboundSchema;
-  /** @deprecated use `ListDomainsRequest$Outbound` instead. */
-  export type Outbound = ListDomainsRequest$Outbound;
-}
-
 export function listDomainsRequestToJSON(
   listDomainsRequest: ListDomainsRequest,
 ): string {
   return JSON.stringify(
     ListDomainsRequest$outboundSchema.parse(listDomainsRequest),
-  );
-}
-
-export function listDomainsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ListDomainsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListDomainsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListDomainsRequest' from JSON`,
   );
 }
 
@@ -107,45 +72,6 @@ export const ListDomainsResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
-/** @internal */
-export type ListDomainsResponse$Outbound = {
-  Result: Array<components.DomainSchema$Outbound>;
-};
-
-/** @internal */
-export const ListDomainsResponse$outboundSchema: z.ZodType<
-  ListDomainsResponse$Outbound,
-  z.ZodTypeDef,
-  ListDomainsResponse
-> = z.object({
-  result: z.array(components.DomainSchema$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    result: "Result",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListDomainsResponse$ {
-  /** @deprecated use `ListDomainsResponse$inboundSchema` instead. */
-  export const inboundSchema = ListDomainsResponse$inboundSchema;
-  /** @deprecated use `ListDomainsResponse$outboundSchema` instead. */
-  export const outboundSchema = ListDomainsResponse$outboundSchema;
-  /** @deprecated use `ListDomainsResponse$Outbound` instead. */
-  export type Outbound = ListDomainsResponse$Outbound;
-}
-
-export function listDomainsResponseToJSON(
-  listDomainsResponse: ListDomainsResponse,
-): string {
-  return JSON.stringify(
-    ListDomainsResponse$outboundSchema.parse(listDomainsResponse),
-  );
-}
 
 export function listDomainsResponseFromJSON(
   jsonString: string,

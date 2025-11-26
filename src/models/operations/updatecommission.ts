@@ -94,6 +94,10 @@ export type UpdateCommissionPartner = {
    * The partner's country (required for tax purposes).
    */
   country: string | null;
+  /**
+   * The partner's group ID on Dub.
+   */
+  groupId?: string | null | undefined;
 };
 
 export type UpdateCommissionCustomer = {
@@ -162,35 +166,8 @@ export type UpdateCommissionResponseBody = {
 };
 
 /** @internal */
-export const Status$inboundSchema: z.ZodNativeEnum<typeof Status> = z
+export const Status$outboundSchema: z.ZodNativeEnum<typeof Status> = z
   .nativeEnum(Status);
-
-/** @internal */
-export const Status$outboundSchema: z.ZodNativeEnum<typeof Status> =
-  Status$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Status$ {
-  /** @deprecated use `Status$inboundSchema` instead. */
-  export const inboundSchema = Status$inboundSchema;
-  /** @deprecated use `Status$outboundSchema` instead. */
-  export const outboundSchema = Status$outboundSchema;
-}
-
-/** @internal */
-export const UpdateCommissionRequestBody$inboundSchema: z.ZodType<
-  UpdateCommissionRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  amount: z.number().optional(),
-  modifyAmount: z.number().optional(),
-  currency: z.string().default("usd"),
-  status: Status$inboundSchema.optional(),
-});
 
 /** @internal */
 export type UpdateCommissionRequestBody$Outbound = {
@@ -212,19 +189,6 @@ export const UpdateCommissionRequestBody$outboundSchema: z.ZodType<
   status: Status$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateCommissionRequestBody$ {
-  /** @deprecated use `UpdateCommissionRequestBody$inboundSchema` instead. */
-  export const inboundSchema = UpdateCommissionRequestBody$inboundSchema;
-  /** @deprecated use `UpdateCommissionRequestBody$outboundSchema` instead. */
-  export const outboundSchema = UpdateCommissionRequestBody$outboundSchema;
-  /** @deprecated use `UpdateCommissionRequestBody$Outbound` instead. */
-  export type Outbound = UpdateCommissionRequestBody$Outbound;
-}
-
 export function updateCommissionRequestBodyToJSON(
   updateCommissionRequestBody: UpdateCommissionRequestBody,
 ): string {
@@ -234,31 +198,6 @@ export function updateCommissionRequestBodyToJSON(
     ),
   );
 }
-
-export function updateCommissionRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateCommissionRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateCommissionRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateCommissionRequestBody' from JSON`,
-  );
-}
-
-/** @internal */
-export const UpdateCommissionRequest$inboundSchema: z.ZodType<
-  UpdateCommissionRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-  RequestBody: z.lazy(() => UpdateCommissionRequestBody$inboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 
 /** @internal */
 export type UpdateCommissionRequest$Outbound = {
@@ -281,34 +220,11 @@ export const UpdateCommissionRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateCommissionRequest$ {
-  /** @deprecated use `UpdateCommissionRequest$inboundSchema` instead. */
-  export const inboundSchema = UpdateCommissionRequest$inboundSchema;
-  /** @deprecated use `UpdateCommissionRequest$outboundSchema` instead. */
-  export const outboundSchema = UpdateCommissionRequest$outboundSchema;
-  /** @deprecated use `UpdateCommissionRequest$Outbound` instead. */
-  export type Outbound = UpdateCommissionRequest$Outbound;
-}
-
 export function updateCommissionRequestToJSON(
   updateCommissionRequest: UpdateCommissionRequest,
 ): string {
   return JSON.stringify(
     UpdateCommissionRequest$outboundSchema.parse(updateCommissionRequest),
-  );
-}
-
-export function updateCommissionRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateCommissionRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateCommissionRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateCommissionRequest' from JSON`,
   );
 }
 
@@ -318,41 +234,9 @@ export const UpdateCommissionType$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(UpdateCommissionType);
 
 /** @internal */
-export const UpdateCommissionType$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateCommissionType
-> = UpdateCommissionType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateCommissionType$ {
-  /** @deprecated use `UpdateCommissionType$inboundSchema` instead. */
-  export const inboundSchema = UpdateCommissionType$inboundSchema;
-  /** @deprecated use `UpdateCommissionType$outboundSchema` instead. */
-  export const outboundSchema = UpdateCommissionType$outboundSchema;
-}
-
-/** @internal */
 export const UpdateCommissionStatus$inboundSchema: z.ZodNativeEnum<
   typeof UpdateCommissionStatus
 > = z.nativeEnum(UpdateCommissionStatus);
-
-/** @internal */
-export const UpdateCommissionStatus$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateCommissionStatus
-> = UpdateCommissionStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateCommissionStatus$ {
-  /** @deprecated use `UpdateCommissionStatus$inboundSchema` instead. */
-  export const inboundSchema = UpdateCommissionStatus$inboundSchema;
-  /** @deprecated use `UpdateCommissionStatus$outboundSchema` instead. */
-  export const outboundSchema = UpdateCommissionStatus$outboundSchema;
-}
 
 /** @internal */
 export const UpdateCommissionPartner$inboundSchema: z.ZodType<
@@ -366,52 +250,8 @@ export const UpdateCommissionPartner$inboundSchema: z.ZodType<
   image: z.nullable(z.string()),
   payoutsEnabledAt: z.nullable(z.string()),
   country: z.nullable(z.string()),
+  groupId: z.nullable(z.string()).optional(),
 });
-
-/** @internal */
-export type UpdateCommissionPartner$Outbound = {
-  id: string;
-  name: string;
-  email: string | null;
-  image: string | null;
-  payoutsEnabledAt: string | null;
-  country: string | null;
-};
-
-/** @internal */
-export const UpdateCommissionPartner$outboundSchema: z.ZodType<
-  UpdateCommissionPartner$Outbound,
-  z.ZodTypeDef,
-  UpdateCommissionPartner
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  email: z.nullable(z.string()),
-  image: z.nullable(z.string()),
-  payoutsEnabledAt: z.nullable(z.string()),
-  country: z.nullable(z.string()),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateCommissionPartner$ {
-  /** @deprecated use `UpdateCommissionPartner$inboundSchema` instead. */
-  export const inboundSchema = UpdateCommissionPartner$inboundSchema;
-  /** @deprecated use `UpdateCommissionPartner$outboundSchema` instead. */
-  export const outboundSchema = UpdateCommissionPartner$outboundSchema;
-  /** @deprecated use `UpdateCommissionPartner$Outbound` instead. */
-  export type Outbound = UpdateCommissionPartner$Outbound;
-}
-
-export function updateCommissionPartnerToJSON(
-  updateCommissionPartner: UpdateCommissionPartner,
-): string {
-  return JSON.stringify(
-    UpdateCommissionPartner$outboundSchema.parse(updateCommissionPartner),
-  );
-}
 
 export function updateCommissionPartnerFromJSON(
   jsonString: string,
@@ -439,57 +279,6 @@ export const UpdateCommissionCustomer$inboundSchema: z.ZodType<
   saleAmount: z.nullable(z.number()).optional(),
   createdAt: z.string(),
 });
-
-/** @internal */
-export type UpdateCommissionCustomer$Outbound = {
-  id: string;
-  externalId: string;
-  name: string;
-  email?: string | null | undefined;
-  avatar?: string | null | undefined;
-  country?: string | null | undefined;
-  sales?: number | null | undefined;
-  saleAmount?: number | null | undefined;
-  createdAt: string;
-};
-
-/** @internal */
-export const UpdateCommissionCustomer$outboundSchema: z.ZodType<
-  UpdateCommissionCustomer$Outbound,
-  z.ZodTypeDef,
-  UpdateCommissionCustomer
-> = z.object({
-  id: z.string(),
-  externalId: z.string(),
-  name: z.string(),
-  email: z.nullable(z.string()).optional(),
-  avatar: z.nullable(z.string()).optional(),
-  country: z.nullable(z.string()).optional(),
-  sales: z.nullable(z.number()).optional(),
-  saleAmount: z.nullable(z.number()).optional(),
-  createdAt: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateCommissionCustomer$ {
-  /** @deprecated use `UpdateCommissionCustomer$inboundSchema` instead. */
-  export const inboundSchema = UpdateCommissionCustomer$inboundSchema;
-  /** @deprecated use `UpdateCommissionCustomer$outboundSchema` instead. */
-  export const outboundSchema = UpdateCommissionCustomer$outboundSchema;
-  /** @deprecated use `UpdateCommissionCustomer$Outbound` instead. */
-  export type Outbound = UpdateCommissionCustomer$Outbound;
-}
-
-export function updateCommissionCustomerToJSON(
-  updateCommissionCustomer: UpdateCommissionCustomer,
-): string {
-  return JSON.stringify(
-    UpdateCommissionCustomer$outboundSchema.parse(updateCommissionCustomer),
-  );
-}
 
 export function updateCommissionCustomerFromJSON(
   jsonString: string,
@@ -523,70 +312,6 @@ export const UpdateCommissionResponseBody$inboundSchema: z.ZodType<
   customer: z.nullable(z.lazy(() => UpdateCommissionCustomer$inboundSchema))
     .optional(),
 });
-
-/** @internal */
-export type UpdateCommissionResponseBody$Outbound = {
-  id: string;
-  type?: string | undefined;
-  amount: number;
-  earnings: number;
-  currency: string;
-  status: string;
-  invoiceId: string | null;
-  description: string | null;
-  quantity: number;
-  userId?: string | null | undefined;
-  createdAt: string;
-  updatedAt: string;
-  partner: UpdateCommissionPartner$Outbound;
-  customer?: UpdateCommissionCustomer$Outbound | null | undefined;
-};
-
-/** @internal */
-export const UpdateCommissionResponseBody$outboundSchema: z.ZodType<
-  UpdateCommissionResponseBody$Outbound,
-  z.ZodTypeDef,
-  UpdateCommissionResponseBody
-> = z.object({
-  id: z.string(),
-  type: UpdateCommissionType$outboundSchema.optional(),
-  amount: z.number(),
-  earnings: z.number(),
-  currency: z.string(),
-  status: UpdateCommissionStatus$outboundSchema,
-  invoiceId: z.nullable(z.string()),
-  description: z.nullable(z.string()),
-  quantity: z.number(),
-  userId: z.nullable(z.string()).optional(),
-  createdAt: z.string(),
-  updatedAt: z.string(),
-  partner: z.lazy(() => UpdateCommissionPartner$outboundSchema),
-  customer: z.nullable(z.lazy(() => UpdateCommissionCustomer$outboundSchema))
-    .optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateCommissionResponseBody$ {
-  /** @deprecated use `UpdateCommissionResponseBody$inboundSchema` instead. */
-  export const inboundSchema = UpdateCommissionResponseBody$inboundSchema;
-  /** @deprecated use `UpdateCommissionResponseBody$outboundSchema` instead. */
-  export const outboundSchema = UpdateCommissionResponseBody$outboundSchema;
-  /** @deprecated use `UpdateCommissionResponseBody$Outbound` instead. */
-  export type Outbound = UpdateCommissionResponseBody$Outbound;
-}
-
-export function updateCommissionResponseBodyToJSON(
-  updateCommissionResponseBody: UpdateCommissionResponseBody,
-): string {
-  return JSON.stringify(
-    UpdateCommissionResponseBody$outboundSchema.parse(
-      updateCommissionResponseBody,
-    ),
-  );
-}
 
 export function updateCommissionResponseBodyFromJSON(
   jsonString: string,

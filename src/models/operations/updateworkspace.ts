@@ -4,9 +4,6 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UpdateWorkspaceRequestBody = {
   name?: string | undefined;
@@ -22,18 +19,6 @@ export type UpdateWorkspaceRequest = {
   idOrSlug: string;
   requestBody?: UpdateWorkspaceRequestBody | undefined;
 };
-
-/** @internal */
-export const UpdateWorkspaceRequestBody$inboundSchema: z.ZodType<
-  UpdateWorkspaceRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: z.string().optional(),
-  slug: z.string().optional(),
-  logo: z.nullable(z.string()).optional(),
-  conversionEnabled: z.boolean().optional(),
-});
 
 /** @internal */
 export type UpdateWorkspaceRequestBody$Outbound = {
@@ -55,19 +40,6 @@ export const UpdateWorkspaceRequestBody$outboundSchema: z.ZodType<
   conversionEnabled: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateWorkspaceRequestBody$ {
-  /** @deprecated use `UpdateWorkspaceRequestBody$inboundSchema` instead. */
-  export const inboundSchema = UpdateWorkspaceRequestBody$inboundSchema;
-  /** @deprecated use `UpdateWorkspaceRequestBody$outboundSchema` instead. */
-  export const outboundSchema = UpdateWorkspaceRequestBody$outboundSchema;
-  /** @deprecated use `UpdateWorkspaceRequestBody$Outbound` instead. */
-  export type Outbound = UpdateWorkspaceRequestBody$Outbound;
-}
-
 export function updateWorkspaceRequestBodyToJSON(
   updateWorkspaceRequestBody: UpdateWorkspaceRequestBody,
 ): string {
@@ -75,31 +47,6 @@ export function updateWorkspaceRequestBodyToJSON(
     UpdateWorkspaceRequestBody$outboundSchema.parse(updateWorkspaceRequestBody),
   );
 }
-
-export function updateWorkspaceRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateWorkspaceRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateWorkspaceRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateWorkspaceRequestBody' from JSON`,
-  );
-}
-
-/** @internal */
-export const UpdateWorkspaceRequest$inboundSchema: z.ZodType<
-  UpdateWorkspaceRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  idOrSlug: z.string(),
-  RequestBody: z.lazy(() => UpdateWorkspaceRequestBody$inboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 
 /** @internal */
 export type UpdateWorkspaceRequest$Outbound = {
@@ -122,33 +69,10 @@ export const UpdateWorkspaceRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateWorkspaceRequest$ {
-  /** @deprecated use `UpdateWorkspaceRequest$inboundSchema` instead. */
-  export const inboundSchema = UpdateWorkspaceRequest$inboundSchema;
-  /** @deprecated use `UpdateWorkspaceRequest$outboundSchema` instead. */
-  export const outboundSchema = UpdateWorkspaceRequest$outboundSchema;
-  /** @deprecated use `UpdateWorkspaceRequest$Outbound` instead. */
-  export type Outbound = UpdateWorkspaceRequest$Outbound;
-}
-
 export function updateWorkspaceRequestToJSON(
   updateWorkspaceRequest: UpdateWorkspaceRequest,
 ): string {
   return JSON.stringify(
     UpdateWorkspaceRequest$outboundSchema.parse(updateWorkspaceRequest),
-  );
-}
-
-export function updateWorkspaceRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateWorkspaceRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateWorkspaceRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateWorkspaceRequest' from JSON`,
   );
 }

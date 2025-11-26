@@ -206,13 +206,6 @@ export type CreateReferralsEmbedTokenResponseBody = {
 };
 
 /** @internal */
-export const CreateReferralsEmbedTokenTagIds$inboundSchema: z.ZodType<
-  CreateReferralsEmbedTokenTagIds,
-  z.ZodTypeDef,
-  unknown
-> = z.union([z.string(), z.array(z.string())]);
-
-/** @internal */
 export type CreateReferralsEmbedTokenTagIds$Outbound = string | Array<string>;
 
 /** @internal */
@@ -221,19 +214,6 @@ export const CreateReferralsEmbedTokenTagIds$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateReferralsEmbedTokenTagIds
 > = z.union([z.string(), z.array(z.string())]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateReferralsEmbedTokenTagIds$ {
-  /** @deprecated use `CreateReferralsEmbedTokenTagIds$inboundSchema` instead. */
-  export const inboundSchema = CreateReferralsEmbedTokenTagIds$inboundSchema;
-  /** @deprecated use `CreateReferralsEmbedTokenTagIds$outboundSchema` instead. */
-  export const outboundSchema = CreateReferralsEmbedTokenTagIds$outboundSchema;
-  /** @deprecated use `CreateReferralsEmbedTokenTagIds$Outbound` instead. */
-  export type Outbound = CreateReferralsEmbedTokenTagIds$Outbound;
-}
 
 export function createReferralsEmbedTokenTagIdsToJSON(
   createReferralsEmbedTokenTagIds: CreateReferralsEmbedTokenTagIds,
@@ -245,23 +225,6 @@ export function createReferralsEmbedTokenTagIdsToJSON(
   );
 }
 
-export function createReferralsEmbedTokenTagIdsFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateReferralsEmbedTokenTagIds, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateReferralsEmbedTokenTagIds$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateReferralsEmbedTokenTagIds' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateReferralsEmbedTokenTagNames$inboundSchema: z.ZodType<
-  CreateReferralsEmbedTokenTagNames,
-  z.ZodTypeDef,
-  unknown
-> = z.union([z.string(), z.array(z.string())]);
-
 /** @internal */
 export type CreateReferralsEmbedTokenTagNames$Outbound = string | Array<string>;
 
@@ -272,20 +235,6 @@ export const CreateReferralsEmbedTokenTagNames$outboundSchema: z.ZodType<
   CreateReferralsEmbedTokenTagNames
 > = z.union([z.string(), z.array(z.string())]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateReferralsEmbedTokenTagNames$ {
-  /** @deprecated use `CreateReferralsEmbedTokenTagNames$inboundSchema` instead. */
-  export const inboundSchema = CreateReferralsEmbedTokenTagNames$inboundSchema;
-  /** @deprecated use `CreateReferralsEmbedTokenTagNames$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateReferralsEmbedTokenTagNames$outboundSchema;
-  /** @deprecated use `CreateReferralsEmbedTokenTagNames$Outbound` instead. */
-  export type Outbound = CreateReferralsEmbedTokenTagNames$Outbound;
-}
-
 export function createReferralsEmbedTokenTagNamesToJSON(
   createReferralsEmbedTokenTagNames: CreateReferralsEmbedTokenTagNames,
 ): string {
@@ -295,26 +244,6 @@ export function createReferralsEmbedTokenTagNamesToJSON(
     ),
   );
 }
-
-export function createReferralsEmbedTokenTagNamesFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateReferralsEmbedTokenTagNames, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateReferralsEmbedTokenTagNames$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateReferralsEmbedTokenTagNames' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateReferralsEmbedTokenTestVariants$inboundSchema: z.ZodType<
-  CreateReferralsEmbedTokenTestVariants,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  url: z.string(),
-  percentage: z.number(),
-});
 
 /** @internal */
 export type CreateReferralsEmbedTokenTestVariants$Outbound = {
@@ -332,21 +261,6 @@ export const CreateReferralsEmbedTokenTestVariants$outboundSchema: z.ZodType<
   percentage: z.number(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateReferralsEmbedTokenTestVariants$ {
-  /** @deprecated use `CreateReferralsEmbedTokenTestVariants$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateReferralsEmbedTokenTestVariants$inboundSchema;
-  /** @deprecated use `CreateReferralsEmbedTokenTestVariants$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateReferralsEmbedTokenTestVariants$outboundSchema;
-  /** @deprecated use `CreateReferralsEmbedTokenTestVariants$Outbound` instead. */
-  export type Outbound = CreateReferralsEmbedTokenTestVariants$Outbound;
-}
-
 export function createReferralsEmbedTokenTestVariantsToJSON(
   createReferralsEmbedTokenTestVariants: CreateReferralsEmbedTokenTestVariants,
 ): string {
@@ -356,65 +270,6 @@ export function createReferralsEmbedTokenTestVariantsToJSON(
     ),
   );
 }
-
-export function createReferralsEmbedTokenTestVariantsFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateReferralsEmbedTokenTestVariants, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateReferralsEmbedTokenTestVariants$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateReferralsEmbedTokenTestVariants' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateReferralsEmbedTokenLinkProps$inboundSchema: z.ZodType<
-  CreateReferralsEmbedTokenLinkProps,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  keyLength: z.number().optional(),
-  externalId: z.nullable(z.string()).optional(),
-  tenantId: z.nullable(z.string()).optional(),
-  prefix: z.string().optional(),
-  archived: z.boolean().optional(),
-  tagIds: z.union([z.string(), z.array(z.string())]).optional(),
-  tagNames: z.union([z.string(), z.array(z.string())]).optional(),
-  folderId: z.nullable(z.string()).optional(),
-  comments: z.nullable(z.string()).optional(),
-  expiresAt: z.nullable(z.string()).optional(),
-  expiredUrl: z.nullable(z.string()).optional(),
-  password: z.nullable(z.string()).optional(),
-  proxy: z.boolean().optional(),
-  title: z.nullable(z.string()).optional(),
-  description: z.nullable(z.string()).optional(),
-  image: z.nullable(z.string()).optional(),
-  video: z.nullable(z.string()).optional(),
-  rewrite: z.boolean().optional(),
-  ios: z.nullable(z.string()).optional(),
-  android: z.nullable(z.string()).optional(),
-  doIndex: z.boolean().optional(),
-  utm_source: z.nullable(z.string()).optional(),
-  utm_medium: z.nullable(z.string()).optional(),
-  utm_campaign: z.nullable(z.string()).optional(),
-  utm_term: z.nullable(z.string()).optional(),
-  utm_content: z.nullable(z.string()).optional(),
-  ref: z.nullable(z.string()).optional(),
-  testVariants: z.nullable(
-    z.array(z.lazy(() => CreateReferralsEmbedTokenTestVariants$inboundSchema)),
-  ).optional(),
-  testStartedAt: z.nullable(z.string()).optional(),
-  testCompletedAt: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "utm_source": "utmSource",
-    "utm_medium": "utmMedium",
-    "utm_campaign": "utmCampaign",
-    "utm_term": "utmTerm",
-    "utm_content": "utmContent",
-  });
-});
 
 /** @internal */
 export type CreateReferralsEmbedTokenLinkProps$Outbound = {
@@ -501,20 +356,6 @@ export const CreateReferralsEmbedTokenLinkProps$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateReferralsEmbedTokenLinkProps$ {
-  /** @deprecated use `CreateReferralsEmbedTokenLinkProps$inboundSchema` instead. */
-  export const inboundSchema = CreateReferralsEmbedTokenLinkProps$inboundSchema;
-  /** @deprecated use `CreateReferralsEmbedTokenLinkProps$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateReferralsEmbedTokenLinkProps$outboundSchema;
-  /** @deprecated use `CreateReferralsEmbedTokenLinkProps$Outbound` instead. */
-  export type Outbound = CreateReferralsEmbedTokenLinkProps$Outbound;
-}
-
 export function createReferralsEmbedTokenLinkPropsToJSON(
   createReferralsEmbedTokenLinkProps: CreateReferralsEmbedTokenLinkProps,
 ): string {
@@ -524,32 +365,6 @@ export function createReferralsEmbedTokenLinkPropsToJSON(
     ),
   );
 }
-
-export function createReferralsEmbedTokenLinkPropsFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateReferralsEmbedTokenLinkProps, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateReferralsEmbedTokenLinkProps$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateReferralsEmbedTokenLinkProps' from JSON`,
-  );
-}
-
-/** @internal */
-export const Partner$inboundSchema: z.ZodType<Partner, z.ZodTypeDef, unknown> =
-  z.object({
-    name: z.nullable(z.string()).optional(),
-    email: z.string(),
-    username: z.nullable(z.string()).optional(),
-    image: z.nullable(z.string()).optional(),
-    tenantId: z.string().optional(),
-    groupId: z.string().optional(),
-    country: z.nullable(z.string()).optional(),
-    description: z.nullable(z.string()).optional(),
-    linkProps: z.lazy(() => CreateReferralsEmbedTokenLinkProps$inboundSchema)
-      .optional(),
-  });
 
 /** @internal */
 export type Partner$Outbound = {
@@ -582,43 +397,9 @@ export const Partner$outboundSchema: z.ZodType<
     .optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Partner$ {
-  /** @deprecated use `Partner$inboundSchema` instead. */
-  export const inboundSchema = Partner$inboundSchema;
-  /** @deprecated use `Partner$outboundSchema` instead. */
-  export const outboundSchema = Partner$outboundSchema;
-  /** @deprecated use `Partner$Outbound` instead. */
-  export type Outbound = Partner$Outbound;
-}
-
 export function partnerToJSON(partner: Partner): string {
   return JSON.stringify(Partner$outboundSchema.parse(partner));
 }
-
-export function partnerFromJSON(
-  jsonString: string,
-): SafeParseResult<Partner, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Partner$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Partner' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateReferralsEmbedTokenRequestBody$inboundSchema: z.ZodType<
-  CreateReferralsEmbedTokenRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  partnerId: z.string().optional(),
-  tenantId: z.string().optional(),
-  partner: z.lazy(() => Partner$inboundSchema).optional(),
-});
 
 /** @internal */
 export type CreateReferralsEmbedTokenRequestBody$Outbound = {
@@ -638,21 +419,6 @@ export const CreateReferralsEmbedTokenRequestBody$outboundSchema: z.ZodType<
   partner: z.lazy(() => Partner$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateReferralsEmbedTokenRequestBody$ {
-  /** @deprecated use `CreateReferralsEmbedTokenRequestBody$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateReferralsEmbedTokenRequestBody$inboundSchema;
-  /** @deprecated use `CreateReferralsEmbedTokenRequestBody$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateReferralsEmbedTokenRequestBody$outboundSchema;
-  /** @deprecated use `CreateReferralsEmbedTokenRequestBody$Outbound` instead. */
-  export type Outbound = CreateReferralsEmbedTokenRequestBody$Outbound;
-}
-
 export function createReferralsEmbedTokenRequestBodyToJSON(
   createReferralsEmbedTokenRequestBody: CreateReferralsEmbedTokenRequestBody,
 ): string {
@@ -660,17 +426,6 @@ export function createReferralsEmbedTokenRequestBodyToJSON(
     CreateReferralsEmbedTokenRequestBody$outboundSchema.parse(
       createReferralsEmbedTokenRequestBody,
     ),
-  );
-}
-
-export function createReferralsEmbedTokenRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateReferralsEmbedTokenRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateReferralsEmbedTokenRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateReferralsEmbedTokenRequestBody' from JSON`,
   );
 }
 
@@ -683,47 +438,6 @@ export const CreateReferralsEmbedTokenResponseBody$inboundSchema: z.ZodType<
   publicToken: z.string(),
   expires: z.string(),
 });
-
-/** @internal */
-export type CreateReferralsEmbedTokenResponseBody$Outbound = {
-  publicToken: string;
-  expires: string;
-};
-
-/** @internal */
-export const CreateReferralsEmbedTokenResponseBody$outboundSchema: z.ZodType<
-  CreateReferralsEmbedTokenResponseBody$Outbound,
-  z.ZodTypeDef,
-  CreateReferralsEmbedTokenResponseBody
-> = z.object({
-  publicToken: z.string(),
-  expires: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateReferralsEmbedTokenResponseBody$ {
-  /** @deprecated use `CreateReferralsEmbedTokenResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateReferralsEmbedTokenResponseBody$inboundSchema;
-  /** @deprecated use `CreateReferralsEmbedTokenResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateReferralsEmbedTokenResponseBody$outboundSchema;
-  /** @deprecated use `CreateReferralsEmbedTokenResponseBody$Outbound` instead. */
-  export type Outbound = CreateReferralsEmbedTokenResponseBody$Outbound;
-}
-
-export function createReferralsEmbedTokenResponseBodyToJSON(
-  createReferralsEmbedTokenResponseBody: CreateReferralsEmbedTokenResponseBody,
-): string {
-  return JSON.stringify(
-    CreateReferralsEmbedTokenResponseBody$outboundSchema.parse(
-      createReferralsEmbedTokenResponseBody,
-    ),
-  );
-}
 
 export function createReferralsEmbedTokenResponseBodyFromJSON(
   jsonString: string,

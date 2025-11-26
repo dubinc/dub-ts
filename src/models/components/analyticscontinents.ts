@@ -53,21 +53,6 @@ export const Continent$inboundSchema: z.ZodNativeEnum<typeof Continent> = z
   .nativeEnum(Continent);
 
 /** @internal */
-export const Continent$outboundSchema: z.ZodNativeEnum<typeof Continent> =
-  Continent$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Continent$ {
-  /** @deprecated use `Continent$inboundSchema` instead. */
-  export const inboundSchema = Continent$inboundSchema;
-  /** @deprecated use `Continent$outboundSchema` instead. */
-  export const outboundSchema = Continent$outboundSchema;
-}
-
-/** @internal */
 export const AnalyticsContinents$inboundSchema: z.ZodType<
   AnalyticsContinents,
   z.ZodTypeDef,
@@ -79,49 +64,6 @@ export const AnalyticsContinents$inboundSchema: z.ZodType<
   sales: z.number().default(0),
   saleAmount: z.number().default(0),
 });
-
-/** @internal */
-export type AnalyticsContinents$Outbound = {
-  continent: string;
-  clicks: number;
-  leads: number;
-  sales: number;
-  saleAmount: number;
-};
-
-/** @internal */
-export const AnalyticsContinents$outboundSchema: z.ZodType<
-  AnalyticsContinents$Outbound,
-  z.ZodTypeDef,
-  AnalyticsContinents
-> = z.object({
-  continent: Continent$outboundSchema,
-  clicks: z.number().default(0),
-  leads: z.number().default(0),
-  sales: z.number().default(0),
-  saleAmount: z.number().default(0),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AnalyticsContinents$ {
-  /** @deprecated use `AnalyticsContinents$inboundSchema` instead. */
-  export const inboundSchema = AnalyticsContinents$inboundSchema;
-  /** @deprecated use `AnalyticsContinents$outboundSchema` instead. */
-  export const outboundSchema = AnalyticsContinents$outboundSchema;
-  /** @deprecated use `AnalyticsContinents$Outbound` instead. */
-  export type Outbound = AnalyticsContinents$Outbound;
-}
-
-export function analyticsContinentsToJSON(
-  analyticsContinents: AnalyticsContinents,
-): string {
-  return JSON.stringify(
-    AnalyticsContinents$outboundSchema.parse(analyticsContinents),
-  );
-}
 
 export function analyticsContinentsFromJSON(
   jsonString: string,

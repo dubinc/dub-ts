@@ -4,9 +4,6 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The unique IDs of the tags assigned to the short link.
@@ -188,13 +185,6 @@ export type UpdateLinkRequest = {
 };
 
 /** @internal */
-export const UpdateLinkTagIds$inboundSchema: z.ZodType<
-  UpdateLinkTagIds,
-  z.ZodTypeDef,
-  unknown
-> = z.union([z.string(), z.array(z.string())]);
-
-/** @internal */
 export type UpdateLinkTagIds$Outbound = string | Array<string>;
 
 /** @internal */
@@ -204,19 +194,6 @@ export const UpdateLinkTagIds$outboundSchema: z.ZodType<
   UpdateLinkTagIds
 > = z.union([z.string(), z.array(z.string())]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateLinkTagIds$ {
-  /** @deprecated use `UpdateLinkTagIds$inboundSchema` instead. */
-  export const inboundSchema = UpdateLinkTagIds$inboundSchema;
-  /** @deprecated use `UpdateLinkTagIds$outboundSchema` instead. */
-  export const outboundSchema = UpdateLinkTagIds$outboundSchema;
-  /** @deprecated use `UpdateLinkTagIds$Outbound` instead. */
-  export type Outbound = UpdateLinkTagIds$Outbound;
-}
-
 export function updateLinkTagIdsToJSON(
   updateLinkTagIds: UpdateLinkTagIds,
 ): string {
@@ -224,23 +201,6 @@ export function updateLinkTagIdsToJSON(
     UpdateLinkTagIds$outboundSchema.parse(updateLinkTagIds),
   );
 }
-
-export function updateLinkTagIdsFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateLinkTagIds, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateLinkTagIds$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateLinkTagIds' from JSON`,
-  );
-}
-
-/** @internal */
-export const UpdateLinkTagNames$inboundSchema: z.ZodType<
-  UpdateLinkTagNames,
-  z.ZodTypeDef,
-  unknown
-> = z.union([z.string(), z.array(z.string())]);
 
 /** @internal */
 export type UpdateLinkTagNames$Outbound = string | Array<string>;
@@ -252,19 +212,6 @@ export const UpdateLinkTagNames$outboundSchema: z.ZodType<
   UpdateLinkTagNames
 > = z.union([z.string(), z.array(z.string())]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateLinkTagNames$ {
-  /** @deprecated use `UpdateLinkTagNames$inboundSchema` instead. */
-  export const inboundSchema = UpdateLinkTagNames$inboundSchema;
-  /** @deprecated use `UpdateLinkTagNames$outboundSchema` instead. */
-  export const outboundSchema = UpdateLinkTagNames$outboundSchema;
-  /** @deprecated use `UpdateLinkTagNames$Outbound` instead. */
-  export type Outbound = UpdateLinkTagNames$Outbound;
-}
-
 export function updateLinkTagNamesToJSON(
   updateLinkTagNames: UpdateLinkTagNames,
 ): string {
@@ -272,26 +219,6 @@ export function updateLinkTagNamesToJSON(
     UpdateLinkTagNames$outboundSchema.parse(updateLinkTagNames),
   );
 }
-
-export function updateLinkTagNamesFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateLinkTagNames, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateLinkTagNames$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateLinkTagNames' from JSON`,
-  );
-}
-
-/** @internal */
-export const UpdateLinkTestVariants$inboundSchema: z.ZodType<
-  UpdateLinkTestVariants,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  url: z.string(),
-  percentage: z.number(),
-});
 
 /** @internal */
 export type UpdateLinkTestVariants$Outbound = {
@@ -309,19 +236,6 @@ export const UpdateLinkTestVariants$outboundSchema: z.ZodType<
   percentage: z.number(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateLinkTestVariants$ {
-  /** @deprecated use `UpdateLinkTestVariants$inboundSchema` instead. */
-  export const inboundSchema = UpdateLinkTestVariants$inboundSchema;
-  /** @deprecated use `UpdateLinkTestVariants$outboundSchema` instead. */
-  export const outboundSchema = UpdateLinkTestVariants$outboundSchema;
-  /** @deprecated use `UpdateLinkTestVariants$Outbound` instead. */
-  export type Outbound = UpdateLinkTestVariants$Outbound;
-}
-
 export function updateLinkTestVariantsToJSON(
   updateLinkTestVariants: UpdateLinkTestVariants,
 ): string {
@@ -329,72 +243,6 @@ export function updateLinkTestVariantsToJSON(
     UpdateLinkTestVariants$outboundSchema.parse(updateLinkTestVariants),
   );
 }
-
-export function updateLinkTestVariantsFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateLinkTestVariants, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateLinkTestVariants$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateLinkTestVariants' from JSON`,
-  );
-}
-
-/** @internal */
-export const UpdateLinkRequestBody$inboundSchema: z.ZodType<
-  UpdateLinkRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  url: z.string().optional(),
-  domain: z.string().optional(),
-  key: z.string().optional(),
-  externalId: z.nullable(z.string()).optional(),
-  tenantId: z.nullable(z.string()).optional(),
-  programId: z.nullable(z.string()).optional(),
-  partnerId: z.nullable(z.string()).optional(),
-  trackConversion: z.boolean().optional(),
-  archived: z.boolean().optional(),
-  tagIds: z.union([z.string(), z.array(z.string())]).optional(),
-  tagNames: z.union([z.string(), z.array(z.string())]).optional(),
-  folderId: z.nullable(z.string()).optional(),
-  comments: z.nullable(z.string()).optional(),
-  expiresAt: z.nullable(z.string()).optional(),
-  expiredUrl: z.nullable(z.string()).optional(),
-  password: z.nullable(z.string()).optional(),
-  proxy: z.boolean().optional(),
-  title: z.nullable(z.string()).optional(),
-  description: z.nullable(z.string()).optional(),
-  image: z.nullable(z.string()).optional(),
-  video: z.nullable(z.string()).optional(),
-  rewrite: z.boolean().optional(),
-  ios: z.nullable(z.string()).optional(),
-  android: z.nullable(z.string()).optional(),
-  geo: z.nullable(z.record(z.string())).optional(),
-  doIndex: z.boolean().optional(),
-  utm_source: z.nullable(z.string()).optional(),
-  utm_medium: z.nullable(z.string()).optional(),
-  utm_campaign: z.nullable(z.string()).optional(),
-  utm_term: z.nullable(z.string()).optional(),
-  utm_content: z.nullable(z.string()).optional(),
-  ref: z.nullable(z.string()).optional(),
-  webhookIds: z.nullable(z.array(z.string())).optional(),
-  testVariants: z.nullable(
-    z.array(z.lazy(() => UpdateLinkTestVariants$inboundSchema)),
-  ).optional(),
-  testStartedAt: z.nullable(z.string()).optional(),
-  testCompletedAt: z.nullable(z.string()).optional(),
-  publicStats: z.boolean().optional(),
-  tagId: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "utm_source": "utmSource",
-    "utm_medium": "utmMedium",
-    "utm_campaign": "utmCampaign",
-    "utm_term": "utmTerm",
-    "utm_content": "utmContent",
-  });
-});
 
 /** @internal */
 export type UpdateLinkRequestBody$Outbound = {
@@ -494,19 +342,6 @@ export const UpdateLinkRequestBody$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateLinkRequestBody$ {
-  /** @deprecated use `UpdateLinkRequestBody$inboundSchema` instead. */
-  export const inboundSchema = UpdateLinkRequestBody$inboundSchema;
-  /** @deprecated use `UpdateLinkRequestBody$outboundSchema` instead. */
-  export const outboundSchema = UpdateLinkRequestBody$outboundSchema;
-  /** @deprecated use `UpdateLinkRequestBody$Outbound` instead. */
-  export type Outbound = UpdateLinkRequestBody$Outbound;
-}
-
 export function updateLinkRequestBodyToJSON(
   updateLinkRequestBody: UpdateLinkRequestBody,
 ): string {
@@ -514,30 +349,6 @@ export function updateLinkRequestBodyToJSON(
     UpdateLinkRequestBody$outboundSchema.parse(updateLinkRequestBody),
   );
 }
-
-export function updateLinkRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateLinkRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateLinkRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateLinkRequestBody' from JSON`,
-  );
-}
-
-/** @internal */
-export const UpdateLinkRequest$inboundSchema: z.ZodType<
-  UpdateLinkRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  linkId: z.string(),
-  RequestBody: z.lazy(() => UpdateLinkRequestBody$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
 
 /** @internal */
 export type UpdateLinkRequest$Outbound = {
@@ -559,33 +370,10 @@ export const UpdateLinkRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateLinkRequest$ {
-  /** @deprecated use `UpdateLinkRequest$inboundSchema` instead. */
-  export const inboundSchema = UpdateLinkRequest$inboundSchema;
-  /** @deprecated use `UpdateLinkRequest$outboundSchema` instead. */
-  export const outboundSchema = UpdateLinkRequest$outboundSchema;
-  /** @deprecated use `UpdateLinkRequest$Outbound` instead. */
-  export type Outbound = UpdateLinkRequest$Outbound;
-}
-
 export function updateLinkRequestToJSON(
   updateLinkRequest: UpdateLinkRequest,
 ): string {
   return JSON.stringify(
     UpdateLinkRequest$outboundSchema.parse(updateLinkRequest),
-  );
-}
-
-export function updateLinkRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateLinkRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateLinkRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateLinkRequest' from JSON`,
   );
 }

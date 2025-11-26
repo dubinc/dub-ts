@@ -72,22 +72,6 @@ export const UnauthorizedCode$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(UnauthorizedCode);
 
 /** @internal */
-export const UnauthorizedCode$outboundSchema: z.ZodNativeEnum<
-  typeof UnauthorizedCode
-> = UnauthorizedCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnauthorizedCode$ {
-  /** @deprecated use `UnauthorizedCode$inboundSchema` instead. */
-  export const inboundSchema = UnauthorizedCode$inboundSchema;
-  /** @deprecated use `UnauthorizedCode$outboundSchema` instead. */
-  export const outboundSchema = UnauthorizedCode$outboundSchema;
-}
-
-/** @internal */
 export const UnauthorizedError$inboundSchema: z.ZodType<
   UnauthorizedError,
   z.ZodTypeDef,
@@ -101,49 +85,6 @@ export const UnauthorizedError$inboundSchema: z.ZodType<
     "doc_url": "docUrl",
   });
 });
-
-/** @internal */
-export type UnauthorizedError$Outbound = {
-  code: string;
-  message: string;
-  doc_url?: string | undefined;
-};
-
-/** @internal */
-export const UnauthorizedError$outboundSchema: z.ZodType<
-  UnauthorizedError$Outbound,
-  z.ZodTypeDef,
-  UnauthorizedError
-> = z.object({
-  code: UnauthorizedCode$outboundSchema,
-  message: z.string(),
-  docUrl: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    docUrl: "doc_url",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnauthorizedError$ {
-  /** @deprecated use `UnauthorizedError$inboundSchema` instead. */
-  export const inboundSchema = UnauthorizedError$inboundSchema;
-  /** @deprecated use `UnauthorizedError$outboundSchema` instead. */
-  export const outboundSchema = UnauthorizedError$outboundSchema;
-  /** @deprecated use `UnauthorizedError$Outbound` instead. */
-  export type Outbound = UnauthorizedError$Outbound;
-}
-
-export function unauthorizedErrorToJSON(
-  unauthorizedError: UnauthorizedError,
-): string {
-  return JSON.stringify(
-    UnauthorizedError$outboundSchema.parse(unauthorizedError),
-  );
-}
 
 export function unauthorizedErrorFromJSON(
   jsonString: string,
@@ -173,32 +114,3 @@ export const Unauthorized$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type Unauthorized$Outbound = {
-  error: UnauthorizedError$Outbound;
-};
-
-/** @internal */
-export const Unauthorized$outboundSchema: z.ZodType<
-  Unauthorized$Outbound,
-  z.ZodTypeDef,
-  Unauthorized
-> = z.instanceof(Unauthorized)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    error: z.lazy(() => UnauthorizedError$outboundSchema),
-  }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Unauthorized$ {
-  /** @deprecated use `Unauthorized$inboundSchema` instead. */
-  export const inboundSchema = Unauthorized$inboundSchema;
-  /** @deprecated use `Unauthorized$outboundSchema` instead. */
-  export const outboundSchema = Unauthorized$outboundSchema;
-  /** @deprecated use `Unauthorized$Outbound` instead. */
-  export type Outbound = Unauthorized$Outbound;
-}

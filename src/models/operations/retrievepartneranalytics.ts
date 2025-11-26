@@ -47,13 +47,13 @@ export type RetrievePartnerAnalyticsQueryParamGroupBy = ClosedEnum<
 
 export type RetrievePartnerAnalyticsRequest = {
   /**
-   * The ID of the partner to retrieve analytics for.
+   * The ID of the partner to create a link for. Will take precedence over `tenantId` if provided.
    */
-  partnerId?: string | undefined;
+  partnerId?: string | null | undefined;
   /**
-   * The ID of the tenant that created the link inside your system.
+   * The ID of the partner in your system. If both `partnerId` and `tenantId` are not provided, an error will be thrown.
    */
-  tenantId?: string | undefined;
+  tenantId?: string | null | undefined;
   /**
    * The interval to retrieve analytics for. If undefined, defaults to 24h.
    */
@@ -89,73 +89,19 @@ export type RetrievePartnerAnalyticsResponseBody =
   | Array<components.PartnerAnalyticsTopLinks>;
 
 /** @internal */
-export const RetrievePartnerAnalyticsQueryParamInterval$inboundSchema:
+export const RetrievePartnerAnalyticsQueryParamInterval$outboundSchema:
   z.ZodNativeEnum<typeof RetrievePartnerAnalyticsQueryParamInterval> = z
     .nativeEnum(RetrievePartnerAnalyticsQueryParamInterval);
 
 /** @internal */
-export const RetrievePartnerAnalyticsQueryParamInterval$outboundSchema:
-  z.ZodNativeEnum<typeof RetrievePartnerAnalyticsQueryParamInterval> =
-    RetrievePartnerAnalyticsQueryParamInterval$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrievePartnerAnalyticsQueryParamInterval$ {
-  /** @deprecated use `RetrievePartnerAnalyticsQueryParamInterval$inboundSchema` instead. */
-  export const inboundSchema =
-    RetrievePartnerAnalyticsQueryParamInterval$inboundSchema;
-  /** @deprecated use `RetrievePartnerAnalyticsQueryParamInterval$outboundSchema` instead. */
-  export const outboundSchema =
-    RetrievePartnerAnalyticsQueryParamInterval$outboundSchema;
-}
-
-/** @internal */
-export const RetrievePartnerAnalyticsQueryParamGroupBy$inboundSchema:
+export const RetrievePartnerAnalyticsQueryParamGroupBy$outboundSchema:
   z.ZodNativeEnum<typeof RetrievePartnerAnalyticsQueryParamGroupBy> = z
     .nativeEnum(RetrievePartnerAnalyticsQueryParamGroupBy);
 
 /** @internal */
-export const RetrievePartnerAnalyticsQueryParamGroupBy$outboundSchema:
-  z.ZodNativeEnum<typeof RetrievePartnerAnalyticsQueryParamGroupBy> =
-    RetrievePartnerAnalyticsQueryParamGroupBy$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrievePartnerAnalyticsQueryParamGroupBy$ {
-  /** @deprecated use `RetrievePartnerAnalyticsQueryParamGroupBy$inboundSchema` instead. */
-  export const inboundSchema =
-    RetrievePartnerAnalyticsQueryParamGroupBy$inboundSchema;
-  /** @deprecated use `RetrievePartnerAnalyticsQueryParamGroupBy$outboundSchema` instead. */
-  export const outboundSchema =
-    RetrievePartnerAnalyticsQueryParamGroupBy$outboundSchema;
-}
-
-/** @internal */
-export const RetrievePartnerAnalyticsRequest$inboundSchema: z.ZodType<
-  RetrievePartnerAnalyticsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  partnerId: z.string().optional(),
-  tenantId: z.string().optional(),
-  interval: RetrievePartnerAnalyticsQueryParamInterval$inboundSchema.optional(),
-  start: z.string().optional(),
-  end: z.string().optional(),
-  timezone: z.string().default("UTC"),
-  query: z.string().optional(),
-  groupBy: RetrievePartnerAnalyticsQueryParamGroupBy$inboundSchema.default(
-    "count",
-  ),
-});
-
-/** @internal */
 export type RetrievePartnerAnalyticsRequest$Outbound = {
-  partnerId?: string | undefined;
-  tenantId?: string | undefined;
+  partnerId?: string | null | undefined;
+  tenantId?: string | null | undefined;
   interval?: string | undefined;
   start?: string | undefined;
   end?: string | undefined;
@@ -170,8 +116,8 @@ export const RetrievePartnerAnalyticsRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   RetrievePartnerAnalyticsRequest
 > = z.object({
-  partnerId: z.string().optional(),
-  tenantId: z.string().optional(),
+  partnerId: z.nullable(z.string()).optional(),
+  tenantId: z.nullable(z.string()).optional(),
   interval: RetrievePartnerAnalyticsQueryParamInterval$outboundSchema
     .optional(),
   start: z.string().optional(),
@@ -183,19 +129,6 @@ export const RetrievePartnerAnalyticsRequest$outboundSchema: z.ZodType<
   ),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrievePartnerAnalyticsRequest$ {
-  /** @deprecated use `RetrievePartnerAnalyticsRequest$inboundSchema` instead. */
-  export const inboundSchema = RetrievePartnerAnalyticsRequest$inboundSchema;
-  /** @deprecated use `RetrievePartnerAnalyticsRequest$outboundSchema` instead. */
-  export const outboundSchema = RetrievePartnerAnalyticsRequest$outboundSchema;
-  /** @deprecated use `RetrievePartnerAnalyticsRequest$Outbound` instead. */
-  export type Outbound = RetrievePartnerAnalyticsRequest$Outbound;
-}
-
 export function retrievePartnerAnalyticsRequestToJSON(
   retrievePartnerAnalyticsRequest: RetrievePartnerAnalyticsRequest,
 ): string {
@@ -203,16 +136,6 @@ export function retrievePartnerAnalyticsRequestToJSON(
     RetrievePartnerAnalyticsRequest$outboundSchema.parse(
       retrievePartnerAnalyticsRequest,
     ),
-  );
-}
-
-export function retrievePartnerAnalyticsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<RetrievePartnerAnalyticsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RetrievePartnerAnalyticsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RetrievePartnerAnalyticsRequest' from JSON`,
   );
 }
 
@@ -226,48 +149,6 @@ export const RetrievePartnerAnalyticsResponseBody$inboundSchema: z.ZodType<
   z.array(components.PartnerAnalyticsTimeseries$inboundSchema),
   z.array(components.PartnerAnalyticsTopLinks$inboundSchema),
 ]);
-
-/** @internal */
-export type RetrievePartnerAnalyticsResponseBody$Outbound =
-  | components.PartnerAnalyticsCount$Outbound
-  | Array<components.PartnerAnalyticsTimeseries$Outbound>
-  | Array<components.PartnerAnalyticsTopLinks$Outbound>;
-
-/** @internal */
-export const RetrievePartnerAnalyticsResponseBody$outboundSchema: z.ZodType<
-  RetrievePartnerAnalyticsResponseBody$Outbound,
-  z.ZodTypeDef,
-  RetrievePartnerAnalyticsResponseBody
-> = z.union([
-  components.PartnerAnalyticsCount$outboundSchema,
-  z.array(components.PartnerAnalyticsTimeseries$outboundSchema),
-  z.array(components.PartnerAnalyticsTopLinks$outboundSchema),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrievePartnerAnalyticsResponseBody$ {
-  /** @deprecated use `RetrievePartnerAnalyticsResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    RetrievePartnerAnalyticsResponseBody$inboundSchema;
-  /** @deprecated use `RetrievePartnerAnalyticsResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    RetrievePartnerAnalyticsResponseBody$outboundSchema;
-  /** @deprecated use `RetrievePartnerAnalyticsResponseBody$Outbound` instead. */
-  export type Outbound = RetrievePartnerAnalyticsResponseBody$Outbound;
-}
-
-export function retrievePartnerAnalyticsResponseBodyToJSON(
-  retrievePartnerAnalyticsResponseBody: RetrievePartnerAnalyticsResponseBody,
-): string {
-  return JSON.stringify(
-    RetrievePartnerAnalyticsResponseBody$outboundSchema.parse(
-      retrievePartnerAnalyticsResponseBody,
-    ),
-  );
-}
 
 export function retrievePartnerAnalyticsResponseBodyFromJSON(
   jsonString: string,

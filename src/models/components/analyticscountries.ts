@@ -48,39 +48,9 @@ export const Region$inboundSchema: z.ZodNativeEnum<typeof Region> = z
   .nativeEnum(Region);
 
 /** @internal */
-export const Region$outboundSchema: z.ZodNativeEnum<typeof Region> =
-  Region$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Region$ {
-  /** @deprecated use `Region$inboundSchema` instead. */
-  export const inboundSchema = Region$inboundSchema;
-  /** @deprecated use `Region$outboundSchema` instead. */
-  export const outboundSchema = Region$outboundSchema;
-}
-
-/** @internal */
 export const City$inboundSchema: z.ZodNativeEnum<typeof City> = z.nativeEnum(
   City,
 );
-
-/** @internal */
-export const City$outboundSchema: z.ZodNativeEnum<typeof City> =
-  City$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace City$ {
-  /** @deprecated use `City$inboundSchema` instead. */
-  export const inboundSchema = City$inboundSchema;
-  /** @deprecated use `City$outboundSchema` instead. */
-  export const outboundSchema = City$outboundSchema;
-}
 
 /** @internal */
 export const AnalyticsCountries$inboundSchema: z.ZodType<
@@ -96,53 +66,6 @@ export const AnalyticsCountries$inboundSchema: z.ZodType<
   sales: z.number().default(0),
   saleAmount: z.number().default(0),
 });
-
-/** @internal */
-export type AnalyticsCountries$Outbound = {
-  country: string;
-  region: string;
-  city: string;
-  clicks: number;
-  leads: number;
-  sales: number;
-  saleAmount: number;
-};
-
-/** @internal */
-export const AnalyticsCountries$outboundSchema: z.ZodType<
-  AnalyticsCountries$Outbound,
-  z.ZodTypeDef,
-  AnalyticsCountries
-> = z.object({
-  country: z.string(),
-  region: Region$outboundSchema.default("*"),
-  city: City$outboundSchema.default("*"),
-  clicks: z.number().default(0),
-  leads: z.number().default(0),
-  sales: z.number().default(0),
-  saleAmount: z.number().default(0),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AnalyticsCountries$ {
-  /** @deprecated use `AnalyticsCountries$inboundSchema` instead. */
-  export const inboundSchema = AnalyticsCountries$inboundSchema;
-  /** @deprecated use `AnalyticsCountries$outboundSchema` instead. */
-  export const outboundSchema = AnalyticsCountries$outboundSchema;
-  /** @deprecated use `AnalyticsCountries$Outbound` instead. */
-  export type Outbound = AnalyticsCountries$Outbound;
-}
-
-export function analyticsCountriesToJSON(
-  analyticsCountries: AnalyticsCountries,
-): string {
-  return JSON.stringify(
-    AnalyticsCountries$outboundSchema.parse(analyticsCountries),
-  );
-}
 
 export function analyticsCountriesFromJSON(
   jsonString: string,

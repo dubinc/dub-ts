@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListFoldersRequest = {
   /**
@@ -21,17 +18,6 @@ export type ListFoldersRequest = {
    */
   pageSize?: number | undefined;
 };
-
-/** @internal */
-export const ListFoldersRequest$inboundSchema: z.ZodType<
-  ListFoldersRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  search: z.string().optional(),
-  page: z.number().default(1),
-  pageSize: z.number().default(50),
-});
 
 /** @internal */
 export type ListFoldersRequest$Outbound = {
@@ -51,33 +37,10 @@ export const ListFoldersRequest$outboundSchema: z.ZodType<
   pageSize: z.number().default(50),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListFoldersRequest$ {
-  /** @deprecated use `ListFoldersRequest$inboundSchema` instead. */
-  export const inboundSchema = ListFoldersRequest$inboundSchema;
-  /** @deprecated use `ListFoldersRequest$outboundSchema` instead. */
-  export const outboundSchema = ListFoldersRequest$outboundSchema;
-  /** @deprecated use `ListFoldersRequest$Outbound` instead. */
-  export type Outbound = ListFoldersRequest$Outbound;
-}
-
 export function listFoldersRequestToJSON(
   listFoldersRequest: ListFoldersRequest,
 ): string {
   return JSON.stringify(
     ListFoldersRequest$outboundSchema.parse(listFoldersRequest),
-  );
-}
-
-export function listFoldersRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ListFoldersRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListFoldersRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListFoldersRequest' from JSON`,
   );
 }

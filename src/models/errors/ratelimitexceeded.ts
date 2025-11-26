@@ -72,22 +72,6 @@ export const RateLimitExceededCode$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(RateLimitExceededCode);
 
 /** @internal */
-export const RateLimitExceededCode$outboundSchema: z.ZodNativeEnum<
-  typeof RateLimitExceededCode
-> = RateLimitExceededCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RateLimitExceededCode$ {
-  /** @deprecated use `RateLimitExceededCode$inboundSchema` instead. */
-  export const inboundSchema = RateLimitExceededCode$inboundSchema;
-  /** @deprecated use `RateLimitExceededCode$outboundSchema` instead. */
-  export const outboundSchema = RateLimitExceededCode$outboundSchema;
-}
-
-/** @internal */
 export const RateLimitExceededError$inboundSchema: z.ZodType<
   RateLimitExceededError,
   z.ZodTypeDef,
@@ -101,49 +85,6 @@ export const RateLimitExceededError$inboundSchema: z.ZodType<
     "doc_url": "docUrl",
   });
 });
-
-/** @internal */
-export type RateLimitExceededError$Outbound = {
-  code: string;
-  message: string;
-  doc_url?: string | undefined;
-};
-
-/** @internal */
-export const RateLimitExceededError$outboundSchema: z.ZodType<
-  RateLimitExceededError$Outbound,
-  z.ZodTypeDef,
-  RateLimitExceededError
-> = z.object({
-  code: RateLimitExceededCode$outboundSchema,
-  message: z.string(),
-  docUrl: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    docUrl: "doc_url",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RateLimitExceededError$ {
-  /** @deprecated use `RateLimitExceededError$inboundSchema` instead. */
-  export const inboundSchema = RateLimitExceededError$inboundSchema;
-  /** @deprecated use `RateLimitExceededError$outboundSchema` instead. */
-  export const outboundSchema = RateLimitExceededError$outboundSchema;
-  /** @deprecated use `RateLimitExceededError$Outbound` instead. */
-  export type Outbound = RateLimitExceededError$Outbound;
-}
-
-export function rateLimitExceededErrorToJSON(
-  rateLimitExceededError: RateLimitExceededError,
-): string {
-  return JSON.stringify(
-    RateLimitExceededError$outboundSchema.parse(rateLimitExceededError),
-  );
-}
 
 export function rateLimitExceededErrorFromJSON(
   jsonString: string,
@@ -173,32 +114,3 @@ export const RateLimitExceeded$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type RateLimitExceeded$Outbound = {
-  error: RateLimitExceededError$Outbound;
-};
-
-/** @internal */
-export const RateLimitExceeded$outboundSchema: z.ZodType<
-  RateLimitExceeded$Outbound,
-  z.ZodTypeDef,
-  RateLimitExceeded
-> = z.instanceof(RateLimitExceeded)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    error: z.lazy(() => RateLimitExceededError$outboundSchema),
-  }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RateLimitExceeded$ {
-  /** @deprecated use `RateLimitExceeded$inboundSchema` instead. */
-  export const inboundSchema = RateLimitExceeded$inboundSchema;
-  /** @deprecated use `RateLimitExceeded$outboundSchema` instead. */
-  export const outboundSchema = RateLimitExceeded$outboundSchema;
-  /** @deprecated use `RateLimitExceeded$Outbound` instead. */
-  export type Outbound = RateLimitExceeded$Outbound;
-}

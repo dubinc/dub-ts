@@ -8,12 +8,7 @@ import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  LinkTagSchema,
-  LinkTagSchema$inboundSchema,
-  LinkTagSchema$Outbound,
-  LinkTagSchema$outboundSchema,
-} from "./linktagschema.js";
+import { LinkTagSchema, LinkTagSchema$inboundSchema } from "./linktagschema.js";
 
 export const Event = {
   Click: "click",
@@ -77,6 +72,7 @@ export type Link = {
   archived: boolean;
   expiresAt: string;
   expiredUrl: string | null;
+  disabledAt: string;
   /**
    * The password required to access the destination URL of the short link.
    */
@@ -161,8 +157,8 @@ export type Link = {
    * An array of A/B test URLs and the percentage of traffic to send to each URL.
    */
   testVariants?: Array<ClickEventTestVariants> | null | undefined;
-  testStartedAt: string | null;
-  testCompletedAt: string | null;
+  testStartedAt: string;
+  testCompletedAt: string;
   userId: string | null;
   /**
    * The workspace ID of the short link.
@@ -296,21 +292,6 @@ export const Event$inboundSchema: z.ZodNativeEnum<typeof Event> = z.nativeEnum(
 );
 
 /** @internal */
-export const Event$outboundSchema: z.ZodNativeEnum<typeof Event> =
-  Event$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Event$ {
-  /** @deprecated use `Event$inboundSchema` instead. */
-  export const inboundSchema = Event$inboundSchema;
-  /** @deprecated use `Event$outboundSchema` instead. */
-  export const outboundSchema = Event$outboundSchema;
-}
-
-/** @internal */
 export const Click$inboundSchema: z.ZodType<Click, z.ZodTypeDef, unknown> = z
   .object({
     id: z.string(),
@@ -329,65 +310,6 @@ export const Click$inboundSchema: z.ZodType<Click, z.ZodTypeDef, unknown> = z
     qr: z.boolean(),
     ip: z.string(),
   });
-
-/** @internal */
-export type Click$Outbound = {
-  id: string;
-  timestamp: string;
-  url: string;
-  country: string;
-  city: string;
-  region: string;
-  continent: string;
-  device: string;
-  browser: string;
-  os: string;
-  trigger?: string | null | undefined;
-  referer: string;
-  refererUrl: string;
-  qr: boolean;
-  ip: string;
-};
-
-/** @internal */
-export const Click$outboundSchema: z.ZodType<
-  Click$Outbound,
-  z.ZodTypeDef,
-  Click
-> = z.object({
-  id: z.string(),
-  timestamp: z.string(),
-  url: z.string(),
-  country: z.string(),
-  city: z.string(),
-  region: z.string(),
-  continent: z.string(),
-  device: z.string(),
-  browser: z.string(),
-  os: z.string(),
-  trigger: z.nullable(z.string()).optional(),
-  referer: z.string(),
-  refererUrl: z.string(),
-  qr: z.boolean(),
-  ip: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Click$ {
-  /** @deprecated use `Click$inboundSchema` instead. */
-  export const inboundSchema = Click$inboundSchema;
-  /** @deprecated use `Click$outboundSchema` instead. */
-  export const outboundSchema = Click$outboundSchema;
-  /** @deprecated use `Click$Outbound` instead. */
-  export type Outbound = Click$Outbound;
-}
-
-export function clickToJSON(click: Click): string {
-  return JSON.stringify(Click$outboundSchema.parse(click));
-}
 
 export function clickFromJSON(
   jsonString: string,
@@ -408,43 +330,6 @@ export const ClickEventTestVariants$inboundSchema: z.ZodType<
   url: z.string(),
   percentage: z.number(),
 });
-
-/** @internal */
-export type ClickEventTestVariants$Outbound = {
-  url: string;
-  percentage: number;
-};
-
-/** @internal */
-export const ClickEventTestVariants$outboundSchema: z.ZodType<
-  ClickEventTestVariants$Outbound,
-  z.ZodTypeDef,
-  ClickEventTestVariants
-> = z.object({
-  url: z.string(),
-  percentage: z.number(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ClickEventTestVariants$ {
-  /** @deprecated use `ClickEventTestVariants$inboundSchema` instead. */
-  export const inboundSchema = ClickEventTestVariants$inboundSchema;
-  /** @deprecated use `ClickEventTestVariants$outboundSchema` instead. */
-  export const outboundSchema = ClickEventTestVariants$outboundSchema;
-  /** @deprecated use `ClickEventTestVariants$Outbound` instead. */
-  export type Outbound = ClickEventTestVariants$Outbound;
-}
-
-export function clickEventTestVariantsToJSON(
-  clickEventTestVariants: ClickEventTestVariants,
-): string {
-  return JSON.stringify(
-    ClickEventTestVariants$outboundSchema.parse(clickEventTestVariants),
-  );
-}
 
 export function clickEventTestVariantsFromJSON(
   jsonString: string,
@@ -471,6 +356,7 @@ export const Link$inboundSchema: z.ZodType<Link, z.ZodTypeDef, unknown> = z
     archived: z.boolean(),
     expiresAt: z.string(),
     expiredUrl: z.nullable(z.string()),
+    disabledAt: z.string(),
     password: z.nullable(z.string()),
     proxy: z.boolean(),
     title: z.nullable(z.string()),
@@ -497,8 +383,8 @@ export const Link$inboundSchema: z.ZodType<Link, z.ZodTypeDef, unknown> = z
     testVariants: z.nullable(
       z.array(z.lazy(() => ClickEventTestVariants$inboundSchema)),
     ).optional(),
-    testStartedAt: z.nullable(z.string()),
-    testCompletedAt: z.nullable(z.string()),
+    testStartedAt: z.string(),
+    testCompletedAt: z.string(),
     userId: z.nullable(z.string()),
     workspaceId: z.string(),
     clicks: z.number().default(0),
@@ -520,142 +406,6 @@ export const Link$inboundSchema: z.ZodType<Link, z.ZodTypeDef, unknown> = z
       "utm_content": "utmContent",
     });
   });
-
-/** @internal */
-export type Link$Outbound = {
-  id: string;
-  domain: string;
-  key: string;
-  url: string;
-  trackConversion: boolean;
-  externalId: string | null;
-  tenantId: string | null;
-  programId: string | null;
-  partnerId: string | null;
-  archived: boolean;
-  expiresAt: string;
-  expiredUrl: string | null;
-  password: string | null;
-  proxy: boolean;
-  title: string | null;
-  description: string | null;
-  image: string | null;
-  video: string | null;
-  rewrite: boolean;
-  doIndex: boolean;
-  ios: string | null;
-  android: string | null;
-  geo: { [k: string]: string } | null;
-  publicStats: boolean;
-  tags: Array<LinkTagSchema$Outbound> | null;
-  folderId: string | null;
-  webhookIds: Array<string>;
-  comments: string | null;
-  shortLink: string;
-  qrCode: string;
-  utm_source: string | null;
-  utm_medium: string | null;
-  utm_campaign: string | null;
-  utm_term: string | null;
-  utm_content: string | null;
-  testVariants?: Array<ClickEventTestVariants$Outbound> | null | undefined;
-  testStartedAt: string | null;
-  testCompletedAt: string | null;
-  userId: string | null;
-  workspaceId: string;
-  clicks: number;
-  leads: number;
-  conversions: number;
-  sales: number;
-  saleAmount: number;
-  lastClicked: string;
-  createdAt: string;
-  updatedAt: string;
-  tagId: string | null;
-  projectId: string;
-};
-
-/** @internal */
-export const Link$outboundSchema: z.ZodType<Link$Outbound, z.ZodTypeDef, Link> =
-  z.object({
-    id: z.string(),
-    domain: z.string(),
-    key: z.string(),
-    url: z.string(),
-    trackConversion: z.boolean(),
-    externalId: z.nullable(z.string()),
-    tenantId: z.nullable(z.string()),
-    programId: z.nullable(z.string()),
-    partnerId: z.nullable(z.string()),
-    archived: z.boolean(),
-    expiresAt: z.string(),
-    expiredUrl: z.nullable(z.string()),
-    password: z.nullable(z.string()),
-    proxy: z.boolean(),
-    title: z.nullable(z.string()),
-    description: z.nullable(z.string()),
-    image: z.nullable(z.string()),
-    video: z.nullable(z.string()),
-    rewrite: z.boolean(),
-    doIndex: z.boolean(),
-    ios: z.nullable(z.string()),
-    android: z.nullable(z.string()),
-    geo: z.nullable(z.record(z.string())),
-    publicStats: z.boolean(),
-    tags: z.nullable(z.array(LinkTagSchema$outboundSchema)),
-    folderId: z.nullable(z.string()),
-    webhookIds: z.array(z.string()),
-    comments: z.nullable(z.string()),
-    shortLink: z.string(),
-    qrCode: z.string(),
-    utmSource: z.nullable(z.string()),
-    utmMedium: z.nullable(z.string()),
-    utmCampaign: z.nullable(z.string()),
-    utmTerm: z.nullable(z.string()),
-    utmContent: z.nullable(z.string()),
-    testVariants: z.nullable(
-      z.array(z.lazy(() => ClickEventTestVariants$outboundSchema)),
-    ).optional(),
-    testStartedAt: z.nullable(z.string()),
-    testCompletedAt: z.nullable(z.string()),
-    userId: z.nullable(z.string()),
-    workspaceId: z.string(),
-    clicks: z.number().default(0),
-    leads: z.number().default(0),
-    conversions: z.number().default(0),
-    sales: z.number().default(0),
-    saleAmount: z.number().default(0),
-    lastClicked: z.string(),
-    createdAt: z.string(),
-    updatedAt: z.string(),
-    tagId: z.nullable(z.string()),
-    projectId: z.string(),
-  }).transform((v) => {
-    return remap$(v, {
-      utmSource: "utm_source",
-      utmMedium: "utm_medium",
-      utmCampaign: "utm_campaign",
-      utmTerm: "utm_term",
-      utmContent: "utm_content",
-    });
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Link$ {
-  /** @deprecated use `Link$inboundSchema` instead. */
-  export const inboundSchema = Link$inboundSchema;
-  /** @deprecated use `Link$outboundSchema` instead. */
-  export const outboundSchema = Link$outboundSchema;
-  /** @deprecated use `Link$Outbound` instead. */
-  export type Outbound = Link$Outbound;
-}
-
-export function linkToJSON(link: Link): string {
-  return JSON.stringify(Link$outboundSchema.parse(link));
-}
 
 export function linkFromJSON(
   jsonString: string,
@@ -696,74 +446,6 @@ export const ClickEvent$inboundSchema: z.ZodType<
     "link_id": "linkId",
   });
 });
-
-/** @internal */
-export type ClickEvent$Outbound = {
-  event: string;
-  timestamp: string;
-  click: Click$Outbound;
-  link: Link$Outbound;
-  click_id: string;
-  link_id: string;
-  domain: string;
-  key: string;
-  url: string;
-  continent: string;
-  country: string;
-  city: string;
-  device: string;
-  browser: string;
-  os: string;
-  qr: number;
-  ip: string;
-};
-
-/** @internal */
-export const ClickEvent$outboundSchema: z.ZodType<
-  ClickEvent$Outbound,
-  z.ZodTypeDef,
-  ClickEvent
-> = z.object({
-  event: Event$outboundSchema,
-  timestamp: z.string(),
-  click: z.lazy(() => Click$outboundSchema),
-  link: z.lazy(() => Link$outboundSchema),
-  clickId: z.string(),
-  linkId: z.string(),
-  domain: z.string(),
-  key: z.string(),
-  url: z.string(),
-  continent: z.string(),
-  country: z.string(),
-  city: z.string(),
-  device: z.string(),
-  browser: z.string(),
-  os: z.string(),
-  qr: z.number(),
-  ip: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    clickId: "click_id",
-    linkId: "link_id",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ClickEvent$ {
-  /** @deprecated use `ClickEvent$inboundSchema` instead. */
-  export const inboundSchema = ClickEvent$inboundSchema;
-  /** @deprecated use `ClickEvent$outboundSchema` instead. */
-  export const outboundSchema = ClickEvent$outboundSchema;
-  /** @deprecated use `ClickEvent$Outbound` instead. */
-  export type Outbound = ClickEvent$Outbound;
-}
-
-export function clickEventToJSON(clickEvent: ClickEvent): string {
-  return JSON.stringify(ClickEvent$outboundSchema.parse(clickEvent));
-}
 
 export function clickEventFromJSON(
   jsonString: string,

@@ -60,38 +60,8 @@ export const Type$inboundSchema: z.ZodNativeEnum<typeof Type> = z.nativeEnum(
 );
 
 /** @internal */
-export const Type$outboundSchema: z.ZodNativeEnum<typeof Type> =
-  Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Type$ {
-  /** @deprecated use `Type$inboundSchema` instead. */
-  export const inboundSchema = Type$inboundSchema;
-  /** @deprecated use `Type$outboundSchema` instead. */
-  export const outboundSchema = Type$outboundSchema;
-}
-
-/** @internal */
 export const AccessLevel$inboundSchema: z.ZodNativeEnum<typeof AccessLevel> = z
   .nativeEnum(AccessLevel);
-
-/** @internal */
-export const AccessLevel$outboundSchema: z.ZodNativeEnum<typeof AccessLevel> =
-  AccessLevel$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccessLevel$ {
-  /** @deprecated use `AccessLevel$inboundSchema` instead. */
-  export const inboundSchema = AccessLevel$inboundSchema;
-  /** @deprecated use `AccessLevel$outboundSchema` instead. */
-  export const outboundSchema = AccessLevel$outboundSchema;
-}
 
 /** @internal */
 export const FolderSchema$inboundSchema: z.ZodType<
@@ -107,49 +77,6 @@ export const FolderSchema$inboundSchema: z.ZodType<
   createdAt: z.string(),
   updatedAt: z.string(),
 });
-
-/** @internal */
-export type FolderSchema$Outbound = {
-  id: string;
-  name: string;
-  description: string | null;
-  type: string;
-  accessLevel: string | null;
-  createdAt: string;
-  updatedAt: string;
-};
-
-/** @internal */
-export const FolderSchema$outboundSchema: z.ZodType<
-  FolderSchema$Outbound,
-  z.ZodTypeDef,
-  FolderSchema
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  description: z.nullable(z.string()),
-  type: Type$outboundSchema,
-  accessLevel: z.nullable(AccessLevel$outboundSchema).default(null),
-  createdAt: z.string(),
-  updatedAt: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FolderSchema$ {
-  /** @deprecated use `FolderSchema$inboundSchema` instead. */
-  export const inboundSchema = FolderSchema$inboundSchema;
-  /** @deprecated use `FolderSchema$outboundSchema` instead. */
-  export const outboundSchema = FolderSchema$outboundSchema;
-  /** @deprecated use `FolderSchema$Outbound` instead. */
-  export type Outbound = FolderSchema$Outbound;
-}
-
-export function folderSchemaToJSON(folderSchema: FolderSchema): string {
-  return JSON.stringify(FolderSchema$outboundSchema.parse(folderSchema));
-}
 
 export function folderSchemaFromJSON(
   jsonString: string,

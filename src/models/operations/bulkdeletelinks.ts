@@ -25,15 +25,6 @@ export type BulkDeleteLinksResponseBody = {
 };
 
 /** @internal */
-export const BulkDeleteLinksRequest$inboundSchema: z.ZodType<
-  BulkDeleteLinksRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  linkIds: z.array(z.string()),
-});
-
-/** @internal */
 export type BulkDeleteLinksRequest$Outbound = {
   linkIds: Array<string>;
 };
@@ -47,34 +38,11 @@ export const BulkDeleteLinksRequest$outboundSchema: z.ZodType<
   linkIds: z.array(z.string()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BulkDeleteLinksRequest$ {
-  /** @deprecated use `BulkDeleteLinksRequest$inboundSchema` instead. */
-  export const inboundSchema = BulkDeleteLinksRequest$inboundSchema;
-  /** @deprecated use `BulkDeleteLinksRequest$outboundSchema` instead. */
-  export const outboundSchema = BulkDeleteLinksRequest$outboundSchema;
-  /** @deprecated use `BulkDeleteLinksRequest$Outbound` instead. */
-  export type Outbound = BulkDeleteLinksRequest$Outbound;
-}
-
 export function bulkDeleteLinksRequestToJSON(
   bulkDeleteLinksRequest: BulkDeleteLinksRequest,
 ): string {
   return JSON.stringify(
     BulkDeleteLinksRequest$outboundSchema.parse(bulkDeleteLinksRequest),
-  );
-}
-
-export function bulkDeleteLinksRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<BulkDeleteLinksRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => BulkDeleteLinksRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BulkDeleteLinksRequest' from JSON`,
   );
 }
 
@@ -86,43 +54,6 @@ export const BulkDeleteLinksResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   deletedCount: z.number(),
 });
-
-/** @internal */
-export type BulkDeleteLinksResponseBody$Outbound = {
-  deletedCount: number;
-};
-
-/** @internal */
-export const BulkDeleteLinksResponseBody$outboundSchema: z.ZodType<
-  BulkDeleteLinksResponseBody$Outbound,
-  z.ZodTypeDef,
-  BulkDeleteLinksResponseBody
-> = z.object({
-  deletedCount: z.number(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BulkDeleteLinksResponseBody$ {
-  /** @deprecated use `BulkDeleteLinksResponseBody$inboundSchema` instead. */
-  export const inboundSchema = BulkDeleteLinksResponseBody$inboundSchema;
-  /** @deprecated use `BulkDeleteLinksResponseBody$outboundSchema` instead. */
-  export const outboundSchema = BulkDeleteLinksResponseBody$outboundSchema;
-  /** @deprecated use `BulkDeleteLinksResponseBody$Outbound` instead. */
-  export type Outbound = BulkDeleteLinksResponseBody$Outbound;
-}
-
-export function bulkDeleteLinksResponseBodyToJSON(
-  bulkDeleteLinksResponseBody: BulkDeleteLinksResponseBody,
-): string {
-  return JSON.stringify(
-    BulkDeleteLinksResponseBody$outboundSchema.parse(
-      bulkDeleteLinksResponseBody,
-    ),
-  );
-}
 
 export function bulkDeleteLinksResponseBodyFromJSON(
   jsonString: string,

@@ -609,6 +609,25 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/partners/ban"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: banPartner
+          source: |-
+            import { Dub } from "dub";
+
+            const dub = new Dub({
+              token: "DUB_API_KEY",
+            });
+
+            async function run() {
+              const result = await dub.partners.ban();
+
+              console.log(result);
+            }
+
+            run();
   - target: $["paths"]["/partners/links"]["get"]
     update:
       x-codeSamples:

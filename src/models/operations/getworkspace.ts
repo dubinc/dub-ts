@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetWorkspaceRequest = {
   /**
@@ -13,15 +10,6 @@ export type GetWorkspaceRequest = {
    */
   idOrSlug: string;
 };
-
-/** @internal */
-export const GetWorkspaceRequest$inboundSchema: z.ZodType<
-  GetWorkspaceRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  idOrSlug: z.string(),
-});
 
 /** @internal */
 export type GetWorkspaceRequest$Outbound = {
@@ -37,33 +25,10 @@ export const GetWorkspaceRequest$outboundSchema: z.ZodType<
   idOrSlug: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetWorkspaceRequest$ {
-  /** @deprecated use `GetWorkspaceRequest$inboundSchema` instead. */
-  export const inboundSchema = GetWorkspaceRequest$inboundSchema;
-  /** @deprecated use `GetWorkspaceRequest$outboundSchema` instead. */
-  export const outboundSchema = GetWorkspaceRequest$outboundSchema;
-  /** @deprecated use `GetWorkspaceRequest$Outbound` instead. */
-  export type Outbound = GetWorkspaceRequest$Outbound;
-}
-
 export function getWorkspaceRequestToJSON(
   getWorkspaceRequest: GetWorkspaceRequest,
 ): string {
   return JSON.stringify(
     GetWorkspaceRequest$outboundSchema.parse(getWorkspaceRequest),
-  );
-}
-
-export function getWorkspaceRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetWorkspaceRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetWorkspaceRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetWorkspaceRequest' from JSON`,
   );
 }
