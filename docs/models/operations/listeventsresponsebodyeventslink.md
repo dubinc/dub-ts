@@ -1,35 +1,37 @@
-# LinkClickedEventLink
+# ListEventsResponseBodyEventsLink
 
 ## Example Usage
 
 ```typescript
-import { LinkClickedEventLink } from "dub/models/components";
+import { ListEventsResponseBodyEventsLink } from "dub/models/operations";
 
-let value: LinkClickedEventLink = {
+let value: ListEventsResponseBodyEventsLink = {
   id: "<id>",
-  domain: "definite-vol.org",
+  domain: "nutritious-clamp.org",
   key: "<key>",
-  url: "https://spanish-invite.biz",
-  trackConversion: false,
+  url: "https://scented-overload.info/",
+  trackConversion: true,
   externalId: "<id>",
   tenantId: "<id>",
   programId: "<id>",
   partnerId: "<id>",
-  archived: true,
-  expiresAt: "1749451352584",
-  expiredUrl: "https://cloudy-detective.net",
+  archived: false,
+  expiresAt: "1760906055408",
+  expiredUrl: "https://bossy-pocket-watch.biz/",
   disabledAt: "<value>",
-  password: "3LhxJavUsFFCDII",
-  proxy: false,
+  password: "pHvmS9_0N_M9Ozq",
+  proxy: true,
   title: "<value>",
-  description: "furthermore ring annual yet expert muddy drat",
-  image: "https://picsum.photos/seed/y4HkK42a/1269/3991",
-  video: "https://loremflickr.com/2806/2642?lock=1025792232477510",
-  rewrite: true,
+  description: null,
+  image: null,
+  video: "https://picsum.videos/seed/yk78d3bAM7/1133/857",
+  rewrite: false,
   doIndex: true,
   ios: "<value>",
   android: "<id>",
-  geo: {},
+  geo: {
+    "key": "https://flustered-polarisation.biz/",
+  },
   publicStats: true,
   tags: [
     {
@@ -45,21 +47,21 @@ let value: LinkClickedEventLink = {
     "<value 3>",
   ],
   comments:
-    "minus yum infinite wherever ha liberalize daintily plain parched militate phooey rue bungalow",
-  shortLink: "https://angelic-populist.org",
-  qrCode: "https://rigid-distinction.net",
+    "ah mmm optimistic apropos scrabble along ample though even than untried athwart instead",
+  shortLink: "https://enchanting-fun.name",
+  qrCode: "https://cultivated-tusk.name/",
   utmSource: "<value>",
-  utmMedium: "<value>",
-  utmCampaign: "<value>",
+  utmMedium: null,
+  utmCampaign: null,
   utmTerm: "<value>",
   utmContent: "<value>",
   testStartedAt: "<value>",
   testCompletedAt: "<value>",
-  userId: "<id>",
+  userId: null,
   workspaceId: "<id>",
   lastClicked: "<value>",
-  createdAt: "1713045244451",
-  updatedAt: "1735610777073",
+  createdAt: "1709874947581",
+  updatedAt: "1735636363401",
   tagId: "<id>",
   projectId: "<id>",
 };
@@ -94,7 +96,7 @@ let value: LinkClickedEventLink = {
 | `android`                                                                                                                                                                                                          | *string*                                                                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                                                                 | The Android destination URL for the short link for Android device targeting.                                                                                                                                       |                                                                                                                                                                                                                    |
 | `geo`                                                                                                                                                                                                              | Record<string, *string*>                                                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                                                                 | Geo targeting information for the short link in JSON format `{[COUNTRY]: https://example.com }`. See https://d.to/geo for more information.                                                                        |                                                                                                                                                                                                                    |
 | `publicStats`                                                                                                                                                                                                      | *boolean*                                                                                                                                                                                                          | :heavy_check_mark:                                                                                                                                                                                                 | N/A                                                                                                                                                                                                                |                                                                                                                                                                                                                    |
-| `tags`                                                                                                                                                                                                             | [components.LinkTagSchema](../../models/components/linktagschema.md)[]                                                                                                                                             | :heavy_check_mark:                                                                                                                                                                                                 | The tags assigned to the short link.                                                                                                                                                                               |                                                                                                                                                                                                                    |
+| `tags`                                                                                                                                                                                                             | [components.LinkTagSchemaOutput](../../models/components/linktagschemaoutput.md)[]                                                                                                                                 | :heavy_check_mark:                                                                                                                                                                                                 | The tags assigned to the short link.                                                                                                                                                                               |                                                                                                                                                                                                                    |
 | `folderId`                                                                                                                                                                                                         | *string*                                                                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                                                                 | The unique ID of the folder assigned to the short link.                                                                                                                                                            |                                                                                                                                                                                                                    |
 | `webhookIds`                                                                                                                                                                                                       | *string*[]                                                                                                                                                                                                         | :heavy_check_mark:                                                                                                                                                                                                 | The IDs of the webhooks that the short link is associated with.                                                                                                                                                    |                                                                                                                                                                                                                    |
 | `comments`                                                                                                                                                                                                         | *string*                                                                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                                                                 | The comments for the short link.                                                                                                                                                                                   |                                                                                                                                                                                                                    |
@@ -105,7 +107,7 @@ let value: LinkClickedEventLink = {
 | `utmCampaign`                                                                                                                                                                                                      | *string*                                                                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                                                                 | The UTM campaign of the short link.                                                                                                                                                                                |                                                                                                                                                                                                                    |
 | `utmTerm`                                                                                                                                                                                                          | *string*                                                                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                                                                 | The UTM term of the short link.                                                                                                                                                                                    |                                                                                                                                                                                                                    |
 | `utmContent`                                                                                                                                                                                                       | *string*                                                                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                                                                 | The UTM content of the short link.                                                                                                                                                                                 |                                                                                                                                                                                                                    |
-| `testVariants`                                                                                                                                                                                                     | [components.LinkClickedEventTestVariants](../../models/components/linkclickedeventtestvariants.md)[]                                                                                                               | :heavy_minus_sign:                                                                                                                                                                                                 | An array of A/B test URLs and the percentage of traffic to send to each URL.                                                                                                                                       | [<br/>{<br/>"url": "https://example.com/variant-1",<br/>"percentage": 50<br/>},<br/>{<br/>"url": "https://example.com/variant-2",<br/>"percentage": 50<br/>}<br/>]                                                 |
+| `testVariants`                                                                                                                                                                                                     | [operations.ResponseBodyTestVariants](../../models/operations/responsebodytestvariants.md)[]                                                                                                                       | :heavy_minus_sign:                                                                                                                                                                                                 | An array of A/B test URLs and the percentage of traffic to send to each URL.                                                                                                                                       | [<br/>{<br/>"url": "https://example.com/variant-1",<br/>"percentage": 50<br/>},<br/>{<br/>"url": "https://example.com/variant-2",<br/>"percentage": 50<br/>}<br/>]                                                 |
 | `testStartedAt`                                                                                                                                                                                                    | *string*                                                                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                                                                 | N/A                                                                                                                                                                                                                |                                                                                                                                                                                                                    |
 | `testCompletedAt`                                                                                                                                                                                                  | *string*                                                                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                                                                 | N/A                                                                                                                                                                                                                |                                                                                                                                                                                                                    |
 | `userId`                                                                                                                                                                                                           | *string*                                                                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                                                                 | N/A                                                                                                                                                                                                                |                                                                                                                                                                                                                    |

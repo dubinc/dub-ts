@@ -15,19 +15,19 @@ export type AnalyticsTimeseries = {
   /**
    * The number of clicks in the interval
    */
-  clicks?: number | undefined;
+  clicks: number;
   /**
    * The number of leads in the interval
    */
-  leads?: number | undefined;
+  leads: number;
   /**
    * The number of sales in the interval
    */
-  sales?: number | undefined;
+  sales: number;
   /**
    * The total amount of sales in the interval, in cents
    */
-  saleAmount?: number | undefined;
+  saleAmount: number;
 };
 
 /** @internal */

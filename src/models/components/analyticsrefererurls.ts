@@ -15,19 +15,19 @@ export type AnalyticsRefererUrls = {
   /**
    * The number of clicks from this referer to this URL
    */
-  clicks?: number | undefined;
+  clicks: number;
   /**
    * The number of leads from this referer to this URL
    */
-  leads?: number | undefined;
+  leads: number;
   /**
    * The number of sales from this referer to this URL
    */
-  sales?: number | undefined;
+  sales: number;
   /**
    * The total amount of sales from this referer to this URL, in cents
    */
-  saleAmount?: number | undefined;
+  saleAmount: number;
 };
 
 /** @internal */

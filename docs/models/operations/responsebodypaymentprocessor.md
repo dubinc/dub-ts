@@ -1,13 +1,13 @@
-# PaymentProcessor
+# ResponseBodyPaymentProcessor
 
 The payment processor via which the sale was made.
 
 ## Example Usage
 
 ```typescript
-import { PaymentProcessor } from "dub/models/components";
+import { ResponseBodyPaymentProcessor } from "dub/models/operations";
 
-let value: PaymentProcessor = "revenuecat";
+let value: ResponseBodyPaymentProcessor = "polar";
 ```
 
 ## Values

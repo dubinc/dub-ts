@@ -23,24 +23,24 @@ export type AnalyticsCountries = {
    * The 2-letter ISO 3166-1 country code of the country. Learn more: https://d.to/geo
    */
   country: string;
-  region?: Region | undefined;
-  city?: City | undefined;
+  region: Region;
+  city: City;
   /**
    * The number of clicks from this country
    */
-  clicks?: number | undefined;
+  clicks: number;
   /**
    * The number of leads from this country
    */
-  leads?: number | undefined;
+  leads: number;
   /**
    * The number of sales from this country
    */
-  sales?: number | undefined;
+  sales: number;
   /**
    * The total amount of sales from this country, in cents
    */
-  saleAmount?: number | undefined;
+  saleAmount: number;
 };
 
 /** @internal */

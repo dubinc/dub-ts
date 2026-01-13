@@ -64,7 +64,7 @@ export type Click = {
   id: string;
 };
 
-export type TrackLeadLink = {
+export type Link = {
   /**
    * The unique ID of the short link.
    */
@@ -115,7 +115,7 @@ export type Customer = {
  */
 export type TrackLeadResponseBody = {
   click: Click;
-  link: TrackLeadLink | null;
+  link: Link | null;
   customer: Customer;
 };
 
@@ -179,29 +179,26 @@ export function clickFromJSON(
 }
 
 /** @internal */
-export const TrackLeadLink$inboundSchema: z.ZodType<
-  TrackLeadLink,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-  domain: z.string(),
-  key: z.string(),
-  shortLink: z.string(),
-  url: z.string(),
-  partnerId: z.nullable(z.string()),
-  programId: z.nullable(z.string()),
-  tenantId: z.nullable(z.string()),
-  externalId: z.nullable(z.string()),
-});
+export const Link$inboundSchema: z.ZodType<Link, z.ZodTypeDef, unknown> = z
+  .object({
+    id: z.string(),
+    domain: z.string(),
+    key: z.string(),
+    shortLink: z.string(),
+    url: z.string(),
+    partnerId: z.nullable(z.string()),
+    programId: z.nullable(z.string()),
+    tenantId: z.nullable(z.string()),
+    externalId: z.nullable(z.string()),
+  });
 
-export function trackLeadLinkFromJSON(
+export function linkFromJSON(
   jsonString: string,
-): SafeParseResult<TrackLeadLink, SDKValidationError> {
+): SafeParseResult<Link, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => TrackLeadLink$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TrackLeadLink' from JSON`,
+    (x) => Link$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Link' from JSON`,
   );
 }
 
@@ -234,7 +231,7 @@ export const TrackLeadResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   click: z.lazy(() => Click$inboundSchema),
-  link: z.nullable(z.lazy(() => TrackLeadLink$inboundSchema)),
+  link: z.nullable(z.lazy(() => Link$inboundSchema)),
   customer: z.lazy(() => Customer$inboundSchema),
 });
 

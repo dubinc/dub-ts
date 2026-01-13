@@ -11,20 +11,20 @@ export type PartnerAnalyticsCount = {
   /**
    * The total number of clicks
    */
-  clicks?: number | undefined;
+  clicks: number;
   /**
    * The total number of leads
    */
-  leads?: number | undefined;
+  leads: number;
   /**
    * The total number of sales
    */
-  sales?: number | undefined;
+  sales: number;
   /**
    * The total amount of sales, in cents
    */
-  saleAmount?: number | undefined;
-  earnings?: number | undefined;
+  saleAmount: number;
+  earnings: number;
 };
 
 /** @internal */

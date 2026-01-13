@@ -116,6 +116,8 @@ async function $do(
     "linkId": payload?.linkId,
     "page": payload?.page,
     "pageSize": payload?.pageSize,
+    "partnerId": payload?.partnerId,
+    "programId": payload?.programId,
     "search": payload?.search,
     "sortBy": payload?.sortBy,
     "sortOrder": payload?.sortOrder,

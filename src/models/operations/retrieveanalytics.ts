@@ -80,6 +80,23 @@ export const Interval = {
 export type Interval = ClosedEnum<typeof Interval>;
 
 /**
+ * The continent to retrieve analytics for.
+ */
+export const Continent = {
+  Af: "AF",
+  An: "AN",
+  As: "AS",
+  Eu: "EU",
+  Na: "NA",
+  Oc: "OC",
+  Sa: "SA",
+} as const;
+/**
+ * The continent to retrieve analytics for.
+ */
+export type Continent = ClosedEnum<typeof Continent>;
+
+/**
  * The trigger to retrieve analytics for. If undefined, returns all trigger types.
  */
 export const Trigger = {
@@ -182,7 +199,7 @@ export type RetrieveAnalyticsRequest = {
   /**
    * The continent to retrieve analytics for.
    */
-  continent?: components.ContinentCode | undefined;
+  continent?: Continent | undefined;
   /**
    * The device to retrieve analytics for.
    */
@@ -200,7 +217,7 @@ export type RetrieveAnalyticsRequest = {
    */
   trigger?: Trigger | undefined;
   /**
-   * The referer to retrieve analytics for.
+   * The referer hostname to retrieve analytics for.
    */
   referer?: string | undefined;
   /**
@@ -303,6 +320,10 @@ export const Interval$outboundSchema: z.ZodNativeEnum<typeof Interval> = z
   .nativeEnum(Interval);
 
 /** @internal */
+export const Continent$outboundSchema: z.ZodNativeEnum<typeof Continent> = z
+  .nativeEnum(Continent);
+
+/** @internal */
 export const Trigger$outboundSchema: z.ZodNativeEnum<typeof Trigger> = z
   .nativeEnum(Trigger);
 
@@ -396,7 +417,7 @@ export const RetrieveAnalyticsRequest$outboundSchema: z.ZodType<
   country: z.string().optional(),
   city: z.string().optional(),
   region: z.string().optional(),
-  continent: components.ContinentCode$outboundSchema.optional(),
+  continent: Continent$outboundSchema.optional(),
   device: z.string().optional(),
   browser: z.string().optional(),
   os: z.string().optional(),

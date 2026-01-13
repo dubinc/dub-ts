@@ -7,7 +7,7 @@ The type of event to retrieve analytics for. Defaults to `clicks`.
 ```typescript
 import { Event } from "dub/models/operations";
 
-let value: Event = "clicks";
+let value: Event = "leads";
 ```
 
 ## Values

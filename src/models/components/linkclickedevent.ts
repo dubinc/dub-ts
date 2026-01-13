@@ -20,7 +20,7 @@ export const LinkClickedEventEvent = {
 } as const;
 export type LinkClickedEventEvent = ClosedEnum<typeof LinkClickedEventEvent>;
 
-export type LinkClickedEventClick = {
+export type Click = {
   id: string;
   timestamp: string;
   url: string;
@@ -43,7 +43,7 @@ export type LinkClickedEventTestVariants = {
   percentage: number;
 };
 
-export type LinkClickedEventLink = {
+export type Link = {
   /**
    * The unique ID of the short link.
    */
@@ -206,9 +206,9 @@ export type LinkClickedEventLink = {
   projectId: string;
 };
 
-export type Data = {
-  click: LinkClickedEventClick;
-  link: LinkClickedEventLink;
+export type LinkClickedEventData = {
+  click: Click;
+  link: Link;
 };
 
 /**
@@ -218,7 +218,7 @@ export type LinkClickedEvent = {
   id: string;
   event: LinkClickedEventEvent;
   createdAt: string;
-  data: Data;
+  data: LinkClickedEventData;
 };
 
 /** @internal */
@@ -231,29 +231,26 @@ export const LinkClickedEventEvent$outboundSchema: z.ZodNativeEnum<
 > = LinkClickedEventEvent$inboundSchema;
 
 /** @internal */
-export const LinkClickedEventClick$inboundSchema: z.ZodType<
-  LinkClickedEventClick,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-  timestamp: z.string(),
-  url: z.string(),
-  country: z.string(),
-  city: z.string(),
-  region: z.string(),
-  continent: z.string(),
-  device: z.string(),
-  browser: z.string(),
-  os: z.string(),
-  trigger: z.nullable(z.string()).optional(),
-  referer: z.string(),
-  refererUrl: z.string(),
-  qr: z.boolean(),
-  ip: z.string(),
-});
+export const Click$inboundSchema: z.ZodType<Click, z.ZodTypeDef, unknown> = z
+  .object({
+    id: z.string(),
+    timestamp: z.string(),
+    url: z.string(),
+    country: z.string(),
+    city: z.string(),
+    region: z.string(),
+    continent: z.string(),
+    device: z.string(),
+    browser: z.string(),
+    os: z.string(),
+    trigger: z.nullable(z.string()).optional(),
+    referer: z.string(),
+    refererUrl: z.string(),
+    qr: z.boolean(),
+    ip: z.string(),
+  });
 /** @internal */
-export type LinkClickedEventClick$Outbound = {
+export type Click$Outbound = {
   id: string;
   timestamp: string;
   url: string;
@@ -272,10 +269,10 @@ export type LinkClickedEventClick$Outbound = {
 };
 
 /** @internal */
-export const LinkClickedEventClick$outboundSchema: z.ZodType<
-  LinkClickedEventClick$Outbound,
+export const Click$outboundSchema: z.ZodType<
+  Click$Outbound,
   z.ZodTypeDef,
-  LinkClickedEventClick
+  Click
 > = z.object({
   id: z.string(),
   timestamp: z.string(),
@@ -294,20 +291,16 @@ export const LinkClickedEventClick$outboundSchema: z.ZodType<
   ip: z.string(),
 });
 
-export function linkClickedEventClickToJSON(
-  linkClickedEventClick: LinkClickedEventClick,
-): string {
-  return JSON.stringify(
-    LinkClickedEventClick$outboundSchema.parse(linkClickedEventClick),
-  );
+export function clickToJSON(click: Click): string {
+  return JSON.stringify(Click$outboundSchema.parse(click));
 }
-export function linkClickedEventClickFromJSON(
+export function clickFromJSON(
   jsonString: string,
-): SafeParseResult<LinkClickedEventClick, SDKValidationError> {
+): SafeParseResult<Click, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => LinkClickedEventClick$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LinkClickedEventClick' from JSON`,
+    (x) => Click$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Click' from JSON`,
   );
 }
 
@@ -356,75 +349,72 @@ export function linkClickedEventTestVariantsFromJSON(
 }
 
 /** @internal */
-export const LinkClickedEventLink$inboundSchema: z.ZodType<
-  LinkClickedEventLink,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-  domain: z.string(),
-  key: z.string(),
-  url: z.string(),
-  trackConversion: z.boolean(),
-  externalId: z.nullable(z.string()),
-  tenantId: z.nullable(z.string()),
-  programId: z.nullable(z.string()),
-  partnerId: z.nullable(z.string()),
-  archived: z.boolean(),
-  expiresAt: z.string(),
-  expiredUrl: z.nullable(z.string()),
-  disabledAt: z.string(),
-  password: z.nullable(z.string()),
-  proxy: z.boolean(),
-  title: z.nullable(z.string()),
-  description: z.nullable(z.string()),
-  image: z.nullable(z.string()),
-  video: z.nullable(z.string()),
-  rewrite: z.boolean(),
-  doIndex: z.boolean(),
-  ios: z.nullable(z.string()),
-  android: z.nullable(z.string()),
-  geo: z.nullable(z.record(z.string())),
-  publicStats: z.boolean(),
-  tags: z.nullable(z.array(LinkTagSchema$inboundSchema)),
-  folderId: z.nullable(z.string()),
-  webhookIds: z.array(z.string()),
-  comments: z.nullable(z.string()),
-  shortLink: z.string(),
-  qrCode: z.string(),
-  utm_source: z.nullable(z.string()),
-  utm_medium: z.nullable(z.string()),
-  utm_campaign: z.nullable(z.string()),
-  utm_term: z.nullable(z.string()),
-  utm_content: z.nullable(z.string()),
-  testVariants: z.nullable(
-    z.array(z.lazy(() => LinkClickedEventTestVariants$inboundSchema)),
-  ).optional(),
-  testStartedAt: z.string(),
-  testCompletedAt: z.string(),
-  userId: z.nullable(z.string()),
-  workspaceId: z.string(),
-  clicks: z.number().default(0),
-  leads: z.number().default(0),
-  conversions: z.number().default(0),
-  sales: z.number().default(0),
-  saleAmount: z.number().default(0),
-  lastClicked: z.string(),
-  createdAt: z.string(),
-  updatedAt: z.string(),
-  tagId: z.nullable(z.string()),
-  projectId: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "utm_source": "utmSource",
-    "utm_medium": "utmMedium",
-    "utm_campaign": "utmCampaign",
-    "utm_term": "utmTerm",
-    "utm_content": "utmContent",
+export const Link$inboundSchema: z.ZodType<Link, z.ZodTypeDef, unknown> = z
+  .object({
+    id: z.string(),
+    domain: z.string(),
+    key: z.string(),
+    url: z.string(),
+    trackConversion: z.boolean(),
+    externalId: z.nullable(z.string()),
+    tenantId: z.nullable(z.string()),
+    programId: z.nullable(z.string()),
+    partnerId: z.nullable(z.string()),
+    archived: z.boolean(),
+    expiresAt: z.string(),
+    expiredUrl: z.nullable(z.string()),
+    disabledAt: z.string(),
+    password: z.nullable(z.string()),
+    proxy: z.boolean(),
+    title: z.nullable(z.string()),
+    description: z.nullable(z.string()),
+    image: z.nullable(z.string()),
+    video: z.nullable(z.string()),
+    rewrite: z.boolean(),
+    doIndex: z.boolean(),
+    ios: z.nullable(z.string()),
+    android: z.nullable(z.string()),
+    geo: z.nullable(z.record(z.string())),
+    publicStats: z.boolean(),
+    tags: z.nullable(z.array(LinkTagSchema$inboundSchema)),
+    folderId: z.nullable(z.string()),
+    webhookIds: z.array(z.string()),
+    comments: z.nullable(z.string()),
+    shortLink: z.string(),
+    qrCode: z.string(),
+    utm_source: z.nullable(z.string()),
+    utm_medium: z.nullable(z.string()),
+    utm_campaign: z.nullable(z.string()),
+    utm_term: z.nullable(z.string()),
+    utm_content: z.nullable(z.string()),
+    testVariants: z.nullable(
+      z.array(z.lazy(() => LinkClickedEventTestVariants$inboundSchema)),
+    ).optional(),
+    testStartedAt: z.string(),
+    testCompletedAt: z.string(),
+    userId: z.nullable(z.string()),
+    workspaceId: z.string(),
+    clicks: z.number().default(0),
+    leads: z.number().default(0),
+    conversions: z.number().default(0),
+    sales: z.number().default(0),
+    saleAmount: z.number().default(0),
+    lastClicked: z.string(),
+    createdAt: z.string(),
+    updatedAt: z.string(),
+    tagId: z.nullable(z.string()),
+    projectId: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "utm_source": "utmSource",
+      "utm_medium": "utmMedium",
+      "utm_campaign": "utmCampaign",
+      "utm_term": "utmTerm",
+      "utm_content": "utmContent",
+    });
   });
-});
 /** @internal */
-export type LinkClickedEventLink$Outbound = {
+export type Link$Outbound = {
   id: string;
   domain: string;
   key: string;
@@ -482,120 +472,123 @@ export type LinkClickedEventLink$Outbound = {
 };
 
 /** @internal */
-export const LinkClickedEventLink$outboundSchema: z.ZodType<
-  LinkClickedEventLink$Outbound,
-  z.ZodTypeDef,
-  LinkClickedEventLink
-> = z.object({
-  id: z.string(),
-  domain: z.string(),
-  key: z.string(),
-  url: z.string(),
-  trackConversion: z.boolean(),
-  externalId: z.nullable(z.string()),
-  tenantId: z.nullable(z.string()),
-  programId: z.nullable(z.string()),
-  partnerId: z.nullable(z.string()),
-  archived: z.boolean(),
-  expiresAt: z.string(),
-  expiredUrl: z.nullable(z.string()),
-  disabledAt: z.string(),
-  password: z.nullable(z.string()),
-  proxy: z.boolean(),
-  title: z.nullable(z.string()),
-  description: z.nullable(z.string()),
-  image: z.nullable(z.string()),
-  video: z.nullable(z.string()),
-  rewrite: z.boolean(),
-  doIndex: z.boolean(),
-  ios: z.nullable(z.string()),
-  android: z.nullable(z.string()),
-  geo: z.nullable(z.record(z.string())),
-  publicStats: z.boolean(),
-  tags: z.nullable(z.array(LinkTagSchema$outboundSchema)),
-  folderId: z.nullable(z.string()),
-  webhookIds: z.array(z.string()),
-  comments: z.nullable(z.string()),
-  shortLink: z.string(),
-  qrCode: z.string(),
-  utmSource: z.nullable(z.string()),
-  utmMedium: z.nullable(z.string()),
-  utmCampaign: z.nullable(z.string()),
-  utmTerm: z.nullable(z.string()),
-  utmContent: z.nullable(z.string()),
-  testVariants: z.nullable(
-    z.array(z.lazy(() => LinkClickedEventTestVariants$outboundSchema)),
-  ).optional(),
-  testStartedAt: z.string(),
-  testCompletedAt: z.string(),
-  userId: z.nullable(z.string()),
-  workspaceId: z.string(),
-  clicks: z.number().default(0),
-  leads: z.number().default(0),
-  conversions: z.number().default(0),
-  sales: z.number().default(0),
-  saleAmount: z.number().default(0),
-  lastClicked: z.string(),
-  createdAt: z.string(),
-  updatedAt: z.string(),
-  tagId: z.nullable(z.string()),
-  projectId: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    utmSource: "utm_source",
-    utmMedium: "utm_medium",
-    utmCampaign: "utm_campaign",
-    utmTerm: "utm_term",
-    utmContent: "utm_content",
+export const Link$outboundSchema: z.ZodType<Link$Outbound, z.ZodTypeDef, Link> =
+  z.object({
+    id: z.string(),
+    domain: z.string(),
+    key: z.string(),
+    url: z.string(),
+    trackConversion: z.boolean(),
+    externalId: z.nullable(z.string()),
+    tenantId: z.nullable(z.string()),
+    programId: z.nullable(z.string()),
+    partnerId: z.nullable(z.string()),
+    archived: z.boolean(),
+    expiresAt: z.string(),
+    expiredUrl: z.nullable(z.string()),
+    disabledAt: z.string(),
+    password: z.nullable(z.string()),
+    proxy: z.boolean(),
+    title: z.nullable(z.string()),
+    description: z.nullable(z.string()),
+    image: z.nullable(z.string()),
+    video: z.nullable(z.string()),
+    rewrite: z.boolean(),
+    doIndex: z.boolean(),
+    ios: z.nullable(z.string()),
+    android: z.nullable(z.string()),
+    geo: z.nullable(z.record(z.string())),
+    publicStats: z.boolean(),
+    tags: z.nullable(z.array(LinkTagSchema$outboundSchema)),
+    folderId: z.nullable(z.string()),
+    webhookIds: z.array(z.string()),
+    comments: z.nullable(z.string()),
+    shortLink: z.string(),
+    qrCode: z.string(),
+    utmSource: z.nullable(z.string()),
+    utmMedium: z.nullable(z.string()),
+    utmCampaign: z.nullable(z.string()),
+    utmTerm: z.nullable(z.string()),
+    utmContent: z.nullable(z.string()),
+    testVariants: z.nullable(
+      z.array(z.lazy(() => LinkClickedEventTestVariants$outboundSchema)),
+    ).optional(),
+    testStartedAt: z.string(),
+    testCompletedAt: z.string(),
+    userId: z.nullable(z.string()),
+    workspaceId: z.string(),
+    clicks: z.number().default(0),
+    leads: z.number().default(0),
+    conversions: z.number().default(0),
+    sales: z.number().default(0),
+    saleAmount: z.number().default(0),
+    lastClicked: z.string(),
+    createdAt: z.string(),
+    updatedAt: z.string(),
+    tagId: z.nullable(z.string()),
+    projectId: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      utmSource: "utm_source",
+      utmMedium: "utm_medium",
+      utmCampaign: "utm_campaign",
+      utmTerm: "utm_term",
+      utmContent: "utm_content",
+    });
   });
-});
 
-export function linkClickedEventLinkToJSON(
-  linkClickedEventLink: LinkClickedEventLink,
-): string {
-  return JSON.stringify(
-    LinkClickedEventLink$outboundSchema.parse(linkClickedEventLink),
-  );
+export function linkToJSON(link: Link): string {
+  return JSON.stringify(Link$outboundSchema.parse(link));
 }
-export function linkClickedEventLinkFromJSON(
+export function linkFromJSON(
   jsonString: string,
-): SafeParseResult<LinkClickedEventLink, SDKValidationError> {
+): SafeParseResult<Link, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => LinkClickedEventLink$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LinkClickedEventLink' from JSON`,
+    (x) => Link$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Link' from JSON`,
   );
 }
 
 /** @internal */
-export const Data$inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z
-  .object({
-    click: z.lazy(() => LinkClickedEventClick$inboundSchema),
-    link: z.lazy(() => LinkClickedEventLink$inboundSchema),
-  });
+export const LinkClickedEventData$inboundSchema: z.ZodType<
+  LinkClickedEventData,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  click: z.lazy(() => Click$inboundSchema),
+  link: z.lazy(() => Link$inboundSchema),
+});
 /** @internal */
-export type Data$Outbound = {
-  click: LinkClickedEventClick$Outbound;
-  link: LinkClickedEventLink$Outbound;
+export type LinkClickedEventData$Outbound = {
+  click: Click$Outbound;
+  link: Link$Outbound;
 };
 
 /** @internal */
-export const Data$outboundSchema: z.ZodType<Data$Outbound, z.ZodTypeDef, Data> =
-  z.object({
-    click: z.lazy(() => LinkClickedEventClick$outboundSchema),
-    link: z.lazy(() => LinkClickedEventLink$outboundSchema),
-  });
+export const LinkClickedEventData$outboundSchema: z.ZodType<
+  LinkClickedEventData$Outbound,
+  z.ZodTypeDef,
+  LinkClickedEventData
+> = z.object({
+  click: z.lazy(() => Click$outboundSchema),
+  link: z.lazy(() => Link$outboundSchema),
+});
 
-export function dataToJSON(data: Data): string {
-  return JSON.stringify(Data$outboundSchema.parse(data));
+export function linkClickedEventDataToJSON(
+  linkClickedEventData: LinkClickedEventData,
+): string {
+  return JSON.stringify(
+    LinkClickedEventData$outboundSchema.parse(linkClickedEventData),
+  );
 }
-export function dataFromJSON(
+export function linkClickedEventDataFromJSON(
   jsonString: string,
-): SafeParseResult<Data, SDKValidationError> {
+): SafeParseResult<LinkClickedEventData, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Data$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Data' from JSON`,
+    (x) => LinkClickedEventData$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LinkClickedEventData' from JSON`,
   );
 }
 
@@ -608,14 +601,14 @@ export const LinkClickedEvent$inboundSchema: z.ZodType<
   id: z.string(),
   event: LinkClickedEventEvent$inboundSchema,
   createdAt: z.string(),
-  data: z.lazy(() => Data$inboundSchema),
+  data: z.lazy(() => LinkClickedEventData$inboundSchema),
 });
 /** @internal */
 export type LinkClickedEvent$Outbound = {
   id: string;
   event: string;
   createdAt: string;
-  data: Data$Outbound;
+  data: LinkClickedEventData$Outbound;
 };
 
 /** @internal */
@@ -627,7 +620,7 @@ export const LinkClickedEvent$outboundSchema: z.ZodType<
   id: z.string(),
   event: LinkClickedEventEvent$outboundSchema,
   createdAt: z.string(),
-  data: z.lazy(() => Data$outboundSchema),
+  data: z.lazy(() => LinkClickedEventData$outboundSchema),
 });
 
 export function linkClickedEventToJSON(

@@ -1,13 +1,13 @@
-# SaleEventTestVariants
+# ListEventsResponseBodyEventsTestVariants
 
 ## Example Usage
 
 ```typescript
-import { SaleEventTestVariants } from "dub/models/components";
+import { ListEventsResponseBodyEventsTestVariants } from "dub/models/operations";
 
-let value: SaleEventTestVariants = {
-  url: "https://tempting-galoshes.name/",
-  percentage: 7406.33,
+let value: ListEventsResponseBodyEventsTestVariants = {
+  url: "https://dental-schedule.com/",
+  percentage: 9566.48,
 };
 ```
 

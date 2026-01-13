@@ -1,5 +1,4 @@
 # Track
-(*track*)
 
 ## Overview
 

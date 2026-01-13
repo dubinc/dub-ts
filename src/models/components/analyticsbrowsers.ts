@@ -15,19 +15,19 @@ export type AnalyticsBrowsers = {
   /**
    * The number of clicks from this browser
    */
-  clicks?: number | undefined;
+  clicks: number;
   /**
    * The number of leads from this browser
    */
-  leads?: number | undefined;
+  leads: number;
   /**
    * The number of sales from this browser
    */
-  sales?: number | undefined;
+  sales: number;
   /**
    * The total amount of sales from this browser, in cents
    */
-  saleAmount?: number | undefined;
+  saleAmount: number;
 };
 
 /** @internal */

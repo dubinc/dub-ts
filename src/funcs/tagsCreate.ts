@@ -38,7 +38,7 @@ export function tagsCreate(
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    components.LinkTagSchema,
+    components.LinkTagSchemaOutput,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -72,7 +72,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      components.LinkTagSchema,
+      components.LinkTagSchemaOutput,
       | errors.BadRequest
       | errors.Unauthorized
       | errors.Forbidden
@@ -177,7 +177,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    components.LinkTagSchema,
+    components.LinkTagSchemaOutput,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -196,7 +196,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(201, components.LinkTagSchema$inboundSchema),
+    M.json(201, components.LinkTagSchemaOutput$inboundSchema),
     M.jsonErr(400, errors.BadRequest$inboundSchema),
     M.jsonErr(401, errors.Unauthorized$inboundSchema),
     M.jsonErr(403, errors.Forbidden$inboundSchema),

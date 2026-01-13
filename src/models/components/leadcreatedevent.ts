@@ -20,7 +20,7 @@ export const LeadCreatedEventEvent = {
 } as const;
 export type LeadCreatedEventEvent = ClosedEnum<typeof LeadCreatedEventEvent>;
 
-export type LeadCreatedEventCustomer = {
+export type Customer = {
   /**
    * The unique ID of the customer. You may use either the customer's `id` on Dub (obtained via `/customers` endpoint) or their `externalId` (unique ID within your system, prefixed with `ext_`, e.g. `ext_123`).
    */
@@ -281,11 +281,11 @@ export type Partner = {
 
 export type LeadCreatedEventData = {
   eventName: string;
-  customer: LeadCreatedEventCustomer;
+  customer: Customer;
   click: LeadCreatedEventClick;
   link: LeadCreatedEventLink;
   partner?: Partner | null | undefined;
-  metadata: { [k: string]: any } | null;
+  metadata?: { [k: string]: any } | null | undefined;
 };
 
 /**
@@ -308,8 +308,8 @@ export const LeadCreatedEventEvent$outboundSchema: z.ZodNativeEnum<
 > = LeadCreatedEventEvent$inboundSchema;
 
 /** @internal */
-export const LeadCreatedEventCustomer$inboundSchema: z.ZodType<
-  LeadCreatedEventCustomer,
+export const Customer$inboundSchema: z.ZodType<
+  Customer,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -324,7 +324,7 @@ export const LeadCreatedEventCustomer$inboundSchema: z.ZodType<
   createdAt: z.string(),
 });
 /** @internal */
-export type LeadCreatedEventCustomer$Outbound = {
+export type Customer$Outbound = {
   id: string;
   externalId: string;
   name: string;
@@ -337,10 +337,10 @@ export type LeadCreatedEventCustomer$Outbound = {
 };
 
 /** @internal */
-export const LeadCreatedEventCustomer$outboundSchema: z.ZodType<
-  LeadCreatedEventCustomer$Outbound,
+export const Customer$outboundSchema: z.ZodType<
+  Customer$Outbound,
   z.ZodTypeDef,
-  LeadCreatedEventCustomer
+  Customer
 > = z.object({
   id: z.string(),
   externalId: z.string(),
@@ -353,20 +353,16 @@ export const LeadCreatedEventCustomer$outboundSchema: z.ZodType<
   createdAt: z.string(),
 });
 
-export function leadCreatedEventCustomerToJSON(
-  leadCreatedEventCustomer: LeadCreatedEventCustomer,
-): string {
-  return JSON.stringify(
-    LeadCreatedEventCustomer$outboundSchema.parse(leadCreatedEventCustomer),
-  );
+export function customerToJSON(customer: Customer): string {
+  return JSON.stringify(Customer$outboundSchema.parse(customer));
 }
-export function leadCreatedEventCustomerFromJSON(
+export function customerFromJSON(
   jsonString: string,
-): SafeParseResult<LeadCreatedEventCustomer, SDKValidationError> {
+): SafeParseResult<Customer, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => LeadCreatedEventCustomer$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LeadCreatedEventCustomer' from JSON`,
+    (x) => Customer$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Customer' from JSON`,
   );
 }
 
@@ -782,20 +778,20 @@ export const LeadCreatedEventData$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   eventName: z.string(),
-  customer: z.lazy(() => LeadCreatedEventCustomer$inboundSchema),
+  customer: z.lazy(() => Customer$inboundSchema),
   click: z.lazy(() => LeadCreatedEventClick$inboundSchema),
   link: z.lazy(() => LeadCreatedEventLink$inboundSchema),
   partner: z.nullable(z.lazy(() => Partner$inboundSchema)).optional(),
-  metadata: z.nullable(z.record(z.any())),
+  metadata: z.nullable(z.record(z.any())).optional(),
 });
 /** @internal */
 export type LeadCreatedEventData$Outbound = {
   eventName: string;
-  customer: LeadCreatedEventCustomer$Outbound;
+  customer: Customer$Outbound;
   click: LeadCreatedEventClick$Outbound;
   link: LeadCreatedEventLink$Outbound;
   partner?: Partner$Outbound | null | undefined;
-  metadata: { [k: string]: any } | null;
+  metadata?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -805,11 +801,11 @@ export const LeadCreatedEventData$outboundSchema: z.ZodType<
   LeadCreatedEventData
 > = z.object({
   eventName: z.string(),
-  customer: z.lazy(() => LeadCreatedEventCustomer$outboundSchema),
+  customer: z.lazy(() => Customer$outboundSchema),
   click: z.lazy(() => LeadCreatedEventClick$outboundSchema),
   link: z.lazy(() => LeadCreatedEventLink$outboundSchema),
   partner: z.nullable(z.lazy(() => Partner$outboundSchema)).optional(),
-  metadata: z.nullable(z.record(z.any())),
+  metadata: z.nullable(z.record(z.any())).optional(),
 });
 
 export function leadCreatedEventDataToJSON(

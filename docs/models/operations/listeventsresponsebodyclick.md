@@ -1,25 +1,25 @@
-# SaleEventClick
+# ListEventsResponseBodyClick
 
 ## Example Usage
 
 ```typescript
-import { SaleEventClick } from "dub/models/components";
+import { ListEventsResponseBodyClick } from "dub/models/operations";
 
-let value: SaleEventClick = {
+let value: ListEventsResponseBodyClick = {
   id: "<id>",
   timestamp: "<value>",
-  url: "https://suburban-linseed.biz",
-  country: "Falkland Islands (Malvinas)",
-  city: "New Aliaview",
+  url: "https://ample-sock.org",
+  country: "Kazakhstan",
+  city: "San Buenaventura (Ventura)",
   region: "<value>",
-  continent: "Asia",
+  continent: "South America",
   device: "Desktop",
-  browser: "Firefox",
-  os: "Windows",
-  referer: "live-tarragon.com",
-  refererUrl: "https://negligible-stranger.net",
+  browser: "Safari",
+  os: "Symbian",
+  referer: "enraged-accelerator.net",
+  refererUrl: "https://flashy-handle.com/",
   qr: false,
-  ip: "d04a:51ba:e2b9:85e2:44dd:4fbb:5e36:5d1e",
+  ip: "2665:7bf6:f5ea:4ec3:60a7:a807:11b1:edaa",
 };
 ```
 

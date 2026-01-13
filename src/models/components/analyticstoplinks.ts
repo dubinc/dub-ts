@@ -49,19 +49,19 @@ export type AnalyticsTopLinks = {
   /**
    * The number of clicks from this link
    */
-  clicks?: number | undefined;
+  clicks: number;
   /**
    * The number of leads from this link
    */
-  leads?: number | undefined;
+  leads: number;
   /**
    * The number of sales from this link
    */
-  sales?: number | undefined;
+  sales: number;
   /**
    * The total amount of sales from this link, in cents
    */
-  saleAmount?: number | undefined;
+  saleAmount: number;
 };
 
 /** @internal */

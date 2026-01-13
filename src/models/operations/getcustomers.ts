@@ -58,6 +58,14 @@ export type GetCustomersRequest = {
    */
   linkId?: string | undefined;
   /**
+   * Program ID to filter by.
+   */
+  programId?: string | undefined;
+  /**
+   * Partner ID to filter by.
+   */
+  partnerId?: string | undefined;
+  /**
    * Whether to include expanded fields on the customer (`link`, `partner`, `discount`).
    */
   includeExpandedFields?: boolean | undefined;
@@ -202,6 +210,8 @@ export type GetCustomersRequest$Outbound = {
   search?: string | undefined;
   country?: string | undefined;
   linkId?: string | undefined;
+  programId?: string | undefined;
+  partnerId?: string | undefined;
   includeExpandedFields?: boolean | undefined;
   sortBy: string;
   sortOrder: string;
@@ -220,6 +230,8 @@ export const GetCustomersRequest$outboundSchema: z.ZodType<
   search: z.string().optional(),
   country: z.string().optional(),
   linkId: z.string().optional(),
+  programId: z.string().optional(),
+  partnerId: z.string().optional(),
   includeExpandedFields: z.boolean().optional(),
   sortBy: GetCustomersQueryParamSortBy$outboundSchema.default("createdAt"),
   sortOrder: GetCustomersQueryParamSortOrder$outboundSchema.default("desc"),

@@ -15,19 +15,19 @@ export type AnalyticsTopUrls = {
   /**
    * The number of clicks from this URL
    */
-  clicks?: number | undefined;
+  clicks: number;
   /**
    * The number of leads from this URL
    */
-  leads?: number | undefined;
+  leads: number;
   /**
    * The number of sales from this URL
    */
-  sales?: number | undefined;
+  sales: number;
   /**
    * The total amount of sales from this URL, in cents
    */
-  saleAmount?: number | undefined;
+  saleAmount: number;
 };
 
 /** @internal */

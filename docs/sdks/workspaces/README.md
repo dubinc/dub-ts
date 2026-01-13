@@ -1,5 +1,4 @@
 # Workspaces
-(*workspaces*)
 
 ## Overview
 

@@ -23,19 +23,19 @@ export type AnalyticsCities = {
   /**
    * The number of clicks from this city
    */
-  clicks?: number | undefined;
+  clicks: number;
   /**
    * The number of leads from this city
    */
-  leads?: number | undefined;
+  leads: number;
   /**
    * The number of sales from this city
    */
-  sales?: number | undefined;
+  sales: number;
   /**
    * The total amount of sales from this city, in cents
    */
-  saleAmount?: number | undefined;
+  saleAmount: number;
 };
 
 /** @internal */

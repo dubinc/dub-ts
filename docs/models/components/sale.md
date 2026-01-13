@@ -6,14 +6,18 @@
 import { Sale } from "dub/models/components";
 
 let value: Sale = {
-  amount: 28367,
+  amount: 283.67,
+  currency: "South Sudanese pound",
+  paymentProcessor: "<value>",
+  invoiceId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                                                                                                                                                         | Type                                                                                                                                                                                          | Required                                                                                                                                                                                      | Description                                                                                                                                                                                   |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `amount`                                                                                                                                                                                      | *number*                                                                                                                                                                                      | :heavy_check_mark:                                                                                                                                                                            | The amount of the sale in cents (for all two-decimal currencies). If the sale is in a zero-decimal currency, pass the full integer value (e.g. `1437` JPY). Learn more: https://d.to/currency |
-| `invoiceId`                                                                                                                                                                                   | *string*                                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                            | The invoice ID of the sale. Can be used as a idempotency key – only one sale event can be recorded for a given invoice ID.                                                                    |
-| `paymentProcessor`                                                                                                                                                                            | [components.PaymentProcessor](../../models/components/paymentprocessor.md)                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                            | The payment processor via which the sale was made.                                                                                                                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `amount`           | *number*           | :heavy_check_mark: | N/A                |
+| `currency`         | *string*           | :heavy_check_mark: | N/A                |
+| `paymentProcessor` | *string*           | :heavy_check_mark: | N/A                |
+| `invoiceId`        | *string*           | :heavy_check_mark: | N/A                |

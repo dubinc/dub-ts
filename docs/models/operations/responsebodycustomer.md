@@ -1,15 +1,15 @@
-# SaleEventCustomer
+# ResponseBodyCustomer
 
 ## Example Usage
 
 ```typescript
-import { SaleEventCustomer } from "dub/models/components";
+import { ResponseBodyCustomer } from "dub/models/operations";
 
-let value: SaleEventCustomer = {
+let value: ResponseBodyCustomer = {
   id: "<id>",
   externalId: "<id>",
   name: "<value>",
-  createdAt: "1720452541994",
+  createdAt: "1723909232428",
 };
 ```
 

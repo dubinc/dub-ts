@@ -38,7 +38,7 @@ export function partnersRetrieveLinks(
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    Array<operations.Link>,
+    Array<operations.RetrieveLinksResponseBody>,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -72,7 +72,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      Array<operations.Link>,
+      Array<operations.RetrieveLinksResponseBody>,
       | errors.BadRequest
       | errors.Unauthorized
       | errors.Forbidden
@@ -180,7 +180,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    Array<operations.Link>,
+    Array<operations.RetrieveLinksResponseBody>,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -199,7 +199,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, z.array(operations.Link$inboundSchema)),
+    M.json(200, z.array(operations.RetrieveLinksResponseBody$inboundSchema)),
     M.jsonErr(400, errors.BadRequest$inboundSchema),
     M.jsonErr(401, errors.Unauthorized$inboundSchema),
     M.jsonErr(403, errors.Forbidden$inboundSchema),

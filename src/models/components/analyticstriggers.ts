@@ -30,19 +30,19 @@ export type AnalyticsTriggers = {
   /**
    * The number of clicks from this trigger method
    */
-  clicks?: number | undefined;
+  clicks: number;
   /**
    * The number of leads from this trigger method
    */
-  leads?: number | undefined;
+  leads: number;
   /**
    * The number of sales from this trigger method
    */
-  sales?: number | undefined;
+  sales: number;
   /**
    * The total amount of sales from this trigger method, in cents
    */
-  saleAmount?: number | undefined;
+  saleAmount: number;
 };
 
 /** @internal */

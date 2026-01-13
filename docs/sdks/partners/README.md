@@ -1,5 +1,4 @@
 # Partners
-(*partners*)
 
 ## Overview
 
@@ -308,7 +307,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.Link[]](../../models/.md)\>**
+**Promise\<[operations.RetrieveLinksResponseBody[]](../../models/.md)\>**
 
 ### Errors
 

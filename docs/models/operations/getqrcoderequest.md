@@ -7,8 +7,6 @@ import { GetQRCodeRequest } from "dub/models/operations";
 
 let value: GetQRCodeRequest = {
   url: "https://far-off-tenement.info/",
-  hideLogo: true,
-  includeMargin: false,
 };
 ```
 

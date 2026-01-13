@@ -1,13 +1,13 @@
-# ClickEventTestVariants
+# ListEventsResponseBodyTestVariants
 
 ## Example Usage
 
 ```typescript
-import { ClickEventTestVariants } from "dub/models/components";
+import { ListEventsResponseBodyTestVariants } from "dub/models/operations";
 
-let value: ClickEventTestVariants = {
-  url: "https://light-bidet.org",
-  percentage: 4655.72,
+let value: ListEventsResponseBodyTestVariants = {
+  url: "https://crazy-stock.biz",
+  percentage: 3116.56,
 };
 ```
 

@@ -15,19 +15,19 @@ export type AnalyticsDevices = {
   /**
    * The number of clicks from this device
    */
-  clicks?: number | undefined;
+  clicks: number;
   /**
    * The number of leads from this device
    */
-  leads?: number | undefined;
+  leads: number;
   /**
    * The number of sales from this device
    */
-  sales?: number | undefined;
+  sales: number;
   /**
    * The total amount of sales from this device, in cents
    */
-  saleAmount?: number | undefined;
+  saleAmount: number;
 };
 
 /** @internal */

@@ -15,19 +15,19 @@ export type AnalyticsOS = {
   /**
    * The number of clicks from this OS
    */
-  clicks?: number | undefined;
+  clicks: number;
   /**
    * The number of leads from this OS
    */
-  leads?: number | undefined;
+  leads: number;
   /**
    * The number of sales from this OS
    */
-  sales?: number | undefined;
+  sales: number;
   /**
    * The total amount of sales from this OS, in cents
    */
-  saleAmount?: number | undefined;
+  saleAmount: number;
 };
 
 /** @internal */

@@ -43,7 +43,7 @@ export type FolderSchema = {
   /**
    * The access level of the folder within the workspace.
    */
-  accessLevel?: AccessLevel | null | undefined;
+  accessLevel: AccessLevel | null;
   /**
    * The date the folder was created.
    */

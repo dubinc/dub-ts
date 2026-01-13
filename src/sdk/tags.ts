@@ -21,7 +21,7 @@ export class Tags extends ClientSDK {
   async create(
     request?: operations.CreateTagRequestBody | undefined,
     options?: RequestOptions,
-  ): Promise<components.LinkTagSchema> {
+  ): Promise<components.LinkTagSchemaOutput> {
     return unwrapAsync(tagsCreate(
       this,
       request,
@@ -38,7 +38,7 @@ export class Tags extends ClientSDK {
   async list(
     request?: operations.GetTagsRequest | undefined,
     options?: RequestOptions,
-  ): Promise<Array<components.LinkTagSchema>> {
+  ): Promise<Array<components.LinkTagSchemaOutput>> {
     return unwrapAsync(tagsList(
       this,
       request,
@@ -56,7 +56,7 @@ export class Tags extends ClientSDK {
     id: string,
     requestBody?: operations.UpdateTagRequestBody | undefined,
     options?: RequestOptions,
-  ): Promise<components.LinkTagSchema> {
+  ): Promise<components.LinkTagSchemaOutput> {
     return unwrapAsync(tagsUpdate(
       this,
       id,

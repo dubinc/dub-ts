@@ -11,25 +11,29 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UpdateCustomerRequestBody = {
   /**
-   * Email of the customer in the client's app.
+   * The customer's email address.
    */
   email?: string | null | undefined;
   /**
-   * Name of the customer in the client's app. If not provided, a random name will be generated.
+   * The customer's name. If not provided, the email address will be used, and if email is not provided, a random name will be generated.
    */
   name?: string | null | undefined;
   /**
-   * Avatar URL of the customer in the client's app.
+   * The customer's avatar URL. If not provided, a random avatar will be generated.
    */
   avatar?: string | null | undefined;
   /**
-   * Unique identifier for the customer in the client's app.
+   * The customer's unique identifier your database. This is useful for associating subsequent conversion events from Dub's API to your internal systems.
    */
   externalId?: string | undefined;
   /**
-   * The customer's Stripe customer ID. Useful for attribution recurring sale events to the partner who referred the customer.
+   * The customer's Stripe customer ID. This is useful for attributing recurring sale events to the partner who referred the customer.
    */
   stripeCustomerId?: string | null | undefined;
+  /**
+   * The customer's country in ISO 3166-1 alpha-2 format. Updating this field will only affect the customer's country in Dub's system (and has no effect on existing conversion events).
+   */
+  country?: string | undefined;
 };
 
 export type UpdateCustomerRequest = {
@@ -160,6 +164,7 @@ export type UpdateCustomerRequestBody$Outbound = {
   avatar?: string | null | undefined;
   externalId?: string | undefined;
   stripeCustomerId?: string | null | undefined;
+  country?: string | undefined;
 };
 
 /** @internal */
@@ -173,6 +178,7 @@ export const UpdateCustomerRequestBody$outboundSchema: z.ZodType<
   avatar: z.nullable(z.string()).optional(),
   externalId: z.string().optional(),
   stripeCustomerId: z.nullable(z.string()).optional(),
+  country: z.string().optional(),
 });
 
 export function updateCustomerRequestBodyToJSON(

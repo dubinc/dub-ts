@@ -57,11 +57,11 @@ export type Domains = {
   /**
    * Whether the domain is the primary domain for the workspace.
    */
-  primary?: boolean | undefined;
+  primary: boolean;
   /**
    * Whether the domain is verified.
    */
-  verified?: boolean | undefined;
+  verified: boolean;
 };
 
 export type WorkspaceSchema = {
@@ -80,7 +80,7 @@ export type WorkspaceSchema = {
   /**
    * The logo of the workspace.
    */
-  logo?: string | null | undefined;
+  logo: string | null;
   /**
    * The invite code of the workspace.
    */
