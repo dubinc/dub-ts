@@ -6,8 +6,9 @@
 import { LinkErrorSchema } from "dub/models/components";
 
 let value: LinkErrorSchema = {
+  link: "<value>",
   error: "<value>",
-  code: "not_found",
+  code: "unauthorized",
 };
 ```
 
@@ -15,6 +16,6 @@ let value: LinkErrorSchema = {
 
 | Field                                              | Type                                               | Required                                           | Description                                        |
 | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `link`                                             | *any*                                              | :heavy_minus_sign:                                 | The link that caused the error.                    |
+| `link`                                             | *any*                                              | :heavy_check_mark:                                 | The link that caused the error.                    |
 | `error`                                            | *string*                                           | :heavy_check_mark:                                 | The error message.                                 |
 | `code`                                             | [components.Code](../../models/components/code.md) | :heavy_check_mark:                                 | The error code.                                    |

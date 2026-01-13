@@ -114,9 +114,6 @@ export type UpdateLinkRequestBody = {
    * The Android destination URL for the short link for Android device targeting.
    */
   android?: string | null | undefined;
-  /**
-   * Geo targeting information for the short link in JSON format `{[COUNTRY]: https://example.com }`. See https://d.to/geo for more information.
-   */
   geo?: { [k: string]: string } | null | undefined;
   /**
    * Allow search engines to index your short link. Defaults to `false` if not provided. Learn more: https://d.to/noindex

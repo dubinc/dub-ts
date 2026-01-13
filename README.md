@@ -118,23 +118,23 @@ run();
 <details open>
 <summary>Available methods</summary>
 
-### [analytics](docs/sdks/analytics/README.md)
+### [Analytics](docs/sdks/analytics/README.md)
 
 * [retrieve](docs/sdks/analytics/README.md#retrieve) - Retrieve analytics for a link, a domain, or the authenticated workspace.
 
-### [commissions](docs/sdks/commissions/README.md)
+### [Commissions](docs/sdks/commissions/README.md)
 
 * [list](docs/sdks/commissions/README.md#list) - Get commissions for a program.
 * [update](docs/sdks/commissions/README.md#update) - Update a commission.
 
-### [customers](docs/sdks/customers/README.md)
+### [Customers](docs/sdks/customers/README.md)
 
 * [list](docs/sdks/customers/README.md#list) - Retrieve a list of customers
 * [get](docs/sdks/customers/README.md#get) - Retrieve a customer
 * [update](docs/sdks/customers/README.md#update) - Update a customer
 * [delete](docs/sdks/customers/README.md#delete) - Delete a customer
 
-### [domains](docs/sdks/domains/README.md)
+### [Domains](docs/sdks/domains/README.md)
 
 * [create](docs/sdks/domains/README.md#create) - Create a domain
 * [list](docs/sdks/domains/README.md#list) - Retrieve a list of domains
@@ -143,22 +143,22 @@ run();
 * [register](docs/sdks/domains/README.md#register) - Register a domain
 * [checkStatus](docs/sdks/domains/README.md#checkstatus) - Check the availability of one or more domains
 
-### [embedTokens](docs/sdks/embedtokens/README.md)
+### [EmbedTokens](docs/sdks/embedtokens/README.md)
 
 * [referrals](docs/sdks/embedtokens/README.md#referrals) - Create a referrals embed token
 
-### [events](docs/sdks/events/README.md)
+### [Events](docs/sdks/events/README.md)
 
 * [list](docs/sdks/events/README.md#list) - Retrieve a list of events
 
-### [folders](docs/sdks/folders/README.md)
+### [Folders](docs/sdks/folders/README.md)
 
 * [create](docs/sdks/folders/README.md#create) - Create a folder
 * [list](docs/sdks/folders/README.md#list) - Retrieve a list of folders
 * [update](docs/sdks/folders/README.md#update) - Update a folder
 * [delete](docs/sdks/folders/README.md#delete) - Delete a folder
 
-### [links](docs/sdks/links/README.md)
+### [Links](docs/sdks/links/README.md)
 
 * [create](docs/sdks/links/README.md#create) - Create a link
 * [list](docs/sdks/links/README.md#list) - Retrieve a list of links
@@ -171,7 +171,7 @@ run();
 * [deleteMany](docs/sdks/links/README.md#deletemany) - Bulk delete links
 * [upsert](docs/sdks/links/README.md#upsert) - Upsert a link
 
-### [partners](docs/sdks/partners/README.md)
+### [Partners](docs/sdks/partners/README.md)
 
 * [create](docs/sdks/partners/README.md#create) - Create or update a partner
 * [list](docs/sdks/partners/README.md#list) - List all partners
@@ -181,23 +181,23 @@ run();
 * [analytics](docs/sdks/partners/README.md#analytics) - Retrieve analytics for a partner
 * [ban](docs/sdks/partners/README.md#ban) - Ban a partner
 
-### [qrCodes](docs/sdks/qrcodes/README.md)
+### [QRCodes](docs/sdks/qrcodes/README.md)
 
 * [get](docs/sdks/qrcodes/README.md#get) - Retrieve a QR code
 
-### [tags](docs/sdks/tags/README.md)
+### [Tags](docs/sdks/tags/README.md)
 
 * [create](docs/sdks/tags/README.md#create) - Create a tag
 * [list](docs/sdks/tags/README.md#list) - Retrieve a list of tags
 * [update](docs/sdks/tags/README.md#update) - Update a tag
 * [delete](docs/sdks/tags/README.md#delete) - Delete a tag
 
-### [track](docs/sdks/track/README.md)
+### [Track](docs/sdks/track/README.md)
 
 * [lead](docs/sdks/track/README.md#lead) - Track a lead
 * [sale](docs/sdks/track/README.md#sale) - Track a sale
 
-### [workspaces](docs/sdks/workspaces/README.md)
+### [Workspaces](docs/sdks/workspaces/README.md)
 
 * [get](docs/sdks/workspaces/README.md#get) - Retrieve a workspace
 * [update](docs/sdks/workspaces/README.md#update) - Update a workspace

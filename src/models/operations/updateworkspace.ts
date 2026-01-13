@@ -8,7 +8,7 @@ import { remap as remap$ } from "../../lib/primitives.js";
 export type UpdateWorkspaceRequestBody = {
   name?: string | undefined;
   slug?: string | undefined;
-  logo?: string | null | undefined;
+  logo?: any | null | undefined;
   conversionEnabled?: boolean | undefined;
 };
 
@@ -24,7 +24,7 @@ export type UpdateWorkspaceRequest = {
 export type UpdateWorkspaceRequestBody$Outbound = {
   name?: string | undefined;
   slug?: string | undefined;
-  logo?: string | null | undefined;
+  logo?: any | null | undefined;
   conversionEnabled?: boolean | undefined;
 };
 
@@ -36,7 +36,7 @@ export const UpdateWorkspaceRequestBody$outboundSchema: z.ZodType<
 > = z.object({
   name: z.string().optional(),
   slug: z.string().optional(),
-  logo: z.nullable(z.string()).optional(),
+  logo: z.nullable(z.any()).optional(),
   conversionEnabled: z.boolean().optional(),
 });
 

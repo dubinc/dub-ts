@@ -1,16 +1,16 @@
-# PartnerEnrolledEventLink
+# RetrieveLinksResponseBody
 
 ## Example Usage
 
 ```typescript
-import { PartnerEnrolledEventLink } from "dub/models/components";
+import { RetrieveLinksResponseBody } from "dub/models/operations";
 
-let value: PartnerEnrolledEventLink = {
+let value: RetrieveLinksResponseBody = {
   id: "<id>",
-  domain: "subdued-pillow.org",
+  domain: "colossal-commercial.org",
   key: "<key>",
-  shortLink: "https://true-blossom.biz/",
-  url: "https://flashy-adrenalin.biz/",
+  shortLink: "https://french-jogging.com",
+  url: "https://humble-circumference.org",
 };
 ```
 

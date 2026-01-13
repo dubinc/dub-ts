@@ -700,8 +700,6 @@ actions:
             async function run() {
               const result = await dub.qrCodes.get({
                 url: "https://needy-newsstand.biz/",
-                hideLogo: true,
-                includeMargin: false,
               });
 
               console.log(result);

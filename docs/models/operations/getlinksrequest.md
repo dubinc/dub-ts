@@ -6,8 +6,6 @@
 import { GetLinksRequest } from "dub/models/operations";
 
 let value: GetLinksRequest = {
-  showArchived: false,
-  withTags: false,
   pageSize: 50,
 };
 ```

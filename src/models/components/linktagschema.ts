@@ -11,7 +11,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The color of the tag.
  */
-export const Color = {
+export const LinkTagSchemaColor = {
   Red: "red",
   Yellow: "yellow",
   Green: "green",
@@ -23,7 +23,7 @@ export const Color = {
 /**
  * The color of the tag.
  */
-export type Color = ClosedEnum<typeof Color>;
+export type LinkTagSchemaColor = ClosedEnum<typeof LinkTagSchemaColor>;
 
 export type LinkTagSchema = {
   /**
@@ -37,16 +37,17 @@ export type LinkTagSchema = {
   /**
    * The color of the tag.
    */
-  color: Color;
+  color: LinkTagSchemaColor;
 };
 
 /** @internal */
-export const Color$inboundSchema: z.ZodNativeEnum<typeof Color> = z.nativeEnum(
-  Color,
-);
+export const LinkTagSchemaColor$inboundSchema: z.ZodNativeEnum<
+  typeof LinkTagSchemaColor
+> = z.nativeEnum(LinkTagSchemaColor);
 /** @internal */
-export const Color$outboundSchema: z.ZodNativeEnum<typeof Color> =
-  Color$inboundSchema;
+export const LinkTagSchemaColor$outboundSchema: z.ZodNativeEnum<
+  typeof LinkTagSchemaColor
+> = LinkTagSchemaColor$inboundSchema;
 
 /** @internal */
 export const LinkTagSchema$inboundSchema: z.ZodType<
@@ -56,7 +57,7 @@ export const LinkTagSchema$inboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   name: z.string(),
-  color: Color$inboundSchema,
+  color: LinkTagSchemaColor$inboundSchema,
 });
 /** @internal */
 export type LinkTagSchema$Outbound = {
@@ -73,7 +74,7 @@ export const LinkTagSchema$outboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   name: z.string(),
-  color: Color$outboundSchema,
+  color: LinkTagSchemaColor$outboundSchema,
 });
 
 export function linkTagSchemaToJSON(linkTagSchema: LinkTagSchema): string {

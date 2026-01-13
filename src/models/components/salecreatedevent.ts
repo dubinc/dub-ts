@@ -245,7 +245,7 @@ export type SaleCreatedEventLink = {
   projectId: string;
 };
 
-export type SaleCreatedEventSale = {
+export type Sale = {
   amount: number;
   currency: string;
   paymentProcessor: string;
@@ -291,9 +291,9 @@ export type SaleCreatedEventData = {
   customer: SaleCreatedEventCustomer;
   click: SaleCreatedEventClick;
   link: SaleCreatedEventLink;
-  sale: SaleCreatedEventSale;
+  sale: Sale;
   partner?: SaleCreatedEventPartner | null | undefined;
-  metadata: { [k: string]: any } | null;
+  metadata?: { [k: string]: any } | null | undefined;
 };
 
 /**
@@ -716,18 +716,15 @@ export function saleCreatedEventLinkFromJSON(
 }
 
 /** @internal */
-export const SaleCreatedEventSale$inboundSchema: z.ZodType<
-  SaleCreatedEventSale,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  amount: z.number(),
-  currency: z.string(),
-  paymentProcessor: z.string(),
-  invoiceId: z.nullable(z.string()),
-});
+export const Sale$inboundSchema: z.ZodType<Sale, z.ZodTypeDef, unknown> = z
+  .object({
+    amount: z.number(),
+    currency: z.string(),
+    paymentProcessor: z.string(),
+    invoiceId: z.nullable(z.string()),
+  });
 /** @internal */
-export type SaleCreatedEventSale$Outbound = {
+export type Sale$Outbound = {
   amount: number;
   currency: string;
   paymentProcessor: string;
@@ -735,31 +732,24 @@ export type SaleCreatedEventSale$Outbound = {
 };
 
 /** @internal */
-export const SaleCreatedEventSale$outboundSchema: z.ZodType<
-  SaleCreatedEventSale$Outbound,
-  z.ZodTypeDef,
-  SaleCreatedEventSale
-> = z.object({
-  amount: z.number(),
-  currency: z.string(),
-  paymentProcessor: z.string(),
-  invoiceId: z.nullable(z.string()),
-});
+export const Sale$outboundSchema: z.ZodType<Sale$Outbound, z.ZodTypeDef, Sale> =
+  z.object({
+    amount: z.number(),
+    currency: z.string(),
+    paymentProcessor: z.string(),
+    invoiceId: z.nullable(z.string()),
+  });
 
-export function saleCreatedEventSaleToJSON(
-  saleCreatedEventSale: SaleCreatedEventSale,
-): string {
-  return JSON.stringify(
-    SaleCreatedEventSale$outboundSchema.parse(saleCreatedEventSale),
-  );
+export function saleToJSON(sale: Sale): string {
+  return JSON.stringify(Sale$outboundSchema.parse(sale));
 }
-export function saleCreatedEventSaleFromJSON(
+export function saleFromJSON(
   jsonString: string,
-): SafeParseResult<SaleCreatedEventSale, SDKValidationError> {
+): SafeParseResult<Sale, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => SaleCreatedEventSale$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SaleCreatedEventSale' from JSON`,
+    (x) => Sale$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Sale' from JSON`,
   );
 }
 
@@ -848,10 +838,10 @@ export const SaleCreatedEventData$inboundSchema: z.ZodType<
   customer: z.lazy(() => SaleCreatedEventCustomer$inboundSchema),
   click: z.lazy(() => SaleCreatedEventClick$inboundSchema),
   link: z.lazy(() => SaleCreatedEventLink$inboundSchema),
-  sale: z.lazy(() => SaleCreatedEventSale$inboundSchema),
+  sale: z.lazy(() => Sale$inboundSchema),
   partner: z.nullable(z.lazy(() => SaleCreatedEventPartner$inboundSchema))
     .optional(),
-  metadata: z.nullable(z.record(z.any())),
+  metadata: z.nullable(z.record(z.any())).optional(),
 });
 /** @internal */
 export type SaleCreatedEventData$Outbound = {
@@ -859,9 +849,9 @@ export type SaleCreatedEventData$Outbound = {
   customer: SaleCreatedEventCustomer$Outbound;
   click: SaleCreatedEventClick$Outbound;
   link: SaleCreatedEventLink$Outbound;
-  sale: SaleCreatedEventSale$Outbound;
+  sale: Sale$Outbound;
   partner?: SaleCreatedEventPartner$Outbound | null | undefined;
-  metadata: { [k: string]: any } | null;
+  metadata?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -874,10 +864,10 @@ export const SaleCreatedEventData$outboundSchema: z.ZodType<
   customer: z.lazy(() => SaleCreatedEventCustomer$outboundSchema),
   click: z.lazy(() => SaleCreatedEventClick$outboundSchema),
   link: z.lazy(() => SaleCreatedEventLink$outboundSchema),
-  sale: z.lazy(() => SaleCreatedEventSale$outboundSchema),
+  sale: z.lazy(() => Sale$outboundSchema),
   partner: z.nullable(z.lazy(() => SaleCreatedEventPartner$outboundSchema))
     .optional(),
-  metadata: z.nullable(z.record(z.any())),
+  metadata: z.nullable(z.record(z.any())).optional(),
 });
 
 export function saleCreatedEventDataToJSON(

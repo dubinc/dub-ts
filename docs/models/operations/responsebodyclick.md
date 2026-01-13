@@ -1,25 +1,25 @@
-# LinkClickedEventClick
+# ResponseBodyClick
 
 ## Example Usage
 
 ```typescript
-import { LinkClickedEventClick } from "dub/models/components";
+import { ResponseBodyClick } from "dub/models/operations";
 
-let value: LinkClickedEventClick = {
+let value: ResponseBodyClick = {
   id: "<id>",
   timestamp: "<value>",
-  url: "https://watery-drive.info/",
-  country: "Costa Rica",
-  city: "South Kevon",
+  url: "https://puzzled-address.name/",
+  country: "Uruguay",
+  city: "Pricestad",
   region: "<value>",
   continent: "Africa",
-  device: "Mobile",
-  browser: "Firefox",
-  os: "MacOS",
-  referer: "aching-responsibility.net",
-  refererUrl: "https://colorful-mathematics.name/",
+  device: "Desktop",
+  browser: "Safari",
+  os: "Linux",
+  referer: "negligible-elver.com",
+  refererUrl: "https://gray-singing.org/",
   qr: false,
-  ip: "187.26.215.115",
+  ip: "209.49.53.51",
 };
 ```
 

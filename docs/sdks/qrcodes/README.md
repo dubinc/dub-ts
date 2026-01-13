@@ -1,5 +1,4 @@
 # QRCodes
-(*qrCodes*)
 
 ## Overview
 

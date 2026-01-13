@@ -33,7 +33,7 @@ export const Status = {
  */
 export type Status = ClosedEnum<typeof Status>;
 
-export type PartnerEnrolledEventLink = {
+export type Links = {
   /**
    * The unique ID of the short link.
    */
@@ -161,7 +161,7 @@ export type PartnerEnrolledEventData = {
   /**
    * The partner's referral links in this program.
    */
-  links: Array<PartnerEnrolledEventLink> | null;
+  links: Array<Links> | null;
   /**
    * The total commissions paid to the partner for their referrals
    */
@@ -283,24 +283,21 @@ export const Status$outboundSchema: z.ZodNativeEnum<typeof Status> =
   Status$inboundSchema;
 
 /** @internal */
-export const PartnerEnrolledEventLink$inboundSchema: z.ZodType<
-  PartnerEnrolledEventLink,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-  domain: z.string(),
-  key: z.string(),
-  shortLink: z.string(),
-  url: z.string(),
-  clicks: z.number().default(0),
-  leads: z.number().default(0),
-  conversions: z.number().default(0),
-  sales: z.number().default(0),
-  saleAmount: z.number().default(0),
-});
+export const Links$inboundSchema: z.ZodType<Links, z.ZodTypeDef, unknown> = z
+  .object({
+    id: z.string(),
+    domain: z.string(),
+    key: z.string(),
+    shortLink: z.string(),
+    url: z.string(),
+    clicks: z.number().default(0),
+    leads: z.number().default(0),
+    conversions: z.number().default(0),
+    sales: z.number().default(0),
+    saleAmount: z.number().default(0),
+  });
 /** @internal */
-export type PartnerEnrolledEventLink$Outbound = {
+export type Links$Outbound = {
   id: string;
   domain: string;
   key: string;
@@ -314,10 +311,10 @@ export type PartnerEnrolledEventLink$Outbound = {
 };
 
 /** @internal */
-export const PartnerEnrolledEventLink$outboundSchema: z.ZodType<
-  PartnerEnrolledEventLink$Outbound,
+export const Links$outboundSchema: z.ZodType<
+  Links$Outbound,
   z.ZodTypeDef,
-  PartnerEnrolledEventLink
+  Links
 > = z.object({
   id: z.string(),
   domain: z.string(),
@@ -331,20 +328,16 @@ export const PartnerEnrolledEventLink$outboundSchema: z.ZodType<
   saleAmount: z.number().default(0),
 });
 
-export function partnerEnrolledEventLinkToJSON(
-  partnerEnrolledEventLink: PartnerEnrolledEventLink,
-): string {
-  return JSON.stringify(
-    PartnerEnrolledEventLink$outboundSchema.parse(partnerEnrolledEventLink),
-  );
+export function linksToJSON(links: Links): string {
+  return JSON.stringify(Links$outboundSchema.parse(links));
 }
-export function partnerEnrolledEventLinkFromJSON(
+export function linksFromJSON(
   jsonString: string,
-): SafeParseResult<PartnerEnrolledEventLink, SDKValidationError> {
+): SafeParseResult<Links, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PartnerEnrolledEventLink$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PartnerEnrolledEventLink' from JSON`,
+    (x) => Links$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Links' from JSON`,
   );
 }
 
@@ -378,9 +371,7 @@ export const PartnerEnrolledEventData$inboundSchema: z.ZodType<
   tenantId: z.nullable(z.string()),
   createdAt: z.string(),
   status: Status$inboundSchema,
-  links: z.nullable(
-    z.array(z.lazy(() => PartnerEnrolledEventLink$inboundSchema)),
-  ),
+  links: z.nullable(z.array(z.lazy(() => Links$inboundSchema))),
   totalCommissions: z.number().default(0),
   clickRewardId: z.nullable(z.string()).optional(),
   leadRewardId: z.nullable(z.string()).optional(),
@@ -427,7 +418,7 @@ export type PartnerEnrolledEventData$Outbound = {
   tenantId: string | null;
   createdAt: string;
   status: string;
-  links: Array<PartnerEnrolledEventLink$Outbound> | null;
+  links: Array<Links$Outbound> | null;
   totalCommissions: number;
   clickRewardId?: string | null | undefined;
   leadRewardId?: string | null | undefined;
@@ -479,9 +470,7 @@ export const PartnerEnrolledEventData$outboundSchema: z.ZodType<
   tenantId: z.nullable(z.string()),
   createdAt: z.string(),
   status: Status$outboundSchema,
-  links: z.nullable(
-    z.array(z.lazy(() => PartnerEnrolledEventLink$outboundSchema)),
-  ),
+  links: z.nullable(z.array(z.lazy(() => Links$outboundSchema))),
   totalCommissions: z.number().default(0),
   clickRewardId: z.nullable(z.string()).optional(),
   leadRewardId: z.nullable(z.string()).optional(),

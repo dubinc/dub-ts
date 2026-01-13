@@ -1,13 +1,13 @@
-# LeadEventTestVariants
+# ResponseBodyTestVariants
 
 ## Example Usage
 
 ```typescript
-import { LeadEventTestVariants } from "dub/models/components";
+import { ResponseBodyTestVariants } from "dub/models/operations";
 
-let value: LeadEventTestVariants = {
-  url: "https://fatal-arcade.com",
-  percentage: 570.5,
+let value: ResponseBodyTestVariants = {
+  url: "https://pastel-suv.info",
+  percentage: 3851.18,
 };
 ```
 

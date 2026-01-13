@@ -1,15 +1,23 @@
 # Event
 
-## Example Usage
+
+## Supported Types
+
+### `components.One`
 
 ```typescript
-import { Event } from "dub/models/components";
-
-let value: Event = "click";
+const value: components.One = "link.created";
 ```
 
-## Values
+### `components.Two`
 
 ```typescript
-"click"
+const value: components.Two = "link.updated";
 ```
+
+### `components.Three`
+
+```typescript
+const value: components.Three = "link.deleted";
+```
+

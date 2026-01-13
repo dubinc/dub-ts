@@ -22,23 +22,23 @@ export type AnalyticsRegions = {
    * The 2-letter ISO 3166-2 region code of the region.
    */
   region: string;
-  city?: AnalyticsRegionsCity | undefined;
+  city: AnalyticsRegionsCity;
   /**
    * The number of clicks from this region
    */
-  clicks?: number | undefined;
+  clicks: number;
   /**
    * The number of leads from this region
    */
-  leads?: number | undefined;
+  leads: number;
   /**
    * The number of sales from this region
    */
-  sales?: number | undefined;
+  sales: number;
   /**
    * The total amount of sales from this region, in cents
    */
-  saleAmount?: number | undefined;
+  saleAmount: number;
 };
 
 /** @internal */

@@ -45,15 +45,15 @@ export type DomainSchema = {
   /**
    * Whether the domain is verified.
    */
-  verified?: boolean | undefined;
+  verified: boolean;
   /**
    * Whether the domain is the primary domain for the workspace.
    */
-  primary?: boolean | undefined;
+  primary: boolean;
   /**
    * Whether the domain is archived.
    */
-  archived?: boolean | undefined;
+  archived: boolean;
   /**
    * Provide context to your teammates in the link creation modal by showing them an example of a link to be shortened.
    */
@@ -73,11 +73,11 @@ export type DomainSchema = {
   /**
    * assetLinks.json configuration file (for deep link support on Android).
    */
-  assetLinks?: string | null | undefined;
+  assetLinks: string | null;
   /**
    * apple-app-site-association configuration file (for deep link support on iOS).
    */
-  appleAppSiteAssociation?: string | null | undefined;
+  appleAppSiteAssociation: string | null;
   /**
    * The date the domain was created.
    */

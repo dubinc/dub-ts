@@ -3,10 +3,10 @@
 
 ## Supported Types
 
-### `components.ClickEvent`
+### `operations.ClickEvent`
 
 ```typescript
-const value: components.ClickEvent = {
+const value: operations.ClickEvent = {
   event: "click",
   timestamp: "<value>",
   click: {
@@ -100,10 +100,10 @@ const value: components.ClickEvent = {
 };
 ```
 
-### `components.LeadEvent`
+### `operations.LeadEvent`
 
 ```typescript
-const value: components.LeadEvent = {
+const value: operations.LeadEvent = {
   event: "lead",
   timestamp: "<value>",
   eventId: "<id>",
@@ -204,10 +204,10 @@ const value: components.LeadEvent = {
 };
 ```
 
-### `components.SaleEvent`
+### `operations.SaleEvent`
 
 ```typescript
-const value: components.SaleEvent = {
+const value: operations.SaleEvent = {
   event: "sale",
   timestamp: "<value>",
   eventId: "<id>",

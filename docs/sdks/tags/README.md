@@ -1,5 +1,4 @@
 # Tags
-(*tags*)
 
 ## Overview
 
@@ -71,7 +70,7 @@ run();
 
 ### Response
 
-**Promise\<[components.LinkTagSchema](../../models/components/linktagschema.md)\>**
+**Promise\<[components.LinkTagSchemaOutput](../../models/components/linktagschemaoutput.md)\>**
 
 ### Errors
 
@@ -149,7 +148,7 @@ run();
 
 ### Response
 
-**Promise\<[components.LinkTagSchema[]](../../models/.md)\>**
+**Promise\<[components.LinkTagSchemaOutput[]](../../models/.md)\>**
 
 ### Errors
 
@@ -228,7 +227,7 @@ run();
 
 ### Response
 
-**Promise\<[components.LinkTagSchema](../../models/components/linktagschema.md)\>**
+**Promise\<[components.LinkTagSchemaOutput](../../models/components/linktagschemaoutput.md)\>**
 
 ### Errors
 

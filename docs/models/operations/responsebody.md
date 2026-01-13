@@ -61,8 +61,9 @@ const value: components.LinkSchema = {
 
 ```typescript
 const value: components.LinkErrorSchema = {
+  link: "<value>",
   error: "<value>",
-  code: "not_found",
+  code: "unauthorized",
 };
 ```
 

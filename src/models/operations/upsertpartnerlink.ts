@@ -3,7 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../lib/primitives.js";
 
 /**
  * The unique IDs of the tags assigned to the short link.
@@ -52,10 +51,6 @@ export type UpsertPartnerLinkLinkProps = {
    * The unique name of the tags assigned to the short link (case insensitive).
    */
   tagNames?: string | Array<string> | undefined;
-  /**
-   * The unique ID existing folder to assign the short link to.
-   */
-  folderId?: string | null | undefined;
   /**
    * The comments for the short link.
    */
@@ -108,30 +103,6 @@ export type UpsertPartnerLinkLinkProps = {
    * Allow search engines to index your short link. Defaults to `false` if not provided. Learn more: https://d.to/noindex
    */
   doIndex?: boolean | undefined;
-  /**
-   * The UTM source of the short link. If set, this will populate or override the UTM source in the destination URL.
-   */
-  utmSource?: string | null | undefined;
-  /**
-   * The UTM medium of the short link. If set, this will populate or override the UTM medium in the destination URL.
-   */
-  utmMedium?: string | null | undefined;
-  /**
-   * The UTM campaign of the short link. If set, this will populate or override the UTM campaign in the destination URL.
-   */
-  utmCampaign?: string | null | undefined;
-  /**
-   * The UTM term of the short link. If set, this will populate or override the UTM term in the destination URL.
-   */
-  utmTerm?: string | null | undefined;
-  /**
-   * The UTM content of the short link. If set, this will populate or override the UTM content in the destination URL.
-   */
-  utmContent?: string | null | undefined;
-  /**
-   * The referral tag of the short link. If set, this will populate or override the `ref` query parameter in the destination URL.
-   */
-  ref?: string | null | undefined;
   /**
    * An array of A/B test URLs and the percentage of traffic to send to each URL.
    */
@@ -244,7 +215,6 @@ export type UpsertPartnerLinkLinkProps$Outbound = {
   archived?: boolean | undefined;
   tagIds?: string | Array<string> | undefined;
   tagNames?: string | Array<string> | undefined;
-  folderId?: string | null | undefined;
   comments?: string | null | undefined;
   expiresAt?: string | null | undefined;
   expiredUrl?: string | null | undefined;
@@ -258,12 +228,6 @@ export type UpsertPartnerLinkLinkProps$Outbound = {
   ios?: string | null | undefined;
   android?: string | null | undefined;
   doIndex?: boolean | undefined;
-  utm_source?: string | null | undefined;
-  utm_medium?: string | null | undefined;
-  utm_campaign?: string | null | undefined;
-  utm_term?: string | null | undefined;
-  utm_content?: string | null | undefined;
-  ref?: string | null | undefined;
   testVariants?:
     | Array<UpsertPartnerLinkTestVariants$Outbound>
     | null
@@ -285,7 +249,6 @@ export const UpsertPartnerLinkLinkProps$outboundSchema: z.ZodType<
   archived: z.boolean().optional(),
   tagIds: z.union([z.string(), z.array(z.string())]).optional(),
   tagNames: z.union([z.string(), z.array(z.string())]).optional(),
-  folderId: z.nullable(z.string()).optional(),
   comments: z.nullable(z.string()).optional(),
   expiresAt: z.nullable(z.string()).optional(),
   expiredUrl: z.nullable(z.string()).optional(),
@@ -299,25 +262,11 @@ export const UpsertPartnerLinkLinkProps$outboundSchema: z.ZodType<
   ios: z.nullable(z.string()).optional(),
   android: z.nullable(z.string()).optional(),
   doIndex: z.boolean().optional(),
-  utmSource: z.nullable(z.string()).optional(),
-  utmMedium: z.nullable(z.string()).optional(),
-  utmCampaign: z.nullable(z.string()).optional(),
-  utmTerm: z.nullable(z.string()).optional(),
-  utmContent: z.nullable(z.string()).optional(),
-  ref: z.nullable(z.string()).optional(),
   testVariants: z.nullable(
     z.array(z.lazy(() => UpsertPartnerLinkTestVariants$outboundSchema)),
   ).optional(),
   testStartedAt: z.nullable(z.string()).optional(),
   testCompletedAt: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    utmSource: "utm_source",
-    utmMedium: "utm_medium",
-    utmCampaign: "utm_campaign",
-    utmTerm: "utm_term",
-    utmContent: "utm_content",
-  });
 });
 
 export function upsertPartnerLinkLinkPropsToJSON(

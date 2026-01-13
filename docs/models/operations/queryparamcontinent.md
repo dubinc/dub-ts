@@ -1,13 +1,13 @@
-# ContinentCode
+# QueryParamContinent
 
 The continent to retrieve analytics for.
 
 ## Example Usage
 
 ```typescript
-import { ContinentCode } from "dub/models/components";
+import { QueryParamContinent } from "dub/models/operations";
 
-let value: ContinentCode = "AS";
+let value: QueryParamContinent = "AF";
 ```
 
 ## Values

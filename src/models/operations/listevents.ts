@@ -43,6 +43,23 @@ export const QueryParamInterval = {
 export type QueryParamInterval = ClosedEnum<typeof QueryParamInterval>;
 
 /**
+ * The continent to retrieve analytics for.
+ */
+export const QueryParamContinent = {
+  Af: "AF",
+  An: "AN",
+  As: "AS",
+  Eu: "EU",
+  Na: "NA",
+  Oc: "OC",
+  Sa: "SA",
+} as const;
+/**
+ * The continent to retrieve analytics for.
+ */
+export type QueryParamContinent = ClosedEnum<typeof QueryParamContinent>;
+
+/**
  * The trigger to retrieve analytics for. If undefined, returns all trigger types.
  */
 export const QueryParamTrigger = {
@@ -180,7 +197,7 @@ export type ListEventsRequest = {
   /**
    * The continent to retrieve analytics for.
    */
-  continent?: components.ContinentCode | undefined;
+  continent?: QueryParamContinent | undefined;
   /**
    * The device to retrieve analytics for.
    */
@@ -198,7 +215,7 @@ export type ListEventsRequest = {
    */
   trigger?: QueryParamTrigger | undefined;
   /**
-   * The referer to retrieve analytics for.
+   * The referer hostname to retrieve analytics for.
    */
   referer?: string | undefined;
   /**
@@ -281,10 +298,961 @@ export type ListEventsRequest = {
   order?: Order | undefined;
 };
 
-export type ListEventsResponseBody =
-  | (components.SaleEvent & { event: "sale" })
-  | (components.LeadEvent & { event: "lead" })
-  | (components.ClickEvent & { event: "click" });
+/**
+ * The payment processor via which the sale was made.
+ */
+export const ResponseBodyPaymentProcessor = {
+  Stripe: "stripe",
+  Shopify: "shopify",
+  Polar: "polar",
+  Paddle: "paddle",
+  Revenuecat: "revenuecat",
+  Custom: "custom",
+} as const;
+/**
+ * The payment processor via which the sale was made.
+ */
+export type ResponseBodyPaymentProcessor = ClosedEnum<
+  typeof ResponseBodyPaymentProcessor
+>;
+
+export type ResponseBodySale = {
+  /**
+   * The amount of the sale in cents (for all two-decimal currencies). If the sale is in a zero-decimal currency, pass the full integer value (e.g. `1437` JPY). Learn more: https://d.to/currency
+   */
+  amount: number;
+  /**
+   * The invoice ID of the sale. Can be used as a idempotency key – only one sale event can be recorded for a given invoice ID.
+   */
+  invoiceId: string | null;
+  /**
+   * The payment processor via which the sale was made.
+   */
+  paymentProcessor: ResponseBodyPaymentProcessor;
+};
+
+export type ListEventsResponseBodyEventsTestVariants = {
+  url: string;
+  percentage: number;
+};
+
+export type ListEventsResponseBodyLink = {
+  /**
+   * The unique ID of the short link.
+   */
+  id: string;
+  /**
+   * The domain of the short link. If not provided, the primary domain for the workspace will be used (or `dub.sh` if the workspace has no domains).
+   */
+  domain: string;
+  /**
+   * The short link slug. If not provided, a random 7-character slug will be generated.
+   */
+  key: string;
+  url: string;
+  trackConversion: boolean;
+  /**
+   * The ID of the link in your database. If set, it can be used to identify the link in future API requests (must be prefixed with 'ext_' when passed as a query parameter). This key is unique across your workspace.
+   */
+  externalId: string | null;
+  /**
+   * The ID of the tenant that created the link inside your system. If set, it can be used to fetch all links for a tenant.
+   */
+  tenantId: string | null;
+  /**
+   * The ID of the program the short link is associated with.
+   */
+  programId: string | null;
+  /**
+   * The ID of the partner the short link is associated with.
+   */
+  partnerId: string | null;
+  archived: boolean;
+  expiresAt: string;
+  expiredUrl: string | null;
+  disabledAt: string;
+  /**
+   * The password required to access the destination URL of the short link.
+   */
+  password: string | null;
+  proxy: boolean;
+  /**
+   * The title of the short link. Will be used for Custom Link Previews if `proxy` is true.
+   */
+  title: string | null;
+  /**
+   * The description of the short link. Will be used for Custom Link Previews if `proxy` is true.
+   */
+  description: string | null;
+  /**
+   * The image of the short link. Will be used for Custom Link Previews if `proxy` is true.
+   */
+  image: string | null;
+  /**
+   * The custom link preview video (og:video). Will be used for Custom Link Previews if `proxy` is true. Learn more: https://d.to/og
+   */
+  video: string | null;
+  rewrite: boolean;
+  doIndex: boolean;
+  /**
+   * The iOS destination URL for the short link for iOS device targeting.
+   */
+  ios: string | null;
+  /**
+   * The Android destination URL for the short link for Android device targeting.
+   */
+  android: string | null;
+  /**
+   * Geo targeting information for the short link in JSON format `{[COUNTRY]: https://example.com }`. See https://d.to/geo for more information.
+   */
+  geo: { [k: string]: string } | null;
+  publicStats: boolean;
+  /**
+   * The tags assigned to the short link.
+   */
+  tags: Array<components.LinkTagSchemaOutput> | null;
+  /**
+   * The unique ID of the folder assigned to the short link.
+   */
+  folderId: string | null;
+  /**
+   * The IDs of the webhooks that the short link is associated with.
+   */
+  webhookIds: Array<string>;
+  /**
+   * The comments for the short link.
+   */
+  comments: string | null;
+  /**
+   * The full URL of the short link, including the https protocol (e.g. `https://dub.sh/try`).
+   */
+  shortLink: string;
+  /**
+   * The full URL of the QR code for the short link (e.g. `https://api.dub.co/qr?url=https://dub.sh/try`).
+   */
+  qrCode: string;
+  /**
+   * The UTM source of the short link.
+   */
+  utmSource: string | null;
+  /**
+   * The UTM medium of the short link.
+   */
+  utmMedium: string | null;
+  /**
+   * The UTM campaign of the short link.
+   */
+  utmCampaign: string | null;
+  /**
+   * The UTM term of the short link.
+   */
+  utmTerm: string | null;
+  /**
+   * The UTM content of the short link.
+   */
+  utmContent: string | null;
+  /**
+   * An array of A/B test URLs and the percentage of traffic to send to each URL.
+   */
+  testVariants?:
+    | Array<ListEventsResponseBodyEventsTestVariants>
+    | null
+    | undefined;
+  testStartedAt: string;
+  testCompletedAt: string;
+  userId: string | null;
+  /**
+   * The workspace ID of the short link.
+   */
+  workspaceId: string;
+  /**
+   * The number of clicks on the short link.
+   */
+  clicks: number;
+  /**
+   * The number of leads the short link has generated.
+   */
+  leads: number;
+  /**
+   * The number of leads that converted to paying customers.
+   */
+  conversions: number;
+  /**
+   * The total number of sales (includes recurring sales) generated by the short link.
+   */
+  sales: number;
+  /**
+   * The total dollar value of sales (in cents) generated by the short link.
+   */
+  saleAmount: number;
+  lastClicked: string;
+  createdAt: string;
+  updatedAt: string;
+  /**
+   * Deprecated: Use `tags` instead. The unique ID of the tag assigned to the short link.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  tagId: string | null;
+  /**
+   * Deprecated: Use `workspaceId` instead. The project ID of the short link.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  projectId: string;
+};
+
+export type ListEventsResponseBodyClick = {
+  id: string;
+  timestamp: string;
+  url: string;
+  country: string;
+  city: string;
+  region: string;
+  continent: string;
+  device: string;
+  browser: string;
+  os: string;
+  trigger?: string | null | undefined;
+  referer: string;
+  refererUrl: string;
+  qr: boolean;
+  ip: string;
+};
+
+export type ResponseBodyCustomer = {
+  /**
+   * The unique ID of the customer. You may use either the customer's `id` on Dub (obtained via `/customers` endpoint) or their `externalId` (unique ID within your system, prefixed with `ext_`, e.g. `ext_123`).
+   */
+  id: string;
+  /**
+   * Unique identifier for the customer in the client's app.
+   */
+  externalId: string;
+  /**
+   * Name of the customer.
+   */
+  name: string;
+  /**
+   * Email of the customer.
+   */
+  email?: string | null | undefined;
+  /**
+   * Avatar URL of the customer.
+   */
+  avatar?: string | null | undefined;
+  /**
+   * Country of the customer.
+   */
+  country?: string | null | undefined;
+  /**
+   * Total number of sales for the customer.
+   */
+  sales?: number | null | undefined;
+  /**
+   * Total amount of sales for the customer.
+   */
+  saleAmount?: number | null | undefined;
+  /**
+   * The date the customer was created.
+   */
+  createdAt: string;
+};
+
+export type SaleEvent = {
+  event: "sale";
+  timestamp: string;
+  eventId: string;
+  eventName: string;
+  sale: ResponseBodySale;
+  metadata?: any | null | undefined;
+  link: ListEventsResponseBodyLink;
+  click: ListEventsResponseBodyClick;
+  customer: ResponseBodyCustomer;
+  /**
+   * Deprecated: Use `sale.amount` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  saleAmount: number;
+  /**
+   * Deprecated: Use `sale.invoiceId` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  invoiceId: string;
+  /**
+   * Deprecated: Use `sale.paymentProcessor` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  paymentProcessor: string;
+  /**
+   * Deprecated: Use `click.id` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  clickId: string;
+  /**
+   * Deprecated: Use `link.id` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  linkId: string;
+  /**
+   * Deprecated: Use `link.domain` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  domain: string;
+  /**
+   * Deprecated: Use `link.key` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  key: string;
+  /**
+   * Deprecated: Use `click.url` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  url: string;
+  /**
+   * Deprecated: Use `click.continent` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  continent: string;
+  /**
+   * Deprecated: Use `click.country` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  country: string;
+  /**
+   * Deprecated: Use `click.city` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  city: string;
+  /**
+   * Deprecated: Use `click.device` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  device: string;
+  /**
+   * Deprecated: Use `click.browser` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  browser: string;
+  /**
+   * Deprecated: Use `click.os` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  os: string;
+  /**
+   * Deprecated: Use `click.qr` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  qr: number;
+  /**
+   * Deprecated: Use `click.ip` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  ip: string;
+};
+
+export type ResponseBodyClick = {
+  id: string;
+  timestamp: string;
+  url: string;
+  country: string;
+  city: string;
+  region: string;
+  continent: string;
+  device: string;
+  browser: string;
+  os: string;
+  trigger?: string | null | undefined;
+  referer: string;
+  refererUrl: string;
+  qr: boolean;
+  ip: string;
+};
+
+export type ListEventsResponseBodyTestVariants = {
+  url: string;
+  percentage: number;
+};
+
+export type ResponseBodyLink = {
+  /**
+   * The unique ID of the short link.
+   */
+  id: string;
+  /**
+   * The domain of the short link. If not provided, the primary domain for the workspace will be used (or `dub.sh` if the workspace has no domains).
+   */
+  domain: string;
+  /**
+   * The short link slug. If not provided, a random 7-character slug will be generated.
+   */
+  key: string;
+  url: string;
+  trackConversion: boolean;
+  /**
+   * The ID of the link in your database. If set, it can be used to identify the link in future API requests (must be prefixed with 'ext_' when passed as a query parameter). This key is unique across your workspace.
+   */
+  externalId: string | null;
+  /**
+   * The ID of the tenant that created the link inside your system. If set, it can be used to fetch all links for a tenant.
+   */
+  tenantId: string | null;
+  /**
+   * The ID of the program the short link is associated with.
+   */
+  programId: string | null;
+  /**
+   * The ID of the partner the short link is associated with.
+   */
+  partnerId: string | null;
+  archived: boolean;
+  expiresAt: string;
+  expiredUrl: string | null;
+  disabledAt: string;
+  /**
+   * The password required to access the destination URL of the short link.
+   */
+  password: string | null;
+  proxy: boolean;
+  /**
+   * The title of the short link. Will be used for Custom Link Previews if `proxy` is true.
+   */
+  title: string | null;
+  /**
+   * The description of the short link. Will be used for Custom Link Previews if `proxy` is true.
+   */
+  description: string | null;
+  /**
+   * The image of the short link. Will be used for Custom Link Previews if `proxy` is true.
+   */
+  image: string | null;
+  /**
+   * The custom link preview video (og:video). Will be used for Custom Link Previews if `proxy` is true. Learn more: https://d.to/og
+   */
+  video: string | null;
+  rewrite: boolean;
+  doIndex: boolean;
+  /**
+   * The iOS destination URL for the short link for iOS device targeting.
+   */
+  ios: string | null;
+  /**
+   * The Android destination URL for the short link for Android device targeting.
+   */
+  android: string | null;
+  /**
+   * Geo targeting information for the short link in JSON format `{[COUNTRY]: https://example.com }`. See https://d.to/geo for more information.
+   */
+  geo: { [k: string]: string } | null;
+  publicStats: boolean;
+  /**
+   * The tags assigned to the short link.
+   */
+  tags: Array<components.LinkTagSchemaOutput> | null;
+  /**
+   * The unique ID of the folder assigned to the short link.
+   */
+  folderId: string | null;
+  /**
+   * The IDs of the webhooks that the short link is associated with.
+   */
+  webhookIds: Array<string>;
+  /**
+   * The comments for the short link.
+   */
+  comments: string | null;
+  /**
+   * The full URL of the short link, including the https protocol (e.g. `https://dub.sh/try`).
+   */
+  shortLink: string;
+  /**
+   * The full URL of the QR code for the short link (e.g. `https://api.dub.co/qr?url=https://dub.sh/try`).
+   */
+  qrCode: string;
+  /**
+   * The UTM source of the short link.
+   */
+  utmSource: string | null;
+  /**
+   * The UTM medium of the short link.
+   */
+  utmMedium: string | null;
+  /**
+   * The UTM campaign of the short link.
+   */
+  utmCampaign: string | null;
+  /**
+   * The UTM term of the short link.
+   */
+  utmTerm: string | null;
+  /**
+   * The UTM content of the short link.
+   */
+  utmContent: string | null;
+  /**
+   * An array of A/B test URLs and the percentage of traffic to send to each URL.
+   */
+  testVariants?: Array<ListEventsResponseBodyTestVariants> | null | undefined;
+  testStartedAt: string;
+  testCompletedAt: string;
+  userId: string | null;
+  /**
+   * The workspace ID of the short link.
+   */
+  workspaceId: string;
+  /**
+   * The number of clicks on the short link.
+   */
+  clicks: number;
+  /**
+   * The number of leads the short link has generated.
+   */
+  leads: number;
+  /**
+   * The number of leads that converted to paying customers.
+   */
+  conversions: number;
+  /**
+   * The total number of sales (includes recurring sales) generated by the short link.
+   */
+  sales: number;
+  /**
+   * The total dollar value of sales (in cents) generated by the short link.
+   */
+  saleAmount: number;
+  lastClicked: string;
+  createdAt: string;
+  updatedAt: string;
+  /**
+   * Deprecated: Use `tags` instead. The unique ID of the tag assigned to the short link.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  tagId: string | null;
+  /**
+   * Deprecated: Use `workspaceId` instead. The project ID of the short link.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  projectId: string;
+};
+
+export type ListEventsResponseBodyCustomer = {
+  /**
+   * The unique ID of the customer. You may use either the customer's `id` on Dub (obtained via `/customers` endpoint) or their `externalId` (unique ID within your system, prefixed with `ext_`, e.g. `ext_123`).
+   */
+  id: string;
+  /**
+   * Unique identifier for the customer in the client's app.
+   */
+  externalId: string;
+  /**
+   * Name of the customer.
+   */
+  name: string;
+  /**
+   * Email of the customer.
+   */
+  email?: string | null | undefined;
+  /**
+   * Avatar URL of the customer.
+   */
+  avatar?: string | null | undefined;
+  /**
+   * Country of the customer.
+   */
+  country?: string | null | undefined;
+  /**
+   * Total number of sales for the customer.
+   */
+  sales?: number | null | undefined;
+  /**
+   * Total amount of sales for the customer.
+   */
+  saleAmount?: number | null | undefined;
+  /**
+   * The date the customer was created.
+   */
+  createdAt: string;
+};
+
+export type LeadEvent = {
+  event: "lead";
+  timestamp: string;
+  eventId: string;
+  eventName: string;
+  metadata?: any | null | undefined;
+  click: ResponseBodyClick;
+  link: ResponseBodyLink;
+  customer: ListEventsResponseBodyCustomer;
+  /**
+   * Deprecated: Use `click.id` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  clickId: string;
+  /**
+   * Deprecated: Use `link.id` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  linkId: string;
+  /**
+   * Deprecated: Use `link.domain` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  domain: string;
+  /**
+   * Deprecated: Use `link.key` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  key: string;
+  /**
+   * Deprecated: Use `click.url` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  url: string;
+  /**
+   * Deprecated: Use `click.continent` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  continent: string;
+  /**
+   * Deprecated: Use `click.country` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  country: string;
+  /**
+   * Deprecated: Use `click.city` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  city: string;
+  /**
+   * Deprecated: Use `click.device` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  device: string;
+  /**
+   * Deprecated: Use `click.browser` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  browser: string;
+  /**
+   * Deprecated: Use `click.os` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  os: string;
+  /**
+   * Deprecated: Use `click.qr` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  qr: number;
+  /**
+   * Deprecated: Use `click.ip` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  ip: string;
+};
+
+export type ListEventsResponseBodyEventsClick = {
+  id: string;
+  timestamp: string;
+  url: string;
+  country: string;
+  city: string;
+  region: string;
+  continent: string;
+  device: string;
+  browser: string;
+  os: string;
+  trigger?: string | null | undefined;
+  referer: string;
+  refererUrl: string;
+  qr: boolean;
+  ip: string;
+};
+
+export type ResponseBodyTestVariants = {
+  url: string;
+  percentage: number;
+};
+
+export type ListEventsResponseBodyEventsLink = {
+  /**
+   * The unique ID of the short link.
+   */
+  id: string;
+  /**
+   * The domain of the short link. If not provided, the primary domain for the workspace will be used (or `dub.sh` if the workspace has no domains).
+   */
+  domain: string;
+  /**
+   * The short link slug. If not provided, a random 7-character slug will be generated.
+   */
+  key: string;
+  url: string;
+  trackConversion: boolean;
+  /**
+   * The ID of the link in your database. If set, it can be used to identify the link in future API requests (must be prefixed with 'ext_' when passed as a query parameter). This key is unique across your workspace.
+   */
+  externalId: string | null;
+  /**
+   * The ID of the tenant that created the link inside your system. If set, it can be used to fetch all links for a tenant.
+   */
+  tenantId: string | null;
+  /**
+   * The ID of the program the short link is associated with.
+   */
+  programId: string | null;
+  /**
+   * The ID of the partner the short link is associated with.
+   */
+  partnerId: string | null;
+  archived: boolean;
+  expiresAt: string;
+  expiredUrl: string | null;
+  disabledAt: string;
+  /**
+   * The password required to access the destination URL of the short link.
+   */
+  password: string | null;
+  proxy: boolean;
+  /**
+   * The title of the short link. Will be used for Custom Link Previews if `proxy` is true.
+   */
+  title: string | null;
+  /**
+   * The description of the short link. Will be used for Custom Link Previews if `proxy` is true.
+   */
+  description: string | null;
+  /**
+   * The image of the short link. Will be used for Custom Link Previews if `proxy` is true.
+   */
+  image: string | null;
+  /**
+   * The custom link preview video (og:video). Will be used for Custom Link Previews if `proxy` is true. Learn more: https://d.to/og
+   */
+  video: string | null;
+  rewrite: boolean;
+  doIndex: boolean;
+  /**
+   * The iOS destination URL for the short link for iOS device targeting.
+   */
+  ios: string | null;
+  /**
+   * The Android destination URL for the short link for Android device targeting.
+   */
+  android: string | null;
+  /**
+   * Geo targeting information for the short link in JSON format `{[COUNTRY]: https://example.com }`. See https://d.to/geo for more information.
+   */
+  geo: { [k: string]: string } | null;
+  publicStats: boolean;
+  /**
+   * The tags assigned to the short link.
+   */
+  tags: Array<components.LinkTagSchemaOutput> | null;
+  /**
+   * The unique ID of the folder assigned to the short link.
+   */
+  folderId: string | null;
+  /**
+   * The IDs of the webhooks that the short link is associated with.
+   */
+  webhookIds: Array<string>;
+  /**
+   * The comments for the short link.
+   */
+  comments: string | null;
+  /**
+   * The full URL of the short link, including the https protocol (e.g. `https://dub.sh/try`).
+   */
+  shortLink: string;
+  /**
+   * The full URL of the QR code for the short link (e.g. `https://api.dub.co/qr?url=https://dub.sh/try`).
+   */
+  qrCode: string;
+  /**
+   * The UTM source of the short link.
+   */
+  utmSource: string | null;
+  /**
+   * The UTM medium of the short link.
+   */
+  utmMedium: string | null;
+  /**
+   * The UTM campaign of the short link.
+   */
+  utmCampaign: string | null;
+  /**
+   * The UTM term of the short link.
+   */
+  utmTerm: string | null;
+  /**
+   * The UTM content of the short link.
+   */
+  utmContent: string | null;
+  /**
+   * An array of A/B test URLs and the percentage of traffic to send to each URL.
+   */
+  testVariants?: Array<ResponseBodyTestVariants> | null | undefined;
+  testStartedAt: string;
+  testCompletedAt: string;
+  userId: string | null;
+  /**
+   * The workspace ID of the short link.
+   */
+  workspaceId: string;
+  /**
+   * The number of clicks on the short link.
+   */
+  clicks: number;
+  /**
+   * The number of leads the short link has generated.
+   */
+  leads: number;
+  /**
+   * The number of leads that converted to paying customers.
+   */
+  conversions: number;
+  /**
+   * The total number of sales (includes recurring sales) generated by the short link.
+   */
+  sales: number;
+  /**
+   * The total dollar value of sales (in cents) generated by the short link.
+   */
+  saleAmount: number;
+  lastClicked: string;
+  createdAt: string;
+  updatedAt: string;
+  /**
+   * Deprecated: Use `tags` instead. The unique ID of the tag assigned to the short link.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  tagId: string | null;
+  /**
+   * Deprecated: Use `workspaceId` instead. The project ID of the short link.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  projectId: string;
+};
+
+export type ClickEvent = {
+  event: "click";
+  timestamp: string;
+  click: ListEventsResponseBodyEventsClick;
+  link: ListEventsResponseBodyEventsLink;
+  /**
+   * Deprecated: Use `click.id` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  clickId: string;
+  /**
+   * Deprecated: Use `link.id` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  linkId: string;
+  /**
+   * Deprecated: Use `link.domain` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  domain: string;
+  /**
+   * Deprecated: Use `link.key` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  key: string;
+  /**
+   * Deprecated: Use `click.url` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  url: string;
+  /**
+   * Deprecated: Use `click.continent` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  continent: string;
+  /**
+   * Deprecated: Use `click.country` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  country: string;
+  /**
+   * Deprecated: Use `click.city` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  city: string;
+  /**
+   * Deprecated: Use `click.device` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  device: string;
+  /**
+   * Deprecated: Use `click.browser` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  browser: string;
+  /**
+   * Deprecated: Use `click.os` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  os: string;
+  /**
+   * Deprecated: Use `click.qr` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  qr: number;
+  /**
+   * Deprecated: Use `click.ip` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  ip: string;
+};
+
+export type ListEventsResponseBody = ClickEvent | LeadEvent | SaleEvent;
 
 /** @internal */
 export const QueryParamEvent$outboundSchema: z.ZodNativeEnum<
@@ -295,6 +1263,11 @@ export const QueryParamEvent$outboundSchema: z.ZodNativeEnum<
 export const QueryParamInterval$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamInterval
 > = z.nativeEnum(QueryParamInterval);
+
+/** @internal */
+export const QueryParamContinent$outboundSchema: z.ZodNativeEnum<
+  typeof QueryParamContinent
+> = z.nativeEnum(QueryParamContinent);
 
 /** @internal */
 export const QueryParamTrigger$outboundSchema: z.ZodNativeEnum<
@@ -408,7 +1381,7 @@ export const ListEventsRequest$outboundSchema: z.ZodType<
   country: z.string().optional(),
   city: z.string().optional(),
   region: z.string().optional(),
-  continent: components.ContinentCode$outboundSchema.optional(),
+  continent: QueryParamContinent$outboundSchema.optional(),
   device: z.string().optional(),
   browser: z.string().optional(),
   os: z.string().optional(),
@@ -454,20 +1427,635 @@ export function listEventsRequestToJSON(
 }
 
 /** @internal */
+export const ResponseBodyPaymentProcessor$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyPaymentProcessor
+> = z.nativeEnum(ResponseBodyPaymentProcessor);
+
+/** @internal */
+export const ResponseBodySale$inboundSchema: z.ZodType<
+  ResponseBodySale,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  amount: z.number().int(),
+  invoiceId: z.nullable(z.string()).default(null),
+  paymentProcessor: ResponseBodyPaymentProcessor$inboundSchema.default(
+    "custom",
+  ),
+});
+
+export function responseBodySaleFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodySale, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodySale$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodySale' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListEventsResponseBodyEventsTestVariants$inboundSchema: z.ZodType<
+  ListEventsResponseBodyEventsTestVariants,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  url: z.string(),
+  percentage: z.number(),
+});
+
+export function listEventsResponseBodyEventsTestVariantsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListEventsResponseBodyEventsTestVariants,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListEventsResponseBodyEventsTestVariants$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ListEventsResponseBodyEventsTestVariants' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListEventsResponseBodyLink$inboundSchema: z.ZodType<
+  ListEventsResponseBodyLink,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  domain: z.string(),
+  key: z.string(),
+  url: z.string(),
+  trackConversion: z.boolean(),
+  externalId: z.nullable(z.string()),
+  tenantId: z.nullable(z.string()),
+  programId: z.nullable(z.string()),
+  partnerId: z.nullable(z.string()),
+  archived: z.boolean(),
+  expiresAt: z.string(),
+  expiredUrl: z.nullable(z.string()),
+  disabledAt: z.string(),
+  password: z.nullable(z.string()),
+  proxy: z.boolean(),
+  title: z.nullable(z.string()),
+  description: z.nullable(z.string()),
+  image: z.nullable(z.string()),
+  video: z.nullable(z.string()),
+  rewrite: z.boolean(),
+  doIndex: z.boolean(),
+  ios: z.nullable(z.string()),
+  android: z.nullable(z.string()),
+  geo: z.nullable(z.record(z.string())),
+  publicStats: z.boolean(),
+  tags: z.nullable(z.array(components.LinkTagSchemaOutput$inboundSchema)),
+  folderId: z.nullable(z.string()),
+  webhookIds: z.array(z.string()),
+  comments: z.nullable(z.string()),
+  shortLink: z.string(),
+  qrCode: z.string(),
+  utm_source: z.nullable(z.string()),
+  utm_medium: z.nullable(z.string()),
+  utm_campaign: z.nullable(z.string()),
+  utm_term: z.nullable(z.string()),
+  utm_content: z.nullable(z.string()),
+  testVariants: z.nullable(
+    z.array(
+      z.lazy(() => ListEventsResponseBodyEventsTestVariants$inboundSchema),
+    ),
+  ).optional(),
+  testStartedAt: z.string(),
+  testCompletedAt: z.string(),
+  userId: z.nullable(z.string()),
+  workspaceId: z.string(),
+  clicks: z.number().default(0),
+  leads: z.number().default(0),
+  conversions: z.number().default(0),
+  sales: z.number().default(0),
+  saleAmount: z.number().default(0),
+  lastClicked: z.string(),
+  createdAt: z.string(),
+  updatedAt: z.string(),
+  tagId: z.nullable(z.string()),
+  projectId: z.string(),
+}).transform((v) => {
+  return remap$(v, {
+    "utm_source": "utmSource",
+    "utm_medium": "utmMedium",
+    "utm_campaign": "utmCampaign",
+    "utm_term": "utmTerm",
+    "utm_content": "utmContent",
+  });
+});
+
+export function listEventsResponseBodyLinkFromJSON(
+  jsonString: string,
+): SafeParseResult<ListEventsResponseBodyLink, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListEventsResponseBodyLink$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListEventsResponseBodyLink' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListEventsResponseBodyClick$inboundSchema: z.ZodType<
+  ListEventsResponseBodyClick,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  timestamp: z.string(),
+  url: z.string(),
+  country: z.string(),
+  city: z.string(),
+  region: z.string(),
+  continent: z.string(),
+  device: z.string(),
+  browser: z.string(),
+  os: z.string(),
+  trigger: z.nullable(z.string()).optional(),
+  referer: z.string(),
+  refererUrl: z.string(),
+  qr: z.boolean(),
+  ip: z.string(),
+});
+
+export function listEventsResponseBodyClickFromJSON(
+  jsonString: string,
+): SafeParseResult<ListEventsResponseBodyClick, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListEventsResponseBodyClick$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListEventsResponseBodyClick' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyCustomer$inboundSchema: z.ZodType<
+  ResponseBodyCustomer,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  externalId: z.string(),
+  name: z.string(),
+  email: z.nullable(z.string()).optional(),
+  avatar: z.nullable(z.string()).optional(),
+  country: z.nullable(z.string()).optional(),
+  sales: z.nullable(z.number()).optional(),
+  saleAmount: z.nullable(z.number()).optional(),
+  createdAt: z.string(),
+});
+
+export function responseBodyCustomerFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyCustomer, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyCustomer$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyCustomer' from JSON`,
+  );
+}
+
+/** @internal */
+export const SaleEvent$inboundSchema: z.ZodType<
+  SaleEvent,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  event: z.literal("sale"),
+  timestamp: z.string(),
+  eventId: z.string(),
+  eventName: z.string(),
+  sale: z.lazy(() => ResponseBodySale$inboundSchema),
+  metadata: z.nullable(z.any()).optional(),
+  link: z.lazy(() => ListEventsResponseBodyLink$inboundSchema),
+  click: z.lazy(() => ListEventsResponseBodyClick$inboundSchema),
+  customer: z.lazy(() => ResponseBodyCustomer$inboundSchema),
+  saleAmount: z.number(),
+  invoice_id: z.string(),
+  payment_processor: z.string(),
+  click_id: z.string(),
+  link_id: z.string(),
+  domain: z.string(),
+  key: z.string(),
+  url: z.string(),
+  continent: z.string(),
+  country: z.string(),
+  city: z.string(),
+  device: z.string(),
+  browser: z.string(),
+  os: z.string(),
+  qr: z.number(),
+  ip: z.string(),
+}).transform((v) => {
+  return remap$(v, {
+    "invoice_id": "invoiceId",
+    "payment_processor": "paymentProcessor",
+    "click_id": "clickId",
+    "link_id": "linkId",
+  });
+});
+
+export function saleEventFromJSON(
+  jsonString: string,
+): SafeParseResult<SaleEvent, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SaleEvent$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SaleEvent' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyClick$inboundSchema: z.ZodType<
+  ResponseBodyClick,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  timestamp: z.string(),
+  url: z.string(),
+  country: z.string(),
+  city: z.string(),
+  region: z.string(),
+  continent: z.string(),
+  device: z.string(),
+  browser: z.string(),
+  os: z.string(),
+  trigger: z.nullable(z.string()).optional(),
+  referer: z.string(),
+  refererUrl: z.string(),
+  qr: z.boolean(),
+  ip: z.string(),
+});
+
+export function responseBodyClickFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyClick, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyClick$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyClick' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListEventsResponseBodyTestVariants$inboundSchema: z.ZodType<
+  ListEventsResponseBodyTestVariants,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  url: z.string(),
+  percentage: z.number(),
+});
+
+export function listEventsResponseBodyTestVariantsFromJSON(
+  jsonString: string,
+): SafeParseResult<ListEventsResponseBodyTestVariants, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListEventsResponseBodyTestVariants$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListEventsResponseBodyTestVariants' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyLink$inboundSchema: z.ZodType<
+  ResponseBodyLink,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  domain: z.string(),
+  key: z.string(),
+  url: z.string(),
+  trackConversion: z.boolean(),
+  externalId: z.nullable(z.string()),
+  tenantId: z.nullable(z.string()),
+  programId: z.nullable(z.string()),
+  partnerId: z.nullable(z.string()),
+  archived: z.boolean(),
+  expiresAt: z.string(),
+  expiredUrl: z.nullable(z.string()),
+  disabledAt: z.string(),
+  password: z.nullable(z.string()),
+  proxy: z.boolean(),
+  title: z.nullable(z.string()),
+  description: z.nullable(z.string()),
+  image: z.nullable(z.string()),
+  video: z.nullable(z.string()),
+  rewrite: z.boolean(),
+  doIndex: z.boolean(),
+  ios: z.nullable(z.string()),
+  android: z.nullable(z.string()),
+  geo: z.nullable(z.record(z.string())),
+  publicStats: z.boolean(),
+  tags: z.nullable(z.array(components.LinkTagSchemaOutput$inboundSchema)),
+  folderId: z.nullable(z.string()),
+  webhookIds: z.array(z.string()),
+  comments: z.nullable(z.string()),
+  shortLink: z.string(),
+  qrCode: z.string(),
+  utm_source: z.nullable(z.string()),
+  utm_medium: z.nullable(z.string()),
+  utm_campaign: z.nullable(z.string()),
+  utm_term: z.nullable(z.string()),
+  utm_content: z.nullable(z.string()),
+  testVariants: z.nullable(
+    z.array(z.lazy(() => ListEventsResponseBodyTestVariants$inboundSchema)),
+  ).optional(),
+  testStartedAt: z.string(),
+  testCompletedAt: z.string(),
+  userId: z.nullable(z.string()),
+  workspaceId: z.string(),
+  clicks: z.number().default(0),
+  leads: z.number().default(0),
+  conversions: z.number().default(0),
+  sales: z.number().default(0),
+  saleAmount: z.number().default(0),
+  lastClicked: z.string(),
+  createdAt: z.string(),
+  updatedAt: z.string(),
+  tagId: z.nullable(z.string()),
+  projectId: z.string(),
+}).transform((v) => {
+  return remap$(v, {
+    "utm_source": "utmSource",
+    "utm_medium": "utmMedium",
+    "utm_campaign": "utmCampaign",
+    "utm_term": "utmTerm",
+    "utm_content": "utmContent",
+  });
+});
+
+export function responseBodyLinkFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyLink, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyLink$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyLink' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListEventsResponseBodyCustomer$inboundSchema: z.ZodType<
+  ListEventsResponseBodyCustomer,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  externalId: z.string(),
+  name: z.string(),
+  email: z.nullable(z.string()).optional(),
+  avatar: z.nullable(z.string()).optional(),
+  country: z.nullable(z.string()).optional(),
+  sales: z.nullable(z.number()).optional(),
+  saleAmount: z.nullable(z.number()).optional(),
+  createdAt: z.string(),
+});
+
+export function listEventsResponseBodyCustomerFromJSON(
+  jsonString: string,
+): SafeParseResult<ListEventsResponseBodyCustomer, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListEventsResponseBodyCustomer$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListEventsResponseBodyCustomer' from JSON`,
+  );
+}
+
+/** @internal */
+export const LeadEvent$inboundSchema: z.ZodType<
+  LeadEvent,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  event: z.literal("lead"),
+  timestamp: z.string(),
+  eventId: z.string(),
+  eventName: z.string(),
+  metadata: z.nullable(z.any()).optional(),
+  click: z.lazy(() => ResponseBodyClick$inboundSchema),
+  link: z.lazy(() => ResponseBodyLink$inboundSchema),
+  customer: z.lazy(() => ListEventsResponseBodyCustomer$inboundSchema),
+  click_id: z.string(),
+  link_id: z.string(),
+  domain: z.string(),
+  key: z.string(),
+  url: z.string(),
+  continent: z.string(),
+  country: z.string(),
+  city: z.string(),
+  device: z.string(),
+  browser: z.string(),
+  os: z.string(),
+  qr: z.number(),
+  ip: z.string(),
+}).transform((v) => {
+  return remap$(v, {
+    "click_id": "clickId",
+    "link_id": "linkId",
+  });
+});
+
+export function leadEventFromJSON(
+  jsonString: string,
+): SafeParseResult<LeadEvent, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LeadEvent$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LeadEvent' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListEventsResponseBodyEventsClick$inboundSchema: z.ZodType<
+  ListEventsResponseBodyEventsClick,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  timestamp: z.string(),
+  url: z.string(),
+  country: z.string(),
+  city: z.string(),
+  region: z.string(),
+  continent: z.string(),
+  device: z.string(),
+  browser: z.string(),
+  os: z.string(),
+  trigger: z.nullable(z.string()).optional(),
+  referer: z.string(),
+  refererUrl: z.string(),
+  qr: z.boolean(),
+  ip: z.string(),
+});
+
+export function listEventsResponseBodyEventsClickFromJSON(
+  jsonString: string,
+): SafeParseResult<ListEventsResponseBodyEventsClick, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListEventsResponseBodyEventsClick$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListEventsResponseBodyEventsClick' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyTestVariants$inboundSchema: z.ZodType<
+  ResponseBodyTestVariants,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  url: z.string(),
+  percentage: z.number(),
+});
+
+export function responseBodyTestVariantsFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyTestVariants, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyTestVariants$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyTestVariants' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListEventsResponseBodyEventsLink$inboundSchema: z.ZodType<
+  ListEventsResponseBodyEventsLink,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  domain: z.string(),
+  key: z.string(),
+  url: z.string(),
+  trackConversion: z.boolean(),
+  externalId: z.nullable(z.string()),
+  tenantId: z.nullable(z.string()),
+  programId: z.nullable(z.string()),
+  partnerId: z.nullable(z.string()),
+  archived: z.boolean(),
+  expiresAt: z.string(),
+  expiredUrl: z.nullable(z.string()),
+  disabledAt: z.string(),
+  password: z.nullable(z.string()),
+  proxy: z.boolean(),
+  title: z.nullable(z.string()),
+  description: z.nullable(z.string()),
+  image: z.nullable(z.string()),
+  video: z.nullable(z.string()),
+  rewrite: z.boolean(),
+  doIndex: z.boolean(),
+  ios: z.nullable(z.string()),
+  android: z.nullable(z.string()),
+  geo: z.nullable(z.record(z.string())),
+  publicStats: z.boolean(),
+  tags: z.nullable(z.array(components.LinkTagSchemaOutput$inboundSchema)),
+  folderId: z.nullable(z.string()),
+  webhookIds: z.array(z.string()),
+  comments: z.nullable(z.string()),
+  shortLink: z.string(),
+  qrCode: z.string(),
+  utm_source: z.nullable(z.string()),
+  utm_medium: z.nullable(z.string()),
+  utm_campaign: z.nullable(z.string()),
+  utm_term: z.nullable(z.string()),
+  utm_content: z.nullable(z.string()),
+  testVariants: z.nullable(
+    z.array(z.lazy(() => ResponseBodyTestVariants$inboundSchema)),
+  ).optional(),
+  testStartedAt: z.string(),
+  testCompletedAt: z.string(),
+  userId: z.nullable(z.string()),
+  workspaceId: z.string(),
+  clicks: z.number().default(0),
+  leads: z.number().default(0),
+  conversions: z.number().default(0),
+  sales: z.number().default(0),
+  saleAmount: z.number().default(0),
+  lastClicked: z.string(),
+  createdAt: z.string(),
+  updatedAt: z.string(),
+  tagId: z.nullable(z.string()),
+  projectId: z.string(),
+}).transform((v) => {
+  return remap$(v, {
+    "utm_source": "utmSource",
+    "utm_medium": "utmMedium",
+    "utm_campaign": "utmCampaign",
+    "utm_term": "utmTerm",
+    "utm_content": "utmContent",
+  });
+});
+
+export function listEventsResponseBodyEventsLinkFromJSON(
+  jsonString: string,
+): SafeParseResult<ListEventsResponseBodyEventsLink, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListEventsResponseBodyEventsLink$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListEventsResponseBodyEventsLink' from JSON`,
+  );
+}
+
+/** @internal */
+export const ClickEvent$inboundSchema: z.ZodType<
+  ClickEvent,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  event: z.literal("click"),
+  timestamp: z.string(),
+  click: z.lazy(() => ListEventsResponseBodyEventsClick$inboundSchema),
+  link: z.lazy(() => ListEventsResponseBodyEventsLink$inboundSchema),
+  click_id: z.string(),
+  link_id: z.string(),
+  domain: z.string(),
+  key: z.string(),
+  url: z.string(),
+  continent: z.string(),
+  country: z.string(),
+  city: z.string(),
+  device: z.string(),
+  browser: z.string(),
+  os: z.string(),
+  qr: z.number(),
+  ip: z.string(),
+}).transform((v) => {
+  return remap$(v, {
+    "click_id": "clickId",
+    "link_id": "linkId",
+  });
+});
+
+export function clickEventFromJSON(
+  jsonString: string,
+): SafeParseResult<ClickEvent, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ClickEvent$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ClickEvent' from JSON`,
+  );
+}
+
+/** @internal */
 export const ListEventsResponseBody$inboundSchema: z.ZodType<
   ListEventsResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.union([
-  components.SaleEvent$inboundSchema.and(
-    z.object({ event: z.literal("sale") }),
-  ),
-  components.LeadEvent$inboundSchema.and(
-    z.object({ event: z.literal("lead") }),
-  ),
-  components.ClickEvent$inboundSchema.and(
-    z.object({ event: z.literal("click") }),
-  ),
+  z.lazy(() => ClickEvent$inboundSchema),
+  z.lazy(() => LeadEvent$inboundSchema),
+  z.lazy(() => SaleEvent$inboundSchema),
 ]);
 
 export function listEventsResponseBodyFromJSON(

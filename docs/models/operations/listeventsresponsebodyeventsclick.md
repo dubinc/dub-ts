@@ -1,25 +1,25 @@
-# LeadEventClick
+# ListEventsResponseBodyEventsClick
 
 ## Example Usage
 
 ```typescript
-import { LeadEventClick } from "dub/models/components";
+import { ListEventsResponseBodyEventsClick } from "dub/models/operations";
 
-let value: LeadEventClick = {
+let value: ListEventsResponseBodyEventsClick = {
   id: "<id>",
   timestamp: "<value>",
-  url: "https://scary-airbus.biz",
-  country: "Guinea",
-  city: "Lake Ursula",
+  url: "https://ajar-slipper.name",
+  country: "Israel",
+  city: "Jersey City",
   region: "<value>",
-  continent: "North America",
+  continent: "Australia",
   device: "Desktop",
-  browser: "Chrome",
-  os: "Symbian",
-  referer: "empty-draft.org",
-  refererUrl: "https://esteemed-freezing.info",
+  browser: "Firefox",
+  os: "MacOS",
+  referer: "joyous-annual.name",
+  refererUrl: "https://unknown-chap.com",
   qr: true,
-  ip: "2f22:cb58:80fc:cfc4:fa7c:beaa:aefe:b0da",
+  ip: "168.175.113.69",
 };
 ```
 

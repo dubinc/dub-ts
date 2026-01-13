@@ -6,9 +6,6 @@ import * as z from "zod/v3";
 
 export type GetLinkInfoRequest = {
   domain?: string | undefined;
-  /**
-   * The key of the link to retrieve. E.g. for `d.to/github`, the key is `github`.
-   */
   key?: string | undefined;
   /**
    * The unique ID of the short link.
