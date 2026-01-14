@@ -4,6 +4,7 @@
 
 import { ClientSDK } from "../lib/sdks.js";
 import { Analytics } from "./analytics.js";
+import { Bounties } from "./bounties.js";
 import { Commissions } from "./commissions.js";
 import { Customers } from "./customers.js";
 import { Domains } from "./domains.js";
@@ -81,5 +82,10 @@ export class Dub extends ClientSDK {
   private _qrCodes?: QRCodes;
   get qrCodes(): QRCodes {
     return (this._qrCodes ??= new QRCodes(this._options));
+  }
+
+  private _bounties?: Bounties;
+  get bounties(): Bounties {
+    return (this._bounties ??= new Bounties(this._options));
   }
 }

@@ -127,9 +127,9 @@ export type UpsertPartnerLinkRequestBody = {
    */
   tenantId?: string | null | undefined;
   /**
-   * The URL to shorten (if not provided, the program's default URL will be used). Will throw an error if the domain doesn't match the program's default URL domain.
+   * The URL to upsert for. Will throw an error if the domain doesn't match the program's default URL domain.
    */
-  url?: string | null | undefined;
+  url: string;
   /**
    * The short link slug. If not provided, a random 7-character slug will be generated.
    */
@@ -281,7 +281,7 @@ export function upsertPartnerLinkLinkPropsToJSON(
 export type UpsertPartnerLinkRequestBody$Outbound = {
   partnerId?: string | null | undefined;
   tenantId?: string | null | undefined;
-  url?: string | null | undefined;
+  url: string;
   key?: string | undefined;
   comments?: string | null | undefined;
   linkProps?: UpsertPartnerLinkLinkProps$Outbound | undefined;
@@ -295,7 +295,7 @@ export const UpsertPartnerLinkRequestBody$outboundSchema: z.ZodType<
 > = z.object({
   partnerId: z.nullable(z.string()).optional(),
   tenantId: z.nullable(z.string()).optional(),
-  url: z.nullable(z.string()).optional(),
+  url: z.string(),
   key: z.string().optional(),
   comments: z.nullable(z.string()).optional(),
   linkProps: z.lazy(() => UpsertPartnerLinkLinkProps$outboundSchema).optional(),

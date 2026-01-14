@@ -111,6 +111,25 @@ export type CommissionCreatedEventCustomer = {
   createdAt: string;
 };
 
+export type CommissionCreatedEventLink = {
+  /**
+   * The unique ID of the short link.
+   */
+  id: string;
+  /**
+   * The full URL of the short link, including the https protocol (e.g. `https://dub.sh/try`).
+   */
+  shortLink: string;
+  /**
+   * The domain of the short link. If not provided, the primary domain for the workspace will be used (or `dub.sh` if the workspace has no domains).
+   */
+  domain: string;
+  /**
+   * The short link slug. If not provided, a random 7-character slug will be generated.
+   */
+  key: string;
+};
+
 export type CommissionCreatedEventData = {
   /**
    * The commission's unique ID on Dub.
@@ -132,6 +151,7 @@ export type CommissionCreatedEventData = {
   updatedAt: string;
   partner: CommissionCreatedEventPartner;
   customer?: CommissionCreatedEventCustomer | null | undefined;
+  link: CommissionCreatedEventLink | null;
 };
 
 /**
@@ -314,6 +334,54 @@ export function commissionCreatedEventCustomerFromJSON(
 }
 
 /** @internal */
+export const CommissionCreatedEventLink$inboundSchema: z.ZodType<
+  CommissionCreatedEventLink,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  shortLink: z.string(),
+  domain: z.string(),
+  key: z.string(),
+});
+/** @internal */
+export type CommissionCreatedEventLink$Outbound = {
+  id: string;
+  shortLink: string;
+  domain: string;
+  key: string;
+};
+
+/** @internal */
+export const CommissionCreatedEventLink$outboundSchema: z.ZodType<
+  CommissionCreatedEventLink$Outbound,
+  z.ZodTypeDef,
+  CommissionCreatedEventLink
+> = z.object({
+  id: z.string(),
+  shortLink: z.string(),
+  domain: z.string(),
+  key: z.string(),
+});
+
+export function commissionCreatedEventLinkToJSON(
+  commissionCreatedEventLink: CommissionCreatedEventLink,
+): string {
+  return JSON.stringify(
+    CommissionCreatedEventLink$outboundSchema.parse(commissionCreatedEventLink),
+  );
+}
+export function commissionCreatedEventLinkFromJSON(
+  jsonString: string,
+): SafeParseResult<CommissionCreatedEventLink, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CommissionCreatedEventLink$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CommissionCreatedEventLink' from JSON`,
+  );
+}
+
+/** @internal */
 export const CommissionCreatedEventData$inboundSchema: z.ZodType<
   CommissionCreatedEventData,
   z.ZodTypeDef,
@@ -335,6 +403,7 @@ export const CommissionCreatedEventData$inboundSchema: z.ZodType<
   customer: z.nullable(
     z.lazy(() => CommissionCreatedEventCustomer$inboundSchema),
   ).optional(),
+  link: z.nullable(z.lazy(() => CommissionCreatedEventLink$inboundSchema)),
 });
 /** @internal */
 export type CommissionCreatedEventData$Outbound = {
@@ -352,6 +421,7 @@ export type CommissionCreatedEventData$Outbound = {
   updatedAt: string;
   partner: CommissionCreatedEventPartner$Outbound;
   customer?: CommissionCreatedEventCustomer$Outbound | null | undefined;
+  link: CommissionCreatedEventLink$Outbound | null;
 };
 
 /** @internal */
@@ -376,6 +446,7 @@ export const CommissionCreatedEventData$outboundSchema: z.ZodType<
   customer: z.nullable(
     z.lazy(() => CommissionCreatedEventCustomer$outboundSchema),
   ).optional(),
+  link: z.nullable(z.lazy(() => CommissionCreatedEventLink$outboundSchema)),
 });
 
 export function commissionCreatedEventDataToJSON(

@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: 4fe71b8b593ac1efb49346d3604bbe46
+  docChecksum: 1dfd58e77751ca1d1443d50d088508ad
   docVersion: 0.0.1
-  speakeasyVersion: 1.684.1
-  generationVersion: 2.793.2
-  releaseVersion: 0.70.0
-  configChecksum: 7cb475e3acaa08225eba40c0f356132e
+  speakeasyVersion: 1.685.0
+  generationVersion: 2.794.1
+  releaseVersion: 0.70.1
+  configChecksum: 47d3a1165ae1108ed8718d474ec1e1e1
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
 persistentEdits:
-  generation_id: 87f28db3-0ce8-4a24-ac28-28dc283cfe9e
-  pristine_commit_hash: cf6fc400c72af6179cfc090aaf4e1f3ef9299cc0
-  pristine_tree_hash: f66b8e4d5d6a46cad41d985ec537264c405fdc6e
+  generation_id: 2a04768b-7c6f-4c90-b822-92a9cec5740e
+  pristine_commit_hash: 2d222b324917048b73ef48c34150c6afa0f71a9b
+  pristine_tree_hash: 51fd6d9f8e5afa7bd561d7866e0262107a57f3e2
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -155,20 +155,24 @@ trackedFiles:
     pristine_git_object: 0d6e32a6168bf7a0bc38c4c07069a787384c8e66
   docs/models/components/commissioncreatedevent.md:
     id: 9465b7f9b2aa
-    last_write_checksum: sha1:4418d40d0c56782899889fa4ac550d3729656d87
-    pristine_git_object: 911140df1114d7861b28a7b444a4ff8abf47789a
+    last_write_checksum: sha1:21952fe9af542794ea0818bcc8d6fa7e2b4f15db
+    pristine_git_object: 9df6f1038e26fa8e949afb0de5b8b7f3045668d7
   docs/models/components/commissioncreatedeventcustomer.md:
     id: af161f029be1
     last_write_checksum: sha1:e531aa2ae4fb64c8bf03e54dce911e3b8bc3329c
     pristine_git_object: 2739c6077c7438e1bbbcbad43a7afccfae9ae749
   docs/models/components/commissioncreatedeventdata.md:
     id: 3354f5392594
-    last_write_checksum: sha1:a4f4831c70f51d1c2bc8582c87885e85c3707cb6
-    pristine_git_object: 66202c9e97bde8e824c5ea522a4f4cb28c1615e1
+    last_write_checksum: sha1:9ec22620cc09598f8e94c0b82864b27e2c0bf68f
+    pristine_git_object: 24b29a91997da8c0b90877d2d7499657bbd0aff6
   docs/models/components/commissioncreatedeventevent.md:
     id: 4a349652cc27
     last_write_checksum: sha1:7c61b3daa8c1dd2f0288c15b229a4554d93e3bae
     pristine_git_object: c84594fdea00a71829504e72e0cc643acbd55558
+  docs/models/components/commissioncreatedeventlink.md:
+    id: 36597d57a393
+    last_write_checksum: sha1:2aea48617f58a0c106065415deca2b576f34bbb9
+    pristine_git_object: 563c0b58f95f6c0d013ac1621163852868238301
   docs/models/components/commissioncreatedeventpartner.md:
     id: c52c60486c76
     last_write_checksum: sha1:beb69266c1b4a11190967c16362bb7b723e1864c
@@ -423,8 +427,8 @@ trackedFiles:
     pristine_git_object: 5ee5756b1aeed008cc112788450421cbc0d784ca
   docs/models/components/webhookevent.md:
     id: d393cc753930
-    last_write_checksum: sha1:0eb62ea7c33af1cd9952c6522d9fb8c426e6e8b6
-    pristine_git_object: e3cc13bdd126ac5e13411b397668acf442984604
+    last_write_checksum: sha1:844d8917e588f2d77516a2ce41993101df07907f
+    pristine_git_object: c6c065f9931ceb63f0d3b7ccb0810d1a6f73e079
   docs/models/components/workspaceschema.md:
     id: ab09a4a2cc5a
     last_write_checksum: sha1:fa1aa801af850a104aee23d31820bb0c3ea78db8
@@ -541,6 +545,26 @@ trackedFiles:
     id: 4a294fedbfd2
     last_write_checksum: sha1:81fe627e5cb1d32ee51b211f427529ad0aee180d
     pristine_git_object: f72c280197029a2382d3627e97dfac163c0b46c3
+  docs/models/operations/approvebountysubmissionfiles.md:
+    id: 0e058522e464
+    last_write_checksum: sha1:19752e0344238bc1248dbfb6b08585706868d86d
+    pristine_git_object: d88f5ca60fdee92d0e1ea191b10d6530532012da
+  docs/models/operations/approvebountysubmissionrequest.md:
+    id: 24a57cc483cb
+    last_write_checksum: sha1:3f9c2ed6b4fe8c97b497202f182f86f8b90bf102
+    pristine_git_object: 37df0ed60199125434a25ef1971d6e7c8f51015d
+  docs/models/operations/approvebountysubmissionrequestbody.md:
+    id: 15a973b62595
+    last_write_checksum: sha1:87196e3118afeb9e15a354726bc3166dff068b97
+    pristine_git_object: e79f48e2daf92eb1681838149b060d657e06eee5
+  docs/models/operations/approvebountysubmissionresponsebody.md:
+    id: 319a8704a6fe
+    last_write_checksum: sha1:6bf6e0722c4d1f26fb70701751c47f4337be48cf
+    pristine_git_object: 4486d48d9881eb4fbd8151b3599a450ec0be9e99
+  docs/models/operations/approvebountysubmissionstatus.md:
+    id: 8322200a0483
+    last_write_checksum: sha1:c00be092361bd230469873377acfb41f45630e1d
+    pristine_git_object: 6e6c8c1242ed2cc03e596d03bae8abdd7e312959
   docs/models/operations/bannedreason.md:
     id: 63e2b4b788c0
     last_write_checksum: sha1:0d30b184ec75bbd84229244d1ff70ea6320b928d
@@ -757,6 +781,10 @@ trackedFiles:
     id: 692313a333f0
     last_write_checksum: sha1:40b94eed23b4ecf0872a1256b058cea1bc80f620
     pristine_git_object: c2567a7e5cbaca4bc7312473814e60695b7f62b0
+  docs/models/operations/files.md:
+    id: c89c08a77981
+    last_write_checksum: sha1:45a357cce6b10540a5bf4f91ec934b42f343457c
+    pristine_git_object: 3003fa57fe4f966253302970bfa7feb0ebd23677
   docs/models/operations/four.md:
     id: 4297a17a32c9
     last_write_checksum: sha1:a6ef2b0f67c912260dee7015923fe0b1a9c2e246
@@ -889,6 +917,30 @@ trackedFiles:
     id: 161455a12c65
     last_write_checksum: sha1:e2ff154ec575085704731610297fef601e2453f8
     pristine_git_object: a1bc34120341e8136bcce64be17aa9bd1b122e20
+  docs/models/operations/listbountysubmissionsqueryparamsortby.md:
+    id: 1db6f01a0a12
+    last_write_checksum: sha1:9b3f1f01078ad8b4a3dd1770b8f360d034b33b57
+    pristine_git_object: 8ca4e6f3781379da292e74af5a79a745df9e0aea
+  docs/models/operations/listbountysubmissionsqueryparamsortorder.md:
+    id: fd9f9a7cd1d5
+    last_write_checksum: sha1:954deb6859e9a7c1ddab289f43766ca840101a0d
+    pristine_git_object: 9c6a1b09e5de003c0a3c12b4809c10ba96cd61fc
+  docs/models/operations/listbountysubmissionsqueryparamstatus.md:
+    id: 1dfa301d586d
+    last_write_checksum: sha1:e04ba03e6608b69da9d8054d8112545ef0241285
+    pristine_git_object: 240f7388feb6bd0b292c98879c580444e17c5be1
+  docs/models/operations/listbountysubmissionsrequest.md:
+    id: 7da58a63a48d
+    last_write_checksum: sha1:928b8ade4366226a02b94bfc239cd82c3dcfc6f0
+    pristine_git_object: b9f681e3afd5468f6808412bda089ee2b71c08b6
+  docs/models/operations/listbountysubmissionsresponsebody.md:
+    id: 82e7d60f5d44
+    last_write_checksum: sha1:45aae46ad8a80f934c76c37ae2cec2f3b2958bee
+    pristine_git_object: 27bb9d1e6ff1fc519807a06077d7167a6260454a
+  docs/models/operations/listbountysubmissionsstatus.md:
+    id: 854ef71b7c73
+    last_write_checksum: sha1:7ea69e5796e04e7ab08468da59b03eb8f6063511
+    pristine_git_object: 311708f0ab60d35c7083677a5aef9456037c6d6c
   docs/models/operations/listcommissionscustomer.md:
     id: 1a5ccf443dee
     last_write_checksum: sha1:a1a9df43588dad73998987d53192b41374a1dc77
@@ -1085,6 +1137,30 @@ trackedFiles:
     id: f677bca6a0af
     last_write_checksum: sha1:6af026cd1f85f0d1efee6cdf2a7ff91786538c6b
     pristine_git_object: a965155b8eaf117a1ca9a4746e3d9692e10e350d
+  docs/models/operations/rejectbountysubmissionfiles.md:
+    id: d36f7d98bd36
+    last_write_checksum: sha1:a1425ba65d6b391e2ef505bd217f9ce3c9dc116a
+    pristine_git_object: 3663ba7d44cc909a93ea912fca6e4e98bf9dbab9
+  docs/models/operations/rejectbountysubmissionrequest.md:
+    id: 21ca1e8f0673
+    last_write_checksum: sha1:f22e751ca1d45046d4b648ec9d54dea1ce139412
+    pristine_git_object: 5fc583243cb41747fc63e3977397d35c97df4739
+  docs/models/operations/rejectbountysubmissionrequestbody.md:
+    id: 40b56b0a2776
+    last_write_checksum: sha1:8a31ca6e7e6cf65a04ad2279f1bcf2f984d119b3
+    pristine_git_object: 5fecea270a101319299e3a0f61285990cf643ce7
+  docs/models/operations/rejectbountysubmissionresponsebody.md:
+    id: c80cd0172778
+    last_write_checksum: sha1:cfbd00f2bc428022431312b56ae360fcad446d7c
+    pristine_git_object: 217670452f8671225405c7137bb4149d20ab2e1f
+  docs/models/operations/rejectbountysubmissionstatus.md:
+    id: 14acb015a882
+    last_write_checksum: sha1:fd37d4b9fca2b3b94b771c1dcd575d53d83949e0
+    pristine_git_object: a86ab8c5b8787bfbb3b626ae18438b105be56041
+  docs/models/operations/rejectionreason.md:
+    id: 99a67fae384a
+    last_write_checksum: sha1:3f4ba12b8ea7be694de445fb687ab02845908756
+    pristine_git_object: 77099869b2ecf63de36115be94b7d0d48fc97209
   docs/models/operations/requestbody.md:
     id: f78af0833126
     last_write_checksum: sha1:67c1859e22d3fe41e482f5b08e1076b75d37d820
@@ -1367,8 +1443,8 @@ trackedFiles:
     pristine_git_object: ef5b67b3892f921156b5a13f8f8ba5c359f57eb1
   docs/models/operations/upsertpartnerlinkrequestbody.md:
     id: c979f5a7d50e
-    last_write_checksum: sha1:ff265a2a4d7fcdd7155e89279a6670e1acb6e214
-    pristine_git_object: 0f1d83ee44da6ce85bda61d2e5cf8012edb08207
+    last_write_checksum: sha1:d8a85c8634d8546e794923dabfc3c5ea8879cf58
+    pristine_git_object: eace6d9cd98223ea501fb35bddbb0e72f82dc3d2
   docs/models/operations/upsertpartnerlinktagids.md:
     id: d5cd29a01c90
     last_write_checksum: sha1:7e8ff22d921381cb20e0cfbd7eba021b76da37ca
@@ -1385,6 +1461,10 @@ trackedFiles:
     id: 4c84abb05030
     last_write_checksum: sha1:abfae936084a0821a41c1d2aed2d322187b9dc4c
     pristine_git_object: 78f5e0e81724a96f3d2c24d8db6ed547abae3911
+  docs/sdks/bounties/README.md:
+    id: 013b99daef97
+    last_write_checksum: sha1:d2276c561ff19c3b25c7cb0161cf8d28cd81adf5
+    pristine_git_object: 7899f826cb52ea30d1d63a3264edb7b541003e22
   docs/sdks/commissions/README.md:
     id: 12d4eb833558
     last_write_checksum: sha1:3d7cdb1c2bd13e51692423e266cd5c73394f7d77
@@ -1455,12 +1535,12 @@ trackedFiles:
     pristine_git_object: b15f2223f26e640398024c665696a631aa8cc97a
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:79d39664c991d068bcccb2b47a376eab34d4530d
-    pristine_git_object: f547cbe3a97d385c44a5875352ae53374c9de143
+    last_write_checksum: sha1:7ee36158b464a583f107dd52179b26d6521a1d47
+    pristine_git_object: 7097dc0a3c27fdd4ccb0145115f1799ec761dc15
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:1107599c1a703c59bc5fbc94524ae6e9c57e0578
-    pristine_git_object: f5f89d2766297c1f12c20627d8295e0c8bdbd3bb
+    last_write_checksum: sha1:c247e0cfc22deea01b97eee9e502cad75d4bdb3a
+    pristine_git_object: 7b3ec54fda0e5faf2a6c1dfd0f693483c037c4c8
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:f9ef229e4b8c8413b69fb9fb091aa6758b05d99f
@@ -1469,6 +1549,18 @@ trackedFiles:
     id: 28564cea424c
     last_write_checksum: sha1:b947fe854c03ae5bb12136ed83f81f918ec2138c
     pristine_git_object: 5ba892a550020b90604c611aa76b01424751968a
+  src/funcs/bountiesApproveSubmission.ts:
+    id: cd734f2cd64e
+    last_write_checksum: sha1:afbc2599f005baaa68f382d79c617e02f57c54fc
+    pristine_git_object: 99b900f2e912b2f270c6149af181f02602800959
+  src/funcs/bountiesListSubmissions.ts:
+    id: 1b7920bea0b4
+    last_write_checksum: sha1:d3fc064a6dafeef7e6d182ca2b1f0d4e34529ec4
+    pristine_git_object: 839f2503413a6e0dfd815bf79e519a122724fd57
+  src/funcs/bountiesRejectSubmission.ts:
+    id: f263afb7610e
+    last_write_checksum: sha1:23e4bfa905262ae4ed245d069ba8f111da502c40
+    pristine_git_object: 27f1eafc4b6fce14343a61d0ce839d4dc7b9b4dd
   src/funcs/commissionsList.ts:
     id: b43ae478cded
     last_write_checksum: sha1:a70aac77ddec972196333ab35a1a6cb0bcd6d8b4
@@ -1663,8 +1755,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:89296a2ad38e94bc86bf59253f79cb0245ed0d52
-    pristine_git_object: fe400ac28068606cc47ee8079a753a9ec8750026
+    last_write_checksum: sha1:d66304f7b5fb8dcf60a53512f14e35e41c7ef6a0
+    pristine_git_object: 7248015873b579aa9dd02d37621426bf875d970e
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -1775,8 +1867,8 @@ trackedFiles:
     pristine_git_object: 8d0b777248e27eca76ede8d22acb82a7e44782ec
   src/models/components/commissioncreatedevent.ts:
     id: 9da3b4f5153a
-    last_write_checksum: sha1:eb4a8d5428a1bd5c3d15d2bfe9fe30374160bc5d
-    pristine_git_object: 9d040ae52c9cabe126d7ac9c5bd31c0b4ce3b5d7
+    last_write_checksum: sha1:4dc9a0d3e583d5120beaf2961f65cdef3333a8c1
+    pristine_git_object: b3ad3397a9453a2ac3e05e8f40f70381faba24d6
   src/models/components/domainschema.ts:
     id: e230d6c76ff5
     last_write_checksum: sha1:2a4431142f2659cf8a0f2aad1d331fcba10025ec
@@ -1913,6 +2005,10 @@ trackedFiles:
     id: 7cc32af32b2b
     last_write_checksum: sha1:4e1a146dc5dcc3ab75bcec2a63220939a60ef2cf
     pristine_git_object: 20c68dee8ff5fead6d6b7255a149439fb1a10073
+  src/models/operations/approvebountysubmission.ts:
+    id: 293e33363334
+    last_write_checksum: sha1:63f725ed593a76ea158f925c0bba07d97cfaf31a
+    pristine_git_object: a07a7cd269589942875c21a622c343854d4f8bdc
   src/models/operations/banpartner.ts:
     id: fc7b9ca71f86
     last_write_checksum: sha1:4abe46131c1c5eecb75ae440a4eab856d01351a4
@@ -2015,8 +2111,12 @@ trackedFiles:
     pristine_git_object: d98ebff46e919d2c4b382b1adeeba0db505c8fef
   src/models/operations/index.ts:
     id: 0d9ffaf774d2
-    last_write_checksum: sha1:28b18ea08198bc52272bbed51c51c1643020d5d5
-    pristine_git_object: adc8ba8d939912fa2b2747e9eb22f8143cf41e29
+    last_write_checksum: sha1:ab70aa9951e7f50be72507269ed4641aa7fc59ac
+    pristine_git_object: 20e759b347b3ffda0210e22bbadaf9059b98ee3b
+  src/models/operations/listbountysubmissions.ts:
+    id: 0ac11c7282c7
+    last_write_checksum: sha1:c98e129e327826fcdfc041474cf0aedc770ea1f8
+    pristine_git_object: cb3e85a1f24caf3fd1270acaf96c6e61f08aeae0
   src/models/operations/listcommissions.ts:
     id: 40d23d45c47f
     last_write_checksum: sha1:826bb9f98357eaf9e4f007075ec1093c4b360b29
@@ -2041,6 +2141,10 @@ trackedFiles:
     id: 12f28a3b2a16
     last_write_checksum: sha1:146cc842b55bcef4d16b5f2da01ccf6c6518b9f0
     pristine_git_object: 84b25b7e5ad0dfb3c8182e5c11df4531d52d1c0b
+  src/models/operations/rejectbountysubmission.ts:
+    id: ee47280f5a6d
+    last_write_checksum: sha1:db14c435c1a2dbcb5a8ea7851cc9ea9267c8b178
+    pristine_git_object: e4b372a1f8ffa83a1b0d0172126c01c08db5fa10
   src/models/operations/retrieveanalytics.ts:
     id: 8d052c2ff7d7
     last_write_checksum: sha1:7afe4671397e28ec0210d5229b7a24add2759ec2
@@ -2095,12 +2199,16 @@ trackedFiles:
     pristine_git_object: 8d10ae92ad769d9b92b8319b41807e056350f23c
   src/models/operations/upsertpartnerlink.ts:
     id: ef37275c367b
-    last_write_checksum: sha1:29e8da61deaedabb86b566918b5f8290050b6c74
-    pristine_git_object: b6787aa2d302169d5d199008263a039917372013
+    last_write_checksum: sha1:30df1b2af4085d5e88e005d70ab61919bdab5071
+    pristine_git_object: e740eb43d7518da1f31a9271c760adfb32ca35f7
   src/sdk/analytics.ts:
     id: 411d91261be3
     last_write_checksum: sha1:3d969927be49d1e393d8d57d84ab01ea75111ff1
     pristine_git_object: e527f40b4cb812346f21c880d63fd97eed9d76bb
+  src/sdk/bounties.ts:
+    id: 7c7ba0e87ae3
+    last_write_checksum: sha1:4b1dcfae78360a27e8d0b0cd4d65f8bfe2e5a1c8
+    pristine_git_object: 7f16f3a1bafbbb163a4ee1d2e9b0d142738de117
   src/sdk/commissions.ts:
     id: 92da4b129c0b
     last_write_checksum: sha1:056267eb214acdbed958c175e5c1870238828836
@@ -2143,8 +2251,8 @@ trackedFiles:
     pristine_git_object: 93f21781c73af860c055248591443ef742afe417
   src/sdk/sdk.ts:
     id: 784571af2f69
-    last_write_checksum: sha1:c522acd26dacc9eefb141df559ef0d886e1acdc9
-    pristine_git_object: 49b5870ef69278b87ed266e238dab6fc883a9d3f
+    last_write_checksum: sha1:9708fd29e5b1da0fd94d00ff4892f2680b1b2b51
+    pristine_git_object: 1c8a81a254dca6dfbf044f1236f988e63b48bc93
   src/sdk/tags.ts:
     id: b83eb1bf926f
     last_write_checksum: sha1:97f4a5bd9f3ec3e4fbf882bbd87fb3f73c333da8
@@ -3428,9 +3536,94 @@ examples:
           application/json: {"error": {"code": "rate_limit_exceeded", "message": "The requested resource was not found."}}
         "500":
           application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
+  listBountySubmissions:
+    speakeasy-default-list-bounty-submissions:
+      parameters:
+        path:
+          bountyId: "<id>"
+        query:
+          sortBy: "completedAt"
+          sortOrder: "asc"
+          page: 1
+          pageSize: 50
+      responses:
+        "200":
+          application/json: [{"id": "<id>", "bountyId": "<id>", "partnerId": "<id>", "description": null, "urls": ["<value 1>", "<value 2>", "<value 3>"], "files": [], "status": "rejected", "performanceCount": 7252.47, "createdAt": "1730788726599", "completedAt": "<value>", "reviewedAt": "<value>", "rejectionReason": "<value>", "rejectionNote": "<value>"}]
+        "400":
+          application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
+        "401":
+          application/json: {"error": {"code": "unauthorized", "message": "The requested resource was not found."}}
+        "403":
+          application/json: {"error": {"code": "forbidden", "message": "The requested resource was not found."}}
+        "404":
+          application/json: {"error": {"code": "not_found", "message": "The requested resource was not found."}}
+        "409":
+          application/json: {"error": {"code": "conflict", "message": "The requested resource was not found."}}
+        "410":
+          application/json: {"error": {"code": "invite_expired", "message": "The requested resource was not found."}}
+        "422":
+          application/json: {"error": {"code": "unprocessable_entity", "message": "The requested resource was not found."}}
+        "429":
+          application/json: {"error": {"code": "rate_limit_exceeded", "message": "The requested resource was not found."}}
+        "500":
+          application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
+  approveBountySubmission:
+    speakeasy-default-approve-bounty-submission:
+      parameters:
+        path:
+          bountyId: "<id>"
+          submissionId: "<id>"
+      responses:
+        "200":
+          application/json: {"id": "<id>", "bountyId": "<id>", "partnerId": "<id>", "description": "braid probe where", "urls": [], "files": [], "status": "rejected", "performanceCount": 1758.64, "createdAt": "1734899747469", "completedAt": "<value>", "reviewedAt": "<value>", "rejectionReason": "<value>", "rejectionNote": "<value>"}
+        "400":
+          application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
+        "401":
+          application/json: {"error": {"code": "unauthorized", "message": "The requested resource was not found."}}
+        "403":
+          application/json: {"error": {"code": "forbidden", "message": "The requested resource was not found."}}
+        "404":
+          application/json: {"error": {"code": "not_found", "message": "The requested resource was not found."}}
+        "409":
+          application/json: {"error": {"code": "conflict", "message": "The requested resource was not found."}}
+        "410":
+          application/json: {"error": {"code": "invite_expired", "message": "The requested resource was not found."}}
+        "422":
+          application/json: {"error": {"code": "unprocessable_entity", "message": "The requested resource was not found."}}
+        "429":
+          application/json: {"error": {"code": "rate_limit_exceeded", "message": "The requested resource was not found."}}
+        "500":
+          application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
+  rejectBountySubmission:
+    speakeasy-default-reject-bounty-submission:
+      parameters:
+        path:
+          bountyId: "<id>"
+          submissionId: "<id>"
+      responses:
+        "200":
+          application/json: {"id": "<id>", "bountyId": "<id>", "partnerId": "<id>", "description": "concentration blah safely inspection", "urls": ["<value 1>", "<value 2>"], "files": [], "status": "approved", "performanceCount": 6879.81, "createdAt": "1731452499894", "completedAt": "<value>", "reviewedAt": "<value>", "rejectionReason": "<value>", "rejectionNote": "<value>"}
+        "400":
+          application/json: {"error": {"code": "bad_request", "message": "The requested resource was not found."}}
+        "401":
+          application/json: {"error": {"code": "unauthorized", "message": "The requested resource was not found."}}
+        "403":
+          application/json: {"error": {"code": "forbidden", "message": "The requested resource was not found."}}
+        "404":
+          application/json: {"error": {"code": "not_found", "message": "The requested resource was not found."}}
+        "409":
+          application/json: {"error": {"code": "conflict", "message": "The requested resource was not found."}}
+        "410":
+          application/json: {"error": {"code": "invite_expired", "message": "The requested resource was not found."}}
+        "422":
+          application/json: {"error": {"code": "unprocessable_entity", "message": "The requested resource was not found."}}
+        "429":
+          application/json: {"error": {"code": "rate_limit_exceeded", "message": "The requested resource was not found."}}
+        "500":
+          application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes:\n* `dub.partners.create()`: \n  *  `request.linkProps` **Changed** **Breaking** :warning:\n* `dub.partners.createLink()`: \n  *  `request.linkProps` **Changed** **Breaking** :warning:\n* `dub.partners.upsertLink()`: \n  *  `request.linkProps` **Changed** **Breaking** :warning:\n* `dub.workspaces.update()`: \n  *  `requestbody.logo` **Changed** **Breaking** :warning:\n* `dub.embedTokens.referrals()`: \n  *  `request.partner.linkProps` **Changed** **Breaking** :warning:\n* `dub.links.createMany()`:  `response.[].[linkErrorSchema].link` **Changed**\n* `dub.analytics.retrieve()`: \n  *  `request.continent` **Changed**\n* `dub.events.list()`: \n  *  `request.continent` **Changed**\n* `dub.customers.list()`:  `request` **Changed**\n* `dub.customers.update()`: \n  *  `request.requestBody.country` **Added**\n"
+releaseNotes: "## Typescript SDK Changes:\n* `dub.partners.upsertLink()`: \n  *  `request.url` **Changed** **Breaking** :warning:\n* `dub.bounties.listSubmissions()`: **Added**\n* `dub.bounties.approveSubmission()`: **Added**\n* `dub.bounties.rejectSubmission()`: **Added**\n"
 generatedFiles:
   - .gitattributes
   - .npmignore
