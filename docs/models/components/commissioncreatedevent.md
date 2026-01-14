@@ -37,6 +37,12 @@ let value: CommissionCreatedEvent = {
       totalSaleAmount: 6883.26,
       totalCommissions: 6180.26,
     },
+    link: {
+      id: "<id>",
+      shortLink: "https://infamous-boyfriend.net",
+      domain: "bad-contractor.org",
+      key: "<key>",
+    },
   },
 };
 ```

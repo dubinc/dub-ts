@@ -31,6 +31,7 @@ let value: CommissionCreatedEventData = {
     totalSaleAmount: 6883.26,
     totalCommissions: 6180.26,
   },
+  link: null,
 };
 ```
 
@@ -52,3 +53,4 @@ let value: CommissionCreatedEventData = {
 | `updatedAt`                                                                                            | *string*                                                                                               | :heavy_check_mark:                                                                                     | N/A                                                                                                    |                                                                                                        |
 | `partner`                                                                                              | [components.CommissionCreatedEventPartner](../../models/components/commissioncreatedeventpartner.md)   | :heavy_check_mark:                                                                                     | N/A                                                                                                    |                                                                                                        |
 | `customer`                                                                                             | [components.CommissionCreatedEventCustomer](../../models/components/commissioncreatedeventcustomer.md) | :heavy_minus_sign:                                                                                     | N/A                                                                                                    |                                                                                                        |
+| `link`                                                                                                 | [components.CommissionCreatedEventLink](../../models/components/commissioncreatedeventlink.md)         | :heavy_check_mark:                                                                                     | N/A                                                                                                    |                                                                                                        |

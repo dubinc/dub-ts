@@ -122,6 +122,12 @@ run();
 
 * [retrieve](docs/sdks/analytics/README.md#retrieve) - Retrieve analytics for a link, a domain, or the authenticated workspace.
 
+### [Bounties](docs/sdks/bounties/README.md)
+
+* [listSubmissions](docs/sdks/bounties/README.md#listsubmissions) - List bounty submissions
+* [approveSubmission](docs/sdks/bounties/README.md#approvesubmission) - Approve a bounty submission
+* [rejectSubmission](docs/sdks/bounties/README.md#rejectsubmission) - Reject a bounty submission
+
 ### [Commissions](docs/sdks/commissions/README.md)
 
 * [list](docs/sdks/commissions/README.md#list) - Get commissions for a program.
@@ -499,6 +505,9 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 <summary>Available standalone functions</summary>
 
 - [`analyticsRetrieve`](docs/sdks/analytics/README.md#retrieve) - Retrieve analytics for a link, a domain, or the authenticated workspace.
+- [`bountiesApproveSubmission`](docs/sdks/bounties/README.md#approvesubmission) - Approve a bounty submission
+- [`bountiesListSubmissions`](docs/sdks/bounties/README.md#listsubmissions) - List bounty submissions
+- [`bountiesRejectSubmission`](docs/sdks/bounties/README.md#rejectsubmission) - Reject a bounty submission
 - [`commissionsList`](docs/sdks/commissions/README.md#list) - Get commissions for a program.
 - [`commissionsUpdate`](docs/sdks/commissions/README.md#update) - Update a commission.
 - [`customersDelete`](docs/sdks/customers/README.md#delete) - Delete a customer

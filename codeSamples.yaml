@@ -22,6 +22,72 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/bounties/{bountyId}/submissions"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: listBountySubmissions
+          source: |-
+            import { Dub } from "dub";
+
+            const dub = new Dub({
+              token: "DUB_API_KEY",
+            });
+
+            async function run() {
+              const result = await dub.bounties.listSubmissions({
+                bountyId: "<id>",
+                pageSize: 50,
+              });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/bounties/{bountyId}/submissions/{submissionId}/approve"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: approveBountySubmission
+          source: |-
+            import { Dub } from "dub";
+
+            const dub = new Dub({
+              token: "DUB_API_KEY",
+            });
+
+            async function run() {
+              const result = await dub.bounties.approveSubmission({
+                bountyId: "<id>",
+                submissionId: "<id>",
+              });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/bounties/{bountyId}/submissions/{submissionId}/reject"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: rejectBountySubmission
+          source: |-
+            import { Dub } from "dub";
+
+            const dub = new Dub({
+              token: "DUB_API_KEY",
+            });
+
+            async function run() {
+              const result = await dub.bounties.rejectSubmission({
+                bountyId: "<id>",
+                submissionId: "<id>",
+              });
+
+              console.log(result);
+            }
+
+            run();
   - target: $["paths"]["/commissions"]["get"]
     update:
       x-codeSamples:
