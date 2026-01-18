@@ -86,8 +86,8 @@ let value: LeadEvent = {
   },
   customer: {
     id: "<id>",
-    externalId: "<id>",
     name: "<value>",
+    externalId: "<id>",
     createdAt: "1717427554667",
   },
   clickId: "<id>",
