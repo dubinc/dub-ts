@@ -32,6 +32,8 @@ export type Plan = ClosedEnum<typeof Plan>;
 export const Role = {
   Owner: "owner",
   Member: "member",
+  Viewer: "viewer",
+  Billing: "billing",
 } as const;
 /**
  * The role of the authenticated user in the workspace.

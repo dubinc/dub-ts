@@ -199,10 +199,6 @@ export type ListCommissionsCustomer = {
    */
   id: string;
   /**
-   * Unique identifier for the customer in the client's app.
-   */
-  externalId: string;
-  /**
    * Name of the customer.
    */
   name: string;
@@ -214,6 +210,14 @@ export type ListCommissionsCustomer = {
    * Avatar URL of the customer.
    */
   avatar?: string | null | undefined;
+  /**
+   * Unique identifier for the customer in the client's app.
+   */
+  externalId: string;
+  /**
+   * The customer's Stripe customer ID. This is useful for attributing recurring sale events to the partner who referred the customer.
+   */
+  stripeCustomerId?: string | null | undefined;
   /**
    * Country of the customer.
    */
@@ -374,10 +378,11 @@ export const ListCommissionsCustomer$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: z.string(),
-  externalId: z.string(),
   name: z.string(),
   email: z.nullable(z.string()).optional(),
   avatar: z.nullable(z.string()).optional(),
+  externalId: z.string(),
+  stripeCustomerId: z.nullable(z.string()).optional(),
   country: z.nullable(z.string()).optional(),
   sales: z.nullable(z.number()).optional(),
   saleAmount: z.nullable(z.number()).optional(),
