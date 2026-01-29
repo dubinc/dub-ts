@@ -53,6 +53,9 @@ export type ListBountySubmissionsQueryParamSortOrder = ClosedEnum<
 >;
 
 export type ListBountySubmissionsRequest = {
+  /**
+   * The ID of the bounty
+   */
   bountyId: string;
   /**
    * The status of the submissions to list.
@@ -85,34 +88,88 @@ export type ListBountySubmissionsRequest = {
 };
 
 export type Files = {
+  /**
+   * The URL of the uploaded file.
+   */
   url: string;
+  /**
+   * The original file name.
+   */
   fileName: string;
+  /**
+   * The file size in bytes.
+   */
   size: number;
 };
 
+/**
+ * The status of the submission
+ */
 export const ListBountySubmissionsStatus = {
   Draft: "draft",
   Submitted: "submitted",
   Approved: "approved",
   Rejected: "rejected",
 } as const;
+/**
+ * The status of the submission
+ */
 export type ListBountySubmissionsStatus = ClosedEnum<
   typeof ListBountySubmissionsStatus
 >;
 
 export type ListBountySubmissionsResponseBody = {
+  /**
+   * The ID of the bounty submission
+   */
   id: string;
+  /**
+   * The ID of the bounty
+   */
   bountyId: string;
+  /**
+   * The ID of the partner
+   */
   partnerId: string;
+  /**
+   * The description of the submission
+   */
   description: string | null;
+  /**
+   * The URLs submitted for the submission
+   */
   urls: Array<string> | null;
+  /**
+   * The files uploaded for the submission
+   */
   files: Array<Files> | null;
+  /**
+   * The status of the submission
+   */
   status: ListBountySubmissionsStatus;
+  /**
+   * The performance count of the submission
+   */
   performanceCount: number | null;
+  /**
+   * The date and time the submission was created
+   */
   createdAt: string;
+  /**
+   * The date and time the submission was completed
+   */
   completedAt: string | null;
+  /**
+   * The date and time the submission was reviewed
+   */
   reviewedAt: string | null;
+  /**
+   * The reason for rejecting the submission
+   */
   rejectionReason: string | null;
+  /**
+   * The note for rejecting the submission
+   */
   rejectionNote: string | null;
 };
 

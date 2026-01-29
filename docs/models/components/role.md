@@ -7,11 +7,11 @@ The role of the authenticated user in the workspace.
 ```typescript
 import { Role } from "dub/models/components";
 
-let value: Role = "owner";
+let value: Role = "member";
 ```
 
 ## Values
 
 ```typescript
-"owner" | "member"
+"owner" | "member" | "viewer" | "billing"
 ```
