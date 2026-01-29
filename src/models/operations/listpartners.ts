@@ -185,6 +185,124 @@ export type ListPartnersBannedReason = ClosedEnum<
   typeof ListPartnersBannedReason
 >;
 
+export type Fields8 = {
+  key: string;
+  label: string;
+  required: boolean;
+  locked: boolean;
+  position: number;
+  type: "phone";
+};
+
+export type Fields7 = {
+  key: string;
+  label: string;
+  required: boolean;
+  locked: boolean;
+  position: number;
+  type: "number";
+};
+
+export type ListPartnersFieldsPartnersOptions = {
+  label: string;
+  value: string;
+};
+
+export type Fields6 = {
+  key: string;
+  label: string;
+  required: boolean;
+  locked: boolean;
+  position: number;
+  type: "multiSelect";
+  options: Array<ListPartnersFieldsPartnersOptions>;
+};
+
+export type Fields5 = {
+  key: string;
+  label: string;
+  required: boolean;
+  locked: boolean;
+  position: number;
+  type: "date";
+};
+
+export type ListPartnersFields4 = {
+  key: string;
+  label: string;
+  required: boolean;
+  locked: boolean;
+  position: number;
+  type: "country";
+};
+
+export type ListPartnersFieldsOptions = {
+  label: string;
+  value: string;
+};
+
+export type ListPartnersFields3 = {
+  key: string;
+  label: string;
+  required: boolean;
+  locked: boolean;
+  position: number;
+  type: "select";
+  options: Array<ListPartnersFieldsOptions>;
+};
+
+export type ListPartnersFieldsPartnersConstraints = {
+  maxLength?: number | undefined;
+};
+
+export type ListPartnersFields2 = {
+  key: string;
+  label: string;
+  required: boolean;
+  locked: boolean;
+  position: number;
+  type: "textarea";
+  constraints?: ListPartnersFieldsPartnersConstraints | undefined;
+};
+
+export type ListPartnersFieldsConstraints = {
+  maxLength?: number | undefined;
+  pattern?: string | undefined;
+};
+
+export type ListPartnersFields1 = {
+  key: string;
+  label: string;
+  required: boolean;
+  locked: boolean;
+  position: number;
+  type: "text";
+  constraints?: ListPartnersFieldsConstraints | undefined;
+};
+
+export type ListPartnersFields =
+  | ListPartnersFields1
+  | ListPartnersFields2
+  | ListPartnersFields3
+  | ListPartnersFields4
+  | Fields5
+  | Fields6
+  | Fields7
+  | Fields8;
+
+export type ListPartnersReferralFormData = {
+  fields: Array<
+    | ListPartnersFields1
+    | ListPartnersFields2
+    | ListPartnersFields3
+    | ListPartnersFields4
+    | Fields5
+    | Fields6
+    | Fields7
+    | Fields8
+  >;
+};
+
 export type ListPartnersResponseBody = {
   /**
    * The partner's unique ID on Dub.
@@ -275,6 +393,7 @@ export type ListPartnersResponseBody = {
    * If the partner was banned from the program, this is the reason for the ban.
    */
   bannedReason?: ListPartnersBannedReason | null | undefined;
+  referralFormData?: ListPartnersReferralFormData | null | undefined;
   /**
    * The total number of clicks on the partner's links
    */
@@ -443,6 +562,330 @@ export const ListPartnersBannedReason$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(ListPartnersBannedReason);
 
 /** @internal */
+export const Fields8$inboundSchema: z.ZodType<Fields8, z.ZodTypeDef, unknown> =
+  z.object({
+    key: z.string(),
+    label: z.string(),
+    required: z.boolean(),
+    locked: z.boolean(),
+    position: z.number().int(),
+    type: z.literal("phone"),
+  });
+
+export function fields8FromJSON(
+  jsonString: string,
+): SafeParseResult<Fields8, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Fields8$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Fields8' from JSON`,
+  );
+}
+
+/** @internal */
+export const Fields7$inboundSchema: z.ZodType<Fields7, z.ZodTypeDef, unknown> =
+  z.object({
+    key: z.string(),
+    label: z.string(),
+    required: z.boolean(),
+    locked: z.boolean(),
+    position: z.number().int(),
+    type: z.literal("number"),
+  });
+
+export function fields7FromJSON(
+  jsonString: string,
+): SafeParseResult<Fields7, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Fields7$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Fields7' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListPartnersFieldsPartnersOptions$inboundSchema: z.ZodType<
+  ListPartnersFieldsPartnersOptions,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  label: z.string(),
+  value: z.string(),
+});
+
+export function listPartnersFieldsPartnersOptionsFromJSON(
+  jsonString: string,
+): SafeParseResult<ListPartnersFieldsPartnersOptions, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListPartnersFieldsPartnersOptions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListPartnersFieldsPartnersOptions' from JSON`,
+  );
+}
+
+/** @internal */
+export const Fields6$inboundSchema: z.ZodType<Fields6, z.ZodTypeDef, unknown> =
+  z.object({
+    key: z.string(),
+    label: z.string(),
+    required: z.boolean(),
+    locked: z.boolean(),
+    position: z.number().int(),
+    type: z.literal("multiSelect"),
+    options: z.array(
+      z.lazy(() => ListPartnersFieldsPartnersOptions$inboundSchema),
+    ),
+  });
+
+export function fields6FromJSON(
+  jsonString: string,
+): SafeParseResult<Fields6, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Fields6$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Fields6' from JSON`,
+  );
+}
+
+/** @internal */
+export const Fields5$inboundSchema: z.ZodType<Fields5, z.ZodTypeDef, unknown> =
+  z.object({
+    key: z.string(),
+    label: z.string(),
+    required: z.boolean(),
+    locked: z.boolean(),
+    position: z.number().int(),
+    type: z.literal("date"),
+  });
+
+export function fields5FromJSON(
+  jsonString: string,
+): SafeParseResult<Fields5, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Fields5$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Fields5' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListPartnersFields4$inboundSchema: z.ZodType<
+  ListPartnersFields4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  key: z.string(),
+  label: z.string(),
+  required: z.boolean(),
+  locked: z.boolean(),
+  position: z.number().int(),
+  type: z.literal("country"),
+});
+
+export function listPartnersFields4FromJSON(
+  jsonString: string,
+): SafeParseResult<ListPartnersFields4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListPartnersFields4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListPartnersFields4' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListPartnersFieldsOptions$inboundSchema: z.ZodType<
+  ListPartnersFieldsOptions,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  label: z.string(),
+  value: z.string(),
+});
+
+export function listPartnersFieldsOptionsFromJSON(
+  jsonString: string,
+): SafeParseResult<ListPartnersFieldsOptions, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListPartnersFieldsOptions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListPartnersFieldsOptions' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListPartnersFields3$inboundSchema: z.ZodType<
+  ListPartnersFields3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  key: z.string(),
+  label: z.string(),
+  required: z.boolean(),
+  locked: z.boolean(),
+  position: z.number().int(),
+  type: z.literal("select"),
+  options: z.array(z.lazy(() => ListPartnersFieldsOptions$inboundSchema)),
+});
+
+export function listPartnersFields3FromJSON(
+  jsonString: string,
+): SafeParseResult<ListPartnersFields3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListPartnersFields3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListPartnersFields3' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListPartnersFieldsPartnersConstraints$inboundSchema: z.ZodType<
+  ListPartnersFieldsPartnersConstraints,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  maxLength: z.number().int().optional(),
+});
+
+export function listPartnersFieldsPartnersConstraintsFromJSON(
+  jsonString: string,
+): SafeParseResult<ListPartnersFieldsPartnersConstraints, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListPartnersFieldsPartnersConstraints$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListPartnersFieldsPartnersConstraints' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListPartnersFields2$inboundSchema: z.ZodType<
+  ListPartnersFields2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  key: z.string(),
+  label: z.string(),
+  required: z.boolean(),
+  locked: z.boolean(),
+  position: z.number().int(),
+  type: z.literal("textarea"),
+  constraints: z.lazy(() => ListPartnersFieldsPartnersConstraints$inboundSchema)
+    .optional(),
+});
+
+export function listPartnersFields2FromJSON(
+  jsonString: string,
+): SafeParseResult<ListPartnersFields2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListPartnersFields2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListPartnersFields2' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListPartnersFieldsConstraints$inboundSchema: z.ZodType<
+  ListPartnersFieldsConstraints,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  maxLength: z.number().int().optional(),
+  pattern: z.string().optional(),
+});
+
+export function listPartnersFieldsConstraintsFromJSON(
+  jsonString: string,
+): SafeParseResult<ListPartnersFieldsConstraints, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListPartnersFieldsConstraints$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListPartnersFieldsConstraints' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListPartnersFields1$inboundSchema: z.ZodType<
+  ListPartnersFields1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  key: z.string(),
+  label: z.string(),
+  required: z.boolean(),
+  locked: z.boolean(),
+  position: z.number().int(),
+  type: z.literal("text"),
+  constraints: z.lazy(() => ListPartnersFieldsConstraints$inboundSchema)
+    .optional(),
+});
+
+export function listPartnersFields1FromJSON(
+  jsonString: string,
+): SafeParseResult<ListPartnersFields1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListPartnersFields1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListPartnersFields1' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListPartnersFields$inboundSchema: z.ZodType<
+  ListPartnersFields,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => ListPartnersFields1$inboundSchema),
+  z.lazy(() => ListPartnersFields2$inboundSchema),
+  z.lazy(() => ListPartnersFields3$inboundSchema),
+  z.lazy(() => ListPartnersFields4$inboundSchema),
+  z.lazy(() => Fields5$inboundSchema),
+  z.lazy(() => Fields6$inboundSchema),
+  z.lazy(() => Fields7$inboundSchema),
+  z.lazy(() => Fields8$inboundSchema),
+]);
+
+export function listPartnersFieldsFromJSON(
+  jsonString: string,
+): SafeParseResult<ListPartnersFields, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListPartnersFields$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListPartnersFields' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListPartnersReferralFormData$inboundSchema: z.ZodType<
+  ListPartnersReferralFormData,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  fields: z.array(
+    z.union([
+      z.lazy(() => ListPartnersFields1$inboundSchema),
+      z.lazy(() => ListPartnersFields2$inboundSchema),
+      z.lazy(() => ListPartnersFields3$inboundSchema),
+      z.lazy(() => ListPartnersFields4$inboundSchema),
+      z.lazy(() => Fields5$inboundSchema),
+      z.lazy(() => Fields6$inboundSchema),
+      z.lazy(() => Fields7$inboundSchema),
+      z.lazy(() => Fields8$inboundSchema),
+    ]),
+  ),
+});
+
+export function listPartnersReferralFormDataFromJSON(
+  jsonString: string,
+): SafeParseResult<ListPartnersReferralFormData, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListPartnersReferralFormData$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListPartnersReferralFormData' from JSON`,
+  );
+}
+
+/** @internal */
 export const ListPartnersResponseBody$inboundSchema: z.ZodType<
   ListPartnersResponseBody,
   z.ZodTypeDef,
@@ -474,6 +917,9 @@ export const ListPartnersResponseBody$inboundSchema: z.ZodType<
   applicationId: z.nullable(z.string()).optional(),
   bannedAt: z.nullable(z.string()).optional(),
   bannedReason: z.nullable(ListPartnersBannedReason$inboundSchema).optional(),
+  referralFormData: z.nullable(
+    z.lazy(() => ListPartnersReferralFormData$inboundSchema),
+  ).optional(),
   totalClicks: z.number().default(0),
   totalLeads: z.number().default(0),
   totalConversions: z.number().default(0),
