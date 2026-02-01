@@ -7,11 +7,11 @@ The field to sort the customers by. The default is `createdAt`.
 ```typescript
 import { GetCustomersQueryParamSortBy } from "dub/models/operations";
 
-let value: GetCustomersQueryParamSortBy = "saleAmount";
+let value: GetCustomersQueryParamSortBy = "subscriptionCanceledAt";
 ```
 
 ## Values
 
 ```typescript
-"createdAt" | "saleAmount"
+"createdAt" | "saleAmount" | "firstSaleAt" | "subscriptionCanceledAt"
 ```

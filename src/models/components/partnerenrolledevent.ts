@@ -92,6 +92,178 @@ export const BannedReason = {
  */
 export type BannedReason = ClosedEnum<typeof BannedReason>;
 
+export const PartnerEnrolledEventFieldsDataReferralFormData8Type = {
+  Phone: "phone",
+} as const;
+export type PartnerEnrolledEventFieldsDataReferralFormData8Type = ClosedEnum<
+  typeof PartnerEnrolledEventFieldsDataReferralFormData8Type
+>;
+
+export type Eight = {
+  key: string;
+  label: string;
+  required: boolean;
+  locked: boolean;
+  position: number;
+  type: PartnerEnrolledEventFieldsDataReferralFormData8Type;
+};
+
+export const PartnerEnrolledEventFieldsDataReferralFormData7Type = {
+  Number: "number",
+} as const;
+export type PartnerEnrolledEventFieldsDataReferralFormData7Type = ClosedEnum<
+  typeof PartnerEnrolledEventFieldsDataReferralFormData7Type
+>;
+
+export type Seven = {
+  key: string;
+  label: string;
+  required: boolean;
+  locked: boolean;
+  position: number;
+  type: PartnerEnrolledEventFieldsDataReferralFormData7Type;
+};
+
+export const PartnerEnrolledEventFieldsDataReferralFormData6Type = {
+  MultiSelect: "multiSelect",
+} as const;
+export type PartnerEnrolledEventFieldsDataReferralFormData6Type = ClosedEnum<
+  typeof PartnerEnrolledEventFieldsDataReferralFormData6Type
+>;
+
+export type FieldsOptions = {
+  label: string;
+  value: string;
+};
+
+export type Six = {
+  key: string;
+  label: string;
+  required: boolean;
+  locked: boolean;
+  position: number;
+  type: PartnerEnrolledEventFieldsDataReferralFormData6Type;
+  options: Array<FieldsOptions>;
+};
+
+export const PartnerEnrolledEventFieldsDataReferralFormData5Type = {
+  Date: "date",
+} as const;
+export type PartnerEnrolledEventFieldsDataReferralFormData5Type = ClosedEnum<
+  typeof PartnerEnrolledEventFieldsDataReferralFormData5Type
+>;
+
+export type Five = {
+  key: string;
+  label: string;
+  required: boolean;
+  locked: boolean;
+  position: number;
+  type: PartnerEnrolledEventFieldsDataReferralFormData5Type;
+};
+
+export const PartnerEnrolledEventFieldsDataReferralFormDataType = {
+  Country: "country",
+} as const;
+export type PartnerEnrolledEventFieldsDataReferralFormDataType = ClosedEnum<
+  typeof PartnerEnrolledEventFieldsDataReferralFormDataType
+>;
+
+export type Four = {
+  key: string;
+  label: string;
+  required: boolean;
+  locked: boolean;
+  position: number;
+  type: PartnerEnrolledEventFieldsDataReferralFormDataType;
+};
+
+export const PartnerEnrolledEventFieldsDataType = {
+  Select: "select",
+} as const;
+export type PartnerEnrolledEventFieldsDataType = ClosedEnum<
+  typeof PartnerEnrolledEventFieldsDataType
+>;
+
+export type Options = {
+  label: string;
+  value: string;
+};
+
+export type Fields3 = {
+  key: string;
+  label: string;
+  required: boolean;
+  locked: boolean;
+  position: number;
+  type: PartnerEnrolledEventFieldsDataType;
+  options: Array<Options>;
+};
+
+export const PartnerEnrolledEventFieldsType = {
+  Textarea: "textarea",
+} as const;
+export type PartnerEnrolledEventFieldsType = ClosedEnum<
+  typeof PartnerEnrolledEventFieldsType
+>;
+
+export type FieldsConstraints = {
+  maxLength?: number | undefined;
+};
+
+export type Fields2 = {
+  key: string;
+  label: string;
+  required: boolean;
+  locked: boolean;
+  position: number;
+  type: PartnerEnrolledEventFieldsType;
+  constraints?: FieldsConstraints | undefined;
+};
+
+export const FieldsType = {
+  Text: "text",
+} as const;
+export type FieldsType = ClosedEnum<typeof FieldsType>;
+
+export type Constraints = {
+  maxLength?: number | undefined;
+  pattern?: string | undefined;
+};
+
+export type Fields1 = {
+  key: string;
+  label: string;
+  required: boolean;
+  locked: boolean;
+  position: number;
+  type: FieldsType;
+  constraints?: Constraints | undefined;
+};
+
+export type Fields =
+  | (Fields1 & { type: "text" })
+  | (Fields2 & { type: "textarea" })
+  | (Fields3 & { type: "select" })
+  | (Four & { type: "country" })
+  | (Five & { type: "date" })
+  | (Six & { type: "multiSelect" })
+  | (Seven & { type: "number" })
+  | (Eight & { type: "phone" });
+
+export type ReferralFormData = {
+  fields: Array<
+    | (Fields1 & { type: "text" })
+    | (Fields2 & { type: "textarea" })
+    | (Fields3 & { type: "select" })
+    | (Four & { type: "country" })
+    | (Five & { type: "date" })
+    | (Six & { type: "multiSelect" })
+    | (Seven & { type: "number" })
+    | (Eight & { type: "phone" })
+  >;
+};
+
 export type PartnerEnrolledEventData = {
   /**
    * The partner's unique ID on Dub.
@@ -182,6 +354,7 @@ export type PartnerEnrolledEventData = {
    * If the partner was banned from the program, this is the reason for the ban.
    */
   bannedReason?: BannedReason | null | undefined;
+  referralFormData?: ReferralFormData | null | undefined;
   /**
    * The total number of clicks on the partner's links
    */
@@ -349,6 +522,787 @@ export const BannedReason$outboundSchema: z.ZodNativeEnum<typeof BannedReason> =
   BannedReason$inboundSchema;
 
 /** @internal */
+export const PartnerEnrolledEventFieldsDataReferralFormData8Type$inboundSchema:
+  z.ZodNativeEnum<typeof PartnerEnrolledEventFieldsDataReferralFormData8Type> =
+    z.nativeEnum(PartnerEnrolledEventFieldsDataReferralFormData8Type);
+/** @internal */
+export const PartnerEnrolledEventFieldsDataReferralFormData8Type$outboundSchema:
+  z.ZodNativeEnum<typeof PartnerEnrolledEventFieldsDataReferralFormData8Type> =
+    PartnerEnrolledEventFieldsDataReferralFormData8Type$inboundSchema;
+
+/** @internal */
+export const Eight$inboundSchema: z.ZodType<Eight, z.ZodTypeDef, unknown> = z
+  .object({
+    key: z.string(),
+    label: z.string(),
+    required: z.boolean(),
+    locked: z.boolean(),
+    position: z.number().int(),
+    type: PartnerEnrolledEventFieldsDataReferralFormData8Type$inboundSchema,
+  });
+/** @internal */
+export type Eight$Outbound = {
+  key: string;
+  label: string;
+  required: boolean;
+  locked: boolean;
+  position: number;
+  type: string;
+};
+
+/** @internal */
+export const Eight$outboundSchema: z.ZodType<
+  Eight$Outbound,
+  z.ZodTypeDef,
+  Eight
+> = z.object({
+  key: z.string(),
+  label: z.string(),
+  required: z.boolean(),
+  locked: z.boolean(),
+  position: z.number().int(),
+  type: PartnerEnrolledEventFieldsDataReferralFormData8Type$outboundSchema,
+});
+
+export function eightToJSON(eight: Eight): string {
+  return JSON.stringify(Eight$outboundSchema.parse(eight));
+}
+export function eightFromJSON(
+  jsonString: string,
+): SafeParseResult<Eight, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Eight$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Eight' from JSON`,
+  );
+}
+
+/** @internal */
+export const PartnerEnrolledEventFieldsDataReferralFormData7Type$inboundSchema:
+  z.ZodNativeEnum<typeof PartnerEnrolledEventFieldsDataReferralFormData7Type> =
+    z.nativeEnum(PartnerEnrolledEventFieldsDataReferralFormData7Type);
+/** @internal */
+export const PartnerEnrolledEventFieldsDataReferralFormData7Type$outboundSchema:
+  z.ZodNativeEnum<typeof PartnerEnrolledEventFieldsDataReferralFormData7Type> =
+    PartnerEnrolledEventFieldsDataReferralFormData7Type$inboundSchema;
+
+/** @internal */
+export const Seven$inboundSchema: z.ZodType<Seven, z.ZodTypeDef, unknown> = z
+  .object({
+    key: z.string(),
+    label: z.string(),
+    required: z.boolean(),
+    locked: z.boolean(),
+    position: z.number().int(),
+    type: PartnerEnrolledEventFieldsDataReferralFormData7Type$inboundSchema,
+  });
+/** @internal */
+export type Seven$Outbound = {
+  key: string;
+  label: string;
+  required: boolean;
+  locked: boolean;
+  position: number;
+  type: string;
+};
+
+/** @internal */
+export const Seven$outboundSchema: z.ZodType<
+  Seven$Outbound,
+  z.ZodTypeDef,
+  Seven
+> = z.object({
+  key: z.string(),
+  label: z.string(),
+  required: z.boolean(),
+  locked: z.boolean(),
+  position: z.number().int(),
+  type: PartnerEnrolledEventFieldsDataReferralFormData7Type$outboundSchema,
+});
+
+export function sevenToJSON(seven: Seven): string {
+  return JSON.stringify(Seven$outboundSchema.parse(seven));
+}
+export function sevenFromJSON(
+  jsonString: string,
+): SafeParseResult<Seven, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Seven$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Seven' from JSON`,
+  );
+}
+
+/** @internal */
+export const PartnerEnrolledEventFieldsDataReferralFormData6Type$inboundSchema:
+  z.ZodNativeEnum<typeof PartnerEnrolledEventFieldsDataReferralFormData6Type> =
+    z.nativeEnum(PartnerEnrolledEventFieldsDataReferralFormData6Type);
+/** @internal */
+export const PartnerEnrolledEventFieldsDataReferralFormData6Type$outboundSchema:
+  z.ZodNativeEnum<typeof PartnerEnrolledEventFieldsDataReferralFormData6Type> =
+    PartnerEnrolledEventFieldsDataReferralFormData6Type$inboundSchema;
+
+/** @internal */
+export const FieldsOptions$inboundSchema: z.ZodType<
+  FieldsOptions,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  label: z.string(),
+  value: z.string(),
+});
+/** @internal */
+export type FieldsOptions$Outbound = {
+  label: string;
+  value: string;
+};
+
+/** @internal */
+export const FieldsOptions$outboundSchema: z.ZodType<
+  FieldsOptions$Outbound,
+  z.ZodTypeDef,
+  FieldsOptions
+> = z.object({
+  label: z.string(),
+  value: z.string(),
+});
+
+export function fieldsOptionsToJSON(fieldsOptions: FieldsOptions): string {
+  return JSON.stringify(FieldsOptions$outboundSchema.parse(fieldsOptions));
+}
+export function fieldsOptionsFromJSON(
+  jsonString: string,
+): SafeParseResult<FieldsOptions, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FieldsOptions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FieldsOptions' from JSON`,
+  );
+}
+
+/** @internal */
+export const Six$inboundSchema: z.ZodType<Six, z.ZodTypeDef, unknown> = z
+  .object({
+    key: z.string(),
+    label: z.string(),
+    required: z.boolean(),
+    locked: z.boolean(),
+    position: z.number().int(),
+    type: PartnerEnrolledEventFieldsDataReferralFormData6Type$inboundSchema,
+    options: z.array(z.lazy(() => FieldsOptions$inboundSchema)),
+  });
+/** @internal */
+export type Six$Outbound = {
+  key: string;
+  label: string;
+  required: boolean;
+  locked: boolean;
+  position: number;
+  type: string;
+  options: Array<FieldsOptions$Outbound>;
+};
+
+/** @internal */
+export const Six$outboundSchema: z.ZodType<Six$Outbound, z.ZodTypeDef, Six> = z
+  .object({
+    key: z.string(),
+    label: z.string(),
+    required: z.boolean(),
+    locked: z.boolean(),
+    position: z.number().int(),
+    type: PartnerEnrolledEventFieldsDataReferralFormData6Type$outboundSchema,
+    options: z.array(z.lazy(() => FieldsOptions$outboundSchema)),
+  });
+
+export function sixToJSON(six: Six): string {
+  return JSON.stringify(Six$outboundSchema.parse(six));
+}
+export function sixFromJSON(
+  jsonString: string,
+): SafeParseResult<Six, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Six$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Six' from JSON`,
+  );
+}
+
+/** @internal */
+export const PartnerEnrolledEventFieldsDataReferralFormData5Type$inboundSchema:
+  z.ZodNativeEnum<typeof PartnerEnrolledEventFieldsDataReferralFormData5Type> =
+    z.nativeEnum(PartnerEnrolledEventFieldsDataReferralFormData5Type);
+/** @internal */
+export const PartnerEnrolledEventFieldsDataReferralFormData5Type$outboundSchema:
+  z.ZodNativeEnum<typeof PartnerEnrolledEventFieldsDataReferralFormData5Type> =
+    PartnerEnrolledEventFieldsDataReferralFormData5Type$inboundSchema;
+
+/** @internal */
+export const Five$inboundSchema: z.ZodType<Five, z.ZodTypeDef, unknown> = z
+  .object({
+    key: z.string(),
+    label: z.string(),
+    required: z.boolean(),
+    locked: z.boolean(),
+    position: z.number().int(),
+    type: PartnerEnrolledEventFieldsDataReferralFormData5Type$inboundSchema,
+  });
+/** @internal */
+export type Five$Outbound = {
+  key: string;
+  label: string;
+  required: boolean;
+  locked: boolean;
+  position: number;
+  type: string;
+};
+
+/** @internal */
+export const Five$outboundSchema: z.ZodType<Five$Outbound, z.ZodTypeDef, Five> =
+  z.object({
+    key: z.string(),
+    label: z.string(),
+    required: z.boolean(),
+    locked: z.boolean(),
+    position: z.number().int(),
+    type: PartnerEnrolledEventFieldsDataReferralFormData5Type$outboundSchema,
+  });
+
+export function fiveToJSON(five: Five): string {
+  return JSON.stringify(Five$outboundSchema.parse(five));
+}
+export function fiveFromJSON(
+  jsonString: string,
+): SafeParseResult<Five, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Five$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Five' from JSON`,
+  );
+}
+
+/** @internal */
+export const PartnerEnrolledEventFieldsDataReferralFormDataType$inboundSchema:
+  z.ZodNativeEnum<typeof PartnerEnrolledEventFieldsDataReferralFormDataType> = z
+    .nativeEnum(PartnerEnrolledEventFieldsDataReferralFormDataType);
+/** @internal */
+export const PartnerEnrolledEventFieldsDataReferralFormDataType$outboundSchema:
+  z.ZodNativeEnum<typeof PartnerEnrolledEventFieldsDataReferralFormDataType> =
+    PartnerEnrolledEventFieldsDataReferralFormDataType$inboundSchema;
+
+/** @internal */
+export const Four$inboundSchema: z.ZodType<Four, z.ZodTypeDef, unknown> = z
+  .object({
+    key: z.string(),
+    label: z.string(),
+    required: z.boolean(),
+    locked: z.boolean(),
+    position: z.number().int(),
+    type: PartnerEnrolledEventFieldsDataReferralFormDataType$inboundSchema,
+  });
+/** @internal */
+export type Four$Outbound = {
+  key: string;
+  label: string;
+  required: boolean;
+  locked: boolean;
+  position: number;
+  type: string;
+};
+
+/** @internal */
+export const Four$outboundSchema: z.ZodType<Four$Outbound, z.ZodTypeDef, Four> =
+  z.object({
+    key: z.string(),
+    label: z.string(),
+    required: z.boolean(),
+    locked: z.boolean(),
+    position: z.number().int(),
+    type: PartnerEnrolledEventFieldsDataReferralFormDataType$outboundSchema,
+  });
+
+export function fourToJSON(four: Four): string {
+  return JSON.stringify(Four$outboundSchema.parse(four));
+}
+export function fourFromJSON(
+  jsonString: string,
+): SafeParseResult<Four, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Four$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Four' from JSON`,
+  );
+}
+
+/** @internal */
+export const PartnerEnrolledEventFieldsDataType$inboundSchema: z.ZodNativeEnum<
+  typeof PartnerEnrolledEventFieldsDataType
+> = z.nativeEnum(PartnerEnrolledEventFieldsDataType);
+/** @internal */
+export const PartnerEnrolledEventFieldsDataType$outboundSchema: z.ZodNativeEnum<
+  typeof PartnerEnrolledEventFieldsDataType
+> = PartnerEnrolledEventFieldsDataType$inboundSchema;
+
+/** @internal */
+export const Options$inboundSchema: z.ZodType<Options, z.ZodTypeDef, unknown> =
+  z.object({
+    label: z.string(),
+    value: z.string(),
+  });
+/** @internal */
+export type Options$Outbound = {
+  label: string;
+  value: string;
+};
+
+/** @internal */
+export const Options$outboundSchema: z.ZodType<
+  Options$Outbound,
+  z.ZodTypeDef,
+  Options
+> = z.object({
+  label: z.string(),
+  value: z.string(),
+});
+
+export function optionsToJSON(options: Options): string {
+  return JSON.stringify(Options$outboundSchema.parse(options));
+}
+export function optionsFromJSON(
+  jsonString: string,
+): SafeParseResult<Options, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Options$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Options' from JSON`,
+  );
+}
+
+/** @internal */
+export const Fields3$inboundSchema: z.ZodType<Fields3, z.ZodTypeDef, unknown> =
+  z.object({
+    key: z.string(),
+    label: z.string(),
+    required: z.boolean(),
+    locked: z.boolean(),
+    position: z.number().int(),
+    type: PartnerEnrolledEventFieldsDataType$inboundSchema,
+    options: z.array(z.lazy(() => Options$inboundSchema)),
+  });
+/** @internal */
+export type Fields3$Outbound = {
+  key: string;
+  label: string;
+  required: boolean;
+  locked: boolean;
+  position: number;
+  type: string;
+  options: Array<Options$Outbound>;
+};
+
+/** @internal */
+export const Fields3$outboundSchema: z.ZodType<
+  Fields3$Outbound,
+  z.ZodTypeDef,
+  Fields3
+> = z.object({
+  key: z.string(),
+  label: z.string(),
+  required: z.boolean(),
+  locked: z.boolean(),
+  position: z.number().int(),
+  type: PartnerEnrolledEventFieldsDataType$outboundSchema,
+  options: z.array(z.lazy(() => Options$outboundSchema)),
+});
+
+export function fields3ToJSON(fields3: Fields3): string {
+  return JSON.stringify(Fields3$outboundSchema.parse(fields3));
+}
+export function fields3FromJSON(
+  jsonString: string,
+): SafeParseResult<Fields3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Fields3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Fields3' from JSON`,
+  );
+}
+
+/** @internal */
+export const PartnerEnrolledEventFieldsType$inboundSchema: z.ZodNativeEnum<
+  typeof PartnerEnrolledEventFieldsType
+> = z.nativeEnum(PartnerEnrolledEventFieldsType);
+/** @internal */
+export const PartnerEnrolledEventFieldsType$outboundSchema: z.ZodNativeEnum<
+  typeof PartnerEnrolledEventFieldsType
+> = PartnerEnrolledEventFieldsType$inboundSchema;
+
+/** @internal */
+export const FieldsConstraints$inboundSchema: z.ZodType<
+  FieldsConstraints,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  maxLength: z.number().int().optional(),
+});
+/** @internal */
+export type FieldsConstraints$Outbound = {
+  maxLength?: number | undefined;
+};
+
+/** @internal */
+export const FieldsConstraints$outboundSchema: z.ZodType<
+  FieldsConstraints$Outbound,
+  z.ZodTypeDef,
+  FieldsConstraints
+> = z.object({
+  maxLength: z.number().int().optional(),
+});
+
+export function fieldsConstraintsToJSON(
+  fieldsConstraints: FieldsConstraints,
+): string {
+  return JSON.stringify(
+    FieldsConstraints$outboundSchema.parse(fieldsConstraints),
+  );
+}
+export function fieldsConstraintsFromJSON(
+  jsonString: string,
+): SafeParseResult<FieldsConstraints, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FieldsConstraints$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FieldsConstraints' from JSON`,
+  );
+}
+
+/** @internal */
+export const Fields2$inboundSchema: z.ZodType<Fields2, z.ZodTypeDef, unknown> =
+  z.object({
+    key: z.string(),
+    label: z.string(),
+    required: z.boolean(),
+    locked: z.boolean(),
+    position: z.number().int(),
+    type: PartnerEnrolledEventFieldsType$inboundSchema,
+    constraints: z.lazy(() => FieldsConstraints$inboundSchema).optional(),
+  });
+/** @internal */
+export type Fields2$Outbound = {
+  key: string;
+  label: string;
+  required: boolean;
+  locked: boolean;
+  position: number;
+  type: string;
+  constraints?: FieldsConstraints$Outbound | undefined;
+};
+
+/** @internal */
+export const Fields2$outboundSchema: z.ZodType<
+  Fields2$Outbound,
+  z.ZodTypeDef,
+  Fields2
+> = z.object({
+  key: z.string(),
+  label: z.string(),
+  required: z.boolean(),
+  locked: z.boolean(),
+  position: z.number().int(),
+  type: PartnerEnrolledEventFieldsType$outboundSchema,
+  constraints: z.lazy(() => FieldsConstraints$outboundSchema).optional(),
+});
+
+export function fields2ToJSON(fields2: Fields2): string {
+  return JSON.stringify(Fields2$outboundSchema.parse(fields2));
+}
+export function fields2FromJSON(
+  jsonString: string,
+): SafeParseResult<Fields2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Fields2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Fields2' from JSON`,
+  );
+}
+
+/** @internal */
+export const FieldsType$inboundSchema: z.ZodNativeEnum<typeof FieldsType> = z
+  .nativeEnum(FieldsType);
+/** @internal */
+export const FieldsType$outboundSchema: z.ZodNativeEnum<typeof FieldsType> =
+  FieldsType$inboundSchema;
+
+/** @internal */
+export const Constraints$inboundSchema: z.ZodType<
+  Constraints,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  maxLength: z.number().int().optional(),
+  pattern: z.string().optional(),
+});
+/** @internal */
+export type Constraints$Outbound = {
+  maxLength?: number | undefined;
+  pattern?: string | undefined;
+};
+
+/** @internal */
+export const Constraints$outboundSchema: z.ZodType<
+  Constraints$Outbound,
+  z.ZodTypeDef,
+  Constraints
+> = z.object({
+  maxLength: z.number().int().optional(),
+  pattern: z.string().optional(),
+});
+
+export function constraintsToJSON(constraints: Constraints): string {
+  return JSON.stringify(Constraints$outboundSchema.parse(constraints));
+}
+export function constraintsFromJSON(
+  jsonString: string,
+): SafeParseResult<Constraints, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Constraints$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Constraints' from JSON`,
+  );
+}
+
+/** @internal */
+export const Fields1$inboundSchema: z.ZodType<Fields1, z.ZodTypeDef, unknown> =
+  z.object({
+    key: z.string(),
+    label: z.string(),
+    required: z.boolean(),
+    locked: z.boolean(),
+    position: z.number().int(),
+    type: FieldsType$inboundSchema,
+    constraints: z.lazy(() => Constraints$inboundSchema).optional(),
+  });
+/** @internal */
+export type Fields1$Outbound = {
+  key: string;
+  label: string;
+  required: boolean;
+  locked: boolean;
+  position: number;
+  type: string;
+  constraints?: Constraints$Outbound | undefined;
+};
+
+/** @internal */
+export const Fields1$outboundSchema: z.ZodType<
+  Fields1$Outbound,
+  z.ZodTypeDef,
+  Fields1
+> = z.object({
+  key: z.string(),
+  label: z.string(),
+  required: z.boolean(),
+  locked: z.boolean(),
+  position: z.number().int(),
+  type: FieldsType$outboundSchema,
+  constraints: z.lazy(() => Constraints$outboundSchema).optional(),
+});
+
+export function fields1ToJSON(fields1: Fields1): string {
+  return JSON.stringify(Fields1$outboundSchema.parse(fields1));
+}
+export function fields1FromJSON(
+  jsonString: string,
+): SafeParseResult<Fields1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Fields1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Fields1' from JSON`,
+  );
+}
+
+/** @internal */
+export const Fields$inboundSchema: z.ZodType<Fields, z.ZodTypeDef, unknown> = z
+  .union([
+    z.lazy(() => Fields1$inboundSchema).and(
+      z.object({ type: z.literal("text") }),
+    ),
+    z.lazy(() => Fields2$inboundSchema).and(
+      z.object({ type: z.literal("textarea") }),
+    ),
+    z.lazy(() => Fields3$inboundSchema).and(
+      z.object({ type: z.literal("select") }),
+    ),
+    z.lazy(() => Four$inboundSchema).and(
+      z.object({ type: z.literal("country") }),
+    ),
+    z.lazy(() => Five$inboundSchema).and(z.object({ type: z.literal("date") })),
+    z.lazy(() => Six$inboundSchema).and(
+      z.object({ type: z.literal("multiSelect") }),
+    ),
+    z.lazy(() => Seven$inboundSchema).and(
+      z.object({ type: z.literal("number") }),
+    ),
+    z.lazy(() => Eight$inboundSchema).and(
+      z.object({ type: z.literal("phone") }),
+    ),
+  ]);
+/** @internal */
+export type Fields$Outbound =
+  | (Fields1$Outbound & { type: "text" })
+  | (Fields2$Outbound & { type: "textarea" })
+  | (Fields3$Outbound & { type: "select" })
+  | (Four$Outbound & { type: "country" })
+  | (Five$Outbound & { type: "date" })
+  | (Six$Outbound & { type: "multiSelect" })
+  | (Seven$Outbound & { type: "number" })
+  | (Eight$Outbound & { type: "phone" });
+
+/** @internal */
+export const Fields$outboundSchema: z.ZodType<
+  Fields$Outbound,
+  z.ZodTypeDef,
+  Fields
+> = z.union([
+  z.lazy(() => Fields1$outboundSchema).and(
+    z.object({ type: z.literal("text") }),
+  ),
+  z.lazy(() => Fields2$outboundSchema).and(
+    z.object({ type: z.literal("textarea") }),
+  ),
+  z.lazy(() => Fields3$outboundSchema).and(
+    z.object({ type: z.literal("select") }),
+  ),
+  z.lazy(() => Four$outboundSchema).and(
+    z.object({ type: z.literal("country") }),
+  ),
+  z.lazy(() => Five$outboundSchema).and(z.object({ type: z.literal("date") })),
+  z.lazy(() => Six$outboundSchema).and(
+    z.object({ type: z.literal("multiSelect") }),
+  ),
+  z.lazy(() => Seven$outboundSchema).and(
+    z.object({ type: z.literal("number") }),
+  ),
+  z.lazy(() => Eight$outboundSchema).and(
+    z.object({ type: z.literal("phone") }),
+  ),
+]);
+
+export function fieldsToJSON(fields: Fields): string {
+  return JSON.stringify(Fields$outboundSchema.parse(fields));
+}
+export function fieldsFromJSON(
+  jsonString: string,
+): SafeParseResult<Fields, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Fields$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Fields' from JSON`,
+  );
+}
+
+/** @internal */
+export const ReferralFormData$inboundSchema: z.ZodType<
+  ReferralFormData,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  fields: z.array(
+    z.union([
+      z.lazy(() => Fields1$inboundSchema).and(
+        z.object({ type: z.literal("text") }),
+      ),
+      z.lazy(() => Fields2$inboundSchema).and(
+        z.object({ type: z.literal("textarea") }),
+      ),
+      z.lazy(() => Fields3$inboundSchema).and(
+        z.object({ type: z.literal("select") }),
+      ),
+      z.lazy(() => Four$inboundSchema).and(
+        z.object({ type: z.literal("country") }),
+      ),
+      z.lazy(() => Five$inboundSchema).and(
+        z.object({ type: z.literal("date") }),
+      ),
+      z.lazy(() => Six$inboundSchema).and(
+        z.object({ type: z.literal("multiSelect") }),
+      ),
+      z.lazy(() => Seven$inboundSchema).and(
+        z.object({ type: z.literal("number") }),
+      ),
+      z.lazy(() => Eight$inboundSchema).and(
+        z.object({ type: z.literal("phone") }),
+      ),
+    ]),
+  ),
+});
+/** @internal */
+export type ReferralFormData$Outbound = {
+  fields: Array<
+    | (Fields1$Outbound & { type: "text" })
+    | (Fields2$Outbound & { type: "textarea" })
+    | (Fields3$Outbound & { type: "select" })
+    | (Four$Outbound & { type: "country" })
+    | (Five$Outbound & { type: "date" })
+    | (Six$Outbound & { type: "multiSelect" })
+    | (Seven$Outbound & { type: "number" })
+    | (Eight$Outbound & { type: "phone" })
+  >;
+};
+
+/** @internal */
+export const ReferralFormData$outboundSchema: z.ZodType<
+  ReferralFormData$Outbound,
+  z.ZodTypeDef,
+  ReferralFormData
+> = z.object({
+  fields: z.array(
+    z.union([
+      z.lazy(() => Fields1$outboundSchema).and(
+        z.object({ type: z.literal("text") }),
+      ),
+      z.lazy(() => Fields2$outboundSchema).and(
+        z.object({ type: z.literal("textarea") }),
+      ),
+      z.lazy(() => Fields3$outboundSchema).and(
+        z.object({ type: z.literal("select") }),
+      ),
+      z.lazy(() => Four$outboundSchema).and(
+        z.object({ type: z.literal("country") }),
+      ),
+      z.lazy(() => Five$outboundSchema).and(
+        z.object({ type: z.literal("date") }),
+      ),
+      z.lazy(() => Six$outboundSchema).and(
+        z.object({ type: z.literal("multiSelect") }),
+      ),
+      z.lazy(() => Seven$outboundSchema).and(
+        z.object({ type: z.literal("number") }),
+      ),
+      z.lazy(() => Eight$outboundSchema).and(
+        z.object({ type: z.literal("phone") }),
+      ),
+    ]),
+  ),
+});
+
+export function referralFormDataToJSON(
+  referralFormData: ReferralFormData,
+): string {
+  return JSON.stringify(
+    ReferralFormData$outboundSchema.parse(referralFormData),
+  );
+}
+export function referralFormDataFromJSON(
+  jsonString: string,
+): SafeParseResult<ReferralFormData, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ReferralFormData$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ReferralFormData' from JSON`,
+  );
+}
+
+/** @internal */
 export const PartnerEnrolledEventData$inboundSchema: z.ZodType<
   PartnerEnrolledEventData,
   z.ZodTypeDef,
@@ -380,6 +1334,8 @@ export const PartnerEnrolledEventData$inboundSchema: z.ZodType<
   applicationId: z.nullable(z.string()).optional(),
   bannedAt: z.nullable(z.string()).optional(),
   bannedReason: z.nullable(BannedReason$inboundSchema).optional(),
+  referralFormData: z.nullable(z.lazy(() => ReferralFormData$inboundSchema))
+    .optional(),
   totalClicks: z.number().default(0),
   totalLeads: z.number().default(0),
   totalConversions: z.number().default(0),
@@ -427,6 +1383,7 @@ export type PartnerEnrolledEventData$Outbound = {
   applicationId?: string | null | undefined;
   bannedAt?: string | null | undefined;
   bannedReason?: string | null | undefined;
+  referralFormData?: ReferralFormData$Outbound | null | undefined;
   totalClicks: number;
   totalLeads: number;
   totalConversions: number;
@@ -479,6 +1436,8 @@ export const PartnerEnrolledEventData$outboundSchema: z.ZodType<
   applicationId: z.nullable(z.string()).optional(),
   bannedAt: z.nullable(z.string()).optional(),
   bannedReason: z.nullable(BannedReason$outboundSchema).optional(),
+  referralFormData: z.nullable(z.lazy(() => ReferralFormData$outboundSchema))
+    .optional(),
   totalClicks: z.number().default(0),
   totalLeads: z.number().default(0),
   totalConversions: z.number().default(0),
