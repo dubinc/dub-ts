@@ -186,6 +186,7 @@ run();
 * [upsertLink](docs/sdks/partners/README.md#upsertlink) - Upsert a link for a partner
 * [analytics](docs/sdks/partners/README.md#analytics) - Retrieve analytics for a partner
 * [ban](docs/sdks/partners/README.md#ban) - Ban a partner
+* [deactivate](docs/sdks/partners/README.md#deactivate) - Deactivate a partner
 
 ### [QRCodes](docs/sdks/qrcodes/README.md)
 
@@ -202,11 +203,6 @@ run();
 
 * [lead](docs/sdks/track/README.md#lead) - Track a lead
 * [sale](docs/sdks/track/README.md#sale) - Track a sale
-
-### [Workspaces](docs/sdks/workspaces/README.md)
-
-* [get](docs/sdks/workspaces/README.md#get) - Retrieve a workspace
-* [update](docs/sdks/workspaces/README.md#update) - Update a workspace
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -540,6 +536,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`partnersBan`](docs/sdks/partners/README.md#ban) - Ban a partner
 - [`partnersCreate`](docs/sdks/partners/README.md#create) - Create or update a partner
 - [`partnersCreateLink`](docs/sdks/partners/README.md#createlink) - Create a link for a partner
+- [`partnersDeactivate`](docs/sdks/partners/README.md#deactivate) - Deactivate a partner
 - [`partnersList`](docs/sdks/partners/README.md#list) - List all partners
 - [`partnersRetrieveLinks`](docs/sdks/partners/README.md#retrievelinks) - Retrieve a partner's links.
 - [`partnersUpsertLink`](docs/sdks/partners/README.md#upsertlink) - Upsert a link for a partner
@@ -550,8 +547,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`tagsUpdate`](docs/sdks/tags/README.md#update) - Update a tag
 - [`trackLead`](docs/sdks/track/README.md#lead) - Track a lead
 - [`trackSale`](docs/sdks/track/README.md#sale) - Track a sale
-- [`workspacesGet`](docs/sdks/workspaces/README.md#get) - Retrieve a workspace
-- [`workspacesUpdate`](docs/sdks/workspaces/README.md#update) - Update a workspace
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->

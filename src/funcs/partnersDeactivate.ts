@@ -3,14 +3,13 @@
  */
 
 import { DubCore } from "../core.js";
-import { encodeSimple } from "../lib/encodings.js";
+import { encodeJSON } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
-import * as components from "../models/components/index.js";
 import { DubError } from "../models/errors/duberror.js";
 import {
   ConnectionError,
@@ -27,18 +26,18 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Retrieve a workspace
+ * Deactivate a partner
  *
  * @remarks
- * Retrieve a workspace for the authenticated user.
+ * This will deactivate the partner from your program and disable all their active links. Their commissions and payouts will remain intact. You can reactivate them later if needed.
  */
-export function workspacesGet(
+export function partnersDeactivate(
   client: DubCore,
-  request: operations.GetWorkspaceRequest,
+  request?: operations.DeactivatePartnerRequestBody | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    components.WorkspaceSchema,
+    operations.DeactivatePartnerResponseBody,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -67,12 +66,12 @@ export function workspacesGet(
 
 async function $do(
   client: DubCore,
-  request: operations.GetWorkspaceRequest,
+  request?: operations.DeactivatePartnerRequestBody | undefined,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      components.WorkspaceSchema,
+      operations.DeactivatePartnerResponseBody,
       | errors.BadRequest
       | errors.Unauthorized
       | errors.Forbidden
@@ -96,25 +95,24 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => operations.GetWorkspaceRequest$outboundSchema.parse(value),
+    (value) =>
+      operations.DeactivatePartnerRequestBody$outboundSchema.optional().parse(
+        value,
+      ),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = null;
+  const body = payload === undefined
+    ? null
+    : encodeJSON("body", payload, { explode: true });
 
-  const pathParams = {
-    idOrSlug: encodeSimple("idOrSlug", payload.idOrSlug, {
-      explode: false,
-      charEncoding: "percent",
-    }),
-  };
-
-  const path = pathToFunc("/workspaces/{idOrSlug}")(pathParams);
+  const path = pathToFunc("/partners/deactivate")();
 
   const headers = new Headers(compactMap({
+    "Content-Type": "application/json",
     Accept: "application/json",
   }));
 
@@ -125,7 +123,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "getWorkspace",
+    operationID: "deactivatePartner",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
@@ -139,7 +137,7 @@ async function $do(
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
-    method: "GET",
+    method: "POST",
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
@@ -180,7 +178,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    components.WorkspaceSchema,
+    operations.DeactivatePartnerResponseBody,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -199,7 +197,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, components.WorkspaceSchema$inboundSchema),
+    M.json(200, operations.DeactivatePartnerResponseBody$inboundSchema),
     M.jsonErr(400, errors.BadRequest$inboundSchema),
     M.jsonErr(401, errors.Unauthorized$inboundSchema),
     M.jsonErr(403, errors.Forbidden$inboundSchema),

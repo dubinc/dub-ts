@@ -34,4 +34,3 @@ export * from "./partnerenrolledevent.js";
 export * from "./salecreatedevent.js";
 export * from "./security.js";
 export * from "./webhookevent.js";
-export * from "./workspaceschema.js";

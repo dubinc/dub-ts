@@ -26,10 +26,6 @@ export type SaleCreatedEventCustomer = {
    */
   id: string;
   /**
-   * Unique identifier for the customer in the client's app.
-   */
-  externalId: string;
-  /**
    * Name of the customer.
    */
   name: string;
@@ -41,6 +37,14 @@ export type SaleCreatedEventCustomer = {
    * Avatar URL of the customer.
    */
   avatar?: string | null | undefined;
+  /**
+   * Unique identifier for the customer in the client's app.
+   */
+  externalId: string;
+  /**
+   * The customer's Stripe customer ID. This is useful for attributing recurring sale events to the partner who referred the customer.
+   */
+  stripeCustomerId?: string | null | undefined;
   /**
    * Country of the customer.
    */
@@ -54,9 +58,17 @@ export type SaleCreatedEventCustomer = {
    */
   saleAmount?: number | null | undefined;
   /**
-   * The date the customer was created.
+   * The date the customer was created (usually the signup date or trial start date).
    */
   createdAt: string;
+  /**
+   * The date the customer made their first sale. Useful for calculating the time to first sale and LTV.
+   */
+  firstSaleAt?: string | null | undefined;
+  /**
+   * The date the customer canceled their subscription. Useful for calculating LTV and churn rate.
+   */
+  subscriptionCanceledAt?: string | null | undefined;
 };
 
 export type SaleCreatedEventClick = {
@@ -322,26 +334,32 @@ export const SaleCreatedEventCustomer$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: z.string(),
-  externalId: z.string(),
   name: z.string(),
   email: z.nullable(z.string()).optional(),
   avatar: z.nullable(z.string()).optional(),
+  externalId: z.string(),
+  stripeCustomerId: z.nullable(z.string()).optional(),
   country: z.nullable(z.string()).optional(),
   sales: z.nullable(z.number()).optional(),
   saleAmount: z.nullable(z.number()).optional(),
   createdAt: z.string(),
+  firstSaleAt: z.nullable(z.string()).optional(),
+  subscriptionCanceledAt: z.nullable(z.string()).optional(),
 });
 /** @internal */
 export type SaleCreatedEventCustomer$Outbound = {
   id: string;
-  externalId: string;
   name: string;
   email?: string | null | undefined;
   avatar?: string | null | undefined;
+  externalId: string;
+  stripeCustomerId?: string | null | undefined;
   country?: string | null | undefined;
   sales?: number | null | undefined;
   saleAmount?: number | null | undefined;
   createdAt: string;
+  firstSaleAt?: string | null | undefined;
+  subscriptionCanceledAt?: string | null | undefined;
 };
 
 /** @internal */
@@ -351,14 +369,17 @@ export const SaleCreatedEventCustomer$outboundSchema: z.ZodType<
   SaleCreatedEventCustomer
 > = z.object({
   id: z.string(),
-  externalId: z.string(),
   name: z.string(),
   email: z.nullable(z.string()).optional(),
   avatar: z.nullable(z.string()).optional(),
+  externalId: z.string(),
+  stripeCustomerId: z.nullable(z.string()).optional(),
   country: z.nullable(z.string()).optional(),
   sales: z.nullable(z.number()).optional(),
   saleAmount: z.nullable(z.number()).optional(),
   createdAt: z.string(),
+  firstSaleAt: z.nullable(z.string()).optional(),
+  subscriptionCanceledAt: z.nullable(z.string()).optional(),
 });
 
 export function saleCreatedEventCustomerToJSON(

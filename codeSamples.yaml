@@ -694,6 +694,25 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/partners/deactivate"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: deactivatePartner
+          source: |-
+            import { Dub } from "dub";
+
+            const dub = new Dub({
+              token: "DUB_API_KEY",
+            });
+
+            async function run() {
+              const result = await dub.partners.deactivate();
+
+              console.log(result);
+            }
+
+            run();
   - target: $["paths"]["/partners/links"]["get"]
     update:
       x-codeSamples:
@@ -900,46 +919,6 @@ actions:
 
             async function run() {
               const result = await dub.track.sale();
-
-              console.log(result);
-            }
-
-            run();
-  - target: $["paths"]["/workspaces/{idOrSlug}"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: getWorkspace
-          source: |-
-            import { Dub } from "dub";
-
-            const dub = new Dub({
-              token: "DUB_API_KEY",
-            });
-
-            async function run() {
-              const result = await dub.workspaces.get({
-                idOrSlug: "<value>",
-              });
-
-              console.log(result);
-            }
-
-            run();
-  - target: $["paths"]["/workspaces/{idOrSlug}"]["patch"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: updateWorkspace
-          source: |-
-            import { Dub } from "dub";
-
-            const dub = new Dub({
-              token: "DUB_API_KEY",
-            });
-
-            async function run() {
-              const result = await dub.workspaces.update("<value>");
 
               console.log(result);
             }
