@@ -8,7 +8,7 @@ The unique IDs of the tags assigned to the short link.
 ### `string`
 
 ```typescript
-const value: string = "[\"clux0rgak00011...\"]";
+const value: string = "<value>";
 ```
 
 ### `string[]`

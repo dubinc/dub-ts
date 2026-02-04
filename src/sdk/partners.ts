@@ -6,6 +6,7 @@ import { partnersAnalytics } from "../funcs/partnersAnalytics.js";
 import { partnersBan } from "../funcs/partnersBan.js";
 import { partnersCreate } from "../funcs/partnersCreate.js";
 import { partnersCreateLink } from "../funcs/partnersCreateLink.js";
+import { partnersDeactivate } from "../funcs/partnersDeactivate.js";
 import { partnersList } from "../funcs/partnersList.js";
 import { partnersRetrieveLinks } from "../funcs/partnersRetrieveLinks.js";
 import { partnersUpsertLink } from "../funcs/partnersUpsertLink.js";
@@ -128,6 +129,23 @@ export class Partners extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.BanPartnerResponseBody> {
     return unwrapAsync(partnersBan(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Deactivate a partner
+   *
+   * @remarks
+   * This will deactivate the partner from your program and disable all their active links. Their commissions and payouts will remain intact. You can reactivate them later if needed.
+   */
+  async deactivate(
+    request?: operations.DeactivatePartnerRequestBody | undefined,
+    options?: RequestOptions,
+  ): Promise<operations.DeactivatePartnerResponseBody> {
+    return unwrapAsync(partnersDeactivate(
       this,
       request,
       options,

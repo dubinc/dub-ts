@@ -15,8 +15,8 @@ let value: LeadCreatedEvent = {
     eventName: "<value>",
     customer: {
       id: "<id>",
-      externalId: "<id>",
       name: "<value>",
+      externalId: "<id>",
       createdAt: "1718158709687",
     },
     click: {

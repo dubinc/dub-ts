@@ -9,8 +9,8 @@ let value: SaleCreatedEventData = {
   eventName: "<value>",
   customer: {
     id: "<id>",
-    externalId: "<id>",
     name: "<value>",
+    externalId: "<id>",
     createdAt: "1732125211331",
   },
   click: {

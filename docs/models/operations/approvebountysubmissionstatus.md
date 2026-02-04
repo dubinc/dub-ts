@@ -1,5 +1,7 @@
 # ApproveBountySubmissionStatus
 
+The status of the submission
+
 ## Example Usage
 
 ```typescript

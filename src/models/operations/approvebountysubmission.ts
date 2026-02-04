@@ -10,27 +10,51 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ApproveBountySubmissionRequestBody = {
+  /**
+   * The reward amount for the performance-based bounty. Applicable if the bounty reward amount is not set.
+   */
   rewardAmount?: number | null | undefined;
 };
 
 export type ApproveBountySubmissionRequest = {
+  /**
+   * The ID of the bounty
+   */
   bountyId: string;
+  /**
+   * The ID of the bounty submission
+   */
   submissionId: string;
   requestBody?: ApproveBountySubmissionRequestBody | undefined;
 };
 
 export type ApproveBountySubmissionFiles = {
+  /**
+   * The URL of the uploaded file.
+   */
   url: string;
+  /**
+   * The original file name.
+   */
   fileName: string;
+  /**
+   * The file size in bytes.
+   */
   size: number;
 };
 
+/**
+ * The status of the submission
+ */
 export const ApproveBountySubmissionStatus = {
   Draft: "draft",
   Submitted: "submitted",
   Approved: "approved",
   Rejected: "rejected",
 } as const;
+/**
+ * The status of the submission
+ */
 export type ApproveBountySubmissionStatus = ClosedEnum<
   typeof ApproveBountySubmissionStatus
 >;
@@ -39,18 +63,57 @@ export type ApproveBountySubmissionStatus = ClosedEnum<
  * The approved bounty submission.
  */
 export type ApproveBountySubmissionResponseBody = {
+  /**
+   * The ID of the bounty submission
+   */
   id: string;
+  /**
+   * The ID of the bounty
+   */
   bountyId: string;
+  /**
+   * The ID of the partner
+   */
   partnerId: string;
+  /**
+   * The description of the submission
+   */
   description: string | null;
+  /**
+   * The URLs submitted for the submission
+   */
   urls: Array<string> | null;
+  /**
+   * The files uploaded for the submission
+   */
   files: Array<ApproveBountySubmissionFiles> | null;
+  /**
+   * The status of the submission
+   */
   status: ApproveBountySubmissionStatus;
+  /**
+   * The performance count of the submission
+   */
   performanceCount: number | null;
+  /**
+   * The date and time the submission was created
+   */
   createdAt: string;
+  /**
+   * The date and time the submission was completed
+   */
   completedAt: string | null;
+  /**
+   * The date and time the submission was reviewed
+   */
   reviewedAt: string | null;
+  /**
+   * The reason for rejecting the submission
+   */
   rejectionReason: string | null;
+  /**
+   * The note for rejecting the submission
+   */
   rejectionNote: string | null;
 };
 

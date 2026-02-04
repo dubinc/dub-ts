@@ -184,8 +184,8 @@ const value: operations.LeadEvent = {
   },
   customer: {
     id: "<id>",
-    externalId: "<id>",
     name: "<value>",
+    externalId: "<id>",
     createdAt: "1717427554667",
   },
   clickId: "<id>",
@@ -286,8 +286,8 @@ const value: operations.SaleEvent = {
   },
   customer: {
     id: "<id>",
-    externalId: "<id>",
     name: "<value>",
+    externalId: "<id>",
     createdAt: "1712670252584",
   },
   saleAmount: 7727.75,

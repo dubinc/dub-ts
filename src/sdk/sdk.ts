@@ -16,7 +16,6 @@ import { Partners } from "./partners.js";
 import { QRCodes } from "./qrcodes.js";
 import { Tags } from "./tags.js";
 import { Track } from "./track.js";
-import { Workspaces } from "./workspaces.js";
 
 export class Dub extends ClientSDK {
   private _links?: Links;
@@ -67,11 +66,6 @@ export class Dub extends ClientSDK {
   private _commissions?: Commissions;
   get commissions(): Commissions {
     return (this._commissions ??= new Commissions(this._options));
-  }
-
-  private _workspaces?: Workspaces;
-  get workspaces(): Workspaces {
-    return (this._workspaces ??= new Workspaces(this._options));
   }
 
   private _embedTokens?: EmbedTokens;
