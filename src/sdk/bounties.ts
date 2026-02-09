@@ -14,7 +14,7 @@ export class Bounties extends ClientSDK {
    * List bounty submissions
    *
    * @remarks
-   * List all submissions for a specific bounty.
+   * List all submissions for a specific bounty in your partner program.
    */
   async listSubmissions(
     request: operations.ListBountySubmissionsRequest,

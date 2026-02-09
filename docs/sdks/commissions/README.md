@@ -4,12 +4,12 @@
 
 ### Available Operations
 
-* [list](#list) - Get commissions for a program.
+* [list](#list) - List all commissions
 * [update](#update) - Update a commission.
 
 ## list
 
-Retrieve a list of commissions for a program.
+Retrieve a list of commissions for your partner program.
 
 ### Example Usage
 

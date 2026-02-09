@@ -34,6 +34,7 @@ export * from "./listdomains.js";
 export * from "./listevents.js";
 export * from "./listfolders.js";
 export * from "./listpartners.js";
+export * from "./listpayouts.js";
 export * from "./registerdomain.js";
 export * from "./rejectbountysubmission.js";
 export * from "./retrieveanalytics.js";

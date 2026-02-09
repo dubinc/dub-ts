@@ -10,10 +10,10 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class Commissions extends ClientSDK {
   /**
-   * Get commissions for a program.
+   * List all commissions
    *
    * @remarks
-   * Retrieve a list of commissions for a program.
+   * Retrieve a list of commissions for your partner program.
    */
   async list(
     request?: operations.ListCommissionsRequest | undefined,

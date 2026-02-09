@@ -27,10 +27,10 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Get commissions for a program.
+ * List all commissions
  *
  * @remarks
- * Retrieve a list of commissions for a program.
+ * Retrieve a list of commissions for your partner program.
  */
 export function commissionsList(
   client: DubCore,

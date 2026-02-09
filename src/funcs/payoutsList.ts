@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { DubCore } from "../core.js";
-import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
+import { encodeFormQuery } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -27,18 +27,18 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * List bounty submissions
+ * List all payouts
  *
  * @remarks
- * List all submissions for a specific bounty in your partner program.
+ * Retrieve a list of payouts for your partner program.
  */
-export function bountiesListSubmissions(
+export function payoutsList(
   client: DubCore,
-  request: operations.ListBountySubmissionsRequest,
+  request?: operations.ListPayoutsRequest | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    Array<operations.ListBountySubmissionsResponseBody>,
+    Array<operations.ListPayoutsResponseBody>,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -67,12 +67,12 @@ export function bountiesListSubmissions(
 
 async function $do(
   client: DubCore,
-  request: operations.ListBountySubmissionsRequest,
+  request?: operations.ListPayoutsRequest | undefined,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      Array<operations.ListBountySubmissionsResponseBody>,
+      Array<operations.ListPayoutsResponseBody>,
       | errors.BadRequest
       | errors.Unauthorized
       | errors.Forbidden
@@ -97,7 +97,7 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.ListBountySubmissionsRequest$outboundSchema.parse(value),
+      operations.ListPayoutsRequest$outboundSchema.optional().parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -106,23 +106,17 @@ async function $do(
   const payload = parsed.value;
   const body = null;
 
-  const pathParams = {
-    bountyId: encodeSimple("bountyId", payload.bountyId, {
-      explode: false,
-      charEncoding: "percent",
-    }),
-  };
-
-  const path = pathToFunc("/bounties/{bountyId}/submissions")(pathParams);
+  const path = pathToFunc("/payouts")();
 
   const query = encodeFormQuery({
-    "groupId": payload.groupId,
-    "page": payload.page,
-    "pageSize": payload.pageSize,
-    "partnerId": payload.partnerId,
-    "sortBy": payload.sortBy,
-    "sortOrder": payload.sortOrder,
-    "status": payload.status,
+    "invoiceId": payload?.invoiceId,
+    "page": payload?.page,
+    "pageSize": payload?.pageSize,
+    "partnerId": payload?.partnerId,
+    "sortBy": payload?.sortBy,
+    "sortOrder": payload?.sortOrder,
+    "status": payload?.status,
+    "tenantId": payload?.tenantId,
   });
 
   const headers = new Headers(compactMap({
@@ -136,7 +130,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "listBountySubmissions",
+    operationID: "listPayouts",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
@@ -192,7 +186,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    Array<operations.ListBountySubmissionsResponseBody>,
+    Array<operations.ListPayoutsResponseBody>,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -211,10 +205,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(
-      200,
-      z.array(operations.ListBountySubmissionsResponseBody$inboundSchema),
-    ),
+    M.json(200, z.array(operations.ListPayoutsResponseBody$inboundSchema)),
     M.jsonErr(400, errors.BadRequest$inboundSchema),
     M.jsonErr(401, errors.Unauthorized$inboundSchema),
     M.jsonErr(403, errors.Forbidden$inboundSchema),
