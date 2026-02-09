@@ -13,6 +13,7 @@ import { Events } from "./events.js";
 import { Folders } from "./folders.js";
 import { Links } from "./links.js";
 import { Partners } from "./partners.js";
+import { Payouts } from "./payouts.js";
 import { QRCodes } from "./qrcodes.js";
 import { Tags } from "./tags.js";
 import { Track } from "./track.js";
@@ -66,6 +67,11 @@ export class Dub extends ClientSDK {
   private _commissions?: Commissions;
   get commissions(): Commissions {
     return (this._commissions ??= new Commissions(this._options));
+  }
+
+  private _payouts?: Payouts;
+  get payouts(): Payouts {
+    return (this._payouts ??= new Payouts(this._options));
   }
 
   private _embedTokens?: EmbedTokens;

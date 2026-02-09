@@ -770,6 +770,25 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/payouts"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: listPayouts
+          source: |-
+            import { Dub } from "dub";
+
+            const dub = new Dub({
+              token: "DUB_API_KEY",
+            });
+
+            async function run() {
+              const result = await dub.payouts.list();
+
+              console.log(result);
+            }
+
+            run();
   - target: $["paths"]["/qr"]["get"]
     update:
       x-codeSamples:

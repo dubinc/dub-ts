@@ -130,7 +130,7 @@ run();
 
 ### [Commissions](docs/sdks/commissions/README.md)
 
-* [list](docs/sdks/commissions/README.md#list) - Get commissions for a program.
+* [list](docs/sdks/commissions/README.md#list) - List all commissions
 * [update](docs/sdks/commissions/README.md#update) - Update a commission.
 
 ### [Customers](docs/sdks/customers/README.md)
@@ -187,6 +187,10 @@ run();
 * [analytics](docs/sdks/partners/README.md#analytics) - Retrieve analytics for a partner
 * [ban](docs/sdks/partners/README.md#ban) - Ban a partner
 * [deactivate](docs/sdks/partners/README.md#deactivate) - Deactivate a partner
+
+### [Payouts](docs/sdks/payouts/README.md)
+
+* [list](docs/sdks/payouts/README.md#list) - List all payouts
 
 ### [QRCodes](docs/sdks/qrcodes/README.md)
 
@@ -504,7 +508,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`bountiesApproveSubmission`](docs/sdks/bounties/README.md#approvesubmission) - Approve a bounty submission
 - [`bountiesListSubmissions`](docs/sdks/bounties/README.md#listsubmissions) - List bounty submissions
 - [`bountiesRejectSubmission`](docs/sdks/bounties/README.md#rejectsubmission) - Reject a bounty submission
-- [`commissionsList`](docs/sdks/commissions/README.md#list) - Get commissions for a program.
+- [`commissionsList`](docs/sdks/commissions/README.md#list) - List all commissions
 - [`commissionsUpdate`](docs/sdks/commissions/README.md#update) - Update a commission.
 - [`customersDelete`](docs/sdks/customers/README.md#delete) - Delete a customer
 - [`customersGet`](docs/sdks/customers/README.md#get) - Retrieve a customer
@@ -540,6 +544,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`partnersList`](docs/sdks/partners/README.md#list) - List all partners
 - [`partnersRetrieveLinks`](docs/sdks/partners/README.md#retrievelinks) - Retrieve a partner's links.
 - [`partnersUpsertLink`](docs/sdks/partners/README.md#upsertlink) - Upsert a link for a partner
+- [`payoutsList`](docs/sdks/payouts/README.md#list) - List all payouts
 - [`qrCodesGet`](docs/sdks/qrcodes/README.md#get) - Retrieve a QR code
 - [`tagsCreate`](docs/sdks/tags/README.md#create) - Create a tag
 - [`tagsDelete`](docs/sdks/tags/README.md#delete) - Delete a tag
