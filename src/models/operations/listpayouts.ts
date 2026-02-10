@@ -108,91 +108,6 @@ export const ListPayoutsMode = {
 } as const;
 export type ListPayoutsMode = ClosedEnum<typeof ListPayoutsMode>;
 
-/**
- * The partner's profile type on Dub.
- */
-export const ProfileType = {
-  Individual: "individual",
-  Company: "company",
-} as const;
-/**
- * The partner's profile type on Dub.
- */
-export type ProfileType = ClosedEnum<typeof ProfileType>;
-
-/**
- * The partner's invoice settings.
- */
-export type InvoiceSettings = {
-  address?: string | null | undefined;
-  taxId?: string | null | undefined;
-};
-
-/**
- * The partner's monthly traffic.
- */
-export const MonthlyTraffic = {
-  ZeroToOneThousand: "ZeroToOneThousand",
-  OneThousandToTenThousand: "OneThousandToTenThousand",
-  TenThousandToFiftyThousand: "TenThousandToFiftyThousand",
-  FiftyThousandToOneHundredThousand: "FiftyThousandToOneHundredThousand",
-  OneHundredThousandPlus: "OneHundredThousandPlus",
-} as const;
-/**
- * The partner's monthly traffic.
- */
-export type MonthlyTraffic = ClosedEnum<typeof MonthlyTraffic>;
-
-export const IndustryInterests = {
-  SaaS: "SaaS",
-  DevTool: "DevTool",
-  Ai: "AI",
-  CreativeAndDesign: "Creative_And_Design",
-  ProductivitySoftware: "Productivity_Software",
-  Marketing: "Marketing",
-  Gaming: "Gaming",
-  Finance: "Finance",
-  Sales: "Sales",
-  Ecommerce: "Ecommerce",
-  CustomerServiceAndSupport: "Customer_Service_And_Support",
-  ContentManagement: "Content_Management",
-  HumanResources: "Human_Resources",
-  Security: "Security",
-  AnalyticsAndData: "Analytics_And_Data",
-  SocialMedia: "Social_Media",
-  ConsumerTech: "Consumer_Tech",
-  EducationAndLearning: "Education_And_Learning",
-  HealthAndFitness: "Health_And_Fitness",
-  FoodAndBeverage: "Food_And_Beverage",
-  TravelAndLifestyle: "Travel_And_Lifestyle",
-  EntertainmentAndMedia: "Entertainment_And_Media",
-  Sports: "Sports",
-  ScienceAndEngineering: "Science_And_Engineering",
-} as const;
-export type IndustryInterests = ClosedEnum<typeof IndustryInterests>;
-
-export const PreferredEarningStructures = {
-  RevenueShare: "Revenue_Share",
-  PerLead: "Per_Lead",
-  PerSale: "Per_Sale",
-  PerClick: "Per_Click",
-  OneTimePayment: "One_Time_Payment",
-} as const;
-export type PreferredEarningStructures = ClosedEnum<
-  typeof PreferredEarningStructures
->;
-
-export const SalesChannels = {
-  Blogs: "Blogs",
-  Coupons: "Coupons",
-  DirectReselling: "Direct_Reselling",
-  Newsletters: "Newsletters",
-  SocialMedia: "Social_Media",
-  Events: "Events",
-  CompanyReferrals: "Company_Referrals",
-} as const;
-export type SalesChannels = ClosedEnum<typeof SalesChannels>;
-
 export type ListPayoutsPartner = {
   /**
    * The partner's unique ID on Dub.
@@ -203,14 +118,6 @@ export type ListPayoutsPartner = {
    */
   name: string;
   /**
-   * If the partner profile type is a company, this is the partner's legal company name.
-   */
-  companyName: string | null;
-  /**
-   * The partner's profile type on Dub.
-   */
-  profileType: ProfileType;
-  /**
    * The partner's email address. Should be a unique value across Dub.
    */
   email: string | null;
@@ -219,81 +126,20 @@ export type ListPayoutsPartner = {
    */
   image: string | null;
   /**
-   * A brief description of the partner and their background.
+   * The date when the partner enabled payouts.
    */
-  description?: string | null | undefined;
+  payoutsEnabledAt: string | null;
   /**
    * The partner's country (required for tax purposes).
    */
   country: string | null;
   /**
-   * The partner's Stripe Connect ID (for receiving payouts via Stripe).
+   * The partner's group ID on Dub.
    */
-  stripeConnectId: string | null;
+  groupId?: string | null | undefined;
   /**
-   * The partner's PayPal email (for receiving payouts via PayPal).
+   * The partner's unique ID within your database. Can be useful for associating the partner with a user in your database and retrieving/update their data in the future.
    */
-  paypalEmail: string | null;
-  /**
-   * The date when the partner enabled payouts.
-   */
-  payoutsEnabledAt: string | null;
-  /**
-   * The partner's invoice settings.
-   */
-  invoiceSettings: InvoiceSettings | null;
-  /**
-   * The date when the partner was created on Dub.
-   */
-  createdAt: string;
-  /**
-   * The date when the partner was added to the partner network.
-   */
-  discoverableAt: string | null;
-  /**
-   * The date when the partner received the trusted badge in the partner network.
-   */
-  trustedAt: string | null;
-  /**
-   * The partner's website URL (including the https protocol).
-   */
-  website?: string | null | undefined;
-  /**
-   * The partner's YouTube channel username (e.g. `johndoe`).
-   */
-  youtube?: string | null | undefined;
-  /**
-   * The partner's Twitter username (e.g. `johndoe`).
-   */
-  twitter?: string | null | undefined;
-  /**
-   * The partner's LinkedIn username (e.g. `johndoe`).
-   */
-  linkedin?: string | null | undefined;
-  /**
-   * The partner's Instagram username (e.g. `johndoe`).
-   */
-  instagram?: string | null | undefined;
-  /**
-   * The partner's TikTok username (e.g. `johndoe`).
-   */
-  tiktok?: string | null | undefined;
-  /**
-   * The partner's monthly traffic.
-   */
-  monthlyTraffic?: MonthlyTraffic | null | undefined;
-  /**
-   * The partner's industry interests.
-   */
-  industryInterests?: Array<IndustryInterests> | undefined;
-  /**
-   * The partner's preferred earning structures.
-   */
-  preferredEarningStructures?: Array<PreferredEarningStructures> | undefined;
-  /**
-   * The partner's sales channels.
-   */
-  salesChannels?: Array<SalesChannels> | undefined;
   tenantId: string | null;
 };
 
@@ -384,50 +230,6 @@ export const ListPayoutsMode$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(ListPayoutsMode);
 
 /** @internal */
-export const ProfileType$inboundSchema: z.ZodNativeEnum<typeof ProfileType> = z
-  .nativeEnum(ProfileType);
-
-/** @internal */
-export const InvoiceSettings$inboundSchema: z.ZodType<
-  InvoiceSettings,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  address: z.nullable(z.string()).optional(),
-  taxId: z.nullable(z.string()).optional(),
-});
-
-export function invoiceSettingsFromJSON(
-  jsonString: string,
-): SafeParseResult<InvoiceSettings, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => InvoiceSettings$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'InvoiceSettings' from JSON`,
-  );
-}
-
-/** @internal */
-export const MonthlyTraffic$inboundSchema: z.ZodNativeEnum<
-  typeof MonthlyTraffic
-> = z.nativeEnum(MonthlyTraffic);
-
-/** @internal */
-export const IndustryInterests$inboundSchema: z.ZodNativeEnum<
-  typeof IndustryInterests
-> = z.nativeEnum(IndustryInterests);
-
-/** @internal */
-export const PreferredEarningStructures$inboundSchema: z.ZodNativeEnum<
-  typeof PreferredEarningStructures
-> = z.nativeEnum(PreferredEarningStructures);
-
-/** @internal */
-export const SalesChannels$inboundSchema: z.ZodNativeEnum<
-  typeof SalesChannels
-> = z.nativeEnum(SalesChannels);
-
-/** @internal */
 export const ListPayoutsPartner$inboundSchema: z.ZodType<
   ListPayoutsPartner,
   z.ZodTypeDef,
@@ -435,30 +237,11 @@ export const ListPayoutsPartner$inboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   name: z.string(),
-  companyName: z.nullable(z.string()),
-  profileType: ProfileType$inboundSchema,
   email: z.nullable(z.string()),
   image: z.nullable(z.string()),
-  description: z.nullable(z.string()).optional(),
-  country: z.nullable(z.string()),
-  stripeConnectId: z.nullable(z.string()),
-  paypalEmail: z.nullable(z.string()),
   payoutsEnabledAt: z.nullable(z.string()),
-  invoiceSettings: z.nullable(z.lazy(() => InvoiceSettings$inboundSchema)),
-  createdAt: z.string(),
-  discoverableAt: z.nullable(z.string()),
-  trustedAt: z.nullable(z.string()),
-  website: z.nullable(z.string()).optional(),
-  youtube: z.nullable(z.string()).optional(),
-  twitter: z.nullable(z.string()).optional(),
-  linkedin: z.nullable(z.string()).optional(),
-  instagram: z.nullable(z.string()).optional(),
-  tiktok: z.nullable(z.string()).optional(),
-  monthlyTraffic: z.nullable(MonthlyTraffic$inboundSchema).optional(),
-  industryInterests: z.array(IndustryInterests$inboundSchema).optional(),
-  preferredEarningStructures: z.array(PreferredEarningStructures$inboundSchema)
-    .optional(),
-  salesChannels: z.array(SalesChannels$inboundSchema).optional(),
+  country: z.nullable(z.string()),
+  groupId: z.nullable(z.string()).optional(),
   tenantId: z.nullable(z.string()),
 });
 
