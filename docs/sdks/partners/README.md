@@ -4,92 +4,14 @@
 
 ### Available Operations
 
-* [create](#create) - Create or update a partner
 * [list](#list) - List all partners
-* [createLink](#createlink) - Create a link for a partner
+* [create](#create) - Create or update a partner
 * [retrieveLinks](#retrievelinks) - Retrieve a partner's links.
+* [createLink](#createlink) - Create a link for a partner
 * [upsertLink](#upsertlink) - Upsert a link for a partner
 * [analytics](#analytics) - Retrieve analytics for a partner
 * [ban](#ban) - Ban a partner
 * [deactivate](#deactivate) - Deactivate a partner
-
-## create
-
-Creates or updates a partner record (upsert behavior). If a partner with the same email already exists, their program enrollment will be updated with the provided tenantId. If no existing partner is found, a new partner will be created using the supplied information.
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="createPartner" method="post" path="/partners" -->
-```typescript
-import { Dub } from "dub";
-
-const dub = new Dub({
-  token: "DUB_API_KEY",
-});
-
-async function run() {
-  const result = await dub.partners.create();
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { DubCore } from "dub/core.js";
-import { partnersCreate } from "dub/funcs/partnersCreate.js";
-
-// Use `DubCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const dub = new DubCore({
-  token: "DUB_API_KEY",
-});
-
-async function run() {
-  const res = await partnersCreate(dub);
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("partnersCreate failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.CreatePartnerRequestBody](../../models/operations/createpartnerrequestbody.md)                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[operations.CreatePartnerResponseBody](../../models/operations/createpartnerresponsebody.md)\>**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.BadRequest          | 400                        | application/json           |
-| errors.Unauthorized        | 401                        | application/json           |
-| errors.Forbidden           | 403                        | application/json           |
-| errors.NotFound            | 404                        | application/json           |
-| errors.Conflict            | 409                        | application/json           |
-| errors.InviteExpired       | 410                        | application/json           |
-| errors.UnprocessableEntity | 422                        | application/json           |
-| errors.RateLimitExceeded   | 429                        | application/json           |
-| errors.InternalServerError | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## list
 
@@ -169,13 +91,13 @@ run();
 | errors.InternalServerError | 500                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## createLink
+## create
 
-Create a link for a partner that is enrolled in your program.
+Creates or updates a partner record (upsert behavior). If a partner with the same email already exists, their program enrollment will be updated with the provided tenantId. If no existing partner is found, a new partner will be created using the supplied information.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="createPartnerLink" method="post" path="/partners/links" -->
+<!-- UsageSnippet language="typescript" operationID="createPartner" method="post" path="/partners" -->
 ```typescript
 import { Dub } from "dub";
 
@@ -184,7 +106,7 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.partners.createLink();
+  const result = await dub.partners.create();
 
   console.log(result);
 }
@@ -198,7 +120,7 @@ The standalone function version of this method:
 
 ```typescript
 import { DubCore } from "dub/core.js";
-import { partnersCreateLink } from "dub/funcs/partnersCreateLink.js";
+import { partnersCreate } from "dub/funcs/partnersCreate.js";
 
 // Use `DubCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -207,12 +129,12 @@ const dub = new DubCore({
 });
 
 async function run() {
-  const res = await partnersCreateLink(dub);
+  const res = await partnersCreate(dub);
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("partnersCreateLink failed:", res.error);
+    console.log("partnersCreate failed:", res.error);
   }
 }
 
@@ -223,14 +145,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.CreatePartnerLinkRequestBody](../../models/operations/createpartnerlinkrequestbody.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.CreatePartnerRequestBody](../../models/operations/createpartnerrequestbody.md)                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.LinkSchema](../../models/components/linkschema.md)\>**
+**Promise\<[operations.CreatePartnerResponseBody](../../models/operations/createpartnerresponsebody.md)\>**
 
 ### Errors
 
@@ -309,6 +231,84 @@ run();
 ### Response
 
 **Promise\<[operations.RetrieveLinksResponseBody[]](../../models/.md)\>**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.BadRequest          | 400                        | application/json           |
+| errors.Unauthorized        | 401                        | application/json           |
+| errors.Forbidden           | 403                        | application/json           |
+| errors.NotFound            | 404                        | application/json           |
+| errors.Conflict            | 409                        | application/json           |
+| errors.InviteExpired       | 410                        | application/json           |
+| errors.UnprocessableEntity | 422                        | application/json           |
+| errors.RateLimitExceeded   | 429                        | application/json           |
+| errors.InternalServerError | 500                        | application/json           |
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## createLink
+
+Create a link for a partner that is enrolled in your program.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="createPartnerLink" method="post" path="/partners/links" -->
+```typescript
+import { Dub } from "dub";
+
+const dub = new Dub({
+  token: "DUB_API_KEY",
+});
+
+async function run() {
+  const result = await dub.partners.createLink();
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { DubCore } from "dub/core.js";
+import { partnersCreateLink } from "dub/funcs/partnersCreateLink.js";
+
+// Use `DubCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const dub = new DubCore({
+  token: "DUB_API_KEY",
+});
+
+async function run() {
+  const res = await partnersCreateLink(dub);
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("partnersCreateLink failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.CreatePartnerLinkRequestBody](../../models/operations/createpartnerlinkrequestbody.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[components.LinkSchema](../../models/components/linkschema.md)\>**
 
 ### Errors
 

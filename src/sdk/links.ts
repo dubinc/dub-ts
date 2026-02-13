@@ -20,23 +20,6 @@ import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Links extends ClientSDK {
   /**
-   * Create a link
-   *
-   * @remarks
-   * Create a link for the authenticated workspace.
-   */
-  async create(
-    request?: operations.CreateLinkRequestBody | undefined,
-    options?: RequestOptions,
-  ): Promise<components.LinkSchema> {
-    return unwrapAsync(linksCreate(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
    * Retrieve a list of links
    *
    * @remarks
@@ -47,6 +30,23 @@ export class Links extends ClientSDK {
     options?: RequestOptions,
   ): Promise<PageIterator<operations.GetLinksResponse, { page: number }>> {
     return unwrapResultIterator(linksList(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Create a link
+   *
+   * @remarks
+   * Create a link for the authenticated workspace.
+   */
+  async create(
+    request?: operations.CreateLinkRequestBody | undefined,
+    options?: RequestOptions,
+  ): Promise<components.LinkSchema> {
+    return unwrapAsync(linksCreate(
       this,
       request,
       options,
@@ -88,6 +88,23 @@ export class Links extends ClientSDK {
   }
 
   /**
+   * Delete a link
+   *
+   * @remarks
+   * Delete a link for the authenticated workspace.
+   */
+  async delete(
+    linkId: string,
+    options?: RequestOptions,
+  ): Promise<operations.DeleteLinkResponseBody> {
+    return unwrapAsync(linksDelete(
+      this,
+      linkId,
+      options,
+    ));
+  }
+
+  /**
    * Update a link
    *
    * @remarks
@@ -102,23 +119,6 @@ export class Links extends ClientSDK {
       this,
       linkId,
       requestBody,
-      options,
-    ));
-  }
-
-  /**
-   * Delete a link
-   *
-   * @remarks
-   * Delete a link for the authenticated workspace.
-   */
-  async delete(
-    linkId: string,
-    options?: RequestOptions,
-  ): Promise<operations.DeleteLinkResponseBody> {
-    return unwrapAsync(linksDelete(
-      this,
-      linkId,
       options,
     ));
   }
@@ -141,23 +141,6 @@ export class Links extends ClientSDK {
   }
 
   /**
-   * Bulk update links
-   *
-   * @remarks
-   * Bulk update up to 100 links with the same data for the authenticated workspace.
-   */
-  async updateMany(
-    request?: operations.BulkUpdateLinksRequestBody | undefined,
-    options?: RequestOptions,
-  ): Promise<Array<components.LinkSchema>> {
-    return unwrapAsync(linksUpdateMany(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
    * Bulk delete links
    *
    * @remarks
@@ -168,6 +151,23 @@ export class Links extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.BulkDeleteLinksResponseBody> {
     return unwrapAsync(linksDeleteMany(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Bulk update links
+   *
+   * @remarks
+   * Bulk update up to 100 links with the same data for the authenticated workspace.
+   */
+  async updateMany(
+    request?: operations.BulkUpdateLinksRequestBody | undefined,
+    options?: RequestOptions,
+  ): Promise<Array<components.LinkSchema>> {
+    return unwrapAsync(linksUpdateMany(
       this,
       request,
       options,

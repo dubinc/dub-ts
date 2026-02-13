@@ -13,6 +13,23 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class Folders extends ClientSDK {
   /**
+   * Retrieve a list of folders
+   *
+   * @remarks
+   * Retrieve a list of folders for the authenticated workspace.
+   */
+  async list(
+    request?: operations.ListFoldersRequest | undefined,
+    options?: RequestOptions,
+  ): Promise<Array<components.FolderSchema>> {
+    return unwrapAsync(foldersList(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Create a folder
    *
    * @remarks
@@ -30,18 +47,18 @@ export class Folders extends ClientSDK {
   }
 
   /**
-   * Retrieve a list of folders
+   * Delete a folder
    *
    * @remarks
-   * Retrieve a list of folders for the authenticated workspace.
+   * Delete a folder from the workspace. All existing links will still work, but they will no longer be associated with this folder.
    */
-  async list(
-    request?: operations.ListFoldersRequest | undefined,
+  async delete(
+    id: string,
     options?: RequestOptions,
-  ): Promise<Array<components.FolderSchema>> {
-    return unwrapAsync(foldersList(
+  ): Promise<operations.DeleteFolderResponseBody> {
+    return unwrapAsync(foldersDelete(
       this,
-      request,
+      id,
       options,
     ));
   }
@@ -61,23 +78,6 @@ export class Folders extends ClientSDK {
       this,
       id,
       requestBody,
-      options,
-    ));
-  }
-
-  /**
-   * Delete a folder
-   *
-   * @remarks
-   * Delete a folder from the workspace. All existing links will still work, but they will no longer be associated with this folder.
-   */
-  async delete(
-    id: string,
-    options?: RequestOptions,
-  ): Promise<operations.DeleteFolderResponseBody> {
-    return unwrapAsync(foldersDelete(
-      this,
-      id,
       options,
     ));
   }
