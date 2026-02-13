@@ -46,23 +46,6 @@ export class Customers extends ClientSDK {
   }
 
   /**
-   * Update a customer
-   *
-   * @remarks
-   * Update a customer for the authenticated workspace.
-   */
-  async update(
-    request: operations.UpdateCustomerRequest,
-    options?: RequestOptions,
-  ): Promise<operations.UpdateCustomerResponseBody> {
-    return unwrapAsync(customersUpdate(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
    * Delete a customer
    *
    * @remarks
@@ -75,6 +58,23 @@ export class Customers extends ClientSDK {
     return unwrapAsync(customersDelete(
       this,
       id,
+      options,
+    ));
+  }
+
+  /**
+   * Update a customer
+   *
+   * @remarks
+   * Update a customer for the authenticated workspace.
+   */
+  async update(
+    request: operations.UpdateCustomerRequest,
+    options?: RequestOptions,
+  ): Promise<operations.UpdateCustomerResponseBody> {
+    return unwrapAsync(customersUpdate(
+      this,
+      request,
       options,
     ));
   }

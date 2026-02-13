@@ -17,23 +17,6 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class Partners extends ClientSDK {
   /**
-   * Create or update a partner
-   *
-   * @remarks
-   * Creates or updates a partner record (upsert behavior). If a partner with the same email already exists, their program enrollment will be updated with the provided tenantId. If no existing partner is found, a new partner will be created using the supplied information.
-   */
-  async create(
-    request?: operations.CreatePartnerRequestBody | undefined,
-    options?: RequestOptions,
-  ): Promise<operations.CreatePartnerResponseBody> {
-    return unwrapAsync(partnersCreate(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
    * List all partners
    *
    * @remarks
@@ -51,16 +34,16 @@ export class Partners extends ClientSDK {
   }
 
   /**
-   * Create a link for a partner
+   * Create or update a partner
    *
    * @remarks
-   * Create a link for a partner that is enrolled in your program.
+   * Creates or updates a partner record (upsert behavior). If a partner with the same email already exists, their program enrollment will be updated with the provided tenantId. If no existing partner is found, a new partner will be created using the supplied information.
    */
-  async createLink(
-    request?: operations.CreatePartnerLinkRequestBody | undefined,
+  async create(
+    request?: operations.CreatePartnerRequestBody | undefined,
     options?: RequestOptions,
-  ): Promise<components.LinkSchema> {
-    return unwrapAsync(partnersCreateLink(
+  ): Promise<operations.CreatePartnerResponseBody> {
+    return unwrapAsync(partnersCreate(
       this,
       request,
       options,
@@ -78,6 +61,23 @@ export class Partners extends ClientSDK {
     options?: RequestOptions,
   ): Promise<Array<operations.RetrieveLinksResponseBody>> {
     return unwrapAsync(partnersRetrieveLinks(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Create a link for a partner
+   *
+   * @remarks
+   * Create a link for a partner that is enrolled in your program.
+   */
+  async createLink(
+    request?: operations.CreatePartnerLinkRequestBody | undefined,
+    options?: RequestOptions,
+  ): Promise<components.LinkSchema> {
+    return unwrapAsync(partnersCreateLink(
       this,
       request,
       options,

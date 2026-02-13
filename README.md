@@ -137,15 +137,15 @@ run();
 
 * [list](docs/sdks/customers/README.md#list) - Retrieve a list of customers
 * [get](docs/sdks/customers/README.md#get) - Retrieve a customer
-* [update](docs/sdks/customers/README.md#update) - Update a customer
 * [delete](docs/sdks/customers/README.md#delete) - Delete a customer
+* [update](docs/sdks/customers/README.md#update) - Update a customer
 
 ### [Domains](docs/sdks/domains/README.md)
 
-* [create](docs/sdks/domains/README.md#create) - Create a domain
 * [list](docs/sdks/domains/README.md#list) - Retrieve a list of domains
-* [update](docs/sdks/domains/README.md#update) - Update a domain
+* [create](docs/sdks/domains/README.md#create) - Create a domain
 * [delete](docs/sdks/domains/README.md#delete) - Delete a domain
+* [update](docs/sdks/domains/README.md#update) - Update a domain
 * [register](docs/sdks/domains/README.md#register) - Register a domain
 * [checkStatus](docs/sdks/domains/README.md#checkstatus) - Check the availability of one or more domains
 
@@ -159,30 +159,30 @@ run();
 
 ### [Folders](docs/sdks/folders/README.md)
 
-* [create](docs/sdks/folders/README.md#create) - Create a folder
 * [list](docs/sdks/folders/README.md#list) - Retrieve a list of folders
-* [update](docs/sdks/folders/README.md#update) - Update a folder
+* [create](docs/sdks/folders/README.md#create) - Create a folder
 * [delete](docs/sdks/folders/README.md#delete) - Delete a folder
+* [update](docs/sdks/folders/README.md#update) - Update a folder
 
 ### [Links](docs/sdks/links/README.md)
 
-* [create](docs/sdks/links/README.md#create) - Create a link
 * [list](docs/sdks/links/README.md#list) - Retrieve a list of links
+* [create](docs/sdks/links/README.md#create) - Create a link
 * [count](docs/sdks/links/README.md#count) - Retrieve links count
 * [get](docs/sdks/links/README.md#get) - Retrieve a link
-* [update](docs/sdks/links/README.md#update) - Update a link
 * [delete](docs/sdks/links/README.md#delete) - Delete a link
+* [update](docs/sdks/links/README.md#update) - Update a link
 * [createMany](docs/sdks/links/README.md#createmany) - Bulk create links
-* [updateMany](docs/sdks/links/README.md#updatemany) - Bulk update links
 * [deleteMany](docs/sdks/links/README.md#deletemany) - Bulk delete links
+* [updateMany](docs/sdks/links/README.md#updatemany) - Bulk update links
 * [upsert](docs/sdks/links/README.md#upsert) - Upsert a link
 
 ### [Partners](docs/sdks/partners/README.md)
 
-* [create](docs/sdks/partners/README.md#create) - Create or update a partner
 * [list](docs/sdks/partners/README.md#list) - List all partners
-* [createLink](docs/sdks/partners/README.md#createlink) - Create a link for a partner
+* [create](docs/sdks/partners/README.md#create) - Create or update a partner
 * [retrieveLinks](docs/sdks/partners/README.md#retrievelinks) - Retrieve a partner's links.
+* [createLink](docs/sdks/partners/README.md#createlink) - Create a link for a partner
 * [upsertLink](docs/sdks/partners/README.md#upsertlink) - Upsert a link for a partner
 * [analytics](docs/sdks/partners/README.md#analytics) - Retrieve analytics for a partner
 * [ban](docs/sdks/partners/README.md#ban) - Ban a partner
@@ -198,10 +198,10 @@ run();
 
 ### [Tags](docs/sdks/tags/README.md)
 
-* [create](docs/sdks/tags/README.md#create) - Create a tag
 * [list](docs/sdks/tags/README.md#list) - Retrieve a list of tags
-* [update](docs/sdks/tags/README.md#update) - Update a tag
+* [create](docs/sdks/tags/README.md#create) - Create a tag
 * [delete](docs/sdks/tags/README.md#delete) - Delete a tag
+* [update](docs/sdks/tags/README.md#update) - Update a tag
 
 ### [Track](docs/sdks/track/README.md)
 
@@ -236,9 +236,11 @@ const dub = new Dub({
 
 async function run() {
   try {
-    const result = await dub.links.create();
+    const result = await dub.links.list();
 
-    console.log(result);
+    for await (const page of result) {
+      console.log(page);
+    }
   } catch (error) {
     // The base class for HTTP error responses
     if (error instanceof errors.DubError) {
@@ -305,9 +307,11 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.links.create();
+  const result = await dub.links.list();
 
-  console.log(result);
+  for await (const page of result) {
+    console.log(page);
+  }
 }
 
 run();
@@ -328,19 +332,23 @@ The `HTTPClient` constructor takes an optional `fetcher` argument that can be
 used to integrate a third-party HTTP client or when writing tests to mock out
 the HTTP client and feed in fixtures.
 
-The following example shows how to use the `"beforeRequest"` hook to to add a
-custom header and a timeout to requests and how to use the `"requestError"` hook
-to log errors:
+The following example shows how to:
+- route requests through a proxy server using [undici](https://www.npmjs.com/package/undici)'s ProxyAgent
+- use the `"beforeRequest"` hook to add a custom header and a timeout to requests
+- use the `"requestError"` hook to log errors
 
 ```typescript
 import { Dub } from "dub";
+import { ProxyAgent } from "undici";
 import { HTTPClient } from "dub/lib/http";
 
+const dispatcher = new ProxyAgent("http://proxy.example.com:8080");
+
 const httpClient = new HTTPClient({
-  // fetcher takes a function that has the same signature as native `fetch`.
-  fetcher: (request) => {
-    return fetch(request);
-  }
+  // 'fetcher' takes a function that has the same signature as native 'fetch'.
+  fetcher: (input, init) =>
+    // 'dispatcher' is specific to undici and not part of the standard Fetch API.
+    fetch(input, { ...init, dispatcher } as RequestInit),
 });
 
 httpClient.addHook("beforeRequest", (request) => {
@@ -384,9 +392,11 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.links.create();
+  const result = await dub.links.list();
 
-  console.log(result);
+  for await (const page of result) {
+    console.log(page);
+  }
 }
 
 run();
@@ -408,7 +418,7 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.links.create({
+  const result = await dub.links.list(undefined, {
     retries: {
       strategy: "backoff",
       backoff: {
@@ -421,7 +431,9 @@ async function run() {
     },
   });
 
-  console.log(result);
+  for await (const page of result) {
+    console.log(page);
+  }
 }
 
 run();
@@ -447,9 +459,11 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.links.create();
+  const result = await dub.links.list();
 
-  console.log(result);
+  for await (const page of result) {
+    console.log(page);
+  }
 }
 
 run();

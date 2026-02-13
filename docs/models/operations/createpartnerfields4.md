@@ -1,16 +1,16 @@
-# ListPartnersFields4
+# CreatePartnerFields4
 
 ## Example Usage
 
 ```typescript
-import { ListPartnersFields4 } from "dub/models/operations";
+import { CreatePartnerFields4 } from "dub/models/operations";
 
-let value: ListPartnersFields4 = {
+let value: CreatePartnerFields4 = {
   key: "<key>",
   label: "<value>",
-  required: true,
-  locked: false,
-  position: 944768,
+  required: false,
+  locked: true,
+  position: 261727,
   type: "country",
 };
 ```

@@ -178,7 +178,7 @@ export const CreatePartnerStatus = {
  */
 export type CreatePartnerStatus = ClosedEnum<typeof CreatePartnerStatus>;
 
-export type Links = {
+export type CreatePartnerLinks = {
   /**
    * The unique ID of the short link.
    */
@@ -224,7 +224,7 @@ export type Links = {
 /**
  * If the partner was banned from the program, this is the reason for the ban.
  */
-export const BannedReason = {
+export const CreatePartnerBannedReason = {
   TosViolation: "tos_violation",
   InappropriateContent: "inappropriate_content",
   FakeTraffic: "fake_traffic",
@@ -235,9 +235,11 @@ export const BannedReason = {
 /**
  * If the partner was banned from the program, this is the reason for the ban.
  */
-export type BannedReason = ClosedEnum<typeof BannedReason>;
+export type CreatePartnerBannedReason = ClosedEnum<
+  typeof CreatePartnerBannedReason
+>;
 
-export type Eight = {
+export type Fields8 = {
   key: string;
   label: string;
   required: boolean;
@@ -246,7 +248,7 @@ export type Eight = {
   type: "phone";
 };
 
-export type Seven = {
+export type Fields7 = {
   key: string;
   label: string;
   required: boolean;
@@ -255,22 +257,22 @@ export type Seven = {
   type: "number";
 };
 
-export type FieldsOptions = {
+export type CreatePartnerFieldsPartnersOptions = {
   label: string;
   value: string;
 };
 
-export type Six = {
+export type Fields6 = {
   key: string;
   label: string;
   required: boolean;
   locked: boolean;
   position: number;
   type: "multiSelect";
-  options: Array<FieldsOptions>;
+  options: Array<CreatePartnerFieldsPartnersOptions>;
 };
 
-export type Five = {
+export type Fields5 = {
   key: string;
   label: string;
   required: boolean;
@@ -279,7 +281,7 @@ export type Five = {
   type: "date";
 };
 
-export type Fields4 = {
+export type CreatePartnerFields4 = {
   key: string;
   label: string;
   required: boolean;
@@ -288,63 +290,70 @@ export type Fields4 = {
   type: "country";
 };
 
-export type Options = {
+export type CreatePartnerFieldsOptions = {
   label: string;
   value: string;
 };
 
-export type Fields3 = {
+export type CreatePartnerFields3 = {
   key: string;
   label: string;
   required: boolean;
   locked: boolean;
   position: number;
   type: "select";
-  options: Array<Options>;
+  options: Array<CreatePartnerFieldsOptions>;
 };
 
-export type FieldsConstraints = {
+export type CreatePartnerFieldsPartnersConstraints = {
   maxLength?: number | undefined;
 };
 
-export type Fields2 = {
+export type CreatePartnerFields2 = {
   key: string;
   label: string;
   required: boolean;
   locked: boolean;
   position: number;
   type: "textarea";
-  constraints?: FieldsConstraints | undefined;
+  constraints?: CreatePartnerFieldsPartnersConstraints | undefined;
 };
 
-export type Constraints = {
+export type CreatePartnerFieldsConstraints = {
   maxLength?: number | undefined;
   pattern?: string | undefined;
 };
 
-export type Fields1 = {
+export type CreatePartnerFields1 = {
   key: string;
   label: string;
   required: boolean;
   locked: boolean;
   position: number;
   type: "text";
-  constraints?: Constraints | undefined;
+  constraints?: CreatePartnerFieldsConstraints | undefined;
 };
 
-export type Fields =
-  | Fields1
-  | Fields2
-  | Fields3
-  | Fields4
-  | Five
-  | Six
-  | Seven
-  | Eight;
+export type CreatePartnerFields =
+  | CreatePartnerFields1
+  | CreatePartnerFields2
+  | CreatePartnerFields3
+  | CreatePartnerFields4
+  | Fields5
+  | Fields6
+  | Fields7
+  | Fields8;
 
-export type ReferralFormData = {
+export type CreatePartnerReferralFormData = {
   fields: Array<
-    Fields1 | Fields2 | Fields3 | Fields4 | Five | Six | Seven | Eight
+    | CreatePartnerFields1
+    | CreatePartnerFields2
+    | CreatePartnerFields3
+    | CreatePartnerFields4
+    | Fields5
+    | Fields6
+    | Fields7
+    | Fields8
   >;
 };
 
@@ -420,7 +429,7 @@ export type CreatePartnerResponseBody = {
   /**
    * The partner's referral links in this program.
    */
-  links: Array<Links> | null;
+  links: Array<CreatePartnerLinks> | null;
   /**
    * The total commissions paid to the partner for their referrals
    */
@@ -440,8 +449,8 @@ export type CreatePartnerResponseBody = {
   /**
    * If the partner was banned from the program, this is the reason for the ban.
    */
-  bannedReason?: BannedReason | null | undefined;
-  referralFormData?: ReferralFormData | null | undefined;
+  bannedReason?: CreatePartnerBannedReason | null | undefined;
+  referralFormData?: CreatePartnerReferralFormData | null | undefined;
   /**
    * The total number of clicks on the partner's links
    */
@@ -684,37 +693,41 @@ export const CreatePartnerStatus$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(CreatePartnerStatus);
 
 /** @internal */
-export const Links$inboundSchema: z.ZodType<Links, z.ZodTypeDef, unknown> = z
-  .object({
-    id: z.string(),
-    domain: z.string(),
-    key: z.string(),
-    shortLink: z.string(),
-    url: z.string(),
-    clicks: z.number().default(0),
-    leads: z.number().default(0),
-    conversions: z.number().default(0),
-    sales: z.number().default(0),
-    saleAmount: z.number().default(0),
-  });
+export const CreatePartnerLinks$inboundSchema: z.ZodType<
+  CreatePartnerLinks,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  domain: z.string(),
+  key: z.string(),
+  shortLink: z.string(),
+  url: z.string(),
+  clicks: z.number().default(0),
+  leads: z.number().default(0),
+  conversions: z.number().default(0),
+  sales: z.number().default(0),
+  saleAmount: z.number().default(0),
+});
 
-export function linksFromJSON(
+export function createPartnerLinksFromJSON(
   jsonString: string,
-): SafeParseResult<Links, SDKValidationError> {
+): SafeParseResult<CreatePartnerLinks, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Links$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Links' from JSON`,
+    (x) => CreatePartnerLinks$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreatePartnerLinks' from JSON`,
   );
 }
 
 /** @internal */
-export const BannedReason$inboundSchema: z.ZodNativeEnum<typeof BannedReason> =
-  z.nativeEnum(BannedReason);
+export const CreatePartnerBannedReason$inboundSchema: z.ZodNativeEnum<
+  typeof CreatePartnerBannedReason
+> = z.nativeEnum(CreatePartnerBannedReason);
 
 /** @internal */
-export const Eight$inboundSchema: z.ZodType<Eight, z.ZodTypeDef, unknown> = z
-  .object({
+export const Fields8$inboundSchema: z.ZodType<Fields8, z.ZodTypeDef, unknown> =
+  z.object({
     key: z.string(),
     label: z.string(),
     required: z.boolean(),
@@ -723,19 +736,19 @@ export const Eight$inboundSchema: z.ZodType<Eight, z.ZodTypeDef, unknown> = z
     type: z.literal("phone"),
   });
 
-export function eightFromJSON(
+export function fields8FromJSON(
   jsonString: string,
-): SafeParseResult<Eight, SDKValidationError> {
+): SafeParseResult<Fields8, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Eight$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Eight' from JSON`,
+    (x) => Fields8$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Fields8' from JSON`,
   );
 }
 
 /** @internal */
-export const Seven$inboundSchema: z.ZodType<Seven, z.ZodTypeDef, unknown> = z
-  .object({
+export const Fields7$inboundSchema: z.ZodType<Fields7, z.ZodTypeDef, unknown> =
+  z.object({
     key: z.string(),
     label: z.string(),
     required: z.boolean(),
@@ -744,19 +757,19 @@ export const Seven$inboundSchema: z.ZodType<Seven, z.ZodTypeDef, unknown> = z
     type: z.literal("number"),
   });
 
-export function sevenFromJSON(
+export function fields7FromJSON(
   jsonString: string,
-): SafeParseResult<Seven, SDKValidationError> {
+): SafeParseResult<Fields7, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Seven$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Seven' from JSON`,
+    (x) => Fields7$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Fields7' from JSON`,
   );
 }
 
 /** @internal */
-export const FieldsOptions$inboundSchema: z.ZodType<
-  FieldsOptions,
+export const CreatePartnerFieldsPartnersOptions$inboundSchema: z.ZodType<
+  CreatePartnerFieldsPartnersOptions,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -764,41 +777,44 @@ export const FieldsOptions$inboundSchema: z.ZodType<
   value: z.string(),
 });
 
-export function fieldsOptionsFromJSON(
+export function createPartnerFieldsPartnersOptionsFromJSON(
   jsonString: string,
-): SafeParseResult<FieldsOptions, SDKValidationError> {
+): SafeParseResult<CreatePartnerFieldsPartnersOptions, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => FieldsOptions$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'FieldsOptions' from JSON`,
+    (x) =>
+      CreatePartnerFieldsPartnersOptions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreatePartnerFieldsPartnersOptions' from JSON`,
   );
 }
 
 /** @internal */
-export const Six$inboundSchema: z.ZodType<Six, z.ZodTypeDef, unknown> = z
-  .object({
+export const Fields6$inboundSchema: z.ZodType<Fields6, z.ZodTypeDef, unknown> =
+  z.object({
     key: z.string(),
     label: z.string(),
     required: z.boolean(),
     locked: z.boolean(),
     position: z.number().int(),
     type: z.literal("multiSelect"),
-    options: z.array(z.lazy(() => FieldsOptions$inboundSchema)),
+    options: z.array(
+      z.lazy(() => CreatePartnerFieldsPartnersOptions$inboundSchema),
+    ),
   });
 
-export function sixFromJSON(
+export function fields6FromJSON(
   jsonString: string,
-): SafeParseResult<Six, SDKValidationError> {
+): SafeParseResult<Fields6, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Six$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Six' from JSON`,
+    (x) => Fields6$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Fields6' from JSON`,
   );
 }
 
 /** @internal */
-export const Five$inboundSchema: z.ZodType<Five, z.ZodTypeDef, unknown> = z
-  .object({
+export const Fields5$inboundSchema: z.ZodType<Fields5, z.ZodTypeDef, unknown> =
+  z.object({
     key: z.string(),
     label: z.string(),
     required: z.boolean(),
@@ -807,120 +823,135 @@ export const Five$inboundSchema: z.ZodType<Five, z.ZodTypeDef, unknown> = z
     type: z.literal("date"),
   });
 
-export function fiveFromJSON(
+export function fields5FromJSON(
   jsonString: string,
-): SafeParseResult<Five, SDKValidationError> {
+): SafeParseResult<Fields5, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Five$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Five' from JSON`,
+    (x) => Fields5$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Fields5' from JSON`,
   );
 }
 
 /** @internal */
-export const Fields4$inboundSchema: z.ZodType<Fields4, z.ZodTypeDef, unknown> =
-  z.object({
-    key: z.string(),
-    label: z.string(),
-    required: z.boolean(),
-    locked: z.boolean(),
-    position: z.number().int(),
-    type: z.literal("country"),
-  });
+export const CreatePartnerFields4$inboundSchema: z.ZodType<
+  CreatePartnerFields4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  key: z.string(),
+  label: z.string(),
+  required: z.boolean(),
+  locked: z.boolean(),
+  position: z.number().int(),
+  type: z.literal("country"),
+});
 
-export function fields4FromJSON(
+export function createPartnerFields4FromJSON(
   jsonString: string,
-): SafeParseResult<Fields4, SDKValidationError> {
+): SafeParseResult<CreatePartnerFields4, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Fields4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Fields4' from JSON`,
+    (x) => CreatePartnerFields4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreatePartnerFields4' from JSON`,
   );
 }
 
 /** @internal */
-export const Options$inboundSchema: z.ZodType<Options, z.ZodTypeDef, unknown> =
-  z.object({
-    label: z.string(),
-    value: z.string(),
-  });
+export const CreatePartnerFieldsOptions$inboundSchema: z.ZodType<
+  CreatePartnerFieldsOptions,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  label: z.string(),
+  value: z.string(),
+});
 
-export function optionsFromJSON(
+export function createPartnerFieldsOptionsFromJSON(
   jsonString: string,
-): SafeParseResult<Options, SDKValidationError> {
+): SafeParseResult<CreatePartnerFieldsOptions, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Options$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Options' from JSON`,
+    (x) => CreatePartnerFieldsOptions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreatePartnerFieldsOptions' from JSON`,
   );
 }
 
 /** @internal */
-export const Fields3$inboundSchema: z.ZodType<Fields3, z.ZodTypeDef, unknown> =
-  z.object({
-    key: z.string(),
-    label: z.string(),
-    required: z.boolean(),
-    locked: z.boolean(),
-    position: z.number().int(),
-    type: z.literal("select"),
-    options: z.array(z.lazy(() => Options$inboundSchema)),
-  });
+export const CreatePartnerFields3$inboundSchema: z.ZodType<
+  CreatePartnerFields3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  key: z.string(),
+  label: z.string(),
+  required: z.boolean(),
+  locked: z.boolean(),
+  position: z.number().int(),
+  type: z.literal("select"),
+  options: z.array(z.lazy(() => CreatePartnerFieldsOptions$inboundSchema)),
+});
 
-export function fields3FromJSON(
+export function createPartnerFields3FromJSON(
   jsonString: string,
-): SafeParseResult<Fields3, SDKValidationError> {
+): SafeParseResult<CreatePartnerFields3, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Fields3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Fields3' from JSON`,
+    (x) => CreatePartnerFields3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreatePartnerFields3' from JSON`,
   );
 }
 
 /** @internal */
-export const FieldsConstraints$inboundSchema: z.ZodType<
-  FieldsConstraints,
+export const CreatePartnerFieldsPartnersConstraints$inboundSchema: z.ZodType<
+  CreatePartnerFieldsPartnersConstraints,
   z.ZodTypeDef,
   unknown
 > = z.object({
   maxLength: z.number().int().optional(),
 });
 
-export function fieldsConstraintsFromJSON(
+export function createPartnerFieldsPartnersConstraintsFromJSON(
   jsonString: string,
-): SafeParseResult<FieldsConstraints, SDKValidationError> {
+): SafeParseResult<CreatePartnerFieldsPartnersConstraints, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => FieldsConstraints$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'FieldsConstraints' from JSON`,
+    (x) =>
+      CreatePartnerFieldsPartnersConstraints$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreatePartnerFieldsPartnersConstraints' from JSON`,
   );
 }
 
 /** @internal */
-export const Fields2$inboundSchema: z.ZodType<Fields2, z.ZodTypeDef, unknown> =
-  z.object({
-    key: z.string(),
-    label: z.string(),
-    required: z.boolean(),
-    locked: z.boolean(),
-    position: z.number().int(),
-    type: z.literal("textarea"),
-    constraints: z.lazy(() => FieldsConstraints$inboundSchema).optional(),
-  });
+export const CreatePartnerFields2$inboundSchema: z.ZodType<
+  CreatePartnerFields2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  key: z.string(),
+  label: z.string(),
+  required: z.boolean(),
+  locked: z.boolean(),
+  position: z.number().int(),
+  type: z.literal("textarea"),
+  constraints: z.lazy(() =>
+    CreatePartnerFieldsPartnersConstraints$inboundSchema
+  ).optional(),
+});
 
-export function fields2FromJSON(
+export function createPartnerFields2FromJSON(
   jsonString: string,
-): SafeParseResult<Fields2, SDKValidationError> {
+): SafeParseResult<CreatePartnerFields2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Fields2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Fields2' from JSON`,
+    (x) => CreatePartnerFields2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreatePartnerFields2' from JSON`,
   );
 }
 
 /** @internal */
-export const Constraints$inboundSchema: z.ZodType<
-  Constraints,
+export const CreatePartnerFieldsConstraints$inboundSchema: z.ZodType<
+  CreatePartnerFieldsConstraints,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -928,88 +959,95 @@ export const Constraints$inboundSchema: z.ZodType<
   pattern: z.string().optional(),
 });
 
-export function constraintsFromJSON(
+export function createPartnerFieldsConstraintsFromJSON(
   jsonString: string,
-): SafeParseResult<Constraints, SDKValidationError> {
+): SafeParseResult<CreatePartnerFieldsConstraints, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Constraints$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Constraints' from JSON`,
+    (x) => CreatePartnerFieldsConstraints$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreatePartnerFieldsConstraints' from JSON`,
   );
 }
 
 /** @internal */
-export const Fields1$inboundSchema: z.ZodType<Fields1, z.ZodTypeDef, unknown> =
-  z.object({
-    key: z.string(),
-    label: z.string(),
-    required: z.boolean(),
-    locked: z.boolean(),
-    position: z.number().int(),
-    type: z.literal("text"),
-    constraints: z.lazy(() => Constraints$inboundSchema).optional(),
-  });
+export const CreatePartnerFields1$inboundSchema: z.ZodType<
+  CreatePartnerFields1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  key: z.string(),
+  label: z.string(),
+  required: z.boolean(),
+  locked: z.boolean(),
+  position: z.number().int(),
+  type: z.literal("text"),
+  constraints: z.lazy(() => CreatePartnerFieldsConstraints$inboundSchema)
+    .optional(),
+});
 
-export function fields1FromJSON(
+export function createPartnerFields1FromJSON(
   jsonString: string,
-): SafeParseResult<Fields1, SDKValidationError> {
+): SafeParseResult<CreatePartnerFields1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Fields1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Fields1' from JSON`,
+    (x) => CreatePartnerFields1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreatePartnerFields1' from JSON`,
   );
 }
 
 /** @internal */
-export const Fields$inboundSchema: z.ZodType<Fields, z.ZodTypeDef, unknown> = z
-  .union([
-    z.lazy(() => Fields1$inboundSchema),
-    z.lazy(() => Fields2$inboundSchema),
-    z.lazy(() => Fields3$inboundSchema),
-    z.lazy(() => Fields4$inboundSchema),
-    z.lazy(() => Five$inboundSchema),
-    z.lazy(() => Six$inboundSchema),
-    z.lazy(() => Seven$inboundSchema),
-    z.lazy(() => Eight$inboundSchema),
-  ]);
+export const CreatePartnerFields$inboundSchema: z.ZodType<
+  CreatePartnerFields,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => CreatePartnerFields1$inboundSchema),
+  z.lazy(() => CreatePartnerFields2$inboundSchema),
+  z.lazy(() => CreatePartnerFields3$inboundSchema),
+  z.lazy(() => CreatePartnerFields4$inboundSchema),
+  z.lazy(() => Fields5$inboundSchema),
+  z.lazy(() => Fields6$inboundSchema),
+  z.lazy(() => Fields7$inboundSchema),
+  z.lazy(() => Fields8$inboundSchema),
+]);
 
-export function fieldsFromJSON(
+export function createPartnerFieldsFromJSON(
   jsonString: string,
-): SafeParseResult<Fields, SDKValidationError> {
+): SafeParseResult<CreatePartnerFields, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Fields$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Fields' from JSON`,
+    (x) => CreatePartnerFields$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreatePartnerFields' from JSON`,
   );
 }
 
 /** @internal */
-export const ReferralFormData$inboundSchema: z.ZodType<
-  ReferralFormData,
+export const CreatePartnerReferralFormData$inboundSchema: z.ZodType<
+  CreatePartnerReferralFormData,
   z.ZodTypeDef,
   unknown
 > = z.object({
   fields: z.array(
     z.union([
-      z.lazy(() => Fields1$inboundSchema),
-      z.lazy(() => Fields2$inboundSchema),
-      z.lazy(() => Fields3$inboundSchema),
-      z.lazy(() => Fields4$inboundSchema),
-      z.lazy(() => Five$inboundSchema),
-      z.lazy(() => Six$inboundSchema),
-      z.lazy(() => Seven$inboundSchema),
-      z.lazy(() => Eight$inboundSchema),
+      z.lazy(() => CreatePartnerFields1$inboundSchema),
+      z.lazy(() => CreatePartnerFields2$inboundSchema),
+      z.lazy(() => CreatePartnerFields3$inboundSchema),
+      z.lazy(() => CreatePartnerFields4$inboundSchema),
+      z.lazy(() => Fields5$inboundSchema),
+      z.lazy(() => Fields6$inboundSchema),
+      z.lazy(() => Fields7$inboundSchema),
+      z.lazy(() => Fields8$inboundSchema),
     ]),
   ),
 });
 
-export function referralFormDataFromJSON(
+export function createPartnerReferralFormDataFromJSON(
   jsonString: string,
-): SafeParseResult<ReferralFormData, SDKValidationError> {
+): SafeParseResult<CreatePartnerReferralFormData, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ReferralFormData$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ReferralFormData' from JSON`,
+    (x) => CreatePartnerReferralFormData$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreatePartnerReferralFormData' from JSON`,
   );
 }
 
@@ -1036,7 +1074,7 @@ export const CreatePartnerResponseBody$inboundSchema: z.ZodType<
   tenantId: z.nullable(z.string()),
   createdAt: z.string(),
   status: CreatePartnerStatus$inboundSchema,
-  links: z.nullable(z.array(z.lazy(() => Links$inboundSchema))),
+  links: z.nullable(z.array(z.lazy(() => CreatePartnerLinks$inboundSchema))),
   totalCommissions: z.number().default(0),
   clickRewardId: z.nullable(z.string()).optional(),
   leadRewardId: z.nullable(z.string()).optional(),
@@ -1044,9 +1082,10 @@ export const CreatePartnerResponseBody$inboundSchema: z.ZodType<
   discountId: z.nullable(z.string()).optional(),
   applicationId: z.nullable(z.string()).optional(),
   bannedAt: z.nullable(z.string()).optional(),
-  bannedReason: z.nullable(BannedReason$inboundSchema).optional(),
-  referralFormData: z.nullable(z.lazy(() => ReferralFormData$inboundSchema))
-    .optional(),
+  bannedReason: z.nullable(CreatePartnerBannedReason$inboundSchema).optional(),
+  referralFormData: z.nullable(
+    z.lazy(() => CreatePartnerReferralFormData$inboundSchema),
+  ).optional(),
   totalClicks: z.number().default(0),
   totalLeads: z.number().default(0),
   totalConversions: z.number().default(0),

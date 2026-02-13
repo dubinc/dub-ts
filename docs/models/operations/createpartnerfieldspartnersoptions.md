@@ -1,11 +1,11 @@
-# ListPartnersFieldsPartnersOptions
+# CreatePartnerFieldsPartnersOptions
 
 ## Example Usage
 
 ```typescript
-import { ListPartnersFieldsPartnersOptions } from "dub/models/operations";
+import { CreatePartnerFieldsPartnersOptions } from "dub/models/operations";
 
-let value: ListPartnersFieldsPartnersOptions = {
+let value: CreatePartnerFieldsPartnersOptions = {
   label: "<value>",
   value: "<value>",
 };

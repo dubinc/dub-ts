@@ -1,57 +1,57 @@
-# ListPartnersFields
+# CreatePartnerFields
 
 
 ## Supported Types
 
-### `operations.ListPartnersFields1`
+### `operations.CreatePartnerFields1`
 
 ```typescript
-const value: operations.ListPartnersFields1 = {
-  key: "<key>",
-  label: "<value>",
-  required: true,
-  locked: true,
-  position: 729229,
-  type: "text",
-};
-```
-
-### `operations.ListPartnersFields2`
-
-```typescript
-const value: operations.ListPartnersFields2 = {
-  key: "<key>",
-  label: "<value>",
-  required: true,
-  locked: true,
-  position: 422140,
-  type: "textarea",
-};
-```
-
-### `operations.ListPartnersFields3`
-
-```typescript
-const value: operations.ListPartnersFields3 = {
+const value: operations.CreatePartnerFields1 = {
   key: "<key>",
   label: "<value>",
   required: false,
   locked: true,
-  position: 87557,
+  position: 144446,
+  type: "text",
+};
+```
+
+### `operations.CreatePartnerFields2`
+
+```typescript
+const value: operations.CreatePartnerFields2 = {
+  key: "<key>",
+  label: "<value>",
+  required: false,
+  locked: false,
+  position: 830575,
+  type: "textarea",
+};
+```
+
+### `operations.CreatePartnerFields3`
+
+```typescript
+const value: operations.CreatePartnerFields3 = {
+  key: "<key>",
+  label: "<value>",
+  required: false,
+  locked: true,
+  position: 128121,
   type: "select",
   options: [],
 };
 ```
 
-### `operations.ListPartnersFields4`
+### `operations.CreatePartnerFields4`
 
 ```typescript
-const value: operations.ListPartnersFields4 = {
+const value: operations.CreatePartnerFields4 = {
   key: "<key>",
   label: "<value>",
-  required: true,
-  locked: false,
-  position: 944768,
+  required: false,
+  locked: true,
+  position: 261727,
   type: "country",
 };
 ```

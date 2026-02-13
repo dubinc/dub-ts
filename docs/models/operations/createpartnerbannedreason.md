@@ -1,13 +1,13 @@
-# ListPartnersBannedReason
+# CreatePartnerBannedReason
 
 If the partner was banned from the program, this is the reason for the ban.
 
 ## Example Usage
 
 ```typescript
-import { ListPartnersBannedReason } from "dub/models/operations";
+import { CreatePartnerBannedReason } from "dub/models/operations";
 
-let value: ListPartnersBannedReason = "fraud";
+let value: CreatePartnerBannedReason = "fake_traffic";
 ```
 
 ## Values

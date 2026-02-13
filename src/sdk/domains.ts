@@ -16,6 +16,23 @@ import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Domains extends ClientSDK {
   /**
+   * Retrieve a list of domains
+   *
+   * @remarks
+   * Retrieve a list of domains associated with the authenticated workspace.
+   */
+  async list(
+    request?: operations.ListDomainsRequest | undefined,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListDomainsResponse, { page: number }>> {
+    return unwrapResultIterator(domainsList(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Create a domain
    *
    * @remarks
@@ -33,18 +50,18 @@ export class Domains extends ClientSDK {
   }
 
   /**
-   * Retrieve a list of domains
+   * Delete a domain
    *
    * @remarks
-   * Retrieve a list of domains associated with the authenticated workspace.
+   * Delete a domain from a workspace. It cannot be undone. This will also delete all the links associated with the domain.
    */
-  async list(
-    request?: operations.ListDomainsRequest | undefined,
+  async delete(
+    slug: string,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListDomainsResponse, { page: number }>> {
-    return unwrapResultIterator(domainsList(
+  ): Promise<operations.DeleteDomainResponseBody> {
+    return unwrapAsync(domainsDelete(
       this,
-      request,
+      slug,
       options,
     ));
   }
@@ -64,23 +81,6 @@ export class Domains extends ClientSDK {
       this,
       slug,
       requestBody,
-      options,
-    ));
-  }
-
-  /**
-   * Delete a domain
-   *
-   * @remarks
-   * Delete a domain from a workspace. It cannot be undone. This will also delete all the links associated with the domain.
-   */
-  async delete(
-    slug: string,
-    options?: RequestOptions,
-  ): Promise<operations.DeleteDomainResponseBody> {
-    return unwrapAsync(domainsDelete(
-      this,
-      slug,
       options,
     ));
   }

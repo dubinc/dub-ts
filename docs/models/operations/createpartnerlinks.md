@@ -1,16 +1,16 @@
-# ListPartnersLinks
+# CreatePartnerLinks
 
 ## Example Usage
 
 ```typescript
-import { ListPartnersLinks } from "dub/models/operations";
+import { CreatePartnerLinks } from "dub/models/operations";
 
-let value: ListPartnersLinks = {
+let value: CreatePartnerLinks = {
   id: "<id>",
-  domain: "mild-adaptation.name",
+  domain: "potable-thorn.com",
   key: "<key>",
-  shortLink: "https://irresponsible-vol.name/",
-  url: "https://trusty-valentine.info",
+  shortLink: "https://good-natured-diagram.name/",
+  url: "https://insistent-pilot.com/",
 };
 ```
 

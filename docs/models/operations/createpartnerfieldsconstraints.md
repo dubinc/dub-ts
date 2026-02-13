@@ -1,11 +1,11 @@
-# ListPartnersFieldsConstraints
+# CreatePartnerFieldsConstraints
 
 ## Example Usage
 
 ```typescript
-import { ListPartnersFieldsConstraints } from "dub/models/operations";
+import { CreatePartnerFieldsConstraints } from "dub/models/operations";
 
-let value: ListPartnersFieldsConstraints = {};
+let value: CreatePartnerFieldsConstraints = {};
 ```
 
 ## Fields
