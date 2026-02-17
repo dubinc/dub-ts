@@ -35,13 +35,17 @@ export type PartnerAnalyticsTopLinks = {
    */
   url: string;
   /**
+   * The custom link preview title (og:title)
+   */
+  title?: string | null | undefined;
+  /**
    * The comments of the short link
    */
   comments?: string | null | undefined;
   /**
-   * The custom link preview title (og:title)
+   * The ID of the partner that the link belongs to (if applicable)
    */
-  title?: string | null | undefined;
+  partnerId?: string | null | undefined;
   /**
    * The creation timestamp of the short link
    */
@@ -77,8 +81,9 @@ export const PartnerAnalyticsTopLinks$inboundSchema: z.ZodType<
   key: z.string(),
   shortLink: z.string(),
   url: z.string(),
-  comments: z.nullable(z.string()).optional(),
   title: z.nullable(z.string()).optional(),
+  comments: z.nullable(z.string()).optional(),
+  partnerId: z.nullable(z.string()).optional(),
   createdAt: z.string(),
   clicks: z.number().default(0),
   leads: z.number().default(0),

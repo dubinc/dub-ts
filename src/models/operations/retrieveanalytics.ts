@@ -80,42 +80,6 @@ export const Interval = {
 export type Interval = ClosedEnum<typeof Interval>;
 
 /**
- * The continent to retrieve analytics for.
- */
-export const Continent = {
-  Af: "AF",
-  An: "AN",
-  As: "AS",
-  Eu: "EU",
-  Na: "NA",
-  Oc: "OC",
-  Sa: "SA",
-} as const;
-/**
- * The continent to retrieve analytics for.
- */
-export type Continent = ClosedEnum<typeof Continent>;
-
-/**
- * The trigger to retrieve analytics for. If undefined, returns all trigger types.
- */
-export const Trigger = {
-  Qr: "qr",
-  Link: "link",
-  Pageview: "pageview",
-  Deeplink: "deeplink",
-} as const;
-/**
- * The trigger to retrieve analytics for. If undefined, returns all trigger types.
- */
-export type Trigger = ClosedEnum<typeof Trigger>;
-
-/**
- * The tag IDs to retrieve analytics for.
- */
-export type RetrieveAnalyticsQueryParamTagIds = string | Array<string>;
-
-/**
  * Filter sales by type: 'new' for first-time purchases, 'recurring' for repeat purchases. If undefined, returns both.
  */
 export const SaleType = {
@@ -137,7 +101,7 @@ export type RetrieveAnalyticsRequest = {
    */
   groupBy?: QueryParamGroupBy | undefined;
   /**
-   * The domain to filter analytics for.
+   * The domain to filter analytics for. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `dub.co`, `dub.co,google.com`, `-spam.com`.
    */
   domain?: string | undefined;
   /**
@@ -145,7 +109,7 @@ export type RetrieveAnalyticsRequest = {
    */
   key?: string | undefined;
   /**
-   * The unique ID of the short link on Dub to retrieve analytics for.
+   * The unique ID of the link to retrieve analytics for.Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `link_123`, `link_123,link_456`, `-link_789`.
    */
   linkId?: string | undefined;
   /**
@@ -153,15 +117,23 @@ export type RetrieveAnalyticsRequest = {
    */
   externalId?: string | undefined;
   /**
-   * The ID of the tenant that created the link inside your system.
+   * The ID of the tenant that created the link inside your system. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `tenant_123`, `tenant_123,tenant_456`, `-tenant_789`.
    */
   tenantId?: string | undefined;
   /**
-   * The ID of the program to retrieve analytics for.
+   * The tag ID to retrieve analytics for. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `tag_123`, `tag_123,tag_456`, `-tag_789`.
    */
-  programId?: string | undefined;
+  tagId?: string | undefined;
   /**
-   * The ID of the partner to retrieve analytics for.
+   * The folder ID to retrieve analytics for. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `folder_123`, `folder_123,folder_456`, `-folder_789`. If not provided, return analytics for all links.
+   */
+  folderId?: string | undefined;
+  /**
+   * The group ID to retrieve analytics for. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `grp_123`, `grp_123,grp_456`, `-grp_789`.
+   */
+  groupId?: string | undefined;
+  /**
+   * The ID of the partner to retrieve analytics for. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `pn_123`, `pn_123,pn_456`, `-pn_789`.
    */
   partnerId?: string | undefined;
   /**
@@ -185,61 +157,69 @@ export type RetrieveAnalyticsRequest = {
    */
   timezone?: string | undefined;
   /**
-   * The country to retrieve analytics for. Must be passed as a 2-letter ISO 3166-1 country code. See https://d.to/geo for more information.
+   * The country to retrieve analytics for. Must be passed as a 2-letter ISO 3166-1 country code (see https://d.to/geo). Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `US`, `US,BR,FR`, `-US`.
    */
   country?: string | undefined;
   /**
-   * The city to retrieve analytics for.
+   * The city to retrieve analytics for. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `New York`, `New York,London`, `-New York`.
    */
   city?: string | undefined;
   /**
-   * The ISO 3166-2 region code to retrieve analytics for.
+   * The ISO 3166-2 region code to retrieve analytics for. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `NY`, `NY,CA`, `-NY`.
    */
   region?: string | undefined;
   /**
-   * The continent to retrieve analytics for.
+   * The continent to retrieve analytics for. Valid values: AF, AN, AS, EU, NA, OC, SA. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `NA`, `NA,EU`, `-AS`.
    */
-  continent?: Continent | undefined;
+  continent?: string | undefined;
   /**
-   * The device to retrieve analytics for.
+   * The device to retrieve analytics for. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `Desktop`, `Mobile,Tablet`, `-Mobile`.
    */
   device?: string | undefined;
   /**
-   * The browser to retrieve analytics for.
+   * The browser to retrieve analytics for. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `Chrome`, `Chrome,Firefox,Safari`, `-IE`.
    */
   browser?: string | undefined;
   /**
-   * The OS to retrieve analytics for.
+   * The OS to retrieve analytics for. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `Windows`, `Mac,Windows,Linux`, `-Windows`.
    */
   os?: string | undefined;
   /**
-   * The trigger to retrieve analytics for. If undefined, returns all trigger types.
+   * The trigger to retrieve analytics for. Valid values: qr, link, pageview. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `qr`, `qr,link`, `-qr`. If undefined, returns all trigger types.
    */
-  trigger?: Trigger | undefined;
+  trigger?: string | undefined;
   /**
-   * The referer hostname to retrieve analytics for.
+   * The referer hostname to retrieve analytics for. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `google.com`, `google.com,twitter.com`, `-facebook.com`.
    */
   referer?: string | undefined;
   /**
-   * The full referer URL to retrieve analytics for.
+   * The full referer URL to retrieve analytics for. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `https://google.com`, `https://google.com,https://twitter.com`, `-https://spam.com`.
    */
   refererUrl?: string | undefined;
   /**
-   * The URL to retrieve analytics for.
+   * The destination URL to retrieve analytics for. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `https://example.com`, `https://example.com,https://other.com`, `-https://spam.com`.
    */
   url?: string | undefined;
   /**
-   * The tag IDs to retrieve analytics for.
+   * The UTM source to retrieve analytics for. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `google`, `google,twitter`, `-spam`.
    */
-  tagIds?: string | Array<string> | undefined;
+  utmSource?: string | undefined;
   /**
-   * The folder ID to retrieve analytics for. If not provided, return analytics for unsorted links.
+   * The UTM medium to retrieve analytics for. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `cpc`, `cpc,social`, `-email`.
    */
-  folderId?: string | undefined;
+  utmMedium?: string | undefined;
   /**
-   * The group ID to retrieve analytics for.
+   * The UTM campaign to retrieve analytics for. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `summer_sale`, `summer_sale,winter_sale`, `-old_campaign`.
    */
-  groupId?: string | undefined;
+  utmCampaign?: string | undefined;
+  /**
+   * The UTM term to retrieve analytics for. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`).
+   */
+  utmTerm?: string | undefined;
+  /**
+   * The UTM content to retrieve analytics for. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`).
+   */
+  utmContent?: string | undefined;
   /**
    * Filter for root domains. If true, filter for domains only. If false, filter for links only. If undefined, return both.
    */
@@ -249,41 +229,21 @@ export type RetrieveAnalyticsRequest = {
    */
   saleType?: SaleType | undefined;
   /**
-   * Search the events by a custom metadata value. Only available for lead and sale events.
+   * Search the events by a custom metadata value. Only available for lead and sale events. Examples: `metadata['key']:'value'`
    */
   query?: string | undefined;
   /**
-   * Deprecated: Use `tagIds` instead. The tag ID to retrieve analytics for.
+   * Deprecated: This is automatically inferred from your workspace's defaultProgramId. The ID of the program to retrieve analytics for.
    */
-  tagId?: string | undefined;
+  programId?: string | undefined;
+  /**
+   * Deprecated: Use `tagId` instead. The tag IDs to retrieve analytics for.
+   */
+  tagIds?: string | undefined;
   /**
    * Deprecated: Use the `trigger` field instead. Filter for QR code scans. If true, filter for QR codes only. If false, filter for links only. If undefined, return both.
    */
   qr?: boolean | undefined;
-  /**
-   * The UTM source of the short link.
-   */
-  utmSource?: string | null | undefined;
-  /**
-   * The UTM medium of the short link.
-   */
-  utmMedium?: string | null | undefined;
-  /**
-   * The UTM campaign of the short link.
-   */
-  utmCampaign?: string | null | undefined;
-  /**
-   * The UTM term of the short link.
-   */
-  utmTerm?: string | null | undefined;
-  /**
-   * The UTM content of the short link.
-   */
-  utmContent?: string | null | undefined;
-  /**
-   * The ref of the short link.
-   */
-  ref?: string | null | undefined;
 };
 
 /**
@@ -320,34 +280,6 @@ export const Interval$outboundSchema: z.ZodNativeEnum<typeof Interval> = z
   .nativeEnum(Interval);
 
 /** @internal */
-export const Continent$outboundSchema: z.ZodNativeEnum<typeof Continent> = z
-  .nativeEnum(Continent);
-
-/** @internal */
-export const Trigger$outboundSchema: z.ZodNativeEnum<typeof Trigger> = z
-  .nativeEnum(Trigger);
-
-/** @internal */
-export type RetrieveAnalyticsQueryParamTagIds$Outbound = string | Array<string>;
-
-/** @internal */
-export const RetrieveAnalyticsQueryParamTagIds$outboundSchema: z.ZodType<
-  RetrieveAnalyticsQueryParamTagIds$Outbound,
-  z.ZodTypeDef,
-  RetrieveAnalyticsQueryParamTagIds
-> = z.union([z.string(), z.array(z.string())]);
-
-export function retrieveAnalyticsQueryParamTagIdsToJSON(
-  retrieveAnalyticsQueryParamTagIds: RetrieveAnalyticsQueryParamTagIds,
-): string {
-  return JSON.stringify(
-    RetrieveAnalyticsQueryParamTagIds$outboundSchema.parse(
-      retrieveAnalyticsQueryParamTagIds,
-    ),
-  );
-}
-
-/** @internal */
 export const SaleType$outboundSchema: z.ZodNativeEnum<typeof SaleType> = z
   .nativeEnum(SaleType);
 
@@ -360,7 +292,9 @@ export type RetrieveAnalyticsRequest$Outbound = {
   linkId?: string | undefined;
   externalId?: string | undefined;
   tenantId?: string | undefined;
-  programId?: string | undefined;
+  tagId?: string | undefined;
+  folderId?: string | undefined;
+  groupId?: string | undefined;
   partnerId?: string | undefined;
   customerId?: string | undefined;
   interval?: string | undefined;
@@ -378,20 +312,17 @@ export type RetrieveAnalyticsRequest$Outbound = {
   referer?: string | undefined;
   refererUrl?: string | undefined;
   url?: string | undefined;
-  tagIds?: string | Array<string> | undefined;
-  folderId?: string | undefined;
-  groupId?: string | undefined;
+  utm_source?: string | undefined;
+  utm_medium?: string | undefined;
+  utm_campaign?: string | undefined;
+  utm_term?: string | undefined;
+  utm_content?: string | undefined;
   root?: boolean | undefined;
   saleType?: string | undefined;
   query?: string | undefined;
-  tagId?: string | undefined;
+  programId?: string | undefined;
+  tagIds?: string | undefined;
   qr?: boolean | undefined;
-  utm_source?: string | null | undefined;
-  utm_medium?: string | null | undefined;
-  utm_campaign?: string | null | undefined;
-  utm_term?: string | null | undefined;
-  utm_content?: string | null | undefined;
-  ref?: string | null | undefined;
 };
 
 /** @internal */
@@ -407,7 +338,9 @@ export const RetrieveAnalyticsRequest$outboundSchema: z.ZodType<
   linkId: z.string().optional(),
   externalId: z.string().optional(),
   tenantId: z.string().optional(),
-  programId: z.string().optional(),
+  tagId: z.string().optional(),
+  folderId: z.string().optional(),
+  groupId: z.string().optional(),
   partnerId: z.string().optional(),
   customerId: z.string().optional(),
   interval: Interval$outboundSchema.optional(),
@@ -417,28 +350,25 @@ export const RetrieveAnalyticsRequest$outboundSchema: z.ZodType<
   country: z.string().optional(),
   city: z.string().optional(),
   region: z.string().optional(),
-  continent: Continent$outboundSchema.optional(),
+  continent: z.string().optional(),
   device: z.string().optional(),
   browser: z.string().optional(),
   os: z.string().optional(),
-  trigger: Trigger$outboundSchema.optional(),
+  trigger: z.string().optional(),
   referer: z.string().optional(),
   refererUrl: z.string().optional(),
   url: z.string().optional(),
-  tagIds: z.union([z.string(), z.array(z.string())]).optional(),
-  folderId: z.string().optional(),
-  groupId: z.string().optional(),
+  utmSource: z.string().optional(),
+  utmMedium: z.string().optional(),
+  utmCampaign: z.string().optional(),
+  utmTerm: z.string().optional(),
+  utmContent: z.string().optional(),
   root: z.boolean().optional(),
   saleType: SaleType$outboundSchema.optional(),
   query: z.string().optional(),
-  tagId: z.string().optional(),
+  programId: z.string().optional(),
+  tagIds: z.string().optional(),
   qr: z.boolean().optional(),
-  utmSource: z.nullable(z.string()).optional(),
-  utmMedium: z.nullable(z.string()).optional(),
-  utmCampaign: z.nullable(z.string()).optional(),
-  utmTerm: z.nullable(z.string()).optional(),
-  utmContent: z.nullable(z.string()).optional(),
-  ref: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     utmSource: "utm_source",
