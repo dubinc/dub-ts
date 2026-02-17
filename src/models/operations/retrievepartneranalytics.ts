@@ -71,7 +71,7 @@ export type RetrievePartnerAnalyticsRequest = {
    */
   timezone?: string | undefined;
   /**
-   * Search the events by a custom metadata value. Only available for lead and sale events.
+   * Search the events by a custom metadata value. Only available for lead and sale events. Examples: `metadata['key']:'value'`
    */
   query?: string | undefined;
   /**
