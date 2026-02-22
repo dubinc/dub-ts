@@ -56,7 +56,7 @@ let value: LinkClickedEventData = {
       {
         id: "<id>",
         name: "<value>",
-        color: "blue",
+        color: "purple",
       },
     ],
     folderId: null,

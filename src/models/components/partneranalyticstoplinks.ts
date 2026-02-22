@@ -43,6 +43,10 @@ export type PartnerAnalyticsTopLinks = {
    */
   comments?: string | null | undefined;
   /**
+   * The ID of the folder that the link belongs to (if applicable)
+   */
+  folderId?: string | null | undefined;
+  /**
    * The ID of the partner that the link belongs to (if applicable)
    */
   partnerId?: string | null | undefined;
@@ -83,6 +87,7 @@ export const PartnerAnalyticsTopLinks$inboundSchema: z.ZodType<
   url: z.string(),
   title: z.nullable(z.string()).optional(),
   comments: z.nullable(z.string()).optional(),
+  folderId: z.nullable(z.string()).optional(),
   partnerId: z.nullable(z.string()).optional(),
   createdAt: z.string(),
   clicks: z.number().default(0),

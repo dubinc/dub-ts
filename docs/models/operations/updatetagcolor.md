@@ -1,17 +1,17 @@
 # UpdateTagColor
 
-The color of the tag. If not provided, a random color will be used from the list: red, yellow, green, blue, purple, brown.
+The color of the tag. If not provided, a random color will be used from the list: red, yellow, green, blue, purple, brown, gray.
 
 ## Example Usage
 
 ```typescript
 import { UpdateTagColor } from "dub/models/operations";
 
-let value: UpdateTagColor = "green";
+let value: UpdateTagColor = "blue";
 ```
 
 ## Values
 
 ```typescript
-"red" | "yellow" | "green" | "blue" | "purple" | "brown" | "pink"
+"red" | "yellow" | "green" | "blue" | "purple" | "brown" | "gray" | "pink"
 ```
