@@ -6,7 +6,7 @@ import * as z from "zod/v3";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
- * The color of the tag. If not provided, a random color will be used from the list: red, yellow, green, blue, purple, brown.
+ * The color of the tag. If not provided, a random color will be used from the list: red, yellow, green, blue, purple, brown, gray.
  */
 export const Color = {
   Red: "red",
@@ -15,10 +15,11 @@ export const Color = {
   Blue: "blue",
   Purple: "purple",
   Brown: "brown",
+  Gray: "gray",
   Pink: "pink",
 } as const;
 /**
- * The color of the tag. If not provided, a random color will be used from the list: red, yellow, green, blue, purple, brown.
+ * The color of the tag. If not provided, a random color will be used from the list: red, yellow, green, blue, purple, brown, gray.
  */
 export type Color = ClosedEnum<typeof Color>;
 
@@ -28,7 +29,7 @@ export type CreateTagRequestBody = {
    */
   name?: string | undefined;
   /**
-   * The color of the tag. If not provided, a random color will be used from the list: red, yellow, green, blue, purple, brown.
+   * The color of the tag. If not provided, a random color will be used from the list: red, yellow, green, blue, purple, brown, gray.
    */
   color?: Color | undefined;
   /**
