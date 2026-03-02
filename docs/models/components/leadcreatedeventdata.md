@@ -60,7 +60,7 @@ let value: LeadCreatedEventData = {
       {
         id: "<id>",
         name: "<value>",
-        color: "blue",
+        color: "purple",
       },
     ],
     folderId: "<id>",

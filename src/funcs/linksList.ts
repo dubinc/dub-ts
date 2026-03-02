@@ -296,7 +296,7 @@ async function $do(
       linksList(
         client,
         {
-          ...request,
+          ...request!,
           page: nextPage,
         },
         options,

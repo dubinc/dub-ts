@@ -131,7 +131,7 @@ run();
 ### [Commissions](docs/sdks/commissions/README.md)
 
 * [list](docs/sdks/commissions/README.md#list) - List all commissions
-* [update](docs/sdks/commissions/README.md#update) - Update a commission.
+* [update](docs/sdks/commissions/README.md#update) - Update a commission
 
 ### [Customers](docs/sdks/customers/README.md)
 
@@ -523,7 +523,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`bountiesListSubmissions`](docs/sdks/bounties/README.md#listsubmissions) - List bounty submissions
 - [`bountiesRejectSubmission`](docs/sdks/bounties/README.md#rejectsubmission) - Reject a bounty submission
 - [`commissionsList`](docs/sdks/commissions/README.md#list) - List all commissions
-- [`commissionsUpdate`](docs/sdks/commissions/README.md#update) - Update a commission.
+- [`commissionsUpdate`](docs/sdks/commissions/README.md#update) - Update a commission
 - [`customersDelete`](docs/sdks/customers/README.md#delete) - Delete a customer
 - [`customersGet`](docs/sdks/customers/README.md#get) - Retrieve a customer
 - [`customersList`](docs/sdks/customers/README.md#list) - Retrieve a list of customers

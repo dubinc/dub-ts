@@ -30,6 +30,7 @@ export type ListBountySubmissionsQueryParamStatus = ClosedEnum<
 export const ListBountySubmissionsQueryParamSortBy = {
   CompletedAt: "completedAt",
   PerformanceCount: "performanceCount",
+  SocialMetricCount: "socialMetricCount",
 } as const;
 /**
  * The field to sort the submissions by.
@@ -152,6 +153,14 @@ export type ListBountySubmissionsResponseBody = {
    */
   performanceCount: number | null;
   /**
+   * The social metric count (views or likes) for the social content
+   */
+  socialMetricCount: number | null;
+  /**
+   * The date and time the submission's social metrics were last synced
+   */
+  socialMetricsLastSyncedAt?: string | null | undefined;
+  /**
    * The date and time the submission was created
    */
   createdAt: string;
@@ -269,6 +278,8 @@ export const ListBountySubmissionsResponseBody$inboundSchema: z.ZodType<
   files: z.nullable(z.array(z.lazy(() => Files$inboundSchema))),
   status: ListBountySubmissionsStatus$inboundSchema,
   performanceCount: z.nullable(z.number()),
+  socialMetricCount: z.nullable(z.number().int()),
+  socialMetricsLastSyncedAt: z.nullable(z.string()).optional(),
   createdAt: z.string(),
   completedAt: z.nullable(z.string()),
   reviewedAt: z.nullable(z.string()),

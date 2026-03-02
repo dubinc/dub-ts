@@ -108,6 +108,13 @@ export const ListPayoutsMode = {
 } as const;
 export type ListPayoutsMode = ClosedEnum<typeof ListPayoutsMode>;
 
+export const Method = {
+  Connect: "connect",
+  Stablecoin: "stablecoin",
+  Paypal: "paypal",
+} as const;
+export type Method = ClosedEnum<typeof Method>;
+
 export type ListPayoutsPartner = {
   /**
    * The partner's unique ID on Dub.
@@ -164,6 +171,8 @@ export type ListPayoutsResponseBody = {
   paidAt: string | null;
   failureReason?: string | null | undefined;
   mode: ListPayoutsMode | null;
+  method: Method | null;
+  traceId?: string | null | undefined;
   partner: ListPayoutsPartner;
   user?: User | null | undefined;
 };
@@ -230,6 +239,10 @@ export const ListPayoutsMode$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(ListPayoutsMode);
 
 /** @internal */
+export const Method$inboundSchema: z.ZodNativeEnum<typeof Method> = z
+  .nativeEnum(Method);
+
+/** @internal */
 export const ListPayoutsPartner$inboundSchema: z.ZodType<
   ListPayoutsPartner,
   z.ZodTypeDef,
@@ -293,6 +306,8 @@ export const ListPayoutsResponseBody$inboundSchema: z.ZodType<
   paidAt: z.nullable(z.string()),
   failureReason: z.nullable(z.string()).optional(),
   mode: z.nullable(ListPayoutsMode$inboundSchema),
+  method: z.nullable(Method$inboundSchema),
+  traceId: z.nullable(z.string()).optional(),
   partner: z.lazy(() => ListPayoutsPartner$inboundSchema),
   user: z.nullable(z.lazy(() => User$inboundSchema)).optional(),
 });

@@ -16,11 +16,12 @@ let value: RejectBountySubmissionResponseBody = {
   files: [],
   status: "rejected",
   performanceCount: 1189.56,
-  createdAt: "1730283071757",
+  socialMetricCount: 906129,
+  createdAt: "1733424446312",
   completedAt: "<value>",
-  reviewedAt: "<value>",
+  reviewedAt: null,
   rejectionReason: "<value>",
-  rejectionNote: null,
+  rejectionNote: "<value>",
 };
 ```
 
@@ -36,6 +37,8 @@ let value: RejectBountySubmissionResponseBody = {
 | `files`                                                                                            | [operations.RejectBountySubmissionFiles](../../models/operations/rejectbountysubmissionfiles.md)[] | :heavy_check_mark:                                                                                 | The files uploaded for the submission                                                              |
 | `status`                                                                                           | [operations.RejectBountySubmissionStatus](../../models/operations/rejectbountysubmissionstatus.md) | :heavy_check_mark:                                                                                 | The status of the submission                                                                       |
 | `performanceCount`                                                                                 | *number*                                                                                           | :heavy_check_mark:                                                                                 | The performance count of the submission                                                            |
+| `socialMetricCount`                                                                                | *number*                                                                                           | :heavy_check_mark:                                                                                 | The social metric count (views or likes) for the social content                                    |
+| `socialMetricsLastSyncedAt`                                                                        | *string*                                                                                           | :heavy_minus_sign:                                                                                 | The date and time the submission's social metrics were last synced                                 |
 | `createdAt`                                                                                        | *string*                                                                                           | :heavy_check_mark:                                                                                 | The date and time the submission was created                                                       |
 | `completedAt`                                                                                      | *string*                                                                                           | :heavy_check_mark:                                                                                 | The date and time the submission was completed                                                     |
 | `reviewedAt`                                                                                       | *string*                                                                                           | :heavy_check_mark:                                                                                 | The date and time the submission was reviewed                                                      |

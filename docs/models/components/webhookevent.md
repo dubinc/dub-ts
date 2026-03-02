@@ -45,7 +45,7 @@ const value: components.LinkWebhookEvent = {
       {
         id: "<id>",
         name: "<value>",
-        color: "blue",
+        color: "purple",
       },
     ],
     folderId: "<id>",
@@ -132,7 +132,7 @@ const value: components.LinkClickedEvent = {
         {
           id: "<id>",
           name: "<value>",
-          color: "blue",
+          color: "purple",
         },
       ],
       folderId: null,
@@ -222,7 +222,7 @@ const value: components.LeadCreatedEvent = {
         {
           id: "<id>",
           name: "<value>",
-          color: "blue",
+          color: "purple",
         },
       ],
       folderId: "<id>",
