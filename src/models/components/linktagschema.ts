@@ -18,6 +18,7 @@ export const LinkTagSchemaColor = {
   Blue: "blue",
   Purple: "purple",
   Brown: "brown",
+  Gray: "gray",
   Pink: "pink",
 } as const;
 /**

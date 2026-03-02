@@ -39,7 +39,7 @@ let value: Link = {
     {
       id: "<id>",
       name: "<value>",
-      color: "blue",
+      color: "purple",
     },
   ],
   folderId: null,

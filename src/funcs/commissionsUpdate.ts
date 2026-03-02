@@ -26,7 +26,7 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Update a commission.
+ * Update a commission
  *
  * @remarks
  * Update an existing commission amount. This is useful for handling refunds (partial or full) or fraudulent sales.

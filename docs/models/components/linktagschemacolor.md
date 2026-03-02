@@ -13,5 +13,5 @@ let value: LinkTagSchemaColor = "green";
 ## Values
 
 ```typescript
-"red" | "yellow" | "green" | "blue" | "purple" | "brown" | "pink"
+"red" | "yellow" | "green" | "blue" | "purple" | "brown" | "gray" | "pink"
 ```

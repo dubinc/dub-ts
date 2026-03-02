@@ -283,7 +283,7 @@ async function $do(
       domainsList(
         client,
         {
-          ...request,
+          ...request!,
           page: nextPage,
         },
         options,

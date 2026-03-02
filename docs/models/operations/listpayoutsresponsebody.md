@@ -17,13 +17,14 @@ let value: ListPayoutsResponseBody = {
   initiatedAt: "<value>",
   paidAt: null,
   mode: null,
+  method: "paypal",
   partner: {
     id: "<id>",
     name: "<value>",
-    email: "Loren12@hotmail.com",
-    image: "https://loremflickr.com/1427/2811?lock=4985653675743413",
+    email: "Will_Cassin@hotmail.com",
+    image: "https://picsum.photos/seed/YqHOiVtyX/1234/2214",
     payoutsEnabledAt: "<value>",
-    country: "Virgin Islands, U.S.",
+    country: null,
     tenantId: "<id>",
   },
 };
@@ -46,5 +47,7 @@ let value: ListPayoutsResponseBody = {
 | `paidAt`                                                                       | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
 | `failureReason`                                                                | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
 | `mode`                                                                         | [operations.ListPayoutsMode](../../models/operations/listpayoutsmode.md)       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `method`                                                                       | [operations.Method](../../models/operations/method.md)                         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `traceId`                                                                      | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
 | `partner`                                                                      | [operations.ListPayoutsPartner](../../models/operations/listpayoutspartner.md) | :heavy_check_mark:                                                             | N/A                                                                            |
 | `user`                                                                         | [operations.User](../../models/operations/user.md)                             | :heavy_minus_sign:                                                             | N/A                                                                            |

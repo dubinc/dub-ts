@@ -27,7 +27,7 @@ export class Commissions extends ClientSDK {
   }
 
   /**
-   * Update a commission.
+   * Update a commission
    *
    * @remarks
    * Update an existing commission amount. This is useful for handling refunds (partial or full) or fraudulent sales.

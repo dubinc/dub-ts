@@ -44,7 +44,7 @@ let value: LinkWebhookEvent = {
       {
         id: "<id>",
         name: "<value>",
-        color: "blue",
+        color: "purple",
       },
     ],
     folderId: "<id>",

@@ -7,11 +7,11 @@ The field to sort the submissions by.
 ```typescript
 import { ListBountySubmissionsQueryParamSortBy } from "dub/models/operations";
 
-let value: ListBountySubmissionsQueryParamSortBy = "performanceCount";
+let value: ListBountySubmissionsQueryParamSortBy = "socialMetricCount";
 ```
 
 ## Values
 
 ```typescript
-"completedAt" | "performanceCount"
+"completedAt" | "performanceCount" | "socialMetricCount"
 ```

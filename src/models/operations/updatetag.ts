@@ -7,7 +7,7 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
- * The color of the tag. If not provided, a random color will be used from the list: red, yellow, green, blue, purple, brown.
+ * The color of the tag. If not provided, a random color will be used from the list: red, yellow, green, blue, purple, brown, gray.
  */
 export const UpdateTagColor = {
   Red: "red",
@@ -16,10 +16,11 @@ export const UpdateTagColor = {
   Blue: "blue",
   Purple: "purple",
   Brown: "brown",
+  Gray: "gray",
   Pink: "pink",
 } as const;
 /**
- * The color of the tag. If not provided, a random color will be used from the list: red, yellow, green, blue, purple, brown.
+ * The color of the tag. If not provided, a random color will be used from the list: red, yellow, green, blue, purple, brown, gray.
  */
 export type UpdateTagColor = ClosedEnum<typeof UpdateTagColor>;
 
@@ -29,7 +30,7 @@ export type UpdateTagRequestBody = {
    */
   name?: string | undefined;
   /**
-   * The color of the tag. If not provided, a random color will be used from the list: red, yellow, green, blue, purple, brown.
+   * The color of the tag. If not provided, a random color will be used from the list: red, yellow, green, blue, purple, brown, gray.
    */
   color?: UpdateTagColor | undefined;
   /**

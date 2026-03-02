@@ -96,6 +96,14 @@ export type ApproveBountySubmissionResponseBody = {
    */
   performanceCount: number | null;
   /**
+   * The social metric count (views or likes) for the social content
+   */
+  socialMetricCount: number | null;
+  /**
+   * The date and time the submission's social metrics were last synced
+   */
+  socialMetricsLastSyncedAt?: string | null | undefined;
+  /**
    * The date and time the submission was created
    */
   createdAt: string;
@@ -216,6 +224,8 @@ export const ApproveBountySubmissionResponseBody$inboundSchema: z.ZodType<
   ),
   status: ApproveBountySubmissionStatus$inboundSchema,
   performanceCount: z.nullable(z.number()),
+  socialMetricCount: z.nullable(z.number().int()),
+  socialMetricsLastSyncedAt: z.nullable(z.string()).optional(),
   createdAt: z.string(),
   completedAt: z.nullable(z.string()),
   reviewedAt: z.nullable(z.string()),
