@@ -36,7 +36,7 @@ export type ListDomainsResponse = {
 export type ListDomainsRequest$Outbound = {
   archived: boolean;
   search?: string | undefined;
-  page: number;
+  page?: number | undefined;
   pageSize: number;
 };
 
@@ -48,7 +48,7 @@ export const ListDomainsRequest$outboundSchema: z.ZodType<
 > = z.object({
   archived: z.boolean().default(false),
   search: z.string().optional(),
-  page: z.number().default(1),
+  page: z.number().optional(),
   pageSize: z.number().default(50),
 });
 

@@ -180,6 +180,10 @@ export type ListBountySubmissionsResponseBody = {
    * The note for rejecting the submission
    */
   rejectionNote: string | null;
+  /**
+   * The period number for this submission (1-indexed)
+   */
+  periodNumber: number;
 };
 
 /** @internal */
@@ -207,7 +211,7 @@ export type ListBountySubmissionsRequest$Outbound = {
   partnerId?: string | undefined;
   sortBy: string;
   sortOrder: string;
-  page: number;
+  page?: number | undefined;
   pageSize: number;
 };
 
@@ -227,7 +231,7 @@ export const ListBountySubmissionsRequest$outboundSchema: z.ZodType<
   sortOrder: ListBountySubmissionsQueryParamSortOrder$outboundSchema.default(
     "asc",
   ),
-  page: z.number().default(1),
+  page: z.number().optional(),
   pageSize: z.number().default(100),
 });
 
@@ -285,6 +289,7 @@ export const ListBountySubmissionsResponseBody$inboundSchema: z.ZodType<
   reviewedAt: z.nullable(z.string()),
   rejectionReason: z.nullable(z.string()),
   rejectionNote: z.nullable(z.string()),
+  periodNumber: z.number().int(),
 });
 
 export function listBountySubmissionsResponseBodyFromJSON(

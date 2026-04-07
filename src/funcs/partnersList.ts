@@ -111,6 +111,7 @@ async function $do(
   const query = encodeFormQuery({
     "country": payload?.country,
     "email": payload?.email,
+    "groupId": payload?.groupId,
     "page": payload?.page,
     "pageSize": payload?.pageSize,
     "search": payload?.search,

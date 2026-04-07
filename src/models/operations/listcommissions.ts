@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -134,7 +135,15 @@ export type ListCommissionsRequest = {
   end?: string | undefined;
   timezone?: string | undefined;
   /**
-   * The page number for pagination.
+   * If specified, the query only searches for results before this cursor. Mutually exclusive with `startingAfter`.
+   */
+  endingBefore?: string | undefined;
+  /**
+   * If specified, the query only searches for results after this cursor. Mutually exclusive with `endingBefore`.
+   */
+  startingAfter?: string | undefined;
+  /**
+   * DEPRECATED. Use `startingAfter` instead.
    */
   page?: number | undefined;
   /**
@@ -267,6 +276,10 @@ export type ListCommissionsResponseBody = {
   customer?: ListCommissionsCustomer | null | undefined;
 };
 
+export type ListCommissionsResponse = {
+  result: Array<ListCommissionsResponseBody>;
+};
+
 /** @internal */
 export const Type$outboundSchema: z.ZodNativeEnum<typeof Type> = z.nativeEnum(
   Type,
@@ -308,7 +321,9 @@ export type ListCommissionsRequest$Outbound = {
   start?: string | undefined;
   end?: string | undefined;
   timezone?: string | undefined;
-  page: number;
+  endingBefore?: string | undefined;
+  startingAfter?: string | undefined;
+  page?: number | undefined;
   pageSize: number;
 };
 
@@ -332,7 +347,9 @@ export const ListCommissionsRequest$outboundSchema: z.ZodType<
   start: z.string().optional(),
   end: z.string().optional(),
   timezone: z.string().optional(),
-  page: z.number().default(1),
+  endingBefore: z.string().optional(),
+  startingAfter: z.string().optional(),
+  page: z.number().optional(),
   pageSize: z.number().default(100),
 });
 
@@ -439,5 +456,28 @@ export function listCommissionsResponseBodyFromJSON(
     jsonString,
     (x) => ListCommissionsResponseBody$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'ListCommissionsResponseBody' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListCommissionsResponse$inboundSchema: z.ZodType<
+  ListCommissionsResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Result: z.array(z.lazy(() => ListCommissionsResponseBody$inboundSchema)),
+}).transform((v) => {
+  return remap$(v, {
+    "Result": "result",
+  });
+});
+
+export function listCommissionsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListCommissionsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListCommissionsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListCommissionsResponse' from JSON`,
   );
 }

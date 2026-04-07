@@ -22,7 +22,7 @@ export type ListFoldersRequest = {
 /** @internal */
 export type ListFoldersRequest$Outbound = {
   search?: string | undefined;
-  page: number;
+  page?: number | undefined;
   pageSize: number;
 };
 
@@ -33,7 +33,7 @@ export const ListFoldersRequest$outboundSchema: z.ZodType<
   ListFoldersRequest
 > = z.object({
   search: z.string().optional(),
-  page: z.number().default(1),
+  page: z.number().optional(),
   pageSize: z.number().default(50),
 });
 

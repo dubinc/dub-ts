@@ -297,7 +297,7 @@ export type LeadCreatedEventData = {
   click: LeadCreatedEventClick;
   link: LeadCreatedEventLink;
   partner?: Partner | null | undefined;
-  metadata?: { [k: string]: any } | null | undefined;
+  metadata: { [k: string]: any } | null;
 };
 
 /**
@@ -803,7 +803,7 @@ export const LeadCreatedEventData$inboundSchema: z.ZodType<
   click: z.lazy(() => LeadCreatedEventClick$inboundSchema),
   link: z.lazy(() => LeadCreatedEventLink$inboundSchema),
   partner: z.nullable(z.lazy(() => Partner$inboundSchema)).optional(),
-  metadata: z.nullable(z.record(z.any())).optional(),
+  metadata: z.nullable(z.record(z.any())),
 });
 /** @internal */
 export type LeadCreatedEventData$Outbound = {
@@ -812,7 +812,7 @@ export type LeadCreatedEventData$Outbound = {
   click: LeadCreatedEventClick$Outbound;
   link: LeadCreatedEventLink$Outbound;
   partner?: Partner$Outbound | null | undefined;
-  metadata?: { [k: string]: any } | null | undefined;
+  metadata: { [k: string]: any } | null;
 };
 
 /** @internal */
@@ -826,7 +826,7 @@ export const LeadCreatedEventData$outboundSchema: z.ZodType<
   click: z.lazy(() => LeadCreatedEventClick$outboundSchema),
   link: z.lazy(() => LeadCreatedEventLink$outboundSchema),
   partner: z.nullable(z.lazy(() => Partner$outboundSchema)).optional(),
-  metadata: z.nullable(z.record(z.any())).optional(),
+  metadata: z.nullable(z.record(z.any())),
 });
 
 export function leadCreatedEventDataToJSON(

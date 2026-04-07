@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -80,7 +81,15 @@ export type GetCustomersRequest = {
    */
   sortOrder?: GetCustomersQueryParamSortOrder | undefined;
   /**
-   * The page number for pagination.
+   * If specified, the query only searches for results before this cursor. Mutually exclusive with `startingAfter`.
+   */
+  endingBefore?: string | undefined;
+  /**
+   * If specified, the query only searches for results after this cursor. Mutually exclusive with `endingBefore`.
+   */
+  startingAfter?: string | undefined;
+  /**
+   * DEPRECATED. Use `startingAfter` instead.
    */
   page?: number | undefined;
   /**
@@ -207,6 +216,10 @@ export type GetCustomersResponseBody = {
   discount?: Discount | null | undefined;
 };
 
+export type GetCustomersResponse = {
+  result: Array<GetCustomersResponseBody>;
+};
+
 /** @internal */
 export const GetCustomersQueryParamSortBy$outboundSchema: z.ZodNativeEnum<
   typeof GetCustomersQueryParamSortBy
@@ -229,7 +242,9 @@ export type GetCustomersRequest$Outbound = {
   includeExpandedFields?: boolean | undefined;
   sortBy: string;
   sortOrder: string;
-  page: number;
+  endingBefore?: string | undefined;
+  startingAfter?: string | undefined;
+  page?: number | undefined;
   pageSize: number;
 };
 
@@ -249,7 +264,9 @@ export const GetCustomersRequest$outboundSchema: z.ZodType<
   includeExpandedFields: z.boolean().optional(),
   sortBy: GetCustomersQueryParamSortBy$outboundSchema.default("createdAt"),
   sortOrder: GetCustomersQueryParamSortOrder$outboundSchema.default("desc"),
-  page: z.number().default(1),
+  endingBefore: z.string().optional(),
+  startingAfter: z.string().optional(),
+  page: z.number().optional(),
   pageSize: z.number().default(100),
 });
 
@@ -370,5 +387,28 @@ export function getCustomersResponseBodyFromJSON(
     jsonString,
     (x) => GetCustomersResponseBody$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetCustomersResponseBody' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetCustomersResponse$inboundSchema: z.ZodType<
+  GetCustomersResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Result: z.array(z.lazy(() => GetCustomersResponseBody$inboundSchema)),
+}).transform((v) => {
+  return remap$(v, {
+    "Result": "result",
+  });
+});
+
+export function getCustomersResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetCustomersResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetCustomersResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetCustomersResponse' from JSON`,
   );
 }

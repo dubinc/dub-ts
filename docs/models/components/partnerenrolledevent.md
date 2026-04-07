@@ -18,6 +18,7 @@ let value: PartnerEnrolledEvent = {
     email: "Guido.Hoppe@yahoo.com",
     image: "https://loremflickr.com/3404/2942?lock=434582497137521",
     country: "Bahamas",
+    defaultPayoutMethod: "paypal",
     paypalEmail: "<value>",
     stripeConnectId: "<id>",
     payoutsEnabledAt: "<value>",
@@ -25,9 +26,17 @@ let value: PartnerEnrolledEvent = {
     programId: "<id>",
     partnerId: "<id>",
     tenantId: "<id>",
-    createdAt: "1717766268005",
-    status: "declined",
-    links: [],
+    createdAt: "1716157784701",
+    status: "pending",
+    links: [
+      {
+        id: "<id>",
+        domain: "suburban-settler.biz",
+        key: "<key>",
+        shortLink: "https://essential-necklace.org/",
+        url: "https://darling-pension.biz",
+      },
+    ],
   },
 };
 ```

@@ -37,6 +37,7 @@ actions:
             async function run() {
               const result = await dub.bounties.listSubmissions({
                 bountyId: "<id>",
+                page: 1,
                 pageSize: 50,
               });
 
@@ -103,6 +104,27 @@ actions:
             async function run() {
               const result = await dub.commissions.list();
 
+              for await (const page of result) {
+                console.log(page);
+              }
+            }
+
+            run();
+  - target: $["paths"]["/commissions/bulk"]["patch"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: bulkUpdateCommissions
+          source: |-
+            import { Dub } from "dub";
+
+            const dub = new Dub({
+              token: "DUB_API_KEY",
+            });
+
+            async function run() {
+              const result = await dub.commissions.updateMany();
+
               console.log(result);
             }
 
@@ -143,7 +165,9 @@ actions:
             async function run() {
               const result = await dub.customers.list();
 
-              console.log(result);
+              for await (const page of result) {
+                console.log(page);
+              }
             }
 
             run();

@@ -4,9 +4,11 @@
 
 import { commissionsList } from "../funcs/commissionsList.js";
 import { commissionsUpdate } from "../funcs/commissionsUpdate.js";
+import { commissionsUpdateMany } from "../funcs/commissionsUpdateMany.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
+import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Commissions extends ClientSDK {
   /**
@@ -18,8 +20,10 @@ export class Commissions extends ClientSDK {
   async list(
     request?: operations.ListCommissionsRequest | undefined,
     options?: RequestOptions,
-  ): Promise<Array<operations.ListCommissionsResponseBody>> {
-    return unwrapAsync(commissionsList(
+  ): Promise<
+    PageIterator<operations.ListCommissionsResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(commissionsList(
       this,
       request,
       options,
@@ -37,6 +41,23 @@ export class Commissions extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.UpdateCommissionResponseBody> {
     return unwrapAsync(commissionsUpdate(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Bulk update commissions
+   *
+   * @remarks
+   * Bulk update up to 100 commissions with the same status.
+   */
+  async updateMany(
+    request?: operations.BulkUpdateCommissionsRequestBody | undefined,
+    options?: RequestOptions,
+  ): Promise<Array<operations.BulkUpdateCommissionsResponseBody>> {
+    return unwrapAsync(commissionsUpdateMany(
       this,
       request,
       options,

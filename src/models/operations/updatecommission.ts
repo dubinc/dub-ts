@@ -10,16 +10,17 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
- * Useful for marking a commission as refunded, duplicate, canceled, or fraudulent. Takes precedence over `amount` and `modifyAmount`. When a commission is marked as refunded, duplicate, canceled, or fraudulent, it will be omitted from the payout, and the payout amount will be recalculated accordingly. Paid commissions cannot be updated.
+ * Useful for marking a commission as pending, refunded, duplicate, canceled, or fraudulent. Takes precedence over `saleAmount` and `modifySaleAmount`. When a commission is marked as pending, refunded, duplicate, canceled, or fraudulent, it will be omitted from the payout, and the payout amount will be recalculated accordingly. Paid commissions cannot be updated.
  */
 export const Status = {
+  Pending: "pending",
   Refunded: "refunded",
   Duplicate: "duplicate",
   Canceled: "canceled",
   Fraud: "fraud",
 } as const;
 /**
- * Useful for marking a commission as refunded, duplicate, canceled, or fraudulent. Takes precedence over `amount` and `modifyAmount`. When a commission is marked as refunded, duplicate, canceled, or fraudulent, it will be omitted from the payout, and the payout amount will be recalculated accordingly. Paid commissions cannot be updated.
+ * Useful for marking a commission as pending, refunded, duplicate, canceled, or fraudulent. Takes precedence over `saleAmount` and `modifySaleAmount`. When a commission is marked as pending, refunded, duplicate, canceled, or fraudulent, it will be omitted from the payout, and the payout amount will be recalculated accordingly. Paid commissions cannot be updated.
  */
 export type Status = ClosedEnum<typeof Status>;
 
@@ -27,19 +28,35 @@ export type UpdateCommissionRequestBody = {
   /**
    * The new absolute amount for the sale. Paid commissions cannot be updated.
    */
-  amount?: number | undefined;
+  saleAmount?: number | undefined;
   /**
-   * Modify the current sale amount: use positive values to increase the amount, negative values to decrease it. Takes precedence over `amount`. Paid commissions cannot be updated.
+   * Modify the current sale amount: use positive values to increase the amount, negative values to decrease it. Takes precedence over `saleAmount`. Paid commissions cannot be updated.
    */
-  modifyAmount?: number | undefined;
+  modifySaleAmount?: number | undefined;
+  /**
+   * The new absolute earnings for the custom commission. Paid commissions cannot be updated.
+   */
+  earnings?: number | undefined;
   /**
    * The currency of the sale amount to update. Accepts ISO 4217 currency codes.
    */
   currency?: string | undefined;
   /**
-   * Useful for marking a commission as refunded, duplicate, canceled, or fraudulent. Takes precedence over `amount` and `modifyAmount`. When a commission is marked as refunded, duplicate, canceled, or fraudulent, it will be omitted from the payout, and the payout amount will be recalculated accordingly. Paid commissions cannot be updated.
+   * Useful for marking a commission as pending, refunded, duplicate, canceled, or fraudulent. Takes precedence over `saleAmount` and `modifySaleAmount`. When a commission is marked as pending, refunded, duplicate, canceled, or fraudulent, it will be omitted from the payout, and the payout amount will be recalculated accordingly. Paid commissions cannot be updated.
    */
   status?: Status | undefined;
+  /**
+   * Deprecated. Use `saleAmount` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  amount?: number | undefined;
+  /**
+   * Deprecated. Use `modifySaleAmount` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  modifyAmount?: number | undefined;
 };
 
 export type UpdateCommissionRequest = {
@@ -183,10 +200,13 @@ export const Status$outboundSchema: z.ZodNativeEnum<typeof Status> = z
 
 /** @internal */
 export type UpdateCommissionRequestBody$Outbound = {
-  amount?: number | undefined;
-  modifyAmount?: number | undefined;
+  saleAmount?: number | undefined;
+  modifySaleAmount?: number | undefined;
+  earnings?: number | undefined;
   currency: string;
   status?: string | undefined;
+  amount?: number | undefined;
+  modifyAmount?: number | undefined;
 };
 
 /** @internal */
@@ -195,10 +215,13 @@ export const UpdateCommissionRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateCommissionRequestBody
 > = z.object({
-  amount: z.number().optional(),
-  modifyAmount: z.number().optional(),
+  saleAmount: z.number().optional(),
+  modifySaleAmount: z.number().optional(),
+  earnings: z.number().optional(),
   currency: z.string().default("usd"),
   status: Status$outboundSchema.optional(),
+  amount: z.number().optional(),
+  modifyAmount: z.number().optional(),
 });
 
 export function updateCommissionRequestBodyToJSON(

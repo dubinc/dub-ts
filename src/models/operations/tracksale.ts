@@ -30,7 +30,7 @@ export type TrackSaleRequestBody = {
    */
   customerExternalId: string;
   /**
-   * The amount of the sale in cents (for all two-decimal currencies). If the sale is in a zero-decimal currency, pass the full integer value (e.g. `1437` JPY). Learn more: https://d.to/currency
+   * The amount of the sale in cents (for all two-decimal currencies). If the sale is in a zero-decimal currency, pass the full integer value (e.g. `1580` JPY). Learn more: https://d.to/currency
    */
   amount: number;
   /**

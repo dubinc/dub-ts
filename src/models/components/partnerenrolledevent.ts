@@ -16,6 +16,19 @@ export type PartnerEnrolledEventEvent = ClosedEnum<
 >;
 
 /**
+ * The partner's default payout method. Connect: Bank account payouts via Stripe Connect; Stablecoin: USDC payouts directly to a crypto wallet; PayPal: Payouts via PayPal
+ */
+export const DefaultPayoutMethod = {
+  Connect: "connect",
+  Stablecoin: "stablecoin",
+  Paypal: "paypal",
+} as const;
+/**
+ * The partner's default payout method. Connect: Bank account payouts via Stripe Connect; Stablecoin: USDC payouts directly to a crypto wallet; PayPal: Payouts via PayPal
+ */
+export type DefaultPayoutMethod = ClosedEnum<typeof DefaultPayoutMethod>;
+
+/**
  * The status of the partner's enrollment in the program.
  */
 export const Status = {
@@ -264,6 +277,38 @@ export type ReferralFormData = {
   >;
 };
 
+/**
+ * Preset reason when the application was rejected.
+ */
+export const RejectionReason = {
+  NeedsMoreDetail: "needsMoreDetail",
+  DoesNotMeetRequirements: "doesNotMeetRequirements",
+  NotTheRightFit: "notTheRightFit",
+  Other: "other",
+} as const;
+/**
+ * Preset reason when the application was rejected.
+ */
+export type RejectionReason = ClosedEnum<typeof RejectionReason>;
+
+/**
+ * Linked program application, including review outcome when applicable.
+ */
+export type Application = {
+  /**
+   * Preset reason when the application was rejected.
+   */
+  rejectionReason: RejectionReason | null;
+  /**
+   * Free-form note when the application was rejected.
+   */
+  rejectionNote: string | null;
+  /**
+   * When the application was approved or rejected.
+   */
+  reviewedAt: string | null;
+};
+
 export type PartnerEnrolledEventData = {
   /**
    * The partner's unique ID on Dub.
@@ -293,6 +338,10 @@ export type PartnerEnrolledEventData = {
    * The partner's country (required for tax purposes).
    */
   country: string | null;
+  /**
+   * The partner's default payout method. Connect: Bank account payouts via Stripe Connect; Stablecoin: USDC payouts directly to a crypto wallet; PayPal: Payouts via PayPal
+   */
+  defaultPayoutMethod: DefaultPayoutMethod | null;
   /**
    * The partner's PayPal email (for receiving payouts via PayPal).
    */
@@ -355,6 +404,10 @@ export type PartnerEnrolledEventData = {
    */
   bannedReason?: BannedReason | null | undefined;
   referralFormData?: ReferralFormData | null | undefined;
+  /**
+   * Linked program application, including review outcome when applicable.
+   */
+  application?: Application | null | undefined;
   /**
    * The total number of clicks on the partner's links
    */
@@ -447,6 +500,15 @@ export const PartnerEnrolledEventEvent$inboundSchema: z.ZodNativeEnum<
 export const PartnerEnrolledEventEvent$outboundSchema: z.ZodNativeEnum<
   typeof PartnerEnrolledEventEvent
 > = PartnerEnrolledEventEvent$inboundSchema;
+
+/** @internal */
+export const DefaultPayoutMethod$inboundSchema: z.ZodNativeEnum<
+  typeof DefaultPayoutMethod
+> = z.nativeEnum(DefaultPayoutMethod);
+/** @internal */
+export const DefaultPayoutMethod$outboundSchema: z.ZodNativeEnum<
+  typeof DefaultPayoutMethod
+> = DefaultPayoutMethod$inboundSchema;
 
 /** @internal */
 export const Status$inboundSchema: z.ZodNativeEnum<typeof Status> = z
@@ -1303,6 +1365,56 @@ export function referralFormDataFromJSON(
 }
 
 /** @internal */
+export const RejectionReason$inboundSchema: z.ZodNativeEnum<
+  typeof RejectionReason
+> = z.nativeEnum(RejectionReason);
+/** @internal */
+export const RejectionReason$outboundSchema: z.ZodNativeEnum<
+  typeof RejectionReason
+> = RejectionReason$inboundSchema;
+
+/** @internal */
+export const Application$inboundSchema: z.ZodType<
+  Application,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  rejectionReason: z.nullable(RejectionReason$inboundSchema),
+  rejectionNote: z.nullable(z.string()),
+  reviewedAt: z.nullable(z.string()),
+});
+/** @internal */
+export type Application$Outbound = {
+  rejectionReason: string | null;
+  rejectionNote: string | null;
+  reviewedAt: string | null;
+};
+
+/** @internal */
+export const Application$outboundSchema: z.ZodType<
+  Application$Outbound,
+  z.ZodTypeDef,
+  Application
+> = z.object({
+  rejectionReason: z.nullable(RejectionReason$outboundSchema),
+  rejectionNote: z.nullable(z.string()),
+  reviewedAt: z.nullable(z.string()),
+});
+
+export function applicationToJSON(application: Application): string {
+  return JSON.stringify(Application$outboundSchema.parse(application));
+}
+export function applicationFromJSON(
+  jsonString: string,
+): SafeParseResult<Application, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Application$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Application' from JSON`,
+  );
+}
+
+/** @internal */
 export const PartnerEnrolledEventData$inboundSchema: z.ZodType<
   PartnerEnrolledEventData,
   z.ZodTypeDef,
@@ -1315,6 +1427,7 @@ export const PartnerEnrolledEventData$inboundSchema: z.ZodType<
   image: z.nullable(z.string()),
   description: z.nullable(z.string()).optional(),
   country: z.nullable(z.string()),
+  defaultPayoutMethod: z.nullable(DefaultPayoutMethod$inboundSchema),
   paypalEmail: z.nullable(z.string()),
   stripeConnectId: z.nullable(z.string()),
   payoutsEnabledAt: z.nullable(z.string()),
@@ -1336,6 +1449,7 @@ export const PartnerEnrolledEventData$inboundSchema: z.ZodType<
   bannedReason: z.nullable(BannedReason$inboundSchema).optional(),
   referralFormData: z.nullable(z.lazy(() => ReferralFormData$inboundSchema))
     .optional(),
+  application: z.nullable(z.lazy(() => Application$inboundSchema)).optional(),
   totalClicks: z.number().default(0),
   totalLeads: z.number().default(0),
   totalConversions: z.number().default(0),
@@ -1364,6 +1478,7 @@ export type PartnerEnrolledEventData$Outbound = {
   image: string | null;
   description?: string | null | undefined;
   country: string | null;
+  defaultPayoutMethod: string | null;
   paypalEmail: string | null;
   stripeConnectId: string | null;
   payoutsEnabledAt: string | null;
@@ -1384,6 +1499,7 @@ export type PartnerEnrolledEventData$Outbound = {
   bannedAt?: string | null | undefined;
   bannedReason?: string | null | undefined;
   referralFormData?: ReferralFormData$Outbound | null | undefined;
+  application?: Application$Outbound | null | undefined;
   totalClicks: number;
   totalLeads: number;
   totalConversions: number;
@@ -1417,6 +1533,7 @@ export const PartnerEnrolledEventData$outboundSchema: z.ZodType<
   image: z.nullable(z.string()),
   description: z.nullable(z.string()).optional(),
   country: z.nullable(z.string()),
+  defaultPayoutMethod: z.nullable(DefaultPayoutMethod$outboundSchema),
   paypalEmail: z.nullable(z.string()),
   stripeConnectId: z.nullable(z.string()),
   payoutsEnabledAt: z.nullable(z.string()),
@@ -1438,6 +1555,7 @@ export const PartnerEnrolledEventData$outboundSchema: z.ZodType<
   bannedReason: z.nullable(BannedReason$outboundSchema).optional(),
   referralFormData: z.nullable(z.lazy(() => ReferralFormData$outboundSchema))
     .optional(),
+  application: z.nullable(z.lazy(() => Application$outboundSchema)).optional(),
   totalClicks: z.number().default(0),
   totalLeads: z.number().default(0),
   totalConversions: z.number().default(0),

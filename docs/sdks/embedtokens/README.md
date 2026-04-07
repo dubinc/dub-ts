@@ -8,7 +8,7 @@
 
 ## referrals
 
-Create a referrals embed token for the given partner/tenant.
+Create a referrals embed token for the given partner/tenant. The endpoint first attempts to locate an existing enrollment using the provided tenantId. If no enrollment is found, it resolves the partner by email and creates a new enrollment as needed. This results in an upsert-style flow that guarantees a valid enrollment and returns a usable embed token.
 
 ### Example Usage
 

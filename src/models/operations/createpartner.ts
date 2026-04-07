@@ -28,10 +28,6 @@ export type CreatePartnerTestVariants = {
  */
 export type LinkProps = {
   /**
-   * The length of the short link slug. Defaults to 7 if not provided. When used with `prefix`, the total length of the key will be `prefix.length + keyLength`.
-   */
-  keyLength?: number | undefined;
-  /**
    * The ID of the link in your database. If set, it can be used to identify the link in future API requests (must be prefixed with 'ext_' when passed as a query parameter). This key is unique across your workspace.
    */
   externalId?: string | null | undefined;
@@ -40,7 +36,7 @@ export type LinkProps = {
    */
   tenantId?: string | null | undefined;
   /**
-   * The prefix of the short link slug for randomly-generated keys (e.g. if prefix is `/c/`, generated keys will be in the `/c/:key` format). Will be ignored if `key` is provided.
+   * Path prefix for each default referral link slug (e.g. `/c/` → `https://{domain}/c/{identity}`). If the group has multiple default links, a short random suffix is appended to the identity segment for uniqueness (e.g. `c/jane-a7f2`).
    */
   prefix?: string | undefined;
   /**
@@ -159,6 +155,21 @@ export type CreatePartnerRequestBody = {
    */
   linkProps?: LinkProps | undefined;
 };
+
+/**
+ * The partner's default payout method. Connect: Bank account payouts via Stripe Connect; Stablecoin: USDC payouts directly to a crypto wallet; PayPal: Payouts via PayPal
+ */
+export const CreatePartnerDefaultPayoutMethod = {
+  Connect: "connect",
+  Stablecoin: "stablecoin",
+  Paypal: "paypal",
+} as const;
+/**
+ * The partner's default payout method. Connect: Bank account payouts via Stripe Connect; Stablecoin: USDC payouts directly to a crypto wallet; PayPal: Payouts via PayPal
+ */
+export type CreatePartnerDefaultPayoutMethod = ClosedEnum<
+  typeof CreatePartnerDefaultPayoutMethod
+>;
 
 /**
  * The status of the partner's enrollment in the program.
@@ -358,6 +369,40 @@ export type CreatePartnerReferralFormData = {
 };
 
 /**
+ * Preset reason when the application was rejected.
+ */
+export const CreatePartnerRejectionReason = {
+  NeedsMoreDetail: "needsMoreDetail",
+  DoesNotMeetRequirements: "doesNotMeetRequirements",
+  NotTheRightFit: "notTheRightFit",
+  Other: "other",
+} as const;
+/**
+ * Preset reason when the application was rejected.
+ */
+export type CreatePartnerRejectionReason = ClosedEnum<
+  typeof CreatePartnerRejectionReason
+>;
+
+/**
+ * Linked program application, including review outcome when applicable.
+ */
+export type CreatePartnerApplication = {
+  /**
+   * Preset reason when the application was rejected.
+   */
+  rejectionReason: CreatePartnerRejectionReason | null;
+  /**
+   * Free-form note when the application was rejected.
+   */
+  rejectionNote: string | null;
+  /**
+   * When the application was approved or rejected.
+   */
+  reviewedAt: string | null;
+};
+
+/**
  * The created or updated partner
  */
 export type CreatePartnerResponseBody = {
@@ -389,6 +434,10 @@ export type CreatePartnerResponseBody = {
    * The partner's country (required for tax purposes).
    */
   country: string | null;
+  /**
+   * The partner's default payout method. Connect: Bank account payouts via Stripe Connect; Stablecoin: USDC payouts directly to a crypto wallet; PayPal: Payouts via PayPal
+   */
+  defaultPayoutMethod: CreatePartnerDefaultPayoutMethod | null;
   /**
    * The partner's PayPal email (for receiving payouts via PayPal).
    */
@@ -451,6 +500,10 @@ export type CreatePartnerResponseBody = {
    */
   bannedReason?: CreatePartnerBannedReason | null | undefined;
   referralFormData?: CreatePartnerReferralFormData | null | undefined;
+  /**
+   * Linked program application, including review outcome when applicable.
+   */
+  application?: CreatePartnerApplication | null | undefined;
   /**
    * The total number of clicks on the partner's links
    */
@@ -587,7 +640,6 @@ export function createPartnerTestVariantsToJSON(
 
 /** @internal */
 export type LinkProps$Outbound = {
-  keyLength?: number | undefined;
   externalId?: string | null | undefined;
   tenantId?: string | null | undefined;
   prefix?: string | undefined;
@@ -618,7 +670,6 @@ export const LinkProps$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   LinkProps
 > = z.object({
-  keyLength: z.number().optional(),
   externalId: z.nullable(z.string()).optional(),
   tenantId: z.nullable(z.string()).optional(),
   prefix: z.string().optional(),
@@ -686,6 +737,11 @@ export function createPartnerRequestBodyToJSON(
     CreatePartnerRequestBody$outboundSchema.parse(createPartnerRequestBody),
   );
 }
+
+/** @internal */
+export const CreatePartnerDefaultPayoutMethod$inboundSchema: z.ZodNativeEnum<
+  typeof CreatePartnerDefaultPayoutMethod
+> = z.nativeEnum(CreatePartnerDefaultPayoutMethod);
 
 /** @internal */
 export const CreatePartnerStatus$inboundSchema: z.ZodNativeEnum<
@@ -1052,6 +1108,32 @@ export function createPartnerReferralFormDataFromJSON(
 }
 
 /** @internal */
+export const CreatePartnerRejectionReason$inboundSchema: z.ZodNativeEnum<
+  typeof CreatePartnerRejectionReason
+> = z.nativeEnum(CreatePartnerRejectionReason);
+
+/** @internal */
+export const CreatePartnerApplication$inboundSchema: z.ZodType<
+  CreatePartnerApplication,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  rejectionReason: z.nullable(CreatePartnerRejectionReason$inboundSchema),
+  rejectionNote: z.nullable(z.string()),
+  reviewedAt: z.nullable(z.string()),
+});
+
+export function createPartnerApplicationFromJSON(
+  jsonString: string,
+): SafeParseResult<CreatePartnerApplication, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreatePartnerApplication$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreatePartnerApplication' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreatePartnerResponseBody$inboundSchema: z.ZodType<
   CreatePartnerResponseBody,
   z.ZodTypeDef,
@@ -1064,6 +1146,9 @@ export const CreatePartnerResponseBody$inboundSchema: z.ZodType<
   image: z.nullable(z.string()),
   description: z.nullable(z.string()).optional(),
   country: z.nullable(z.string()),
+  defaultPayoutMethod: z.nullable(
+    CreatePartnerDefaultPayoutMethod$inboundSchema,
+  ),
   paypalEmail: z.nullable(z.string()),
   stripeConnectId: z.nullable(z.string()),
   payoutsEnabledAt: z.nullable(z.string()),
@@ -1086,6 +1171,8 @@ export const CreatePartnerResponseBody$inboundSchema: z.ZodType<
   referralFormData: z.nullable(
     z.lazy(() => CreatePartnerReferralFormData$inboundSchema),
   ).optional(),
+  application: z.nullable(z.lazy(() => CreatePartnerApplication$inboundSchema))
+    .optional(),
   totalClicks: z.number().default(0),
   totalLeads: z.number().default(0),
   totalConversions: z.number().default(0),

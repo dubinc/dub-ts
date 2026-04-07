@@ -305,7 +305,7 @@ export type SaleCreatedEventData = {
   link: SaleCreatedEventLink;
   sale: Sale;
   partner?: SaleCreatedEventPartner | null | undefined;
-  metadata?: { [k: string]: any } | null | undefined;
+  metadata: { [k: string]: any } | null;
 };
 
 /**
@@ -862,7 +862,7 @@ export const SaleCreatedEventData$inboundSchema: z.ZodType<
   sale: z.lazy(() => Sale$inboundSchema),
   partner: z.nullable(z.lazy(() => SaleCreatedEventPartner$inboundSchema))
     .optional(),
-  metadata: z.nullable(z.record(z.any())).optional(),
+  metadata: z.nullable(z.record(z.any())),
 });
 /** @internal */
 export type SaleCreatedEventData$Outbound = {
@@ -872,7 +872,7 @@ export type SaleCreatedEventData$Outbound = {
   link: SaleCreatedEventLink$Outbound;
   sale: Sale$Outbound;
   partner?: SaleCreatedEventPartner$Outbound | null | undefined;
-  metadata?: { [k: string]: any } | null | undefined;
+  metadata: { [k: string]: any } | null;
 };
 
 /** @internal */
@@ -888,7 +888,7 @@ export const SaleCreatedEventData$outboundSchema: z.ZodType<
   sale: z.lazy(() => Sale$outboundSchema),
   partner: z.nullable(z.lazy(() => SaleCreatedEventPartner$outboundSchema))
     .optional(),
-  metadata: z.nullable(z.record(z.any())).optional(),
+  metadata: z.nullable(z.record(z.any())),
 });
 
 export function saleCreatedEventDataToJSON(
