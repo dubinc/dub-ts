@@ -126,6 +126,7 @@ async function $do(
     }, { explode: false }),
     encodeFormQuery({
       "domain": payload?.domain,
+      "endingBefore": payload?.endingBefore,
       "folderId": payload?.folderId,
       "page": payload?.page,
       "pageSize": payload?.pageSize,
@@ -134,6 +135,7 @@ async function $do(
       "sort": payload?.sort,
       "sortBy": payload?.sortBy,
       "sortOrder": payload?.sortOrder,
+      "startingAfter": payload?.startingAfter,
       "tagId": payload?.tagId,
       "tenantId": payload?.tenantId,
       "userId": payload?.userId,

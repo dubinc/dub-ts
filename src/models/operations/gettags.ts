@@ -92,7 +92,7 @@ export type GetTagsRequest$Outbound = {
   sortOrder: string;
   search?: string | undefined;
   ids?: string | Array<string> | undefined;
-  page: number;
+  page?: number | undefined;
   pageSize: number;
 };
 
@@ -106,7 +106,7 @@ export const GetTagsRequest$outboundSchema: z.ZodType<
   sortOrder: GetTagsQueryParamSortOrder$outboundSchema.default("asc"),
   search: z.string().optional(),
   ids: z.union([z.string(), z.array(z.string())]).optional(),
-  page: z.number().default(1),
+  page: z.number().optional(),
   pageSize: z.number().default(100),
 });
 

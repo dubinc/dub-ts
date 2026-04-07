@@ -7,10 +7,10 @@ import { Links } from "dub/models/components";
 
 let value: Links = {
   id: "<id>",
-  domain: "variable-disadvantage.info",
+  domain: "suburban-settler.biz",
   key: "<key>",
-  shortLink: "https://honored-encouragement.com",
-  url: "https://elementary-lifestyle.org/",
+  shortLink: "https://essential-necklace.org/",
+  url: "https://darling-pension.biz",
 };
 ```
 

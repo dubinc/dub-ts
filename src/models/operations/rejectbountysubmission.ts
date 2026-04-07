@@ -142,6 +142,10 @@ export type RejectBountySubmissionResponseBody = {
    * The note for rejecting the submission
    */
   rejectionNote: string | null;
+  /**
+   * The period number for this submission (1-indexed)
+   */
+  periodNumber: number;
 };
 
 /** @internal */
@@ -257,6 +261,7 @@ export const RejectBountySubmissionResponseBody$inboundSchema: z.ZodType<
   reviewedAt: z.nullable(z.string()),
   rejectionReason: z.nullable(z.string()),
   rejectionNote: z.nullable(z.string()),
+  periodNumber: z.number().int(),
 });
 
 export function rejectBountySubmissionResponseBodyFromJSON(

@@ -118,7 +118,15 @@ export type GetLinksRequest = {
    */
   sort?: Sort | undefined;
   /**
-   * The page number for pagination.
+   * If specified, the query only searches for results before this cursor. Mutually exclusive with `startingAfter`.
+   */
+  endingBefore?: string | undefined;
+  /**
+   * If specified, the query only searches for results after this cursor. Mutually exclusive with `endingBefore`.
+   */
+  startingAfter?: string | undefined;
+  /**
+   * DEPRECATED. Use `startingAfter` instead.
    */
   page?: number | undefined;
   /**
@@ -195,7 +203,9 @@ export type GetLinksRequest$Outbound = {
   sortBy: string;
   sortOrder: string;
   sort: string;
-  page: number;
+  endingBefore?: string | undefined;
+  startingAfter?: string | undefined;
+  page?: number | undefined;
   pageSize: number;
 };
 
@@ -218,7 +228,9 @@ export const GetLinksRequest$outboundSchema: z.ZodType<
   sortBy: SortBy$outboundSchema.default("createdAt"),
   sortOrder: SortOrder$outboundSchema.default("desc"),
   sort: Sort$outboundSchema.default("createdAt"),
-  page: z.number().default(1),
+  endingBefore: z.string().optional(),
+  startingAfter: z.string().optional(),
+  page: z.number().optional(),
   pageSize: z.number().default(100),
 });
 

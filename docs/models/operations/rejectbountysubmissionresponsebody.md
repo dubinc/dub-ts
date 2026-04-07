@@ -22,6 +22,7 @@ let value: RejectBountySubmissionResponseBody = {
   reviewedAt: null,
   rejectionReason: "<value>",
   rejectionNote: "<value>",
+  periodNumber: 516139,
 };
 ```
 
@@ -44,3 +45,4 @@ let value: RejectBountySubmissionResponseBody = {
 | `reviewedAt`                                                                                       | *string*                                                                                           | :heavy_check_mark:                                                                                 | The date and time the submission was reviewed                                                      |
 | `rejectionReason`                                                                                  | *string*                                                                                           | :heavy_check_mark:                                                                                 | The reason for rejecting the submission                                                            |
 | `rejectionNote`                                                                                    | *string*                                                                                           | :heavy_check_mark:                                                                                 | The note for rejecting the submission                                                              |
+| `periodNumber`                                                                                     | *number*                                                                                           | :heavy_check_mark:                                                                                 | The period number for this submission (1-indexed)                                                  |

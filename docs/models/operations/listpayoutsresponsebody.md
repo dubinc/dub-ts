@@ -23,8 +23,9 @@ let value: ListPayoutsResponseBody = {
     name: "<value>",
     email: "Will_Cassin@hotmail.com",
     image: "https://picsum.photos/seed/YqHOiVtyX/1234/2214",
+    defaultPayoutMethod: "connect",
     payoutsEnabledAt: "<value>",
-    country: null,
+    country: "Libyan Arab Jamahiriya",
     tenantId: "<id>",
   },
 };
@@ -43,6 +44,7 @@ let value: ListPayoutsResponseBody = {
 | `periodStart`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
 | `periodEnd`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
 | `createdAt`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `updatedAt`                                                                    | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
 | `initiatedAt`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
 | `paidAt`                                                                       | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
 | `failureReason`                                                                | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |

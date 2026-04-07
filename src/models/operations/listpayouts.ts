@@ -115,6 +115,21 @@ export const Method = {
 } as const;
 export type Method = ClosedEnum<typeof Method>;
 
+/**
+ * The partner's default payout method. Connect: Bank account payouts via Stripe Connect; Stablecoin: USDC payouts directly to a crypto wallet; PayPal: Payouts via PayPal
+ */
+export const ListPayoutsDefaultPayoutMethod = {
+  Connect: "connect",
+  Stablecoin: "stablecoin",
+  Paypal: "paypal",
+} as const;
+/**
+ * The partner's default payout method. Connect: Bank account payouts via Stripe Connect; Stablecoin: USDC payouts directly to a crypto wallet; PayPal: Payouts via PayPal
+ */
+export type ListPayoutsDefaultPayoutMethod = ClosedEnum<
+  typeof ListPayoutsDefaultPayoutMethod
+>;
+
 export type ListPayoutsPartner = {
   /**
    * The partner's unique ID on Dub.
@@ -132,6 +147,10 @@ export type ListPayoutsPartner = {
    * The partner's avatar image.
    */
   image: string | null;
+  /**
+   * The partner's default payout method. Connect: Bank account payouts via Stripe Connect; Stablecoin: USDC payouts directly to a crypto wallet; PayPal: Payouts via PayPal
+   */
+  defaultPayoutMethod: ListPayoutsDefaultPayoutMethod | null;
   /**
    * The date when the partner enabled payouts.
    */
@@ -167,6 +186,7 @@ export type ListPayoutsResponseBody = {
   periodStart: string | null;
   periodEnd: string | null;
   createdAt: string;
+  updatedAt?: string | undefined;
   initiatedAt: string | null;
   paidAt: string | null;
   failureReason?: string | null | undefined;
@@ -200,7 +220,7 @@ export type ListPayoutsRequest$Outbound = {
   invoiceId?: string | undefined;
   sortBy: string;
   sortOrder: string;
-  page: number;
+  page?: number | undefined;
   pageSize: number;
 };
 
@@ -216,7 +236,7 @@ export const ListPayoutsRequest$outboundSchema: z.ZodType<
   invoiceId: z.string().optional(),
   sortBy: ListPayoutsQueryParamSortBy$outboundSchema.default("amount"),
   sortOrder: ListPayoutsQueryParamSortOrder$outboundSchema.default("desc"),
-  page: z.number().default(1),
+  page: z.number().optional(),
   pageSize: z.number().default(100),
 });
 
@@ -243,6 +263,11 @@ export const Method$inboundSchema: z.ZodNativeEnum<typeof Method> = z
   .nativeEnum(Method);
 
 /** @internal */
+export const ListPayoutsDefaultPayoutMethod$inboundSchema: z.ZodNativeEnum<
+  typeof ListPayoutsDefaultPayoutMethod
+> = z.nativeEnum(ListPayoutsDefaultPayoutMethod);
+
+/** @internal */
 export const ListPayoutsPartner$inboundSchema: z.ZodType<
   ListPayoutsPartner,
   z.ZodTypeDef,
@@ -252,6 +277,7 @@ export const ListPayoutsPartner$inboundSchema: z.ZodType<
   name: z.string(),
   email: z.nullable(z.string()),
   image: z.nullable(z.string()),
+  defaultPayoutMethod: z.nullable(ListPayoutsDefaultPayoutMethod$inboundSchema),
   payoutsEnabledAt: z.nullable(z.string()),
   country: z.nullable(z.string()),
   groupId: z.nullable(z.string()).optional(),
@@ -302,6 +328,7 @@ export const ListPayoutsResponseBody$inboundSchema: z.ZodType<
   periodStart: z.nullable(z.string()),
   periodEnd: z.nullable(z.string()),
   createdAt: z.string(),
+  updatedAt: z.string().optional(),
   initiatedAt: z.nullable(z.string()),
   paidAt: z.nullable(z.string()),
   failureReason: z.nullable(z.string()).optional(),

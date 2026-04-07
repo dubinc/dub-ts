@@ -25,6 +25,7 @@ const dub = new Dub({
 async function run() {
   const result = await dub.bounties.listSubmissions({
     bountyId: "<id>",
+    page: 1,
     pageSize: 50,
   });
 
@@ -51,6 +52,7 @@ const dub = new DubCore({
 async function run() {
   const res = await bountiesListSubmissions(dub, {
     bountyId: "<id>",
+    page: 1,
     pageSize: 50,
   });
   if (res.ok) {

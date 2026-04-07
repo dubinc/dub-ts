@@ -115,7 +115,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc(
     "/bounties/{bountyId}/submissions/{submissionId}/approve",
   )(pathParams);

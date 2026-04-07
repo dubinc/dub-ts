@@ -24,10 +24,6 @@ export type UpsertPartnerLinkTestVariants = {
  */
 export type UpsertPartnerLinkLinkProps = {
   /**
-   * The length of the short link slug. Defaults to 7 if not provided. When used with `prefix`, the total length of the key will be `prefix.length + keyLength`.
-   */
-  keyLength?: number | undefined;
-  /**
    * The ID of the link in your database. If set, it can be used to identify the link in future API requests (must be prefixed with 'ext_' when passed as a query parameter). This key is unique across your workspace.
    */
   externalId?: string | null | undefined;
@@ -36,7 +32,7 @@ export type UpsertPartnerLinkLinkProps = {
    */
   tenantId?: string | null | undefined;
   /**
-   * The prefix of the short link slug for randomly-generated keys (e.g. if prefix is `/c/`, generated keys will be in the `/c/:key` format). Will be ignored if `key` is provided.
+   * Path prefix for each default referral link slug (e.g. `/c/` → `https://{domain}/c/{identity}`). If the group has multiple default links, a short random suffix is appended to the identity segment for uniqueness (e.g. `c/jane-a7f2`).
    */
   prefix?: string | undefined;
   /**
@@ -208,7 +204,6 @@ export function upsertPartnerLinkTestVariantsToJSON(
 
 /** @internal */
 export type UpsertPartnerLinkLinkProps$Outbound = {
-  keyLength?: number | undefined;
   externalId?: string | null | undefined;
   tenantId?: string | null | undefined;
   prefix?: string | undefined;
@@ -242,7 +237,6 @@ export const UpsertPartnerLinkLinkProps$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpsertPartnerLinkLinkProps
 > = z.object({
-  keyLength: z.number().optional(),
   externalId: z.nullable(z.string()).optional(),
   tenantId: z.nullable(z.string()).optional(),
   prefix: z.string().optional(),

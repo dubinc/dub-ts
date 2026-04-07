@@ -92,6 +92,10 @@ let value: SaleCreatedEvent = {
       paymentProcessor: "<value>",
       invoiceId: "<id>",
     },
+    metadata: {
+      "key": "<value>",
+      "key1": "<value>",
+    },
   },
 };
 ```

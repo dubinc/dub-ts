@@ -112,7 +112,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/bounties/{bountyId}/submissions")(pathParams);
 
   const query = encodeFormQuery({
