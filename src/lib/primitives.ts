@@ -164,5 +164,5 @@ export function getLastItemId(responseData: unknown): string | null {
     return null;
   }
 
-  return lastItemId.trim();
+  return lastItemId;
 }
