@@ -68,7 +68,6 @@ typescript:
       webhooks: models/webhooks
   inferUnionDiscriminators: true
   inputModelSuffix: input
-  jsonpath: legacy
   laxMode: strict
   legacyFileNaming: true
   maxMethodParams: 0

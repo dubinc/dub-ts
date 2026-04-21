@@ -276,9 +276,6 @@ async function $do(
     if (nextCursor == null) {
       return { next: () => null };
     }
-    if (nextCursor.trim() === "") {
-      return { next: () => null };
-    }
 
     const nextVal = () =>
       customersList(
