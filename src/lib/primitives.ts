@@ -148,3 +148,21 @@ export function allRequired<V extends Record<string, unknown>>(
 
   return v as ReturnType<typeof allRequired<V>>;
 }
+
+export function getLastItemId(responseData: unknown): string | null {
+  if (!Array.isArray(responseData) || responseData.length === 0) {
+    return null;
+  }
+
+  const lastItem = responseData[responseData.length - 1];
+  if (lastItem == null || typeof lastItem !== "object") {
+    return null;
+  }
+
+  const lastItemId = (lastItem as { id?: unknown }).id;
+  if (typeof lastItemId !== "string" || lastItemId.trim().length === 0) {
+    return null;
+  }
+
+  return lastItemId.trim();
+}

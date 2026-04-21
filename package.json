@@ -31,7 +31,6 @@
   "peerDependencies": {},
   "devDependencies": {
     "@eslint/js": "^9.26.0",
-    "@types/jsonpath": "^0.2.4",
     "@types/node": "^20.12.7",
     "eslint": "^9.26.0",
     "globals": "^15.14.0",
@@ -41,7 +40,6 @@
     "vitest": "1.4.0"
   },
   "dependencies": {
-    "jsonpath": "^1.2.1",
     "zod": "^3.25.0 || ^4.0.0"
   },
   "exports": {
