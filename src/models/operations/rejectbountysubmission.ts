@@ -12,7 +12,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The reason for rejecting the submission.
  */
-export const RejectionReason = {
+export const RejectBountySubmissionRejectionReason = {
   InvalidProof: "invalidProof",
   DuplicateSubmission: "duplicateSubmission",
   OutOfTimeWindow: "outOfTimeWindow",
@@ -22,13 +22,15 @@ export const RejectionReason = {
 /**
  * The reason for rejecting the submission.
  */
-export type RejectionReason = ClosedEnum<typeof RejectionReason>;
+export type RejectBountySubmissionRejectionReason = ClosedEnum<
+  typeof RejectBountySubmissionRejectionReason
+>;
 
 export type RejectBountySubmissionRequestBody = {
   /**
    * The reason for rejecting the submission.
    */
-  rejectionReason?: RejectionReason | undefined;
+  rejectionReason?: RejectBountySubmissionRejectionReason | undefined;
   /**
    * The note for rejecting the submission.
    */
@@ -149,9 +151,10 @@ export type RejectBountySubmissionResponseBody = {
 };
 
 /** @internal */
-export const RejectionReason$outboundSchema: z.ZodNativeEnum<
-  typeof RejectionReason
-> = z.nativeEnum(RejectionReason);
+export const RejectBountySubmissionRejectionReason$outboundSchema:
+  z.ZodNativeEnum<typeof RejectBountySubmissionRejectionReason> = z.nativeEnum(
+    RejectBountySubmissionRejectionReason,
+  );
 
 /** @internal */
 export type RejectBountySubmissionRequestBody$Outbound = {
@@ -165,7 +168,8 @@ export const RejectBountySubmissionRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   RejectBountySubmissionRequestBody
 > = z.object({
-  rejectionReason: RejectionReason$outboundSchema.optional(),
+  rejectionReason: RejectBountySubmissionRejectionReason$outboundSchema
+    .optional(),
   rejectionNote: z.string().optional(),
 });
 

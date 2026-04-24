@@ -13,10 +13,10 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class Folders extends ClientSDK {
   /**
-   * Retrieve a list of folders
+   * List all folders
    *
    * @remarks
-   * Retrieve a list of folders for the authenticated workspace.
+   * Retrieve a paginated list of folders for the authenticated workspace.
    */
   async list(
     request?: operations.ListFoldersRequest | undefined,

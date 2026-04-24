@@ -12,7 +12,7 @@ export class Payouts extends ClientSDK {
    * List all payouts
    *
    * @remarks
-   * Retrieve a list of payouts for your partner program.
+   * Retrieve a paginated list of payouts for your partner program.
    */
   async list(
     request?: operations.ListPayoutsRequest | undefined,

@@ -1,5 +1,7 @@
 # Reason
 
+The reason for banning the partner.
+
 ## Example Usage
 
 ```typescript

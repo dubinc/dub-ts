@@ -13,10 +13,10 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class Tags extends ClientSDK {
   /**
-   * Retrieve a list of tags
+   * List all tags
    *
    * @remarks
-   * Retrieve a list of tags for the authenticated workspace.
+   * Retrieve a paginated list of tags for the authenticated workspace.
    */
   async list(
     request?: operations.GetTagsRequest | undefined,

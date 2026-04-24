@@ -4,14 +4,14 @@
 
 ### Available Operations
 
-* [list](#list) - Retrieve a list of tags
+* [list](#list) - List all tags
 * [create](#create) - Create a tag
 * [delete](#delete) - Delete a tag
 * [update](#update) - Update a tag
 
 ## list
 
-Retrieve a list of tags for the authenticated workspace.
+Retrieve a paginated list of tags for the authenticated workspace.
 
 ### Example Usage
 

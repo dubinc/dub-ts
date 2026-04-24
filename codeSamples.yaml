@@ -699,6 +699,67 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/partners/applications"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: listPartnerApplications
+          source: |-
+            import { Dub } from "dub";
+
+            const dub = new Dub({
+              token: "DUB_API_KEY",
+            });
+
+            async function run() {
+              const result = await dub.partnerApplications.list();
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/partners/applications/approve"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: approvePartner
+          source: |-
+            import { Dub } from "dub";
+
+            const dub = new Dub({
+              token: "DUB_API_KEY",
+            });
+
+            async function run() {
+              const result = await dub.partnerApplications.approve({
+                partnerId: "<id>",
+              });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/partners/applications/reject"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: rejectPartner
+          source: |-
+            import { Dub } from "dub";
+
+            const dub = new Dub({
+              token: "DUB_API_KEY",
+            });
+
+            async function run() {
+              const result = await dub.partnerApplications.reject({
+                partnerId: "<id>",
+              });
+
+              console.log(result);
+            }
+
+            run();
   - target: $["paths"]["/partners/ban"]["post"]
     update:
       x-codeSamples:

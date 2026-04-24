@@ -359,6 +359,10 @@ export type PartnerEnrolledEventData = {
    */
   trustedAt: string | null;
   /**
+   * The date when the partner's identity was verified.
+   */
+  identityVerifiedAt: string | null;
+  /**
    * The program's unique ID on Dub.
    */
   programId: string;
@@ -1432,6 +1436,7 @@ export const PartnerEnrolledEventData$inboundSchema: z.ZodType<
   stripeConnectId: z.nullable(z.string()),
   payoutsEnabledAt: z.nullable(z.string()),
   trustedAt: z.nullable(z.string()),
+  identityVerifiedAt: z.nullable(z.string()),
   programId: z.string(),
   groupId: z.nullable(z.string()).optional(),
   partnerId: z.string(),
@@ -1483,6 +1488,7 @@ export type PartnerEnrolledEventData$Outbound = {
   stripeConnectId: string | null;
   payoutsEnabledAt: string | null;
   trustedAt: string | null;
+  identityVerifiedAt: string | null;
   programId: string;
   groupId?: string | null | undefined;
   partnerId: string;
@@ -1538,6 +1544,7 @@ export const PartnerEnrolledEventData$outboundSchema: z.ZodType<
   stripeConnectId: z.nullable(z.string()),
   payoutsEnabledAt: z.nullable(z.string()),
   trustedAt: z.nullable(z.string()),
+  identityVerifiedAt: z.nullable(z.string()),
   programId: z.string(),
   groupId: z.nullable(z.string()).optional(),
   partnerId: z.string(),

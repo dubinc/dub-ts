@@ -8,6 +8,9 @@ import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+/**
+ * The reason for banning the partner.
+ */
 export const Reason = {
   TosViolation: "tos_violation",
   InappropriateContent: "inappropriate_content",
@@ -16,6 +19,9 @@ export const Reason = {
   Spam: "spam",
   BrandAbuse: "brand_abuse",
 } as const;
+/**
+ * The reason for banning the partner.
+ */
 export type Reason = ClosedEnum<typeof Reason>;
 
 export type BanPartnerRequestBody = {
@@ -27,6 +33,9 @@ export type BanPartnerRequestBody = {
    * The ID of the partner in your system. If both `partnerId` and `tenantId` are not provided, an error will be thrown.
    */
   tenantId?: string | null | undefined;
+  /**
+   * The reason for banning the partner.
+   */
   reason: Reason;
 };
 

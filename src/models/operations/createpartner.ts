@@ -455,6 +455,10 @@ export type CreatePartnerResponseBody = {
    */
   trustedAt: string | null;
   /**
+   * The date when the partner's identity was verified.
+   */
+  identityVerifiedAt: string | null;
+  /**
    * The program's unique ID on Dub.
    */
   programId: string;
@@ -1153,6 +1157,7 @@ export const CreatePartnerResponseBody$inboundSchema: z.ZodType<
   stripeConnectId: z.nullable(z.string()),
   payoutsEnabledAt: z.nullable(z.string()),
   trustedAt: z.nullable(z.string()),
+  identityVerifiedAt: z.nullable(z.string()),
   programId: z.string(),
   groupId: z.nullable(z.string()).optional(),
   partnerId: z.string(),

@@ -4,7 +4,7 @@
 
 ### Available Operations
 
-* [list](#list) - Retrieve a list of events
+* [list](#list) - List all events
 
 ## list
 

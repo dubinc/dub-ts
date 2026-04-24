@@ -4,7 +4,7 @@
 
 ### Available Operations
 
-* [list](#list) - Retrieve a list of domains
+* [list](#list) - List all domains
 * [create](#create) - Create a domain
 * [delete](#delete) - Delete a domain
 * [update](#update) - Update a domain
@@ -13,7 +13,7 @@
 
 ## list
 
-Retrieve a list of domains associated with the authenticated workspace.
+Retrieve a paginated list of domains for the authenticated workspace.
 
 ### Example Usage
 

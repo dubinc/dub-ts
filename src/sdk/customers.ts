@@ -13,10 +13,10 @@ import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Customers extends ClientSDK {
   /**
-   * Retrieve a list of customers
+   * List all customers
    *
    * @remarks
-   * Retrieve a list of customers for the authenticated workspace.
+   * Retrieve a paginated list of customers for the authenticated workspace.
    */
   async list(
     request?: operations.GetCustomersRequest | undefined,
@@ -35,7 +35,7 @@ export class Customers extends ClientSDK {
    * Retrieve a customer
    *
    * @remarks
-   * Retrieve a customer by ID for the authenticated workspace.
+   * Retrieve a customer by ID for the authenticated workspace. To retrieve a customer by external ID, prefix the ID with `ext_`.
    */
   async get(
     request: operations.GetCustomerRequest,

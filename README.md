@@ -136,14 +136,14 @@ run();
 
 ### [Customers](docs/sdks/customers/README.md)
 
-* [list](docs/sdks/customers/README.md#list) - Retrieve a list of customers
+* [list](docs/sdks/customers/README.md#list) - List all customers
 * [get](docs/sdks/customers/README.md#get) - Retrieve a customer
 * [delete](docs/sdks/customers/README.md#delete) - Delete a customer
 * [update](docs/sdks/customers/README.md#update) - Update a customer
 
 ### [Domains](docs/sdks/domains/README.md)
 
-* [list](docs/sdks/domains/README.md#list) - Retrieve a list of domains
+* [list](docs/sdks/domains/README.md#list) - List all domains
 * [create](docs/sdks/domains/README.md#create) - Create a domain
 * [delete](docs/sdks/domains/README.md#delete) - Delete a domain
 * [update](docs/sdks/domains/README.md#update) - Update a domain
@@ -156,18 +156,18 @@ run();
 
 ### [Events](docs/sdks/events/README.md)
 
-* [list](docs/sdks/events/README.md#list) - Retrieve a list of events
+* [list](docs/sdks/events/README.md#list) - List all events
 
 ### [Folders](docs/sdks/folders/README.md)
 
-* [list](docs/sdks/folders/README.md#list) - Retrieve a list of folders
+* [list](docs/sdks/folders/README.md#list) - List all folders
 * [create](docs/sdks/folders/README.md#create) - Create a folder
 * [delete](docs/sdks/folders/README.md#delete) - Delete a folder
 * [update](docs/sdks/folders/README.md#update) - Update a folder
 
 ### [Links](docs/sdks/links/README.md)
 
-* [list](docs/sdks/links/README.md#list) - Retrieve a list of links
+* [list](docs/sdks/links/README.md#list) - List all links
 * [create](docs/sdks/links/README.md#create) - Create a link
 * [count](docs/sdks/links/README.md#count) - Retrieve links count
 * [get](docs/sdks/links/README.md#get) - Retrieve a link
@@ -177,6 +177,12 @@ run();
 * [deleteMany](docs/sdks/links/README.md#deletemany) - Bulk delete links
 * [updateMany](docs/sdks/links/README.md#updatemany) - Bulk update links
 * [upsert](docs/sdks/links/README.md#upsert) - Upsert a link
+
+### [PartnerApplications](docs/sdks/partnerapplications/README.md)
+
+* [list](docs/sdks/partnerapplications/README.md#list) - List all pending partner applications
+* [approve](docs/sdks/partnerapplications/README.md#approve) - Approve a partner application
+* [reject](docs/sdks/partnerapplications/README.md#reject) - Reject a partner application
 
 ### [Partners](docs/sdks/partners/README.md)
 
@@ -199,7 +205,7 @@ run();
 
 ### [Tags](docs/sdks/tags/README.md)
 
-* [list](docs/sdks/tags/README.md#list) - Retrieve a list of tags
+* [list](docs/sdks/tags/README.md#list) - List all tags
 * [create](docs/sdks/tags/README.md#create) - Create a tag
 * [delete](docs/sdks/tags/README.md#delete) - Delete a tag
 * [update](docs/sdks/tags/README.md#update) - Update a tag
@@ -528,19 +534,19 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`commissionsUpdateMany`](docs/sdks/commissions/README.md#updatemany) - Bulk update commissions
 - [`customersDelete`](docs/sdks/customers/README.md#delete) - Delete a customer
 - [`customersGet`](docs/sdks/customers/README.md#get) - Retrieve a customer
-- [`customersList`](docs/sdks/customers/README.md#list) - Retrieve a list of customers
+- [`customersList`](docs/sdks/customers/README.md#list) - List all customers
 - [`customersUpdate`](docs/sdks/customers/README.md#update) - Update a customer
 - [`domainsCheckStatus`](docs/sdks/domains/README.md#checkstatus) - Check the availability of one or more domains
 - [`domainsCreate`](docs/sdks/domains/README.md#create) - Create a domain
 - [`domainsDelete`](docs/sdks/domains/README.md#delete) - Delete a domain
-- [`domainsList`](docs/sdks/domains/README.md#list) - Retrieve a list of domains
+- [`domainsList`](docs/sdks/domains/README.md#list) - List all domains
 - [`domainsRegister`](docs/sdks/domains/README.md#register) - Register a domain
 - [`domainsUpdate`](docs/sdks/domains/README.md#update) - Update a domain
 - [`embedTokensReferrals`](docs/sdks/embedtokens/README.md#referrals) - Create a referrals embed token
-- [`eventsList`](docs/sdks/events/README.md#list) - Retrieve a list of events
+- [`eventsList`](docs/sdks/events/README.md#list) - List all events
 - [`foldersCreate`](docs/sdks/folders/README.md#create) - Create a folder
 - [`foldersDelete`](docs/sdks/folders/README.md#delete) - Delete a folder
-- [`foldersList`](docs/sdks/folders/README.md#list) - Retrieve a list of folders
+- [`foldersList`](docs/sdks/folders/README.md#list) - List all folders
 - [`foldersUpdate`](docs/sdks/folders/README.md#update) - Update a folder
 - [`linksCount`](docs/sdks/links/README.md#count) - Retrieve links count
 - [`linksCreate`](docs/sdks/links/README.md#create) - Create a link
@@ -548,10 +554,13 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`linksDelete`](docs/sdks/links/README.md#delete) - Delete a link
 - [`linksDeleteMany`](docs/sdks/links/README.md#deletemany) - Bulk delete links
 - [`linksGet`](docs/sdks/links/README.md#get) - Retrieve a link
-- [`linksList`](docs/sdks/links/README.md#list) - Retrieve a list of links
+- [`linksList`](docs/sdks/links/README.md#list) - List all links
 - [`linksUpdate`](docs/sdks/links/README.md#update) - Update a link
 - [`linksUpdateMany`](docs/sdks/links/README.md#updatemany) - Bulk update links
 - [`linksUpsert`](docs/sdks/links/README.md#upsert) - Upsert a link
+- [`partnerApplicationsApprove`](docs/sdks/partnerapplications/README.md#approve) - Approve a partner application
+- [`partnerApplicationsList`](docs/sdks/partnerapplications/README.md#list) - List all pending partner applications
+- [`partnerApplicationsReject`](docs/sdks/partnerapplications/README.md#reject) - Reject a partner application
 - [`partnersAnalytics`](docs/sdks/partners/README.md#analytics) - Retrieve analytics for a partner
 - [`partnersBan`](docs/sdks/partners/README.md#ban) - Ban a partner
 - [`partnersCreate`](docs/sdks/partners/README.md#create) - Create or update a partner
@@ -564,7 +573,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`qrCodesGet`](docs/sdks/qrcodes/README.md#get) - Retrieve a QR code
 - [`tagsCreate`](docs/sdks/tags/README.md#create) - Create a tag
 - [`tagsDelete`](docs/sdks/tags/README.md#delete) - Delete a tag
-- [`tagsList`](docs/sdks/tags/README.md#list) - Retrieve a list of tags
+- [`tagsList`](docs/sdks/tags/README.md#list) - List all tags
 - [`tagsUpdate`](docs/sdks/tags/README.md#update) - Update a tag
 - [`trackLead`](docs/sdks/track/README.md#lead) - Track a lead
 - [`trackSale`](docs/sdks/track/README.md#sale) - Track a sale

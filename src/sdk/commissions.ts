@@ -15,7 +15,7 @@ export class Commissions extends ClientSDK {
    * List all commissions
    *
    * @remarks
-   * Retrieve a list of commissions for your partner program.
+   * Retrieve a paginated list of commissions for your partner program.
    */
   async list(
     request?: operations.ListCommissionsRequest | undefined,

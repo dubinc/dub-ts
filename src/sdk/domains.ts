@@ -16,10 +16,10 @@ import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Domains extends ClientSDK {
   /**
-   * Retrieve a list of domains
+   * List all domains
    *
    * @remarks
-   * Retrieve a list of domains associated with the authenticated workspace.
+   * Retrieve a paginated list of domains for the authenticated workspace.
    */
   async list(
     request?: operations.ListDomainsRequest | undefined,
