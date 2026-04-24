@@ -26,6 +26,10 @@ export type Status = ClosedEnum<typeof Status>;
 
 export type UpdateCommissionRequestBody = {
   /**
+   * The new earnings amount for the commission. Paid commissions cannot be updated. If provided, will override the earnings calculated based on the sale amount and currency.
+   */
+  earnings?: number | undefined;
+  /**
    * The new absolute amount for the sale. Paid commissions cannot be updated.
    */
   saleAmount?: number | undefined;
@@ -33,10 +37,6 @@ export type UpdateCommissionRequestBody = {
    * Modify the current sale amount: use positive values to increase the amount, negative values to decrease it. Takes precedence over `saleAmount`. Paid commissions cannot be updated.
    */
   modifySaleAmount?: number | undefined;
-  /**
-   * The new absolute earnings for the custom commission. Paid commissions cannot be updated.
-   */
-  earnings?: number | undefined;
   /**
    * The currency of the sale amount to update. Accepts ISO 4217 currency codes.
    */
@@ -200,9 +200,9 @@ export const Status$outboundSchema: z.ZodNativeEnum<typeof Status> = z
 
 /** @internal */
 export type UpdateCommissionRequestBody$Outbound = {
+  earnings?: number | undefined;
   saleAmount?: number | undefined;
   modifySaleAmount?: number | undefined;
-  earnings?: number | undefined;
   currency: string;
   status?: string | undefined;
   amount?: number | undefined;
@@ -215,9 +215,9 @@ export const UpdateCommissionRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateCommissionRequestBody
 > = z.object({
+  earnings: z.number().optional(),
   saleAmount: z.number().optional(),
   modifySaleAmount: z.number().optional(),
-  earnings: z.number().optional(),
   currency: z.string().default("usd"),
   status: Status$outboundSchema.optional(),
   amount: z.number().optional(),

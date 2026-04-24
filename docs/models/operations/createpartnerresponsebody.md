@@ -19,12 +19,21 @@ let value: CreatePartnerResponseBody = {
   stripeConnectId: "<id>",
   payoutsEnabledAt: "<value>",
   trustedAt: "<value>",
+  identityVerifiedAt: "<value>",
   programId: "<id>",
   partnerId: "<id>",
   tenantId: "<id>",
-  createdAt: "1721740577292",
-  status: "banned",
-  links: null,
+  createdAt: "1729913223024",
+  status: "pending",
+  links: [
+    {
+      id: "<id>",
+      domain: "steel-marksman.biz",
+      key: "<key>",
+      shortLink: "https://incomplete-suitcase.org/",
+      url: "https://waterlogged-coast.com/",
+    },
+  ],
 };
 ```
 
@@ -44,6 +53,7 @@ let value: CreatePartnerResponseBody = {
 | `stripeConnectId`                                                                                                                                                       | *string*                                                                                                                                                                | :heavy_check_mark:                                                                                                                                                      | The partner's Stripe Connect ID (for receiving payouts via Stripe).                                                                                                     |
 | `payoutsEnabledAt`                                                                                                                                                      | *string*                                                                                                                                                                | :heavy_check_mark:                                                                                                                                                      | The date when the partner enabled payouts.                                                                                                                              |
 | `trustedAt`                                                                                                                                                             | *string*                                                                                                                                                                | :heavy_check_mark:                                                                                                                                                      | The date when the partner received the trusted badge in the partner network.                                                                                            |
+| `identityVerifiedAt`                                                                                                                                                    | *string*                                                                                                                                                                | :heavy_check_mark:                                                                                                                                                      | The date when the partner's identity was verified.                                                                                                                      |
 | `programId`                                                                                                                                                             | *string*                                                                                                                                                                | :heavy_check_mark:                                                                                                                                                      | The program's unique ID on Dub.                                                                                                                                         |
 | `groupId`                                                                                                                                                               | *string*                                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                      | The partner's group ID on Dub.                                                                                                                                          |
 | `partnerId`                                                                                                                                                             | *string*                                                                                                                                                                | :heavy_check_mark:                                                                                                                                                      | The partner's unique ID on Dub.                                                                                                                                         |

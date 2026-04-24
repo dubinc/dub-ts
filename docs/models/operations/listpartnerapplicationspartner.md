@@ -1,0 +1,37 @@
+# ListPartnerApplicationsPartner
+
+## Example Usage
+
+```typescript
+import { ListPartnerApplicationsPartner } from "dub/models/operations";
+
+let value: ListPartnerApplicationsPartner = {
+  id: "<id>",
+  name: "<value>",
+  companyName: null,
+  email: "Justine.Windler38@gmail.com",
+  image: "https://loremflickr.com/3786/454?lock=2576356729506538",
+  country: "Saint Lucia",
+  status: "deactivated",
+};
+```
+
+## Fields
+
+| Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `id`                                                                                                 | *string*                                                                                             | :heavy_check_mark:                                                                                   | The partner's unique ID on Dub.                                                                      |
+| `name`                                                                                               | *string*                                                                                             | :heavy_check_mark:                                                                                   | The partner's full legal name.                                                                       |
+| `companyName`                                                                                        | *string*                                                                                             | :heavy_check_mark:                                                                                   | If the partner profile type is a company, this is the partner's legal company name.                  |
+| `email`                                                                                              | *string*                                                                                             | :heavy_check_mark:                                                                                   | The partner's email address. Should be a unique value across Dub.                                    |
+| `image`                                                                                              | *string*                                                                                             | :heavy_check_mark:                                                                                   | The partner's avatar image.                                                                          |
+| `description`                                                                                        | *string*                                                                                             | :heavy_minus_sign:                                                                                   | A brief description of the partner and their background.                                             |
+| `country`                                                                                            | *string*                                                                                             | :heavy_check_mark:                                                                                   | The partner's country (required for tax purposes).                                                   |
+| `groupId`                                                                                            | *string*                                                                                             | :heavy_minus_sign:                                                                                   | The partner's group ID on Dub.                                                                       |
+| `status`                                                                                             | [operations.ListPartnerApplicationsStatus](../../models/operations/listpartnerapplicationsstatus.md) | :heavy_check_mark:                                                                                   | The status of the partner's enrollment in the program.                                               |
+| `website`                                                                                            | *string*                                                                                             | :heavy_minus_sign:                                                                                   | The partner's website URL (including the https protocol).                                            |
+| `youtube`                                                                                            | *string*                                                                                             | :heavy_minus_sign:                                                                                   | The partner's YouTube channel username (e.g. `johndoe`).                                             |
+| `twitter`                                                                                            | *string*                                                                                             | :heavy_minus_sign:                                                                                   | The partner's Twitter username (e.g. `johndoe`).                                                     |
+| `linkedin`                                                                                           | *string*                                                                                             | :heavy_minus_sign:                                                                                   | The partner's LinkedIn username (e.g. `johndoe`).                                                    |
+| `instagram`                                                                                          | *string*                                                                                             | :heavy_minus_sign:                                                                                   | The partner's Instagram username (e.g. `johndoe`).                                                   |
+| `tiktok`                                                                                             | *string*                                                                                             | :heavy_minus_sign:                                                                                   | The partner's TikTok username (e.g. `johndoe`).                                                      |

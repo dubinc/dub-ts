@@ -289,6 +289,10 @@ export type ResponseBodySale = {
    * The payment processor via which the sale was made.
    */
   paymentProcessor: ResponseBodyPaymentProcessor;
+  /**
+   * The currency of the sale. Accepts ISO 4217 currency codes. Sales will be automatically converted and stored as USD at the latest exchange rates. Learn more: https://d.to/currency
+   */
+  currency?: any | undefined;
 };
 
 export type ListEventsResponseBodyEventsTestVariants = {
@@ -1396,6 +1400,7 @@ export const ResponseBodySale$inboundSchema: z.ZodType<
   paymentProcessor: ResponseBodyPaymentProcessor$inboundSchema.default(
     "custom",
   ),
+  currency: z.any().optional(),
 });
 
 export function responseBodySaleFromJSON(

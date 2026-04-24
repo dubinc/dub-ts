@@ -20,7 +20,7 @@ import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Links extends ClientSDK {
   /**
-   * Retrieve a list of links
+   * List all links
    *
    * @remarks
    * Retrieve a paginated list of links for the authenticated workspace.

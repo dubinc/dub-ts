@@ -12,6 +12,7 @@ import { EmbedTokens } from "./embedtokens.js";
 import { Events } from "./events.js";
 import { Folders } from "./folders.js";
 import { Links } from "./links.js";
+import { PartnerApplications } from "./partnerapplications.js";
 import { Partners } from "./partners.js";
 import { Payouts } from "./payouts.js";
 import { QRCodes } from "./qrcodes.js";
@@ -62,6 +63,13 @@ export class Dub extends ClientSDK {
   private _partners?: Partners;
   get partners(): Partners {
     return (this._partners ??= new Partners(this._options));
+  }
+
+  private _partnerApplications?: PartnerApplications;
+  get partnerApplications(): PartnerApplications {
+    return (this._partnerApplications ??= new PartnerApplications(
+      this._options,
+    ));
   }
 
   private _commissions?: Commissions;

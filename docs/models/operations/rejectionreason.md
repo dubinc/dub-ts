@@ -1,17 +1,17 @@
 # RejectionReason
 
-The reason for rejecting the submission.
+The reason for rejecting the partner application. This will be shared with the partner via email.
 
 ## Example Usage
 
 ```typescript
 import { RejectionReason } from "dub/models/operations";
 
-let value: RejectionReason = "didNotMeetCriteria";
+let value: RejectionReason = "notTheRightFit";
 ```
 
 ## Values
 
 ```typescript
-"invalidProof" | "duplicateSubmission" | "outOfTimeWindow" | "didNotMeetCriteria" | "other"
+"needsMoreDetail" | "doesNotMeetRequirements" | "notTheRightFit" | "other"
 ```

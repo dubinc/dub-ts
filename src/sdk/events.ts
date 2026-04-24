@@ -9,7 +9,7 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class Events extends ClientSDK {
   /**
-   * Retrieve a list of events
+   * List all events
    *
    * @remarks
    * Retrieve a paginated list of events for the authenticated workspace.
