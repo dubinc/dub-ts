@@ -722,7 +722,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: approvePartner
+          label: approvePartnerApplication
           source: |-
             import { Dub } from "dub";
 
@@ -743,7 +743,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: rejectPartner
+          label: rejectPartnerApplication
           source: |-
             import { Dub } from "dub";
 
@@ -802,7 +802,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: retrieveLinks
+          label: retrievePartnerLinks
           source: |-
             import { Dub } from "dub";
 

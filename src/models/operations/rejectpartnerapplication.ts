@@ -22,7 +22,7 @@ export const RejectionReason = {
  */
 export type RejectionReason = ClosedEnum<typeof RejectionReason>;
 
-export type RejectPartnerRequestBody = {
+export type RejectPartnerApplicationRequestBody = {
   /**
    * The ID of the partner to reject.
    */
@@ -44,7 +44,7 @@ export type RejectPartnerRequestBody = {
 /**
  * The rejected partner
  */
-export type RejectPartnerResponseBody = {
+export type RejectPartnerApplicationResponseBody = {
   /**
    * The ID of the rejected partner.
    */
@@ -57,7 +57,7 @@ export const RejectionReason$outboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(RejectionReason);
 
 /** @internal */
-export type RejectPartnerRequestBody$Outbound = {
+export type RejectPartnerApplicationRequestBody$Outbound = {
   partnerId: string;
   rejectionReason?: string | undefined;
   rejectionNote?: string | undefined;
@@ -65,10 +65,10 @@ export type RejectPartnerRequestBody$Outbound = {
 };
 
 /** @internal */
-export const RejectPartnerRequestBody$outboundSchema: z.ZodType<
-  RejectPartnerRequestBody$Outbound,
+export const RejectPartnerApplicationRequestBody$outboundSchema: z.ZodType<
+  RejectPartnerApplicationRequestBody$Outbound,
   z.ZodTypeDef,
-  RejectPartnerRequestBody
+  RejectPartnerApplicationRequestBody
 > = z.object({
   partnerId: z.string(),
   rejectionReason: RejectionReason$outboundSchema.optional(),
@@ -76,29 +76,32 @@ export const RejectPartnerRequestBody$outboundSchema: z.ZodType<
   allowImmediateReapply: z.boolean().default(false),
 });
 
-export function rejectPartnerRequestBodyToJSON(
-  rejectPartnerRequestBody: RejectPartnerRequestBody,
+export function rejectPartnerApplicationRequestBodyToJSON(
+  rejectPartnerApplicationRequestBody: RejectPartnerApplicationRequestBody,
 ): string {
   return JSON.stringify(
-    RejectPartnerRequestBody$outboundSchema.parse(rejectPartnerRequestBody),
+    RejectPartnerApplicationRequestBody$outboundSchema.parse(
+      rejectPartnerApplicationRequestBody,
+    ),
   );
 }
 
 /** @internal */
-export const RejectPartnerResponseBody$inboundSchema: z.ZodType<
-  RejectPartnerResponseBody,
+export const RejectPartnerApplicationResponseBody$inboundSchema: z.ZodType<
+  RejectPartnerApplicationResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
   partnerId: z.string(),
 });
 
-export function rejectPartnerResponseBodyFromJSON(
+export function rejectPartnerApplicationResponseBodyFromJSON(
   jsonString: string,
-): SafeParseResult<RejectPartnerResponseBody, SDKValidationError> {
+): SafeParseResult<RejectPartnerApplicationResponseBody, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => RejectPartnerResponseBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RejectPartnerResponseBody' from JSON`,
+    (x) =>
+      RejectPartnerApplicationResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RejectPartnerApplicationResponseBody' from JSON`,
   );
 }

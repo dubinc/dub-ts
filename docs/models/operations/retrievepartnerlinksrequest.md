@@ -1,11 +1,11 @@
-# RetrieveLinksRequest
+# RetrievePartnerLinksRequest
 
 ## Example Usage
 
 ```typescript
-import { RetrieveLinksRequest } from "dub/models/operations";
+import { RetrievePartnerLinksRequest } from "dub/models/operations";
 
-let value: RetrieveLinksRequest = {};
+let value: RetrievePartnerLinksRequest = {};
 ```
 
 ## Fields

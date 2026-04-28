@@ -35,11 +35,11 @@ import { Result } from "../types/fp.js";
  */
 export function partnersRetrieveLinks(
   client: DubCore,
-  request?: operations.RetrieveLinksRequest | undefined,
+  request?: operations.RetrievePartnerLinksRequest | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    Array<operations.RetrieveLinksResponseBody>,
+    Array<operations.RetrievePartnerLinksResponseBody>,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -68,12 +68,12 @@ export function partnersRetrieveLinks(
 
 async function $do(
   client: DubCore,
-  request?: operations.RetrieveLinksRequest | undefined,
+  request?: operations.RetrievePartnerLinksRequest | undefined,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      Array<operations.RetrieveLinksResponseBody>,
+      Array<operations.RetrievePartnerLinksResponseBody>,
       | errors.BadRequest
       | errors.Unauthorized
       | errors.Forbidden
@@ -98,7 +98,9 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.RetrieveLinksRequest$outboundSchema.optional().parse(value),
+      operations.RetrievePartnerLinksRequest$outboundSchema.optional().parse(
+        value,
+      ),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -125,7 +127,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "retrieveLinks",
+    operationID: "retrievePartnerLinks",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
@@ -170,7 +172,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    Array<operations.RetrieveLinksResponseBody>,
+    Array<operations.RetrievePartnerLinksResponseBody>,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -189,7 +191,10 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, z.array(operations.RetrieveLinksResponseBody$inboundSchema)),
+    M.json(
+      200,
+      z.array(operations.RetrievePartnerLinksResponseBody$inboundSchema),
+    ),
     M.jsonErr(400, errors.BadRequest$inboundSchema),
     M.jsonErr(401, errors.Unauthorized$inboundSchema),
     M.jsonErr(403, errors.Forbidden$inboundSchema),

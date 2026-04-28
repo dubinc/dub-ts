@@ -7,7 +7,7 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type RetrieveLinksRequest = {
+export type RetrievePartnerLinksRequest = {
   /**
    * The ID of the partner to create a link for. Will take precedence over `tenantId` if provided.
    */
@@ -18,7 +18,7 @@ export type RetrieveLinksRequest = {
   tenantId?: string | null | undefined;
 };
 
-export type RetrieveLinksResponseBody = {
+export type RetrievePartnerLinksResponseBody = {
   /**
    * The unique ID of the short link.
    */
@@ -62,32 +62,34 @@ export type RetrieveLinksResponseBody = {
 };
 
 /** @internal */
-export type RetrieveLinksRequest$Outbound = {
+export type RetrievePartnerLinksRequest$Outbound = {
   partnerId?: string | null | undefined;
   tenantId?: string | null | undefined;
 };
 
 /** @internal */
-export const RetrieveLinksRequest$outboundSchema: z.ZodType<
-  RetrieveLinksRequest$Outbound,
+export const RetrievePartnerLinksRequest$outboundSchema: z.ZodType<
+  RetrievePartnerLinksRequest$Outbound,
   z.ZodTypeDef,
-  RetrieveLinksRequest
+  RetrievePartnerLinksRequest
 > = z.object({
   partnerId: z.nullable(z.string()).optional(),
   tenantId: z.nullable(z.string()).optional(),
 });
 
-export function retrieveLinksRequestToJSON(
-  retrieveLinksRequest: RetrieveLinksRequest,
+export function retrievePartnerLinksRequestToJSON(
+  retrievePartnerLinksRequest: RetrievePartnerLinksRequest,
 ): string {
   return JSON.stringify(
-    RetrieveLinksRequest$outboundSchema.parse(retrieveLinksRequest),
+    RetrievePartnerLinksRequest$outboundSchema.parse(
+      retrievePartnerLinksRequest,
+    ),
   );
 }
 
 /** @internal */
-export const RetrieveLinksResponseBody$inboundSchema: z.ZodType<
-  RetrieveLinksResponseBody,
+export const RetrievePartnerLinksResponseBody$inboundSchema: z.ZodType<
+  RetrievePartnerLinksResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -103,12 +105,12 @@ export const RetrieveLinksResponseBody$inboundSchema: z.ZodType<
   saleAmount: z.number().default(0),
 });
 
-export function retrieveLinksResponseBodyFromJSON(
+export function retrievePartnerLinksResponseBodyFromJSON(
   jsonString: string,
-): SafeParseResult<RetrieveLinksResponseBody, SDKValidationError> {
+): SafeParseResult<RetrievePartnerLinksResponseBody, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => RetrieveLinksResponseBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RetrieveLinksResponseBody' from JSON`,
+    (x) => RetrievePartnerLinksResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RetrievePartnerLinksResponseBody' from JSON`,
   );
 }
