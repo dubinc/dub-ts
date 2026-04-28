@@ -1,13 +1,13 @@
-# ApprovePartnerResponseBody
+# RejectPartnerApplicationResponseBody
 
-The approved partner
+The rejected partner
 
 ## Example Usage
 
 ```typescript
-import { ApprovePartnerResponseBody } from "dub/models/operations";
+import { RejectPartnerApplicationResponseBody } from "dub/models/operations";
 
-let value: ApprovePartnerResponseBody = {
+let value: RejectPartnerApplicationResponseBody = {
   partnerId: "<id>",
 };
 ```
@@ -16,4 +16,4 @@ let value: ApprovePartnerResponseBody = {
 
 | Field                           | Type                            | Required                        | Description                     |
 | ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
-| `partnerId`                     | *string*                        | :heavy_check_mark:              | The ID of the approved partner. |
+| `partnerId`                     | *string*                        | :heavy_check_mark:              | The ID of the rejected partner. |

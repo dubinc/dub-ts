@@ -3,7 +3,7 @@
  */
 
 export * from "./approvebountysubmission.js";
-export * from "./approvepartner.js";
+export * from "./approvepartnerapplication.js";
 export * from "./banpartner.js";
 export * from "./bulkcreatelinks.js";
 export * from "./bulkdeletelinks.js";
@@ -40,10 +40,10 @@ export * from "./listpartners.js";
 export * from "./listpayouts.js";
 export * from "./registerdomain.js";
 export * from "./rejectbountysubmission.js";
-export * from "./rejectpartner.js";
+export * from "./rejectpartnerapplication.js";
 export * from "./retrieveanalytics.js";
-export * from "./retrievelinks.js";
 export * from "./retrievepartneranalytics.js";
+export * from "./retrievepartnerlinks.js";
 export * from "./tracklead.js";
 export * from "./tracksale.js";
 export * from "./updatecommission.js";
