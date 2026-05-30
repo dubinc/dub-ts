@@ -111,6 +111,21 @@ export type ListPartnersRequest = {
 };
 
 /**
+ * The partner's network status on Dub.
+ */
+export const NetworkStatus = {
+  Draft: "draft",
+  Submitted: "submitted",
+  Approved: "approved",
+  Rejected: "rejected",
+  Trusted: "trusted",
+} as const;
+/**
+ * The partner's network status on Dub.
+ */
+export type NetworkStatus = ClosedEnum<typeof NetworkStatus>;
+
+/**
  * The partner's default payout method. Connect: Bank account payouts via Stripe Connect; Stablecoin: USDC payouts directly to a crypto wallet; PayPal: Payouts via PayPal
  */
 export const DefaultPayoutMethod = {
@@ -345,6 +360,11 @@ export type Application = {
   reviewedAt: string | null;
 };
 
+export type Tags = {
+  id: string;
+  name: string;
+};
+
 export type ListPartnersResponseBody = {
   /**
    * The partner's unique ID on Dub.
@@ -355,9 +375,9 @@ export type ListPartnersResponseBody = {
    */
   name: string;
   /**
-   * If the partner profile type is a company, this is the partner's legal company name.
+   * The partner's unique username on Dub.
    */
-  companyName: string | null;
+  username: string | null;
   /**
    * The partner's email address. Should be a unique value across Dub.
    */
@@ -375,6 +395,14 @@ export type ListPartnersResponseBody = {
    */
   country: string | null;
   /**
+   * If the partner profile type is a company, this is the partner's legal company name.
+   */
+  companyName: string | null;
+  /**
+   * The partner's network status on Dub.
+   */
+  networkStatus: NetworkStatus;
+  /**
    * The partner's default payout method. Connect: Bank account payouts via Stripe Connect; Stablecoin: USDC payouts directly to a crypto wallet; PayPal: Payouts via PayPal
    */
   defaultPayoutMethod: DefaultPayoutMethod | null;
@@ -390,10 +418,6 @@ export type ListPartnersResponseBody = {
    * The date when the partner enabled payouts.
    */
   payoutsEnabledAt: string | null;
-  /**
-   * The date when the partner received the trusted badge in the partner network.
-   */
-  trustedAt: string | null;
   /**
    * The date when the partner's identity was verified.
    */
@@ -430,6 +454,7 @@ export type ListPartnersResponseBody = {
   clickRewardId?: string | null | undefined;
   leadRewardId?: string | null | undefined;
   saleRewardId?: string | null | undefined;
+  referralRewardId?: string | null | undefined;
   discountId?: string | null | undefined;
   /**
    * If the partner submitted an application to join the program, this is the ID of the application.
@@ -448,6 +473,10 @@ export type ListPartnersResponseBody = {
    * Linked program application, including review outcome when applicable.
    */
   application?: Application | null | undefined;
+  /**
+   * The tags associated with the partner.
+   */
+  tags?: Array<Tags> | undefined;
   /**
    * The total number of clicks on the partner's links
    */
@@ -520,6 +549,12 @@ export type ListPartnersResponseBody = {
    * The partner's TikTok username (e.g. `johndoe`).
    */
   tiktok?: string | null | undefined;
+  /**
+   * DEPRECATED: Use `networkStatus` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  trustedAt?: string | null | undefined;
 };
 
 /** @internal */
@@ -578,6 +613,11 @@ export function listPartnersRequestToJSON(
     ListPartnersRequest$outboundSchema.parse(listPartnersRequest),
   );
 }
+
+/** @internal */
+export const NetworkStatus$inboundSchema: z.ZodNativeEnum<
+  typeof NetworkStatus
+> = z.nativeEnum(NetworkStatus);
 
 /** @internal */
 export const DefaultPayoutMethod$inboundSchema: z.ZodNativeEnum<
@@ -946,6 +986,23 @@ export function applicationFromJSON(
 }
 
 /** @internal */
+export const Tags$inboundSchema: z.ZodType<Tags, z.ZodTypeDef, unknown> = z
+  .object({
+    id: z.string(),
+    name: z.string(),
+  });
+
+export function tagsFromJSON(
+  jsonString: string,
+): SafeParseResult<Tags, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Tags$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Tags' from JSON`,
+  );
+}
+
+/** @internal */
 export const ListPartnersResponseBody$inboundSchema: z.ZodType<
   ListPartnersResponseBody,
   z.ZodTypeDef,
@@ -953,16 +1010,17 @@ export const ListPartnersResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   name: z.string(),
-  companyName: z.nullable(z.string()),
+  username: z.nullable(z.string()),
   email: z.nullable(z.string()),
   image: z.nullable(z.string()),
   description: z.nullable(z.string()).optional(),
   country: z.nullable(z.string()),
+  companyName: z.nullable(z.string()),
+  networkStatus: NetworkStatus$inboundSchema,
   defaultPayoutMethod: z.nullable(DefaultPayoutMethod$inboundSchema),
   paypalEmail: z.nullable(z.string()),
   stripeConnectId: z.nullable(z.string()),
   payoutsEnabledAt: z.nullable(z.string()),
-  trustedAt: z.nullable(z.string()),
   identityVerifiedAt: z.nullable(z.string()),
   programId: z.string(),
   groupId: z.nullable(z.string()).optional(),
@@ -975,6 +1033,7 @@ export const ListPartnersResponseBody$inboundSchema: z.ZodType<
   clickRewardId: z.nullable(z.string()).optional(),
   leadRewardId: z.nullable(z.string()).optional(),
   saleRewardId: z.nullable(z.string()).optional(),
+  referralRewardId: z.nullable(z.string()).optional(),
   discountId: z.nullable(z.string()).optional(),
   applicationId: z.nullable(z.string()).optional(),
   bannedAt: z.nullable(z.string()).optional(),
@@ -982,6 +1041,7 @@ export const ListPartnersResponseBody$inboundSchema: z.ZodType<
   referralFormData: z.nullable(z.lazy(() => ReferralFormData$inboundSchema))
     .optional(),
   application: z.nullable(z.lazy(() => Application$inboundSchema)).optional(),
+  tags: z.array(z.lazy(() => Tags$inboundSchema)).optional(),
   totalClicks: z.number().default(0),
   totalLeads: z.number().default(0),
   totalConversions: z.number().default(0),
@@ -1000,6 +1060,7 @@ export const ListPartnersResponseBody$inboundSchema: z.ZodType<
   linkedin: z.nullable(z.string()).optional(),
   instagram: z.nullable(z.string()).optional(),
   tiktok: z.nullable(z.string()).optional(),
+  trustedAt: z.nullable(z.string()).optional(),
 });
 
 export function listPartnersResponseBodyFromJSON(

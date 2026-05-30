@@ -7,7 +7,7 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type ApprovePartnerRequestBody = {
+export type ApprovePartnerApplicationRequestBody = {
   /**
    * The ID of the partner to approve.
    */
@@ -21,7 +21,7 @@ export type ApprovePartnerRequestBody = {
 /**
  * The approved partner
  */
-export type ApprovePartnerResponseBody = {
+export type ApprovePartnerApplicationResponseBody = {
   /**
    * The ID of the approved partner.
    */
@@ -29,44 +29,47 @@ export type ApprovePartnerResponseBody = {
 };
 
 /** @internal */
-export type ApprovePartnerRequestBody$Outbound = {
+export type ApprovePartnerApplicationRequestBody$Outbound = {
   partnerId: string;
   groupId?: string | null | undefined;
 };
 
 /** @internal */
-export const ApprovePartnerRequestBody$outboundSchema: z.ZodType<
-  ApprovePartnerRequestBody$Outbound,
+export const ApprovePartnerApplicationRequestBody$outboundSchema: z.ZodType<
+  ApprovePartnerApplicationRequestBody$Outbound,
   z.ZodTypeDef,
-  ApprovePartnerRequestBody
+  ApprovePartnerApplicationRequestBody
 > = z.object({
   partnerId: z.string(),
   groupId: z.nullable(z.string()).optional(),
 });
 
-export function approvePartnerRequestBodyToJSON(
-  approvePartnerRequestBody: ApprovePartnerRequestBody,
+export function approvePartnerApplicationRequestBodyToJSON(
+  approvePartnerApplicationRequestBody: ApprovePartnerApplicationRequestBody,
 ): string {
   return JSON.stringify(
-    ApprovePartnerRequestBody$outboundSchema.parse(approvePartnerRequestBody),
+    ApprovePartnerApplicationRequestBody$outboundSchema.parse(
+      approvePartnerApplicationRequestBody,
+    ),
   );
 }
 
 /** @internal */
-export const ApprovePartnerResponseBody$inboundSchema: z.ZodType<
-  ApprovePartnerResponseBody,
+export const ApprovePartnerApplicationResponseBody$inboundSchema: z.ZodType<
+  ApprovePartnerApplicationResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
   partnerId: z.string(),
 });
 
-export function approvePartnerResponseBodyFromJSON(
+export function approvePartnerApplicationResponseBodyFromJSON(
   jsonString: string,
-): SafeParseResult<ApprovePartnerResponseBody, SDKValidationError> {
+): SafeParseResult<ApprovePartnerApplicationResponseBody, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ApprovePartnerResponseBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ApprovePartnerResponseBody' from JSON`,
+    (x) =>
+      ApprovePartnerApplicationResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ApprovePartnerApplicationResponseBody' from JSON`,
   );
 }

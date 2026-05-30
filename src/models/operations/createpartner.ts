@@ -157,6 +157,23 @@ export type CreatePartnerRequestBody = {
 };
 
 /**
+ * The partner's network status on Dub.
+ */
+export const CreatePartnerNetworkStatus = {
+  Draft: "draft",
+  Submitted: "submitted",
+  Approved: "approved",
+  Rejected: "rejected",
+  Trusted: "trusted",
+} as const;
+/**
+ * The partner's network status on Dub.
+ */
+export type CreatePartnerNetworkStatus = ClosedEnum<
+  typeof CreatePartnerNetworkStatus
+>;
+
+/**
  * The partner's default payout method. Connect: Bank account payouts via Stripe Connect; Stablecoin: USDC payouts directly to a crypto wallet; PayPal: Payouts via PayPal
  */
 export const CreatePartnerDefaultPayoutMethod = {
@@ -402,6 +419,11 @@ export type CreatePartnerApplication = {
   reviewedAt: string | null;
 };
 
+export type CreatePartnerTags = {
+  id: string;
+  name: string;
+};
+
 /**
  * The created or updated partner
  */
@@ -415,9 +437,9 @@ export type CreatePartnerResponseBody = {
    */
   name: string;
   /**
-   * If the partner profile type is a company, this is the partner's legal company name.
+   * The partner's unique username on Dub.
    */
-  companyName: string | null;
+  username: string | null;
   /**
    * The partner's email address. Should be a unique value across Dub.
    */
@@ -435,6 +457,14 @@ export type CreatePartnerResponseBody = {
    */
   country: string | null;
   /**
+   * If the partner profile type is a company, this is the partner's legal company name.
+   */
+  companyName: string | null;
+  /**
+   * The partner's network status on Dub.
+   */
+  networkStatus: CreatePartnerNetworkStatus;
+  /**
    * The partner's default payout method. Connect: Bank account payouts via Stripe Connect; Stablecoin: USDC payouts directly to a crypto wallet; PayPal: Payouts via PayPal
    */
   defaultPayoutMethod: CreatePartnerDefaultPayoutMethod | null;
@@ -450,10 +480,6 @@ export type CreatePartnerResponseBody = {
    * The date when the partner enabled payouts.
    */
   payoutsEnabledAt: string | null;
-  /**
-   * The date when the partner received the trusted badge in the partner network.
-   */
-  trustedAt: string | null;
   /**
    * The date when the partner's identity was verified.
    */
@@ -490,6 +516,7 @@ export type CreatePartnerResponseBody = {
   clickRewardId?: string | null | undefined;
   leadRewardId?: string | null | undefined;
   saleRewardId?: string | null | undefined;
+  referralRewardId?: string | null | undefined;
   discountId?: string | null | undefined;
   /**
    * If the partner submitted an application to join the program, this is the ID of the application.
@@ -508,6 +535,10 @@ export type CreatePartnerResponseBody = {
    * Linked program application, including review outcome when applicable.
    */
   application?: CreatePartnerApplication | null | undefined;
+  /**
+   * The tags associated with the partner.
+   */
+  tags?: Array<CreatePartnerTags> | undefined;
   /**
    * The total number of clicks on the partner's links
    */
@@ -580,6 +611,12 @@ export type CreatePartnerResponseBody = {
    * The partner's TikTok username (e.g. `johndoe`).
    */
   tiktok?: string | null | undefined;
+  /**
+   * DEPRECATED: Use `networkStatus` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  trustedAt?: string | null | undefined;
 };
 
 /** @internal */
@@ -741,6 +778,11 @@ export function createPartnerRequestBodyToJSON(
     CreatePartnerRequestBody$outboundSchema.parse(createPartnerRequestBody),
   );
 }
+
+/** @internal */
+export const CreatePartnerNetworkStatus$inboundSchema: z.ZodNativeEnum<
+  typeof CreatePartnerNetworkStatus
+> = z.nativeEnum(CreatePartnerNetworkStatus);
 
 /** @internal */
 export const CreatePartnerDefaultPayoutMethod$inboundSchema: z.ZodNativeEnum<
@@ -1138,6 +1180,26 @@ export function createPartnerApplicationFromJSON(
 }
 
 /** @internal */
+export const CreatePartnerTags$inboundSchema: z.ZodType<
+  CreatePartnerTags,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  name: z.string(),
+});
+
+export function createPartnerTagsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreatePartnerTags, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreatePartnerTags$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreatePartnerTags' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreatePartnerResponseBody$inboundSchema: z.ZodType<
   CreatePartnerResponseBody,
   z.ZodTypeDef,
@@ -1145,18 +1207,19 @@ export const CreatePartnerResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   name: z.string(),
-  companyName: z.nullable(z.string()),
+  username: z.nullable(z.string()),
   email: z.nullable(z.string()),
   image: z.nullable(z.string()),
   description: z.nullable(z.string()).optional(),
   country: z.nullable(z.string()),
+  companyName: z.nullable(z.string()),
+  networkStatus: CreatePartnerNetworkStatus$inboundSchema,
   defaultPayoutMethod: z.nullable(
     CreatePartnerDefaultPayoutMethod$inboundSchema,
   ),
   paypalEmail: z.nullable(z.string()),
   stripeConnectId: z.nullable(z.string()),
   payoutsEnabledAt: z.nullable(z.string()),
-  trustedAt: z.nullable(z.string()),
   identityVerifiedAt: z.nullable(z.string()),
   programId: z.string(),
   groupId: z.nullable(z.string()).optional(),
@@ -1169,6 +1232,7 @@ export const CreatePartnerResponseBody$inboundSchema: z.ZodType<
   clickRewardId: z.nullable(z.string()).optional(),
   leadRewardId: z.nullable(z.string()).optional(),
   saleRewardId: z.nullable(z.string()).optional(),
+  referralRewardId: z.nullable(z.string()).optional(),
   discountId: z.nullable(z.string()).optional(),
   applicationId: z.nullable(z.string()).optional(),
   bannedAt: z.nullable(z.string()).optional(),
@@ -1178,6 +1242,7 @@ export const CreatePartnerResponseBody$inboundSchema: z.ZodType<
   ).optional(),
   application: z.nullable(z.lazy(() => CreatePartnerApplication$inboundSchema))
     .optional(),
+  tags: z.array(z.lazy(() => CreatePartnerTags$inboundSchema)).optional(),
   totalClicks: z.number().default(0),
   totalLeads: z.number().default(0),
   totalConversions: z.number().default(0),
@@ -1196,6 +1261,7 @@ export const CreatePartnerResponseBody$inboundSchema: z.ZodType<
   linkedin: z.nullable(z.string()).optional(),
   instagram: z.nullable(z.string()).optional(),
   tiktok: z.nullable(z.string()).optional(),
+  trustedAt: z.nullable(z.string()).optional(),
 });
 
 export function createPartnerResponseBodyFromJSON(

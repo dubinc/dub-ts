@@ -16,7 +16,9 @@ export const PaymentProcessor = {
   Shopify: "shopify",
   Polar: "polar",
   Paddle: "paddle",
+  Apple: "apple",
   Revenuecat: "revenuecat",
+  Dub: "dub",
   Custom: "custom",
 } as const;
 /**

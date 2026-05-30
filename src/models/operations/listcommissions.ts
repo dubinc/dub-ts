@@ -9,12 +9,19 @@ import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+/**
+ * Filter the list of commissions by type. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `sale`, `sale,lead`, `-click`.
+ */
 export const Type = {
   Click: "click",
   Lead: "lead",
   Sale: "sale",
+  Referral: "referral",
   Custom: "custom",
 } as const;
+/**
+ * Filter the list of commissions by type. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `sale`, `sale,lead`, `-click`.
+ */
 export type Type = ClosedEnum<typeof Type>;
 
 /**
@@ -84,6 +91,9 @@ export type ListCommissionsQueryParamInterval = ClosedEnum<
 >;
 
 export type ListCommissionsRequest = {
+  /**
+   * Filter the list of commissions by type. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `sale`, `sale,lead`, `-click`.
+   */
   type?: Type | undefined;
   /**
    * Filter the list of commissions by the associated customer.
@@ -94,7 +104,7 @@ export type ListCommissionsRequest = {
    */
   payoutId?: string | undefined;
   /**
-   * Filter the list of commissions by the associated partner. When specified, takes precedence over `tenantId`.
+   * Filter the list of commissions by the associated partner. When specified, takes precedence over `tenantId`. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `partner_abc`, `partner_abc,partner_xyz`, `-partner_abc`.
    */
   partnerId?: string | undefined;
   /**
@@ -102,9 +112,13 @@ export type ListCommissionsRequest = {
    */
   tenantId?: string | undefined;
   /**
-   * Filter the list of commissions by the associated partner group.
+   * Filter the list of commissions by the associated partner group. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `group_abc`, `group_abc,group_xyz`, `-group_abc`.
    */
   groupId?: string | undefined;
+  /**
+   * Filter the list of commissions by the associated partner tag. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `ptag_abc`, `ptag_abc,ptag_xyz`, `-ptag_abc`.
+   */
+  partnerTagId?: string | undefined;
   /**
    * Filter the list of commissions by the associated invoice. Since invoiceId is unique on a per-program basis, this will only return one commission per invoice.
    */
@@ -156,6 +170,7 @@ export const ListCommissionsType = {
   Click: "click",
   Lead: "lead",
   Sale: "sale",
+  Referral: "referral",
   Custom: "custom",
 } as const;
 export type ListCommissionsType = ClosedEnum<typeof ListCommissionsType>;
@@ -313,6 +328,7 @@ export type ListCommissionsRequest$Outbound = {
   partnerId?: string | undefined;
   tenantId?: string | undefined;
   groupId?: string | undefined;
+  partnerTagId?: string | undefined;
   invoiceId?: string | undefined;
   status?: string | undefined;
   sortBy: string;
@@ -339,6 +355,7 @@ export const ListCommissionsRequest$outboundSchema: z.ZodType<
   partnerId: z.string().optional(),
   tenantId: z.string().optional(),
   groupId: z.string().optional(),
+  partnerTagId: z.string().optional(),
   invoiceId: z.string().optional(),
   status: QueryParamStatus$outboundSchema.optional(),
   sortBy: ListCommissionsQueryParamSortBy$outboundSchema.default("createdAt"),

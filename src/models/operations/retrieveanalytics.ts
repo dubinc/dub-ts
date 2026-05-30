@@ -49,6 +49,7 @@ export const QueryParamGroupBy = {
   TopBaseUrls: "top_base_urls",
   TopPartners: "top_partners",
   TopGroups: "top_groups",
+  TopPartnerTags: "top_partner_tags",
   UtmSources: "utm_sources",
   UtmMediums: "utm_mediums",
   UtmCampaigns: "utm_campaigns",
@@ -128,6 +129,10 @@ export type RetrieveAnalyticsRequest = {
    * The folder ID to retrieve analytics for. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `folder_123`, `folder_123,folder_456`, `-folder_789`. If not provided, return analytics for all links.
    */
   folderId?: string | undefined;
+  /**
+   * The partner tag ID(s) to retrieve analytics for. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `ptag_123`, `ptag_123,ptag_456`, `-ptag_789`.
+   */
+  partnerTagId?: string | undefined;
   /**
    * The group ID to retrieve analytics for. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `grp_123`, `grp_123,grp_456`, `-grp_789`.
    */
@@ -294,6 +299,7 @@ export type RetrieveAnalyticsRequest$Outbound = {
   tenantId?: string | undefined;
   tagId?: string | undefined;
   folderId?: string | undefined;
+  partnerTagId?: string | undefined;
   groupId?: string | undefined;
   partnerId?: string | undefined;
   customerId?: string | undefined;
@@ -340,6 +346,7 @@ export const RetrieveAnalyticsRequest$outboundSchema: z.ZodType<
   tenantId: z.string().optional(),
   tagId: z.string().optional(),
   folderId: z.string().optional(),
+  partnerTagId: z.string().optional(),
   groupId: z.string().optional(),
   partnerId: z.string().optional(),
   customerId: z.string().optional(),

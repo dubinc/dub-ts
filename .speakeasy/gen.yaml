@@ -29,12 +29,12 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 typescript:
-  version: 0.71.7
+  version: 0.72.0
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
     devDependencies:
-      "@types/node": ^20.12.7
+      '@types/node': ^20.12.7
       vitest: 1.4.0
     peerDependencies: {}
   additionalPackageJSON: {}
@@ -80,6 +80,7 @@ typescript:
   packageName: dub
   preApplyUnionDiscriminators: true
   preserveModelFieldNames: false
+  privateIdentifierPrefix: '#'
   responseFormat: flat
   sseFlatResponse: false
   templateVersion: v2

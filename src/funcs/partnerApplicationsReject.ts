@@ -34,11 +34,11 @@ import { Result } from "../types/fp.js";
  */
 export function partnerApplicationsReject(
   client: DubCore,
-  request: operations.RejectPartnerRequestBody,
+  request: operations.RejectPartnerApplicationRequestBody,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.RejectPartnerResponseBody,
+    operations.RejectPartnerApplicationResponseBody,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -67,12 +67,12 @@ export function partnerApplicationsReject(
 
 async function $do(
   client: DubCore,
-  request: operations.RejectPartnerRequestBody,
+  request: operations.RejectPartnerApplicationRequestBody,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.RejectPartnerResponseBody,
+      operations.RejectPartnerApplicationResponseBody,
       | errors.BadRequest
       | errors.Unauthorized
       | errors.Forbidden
@@ -96,7 +96,10 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => operations.RejectPartnerRequestBody$outboundSchema.parse(value),
+    (value) =>
+      operations.RejectPartnerApplicationRequestBody$outboundSchema.parse(
+        value,
+      ),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -119,7 +122,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "rejectPartner",
+    operationID: "rejectPartnerApplication",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
@@ -163,7 +166,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.RejectPartnerResponseBody,
+    operations.RejectPartnerApplicationResponseBody,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -182,7 +185,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, operations.RejectPartnerResponseBody$inboundSchema),
+    M.json(200, operations.RejectPartnerApplicationResponseBody$inboundSchema),
     M.jsonErr(400, errors.BadRequest$inboundSchema),
     M.jsonErr(401, errors.Unauthorized$inboundSchema),
     M.jsonErr(403, errors.Forbidden$inboundSchema),

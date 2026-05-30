@@ -11,5 +11,5 @@ let value: CommissionCreatedEventType = "lead";
 ## Values
 
 ```typescript
-"click" | "lead" | "sale" | "custom"
+"click" | "lead" | "sale" | "referral" | "custom"
 ```
