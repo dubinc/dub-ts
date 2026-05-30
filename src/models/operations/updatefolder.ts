@@ -52,7 +52,7 @@ export const UpdateFolderAccessLevel$outboundSchema: z.ZodNativeEnum<
 export type UpdateFolderRequestBody$Outbound = {
   name?: string | undefined;
   description?: string | null | undefined;
-  accessLevel: string | null;
+  accessLevel?: string | null | undefined;
 };
 
 /** @internal */
@@ -63,7 +63,7 @@ export const UpdateFolderRequestBody$outboundSchema: z.ZodType<
 > = z.object({
   name: z.string().optional(),
   description: z.nullable(z.string()).optional(),
-  accessLevel: z.nullable(UpdateFolderAccessLevel$outboundSchema).default(null),
+  accessLevel: z.nullable(UpdateFolderAccessLevel$outboundSchema).optional(),
 });
 
 export function updateFolderRequestBodyToJSON(

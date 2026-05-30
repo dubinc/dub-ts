@@ -19,6 +19,7 @@ export const CommissionCreatedEventType = {
   Click: "click",
   Lead: "lead",
   Sale: "sale",
+  Referral: "referral",
   Custom: "custom",
 } as const;
 export type CommissionCreatedEventType = ClosedEnum<

@@ -127,6 +127,10 @@ export type ListEventsRequest = {
    */
   folderId?: string | undefined;
   /**
+   * The partner tag ID(s) to retrieve analytics for. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `ptag_123`, `ptag_123,ptag_456`, `-ptag_789`.
+   */
+  partnerTagId?: string | undefined;
+  /**
    * The group ID to retrieve analytics for. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `grp_123`, `grp_123,grp_456`, `-grp_789`.
    */
   groupId?: string | undefined;
@@ -266,7 +270,9 @@ export const ResponseBodyPaymentProcessor = {
   Shopify: "shopify",
   Polar: "polar",
   Paddle: "paddle",
+  Apple: "apple",
   Revenuecat: "revenuecat",
+  Dub: "dub",
   Custom: "custom",
 } as const;
 /**
@@ -1282,6 +1288,7 @@ export type ListEventsRequest$Outbound = {
   tenantId?: string | undefined;
   tagId?: string | undefined;
   folderId?: string | undefined;
+  partnerTagId?: string | undefined;
   groupId?: string | undefined;
   partnerId?: string | undefined;
   customerId?: string | undefined;
@@ -1332,6 +1339,7 @@ export const ListEventsRequest$outboundSchema: z.ZodType<
   tenantId: z.string().optional(),
   tagId: z.string().optional(),
   folderId: z.string().optional(),
+  partnerTagId: z.string().optional(),
   groupId: z.string().optional(),
   partnerId: z.string().optional(),
   customerId: z.string().optional(),

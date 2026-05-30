@@ -71,6 +71,7 @@ export const UpdateCommissionType = {
   Click: "click",
   Lead: "lead",
   Sale: "sale",
+  Referral: "referral",
   Custom: "custom",
 } as const;
 export type UpdateCommissionType = ClosedEnum<typeof UpdateCommissionType>;

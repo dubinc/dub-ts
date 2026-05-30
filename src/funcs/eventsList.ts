@@ -130,6 +130,7 @@ async function $do(
     "os": payload?.os,
     "page": payload?.page,
     "partnerId": payload?.partnerId,
+    "partnerTagId": payload?.partnerTagId,
     "programId": payload?.programId,
     "qr": payload?.qr,
     "query": payload?.query,

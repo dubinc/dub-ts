@@ -34,9 +34,9 @@ export class PartnerApplications extends ClientSDK {
    * Approve a pending partner application to your program. The partner will be enrolled in the specified group and notified of the approval.
    */
   async approve(
-    request: operations.ApprovePartnerRequestBody,
+    request: operations.ApprovePartnerApplicationRequestBody,
     options?: RequestOptions,
-  ): Promise<operations.ApprovePartnerResponseBody> {
+  ): Promise<operations.ApprovePartnerApplicationResponseBody> {
     return unwrapAsync(partnerApplicationsApprove(
       this,
       request,
@@ -51,9 +51,9 @@ export class PartnerApplications extends ClientSDK {
    * Reject a pending partner application to your program. The partner will be notified via email that their application was not approved.
    */
   async reject(
-    request: operations.RejectPartnerRequestBody,
+    request: operations.RejectPartnerApplicationRequestBody,
     options?: RequestOptions,
-  ): Promise<operations.RejectPartnerResponseBody> {
+  ): Promise<operations.RejectPartnerApplicationResponseBody> {
     return unwrapAsync(partnerApplicationsReject(
       this,
       request,
