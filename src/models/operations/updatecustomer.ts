@@ -122,7 +122,7 @@ export type UpdateCustomerResponseBody = {
   /**
    * Name of the customer.
    */
-  name: string;
+  name?: string | null | undefined;
   /**
    * Email of the customer.
    */
@@ -316,7 +316,7 @@ export const UpdateCustomerResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: z.string(),
-  name: z.string(),
+  name: z.nullable(z.string()).optional(),
   email: z.nullable(z.string()).optional(),
   avatar: z.nullable(z.string()).optional(),
   externalId: z.string(),

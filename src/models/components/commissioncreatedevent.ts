@@ -81,7 +81,7 @@ export type CommissionCreatedEventCustomer = {
   /**
    * Name of the customer.
    */
-  name: string;
+  name?: string | null | undefined;
   /**
    * Email of the customer.
    */
@@ -288,7 +288,7 @@ export const CommissionCreatedEventCustomer$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: z.string(),
-  name: z.string(),
+  name: z.nullable(z.string()).optional(),
   email: z.nullable(z.string()).optional(),
   avatar: z.nullable(z.string()).optional(),
   externalId: z.string(),
@@ -303,7 +303,7 @@ export const CommissionCreatedEventCustomer$inboundSchema: z.ZodType<
 /** @internal */
 export type CommissionCreatedEventCustomer$Outbound = {
   id: string;
-  name: string;
+  name?: string | null | undefined;
   email?: string | null | undefined;
   avatar?: string | null | undefined;
   externalId: string;
@@ -323,7 +323,7 @@ export const CommissionCreatedEventCustomer$outboundSchema: z.ZodType<
   CommissionCreatedEventCustomer
 > = z.object({
   id: z.string(),
-  name: z.string(),
+  name: z.nullable(z.string()).optional(),
   email: z.nullable(z.string()).optional(),
   avatar: z.nullable(z.string()).optional(),
   externalId: z.string(),

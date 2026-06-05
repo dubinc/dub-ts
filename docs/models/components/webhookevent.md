@@ -171,7 +171,6 @@ const value: components.LeadCreatedEvent = {
     eventName: "<value>",
     customer: {
       id: "<id>",
-      name: "<value>",
       externalId: "<id>",
       createdAt: "1718158709687",
     },
@@ -265,7 +264,6 @@ const value: components.SaleCreatedEvent = {
     eventName: "<value>",
     customer: {
       id: "<id>",
-      name: "<value>",
       externalId: "<id>",
       createdAt: "1732125211331",
     },

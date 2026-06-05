@@ -103,7 +103,7 @@ export type Link = {
   externalId: string | null;
 };
 
-export type Customer = {
+export type TrackLeadCustomer = {
   name: string | null;
   email: string | null;
   avatar: string | null;
@@ -116,7 +116,7 @@ export type Customer = {
 export type TrackLeadResponseBody = {
   click: Click;
   link: Link | null;
-  customer: Customer;
+  customer: TrackLeadCustomer;
 };
 
 /** @internal */
@@ -203,8 +203,8 @@ export function linkFromJSON(
 }
 
 /** @internal */
-export const Customer$inboundSchema: z.ZodType<
-  Customer,
+export const TrackLeadCustomer$inboundSchema: z.ZodType<
+  TrackLeadCustomer,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -214,13 +214,13 @@ export const Customer$inboundSchema: z.ZodType<
   externalId: z.nullable(z.string()),
 });
 
-export function customerFromJSON(
+export function trackLeadCustomerFromJSON(
   jsonString: string,
-): SafeParseResult<Customer, SDKValidationError> {
+): SafeParseResult<TrackLeadCustomer, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Customer$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Customer' from JSON`,
+    (x) => TrackLeadCustomer$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TrackLeadCustomer' from JSON`,
   );
 }
 
@@ -232,7 +232,7 @@ export const TrackLeadResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   click: z.lazy(() => Click$inboundSchema),
   link: z.nullable(z.lazy(() => Link$inboundSchema)),
-  customer: z.lazy(() => Customer$inboundSchema),
+  customer: z.lazy(() => TrackLeadCustomer$inboundSchema),
 });
 
 export function trackLeadResponseBodyFromJSON(

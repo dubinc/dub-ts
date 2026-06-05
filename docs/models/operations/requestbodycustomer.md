@@ -1,15 +1,15 @@
-# Customer
+# RequestBodyCustomer
 
 The full customer object to associate the commission with. Useful for creating the customer on demand.
 
 ## Example Usage
 
 ```typescript
-import { Customer } from "dub/models/operations";
+import { RequestBodyCustomer } from "dub/models/operations";
 
-let value: Customer = {
+let value: RequestBodyCustomer = {
   externalId: "<id>",
-  country: "South Sudan",
+  country: "Guinea",
 };
 ```
 

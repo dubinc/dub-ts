@@ -110,6 +110,25 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/commissions"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: createCommission
+          source: |-
+            import { Dub } from "dub";
+
+            const dub = new Dub({
+              token: "DUB_API_KEY",
+            });
+
+            async function run() {
+              const result = await dub.commissions.create();
+
+              console.log(result);
+            }
+
+            run();
   - target: $["paths"]["/commissions/bulk"]["patch"]
     update:
       x-codeSamples:

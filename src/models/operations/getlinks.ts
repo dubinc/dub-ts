@@ -5,7 +5,6 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -19,50 +18,6 @@ export type QueryParamTagIds = string | Array<string>;
  * The unique name of the tags assigned to the short link (case insensitive).
  */
 export type QueryParamTagNames = string | Array<string>;
-
-/**
- * The field to sort the links by. The default is `createdAt`.
- */
-export const SortBy = {
-  CreatedAt: "createdAt",
-  Clicks: "clicks",
-  SaleAmount: "saleAmount",
-  LastClicked: "lastClicked",
-} as const;
-/**
- * The field to sort the links by. The default is `createdAt`.
- */
-export type SortBy = ClosedEnum<typeof SortBy>;
-
-/**
- * The sort order. The default is `desc`.
- */
-export const SortOrder = {
-  Asc: "asc",
-  Desc: "desc",
-} as const;
-/**
- * The sort order. The default is `desc`.
- */
-export type SortOrder = ClosedEnum<typeof SortOrder>;
-
-/**
- * DEPRECATED. Use `sortBy` instead.
- *
- * @deprecated enum: This will be removed in a future release, please migrate away from it as soon as possible.
- */
-export const Sort = {
-  CreatedAt: "createdAt",
-  Clicks: "clicks",
-  SaleAmount: "saleAmount",
-  LastClicked: "lastClicked",
-} as const;
-/**
- * DEPRECATED. Use `sortBy` instead.
- *
- * @deprecated enum: This will be removed in a future release, please migrate away from it as soon as possible.
- */
-export type Sort = ClosedEnum<typeof Sort>;
 
 export type GetLinksRequest = {
   /**
@@ -105,18 +60,6 @@ export type GetLinksRequest = {
    * DEPRECATED. Filter for links that have at least one tag assigned to them.
    */
   withTags?: boolean | undefined;
-  /**
-   * The field to sort the links by. The default is `createdAt`.
-   */
-  sortBy?: SortBy | undefined;
-  /**
-   * The sort order. The default is `desc`.
-   */
-  sortOrder?: SortOrder | undefined;
-  /**
-   * DEPRECATED. Use `sortBy` instead.
-   */
-  sort?: Sort | undefined;
   /**
    * If specified, the query only searches for results before this cursor. Mutually exclusive with `startingAfter`.
    */
@@ -176,19 +119,6 @@ export function queryParamTagNamesToJSON(
 }
 
 /** @internal */
-export const SortBy$outboundSchema: z.ZodNativeEnum<typeof SortBy> = z
-  .nativeEnum(SortBy);
-
-/** @internal */
-export const SortOrder$outboundSchema: z.ZodNativeEnum<typeof SortOrder> = z
-  .nativeEnum(SortOrder);
-
-/** @internal */
-export const Sort$outboundSchema: z.ZodNativeEnum<typeof Sort> = z.nativeEnum(
-  Sort,
-);
-
-/** @internal */
 export type GetLinksRequest$Outbound = {
   domain?: string | undefined;
   tagId?: string | undefined;
@@ -200,9 +130,6 @@ export type GetLinksRequest$Outbound = {
   tenantId?: string | undefined;
   showArchived: boolean;
   withTags: boolean;
-  sortBy: string;
-  sortOrder: string;
-  sort: string;
   endingBefore?: string | undefined;
   startingAfter?: string | undefined;
   page?: number | undefined;
@@ -225,9 +152,6 @@ export const GetLinksRequest$outboundSchema: z.ZodType<
   tenantId: z.string().optional(),
   showArchived: z.boolean().default(false),
   withTags: z.boolean().default(false),
-  sortBy: SortBy$outboundSchema.default("createdAt"),
-  sortOrder: SortOrder$outboundSchema.default("desc"),
-  sort: Sort$outboundSchema.default("createdAt"),
   endingBefore: z.string().optional(),
   startingAfter: z.string().optional(),
   page: z.number().optional(),

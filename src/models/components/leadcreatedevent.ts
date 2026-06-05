@@ -28,7 +28,7 @@ export type Customer = {
   /**
    * Name of the customer.
    */
-  name: string;
+  name?: string | null | undefined;
   /**
    * Email of the customer.
    */
@@ -326,7 +326,7 @@ export const Customer$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: z.string(),
-  name: z.string(),
+  name: z.nullable(z.string()).optional(),
   email: z.nullable(z.string()).optional(),
   avatar: z.nullable(z.string()).optional(),
   externalId: z.string(),
@@ -341,7 +341,7 @@ export const Customer$inboundSchema: z.ZodType<
 /** @internal */
 export type Customer$Outbound = {
   id: string;
-  name: string;
+  name?: string | null | undefined;
   email?: string | null | undefined;
   avatar?: string | null | undefined;
   externalId: string;
@@ -361,7 +361,7 @@ export const Customer$outboundSchema: z.ZodType<
   Customer
 > = z.object({
   id: z.string(),
-  name: z.string(),
+  name: z.nullable(z.string()).optional(),
   email: z.nullable(z.string()).optional(),
   avatar: z.nullable(z.string()).optional(),
   externalId: z.string(),

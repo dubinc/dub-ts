@@ -15,7 +15,6 @@ let value: SaleCreatedEvent = {
     eventName: "<value>",
     customer: {
       id: "<id>",
-      name: "<value>",
       externalId: "<id>",
       createdAt: "1732125211331",
     },

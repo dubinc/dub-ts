@@ -10,6 +10,7 @@ export * from "./bulkdeletelinks.js";
 export * from "./bulkupdatecommissions.js";
 export * from "./bulkupdatelinks.js";
 export * from "./checkdomainstatus.js";
+export * from "./createcommission.js";
 export * from "./createdomain.js";
 export * from "./createfolder.js";
 export * from "./createlink.js";
