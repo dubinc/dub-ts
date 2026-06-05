@@ -1,6 +1,6 @@
 # QueryParamSortOrder
 
-The sort order. The default is `desc`.
+The order to sort the tags by.
 
 ## Example Usage
 

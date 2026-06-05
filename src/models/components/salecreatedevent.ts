@@ -28,7 +28,7 @@ export type SaleCreatedEventCustomer = {
   /**
    * Name of the customer.
    */
-  name: string;
+  name?: string | null | undefined;
   /**
    * Email of the customer.
    */
@@ -334,7 +334,7 @@ export const SaleCreatedEventCustomer$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: z.string(),
-  name: z.string(),
+  name: z.nullable(z.string()).optional(),
   email: z.nullable(z.string()).optional(),
   avatar: z.nullable(z.string()).optional(),
   externalId: z.string(),
@@ -349,7 +349,7 @@ export const SaleCreatedEventCustomer$inboundSchema: z.ZodType<
 /** @internal */
 export type SaleCreatedEventCustomer$Outbound = {
   id: string;
-  name: string;
+  name?: string | null | undefined;
   email?: string | null | undefined;
   avatar?: string | null | undefined;
   externalId: string;
@@ -369,7 +369,7 @@ export const SaleCreatedEventCustomer$outboundSchema: z.ZodType<
   SaleCreatedEventCustomer
 > = z.object({
   id: z.string(),
-  name: z.string(),
+  name: z.nullable(z.string()).optional(),
   email: z.nullable(z.string()).optional(),
   avatar: z.nullable(z.string()).optional(),
   externalId: z.string(),

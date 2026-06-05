@@ -8,30 +8,26 @@ import { ClosedEnum } from "../../types/enums.js";
 /**
  * The field to sort the tags by.
  */
-export const GetTagsQueryParamSortBy = {
+export const QueryParamSortBy = {
   Name: "name",
   CreatedAt: "createdAt",
 } as const;
 /**
  * The field to sort the tags by.
  */
-export type GetTagsQueryParamSortBy = ClosedEnum<
-  typeof GetTagsQueryParamSortBy
->;
+export type QueryParamSortBy = ClosedEnum<typeof QueryParamSortBy>;
 
 /**
  * The order to sort the tags by.
  */
-export const GetTagsQueryParamSortOrder = {
+export const QueryParamSortOrder = {
   Asc: "asc",
   Desc: "desc",
 } as const;
 /**
  * The order to sort the tags by.
  */
-export type GetTagsQueryParamSortOrder = ClosedEnum<
-  typeof GetTagsQueryParamSortOrder
->;
+export type QueryParamSortOrder = ClosedEnum<typeof QueryParamSortOrder>;
 
 /**
  * IDs of tags to filter by.
@@ -42,11 +38,11 @@ export type GetTagsRequest = {
   /**
    * The field to sort the tags by.
    */
-  sortBy?: GetTagsQueryParamSortBy | undefined;
+  sortBy?: QueryParamSortBy | undefined;
   /**
    * The order to sort the tags by.
    */
-  sortOrder?: GetTagsQueryParamSortOrder | undefined;
+  sortOrder?: QueryParamSortOrder | undefined;
   /**
    * The search term to filter the tags by.
    */
@@ -66,14 +62,14 @@ export type GetTagsRequest = {
 };
 
 /** @internal */
-export const GetTagsQueryParamSortBy$outboundSchema: z.ZodNativeEnum<
-  typeof GetTagsQueryParamSortBy
-> = z.nativeEnum(GetTagsQueryParamSortBy);
+export const QueryParamSortBy$outboundSchema: z.ZodNativeEnum<
+  typeof QueryParamSortBy
+> = z.nativeEnum(QueryParamSortBy);
 
 /** @internal */
-export const GetTagsQueryParamSortOrder$outboundSchema: z.ZodNativeEnum<
-  typeof GetTagsQueryParamSortOrder
-> = z.nativeEnum(GetTagsQueryParamSortOrder);
+export const QueryParamSortOrder$outboundSchema: z.ZodNativeEnum<
+  typeof QueryParamSortOrder
+> = z.nativeEnum(QueryParamSortOrder);
 
 /** @internal */
 export type Ids$Outbound = string | Array<string>;
@@ -102,8 +98,8 @@ export const GetTagsRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetTagsRequest
 > = z.object({
-  sortBy: GetTagsQueryParamSortBy$outboundSchema.default("name"),
-  sortOrder: GetTagsQueryParamSortOrder$outboundSchema.default("asc"),
+  sortBy: QueryParamSortBy$outboundSchema.default("name"),
+  sortOrder: QueryParamSortOrder$outboundSchema.default("asc"),
   search: z.string().optional(),
   ids: z.union([z.string(), z.array(z.string())]).optional(),
   page: z.number().optional(),

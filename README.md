@@ -131,6 +131,7 @@ run();
 ### [Commissions](docs/sdks/commissions/README.md)
 
 * [list](docs/sdks/commissions/README.md#list) - List all commissions
+* [create](docs/sdks/commissions/README.md#create) - Create commission
 * [update](docs/sdks/commissions/README.md#update) - Update a commission
 * [updateMany](docs/sdks/commissions/README.md#updatemany) - Bulk update commissions
 
@@ -529,6 +530,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`bountiesApproveSubmission`](docs/sdks/bounties/README.md#approvesubmission) - Approve a bounty submission
 - [`bountiesListSubmissions`](docs/sdks/bounties/README.md#listsubmissions) - List bounty submissions
 - [`bountiesRejectSubmission`](docs/sdks/bounties/README.md#rejectsubmission) - Reject a bounty submission
+- [`commissionsCreate`](docs/sdks/commissions/README.md#create) - Create commission
 - [`commissionsList`](docs/sdks/commissions/README.md#list) - List all commissions
 - [`commissionsUpdate`](docs/sdks/commissions/README.md#update) - Update a commission
 - [`commissionsUpdateMany`](docs/sdks/commissions/README.md#updatemany) - Bulk update commissions

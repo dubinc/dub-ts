@@ -57,25 +57,25 @@ export type QueryParamSaleType = ClosedEnum<typeof QueryParamSaleType>;
 /**
  * The sort order. The default is `desc`.
  */
-export const QueryParamSortOrder = {
+export const SortOrder = {
   Asc: "asc",
   Desc: "desc",
 } as const;
 /**
  * The sort order. The default is `desc`.
  */
-export type QueryParamSortOrder = ClosedEnum<typeof QueryParamSortOrder>;
+export type SortOrder = ClosedEnum<typeof SortOrder>;
 
 /**
  * The field to sort the events by. The default is `timestamp`.
  */
-export const QueryParamSortBy = {
+export const SortBy = {
   Timestamp: "timestamp",
 } as const;
 /**
  * The field to sort the events by. The default is `timestamp`.
  */
-export type QueryParamSortBy = ClosedEnum<typeof QueryParamSortBy>;
+export type SortBy = ClosedEnum<typeof SortBy>;
 
 /**
  * DEPRECATED. Use `sortOrder` instead.
@@ -251,11 +251,11 @@ export type ListEventsRequest = {
   /**
    * The sort order. The default is `desc`.
    */
-  sortOrder?: QueryParamSortOrder | undefined;
+  sortOrder?: SortOrder | undefined;
   /**
    * The field to sort the events by. The default is `timestamp`.
    */
-  sortBy?: QueryParamSortBy | undefined;
+  sortBy?: SortBy | undefined;
   /**
    * DEPRECATED. Use `sortOrder` instead.
    */
@@ -498,7 +498,7 @@ export type ResponseBodyCustomer = {
   /**
    * Name of the customer.
    */
-  name: string;
+  name?: string | null | undefined;
   /**
    * Email of the customer.
    */
@@ -843,7 +843,7 @@ export type ListEventsResponseBodyCustomer = {
   /**
    * Name of the customer.
    */
-  name: string;
+  name?: string | null | undefined;
   /**
    * Email of the customer.
    */
@@ -1264,14 +1264,12 @@ export const QueryParamSaleType$outboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(QueryParamSaleType);
 
 /** @internal */
-export const QueryParamSortOrder$outboundSchema: z.ZodNativeEnum<
-  typeof QueryParamSortOrder
-> = z.nativeEnum(QueryParamSortOrder);
+export const SortOrder$outboundSchema: z.ZodNativeEnum<typeof SortOrder> = z
+  .nativeEnum(SortOrder);
 
 /** @internal */
-export const QueryParamSortBy$outboundSchema: z.ZodNativeEnum<
-  typeof QueryParamSortBy
-> = z.nativeEnum(QueryParamSortBy);
+export const SortBy$outboundSchema: z.ZodNativeEnum<typeof SortBy> = z
+  .nativeEnum(SortBy);
 
 /** @internal */
 export const Order$outboundSchema: z.ZodNativeEnum<typeof Order> = z.nativeEnum(
@@ -1371,8 +1369,8 @@ export const ListEventsRequest$outboundSchema: z.ZodType<
   qr: z.boolean().optional(),
   page: z.number().default(1),
   limit: z.number().default(100),
-  sortOrder: QueryParamSortOrder$outboundSchema.default("desc"),
-  sortBy: QueryParamSortBy$outboundSchema.default("timestamp"),
+  sortOrder: SortOrder$outboundSchema.default("desc"),
+  sortBy: SortBy$outboundSchema.default("timestamp"),
   order: Order$outboundSchema.default("desc"),
 }).transform((v) => {
   return remap$(v, {
@@ -1568,7 +1566,7 @@ export const ResponseBodyCustomer$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: z.string(),
-  name: z.string(),
+  name: z.nullable(z.string()).optional(),
   email: z.nullable(z.string()).optional(),
   avatar: z.nullable(z.string()).optional(),
   externalId: z.string(),
@@ -1781,7 +1779,7 @@ export const ListEventsResponseBodyCustomer$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: z.string(),
-  name: z.string(),
+  name: z.nullable(z.string()).optional(),
   email: z.nullable(z.string()).optional(),
   avatar: z.nullable(z.string()).optional(),
   externalId: z.string(),

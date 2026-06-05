@@ -1,17 +1,17 @@
 # QueryParamSortBy
 
-The field to sort the events by. The default is `timestamp`.
+The field to sort the tags by.
 
 ## Example Usage
 
 ```typescript
 import { QueryParamSortBy } from "dub/models/operations";
 
-let value: QueryParamSortBy = "timestamp";
+let value: QueryParamSortBy = "name";
 ```
 
 ## Values
 
 ```typescript
-"timestamp"
+"name" | "createdAt"
 ```
