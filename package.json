@@ -2,6 +2,7 @@
   "name": "dub",
   "version": "0.72.1",
   "author": "Dub",
+  "license": "MIT",
   "type": "module",
   "tshy": {
     "sourceDialects": [
