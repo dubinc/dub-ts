@@ -13,5 +13,5 @@ let value: CreatePartnerDefaultPayoutMethod = "connect";
 ## Values
 
 ```typescript
-"connect" | "stablecoin" | "paypal"
+"connect" | "stablecoin" | "paypal" | "tremendous"
 ```

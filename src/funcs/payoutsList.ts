@@ -110,6 +110,7 @@ async function $do(
   const path = pathToFunc("/payouts")();
 
   const query = encodeFormQuery({
+    "groupId": payload?.groupId,
     "invoiceId": payload?.invoiceId,
     "page": payload?.page,
     "pageSize": payload?.pageSize,

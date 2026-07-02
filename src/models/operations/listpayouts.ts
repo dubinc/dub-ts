@@ -74,6 +74,10 @@ export type ListPayoutsRequest = {
    */
   invoiceId?: string | undefined;
   /**
+   * Filter the list of payouts by the associated partner group. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `group_abc`, `group_abc,group_xyz`, `-group_abc`.
+   */
+  groupId?: string | undefined;
+  /**
    * The field to sort the list of payouts by.
    */
   sortBy?: ListPayoutsQueryParamSortBy | undefined;
@@ -112,6 +116,7 @@ export const Method = {
   Connect: "connect",
   Stablecoin: "stablecoin",
   Paypal: "paypal",
+  Tremendous: "tremendous",
 } as const;
 export type Method = ClosedEnum<typeof Method>;
 
@@ -122,6 +127,7 @@ export const ListPayoutsDefaultPayoutMethod = {
   Connect: "connect",
   Stablecoin: "stablecoin",
   Paypal: "paypal",
+  Tremendous: "tremendous",
 } as const;
 /**
  * The partner's default payout method. Connect: Bank account payouts via Stripe Connect; Stablecoin: USDC payouts directly to a crypto wallet; PayPal: Payouts via PayPal
@@ -218,6 +224,7 @@ export type ListPayoutsRequest$Outbound = {
   partnerId?: string | undefined;
   tenantId?: string | undefined;
   invoiceId?: string | undefined;
+  groupId?: string | undefined;
   sortBy: string;
   sortOrder: string;
   page?: number | undefined;
@@ -234,6 +241,7 @@ export const ListPayoutsRequest$outboundSchema: z.ZodType<
   partnerId: z.string().optional(),
   tenantId: z.string().optional(),
   invoiceId: z.string().optional(),
+  groupId: z.string().optional(),
   sortBy: ListPayoutsQueryParamSortBy$outboundSchema.default("amount"),
   sortOrder: ListPayoutsQueryParamSortOrder$outboundSchema.default("desc"),
   page: z.number().optional(),

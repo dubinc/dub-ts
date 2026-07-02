@@ -483,6 +483,7 @@ export type ListEventsResponseBodyClick = {
   device: string;
   browser: string;
   os: string;
+  ua?: string | null | undefined;
   trigger?: string | null | undefined;
   referer: string;
   refererUrl: string;
@@ -660,6 +661,7 @@ export type ResponseBodyClick = {
   device: string;
   browser: string;
   os: string;
+  ua?: string | null | undefined;
   trigger?: string | null | undefined;
   referer: string;
   refererUrl: string;
@@ -986,6 +988,7 @@ export type ListEventsResponseBodyEventsClick = {
   device: string;
   browser: string;
   os: string;
+  ua?: string | null | undefined;
   trigger?: string | null | undefined;
   referer: string;
   refererUrl: string;
@@ -1542,6 +1545,7 @@ export const ListEventsResponseBodyClick$inboundSchema: z.ZodType<
   device: z.string(),
   browser: z.string(),
   os: z.string(),
+  ua: z.nullable(z.string()).optional(),
   trigger: z.nullable(z.string()).optional(),
   referer: z.string(),
   refererUrl: z.string(),
@@ -1655,6 +1659,7 @@ export const ResponseBodyClick$inboundSchema: z.ZodType<
   device: z.string(),
   browser: z.string(),
   os: z.string(),
+  ua: z.nullable(z.string()).optional(),
   trigger: z.nullable(z.string()).optional(),
   referer: z.string(),
   refererUrl: z.string(),
@@ -1862,6 +1867,7 @@ export const ListEventsResponseBodyEventsClick$inboundSchema: z.ZodType<
   device: z.string(),
   browser: z.string(),
   os: z.string(),
+  ua: z.nullable(z.string()).optional(),
   trigger: z.nullable(z.string()).optional(),
   referer: z.string(),
   refererUrl: z.string(),

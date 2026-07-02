@@ -5,11 +5,11 @@
 ```typescript
 import { Method } from "dub/models/operations";
 
-let value: Method = "connect";
+let value: Method = "stablecoin";
 ```
 
 ## Values
 
 ```typescript
-"connect" | "stablecoin" | "paypal"
+"connect" | "stablecoin" | "paypal" | "tremendous"
 ```

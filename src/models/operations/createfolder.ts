@@ -6,14 +6,14 @@ import * as z from "zod/v3";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
- * The access level of the folder within the workspace.
+ * The workspace-level access level settings for the folder. Default is `write` which allows full access to the folder for all team members. The other options are `read` (view-only access) and `null` (no access) and are only available on Business plans and above.
  */
 export const AccessLevel = {
   Write: "write",
   Read: "read",
 } as const;
 /**
- * The access level of the folder within the workspace.
+ * The workspace-level access level settings for the folder. Default is `write` which allows full access to the folder for all team members. The other options are `read` (view-only access) and `null` (no access) and are only available on Business plans and above.
  */
 export type AccessLevel = ClosedEnum<typeof AccessLevel>;
 
@@ -27,7 +27,7 @@ export type CreateFolderRequestBody = {
    */
   description?: string | null | undefined;
   /**
-   * The access level of the folder within the workspace.
+   * The workspace-level access level settings for the folder. Default is `write` which allows full access to the folder for all team members. The other options are `read` (view-only access) and `null` (no access) and are only available on Business plans and above.
    */
   accessLevel?: AccessLevel | null | undefined;
 };
@@ -51,7 +51,7 @@ export const CreateFolderRequestBody$outboundSchema: z.ZodType<
 > = z.object({
   name: z.string(),
   description: z.nullable(z.string()).optional(),
-  accessLevel: z.nullable(AccessLevel$outboundSchema).default(null),
+  accessLevel: z.nullable(AccessLevel$outboundSchema.default("write")),
 });
 
 export function createFolderRequestBodyToJSON(
