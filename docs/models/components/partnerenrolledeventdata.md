@@ -14,7 +14,7 @@ let value: PartnerEnrolledEventData = {
   country: "Belize",
   companyName: "Gutmann - Hudson",
   networkStatus: "draft",
-  defaultPayoutMethod: "connect",
+  defaultPayoutMethod: "stablecoin",
   paypalEmail: "<value>",
   stripeConnectId: "<id>",
   payoutsEnabledAt: "<value>",

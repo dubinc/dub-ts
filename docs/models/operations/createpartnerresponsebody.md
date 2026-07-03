@@ -16,7 +16,7 @@ let value: CreatePartnerResponseBody = {
   country: null,
   companyName: "Nicolas - Deckow",
   networkStatus: "trusted",
-  defaultPayoutMethod: "paypal",
+  defaultPayoutMethod: "tremendous",
   paypalEmail: null,
   stripeConnectId: "<id>",
   payoutsEnabledAt: "<value>",

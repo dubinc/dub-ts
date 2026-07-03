@@ -17,7 +17,7 @@ let value: ListPayoutsResponseBody = {
   initiatedAt: "<value>",
   paidAt: null,
   mode: null,
-  method: "paypal",
+  method: "tremendous",
   partner: {
     id: "<id>",
     name: "<value>",

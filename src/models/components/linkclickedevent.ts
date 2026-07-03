@@ -31,6 +31,7 @@ export type Click = {
   device: string;
   browser: string;
   os: string;
+  ua?: string | null | undefined;
   trigger?: string | null | undefined;
   referer: string;
   refererUrl: string;
@@ -243,6 +244,7 @@ export const Click$inboundSchema: z.ZodType<Click, z.ZodTypeDef, unknown> = z
     device: z.string(),
     browser: z.string(),
     os: z.string(),
+    ua: z.nullable(z.string()).optional(),
     trigger: z.nullable(z.string()).optional(),
     referer: z.string(),
     refererUrl: z.string(),
@@ -261,6 +263,7 @@ export type Click$Outbound = {
   device: string;
   browser: string;
   os: string;
+  ua?: string | null | undefined;
   trigger?: string | null | undefined;
   referer: string;
   refererUrl: string;
@@ -284,6 +287,7 @@ export const Click$outboundSchema: z.ZodType<
   device: z.string(),
   browser: z.string(),
   os: z.string(),
+  ua: z.nullable(z.string()).optional(),
   trigger: z.nullable(z.string()).optional(),
   referer: z.string(),
   refererUrl: z.string(),

@@ -7,11 +7,11 @@ The partner's default payout method. Connect: Bank account payouts via Stripe Co
 ```typescript
 import { DefaultPayoutMethod } from "dub/models/operations";
 
-let value: DefaultPayoutMethod = "connect";
+let value: DefaultPayoutMethod = "stablecoin";
 ```
 
 ## Values
 
 ```typescript
-"connect" | "stablecoin" | "paypal"
+"connect" | "stablecoin" | "paypal" | "tremendous"
 ```

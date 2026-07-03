@@ -19,6 +19,20 @@ export type CheckDomainStatusRequest = {
   domains: string | Array<string>;
 };
 
+/**
+ * Price details for the domain. Will be null if the domain is not available.
+ */
+export type Prices = {
+  /**
+   * The domain's registration price in USD cents.
+   */
+  registration: number | null;
+  /**
+   * The domain's renewal price in USD cents.
+   */
+  renewal: number | null;
+};
+
 export type CheckDomainStatusResponseBody = {
   /**
    * The domain name.
@@ -29,13 +43,19 @@ export type CheckDomainStatusResponseBody = {
    */
   available: boolean;
   /**
-   * The price description.
-   */
-  price: string | null;
-  /**
    * Whether the domain is a premium domain.
    */
   premium: boolean | null;
+  /**
+   * Price details for the domain. Will be null if the domain is not available.
+   */
+  prices: Prices | null;
+  /**
+   * Deprecated: Use `prices` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  price: string | null;
 };
 
 /** @internal */
@@ -75,6 +95,23 @@ export function checkDomainStatusRequestToJSON(
 }
 
 /** @internal */
+export const Prices$inboundSchema: z.ZodType<Prices, z.ZodTypeDef, unknown> = z
+  .object({
+    registration: z.nullable(z.number()),
+    renewal: z.nullable(z.number()),
+  });
+
+export function pricesFromJSON(
+  jsonString: string,
+): SafeParseResult<Prices, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Prices$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Prices' from JSON`,
+  );
+}
+
+/** @internal */
 export const CheckDomainStatusResponseBody$inboundSchema: z.ZodType<
   CheckDomainStatusResponseBody,
   z.ZodTypeDef,
@@ -82,8 +119,9 @@ export const CheckDomainStatusResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   domain: z.string(),
   available: z.boolean(),
-  price: z.nullable(z.string()),
   premium: z.nullable(z.boolean()),
+  prices: z.nullable(z.lazy(() => Prices$inboundSchema)),
+  price: z.nullable(z.string()),
 });
 
 export function checkDomainStatusResponseBodyFromJSON(

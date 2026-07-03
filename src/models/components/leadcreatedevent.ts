@@ -82,6 +82,7 @@ export type LeadCreatedEventClick = {
   device: string;
   browser: string;
   os: string;
+  ua?: string | null | undefined;
   trigger?: string | null | undefined;
   referer: string;
   refererUrl: string;
@@ -403,6 +404,7 @@ export const LeadCreatedEventClick$inboundSchema: z.ZodType<
   device: z.string(),
   browser: z.string(),
   os: z.string(),
+  ua: z.nullable(z.string()).optional(),
   trigger: z.nullable(z.string()).optional(),
   referer: z.string(),
   refererUrl: z.string(),
@@ -421,6 +423,7 @@ export type LeadCreatedEventClick$Outbound = {
   device: string;
   browser: string;
   os: string;
+  ua?: string | null | undefined;
   trigger?: string | null | undefined;
   referer: string;
   refererUrl: string;
@@ -444,6 +447,7 @@ export const LeadCreatedEventClick$outboundSchema: z.ZodType<
   device: z.string(),
   browser: z.string(),
   os: z.string(),
+  ua: z.nullable(z.string()).optional(),
   trigger: z.nullable(z.string()).optional(),
   referer: z.string(),
   refererUrl: z.string(),

@@ -15,14 +15,14 @@ export const Type = {
 export type Type = ClosedEnum<typeof Type>;
 
 /**
- * The access level of the folder within the workspace.
+ * The workspace-level access level settings for the folder. Default is `write` which allows full access to the folder for all team members. The other options are `read` (view-only access) and `null` (no access) and are only available on Business plans and above.
  */
 export const AccessLevel = {
   Write: "write",
   Read: "read",
 } as const;
 /**
- * The access level of the folder within the workspace.
+ * The workspace-level access level settings for the folder. Default is `write` which allows full access to the folder for all team members. The other options are `read` (view-only access) and `null` (no access) and are only available on Business plans and above.
  */
 export type AccessLevel = ClosedEnum<typeof AccessLevel>;
 
@@ -41,7 +41,7 @@ export type FolderSchema = {
   description: string | null;
   type: Type;
   /**
-   * The access level of the folder within the workspace.
+   * The workspace-level access level settings for the folder. Default is `write` which allows full access to the folder for all team members. The other options are `read` (view-only access) and `null` (no access) and are only available on Business plans and above.
    */
   accessLevel: AccessLevel | null;
   /**
@@ -73,7 +73,7 @@ export const FolderSchema$inboundSchema: z.ZodType<
   name: z.string(),
   description: z.nullable(z.string()),
   type: Type$inboundSchema,
-  accessLevel: z.nullable(AccessLevel$inboundSchema).default(null),
+  accessLevel: z.nullable(AccessLevel$inboundSchema.default("write")),
   createdAt: z.string(),
   updatedAt: z.string(),
 });

@@ -82,6 +82,7 @@ export type SaleCreatedEventClick = {
   device: string;
   browser: string;
   os: string;
+  ua?: string | null | undefined;
   trigger?: string | null | undefined;
   referer: string;
   refererUrl: string;
@@ -415,6 +416,7 @@ export const SaleCreatedEventClick$inboundSchema: z.ZodType<
   device: z.string(),
   browser: z.string(),
   os: z.string(),
+  ua: z.nullable(z.string()).optional(),
   trigger: z.nullable(z.string()).optional(),
   referer: z.string(),
   refererUrl: z.string(),
@@ -433,6 +435,7 @@ export type SaleCreatedEventClick$Outbound = {
   device: string;
   browser: string;
   os: string;
+  ua?: string | null | undefined;
   trigger?: string | null | undefined;
   referer: string;
   refererUrl: string;
@@ -456,6 +459,7 @@ export const SaleCreatedEventClick$outboundSchema: z.ZodType<
   device: z.string(),
   browser: z.string(),
   os: z.string(),
+  ua: z.nullable(z.string()).optional(),
   trigger: z.nullable(z.string()).optional(),
   referer: z.string(),
   refererUrl: z.string(),

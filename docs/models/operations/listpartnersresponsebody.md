@@ -14,7 +14,7 @@ let value: ListPartnersResponseBody = {
   country: "Guyana",
   companyName: "Marks Inc",
   networkStatus: "approved",
-  defaultPayoutMethod: "paypal",
+  defaultPayoutMethod: "tremendous",
   paypalEmail: "<value>",
   stripeConnectId: "<id>",
   payoutsEnabledAt: "<value>",
