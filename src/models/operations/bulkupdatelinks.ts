@@ -138,10 +138,6 @@ export type Data = {
    */
   ref?: string | null | undefined;
   /**
-   * An array of webhook IDs to trigger when the link is clicked. These webhooks will receive click event data.
-   */
-  webhookIds?: Array<string> | null | undefined;
-  /**
    * An array of A/B test URLs and the percentage of traffic to send to each URL.
    */
   testVariants?: Array<BulkUpdateLinksTestVariants> | null | undefined;
@@ -165,6 +161,12 @@ export type Data = {
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   tagId?: string | null | undefined;
+  /**
+   * Deprecated: You can now enable link.clicked webhooks for all links in a workspace or folder without passing this field manually. An array of webhook IDs to trigger when the link is clicked. These webhooks will receive click event data.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  webhookIds?: Array<string> | null | undefined;
 };
 
 export type BulkUpdateLinksRequestBody = {
@@ -272,12 +274,12 @@ export type Data$Outbound = {
   utm_term?: string | null | undefined;
   utm_content?: string | null | undefined;
   ref?: string | null | undefined;
-  webhookIds?: Array<string> | null | undefined;
   testVariants?: Array<BulkUpdateLinksTestVariants$Outbound> | null | undefined;
   testStartedAt?: string | null | undefined;
   testCompletedAt?: string | null | undefined;
   publicStats?: boolean | undefined;
   tagId?: string | null | undefined;
+  webhookIds?: Array<string> | null | undefined;
 };
 
 /** @internal */
@@ -312,7 +314,6 @@ export const Data$outboundSchema: z.ZodType<Data$Outbound, z.ZodTypeDef, Data> =
     utmTerm: z.nullable(z.string()).optional(),
     utmContent: z.nullable(z.string()).optional(),
     ref: z.nullable(z.string()).optional(),
-    webhookIds: z.nullable(z.array(z.string())).optional(),
     testVariants: z.nullable(
       z.array(z.lazy(() => BulkUpdateLinksTestVariants$outboundSchema)),
     ).optional(),
@@ -320,6 +321,7 @@ export const Data$outboundSchema: z.ZodType<Data$Outbound, z.ZodTypeDef, Data> =
     testCompletedAt: z.nullable(z.string()).optional(),
     publicStats: z.boolean().optional(),
     tagId: z.nullable(z.string()).optional(),
+    webhookIds: z.nullable(z.array(z.string())).optional(),
   }).transform((v) => {
     return remap$(v, {
       utmSource: "utm_source",

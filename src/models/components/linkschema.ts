@@ -127,10 +127,6 @@ export type LinkSchema = {
    */
   folderId: string | null;
   /**
-   * The IDs of the webhooks that the short link is associated with.
-   */
-  webhookIds: Array<string>;
-  /**
    * The comments for the short link.
    */
   comments: string | null;
@@ -226,6 +222,12 @@ export type LinkSchema = {
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   projectId: string;
+  /**
+   * Deprecated: You can now enable link.clicked webhooks for all links in a workspace or folder without passing this field manually. An array of webhook IDs to trigger when the link is clicked. These webhooks will receive click event data.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  webhookIds: Array<string>;
 };
 
 /** @internal */
@@ -281,7 +283,6 @@ export const LinkSchema$inboundSchema: z.ZodType<
   publicStats: z.boolean().default(false),
   tags: z.nullable(z.array(LinkTagSchemaOutput$inboundSchema)),
   folderId: z.nullable(z.string()),
-  webhookIds: z.array(z.string()),
   comments: z.nullable(z.string()),
   shortLink: z.string(),
   qrCode: z.string(),
@@ -306,6 +307,7 @@ export const LinkSchema$inboundSchema: z.ZodType<
   updatedAt: z.string(),
   tagId: z.nullable(z.string()),
   projectId: z.string(),
+  webhookIds: z.array(z.string()),
 }).transform((v) => {
   return remap$(v, {
     "utm_source": "utmSource",

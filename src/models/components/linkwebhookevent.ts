@@ -117,10 +117,6 @@ export type Data = {
    */
   folderId: string | null;
   /**
-   * The IDs of the webhooks that the short link is associated with.
-   */
-  webhookIds: Array<string>;
-  /**
    * The comments for the short link.
    */
   comments: string | null;
@@ -198,6 +194,12 @@ export type Data = {
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   projectId: string;
+  /**
+   * Deprecated: You can now enable link.clicked webhooks for all links in a workspace or folder without passing this field manually. An array of webhook IDs to trigger when the link is clicked. These webhooks will receive click event data.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  webhookIds: Array<string>;
 };
 
 /**
@@ -330,7 +332,6 @@ export const Data$inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z
     publicStats: z.boolean(),
     tags: z.nullable(z.array(LinkTagSchema$inboundSchema)),
     folderId: z.nullable(z.string()),
-    webhookIds: z.array(z.string()),
     comments: z.nullable(z.string()),
     shortLink: z.string(),
     qrCode: z.string(),
@@ -356,6 +357,7 @@ export const Data$inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z
     updatedAt: z.string(),
     tagId: z.nullable(z.string()),
     projectId: z.string(),
+    webhookIds: z.array(z.string()),
   }).transform((v) => {
     return remap$(v, {
       "utm_source": "utmSource",
@@ -394,7 +396,6 @@ export type Data$Outbound = {
   publicStats: boolean;
   tags: Array<LinkTagSchema$Outbound> | null;
   folderId: string | null;
-  webhookIds: Array<string>;
   comments: string | null;
   shortLink: string;
   qrCode: string;
@@ -421,6 +422,7 @@ export type Data$Outbound = {
   updatedAt: string;
   tagId: string | null;
   projectId: string;
+  webhookIds: Array<string>;
 };
 
 /** @internal */
@@ -453,7 +455,6 @@ export const Data$outboundSchema: z.ZodType<Data$Outbound, z.ZodTypeDef, Data> =
     publicStats: z.boolean(),
     tags: z.nullable(z.array(LinkTagSchema$outboundSchema)),
     folderId: z.nullable(z.string()),
-    webhookIds: z.array(z.string()),
     comments: z.nullable(z.string()),
     shortLink: z.string(),
     qrCode: z.string(),
@@ -479,6 +480,7 @@ export const Data$outboundSchema: z.ZodType<Data$Outbound, z.ZodTypeDef, Data> =
     updatedAt: z.string(),
     tagId: z.nullable(z.string()),
     projectId: z.string(),
+    webhookIds: z.array(z.string()),
   }).transform((v) => {
     return remap$(v, {
       utmSource: "utm_source",
