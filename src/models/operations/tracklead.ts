@@ -150,7 +150,7 @@ export const TrackLeadRequestBody$outboundSchema: z.ZodType<
   customerEmail: z.nullable(z.string()).default(null),
   customerAvatar: z.nullable(z.string()).default(null),
   mode: Mode$outboundSchema.default("async"),
-  eventQuantity: z.nullable(z.number()).optional(),
+  eventQuantity: z.nullable(z.number().int()).optional(),
   metadata: z.nullable(z.record(z.any())).optional(),
 });
 

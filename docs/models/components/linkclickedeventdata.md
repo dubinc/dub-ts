@@ -60,11 +60,9 @@ let value: LinkClickedEventData = {
       },
     ],
     folderId: null,
-    webhookIds: [],
-    comments:
-      "yum impartial phew rewarding always taro hastily whereas though shrilly lovingly pish ham for plain whether aboard",
-    shortLink: "https://windy-cantaloupe.biz/",
-    qrCode: "https://husky-cinder.com/",
+    comments: null,
+    shortLink: "https://small-story.net",
+    qrCode: "https://international-cassava.info/",
     utmSource: "<value>",
     utmMedium: "<value>",
     utmCampaign: "<value>",
@@ -75,10 +73,13 @@ let value: LinkClickedEventData = {
     userId: "<id>",
     workspaceId: "<id>",
     lastClicked: "<value>",
-    createdAt: "1728121349636",
-    updatedAt: "1735614256942",
+    createdAt: "1726329374510",
+    updatedAt: "1735637432644",
     tagId: "<id>",
     projectId: "<id>",
+    webhookIds: [
+      "<value 1>",
+    ],
   },
 };
 ```
