@@ -266,8 +266,8 @@ export const GetCustomersRequest$outboundSchema: z.ZodType<
   sortOrder: GetCustomersQueryParamSortOrder$outboundSchema.default("desc"),
   endingBefore: z.string().optional(),
   startingAfter: z.string().optional(),
-  page: z.number().optional(),
-  pageSize: z.number().default(100),
+  page: z.number().int().optional(),
+  pageSize: z.number().int().default(100),
 });
 
 export function getCustomersRequestToJSON(

@@ -19,7 +19,7 @@ export type ListDomainsRequest = {
    */
   search?: string | undefined;
   /**
-   * The page number for pagination.
+   * The page number for pagination. The first page is `1`.
    */
   page?: number | undefined;
   /**
@@ -48,8 +48,8 @@ export const ListDomainsRequest$outboundSchema: z.ZodType<
 > = z.object({
   archived: z.boolean().default(false),
   search: z.string().optional(),
-  page: z.number().optional(),
-  pageSize: z.number().default(50),
+  page: z.number().int().optional(),
+  pageSize: z.number().int().default(50),
 });
 
 export function listDomainsRequestToJSON(

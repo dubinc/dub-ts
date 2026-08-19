@@ -11,5 +11,5 @@ let value: ListCommissionsStatus = "paid";
 ## Values
 
 ```typescript
-"pending" | "processed" | "paid" | "refunded" | "duplicate" | "fraud" | "canceled"
+"pending" | "processed" | "paid" | "refunded" | "duplicate" | "fraud" | "canceled" | "hold"
 ```

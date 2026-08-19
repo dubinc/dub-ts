@@ -13,6 +13,12 @@ import {
   CommissionCreatedEvent$outboundSchema,
 } from "./commissioncreatedevent.js";
 import {
+  DiscountCodeWebhookEvent,
+  DiscountCodeWebhookEvent$inboundSchema,
+  DiscountCodeWebhookEvent$Outbound,
+  DiscountCodeWebhookEvent$outboundSchema,
+} from "./discountcodewebhookevent.js";
+import {
   LeadCreatedEvent,
   LeadCreatedEvent$inboundSchema,
   LeadCreatedEvent$Outbound,
@@ -59,7 +65,8 @@ export type WebhookEvent =
   | SaleCreatedEvent
   | PartnerEnrolledEvent
   | PartnerApplicationSubmittedEvent
-  | CommissionCreatedEvent;
+  | CommissionCreatedEvent
+  | DiscountCodeWebhookEvent;
 
 /** @internal */
 export const WebhookEvent$inboundSchema: z.ZodType<
@@ -74,6 +81,7 @@ export const WebhookEvent$inboundSchema: z.ZodType<
   PartnerEnrolledEvent$inboundSchema,
   PartnerApplicationSubmittedEvent$inboundSchema,
   CommissionCreatedEvent$inboundSchema,
+  DiscountCodeWebhookEvent$inboundSchema,
 ]);
 /** @internal */
 export type WebhookEvent$Outbound =
@@ -83,7 +91,8 @@ export type WebhookEvent$Outbound =
   | SaleCreatedEvent$Outbound
   | PartnerEnrolledEvent$Outbound
   | PartnerApplicationSubmittedEvent$Outbound
-  | CommissionCreatedEvent$Outbound;
+  | CommissionCreatedEvent$Outbound
+  | DiscountCodeWebhookEvent$Outbound;
 
 /** @internal */
 export const WebhookEvent$outboundSchema: z.ZodType<
@@ -98,6 +107,7 @@ export const WebhookEvent$outboundSchema: z.ZodType<
   PartnerEnrolledEvent$outboundSchema,
   PartnerApplicationSubmittedEvent$outboundSchema,
   CommissionCreatedEvent$outboundSchema,
+  DiscountCodeWebhookEvent$outboundSchema,
 ]);
 
 export function webhookEventToJSON(webhookEvent: WebhookEvent): string {

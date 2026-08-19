@@ -34,6 +34,7 @@ export const CommissionCreatedEventStatus = {
   Duplicate: "duplicate",
   Fraud: "fraud",
   Canceled: "canceled",
+  Hold: "hold",
 } as const;
 export type CommissionCreatedEventStatus = ClosedEnum<
   typeof CommissionCreatedEventStatus

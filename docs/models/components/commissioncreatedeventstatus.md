@@ -5,11 +5,11 @@
 ```typescript
 import { CommissionCreatedEventStatus } from "dub/models/components";
 
-let value: CommissionCreatedEventStatus = "paid";
+let value: CommissionCreatedEventStatus = "refunded";
 ```
 
 ## Values
 
 ```typescript
-"pending" | "processed" | "paid" | "refunded" | "duplicate" | "fraud" | "canceled"
+"pending" | "processed" | "paid" | "refunded" | "duplicate" | "fraud" | "canceled" | "hold"
 ```

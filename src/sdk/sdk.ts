@@ -7,6 +7,7 @@ import { Analytics } from "./analytics.js";
 import { Bounties } from "./bounties.js";
 import { Commissions } from "./commissions.js";
 import { Customers } from "./customers.js";
+import { DiscountCodes } from "./discountcodes.js";
 import { Domains } from "./domains.js";
 import { EmbedTokens } from "./embedtokens.js";
 import { Events } from "./events.js";
@@ -70,6 +71,11 @@ export class Dub extends ClientSDK {
     return (this._partnerApplications ??= new PartnerApplications(
       this._options,
     ));
+  }
+
+  private _discountCodes?: DiscountCodes;
+  get discountCodes(): DiscountCodes {
+    return (this._discountCodes ??= new DiscountCodes(this._options));
   }
 
   private _commissions?: Commissions;

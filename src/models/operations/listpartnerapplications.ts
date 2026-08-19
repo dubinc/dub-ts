@@ -18,7 +18,7 @@ export type ListPartnerApplicationsRequest = {
    */
   groupId?: string | undefined;
   /**
-   * The page number for pagination.
+   * The page number for pagination. The first page is `1`.
    */
   page?: number | undefined;
   /**
@@ -138,8 +138,8 @@ export const ListPartnerApplicationsRequest$outboundSchema: z.ZodType<
 > = z.object({
   country: z.string().optional(),
   groupId: z.string().optional(),
-  page: z.number().optional(),
-  pageSize: z.number().default(100),
+  page: z.number().int().optional(),
+  pageSize: z.number().int().default(100),
 });
 
 export function listPartnerApplicationsRequestToJSON(

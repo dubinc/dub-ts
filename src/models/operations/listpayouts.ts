@@ -86,7 +86,7 @@ export type ListPayoutsRequest = {
    */
   sortOrder?: ListPayoutsQueryParamSortOrder | undefined;
   /**
-   * The page number for pagination.
+   * The page number for pagination. The first page is `1`.
    */
   page?: number | undefined;
   /**
@@ -244,8 +244,8 @@ export const ListPayoutsRequest$outboundSchema: z.ZodType<
   groupId: z.string().optional(),
   sortBy: ListPayoutsQueryParamSortBy$outboundSchema.default("amount"),
   sortOrder: ListPayoutsQueryParamSortOrder$outboundSchema.default("desc"),
-  page: z.number().optional(),
-  pageSize: z.number().default(100),
+  page: z.number().int().optional(),
+  pageSize: z.number().int().default(100),
 });
 
 export function listPayoutsRequestToJSON(

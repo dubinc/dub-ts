@@ -154,8 +154,8 @@ export const GetLinksRequest$outboundSchema: z.ZodType<
   withTags: z.boolean().default(false),
   endingBefore: z.string().optional(),
   startingAfter: z.string().optional(),
-  page: z.number().optional(),
-  pageSize: z.number().default(100),
+  page: z.number().int().optional(),
+  pageSize: z.number().int().default(100),
 });
 
 export function getLinksRequestToJSON(
