@@ -79,7 +79,7 @@ export type ListBountySubmissionsRequest = {
    */
   sortOrder?: ListBountySubmissionsQueryParamSortOrder | undefined;
   /**
-   * The page number for pagination.
+   * The page number for pagination. The first page is `1`.
    */
   page?: number | undefined;
   /**
@@ -231,8 +231,8 @@ export const ListBountySubmissionsRequest$outboundSchema: z.ZodType<
   sortOrder: ListBountySubmissionsQueryParamSortOrder$outboundSchema.default(
     "asc",
   ),
-  page: z.number().optional(),
-  pageSize: z.number().default(100),
+  page: z.number().int().optional(),
+  pageSize: z.number().int().default(100),
 });
 
 export function listBountySubmissionsRequestToJSON(

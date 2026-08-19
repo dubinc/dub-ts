@@ -84,6 +84,7 @@ export const UpdateCommissionStatus = {
   Duplicate: "duplicate",
   Fraud: "fraud",
   Canceled: "canceled",
+  Hold: "hold",
 } as const;
 export type UpdateCommissionStatus = ClosedEnum<typeof UpdateCommissionStatus>;
 
@@ -191,6 +192,10 @@ export type UpdateCommissionResponseBody = {
   userId?: string | null | undefined;
   createdAt: string;
   updatedAt: string;
+  /**
+   * The date the commission was paid out to the partner. Null if not paid yet.
+   */
+  paidAt: string | null;
   partner: UpdateCommissionPartner;
   customer?: UpdateCommissionCustomer | null | undefined;
 };
@@ -347,6 +352,7 @@ export const UpdateCommissionResponseBody$inboundSchema: z.ZodType<
   userId: z.nullable(z.string()).optional(),
   createdAt: z.string(),
   updatedAt: z.string(),
+  paidAt: z.nullable(z.string()),
   partner: z.lazy(() => UpdateCommissionPartner$inboundSchema),
   customer: z.nullable(z.lazy(() => UpdateCommissionCustomer$inboundSchema))
     .optional(),

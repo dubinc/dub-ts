@@ -142,6 +142,12 @@ run();
 * [delete](docs/sdks/customers/README.md#delete) - Delete a customer
 * [update](docs/sdks/customers/README.md#update) - Update a customer
 
+### [DiscountCodes](docs/sdks/discountcodes/README.md)
+
+* [list](docs/sdks/discountcodes/README.md#list) - List discount codes
+* [create](docs/sdks/discountcodes/README.md#create) - Create a discount code
+* [delete](docs/sdks/discountcodes/README.md#delete) - Delete a discount code
+
 ### [Domains](docs/sdks/domains/README.md)
 
 * [list](docs/sdks/domains/README.md#list) - List all domains
@@ -538,6 +544,9 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`customersGet`](docs/sdks/customers/README.md#get) - Retrieve a customer
 - [`customersList`](docs/sdks/customers/README.md#list) - List all customers
 - [`customersUpdate`](docs/sdks/customers/README.md#update) - Update a customer
+- [`discountCodesCreate`](docs/sdks/discountcodes/README.md#create) - Create a discount code
+- [`discountCodesDelete`](docs/sdks/discountcodes/README.md#delete) - Delete a discount code
+- [`discountCodesList`](docs/sdks/discountcodes/README.md#list) - List discount codes
 - [`domainsCheckStatus`](docs/sdks/domains/README.md#checkstatus) - Check the availability of one or more domains
 - [`domainsCreate`](docs/sdks/domains/README.md#create) - Create a domain
 - [`domainsDelete`](docs/sdks/domains/README.md#delete) - Delete a domain

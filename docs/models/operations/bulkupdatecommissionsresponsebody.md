@@ -7,7 +7,7 @@ import { BulkUpdateCommissionsResponseBody } from "dub/models/operations";
 
 let value: BulkUpdateCommissionsResponseBody = {
   id: "cm_1JVR7XRCSR0EDBAF39FZ4PMYE",
-  status: "fraud",
+  status: "canceled",
 };
 ```
 

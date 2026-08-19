@@ -41,6 +41,7 @@ export const BulkUpdateCommissionsCommissionsStatus = {
   Duplicate: "duplicate",
   Fraud: "fraud",
   Canceled: "canceled",
+  Hold: "hold",
 } as const;
 export type BulkUpdateCommissionsCommissionsStatus = ClosedEnum<
   typeof BulkUpdateCommissionsCommissionsStatus

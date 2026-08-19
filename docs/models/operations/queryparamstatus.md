@@ -7,11 +7,11 @@ Filter the list of commissions by their corresponding status.
 ```typescript
 import { QueryParamStatus } from "dub/models/operations";
 
-let value: QueryParamStatus = "paid";
+let value: QueryParamStatus = "refunded";
 ```
 
 ## Values
 
 ```typescript
-"pending" | "processed" | "paid" | "refunded" | "duplicate" | "fraud" | "canceled"
+"pending" | "processed" | "paid" | "refunded" | "duplicate" | "fraud" | "canceled" | "hold"
 ```

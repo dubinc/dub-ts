@@ -16,11 +16,12 @@ let value: ListCommissionsResponseBody = {
   quantity: 751.17,
   createdAt: "1708756045705",
   updatedAt: "1735660652819",
+  paidAt: "<value>",
   partner: {
     id: "<id>",
     name: "<value>",
-    email: "Sheldon51@yahoo.com",
-    image: "https://picsum.photos/seed/AyesdqG2l/1852/2789",
+    email: "Maximus_Blanda81@hotmail.com",
+    image: "https://picsum.photos/seed/yesdqG2l/2789/2026",
     payoutsEnabledAt: "<value>",
     country: "Cape Verde",
   },
@@ -43,5 +44,6 @@ let value: ListCommissionsResponseBody = {
 | `userId`                                                                                 | *string*                                                                                 | :heavy_minus_sign:                                                                       | The user who created the manual commission.                                              |                                                                                          |
 | `createdAt`                                                                              | *string*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |                                                                                          |
 | `updatedAt`                                                                              | *string*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |                                                                                          |
+| `paidAt`                                                                                 | *string*                                                                                 | :heavy_check_mark:                                                                       | The date the commission was paid out to the partner. Null if not paid yet.               |                                                                                          |
 | `partner`                                                                                | [operations.ListCommissionsPartner](../../models/operations/listcommissionspartner.md)   | :heavy_check_mark:                                                                       | N/A                                                                                      |                                                                                          |
 | `customer`                                                                               | [operations.ListCommissionsCustomer](../../models/operations/listcommissionscustomer.md) | :heavy_minus_sign:                                                                       | N/A                                                                                      |                                                                                          |

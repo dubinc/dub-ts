@@ -17,6 +17,8 @@ export * from "./analyticstoplinks.js";
 export * from "./analyticstopurls.js";
 export * from "./analyticstriggers.js";
 export * from "./commissioncreatedevent.js";
+export * from "./discountcodeschema.js";
+export * from "./discountcodewebhookevent.js";
 export * from "./domainschema.js";
 export * from "./folderschema.js";
 export * from "./leadcreatedevent.js";

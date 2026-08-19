@@ -11,5 +11,5 @@ let value: UpdateCommissionStatus = "refunded";
 ## Values
 
 ```typescript
-"pending" | "processed" | "paid" | "refunded" | "duplicate" | "fraud" | "canceled"
+"pending" | "processed" | "paid" | "refunded" | "duplicate" | "fraud" | "canceled" | "hold"
 ```

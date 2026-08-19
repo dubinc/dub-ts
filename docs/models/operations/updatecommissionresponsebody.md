@@ -12,19 +12,20 @@ let value: UpdateCommissionResponseBody = {
   amount: 8786.35,
   earnings: 1486.93,
   currency: "Rand",
-  status: "fraud",
+  status: "canceled",
   invoiceId: "<id>",
   description: "terribly unknown innocent ah ouch brand",
   quantity: 4338.66,
   createdAt: "1720752859158",
   updatedAt: "1735665935076",
+  paidAt: "<value>",
   partner: {
     id: "<id>",
     name: "<value>",
-    email: "Emile_Robel38@gmail.com",
-    image: "https://picsum.photos/seed/FsFnX0o3/2976/2787",
-    payoutsEnabledAt: null,
-    country: "New Caledonia",
+    email: "Abbey.Steuber24@gmail.com",
+    image: "https://picsum.photos/seed/sFnX0o34/2787/2242",
+    payoutsEnabledAt: "<value>",
+    country: "Ireland",
   },
 };
 ```
@@ -45,5 +46,6 @@ let value: UpdateCommissionResponseBody = {
 | `userId`                                                                                   | *string*                                                                                   | :heavy_minus_sign:                                                                         | The user who created the manual commission.                                                |                                                                                            |
 | `createdAt`                                                                                | *string*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |                                                                                            |
 | `updatedAt`                                                                                | *string*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |                                                                                            |
+| `paidAt`                                                                                   | *string*                                                                                   | :heavy_check_mark:                                                                         | The date the commission was paid out to the partner. Null if not paid yet.                 |                                                                                            |
 | `partner`                                                                                  | [operations.UpdateCommissionPartner](../../models/operations/updatecommissionpartner.md)   | :heavy_check_mark:                                                                         | N/A                                                                                        |                                                                                            |
 | `customer`                                                                                 | [operations.UpdateCommissionCustomer](../../models/operations/updatecommissioncustomer.md) | :heavy_minus_sign:                                                                         | N/A                                                                                        |                                                                                            |

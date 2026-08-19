@@ -251,6 +251,63 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/discount-codes"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: listDiscountCodes
+          source: |-
+            import { Dub } from "dub";
+
+            const dub = new Dub({
+              token: "DUB_API_KEY",
+            });
+
+            async function run() {
+              const result = await dub.discountCodes.list();
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/discount-codes"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: createDiscountCode
+          source: |-
+            import { Dub } from "dub";
+
+            const dub = new Dub({
+              token: "DUB_API_KEY",
+            });
+
+            async function run() {
+              const result = await dub.discountCodes.create();
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/discount-codes/{idOrCode}"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: deleteDiscountCode
+          source: |-
+            import { Dub } from "dub";
+
+            const dub = new Dub({
+              token: "DUB_API_KEY",
+            });
+
+            async function run() {
+              const result = await dub.discountCodes.delete("dcode_1JVR7XRCSR0EDBAF39FZ4PMYE");
+
+              console.log(result);
+            }
+
+            run();
   - target: $["paths"]["/domains"]["get"]
     update:
       x-codeSamples:

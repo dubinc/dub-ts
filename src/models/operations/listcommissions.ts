@@ -35,6 +35,7 @@ export const QueryParamStatus = {
   Duplicate: "duplicate",
   Fraud: "fraud",
   Canceled: "canceled",
+  Hold: "hold",
 } as const;
 /**
  * Filter the list of commissions by their corresponding status.
@@ -183,6 +184,7 @@ export const ListCommissionsStatus = {
   Duplicate: "duplicate",
   Fraud: "fraud",
   Canceled: "canceled",
+  Hold: "hold",
 } as const;
 export type ListCommissionsStatus = ClosedEnum<typeof ListCommissionsStatus>;
 
@@ -287,6 +289,10 @@ export type ListCommissionsResponseBody = {
   userId?: string | null | undefined;
   createdAt: string;
   updatedAt: string;
+  /**
+   * The date the commission was paid out to the partner. Null if not paid yet.
+   */
+  paidAt: string | null;
   partner: ListCommissionsPartner;
   customer?: ListCommissionsCustomer | null | undefined;
 };
@@ -366,8 +372,8 @@ export const ListCommissionsRequest$outboundSchema: z.ZodType<
   timezone: z.string().optional(),
   endingBefore: z.string().optional(),
   startingAfter: z.string().optional(),
-  page: z.number().optional(),
-  pageSize: z.number().default(100),
+  page: z.number().int().optional(),
+  pageSize: z.number().int().default(100),
 });
 
 export function listCommissionsRequestToJSON(
@@ -461,6 +467,7 @@ export const ListCommissionsResponseBody$inboundSchema: z.ZodType<
   userId: z.nullable(z.string()).optional(),
   createdAt: z.string(),
   updatedAt: z.string(),
+  paidAt: z.nullable(z.string()),
   partner: z.lazy(() => ListCommissionsPartner$inboundSchema),
   customer: z.nullable(z.lazy(() => ListCommissionsCustomer$inboundSchema))
     .optional(),
