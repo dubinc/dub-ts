@@ -408,6 +408,29 @@ const value: components.PartnerApplicationSubmittedEvent = {
 };
 ```
 
+### `components.PartnerMergedEvent`
+
+```typescript
+const value: components.PartnerMergedEvent = {
+  id: "<id>",
+  event: "partner.merged",
+  createdAt: "1731607257009",
+  data: {
+    sourcePartner: {
+      id: "<id>",
+      tenantId: null,
+      email: "Kim.Heathcote83@hotmail.com",
+    },
+    targetPartner: {
+      id: "<id>",
+      tenantId: "<id>",
+      email: "Orrin_McLaughlin@hotmail.com",
+    },
+    targetAlreadyEnrolled: true,
+  },
+};
+```
+
 ### `components.CommissionCreatedEvent`
 
 ```typescript

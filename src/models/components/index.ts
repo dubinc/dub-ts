@@ -33,6 +33,7 @@ export * from "./partneranalyticstimeseries.js";
 export * from "./partneranalyticstoplinks.js";
 export * from "./partnerapplicationsubmittedevent.js";
 export * from "./partnerenrolledevent.js";
+export * from "./partnermergedevent.js";
 export * from "./salecreatedevent.js";
 export * from "./security.js";
 export * from "./webhookevent.js";

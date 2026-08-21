@@ -49,6 +49,12 @@ import {
   PartnerEnrolledEvent$outboundSchema,
 } from "./partnerenrolledevent.js";
 import {
+  PartnerMergedEvent,
+  PartnerMergedEvent$inboundSchema,
+  PartnerMergedEvent$Outbound,
+  PartnerMergedEvent$outboundSchema,
+} from "./partnermergedevent.js";
+import {
   SaleCreatedEvent,
   SaleCreatedEvent$inboundSchema,
   SaleCreatedEvent$Outbound,
@@ -65,6 +71,7 @@ export type WebhookEvent =
   | SaleCreatedEvent
   | PartnerEnrolledEvent
   | PartnerApplicationSubmittedEvent
+  | PartnerMergedEvent
   | CommissionCreatedEvent
   | DiscountCodeWebhookEvent;
 
@@ -80,6 +87,7 @@ export const WebhookEvent$inboundSchema: z.ZodType<
   SaleCreatedEvent$inboundSchema,
   PartnerEnrolledEvent$inboundSchema,
   PartnerApplicationSubmittedEvent$inboundSchema,
+  PartnerMergedEvent$inboundSchema,
   CommissionCreatedEvent$inboundSchema,
   DiscountCodeWebhookEvent$inboundSchema,
 ]);
@@ -91,6 +99,7 @@ export type WebhookEvent$Outbound =
   | SaleCreatedEvent$Outbound
   | PartnerEnrolledEvent$Outbound
   | PartnerApplicationSubmittedEvent$Outbound
+  | PartnerMergedEvent$Outbound
   | CommissionCreatedEvent$Outbound
   | DiscountCodeWebhookEvent$Outbound;
 
@@ -106,6 +115,7 @@ export const WebhookEvent$outboundSchema: z.ZodType<
   SaleCreatedEvent$outboundSchema,
   PartnerEnrolledEvent$outboundSchema,
   PartnerApplicationSubmittedEvent$outboundSchema,
+  PartnerMergedEvent$outboundSchema,
   CommissionCreatedEvent$outboundSchema,
   DiscountCodeWebhookEvent$outboundSchema,
 ]);

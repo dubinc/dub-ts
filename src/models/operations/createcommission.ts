@@ -142,7 +142,7 @@ export type RequestBody1 = {
    */
   partnerId: string;
   /**
-   * The commission amount in cents.
+   * The commission amount in cents. Use a negative amount to create a clawback.
    */
   amount: number;
   /**
@@ -150,7 +150,10 @@ export type RequestBody1 = {
    */
   date?: string | null | undefined;
   /**
-   * The description of the commission.
+   * The description of the commission. Required for clawbacks (negative `amount`).
+   *
+   * @remarks
+   * May be a known clawback reason (`order_canceled`, `fraud`, `terms_violation`, `tracking_error`, `payment_failed`, `ineligible_partner`, `duplicate_commission`) or an arbitrary string (max 190 characters).
    */
   description?: string | null | undefined;
 };
