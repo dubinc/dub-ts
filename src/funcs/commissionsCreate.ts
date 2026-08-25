@@ -30,7 +30,7 @@ import { Result } from "../types/fp.js";
  * Create commission
  *
  * @remarks
- * Create one or more commissions (custom, lead or sale) for a partner. Custom commissions accept a negative `amount` to create a clawback; in that case `description` is required and may be a known clawback reason or any other string. Commission creation is processed asynchronously. Use the List Commissions endpoint or webhooks to be notified when the commission is created.
+ * Create one or more commissions (custom, lead or sale) for a partner. Custom commissions accept a negative `amount` to create a clawback. Commission creation is processed asynchronously – use the GET /commissions endpoint or webhooks to be notified when the commission is created.
  */
 export function commissionsCreate(
   client: DubCore,

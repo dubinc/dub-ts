@@ -33,6 +33,9 @@ export type BulkUpdateCommissionsRequestBody = {
   status: BulkUpdateCommissionsStatus;
 };
 
+/**
+ * The current status of the commission.
+ */
 export const BulkUpdateCommissionsCommissionsStatus = {
   Pending: "pending",
   Processed: "processed",
@@ -43,6 +46,9 @@ export const BulkUpdateCommissionsCommissionsStatus = {
   Canceled: "canceled",
   Hold: "hold",
 } as const;
+/**
+ * The current status of the commission.
+ */
 export type BulkUpdateCommissionsCommissionsStatus = ClosedEnum<
   typeof BulkUpdateCommissionsCommissionsStatus
 >;
@@ -52,6 +58,9 @@ export type BulkUpdateCommissionsResponseBody = {
    * The commission's unique ID on Dub.
    */
   id: string;
+  /**
+   * The current status of the commission.
+   */
   status: BulkUpdateCommissionsCommissionsStatus;
 };
 
