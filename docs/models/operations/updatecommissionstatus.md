@@ -1,5 +1,7 @@
 # UpdateCommissionStatus
 
+The current status of the commission.
+
 ## Example Usage
 
 ```typescript

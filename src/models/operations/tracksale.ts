@@ -85,7 +85,7 @@ export type TrackSaleCustomer = {
   externalId: string | null;
 };
 
-export type Sale = {
+export type TrackSaleSale = {
   amount: number;
   currency: string;
   paymentProcessor: string;
@@ -99,7 +99,7 @@ export type Sale = {
 export type TrackSaleResponseBody = {
   eventName: string;
   customer: TrackSaleCustomer | null;
-  sale: Sale | null;
+  sale: TrackSaleSale | null;
 };
 
 /** @internal */
@@ -175,22 +175,25 @@ export function trackSaleCustomerFromJSON(
 }
 
 /** @internal */
-export const Sale$inboundSchema: z.ZodType<Sale, z.ZodTypeDef, unknown> = z
-  .object({
-    amount: z.number(),
-    currency: z.string(),
-    paymentProcessor: z.string(),
-    invoiceId: z.nullable(z.string()),
-    metadata: z.nullable(z.record(z.any())),
-  });
+export const TrackSaleSale$inboundSchema: z.ZodType<
+  TrackSaleSale,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  amount: z.number(),
+  currency: z.string(),
+  paymentProcessor: z.string(),
+  invoiceId: z.nullable(z.string()),
+  metadata: z.nullable(z.record(z.any())),
+});
 
-export function saleFromJSON(
+export function trackSaleSaleFromJSON(
   jsonString: string,
-): SafeParseResult<Sale, SDKValidationError> {
+): SafeParseResult<TrackSaleSale, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Sale$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Sale' from JSON`,
+    (x) => TrackSaleSale$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TrackSaleSale' from JSON`,
   );
 }
 
@@ -202,7 +205,7 @@ export const TrackSaleResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   eventName: z.string(),
   customer: z.nullable(z.lazy(() => TrackSaleCustomer$inboundSchema)),
-  sale: z.nullable(z.lazy(() => Sale$inboundSchema)),
+  sale: z.nullable(z.lazy(() => TrackSaleSale$inboundSchema)),
 });
 
 export function trackSaleResponseBodyFromJSON(

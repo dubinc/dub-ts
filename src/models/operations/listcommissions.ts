@@ -167,6 +167,9 @@ export type ListCommissionsRequest = {
   pageSize?: number | undefined;
 };
 
+/**
+ * The type of commission. Can be `click`, `lead`, `sale`, `referral`, or `custom`.
+ */
 export const ListCommissionsType = {
   Click: "click",
   Lead: "lead",
@@ -174,8 +177,14 @@ export const ListCommissionsType = {
   Referral: "referral",
   Custom: "custom",
 } as const;
+/**
+ * The type of commission. Can be `click`, `lead`, `sale`, `referral`, or `custom`.
+ */
 export type ListCommissionsType = ClosedEnum<typeof ListCommissionsType>;
 
+/**
+ * The current status of the commission.
+ */
 export const ListCommissionsStatus = {
   Pending: "pending",
   Processed: "processed",
@@ -186,6 +195,9 @@ export const ListCommissionsStatus = {
   Canceled: "canceled",
   Hold: "hold",
 } as const;
+/**
+ * The current status of the commission.
+ */
 export type ListCommissionsStatus = ClosedEnum<typeof ListCommissionsStatus>;
 
 export type ListCommissionsPartner = {
@@ -275,19 +287,53 @@ export type ListCommissionsResponseBody = {
    * The commission's unique ID on Dub.
    */
   id: string;
-  type?: ListCommissionsType | undefined;
+  /**
+   * The type of commission. Can be `click`, `lead`, `sale`, `referral`, or `custom`.
+   */
+  type: ListCommissionsType;
+  /**
+   * The associated event amount in cents. For sale commissions, this is the sale amount.
+   */
   amount: number;
+  /**
+   * The amount earned by the partner, in cents.
+   */
   earnings: number;
+  /**
+   * The currency of the commission, as an ISO 4217 currency code.
+   */
   currency: string;
+  /**
+   * The current status of the commission.
+   */
   status: ListCommissionsStatus;
+  /**
+   * The associated invoice ID. Only set for sale commissions.
+   */
   invoiceId: string | null;
+  /**
+   * An optional description of the commission.
+   */
   description: string | null;
+  /**
+   * The event quantity. Used for click and lead commissions; typically `1` for sale and custom commissions.
+   */
   quantity: number;
   /**
    * The user who created the manual commission.
    */
   userId?: string | null | undefined;
+  /**
+   * User-provided metadata from the associated lead or sale event (`lead.metadata` / `sale.metadata`).
+   */
+  metadata: { [k: string]: any } | null;
+  /**
+   * The date and time when the commission was created.
+   */
   createdAt: string;
+  /**
+   * The date and time when the commission was last updated.
+   */
   updatedAt: string;
   /**
    * The date the commission was paid out to the partner. Null if not paid yet.
@@ -456,7 +502,7 @@ export const ListCommissionsResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: z.string(),
-  type: ListCommissionsType$inboundSchema.optional(),
+  type: ListCommissionsType$inboundSchema,
   amount: z.number(),
   earnings: z.number(),
   currency: z.string(),
@@ -465,6 +511,7 @@ export const ListCommissionsResponseBody$inboundSchema: z.ZodType<
   description: z.nullable(z.string()),
   quantity: z.number(),
   userId: z.nullable(z.string()).optional(),
+  metadata: z.nullable(z.record(z.any())),
   createdAt: z.string(),
   updatedAt: z.string(),
   paidAt: z.nullable(z.string()),

@@ -15,6 +15,9 @@ export type CommissionCreatedEventEvent = ClosedEnum<
   typeof CommissionCreatedEventEvent
 >;
 
+/**
+ * The type of commission. Can be `click`, `lead`, `sale`, `referral`, or `custom`.
+ */
 export const CommissionCreatedEventType = {
   Click: "click",
   Lead: "lead",
@@ -22,10 +25,16 @@ export const CommissionCreatedEventType = {
   Referral: "referral",
   Custom: "custom",
 } as const;
+/**
+ * The type of commission. Can be `click`, `lead`, `sale`, `referral`, or `custom`.
+ */
 export type CommissionCreatedEventType = ClosedEnum<
   typeof CommissionCreatedEventType
 >;
 
+/**
+ * The current status of the commission.
+ */
 export const CommissionCreatedEventStatus = {
   Pending: "pending",
   Processed: "processed",
@@ -36,6 +45,9 @@ export const CommissionCreatedEventStatus = {
   Canceled: "canceled",
   Hold: "hold",
 } as const;
+/**
+ * The current status of the commission.
+ */
 export type CommissionCreatedEventStatus = ClosedEnum<
   typeof CommissionCreatedEventStatus
 >;
@@ -149,19 +161,53 @@ export type CommissionCreatedEventData = {
    * The commission's unique ID on Dub.
    */
   id: string;
-  type?: CommissionCreatedEventType | undefined;
+  /**
+   * The type of commission. Can be `click`, `lead`, `sale`, `referral`, or `custom`.
+   */
+  type: CommissionCreatedEventType;
+  /**
+   * The associated event amount in cents. For sale commissions, this is the sale amount.
+   */
   amount: number;
+  /**
+   * The amount earned by the partner, in cents.
+   */
   earnings: number;
+  /**
+   * The currency of the commission, as an ISO 4217 currency code.
+   */
   currency: string;
+  /**
+   * The current status of the commission.
+   */
   status: CommissionCreatedEventStatus;
+  /**
+   * The associated invoice ID. Only set for sale commissions.
+   */
   invoiceId: string | null;
+  /**
+   * An optional description of the commission.
+   */
   description: string | null;
+  /**
+   * The event quantity. Used for click and lead commissions; typically `1` for sale and custom commissions.
+   */
   quantity: number;
   /**
    * The user who created the manual commission.
    */
   userId?: string | null | undefined;
+  /**
+   * User-provided metadata from the associated lead or sale event (`lead.metadata` / `sale.metadata`).
+   */
+  metadata: { [k: string]: any } | null;
+  /**
+   * The date and time when the commission was created.
+   */
   createdAt: string;
+  /**
+   * The date and time when the commission was last updated.
+   */
   updatedAt: string;
   partner: CommissionCreatedEventPartner;
   customer?: CommissionCreatedEventCustomer | null | undefined;
@@ -411,7 +457,7 @@ export const CommissionCreatedEventData$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: z.string(),
-  type: CommissionCreatedEventType$inboundSchema.optional(),
+  type: CommissionCreatedEventType$inboundSchema,
   amount: z.number(),
   earnings: z.number(),
   currency: z.string(),
@@ -420,6 +466,7 @@ export const CommissionCreatedEventData$inboundSchema: z.ZodType<
   description: z.nullable(z.string()),
   quantity: z.number(),
   userId: z.nullable(z.string()).optional(),
+  metadata: z.nullable(z.record(z.any())),
   createdAt: z.string(),
   updatedAt: z.string(),
   partner: z.lazy(() => CommissionCreatedEventPartner$inboundSchema),
@@ -431,7 +478,7 @@ export const CommissionCreatedEventData$inboundSchema: z.ZodType<
 /** @internal */
 export type CommissionCreatedEventData$Outbound = {
   id: string;
-  type?: string | undefined;
+  type: string;
   amount: number;
   earnings: number;
   currency: string;
@@ -440,6 +487,7 @@ export type CommissionCreatedEventData$Outbound = {
   description: string | null;
   quantity: number;
   userId?: string | null | undefined;
+  metadata: { [k: string]: any } | null;
   createdAt: string;
   updatedAt: string;
   partner: CommissionCreatedEventPartner$Outbound;
@@ -454,7 +502,7 @@ export const CommissionCreatedEventData$outboundSchema: z.ZodType<
   CommissionCreatedEventData
 > = z.object({
   id: z.string(),
-  type: CommissionCreatedEventType$outboundSchema.optional(),
+  type: CommissionCreatedEventType$outboundSchema,
   amount: z.number(),
   earnings: z.number(),
   currency: z.string(),
@@ -463,6 +511,7 @@ export const CommissionCreatedEventData$outboundSchema: z.ZodType<
   description: z.nullable(z.string()),
   quantity: z.number(),
   userId: z.nullable(z.string()).optional(),
+  metadata: z.nullable(z.record(z.any())),
   createdAt: z.string(),
   updatedAt: z.string(),
   partner: z.lazy(() => CommissionCreatedEventPartner$outboundSchema),

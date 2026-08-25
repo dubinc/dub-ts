@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
+import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -37,6 +38,56 @@ export type RequestBodyCustomer = {
   country: string;
 };
 
+/**
+ * The payment processor via which the sale was made.
+ */
+export const RequestBodyPaymentProcessor = {
+  Stripe: "stripe",
+  Shopify: "shopify",
+  Polar: "polar",
+  Paddle: "paddle",
+  Apple: "apple",
+  Revenuecat: "revenuecat",
+  Dub: "dub",
+  Custom: "custom",
+} as const;
+/**
+ * The payment processor via which the sale was made.
+ */
+export type RequestBodyPaymentProcessor = ClosedEnum<
+  typeof RequestBodyPaymentProcessor
+>;
+
+/**
+ * The sale event object to associate the commission with.
+ */
+export type Sale = {
+  /**
+   * The amount of the sale in cents (for all two-decimal currencies). If the sale is in a zero-decimal currency, pass the full integer value (e.g. `1580` JPY). Learn more: https://d.to/currency
+   */
+  amount?: number | null | undefined;
+  /**
+   * The currency of the sale. Accepts ISO 4217 currency codes. Sales will be automatically converted and stored as USD at the latest exchange rates. Learn more: https://d.to/currency
+   */
+  currency?: string | undefined;
+  /**
+   * The name of the sale event. Recommended format: `Invoice paid` or `Subscription created`.
+   */
+  eventName?: string | undefined;
+  /**
+   * The payment processor via which the sale was made.
+   */
+  paymentProcessor?: RequestBodyPaymentProcessor | undefined;
+  /**
+   * The invoice ID of the sale. Can be used as a idempotency key – only one sale event can be recorded for a given invoice ID.
+   */
+  invoiceId?: string | null | undefined;
+  /**
+   * Additional metadata to be stored with the sale event. Max 10,000 characters when stringified.
+   */
+  metadata?: { [k: string]: any } | null | undefined;
+};
+
 export type RequestBody3 = {
   type: "sale";
   /**
@@ -56,23 +107,39 @@ export type RequestBody3 = {
    */
   linkId?: string | null | undefined;
   /**
-   * When `true`, import all unimported paid Stripe invoices for the customer and create a commission for each. When `false`, create a single manual sale event using `saleAmount`.
+   * When `true`, import all unimported paid Stripe invoices for the customer and create a commission for each. When `false`, create a single manual sale event using `sale.amount` (or deprecated `saleAmount`).
    */
   importStripeInvoices?: boolean | null | undefined;
   /**
-   * Required when `importStripeInvoices` is `false`. The sale amount in cents for the manual sale event. Ignored when importing from Stripe.
-   */
-  saleAmount?: number | null | undefined;
-  /**
    * Only used when `importStripeInvoices` is `false`. The date of the manual sale event. Defaults to the current date and time if not provided.
+   */
+  date?: string | null | undefined;
+  /**
+   * The sale event object to associate the commission with.
+   */
+  sale?: Sale | null | undefined;
+  /**
+   * Deprecated: Use `date` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   saleEventDate?: string | null | undefined;
   /**
-   * Only used when `importStripeInvoices` is `false`. An optional invoice ID to attach to the generated sale event and commission entry for deduplication.
+   * Deprecated: Use `sale.amount` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  saleAmount?: number | null | undefined;
+  /**
+   * Deprecated: Use `sale.invoiceId` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   invoiceId?: string | null | undefined;
   /**
-   * Only used when `importStripeInvoices` is `false`. An optional product ID stored on the sale event metadata – will also impact commission earnings calculation (if a `Sale` `Product ID` modifier is set).
+   * Deprecated: Use `sale.metadata.productId` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   productId?: string | null | undefined;
 };
@@ -107,6 +174,20 @@ export type Customer = {
   country: string;
 };
 
+/**
+ * The lead event object to associate the commission with.
+ */
+export type Lead = {
+  /**
+   * The name of the lead event to track. If not provided, defaults to 'Sign up'.
+   */
+  eventName?: string | null | undefined;
+  /**
+   * Additional metadata to be stored with the lead event. Max 10,000 characters.
+   */
+  metadata?: { [k: string]: any } | null | undefined;
+};
+
 export type RequestBody2 = {
   type: "lead";
   /**
@@ -128,9 +209,21 @@ export type RequestBody2 = {
   /**
    * The date and time of the lead event. If not provided, defaults to the current date and time.
    */
+  date?: string | null | undefined;
+  /**
+   * The lead event object to associate the commission with.
+   */
+  lead?: Lead | null | undefined;
+  /**
+   * Deprecated: Use `date` instead. The date and time of the lead event. If not provided, defaults to the current date and time.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
   leadEventDate?: string | null | undefined;
   /**
-   * The name of the lead event. If not provided, defaults to 'Sign up'.
+   * Deprecated: Use `lead.eventName` instead. The name of the lead event. If not provided, defaults to 'Sign up'.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   leadEventName?: string | null | undefined;
 };
@@ -142,7 +235,7 @@ export type RequestBody1 = {
    */
   partnerId: string;
   /**
-   * The commission amount in cents. Use a negative amount to create a clawback.
+   * The commission earnings amount in cents. Use a negative amount to create a clawback.
    */
   amount: number;
   /**
@@ -150,10 +243,7 @@ export type RequestBody1 = {
    */
   date?: string | null | undefined;
   /**
-   * The description of the commission. Required for clawbacks (negative `amount`).
-   *
-   * @remarks
-   * May be a known clawback reason (`order_canceled`, `fraud`, `terms_violation`, `tracking_error`, `payment_failed`, `ineligible_partner`, `duplicate_commission`) or an arbitrary string (max 190 characters).
+   * The description of the commission. Required for clawbacks (negative `amount`). May be a known clawback reason (`order_canceled`, `fraud`, `terms_violation`, `tracking_error`, `payment_failed`, `ineligible_partner`, `duplicate_commission`) or an arbitrary string (max 190 characters).
    */
   description?: string | null | undefined;
 };
@@ -204,6 +294,38 @@ export function requestBodyCustomerToJSON(
 }
 
 /** @internal */
+export const RequestBodyPaymentProcessor$outboundSchema: z.ZodNativeEnum<
+  typeof RequestBodyPaymentProcessor
+> = z.nativeEnum(RequestBodyPaymentProcessor);
+
+/** @internal */
+export type Sale$Outbound = {
+  amount?: number | null | undefined;
+  currency: string;
+  eventName: string;
+  paymentProcessor: string;
+  invoiceId: string | null;
+  metadata?: { [k: string]: any } | null | undefined;
+};
+
+/** @internal */
+export const Sale$outboundSchema: z.ZodType<Sale$Outbound, z.ZodTypeDef, Sale> =
+  z.object({
+    amount: z.nullable(z.number()).optional(),
+    currency: z.string().default("usd"),
+    eventName: z.string().default("Purchase"),
+    paymentProcessor: RequestBodyPaymentProcessor$outboundSchema.default(
+      "custom",
+    ),
+    invoiceId: z.nullable(z.string()).default(null),
+    metadata: z.nullable(z.record(z.any())).optional(),
+  });
+
+export function saleToJSON(sale: Sale): string {
+  return JSON.stringify(Sale$outboundSchema.parse(sale));
+}
+
+/** @internal */
 export type RequestBody3$Outbound = {
   type: "sale";
   partnerId: string;
@@ -211,8 +333,10 @@ export type RequestBody3$Outbound = {
   customer?: RequestBodyCustomer$Outbound | null | undefined;
   linkId?: string | null | undefined;
   importStripeInvoices: boolean | null;
-  saleAmount?: number | null | undefined;
+  date?: string | null | undefined;
+  sale?: Sale$Outbound | null | undefined;
   saleEventDate?: string | null | undefined;
+  saleAmount?: number | null | undefined;
   invoiceId?: string | null | undefined;
   productId?: string | null | undefined;
 };
@@ -230,8 +354,10 @@ export const RequestBody3$outboundSchema: z.ZodType<
     .optional(),
   linkId: z.nullable(z.string()).optional(),
   importStripeInvoices: z.nullable(z.boolean().default(false)),
-  saleAmount: z.nullable(z.number()).optional(),
+  date: z.nullable(z.string()).optional(),
+  sale: z.nullable(z.lazy(() => Sale$outboundSchema)).optional(),
   saleEventDate: z.nullable(z.string()).optional(),
+  saleAmount: z.nullable(z.number()).optional(),
   invoiceId: z.nullable(z.string()).optional(),
   productId: z.nullable(z.string()).optional(),
 });
@@ -269,12 +395,31 @@ export function customerToJSON(customer: Customer): string {
 }
 
 /** @internal */
+export type Lead$Outbound = {
+  eventName?: string | null | undefined;
+  metadata?: { [k: string]: any } | null | undefined;
+};
+
+/** @internal */
+export const Lead$outboundSchema: z.ZodType<Lead$Outbound, z.ZodTypeDef, Lead> =
+  z.object({
+    eventName: z.nullable(z.string()).optional(),
+    metadata: z.nullable(z.record(z.any())).optional(),
+  });
+
+export function leadToJSON(lead: Lead): string {
+  return JSON.stringify(Lead$outboundSchema.parse(lead));
+}
+
+/** @internal */
 export type RequestBody2$Outbound = {
   type: "lead";
   partnerId: string;
   customerId?: string | null | undefined;
   customer?: Customer$Outbound | null | undefined;
   linkId?: string | null | undefined;
+  date?: string | null | undefined;
+  lead?: Lead$Outbound | null | undefined;
   leadEventDate?: string | null | undefined;
   leadEventName: string | null;
 };
@@ -290,6 +435,8 @@ export const RequestBody2$outboundSchema: z.ZodType<
   customerId: z.nullable(z.string()).optional(),
   customer: z.nullable(z.lazy(() => Customer$outboundSchema)).optional(),
   linkId: z.nullable(z.string()).optional(),
+  date: z.nullable(z.string()).optional(),
+  lead: z.nullable(z.lazy(() => Lead$outboundSchema)).optional(),
   leadEventDate: z.nullable(z.string()).optional(),
   leadEventName: z.nullable(z.string().default("Sign up")),
 });
