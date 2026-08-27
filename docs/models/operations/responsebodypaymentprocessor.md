@@ -7,11 +7,11 @@ The payment processor via which the sale was made.
 ```typescript
 import { ResponseBodyPaymentProcessor } from "dub/models/operations";
 
-let value: ResponseBodyPaymentProcessor = "paddle";
+let value: ResponseBodyPaymentProcessor = "apple";
 ```
 
 ## Values
 
 ```typescript
-"stripe" | "shopify" | "polar" | "paddle" | "apple" | "revenuecat" | "dub" | "custom"
+"stripe" | "shopify" | "polar" | "paddle" | "apple" | "revenuecat" | "lemonsqueezy" | "dub" | "custom"
 ```

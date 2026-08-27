@@ -13,5 +13,5 @@ let value: RequestBodyPaymentProcessor = "polar";
 ## Values
 
 ```typescript
-"stripe" | "shopify" | "polar" | "paddle" | "apple" | "revenuecat" | "dub" | "custom"
+"stripe" | "shopify" | "polar" | "paddle" | "apple" | "revenuecat" | "lemonsqueezy" | "dub" | "custom"
 ```
