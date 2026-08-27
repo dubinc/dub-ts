@@ -133,6 +133,7 @@ async function $do(
     "partnerId": payload?.partnerId,
     "partnerTagId": payload?.partnerTagId,
     "payoutId": payload?.payoutId,
+    "query": payload?.query,
     "sortBy": payload?.sortBy,
     "sortOrder": payload?.sortOrder,
     "start": payload?.start,

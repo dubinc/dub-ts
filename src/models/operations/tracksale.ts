@@ -18,6 +18,7 @@ export const PaymentProcessor = {
   Paddle: "paddle",
   Apple: "apple",
   Revenuecat: "revenuecat",
+  Lemonsqueezy: "lemonsqueezy",
   Dub: "dub",
   Custom: "custom",
 } as const;

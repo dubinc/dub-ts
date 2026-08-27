@@ -150,6 +150,10 @@ export type ListCommissionsRequest = {
   end?: string | undefined;
   timezone?: string | undefined;
   /**
+   * Filter by lead or sale event metadata. Top-level keys only. Compares string values only — numeric and boolean metadata values are not matched.
+   */
+  query?: string | undefined;
+  /**
    * If specified, the query only searches for results before this cursor. Mutually exclusive with `startingAfter`.
    */
   endingBefore?: string | undefined;
@@ -389,6 +393,7 @@ export type ListCommissionsRequest$Outbound = {
   start?: string | undefined;
   end?: string | undefined;
   timezone?: string | undefined;
+  query?: string | undefined;
   endingBefore?: string | undefined;
   startingAfter?: string | undefined;
   page?: number | undefined;
@@ -416,6 +421,7 @@ export const ListCommissionsRequest$outboundSchema: z.ZodType<
   start: z.string().optional(),
   end: z.string().optional(),
   timezone: z.string().optional(),
+  query: z.string().optional(),
   endingBefore: z.string().optional(),
   startingAfter: z.string().optional(),
   page: z.number().int().optional(),
