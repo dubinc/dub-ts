@@ -8,6 +8,7 @@ export * from "./analyticscontinents.js";
 export * from "./analyticscount.js";
 export * from "./analyticscountries.js";
 export * from "./analyticsdevices.js";
+export * from "./analyticseventnames.js";
 export * from "./analyticsos.js";
 export * from "./analyticsreferers.js";
 export * from "./analyticsrefererurls.js";

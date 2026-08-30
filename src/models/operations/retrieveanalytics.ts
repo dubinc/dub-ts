@@ -39,6 +39,7 @@ export const QueryParamGroupBy = {
   Os: "os",
   Trigger: "trigger",
   Triggers: "triggers",
+  EventNames: "event_names",
   Referers: "referers",
   RefererUrls: "referer_urls",
   TopFolders: "top_folders",
@@ -194,6 +195,10 @@ export type RetrieveAnalyticsRequest = {
    */
   trigger?: string | undefined;
   /**
+   * The conversion event name to retrieve analytics for. Only available for lead and sale events. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `Sign up`, `Sign up,Purchase`, `-Sign up`.
+   */
+  eventName?: string | undefined;
+  /**
    * The referer hostname to retrieve analytics for. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `google.com`, `google.com,twitter.com`, `-facebook.com`.
    */
   referer?: string | undefined;
@@ -265,6 +270,7 @@ export type RetrieveAnalyticsResponseBody =
   | Array<components.AnalyticsBrowsers>
   | Array<components.AnalyticsOS>
   | Array<components.AnalyticsTriggers>
+  | Array<components.AnalyticsEventNames>
   | Array<components.AnalyticsReferers>
   | Array<components.AnalyticsRefererUrls>
   | Array<components.AnalyticsTopLinks>
@@ -315,6 +321,7 @@ export type RetrieveAnalyticsRequest$Outbound = {
   browser?: string | undefined;
   os?: string | undefined;
   trigger?: string | undefined;
+  eventName?: string | undefined;
   referer?: string | undefined;
   refererUrl?: string | undefined;
   url?: string | undefined;
@@ -362,6 +369,7 @@ export const RetrieveAnalyticsRequest$outboundSchema: z.ZodType<
   browser: z.string().optional(),
   os: z.string().optional(),
   trigger: z.string().optional(),
+  eventName: z.string().optional(),
   referer: z.string().optional(),
   refererUrl: z.string().optional(),
   url: z.string().optional(),
@@ -410,6 +418,7 @@ export const RetrieveAnalyticsResponseBody$inboundSchema: z.ZodType<
   z.array(components.AnalyticsBrowsers$inboundSchema),
   z.array(components.AnalyticsOS$inboundSchema),
   z.array(components.AnalyticsTriggers$inboundSchema),
+  z.array(components.AnalyticsEventNames$inboundSchema),
   z.array(components.AnalyticsReferers$inboundSchema),
   z.array(components.AnalyticsRefererUrls$inboundSchema),
   z.array(components.AnalyticsTopLinks$inboundSchema),

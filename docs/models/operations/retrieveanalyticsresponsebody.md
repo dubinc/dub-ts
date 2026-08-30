@@ -77,6 +77,16 @@ const value: components.AnalyticsOS[] = [];
 const value: components.AnalyticsTriggers[] = [];
 ```
 
+### `components.AnalyticsEventNames[]`
+
+```typescript
+const value: components.AnalyticsEventNames[] = [
+  {
+    eventName: "<value>",
+  },
+];
+```
+
 ### `components.AnalyticsReferers[]`
 
 ```typescript
