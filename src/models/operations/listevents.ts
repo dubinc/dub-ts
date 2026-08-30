@@ -191,6 +191,10 @@ export type ListEventsRequest = {
    */
   trigger?: string | undefined;
   /**
+   * The conversion event name to retrieve analytics for. Only available for lead and sale events. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `Sign up`, `Sign up,Purchase`, `-Sign up`.
+   */
+  eventName?: string | undefined;
+  /**
    * The referer hostname to retrieve analytics for. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `google.com`, `google.com,twitter.com`, `-facebook.com`.
    */
   referer?: string | undefined;
@@ -1315,6 +1319,7 @@ export type ListEventsRequest$Outbound = {
   browser?: string | undefined;
   os?: string | undefined;
   trigger?: string | undefined;
+  eventName?: string | undefined;
   referer?: string | undefined;
   refererUrl?: string | undefined;
   url?: string | undefined;
@@ -1366,6 +1371,7 @@ export const ListEventsRequest$outboundSchema: z.ZodType<
   browser: z.string().optional(),
   os: z.string().optional(),
   trigger: z.string().optional(),
+  eventName: z.string().optional(),
   referer: z.string().optional(),
   refererUrl: z.string().optional(),
   url: z.string().optional(),

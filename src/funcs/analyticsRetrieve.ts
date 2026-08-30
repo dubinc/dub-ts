@@ -120,6 +120,7 @@ async function $do(
     "domain": payload?.domain,
     "end": payload?.end,
     "event": payload?.event,
+    "eventName": payload?.eventName,
     "externalId": payload?.externalId,
     "folderId": payload?.folderId,
     "groupBy": payload?.groupBy,
