@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: 7dc89d725e13a575f09e0bbe2c501f53
+  docChecksum: 052da4959733457f8d8107004470863b
   docVersion: 0.0.1
   speakeasyVersion: 1.796.2
   generationVersion: 2.933.0
-  releaseVersion: 0.73.6
-  configChecksum: 783c2bb9feb664d5554f2e11ce3da1d0
+  releaseVersion: 0.73.7
+  configChecksum: 8cc8e676009cbe4d7e0d998ada68fb11
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
 persistentEdits:
-  generation_id: ae97ad4b-57f7-4fc8-a386-73f85a1a0d20
-  pristine_commit_hash: 5a6b5e8115b0ab5928ad8d29638d8196b052898b
-  pristine_tree_hash: 348f45c647501931ea58f9bf44d0fb03979d6995
+  generation_id: 6c2bf360-d461-4ba5-ac6a-fe7143dfd479
+  pristine_commit_hash: 9b00805151fa80ea8a7e75aff24529d0e2789281
+  pristine_tree_hash: 1f5013dc2cdd57fbc57a3c465384ca45d9386459
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -1291,8 +1291,8 @@ trackedFiles:
     pristine_git_object: f84fe99611bb2b3dbf14efd544f334b381bf3885
   docs/models/operations/listcommissionsrequest.md:
     id: 3db2f1c49f34
-    last_write_checksum: sha1:dd6297bce3b8d5a4b8a522024106a7712b29c6cb
-    pristine_git_object: 9cd71a40e1b624c04e3b627e9e1a994ecd112c4a
+    last_write_checksum: sha1:217c1b2e20393e41b147abc8ffe67bafaa2b11df
+    pristine_git_object: db1f97c2ce46fa234330029d408868271f2f21f2
   docs/models/operations/listcommissionsresponse.md:
     id: 6de464f720eb
     last_write_checksum: sha1:bed118ce5ae24909c6835b2ed7d8c401025d8bea
@@ -1739,8 +1739,8 @@ trackedFiles:
     pristine_git_object: 851b22ce36f95209a1ad4ef932f84acd5bc97a0f
   docs/models/operations/type.md:
     id: 8e39682ca85e
-    last_write_checksum: sha1:8b8f1316f7e4b7c2e93c3a57705065063be53096
-    pristine_git_object: 53f539f4de48ec87bda05bdf953f43557453f904
+    last_write_checksum: sha1:20238bb229fc195e95549dddee373ff327604bdf
+    pristine_git_object: f6a47ac90841023ce957a4aa3fabfe812da23749
   docs/models/operations/updatecommissioncustomer.md:
     id: 19d4c8993860
     last_write_checksum: sha1:ad4ce9365dadfb68a15ff82d45251fdfdf110902
@@ -1975,12 +1975,12 @@ trackedFiles:
     pristine_git_object: b15f2223f26e640398024c665696a631aa8cc97a
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:386c78a4871b572b990b85ab2872bca45f844669
-    pristine_git_object: b8c0eace6629085db68db174a86d3846e9758e88
+    last_write_checksum: sha1:8531fb2e6dea6e7bfec2a41a28c5ca1ea3885929
+    pristine_git_object: f3524e94e02267b3ca30965f5aba65a9d2e9cd57
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:d5508ff239d93c9f07240c70d1e2a46090f0247b
-    pristine_git_object: 2092c7b57a9395f2cf13af98b230e037087bc7e2
+    last_write_checksum: sha1:a273327f26899c1c86dd45fec4dbc79d78e1b94e
+    pristine_git_object: ee8294b93fbe7de6a423b52b00a491975af797e6
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:f9ef229e4b8c8413b69fb9fb091aa6758b05d99f
@@ -2227,8 +2227,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:7e473b8ac65beee730b5d2118def63d029457722
-    pristine_git_object: ab5e33455345b0686f36e1a0b812e96feaed00cb
+    last_write_checksum: sha1:1c5d742191e874af9b2c3df86e2b946f9adc353f
+    pristine_git_object: 8a5fd379165075f0885d222fa3e88f322eeeb543
   src/lib/encodings.ts:
     id: 3bd8ead98afd
     last_write_checksum: sha1:a257d6f6108693db2197617c579400bc8f0da914
@@ -2615,8 +2615,8 @@ trackedFiles:
     pristine_git_object: 0008cc755681e9f4757df18922d5402379d8752f
   src/models/operations/listcommissions.ts:
     id: 40d23d45c47f
-    last_write_checksum: sha1:d304881d5976ede55c8000290764904e42113d22
-    pristine_git_object: af442085e625c0472d525ed8977beb6cb8f0f0b5
+    last_write_checksum: sha1:8211f7933ce4dcbc9e40cea9a7b36754a3962c10
+    pristine_git_object: 6053c355dad1c41e196883ef67df4bdb796b4062
   src/models/operations/listdiscountcodes.ts:
     id: aee908b0431d
     last_write_checksum: sha1:44b6559f90c27dccc3dcecac81a05f08fa719260
@@ -4461,7 +4461,6 @@ examples:
           application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes:\n* `dub.analytics.retrieve()`: \n  *  `request` **Changed**\n  *  `response.union(Array<AnalyticsEventNames>)` **Added** (Breaking ⚠️)\n* `dub.events.list()`: \n  *  `request.eventName` **Added**\n"
 generatedFiles:
   - .gitattributes
   - .npmignore

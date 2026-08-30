@@ -10,7 +10,13 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
- * Filter the list of commissions by type. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `sale`, `sale,lead`, `-click`.
+ * Filter the list of commissions by type.
+ *
+ * @remarks
+ * Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples:
+ * - "sale"
+ * - "sale,lead"
+ * - "-click"
  */
 export const Type = {
   Click: "click",
@@ -20,7 +26,13 @@ export const Type = {
   Custom: "custom",
 } as const;
 /**
- * Filter the list of commissions by type. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `sale`, `sale,lead`, `-click`.
+ * Filter the list of commissions by type.
+ *
+ * @remarks
+ * Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples:
+ * - "sale"
+ * - "sale,lead"
+ * - "-click"
  */
 export type Type = ClosedEnum<typeof Type>;
 
@@ -93,7 +105,13 @@ export type ListCommissionsQueryParamInterval = ClosedEnum<
 
 export type ListCommissionsRequest = {
   /**
-   * Filter the list of commissions by type. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `sale`, `sale,lead`, `-click`.
+   * Filter the list of commissions by type.
+   *
+   * @remarks
+   * Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples:
+   * - "sale"
+   * - "sale,lead"
+   * - "-click"
    */
   type?: Type | undefined;
   /**
@@ -105,7 +123,14 @@ export type ListCommissionsRequest = {
    */
   payoutId?: string | undefined;
   /**
-   * Filter the list of commissions by the associated partner. When specified, takes precedence over `tenantId`. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `partner_abc`, `partner_abc,partner_xyz`, `-partner_abc`.
+   * Filter the list of commissions by the associated partner. When specified, takes precedence over `tenantId`.
+   *
+   * @remarks
+   * Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`).
+   * Examples:
+   * - "partner_abc"
+   * - "partner_abc,partner_xyz"
+   * - "-partner_abc"
    */
   partnerId?: string | undefined;
   /**
@@ -113,11 +138,24 @@ export type ListCommissionsRequest = {
    */
   tenantId?: string | undefined;
   /**
-   * Filter the list of commissions by the associated partner group. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `group_abc`, `group_abc,group_xyz`, `-group_abc`.
+   * Filter the list of commissions by the associated partner group.
+   *
+   * @remarks
+   * Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples:
+   * - "group_abc"
+   * - "group_abc,group_xyz"
+   * - "-group_abc"
    */
   groupId?: string | undefined;
   /**
-   * Filter the list of commissions by the associated partner tag. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `ptag_abc`, `ptag_abc,ptag_xyz`, `-ptag_abc`.
+   * Filter the list of commissions by the associated partner tag.
+   *
+   * @remarks
+   * Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`).
+   * Examples:
+   * - "ptag_abc"
+   * - "ptag_abc,ptag_xyz"
+   * - "-ptag_abc"
    */
   partnerTagId?: string | undefined;
   /**
@@ -151,6 +189,11 @@ export type ListCommissionsRequest = {
   timezone?: string | undefined;
   /**
    * Filter by lead or sale event metadata. Top-level keys only. Compares string values only — numeric and boolean metadata values are not matched.
+   *
+   * @remarks
+   * Examples:
+   * - "metadata['key']='value'"
+   * - "metadata['key']!='value'"
    */
   query?: string | undefined;
   /**
