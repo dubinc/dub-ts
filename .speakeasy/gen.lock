@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: f28179cc-ef59-426d-9e85-60cec22fc642
 management:
-  docChecksum: 052da4959733457f8d8107004470863b
+  docChecksum: 4a5c88917edd89070470cd4cefad49fe
   docVersion: 0.0.1
-  speakeasyVersion: 1.796.2
-  generationVersion: 2.933.0
-  releaseVersion: 0.73.7
-  configChecksum: 8cc8e676009cbe4d7e0d998ada68fb11
+  speakeasyVersion: 1.796.3
+  generationVersion: 2.934.1
+  releaseVersion: 0.73.8
+  configChecksum: 8e69237d585f4feb841a92631c15dc92
   repoURL: https://github.com/dubinc/dub-ts.git
   installationURL: https://github.com/dubinc/dub-ts
   published: true
 persistentEdits:
-  generation_id: 6c2bf360-d461-4ba5-ac6a-fe7143dfd479
-  pristine_commit_hash: 9b00805151fa80ea8a7e75aff24529d0e2789281
-  pristine_tree_hash: 1f5013dc2cdd57fbc57a3c465384ca45d9386459
+  generation_id: 1f4f02ac-f8c3-450a-a2e2-b8be9c29ddbb
+  pristine_commit_hash: 92d7fadc5a21ee1f8bba33d87d8443a30026552c
+  pristine_tree_hash: b57e34e3f1b467438de8a654fd53c25e0efa3646
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -1395,8 +1395,8 @@ trackedFiles:
     pristine_git_object: 653feef661c6604e52e7230416e20a384c2a7810
   docs/models/operations/listpartnersrequest.md:
     id: 349c06dcc3d5
-    last_write_checksum: sha1:a865d88403c055e75cc1798f80fcbfb307448d28
-    pristine_git_object: 72b907089dad3c7e60545a5c0ff1dc657dab1160
+    last_write_checksum: sha1:85934631de68d9e73af0d57b44dbf36c05f48dea
+    pristine_git_object: c7b05474b4f90811ef202a6d712b26762bc527f5
   docs/models/operations/listpartnersresponsebody.md:
     id: e60469e13fe9
     last_write_checksum: sha1:f2e0e5507830dc4157ff3b366b6bcd5f344d4aff
@@ -1583,8 +1583,8 @@ trackedFiles:
     pristine_git_object: a4ec7b2b63cb8d2b42b89017a1a9a960e10d9c68
   docs/models/operations/requestbody3.md:
     id: f4bad0c7c5d5
-    last_write_checksum: sha1:7df3b1fc0ce5240d04aeaffdb0ef3ebf16518bdf
-    pristine_git_object: 4c63ecfe258c26f66b3caeeccc95e9d618a7f705
+    last_write_checksum: sha1:f56d21e6565dafbc5bd49eab07f1d97502222451
+    pristine_git_object: 1bce5beb0583c772f528ebc85d37d42f1f3253d3
   docs/models/operations/requestbodycustomer.md:
     id: 383cdb67024c
     last_write_checksum: sha1:67eda42b25323119384057d1323141f5880b071e
@@ -1975,12 +1975,12 @@ trackedFiles:
     pristine_git_object: b15f2223f26e640398024c665696a631aa8cc97a
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:8531fb2e6dea6e7bfec2a41a28c5ca1ea3885929
-    pristine_git_object: f3524e94e02267b3ca30965f5aba65a9d2e9cd57
+    last_write_checksum: sha1:284e91e52ebb58450090806befe89bedf794b097
+    pristine_git_object: 75d8ed79b7608248603531332916d03ed033f103
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:a273327f26899c1c86dd45fec4dbc79d78e1b94e
-    pristine_git_object: ee8294b93fbe7de6a423b52b00a491975af797e6
+    last_write_checksum: sha1:f23735f1de09ad567d7a20ebae1c37ebf86a9fc2
+    pristine_git_object: 048aa9fd1ddbc200aa191716ddbde9155aab14d4
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:f9ef229e4b8c8413b69fb9fb091aa6758b05d99f
@@ -2227,8 +2227,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:1c5d742191e874af9b2c3df86e2b946f9adc353f
-    pristine_git_object: 8a5fd379165075f0885d222fa3e88f322eeeb543
+    last_write_checksum: sha1:a39bb0e95ffa92b30ad405d6cbc5f0dc0acf1941
+    pristine_git_object: fea2ae8939585a2e425581a0b5335723d39fc122
   src/lib/encodings.ts:
     id: 3bd8ead98afd
     last_write_checksum: sha1:a257d6f6108693db2197617c579400bc8f0da914
@@ -2515,8 +2515,8 @@ trackedFiles:
     pristine_git_object: 2caf5408f9c54d6e45db42e705bbf0afac7ad142
   src/models/operations/createcommission.ts:
     id: de119eae10a0
-    last_write_checksum: sha1:74e54fd3189b35c272f9d4c45ad882a9f427fd05
-    pristine_git_object: 80694b1faba0746629979bdb85289f943dd1d9d2
+    last_write_checksum: sha1:ab7070543c7f69ed96803ea3ef1d6621e8475093
+    pristine_git_object: cc32664c977ad6eb0d500f660f5f067ff06e6d0f
   src/models/operations/creatediscountcode.ts:
     id: a80888d1f41e
     last_write_checksum: sha1:b01fd8b74a13c8d6290a7fe8e607abc78069c304
@@ -2639,8 +2639,8 @@ trackedFiles:
     pristine_git_object: 550db0fba1b1035ebdc01ad83c61351a97d52f24
   src/models/operations/listpartners.ts:
     id: d94a27f3914a
-    last_write_checksum: sha1:3e0455b1709c85fd26c144303fc16924beae0668
-    pristine_git_object: 8b756396f6305786c66dd6ea4b1489edcc79e3e1
+    last_write_checksum: sha1:4fa8fab69e4e0f3f500b21c63126c964ec5f5275
+    pristine_git_object: 6215107a0df0bb1375f2c458c18e178ad14e270b
   src/models/operations/listpayouts.ts:
     id: 2417fe06d050
     last_write_checksum: sha1:501146bddd6214641de11827048f18e2c3828a80
@@ -4461,6 +4461,7 @@ examples:
           application/json: {"error": {"code": "internal_server_error", "message": "The requested resource was not found."}}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## Typescript SDK Changes:\n* `dub.commissions.create()`: \n  *  `request.union(sale).discountCode` **Added**\n"
 generatedFiles:
   - .gitattributes
   - .npmignore

@@ -104,9 +104,13 @@ export type RequestBody3 = {
    */
   customer?: RequestBodyCustomer | null | undefined;
   /**
-   * The partner link ID to associate the commission with. If not provided, default to the link with the most revenue.
+   * The partner link ID to associate the commission with. If neither `linkId` nor `discountCode` is provided, default to the link with the most revenue.
    */
   linkId?: string | null | undefined;
+  /**
+   * The partner discount code to resolve the associated link. Use this when the link ID is unknown. Cannot be provided together with `linkId`.
+   */
+  discountCode?: string | null | undefined;
   /**
    * When `true`, import all unimported paid Stripe invoices for the customer and create a commission for each. When `false`, create a single manual sale event using `sale.amount` (or deprecated `saleAmount`).
    */
@@ -333,6 +337,7 @@ export type RequestBody3$Outbound = {
   customerId?: string | null | undefined;
   customer?: RequestBodyCustomer$Outbound | null | undefined;
   linkId?: string | null | undefined;
+  discountCode?: string | null | undefined;
   importStripeInvoices: boolean | null;
   date?: string | null | undefined;
   sale?: Sale$Outbound | null | undefined;
@@ -354,6 +359,7 @@ export const RequestBody3$outboundSchema: z.ZodType<
   customer: z.nullable(z.lazy(() => RequestBodyCustomer$outboundSchema))
     .optional(),
   linkId: z.nullable(z.string()).optional(),
+  discountCode: z.nullable(z.string()).optional(),
   importStripeInvoices: z.nullable(z.boolean().default(false)),
   date: z.nullable(z.string()).optional(),
   sale: z.nullable(z.lazy(() => Sale$outboundSchema)).optional(),
