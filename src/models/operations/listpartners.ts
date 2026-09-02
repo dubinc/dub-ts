@@ -93,11 +93,11 @@ export type ListPartnersRequest = {
    */
   email?: string | undefined;
   /**
-   * Filter the partner list based on the partner's `tenantId`. The value must be a string. Takes precedence over `email` and `search`.
+   * Filter the partner list based on the partner's `tenantId`. The value must be a string. Combines with the other filters.
    */
   tenantId?: string | undefined;
   /**
-   * A search query to filter partners by ID, name, email, or company name.
+   * A search query to filter partners by ID, name, email, company name, description, social platforms, or referral links. Partial matches are supported.
    */
   search?: string | undefined;
   /**
