@@ -14,6 +14,10 @@ export type ListDiscountCodesRequest = {
    */
   discountId?: string | undefined;
   /**
+   * Filter discount codes by the alphanumeric code (e.g. `PARTNER10OFF`).
+   */
+  code?: string | undefined;
+  /**
    * The page number for pagination. The first page is `1`.
    */
   page?: number | undefined;
@@ -27,6 +31,7 @@ export type ListDiscountCodesRequest = {
 export type ListDiscountCodesRequest$Outbound = {
   partnerId?: string | undefined;
   discountId?: string | undefined;
+  code?: string | undefined;
   page?: number | undefined;
   pageSize: number;
 };
@@ -39,6 +44,7 @@ export const ListDiscountCodesRequest$outboundSchema: z.ZodType<
 > = z.object({
   partnerId: z.string().optional(),
   discountId: z.string().optional(),
+  code: z.string().optional(),
   page: z.number().int().optional(),
   pageSize: z.number().int().default(100),
 });

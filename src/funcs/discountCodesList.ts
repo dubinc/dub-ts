@@ -32,7 +32,7 @@ import { Result } from "../types/fp.js";
  * List discount codes
  *
  * @remarks
- * Retrieve a paginated list of discount codes for a partner / a given discount / the whole program.
+ * Retrieve a paginated list of discount codes in a program or filtered by partner, discount, or code.
  */
 export function discountCodesList(
   client: DubCore,
@@ -113,6 +113,7 @@ async function $do(
   const path = pathToFunc("/discount-codes")();
 
   const query = encodeFormQuery({
+    "code": payload?.code,
     "discountId": payload?.discountId,
     "page": payload?.page,
     "pageSize": payload?.pageSize,
