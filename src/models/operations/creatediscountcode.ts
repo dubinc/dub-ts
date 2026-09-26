@@ -6,7 +6,7 @@ import * as z from "zod/v3";
 
 export type CreateDiscountCodeRequestBody = {
   /**
-   * The discount code to create. If omitted, a unique code will be generated automatically from the partner's name.
+   * The discount code to create. If omitted, a unique code will be generated automatically from the partner's name. Stripe and Shopify codes can only contain letters, numbers, dashes, and underscores. Custom provider codes can contain any characters.
    */
   code?: string | undefined;
   /**
