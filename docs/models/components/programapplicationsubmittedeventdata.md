@@ -1,26 +1,26 @@
-# PartnerApplicationSubmittedEventData
+# ProgramApplicationSubmittedEventData
 
 ## Example Usage
 
 ```typescript
-import { PartnerApplicationSubmittedEventData } from "dub/models/components";
+import { ProgramApplicationSubmittedEventData } from "dub/models/components";
 
-let value: PartnerApplicationSubmittedEventData = {
+let value: ProgramApplicationSubmittedEventData = {
   id: "<id>",
-  createdAt: "1726165178265",
+  createdAt: "1735601212889",
   partner: {
     id: "<id>",
     name: "<value>",
-    companyName: "Gottlieb LLC",
-    email: "Kraig17@hotmail.com",
-    image: "https://picsum.photos/seed/9eRYaSj/2354/2034",
-    country: "Sierra Leone",
-    status: "approved",
+    companyName: "Schowalter - Effertz",
+    email: null,
+    image: "https://picsum.photos/seed/fhTk2nM/3197/754",
+    country: "Macao",
+    status: "declined",
   },
   applicationFormData: [
     {
       label: "<value>",
-      value: null,
+      value: "<value>",
     },
   ],
 };
@@ -32,5 +32,5 @@ let value: PartnerApplicationSubmittedEventData = {
 | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
 | `id`                                                                                                                     | *string*                                                                                                                 | :heavy_check_mark:                                                                                                       | N/A                                                                                                                      |
 | `createdAt`                                                                                                              | *string*                                                                                                                 | :heavy_check_mark:                                                                                                       | N/A                                                                                                                      |
-| `partner`                                                                                                                | [components.PartnerApplicationSubmittedEventPartner](../../models/components/partnerapplicationsubmittedeventpartner.md) | :heavy_check_mark:                                                                                                       | N/A                                                                                                                      |
+| `partner`                                                                                                                | [components.ProgramApplicationSubmittedEventPartner](../../models/components/programapplicationsubmittedeventpartner.md) | :heavy_check_mark:                                                                                                       | N/A                                                                                                                      |
 | `applicationFormData`                                                                                                    | [components.ApplicationFormData](../../models/components/applicationformdata.md)[]                                       | :heavy_check_mark:                                                                                                       | N/A                                                                                                                      |

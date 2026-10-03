@@ -1,11 +1,11 @@
-# ApprovePartnerApplicationRequestBody
+# ApproveProgramApplicationRequestBody
 
 ## Example Usage
 
 ```typescript
-import { ApprovePartnerApplicationRequestBody } from "dub/models/operations";
+import { ApproveProgramApplicationRequestBody } from "dub/models/operations";
 
-let value: ApprovePartnerApplicationRequestBody = {
+let value: ApproveProgramApplicationRequestBody = {
   partnerId: "<id>",
 };
 ```

@@ -379,29 +379,29 @@ const value: components.PartnerEnrolledEvent = {
 };
 ```
 
-### `components.PartnerApplicationSubmittedEvent`
+### `components.ProgramApplicationSubmittedEvent`
 
 ```typescript
-const value: components.PartnerApplicationSubmittedEvent = {
+const value: components.ProgramApplicationSubmittedEvent = {
   id: "<id>",
   event: "partner.application_submitted",
-  createdAt: "1728987158922",
+  createdAt: "1705224880695",
   data: {
     id: "<id>",
-    createdAt: "1723110420262",
+    createdAt: "1735601986063",
     partner: {
       id: "<id>",
       name: "<value>",
-      companyName: "Gottlieb LLC",
-      email: "Kraig17@hotmail.com",
-      image: "https://picsum.photos/seed/9eRYaSj/2354/2034",
-      country: "Sierra Leone",
-      status: "approved",
+      companyName: "Schowalter - Effertz",
+      email: null,
+      image: "https://picsum.photos/seed/fhTk2nM/3197/754",
+      country: "Macao",
+      status: "declined",
     },
     applicationFormData: [
       {
         label: "<value>",
-        value: null,
+        value: "<value>",
       },
     ],
   },

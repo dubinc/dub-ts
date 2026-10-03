@@ -1,20 +1,20 @@
-# PartnerApplications
+# ProgramApplications
 
 ## Overview
 
 ### Available Operations
 
-* [list](#list) - List all pending partner applications
+* [list](#list) - List all program applications
 * [approve](#approve) - Approve a partner application
 * [reject](#reject) - Reject a partner application
 
 ## list
 
-Retrieve a paginated list of pending applications for your partner program.
+Retrieve a paginated list of applications for your partner program. Filter by `status` to list pending, approved, or rejected applications.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="listPartnerApplications" method="get" path="/partners/applications" -->
+<!-- UsageSnippet language="typescript" operationID="listProgramApplications" method="get" path="/program-applications" -->
 ```typescript
 import { Dub } from "dub";
 
@@ -23,7 +23,7 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.partnerApplications.list();
+  const result = await dub.programApplications.list();
 
   console.log(result);
 }
@@ -37,7 +37,7 @@ The standalone function version of this method:
 
 ```typescript
 import { DubCore } from "dub/core.js";
-import { partnerApplicationsList } from "dub/funcs/partnerApplicationsList.js";
+import { programApplicationsList } from "dub/funcs/programApplicationsList.js";
 
 // Use `DubCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -46,12 +46,12 @@ const dub = new DubCore({
 });
 
 async function run() {
-  const res = await partnerApplicationsList(dub);
+  const res = await programApplicationsList(dub);
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("partnerApplicationsList failed:", res.error);
+    console.log("programApplicationsList failed:", res.error);
   }
 }
 
@@ -62,14 +62,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ListPartnerApplicationsRequest](../../models/operations/listpartnerapplicationsrequest.md)                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.ListProgramApplicationsRequest](../../models/operations/listprogramapplicationsrequest.md)                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[operations.ListPartnerApplicationsResponseBody[]](../../models/.md)\>**
+**Promise\<[operations.ListProgramApplicationsResponseBody[]](../../models/.md)\>**
 
 ### Errors
 
@@ -92,7 +92,7 @@ Approve a pending partner application to your program. The partner will be enrol
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="approvePartnerApplication" method="post" path="/partners/applications/approve" -->
+<!-- UsageSnippet language="typescript" operationID="approveProgramApplication" method="post" path="/program-applications/approve" -->
 ```typescript
 import { Dub } from "dub";
 
@@ -101,7 +101,7 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.partnerApplications.approve({
+  const result = await dub.programApplications.approve({
     partnerId: "<id>",
   });
 
@@ -117,7 +117,7 @@ The standalone function version of this method:
 
 ```typescript
 import { DubCore } from "dub/core.js";
-import { partnerApplicationsApprove } from "dub/funcs/partnerApplicationsApprove.js";
+import { programApplicationsApprove } from "dub/funcs/programApplicationsApprove.js";
 
 // Use `DubCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -126,14 +126,14 @@ const dub = new DubCore({
 });
 
 async function run() {
-  const res = await partnerApplicationsApprove(dub, {
+  const res = await programApplicationsApprove(dub, {
     partnerId: "<id>",
   });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("partnerApplicationsApprove failed:", res.error);
+    console.log("programApplicationsApprove failed:", res.error);
   }
 }
 
@@ -144,14 +144,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ApprovePartnerApplicationRequestBody](../../models/operations/approvepartnerapplicationrequestbody.md)                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.ApproveProgramApplicationRequestBody](../../models/operations/approveprogramapplicationrequestbody.md)                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[operations.ApprovePartnerApplicationResponseBody](../../models/operations/approvepartnerapplicationresponsebody.md)\>**
+**Promise\<[operations.ApproveProgramApplicationResponseBody](../../models/operations/approveprogramapplicationresponsebody.md)\>**
 
 ### Errors
 
@@ -174,7 +174,7 @@ Reject a pending partner application to your program. The partner will be notifi
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="rejectPartnerApplication" method="post" path="/partners/applications/reject" -->
+<!-- UsageSnippet language="typescript" operationID="rejectProgramApplication" method="post" path="/program-applications/reject" -->
 ```typescript
 import { Dub } from "dub";
 
@@ -183,7 +183,7 @@ const dub = new Dub({
 });
 
 async function run() {
-  const result = await dub.partnerApplications.reject({
+  const result = await dub.programApplications.reject({
     partnerId: "<id>",
   });
 
@@ -199,7 +199,7 @@ The standalone function version of this method:
 
 ```typescript
 import { DubCore } from "dub/core.js";
-import { partnerApplicationsReject } from "dub/funcs/partnerApplicationsReject.js";
+import { programApplicationsReject } from "dub/funcs/programApplicationsReject.js";
 
 // Use `DubCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -208,14 +208,14 @@ const dub = new DubCore({
 });
 
 async function run() {
-  const res = await partnerApplicationsReject(dub, {
+  const res = await programApplicationsReject(dub, {
     partnerId: "<id>",
   });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("partnerApplicationsReject failed:", res.error);
+    console.log("programApplicationsReject failed:", res.error);
   }
 }
 
@@ -226,14 +226,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.RejectPartnerApplicationRequestBody](../../models/operations/rejectpartnerapplicationrequestbody.md)                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.RejectProgramApplicationRequestBody](../../models/operations/rejectprogramapplicationrequestbody.md)                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[operations.RejectPartnerApplicationResponseBody](../../models/operations/rejectpartnerapplicationresponsebody.md)\>**
+**Promise\<[operations.RejectProgramApplicationResponseBody](../../models/operations/rejectprogramapplicationresponsebody.md)\>**
 
 ### Errors
 

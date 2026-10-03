@@ -122,6 +122,7 @@ async function $do(
   const path = pathToFunc("/commissions")();
 
   const query = encodeFormQuery({
+    "bountySubmissionId": payload?.bountySubmissionId,
     "customerId": payload?.customerId,
     "end": payload?.end,
     "endingBefore": payload?.endingBefore,

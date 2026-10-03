@@ -49,7 +49,7 @@ export type GetCustomersRequest = {
    */
   externalId?: string | undefined;
   /**
-   * A search query to filter customers by email, externalId, or name. If `email` or `externalId` is provided, this will be ignored.
+   * A search query to filter customers by email, name, or customer ID (`cus_...`). If `email` or `externalId` is provided, this will be ignored.
    */
   search?: string | undefined;
   /**

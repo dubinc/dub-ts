@@ -1,18 +1,18 @@
-# PartnerApplicationSubmittedEventPartner
+# ProgramApplicationSubmittedEventPartner
 
 ## Example Usage
 
 ```typescript
-import { PartnerApplicationSubmittedEventPartner } from "dub/models/components";
+import { ProgramApplicationSubmittedEventPartner } from "dub/models/components";
 
-let value: PartnerApplicationSubmittedEventPartner = {
+let value: ProgramApplicationSubmittedEventPartner = {
   id: "<id>",
   name: "<value>",
-  companyName: "Medhurst, Luettgen and Kunze",
-  email: "Bernard.OConner48@yahoo.com",
-  image: "https://picsum.photos/seed/mq7Kf07DDk/752/1733",
-  country: "Western Sahara",
-  status: "rejected",
+  companyName: "Schaefer and Sons",
+  email: "Oda_Ullrich16@gmail.com",
+  image: "https://picsum.photos/seed/cpI2Pr/2401/3087",
+  country: "Lithuania",
+  status: "declined",
 };
 ```
 
@@ -28,7 +28,7 @@ let value: PartnerApplicationSubmittedEventPartner = {
 | `description`                                                                                                          | *string*                                                                                                               | :heavy_minus_sign:                                                                                                     | A brief description of the partner and their background.                                                               |
 | `country`                                                                                                              | *string*                                                                                                               | :heavy_check_mark:                                                                                                     | The partner's country (required for tax purposes).                                                                     |
 | `groupId`                                                                                                              | *string*                                                                                                               | :heavy_minus_sign:                                                                                                     | The partner's group ID on Dub.                                                                                         |
-| `status`                                                                                                               | [components.PartnerApplicationSubmittedEventStatus](../../models/components/partnerapplicationsubmittedeventstatus.md) | :heavy_check_mark:                                                                                                     | The status of the partner's enrollment in the program.                                                                 |
+| `status`                                                                                                               | [components.ProgramApplicationSubmittedEventStatus](../../models/components/programapplicationsubmittedeventstatus.md) | :heavy_check_mark:                                                                                                     | The status of the partner's enrollment in the program.                                                                 |
 | `website`                                                                                                              | *string*                                                                                                               | :heavy_minus_sign:                                                                                                     | The partner's website URL (including the https protocol).                                                              |
 | `youtube`                                                                                                              | *string*                                                                                                               | :heavy_minus_sign:                                                                                                     | The partner's YouTube channel username (e.g. `johndoe`).                                                               |
 | `twitter`                                                                                                              | *string*                                                                                                               | :heavy_minus_sign:                                                                                                     | The partner's Twitter username (e.g. `johndoe`).                                                                       |
