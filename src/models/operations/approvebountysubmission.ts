@@ -104,6 +104,10 @@ export type ApproveBountySubmissionResponseBody = {
    */
   socialMetricsLastSyncedAt?: string | null | undefined;
   /**
+   * The highest social metric milestone that has been approved and paid out for this submission
+   */
+  approvedSocialMetricThreshold?: number | null | undefined;
+  /**
    * The date and time the submission was created
    */
   createdAt: string;
@@ -230,6 +234,7 @@ export const ApproveBountySubmissionResponseBody$inboundSchema: z.ZodType<
   performanceCount: z.nullable(z.number()),
   socialMetricCount: z.nullable(z.number().int()),
   socialMetricsLastSyncedAt: z.nullable(z.string()).optional(),
+  approvedSocialMetricThreshold: z.nullable(z.number().int()).optional(),
   createdAt: z.string(),
   completedAt: z.nullable(z.string()),
   reviewedAt: z.nullable(z.string()),

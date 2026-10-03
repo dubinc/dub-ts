@@ -1,11 +1,11 @@
-# RejectPartnerApplicationRequestBody
+# RejectProgramApplicationRequestBody
 
 ## Example Usage
 
 ```typescript
-import { RejectPartnerApplicationRequestBody } from "dub/models/operations";
+import { RejectProgramApplicationRequestBody } from "dub/models/operations";
 
-let value: RejectPartnerApplicationRequestBody = {
+let value: RejectProgramApplicationRequestBody = {
   partnerId: "<id>",
 };
 ```

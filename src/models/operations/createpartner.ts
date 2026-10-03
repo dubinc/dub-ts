@@ -28,11 +28,11 @@ export type CreatePartnerTestVariants = {
  */
 export type LinkProps = {
   /**
-   * The ID of the link in your database. If set, it can be used to identify the link in future API requests (must be prefixed with 'ext_' when passed as a query parameter). This key is unique across your workspace.
+   * The ID of the link in your database. If set, it can be used to identify the link in future API requests (must be prefixed with 'ext_' when passed as a query parameter). This key is unique across your workspace. Pass `null` or an empty string to remove it.
    */
   externalId?: string | null | undefined;
   /**
-   * The ID of the tenant that created the link inside your system. If set, it can be used to fetch all links for a tenant.
+   * The ID of the tenant that created the link inside your system. If set, it can be used to fetch all links for a tenant. Pass `null` or an empty string to remove it.
    */
   tenantId?: string | null | undefined;
   /**
@@ -518,6 +518,7 @@ export type CreatePartnerResponseBody = {
   leadRewardId?: string | null | undefined;
   saleRewardId?: string | null | undefined;
   referralRewardId?: string | null | undefined;
+  customRewardId?: string | null | undefined;
   discountId?: string | null | undefined;
   /**
    * If the partner submitted an application to join the program, this is the ID of the application.
@@ -1234,6 +1235,7 @@ export const CreatePartnerResponseBody$inboundSchema: z.ZodType<
   leadRewardId: z.nullable(z.string()).optional(),
   saleRewardId: z.nullable(z.string()).optional(),
   referralRewardId: z.nullable(z.string()).optional(),
+  customRewardId: z.nullable(z.string()).optional(),
   discountId: z.nullable(z.string()).optional(),
   applicationId: z.nullable(z.string()).optional(),
   bannedAt: z.nullable(z.string()).optional(),

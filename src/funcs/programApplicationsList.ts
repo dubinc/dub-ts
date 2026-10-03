@@ -28,18 +28,18 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * List all pending partner applications
+ * List all program applications
  *
  * @remarks
- * Retrieve a paginated list of pending applications for your partner program.
+ * Retrieve a paginated list of applications for your partner program. Filter by `status` to list pending, approved, or rejected applications.
  */
-export function partnerApplicationsList(
+export function programApplicationsList(
   client: DubCore,
-  request?: operations.ListPartnerApplicationsRequest | undefined,
+  request?: operations.ListProgramApplicationsRequest | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    Array<operations.ListPartnerApplicationsResponseBody>,
+    Array<operations.ListProgramApplicationsResponseBody>,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -68,12 +68,12 @@ export function partnerApplicationsList(
 
 async function $do(
   client: DubCore,
-  request?: operations.ListPartnerApplicationsRequest | undefined,
+  request?: operations.ListProgramApplicationsRequest | undefined,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      Array<operations.ListPartnerApplicationsResponseBody>,
+      Array<operations.ListProgramApplicationsResponseBody>,
       | errors.BadRequest
       | errors.Unauthorized
       | errors.Forbidden
@@ -98,7 +98,7 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.ListPartnerApplicationsRequest$outboundSchema.optional().parse(
+      operations.ListProgramApplicationsRequest$outboundSchema.optional().parse(
         value,
       ),
     "Input validation failed",
@@ -109,13 +109,16 @@ async function $do(
   const payload = parsed.value;
   const body = null;
 
-  const path = pathToFunc("/partners/applications")();
+  const path = pathToFunc("/program-applications")();
 
   const query = encodeFormQuery({
     "country": payload?.country,
     "groupId": payload?.groupId,
     "page": payload?.page,
     "pageSize": payload?.pageSize,
+    "search": payload?.search,
+    "sortOrder": payload?.sortOrder,
+    "status": payload?.status,
   });
 
   const headers = new Headers(compactMap({
@@ -129,7 +132,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "listPartnerApplications",
+    operationID: "listProgramApplications",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
@@ -174,7 +177,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    Array<operations.ListPartnerApplicationsResponseBody>,
+    Array<operations.ListProgramApplicationsResponseBody>,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -195,7 +198,7 @@ async function $do(
   >(
     M.json(
       200,
-      z.array(operations.ListPartnerApplicationsResponseBody$inboundSchema),
+      z.array(operations.ListProgramApplicationsResponseBody$inboundSchema),
     ),
     M.jsonErr(400, errors.BadRequest$inboundSchema),
     M.jsonErr(401, errors.Unauthorized$inboundSchema),

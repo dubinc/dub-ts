@@ -24,11 +24,11 @@ export type CreatePartnerLinkTestVariants = {
  */
 export type CreatePartnerLinkLinkProps = {
   /**
-   * The ID of the link in your database. If set, it can be used to identify the link in future API requests (must be prefixed with 'ext_' when passed as a query parameter). This key is unique across your workspace.
+   * The ID of the link in your database. If set, it can be used to identify the link in future API requests (must be prefixed with 'ext_' when passed as a query parameter). This key is unique across your workspace. Pass `null` or an empty string to remove it.
    */
   externalId?: string | null | undefined;
   /**
-   * The ID of the tenant that created the link inside your system. If set, it can be used to fetch all links for a tenant.
+   * The ID of the tenant that created the link inside your system. If set, it can be used to fetch all links for a tenant. Pass `null` or an empty string to remove it.
    */
   tenantId?: string | null | undefined;
   /**
@@ -123,7 +123,7 @@ export type CreatePartnerLinkRequestBody = {
    */
   tenantId?: string | null | undefined;
   /**
-   * The URL to shorten (if not provided, the program's default URL will be used). Will throw an error if the domain doesn't match the program's default URL domain.
+   * The URL to shorten (if not provided, the program's default URL will be used).
    */
   url?: string | null | undefined;
   /**

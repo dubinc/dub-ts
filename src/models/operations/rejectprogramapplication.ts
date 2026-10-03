@@ -35,7 +35,7 @@ export const ReapplicationTimeframe = {
  */
 export type ReapplicationTimeframe = ClosedEnum<typeof ReapplicationTimeframe>;
 
-export type RejectPartnerApplicationRequestBody = {
+export type RejectProgramApplicationRequestBody = {
   /**
    * The ID of the partner to reject.
    */
@@ -65,7 +65,7 @@ export type RejectPartnerApplicationRequestBody = {
 /**
  * The rejected partner
  */
-export type RejectPartnerApplicationResponseBody = {
+export type RejectProgramApplicationResponseBody = {
   /**
    * The ID of the rejected partner.
    */
@@ -83,7 +83,7 @@ export const ReapplicationTimeframe$outboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(ReapplicationTimeframe);
 
 /** @internal */
-export type RejectPartnerApplicationRequestBody$Outbound = {
+export type RejectProgramApplicationRequestBody$Outbound = {
   partnerId: string;
   rejectionReason?: string | undefined;
   rejectionNote?: string | undefined;
@@ -93,10 +93,10 @@ export type RejectPartnerApplicationRequestBody$Outbound = {
 };
 
 /** @internal */
-export const RejectPartnerApplicationRequestBody$outboundSchema: z.ZodType<
-  RejectPartnerApplicationRequestBody$Outbound,
+export const RejectProgramApplicationRequestBody$outboundSchema: z.ZodType<
+  RejectProgramApplicationRequestBody$Outbound,
   z.ZodTypeDef,
-  RejectPartnerApplicationRequestBody
+  RejectProgramApplicationRequestBody
 > = z.object({
   partnerId: z.string(),
   rejectionReason: RejectionReason$outboundSchema.optional(),
@@ -108,32 +108,32 @@ export const RejectPartnerApplicationRequestBody$outboundSchema: z.ZodType<
   flagForFraudReason: z.string().optional(),
 });
 
-export function rejectPartnerApplicationRequestBodyToJSON(
-  rejectPartnerApplicationRequestBody: RejectPartnerApplicationRequestBody,
+export function rejectProgramApplicationRequestBodyToJSON(
+  rejectProgramApplicationRequestBody: RejectProgramApplicationRequestBody,
 ): string {
   return JSON.stringify(
-    RejectPartnerApplicationRequestBody$outboundSchema.parse(
-      rejectPartnerApplicationRequestBody,
+    RejectProgramApplicationRequestBody$outboundSchema.parse(
+      rejectProgramApplicationRequestBody,
     ),
   );
 }
 
 /** @internal */
-export const RejectPartnerApplicationResponseBody$inboundSchema: z.ZodType<
-  RejectPartnerApplicationResponseBody,
+export const RejectProgramApplicationResponseBody$inboundSchema: z.ZodType<
+  RejectProgramApplicationResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
   partnerId: z.string(),
 });
 
-export function rejectPartnerApplicationResponseBodyFromJSON(
+export function rejectProgramApplicationResponseBodyFromJSON(
   jsonString: string,
-): SafeParseResult<RejectPartnerApplicationResponseBody, SDKValidationError> {
+): SafeParseResult<RejectProgramApplicationResponseBody, SDKValidationError> {
   return safeParse(
     jsonString,
     (x) =>
-      RejectPartnerApplicationResponseBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RejectPartnerApplicationResponseBody' from JSON`,
+      RejectProgramApplicationResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RejectProgramApplicationResponseBody' from JSON`,
   );
 }
