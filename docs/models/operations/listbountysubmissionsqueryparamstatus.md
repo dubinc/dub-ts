@@ -7,11 +7,11 @@ The status of the submissions to list.
 ```typescript
 import { ListBountySubmissionsQueryParamStatus } from "dub/models/operations";
 
-let value: ListBountySubmissionsQueryParamStatus = "draft";
+let value: ListBountySubmissionsQueryParamStatus = "submitted";
 ```
 
 ## Values
 
 ```typescript
-"draft" | "submitted" | "approved" | "rejected"
+"draft" | "submitted" | "approved" | "rejected" | "partiallyApproved"
 ```

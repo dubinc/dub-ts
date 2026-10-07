@@ -7,7 +7,7 @@ import { ApplicationFormData } from "dub/models/components";
 
 let value: ApplicationFormData = {
   label: "<value>",
-  value: null,
+  value: "<value>",
 };
 ```
 

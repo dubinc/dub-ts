@@ -185,12 +185,6 @@ run();
 * [updateMany](docs/sdks/links/README.md#updatemany) - Bulk update links
 * [upsert](docs/sdks/links/README.md#upsert) - Upsert a link
 
-### [PartnerApplications](docs/sdks/partnerapplications/README.md)
-
-* [list](docs/sdks/partnerapplications/README.md#list) - List all pending partner applications
-* [approve](docs/sdks/partnerapplications/README.md#approve) - Approve a partner application
-* [reject](docs/sdks/partnerapplications/README.md#reject) - Reject a partner application
-
 ### [Partners](docs/sdks/partners/README.md)
 
 * [list](docs/sdks/partners/README.md#list) - List all partners
@@ -205,6 +199,12 @@ run();
 ### [Payouts](docs/sdks/payouts/README.md)
 
 * [list](docs/sdks/payouts/README.md#list) - List all payouts
+
+### [ProgramApplications](docs/sdks/programapplications/README.md)
+
+* [list](docs/sdks/programapplications/README.md#list) - List all program applications
+* [approve](docs/sdks/programapplications/README.md#approve) - Approve a partner application
+* [reject](docs/sdks/programapplications/README.md#reject) - Reject a partner application
 
 ### [QRCodes](docs/sdks/qrcodes/README.md)
 
@@ -569,9 +569,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`linksUpdate`](docs/sdks/links/README.md#update) - Update a link
 - [`linksUpdateMany`](docs/sdks/links/README.md#updatemany) - Bulk update links
 - [`linksUpsert`](docs/sdks/links/README.md#upsert) - Upsert a link
-- [`partnerApplicationsApprove`](docs/sdks/partnerapplications/README.md#approve) - Approve a partner application
-- [`partnerApplicationsList`](docs/sdks/partnerapplications/README.md#list) - List all pending partner applications
-- [`partnerApplicationsReject`](docs/sdks/partnerapplications/README.md#reject) - Reject a partner application
 - [`partnersAnalytics`](docs/sdks/partners/README.md#analytics) - Retrieve analytics for a partner
 - [`partnersBan`](docs/sdks/partners/README.md#ban) - Ban a partner
 - [`partnersCreate`](docs/sdks/partners/README.md#create) - Create or update a partner
@@ -581,6 +578,9 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`partnersRetrieveLinks`](docs/sdks/partners/README.md#retrievelinks) - Retrieve a partner's links.
 - [`partnersUpsertLink`](docs/sdks/partners/README.md#upsertlink) - Upsert a link for a partner
 - [`payoutsList`](docs/sdks/payouts/README.md#list) - List all payouts
+- [`programApplicationsApprove`](docs/sdks/programapplications/README.md#approve) - Approve a partner application
+- [`programApplicationsList`](docs/sdks/programapplications/README.md#list) - List all program applications
+- [`programApplicationsReject`](docs/sdks/programapplications/README.md#reject) - Reject a partner application
 - [`qrCodesGet`](docs/sdks/qrcodes/README.md#get) - Retrieve a QR code
 - [`tagsCreate`](docs/sdks/tags/README.md#create) - Create a tag
 - [`tagsDelete`](docs/sdks/tags/README.md#delete) - Delete a tag

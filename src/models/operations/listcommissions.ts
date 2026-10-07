@@ -39,7 +39,7 @@ export type Type = ClosedEnum<typeof Type>;
 /**
  * Filter the list of commissions by their corresponding status.
  */
-export const QueryParamStatus = {
+export const ListCommissionsQueryParamStatus = {
   Pending: "pending",
   Processed: "processed",
   Paid: "paid",
@@ -52,7 +52,9 @@ export const QueryParamStatus = {
 /**
  * Filter the list of commissions by their corresponding status.
  */
-export type QueryParamStatus = ClosedEnum<typeof QueryParamStatus>;
+export type ListCommissionsQueryParamStatus = ClosedEnum<
+  typeof ListCommissionsQueryParamStatus
+>;
 
 /**
  * The field to sort the list of commissions by.
@@ -123,6 +125,10 @@ export type ListCommissionsRequest = {
    */
   payoutId?: string | undefined;
   /**
+   * Filter the list of commissions by the associated bounty submission.
+   */
+  bountySubmissionId?: string | undefined;
+  /**
    * Filter the list of commissions by the associated partner. When specified, takes precedence over `tenantId`.
    *
    * @remarks
@@ -165,7 +171,7 @@ export type ListCommissionsRequest = {
   /**
    * Filter the list of commissions by their corresponding status.
    */
-  status?: QueryParamStatus | undefined;
+  status?: ListCommissionsQueryParamStatus | undefined;
   /**
    * The field to sort the list of commissions by.
    */
@@ -371,7 +377,7 @@ export type ListCommissionsResponseBody = {
    */
   userId?: string | null | undefined;
   /**
-   * User-provided metadata from the associated lead or sale event (`lead.metadata` / `sale.metadata`).
+   * Metadata from the associated lead or sale event (`lead.metadata` / `sale.metadata`), or from Stripe webhook metadata.
    */
   metadata: { [k: string]: any } | null;
   /**
@@ -400,9 +406,9 @@ export const Type$outboundSchema: z.ZodNativeEnum<typeof Type> = z.nativeEnum(
 );
 
 /** @internal */
-export const QueryParamStatus$outboundSchema: z.ZodNativeEnum<
-  typeof QueryParamStatus
-> = z.nativeEnum(QueryParamStatus);
+export const ListCommissionsQueryParamStatus$outboundSchema: z.ZodNativeEnum<
+  typeof ListCommissionsQueryParamStatus
+> = z.nativeEnum(ListCommissionsQueryParamStatus);
 
 /** @internal */
 export const ListCommissionsQueryParamSortBy$outboundSchema: z.ZodNativeEnum<
@@ -424,6 +430,7 @@ export type ListCommissionsRequest$Outbound = {
   type?: string | undefined;
   customerId?: string | undefined;
   payoutId?: string | undefined;
+  bountySubmissionId?: string | undefined;
   partnerId?: string | undefined;
   tenantId?: string | undefined;
   groupId?: string | undefined;
@@ -452,12 +459,13 @@ export const ListCommissionsRequest$outboundSchema: z.ZodType<
   type: Type$outboundSchema.optional(),
   customerId: z.string().optional(),
   payoutId: z.string().optional(),
+  bountySubmissionId: z.string().optional(),
   partnerId: z.string().optional(),
   tenantId: z.string().optional(),
   groupId: z.string().optional(),
   partnerTagId: z.string().optional(),
   invoiceId: z.string().optional(),
-  status: QueryParamStatus$outboundSchema.optional(),
+  status: ListCommissionsQueryParamStatus$outboundSchema.optional(),
   sortBy: ListCommissionsQueryParamSortBy$outboundSchema.default("createdAt"),
   sortOrder: ListCommissionsQueryParamSortOrder$outboundSchema.default("desc"),
   interval: ListCommissionsQueryParamInterval$outboundSchema.default("all"),

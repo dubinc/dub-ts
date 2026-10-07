@@ -775,67 +775,6 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/partners/applications"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: listPartnerApplications
-          source: |-
-            import { Dub } from "dub";
-
-            const dub = new Dub({
-              token: "DUB_API_KEY",
-            });
-
-            async function run() {
-              const result = await dub.partnerApplications.list();
-
-              console.log(result);
-            }
-
-            run();
-  - target: $["paths"]["/partners/applications/approve"]["post"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: approvePartnerApplication
-          source: |-
-            import { Dub } from "dub";
-
-            const dub = new Dub({
-              token: "DUB_API_KEY",
-            });
-
-            async function run() {
-              const result = await dub.partnerApplications.approve({
-                partnerId: "<id>",
-              });
-
-              console.log(result);
-            }
-
-            run();
-  - target: $["paths"]["/partners/applications/reject"]["post"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: rejectPartnerApplication
-          source: |-
-            import { Dub } from "dub";
-
-            const dub = new Dub({
-              token: "DUB_API_KEY",
-            });
-
-            async function run() {
-              const result = await dub.partnerApplications.reject({
-                partnerId: "<id>",
-              });
-
-              console.log(result);
-            }
-
-            run();
   - target: $["paths"]["/partners/ban"]["post"]
     update:
       x-codeSamples:
@@ -945,6 +884,67 @@ actions:
 
             async function run() {
               const result = await dub.payouts.list();
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/program-applications"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: listProgramApplications
+          source: |-
+            import { Dub } from "dub";
+
+            const dub = new Dub({
+              token: "DUB_API_KEY",
+            });
+
+            async function run() {
+              const result = await dub.programApplications.list();
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/program-applications/approve"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: approveProgramApplication
+          source: |-
+            import { Dub } from "dub";
+
+            const dub = new Dub({
+              token: "DUB_API_KEY",
+            });
+
+            async function run() {
+              const result = await dub.programApplications.approve({
+                partnerId: "<id>",
+              });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/program-applications/reject"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: rejectProgramApplication
+          source: |-
+            import { Dub } from "dub";
+
+            const dub = new Dub({
+              token: "DUB_API_KEY",
+            });
+
+            async function run() {
+              const result = await dub.programApplications.reject({
+                partnerId: "<id>",
+              });
 
               console.log(result);
             }

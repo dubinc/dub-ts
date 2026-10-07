@@ -1,32 +1,34 @@
-# PartnerApplicationSubmittedEvent
+# ~~ProgramApplicationSubmittedEvent~~
 
-Triggered when a partner submits an application to join a program.
+Deprecated: Use `program_application.created` instead. Triggered when a partner submits an application to join a program.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ## Example Usage
 
 ```typescript
-import { PartnerApplicationSubmittedEvent } from "dub/models/components";
+import { ProgramApplicationSubmittedEvent } from "dub/models/components";
 
-let value: PartnerApplicationSubmittedEvent = {
+let value: ProgramApplicationSubmittedEvent = {
   id: "<id>",
   event: "partner.application_submitted",
-  createdAt: "1728987158922",
+  createdAt: "1705224880695",
   data: {
     id: "<id>",
-    createdAt: "1723110420262",
+    createdAt: "1735601986063",
     partner: {
       id: "<id>",
       name: "<value>",
-      companyName: "Gottlieb LLC",
-      email: "Kraig17@hotmail.com",
-      image: "https://picsum.photos/seed/9eRYaSj/2354/2034",
-      country: "Sierra Leone",
-      status: "approved",
+      companyName: "Schowalter - Effertz",
+      email: null,
+      image: "https://picsum.photos/seed/fhTk2nM/3197/754",
+      country: "Macao",
+      status: "declined",
     },
     applicationFormData: [
       {
         label: "<value>",
-        value: null,
+        value: "<value>",
       },
     ],
   },
@@ -38,6 +40,6 @@ let value: PartnerApplicationSubmittedEvent = {
 | Field                                                                                                                | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
 | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
 | `id`                                                                                                                 | *string*                                                                                                             | :heavy_check_mark:                                                                                                   | N/A                                                                                                                  |
-| `event`                                                                                                              | [components.PartnerApplicationSubmittedEventEvent](../../models/components/partnerapplicationsubmittedeventevent.md) | :heavy_check_mark:                                                                                                   | N/A                                                                                                                  |
+| `event`                                                                                                              | [components.ProgramApplicationSubmittedEventEvent](../../models/components/programapplicationsubmittedeventevent.md) | :heavy_check_mark:                                                                                                   | N/A                                                                                                                  |
 | `createdAt`                                                                                                          | *string*                                                                                                             | :heavy_check_mark:                                                                                                   | N/A                                                                                                                  |
-| `data`                                                                                                               | [components.PartnerApplicationSubmittedEventData](../../models/components/partnerapplicationsubmittedeventdata.md)   | :heavy_check_mark:                                                                                                   | N/A                                                                                                                  |
+| `data`                                                                                                               | [components.ProgramApplicationSubmittedEventData](../../models/components/programapplicationsubmittedeventdata.md)   | :heavy_check_mark:                                                                                                   | N/A                                                                                                                  |

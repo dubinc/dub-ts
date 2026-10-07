@@ -26,7 +26,7 @@ export type Data = {
    */
   url?: string | undefined;
   /**
-   * The ID of the tenant that created the link inside your system. If set, it can be used to fetch all links for a tenant.
+   * The ID of the tenant that created the link inside your system. If set, it can be used to fetch all links for a tenant. Pass `null` or an empty string to remove it.
    */
   tenantId?: string | null | undefined;
   /**

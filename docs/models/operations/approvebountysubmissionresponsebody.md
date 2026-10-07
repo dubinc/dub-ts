@@ -14,7 +14,7 @@ let value: ApproveBountySubmissionResponseBody = {
   description: "er drat next dependent and onto hmph except",
   urls: [],
   files: [],
-  status: "submitted",
+  status: "approved",
   performanceCount: 2193.4,
   socialMetricCount: null,
   createdAt: "1706450776911",
@@ -40,6 +40,7 @@ let value: ApproveBountySubmissionResponseBody = {
 | `performanceCount`                                                                                   | *number*                                                                                             | :heavy_check_mark:                                                                                   | The performance count of the submission                                                              |
 | `socialMetricCount`                                                                                  | *number*                                                                                             | :heavy_check_mark:                                                                                   | The social metric count (views or likes) for the social content                                      |
 | `socialMetricsLastSyncedAt`                                                                          | *string*                                                                                             | :heavy_minus_sign:                                                                                   | The date and time the submission's social metrics were last synced                                   |
+| `approvedSocialMetricThreshold`                                                                      | *number*                                                                                             | :heavy_minus_sign:                                                                                   | The highest social metric milestone that has been approved and paid out for this submission          |
 | `createdAt`                                                                                          | *string*                                                                                             | :heavy_check_mark:                                                                                   | The date and time the submission was created                                                         |
 | `completedAt`                                                                                        | *string*                                                                                             | :heavy_check_mark:                                                                                   | The date and time the submission was completed                                                       |
 | `reviewedAt`                                                                                         | *string*                                                                                             | :heavy_check_mark:                                                                                   | The date and time the submission was reviewed                                                        |

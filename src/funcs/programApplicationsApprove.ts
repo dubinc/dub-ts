@@ -27,18 +27,18 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Reject a partner application
+ * Approve a partner application
  *
  * @remarks
- * Reject a pending partner application to your program. The partner will be notified via email that their application was not approved.
+ * Approve a pending partner application to your program. The partner will be enrolled in the specified group and notified of the approval.
  */
-export function partnerApplicationsReject(
+export function programApplicationsApprove(
   client: DubCore,
-  request: operations.RejectPartnerApplicationRequestBody,
+  request: operations.ApproveProgramApplicationRequestBody,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.RejectPartnerApplicationResponseBody,
+    operations.ApproveProgramApplicationResponseBody,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -67,12 +67,12 @@ export function partnerApplicationsReject(
 
 async function $do(
   client: DubCore,
-  request: operations.RejectPartnerApplicationRequestBody,
+  request: operations.ApproveProgramApplicationRequestBody,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.RejectPartnerApplicationResponseBody,
+      operations.ApproveProgramApplicationResponseBody,
       | errors.BadRequest
       | errors.Unauthorized
       | errors.Forbidden
@@ -97,7 +97,7 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.RejectPartnerApplicationRequestBody$outboundSchema.parse(
+      operations.ApproveProgramApplicationRequestBody$outboundSchema.parse(
         value,
       ),
     "Input validation failed",
@@ -108,7 +108,7 @@ async function $do(
   const payload = parsed.value;
   const body = encodeJSON("body", payload, { explode: true });
 
-  const path = pathToFunc("/partners/applications/reject")();
+  const path = pathToFunc("/program-applications/approve")();
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
@@ -122,7 +122,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "rejectPartnerApplication",
+    operationID: "approveProgramApplication",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
@@ -166,7 +166,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.RejectPartnerApplicationResponseBody,
+    operations.ApproveProgramApplicationResponseBody,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -185,7 +185,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, operations.RejectPartnerApplicationResponseBody$inboundSchema),
+    M.json(200, operations.ApproveProgramApplicationResponseBody$inboundSchema),
     M.jsonErr(400, errors.BadRequest$inboundSchema),
     M.jsonErr(401, errors.Unauthorized$inboundSchema),
     M.jsonErr(403, errors.Forbidden$inboundSchema),
