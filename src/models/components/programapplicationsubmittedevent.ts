@@ -8,17 +8,17 @@ import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export const PartnerApplicationSubmittedEventEvent = {
+export const ProgramApplicationSubmittedEventEvent = {
   PartnerApplicationSubmitted: "partner.application_submitted",
 } as const;
-export type PartnerApplicationSubmittedEventEvent = ClosedEnum<
-  typeof PartnerApplicationSubmittedEventEvent
+export type ProgramApplicationSubmittedEventEvent = ClosedEnum<
+  typeof ProgramApplicationSubmittedEventEvent
 >;
 
 /**
  * The status of the partner's enrollment in the program.
  */
-export const PartnerApplicationSubmittedEventStatus = {
+export const ProgramApplicationSubmittedEventStatus = {
   Pending: "pending",
   Approved: "approved",
   Rejected: "rejected",
@@ -31,11 +31,11 @@ export const PartnerApplicationSubmittedEventStatus = {
 /**
  * The status of the partner's enrollment in the program.
  */
-export type PartnerApplicationSubmittedEventStatus = ClosedEnum<
-  typeof PartnerApplicationSubmittedEventStatus
+export type ProgramApplicationSubmittedEventStatus = ClosedEnum<
+  typeof ProgramApplicationSubmittedEventStatus
 >;
 
-export type PartnerApplicationSubmittedEventPartner = {
+export type ProgramApplicationSubmittedEventPartner = {
   /**
    * The partner's unique ID on Dub.
    */
@@ -71,7 +71,7 @@ export type PartnerApplicationSubmittedEventPartner = {
   /**
    * The status of the partner's enrollment in the program.
    */
-  status: PartnerApplicationSubmittedEventStatus;
+  status: ProgramApplicationSubmittedEventStatus;
   /**
    * The partner's website URL (including the https protocol).
    */
@@ -103,46 +103,48 @@ export type ApplicationFormData = {
   value: string | null;
 };
 
-export type PartnerApplicationSubmittedEventData = {
+export type ProgramApplicationSubmittedEventData = {
   id: string;
   createdAt: string;
-  partner: PartnerApplicationSubmittedEventPartner;
+  partner: ProgramApplicationSubmittedEventPartner;
   applicationFormData: Array<ApplicationFormData> | null;
 };
 
 /**
- * Triggered when a partner submits an application to join a program.
+ * Deprecated: Use `program_application.created` instead. Triggered when a partner submits an application to join a program.
+ *
+ * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
  */
-export type PartnerApplicationSubmittedEvent = {
+export type ProgramApplicationSubmittedEvent = {
   id: string;
-  event: PartnerApplicationSubmittedEventEvent;
+  event: ProgramApplicationSubmittedEventEvent;
   createdAt: string;
-  data: PartnerApplicationSubmittedEventData;
+  data: ProgramApplicationSubmittedEventData;
 };
 
 /** @internal */
-export const PartnerApplicationSubmittedEventEvent$inboundSchema:
-  z.ZodNativeEnum<typeof PartnerApplicationSubmittedEventEvent> = z.nativeEnum(
-    PartnerApplicationSubmittedEventEvent,
+export const ProgramApplicationSubmittedEventEvent$inboundSchema:
+  z.ZodNativeEnum<typeof ProgramApplicationSubmittedEventEvent> = z.nativeEnum(
+    ProgramApplicationSubmittedEventEvent,
   );
 /** @internal */
-export const PartnerApplicationSubmittedEventEvent$outboundSchema:
-  z.ZodNativeEnum<typeof PartnerApplicationSubmittedEventEvent> =
-    PartnerApplicationSubmittedEventEvent$inboundSchema;
+export const ProgramApplicationSubmittedEventEvent$outboundSchema:
+  z.ZodNativeEnum<typeof ProgramApplicationSubmittedEventEvent> =
+    ProgramApplicationSubmittedEventEvent$inboundSchema;
 
 /** @internal */
-export const PartnerApplicationSubmittedEventStatus$inboundSchema:
-  z.ZodNativeEnum<typeof PartnerApplicationSubmittedEventStatus> = z.nativeEnum(
-    PartnerApplicationSubmittedEventStatus,
+export const ProgramApplicationSubmittedEventStatus$inboundSchema:
+  z.ZodNativeEnum<typeof ProgramApplicationSubmittedEventStatus> = z.nativeEnum(
+    ProgramApplicationSubmittedEventStatus,
   );
 /** @internal */
-export const PartnerApplicationSubmittedEventStatus$outboundSchema:
-  z.ZodNativeEnum<typeof PartnerApplicationSubmittedEventStatus> =
-    PartnerApplicationSubmittedEventStatus$inboundSchema;
+export const ProgramApplicationSubmittedEventStatus$outboundSchema:
+  z.ZodNativeEnum<typeof ProgramApplicationSubmittedEventStatus> =
+    ProgramApplicationSubmittedEventStatus$inboundSchema;
 
 /** @internal */
-export const PartnerApplicationSubmittedEventPartner$inboundSchema: z.ZodType<
-  PartnerApplicationSubmittedEventPartner,
+export const ProgramApplicationSubmittedEventPartner$inboundSchema: z.ZodType<
+  ProgramApplicationSubmittedEventPartner,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -154,7 +156,7 @@ export const PartnerApplicationSubmittedEventPartner$inboundSchema: z.ZodType<
   description: z.nullable(z.string()).optional(),
   country: z.nullable(z.string()),
   groupId: z.nullable(z.string()).optional(),
-  status: PartnerApplicationSubmittedEventStatus$inboundSchema,
+  status: ProgramApplicationSubmittedEventStatus$inboundSchema,
   website: z.nullable(z.string()).optional(),
   youtube: z.nullable(z.string()).optional(),
   twitter: z.nullable(z.string()).optional(),
@@ -163,7 +165,7 @@ export const PartnerApplicationSubmittedEventPartner$inboundSchema: z.ZodType<
   tiktok: z.nullable(z.string()).optional(),
 });
 /** @internal */
-export type PartnerApplicationSubmittedEventPartner$Outbound = {
+export type ProgramApplicationSubmittedEventPartner$Outbound = {
   id: string;
   name: string;
   companyName: string | null;
@@ -182,10 +184,10 @@ export type PartnerApplicationSubmittedEventPartner$Outbound = {
 };
 
 /** @internal */
-export const PartnerApplicationSubmittedEventPartner$outboundSchema: z.ZodType<
-  PartnerApplicationSubmittedEventPartner$Outbound,
+export const ProgramApplicationSubmittedEventPartner$outboundSchema: z.ZodType<
+  ProgramApplicationSubmittedEventPartner$Outbound,
   z.ZodTypeDef,
-  PartnerApplicationSubmittedEventPartner
+  ProgramApplicationSubmittedEventPartner
 > = z.object({
   id: z.string(),
   name: z.string(),
@@ -195,7 +197,7 @@ export const PartnerApplicationSubmittedEventPartner$outboundSchema: z.ZodType<
   description: z.nullable(z.string()).optional(),
   country: z.nullable(z.string()),
   groupId: z.nullable(z.string()).optional(),
-  status: PartnerApplicationSubmittedEventStatus$outboundSchema,
+  status: ProgramApplicationSubmittedEventStatus$outboundSchema,
   website: z.nullable(z.string()).optional(),
   youtube: z.nullable(z.string()).optional(),
   twitter: z.nullable(z.string()).optional(),
@@ -204,29 +206,29 @@ export const PartnerApplicationSubmittedEventPartner$outboundSchema: z.ZodType<
   tiktok: z.nullable(z.string()).optional(),
 });
 
-export function partnerApplicationSubmittedEventPartnerToJSON(
-  partnerApplicationSubmittedEventPartner:
-    PartnerApplicationSubmittedEventPartner,
+export function programApplicationSubmittedEventPartnerToJSON(
+  programApplicationSubmittedEventPartner:
+    ProgramApplicationSubmittedEventPartner,
 ): string {
   return JSON.stringify(
-    PartnerApplicationSubmittedEventPartner$outboundSchema.parse(
-      partnerApplicationSubmittedEventPartner,
+    ProgramApplicationSubmittedEventPartner$outboundSchema.parse(
+      programApplicationSubmittedEventPartner,
     ),
   );
 }
-export function partnerApplicationSubmittedEventPartnerFromJSON(
+export function programApplicationSubmittedEventPartnerFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  PartnerApplicationSubmittedEventPartner,
+  ProgramApplicationSubmittedEventPartner,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      PartnerApplicationSubmittedEventPartner$inboundSchema.parse(
+      ProgramApplicationSubmittedEventPartner$inboundSchema.parse(
         JSON.parse(x),
       ),
-    `Failed to parse 'PartnerApplicationSubmittedEventPartner' from JSON`,
+    `Failed to parse 'ProgramApplicationSubmittedEventPartner' from JSON`,
   );
 }
 
@@ -273,106 +275,106 @@ export function applicationFormDataFromJSON(
 }
 
 /** @internal */
-export const PartnerApplicationSubmittedEventData$inboundSchema: z.ZodType<
-  PartnerApplicationSubmittedEventData,
+export const ProgramApplicationSubmittedEventData$inboundSchema: z.ZodType<
+  ProgramApplicationSubmittedEventData,
   z.ZodTypeDef,
   unknown
 > = z.object({
   id: z.string(),
   createdAt: z.string(),
-  partner: z.lazy(() => PartnerApplicationSubmittedEventPartner$inboundSchema),
+  partner: z.lazy(() => ProgramApplicationSubmittedEventPartner$inboundSchema),
   applicationFormData: z.nullable(
     z.array(z.lazy(() => ApplicationFormData$inboundSchema)),
   ),
 });
 /** @internal */
-export type PartnerApplicationSubmittedEventData$Outbound = {
+export type ProgramApplicationSubmittedEventData$Outbound = {
   id: string;
   createdAt: string;
-  partner: PartnerApplicationSubmittedEventPartner$Outbound;
+  partner: ProgramApplicationSubmittedEventPartner$Outbound;
   applicationFormData: Array<ApplicationFormData$Outbound> | null;
 };
 
 /** @internal */
-export const PartnerApplicationSubmittedEventData$outboundSchema: z.ZodType<
-  PartnerApplicationSubmittedEventData$Outbound,
+export const ProgramApplicationSubmittedEventData$outboundSchema: z.ZodType<
+  ProgramApplicationSubmittedEventData$Outbound,
   z.ZodTypeDef,
-  PartnerApplicationSubmittedEventData
+  ProgramApplicationSubmittedEventData
 > = z.object({
   id: z.string(),
   createdAt: z.string(),
-  partner: z.lazy(() => PartnerApplicationSubmittedEventPartner$outboundSchema),
+  partner: z.lazy(() => ProgramApplicationSubmittedEventPartner$outboundSchema),
   applicationFormData: z.nullable(
     z.array(z.lazy(() => ApplicationFormData$outboundSchema)),
   ),
 });
 
-export function partnerApplicationSubmittedEventDataToJSON(
-  partnerApplicationSubmittedEventData: PartnerApplicationSubmittedEventData,
+export function programApplicationSubmittedEventDataToJSON(
+  programApplicationSubmittedEventData: ProgramApplicationSubmittedEventData,
 ): string {
   return JSON.stringify(
-    PartnerApplicationSubmittedEventData$outboundSchema.parse(
-      partnerApplicationSubmittedEventData,
+    ProgramApplicationSubmittedEventData$outboundSchema.parse(
+      programApplicationSubmittedEventData,
     ),
   );
 }
-export function partnerApplicationSubmittedEventDataFromJSON(
+export function programApplicationSubmittedEventDataFromJSON(
   jsonString: string,
-): SafeParseResult<PartnerApplicationSubmittedEventData, SDKValidationError> {
+): SafeParseResult<ProgramApplicationSubmittedEventData, SDKValidationError> {
   return safeParse(
     jsonString,
     (x) =>
-      PartnerApplicationSubmittedEventData$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PartnerApplicationSubmittedEventData' from JSON`,
+      ProgramApplicationSubmittedEventData$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ProgramApplicationSubmittedEventData' from JSON`,
   );
 }
 
 /** @internal */
-export const PartnerApplicationSubmittedEvent$inboundSchema: z.ZodType<
-  PartnerApplicationSubmittedEvent,
+export const ProgramApplicationSubmittedEvent$inboundSchema: z.ZodType<
+  ProgramApplicationSubmittedEvent,
   z.ZodTypeDef,
   unknown
 > = z.object({
   id: z.string(),
-  event: PartnerApplicationSubmittedEventEvent$inboundSchema,
+  event: ProgramApplicationSubmittedEventEvent$inboundSchema,
   createdAt: z.string(),
-  data: z.lazy(() => PartnerApplicationSubmittedEventData$inboundSchema),
+  data: z.lazy(() => ProgramApplicationSubmittedEventData$inboundSchema),
 });
 /** @internal */
-export type PartnerApplicationSubmittedEvent$Outbound = {
+export type ProgramApplicationSubmittedEvent$Outbound = {
   id: string;
   event: string;
   createdAt: string;
-  data: PartnerApplicationSubmittedEventData$Outbound;
+  data: ProgramApplicationSubmittedEventData$Outbound;
 };
 
 /** @internal */
-export const PartnerApplicationSubmittedEvent$outboundSchema: z.ZodType<
-  PartnerApplicationSubmittedEvent$Outbound,
+export const ProgramApplicationSubmittedEvent$outboundSchema: z.ZodType<
+  ProgramApplicationSubmittedEvent$Outbound,
   z.ZodTypeDef,
-  PartnerApplicationSubmittedEvent
+  ProgramApplicationSubmittedEvent
 > = z.object({
   id: z.string(),
-  event: PartnerApplicationSubmittedEventEvent$outboundSchema,
+  event: ProgramApplicationSubmittedEventEvent$outboundSchema,
   createdAt: z.string(),
-  data: z.lazy(() => PartnerApplicationSubmittedEventData$outboundSchema),
+  data: z.lazy(() => ProgramApplicationSubmittedEventData$outboundSchema),
 });
 
-export function partnerApplicationSubmittedEventToJSON(
-  partnerApplicationSubmittedEvent: PartnerApplicationSubmittedEvent,
+export function programApplicationSubmittedEventToJSON(
+  programApplicationSubmittedEvent: ProgramApplicationSubmittedEvent,
 ): string {
   return JSON.stringify(
-    PartnerApplicationSubmittedEvent$outboundSchema.parse(
-      partnerApplicationSubmittedEvent,
+    ProgramApplicationSubmittedEvent$outboundSchema.parse(
+      programApplicationSubmittedEvent,
     ),
   );
 }
-export function partnerApplicationSubmittedEventFromJSON(
+export function programApplicationSubmittedEventFromJSON(
   jsonString: string,
-): SafeParseResult<PartnerApplicationSubmittedEvent, SDKValidationError> {
+): SafeParseResult<ProgramApplicationSubmittedEvent, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PartnerApplicationSubmittedEvent$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PartnerApplicationSubmittedEvent' from JSON`,
+    (x) => ProgramApplicationSubmittedEvent$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ProgramApplicationSubmittedEvent' from JSON`,
   );
 }

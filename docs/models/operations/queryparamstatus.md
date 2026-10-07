@@ -1,17 +1,17 @@
 # QueryParamStatus
 
-Filter the list of commissions by their corresponding status.
+Filter applications by status. One of `pending`, `approved`, or `rejected`. Defaults to `pending`.
 
 ## Example Usage
 
 ```typescript
 import { QueryParamStatus } from "dub/models/operations";
 
-let value: QueryParamStatus = "refunded";
+let value: QueryParamStatus = "approved";
 ```
 
 ## Values
 
 ```typescript
-"pending" | "processed" | "paid" | "refunded" | "duplicate" | "fraud" | "canceled" | "hold"
+"pending" | "approved" | "rejected"
 ```

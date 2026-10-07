@@ -38,6 +38,18 @@ export type RequestBodyCustomer = {
   country: string;
 };
 
+export const StripeInvoicesToImport1 = {
+  All: "all",
+} as const;
+export type StripeInvoicesToImport1 = ClosedEnum<
+  typeof StripeInvoicesToImport1
+>;
+
+/**
+ * Import paid Stripe invoices for the customer and create a commission for each. Pass `all` to import every unimported, paid invoice, or an array of Stripe invoice IDs to import only those invoices. Refunded invoices are not imported. When not provided, create a single manual sale event using `sale.amount`
+ */
+export type StripeInvoicesToImport = StripeInvoicesToImport1 | Array<string>;
+
 /**
  * The payment processor via which the sale was made.
  */
@@ -112,17 +124,27 @@ export type RequestBody3 = {
    */
   discountCode?: string | null | undefined;
   /**
-   * When `true`, import all unimported paid Stripe invoices for the customer and create a commission for each. When `false`, create a single manual sale event using `sale.amount` (or deprecated `saleAmount`).
+   * Import paid Stripe invoices for the customer and create a commission for each. Pass `all` to import every unimported, paid invoice, or an array of Stripe invoice IDs to import only those invoices. Refunded invoices are not imported. When not provided, create a single manual sale event using `sale.amount`
    */
-  importStripeInvoices?: boolean | null | undefined;
+  stripeInvoicesToImport?:
+    | StripeInvoicesToImport1
+    | Array<string>
+    | null
+    | undefined;
   /**
-   * Only used when `importStripeInvoices` is `false`. The date of the manual sale event. Defaults to the current date and time if not provided.
+   * Only used when `stripeInvoicesToImport` is not provided. The date of the manual sale event. Defaults to the current date and time if not provided.
    */
   date?: string | null | undefined;
   /**
    * The sale event object to associate the commission with.
    */
   sale?: Sale | null | undefined;
+  /**
+   * Deprecated: Use `stripeInvoicesToImport: all` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  importStripeInvoices?: boolean | null | undefined;
   /**
    * Deprecated: Use `date` instead.
    *
@@ -299,6 +321,29 @@ export function requestBodyCustomerToJSON(
 }
 
 /** @internal */
+export const StripeInvoicesToImport1$outboundSchema: z.ZodNativeEnum<
+  typeof StripeInvoicesToImport1
+> = z.nativeEnum(StripeInvoicesToImport1);
+
+/** @internal */
+export type StripeInvoicesToImport$Outbound = string | Array<string>;
+
+/** @internal */
+export const StripeInvoicesToImport$outboundSchema: z.ZodType<
+  StripeInvoicesToImport$Outbound,
+  z.ZodTypeDef,
+  StripeInvoicesToImport
+> = z.union([StripeInvoicesToImport1$outboundSchema, z.array(z.string())]);
+
+export function stripeInvoicesToImportToJSON(
+  stripeInvoicesToImport: StripeInvoicesToImport,
+): string {
+  return JSON.stringify(
+    StripeInvoicesToImport$outboundSchema.parse(stripeInvoicesToImport),
+  );
+}
+
+/** @internal */
 export const RequestBodyPaymentProcessor$outboundSchema: z.ZodNativeEnum<
   typeof RequestBodyPaymentProcessor
 > = z.nativeEnum(RequestBodyPaymentProcessor);
@@ -338,9 +383,10 @@ export type RequestBody3$Outbound = {
   customer?: RequestBodyCustomer$Outbound | null | undefined;
   linkId?: string | null | undefined;
   discountCode?: string | null | undefined;
-  importStripeInvoices: boolean | null;
+  stripeInvoicesToImport?: string | Array<string> | null | undefined;
   date?: string | null | undefined;
   sale?: Sale$Outbound | null | undefined;
+  importStripeInvoices?: boolean | null | undefined;
   saleEventDate?: string | null | undefined;
   saleAmount?: number | null | undefined;
   invoiceId?: string | null | undefined;
@@ -360,9 +406,12 @@ export const RequestBody3$outboundSchema: z.ZodType<
     .optional(),
   linkId: z.nullable(z.string()).optional(),
   discountCode: z.nullable(z.string()).optional(),
-  importStripeInvoices: z.nullable(z.boolean().default(false)),
+  stripeInvoicesToImport: z.nullable(
+    z.union([StripeInvoicesToImport1$outboundSchema, z.array(z.string())]),
+  ).optional(),
   date: z.nullable(z.string()).optional(),
   sale: z.nullable(z.lazy(() => Sale$outboundSchema)).optional(),
+  importStripeInvoices: z.nullable(z.boolean()).optional(),
   saleEventDate: z.nullable(z.string()).optional(),
   saleAmount: z.nullable(z.number()).optional(),
   invoiceId: z.nullable(z.string()).optional(),

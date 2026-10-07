@@ -37,12 +37,6 @@ import {
   LinkWebhookEvent$outboundSchema,
 } from "./linkwebhookevent.js";
 import {
-  PartnerApplicationSubmittedEvent,
-  PartnerApplicationSubmittedEvent$inboundSchema,
-  PartnerApplicationSubmittedEvent$Outbound,
-  PartnerApplicationSubmittedEvent$outboundSchema,
-} from "./partnerapplicationsubmittedevent.js";
-import {
   PartnerEnrolledEvent,
   PartnerEnrolledEvent$inboundSchema,
   PartnerEnrolledEvent$Outbound,
@@ -54,6 +48,18 @@ import {
   PartnerMergedEvent$Outbound,
   PartnerMergedEvent$outboundSchema,
 } from "./partnermergedevent.js";
+import {
+  ProgramApplicationCreatedEvent,
+  ProgramApplicationCreatedEvent$inboundSchema,
+  ProgramApplicationCreatedEvent$Outbound,
+  ProgramApplicationCreatedEvent$outboundSchema,
+} from "./programapplicationcreatedevent.js";
+import {
+  ProgramApplicationSubmittedEvent,
+  ProgramApplicationSubmittedEvent$inboundSchema,
+  ProgramApplicationSubmittedEvent$Outbound,
+  ProgramApplicationSubmittedEvent$outboundSchema,
+} from "./programapplicationsubmittedevent.js";
 import {
   SaleCreatedEvent,
   SaleCreatedEvent$inboundSchema,
@@ -70,7 +76,8 @@ export type WebhookEvent =
   | LeadCreatedEvent
   | SaleCreatedEvent
   | PartnerEnrolledEvent
-  | PartnerApplicationSubmittedEvent
+  | ProgramApplicationSubmittedEvent
+  | ProgramApplicationCreatedEvent
   | PartnerMergedEvent
   | CommissionCreatedEvent
   | DiscountCodeWebhookEvent;
@@ -86,7 +93,8 @@ export const WebhookEvent$inboundSchema: z.ZodType<
   LeadCreatedEvent$inboundSchema,
   SaleCreatedEvent$inboundSchema,
   PartnerEnrolledEvent$inboundSchema,
-  PartnerApplicationSubmittedEvent$inboundSchema,
+  ProgramApplicationSubmittedEvent$inboundSchema,
+  ProgramApplicationCreatedEvent$inboundSchema,
   PartnerMergedEvent$inboundSchema,
   CommissionCreatedEvent$inboundSchema,
   DiscountCodeWebhookEvent$inboundSchema,
@@ -98,7 +106,8 @@ export type WebhookEvent$Outbound =
   | LeadCreatedEvent$Outbound
   | SaleCreatedEvent$Outbound
   | PartnerEnrolledEvent$Outbound
-  | PartnerApplicationSubmittedEvent$Outbound
+  | ProgramApplicationSubmittedEvent$Outbound
+  | ProgramApplicationCreatedEvent$Outbound
   | PartnerMergedEvent$Outbound
   | CommissionCreatedEvent$Outbound
   | DiscountCodeWebhookEvent$Outbound;
@@ -114,7 +123,8 @@ export const WebhookEvent$outboundSchema: z.ZodType<
   LeadCreatedEvent$outboundSchema,
   SaleCreatedEvent$outboundSchema,
   PartnerEnrolledEvent$outboundSchema,
-  PartnerApplicationSubmittedEvent$outboundSchema,
+  ProgramApplicationSubmittedEvent$outboundSchema,
+  ProgramApplicationCreatedEvent$outboundSchema,
   PartnerMergedEvent$outboundSchema,
   CommissionCreatedEvent$outboundSchema,
   DiscountCodeWebhookEvent$outboundSchema,

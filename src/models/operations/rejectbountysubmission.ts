@@ -72,6 +72,7 @@ export const RejectBountySubmissionStatus = {
   Submitted: "submitted",
   Approved: "approved",
   Rejected: "rejected",
+  PartiallyApproved: "partiallyApproved",
 } as const;
 /**
  * The status of the submission
@@ -124,6 +125,10 @@ export type RejectBountySubmissionResponseBody = {
    * The date and time the submission's social metrics were last synced
    */
   socialMetricsLastSyncedAt?: string | null | undefined;
+  /**
+   * The highest social metric milestone that has been approved and paid out for this submission
+   */
+  approvedSocialMetricThreshold?: number | null | undefined;
   /**
    * The date and time the submission was created
    */
@@ -260,6 +265,7 @@ export const RejectBountySubmissionResponseBody$inboundSchema: z.ZodType<
   performanceCount: z.nullable(z.number()),
   socialMetricCount: z.nullable(z.number().int()),
   socialMetricsLastSyncedAt: z.nullable(z.string()).optional(),
+  approvedSocialMetricThreshold: z.nullable(z.number().int()).optional(),
   createdAt: z.string(),
   completedAt: z.nullable(z.string()),
   reviewedAt: z.nullable(z.string()),

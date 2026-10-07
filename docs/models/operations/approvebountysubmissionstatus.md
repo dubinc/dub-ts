@@ -7,11 +7,11 @@ The status of the submission
 ```typescript
 import { ApproveBountySubmissionStatus } from "dub/models/operations";
 
-let value: ApproveBountySubmissionStatus = "rejected";
+let value: ApproveBountySubmissionStatus = "partiallyApproved";
 ```
 
 ## Values
 
 ```typescript
-"draft" | "submitted" | "approved" | "rejected"
+"draft" | "submitted" | "approved" | "rejected" | "partiallyApproved"
 ```

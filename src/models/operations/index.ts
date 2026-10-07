@@ -3,7 +3,7 @@
  */
 
 export * from "./approvebountysubmission.js";
-export * from "./approvepartnerapplication.js";
+export * from "./approveprogramapplication.js";
 export * from "./banpartner.js";
 export * from "./bulkcreatelinks.js";
 export * from "./bulkdeletelinks.js";
@@ -39,12 +39,12 @@ export * from "./listdiscountcodes.js";
 export * from "./listdomains.js";
 export * from "./listevents.js";
 export * from "./listfolders.js";
-export * from "./listpartnerapplications.js";
 export * from "./listpartners.js";
 export * from "./listpayouts.js";
+export * from "./listprogramapplications.js";
 export * from "./registerdomain.js";
 export * from "./rejectbountysubmission.js";
-export * from "./rejectpartnerapplication.js";
+export * from "./rejectprogramapplication.js";
 export * from "./retrieveanalytics.js";
 export * from "./retrievepartneranalytics.js";
 export * from "./retrievepartnerlinks.js";

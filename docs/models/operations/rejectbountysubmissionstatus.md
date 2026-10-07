@@ -13,5 +13,5 @@ let value: RejectBountySubmissionStatus = "draft";
 ## Values
 
 ```typescript
-"draft" | "submitted" | "approved" | "rejected"
+"draft" | "submitted" | "approved" | "rejected" | "partiallyApproved"
 ```

@@ -13,9 +13,9 @@ import { EmbedTokens } from "./embedtokens.js";
 import { Events } from "./events.js";
 import { Folders } from "./folders.js";
 import { Links } from "./links.js";
-import { PartnerApplications } from "./partnerapplications.js";
 import { Partners } from "./partners.js";
 import { Payouts } from "./payouts.js";
+import { ProgramApplications } from "./programapplications.js";
 import { QRCodes } from "./qrcodes.js";
 import { Tags } from "./tags.js";
 import { Track } from "./track.js";
@@ -66,9 +66,9 @@ export class Dub extends ClientSDK {
     return (this._partners ??= new Partners(this._options));
   }
 
-  private _partnerApplications?: PartnerApplications;
-  get partnerApplications(): PartnerApplications {
-    return (this._partnerApplications ??= new PartnerApplications(
+  private _programApplications?: ProgramApplications;
+  get programApplications(): ProgramApplications {
+    return (this._programApplications ??= new ProgramApplications(
       this._options,
     ));
   }

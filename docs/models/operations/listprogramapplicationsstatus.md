@@ -1,13 +1,13 @@
-# PartnerApplicationSubmittedEventStatus
+# ListProgramApplicationsStatus
 
 The status of the partner's enrollment in the program.
 
 ## Example Usage
 
 ```typescript
-import { PartnerApplicationSubmittedEventStatus } from "dub/models/components";
+import { ListProgramApplicationsStatus } from "dub/models/operations";
 
-let value: PartnerApplicationSubmittedEventStatus = "deactivated";
+let value: ListProgramApplicationsStatus = "banned";
 ```
 
 ## Values
