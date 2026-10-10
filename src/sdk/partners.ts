@@ -37,7 +37,7 @@ export class Partners extends ClientSDK {
    * Create or update a partner
    *
    * @remarks
-   * Creates or updates a partner record (upsert behavior). If a partner with the same email already exists, their program enrollment will be updated with the provided tenantId. If no existing partner is found, a new partner will be created using the supplied information.
+   * Creates a partner and enrolls them in the program. If that email is already enrolled, the enrollment is returned unchanged, except a different `tenantId` replaces the current one when it is not already associated with another partner in the program.
    */
   async create(
     request?: operations.CreatePartnerRequestBody | undefined,
