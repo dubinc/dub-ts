@@ -29,7 +29,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 typescript:
-  version: 0.74.0
+  version: 0.74.1
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
@@ -78,6 +78,7 @@ typescript:
   modelPropertyCasing: camel
   moduleFormat: dual
   multipartArrayFormat: legacy
+  numericEnumMemberNames: legacy
   outputModelSuffix: output
   packageName: dub
   preApplyUnionDiscriminators: true
