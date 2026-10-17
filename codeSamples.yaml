@@ -965,6 +965,7 @@ actions:
             async function run() {
               const result = await dub.qrCodes.get({
                 url: "https://needy-newsstand.biz/",
+                bgColor: "#FFFFFF",
               });
 
               console.log(result);

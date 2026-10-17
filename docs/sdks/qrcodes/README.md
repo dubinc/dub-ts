@@ -23,6 +23,7 @@ const dub = new Dub({
 async function run() {
   const result = await dub.qrCodes.get({
     url: "https://needy-newsstand.biz/",
+    bgColor: "#FFFFFF",
   });
 
   console.log(result);
@@ -48,6 +49,7 @@ const dub = new DubCore({
 async function run() {
   const res = await qrCodesGet(dub, {
     url: "https://needy-newsstand.biz/",
+    bgColor: "#FFFFFF",
   });
   if (res.ok) {
     const { value: result } = res;
@@ -71,7 +73,7 @@ run();
 
 ### Response
 
-**Promise\<[string](../../models/.md)\>**
+**Promise\<[operations.GetQRCodeResponse](../../models/operations/getqrcoderesponse.md)\>**
 
 ### Errors
 

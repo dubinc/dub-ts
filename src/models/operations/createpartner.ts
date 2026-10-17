@@ -143,6 +143,14 @@ export type CreatePartnerRequestBody = {
    */
   groupId?: string | undefined;
   /**
+   * The IDs of the partner tags to assign when creating the partner. Existing tags are kept. Takes priority over `tagNames` only when it contains at least one ID.
+   */
+  tagIds?: Array<string> | undefined;
+  /**
+   * The names of the partner tags to assign when creating the partner. Existing tags are kept. Ignored only when `tagIds` contains at least one ID.
+   */
+  tagNames?: Array<string> | undefined;
+  /**
    * The partner's country of residence. Must be passed as a 2-letter ISO 3166-1 country code. See https://d.to/geo for more information.
    */
   country?: string | null | undefined;
@@ -267,124 +275,6 @@ export const CreatePartnerBannedReason = {
 export type CreatePartnerBannedReason = ClosedEnum<
   typeof CreatePartnerBannedReason
 >;
-
-export type Fields8 = {
-  key: string;
-  label: string;
-  required: boolean;
-  locked: boolean;
-  position: number;
-  type: "phone";
-};
-
-export type Fields7 = {
-  key: string;
-  label: string;
-  required: boolean;
-  locked: boolean;
-  position: number;
-  type: "number";
-};
-
-export type CreatePartnerFieldsPartnersOptions = {
-  label: string;
-  value: string;
-};
-
-export type Fields6 = {
-  key: string;
-  label: string;
-  required: boolean;
-  locked: boolean;
-  position: number;
-  type: "multiSelect";
-  options: Array<CreatePartnerFieldsPartnersOptions>;
-};
-
-export type Fields5 = {
-  key: string;
-  label: string;
-  required: boolean;
-  locked: boolean;
-  position: number;
-  type: "date";
-};
-
-export type CreatePartnerFields4 = {
-  key: string;
-  label: string;
-  required: boolean;
-  locked: boolean;
-  position: number;
-  type: "country";
-};
-
-export type CreatePartnerFieldsOptions = {
-  label: string;
-  value: string;
-};
-
-export type CreatePartnerFields3 = {
-  key: string;
-  label: string;
-  required: boolean;
-  locked: boolean;
-  position: number;
-  type: "select";
-  options: Array<CreatePartnerFieldsOptions>;
-};
-
-export type CreatePartnerFieldsPartnersConstraints = {
-  maxLength?: number | undefined;
-};
-
-export type CreatePartnerFields2 = {
-  key: string;
-  label: string;
-  required: boolean;
-  locked: boolean;
-  position: number;
-  type: "textarea";
-  constraints?: CreatePartnerFieldsPartnersConstraints | undefined;
-};
-
-export type CreatePartnerFieldsConstraints = {
-  maxLength?: number | undefined;
-  pattern?: string | undefined;
-};
-
-export type CreatePartnerFields1 = {
-  key: string;
-  label: string;
-  required: boolean;
-  locked: boolean;
-  position: number;
-  type: "text";
-  constraints?: CreatePartnerFieldsConstraints | undefined;
-};
-
-export type CreatePartnerFields =
-  | CreatePartnerFields1
-  | CreatePartnerFields2
-  | CreatePartnerFields3
-  | CreatePartnerFields4
-  | Fields5
-  | Fields6
-  | Fields7
-  | Fields8;
-
-export type CreatePartnerReferralFormData = {
-  fields: Array<
-    | CreatePartnerFields1
-    | CreatePartnerFields2
-    | CreatePartnerFields3
-    | CreatePartnerFields4
-    | Fields5
-    | Fields6
-    | Fields7
-    | Fields8
-  >;
-};
 
 /**
  * Preset reason when the application was rejected.
@@ -532,7 +422,6 @@ export type CreatePartnerResponseBody = {
    * If the partner was banned from the program, this is the reason for the ban.
    */
   bannedReason?: CreatePartnerBannedReason | null | undefined;
-  referralFormData?: CreatePartnerReferralFormData | null | undefined;
   /**
    * Linked program application, including review outcome when applicable.
    */
@@ -751,6 +640,8 @@ export type CreatePartnerRequestBody$Outbound = {
   image?: string | null | undefined;
   tenantId?: string | undefined;
   groupId?: string | undefined;
+  tagIds?: Array<string> | undefined;
+  tagNames?: Array<string> | undefined;
   country?: string | null | undefined;
   description?: string | null | undefined;
   linkProps?: LinkProps$Outbound | undefined;
@@ -768,6 +659,8 @@ export const CreatePartnerRequestBody$outboundSchema: z.ZodType<
   image: z.nullable(z.string()).optional(),
   tenantId: z.string().optional(),
   groupId: z.string().optional(),
+  tagIds: z.array(z.string()).optional(),
+  tagNames: z.array(z.string()).optional(),
   country: z.nullable(z.string()).optional(),
   description: z.nullable(z.string()).optional(),
   linkProps: z.lazy(() => LinkProps$outboundSchema).optional(),
@@ -828,332 +721,6 @@ export function createPartnerLinksFromJSON(
 export const CreatePartnerBannedReason$inboundSchema: z.ZodNativeEnum<
   typeof CreatePartnerBannedReason
 > = z.nativeEnum(CreatePartnerBannedReason);
-
-/** @internal */
-export const Fields8$inboundSchema: z.ZodType<Fields8, z.ZodTypeDef, unknown> =
-  z.object({
-    key: z.string(),
-    label: z.string(),
-    required: z.boolean(),
-    locked: z.boolean(),
-    position: z.number().int(),
-    type: z.literal("phone"),
-  });
-
-export function fields8FromJSON(
-  jsonString: string,
-): SafeParseResult<Fields8, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Fields8$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Fields8' from JSON`,
-  );
-}
-
-/** @internal */
-export const Fields7$inboundSchema: z.ZodType<Fields7, z.ZodTypeDef, unknown> =
-  z.object({
-    key: z.string(),
-    label: z.string(),
-    required: z.boolean(),
-    locked: z.boolean(),
-    position: z.number().int(),
-    type: z.literal("number"),
-  });
-
-export function fields7FromJSON(
-  jsonString: string,
-): SafeParseResult<Fields7, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Fields7$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Fields7' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreatePartnerFieldsPartnersOptions$inboundSchema: z.ZodType<
-  CreatePartnerFieldsPartnersOptions,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  label: z.string(),
-  value: z.string(),
-});
-
-export function createPartnerFieldsPartnersOptionsFromJSON(
-  jsonString: string,
-): SafeParseResult<CreatePartnerFieldsPartnersOptions, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreatePartnerFieldsPartnersOptions$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreatePartnerFieldsPartnersOptions' from JSON`,
-  );
-}
-
-/** @internal */
-export const Fields6$inboundSchema: z.ZodType<Fields6, z.ZodTypeDef, unknown> =
-  z.object({
-    key: z.string(),
-    label: z.string(),
-    required: z.boolean(),
-    locked: z.boolean(),
-    position: z.number().int(),
-    type: z.literal("multiSelect"),
-    options: z.array(
-      z.lazy(() => CreatePartnerFieldsPartnersOptions$inboundSchema),
-    ),
-  });
-
-export function fields6FromJSON(
-  jsonString: string,
-): SafeParseResult<Fields6, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Fields6$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Fields6' from JSON`,
-  );
-}
-
-/** @internal */
-export const Fields5$inboundSchema: z.ZodType<Fields5, z.ZodTypeDef, unknown> =
-  z.object({
-    key: z.string(),
-    label: z.string(),
-    required: z.boolean(),
-    locked: z.boolean(),
-    position: z.number().int(),
-    type: z.literal("date"),
-  });
-
-export function fields5FromJSON(
-  jsonString: string,
-): SafeParseResult<Fields5, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Fields5$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Fields5' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreatePartnerFields4$inboundSchema: z.ZodType<
-  CreatePartnerFields4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  key: z.string(),
-  label: z.string(),
-  required: z.boolean(),
-  locked: z.boolean(),
-  position: z.number().int(),
-  type: z.literal("country"),
-});
-
-export function createPartnerFields4FromJSON(
-  jsonString: string,
-): SafeParseResult<CreatePartnerFields4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreatePartnerFields4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreatePartnerFields4' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreatePartnerFieldsOptions$inboundSchema: z.ZodType<
-  CreatePartnerFieldsOptions,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  label: z.string(),
-  value: z.string(),
-});
-
-export function createPartnerFieldsOptionsFromJSON(
-  jsonString: string,
-): SafeParseResult<CreatePartnerFieldsOptions, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreatePartnerFieldsOptions$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreatePartnerFieldsOptions' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreatePartnerFields3$inboundSchema: z.ZodType<
-  CreatePartnerFields3,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  key: z.string(),
-  label: z.string(),
-  required: z.boolean(),
-  locked: z.boolean(),
-  position: z.number().int(),
-  type: z.literal("select"),
-  options: z.array(z.lazy(() => CreatePartnerFieldsOptions$inboundSchema)),
-});
-
-export function createPartnerFields3FromJSON(
-  jsonString: string,
-): SafeParseResult<CreatePartnerFields3, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreatePartnerFields3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreatePartnerFields3' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreatePartnerFieldsPartnersConstraints$inboundSchema: z.ZodType<
-  CreatePartnerFieldsPartnersConstraints,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  maxLength: z.number().int().optional(),
-});
-
-export function createPartnerFieldsPartnersConstraintsFromJSON(
-  jsonString: string,
-): SafeParseResult<CreatePartnerFieldsPartnersConstraints, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreatePartnerFieldsPartnersConstraints$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreatePartnerFieldsPartnersConstraints' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreatePartnerFields2$inboundSchema: z.ZodType<
-  CreatePartnerFields2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  key: z.string(),
-  label: z.string(),
-  required: z.boolean(),
-  locked: z.boolean(),
-  position: z.number().int(),
-  type: z.literal("textarea"),
-  constraints: z.lazy(() =>
-    CreatePartnerFieldsPartnersConstraints$inboundSchema
-  ).optional(),
-});
-
-export function createPartnerFields2FromJSON(
-  jsonString: string,
-): SafeParseResult<CreatePartnerFields2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreatePartnerFields2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreatePartnerFields2' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreatePartnerFieldsConstraints$inboundSchema: z.ZodType<
-  CreatePartnerFieldsConstraints,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  maxLength: z.number().int().optional(),
-  pattern: z.string().optional(),
-});
-
-export function createPartnerFieldsConstraintsFromJSON(
-  jsonString: string,
-): SafeParseResult<CreatePartnerFieldsConstraints, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreatePartnerFieldsConstraints$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreatePartnerFieldsConstraints' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreatePartnerFields1$inboundSchema: z.ZodType<
-  CreatePartnerFields1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  key: z.string(),
-  label: z.string(),
-  required: z.boolean(),
-  locked: z.boolean(),
-  position: z.number().int(),
-  type: z.literal("text"),
-  constraints: z.lazy(() => CreatePartnerFieldsConstraints$inboundSchema)
-    .optional(),
-});
-
-export function createPartnerFields1FromJSON(
-  jsonString: string,
-): SafeParseResult<CreatePartnerFields1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreatePartnerFields1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreatePartnerFields1' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreatePartnerFields$inboundSchema: z.ZodType<
-  CreatePartnerFields,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => CreatePartnerFields1$inboundSchema),
-  z.lazy(() => CreatePartnerFields2$inboundSchema),
-  z.lazy(() => CreatePartnerFields3$inboundSchema),
-  z.lazy(() => CreatePartnerFields4$inboundSchema),
-  z.lazy(() => Fields5$inboundSchema),
-  z.lazy(() => Fields6$inboundSchema),
-  z.lazy(() => Fields7$inboundSchema),
-  z.lazy(() => Fields8$inboundSchema),
-]);
-
-export function createPartnerFieldsFromJSON(
-  jsonString: string,
-): SafeParseResult<CreatePartnerFields, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreatePartnerFields$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreatePartnerFields' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreatePartnerReferralFormData$inboundSchema: z.ZodType<
-  CreatePartnerReferralFormData,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.array(
-    z.union([
-      z.lazy(() => CreatePartnerFields1$inboundSchema),
-      z.lazy(() => CreatePartnerFields2$inboundSchema),
-      z.lazy(() => CreatePartnerFields3$inboundSchema),
-      z.lazy(() => CreatePartnerFields4$inboundSchema),
-      z.lazy(() => Fields5$inboundSchema),
-      z.lazy(() => Fields6$inboundSchema),
-      z.lazy(() => Fields7$inboundSchema),
-      z.lazy(() => Fields8$inboundSchema),
-    ]),
-  ),
-});
-
-export function createPartnerReferralFormDataFromJSON(
-  jsonString: string,
-): SafeParseResult<CreatePartnerReferralFormData, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreatePartnerReferralFormData$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreatePartnerReferralFormData' from JSON`,
-  );
-}
 
 /** @internal */
 export const CreatePartnerRejectionReason$inboundSchema: z.ZodNativeEnum<
@@ -1240,9 +807,6 @@ export const CreatePartnerResponseBody$inboundSchema: z.ZodType<
   applicationId: z.nullable(z.string()).optional(),
   bannedAt: z.nullable(z.string()).optional(),
   bannedReason: z.nullable(CreatePartnerBannedReason$inboundSchema).optional(),
-  referralFormData: z.nullable(
-    z.lazy(() => CreatePartnerReferralFormData$inboundSchema),
-  ).optional(),
   application: z.nullable(z.lazy(() => CreatePartnerApplication$inboundSchema))
     .optional(),
   tags: z.array(z.lazy(() => CreatePartnerTags$inboundSchema)).optional(),
