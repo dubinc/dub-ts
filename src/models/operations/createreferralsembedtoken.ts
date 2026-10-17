@@ -145,6 +145,14 @@ export type Partner = {
    */
   groupId?: string | undefined;
   /**
+   * The IDs of the partner tags to assign when creating the partner. Existing tags are kept. Takes priority over `tagNames` only when it contains at least one ID.
+   */
+  tagIds?: Array<string> | undefined;
+  /**
+   * The names of the partner tags to assign when creating the partner. Existing tags are kept. Ignored only when `tagIds` contains at least one ID.
+   */
+  tagNames?: Array<string> | undefined;
+  /**
    * The partner's country of residence. Must be passed as a 2-letter ISO 3166-1 country code. See https://d.to/geo for more information.
    */
   country?: string | null | undefined;
@@ -317,6 +325,8 @@ export type Partner$Outbound = {
   image?: string | null | undefined;
   tenantId?: string | undefined;
   groupId?: string | undefined;
+  tagIds?: Array<string> | undefined;
+  tagNames?: Array<string> | undefined;
   country?: string | null | undefined;
   description?: string | null | undefined;
   linkProps?: CreateReferralsEmbedTokenLinkProps$Outbound | undefined;
@@ -334,6 +344,8 @@ export const Partner$outboundSchema: z.ZodType<
   image: z.nullable(z.string()).optional(),
   tenantId: z.string().optional(),
   groupId: z.string().optional(),
+  tagIds: z.array(z.string()).optional(),
+  tagNames: z.array(z.string()).optional(),
   country: z.nullable(z.string()).optional(),
   description: z.nullable(z.string()).optional(),
   linkProps: z.lazy(() => CreateReferralsEmbedTokenLinkProps$outboundSchema)
