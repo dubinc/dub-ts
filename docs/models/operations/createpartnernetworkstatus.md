@@ -7,11 +7,11 @@ The partner's network status on Dub.
 ```typescript
 import { CreatePartnerNetworkStatus } from "dub/models/operations";
 
-let value: CreatePartnerNetworkStatus = "approved";
+let value: CreatePartnerNetworkStatus = "rejected";
 ```
 
 ## Values
 
 ```typescript
-"draft" | "submitted" | "approved" | "rejected" | "trusted"
+"draft" | "submitted" | "approved" | "rejected" | "trusted" | "banned"
 ```

@@ -37,6 +37,14 @@ export type BanPartnerRequestBody = {
    * The reason for banning the partner.
    */
   reason: Reason;
+  /**
+   * Whether to flag the partner for fraud review by the Dub team.
+   */
+  flagForFraud?: boolean | undefined;
+  /**
+   * The reason for flagging the partner for fraud. Required when flagForFraud is true.
+   */
+  flagForFraudReason?: string | undefined;
 };
 
 /**
@@ -58,6 +66,8 @@ export type BanPartnerRequestBody$Outbound = {
   partnerId?: string | null | undefined;
   tenantId?: string | null | undefined;
   reason: string;
+  flagForFraud?: boolean | undefined;
+  flagForFraudReason?: string | undefined;
 };
 
 /** @internal */
@@ -69,6 +79,8 @@ export const BanPartnerRequestBody$outboundSchema: z.ZodType<
   partnerId: z.nullable(z.string()).optional(),
   tenantId: z.nullable(z.string()).optional(),
   reason: Reason$outboundSchema,
+  flagForFraud: z.boolean().optional(),
+  flagForFraudReason: z.string().optional(),
 });
 
 export function banPartnerRequestBodyToJSON(

@@ -44,6 +44,7 @@ export const ProgramApplicationCreatedEventNetworkStatus = {
   Approved: "approved",
   Rejected: "rejected",
   Trusted: "trusted",
+  Banned: "banned",
 } as const;
 /**
  * The partner's network status on Dub.
