@@ -95,6 +95,7 @@ export const ListProgramApplicationsNetworkStatus = {
   Approved: "approved",
   Rejected: "rejected",
   Trusted: "trusted",
+  Banned: "banned",
 } as const;
 /**
  * The partner's network status on Dub.

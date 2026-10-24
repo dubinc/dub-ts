@@ -22,7 +22,7 @@ let value: ProgramApplicationCreatedEvent = {
       image: "https://picsum.photos/seed/LZRDzeKRf/1417/2335",
       country: "Morocco",
       status: "declined",
-      networkStatus: "trusted",
+      networkStatus: "banned",
       defaultPayoutMethod: null,
       payoutsEnabledAt: "<value>",
     },

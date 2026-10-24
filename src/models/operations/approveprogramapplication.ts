@@ -20,6 +20,14 @@ export type ApproveProgramApplicationRequestBody = {
    * The ID of the group to assign the partner to. If not provided, the partner will be assigned to the group they applied to, or the program's default group if no application group is set.
    */
   groupId?: string | null | undefined;
+  /**
+   * The IDs of the partner tags to assign as part of approval. Existing tags are kept. Takes priority over `tagNames` only when it contains at least one ID.
+   */
+  tagIds?: Array<string> | undefined;
+  /**
+   * The names of the partner tags to assign as part of approval. Existing tags are kept. Ignored only when `tagIds` contains at least one ID.
+   */
+  tagNames?: Array<string> | undefined;
 };
 
 /**
@@ -37,6 +45,8 @@ export type ApproveProgramApplicationRequestBody$Outbound = {
   partnerId: string;
   applicationId?: string | undefined;
   groupId?: string | null | undefined;
+  tagIds?: Array<string> | undefined;
+  tagNames?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -48,6 +58,8 @@ export const ApproveProgramApplicationRequestBody$outboundSchema: z.ZodType<
   partnerId: z.string(),
   applicationId: z.string().optional(),
   groupId: z.nullable(z.string()).optional(),
+  tagIds: z.array(z.string()).optional(),
+  tagNames: z.array(z.string()).optional(),
 });
 
 export function approveProgramApplicationRequestBodyToJSON(

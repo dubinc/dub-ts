@@ -13,5 +13,5 @@ let value: ListProgramApplicationsNetworkStatus = "submitted";
 ## Values
 
 ```typescript
-"draft" | "submitted" | "approved" | "rejected" | "trusted"
+"draft" | "submitted" | "approved" | "rejected" | "trusted" | "banned"
 ```

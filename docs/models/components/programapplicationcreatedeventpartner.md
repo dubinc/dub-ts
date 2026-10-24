@@ -13,7 +13,7 @@ let value: ProgramApplicationCreatedEventPartner = {
   image: "https://loremflickr.com/3333/1665?lock=7158759712151859",
   country: "Saint Pierre and Miquelon",
   status: "invited",
-  networkStatus: "approved",
+  networkStatus: "rejected",
   defaultPayoutMethod: "tremendous",
   payoutsEnabledAt: "<value>",
 };

@@ -13,5 +13,5 @@ let value: NetworkStatus = "draft";
 ## Values
 
 ```typescript
-"draft" | "submitted" | "approved" | "rejected" | "trusted"
+"draft" | "submitted" | "approved" | "rejected" | "trusted" | "banned"
 ```
