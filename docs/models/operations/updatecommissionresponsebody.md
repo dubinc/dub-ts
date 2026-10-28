@@ -29,7 +29,8 @@ let value: UpdateCommissionResponseBody = {
     email: "Geovanny_Ferry@hotmail.com",
     image: "https://picsum.photos/seed/X0o34iD/2650/1856",
     payoutsEnabledAt: "<value>",
-    country: "Maldives",
+    networkStatus: "rejected",
+    country: "Paraguay",
   },
 };
 ```

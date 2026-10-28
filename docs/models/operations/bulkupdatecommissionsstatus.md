@@ -7,11 +7,11 @@ The status to apply to every commission in the batch.
 ```typescript
 import { BulkUpdateCommissionsStatus } from "dub/models/operations";
 
-let value: BulkUpdateCommissionsStatus = "duplicate";
+let value: BulkUpdateCommissionsStatus = "canceled";
 ```
 
 ## Values
 
 ```typescript
-"pending" | "refunded" | "duplicate" | "canceled" | "fraud"
+"pending" | "refunded" | "duplicate" | "canceled" | "fraud" | "hold"
 ```

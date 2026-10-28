@@ -26,6 +26,7 @@ let value: ListPayoutsResponseBody = {
     defaultPayoutMethod: "connect",
     payoutsEnabledAt: "<value>",
     country: "Libyan Arab Jamahiriya",
+    networkStatus: "rejected",
     tenantId: "<id>",
   },
 };

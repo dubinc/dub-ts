@@ -253,6 +253,24 @@ export const ListCommissionsStatus = {
  */
 export type ListCommissionsStatus = ClosedEnum<typeof ListCommissionsStatus>;
 
+/**
+ * The partner's network status on Dub.
+ */
+export const ListCommissionsNetworkStatus = {
+  Draft: "draft",
+  Submitted: "submitted",
+  Approved: "approved",
+  Rejected: "rejected",
+  Trusted: "trusted",
+  Banned: "banned",
+} as const;
+/**
+ * The partner's network status on Dub.
+ */
+export type ListCommissionsNetworkStatus = ClosedEnum<
+  typeof ListCommissionsNetworkStatus
+>;
+
 export type ListCommissionsPartner = {
   /**
    * The partner's unique ID on Dub.
@@ -274,6 +292,10 @@ export type ListCommissionsPartner = {
    * The date when the partner enabled payouts.
    */
   payoutsEnabledAt: string | null;
+  /**
+   * The partner's network status on Dub.
+   */
+  networkStatus: ListCommissionsNetworkStatus;
   /**
    * The partner's country (required for tax purposes).
    */
@@ -498,6 +520,11 @@ export const ListCommissionsStatus$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(ListCommissionsStatus);
 
 /** @internal */
+export const ListCommissionsNetworkStatus$inboundSchema: z.ZodNativeEnum<
+  typeof ListCommissionsNetworkStatus
+> = z.nativeEnum(ListCommissionsNetworkStatus);
+
+/** @internal */
 export const ListCommissionsPartner$inboundSchema: z.ZodType<
   ListCommissionsPartner,
   z.ZodTypeDef,
@@ -508,6 +535,7 @@ export const ListCommissionsPartner$inboundSchema: z.ZodType<
   email: z.nullable(z.string()),
   image: z.nullable(z.string()),
   payoutsEnabledAt: z.nullable(z.string()),
+  networkStatus: ListCommissionsNetworkStatus$inboundSchema,
   country: z.nullable(z.string()),
   groupId: z.nullable(z.string()).optional(),
 });
