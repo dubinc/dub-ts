@@ -15,6 +15,7 @@ generation:
     sharedErrorComponentsApr2025: false
     sharedNestedComponentsJan2026: false
     nameOverrideFeb2026: false
+    openSingleValueEnumsOct2026: false
   auth:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
@@ -29,7 +30,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 typescript:
-  version: 0.74.0
+  version: 0.75.0
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
@@ -78,6 +79,7 @@ typescript:
   modelPropertyCasing: camel
   moduleFormat: dual
   multipartArrayFormat: legacy
+  numericEnumMemberNames: legacy
   outputModelSuffix: output
   packageName: dub
   preApplyUnionDiscriminators: true

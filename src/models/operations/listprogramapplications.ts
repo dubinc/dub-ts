@@ -95,6 +95,7 @@ export const ListProgramApplicationsNetworkStatus = {
   Approved: "approved",
   Rejected: "rejected",
   Trusted: "trusted",
+  Banned: "banned",
 } as const;
 /**
  * The partner's network status on Dub.
@@ -135,6 +136,18 @@ export type Platforms = {
   type: ListProgramApplicationsType;
   identifier: string;
   verifiedAt: string | null;
+  /**
+   * Subscribers or followers for social profiles, or domain rating for websites.
+   */
+  subscribers: number;
+  /**
+   * Number of posts on the profile.
+   */
+  posts: number;
+  /**
+   * Video views for YouTube, or impressions for other social profiles.
+   */
+  views: number;
 };
 
 export type ListProgramApplicationsPartner = {
@@ -211,7 +224,7 @@ export type ListProgramApplicationsPartner = {
    */
   payoutsEnabledAt: string | null;
   /**
-   * The partner's website and social profiles, including when each was verified.
+   * The partner's website and social profiles, including when each was verified and audience stats (subscribers, views, and posts).
    */
   platforms?: Array<Platforms> | null | undefined;
 };
@@ -306,6 +319,9 @@ export const Platforms$inboundSchema: z.ZodType<
   type: ListProgramApplicationsType$inboundSchema,
   identifier: z.string(),
   verifiedAt: z.nullable(z.string()),
+  subscribers: z.number().int().default(0),
+  posts: z.number().int().default(0),
+  views: z.number().int().default(0),
 });
 
 export function platformsFromJSON(

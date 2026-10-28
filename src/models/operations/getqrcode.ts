@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod/v3";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The level of error correction to use for the QR code. Defaults to `L` if not provided.
@@ -18,6 +21,18 @@ export const Level = {
  * The level of error correction to use for the QR code. Defaults to `L` if not provided.
  */
 export type Level = ClosedEnum<typeof Level>;
+
+/**
+ * The format of the QR code. Defaults to `png` if not provided.
+ */
+export const Format = {
+  Png: "png",
+  Svg: "svg",
+} as const;
+/**
+ * The format of the QR code. Defaults to `png` if not provided.
+ */
+export type Format = ClosedEnum<typeof Format>;
 
 export type GetQRCodeRequest = {
   /**
@@ -41,7 +56,7 @@ export type GetQRCodeRequest = {
    */
   fgColor?: string | undefined;
   /**
-   * The background color of the QR code in hex format. Defaults to `#ffffff` if not provided.
+   * The background color of the QR code in hex format. Defaults to `#ffffff` for `png`. When omitted for `svg`, the background is transparent.
    */
   bgColor?: string | undefined;
   /**
@@ -56,12 +71,22 @@ export type GetQRCodeRequest = {
    * DEPRECATED: Margin is included by default. Use the `margin` prop to customize the margin size.
    */
   includeMargin?: boolean | undefined;
+  /**
+   * The format of the QR code. Defaults to `png` if not provided.
+   */
+  format?: Format | undefined;
 };
+
+export type GetQRCodeResponse = string | string;
 
 /** @internal */
 export const Level$outboundSchema: z.ZodNativeEnum<typeof Level> = z.nativeEnum(
   Level,
 );
+
+/** @internal */
+export const Format$outboundSchema: z.ZodNativeEnum<typeof Format> = z
+  .nativeEnum(Format);
 
 /** @internal */
 export type GetQRCodeRequest$Outbound = {
@@ -70,10 +95,11 @@ export type GetQRCodeRequest$Outbound = {
   size: number;
   level: string;
   fgColor: string;
-  bgColor: string;
+  bgColor?: string | undefined;
   hideLogo: boolean;
   margin: number;
   includeMargin: boolean;
+  format: string;
 };
 
 /** @internal */
@@ -87,10 +113,11 @@ export const GetQRCodeRequest$outboundSchema: z.ZodType<
   size: z.number().default(600),
   level: Level$outboundSchema.default("L"),
   fgColor: z.string().default("#000000"),
-  bgColor: z.string().default("#FFFFFF"),
+  bgColor: z.string().optional(),
   hideLogo: z.boolean().default(false),
   margin: z.number().default(2),
   includeMargin: z.boolean().default(true),
+  format: Format$outboundSchema.default("png"),
 });
 
 export function getQRCodeRequestToJSON(
@@ -98,5 +125,22 @@ export function getQRCodeRequestToJSON(
 ): string {
   return JSON.stringify(
     GetQRCodeRequest$outboundSchema.parse(getQRCodeRequest),
+  );
+}
+
+/** @internal */
+export const GetQRCodeResponse$inboundSchema: z.ZodType<
+  GetQRCodeResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.string(), z.string()]);
+
+export function getQRCodeResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetQRCodeResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetQRCodeResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetQRCodeResponse' from JSON`,
   );
 }

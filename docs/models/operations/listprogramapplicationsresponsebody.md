@@ -16,7 +16,7 @@ let value: ListProgramApplicationsResponseBody = {
     image: "https://picsum.photos/seed/PdSynIR/3571/1388",
     country: "Kuwait",
     status: "pending",
-    networkStatus: "draft",
+    networkStatus: "submitted",
     defaultPayoutMethod: "connect",
     payoutsEnabledAt: "<value>",
   },

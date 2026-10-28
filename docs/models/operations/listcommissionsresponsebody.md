@@ -28,7 +28,8 @@ let value: ListCommissionsResponseBody = {
     email: "Alvah_Sauer@hotmail.com",
     image: "https://loremflickr.com/1794/1402?lock=5326008437078580",
     payoutsEnabledAt: "<value>",
-    country: "Montenegro",
+    networkStatus: "rejected",
+    country: "Andorra",
   },
 };
 ```

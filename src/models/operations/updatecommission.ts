@@ -10,7 +10,7 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
- * Useful for marking a commission as pending, refunded, duplicate, canceled, or fraudulent. Takes precedence over `saleAmount` and `modifySaleAmount`. When a commission is marked as pending, refunded, duplicate, canceled, or fraudulent, it will be omitted from the payout, and the payout amount will be recalculated accordingly. Paid commissions cannot be updated.
+ * Useful for marking a commission as pending, refunded, duplicate, canceled, fraudulent, or on hold. Takes precedence over `saleAmount` and `modifySaleAmount`. When a commission is marked as pending, refunded, duplicate, canceled, fraudulent, or on hold, it will be omitted from the payout, and the payout amount will be recalculated accordingly. To release a commission on hold, mark it as pending. Marking a commission as on hold is only available on Advanced and Enterprise plans. Paid commissions cannot be updated.
  */
 export const Status = {
   Pending: "pending",
@@ -18,9 +18,10 @@ export const Status = {
   Duplicate: "duplicate",
   Canceled: "canceled",
   Fraud: "fraud",
+  Hold: "hold",
 } as const;
 /**
- * Useful for marking a commission as pending, refunded, duplicate, canceled, or fraudulent. Takes precedence over `saleAmount` and `modifySaleAmount`. When a commission is marked as pending, refunded, duplicate, canceled, or fraudulent, it will be omitted from the payout, and the payout amount will be recalculated accordingly. Paid commissions cannot be updated.
+ * Useful for marking a commission as pending, refunded, duplicate, canceled, fraudulent, or on hold. Takes precedence over `saleAmount` and `modifySaleAmount`. When a commission is marked as pending, refunded, duplicate, canceled, fraudulent, or on hold, it will be omitted from the payout, and the payout amount will be recalculated accordingly. To release a commission on hold, mark it as pending. Marking a commission as on hold is only available on Advanced and Enterprise plans. Paid commissions cannot be updated.
  */
 export type Status = ClosedEnum<typeof Status>;
 
@@ -42,7 +43,7 @@ export type UpdateCommissionRequestBody = {
    */
   currency?: string | undefined;
   /**
-   * Useful for marking a commission as pending, refunded, duplicate, canceled, or fraudulent. Takes precedence over `saleAmount` and `modifySaleAmount`. When a commission is marked as pending, refunded, duplicate, canceled, or fraudulent, it will be omitted from the payout, and the payout amount will be recalculated accordingly. Paid commissions cannot be updated.
+   * Useful for marking a commission as pending, refunded, duplicate, canceled, fraudulent, or on hold. Takes precedence over `saleAmount` and `modifySaleAmount`. When a commission is marked as pending, refunded, duplicate, canceled, fraudulent, or on hold, it will be omitted from the payout, and the payout amount will be recalculated accordingly. To release a commission on hold, mark it as pending. Marking a commission as on hold is only available on Advanced and Enterprise plans. Paid commissions cannot be updated.
    */
   status?: Status | undefined;
   /**
@@ -100,6 +101,24 @@ export const UpdateCommissionStatus = {
  */
 export type UpdateCommissionStatus = ClosedEnum<typeof UpdateCommissionStatus>;
 
+/**
+ * The partner's network status on Dub.
+ */
+export const UpdateCommissionNetworkStatus = {
+  Draft: "draft",
+  Submitted: "submitted",
+  Approved: "approved",
+  Rejected: "rejected",
+  Trusted: "trusted",
+  Banned: "banned",
+} as const;
+/**
+ * The partner's network status on Dub.
+ */
+export type UpdateCommissionNetworkStatus = ClosedEnum<
+  typeof UpdateCommissionNetworkStatus
+>;
+
 export type UpdateCommissionPartner = {
   /**
    * The partner's unique ID on Dub.
@@ -121,6 +140,10 @@ export type UpdateCommissionPartner = {
    * The date when the partner enabled payouts.
    */
   payoutsEnabledAt: string | null;
+  /**
+   * The partner's network status on Dub.
+   */
+  networkStatus: UpdateCommissionNetworkStatus;
   /**
    * The partner's country (required for tax purposes).
    */
@@ -326,6 +349,11 @@ export const UpdateCommissionStatus$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(UpdateCommissionStatus);
 
 /** @internal */
+export const UpdateCommissionNetworkStatus$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateCommissionNetworkStatus
+> = z.nativeEnum(UpdateCommissionNetworkStatus);
+
+/** @internal */
 export const UpdateCommissionPartner$inboundSchema: z.ZodType<
   UpdateCommissionPartner,
   z.ZodTypeDef,
@@ -336,6 +364,7 @@ export const UpdateCommissionPartner$inboundSchema: z.ZodType<
   email: z.nullable(z.string()),
   image: z.nullable(z.string()),
   payoutsEnabledAt: z.nullable(z.string()),
+  networkStatus: UpdateCommissionNetworkStatus$inboundSchema,
   country: z.nullable(z.string()),
   groupId: z.nullable(z.string()).optional(),
 });

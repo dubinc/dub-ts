@@ -136,6 +136,24 @@ export type ListPayoutsDefaultPayoutMethod = ClosedEnum<
   typeof ListPayoutsDefaultPayoutMethod
 >;
 
+/**
+ * The partner's network status on Dub.
+ */
+export const ListPayoutsNetworkStatus = {
+  Draft: "draft",
+  Submitted: "submitted",
+  Approved: "approved",
+  Rejected: "rejected",
+  Trusted: "trusted",
+  Banned: "banned",
+} as const;
+/**
+ * The partner's network status on Dub.
+ */
+export type ListPayoutsNetworkStatus = ClosedEnum<
+  typeof ListPayoutsNetworkStatus
+>;
+
 export type ListPayoutsPartner = {
   /**
    * The partner's unique ID on Dub.
@@ -165,6 +183,10 @@ export type ListPayoutsPartner = {
    * The partner's country (required for tax purposes).
    */
   country: string | null;
+  /**
+   * The partner's network status on Dub.
+   */
+  networkStatus: ListPayoutsNetworkStatus;
   /**
    * The partner's group ID on Dub.
    */
@@ -276,6 +298,11 @@ export const ListPayoutsDefaultPayoutMethod$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(ListPayoutsDefaultPayoutMethod);
 
 /** @internal */
+export const ListPayoutsNetworkStatus$inboundSchema: z.ZodNativeEnum<
+  typeof ListPayoutsNetworkStatus
+> = z.nativeEnum(ListPayoutsNetworkStatus);
+
+/** @internal */
 export const ListPayoutsPartner$inboundSchema: z.ZodType<
   ListPayoutsPartner,
   z.ZodTypeDef,
@@ -288,6 +315,7 @@ export const ListPayoutsPartner$inboundSchema: z.ZodType<
   defaultPayoutMethod: z.nullable(ListPayoutsDefaultPayoutMethod$inboundSchema),
   payoutsEnabledAt: z.nullable(z.string()),
   country: z.nullable(z.string()),
+  networkStatus: ListPayoutsNetworkStatus$inboundSchema,
   groupId: z.nullable(z.string()).optional(),
   tenantId: z.nullable(z.string()),
 });

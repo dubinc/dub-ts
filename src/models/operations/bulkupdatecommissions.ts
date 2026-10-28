@@ -17,6 +17,7 @@ export const BulkUpdateCommissionsStatus = {
   Duplicate: "duplicate",
   Canceled: "canceled",
   Fraud: "fraud",
+  Hold: "hold",
 } as const;
 /**
  * The status to apply to every commission in the batch.
