@@ -519,3 +519,29 @@ const value: components.DiscountCodeWebhookEvent = {
 };
 ```
 
+### `components.MessageReceivedEvent`
+
+```typescript
+const value: components.MessageReceivedEvent = {
+  id: "<id>",
+  event: "message.received",
+  createdAt: "1707737768691",
+  data: {
+    id: "<id>",
+    text: "<value>",
+    readInApp: null,
+    readInEmail: "<value>",
+    createdAt: "1725915170102",
+    updatedAt: "1735625782119",
+    attachments: [],
+    sourceType: "program",
+    partner: {
+      id: "<id>",
+      name: "<value>",
+      email: null,
+      image: "https://loremflickr.com/903/3982?lock=7791735311306908",
+    },
+  },
+};
+```
+

@@ -78,6 +78,10 @@ export type ListPayoutsRequest = {
    */
   groupId?: string | undefined;
   /**
+   * Filter the list of payouts by the associated partner tag. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `ptag_abc`, `ptag_abc,ptag_xyz`, `-ptag_abc`.
+   */
+  partnerTagId?: string | undefined;
+  /**
    * The field to sort the list of payouts by.
    */
   sortBy?: ListPayoutsQueryParamSortBy | undefined;
@@ -247,6 +251,7 @@ export type ListPayoutsRequest$Outbound = {
   tenantId?: string | undefined;
   invoiceId?: string | undefined;
   groupId?: string | undefined;
+  partnerTagId?: string | undefined;
   sortBy: string;
   sortOrder: string;
   page?: number | undefined;
@@ -264,6 +269,7 @@ export const ListPayoutsRequest$outboundSchema: z.ZodType<
   tenantId: z.string().optional(),
   invoiceId: z.string().optional(),
   groupId: z.string().optional(),
+  partnerTagId: z.string().optional(),
   sortBy: ListPayoutsQueryParamSortBy$outboundSchema.default("amount"),
   sortOrder: ListPayoutsQueryParamSortOrder$outboundSchema.default("desc"),
   page: z.number().int().optional(),
