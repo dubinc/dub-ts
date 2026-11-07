@@ -302,7 +302,7 @@ export const UpsertLinkRequestBody$outboundSchema: z.ZodType<
   url: z.string(),
   domain: z.string().optional(),
   key: z.string().optional(),
-  keyLength: z.number().optional(),
+  keyLength: z.number().int().optional(),
   externalId: z.nullable(z.string()).optional(),
   tenantId: z.nullable(z.string()).optional(),
   programId: z.nullable(z.string()).optional(),
