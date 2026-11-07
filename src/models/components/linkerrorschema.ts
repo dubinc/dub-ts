@@ -23,6 +23,7 @@ export const Code = {
   UnprocessableEntity: "unprocessable_entity",
   RateLimitExceeded: "rate_limit_exceeded",
   InternalServerError: "internal_server_error",
+  ServiceUnavailable: "service_unavailable",
 } as const;
 /**
  * The error code.
