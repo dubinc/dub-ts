@@ -185,6 +185,11 @@ run();
 * [updateMany](docs/sdks/links/README.md#updatemany) - Bulk update links
 * [upsert](docs/sdks/links/README.md#upsert) - Upsert a link
 
+### [Messages](docs/sdks/messages/README.md)
+
+* [list](docs/sdks/messages/README.md#list) - List all messages
+* [create](docs/sdks/messages/README.md#create) - Send a message to a partner
+
 ### [Partners](docs/sdks/partners/README.md)
 
 * [list](docs/sdks/partners/README.md#list) - List all partners
@@ -569,6 +574,8 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`linksUpdate`](docs/sdks/links/README.md#update) - Update a link
 - [`linksUpdateMany`](docs/sdks/links/README.md#updatemany) - Bulk update links
 - [`linksUpsert`](docs/sdks/links/README.md#upsert) - Upsert a link
+- [`messagesCreate`](docs/sdks/messages/README.md#create) - Send a message to a partner
+- [`messagesList`](docs/sdks/messages/README.md#list) - List all messages
 - [`partnersAnalytics`](docs/sdks/partners/README.md#analytics) - Retrieve analytics for a partner
 - [`partnersBan`](docs/sdks/partners/README.md#ban) - Ban a partner
 - [`partnersCreate`](docs/sdks/partners/README.md#create) - Create or update a partner

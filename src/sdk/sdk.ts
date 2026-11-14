@@ -13,6 +13,7 @@ import { EmbedTokens } from "./embedtokens.js";
 import { Events } from "./events.js";
 import { Folders } from "./folders.js";
 import { Links } from "./links.js";
+import { Messages } from "./messages.js";
 import { Partners } from "./partners.js";
 import { Payouts } from "./payouts.js";
 import { ProgramApplications } from "./programapplications.js";
@@ -101,5 +102,10 @@ export class Dub extends ClientSDK {
   private _bounties?: Bounties;
   get bounties(): Bounties {
     return (this._bounties ??= new Bounties(this._options));
+  }
+
+  private _messages?: Messages;
+  get messages(): Messages {
+    return (this._messages ??= new Messages(this._options));
   }
 }

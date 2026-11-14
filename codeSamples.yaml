@@ -718,6 +718,44 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/messages"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: listMessages
+          source: |-
+            import { Dub } from "dub";
+
+            const dub = new Dub({
+              token: "DUB_API_KEY",
+            });
+
+            async function run() {
+              const result = await dub.messages.list();
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/messages"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: createMessage
+          source: |-
+            import { Dub } from "dub";
+
+            const dub = new Dub({
+              token: "DUB_API_KEY",
+            });
+
+            async function run() {
+              const result = await dub.messages.create();
+
+              console.log(result);
+            }
+
+            run();
   - target: $["paths"]["/partners"]["get"]
     update:
       x-codeSamples:

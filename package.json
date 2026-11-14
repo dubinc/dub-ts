@@ -1,6 +1,6 @@
 {
   "name": "dub",
-  "version": "0.75.0",
+  "version": "0.75.1",
   "author": "Dub",
   "type": "module",
   "tshy": {
@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "jsonpath-rfc9535": "1.1.0",
-    "zod": "^3.25.0 || ^4.0.0"
+    "zod": "^3.25.0 || ^4.6.6"
   },
   "exports": {
     ".": {
