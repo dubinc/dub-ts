@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -78,15 +78,15 @@ export type DiscountCodeWebhookEvent = {
 };
 
 /** @internal */
-export const Event2$inboundSchema: z.ZodNativeEnum<typeof Event2> = z
-  .nativeEnum(Event2);
+export const Event2$inboundSchema: z.ZodNativeEnum<typeof Event2> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Event2));
 /** @internal */
 export const Event2$outboundSchema: z.ZodNativeEnum<typeof Event2> =
   Event2$inboundSchema;
 
 /** @internal */
-export const Event1$inboundSchema: z.ZodNativeEnum<typeof Event1> = z
-  .nativeEnum(Event1);
+export const Event1$inboundSchema: z.ZodNativeEnum<typeof Event1> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Event1));
 /** @internal */
 export const Event1$outboundSchema: z.ZodNativeEnum<typeof Event1> =
   Event1$inboundSchema;
@@ -96,7 +96,9 @@ export const DiscountCodeWebhookEventEvent$inboundSchema: z.ZodType<
   DiscountCodeWebhookEventEvent,
   z.ZodTypeDef,
   unknown
-> = z.union([Event1$inboundSchema, Event2$inboundSchema]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([Event1$inboundSchema, Event2$inboundSchema])
+);
 /** @internal */
 export type DiscountCodeWebhookEventEvent$Outbound = string | string;
 
@@ -105,7 +107,9 @@ export const DiscountCodeWebhookEventEvent$outboundSchema: z.ZodType<
   DiscountCodeWebhookEventEvent$Outbound,
   z.ZodTypeDef,
   DiscountCodeWebhookEventEvent
-> = z.union([Event1$outboundSchema, Event2$outboundSchema]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([Event1$outboundSchema, Event2$outboundSchema])
+);
 
 export function discountCodeWebhookEventEventToJSON(
   discountCodeWebhookEventEvent: DiscountCodeWebhookEventEvent,
@@ -129,15 +133,17 @@ export function discountCodeWebhookEventEventFromJSON(
 /** @internal */
 export const DiscountCodeWebhookEventType$inboundSchema: z.ZodNativeEnum<
   typeof DiscountCodeWebhookEventType
-> = z.nativeEnum(DiscountCodeWebhookEventType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(DiscountCodeWebhookEventType)
+);
 /** @internal */
 export const DiscountCodeWebhookEventType$outboundSchema: z.ZodNativeEnum<
   typeof DiscountCodeWebhookEventType
 > = DiscountCodeWebhookEventType$inboundSchema;
 
 /** @internal */
-export const Provider$inboundSchema: z.ZodNativeEnum<typeof Provider> = z
-  .nativeEnum(Provider);
+export const Provider$inboundSchema: z.ZodNativeEnum<typeof Provider> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Provider));
 /** @internal */
 export const Provider$outboundSchema: z.ZodNativeEnum<typeof Provider> =
   Provider$inboundSchema;
@@ -147,13 +153,15 @@ export const Discount$inboundSchema: z.ZodType<
   Discount,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  amount: z.number(),
-  type: DiscountCodeWebhookEventType$inboundSchema,
-  maxDuration: z.nullable(z.number()),
-  provider: Provider$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    amount: z.number(),
+    type: DiscountCodeWebhookEventType$inboundSchema,
+    maxDuration: z.nullable(z.number()),
+    provider: Provider$inboundSchema,
+  })
+);
 /** @internal */
 export type Discount$Outbound = {
   id: string;
@@ -168,13 +176,15 @@ export const Discount$outboundSchema: z.ZodType<
   Discount$Outbound,
   z.ZodTypeDef,
   Discount
-> = z.object({
-  id: z.string(),
-  amount: z.number(),
-  type: DiscountCodeWebhookEventType$outboundSchema,
-  maxDuration: z.nullable(z.number()),
-  provider: Provider$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    amount: z.number(),
+    type: DiscountCodeWebhookEventType$outboundSchema,
+    maxDuration: z.nullable(z.number()),
+    provider: Provider$outboundSchema,
+  })
+);
 
 export function discountToJSON(discount: Discount): string {
   return JSON.stringify(Discount$outboundSchema.parse(discount));
@@ -194,14 +204,16 @@ export const DiscountCodeWebhookEventData$inboundSchema: z.ZodType<
   DiscountCodeWebhookEventData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  code: z.string(),
-  partnerId: z.string(),
-  linkId: z.string(),
-  disabledAt: z.nullable(z.string()).optional(),
-  discount: z.nullable(z.lazy(() => Discount$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    code: z.string(),
+    partnerId: z.string(),
+    linkId: z.string(),
+    disabledAt: z.nullable(z.string()).optional(),
+    discount: z.nullable(z.lazy(() => Discount$inboundSchema)),
+  })
+);
 /** @internal */
 export type DiscountCodeWebhookEventData$Outbound = {
   id: string;
@@ -217,14 +229,16 @@ export const DiscountCodeWebhookEventData$outboundSchema: z.ZodType<
   DiscountCodeWebhookEventData$Outbound,
   z.ZodTypeDef,
   DiscountCodeWebhookEventData
-> = z.object({
-  id: z.string(),
-  code: z.string(),
-  partnerId: z.string(),
-  linkId: z.string(),
-  disabledAt: z.nullable(z.string()).optional(),
-  discount: z.nullable(z.lazy(() => Discount$outboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    code: z.string(),
+    partnerId: z.string(),
+    linkId: z.string(),
+    disabledAt: z.nullable(z.string()).optional(),
+    discount: z.nullable(z.lazy(() => Discount$outboundSchema)),
+  })
+);
 
 export function discountCodeWebhookEventDataToJSON(
   discountCodeWebhookEventData: DiscountCodeWebhookEventData,
@@ -250,12 +264,14 @@ export const DiscountCodeWebhookEvent$inboundSchema: z.ZodType<
   DiscountCodeWebhookEvent,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  event: z.union([Event1$inboundSchema, Event2$inboundSchema]),
-  createdAt: z.string(),
-  data: z.lazy(() => DiscountCodeWebhookEventData$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    event: z.union([Event1$inboundSchema, Event2$inboundSchema]),
+    createdAt: z.string(),
+    data: z.lazy(() => DiscountCodeWebhookEventData$inboundSchema),
+  })
+);
 /** @internal */
 export type DiscountCodeWebhookEvent$Outbound = {
   id: string;
@@ -269,12 +285,14 @@ export const DiscountCodeWebhookEvent$outboundSchema: z.ZodType<
   DiscountCodeWebhookEvent$Outbound,
   z.ZodTypeDef,
   DiscountCodeWebhookEvent
-> = z.object({
-  id: z.string(),
-  event: z.union([Event1$outboundSchema, Event2$outboundSchema]),
-  createdAt: z.string(),
-  data: z.lazy(() => DiscountCodeWebhookEventData$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    event: z.union([Event1$outboundSchema, Event2$outboundSchema]),
+    createdAt: z.string(),
+    data: z.lazy(() => DiscountCodeWebhookEventData$outboundSchema),
+  })
+);
 
 export function discountCodeWebhookEventToJSON(
   discountCodeWebhookEvent: DiscountCodeWebhookEvent,

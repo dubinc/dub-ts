@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -188,7 +188,9 @@ export const CreateReferralsEmbedTokenTagIds$outboundSchema: z.ZodType<
   CreateReferralsEmbedTokenTagIds$Outbound,
   z.ZodTypeDef,
   CreateReferralsEmbedTokenTagIds
-> = z.union([z.string(), z.array(z.string())]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([z.string(), z.array(z.string())])
+);
 
 export function createReferralsEmbedTokenTagIdsToJSON(
   createReferralsEmbedTokenTagIds: CreateReferralsEmbedTokenTagIds,
@@ -208,7 +210,9 @@ export const CreateReferralsEmbedTokenTagNames$outboundSchema: z.ZodType<
   CreateReferralsEmbedTokenTagNames$Outbound,
   z.ZodTypeDef,
   CreateReferralsEmbedTokenTagNames
-> = z.union([z.string(), z.array(z.string())]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([z.string(), z.array(z.string())])
+);
 
 export function createReferralsEmbedTokenTagNamesToJSON(
   createReferralsEmbedTokenTagNames: CreateReferralsEmbedTokenTagNames,
@@ -231,10 +235,12 @@ export const CreateReferralsEmbedTokenTestVariants$outboundSchema: z.ZodType<
   CreateReferralsEmbedTokenTestVariants$Outbound,
   z.ZodTypeDef,
   CreateReferralsEmbedTokenTestVariants
-> = z.object({
-  url: z.string(),
-  percentage: z.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    url: z.string(),
+    percentage: z.number(),
+  })
+);
 
 export function createReferralsEmbedTokenTestVariantsToJSON(
   createReferralsEmbedTokenTestVariants: CreateReferralsEmbedTokenTestVariants,
@@ -280,32 +286,36 @@ export const CreateReferralsEmbedTokenLinkProps$outboundSchema: z.ZodType<
   CreateReferralsEmbedTokenLinkProps$Outbound,
   z.ZodTypeDef,
   CreateReferralsEmbedTokenLinkProps
-> = z.object({
-  externalId: z.nullable(z.string()).optional(),
-  tenantId: z.nullable(z.string()).optional(),
-  prefix: z.string().optional(),
-  archived: z.boolean().optional(),
-  tagIds: z.union([z.string(), z.array(z.string())]).optional(),
-  tagNames: z.union([z.string(), z.array(z.string())]).optional(),
-  comments: z.nullable(z.string()).optional(),
-  expiresAt: z.nullable(z.string()).optional(),
-  expiredUrl: z.nullable(z.string()).optional(),
-  password: z.nullable(z.string()).optional(),
-  proxy: z.boolean().optional(),
-  title: z.nullable(z.string()).optional(),
-  description: z.nullable(z.string()).optional(),
-  image: z.nullable(z.string()).optional(),
-  video: z.nullable(z.string()).optional(),
-  rewrite: z.boolean().optional(),
-  ios: z.nullable(z.string()).optional(),
-  android: z.nullable(z.string()).optional(),
-  doIndex: z.boolean().optional(),
-  testVariants: z.nullable(
-    z.array(z.lazy(() => CreateReferralsEmbedTokenTestVariants$outboundSchema)),
-  ).optional(),
-  testStartedAt: z.nullable(z.string()).optional(),
-  testCompletedAt: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    externalId: z.nullable(z.string()).optional(),
+    tenantId: z.nullable(z.string()).optional(),
+    prefix: z.string().optional(),
+    archived: z.boolean().optional(),
+    tagIds: z.union([z.string(), z.array(z.string())]).optional(),
+    tagNames: z.union([z.string(), z.array(z.string())]).optional(),
+    comments: z.nullable(z.string()).optional(),
+    expiresAt: z.nullable(z.string()).optional(),
+    expiredUrl: z.nullable(z.string()).optional(),
+    password: z.nullable(z.string()).optional(),
+    proxy: z.boolean().optional(),
+    title: z.nullable(z.string()).optional(),
+    description: z.nullable(z.string()).optional(),
+    image: z.nullable(z.string()).optional(),
+    video: z.nullable(z.string()).optional(),
+    rewrite: z.boolean().optional(),
+    ios: z.nullable(z.string()).optional(),
+    android: z.nullable(z.string()).optional(),
+    doIndex: z.boolean().optional(),
+    testVariants: z.nullable(
+      z.array(
+        z.lazy(() => CreateReferralsEmbedTokenTestVariants$outboundSchema),
+      ),
+    ).optional(),
+    testStartedAt: z.nullable(z.string()).optional(),
+    testCompletedAt: z.nullable(z.string()).optional(),
+  })
+);
 
 export function createReferralsEmbedTokenLinkPropsToJSON(
   createReferralsEmbedTokenLinkProps: CreateReferralsEmbedTokenLinkProps,
@@ -337,20 +347,22 @@ export const Partner$outboundSchema: z.ZodType<
   Partner$Outbound,
   z.ZodTypeDef,
   Partner
-> = z.object({
-  name: z.nullable(z.string()).optional(),
-  email: z.string(),
-  username: z.nullable(z.string()).optional(),
-  image: z.nullable(z.string()).optional(),
-  tenantId: z.string().optional(),
-  groupId: z.string().optional(),
-  tagIds: z.array(z.string()).optional(),
-  tagNames: z.array(z.string()).optional(),
-  country: z.nullable(z.string()).optional(),
-  description: z.nullable(z.string()).optional(),
-  linkProps: z.lazy(() => CreateReferralsEmbedTokenLinkProps$outboundSchema)
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.nullable(z.string()).optional(),
+    email: z.string(),
+    username: z.nullable(z.string()).optional(),
+    image: z.nullable(z.string()).optional(),
+    tenantId: z.string().optional(),
+    groupId: z.string().optional(),
+    tagIds: z.array(z.string()).optional(),
+    tagNames: z.array(z.string()).optional(),
+    country: z.nullable(z.string()).optional(),
+    description: z.nullable(z.string()).optional(),
+    linkProps: z.lazy(() => CreateReferralsEmbedTokenLinkProps$outboundSchema)
+      .optional(),
+  })
+);
 
 export function partnerToJSON(partner: Partner): string {
   return JSON.stringify(Partner$outboundSchema.parse(partner));
@@ -368,11 +380,13 @@ export const CreateReferralsEmbedTokenRequestBody$outboundSchema: z.ZodType<
   CreateReferralsEmbedTokenRequestBody$Outbound,
   z.ZodTypeDef,
   CreateReferralsEmbedTokenRequestBody
-> = z.object({
-  partnerId: z.string().optional(),
-  tenantId: z.string().optional(),
-  partner: z.lazy(() => Partner$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    partnerId: z.string().optional(),
+    tenantId: z.string().optional(),
+    partner: z.lazy(() => Partner$outboundSchema).optional(),
+  })
+);
 
 export function createReferralsEmbedTokenRequestBodyToJSON(
   createReferralsEmbedTokenRequestBody: CreateReferralsEmbedTokenRequestBody,
@@ -389,10 +403,12 @@ export const CreateReferralsEmbedTokenResponseBody$inboundSchema: z.ZodType<
   CreateReferralsEmbedTokenResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  publicToken: z.string(),
-  expires: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    publicToken: z.string(),
+    expires: z.string(),
+  })
+);
 
 export function createReferralsEmbedTokenResponseBodyFromJSON(
   jsonString: string,

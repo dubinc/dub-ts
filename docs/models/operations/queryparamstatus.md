@@ -1,17 +1,17 @@
 # QueryParamStatus
 
-Filter applications by status. One of `pending`, `approved`, or `rejected`. Defaults to `pending`.
+Filter the list of partners by their status for your program. `discover` returns the partners that are not in your program and that you have not ignored, ranked by relevance.
 
 ## Example Usage
 
 ```typescript
 import { QueryParamStatus } from "dub/models/operations";
 
-let value: QueryParamStatus = "approved";
+let value: QueryParamStatus = "invited";
 ```
 
 ## Values
 
 ```typescript
-"pending" | "approved" | "rejected"
+"discover" | "invited" | "recruited" | "ignored"
 ```

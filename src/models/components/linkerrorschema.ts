@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -23,6 +23,7 @@ export const Code = {
   UnprocessableEntity: "unprocessable_entity",
   RateLimitExceeded: "rate_limit_exceeded",
   InternalServerError: "internal_server_error",
+  ServiceUnavailable: "service_unavailable",
 } as const;
 /**
  * The error code.
@@ -45,20 +46,21 @@ export type LinkErrorSchema = {
 };
 
 /** @internal */
-export const Code$inboundSchema: z.ZodNativeEnum<typeof Code> = z.nativeEnum(
-  Code,
-);
+export const Code$inboundSchema: z.ZodNativeEnum<typeof Code> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Code));
 
 /** @internal */
 export const LinkErrorSchema$inboundSchema: z.ZodType<
   LinkErrorSchema,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  link: z.any().optional(),
-  error: z.string(),
-  code: Code$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    link: z.any().optional(),
+    error: z.string(),
+    code: Code$inboundSchema,
+  })
+);
 
 export function linkErrorSchemaFromJSON(
   jsonString: string,

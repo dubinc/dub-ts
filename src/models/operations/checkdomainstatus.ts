@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -66,7 +66,9 @@ export const Domains$outboundSchema: z.ZodType<
   Domains$Outbound,
   z.ZodTypeDef,
   Domains
-> = z.union([z.string(), z.array(z.string())]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([z.string(), z.array(z.string())])
+);
 
 export function domainsToJSON(domains: Domains): string {
   return JSON.stringify(Domains$outboundSchema.parse(domains));
@@ -82,9 +84,11 @@ export const CheckDomainStatusRequest$outboundSchema: z.ZodType<
   CheckDomainStatusRequest$Outbound,
   z.ZodTypeDef,
   CheckDomainStatusRequest
-> = z.object({
-  domains: z.union([z.string(), z.array(z.string())]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domains: z.union([z.string(), z.array(z.string())]),
+  })
+);
 
 export function checkDomainStatusRequestToJSON(
   checkDomainStatusRequest: CheckDomainStatusRequest,
@@ -95,11 +99,13 @@ export function checkDomainStatusRequestToJSON(
 }
 
 /** @internal */
-export const Prices$inboundSchema: z.ZodType<Prices, z.ZodTypeDef, unknown> = z
-  .object({
-    registration: z.nullable(z.number()),
-    renewal: z.nullable(z.number()),
-  });
+export const Prices$inboundSchema: z.ZodType<Prices, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      registration: z.nullable(z.number()),
+      renewal: z.nullable(z.number()),
+    })
+  );
 
 export function pricesFromJSON(
   jsonString: string,
@@ -116,13 +122,15 @@ export const CheckDomainStatusResponseBody$inboundSchema: z.ZodType<
   CheckDomainStatusResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  domain: z.string(),
-  available: z.boolean(),
-  premium: z.nullable(z.boolean()),
-  prices: z.nullable(z.lazy(() => Prices$inboundSchema)),
-  price: z.nullable(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: z.string(),
+    available: z.boolean(),
+    premium: z.nullable(z.boolean()),
+    prices: z.nullable(z.lazy(() => Prices$inboundSchema)),
+    price: z.nullable(z.string()),
+  })
+);
 
 export function checkDomainStatusResponseBodyFromJSON(
   jsonString: string,

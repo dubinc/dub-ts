@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -157,9 +157,10 @@ export type RejectBountySubmissionResponseBody = {
 
 /** @internal */
 export const RejectBountySubmissionRejectionReason$outboundSchema:
-  z.ZodNativeEnum<typeof RejectBountySubmissionRejectionReason> = z.nativeEnum(
-    RejectBountySubmissionRejectionReason,
-  );
+  z.ZodNativeEnum<typeof RejectBountySubmissionRejectionReason> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(RejectBountySubmissionRejectionReason)
+    );
 
 /** @internal */
 export type RejectBountySubmissionRequestBody$Outbound = {
@@ -172,11 +173,13 @@ export const RejectBountySubmissionRequestBody$outboundSchema: z.ZodType<
   RejectBountySubmissionRequestBody$Outbound,
   z.ZodTypeDef,
   RejectBountySubmissionRequestBody
-> = z.object({
-  rejectionReason: RejectBountySubmissionRejectionReason$outboundSchema
-    .optional(),
-  rejectionNote: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    rejectionReason: RejectBountySubmissionRejectionReason$outboundSchema
+      .optional(),
+    rejectionNote: z.string().optional(),
+  })
+);
 
 export function rejectBountySubmissionRequestBodyToJSON(
   rejectBountySubmissionRequestBody: RejectBountySubmissionRequestBody,
@@ -200,16 +203,18 @@ export const RejectBountySubmissionRequest$outboundSchema: z.ZodType<
   RejectBountySubmissionRequest$Outbound,
   z.ZodTypeDef,
   RejectBountySubmissionRequest
-> = z.object({
-  bountyId: z.string(),
-  submissionId: z.string(),
-  requestBody: z.lazy(() => RejectBountySubmissionRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    bountyId: z.string(),
+    submissionId: z.string(),
+    requestBody: z.lazy(() => RejectBountySubmissionRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function rejectBountySubmissionRequestToJSON(
   rejectBountySubmissionRequest: RejectBountySubmissionRequest,
@@ -226,11 +231,13 @@ export const RejectBountySubmissionFiles$inboundSchema: z.ZodType<
   RejectBountySubmissionFiles,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  url: z.string(),
-  fileName: z.string(),
-  size: z.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    url: z.string(),
+    fileName: z.string(),
+    size: z.number(),
+  })
+);
 
 export function rejectBountySubmissionFilesFromJSON(
   jsonString: string,
@@ -245,34 +252,38 @@ export function rejectBountySubmissionFilesFromJSON(
 /** @internal */
 export const RejectBountySubmissionStatus$inboundSchema: z.ZodNativeEnum<
   typeof RejectBountySubmissionStatus
-> = z.nativeEnum(RejectBountySubmissionStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(RejectBountySubmissionStatus)
+);
 
 /** @internal */
 export const RejectBountySubmissionResponseBody$inboundSchema: z.ZodType<
   RejectBountySubmissionResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  bountyId: z.string(),
-  partnerId: z.string(),
-  description: z.nullable(z.string()),
-  urls: z.nullable(z.array(z.string())),
-  files: z.nullable(
-    z.array(z.lazy(() => RejectBountySubmissionFiles$inboundSchema)),
-  ),
-  status: RejectBountySubmissionStatus$inboundSchema,
-  performanceCount: z.nullable(z.number()),
-  socialMetricCount: z.nullable(z.number().int()),
-  socialMetricsLastSyncedAt: z.nullable(z.string()).optional(),
-  approvedSocialMetricThreshold: z.nullable(z.number().int()).optional(),
-  createdAt: z.string(),
-  completedAt: z.nullable(z.string()),
-  reviewedAt: z.nullable(z.string()),
-  rejectionReason: z.nullable(z.string()),
-  rejectionNote: z.nullable(z.string()),
-  periodNumber: z.number().int(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    bountyId: z.string(),
+    partnerId: z.string(),
+    description: z.nullable(z.string()),
+    urls: z.nullable(z.array(z.string())),
+    files: z.nullable(
+      z.array(z.lazy(() => RejectBountySubmissionFiles$inboundSchema)),
+    ),
+    status: RejectBountySubmissionStatus$inboundSchema,
+    performanceCount: z.nullable(z.number()),
+    socialMetricCount: z.nullable(z.number().int()),
+    socialMetricsLastSyncedAt: z.nullable(z.string()).optional(),
+    approvedSocialMetricThreshold: z.nullable(z.number().int()).optional(),
+    createdAt: z.string(),
+    completedAt: z.nullable(z.string()),
+    reviewedAt: z.nullable(z.string()),
+    rejectionReason: z.nullable(z.string()),
+    rejectionNote: z.nullable(z.string()),
+    periodNumber: z.number().int(),
+  })
+);
 
 export function rejectBountySubmissionResponseBodyFromJSON(
   jsonString: string,

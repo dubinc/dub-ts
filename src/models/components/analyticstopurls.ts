@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -35,13 +35,15 @@ export const AnalyticsTopUrls$inboundSchema: z.ZodType<
   AnalyticsTopUrls,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  url: z.string(),
-  clicks: z.number().default(0),
-  leads: z.number().default(0),
-  sales: z.number().default(0),
-  saleAmount: z.number().default(0),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    url: z.string(),
+    clicks: z.number().default(0),
+    leads: z.number().default(0),
+    sales: z.number().default(0),
+    saleAmount: z.number().default(0),
+  })
+);
 
 export function analyticsTopUrlsFromJSON(
   jsonString: string,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -106,7 +106,7 @@ export type TrackSaleResponseBody = {
 /** @internal */
 export const PaymentProcessor$outboundSchema: z.ZodNativeEnum<
   typeof PaymentProcessor
-> = z.nativeEnum(PaymentProcessor);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(PaymentProcessor));
 
 /** @internal */
 export type TrackSaleRequestBody$Outbound = {
@@ -129,20 +129,22 @@ export const TrackSaleRequestBody$outboundSchema: z.ZodType<
   TrackSaleRequestBody$Outbound,
   z.ZodTypeDef,
   TrackSaleRequestBody
-> = z.object({
-  customerExternalId: z.string(),
-  amount: z.number().int(),
-  currency: z.string().default("usd"),
-  eventName: z.string().default("Purchase"),
-  paymentProcessor: PaymentProcessor$outboundSchema.default("custom"),
-  invoiceId: z.nullable(z.string()).default(null),
-  metadata: z.nullable(z.record(z.any())).optional(),
-  leadEventName: z.nullable(z.string()).default(null),
-  clickId: z.nullable(z.string()).optional(),
-  customerName: z.nullable(z.string()).default(null),
-  customerEmail: z.nullable(z.string()).default(null),
-  customerAvatar: z.nullable(z.string()).default(null),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    customerExternalId: z.string(),
+    amount: z.number().int(),
+    currency: z.string().default("usd"),
+    eventName: z.string().default("Purchase"),
+    paymentProcessor: PaymentProcessor$outboundSchema.default("custom"),
+    invoiceId: z.nullable(z.string()).default(null),
+    metadata: z.nullable(z.record(z.any())).optional(),
+    leadEventName: z.nullable(z.string()).default(null),
+    clickId: z.nullable(z.string()).optional(),
+    customerName: z.nullable(z.string()).default(null),
+    customerEmail: z.nullable(z.string()).default(null),
+    customerAvatar: z.nullable(z.string()).default(null),
+  })
+);
 
 export function trackSaleRequestBodyToJSON(
   trackSaleRequestBody: TrackSaleRequestBody,
@@ -157,13 +159,15 @@ export const TrackSaleCustomer$inboundSchema: z.ZodType<
   TrackSaleCustomer,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  name: z.nullable(z.string()),
-  email: z.nullable(z.string()),
-  avatar: z.nullable(z.string()),
-  externalId: z.nullable(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    name: z.nullable(z.string()),
+    email: z.nullable(z.string()),
+    avatar: z.nullable(z.string()),
+    externalId: z.nullable(z.string()),
+  })
+);
 
 export function trackSaleCustomerFromJSON(
   jsonString: string,
@@ -180,13 +184,15 @@ export const TrackSaleSale$inboundSchema: z.ZodType<
   TrackSaleSale,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  amount: z.number(),
-  currency: z.string(),
-  paymentProcessor: z.string(),
-  invoiceId: z.nullable(z.string()),
-  metadata: z.nullable(z.record(z.any())),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    amount: z.number(),
+    currency: z.string(),
+    paymentProcessor: z.string(),
+    invoiceId: z.nullable(z.string()),
+    metadata: z.nullable(z.record(z.any())),
+  })
+);
 
 export function trackSaleSaleFromJSON(
   jsonString: string,
@@ -203,11 +209,13 @@ export const TrackSaleResponseBody$inboundSchema: z.ZodType<
   TrackSaleResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  eventName: z.string(),
-  customer: z.nullable(z.lazy(() => TrackSaleCustomer$inboundSchema)),
-  sale: z.nullable(z.lazy(() => TrackSaleSale$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    eventName: z.string(),
+    customer: z.nullable(z.lazy(() => TrackSaleCustomer$inboundSchema)),
+    sale: z.nullable(z.lazy(() => TrackSaleSale$inboundSchema)),
+  })
+);
 
 export function trackSaleResponseBodyFromJSON(
   jsonString: string,

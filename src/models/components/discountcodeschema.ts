@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -39,14 +39,16 @@ export const DiscountCodeSchema$inboundSchema: z.ZodType<
   DiscountCodeSchema,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  code: z.string(),
-  discountId: z.nullable(z.string()),
-  partnerId: z.string(),
-  linkId: z.string(),
-  disabledAt: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    code: z.string(),
+    discountId: z.nullable(z.string()),
+    partnerId: z.string(),
+    linkId: z.string(),
+    disabledAt: z.nullable(z.string()).optional(),
+  })
+);
 
 export function discountCodeSchemaFromJSON(
   jsonString: string,

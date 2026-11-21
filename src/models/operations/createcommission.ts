@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -303,14 +303,16 @@ export const RequestBodyCustomer$outboundSchema: z.ZodType<
   RequestBodyCustomer$Outbound,
   z.ZodTypeDef,
   RequestBodyCustomer
-> = z.object({
-  email: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  avatar: z.nullable(z.string()).optional(),
-  externalId: z.string(),
-  stripeCustomerId: z.nullable(z.string()).optional(),
-  country: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    email: z.nullable(z.string()).optional(),
+    name: z.nullable(z.string()).optional(),
+    avatar: z.nullable(z.string()).optional(),
+    externalId: z.string(),
+    stripeCustomerId: z.nullable(z.string()).optional(),
+    country: z.string(),
+  })
+);
 
 export function requestBodyCustomerToJSON(
   requestBodyCustomer: RequestBodyCustomer,
@@ -323,7 +325,7 @@ export function requestBodyCustomerToJSON(
 /** @internal */
 export const StripeInvoicesToImport1$outboundSchema: z.ZodNativeEnum<
   typeof StripeInvoicesToImport1
-> = z.nativeEnum(StripeInvoicesToImport1);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(StripeInvoicesToImport1));
 
 /** @internal */
 export type StripeInvoicesToImport$Outbound = string | Array<string>;
@@ -333,7 +335,9 @@ export const StripeInvoicesToImport$outboundSchema: z.ZodType<
   StripeInvoicesToImport$Outbound,
   z.ZodTypeDef,
   StripeInvoicesToImport
-> = z.union([StripeInvoicesToImport1$outboundSchema, z.array(z.string())]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([StripeInvoicesToImport1$outboundSchema, z.array(z.string())])
+);
 
 export function stripeInvoicesToImportToJSON(
   stripeInvoicesToImport: StripeInvoicesToImport,
@@ -346,7 +350,9 @@ export function stripeInvoicesToImportToJSON(
 /** @internal */
 export const RequestBodyPaymentProcessor$outboundSchema: z.ZodNativeEnum<
   typeof RequestBodyPaymentProcessor
-> = z.nativeEnum(RequestBodyPaymentProcessor);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(RequestBodyPaymentProcessor)
+);
 
 /** @internal */
 export type Sale$Outbound = {
@@ -360,16 +366,18 @@ export type Sale$Outbound = {
 
 /** @internal */
 export const Sale$outboundSchema: z.ZodType<Sale$Outbound, z.ZodTypeDef, Sale> =
-  z.object({
-    amount: z.nullable(z.number()).optional(),
-    currency: z.string().default("usd"),
-    eventName: z.string().default("Purchase"),
-    paymentProcessor: RequestBodyPaymentProcessor$outboundSchema.default(
-      "custom",
-    ),
-    invoiceId: z.nullable(z.string()).default(null),
-    metadata: z.nullable(z.record(z.any())).optional(),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      amount: z.nullable(z.number()).optional(),
+      currency: z.string().default("usd"),
+      eventName: z.string().default("Purchase"),
+      paymentProcessor: RequestBodyPaymentProcessor$outboundSchema.default(
+        "custom",
+      ),
+      invoiceId: z.nullable(z.string()).default(null),
+      metadata: z.nullable(z.record(z.any())).optional(),
+    })
+  );
 
 export function saleToJSON(sale: Sale): string {
   return JSON.stringify(Sale$outboundSchema.parse(sale));
@@ -398,25 +406,27 @@ export const RequestBody3$outboundSchema: z.ZodType<
   RequestBody3$Outbound,
   z.ZodTypeDef,
   RequestBody3
-> = z.object({
-  type: z.literal("sale"),
-  partnerId: z.string(),
-  customerId: z.nullable(z.string()).optional(),
-  customer: z.nullable(z.lazy(() => RequestBodyCustomer$outboundSchema))
-    .optional(),
-  linkId: z.nullable(z.string()).optional(),
-  discountCode: z.nullable(z.string()).optional(),
-  stripeInvoicesToImport: z.nullable(
-    z.union([StripeInvoicesToImport1$outboundSchema, z.array(z.string())]),
-  ).optional(),
-  date: z.nullable(z.string()).optional(),
-  sale: z.nullable(z.lazy(() => Sale$outboundSchema)).optional(),
-  importStripeInvoices: z.nullable(z.boolean()).optional(),
-  saleEventDate: z.nullable(z.string()).optional(),
-  saleAmount: z.nullable(z.number()).optional(),
-  invoiceId: z.nullable(z.string()).optional(),
-  productId: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.literal("sale"),
+    partnerId: z.string(),
+    customerId: z.nullable(z.string()).optional(),
+    customer: z.nullable(z.lazy(() => RequestBodyCustomer$outboundSchema))
+      .optional(),
+    linkId: z.nullable(z.string()).optional(),
+    discountCode: z.nullable(z.string()).optional(),
+    stripeInvoicesToImport: z.nullable(
+      z.union([StripeInvoicesToImport1$outboundSchema, z.array(z.string())]),
+    ).optional(),
+    date: z.nullable(z.string()).optional(),
+    sale: z.nullable(z.lazy(() => Sale$outboundSchema)).optional(),
+    importStripeInvoices: z.nullable(z.boolean()).optional(),
+    saleEventDate: z.nullable(z.string()).optional(),
+    saleAmount: z.nullable(z.number()).optional(),
+    invoiceId: z.nullable(z.string()).optional(),
+    productId: z.nullable(z.string()).optional(),
+  })
+);
 
 export function requestBody3ToJSON(requestBody3: RequestBody3): string {
   return JSON.stringify(RequestBody3$outboundSchema.parse(requestBody3));
@@ -437,14 +447,16 @@ export const Customer$outboundSchema: z.ZodType<
   Customer$Outbound,
   z.ZodTypeDef,
   Customer
-> = z.object({
-  email: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  avatar: z.nullable(z.string()).optional(),
-  externalId: z.string(),
-  stripeCustomerId: z.nullable(z.string()).optional(),
-  country: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    email: z.nullable(z.string()).optional(),
+    name: z.nullable(z.string()).optional(),
+    avatar: z.nullable(z.string()).optional(),
+    externalId: z.string(),
+    stripeCustomerId: z.nullable(z.string()).optional(),
+    country: z.string(),
+  })
+);
 
 export function customerToJSON(customer: Customer): string {
   return JSON.stringify(Customer$outboundSchema.parse(customer));
@@ -458,10 +470,12 @@ export type Lead$Outbound = {
 
 /** @internal */
 export const Lead$outboundSchema: z.ZodType<Lead$Outbound, z.ZodTypeDef, Lead> =
-  z.object({
-    eventName: z.nullable(z.string()).optional(),
-    metadata: z.nullable(z.record(z.any())).optional(),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      eventName: z.nullable(z.string()).optional(),
+      metadata: z.nullable(z.record(z.any())).optional(),
+    })
+  );
 
 export function leadToJSON(lead: Lead): string {
   return JSON.stringify(Lead$outboundSchema.parse(lead));
@@ -485,17 +499,19 @@ export const RequestBody2$outboundSchema: z.ZodType<
   RequestBody2$Outbound,
   z.ZodTypeDef,
   RequestBody2
-> = z.object({
-  type: z.literal("lead"),
-  partnerId: z.string(),
-  customerId: z.nullable(z.string()).optional(),
-  customer: z.nullable(z.lazy(() => Customer$outboundSchema)).optional(),
-  linkId: z.nullable(z.string()).optional(),
-  date: z.nullable(z.string()).optional(),
-  lead: z.nullable(z.lazy(() => Lead$outboundSchema)).optional(),
-  leadEventDate: z.nullable(z.string()).optional(),
-  leadEventName: z.nullable(z.string().default("Sign up")),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.literal("lead"),
+    partnerId: z.string(),
+    customerId: z.nullable(z.string()).optional(),
+    customer: z.nullable(z.lazy(() => Customer$outboundSchema)).optional(),
+    linkId: z.nullable(z.string()).optional(),
+    date: z.nullable(z.string()).optional(),
+    lead: z.nullable(z.lazy(() => Lead$outboundSchema)).optional(),
+    leadEventDate: z.nullable(z.string()).optional(),
+    leadEventName: z.nullable(z.string().default("Sign up")),
+  })
+);
 
 export function requestBody2ToJSON(requestBody2: RequestBody2): string {
   return JSON.stringify(RequestBody2$outboundSchema.parse(requestBody2));
@@ -515,13 +531,15 @@ export const RequestBody1$outboundSchema: z.ZodType<
   RequestBody1$Outbound,
   z.ZodTypeDef,
   RequestBody1
-> = z.object({
-  type: z.literal("custom"),
-  partnerId: z.string(),
-  amount: z.number(),
-  date: z.nullable(z.string()).optional(),
-  description: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.literal("custom"),
+    partnerId: z.string(),
+    amount: z.number(),
+    date: z.nullable(z.string()).optional(),
+    description: z.nullable(z.string()).optional(),
+  })
+);
 
 export function requestBody1ToJSON(requestBody1: RequestBody1): string {
   return JSON.stringify(RequestBody1$outboundSchema.parse(requestBody1));
@@ -538,11 +556,13 @@ export const CreateCommissionRequestBody$outboundSchema: z.ZodType<
   CreateCommissionRequestBody$Outbound,
   z.ZodTypeDef,
   CreateCommissionRequestBody
-> = z.union([
-  z.lazy(() => RequestBody1$outboundSchema),
-  z.lazy(() => RequestBody2$outboundSchema),
-  z.lazy(() => RequestBody3$outboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => RequestBody1$outboundSchema),
+    z.lazy(() => RequestBody2$outboundSchema),
+    z.lazy(() => RequestBody3$outboundSchema),
+  ])
+);
 
 export function createCommissionRequestBodyToJSON(
   createCommissionRequestBody: CreateCommissionRequestBody,
@@ -559,10 +579,12 @@ export const CreateCommissionResponseBody$inboundSchema: z.ZodType<
   CreateCommissionResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  success: z.boolean(),
-  message: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    success: z.boolean(),
+    message: z.string(),
+  })
+);
 
 export function createCommissionResponseBodyFromJSON(
   jsonString: string,

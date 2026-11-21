@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
@@ -95,7 +96,9 @@ export const GetLinksCountQueryParamTagIds$outboundSchema: z.ZodType<
   GetLinksCountQueryParamTagIds$Outbound,
   z.ZodTypeDef,
   GetLinksCountQueryParamTagIds
-> = z.union([z.string(), z.array(z.string())]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([z.string(), z.array(z.string())])
+);
 
 export function getLinksCountQueryParamTagIdsToJSON(
   getLinksCountQueryParamTagIds: GetLinksCountQueryParamTagIds,
@@ -115,7 +118,9 @@ export const GetLinksCountQueryParamTagNames$outboundSchema: z.ZodType<
   GetLinksCountQueryParamTagNames$Outbound,
   z.ZodTypeDef,
   GetLinksCountQueryParamTagNames
-> = z.union([z.string(), z.array(z.string())]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([z.string(), z.array(z.string())])
+);
 
 export function getLinksCountQueryParamTagNamesToJSON(
   getLinksCountQueryParamTagNames: GetLinksCountQueryParamTagNames,
@@ -128,24 +133,20 @@ export function getLinksCountQueryParamTagNamesToJSON(
 }
 
 /** @internal */
-export const Four$outboundSchema: z.ZodNativeEnum<typeof Four> = z.nativeEnum(
-  Four,
-);
+export const Four$outboundSchema: z.ZodNativeEnum<typeof Four> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Four));
 
 /** @internal */
-export const Three$outboundSchema: z.ZodNativeEnum<typeof Three> = z.nativeEnum(
-  Three,
-);
+export const Three$outboundSchema: z.ZodNativeEnum<typeof Three> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Three));
 
 /** @internal */
-export const Two$outboundSchema: z.ZodNativeEnum<typeof Two> = z.nativeEnum(
-  Two,
-);
+export const Two$outboundSchema: z.ZodNativeEnum<typeof Two> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Two));
 
 /** @internal */
-export const One$outboundSchema: z.ZodNativeEnum<typeof One> = z.nativeEnum(
-  One,
-);
+export const One$outboundSchema: z.ZodNativeEnum<typeof One> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(One));
 
 /** @internal */
 export type GroupBy$Outbound = string | string | string | string;
@@ -155,12 +156,14 @@ export const GroupBy$outboundSchema: z.ZodType<
   GroupBy$Outbound,
   z.ZodTypeDef,
   GroupBy
-> = z.union([
-  One$outboundSchema,
-  Two$outboundSchema,
-  Three$outboundSchema,
-  Four$outboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    One$outboundSchema,
+    Two$outboundSchema,
+    Three$outboundSchema,
+    Four$outboundSchema,
+  ])
+);
 
 export function groupByToJSON(groupBy: GroupBy): string {
   return JSON.stringify(GroupBy$outboundSchema.parse(groupBy));
@@ -186,24 +189,26 @@ export const GetLinksCountRequest$outboundSchema: z.ZodType<
   GetLinksCountRequest$Outbound,
   z.ZodTypeDef,
   GetLinksCountRequest
-> = z.object({
-  domain: z.string().optional(),
-  tagId: z.string().optional(),
-  tagIds: z.union([z.string(), z.array(z.string())]).optional(),
-  tagNames: z.union([z.string(), z.array(z.string())]).optional(),
-  folderId: z.string().optional(),
-  search: z.string().optional(),
-  userId: z.string().optional(),
-  tenantId: z.string().optional(),
-  showArchived: z.boolean().default(false),
-  withTags: z.boolean().default(false),
-  groupBy: z.union([
-    One$outboundSchema,
-    Two$outboundSchema,
-    Three$outboundSchema,
-    Four$outboundSchema,
-  ]).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: z.string().optional(),
+    tagId: z.string().optional(),
+    tagIds: z.union([z.string(), z.array(z.string())]).optional(),
+    tagNames: z.union([z.string(), z.array(z.string())]).optional(),
+    folderId: z.string().optional(),
+    search: z.string().optional(),
+    userId: z.string().optional(),
+    tenantId: z.string().optional(),
+    showArchived: z.boolean().default(false),
+    withTags: z.boolean().default(false),
+    groupBy: z.union([
+      One$outboundSchema,
+      Two$outboundSchema,
+      Three$outboundSchema,
+      Four$outboundSchema,
+    ]).optional(),
+  })
+);
 
 export function getLinksCountRequestToJSON(
   getLinksCountRequest: GetLinksCountRequest,

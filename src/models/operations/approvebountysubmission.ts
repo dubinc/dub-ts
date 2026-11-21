@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -144,9 +144,11 @@ export const ApproveBountySubmissionRequestBody$outboundSchema: z.ZodType<
   ApproveBountySubmissionRequestBody$Outbound,
   z.ZodTypeDef,
   ApproveBountySubmissionRequestBody
-> = z.object({
-  rewardAmount: z.nullable(z.number()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    rewardAmount: z.nullable(z.number()).optional(),
+  })
+);
 
 export function approveBountySubmissionRequestBodyToJSON(
   approveBountySubmissionRequestBody: ApproveBountySubmissionRequestBody,
@@ -170,16 +172,18 @@ export const ApproveBountySubmissionRequest$outboundSchema: z.ZodType<
   ApproveBountySubmissionRequest$Outbound,
   z.ZodTypeDef,
   ApproveBountySubmissionRequest
-> = z.object({
-  bountyId: z.string(),
-  submissionId: z.string(),
-  requestBody: z.lazy(() => ApproveBountySubmissionRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    bountyId: z.string(),
+    submissionId: z.string(),
+    requestBody: z.lazy(() => ApproveBountySubmissionRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function approveBountySubmissionRequestToJSON(
   approveBountySubmissionRequest: ApproveBountySubmissionRequest,
@@ -196,11 +200,13 @@ export const ApproveBountySubmissionFiles$inboundSchema: z.ZodType<
   ApproveBountySubmissionFiles,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  url: z.string(),
-  fileName: z.string(),
-  size: z.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    url: z.string(),
+    fileName: z.string(),
+    size: z.number(),
+  })
+);
 
 export function approveBountySubmissionFilesFromJSON(
   jsonString: string,
@@ -215,34 +221,38 @@ export function approveBountySubmissionFilesFromJSON(
 /** @internal */
 export const ApproveBountySubmissionStatus$inboundSchema: z.ZodNativeEnum<
   typeof ApproveBountySubmissionStatus
-> = z.nativeEnum(ApproveBountySubmissionStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ApproveBountySubmissionStatus)
+);
 
 /** @internal */
 export const ApproveBountySubmissionResponseBody$inboundSchema: z.ZodType<
   ApproveBountySubmissionResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  bountyId: z.string(),
-  partnerId: z.string(),
-  description: z.nullable(z.string()),
-  urls: z.nullable(z.array(z.string())),
-  files: z.nullable(
-    z.array(z.lazy(() => ApproveBountySubmissionFiles$inboundSchema)),
-  ),
-  status: ApproveBountySubmissionStatus$inboundSchema,
-  performanceCount: z.nullable(z.number()),
-  socialMetricCount: z.nullable(z.number().int()),
-  socialMetricsLastSyncedAt: z.nullable(z.string()).optional(),
-  approvedSocialMetricThreshold: z.nullable(z.number().int()).optional(),
-  createdAt: z.string(),
-  completedAt: z.nullable(z.string()),
-  reviewedAt: z.nullable(z.string()),
-  rejectionReason: z.nullable(z.string()),
-  rejectionNote: z.nullable(z.string()),
-  periodNumber: z.number().int(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    bountyId: z.string(),
+    partnerId: z.string(),
+    description: z.nullable(z.string()),
+    urls: z.nullable(z.array(z.string())),
+    files: z.nullable(
+      z.array(z.lazy(() => ApproveBountySubmissionFiles$inboundSchema)),
+    ),
+    status: ApproveBountySubmissionStatus$inboundSchema,
+    performanceCount: z.nullable(z.number()),
+    socialMetricCount: z.nullable(z.number().int()),
+    socialMetricsLastSyncedAt: z.nullable(z.string()).optional(),
+    approvedSocialMetricThreshold: z.nullable(z.number().int()).optional(),
+    createdAt: z.string(),
+    completedAt: z.nullable(z.string()),
+    reviewedAt: z.nullable(z.string()),
+    rejectionReason: z.nullable(z.string()),
+    rejectionNote: z.nullable(z.string()),
+    periodNumber: z.number().int(),
+  })
+);
 
 export function approveBountySubmissionResponseBodyFromJSON(
   jsonString: string,

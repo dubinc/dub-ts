@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { DubError } from "./duberror.js";
@@ -69,22 +69,24 @@ export class Forbidden extends DubError {
 /** @internal */
 export const ForbiddenCode$inboundSchema: z.ZodNativeEnum<
   typeof ForbiddenCode
-> = z.nativeEnum(ForbiddenCode);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ForbiddenCode));
 
 /** @internal */
 export const ForbiddenError$inboundSchema: z.ZodType<
   ForbiddenError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: ForbiddenCode$inboundSchema,
-  message: z.string(),
-  doc_url: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "doc_url": "docUrl",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: ForbiddenCode$inboundSchema,
+    message: z.string(),
+    doc_url: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "doc_url": "docUrl",
+    });
+  })
+);
 
 export function forbiddenErrorFromJSON(
   jsonString: string,
@@ -101,16 +103,18 @@ export const Forbidden$inboundSchema: z.ZodType<
   Forbidden,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  error: z.lazy(() => ForbiddenError$inboundSchema),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new Forbidden(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    error: z.lazy(() => ForbiddenError$inboundSchema),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new Forbidden(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);

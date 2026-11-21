@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { DubError } from "./duberror.js";
@@ -68,22 +68,24 @@ export class Conflict extends DubError {
 
 /** @internal */
 export const ConflictCode$inboundSchema: z.ZodNativeEnum<typeof ConflictCode> =
-  z.nativeEnum(ConflictCode);
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ConflictCode));
 
 /** @internal */
 export const ConflictError$inboundSchema: z.ZodType<
   ConflictError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: ConflictCode$inboundSchema,
-  message: z.string(),
-  doc_url: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "doc_url": "docUrl",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: ConflictCode$inboundSchema,
+    message: z.string(),
+    doc_url: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "doc_url": "docUrl",
+    });
+  })
+);
 
 export function conflictErrorFromJSON(
   jsonString: string,
@@ -100,16 +102,18 @@ export const Conflict$inboundSchema: z.ZodType<
   Conflict,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  error: z.lazy(() => ConflictError$inboundSchema),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new Conflict(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    error: z.lazy(() => ConflictError$inboundSchema),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new Conflict(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);

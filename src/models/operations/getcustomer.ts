@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -151,10 +151,12 @@ export const GetCustomerRequest$outboundSchema: z.ZodType<
   GetCustomerRequest$Outbound,
   z.ZodTypeDef,
   GetCustomerRequest
-> = z.object({
-  id: z.string(),
-  includeExpandedFields: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    includeExpandedFields: z.boolean().optional(),
+  })
+);
 
 export function getCustomerRequestToJSON(
   getCustomerRequest: GetCustomerRequest,
@@ -169,14 +171,16 @@ export const GetCustomerLink$inboundSchema: z.ZodType<
   GetCustomerLink,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  domain: z.string(),
-  key: z.string(),
-  shortLink: z.string(),
-  url: z.string(),
-  programId: z.nullable(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    domain: z.string(),
+    key: z.string(),
+    shortLink: z.string(),
+    url: z.string(),
+    programId: z.nullable(z.string()),
+  })
+);
 
 export function getCustomerLinkFromJSON(
   jsonString: string,
@@ -193,12 +197,14 @@ export const GetCustomerPartner$inboundSchema: z.ZodType<
   GetCustomerPartner,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  email: z.nullable(z.string()),
-  image: z.nullable(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    name: z.string(),
+    email: z.nullable(z.string()),
+    image: z.nullable(z.string()),
+  })
+);
 
 export function getCustomerPartnerFromJSON(
   jsonString: string,
@@ -213,23 +219,25 @@ export function getCustomerPartnerFromJSON(
 /** @internal */
 export const GetCustomerType$inboundSchema: z.ZodNativeEnum<
   typeof GetCustomerType
-> = z.nativeEnum(GetCustomerType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetCustomerType));
 
 /** @internal */
 export const GetCustomerDiscount$inboundSchema: z.ZodType<
   GetCustomerDiscount,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  amount: z.number(),
-  type: GetCustomerType$inboundSchema,
-  maxDuration: z.nullable(z.number()),
-  couponId: z.nullable(z.string()),
-  couponTestId: z.nullable(z.string()),
-  description: z.nullable(z.string()).optional(),
-  partnersCount: z.nullable(z.number()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    amount: z.number(),
+    type: GetCustomerType$inboundSchema,
+    maxDuration: z.nullable(z.number()),
+    couponId: z.nullable(z.string()),
+    couponTestId: z.nullable(z.string()),
+    description: z.nullable(z.string()).optional(),
+    partnersCount: z.nullable(z.number()).optional(),
+  })
+);
 
 export function getCustomerDiscountFromJSON(
   jsonString: string,
@@ -246,26 +254,28 @@ export const GetCustomerResponseBody$inboundSchema: z.ZodType<
   GetCustomerResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  name: z.nullable(z.string()).optional(),
-  email: z.nullable(z.string()).optional(),
-  avatar: z.nullable(z.string()).optional(),
-  externalId: z.string(),
-  stripeCustomerId: z.nullable(z.string()).optional(),
-  country: z.nullable(z.string()).optional(),
-  sales: z.nullable(z.number()).optional(),
-  saleAmount: z.nullable(z.number()).optional(),
-  createdAt: z.string(),
-  firstSaleAt: z.nullable(z.string()).optional(),
-  subscriptionCanceledAt: z.nullable(z.string()).optional(),
-  link: z.nullable(z.lazy(() => GetCustomerLink$inboundSchema)).optional(),
-  programId: z.nullable(z.string()).optional(),
-  partner: z.nullable(z.lazy(() => GetCustomerPartner$inboundSchema))
-    .optional(),
-  discount: z.nullable(z.lazy(() => GetCustomerDiscount$inboundSchema))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    name: z.nullable(z.string()).optional(),
+    email: z.nullable(z.string()).optional(),
+    avatar: z.nullable(z.string()).optional(),
+    externalId: z.string(),
+    stripeCustomerId: z.nullable(z.string()).optional(),
+    country: z.nullable(z.string()).optional(),
+    sales: z.nullable(z.number()).optional(),
+    saleAmount: z.nullable(z.number()).optional(),
+    createdAt: z.string(),
+    firstSaleAt: z.nullable(z.string()).optional(),
+    subscriptionCanceledAt: z.nullable(z.string()).optional(),
+    link: z.nullable(z.lazy(() => GetCustomerLink$inboundSchema)).optional(),
+    programId: z.nullable(z.string()).optional(),
+    partner: z.nullable(z.lazy(() => GetCustomerPartner$inboundSchema))
+      .optional(),
+    discount: z.nullable(z.lazy(() => GetCustomerDiscount$inboundSchema))
+      .optional(),
+  })
+);
 
 export function getCustomerResponseBodyFromJSON(
   jsonString: string,

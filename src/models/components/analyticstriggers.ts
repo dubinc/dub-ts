@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -46,21 +46,23 @@ export type AnalyticsTriggers = {
 };
 
 /** @internal */
-export const Trigger$inboundSchema: z.ZodNativeEnum<typeof Trigger> = z
-  .nativeEnum(Trigger);
+export const Trigger$inboundSchema: z.ZodNativeEnum<typeof Trigger> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Trigger));
 
 /** @internal */
 export const AnalyticsTriggers$inboundSchema: z.ZodType<
   AnalyticsTriggers,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  trigger: Trigger$inboundSchema,
-  clicks: z.number().default(0),
-  leads: z.number().default(0),
-  sales: z.number().default(0),
-  saleAmount: z.number().default(0),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    trigger: Trigger$inboundSchema,
+    clicks: z.number().default(0),
+    leads: z.number().default(0),
+    sales: z.number().default(0),
+    saleAmount: z.number().default(0),
+  })
+);
 
 export function analyticsTriggersFromJSON(
   jsonString: string,

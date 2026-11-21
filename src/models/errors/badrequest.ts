@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { DubError } from "./duberror.js";
@@ -67,21 +67,22 @@ export class BadRequest extends DubError {
 }
 
 /** @internal */
-export const Code$inboundSchema: z.ZodNativeEnum<typeof Code> = z.nativeEnum(
-  Code,
-);
+export const Code$inboundSchema: z.ZodNativeEnum<typeof Code> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Code));
 
 /** @internal */
-export const ErrorT$inboundSchema: z.ZodType<ErrorT, z.ZodTypeDef, unknown> = z
-  .object({
-    code: Code$inboundSchema,
-    message: z.string(),
-    doc_url: z.string().optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "doc_url": "docUrl",
-    });
-  });
+export const ErrorT$inboundSchema: z.ZodType<ErrorT, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      code: Code$inboundSchema,
+      message: z.string(),
+      doc_url: z.string().optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        "doc_url": "docUrl",
+      });
+    })
+  );
 
 export function errorFromJSON(
   jsonString: string,
@@ -98,16 +99,18 @@ export const BadRequest$inboundSchema: z.ZodType<
   BadRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  error: z.lazy(() => ErrorT$inboundSchema),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new BadRequest(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    error: z.lazy(() => ErrorT$inboundSchema),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new BadRequest(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
