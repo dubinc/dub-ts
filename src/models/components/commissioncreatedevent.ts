@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -227,7 +227,9 @@ export type CommissionCreatedEvent = {
 /** @internal */
 export const CommissionCreatedEventEvent$inboundSchema: z.ZodNativeEnum<
   typeof CommissionCreatedEventEvent
-> = z.nativeEnum(CommissionCreatedEventEvent);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(CommissionCreatedEventEvent)
+);
 /** @internal */
 export const CommissionCreatedEventEvent$outboundSchema: z.ZodNativeEnum<
   typeof CommissionCreatedEventEvent
@@ -236,7 +238,7 @@ export const CommissionCreatedEventEvent$outboundSchema: z.ZodNativeEnum<
 /** @internal */
 export const CommissionCreatedEventType$inboundSchema: z.ZodNativeEnum<
   typeof CommissionCreatedEventType
-> = z.nativeEnum(CommissionCreatedEventType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(CommissionCreatedEventType));
 /** @internal */
 export const CommissionCreatedEventType$outboundSchema: z.ZodNativeEnum<
   typeof CommissionCreatedEventType
@@ -245,7 +247,9 @@ export const CommissionCreatedEventType$outboundSchema: z.ZodNativeEnum<
 /** @internal */
 export const CommissionCreatedEventStatus$inboundSchema: z.ZodNativeEnum<
   typeof CommissionCreatedEventStatus
-> = z.nativeEnum(CommissionCreatedEventStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(CommissionCreatedEventStatus)
+);
 /** @internal */
 export const CommissionCreatedEventStatus$outboundSchema: z.ZodNativeEnum<
   typeof CommissionCreatedEventStatus
@@ -256,21 +260,23 @@ export const CommissionCreatedEventPartner$inboundSchema: z.ZodType<
   CommissionCreatedEventPartner,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  email: z.nullable(z.string()),
-  image: z.nullable(z.string()),
-  payoutsEnabledAt: z.nullable(z.string()),
-  country: z.nullable(z.string()),
-  groupId: z.nullable(z.string()).optional(),
-  totalClicks: z.number(),
-  totalLeads: z.number(),
-  totalConversions: z.number(),
-  totalSales: z.number(),
-  totalSaleAmount: z.number(),
-  totalCommissions: z.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    name: z.string(),
+    email: z.nullable(z.string()),
+    image: z.nullable(z.string()),
+    payoutsEnabledAt: z.nullable(z.string()),
+    country: z.nullable(z.string()),
+    groupId: z.nullable(z.string()).optional(),
+    totalClicks: z.number(),
+    totalLeads: z.number(),
+    totalConversions: z.number(),
+    totalSales: z.number(),
+    totalSaleAmount: z.number(),
+    totalCommissions: z.number(),
+  })
+);
 /** @internal */
 export type CommissionCreatedEventPartner$Outbound = {
   id: string;
@@ -293,21 +299,23 @@ export const CommissionCreatedEventPartner$outboundSchema: z.ZodType<
   CommissionCreatedEventPartner$Outbound,
   z.ZodTypeDef,
   CommissionCreatedEventPartner
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  email: z.nullable(z.string()),
-  image: z.nullable(z.string()),
-  payoutsEnabledAt: z.nullable(z.string()),
-  country: z.nullable(z.string()),
-  groupId: z.nullable(z.string()).optional(),
-  totalClicks: z.number(),
-  totalLeads: z.number(),
-  totalConversions: z.number(),
-  totalSales: z.number(),
-  totalSaleAmount: z.number(),
-  totalCommissions: z.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    name: z.string(),
+    email: z.nullable(z.string()),
+    image: z.nullable(z.string()),
+    payoutsEnabledAt: z.nullable(z.string()),
+    country: z.nullable(z.string()),
+    groupId: z.nullable(z.string()).optional(),
+    totalClicks: z.number(),
+    totalLeads: z.number(),
+    totalConversions: z.number(),
+    totalSales: z.number(),
+    totalSaleAmount: z.number(),
+    totalCommissions: z.number(),
+  })
+);
 
 export function commissionCreatedEventPartnerToJSON(
   commissionCreatedEventPartner: CommissionCreatedEventPartner,
@@ -333,20 +341,22 @@ export const CommissionCreatedEventCustomer$inboundSchema: z.ZodType<
   CommissionCreatedEventCustomer,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  name: z.nullable(z.string()).optional(),
-  email: z.nullable(z.string()).optional(),
-  avatar: z.nullable(z.string()).optional(),
-  externalId: z.string(),
-  stripeCustomerId: z.nullable(z.string()).optional(),
-  country: z.nullable(z.string()).optional(),
-  sales: z.nullable(z.number()).optional(),
-  saleAmount: z.nullable(z.number()).optional(),
-  createdAt: z.string(),
-  firstSaleAt: z.nullable(z.string()).optional(),
-  subscriptionCanceledAt: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    name: z.nullable(z.string()).optional(),
+    email: z.nullable(z.string()).optional(),
+    avatar: z.nullable(z.string()).optional(),
+    externalId: z.string(),
+    stripeCustomerId: z.nullable(z.string()).optional(),
+    country: z.nullable(z.string()).optional(),
+    sales: z.nullable(z.number()).optional(),
+    saleAmount: z.nullable(z.number()).optional(),
+    createdAt: z.string(),
+    firstSaleAt: z.nullable(z.string()).optional(),
+    subscriptionCanceledAt: z.nullable(z.string()).optional(),
+  })
+);
 /** @internal */
 export type CommissionCreatedEventCustomer$Outbound = {
   id: string;
@@ -368,20 +378,22 @@ export const CommissionCreatedEventCustomer$outboundSchema: z.ZodType<
   CommissionCreatedEventCustomer$Outbound,
   z.ZodTypeDef,
   CommissionCreatedEventCustomer
-> = z.object({
-  id: z.string(),
-  name: z.nullable(z.string()).optional(),
-  email: z.nullable(z.string()).optional(),
-  avatar: z.nullable(z.string()).optional(),
-  externalId: z.string(),
-  stripeCustomerId: z.nullable(z.string()).optional(),
-  country: z.nullable(z.string()).optional(),
-  sales: z.nullable(z.number()).optional(),
-  saleAmount: z.nullable(z.number()).optional(),
-  createdAt: z.string(),
-  firstSaleAt: z.nullable(z.string()).optional(),
-  subscriptionCanceledAt: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    name: z.nullable(z.string()).optional(),
+    email: z.nullable(z.string()).optional(),
+    avatar: z.nullable(z.string()).optional(),
+    externalId: z.string(),
+    stripeCustomerId: z.nullable(z.string()).optional(),
+    country: z.nullable(z.string()).optional(),
+    sales: z.nullable(z.number()).optional(),
+    saleAmount: z.nullable(z.number()).optional(),
+    createdAt: z.string(),
+    firstSaleAt: z.nullable(z.string()).optional(),
+    subscriptionCanceledAt: z.nullable(z.string()).optional(),
+  })
+);
 
 export function commissionCreatedEventCustomerToJSON(
   commissionCreatedEventCustomer: CommissionCreatedEventCustomer,
@@ -407,12 +419,14 @@ export const CommissionCreatedEventLink$inboundSchema: z.ZodType<
   CommissionCreatedEventLink,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  shortLink: z.string(),
-  domain: z.string(),
-  key: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    shortLink: z.string(),
+    domain: z.string(),
+    key: z.string(),
+  })
+);
 /** @internal */
 export type CommissionCreatedEventLink$Outbound = {
   id: string;
@@ -426,12 +440,14 @@ export const CommissionCreatedEventLink$outboundSchema: z.ZodType<
   CommissionCreatedEventLink$Outbound,
   z.ZodTypeDef,
   CommissionCreatedEventLink
-> = z.object({
-  id: z.string(),
-  shortLink: z.string(),
-  domain: z.string(),
-  key: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    shortLink: z.string(),
+    domain: z.string(),
+    key: z.string(),
+  })
+);
 
 export function commissionCreatedEventLinkToJSON(
   commissionCreatedEventLink: CommissionCreatedEventLink,
@@ -455,26 +471,28 @@ export const CommissionCreatedEventData$inboundSchema: z.ZodType<
   CommissionCreatedEventData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  type: CommissionCreatedEventType$inboundSchema,
-  amount: z.number(),
-  earnings: z.number(),
-  currency: z.string(),
-  status: CommissionCreatedEventStatus$inboundSchema,
-  invoiceId: z.nullable(z.string()),
-  description: z.nullable(z.string()),
-  quantity: z.number(),
-  userId: z.nullable(z.string()).optional(),
-  metadata: z.nullable(z.record(z.any())),
-  createdAt: z.string(),
-  updatedAt: z.string(),
-  partner: z.lazy(() => CommissionCreatedEventPartner$inboundSchema),
-  customer: z.nullable(
-    z.lazy(() => CommissionCreatedEventCustomer$inboundSchema),
-  ).optional(),
-  link: z.nullable(z.lazy(() => CommissionCreatedEventLink$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    type: CommissionCreatedEventType$inboundSchema,
+    amount: z.number(),
+    earnings: z.number(),
+    currency: z.string(),
+    status: CommissionCreatedEventStatus$inboundSchema,
+    invoiceId: z.nullable(z.string()),
+    description: z.nullable(z.string()),
+    quantity: z.number(),
+    userId: z.nullable(z.string()).optional(),
+    metadata: z.nullable(z.record(z.any())),
+    createdAt: z.string(),
+    updatedAt: z.string(),
+    partner: z.lazy(() => CommissionCreatedEventPartner$inboundSchema),
+    customer: z.nullable(
+      z.lazy(() => CommissionCreatedEventCustomer$inboundSchema),
+    ).optional(),
+    link: z.nullable(z.lazy(() => CommissionCreatedEventLink$inboundSchema)),
+  })
+);
 /** @internal */
 export type CommissionCreatedEventData$Outbound = {
   id: string;
@@ -500,26 +518,28 @@ export const CommissionCreatedEventData$outboundSchema: z.ZodType<
   CommissionCreatedEventData$Outbound,
   z.ZodTypeDef,
   CommissionCreatedEventData
-> = z.object({
-  id: z.string(),
-  type: CommissionCreatedEventType$outboundSchema,
-  amount: z.number(),
-  earnings: z.number(),
-  currency: z.string(),
-  status: CommissionCreatedEventStatus$outboundSchema,
-  invoiceId: z.nullable(z.string()),
-  description: z.nullable(z.string()),
-  quantity: z.number(),
-  userId: z.nullable(z.string()).optional(),
-  metadata: z.nullable(z.record(z.any())),
-  createdAt: z.string(),
-  updatedAt: z.string(),
-  partner: z.lazy(() => CommissionCreatedEventPartner$outboundSchema),
-  customer: z.nullable(
-    z.lazy(() => CommissionCreatedEventCustomer$outboundSchema),
-  ).optional(),
-  link: z.nullable(z.lazy(() => CommissionCreatedEventLink$outboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    type: CommissionCreatedEventType$outboundSchema,
+    amount: z.number(),
+    earnings: z.number(),
+    currency: z.string(),
+    status: CommissionCreatedEventStatus$outboundSchema,
+    invoiceId: z.nullable(z.string()),
+    description: z.nullable(z.string()),
+    quantity: z.number(),
+    userId: z.nullable(z.string()).optional(),
+    metadata: z.nullable(z.record(z.any())),
+    createdAt: z.string(),
+    updatedAt: z.string(),
+    partner: z.lazy(() => CommissionCreatedEventPartner$outboundSchema),
+    customer: z.nullable(
+      z.lazy(() => CommissionCreatedEventCustomer$outboundSchema),
+    ).optional(),
+    link: z.nullable(z.lazy(() => CommissionCreatedEventLink$outboundSchema)),
+  })
+);
 
 export function commissionCreatedEventDataToJSON(
   commissionCreatedEventData: CommissionCreatedEventData,
@@ -543,12 +563,14 @@ export const CommissionCreatedEvent$inboundSchema: z.ZodType<
   CommissionCreatedEvent,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  event: CommissionCreatedEventEvent$inboundSchema,
-  createdAt: z.string(),
-  data: z.lazy(() => CommissionCreatedEventData$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    event: CommissionCreatedEventEvent$inboundSchema,
+    createdAt: z.string(),
+    data: z.lazy(() => CommissionCreatedEventData$inboundSchema),
+  })
+);
 /** @internal */
 export type CommissionCreatedEvent$Outbound = {
   id: string;
@@ -562,12 +584,14 @@ export const CommissionCreatedEvent$outboundSchema: z.ZodType<
   CommissionCreatedEvent$Outbound,
   z.ZodTypeDef,
   CommissionCreatedEvent
-> = z.object({
-  id: z.string(),
-  event: CommissionCreatedEventEvent$outboundSchema,
-  createdAt: z.string(),
-  data: z.lazy(() => CommissionCreatedEventData$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    event: CommissionCreatedEventEvent$outboundSchema,
+    createdAt: z.string(),
+    data: z.lazy(() => CommissionCreatedEventData$outboundSchema),
+  })
+);
 
 export function commissionCreatedEventToJSON(
   commissionCreatedEvent: CommissionCreatedEvent,

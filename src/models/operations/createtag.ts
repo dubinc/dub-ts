@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
@@ -41,9 +42,8 @@ export type CreateTagRequestBody = {
 };
 
 /** @internal */
-export const Color$outboundSchema: z.ZodNativeEnum<typeof Color> = z.nativeEnum(
-  Color,
-);
+export const Color$outboundSchema: z.ZodNativeEnum<typeof Color> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Color));
 
 /** @internal */
 export type CreateTagRequestBody$Outbound = {
@@ -57,11 +57,13 @@ export const CreateTagRequestBody$outboundSchema: z.ZodType<
   CreateTagRequestBody$Outbound,
   z.ZodTypeDef,
   CreateTagRequestBody
-> = z.object({
-  name: z.string().optional(),
-  color: Color$outboundSchema.optional(),
-  tag: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    color: Color$outboundSchema.optional(),
+    tag: z.string().optional(),
+  })
+);
 
 export function createTagRequestBodyToJSON(
   createTagRequestBody: CreateTagRequestBody,

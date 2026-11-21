@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -120,9 +120,8 @@ export type TrackLeadResponseBody = {
 };
 
 /** @internal */
-export const Mode$outboundSchema: z.ZodNativeEnum<typeof Mode> = z.nativeEnum(
-  Mode,
-);
+export const Mode$outboundSchema: z.ZodNativeEnum<typeof Mode> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Mode));
 
 /** @internal */
 export type TrackLeadRequestBody$Outbound = {
@@ -142,17 +141,19 @@ export const TrackLeadRequestBody$outboundSchema: z.ZodType<
   TrackLeadRequestBody$Outbound,
   z.ZodTypeDef,
   TrackLeadRequestBody
-> = z.object({
-  clickId: z.string(),
-  eventName: z.string(),
-  customerExternalId: z.string(),
-  customerName: z.nullable(z.string()).default(null),
-  customerEmail: z.nullable(z.string()).default(null),
-  customerAvatar: z.nullable(z.string()).default(null),
-  mode: Mode$outboundSchema.default("async"),
-  eventQuantity: z.nullable(z.number().int()).optional(),
-  metadata: z.nullable(z.record(z.any())).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    clickId: z.string(),
+    eventName: z.string(),
+    customerExternalId: z.string(),
+    customerName: z.nullable(z.string()).default(null),
+    customerEmail: z.nullable(z.string()).default(null),
+    customerAvatar: z.nullable(z.string()).default(null),
+    mode: Mode$outboundSchema.default("async"),
+    eventQuantity: z.nullable(z.number().int()).optional(),
+    metadata: z.nullable(z.record(z.any())).optional(),
+  })
+);
 
 export function trackLeadRequestBodyToJSON(
   trackLeadRequestBody: TrackLeadRequestBody,
@@ -163,10 +164,12 @@ export function trackLeadRequestBodyToJSON(
 }
 
 /** @internal */
-export const Click$inboundSchema: z.ZodType<Click, z.ZodTypeDef, unknown> = z
-  .object({
-    id: z.string(),
-  });
+export const Click$inboundSchema: z.ZodType<Click, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+    })
+  );
 
 export function clickFromJSON(
   jsonString: string,
@@ -179,18 +182,20 @@ export function clickFromJSON(
 }
 
 /** @internal */
-export const Link$inboundSchema: z.ZodType<Link, z.ZodTypeDef, unknown> = z
-  .object({
-    id: z.string(),
-    domain: z.string(),
-    key: z.string(),
-    shortLink: z.string(),
-    url: z.string(),
-    partnerId: z.nullable(z.string()),
-    programId: z.nullable(z.string()),
-    tenantId: z.nullable(z.string()),
-    externalId: z.nullable(z.string()),
-  });
+export const Link$inboundSchema: z.ZodType<Link, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      domain: z.string(),
+      key: z.string(),
+      shortLink: z.string(),
+      url: z.string(),
+      partnerId: z.nullable(z.string()),
+      programId: z.nullable(z.string()),
+      tenantId: z.nullable(z.string()),
+      externalId: z.nullable(z.string()),
+    })
+  );
 
 export function linkFromJSON(
   jsonString: string,
@@ -207,12 +212,14 @@ export const TrackLeadCustomer$inboundSchema: z.ZodType<
   TrackLeadCustomer,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.nullable(z.string()),
-  email: z.nullable(z.string()),
-  avatar: z.nullable(z.string()),
-  externalId: z.nullable(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.nullable(z.string()),
+    email: z.nullable(z.string()),
+    avatar: z.nullable(z.string()),
+    externalId: z.nullable(z.string()),
+  })
+);
 
 export function trackLeadCustomerFromJSON(
   jsonString: string,
@@ -229,11 +236,13 @@ export const TrackLeadResponseBody$inboundSchema: z.ZodType<
   TrackLeadResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  click: z.lazy(() => Click$inboundSchema),
-  link: z.nullable(z.lazy(() => Link$inboundSchema)),
-  customer: z.lazy(() => TrackLeadCustomer$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    click: z.lazy(() => Click$inboundSchema),
+    link: z.nullable(z.lazy(() => Link$inboundSchema)),
+    customer: z.lazy(() => TrackLeadCustomer$inboundSchema),
+  })
+);
 
 export function trackLeadResponseBodyFromJSON(
   jsonString: string,

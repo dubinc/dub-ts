@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
@@ -195,7 +195,7 @@ export type RetrieveAnalyticsRequest = {
    */
   trigger?: string | undefined;
   /**
-   * The conversion event name to retrieve analytics for. Only available for lead and sale events. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `Sign up`, `Sign up,Purchase`, `-Sign up`.
+   * The conversion event name to retrieve analytics for. Only available for lead and sale events. Supports advanced filtering: single value, multiple values (comma-separated), exclusion (prefix with `-`), or case-insensitive substring match (prefix with `~`, combine with `-` to exclude). Examples: `Sign up`, `Sign up,Purchase`, `-Sign up`, `~deposit`, `-~test`.
    */
   eventName?: string | undefined;
   /**
@@ -277,22 +277,21 @@ export type RetrieveAnalyticsResponseBody =
   | Array<components.AnalyticsTopUrls>;
 
 /** @internal */
-export const Event$outboundSchema: z.ZodNativeEnum<typeof Event> = z.nativeEnum(
-  Event,
-);
+export const Event$outboundSchema: z.ZodNativeEnum<typeof Event> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Event));
 
 /** @internal */
 export const QueryParamGroupBy$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamGroupBy
-> = z.nativeEnum(QueryParamGroupBy);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(QueryParamGroupBy));
 
 /** @internal */
-export const Interval$outboundSchema: z.ZodNativeEnum<typeof Interval> = z
-  .nativeEnum(Interval);
+export const Interval$outboundSchema: z.ZodNativeEnum<typeof Interval> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Interval));
 
 /** @internal */
-export const SaleType$outboundSchema: z.ZodNativeEnum<typeof SaleType> = z
-  .nativeEnum(SaleType);
+export const SaleType$outboundSchema: z.ZodNativeEnum<typeof SaleType> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(SaleType));
 
 /** @internal */
 export type RetrieveAnalyticsRequest$Outbound = {
@@ -343,56 +342,58 @@ export const RetrieveAnalyticsRequest$outboundSchema: z.ZodType<
   RetrieveAnalyticsRequest$Outbound,
   z.ZodTypeDef,
   RetrieveAnalyticsRequest
-> = z.object({
-  event: Event$outboundSchema.default("clicks"),
-  groupBy: QueryParamGroupBy$outboundSchema.default("count"),
-  domain: z.string().optional(),
-  key: z.string().optional(),
-  linkId: z.string().optional(),
-  externalId: z.string().optional(),
-  tenantId: z.string().optional(),
-  tagId: z.string().optional(),
-  folderId: z.string().optional(),
-  partnerTagId: z.string().optional(),
-  groupId: z.string().optional(),
-  partnerId: z.string().optional(),
-  customerId: z.string().optional(),
-  interval: Interval$outboundSchema.optional(),
-  start: z.string().optional(),
-  end: z.string().optional(),
-  timezone: z.string().default("UTC"),
-  country: z.string().optional(),
-  city: z.string().optional(),
-  region: z.string().optional(),
-  continent: z.string().optional(),
-  device: z.string().optional(),
-  browser: z.string().optional(),
-  os: z.string().optional(),
-  trigger: z.string().optional(),
-  eventName: z.string().optional(),
-  referer: z.string().optional(),
-  refererUrl: z.string().optional(),
-  url: z.string().optional(),
-  utmSource: z.string().optional(),
-  utmMedium: z.string().optional(),
-  utmCampaign: z.string().optional(),
-  utmTerm: z.string().optional(),
-  utmContent: z.string().optional(),
-  root: z.boolean().optional(),
-  saleType: SaleType$outboundSchema.optional(),
-  query: z.string().optional(),
-  programId: z.string().optional(),
-  tagIds: z.string().optional(),
-  qr: z.boolean().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    utmSource: "utm_source",
-    utmMedium: "utm_medium",
-    utmCampaign: "utm_campaign",
-    utmTerm: "utm_term",
-    utmContent: "utm_content",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    event: Event$outboundSchema.default("clicks"),
+    groupBy: QueryParamGroupBy$outboundSchema.default("count"),
+    domain: z.string().optional(),
+    key: z.string().optional(),
+    linkId: z.string().optional(),
+    externalId: z.string().optional(),
+    tenantId: z.string().optional(),
+    tagId: z.string().optional(),
+    folderId: z.string().optional(),
+    partnerTagId: z.string().optional(),
+    groupId: z.string().optional(),
+    partnerId: z.string().optional(),
+    customerId: z.string().optional(),
+    interval: Interval$outboundSchema.optional(),
+    start: z.string().optional(),
+    end: z.string().optional(),
+    timezone: z.string().default("UTC"),
+    country: z.string().optional(),
+    city: z.string().optional(),
+    region: z.string().optional(),
+    continent: z.string().optional(),
+    device: z.string().optional(),
+    browser: z.string().optional(),
+    os: z.string().optional(),
+    trigger: z.string().optional(),
+    eventName: z.string().optional(),
+    referer: z.string().optional(),
+    refererUrl: z.string().optional(),
+    url: z.string().optional(),
+    utmSource: z.string().optional(),
+    utmMedium: z.string().optional(),
+    utmCampaign: z.string().optional(),
+    utmTerm: z.string().optional(),
+    utmContent: z.string().optional(),
+    root: z.boolean().optional(),
+    saleType: SaleType$outboundSchema.optional(),
+    query: z.string().optional(),
+    programId: z.string().optional(),
+    tagIds: z.string().optional(),
+    qr: z.boolean().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      utmSource: "utm_source",
+      utmMedium: "utm_medium",
+      utmCampaign: "utm_campaign",
+      utmTerm: "utm_term",
+      utmContent: "utm_content",
+    });
+  })
+);
 
 export function retrieveAnalyticsRequestToJSON(
   retrieveAnalyticsRequest: RetrieveAnalyticsRequest,
@@ -407,23 +408,25 @@ export const RetrieveAnalyticsResponseBody$inboundSchema: z.ZodType<
   RetrieveAnalyticsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  components.AnalyticsCount$inboundSchema,
-  z.array(components.AnalyticsTimeseries$inboundSchema),
-  z.array(components.AnalyticsContinents$inboundSchema),
-  z.array(components.AnalyticsCountries$inboundSchema),
-  z.array(components.AnalyticsRegions$inboundSchema),
-  z.array(components.AnalyticsCities$inboundSchema),
-  z.array(components.AnalyticsDevices$inboundSchema),
-  z.array(components.AnalyticsBrowsers$inboundSchema),
-  z.array(components.AnalyticsOS$inboundSchema),
-  z.array(components.AnalyticsTriggers$inboundSchema),
-  z.array(components.AnalyticsEventNames$inboundSchema),
-  z.array(components.AnalyticsReferers$inboundSchema),
-  z.array(components.AnalyticsRefererUrls$inboundSchema),
-  z.array(components.AnalyticsTopLinks$inboundSchema),
-  z.array(components.AnalyticsTopUrls$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    components.AnalyticsCount$inboundSchema,
+    z.array(components.AnalyticsTimeseries$inboundSchema),
+    z.array(components.AnalyticsContinents$inboundSchema),
+    z.array(components.AnalyticsCountries$inboundSchema),
+    z.array(components.AnalyticsRegions$inboundSchema),
+    z.array(components.AnalyticsCities$inboundSchema),
+    z.array(components.AnalyticsDevices$inboundSchema),
+    z.array(components.AnalyticsBrowsers$inboundSchema),
+    z.array(components.AnalyticsOS$inboundSchema),
+    z.array(components.AnalyticsTriggers$inboundSchema),
+    z.array(components.AnalyticsEventNames$inboundSchema),
+    z.array(components.AnalyticsReferers$inboundSchema),
+    z.array(components.AnalyticsRefererUrls$inboundSchema),
+    z.array(components.AnalyticsTopLinks$inboundSchema),
+    z.array(components.AnalyticsTopUrls$inboundSchema),
+  ])
+);
 
 export function retrieveAnalyticsResponseBodyFromJSON(
   jsonString: string,

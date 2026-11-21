@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -80,13 +80,12 @@ export type GetQRCodeRequest = {
 export type GetQRCodeResponse = string | string;
 
 /** @internal */
-export const Level$outboundSchema: z.ZodNativeEnum<typeof Level> = z.nativeEnum(
-  Level,
-);
+export const Level$outboundSchema: z.ZodNativeEnum<typeof Level> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Level));
 
 /** @internal */
-export const Format$outboundSchema: z.ZodNativeEnum<typeof Format> = z
-  .nativeEnum(Format);
+export const Format$outboundSchema: z.ZodNativeEnum<typeof Format> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Format));
 
 /** @internal */
 export type GetQRCodeRequest$Outbound = {
@@ -107,18 +106,20 @@ export const GetQRCodeRequest$outboundSchema: z.ZodType<
   GetQRCodeRequest$Outbound,
   z.ZodTypeDef,
   GetQRCodeRequest
-> = z.object({
-  url: z.string(),
-  logo: z.string().optional(),
-  size: z.number().default(600),
-  level: Level$outboundSchema.default("L"),
-  fgColor: z.string().default("#000000"),
-  bgColor: z.string().optional(),
-  hideLogo: z.boolean().default(false),
-  margin: z.number().default(2),
-  includeMargin: z.boolean().default(true),
-  format: Format$outboundSchema.default("png"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    url: z.string(),
+    logo: z.string().optional(),
+    size: z.number().default(600),
+    level: Level$outboundSchema.default("L"),
+    fgColor: z.string().default("#000000"),
+    bgColor: z.string().optional(),
+    hideLogo: z.boolean().default(false),
+    margin: z.number().default(2),
+    includeMargin: z.boolean().default(true),
+    format: Format$outboundSchema.default("png"),
+  })
+);
 
 export function getQRCodeRequestToJSON(
   getQRCodeRequest: GetQRCodeRequest,
@@ -133,7 +134,7 @@ export const GetQRCodeResponse$inboundSchema: z.ZodType<
   GetQRCodeResponse,
   z.ZodTypeDef,
   unknown
-> = z.union([z.string(), z.string()]);
+> = /* @__PURE__ */ lazySchema$(() => z.union([z.string(), z.string()]));
 
 export function getQRCodeResponseFromJSON(
   jsonString: string,

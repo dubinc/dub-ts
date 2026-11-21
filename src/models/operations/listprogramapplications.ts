@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -25,7 +25,7 @@ export type ListProgramApplicationsQueryParamSortOrder = ClosedEnum<
 /**
  * Filter applications by status. One of `pending`, `approved`, or `rejected`. Defaults to `pending`.
  */
-export const QueryParamStatus = {
+export const ListProgramApplicationsQueryParamStatus = {
   Pending: "pending",
   Approved: "approved",
   Rejected: "rejected",
@@ -33,7 +33,9 @@ export const QueryParamStatus = {
 /**
  * Filter applications by status. One of `pending`, `approved`, or `rejected`. Defaults to `pending`.
  */
-export type QueryParamStatus = ClosedEnum<typeof QueryParamStatus>;
+export type ListProgramApplicationsQueryParamStatus = ClosedEnum<
+  typeof ListProgramApplicationsQueryParamStatus
+>;
 
 export type ListProgramApplicationsRequest = {
   /**
@@ -55,7 +57,7 @@ export type ListProgramApplicationsRequest = {
   /**
    * Filter applications by status. One of `pending`, `approved`, or `rejected`. Defaults to `pending`.
    */
-  status?: QueryParamStatus | undefined;
+  status?: ListProgramApplicationsQueryParamStatus | undefined;
   /**
    * The page number for pagination. The first page is `1`.
    */
@@ -243,13 +245,17 @@ export type ListProgramApplicationsResponseBody = {
 
 /** @internal */
 export const ListProgramApplicationsQueryParamSortOrder$outboundSchema:
-  z.ZodNativeEnum<typeof ListProgramApplicationsQueryParamSortOrder> = z
-    .nativeEnum(ListProgramApplicationsQueryParamSortOrder);
+  z.ZodNativeEnum<typeof ListProgramApplicationsQueryParamSortOrder> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(ListProgramApplicationsQueryParamSortOrder)
+    );
 
 /** @internal */
-export const QueryParamStatus$outboundSchema: z.ZodNativeEnum<
-  typeof QueryParamStatus
-> = z.nativeEnum(QueryParamStatus);
+export const ListProgramApplicationsQueryParamStatus$outboundSchema:
+  z.ZodNativeEnum<typeof ListProgramApplicationsQueryParamStatus> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(ListProgramApplicationsQueryParamStatus)
+    );
 
 /** @internal */
 export type ListProgramApplicationsRequest$Outbound = {
@@ -267,17 +273,20 @@ export const ListProgramApplicationsRequest$outboundSchema: z.ZodType<
   ListProgramApplicationsRequest$Outbound,
   z.ZodTypeDef,
   ListProgramApplicationsRequest
-> = z.object({
-  country: z.string().optional(),
-  groupId: z.string().optional(),
-  sortOrder: ListProgramApplicationsQueryParamSortOrder$outboundSchema.default(
-    "desc",
-  ),
-  search: z.string().optional(),
-  status: QueryParamStatus$outboundSchema.default("pending"),
-  page: z.number().int().optional(),
-  pageSize: z.number().int().default(100),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    country: z.string().optional(),
+    groupId: z.string().optional(),
+    sortOrder: ListProgramApplicationsQueryParamSortOrder$outboundSchema
+      .default("desc"),
+    search: z.string().optional(),
+    status: ListProgramApplicationsQueryParamStatus$outboundSchema.default(
+      "pending",
+    ),
+    page: z.number().int().optional(),
+    pageSize: z.number().int().default(100),
+  })
+);
 
 export function listProgramApplicationsRequestToJSON(
   listProgramApplicationsRequest: ListProgramApplicationsRequest,
@@ -292,37 +301,46 @@ export function listProgramApplicationsRequestToJSON(
 /** @internal */
 export const ListProgramApplicationsStatus$inboundSchema: z.ZodNativeEnum<
   typeof ListProgramApplicationsStatus
-> = z.nativeEnum(ListProgramApplicationsStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ListProgramApplicationsStatus)
+);
 
 /** @internal */
 export const ListProgramApplicationsNetworkStatus$inboundSchema:
-  z.ZodNativeEnum<typeof ListProgramApplicationsNetworkStatus> = z.nativeEnum(
-    ListProgramApplicationsNetworkStatus,
-  );
+  z.ZodNativeEnum<typeof ListProgramApplicationsNetworkStatus> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(ListProgramApplicationsNetworkStatus)
+    );
 
 /** @internal */
 export const ListProgramApplicationsDefaultPayoutMethod$inboundSchema:
-  z.ZodNativeEnum<typeof ListProgramApplicationsDefaultPayoutMethod> = z
-    .nativeEnum(ListProgramApplicationsDefaultPayoutMethod);
+  z.ZodNativeEnum<typeof ListProgramApplicationsDefaultPayoutMethod> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(ListProgramApplicationsDefaultPayoutMethod)
+    );
 
 /** @internal */
 export const ListProgramApplicationsType$inboundSchema: z.ZodNativeEnum<
   typeof ListProgramApplicationsType
-> = z.nativeEnum(ListProgramApplicationsType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ListProgramApplicationsType)
+);
 
 /** @internal */
 export const Platforms$inboundSchema: z.ZodType<
   Platforms,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: ListProgramApplicationsType$inboundSchema,
-  identifier: z.string(),
-  verifiedAt: z.nullable(z.string()),
-  subscribers: z.number().int().default(0),
-  posts: z.number().int().default(0),
-  views: z.number().int().default(0),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: ListProgramApplicationsType$inboundSchema,
+    identifier: z.string(),
+    verifiedAt: z.nullable(z.string()),
+    subscribers: z.number().int().default(0),
+    posts: z.number().int().default(0),
+    views: z.number().int().default(0),
+  })
+);
 
 export function platformsFromJSON(
   jsonString: string,
@@ -339,30 +357,32 @@ export const ListProgramApplicationsPartner$inboundSchema: z.ZodType<
   ListProgramApplicationsPartner,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  companyName: z.nullable(z.string()),
-  email: z.nullable(z.string()),
-  image: z.nullable(z.string()),
-  description: z.nullable(z.string()).optional(),
-  country: z.nullable(z.string()),
-  groupId: z.nullable(z.string()).optional(),
-  status: ListProgramApplicationsStatus$inboundSchema,
-  website: z.nullable(z.string()).optional(),
-  youtube: z.nullable(z.string()).optional(),
-  twitter: z.nullable(z.string()).optional(),
-  linkedin: z.nullable(z.string()).optional(),
-  instagram: z.nullable(z.string()).optional(),
-  tiktok: z.nullable(z.string()).optional(),
-  networkStatus: ListProgramApplicationsNetworkStatus$inboundSchema,
-  defaultPayoutMethod: z.nullable(
-    ListProgramApplicationsDefaultPayoutMethod$inboundSchema,
-  ),
-  payoutsEnabledAt: z.nullable(z.string()),
-  platforms: z.nullable(z.array(z.lazy(() => Platforms$inboundSchema)))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    name: z.string(),
+    companyName: z.nullable(z.string()),
+    email: z.nullable(z.string()),
+    image: z.nullable(z.string()),
+    description: z.nullable(z.string()).optional(),
+    country: z.nullable(z.string()),
+    groupId: z.nullable(z.string()).optional(),
+    status: ListProgramApplicationsStatus$inboundSchema,
+    website: z.nullable(z.string()).optional(),
+    youtube: z.nullable(z.string()).optional(),
+    twitter: z.nullable(z.string()).optional(),
+    linkedin: z.nullable(z.string()).optional(),
+    instagram: z.nullable(z.string()).optional(),
+    tiktok: z.nullable(z.string()).optional(),
+    networkStatus: ListProgramApplicationsNetworkStatus$inboundSchema,
+    defaultPayoutMethod: z.nullable(
+      ListProgramApplicationsDefaultPayoutMethod$inboundSchema,
+    ),
+    payoutsEnabledAt: z.nullable(z.string()),
+    platforms: z.nullable(z.array(z.lazy(() => Platforms$inboundSchema)))
+      .optional(),
+  })
+);
 
 export function listProgramApplicationsPartnerFromJSON(
   jsonString: string,
@@ -379,10 +399,12 @@ export const ApplicationFormData$inboundSchema: z.ZodType<
   ApplicationFormData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  label: z.string(),
-  value: z.nullable(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: z.string(),
+    value: z.nullable(z.string()),
+  })
+);
 
 export function applicationFormDataFromJSON(
   jsonString: string,
@@ -399,14 +421,16 @@ export const ListProgramApplicationsResponseBody$inboundSchema: z.ZodType<
   ListProgramApplicationsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  createdAt: z.string(),
-  partner: z.lazy(() => ListProgramApplicationsPartner$inboundSchema),
-  applicationFormData: z.nullable(
-    z.array(z.lazy(() => ApplicationFormData$inboundSchema)),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    createdAt: z.string(),
+    partner: z.lazy(() => ListProgramApplicationsPartner$inboundSchema),
+    applicationFormData: z.nullable(
+      z.array(z.lazy(() => ApplicationFormData$inboundSchema)),
+    ),
+  })
+);
 
 export function listProgramApplicationsResponseBodyFromJSON(
   jsonString: string,

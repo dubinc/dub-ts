@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -423,29 +423,36 @@ export type ListCommissionsResponse = {
 };
 
 /** @internal */
-export const Type$outboundSchema: z.ZodNativeEnum<typeof Type> = z.nativeEnum(
-  Type,
-);
+export const Type$outboundSchema: z.ZodNativeEnum<typeof Type> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Type));
 
 /** @internal */
 export const ListCommissionsQueryParamStatus$outboundSchema: z.ZodNativeEnum<
   typeof ListCommissionsQueryParamStatus
-> = z.nativeEnum(ListCommissionsQueryParamStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ListCommissionsQueryParamStatus)
+);
 
 /** @internal */
 export const ListCommissionsQueryParamSortBy$outboundSchema: z.ZodNativeEnum<
   typeof ListCommissionsQueryParamSortBy
-> = z.nativeEnum(ListCommissionsQueryParamSortBy);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ListCommissionsQueryParamSortBy)
+);
 
 /** @internal */
 export const ListCommissionsQueryParamSortOrder$outboundSchema: z.ZodNativeEnum<
   typeof ListCommissionsQueryParamSortOrder
-> = z.nativeEnum(ListCommissionsQueryParamSortOrder);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ListCommissionsQueryParamSortOrder)
+);
 
 /** @internal */
 export const ListCommissionsQueryParamInterval$outboundSchema: z.ZodNativeEnum<
   typeof ListCommissionsQueryParamInterval
-> = z.nativeEnum(ListCommissionsQueryParamInterval);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ListCommissionsQueryParamInterval)
+);
 
 /** @internal */
 export type ListCommissionsRequest$Outbound = {
@@ -477,29 +484,33 @@ export const ListCommissionsRequest$outboundSchema: z.ZodType<
   ListCommissionsRequest$Outbound,
   z.ZodTypeDef,
   ListCommissionsRequest
-> = z.object({
-  type: Type$outboundSchema.optional(),
-  customerId: z.string().optional(),
-  payoutId: z.string().optional(),
-  bountySubmissionId: z.string().optional(),
-  partnerId: z.string().optional(),
-  tenantId: z.string().optional(),
-  groupId: z.string().optional(),
-  partnerTagId: z.string().optional(),
-  invoiceId: z.string().optional(),
-  status: ListCommissionsQueryParamStatus$outboundSchema.optional(),
-  sortBy: ListCommissionsQueryParamSortBy$outboundSchema.default("createdAt"),
-  sortOrder: ListCommissionsQueryParamSortOrder$outboundSchema.default("desc"),
-  interval: ListCommissionsQueryParamInterval$outboundSchema.default("all"),
-  start: z.string().optional(),
-  end: z.string().optional(),
-  timezone: z.string().optional(),
-  query: z.string().optional(),
-  endingBefore: z.string().optional(),
-  startingAfter: z.string().optional(),
-  page: z.number().int().optional(),
-  pageSize: z.number().int().default(100),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: Type$outboundSchema.optional(),
+    customerId: z.string().optional(),
+    payoutId: z.string().optional(),
+    bountySubmissionId: z.string().optional(),
+    partnerId: z.string().optional(),
+    tenantId: z.string().optional(),
+    groupId: z.string().optional(),
+    partnerTagId: z.string().optional(),
+    invoiceId: z.string().optional(),
+    status: ListCommissionsQueryParamStatus$outboundSchema.optional(),
+    sortBy: ListCommissionsQueryParamSortBy$outboundSchema.default("createdAt"),
+    sortOrder: ListCommissionsQueryParamSortOrder$outboundSchema.default(
+      "desc",
+    ),
+    interval: ListCommissionsQueryParamInterval$outboundSchema.default("all"),
+    start: z.string().optional(),
+    end: z.string().optional(),
+    timezone: z.string().optional(),
+    query: z.string().optional(),
+    endingBefore: z.string().optional(),
+    startingAfter: z.string().optional(),
+    page: z.number().int().optional(),
+    pageSize: z.number().int().default(100),
+  })
+);
 
 export function listCommissionsRequestToJSON(
   listCommissionsRequest: ListCommissionsRequest,
@@ -512,33 +523,37 @@ export function listCommissionsRequestToJSON(
 /** @internal */
 export const ListCommissionsType$inboundSchema: z.ZodNativeEnum<
   typeof ListCommissionsType
-> = z.nativeEnum(ListCommissionsType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ListCommissionsType));
 
 /** @internal */
 export const ListCommissionsStatus$inboundSchema: z.ZodNativeEnum<
   typeof ListCommissionsStatus
-> = z.nativeEnum(ListCommissionsStatus);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ListCommissionsStatus));
 
 /** @internal */
 export const ListCommissionsNetworkStatus$inboundSchema: z.ZodNativeEnum<
   typeof ListCommissionsNetworkStatus
-> = z.nativeEnum(ListCommissionsNetworkStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ListCommissionsNetworkStatus)
+);
 
 /** @internal */
 export const ListCommissionsPartner$inboundSchema: z.ZodType<
   ListCommissionsPartner,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  email: z.nullable(z.string()),
-  image: z.nullable(z.string()),
-  payoutsEnabledAt: z.nullable(z.string()),
-  networkStatus: ListCommissionsNetworkStatus$inboundSchema,
-  country: z.nullable(z.string()),
-  groupId: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    name: z.string(),
+    email: z.nullable(z.string()),
+    image: z.nullable(z.string()),
+    payoutsEnabledAt: z.nullable(z.string()),
+    networkStatus: ListCommissionsNetworkStatus$inboundSchema,
+    country: z.nullable(z.string()),
+    groupId: z.nullable(z.string()).optional(),
+  })
+);
 
 export function listCommissionsPartnerFromJSON(
   jsonString: string,
@@ -555,20 +570,22 @@ export const ListCommissionsCustomer$inboundSchema: z.ZodType<
   ListCommissionsCustomer,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  name: z.nullable(z.string()).optional(),
-  email: z.nullable(z.string()).optional(),
-  avatar: z.nullable(z.string()).optional(),
-  externalId: z.string(),
-  stripeCustomerId: z.nullable(z.string()).optional(),
-  country: z.nullable(z.string()).optional(),
-  sales: z.nullable(z.number()).optional(),
-  saleAmount: z.nullable(z.number()).optional(),
-  createdAt: z.string(),
-  firstSaleAt: z.nullable(z.string()).optional(),
-  subscriptionCanceledAt: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    name: z.nullable(z.string()).optional(),
+    email: z.nullable(z.string()).optional(),
+    avatar: z.nullable(z.string()).optional(),
+    externalId: z.string(),
+    stripeCustomerId: z.nullable(z.string()).optional(),
+    country: z.nullable(z.string()).optional(),
+    sales: z.nullable(z.number()).optional(),
+    saleAmount: z.nullable(z.number()).optional(),
+    createdAt: z.string(),
+    firstSaleAt: z.nullable(z.string()).optional(),
+    subscriptionCanceledAt: z.nullable(z.string()).optional(),
+  })
+);
 
 export function listCommissionsCustomerFromJSON(
   jsonString: string,
@@ -585,25 +602,27 @@ export const ListCommissionsResponseBody$inboundSchema: z.ZodType<
   ListCommissionsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  type: ListCommissionsType$inboundSchema,
-  amount: z.number(),
-  earnings: z.number(),
-  currency: z.string(),
-  status: ListCommissionsStatus$inboundSchema,
-  invoiceId: z.nullable(z.string()),
-  description: z.nullable(z.string()),
-  quantity: z.number(),
-  userId: z.nullable(z.string()).optional(),
-  metadata: z.nullable(z.record(z.any())),
-  createdAt: z.string(),
-  updatedAt: z.string(),
-  paidAt: z.nullable(z.string()),
-  partner: z.lazy(() => ListCommissionsPartner$inboundSchema),
-  customer: z.nullable(z.lazy(() => ListCommissionsCustomer$inboundSchema))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    type: ListCommissionsType$inboundSchema,
+    amount: z.number(),
+    earnings: z.number(),
+    currency: z.string(),
+    status: ListCommissionsStatus$inboundSchema,
+    invoiceId: z.nullable(z.string()),
+    description: z.nullable(z.string()),
+    quantity: z.number(),
+    userId: z.nullable(z.string()).optional(),
+    metadata: z.nullable(z.record(z.any())),
+    createdAt: z.string(),
+    updatedAt: z.string(),
+    paidAt: z.nullable(z.string()),
+    partner: z.lazy(() => ListCommissionsPartner$inboundSchema),
+    customer: z.nullable(z.lazy(() => ListCommissionsCustomer$inboundSchema))
+      .optional(),
+  })
+);
 
 export function listCommissionsResponseBodyFromJSON(
   jsonString: string,
@@ -620,13 +639,15 @@ export const ListCommissionsResponse$inboundSchema: z.ZodType<
   ListCommissionsResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Result: z.array(z.lazy(() => ListCommissionsResponseBody$inboundSchema)),
-}).transform((v) => {
-  return remap$(v, {
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Result: z.array(z.lazy(() => ListCommissionsResponseBody$inboundSchema)),
+  }).transform((v) => {
+    return remap$(v, {
+      "Result": "result",
+    });
+  })
+);
 
 export function listCommissionsResponseFromJSON(
   jsonString: string,

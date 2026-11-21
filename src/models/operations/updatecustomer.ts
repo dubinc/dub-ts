@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -189,15 +189,17 @@ export const UpdateCustomerRequestBody$outboundSchema: z.ZodType<
   UpdateCustomerRequestBody$Outbound,
   z.ZodTypeDef,
   UpdateCustomerRequestBody
-> = z.object({
-  email: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  avatar: z.nullable(z.string()).optional(),
-  externalId: z.string().optional(),
-  stripeCustomerId: z.nullable(z.string()).optional(),
-  country: z.string().optional(),
-  subscriptionCanceledAt: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    email: z.nullable(z.string()).optional(),
+    name: z.nullable(z.string()).optional(),
+    avatar: z.nullable(z.string()).optional(),
+    externalId: z.string().optional(),
+    stripeCustomerId: z.nullable(z.string()).optional(),
+    country: z.string().optional(),
+    subscriptionCanceledAt: z.nullable(z.string()).optional(),
+  })
+);
 
 export function updateCustomerRequestBodyToJSON(
   updateCustomerRequestBody: UpdateCustomerRequestBody,
@@ -219,16 +221,18 @@ export const UpdateCustomerRequest$outboundSchema: z.ZodType<
   UpdateCustomerRequest$Outbound,
   z.ZodTypeDef,
   UpdateCustomerRequest
-> = z.object({
-  id: z.string(),
-  includeExpandedFields: z.boolean().optional(),
-  requestBody: z.lazy(() => UpdateCustomerRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    includeExpandedFields: z.boolean().optional(),
+    requestBody: z.lazy(() => UpdateCustomerRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function updateCustomerRequestToJSON(
   updateCustomerRequest: UpdateCustomerRequest,
@@ -243,14 +247,16 @@ export const UpdateCustomerLink$inboundSchema: z.ZodType<
   UpdateCustomerLink,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  domain: z.string(),
-  key: z.string(),
-  shortLink: z.string(),
-  url: z.string(),
-  programId: z.nullable(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    domain: z.string(),
+    key: z.string(),
+    shortLink: z.string(),
+    url: z.string(),
+    programId: z.nullable(z.string()),
+  })
+);
 
 export function updateCustomerLinkFromJSON(
   jsonString: string,
@@ -267,12 +273,14 @@ export const UpdateCustomerPartner$inboundSchema: z.ZodType<
   UpdateCustomerPartner,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  email: z.nullable(z.string()),
-  image: z.nullable(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    name: z.string(),
+    email: z.nullable(z.string()),
+    image: z.nullable(z.string()),
+  })
+);
 
 export function updateCustomerPartnerFromJSON(
   jsonString: string,
@@ -287,23 +295,25 @@ export function updateCustomerPartnerFromJSON(
 /** @internal */
 export const UpdateCustomerType$inboundSchema: z.ZodNativeEnum<
   typeof UpdateCustomerType
-> = z.nativeEnum(UpdateCustomerType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UpdateCustomerType));
 
 /** @internal */
 export const UpdateCustomerDiscount$inboundSchema: z.ZodType<
   UpdateCustomerDiscount,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  amount: z.number(),
-  type: UpdateCustomerType$inboundSchema,
-  maxDuration: z.nullable(z.number()),
-  couponId: z.nullable(z.string()),
-  couponTestId: z.nullable(z.string()),
-  description: z.nullable(z.string()).optional(),
-  partnersCount: z.nullable(z.number()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    amount: z.number(),
+    type: UpdateCustomerType$inboundSchema,
+    maxDuration: z.nullable(z.number()),
+    couponId: z.nullable(z.string()),
+    couponTestId: z.nullable(z.string()),
+    description: z.nullable(z.string()).optional(),
+    partnersCount: z.nullable(z.number()).optional(),
+  })
+);
 
 export function updateCustomerDiscountFromJSON(
   jsonString: string,
@@ -320,26 +330,28 @@ export const UpdateCustomerResponseBody$inboundSchema: z.ZodType<
   UpdateCustomerResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  name: z.nullable(z.string()).optional(),
-  email: z.nullable(z.string()).optional(),
-  avatar: z.nullable(z.string()).optional(),
-  externalId: z.string(),
-  stripeCustomerId: z.nullable(z.string()).optional(),
-  country: z.nullable(z.string()).optional(),
-  sales: z.nullable(z.number()).optional(),
-  saleAmount: z.nullable(z.number()).optional(),
-  createdAt: z.string(),
-  firstSaleAt: z.nullable(z.string()).optional(),
-  subscriptionCanceledAt: z.nullable(z.string()).optional(),
-  link: z.nullable(z.lazy(() => UpdateCustomerLink$inboundSchema)).optional(),
-  programId: z.nullable(z.string()).optional(),
-  partner: z.nullable(z.lazy(() => UpdateCustomerPartner$inboundSchema))
-    .optional(),
-  discount: z.nullable(z.lazy(() => UpdateCustomerDiscount$inboundSchema))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    name: z.nullable(z.string()).optional(),
+    email: z.nullable(z.string()).optional(),
+    avatar: z.nullable(z.string()).optional(),
+    externalId: z.string(),
+    stripeCustomerId: z.nullable(z.string()).optional(),
+    country: z.nullable(z.string()).optional(),
+    sales: z.nullable(z.number()).optional(),
+    saleAmount: z.nullable(z.number()).optional(),
+    createdAt: z.string(),
+    firstSaleAt: z.nullable(z.string()).optional(),
+    subscriptionCanceledAt: z.nullable(z.string()).optional(),
+    link: z.nullable(z.lazy(() => UpdateCustomerLink$inboundSchema)).optional(),
+    programId: z.nullable(z.string()).optional(),
+    partner: z.nullable(z.lazy(() => UpdateCustomerPartner$inboundSchema))
+      .optional(),
+    discount: z.nullable(z.lazy(() => UpdateCustomerDiscount$inboundSchema))
+      .optional(),
+  })
+);
 
 export function updateCustomerResponseBodyFromJSON(
   jsonString: string,

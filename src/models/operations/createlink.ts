@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 /**
  * The unique IDs of the tags assigned to the short link.
@@ -197,7 +198,9 @@ export const TagIds$outboundSchema: z.ZodType<
   TagIds$Outbound,
   z.ZodTypeDef,
   TagIds
-> = z.union([z.string(), z.array(z.string())]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([z.string(), z.array(z.string())])
+);
 
 export function tagIdsToJSON(tagIds: TagIds): string {
   return JSON.stringify(TagIds$outboundSchema.parse(tagIds));
@@ -211,7 +214,9 @@ export const TagNames$outboundSchema: z.ZodType<
   TagNames$Outbound,
   z.ZodTypeDef,
   TagNames
-> = z.union([z.string(), z.array(z.string())]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([z.string(), z.array(z.string())])
+);
 
 export function tagNamesToJSON(tagNames: TagNames): string {
   return JSON.stringify(TagNames$outboundSchema.parse(tagNames));
@@ -228,10 +233,12 @@ export const TestVariants$outboundSchema: z.ZodType<
   TestVariants$Outbound,
   z.ZodTypeDef,
   TestVariants
-> = z.object({
-  url: z.string(),
-  percentage: z.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    url: z.string(),
+    percentage: z.number(),
+  })
+);
 
 export function testVariantsToJSON(testVariants: TestVariants): string {
   return JSON.stringify(TestVariants$outboundSchema.parse(testVariants));
@@ -286,57 +293,59 @@ export const CreateLinkRequestBody$outboundSchema: z.ZodType<
   CreateLinkRequestBody$Outbound,
   z.ZodTypeDef,
   CreateLinkRequestBody
-> = z.object({
-  url: z.string(),
-  domain: z.string().optional(),
-  key: z.string().optional(),
-  keyLength: z.number().optional(),
-  externalId: z.nullable(z.string()).optional(),
-  tenantId: z.nullable(z.string()).optional(),
-  programId: z.nullable(z.string()).optional(),
-  partnerId: z.nullable(z.string()).optional(),
-  prefix: z.string().optional(),
-  trackConversion: z.boolean().optional(),
-  archived: z.boolean().optional(),
-  tagIds: z.union([z.string(), z.array(z.string())]).optional(),
-  tagNames: z.union([z.string(), z.array(z.string())]).optional(),
-  folderId: z.nullable(z.string()).optional(),
-  comments: z.nullable(z.string()).optional(),
-  expiresAt: z.nullable(z.string()).optional(),
-  expiredUrl: z.nullable(z.string()).optional(),
-  password: z.nullable(z.string()).optional(),
-  proxy: z.boolean().optional(),
-  title: z.nullable(z.string()).optional(),
-  description: z.nullable(z.string()).optional(),
-  image: z.nullable(z.string()).optional(),
-  video: z.nullable(z.string()).optional(),
-  rewrite: z.boolean().optional(),
-  ios: z.nullable(z.string()).optional(),
-  android: z.nullable(z.string()).optional(),
-  geo: z.nullable(z.record(z.string())).optional(),
-  doIndex: z.boolean().optional(),
-  utmSource: z.nullable(z.string()).optional(),
-  utmMedium: z.nullable(z.string()).optional(),
-  utmCampaign: z.nullable(z.string()).optional(),
-  utmTerm: z.nullable(z.string()).optional(),
-  utmContent: z.nullable(z.string()).optional(),
-  ref: z.nullable(z.string()).optional(),
-  testVariants: z.nullable(z.array(z.lazy(() => TestVariants$outboundSchema)))
-    .optional(),
-  testStartedAt: z.nullable(z.string()).optional(),
-  testCompletedAt: z.nullable(z.string()).optional(),
-  publicStats: z.boolean().optional(),
-  tagId: z.nullable(z.string()).optional(),
-  webhookIds: z.nullable(z.array(z.string())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    utmSource: "utm_source",
-    utmMedium: "utm_medium",
-    utmCampaign: "utm_campaign",
-    utmTerm: "utm_term",
-    utmContent: "utm_content",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    url: z.string(),
+    domain: z.string().optional(),
+    key: z.string().optional(),
+    keyLength: z.number().int().optional(),
+    externalId: z.nullable(z.string()).optional(),
+    tenantId: z.nullable(z.string()).optional(),
+    programId: z.nullable(z.string()).optional(),
+    partnerId: z.nullable(z.string()).optional(),
+    prefix: z.string().optional(),
+    trackConversion: z.boolean().optional(),
+    archived: z.boolean().optional(),
+    tagIds: z.union([z.string(), z.array(z.string())]).optional(),
+    tagNames: z.union([z.string(), z.array(z.string())]).optional(),
+    folderId: z.nullable(z.string()).optional(),
+    comments: z.nullable(z.string()).optional(),
+    expiresAt: z.nullable(z.string()).optional(),
+    expiredUrl: z.nullable(z.string()).optional(),
+    password: z.nullable(z.string()).optional(),
+    proxy: z.boolean().optional(),
+    title: z.nullable(z.string()).optional(),
+    description: z.nullable(z.string()).optional(),
+    image: z.nullable(z.string()).optional(),
+    video: z.nullable(z.string()).optional(),
+    rewrite: z.boolean().optional(),
+    ios: z.nullable(z.string()).optional(),
+    android: z.nullable(z.string()).optional(),
+    geo: z.nullable(z.record(z.string())).optional(),
+    doIndex: z.boolean().optional(),
+    utmSource: z.nullable(z.string()).optional(),
+    utmMedium: z.nullable(z.string()).optional(),
+    utmCampaign: z.nullable(z.string()).optional(),
+    utmTerm: z.nullable(z.string()).optional(),
+    utmContent: z.nullable(z.string()).optional(),
+    ref: z.nullable(z.string()).optional(),
+    testVariants: z.nullable(z.array(z.lazy(() => TestVariants$outboundSchema)))
+      .optional(),
+    testStartedAt: z.nullable(z.string()).optional(),
+    testCompletedAt: z.nullable(z.string()).optional(),
+    publicStats: z.boolean().optional(),
+    tagId: z.nullable(z.string()).optional(),
+    webhookIds: z.nullable(z.array(z.string())).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      utmSource: "utm_source",
+      utmMedium: "utm_medium",
+      utmCampaign: "utm_campaign",
+      utmTerm: "utm_term",
+      utmContent: "utm_content",
+    });
+  })
+);
 
 export function createLinkRequestBodyToJSON(
   createLinkRequestBody: CreateLinkRequestBody,

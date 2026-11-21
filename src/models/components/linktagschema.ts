@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -44,7 +44,7 @@ export type LinkTagSchema = {
 /** @internal */
 export const LinkTagSchemaColor$inboundSchema: z.ZodNativeEnum<
   typeof LinkTagSchemaColor
-> = z.nativeEnum(LinkTagSchemaColor);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(LinkTagSchemaColor));
 /** @internal */
 export const LinkTagSchemaColor$outboundSchema: z.ZodNativeEnum<
   typeof LinkTagSchemaColor
@@ -55,11 +55,13 @@ export const LinkTagSchema$inboundSchema: z.ZodType<
   LinkTagSchema,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  color: LinkTagSchemaColor$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    name: z.string(),
+    color: LinkTagSchemaColor$inboundSchema,
+  })
+);
 /** @internal */
 export type LinkTagSchema$Outbound = {
   id: string;
@@ -72,11 +74,13 @@ export const LinkTagSchema$outboundSchema: z.ZodType<
   LinkTagSchema$Outbound,
   z.ZodTypeDef,
   LinkTagSchema
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  color: LinkTagSchemaColor$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    name: z.string(),
+    color: LinkTagSchemaColor$outboundSchema,
+  })
+);
 
 export function linkTagSchemaToJSON(linkTagSchema: LinkTagSchema): string {
   return JSON.stringify(LinkTagSchema$outboundSchema.parse(linkTagSchema));

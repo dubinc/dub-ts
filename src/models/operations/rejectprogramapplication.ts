@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -75,12 +75,12 @@ export type RejectProgramApplicationResponseBody = {
 /** @internal */
 export const RejectionReason$outboundSchema: z.ZodNativeEnum<
   typeof RejectionReason
-> = z.nativeEnum(RejectionReason);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(RejectionReason));
 
 /** @internal */
 export const ReapplicationTimeframe$outboundSchema: z.ZodNativeEnum<
   typeof ReapplicationTimeframe
-> = z.nativeEnum(ReapplicationTimeframe);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ReapplicationTimeframe));
 
 /** @internal */
 export type RejectProgramApplicationRequestBody$Outbound = {
@@ -97,16 +97,18 @@ export const RejectProgramApplicationRequestBody$outboundSchema: z.ZodType<
   RejectProgramApplicationRequestBody$Outbound,
   z.ZodTypeDef,
   RejectProgramApplicationRequestBody
-> = z.object({
-  partnerId: z.string(),
-  rejectionReason: RejectionReason$outboundSchema.optional(),
-  rejectionNote: z.string().optional(),
-  reapplicationTimeframe: ReapplicationTimeframe$outboundSchema.default(
-    "standard",
-  ),
-  flagForFraud: z.boolean().optional(),
-  flagForFraudReason: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    partnerId: z.string(),
+    rejectionReason: RejectionReason$outboundSchema.optional(),
+    rejectionNote: z.string().optional(),
+    reapplicationTimeframe: ReapplicationTimeframe$outboundSchema.default(
+      "standard",
+    ),
+    flagForFraud: z.boolean().optional(),
+    flagForFraudReason: z.string().optional(),
+  })
+);
 
 export function rejectProgramApplicationRequestBodyToJSON(
   rejectProgramApplicationRequestBody: RejectProgramApplicationRequestBody,
@@ -123,9 +125,11 @@ export const RejectProgramApplicationResponseBody$inboundSchema: z.ZodType<
   RejectProgramApplicationResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  partnerId: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    partnerId: z.string(),
+  })
+);
 
 export function rejectProgramApplicationResponseBodyFromJSON(
   jsonString: string,

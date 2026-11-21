@@ -8,7 +8,10 @@ import { partnersCreate } from "../funcs/partnersCreate.js";
 import { partnersCreateLink } from "../funcs/partnersCreateLink.js";
 import { partnersDeactivate } from "../funcs/partnersDeactivate.js";
 import { partnersList } from "../funcs/partnersList.js";
+import { partnersListNetwork } from "../funcs/partnersListNetwork.js";
 import { partnersRetrieveLinks } from "../funcs/partnersRetrieveLinks.js";
+import { partnersUpdateGroup } from "../funcs/partnersUpdateGroup.js";
+import { partnersUpdateTags } from "../funcs/partnersUpdateTags.js";
 import { partnersUpsertLink } from "../funcs/partnersUpsertLink.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
@@ -102,6 +105,23 @@ export class Partners extends ClientSDK {
   }
 
   /**
+   * List all partners in the network
+   *
+   * @remarks
+   * List the partners in the Dub partner network for your program. The partner network must be enabled for the program.
+   */
+  async listNetwork(
+    request?: operations.ListNetworkPartnersRequest | undefined,
+    options?: RequestOptions,
+  ): Promise<Array<components.NetworkPartner>> {
+    return unwrapAsync(partnersListNetwork(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Retrieve analytics for a partner
    *
    * @remarks
@@ -146,6 +166,40 @@ export class Partners extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.DeactivatePartnerResponseBody> {
     return unwrapAsync(partnersDeactivate(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Update the tags of partners
+   *
+   * @remarks
+   * Add and remove partner tags on up to 100 partners enrolled in your program. Tags that a partner already has are not added again, and tags a partner does not have are skipped on removal. The call fails without changes if any partner is not enrolled in your program or any tag is not in your program.
+   */
+  async updateTags(
+    request: operations.UpdatePartnerTagsRequestBody,
+    options?: RequestOptions,
+  ): Promise<operations.UpdatePartnerTagsResponseBody> {
+    return unwrapAsync(partnersUpdateTags(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Update the group of partners
+   *
+   * @remarks
+   * Move up to 100 partners enrolled in your program into a group. They get the group's rewards and discount. Partners already in the group are skipped, unless `disableGroupMove` is set, in which case their setting is updated and they're counted. The call fails without changes if any partner is not enrolled in your program.
+   */
+  async updateGroup(
+    request: operations.UpdatePartnersGroupRequestBody,
+    options?: RequestOptions,
+  ): Promise<operations.UpdatePartnersGroupResponseBody> {
+    return unwrapAsync(partnersUpdateGroup(
       this,
       request,
       options,

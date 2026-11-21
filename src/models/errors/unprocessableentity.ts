@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { DubError } from "./duberror.js";
@@ -71,22 +71,24 @@ export class UnprocessableEntity extends DubError {
 /** @internal */
 export const UnprocessableEntityCode$inboundSchema: z.ZodNativeEnum<
   typeof UnprocessableEntityCode
-> = z.nativeEnum(UnprocessableEntityCode);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UnprocessableEntityCode));
 
 /** @internal */
 export const UnprocessableEntityError$inboundSchema: z.ZodType<
   UnprocessableEntityError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: UnprocessableEntityCode$inboundSchema,
-  message: z.string(),
-  doc_url: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "doc_url": "docUrl",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: UnprocessableEntityCode$inboundSchema,
+    message: z.string(),
+    doc_url: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "doc_url": "docUrl",
+    });
+  })
+);
 
 export function unprocessableEntityErrorFromJSON(
   jsonString: string,
@@ -103,16 +105,18 @@ export const UnprocessableEntity$inboundSchema: z.ZodType<
   UnprocessableEntity,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  error: z.lazy(() => UnprocessableEntityError$inboundSchema),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new UnprocessableEntity(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    error: z.lazy(() => UnprocessableEntityError$inboundSchema),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new UnprocessableEntity(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);

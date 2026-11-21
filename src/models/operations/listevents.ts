@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
@@ -191,7 +191,7 @@ export type ListEventsRequest = {
    */
   trigger?: string | undefined;
   /**
-   * The conversion event name to retrieve analytics for. Only available for lead and sale events. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `Sign up`, `Sign up,Purchase`, `-Sign up`.
+   * The conversion event name to retrieve analytics for. Only available for lead and sale events. Supports advanced filtering: single value, multiple values (comma-separated), exclusion (prefix with `-`), or case-insensitive substring match (prefix with `~`, combine with `-` to exclude). Examples: `Sign up`, `Sign up,Purchase`, `-Sign up`, `~deposit`, `-~test`.
    */
   eventName?: string | undefined;
   /**
@@ -1268,30 +1268,29 @@ export type ListEventsResponseBody = ClickEvent | LeadEvent | SaleEvent;
 /** @internal */
 export const QueryParamEvent$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamEvent
-> = z.nativeEnum(QueryParamEvent);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(QueryParamEvent));
 
 /** @internal */
 export const QueryParamInterval$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamInterval
-> = z.nativeEnum(QueryParamInterval);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(QueryParamInterval));
 
 /** @internal */
 export const QueryParamSaleType$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamSaleType
-> = z.nativeEnum(QueryParamSaleType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(QueryParamSaleType));
 
 /** @internal */
-export const SortOrder$outboundSchema: z.ZodNativeEnum<typeof SortOrder> = z
-  .nativeEnum(SortOrder);
+export const SortOrder$outboundSchema: z.ZodNativeEnum<typeof SortOrder> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(SortOrder));
 
 /** @internal */
-export const SortBy$outboundSchema: z.ZodNativeEnum<typeof SortBy> = z
-  .nativeEnum(SortBy);
+export const SortBy$outboundSchema: z.ZodNativeEnum<typeof SortBy> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(SortBy));
 
 /** @internal */
-export const Order$outboundSchema: z.ZodNativeEnum<typeof Order> = z.nativeEnum(
-  Order,
-);
+export const Order$outboundSchema: z.ZodNativeEnum<typeof Order> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Order));
 
 /** @internal */
 export type ListEventsRequest$Outbound = {
@@ -1346,60 +1345,62 @@ export const ListEventsRequest$outboundSchema: z.ZodType<
   ListEventsRequest$Outbound,
   z.ZodTypeDef,
   ListEventsRequest
-> = z.object({
-  event: QueryParamEvent$outboundSchema.default("clicks"),
-  domain: z.string().optional(),
-  key: z.string().optional(),
-  linkId: z.string().optional(),
-  externalId: z.string().optional(),
-  tenantId: z.string().optional(),
-  tagId: z.string().optional(),
-  folderId: z.string().optional(),
-  partnerTagId: z.string().optional(),
-  groupId: z.string().optional(),
-  partnerId: z.string().optional(),
-  customerId: z.string().optional(),
-  interval: QueryParamInterval$outboundSchema.optional(),
-  start: z.string().optional(),
-  end: z.string().optional(),
-  timezone: z.string().default("UTC"),
-  country: z.string().optional(),
-  city: z.string().optional(),
-  region: z.string().optional(),
-  continent: z.string().optional(),
-  device: z.string().optional(),
-  browser: z.string().optional(),
-  os: z.string().optional(),
-  trigger: z.string().optional(),
-  eventName: z.string().optional(),
-  referer: z.string().optional(),
-  refererUrl: z.string().optional(),
-  url: z.string().optional(),
-  utmSource: z.string().optional(),
-  utmMedium: z.string().optional(),
-  utmCampaign: z.string().optional(),
-  utmTerm: z.string().optional(),
-  utmContent: z.string().optional(),
-  root: z.boolean().optional(),
-  saleType: QueryParamSaleType$outboundSchema.optional(),
-  query: z.string().optional(),
-  programId: z.string().optional(),
-  tagIds: z.string().optional(),
-  qr: z.boolean().optional(),
-  page: z.number().int().default(1),
-  limit: z.number().int().default(100),
-  sortOrder: SortOrder$outboundSchema.default("desc"),
-  sortBy: SortBy$outboundSchema.default("timestamp"),
-  order: Order$outboundSchema.default("desc"),
-}).transform((v) => {
-  return remap$(v, {
-    utmSource: "utm_source",
-    utmMedium: "utm_medium",
-    utmCampaign: "utm_campaign",
-    utmTerm: "utm_term",
-    utmContent: "utm_content",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    event: QueryParamEvent$outboundSchema.default("clicks"),
+    domain: z.string().optional(),
+    key: z.string().optional(),
+    linkId: z.string().optional(),
+    externalId: z.string().optional(),
+    tenantId: z.string().optional(),
+    tagId: z.string().optional(),
+    folderId: z.string().optional(),
+    partnerTagId: z.string().optional(),
+    groupId: z.string().optional(),
+    partnerId: z.string().optional(),
+    customerId: z.string().optional(),
+    interval: QueryParamInterval$outboundSchema.optional(),
+    start: z.string().optional(),
+    end: z.string().optional(),
+    timezone: z.string().default("UTC"),
+    country: z.string().optional(),
+    city: z.string().optional(),
+    region: z.string().optional(),
+    continent: z.string().optional(),
+    device: z.string().optional(),
+    browser: z.string().optional(),
+    os: z.string().optional(),
+    trigger: z.string().optional(),
+    eventName: z.string().optional(),
+    referer: z.string().optional(),
+    refererUrl: z.string().optional(),
+    url: z.string().optional(),
+    utmSource: z.string().optional(),
+    utmMedium: z.string().optional(),
+    utmCampaign: z.string().optional(),
+    utmTerm: z.string().optional(),
+    utmContent: z.string().optional(),
+    root: z.boolean().optional(),
+    saleType: QueryParamSaleType$outboundSchema.optional(),
+    query: z.string().optional(),
+    programId: z.string().optional(),
+    tagIds: z.string().optional(),
+    qr: z.boolean().optional(),
+    page: z.number().int().default(1),
+    limit: z.number().int().default(100),
+    sortOrder: SortOrder$outboundSchema.default("desc"),
+    sortBy: SortBy$outboundSchema.default("timestamp"),
+    order: Order$outboundSchema.default("desc"),
+  }).transform((v) => {
+    return remap$(v, {
+      utmSource: "utm_source",
+      utmMedium: "utm_medium",
+      utmCampaign: "utm_campaign",
+      utmTerm: "utm_term",
+      utmContent: "utm_content",
+    });
+  })
+);
 
 export function listEventsRequestToJSON(
   listEventsRequest: ListEventsRequest,
@@ -1412,21 +1413,25 @@ export function listEventsRequestToJSON(
 /** @internal */
 export const ResponseBodyPaymentProcessor$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyPaymentProcessor
-> = z.nativeEnum(ResponseBodyPaymentProcessor);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ResponseBodyPaymentProcessor)
+);
 
 /** @internal */
 export const ResponseBodySale$inboundSchema: z.ZodType<
   ResponseBodySale,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  amount: z.number().int(),
-  invoiceId: z.nullable(z.string()).default(null),
-  paymentProcessor: ResponseBodyPaymentProcessor$inboundSchema.default(
-    "custom",
-  ),
-  currency: z.any().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    amount: z.number().int(),
+    invoiceId: z.nullable(z.string()).default(null),
+    paymentProcessor: ResponseBodyPaymentProcessor$inboundSchema.default(
+      "custom",
+    ),
+    currency: z.any().optional(),
+  })
+);
 
 export function responseBodySaleFromJSON(
   jsonString: string,
@@ -1443,10 +1448,12 @@ export const ListEventsResponseBodyEventsTestVariants$inboundSchema: z.ZodType<
   ListEventsResponseBodyEventsTestVariants,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  url: z.string(),
-  percentage: z.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    url: z.string(),
+    percentage: z.number(),
+  })
+);
 
 export function listEventsResponseBodyEventsTestVariantsFromJSON(
   jsonString: string,
@@ -1469,71 +1476,71 @@ export const ListEventsResponseBodyLink$inboundSchema: z.ZodType<
   ListEventsResponseBodyLink,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  domain: z.string(),
-  key: z.string(),
-  url: z.string(),
-  trackConversion: z.boolean(),
-  externalId: z.nullable(z.string()),
-  tenantId: z.nullable(z.string()),
-  programId: z.nullable(z.string()),
-  partnerId: z.nullable(z.string()),
-  archived: z.boolean(),
-  expiresAt: z.nullable(z.string()),
-  expiredUrl: z.nullable(z.string()),
-  disabledAt: z.nullable(z.string()),
-  password: z.nullable(z.string()),
-  proxy: z.boolean(),
-  title: z.nullable(z.string()),
-  description: z.nullable(z.string()),
-  image: z.nullable(z.string()),
-  video: z.nullable(z.string()),
-  rewrite: z.boolean(),
-  doIndex: z.boolean(),
-  ios: z.nullable(z.string()),
-  android: z.nullable(z.string()),
-  geo: z.nullable(z.record(z.string())),
-  publicStats: z.boolean(),
-  tags: z.nullable(z.array(components.LinkTagSchemaOutput$inboundSchema)),
-  folderId: z.nullable(z.string()),
-  comments: z.nullable(z.string()),
-  shortLink: z.string(),
-  qrCode: z.string(),
-  utm_source: z.nullable(z.string()),
-  utm_medium: z.nullable(z.string()),
-  utm_campaign: z.nullable(z.string()),
-  utm_term: z.nullable(z.string()),
-  utm_content: z.nullable(z.string()),
-  testVariants: z.nullable(
-    z.array(
-      z.lazy(() => ListEventsResponseBodyEventsTestVariants$inboundSchema),
-    ),
-  ).optional(),
-  testStartedAt: z.nullable(z.string()),
-  testCompletedAt: z.nullable(z.string()),
-  userId: z.nullable(z.string()),
-  workspaceId: z.string(),
-  clicks: z.number().default(0),
-  leads: z.number().default(0),
-  conversions: z.number().default(0),
-  sales: z.number().default(0),
-  saleAmount: z.number().default(0),
-  lastClicked: z.nullable(z.string()),
-  createdAt: z.string(),
-  updatedAt: z.string(),
-  tagId: z.nullable(z.string()),
-  projectId: z.string(),
-  webhookIds: z.array(z.string()),
-}).transform((v) => {
-  return remap$(v, {
-    "utm_source": "utmSource",
-    "utm_medium": "utmMedium",
-    "utm_campaign": "utmCampaign",
-    "utm_term": "utmTerm",
-    "utm_content": "utmContent",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    domain: z.string(),
+    key: z.string(),
+    url: z.string(),
+    trackConversion: z.boolean(),
+    externalId: z.nullable(z.string()),
+    tenantId: z.nullable(z.string()),
+    programId: z.nullable(z.string()),
+    partnerId: z.nullable(z.string()),
+    archived: z.boolean(),
+    expiresAt: z.nullable(z.string()),
+    expiredUrl: z.nullable(z.string()),
+    disabledAt: z.nullable(z.string()),
+    password: z.nullable(z.string()),
+    proxy: z.boolean(),
+    title: z.nullable(z.string()),
+    description: z.nullable(z.string()),
+    image: z.nullable(z.string()),
+    video: z.nullable(z.string()),
+    rewrite: z.boolean(),
+    doIndex: z.boolean(),
+    ios: z.nullable(z.string()),
+    android: z.nullable(z.string()),
+    geo: z.nullable(z.record(z.string())),
+    publicStats: z.boolean(),
+    tags: z.nullable(z.array(components.LinkTagSchemaOutput$inboundSchema)),
+    folderId: z.nullable(z.string()),
+    comments: z.nullable(z.string()),
+    shortLink: z.string(),
+    qrCode: z.string(),
+    utm_source: z.nullable(z.string()),
+    utm_medium: z.nullable(z.string()),
+    utm_campaign: z.nullable(z.string()),
+    utm_term: z.nullable(z.string()),
+    utm_content: z.nullable(z.string()),
+    testVariants: z.nullable(z.array(z.lazy(() =>
+      ListEventsResponseBodyEventsTestVariants$inboundSchema
+    ))).optional(),
+    testStartedAt: z.nullable(z.string()),
+    testCompletedAt: z.nullable(z.string()),
+    userId: z.nullable(z.string()),
+    workspaceId: z.string(),
+    clicks: z.number().default(0),
+    leads: z.number().default(0),
+    conversions: z.number().default(0),
+    sales: z.number().default(0),
+    saleAmount: z.number().default(0),
+    lastClicked: z.nullable(z.string()),
+    createdAt: z.string(),
+    updatedAt: z.string(),
+    tagId: z.nullable(z.string()),
+    projectId: z.string(),
+    webhookIds: z.array(z.string()),
+  }).transform((v) => {
+    return remap$(v, {
+      "utm_source": "utmSource",
+      "utm_medium": "utmMedium",
+      "utm_campaign": "utmCampaign",
+      "utm_term": "utmTerm",
+      "utm_content": "utmContent",
+    });
+  })
+);
 
 export function listEventsResponseBodyLinkFromJSON(
   jsonString: string,
@@ -1550,24 +1557,26 @@ export const ListEventsResponseBodyClick$inboundSchema: z.ZodType<
   ListEventsResponseBodyClick,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  timestamp: z.string(),
-  url: z.string(),
-  country: z.string(),
-  city: z.string(),
-  region: z.string(),
-  continent: z.string(),
-  device: z.string(),
-  browser: z.string(),
-  os: z.string(),
-  ua: z.nullable(z.string()).optional(),
-  trigger: z.nullable(z.string()).optional(),
-  referer: z.string(),
-  refererUrl: z.string(),
-  qr: z.boolean(),
-  ip: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    timestamp: z.string(),
+    url: z.string(),
+    country: z.string(),
+    city: z.string(),
+    region: z.string(),
+    continent: z.string(),
+    device: z.string(),
+    browser: z.string(),
+    os: z.string(),
+    ua: z.nullable(z.string()).optional(),
+    trigger: z.nullable(z.string()).optional(),
+    referer: z.string(),
+    refererUrl: z.string(),
+    qr: z.boolean(),
+    ip: z.string(),
+  })
+);
 
 export function listEventsResponseBodyClickFromJSON(
   jsonString: string,
@@ -1584,20 +1593,22 @@ export const ResponseBodyCustomer$inboundSchema: z.ZodType<
   ResponseBodyCustomer,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  name: z.nullable(z.string()).optional(),
-  email: z.nullable(z.string()).optional(),
-  avatar: z.nullable(z.string()).optional(),
-  externalId: z.string(),
-  stripeCustomerId: z.nullable(z.string()).optional(),
-  country: z.nullable(z.string()).optional(),
-  sales: z.nullable(z.number()).optional(),
-  saleAmount: z.nullable(z.number()).optional(),
-  createdAt: z.string(),
-  firstSaleAt: z.nullable(z.string()).optional(),
-  subscriptionCanceledAt: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    name: z.nullable(z.string()).optional(),
+    email: z.nullable(z.string()).optional(),
+    avatar: z.nullable(z.string()).optional(),
+    externalId: z.string(),
+    stripeCustomerId: z.nullable(z.string()).optional(),
+    country: z.nullable(z.string()).optional(),
+    sales: z.nullable(z.number()).optional(),
+    saleAmount: z.nullable(z.number()).optional(),
+    createdAt: z.string(),
+    firstSaleAt: z.nullable(z.string()).optional(),
+    subscriptionCanceledAt: z.nullable(z.string()).optional(),
+  })
+);
 
 export function responseBodyCustomerFromJSON(
   jsonString: string,
@@ -1614,40 +1625,42 @@ export const SaleEvent$inboundSchema: z.ZodType<
   SaleEvent,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  event: z.literal("sale"),
-  timestamp: z.string(),
-  eventId: z.string(),
-  eventName: z.string(),
-  sale: z.lazy(() => ResponseBodySale$inboundSchema),
-  metadata: z.nullable(z.any()).optional(),
-  link: z.lazy(() => ListEventsResponseBodyLink$inboundSchema),
-  click: z.lazy(() => ListEventsResponseBodyClick$inboundSchema),
-  customer: z.lazy(() => ResponseBodyCustomer$inboundSchema),
-  saleAmount: z.number(),
-  invoice_id: z.string(),
-  payment_processor: z.string(),
-  click_id: z.string(),
-  link_id: z.string(),
-  domain: z.string(),
-  key: z.string(),
-  url: z.string(),
-  continent: z.string(),
-  country: z.string(),
-  city: z.string(),
-  device: z.string(),
-  browser: z.string(),
-  os: z.string(),
-  qr: z.number(),
-  ip: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "invoice_id": "invoiceId",
-    "payment_processor": "paymentProcessor",
-    "click_id": "clickId",
-    "link_id": "linkId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    event: z.literal("sale"),
+    timestamp: z.string(),
+    eventId: z.string(),
+    eventName: z.string(),
+    sale: z.lazy(() => ResponseBodySale$inboundSchema),
+    metadata: z.nullable(z.any()).optional(),
+    link: z.lazy(() => ListEventsResponseBodyLink$inboundSchema),
+    click: z.lazy(() => ListEventsResponseBodyClick$inboundSchema),
+    customer: z.lazy(() => ResponseBodyCustomer$inboundSchema),
+    saleAmount: z.number(),
+    invoice_id: z.string(),
+    payment_processor: z.string(),
+    click_id: z.string(),
+    link_id: z.string(),
+    domain: z.string(),
+    key: z.string(),
+    url: z.string(),
+    continent: z.string(),
+    country: z.string(),
+    city: z.string(),
+    device: z.string(),
+    browser: z.string(),
+    os: z.string(),
+    qr: z.number(),
+    ip: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "invoice_id": "invoiceId",
+      "payment_processor": "paymentProcessor",
+      "click_id": "clickId",
+      "link_id": "linkId",
+    });
+  })
+);
 
 export function saleEventFromJSON(
   jsonString: string,
@@ -1664,24 +1677,26 @@ export const ResponseBodyClick$inboundSchema: z.ZodType<
   ResponseBodyClick,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  timestamp: z.string(),
-  url: z.string(),
-  country: z.string(),
-  city: z.string(),
-  region: z.string(),
-  continent: z.string(),
-  device: z.string(),
-  browser: z.string(),
-  os: z.string(),
-  ua: z.nullable(z.string()).optional(),
-  trigger: z.nullable(z.string()).optional(),
-  referer: z.string(),
-  refererUrl: z.string(),
-  qr: z.boolean(),
-  ip: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    timestamp: z.string(),
+    url: z.string(),
+    country: z.string(),
+    city: z.string(),
+    region: z.string(),
+    continent: z.string(),
+    device: z.string(),
+    browser: z.string(),
+    os: z.string(),
+    ua: z.nullable(z.string()).optional(),
+    trigger: z.nullable(z.string()).optional(),
+    referer: z.string(),
+    refererUrl: z.string(),
+    qr: z.boolean(),
+    ip: z.string(),
+  })
+);
 
 export function responseBodyClickFromJSON(
   jsonString: string,
@@ -1698,10 +1713,12 @@ export const ListEventsResponseBodyTestVariants$inboundSchema: z.ZodType<
   ListEventsResponseBodyTestVariants,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  url: z.string(),
-  percentage: z.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    url: z.string(),
+    percentage: z.number(),
+  })
+);
 
 export function listEventsResponseBodyTestVariantsFromJSON(
   jsonString: string,
@@ -1719,69 +1736,71 @@ export const ResponseBodyLink$inboundSchema: z.ZodType<
   ResponseBodyLink,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  domain: z.string(),
-  key: z.string(),
-  url: z.string(),
-  trackConversion: z.boolean(),
-  externalId: z.nullable(z.string()),
-  tenantId: z.nullable(z.string()),
-  programId: z.nullable(z.string()),
-  partnerId: z.nullable(z.string()),
-  archived: z.boolean(),
-  expiresAt: z.nullable(z.string()),
-  expiredUrl: z.nullable(z.string()),
-  disabledAt: z.nullable(z.string()),
-  password: z.nullable(z.string()),
-  proxy: z.boolean(),
-  title: z.nullable(z.string()),
-  description: z.nullable(z.string()),
-  image: z.nullable(z.string()),
-  video: z.nullable(z.string()),
-  rewrite: z.boolean(),
-  doIndex: z.boolean(),
-  ios: z.nullable(z.string()),
-  android: z.nullable(z.string()),
-  geo: z.nullable(z.record(z.string())),
-  publicStats: z.boolean(),
-  tags: z.nullable(z.array(components.LinkTagSchemaOutput$inboundSchema)),
-  folderId: z.nullable(z.string()),
-  comments: z.nullable(z.string()),
-  shortLink: z.string(),
-  qrCode: z.string(),
-  utm_source: z.nullable(z.string()),
-  utm_medium: z.nullable(z.string()),
-  utm_campaign: z.nullable(z.string()),
-  utm_term: z.nullable(z.string()),
-  utm_content: z.nullable(z.string()),
-  testVariants: z.nullable(
-    z.array(z.lazy(() => ListEventsResponseBodyTestVariants$inboundSchema)),
-  ).optional(),
-  testStartedAt: z.nullable(z.string()),
-  testCompletedAt: z.nullable(z.string()),
-  userId: z.nullable(z.string()),
-  workspaceId: z.string(),
-  clicks: z.number().default(0),
-  leads: z.number().default(0),
-  conversions: z.number().default(0),
-  sales: z.number().default(0),
-  saleAmount: z.number().default(0),
-  lastClicked: z.nullable(z.string()),
-  createdAt: z.string(),
-  updatedAt: z.string(),
-  tagId: z.nullable(z.string()),
-  projectId: z.string(),
-  webhookIds: z.array(z.string()),
-}).transform((v) => {
-  return remap$(v, {
-    "utm_source": "utmSource",
-    "utm_medium": "utmMedium",
-    "utm_campaign": "utmCampaign",
-    "utm_term": "utmTerm",
-    "utm_content": "utmContent",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    domain: z.string(),
+    key: z.string(),
+    url: z.string(),
+    trackConversion: z.boolean(),
+    externalId: z.nullable(z.string()),
+    tenantId: z.nullable(z.string()),
+    programId: z.nullable(z.string()),
+    partnerId: z.nullable(z.string()),
+    archived: z.boolean(),
+    expiresAt: z.nullable(z.string()),
+    expiredUrl: z.nullable(z.string()),
+    disabledAt: z.nullable(z.string()),
+    password: z.nullable(z.string()),
+    proxy: z.boolean(),
+    title: z.nullable(z.string()),
+    description: z.nullable(z.string()),
+    image: z.nullable(z.string()),
+    video: z.nullable(z.string()),
+    rewrite: z.boolean(),
+    doIndex: z.boolean(),
+    ios: z.nullable(z.string()),
+    android: z.nullable(z.string()),
+    geo: z.nullable(z.record(z.string())),
+    publicStats: z.boolean(),
+    tags: z.nullable(z.array(components.LinkTagSchemaOutput$inboundSchema)),
+    folderId: z.nullable(z.string()),
+    comments: z.nullable(z.string()),
+    shortLink: z.string(),
+    qrCode: z.string(),
+    utm_source: z.nullable(z.string()),
+    utm_medium: z.nullable(z.string()),
+    utm_campaign: z.nullable(z.string()),
+    utm_term: z.nullable(z.string()),
+    utm_content: z.nullable(z.string()),
+    testVariants: z.nullable(
+      z.array(z.lazy(() => ListEventsResponseBodyTestVariants$inboundSchema)),
+    ).optional(),
+    testStartedAt: z.nullable(z.string()),
+    testCompletedAt: z.nullable(z.string()),
+    userId: z.nullable(z.string()),
+    workspaceId: z.string(),
+    clicks: z.number().default(0),
+    leads: z.number().default(0),
+    conversions: z.number().default(0),
+    sales: z.number().default(0),
+    saleAmount: z.number().default(0),
+    lastClicked: z.nullable(z.string()),
+    createdAt: z.string(),
+    updatedAt: z.string(),
+    tagId: z.nullable(z.string()),
+    projectId: z.string(),
+    webhookIds: z.array(z.string()),
+  }).transform((v) => {
+    return remap$(v, {
+      "utm_source": "utmSource",
+      "utm_medium": "utmMedium",
+      "utm_campaign": "utmCampaign",
+      "utm_term": "utmTerm",
+      "utm_content": "utmContent",
+    });
+  })
+);
 
 export function responseBodyLinkFromJSON(
   jsonString: string,
@@ -1798,20 +1817,22 @@ export const ListEventsResponseBodyCustomer$inboundSchema: z.ZodType<
   ListEventsResponseBodyCustomer,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  name: z.nullable(z.string()).optional(),
-  email: z.nullable(z.string()).optional(),
-  avatar: z.nullable(z.string()).optional(),
-  externalId: z.string(),
-  stripeCustomerId: z.nullable(z.string()).optional(),
-  country: z.nullable(z.string()).optional(),
-  sales: z.nullable(z.number()).optional(),
-  saleAmount: z.nullable(z.number()).optional(),
-  createdAt: z.string(),
-  firstSaleAt: z.nullable(z.string()).optional(),
-  subscriptionCanceledAt: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    name: z.nullable(z.string()).optional(),
+    email: z.nullable(z.string()).optional(),
+    avatar: z.nullable(z.string()).optional(),
+    externalId: z.string(),
+    stripeCustomerId: z.nullable(z.string()).optional(),
+    country: z.nullable(z.string()).optional(),
+    sales: z.nullable(z.number()).optional(),
+    saleAmount: z.nullable(z.number()).optional(),
+    createdAt: z.string(),
+    firstSaleAt: z.nullable(z.string()).optional(),
+    subscriptionCanceledAt: z.nullable(z.string()).optional(),
+  })
+);
 
 export function listEventsResponseBodyCustomerFromJSON(
   jsonString: string,
@@ -1828,34 +1849,36 @@ export const LeadEvent$inboundSchema: z.ZodType<
   LeadEvent,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  event: z.literal("lead"),
-  timestamp: z.string(),
-  eventId: z.string(),
-  eventName: z.string(),
-  metadata: z.nullable(z.any()).optional(),
-  click: z.lazy(() => ResponseBodyClick$inboundSchema),
-  link: z.lazy(() => ResponseBodyLink$inboundSchema),
-  customer: z.lazy(() => ListEventsResponseBodyCustomer$inboundSchema),
-  click_id: z.string(),
-  link_id: z.string(),
-  domain: z.string(),
-  key: z.string(),
-  url: z.string(),
-  continent: z.string(),
-  country: z.string(),
-  city: z.string(),
-  device: z.string(),
-  browser: z.string(),
-  os: z.string(),
-  qr: z.number(),
-  ip: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "click_id": "clickId",
-    "link_id": "linkId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    event: z.literal("lead"),
+    timestamp: z.string(),
+    eventId: z.string(),
+    eventName: z.string(),
+    metadata: z.nullable(z.any()).optional(),
+    click: z.lazy(() => ResponseBodyClick$inboundSchema),
+    link: z.lazy(() => ResponseBodyLink$inboundSchema),
+    customer: z.lazy(() => ListEventsResponseBodyCustomer$inboundSchema),
+    click_id: z.string(),
+    link_id: z.string(),
+    domain: z.string(),
+    key: z.string(),
+    url: z.string(),
+    continent: z.string(),
+    country: z.string(),
+    city: z.string(),
+    device: z.string(),
+    browser: z.string(),
+    os: z.string(),
+    qr: z.number(),
+    ip: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "click_id": "clickId",
+      "link_id": "linkId",
+    });
+  })
+);
 
 export function leadEventFromJSON(
   jsonString: string,
@@ -1872,24 +1895,26 @@ export const ListEventsResponseBodyEventsClick$inboundSchema: z.ZodType<
   ListEventsResponseBodyEventsClick,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  timestamp: z.string(),
-  url: z.string(),
-  country: z.string(),
-  city: z.string(),
-  region: z.string(),
-  continent: z.string(),
-  device: z.string(),
-  browser: z.string(),
-  os: z.string(),
-  ua: z.nullable(z.string()).optional(),
-  trigger: z.nullable(z.string()).optional(),
-  referer: z.string(),
-  refererUrl: z.string(),
-  qr: z.boolean(),
-  ip: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    timestamp: z.string(),
+    url: z.string(),
+    country: z.string(),
+    city: z.string(),
+    region: z.string(),
+    continent: z.string(),
+    device: z.string(),
+    browser: z.string(),
+    os: z.string(),
+    ua: z.nullable(z.string()).optional(),
+    trigger: z.nullable(z.string()).optional(),
+    referer: z.string(),
+    refererUrl: z.string(),
+    qr: z.boolean(),
+    ip: z.string(),
+  })
+);
 
 export function listEventsResponseBodyEventsClickFromJSON(
   jsonString: string,
@@ -1906,10 +1931,12 @@ export const ResponseBodyTestVariants$inboundSchema: z.ZodType<
   ResponseBodyTestVariants,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  url: z.string(),
-  percentage: z.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    url: z.string(),
+    percentage: z.number(),
+  })
+);
 
 export function responseBodyTestVariantsFromJSON(
   jsonString: string,
@@ -1926,69 +1953,71 @@ export const ListEventsResponseBodyEventsLink$inboundSchema: z.ZodType<
   ListEventsResponseBodyEventsLink,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  domain: z.string(),
-  key: z.string(),
-  url: z.string(),
-  trackConversion: z.boolean(),
-  externalId: z.nullable(z.string()),
-  tenantId: z.nullable(z.string()),
-  programId: z.nullable(z.string()),
-  partnerId: z.nullable(z.string()),
-  archived: z.boolean(),
-  expiresAt: z.nullable(z.string()),
-  expiredUrl: z.nullable(z.string()),
-  disabledAt: z.nullable(z.string()),
-  password: z.nullable(z.string()),
-  proxy: z.boolean(),
-  title: z.nullable(z.string()),
-  description: z.nullable(z.string()),
-  image: z.nullable(z.string()),
-  video: z.nullable(z.string()),
-  rewrite: z.boolean(),
-  doIndex: z.boolean(),
-  ios: z.nullable(z.string()),
-  android: z.nullable(z.string()),
-  geo: z.nullable(z.record(z.string())),
-  publicStats: z.boolean(),
-  tags: z.nullable(z.array(components.LinkTagSchemaOutput$inboundSchema)),
-  folderId: z.nullable(z.string()),
-  comments: z.nullable(z.string()),
-  shortLink: z.string(),
-  qrCode: z.string(),
-  utm_source: z.nullable(z.string()),
-  utm_medium: z.nullable(z.string()),
-  utm_campaign: z.nullable(z.string()),
-  utm_term: z.nullable(z.string()),
-  utm_content: z.nullable(z.string()),
-  testVariants: z.nullable(
-    z.array(z.lazy(() => ResponseBodyTestVariants$inboundSchema)),
-  ).optional(),
-  testStartedAt: z.nullable(z.string()),
-  testCompletedAt: z.nullable(z.string()),
-  userId: z.nullable(z.string()),
-  workspaceId: z.string(),
-  clicks: z.number().default(0),
-  leads: z.number().default(0),
-  conversions: z.number().default(0),
-  sales: z.number().default(0),
-  saleAmount: z.number().default(0),
-  lastClicked: z.nullable(z.string()),
-  createdAt: z.string(),
-  updatedAt: z.string(),
-  tagId: z.nullable(z.string()),
-  projectId: z.string(),
-  webhookIds: z.array(z.string()),
-}).transform((v) => {
-  return remap$(v, {
-    "utm_source": "utmSource",
-    "utm_medium": "utmMedium",
-    "utm_campaign": "utmCampaign",
-    "utm_term": "utmTerm",
-    "utm_content": "utmContent",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    domain: z.string(),
+    key: z.string(),
+    url: z.string(),
+    trackConversion: z.boolean(),
+    externalId: z.nullable(z.string()),
+    tenantId: z.nullable(z.string()),
+    programId: z.nullable(z.string()),
+    partnerId: z.nullable(z.string()),
+    archived: z.boolean(),
+    expiresAt: z.nullable(z.string()),
+    expiredUrl: z.nullable(z.string()),
+    disabledAt: z.nullable(z.string()),
+    password: z.nullable(z.string()),
+    proxy: z.boolean(),
+    title: z.nullable(z.string()),
+    description: z.nullable(z.string()),
+    image: z.nullable(z.string()),
+    video: z.nullable(z.string()),
+    rewrite: z.boolean(),
+    doIndex: z.boolean(),
+    ios: z.nullable(z.string()),
+    android: z.nullable(z.string()),
+    geo: z.nullable(z.record(z.string())),
+    publicStats: z.boolean(),
+    tags: z.nullable(z.array(components.LinkTagSchemaOutput$inboundSchema)),
+    folderId: z.nullable(z.string()),
+    comments: z.nullable(z.string()),
+    shortLink: z.string(),
+    qrCode: z.string(),
+    utm_source: z.nullable(z.string()),
+    utm_medium: z.nullable(z.string()),
+    utm_campaign: z.nullable(z.string()),
+    utm_term: z.nullable(z.string()),
+    utm_content: z.nullable(z.string()),
+    testVariants: z.nullable(
+      z.array(z.lazy(() => ResponseBodyTestVariants$inboundSchema)),
+    ).optional(),
+    testStartedAt: z.nullable(z.string()),
+    testCompletedAt: z.nullable(z.string()),
+    userId: z.nullable(z.string()),
+    workspaceId: z.string(),
+    clicks: z.number().default(0),
+    leads: z.number().default(0),
+    conversions: z.number().default(0),
+    sales: z.number().default(0),
+    saleAmount: z.number().default(0),
+    lastClicked: z.nullable(z.string()),
+    createdAt: z.string(),
+    updatedAt: z.string(),
+    tagId: z.nullable(z.string()),
+    projectId: z.string(),
+    webhookIds: z.array(z.string()),
+  }).transform((v) => {
+    return remap$(v, {
+      "utm_source": "utmSource",
+      "utm_medium": "utmMedium",
+      "utm_campaign": "utmCampaign",
+      "utm_term": "utmTerm",
+      "utm_content": "utmContent",
+    });
+  })
+);
 
 export function listEventsResponseBodyEventsLinkFromJSON(
   jsonString: string,
@@ -2005,30 +2034,32 @@ export const ClickEvent$inboundSchema: z.ZodType<
   ClickEvent,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  event: z.literal("click"),
-  timestamp: z.string(),
-  click: z.lazy(() => ListEventsResponseBodyEventsClick$inboundSchema),
-  link: z.lazy(() => ListEventsResponseBodyEventsLink$inboundSchema),
-  click_id: z.string(),
-  link_id: z.string(),
-  domain: z.string(),
-  key: z.string(),
-  url: z.string(),
-  continent: z.string(),
-  country: z.string(),
-  city: z.string(),
-  device: z.string(),
-  browser: z.string(),
-  os: z.string(),
-  qr: z.number(),
-  ip: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "click_id": "clickId",
-    "link_id": "linkId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    event: z.literal("click"),
+    timestamp: z.string(),
+    click: z.lazy(() => ListEventsResponseBodyEventsClick$inboundSchema),
+    link: z.lazy(() => ListEventsResponseBodyEventsLink$inboundSchema),
+    click_id: z.string(),
+    link_id: z.string(),
+    domain: z.string(),
+    key: z.string(),
+    url: z.string(),
+    continent: z.string(),
+    country: z.string(),
+    city: z.string(),
+    device: z.string(),
+    browser: z.string(),
+    os: z.string(),
+    qr: z.number(),
+    ip: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "click_id": "clickId",
+      "link_id": "linkId",
+    });
+  })
+);
 
 export function clickEventFromJSON(
   jsonString: string,
@@ -2045,11 +2076,13 @@ export const ListEventsResponseBody$inboundSchema: z.ZodType<
   ListEventsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => ClickEvent$inboundSchema),
-  z.lazy(() => LeadEvent$inboundSchema),
-  z.lazy(() => SaleEvent$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => ClickEvent$inboundSchema),
+    z.lazy(() => LeadEvent$inboundSchema),
+    z.lazy(() => SaleEvent$inboundSchema),
+  ])
+);
 
 export function listEventsResponseBodyFromJSON(
   jsonString: string,

@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type CreateDomainRequestBody = {
   /**
@@ -56,16 +57,18 @@ export const CreateDomainRequestBody$outboundSchema: z.ZodType<
   CreateDomainRequestBody$Outbound,
   z.ZodTypeDef,
   CreateDomainRequestBody
-> = z.object({
-  slug: z.string(),
-  expiredUrl: z.nullable(z.string()).optional(),
-  notFoundUrl: z.nullable(z.string()).optional(),
-  archived: z.boolean().default(false),
-  placeholder: z.nullable(z.string()).optional(),
-  logo: z.nullable(z.string()).optional(),
-  assetLinks: z.nullable(z.string()).optional(),
-  appleAppSiteAssociation: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    slug: z.string(),
+    expiredUrl: z.nullable(z.string()).optional(),
+    notFoundUrl: z.nullable(z.string()).optional(),
+    archived: z.boolean().default(false),
+    placeholder: z.nullable(z.string()).optional(),
+    logo: z.nullable(z.string()).optional(),
+    assetLinks: z.nullable(z.string()).optional(),
+    appleAppSiteAssociation: z.nullable(z.string()).optional(),
+  })
+);
 
 export function createDomainRequestBodyToJSON(
   createDomainRequestBody: CreateDomainRequestBody,

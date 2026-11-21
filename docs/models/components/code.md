@@ -13,5 +13,5 @@ let value: Code = "bad_request";
 ## Values
 
 ```typescript
-"bad_request" | "unauthorized" | "forbidden" | "exceeded_limit" | "not_found" | "conflict" | "invite_pending" | "invite_expired" | "unprocessable_entity" | "rate_limit_exceeded" | "internal_server_error"
+"bad_request" | "unauthorized" | "forbidden" | "exceeded_limit" | "not_found" | "conflict" | "invite_pending" | "invite_expired" | "unprocessable_entity" | "rate_limit_exceeded" | "internal_server_error" | "service_unavailable"
 ```

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { DubError } from "./duberror.js";
@@ -69,22 +69,24 @@ export class RateLimitExceeded extends DubError {
 /** @internal */
 export const RateLimitExceededCode$inboundSchema: z.ZodNativeEnum<
   typeof RateLimitExceededCode
-> = z.nativeEnum(RateLimitExceededCode);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(RateLimitExceededCode));
 
 /** @internal */
 export const RateLimitExceededError$inboundSchema: z.ZodType<
   RateLimitExceededError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: RateLimitExceededCode$inboundSchema,
-  message: z.string(),
-  doc_url: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "doc_url": "docUrl",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: RateLimitExceededCode$inboundSchema,
+    message: z.string(),
+    doc_url: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "doc_url": "docUrl",
+    });
+  })
+);
 
 export function rateLimitExceededErrorFromJSON(
   jsonString: string,
@@ -101,16 +103,18 @@ export const RateLimitExceeded$inboundSchema: z.ZodType<
   RateLimitExceeded,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  error: z.lazy(() => RateLimitExceededError$inboundSchema),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new RateLimitExceeded(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    error: z.lazy(() => RateLimitExceededError$inboundSchema),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new RateLimitExceeded(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);

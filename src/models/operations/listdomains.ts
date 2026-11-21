@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -45,12 +45,14 @@ export const ListDomainsRequest$outboundSchema: z.ZodType<
   ListDomainsRequest$Outbound,
   z.ZodTypeDef,
   ListDomainsRequest
-> = z.object({
-  archived: z.boolean().default(false),
-  search: z.string().optional(),
-  page: z.number().int().optional(),
-  pageSize: z.number().int().default(50),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    archived: z.boolean().default(false),
+    search: z.string().optional(),
+    page: z.number().int().optional(),
+    pageSize: z.number().int().default(50),
+  })
+);
 
 export function listDomainsRequestToJSON(
   listDomainsRequest: ListDomainsRequest,
@@ -65,13 +67,15 @@ export const ListDomainsResponse$inboundSchema: z.ZodType<
   ListDomainsResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Result: z.array(components.DomainSchema$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Result: z.array(components.DomainSchema$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "Result": "result",
+    });
+  })
+);
 
 export function listDomainsResponseFromJSON(
   jsonString: string,

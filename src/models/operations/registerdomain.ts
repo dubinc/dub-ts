@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -42,9 +42,11 @@ export const RegisterDomainRequestBody$outboundSchema: z.ZodType<
   RegisterDomainRequestBody$Outbound,
   z.ZodTypeDef,
   RegisterDomainRequestBody
-> = z.object({
-  domain: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: z.string(),
+  })
+);
 
 export function registerDomainRequestBodyToJSON(
   registerDomainRequestBody: RegisterDomainRequestBody,
@@ -59,11 +61,13 @@ export const RegisterDomainResponseBody$inboundSchema: z.ZodType<
   RegisterDomainResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  domain: z.string(),
-  status: z.string(),
-  expiration: z.nullable(z.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: z.string(),
+    status: z.string(),
+    expiration: z.nullable(z.number()),
+  })
+);
 
 export function registerDomainResponseBodyFromJSON(
   jsonString: string,

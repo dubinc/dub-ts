@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type ListFoldersRequest = {
   /**
@@ -31,11 +32,13 @@ export const ListFoldersRequest$outboundSchema: z.ZodType<
   ListFoldersRequest$Outbound,
   z.ZodTypeDef,
   ListFoldersRequest
-> = z.object({
-  search: z.string().optional(),
-  page: z.number().int().optional(),
-  pageSize: z.number().int().default(50),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    search: z.string().optional(),
+    page: z.number().int().optional(),
+    pageSize: z.number().int().default(50),
+  })
+);
 
 export function listFoldersRequestToJSON(
   listFoldersRequest: ListFoldersRequest,

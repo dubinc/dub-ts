@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { DubError } from "./duberror.js";
@@ -68,22 +68,24 @@ export class NotFound extends DubError {
 
 /** @internal */
 export const NotFoundCode$inboundSchema: z.ZodNativeEnum<typeof NotFoundCode> =
-  z.nativeEnum(NotFoundCode);
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(NotFoundCode));
 
 /** @internal */
 export const NotFoundError$inboundSchema: z.ZodType<
   NotFoundError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: NotFoundCode$inboundSchema,
-  message: z.string(),
-  doc_url: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "doc_url": "docUrl",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: NotFoundCode$inboundSchema,
+    message: z.string(),
+    doc_url: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "doc_url": "docUrl",
+    });
+  })
+);
 
 export function notFoundErrorFromJSON(
   jsonString: string,
@@ -100,16 +102,18 @@ export const NotFound$inboundSchema: z.ZodType<
   NotFound,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  error: z.lazy(() => NotFoundError$inboundSchema),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new NotFound(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    error: z.lazy(() => NotFoundError$inboundSchema),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new NotFound(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
