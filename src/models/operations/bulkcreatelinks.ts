@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -203,7 +203,9 @@ export const BulkCreateLinksTagIds$outboundSchema: z.ZodType<
   BulkCreateLinksTagIds$Outbound,
   z.ZodTypeDef,
   BulkCreateLinksTagIds
-> = z.union([z.string(), z.array(z.string())]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([z.string(), z.array(z.string())])
+);
 
 export function bulkCreateLinksTagIdsToJSON(
   bulkCreateLinksTagIds: BulkCreateLinksTagIds,
@@ -221,7 +223,9 @@ export const BulkCreateLinksTagNames$outboundSchema: z.ZodType<
   BulkCreateLinksTagNames$Outbound,
   z.ZodTypeDef,
   BulkCreateLinksTagNames
-> = z.union([z.string(), z.array(z.string())]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([z.string(), z.array(z.string())])
+);
 
 export function bulkCreateLinksTagNamesToJSON(
   bulkCreateLinksTagNames: BulkCreateLinksTagNames,
@@ -242,10 +246,12 @@ export const BulkCreateLinksTestVariants$outboundSchema: z.ZodType<
   BulkCreateLinksTestVariants$Outbound,
   z.ZodTypeDef,
   BulkCreateLinksTestVariants
-> = z.object({
-  url: z.string(),
-  percentage: z.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    url: z.string(),
+    percentage: z.number(),
+  })
+);
 
 export function bulkCreateLinksTestVariantsToJSON(
   bulkCreateLinksTestVariants: BulkCreateLinksTestVariants,
@@ -306,58 +312,60 @@ export const RequestBody$outboundSchema: z.ZodType<
   RequestBody$Outbound,
   z.ZodTypeDef,
   RequestBody
-> = z.object({
-  url: z.string(),
-  domain: z.string().optional(),
-  key: z.string().optional(),
-  keyLength: z.number().optional(),
-  externalId: z.nullable(z.string()).optional(),
-  tenantId: z.nullable(z.string()).optional(),
-  programId: z.nullable(z.string()).optional(),
-  partnerId: z.nullable(z.string()).optional(),
-  prefix: z.string().optional(),
-  trackConversion: z.boolean().optional(),
-  archived: z.boolean().optional(),
-  tagIds: z.union([z.string(), z.array(z.string())]).optional(),
-  tagNames: z.union([z.string(), z.array(z.string())]).optional(),
-  folderId: z.nullable(z.string()).optional(),
-  comments: z.nullable(z.string()).optional(),
-  expiresAt: z.nullable(z.string()).optional(),
-  expiredUrl: z.nullable(z.string()).optional(),
-  password: z.nullable(z.string()).optional(),
-  proxy: z.boolean().optional(),
-  title: z.nullable(z.string()).optional(),
-  description: z.nullable(z.string()).optional(),
-  image: z.nullable(z.string()).optional(),
-  video: z.nullable(z.string()).optional(),
-  rewrite: z.boolean().optional(),
-  ios: z.nullable(z.string()).optional(),
-  android: z.nullable(z.string()).optional(),
-  geo: z.nullable(z.record(z.string())).optional(),
-  doIndex: z.boolean().optional(),
-  utmSource: z.nullable(z.string()).optional(),
-  utmMedium: z.nullable(z.string()).optional(),
-  utmCampaign: z.nullable(z.string()).optional(),
-  utmTerm: z.nullable(z.string()).optional(),
-  utmContent: z.nullable(z.string()).optional(),
-  ref: z.nullable(z.string()).optional(),
-  testVariants: z.nullable(
-    z.array(z.lazy(() => BulkCreateLinksTestVariants$outboundSchema)),
-  ).optional(),
-  testStartedAt: z.nullable(z.string()).optional(),
-  testCompletedAt: z.nullable(z.string()).optional(),
-  publicStats: z.boolean().optional(),
-  tagId: z.nullable(z.string()).optional(),
-  webhookIds: z.nullable(z.array(z.string())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    utmSource: "utm_source",
-    utmMedium: "utm_medium",
-    utmCampaign: "utm_campaign",
-    utmTerm: "utm_term",
-    utmContent: "utm_content",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    url: z.string(),
+    domain: z.string().optional(),
+    key: z.string().optional(),
+    keyLength: z.number().int().optional(),
+    externalId: z.nullable(z.string()).optional(),
+    tenantId: z.nullable(z.string()).optional(),
+    programId: z.nullable(z.string()).optional(),
+    partnerId: z.nullable(z.string()).optional(),
+    prefix: z.string().optional(),
+    trackConversion: z.boolean().optional(),
+    archived: z.boolean().optional(),
+    tagIds: z.union([z.string(), z.array(z.string())]).optional(),
+    tagNames: z.union([z.string(), z.array(z.string())]).optional(),
+    folderId: z.nullable(z.string()).optional(),
+    comments: z.nullable(z.string()).optional(),
+    expiresAt: z.nullable(z.string()).optional(),
+    expiredUrl: z.nullable(z.string()).optional(),
+    password: z.nullable(z.string()).optional(),
+    proxy: z.boolean().optional(),
+    title: z.nullable(z.string()).optional(),
+    description: z.nullable(z.string()).optional(),
+    image: z.nullable(z.string()).optional(),
+    video: z.nullable(z.string()).optional(),
+    rewrite: z.boolean().optional(),
+    ios: z.nullable(z.string()).optional(),
+    android: z.nullable(z.string()).optional(),
+    geo: z.nullable(z.record(z.string())).optional(),
+    doIndex: z.boolean().optional(),
+    utmSource: z.nullable(z.string()).optional(),
+    utmMedium: z.nullable(z.string()).optional(),
+    utmCampaign: z.nullable(z.string()).optional(),
+    utmTerm: z.nullable(z.string()).optional(),
+    utmContent: z.nullable(z.string()).optional(),
+    ref: z.nullable(z.string()).optional(),
+    testVariants: z.nullable(
+      z.array(z.lazy(() => BulkCreateLinksTestVariants$outboundSchema)),
+    ).optional(),
+    testStartedAt: z.nullable(z.string()).optional(),
+    testCompletedAt: z.nullable(z.string()).optional(),
+    publicStats: z.boolean().optional(),
+    tagId: z.nullable(z.string()).optional(),
+    webhookIds: z.nullable(z.array(z.string())).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      utmSource: "utm_source",
+      utmMedium: "utm_medium",
+      utmCampaign: "utm_campaign",
+      utmTerm: "utm_term",
+      utmContent: "utm_content",
+    });
+  })
+);
 
 export function requestBodyToJSON(requestBody: RequestBody): string {
   return JSON.stringify(RequestBody$outboundSchema.parse(requestBody));
@@ -368,10 +376,12 @@ export const ResponseBody$inboundSchema: z.ZodType<
   ResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  components.LinkSchema$inboundSchema,
-  components.LinkErrorSchema$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    components.LinkSchema$inboundSchema,
+    components.LinkErrorSchema$inboundSchema,
+  ])
+);
 
 export function responseBodyFromJSON(
   jsonString: string,

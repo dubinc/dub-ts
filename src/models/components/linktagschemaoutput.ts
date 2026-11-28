@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -42,20 +42,21 @@ export type LinkTagSchemaOutput = {
 };
 
 /** @internal */
-export const Color$inboundSchema: z.ZodNativeEnum<typeof Color> = z.nativeEnum(
-  Color,
-);
+export const Color$inboundSchema: z.ZodNativeEnum<typeof Color> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Color));
 
 /** @internal */
 export const LinkTagSchemaOutput$inboundSchema: z.ZodType<
   LinkTagSchemaOutput,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  color: Color$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    name: z.string(),
+    color: Color$inboundSchema,
+  })
+);
 
 export function linkTagSchemaOutputFromJSON(
   jsonString: string,

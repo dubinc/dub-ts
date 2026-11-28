@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
@@ -90,13 +90,17 @@ export type RetrievePartnerAnalyticsResponseBody =
 
 /** @internal */
 export const RetrievePartnerAnalyticsQueryParamInterval$outboundSchema:
-  z.ZodNativeEnum<typeof RetrievePartnerAnalyticsQueryParamInterval> = z
-    .nativeEnum(RetrievePartnerAnalyticsQueryParamInterval);
+  z.ZodNativeEnum<typeof RetrievePartnerAnalyticsQueryParamInterval> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(RetrievePartnerAnalyticsQueryParamInterval)
+    );
 
 /** @internal */
 export const RetrievePartnerAnalyticsQueryParamGroupBy$outboundSchema:
-  z.ZodNativeEnum<typeof RetrievePartnerAnalyticsQueryParamGroupBy> = z
-    .nativeEnum(RetrievePartnerAnalyticsQueryParamGroupBy);
+  z.ZodNativeEnum<typeof RetrievePartnerAnalyticsQueryParamGroupBy> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(RetrievePartnerAnalyticsQueryParamGroupBy)
+    );
 
 /** @internal */
 export type RetrievePartnerAnalyticsRequest$Outbound = {
@@ -115,19 +119,21 @@ export const RetrievePartnerAnalyticsRequest$outboundSchema: z.ZodType<
   RetrievePartnerAnalyticsRequest$Outbound,
   z.ZodTypeDef,
   RetrievePartnerAnalyticsRequest
-> = z.object({
-  partnerId: z.nullable(z.string()).optional(),
-  tenantId: z.nullable(z.string()).optional(),
-  interval: RetrievePartnerAnalyticsQueryParamInterval$outboundSchema
-    .optional(),
-  start: z.string().optional(),
-  end: z.string().optional(),
-  timezone: z.string().default("UTC"),
-  query: z.string().optional(),
-  groupBy: RetrievePartnerAnalyticsQueryParamGroupBy$outboundSchema.default(
-    "count",
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    partnerId: z.nullable(z.string()).optional(),
+    tenantId: z.nullable(z.string()).optional(),
+    interval: RetrievePartnerAnalyticsQueryParamInterval$outboundSchema
+      .optional(),
+    start: z.string().optional(),
+    end: z.string().optional(),
+    timezone: z.string().default("UTC"),
+    query: z.string().optional(),
+    groupBy: RetrievePartnerAnalyticsQueryParamGroupBy$outboundSchema.default(
+      "count",
+    ),
+  })
+);
 
 export function retrievePartnerAnalyticsRequestToJSON(
   retrievePartnerAnalyticsRequest: RetrievePartnerAnalyticsRequest,
@@ -144,11 +150,13 @@ export const RetrievePartnerAnalyticsResponseBody$inboundSchema: z.ZodType<
   RetrievePartnerAnalyticsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  components.PartnerAnalyticsCount$inboundSchema,
-  z.array(components.PartnerAnalyticsTimeseries$inboundSchema),
-  z.array(components.PartnerAnalyticsTopLinks$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    components.PartnerAnalyticsCount$inboundSchema,
+    z.array(components.PartnerAnalyticsTimeseries$inboundSchema),
+    z.array(components.PartnerAnalyticsTopLinks$inboundSchema),
+  ])
+);
 
 export function retrievePartnerAnalyticsResponseBodyFromJSON(
   jsonString: string,

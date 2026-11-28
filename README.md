@@ -68,6 +68,26 @@ yarn add dub
 ## Requirements
 
 For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
+
+### Lazy operation loading in Node.js
+
+The `/node` entry point and its lazy SDK classes are generated for every SDK. No `gen.yaml` flag is needed; Node.js applications opt in to loading operation functions on first use by changing their import:
+
+```typescript
+import { Dub } from "dub/node";
+
+const sdk = new Dub();
+```
+
+The `/node` entry point keeps the same method signatures, pagination behaviour, and response helpers. Operation modules load through dynamic imports when a method is called. Models and error classes are shared with the standard entry points, rather than bundled into separate copies.
+
+The standard package entry point and SDK subpaths retain their static imports. Keep using those entry points in browser bundles, including IIFE and UMD builds, to avoid dynamic-import chunks. Custom root exports may still load additional modules.
+
+The Node SDK classes live in `src/sdk/*.lazy.ts`. Custom code regions in the standard SDK classes are not copied to these classes; apply any required customisations to their separate regions. Accept-header enums have the same values, but their enum objects are specific to each entry point.
+
+Generated model schemas are constructed synchronously and cached on first use with either entry point. Importing a model does not construct its schema; parsing or inspecting a schema does. This does not require changing the configured Zod version.
+
+`Object.freeze`, `Object.seal`, and `Object.preventExtensions` construct the schema and apply to the cached Zod object. Zod's own restrictions on frozen schemas still apply, including methods that install properties on first access.
 <!-- End Requirements [requirements] -->
 
 <!-- Start SDK Example Usage [usage] -->
@@ -185,6 +205,11 @@ run();
 * [updateMany](docs/sdks/links/README.md#updatemany) - Bulk update links
 * [upsert](docs/sdks/links/README.md#upsert) - Upsert a link
 
+### [Messages](docs/sdks/messages/README.md)
+
+* [list](docs/sdks/messages/README.md#list) - List all messages
+* [create](docs/sdks/messages/README.md#create) - Send a message to a partner
+
 ### [Partners](docs/sdks/partners/README.md)
 
 * [list](docs/sdks/partners/README.md#list) - List all partners
@@ -192,9 +217,12 @@ run();
 * [retrieveLinks](docs/sdks/partners/README.md#retrievelinks) - Retrieve a partner's links.
 * [createLink](docs/sdks/partners/README.md#createlink) - Create a link for a partner
 * [upsertLink](docs/sdks/partners/README.md#upsertlink) - Upsert a link for a partner
+* [listNetwork](docs/sdks/partners/README.md#listnetwork) - List all partners in the network
 * [analytics](docs/sdks/partners/README.md#analytics) - Retrieve analytics for a partner
 * [ban](docs/sdks/partners/README.md#ban) - Ban a partner
 * [deactivate](docs/sdks/partners/README.md#deactivate) - Deactivate a partner
+* [updateTags](docs/sdks/partners/README.md#updatetags) - Update the tags of partners
+* [updateGroup](docs/sdks/partners/README.md#updategroup) - Update the group of partners
 
 ### [Payouts](docs/sdks/payouts/README.md)
 
@@ -569,13 +597,18 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`linksUpdate`](docs/sdks/links/README.md#update) - Update a link
 - [`linksUpdateMany`](docs/sdks/links/README.md#updatemany) - Bulk update links
 - [`linksUpsert`](docs/sdks/links/README.md#upsert) - Upsert a link
+- [`messagesCreate`](docs/sdks/messages/README.md#create) - Send a message to a partner
+- [`messagesList`](docs/sdks/messages/README.md#list) - List all messages
 - [`partnersAnalytics`](docs/sdks/partners/README.md#analytics) - Retrieve analytics for a partner
 - [`partnersBan`](docs/sdks/partners/README.md#ban) - Ban a partner
 - [`partnersCreate`](docs/sdks/partners/README.md#create) - Create or update a partner
 - [`partnersCreateLink`](docs/sdks/partners/README.md#createlink) - Create a link for a partner
 - [`partnersDeactivate`](docs/sdks/partners/README.md#deactivate) - Deactivate a partner
 - [`partnersList`](docs/sdks/partners/README.md#list) - List all partners
+- [`partnersListNetwork`](docs/sdks/partners/README.md#listnetwork) - List all partners in the network
 - [`partnersRetrieveLinks`](docs/sdks/partners/README.md#retrievelinks) - Retrieve a partner's links.
+- [`partnersUpdateGroup`](docs/sdks/partners/README.md#updategroup) - Update the group of partners
+- [`partnersUpdateTags`](docs/sdks/partners/README.md#updatetags) - Update the tags of partners
 - [`partnersUpsertLink`](docs/sdks/partners/README.md#upsertlink) - Upsert a link for a partner
 - [`payoutsList`](docs/sdks/payouts/README.md#list) - List all payouts
 - [`programApplicationsApprove`](docs/sdks/programapplications/README.md#approve) - Approve a partner application

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -55,28 +55,29 @@ export type FolderSchema = {
 };
 
 /** @internal */
-export const Type$inboundSchema: z.ZodNativeEnum<typeof Type> = z.nativeEnum(
-  Type,
-);
+export const Type$inboundSchema: z.ZodNativeEnum<typeof Type> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Type));
 
 /** @internal */
-export const AccessLevel$inboundSchema: z.ZodNativeEnum<typeof AccessLevel> = z
-  .nativeEnum(AccessLevel);
+export const AccessLevel$inboundSchema: z.ZodNativeEnum<typeof AccessLevel> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(AccessLevel));
 
 /** @internal */
 export const FolderSchema$inboundSchema: z.ZodType<
   FolderSchema,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  description: z.nullable(z.string()),
-  type: Type$inboundSchema,
-  accessLevel: z.nullable(AccessLevel$inboundSchema.default("write")),
-  createdAt: z.string(),
-  updatedAt: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    name: z.string(),
+    description: z.nullable(z.string()),
+    type: Type$inboundSchema,
+    accessLevel: z.nullable(AccessLevel$inboundSchema.default("write")),
+    createdAt: z.string(),
+    updatedAt: z.string(),
+  })
+);
 
 export function folderSchemaFromJSON(
   jsonString: string,

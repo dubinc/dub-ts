@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type GetLinkInfoRequest = {
   domain?: string | undefined;
@@ -30,12 +31,14 @@ export const GetLinkInfoRequest$outboundSchema: z.ZodType<
   GetLinkInfoRequest$Outbound,
   z.ZodTypeDef,
   GetLinkInfoRequest
-> = z.object({
-  domain: z.string().optional(),
-  key: z.string().optional(),
-  linkId: z.string().optional(),
-  externalId: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: z.string().optional(),
+    key: z.string().optional(),
+    linkId: z.string().optional(),
+    externalId: z.string().optional(),
+  })
+);
 
 export function getLinkInfoRequestToJSON(
   getLinkInfoRequest: GetLinkInfoRequest,

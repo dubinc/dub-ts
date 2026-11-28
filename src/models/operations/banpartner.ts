@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -58,8 +58,8 @@ export type BanPartnerResponseBody = {
 };
 
 /** @internal */
-export const Reason$outboundSchema: z.ZodNativeEnum<typeof Reason> = z
-  .nativeEnum(Reason);
+export const Reason$outboundSchema: z.ZodNativeEnum<typeof Reason> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Reason));
 
 /** @internal */
 export type BanPartnerRequestBody$Outbound = {
@@ -75,13 +75,15 @@ export const BanPartnerRequestBody$outboundSchema: z.ZodType<
   BanPartnerRequestBody$Outbound,
   z.ZodTypeDef,
   BanPartnerRequestBody
-> = z.object({
-  partnerId: z.nullable(z.string()).optional(),
-  tenantId: z.nullable(z.string()).optional(),
-  reason: Reason$outboundSchema,
-  flagForFraud: z.boolean().optional(),
-  flagForFraudReason: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    partnerId: z.nullable(z.string()).optional(),
+    tenantId: z.nullable(z.string()).optional(),
+    reason: Reason$outboundSchema,
+    flagForFraud: z.boolean().optional(),
+    flagForFraudReason: z.string().optional(),
+  })
+);
 
 export function banPartnerRequestBodyToJSON(
   banPartnerRequestBody: BanPartnerRequestBody,
@@ -96,9 +98,11 @@ export const BanPartnerResponseBody$inboundSchema: z.ZodType<
   BanPartnerResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  partnerId: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    partnerId: z.string(),
+  })
+);
 
 export function banPartnerResponseBodyFromJSON(
   jsonString: string,

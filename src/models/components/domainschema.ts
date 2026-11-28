@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -97,13 +97,15 @@ export const RegisteredDomain$inboundSchema: z.ZodType<
   RegisteredDomain,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  autoRenewalDisabledAt: z.nullable(z.string()),
-  createdAt: z.string(),
-  expiresAt: z.string(),
-  renewalFee: z.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    autoRenewalDisabledAt: z.nullable(z.string()),
+    createdAt: z.string(),
+    expiresAt: z.string(),
+    renewalFee: z.number(),
+  })
+);
 
 export function registeredDomainFromJSON(
   jsonString: string,
@@ -120,22 +122,24 @@ export const DomainSchema$inboundSchema: z.ZodType<
   DomainSchema,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  slug: z.string(),
-  verified: z.boolean().default(false),
-  primary: z.boolean().default(false),
-  archived: z.boolean().default(false),
-  placeholder: z.nullable(z.string()),
-  expiredUrl: z.nullable(z.string()),
-  notFoundUrl: z.nullable(z.string()),
-  logo: z.nullable(z.string()),
-  assetLinks: z.nullable(z.string()).default(null),
-  appleAppSiteAssociation: z.nullable(z.string()).default(null),
-  createdAt: z.string(),
-  updatedAt: z.string(),
-  registeredDomain: z.nullable(z.lazy(() => RegisteredDomain$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    slug: z.string(),
+    verified: z.boolean().default(false),
+    primary: z.boolean().default(false),
+    archived: z.boolean().default(false),
+    placeholder: z.nullable(z.string()),
+    expiredUrl: z.nullable(z.string()),
+    notFoundUrl: z.nullable(z.string()),
+    logo: z.nullable(z.string()),
+    assetLinks: z.nullable(z.string()).default(null),
+    appleAppSiteAssociation: z.nullable(z.string()).default(null),
+    createdAt: z.string(),
+    updatedAt: z.string(),
+    registeredDomain: z.nullable(z.lazy(() => RegisteredDomain$inboundSchema)),
+  })
+);
 
 export function domainSchemaFromJSON(
   jsonString: string,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -83,7 +83,7 @@ export type PartnerMergedEvent = {
 /** @internal */
 export const PartnerMergedEventEvent$inboundSchema: z.ZodNativeEnum<
   typeof PartnerMergedEventEvent
-> = z.nativeEnum(PartnerMergedEventEvent);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(PartnerMergedEventEvent));
 /** @internal */
 export const PartnerMergedEventEvent$outboundSchema: z.ZodNativeEnum<
   typeof PartnerMergedEventEvent
@@ -94,11 +94,13 @@ export const SourcePartner$inboundSchema: z.ZodType<
   SourcePartner,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  tenantId: z.nullable(z.string()),
-  email: z.nullable(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    tenantId: z.nullable(z.string()),
+    email: z.nullable(z.string()),
+  })
+);
 /** @internal */
 export type SourcePartner$Outbound = {
   id: string;
@@ -111,11 +113,13 @@ export const SourcePartner$outboundSchema: z.ZodType<
   SourcePartner$Outbound,
   z.ZodTypeDef,
   SourcePartner
-> = z.object({
-  id: z.string(),
-  tenantId: z.nullable(z.string()),
-  email: z.nullable(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    tenantId: z.nullable(z.string()),
+    email: z.nullable(z.string()),
+  })
+);
 
 export function sourcePartnerToJSON(sourcePartner: SourcePartner): string {
   return JSON.stringify(SourcePartner$outboundSchema.parse(sourcePartner));
@@ -135,11 +139,13 @@ export const TargetPartner$inboundSchema: z.ZodType<
   TargetPartner,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  tenantId: z.nullable(z.string()),
-  email: z.nullable(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    tenantId: z.nullable(z.string()),
+    email: z.nullable(z.string()),
+  })
+);
 /** @internal */
 export type TargetPartner$Outbound = {
   id: string;
@@ -152,11 +158,13 @@ export const TargetPartner$outboundSchema: z.ZodType<
   TargetPartner$Outbound,
   z.ZodTypeDef,
   TargetPartner
-> = z.object({
-  id: z.string(),
-  tenantId: z.nullable(z.string()),
-  email: z.nullable(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    tenantId: z.nullable(z.string()),
+    email: z.nullable(z.string()),
+  })
+);
 
 export function targetPartnerToJSON(targetPartner: TargetPartner): string {
   return JSON.stringify(TargetPartner$outboundSchema.parse(targetPartner));
@@ -176,11 +184,13 @@ export const PartnerMergedEventData$inboundSchema: z.ZodType<
   PartnerMergedEventData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  sourcePartner: z.lazy(() => SourcePartner$inboundSchema),
-  targetPartner: z.lazy(() => TargetPartner$inboundSchema),
-  targetAlreadyEnrolled: z.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sourcePartner: z.lazy(() => SourcePartner$inboundSchema),
+    targetPartner: z.lazy(() => TargetPartner$inboundSchema),
+    targetAlreadyEnrolled: z.boolean(),
+  })
+);
 /** @internal */
 export type PartnerMergedEventData$Outbound = {
   sourcePartner: SourcePartner$Outbound;
@@ -193,11 +203,13 @@ export const PartnerMergedEventData$outboundSchema: z.ZodType<
   PartnerMergedEventData$Outbound,
   z.ZodTypeDef,
   PartnerMergedEventData
-> = z.object({
-  sourcePartner: z.lazy(() => SourcePartner$outboundSchema),
-  targetPartner: z.lazy(() => TargetPartner$outboundSchema),
-  targetAlreadyEnrolled: z.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sourcePartner: z.lazy(() => SourcePartner$outboundSchema),
+    targetPartner: z.lazy(() => TargetPartner$outboundSchema),
+    targetAlreadyEnrolled: z.boolean(),
+  })
+);
 
 export function partnerMergedEventDataToJSON(
   partnerMergedEventData: PartnerMergedEventData,
@@ -221,12 +233,14 @@ export const PartnerMergedEvent$inboundSchema: z.ZodType<
   PartnerMergedEvent,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  event: PartnerMergedEventEvent$inboundSchema,
-  createdAt: z.string(),
-  data: z.lazy(() => PartnerMergedEventData$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    event: PartnerMergedEventEvent$inboundSchema,
+    createdAt: z.string(),
+    data: z.lazy(() => PartnerMergedEventData$inboundSchema),
+  })
+);
 /** @internal */
 export type PartnerMergedEvent$Outbound = {
   id: string;
@@ -240,12 +254,14 @@ export const PartnerMergedEvent$outboundSchema: z.ZodType<
   PartnerMergedEvent$Outbound,
   z.ZodTypeDef,
   PartnerMergedEvent
-> = z.object({
-  id: z.string(),
-  event: PartnerMergedEventEvent$outboundSchema,
-  createdAt: z.string(),
-  data: z.lazy(() => PartnerMergedEventData$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    event: PartnerMergedEventEvent$outboundSchema,
+    createdAt: z.string(),
+    data: z.lazy(() => PartnerMergedEventData$outboundSchema),
+  })
+);
 
 export function partnerMergedEventToJSON(
   partnerMergedEvent: PartnerMergedEvent,

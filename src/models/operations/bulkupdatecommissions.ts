@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -68,7 +68,9 @@ export type BulkUpdateCommissionsResponseBody = {
 /** @internal */
 export const BulkUpdateCommissionsStatus$outboundSchema: z.ZodNativeEnum<
   typeof BulkUpdateCommissionsStatus
-> = z.nativeEnum(BulkUpdateCommissionsStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(BulkUpdateCommissionsStatus)
+);
 
 /** @internal */
 export type BulkUpdateCommissionsRequestBody$Outbound = {
@@ -81,10 +83,12 @@ export const BulkUpdateCommissionsRequestBody$outboundSchema: z.ZodType<
   BulkUpdateCommissionsRequestBody$Outbound,
   z.ZodTypeDef,
   BulkUpdateCommissionsRequestBody
-> = z.object({
-  commissionIds: z.array(z.string()),
-  status: BulkUpdateCommissionsStatus$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    commissionIds: z.array(z.string()),
+    status: BulkUpdateCommissionsStatus$outboundSchema,
+  })
+);
 
 export function bulkUpdateCommissionsRequestBodyToJSON(
   bulkUpdateCommissionsRequestBody: BulkUpdateCommissionsRequestBody,
@@ -98,19 +102,22 @@ export function bulkUpdateCommissionsRequestBodyToJSON(
 
 /** @internal */
 export const BulkUpdateCommissionsCommissionsStatus$inboundSchema:
-  z.ZodNativeEnum<typeof BulkUpdateCommissionsCommissionsStatus> = z.nativeEnum(
-    BulkUpdateCommissionsCommissionsStatus,
-  );
+  z.ZodNativeEnum<typeof BulkUpdateCommissionsCommissionsStatus> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(BulkUpdateCommissionsCommissionsStatus)
+    );
 
 /** @internal */
 export const BulkUpdateCommissionsResponseBody$inboundSchema: z.ZodType<
   BulkUpdateCommissionsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  status: BulkUpdateCommissionsCommissionsStatus$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    status: BulkUpdateCommissionsCommissionsStatus$inboundSchema,
+  })
+);
 
 export function bulkUpdateCommissionsResponseBodyFromJSON(
   jsonString: string,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -34,9 +34,11 @@ export const BulkDeleteLinksRequest$outboundSchema: z.ZodType<
   BulkDeleteLinksRequest$Outbound,
   z.ZodTypeDef,
   BulkDeleteLinksRequest
-> = z.object({
-  linkIds: z.array(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    linkIds: z.array(z.string()),
+  })
+);
 
 export function bulkDeleteLinksRequestToJSON(
   bulkDeleteLinksRequest: BulkDeleteLinksRequest,
@@ -51,9 +53,11 @@ export const BulkDeleteLinksResponseBody$inboundSchema: z.ZodType<
   BulkDeleteLinksResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  deletedCount: z.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    deletedCount: z.number(),
+  })
+);
 
 export function bulkDeleteLinksResponseBodyFromJSON(
   jsonString: string,

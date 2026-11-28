@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type ListDiscountCodesRequest = {
   /**
@@ -41,13 +42,15 @@ export const ListDiscountCodesRequest$outboundSchema: z.ZodType<
   ListDiscountCodesRequest$Outbound,
   z.ZodTypeDef,
   ListDiscountCodesRequest
-> = z.object({
-  partnerId: z.string().optional(),
-  discountId: z.string().optional(),
-  code: z.string().optional(),
-  page: z.number().int().optional(),
-  pageSize: z.number().int().default(100),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    partnerId: z.string().optional(),
+    discountId: z.string().optional(),
+    code: z.string().optional(),
+    page: z.number().int().optional(),
+    pageSize: z.number().int().default(100),
+  })
+);
 
 export function listDiscountCodesRequestToJSON(
   listDiscountCodesRequest: ListDiscountCodesRequest,

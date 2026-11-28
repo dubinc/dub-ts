@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -18,7 +18,7 @@ export type PartnerEnrolledEventEvent = ClosedEnum<
 /**
  * The partner's network status on Dub.
  */
-export const NetworkStatus = {
+export const PartnerEnrolledEventNetworkStatus = {
   Draft: "draft",
   Submitted: "submitted",
   Approved: "approved",
@@ -29,7 +29,9 @@ export const NetworkStatus = {
 /**
  * The partner's network status on Dub.
  */
-export type NetworkStatus = ClosedEnum<typeof NetworkStatus>;
+export type PartnerEnrolledEventNetworkStatus = ClosedEnum<
+  typeof PartnerEnrolledEventNetworkStatus
+>;
 
 /**
  * The partner's default payout method. Connect: Bank account payouts via Stripe Connect; Stablecoin: USDC payouts directly to a crypto wallet; PayPal: Payouts via PayPal
@@ -195,7 +197,7 @@ export type PartnerEnrolledEventData = {
   /**
    * The partner's network status on Dub.
    */
-  networkStatus: NetworkStatus;
+  networkStatus: PartnerEnrolledEventNetworkStatus;
   /**
    * The partner's default payout method. Connect: Bank account payouts via Stripe Connect; Stablecoin: USDC payouts directly to a crypto wallet; PayPal: Payouts via PayPal
    */
@@ -364,51 +366,55 @@ export type PartnerEnrolledEvent = {
 /** @internal */
 export const PartnerEnrolledEventEvent$inboundSchema: z.ZodNativeEnum<
   typeof PartnerEnrolledEventEvent
-> = z.nativeEnum(PartnerEnrolledEventEvent);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(PartnerEnrolledEventEvent));
 /** @internal */
 export const PartnerEnrolledEventEvent$outboundSchema: z.ZodNativeEnum<
   typeof PartnerEnrolledEventEvent
 > = PartnerEnrolledEventEvent$inboundSchema;
 
 /** @internal */
-export const NetworkStatus$inboundSchema: z.ZodNativeEnum<
-  typeof NetworkStatus
-> = z.nativeEnum(NetworkStatus);
+export const PartnerEnrolledEventNetworkStatus$inboundSchema: z.ZodNativeEnum<
+  typeof PartnerEnrolledEventNetworkStatus
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(PartnerEnrolledEventNetworkStatus)
+);
 /** @internal */
-export const NetworkStatus$outboundSchema: z.ZodNativeEnum<
-  typeof NetworkStatus
-> = NetworkStatus$inboundSchema;
+export const PartnerEnrolledEventNetworkStatus$outboundSchema: z.ZodNativeEnum<
+  typeof PartnerEnrolledEventNetworkStatus
+> = PartnerEnrolledEventNetworkStatus$inboundSchema;
 
 /** @internal */
 export const DefaultPayoutMethod$inboundSchema: z.ZodNativeEnum<
   typeof DefaultPayoutMethod
-> = z.nativeEnum(DefaultPayoutMethod);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(DefaultPayoutMethod));
 /** @internal */
 export const DefaultPayoutMethod$outboundSchema: z.ZodNativeEnum<
   typeof DefaultPayoutMethod
 > = DefaultPayoutMethod$inboundSchema;
 
 /** @internal */
-export const Status$inboundSchema: z.ZodNativeEnum<typeof Status> = z
-  .nativeEnum(Status);
+export const Status$inboundSchema: z.ZodNativeEnum<typeof Status> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Status));
 /** @internal */
 export const Status$outboundSchema: z.ZodNativeEnum<typeof Status> =
   Status$inboundSchema;
 
 /** @internal */
-export const Links$inboundSchema: z.ZodType<Links, z.ZodTypeDef, unknown> = z
-  .object({
-    id: z.string(),
-    domain: z.string(),
-    key: z.string(),
-    shortLink: z.string(),
-    url: z.string(),
-    clicks: z.number().default(0),
-    leads: z.number().default(0),
-    conversions: z.number().default(0),
-    sales: z.number().default(0),
-    saleAmount: z.number().default(0),
-  });
+export const Links$inboundSchema: z.ZodType<Links, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      domain: z.string(),
+      key: z.string(),
+      shortLink: z.string(),
+      url: z.string(),
+      clicks: z.number().default(0),
+      leads: z.number().default(0),
+      conversions: z.number().default(0),
+      sales: z.number().default(0),
+      saleAmount: z.number().default(0),
+    })
+  );
 /** @internal */
 export type Links$Outbound = {
   id: string;
@@ -428,18 +434,20 @@ export const Links$outboundSchema: z.ZodType<
   Links$Outbound,
   z.ZodTypeDef,
   Links
-> = z.object({
-  id: z.string(),
-  domain: z.string(),
-  key: z.string(),
-  shortLink: z.string(),
-  url: z.string(),
-  clicks: z.number().default(0),
-  leads: z.number().default(0),
-  conversions: z.number().default(0),
-  sales: z.number().default(0),
-  saleAmount: z.number().default(0),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    domain: z.string(),
+    key: z.string(),
+    shortLink: z.string(),
+    url: z.string(),
+    clicks: z.number().default(0),
+    leads: z.number().default(0),
+    conversions: z.number().default(0),
+    sales: z.number().default(0),
+    saleAmount: z.number().default(0),
+  })
+);
 
 export function linksToJSON(links: Links): string {
   return JSON.stringify(Links$outboundSchema.parse(links));
@@ -456,7 +464,7 @@ export function linksFromJSON(
 
 /** @internal */
 export const BannedReason$inboundSchema: z.ZodNativeEnum<typeof BannedReason> =
-  z.nativeEnum(BannedReason);
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(BannedReason));
 /** @internal */
 export const BannedReason$outboundSchema: z.ZodNativeEnum<typeof BannedReason> =
   BannedReason$inboundSchema;
@@ -464,7 +472,7 @@ export const BannedReason$outboundSchema: z.ZodNativeEnum<typeof BannedReason> =
 /** @internal */
 export const RejectionReason$inboundSchema: z.ZodNativeEnum<
   typeof RejectionReason
-> = z.nativeEnum(RejectionReason);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(RejectionReason));
 /** @internal */
 export const RejectionReason$outboundSchema: z.ZodNativeEnum<
   typeof RejectionReason
@@ -475,11 +483,13 @@ export const Application$inboundSchema: z.ZodType<
   Application,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  rejectionReason: z.nullable(RejectionReason$inboundSchema),
-  rejectionNote: z.nullable(z.string()),
-  reviewedAt: z.nullable(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    rejectionReason: z.nullable(RejectionReason$inboundSchema),
+    rejectionNote: z.nullable(z.string()),
+    reviewedAt: z.nullable(z.string()),
+  })
+);
 /** @internal */
 export type Application$Outbound = {
   rejectionReason: string | null;
@@ -492,11 +502,13 @@ export const Application$outboundSchema: z.ZodType<
   Application$Outbound,
   z.ZodTypeDef,
   Application
-> = z.object({
-  rejectionReason: z.nullable(RejectionReason$outboundSchema),
-  rejectionNote: z.nullable(z.string()),
-  reviewedAt: z.nullable(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    rejectionReason: z.nullable(RejectionReason$outboundSchema),
+    rejectionNote: z.nullable(z.string()),
+    reviewedAt: z.nullable(z.string()),
+  })
+);
 
 export function applicationToJSON(application: Application): string {
   return JSON.stringify(Application$outboundSchema.parse(application));
@@ -512,11 +524,13 @@ export function applicationFromJSON(
 }
 
 /** @internal */
-export const Tags$inboundSchema: z.ZodType<Tags, z.ZodTypeDef, unknown> = z
-  .object({
-    id: z.string(),
-    name: z.string(),
-  });
+export const Tags$inboundSchema: z.ZodType<Tags, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      name: z.string(),
+    })
+  );
 /** @internal */
 export type Tags$Outbound = {
   id: string;
@@ -525,10 +539,12 @@ export type Tags$Outbound = {
 
 /** @internal */
 export const Tags$outboundSchema: z.ZodType<Tags$Outbound, z.ZodTypeDef, Tags> =
-  z.object({
-    id: z.string(),
-    name: z.string(),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      name: z.string(),
+    })
+  );
 
 export function tagsToJSON(tags: Tags): string {
   return JSON.stringify(Tags$outboundSchema.parse(tags));
@@ -548,60 +564,62 @@ export const PartnerEnrolledEventData$inboundSchema: z.ZodType<
   PartnerEnrolledEventData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  username: z.nullable(z.string()),
-  email: z.nullable(z.string()),
-  image: z.nullable(z.string()),
-  description: z.nullable(z.string()).optional(),
-  country: z.nullable(z.string()),
-  companyName: z.nullable(z.string()),
-  networkStatus: NetworkStatus$inboundSchema,
-  defaultPayoutMethod: z.nullable(DefaultPayoutMethod$inboundSchema),
-  paypalEmail: z.nullable(z.string()),
-  stripeConnectId: z.nullable(z.string()),
-  payoutsEnabledAt: z.nullable(z.string()),
-  identityVerifiedAt: z.nullable(z.string()),
-  programId: z.string(),
-  groupId: z.nullable(z.string()).optional(),
-  partnerId: z.string(),
-  tenantId: z.nullable(z.string()),
-  createdAt: z.string(),
-  status: Status$inboundSchema,
-  links: z.nullable(z.array(z.lazy(() => Links$inboundSchema))),
-  totalCommissions: z.number().default(0),
-  clickRewardId: z.nullable(z.string()).optional(),
-  leadRewardId: z.nullable(z.string()).optional(),
-  saleRewardId: z.nullable(z.string()).optional(),
-  referralRewardId: z.nullable(z.string()).optional(),
-  customRewardId: z.nullable(z.string()).optional(),
-  discountId: z.nullable(z.string()).optional(),
-  applicationId: z.nullable(z.string()).optional(),
-  bannedAt: z.nullable(z.string()).optional(),
-  bannedReason: z.nullable(BannedReason$inboundSchema).optional(),
-  application: z.nullable(z.lazy(() => Application$inboundSchema)).optional(),
-  tags: z.array(z.lazy(() => Tags$inboundSchema)).optional(),
-  totalClicks: z.number().default(0),
-  totalLeads: z.number().default(0),
-  totalConversions: z.number().default(0),
-  totalSales: z.number().default(0),
-  totalSaleAmount: z.number().default(0),
-  netRevenue: z.number().default(0),
-  earningsPerClick: z.nullable(z.number()).optional(),
-  averageLifetimeValue: z.nullable(z.number()).optional(),
-  clickToLeadRate: z.nullable(z.number()).optional(),
-  clickToConversionRate: z.nullable(z.number()).optional(),
-  leadToConversionRate: z.nullable(z.number()).optional(),
-  returnOnAdSpend: z.nullable(z.number()).optional(),
-  website: z.nullable(z.string()).optional(),
-  youtube: z.nullable(z.string()).optional(),
-  twitter: z.nullable(z.string()).optional(),
-  linkedin: z.nullable(z.string()).optional(),
-  instagram: z.nullable(z.string()).optional(),
-  tiktok: z.nullable(z.string()).optional(),
-  trustedAt: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    name: z.string(),
+    username: z.nullable(z.string()),
+    email: z.nullable(z.string()),
+    image: z.nullable(z.string()),
+    description: z.nullable(z.string()).optional(),
+    country: z.nullable(z.string()),
+    companyName: z.nullable(z.string()),
+    networkStatus: PartnerEnrolledEventNetworkStatus$inboundSchema,
+    defaultPayoutMethod: z.nullable(DefaultPayoutMethod$inboundSchema),
+    paypalEmail: z.nullable(z.string()),
+    stripeConnectId: z.nullable(z.string()),
+    payoutsEnabledAt: z.nullable(z.string()),
+    identityVerifiedAt: z.nullable(z.string()),
+    programId: z.string(),
+    groupId: z.nullable(z.string()).optional(),
+    partnerId: z.string(),
+    tenantId: z.nullable(z.string()),
+    createdAt: z.string(),
+    status: Status$inboundSchema,
+    links: z.nullable(z.array(z.lazy(() => Links$inboundSchema))),
+    totalCommissions: z.number().default(0),
+    clickRewardId: z.nullable(z.string()).optional(),
+    leadRewardId: z.nullable(z.string()).optional(),
+    saleRewardId: z.nullable(z.string()).optional(),
+    referralRewardId: z.nullable(z.string()).optional(),
+    customRewardId: z.nullable(z.string()).optional(),
+    discountId: z.nullable(z.string()).optional(),
+    applicationId: z.nullable(z.string()).optional(),
+    bannedAt: z.nullable(z.string()).optional(),
+    bannedReason: z.nullable(BannedReason$inboundSchema).optional(),
+    application: z.nullable(z.lazy(() => Application$inboundSchema)).optional(),
+    tags: z.array(z.lazy(() => Tags$inboundSchema)).optional(),
+    totalClicks: z.number().default(0),
+    totalLeads: z.number().default(0),
+    totalConversions: z.number().default(0),
+    totalSales: z.number().default(0),
+    totalSaleAmount: z.number().default(0),
+    netRevenue: z.number().default(0),
+    earningsPerClick: z.nullable(z.number()).optional(),
+    averageLifetimeValue: z.nullable(z.number()).optional(),
+    clickToLeadRate: z.nullable(z.number()).optional(),
+    clickToConversionRate: z.nullable(z.number()).optional(),
+    leadToConversionRate: z.nullable(z.number()).optional(),
+    returnOnAdSpend: z.nullable(z.number()).optional(),
+    website: z.nullable(z.string()).optional(),
+    youtube: z.nullable(z.string()).optional(),
+    twitter: z.nullable(z.string()).optional(),
+    linkedin: z.nullable(z.string()).optional(),
+    instagram: z.nullable(z.string()).optional(),
+    tiktok: z.nullable(z.string()).optional(),
+    trustedAt: z.nullable(z.string()).optional(),
+  })
+);
 /** @internal */
 export type PartnerEnrolledEventData$Outbound = {
   id: string;
@@ -663,60 +681,63 @@ export const PartnerEnrolledEventData$outboundSchema: z.ZodType<
   PartnerEnrolledEventData$Outbound,
   z.ZodTypeDef,
   PartnerEnrolledEventData
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  username: z.nullable(z.string()),
-  email: z.nullable(z.string()),
-  image: z.nullable(z.string()),
-  description: z.nullable(z.string()).optional(),
-  country: z.nullable(z.string()),
-  companyName: z.nullable(z.string()),
-  networkStatus: NetworkStatus$outboundSchema,
-  defaultPayoutMethod: z.nullable(DefaultPayoutMethod$outboundSchema),
-  paypalEmail: z.nullable(z.string()),
-  stripeConnectId: z.nullable(z.string()),
-  payoutsEnabledAt: z.nullable(z.string()),
-  identityVerifiedAt: z.nullable(z.string()),
-  programId: z.string(),
-  groupId: z.nullable(z.string()).optional(),
-  partnerId: z.string(),
-  tenantId: z.nullable(z.string()),
-  createdAt: z.string(),
-  status: Status$outboundSchema,
-  links: z.nullable(z.array(z.lazy(() => Links$outboundSchema))),
-  totalCommissions: z.number().default(0),
-  clickRewardId: z.nullable(z.string()).optional(),
-  leadRewardId: z.nullable(z.string()).optional(),
-  saleRewardId: z.nullable(z.string()).optional(),
-  referralRewardId: z.nullable(z.string()).optional(),
-  customRewardId: z.nullable(z.string()).optional(),
-  discountId: z.nullable(z.string()).optional(),
-  applicationId: z.nullable(z.string()).optional(),
-  bannedAt: z.nullable(z.string()).optional(),
-  bannedReason: z.nullable(BannedReason$outboundSchema).optional(),
-  application: z.nullable(z.lazy(() => Application$outboundSchema)).optional(),
-  tags: z.array(z.lazy(() => Tags$outboundSchema)).optional(),
-  totalClicks: z.number().default(0),
-  totalLeads: z.number().default(0),
-  totalConversions: z.number().default(0),
-  totalSales: z.number().default(0),
-  totalSaleAmount: z.number().default(0),
-  netRevenue: z.number().default(0),
-  earningsPerClick: z.nullable(z.number()).optional(),
-  averageLifetimeValue: z.nullable(z.number()).optional(),
-  clickToLeadRate: z.nullable(z.number()).optional(),
-  clickToConversionRate: z.nullable(z.number()).optional(),
-  leadToConversionRate: z.nullable(z.number()).optional(),
-  returnOnAdSpend: z.nullable(z.number()).optional(),
-  website: z.nullable(z.string()).optional(),
-  youtube: z.nullable(z.string()).optional(),
-  twitter: z.nullable(z.string()).optional(),
-  linkedin: z.nullable(z.string()).optional(),
-  instagram: z.nullable(z.string()).optional(),
-  tiktok: z.nullable(z.string()).optional(),
-  trustedAt: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    name: z.string(),
+    username: z.nullable(z.string()),
+    email: z.nullable(z.string()),
+    image: z.nullable(z.string()),
+    description: z.nullable(z.string()).optional(),
+    country: z.nullable(z.string()),
+    companyName: z.nullable(z.string()),
+    networkStatus: PartnerEnrolledEventNetworkStatus$outboundSchema,
+    defaultPayoutMethod: z.nullable(DefaultPayoutMethod$outboundSchema),
+    paypalEmail: z.nullable(z.string()),
+    stripeConnectId: z.nullable(z.string()),
+    payoutsEnabledAt: z.nullable(z.string()),
+    identityVerifiedAt: z.nullable(z.string()),
+    programId: z.string(),
+    groupId: z.nullable(z.string()).optional(),
+    partnerId: z.string(),
+    tenantId: z.nullable(z.string()),
+    createdAt: z.string(),
+    status: Status$outboundSchema,
+    links: z.nullable(z.array(z.lazy(() => Links$outboundSchema))),
+    totalCommissions: z.number().default(0),
+    clickRewardId: z.nullable(z.string()).optional(),
+    leadRewardId: z.nullable(z.string()).optional(),
+    saleRewardId: z.nullable(z.string()).optional(),
+    referralRewardId: z.nullable(z.string()).optional(),
+    customRewardId: z.nullable(z.string()).optional(),
+    discountId: z.nullable(z.string()).optional(),
+    applicationId: z.nullable(z.string()).optional(),
+    bannedAt: z.nullable(z.string()).optional(),
+    bannedReason: z.nullable(BannedReason$outboundSchema).optional(),
+    application: z.nullable(z.lazy(() => Application$outboundSchema))
+      .optional(),
+    tags: z.array(z.lazy(() => Tags$outboundSchema)).optional(),
+    totalClicks: z.number().default(0),
+    totalLeads: z.number().default(0),
+    totalConversions: z.number().default(0),
+    totalSales: z.number().default(0),
+    totalSaleAmount: z.number().default(0),
+    netRevenue: z.number().default(0),
+    earningsPerClick: z.nullable(z.number()).optional(),
+    averageLifetimeValue: z.nullable(z.number()).optional(),
+    clickToLeadRate: z.nullable(z.number()).optional(),
+    clickToConversionRate: z.nullable(z.number()).optional(),
+    leadToConversionRate: z.nullable(z.number()).optional(),
+    returnOnAdSpend: z.nullable(z.number()).optional(),
+    website: z.nullable(z.string()).optional(),
+    youtube: z.nullable(z.string()).optional(),
+    twitter: z.nullable(z.string()).optional(),
+    linkedin: z.nullable(z.string()).optional(),
+    instagram: z.nullable(z.string()).optional(),
+    tiktok: z.nullable(z.string()).optional(),
+    trustedAt: z.nullable(z.string()).optional(),
+  })
+);
 
 export function partnerEnrolledEventDataToJSON(
   partnerEnrolledEventData: PartnerEnrolledEventData,
@@ -740,12 +761,14 @@ export const PartnerEnrolledEvent$inboundSchema: z.ZodType<
   PartnerEnrolledEvent,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  event: PartnerEnrolledEventEvent$inboundSchema,
-  createdAt: z.string(),
-  data: z.lazy(() => PartnerEnrolledEventData$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    event: PartnerEnrolledEventEvent$inboundSchema,
+    createdAt: z.string(),
+    data: z.lazy(() => PartnerEnrolledEventData$inboundSchema),
+  })
+);
 /** @internal */
 export type PartnerEnrolledEvent$Outbound = {
   id: string;
@@ -759,12 +782,14 @@ export const PartnerEnrolledEvent$outboundSchema: z.ZodType<
   PartnerEnrolledEvent$Outbound,
   z.ZodTypeDef,
   PartnerEnrolledEvent
-> = z.object({
-  id: z.string(),
-  event: PartnerEnrolledEventEvent$outboundSchema,
-  createdAt: z.string(),
-  data: z.lazy(() => PartnerEnrolledEventData$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    event: PartnerEnrolledEventEvent$outboundSchema,
+    createdAt: z.string(),
+    data: z.lazy(() => PartnerEnrolledEventData$outboundSchema),
+  })
+);
 
 export function partnerEnrolledEventToJSON(
   partnerEnrolledEvent: PartnerEnrolledEvent,

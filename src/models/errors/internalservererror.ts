@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { DubError } from "./duberror.js";
@@ -71,22 +71,24 @@ export class InternalServerError extends DubError {
 /** @internal */
 export const InternalServerErrorCode$inboundSchema: z.ZodNativeEnum<
   typeof InternalServerErrorCode
-> = z.nativeEnum(InternalServerErrorCode);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(InternalServerErrorCode));
 
 /** @internal */
 export const InternalServerErrorError$inboundSchema: z.ZodType<
   InternalServerErrorError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: InternalServerErrorCode$inboundSchema,
-  message: z.string(),
-  doc_url: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "doc_url": "docUrl",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: InternalServerErrorCode$inboundSchema,
+    message: z.string(),
+    doc_url: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "doc_url": "docUrl",
+    });
+  })
+);
 
 export function internalServerErrorErrorFromJSON(
   jsonString: string,
@@ -103,16 +105,20 @@ export const InternalServerError$inboundSchema: z.ZodType<
   InternalServerError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  error: z.lazy(() => InternalServerErrorError$inboundSchema),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new InternalServerError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    error: z.lazy(() => InternalServerErrorError$inboundSchema),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      const { request$, response$, body$, ...data } = v;
+
+      return new InternalServerError(data, {
+        request: request$,
+        response: response$,
+        body: body$,
+      });
+    })
+);

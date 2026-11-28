@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -194,20 +194,24 @@ export type ListBountySubmissionsResponseBody = {
 
 /** @internal */
 export const ListBountySubmissionsQueryParamStatus$outboundSchema:
-  z.ZodNativeEnum<typeof ListBountySubmissionsQueryParamStatus> = z.nativeEnum(
-    ListBountySubmissionsQueryParamStatus,
-  );
+  z.ZodNativeEnum<typeof ListBountySubmissionsQueryParamStatus> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(ListBountySubmissionsQueryParamStatus)
+    );
 
 /** @internal */
 export const ListBountySubmissionsQueryParamSortBy$outboundSchema:
-  z.ZodNativeEnum<typeof ListBountySubmissionsQueryParamSortBy> = z.nativeEnum(
-    ListBountySubmissionsQueryParamSortBy,
-  );
+  z.ZodNativeEnum<typeof ListBountySubmissionsQueryParamSortBy> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(ListBountySubmissionsQueryParamSortBy)
+    );
 
 /** @internal */
 export const ListBountySubmissionsQueryParamSortOrder$outboundSchema:
-  z.ZodNativeEnum<typeof ListBountySubmissionsQueryParamSortOrder> = z
-    .nativeEnum(ListBountySubmissionsQueryParamSortOrder);
+  z.ZodNativeEnum<typeof ListBountySubmissionsQueryParamSortOrder> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(ListBountySubmissionsQueryParamSortOrder)
+    );
 
 /** @internal */
 export type ListBountySubmissionsRequest$Outbound = {
@@ -226,20 +230,22 @@ export const ListBountySubmissionsRequest$outboundSchema: z.ZodType<
   ListBountySubmissionsRequest$Outbound,
   z.ZodTypeDef,
   ListBountySubmissionsRequest
-> = z.object({
-  bountyId: z.string(),
-  status: ListBountySubmissionsQueryParamStatus$outboundSchema.optional(),
-  groupId: z.string().optional(),
-  partnerId: z.string().optional(),
-  sortBy: ListBountySubmissionsQueryParamSortBy$outboundSchema.default(
-    "completedAt",
-  ),
-  sortOrder: ListBountySubmissionsQueryParamSortOrder$outboundSchema.default(
-    "asc",
-  ),
-  page: z.number().int().optional(),
-  pageSize: z.number().int().default(100),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    bountyId: z.string(),
+    status: ListBountySubmissionsQueryParamStatus$outboundSchema.optional(),
+    groupId: z.string().optional(),
+    partnerId: z.string().optional(),
+    sortBy: ListBountySubmissionsQueryParamSortBy$outboundSchema.default(
+      "completedAt",
+    ),
+    sortOrder: ListBountySubmissionsQueryParamSortOrder$outboundSchema.default(
+      "asc",
+    ),
+    page: z.number().int().optional(),
+    pageSize: z.number().int().default(100),
+  })
+);
 
 export function listBountySubmissionsRequestToJSON(
   listBountySubmissionsRequest: ListBountySubmissionsRequest,
@@ -252,12 +258,14 @@ export function listBountySubmissionsRequestToJSON(
 }
 
 /** @internal */
-export const Files$inboundSchema: z.ZodType<Files, z.ZodTypeDef, unknown> = z
-  .object({
-    url: z.string(),
-    fileName: z.string(),
-    size: z.number(),
-  });
+export const Files$inboundSchema: z.ZodType<Files, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      url: z.string(),
+      fileName: z.string(),
+      size: z.number(),
+    })
+  );
 
 export function filesFromJSON(
   jsonString: string,
@@ -272,32 +280,36 @@ export function filesFromJSON(
 /** @internal */
 export const ListBountySubmissionsStatus$inboundSchema: z.ZodNativeEnum<
   typeof ListBountySubmissionsStatus
-> = z.nativeEnum(ListBountySubmissionsStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ListBountySubmissionsStatus)
+);
 
 /** @internal */
 export const ListBountySubmissionsResponseBody$inboundSchema: z.ZodType<
   ListBountySubmissionsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  bountyId: z.string(),
-  partnerId: z.string(),
-  description: z.nullable(z.string()),
-  urls: z.nullable(z.array(z.string())),
-  files: z.nullable(z.array(z.lazy(() => Files$inboundSchema))),
-  status: ListBountySubmissionsStatus$inboundSchema,
-  performanceCount: z.nullable(z.number()),
-  socialMetricCount: z.nullable(z.number().int()),
-  socialMetricsLastSyncedAt: z.nullable(z.string()).optional(),
-  approvedSocialMetricThreshold: z.nullable(z.number().int()).optional(),
-  createdAt: z.string(),
-  completedAt: z.nullable(z.string()),
-  reviewedAt: z.nullable(z.string()),
-  rejectionReason: z.nullable(z.string()),
-  rejectionNote: z.nullable(z.string()),
-  periodNumber: z.number().int(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    bountyId: z.string(),
+    partnerId: z.string(),
+    description: z.nullable(z.string()),
+    urls: z.nullable(z.array(z.string())),
+    files: z.nullable(z.array(z.lazy(() => Files$inboundSchema))),
+    status: ListBountySubmissionsStatus$inboundSchema,
+    performanceCount: z.nullable(z.number()),
+    socialMetricCount: z.nullable(z.number().int()),
+    socialMetricsLastSyncedAt: z.nullable(z.string()).optional(),
+    approvedSocialMetricThreshold: z.nullable(z.number().int()).optional(),
+    createdAt: z.string(),
+    completedAt: z.nullable(z.string()),
+    reviewedAt: z.nullable(z.string()),
+    rejectionReason: z.nullable(z.string()),
+    rejectionNote: z.nullable(z.string()),
+    periodNumber: z.number().int(),
+  })
+);
 
 export function listBountySubmissionsResponseBodyFromJSON(
   jsonString: string,

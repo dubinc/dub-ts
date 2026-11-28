@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type UpdateDomainRequestBody = {
   /**
@@ -65,16 +66,18 @@ export const UpdateDomainRequestBody$outboundSchema: z.ZodType<
   UpdateDomainRequestBody$Outbound,
   z.ZodTypeDef,
   UpdateDomainRequestBody
-> = z.object({
-  slug: z.string().optional(),
-  expiredUrl: z.nullable(z.string()).optional(),
-  notFoundUrl: z.nullable(z.string()).optional(),
-  archived: z.boolean().default(false),
-  placeholder: z.nullable(z.string()).optional(),
-  logo: z.nullable(z.string()).optional(),
-  assetLinks: z.nullable(z.string()).optional(),
-  appleAppSiteAssociation: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    slug: z.string().optional(),
+    expiredUrl: z.nullable(z.string()).optional(),
+    notFoundUrl: z.nullable(z.string()).optional(),
+    archived: z.boolean().default(false),
+    placeholder: z.nullable(z.string()).optional(),
+    logo: z.nullable(z.string()).optional(),
+    assetLinks: z.nullable(z.string()).optional(),
+    appleAppSiteAssociation: z.nullable(z.string()).optional(),
+  })
+);
 
 export function updateDomainRequestBodyToJSON(
   updateDomainRequestBody: UpdateDomainRequestBody,
@@ -95,14 +98,17 @@ export const UpdateDomainRequest$outboundSchema: z.ZodType<
   UpdateDomainRequest$Outbound,
   z.ZodTypeDef,
   UpdateDomainRequest
-> = z.object({
-  slug: z.string(),
-  requestBody: z.lazy(() => UpdateDomainRequestBody$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    slug: z.string(),
+    requestBody: z.lazy(() => UpdateDomainRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function updateDomainRequestToJSON(
   updateDomainRequest: UpdateDomainRequest,

@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
@@ -52,7 +53,7 @@ export type UpdateTagRequest = {
 /** @internal */
 export const UpdateTagColor$outboundSchema: z.ZodNativeEnum<
   typeof UpdateTagColor
-> = z.nativeEnum(UpdateTagColor);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UpdateTagColor));
 
 /** @internal */
 export type UpdateTagRequestBody$Outbound = {
@@ -66,11 +67,13 @@ export const UpdateTagRequestBody$outboundSchema: z.ZodType<
   UpdateTagRequestBody$Outbound,
   z.ZodTypeDef,
   UpdateTagRequestBody
-> = z.object({
-  name: z.string().optional(),
-  color: UpdateTagColor$outboundSchema.optional(),
-  tag: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    color: UpdateTagColor$outboundSchema.optional(),
+    tag: z.string().optional(),
+  })
+);
 
 export function updateTagRequestBodyToJSON(
   updateTagRequestBody: UpdateTagRequestBody,
@@ -91,14 +94,16 @@ export const UpdateTagRequest$outboundSchema: z.ZodType<
   UpdateTagRequest$Outbound,
   z.ZodTypeDef,
   UpdateTagRequest
-> = z.object({
-  id: z.string(),
-  requestBody: z.lazy(() => UpdateTagRequestBody$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    requestBody: z.lazy(() => UpdateTagRequestBody$outboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function updateTagRequestToJSON(
   updateTagRequest: UpdateTagRequest,

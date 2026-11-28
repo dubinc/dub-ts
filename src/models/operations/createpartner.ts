@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -519,7 +519,9 @@ export const CreatePartnerTagIds$outboundSchema: z.ZodType<
   CreatePartnerTagIds$Outbound,
   z.ZodTypeDef,
   CreatePartnerTagIds
-> = z.union([z.string(), z.array(z.string())]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([z.string(), z.array(z.string())])
+);
 
 export function createPartnerTagIdsToJSON(
   createPartnerTagIds: CreatePartnerTagIds,
@@ -537,7 +539,9 @@ export const CreatePartnerTagNames$outboundSchema: z.ZodType<
   CreatePartnerTagNames$Outbound,
   z.ZodTypeDef,
   CreatePartnerTagNames
-> = z.union([z.string(), z.array(z.string())]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([z.string(), z.array(z.string())])
+);
 
 export function createPartnerTagNamesToJSON(
   createPartnerTagNames: CreatePartnerTagNames,
@@ -558,10 +562,12 @@ export const CreatePartnerTestVariants$outboundSchema: z.ZodType<
   CreatePartnerTestVariants$Outbound,
   z.ZodTypeDef,
   CreatePartnerTestVariants
-> = z.object({
-  url: z.string(),
-  percentage: z.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    url: z.string(),
+    percentage: z.number(),
+  })
+);
 
 export function createPartnerTestVariantsToJSON(
   createPartnerTestVariants: CreatePartnerTestVariants,
@@ -602,32 +608,34 @@ export const LinkProps$outboundSchema: z.ZodType<
   LinkProps$Outbound,
   z.ZodTypeDef,
   LinkProps
-> = z.object({
-  externalId: z.nullable(z.string()).optional(),
-  tenantId: z.nullable(z.string()).optional(),
-  prefix: z.string().optional(),
-  archived: z.boolean().optional(),
-  tagIds: z.union([z.string(), z.array(z.string())]).optional(),
-  tagNames: z.union([z.string(), z.array(z.string())]).optional(),
-  comments: z.nullable(z.string()).optional(),
-  expiresAt: z.nullable(z.string()).optional(),
-  expiredUrl: z.nullable(z.string()).optional(),
-  password: z.nullable(z.string()).optional(),
-  proxy: z.boolean().optional(),
-  title: z.nullable(z.string()).optional(),
-  description: z.nullable(z.string()).optional(),
-  image: z.nullable(z.string()).optional(),
-  video: z.nullable(z.string()).optional(),
-  rewrite: z.boolean().optional(),
-  ios: z.nullable(z.string()).optional(),
-  android: z.nullable(z.string()).optional(),
-  doIndex: z.boolean().optional(),
-  testVariants: z.nullable(
-    z.array(z.lazy(() => CreatePartnerTestVariants$outboundSchema)),
-  ).optional(),
-  testStartedAt: z.nullable(z.string()).optional(),
-  testCompletedAt: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    externalId: z.nullable(z.string()).optional(),
+    tenantId: z.nullable(z.string()).optional(),
+    prefix: z.string().optional(),
+    archived: z.boolean().optional(),
+    tagIds: z.union([z.string(), z.array(z.string())]).optional(),
+    tagNames: z.union([z.string(), z.array(z.string())]).optional(),
+    comments: z.nullable(z.string()).optional(),
+    expiresAt: z.nullable(z.string()).optional(),
+    expiredUrl: z.nullable(z.string()).optional(),
+    password: z.nullable(z.string()).optional(),
+    proxy: z.boolean().optional(),
+    title: z.nullable(z.string()).optional(),
+    description: z.nullable(z.string()).optional(),
+    image: z.nullable(z.string()).optional(),
+    video: z.nullable(z.string()).optional(),
+    rewrite: z.boolean().optional(),
+    ios: z.nullable(z.string()).optional(),
+    android: z.nullable(z.string()).optional(),
+    doIndex: z.boolean().optional(),
+    testVariants: z.nullable(
+      z.array(z.lazy(() => CreatePartnerTestVariants$outboundSchema)),
+    ).optional(),
+    testStartedAt: z.nullable(z.string()).optional(),
+    testCompletedAt: z.nullable(z.string()).optional(),
+  })
+);
 
 export function linkPropsToJSON(linkProps: LinkProps): string {
   return JSON.stringify(LinkProps$outboundSchema.parse(linkProps));
@@ -653,19 +661,21 @@ export const CreatePartnerRequestBody$outboundSchema: z.ZodType<
   CreatePartnerRequestBody$Outbound,
   z.ZodTypeDef,
   CreatePartnerRequestBody
-> = z.object({
-  name: z.nullable(z.string()).optional(),
-  email: z.string(),
-  username: z.nullable(z.string()).optional(),
-  image: z.nullable(z.string()).optional(),
-  tenantId: z.string().optional(),
-  groupId: z.string().optional(),
-  tagIds: z.array(z.string()).optional(),
-  tagNames: z.array(z.string()).optional(),
-  country: z.nullable(z.string()).optional(),
-  description: z.nullable(z.string()).optional(),
-  linkProps: z.lazy(() => LinkProps$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.nullable(z.string()).optional(),
+    email: z.string(),
+    username: z.nullable(z.string()).optional(),
+    image: z.nullable(z.string()).optional(),
+    tenantId: z.string().optional(),
+    groupId: z.string().optional(),
+    tagIds: z.array(z.string()).optional(),
+    tagNames: z.array(z.string()).optional(),
+    country: z.nullable(z.string()).optional(),
+    description: z.nullable(z.string()).optional(),
+    linkProps: z.lazy(() => LinkProps$outboundSchema).optional(),
+  })
+);
 
 export function createPartnerRequestBodyToJSON(
   createPartnerRequestBody: CreatePartnerRequestBody,
@@ -678,35 +688,39 @@ export function createPartnerRequestBodyToJSON(
 /** @internal */
 export const CreatePartnerNetworkStatus$inboundSchema: z.ZodNativeEnum<
   typeof CreatePartnerNetworkStatus
-> = z.nativeEnum(CreatePartnerNetworkStatus);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(CreatePartnerNetworkStatus));
 
 /** @internal */
 export const CreatePartnerDefaultPayoutMethod$inboundSchema: z.ZodNativeEnum<
   typeof CreatePartnerDefaultPayoutMethod
-> = z.nativeEnum(CreatePartnerDefaultPayoutMethod);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(CreatePartnerDefaultPayoutMethod)
+);
 
 /** @internal */
 export const CreatePartnerStatus$inboundSchema: z.ZodNativeEnum<
   typeof CreatePartnerStatus
-> = z.nativeEnum(CreatePartnerStatus);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(CreatePartnerStatus));
 
 /** @internal */
 export const CreatePartnerLinks$inboundSchema: z.ZodType<
   CreatePartnerLinks,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  domain: z.string(),
-  key: z.string(),
-  shortLink: z.string(),
-  url: z.string(),
-  clicks: z.number().default(0),
-  leads: z.number().default(0),
-  conversions: z.number().default(0),
-  sales: z.number().default(0),
-  saleAmount: z.number().default(0),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    domain: z.string(),
+    key: z.string(),
+    shortLink: z.string(),
+    url: z.string(),
+    clicks: z.number().default(0),
+    leads: z.number().default(0),
+    conversions: z.number().default(0),
+    sales: z.number().default(0),
+    saleAmount: z.number().default(0),
+  })
+);
 
 export function createPartnerLinksFromJSON(
   jsonString: string,
@@ -721,23 +735,27 @@ export function createPartnerLinksFromJSON(
 /** @internal */
 export const CreatePartnerBannedReason$inboundSchema: z.ZodNativeEnum<
   typeof CreatePartnerBannedReason
-> = z.nativeEnum(CreatePartnerBannedReason);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(CreatePartnerBannedReason));
 
 /** @internal */
 export const CreatePartnerRejectionReason$inboundSchema: z.ZodNativeEnum<
   typeof CreatePartnerRejectionReason
-> = z.nativeEnum(CreatePartnerRejectionReason);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(CreatePartnerRejectionReason)
+);
 
 /** @internal */
 export const CreatePartnerApplication$inboundSchema: z.ZodType<
   CreatePartnerApplication,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  rejectionReason: z.nullable(CreatePartnerRejectionReason$inboundSchema),
-  rejectionNote: z.nullable(z.string()),
-  reviewedAt: z.nullable(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    rejectionReason: z.nullable(CreatePartnerRejectionReason$inboundSchema),
+    rejectionNote: z.nullable(z.string()),
+    reviewedAt: z.nullable(z.string()),
+  })
+);
 
 export function createPartnerApplicationFromJSON(
   jsonString: string,
@@ -754,10 +772,12 @@ export const CreatePartnerTags$inboundSchema: z.ZodType<
   CreatePartnerTags,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    name: z.string(),
+  })
+);
 
 export function createPartnerTagsFromJSON(
   jsonString: string,
@@ -774,63 +794,67 @@ export const CreatePartnerResponseBody$inboundSchema: z.ZodType<
   CreatePartnerResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  username: z.nullable(z.string()),
-  email: z.nullable(z.string()),
-  image: z.nullable(z.string()),
-  description: z.nullable(z.string()).optional(),
-  country: z.nullable(z.string()),
-  companyName: z.nullable(z.string()),
-  networkStatus: CreatePartnerNetworkStatus$inboundSchema,
-  defaultPayoutMethod: z.nullable(
-    CreatePartnerDefaultPayoutMethod$inboundSchema,
-  ),
-  paypalEmail: z.nullable(z.string()),
-  stripeConnectId: z.nullable(z.string()),
-  payoutsEnabledAt: z.nullable(z.string()),
-  identityVerifiedAt: z.nullable(z.string()),
-  programId: z.string(),
-  groupId: z.nullable(z.string()).optional(),
-  partnerId: z.string(),
-  tenantId: z.nullable(z.string()),
-  createdAt: z.string(),
-  status: CreatePartnerStatus$inboundSchema,
-  links: z.nullable(z.array(z.lazy(() => CreatePartnerLinks$inboundSchema))),
-  totalCommissions: z.number().default(0),
-  clickRewardId: z.nullable(z.string()).optional(),
-  leadRewardId: z.nullable(z.string()).optional(),
-  saleRewardId: z.nullable(z.string()).optional(),
-  referralRewardId: z.nullable(z.string()).optional(),
-  customRewardId: z.nullable(z.string()).optional(),
-  discountId: z.nullable(z.string()).optional(),
-  applicationId: z.nullable(z.string()).optional(),
-  bannedAt: z.nullable(z.string()).optional(),
-  bannedReason: z.nullable(CreatePartnerBannedReason$inboundSchema).optional(),
-  application: z.nullable(z.lazy(() => CreatePartnerApplication$inboundSchema))
-    .optional(),
-  tags: z.array(z.lazy(() => CreatePartnerTags$inboundSchema)).optional(),
-  totalClicks: z.number().default(0),
-  totalLeads: z.number().default(0),
-  totalConversions: z.number().default(0),
-  totalSales: z.number().default(0),
-  totalSaleAmount: z.number().default(0),
-  netRevenue: z.number().default(0),
-  earningsPerClick: z.nullable(z.number()).optional(),
-  averageLifetimeValue: z.nullable(z.number()).optional(),
-  clickToLeadRate: z.nullable(z.number()).optional(),
-  clickToConversionRate: z.nullable(z.number()).optional(),
-  leadToConversionRate: z.nullable(z.number()).optional(),
-  returnOnAdSpend: z.nullable(z.number()).optional(),
-  website: z.nullable(z.string()).optional(),
-  youtube: z.nullable(z.string()).optional(),
-  twitter: z.nullable(z.string()).optional(),
-  linkedin: z.nullable(z.string()).optional(),
-  instagram: z.nullable(z.string()).optional(),
-  tiktok: z.nullable(z.string()).optional(),
-  trustedAt: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    name: z.string(),
+    username: z.nullable(z.string()),
+    email: z.nullable(z.string()),
+    image: z.nullable(z.string()),
+    description: z.nullable(z.string()).optional(),
+    country: z.nullable(z.string()),
+    companyName: z.nullable(z.string()),
+    networkStatus: CreatePartnerNetworkStatus$inboundSchema,
+    defaultPayoutMethod: z.nullable(
+      CreatePartnerDefaultPayoutMethod$inboundSchema,
+    ),
+    paypalEmail: z.nullable(z.string()),
+    stripeConnectId: z.nullable(z.string()),
+    payoutsEnabledAt: z.nullable(z.string()),
+    identityVerifiedAt: z.nullable(z.string()),
+    programId: z.string(),
+    groupId: z.nullable(z.string()).optional(),
+    partnerId: z.string(),
+    tenantId: z.nullable(z.string()),
+    createdAt: z.string(),
+    status: CreatePartnerStatus$inboundSchema,
+    links: z.nullable(z.array(z.lazy(() => CreatePartnerLinks$inboundSchema))),
+    totalCommissions: z.number().default(0),
+    clickRewardId: z.nullable(z.string()).optional(),
+    leadRewardId: z.nullable(z.string()).optional(),
+    saleRewardId: z.nullable(z.string()).optional(),
+    referralRewardId: z.nullable(z.string()).optional(),
+    customRewardId: z.nullable(z.string()).optional(),
+    discountId: z.nullable(z.string()).optional(),
+    applicationId: z.nullable(z.string()).optional(),
+    bannedAt: z.nullable(z.string()).optional(),
+    bannedReason: z.nullable(CreatePartnerBannedReason$inboundSchema)
+      .optional(),
+    application: z.nullable(
+      z.lazy(() => CreatePartnerApplication$inboundSchema),
+    ).optional(),
+    tags: z.array(z.lazy(() => CreatePartnerTags$inboundSchema)).optional(),
+    totalClicks: z.number().default(0),
+    totalLeads: z.number().default(0),
+    totalConversions: z.number().default(0),
+    totalSales: z.number().default(0),
+    totalSaleAmount: z.number().default(0),
+    netRevenue: z.number().default(0),
+    earningsPerClick: z.nullable(z.number()).optional(),
+    averageLifetimeValue: z.nullable(z.number()).optional(),
+    clickToLeadRate: z.nullable(z.number()).optional(),
+    clickToConversionRate: z.nullable(z.number()).optional(),
+    leadToConversionRate: z.nullable(z.number()).optional(),
+    returnOnAdSpend: z.nullable(z.number()).optional(),
+    website: z.nullable(z.string()).optional(),
+    youtube: z.nullable(z.string()).optional(),
+    twitter: z.nullable(z.string()).optional(),
+    linkedin: z.nullable(z.string()).optional(),
+    instagram: z.nullable(z.string()).optional(),
+    tiktok: z.nullable(z.string()).optional(),
+    trustedAt: z.nullable(z.string()).optional(),
+  })
+);
 
 export function createPartnerResponseBodyFromJSON(
   jsonString: string,

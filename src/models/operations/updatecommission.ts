@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -270,8 +270,8 @@ export type UpdateCommissionResponseBody = {
 };
 
 /** @internal */
-export const Status$outboundSchema: z.ZodNativeEnum<typeof Status> = z
-  .nativeEnum(Status);
+export const Status$outboundSchema: z.ZodNativeEnum<typeof Status> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Status));
 
 /** @internal */
 export type UpdateCommissionRequestBody$Outbound = {
@@ -289,15 +289,17 @@ export const UpdateCommissionRequestBody$outboundSchema: z.ZodType<
   UpdateCommissionRequestBody$Outbound,
   z.ZodTypeDef,
   UpdateCommissionRequestBody
-> = z.object({
-  earnings: z.number().optional(),
-  saleAmount: z.number().optional(),
-  modifySaleAmount: z.number().optional(),
-  currency: z.string().default("usd"),
-  status: Status$outboundSchema.optional(),
-  amount: z.number().optional(),
-  modifyAmount: z.number().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    earnings: z.number().optional(),
+    saleAmount: z.number().optional(),
+    modifySaleAmount: z.number().optional(),
+    currency: z.string().default("usd"),
+    status: Status$outboundSchema.optional(),
+    amount: z.number().optional(),
+    modifyAmount: z.number().optional(),
+  })
+);
 
 export function updateCommissionRequestBodyToJSON(
   updateCommissionRequestBody: UpdateCommissionRequestBody,
@@ -320,15 +322,17 @@ export const UpdateCommissionRequest$outboundSchema: z.ZodType<
   UpdateCommissionRequest$Outbound,
   z.ZodTypeDef,
   UpdateCommissionRequest
-> = z.object({
-  id: z.string(),
-  requestBody: z.lazy(() => UpdateCommissionRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    requestBody: z.lazy(() => UpdateCommissionRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function updateCommissionRequestToJSON(
   updateCommissionRequest: UpdateCommissionRequest,
@@ -341,33 +345,37 @@ export function updateCommissionRequestToJSON(
 /** @internal */
 export const UpdateCommissionType$inboundSchema: z.ZodNativeEnum<
   typeof UpdateCommissionType
-> = z.nativeEnum(UpdateCommissionType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UpdateCommissionType));
 
 /** @internal */
 export const UpdateCommissionStatus$inboundSchema: z.ZodNativeEnum<
   typeof UpdateCommissionStatus
-> = z.nativeEnum(UpdateCommissionStatus);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UpdateCommissionStatus));
 
 /** @internal */
 export const UpdateCommissionNetworkStatus$inboundSchema: z.ZodNativeEnum<
   typeof UpdateCommissionNetworkStatus
-> = z.nativeEnum(UpdateCommissionNetworkStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UpdateCommissionNetworkStatus)
+);
 
 /** @internal */
 export const UpdateCommissionPartner$inboundSchema: z.ZodType<
   UpdateCommissionPartner,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  email: z.nullable(z.string()),
-  image: z.nullable(z.string()),
-  payoutsEnabledAt: z.nullable(z.string()),
-  networkStatus: UpdateCommissionNetworkStatus$inboundSchema,
-  country: z.nullable(z.string()),
-  groupId: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    name: z.string(),
+    email: z.nullable(z.string()),
+    image: z.nullable(z.string()),
+    payoutsEnabledAt: z.nullable(z.string()),
+    networkStatus: UpdateCommissionNetworkStatus$inboundSchema,
+    country: z.nullable(z.string()),
+    groupId: z.nullable(z.string()).optional(),
+  })
+);
 
 export function updateCommissionPartnerFromJSON(
   jsonString: string,
@@ -384,20 +392,22 @@ export const UpdateCommissionCustomer$inboundSchema: z.ZodType<
   UpdateCommissionCustomer,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  name: z.nullable(z.string()).optional(),
-  email: z.nullable(z.string()).optional(),
-  avatar: z.nullable(z.string()).optional(),
-  externalId: z.string(),
-  stripeCustomerId: z.nullable(z.string()).optional(),
-  country: z.nullable(z.string()).optional(),
-  sales: z.nullable(z.number()).optional(),
-  saleAmount: z.nullable(z.number()).optional(),
-  createdAt: z.string(),
-  firstSaleAt: z.nullable(z.string()).optional(),
-  subscriptionCanceledAt: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    name: z.nullable(z.string()).optional(),
+    email: z.nullable(z.string()).optional(),
+    avatar: z.nullable(z.string()).optional(),
+    externalId: z.string(),
+    stripeCustomerId: z.nullable(z.string()).optional(),
+    country: z.nullable(z.string()).optional(),
+    sales: z.nullable(z.number()).optional(),
+    saleAmount: z.nullable(z.number()).optional(),
+    createdAt: z.string(),
+    firstSaleAt: z.nullable(z.string()).optional(),
+    subscriptionCanceledAt: z.nullable(z.string()).optional(),
+  })
+);
 
 export function updateCommissionCustomerFromJSON(
   jsonString: string,
@@ -414,25 +424,27 @@ export const UpdateCommissionResponseBody$inboundSchema: z.ZodType<
   UpdateCommissionResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  type: UpdateCommissionType$inboundSchema,
-  amount: z.number(),
-  earnings: z.number(),
-  currency: z.string(),
-  status: UpdateCommissionStatus$inboundSchema,
-  invoiceId: z.nullable(z.string()),
-  description: z.nullable(z.string()),
-  quantity: z.number(),
-  userId: z.nullable(z.string()).optional(),
-  metadata: z.nullable(z.record(z.any())),
-  createdAt: z.string(),
-  updatedAt: z.string(),
-  paidAt: z.nullable(z.string()),
-  partner: z.lazy(() => UpdateCommissionPartner$inboundSchema),
-  customer: z.nullable(z.lazy(() => UpdateCommissionCustomer$inboundSchema))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    type: UpdateCommissionType$inboundSchema,
+    amount: z.number(),
+    earnings: z.number(),
+    currency: z.string(),
+    status: UpdateCommissionStatus$inboundSchema,
+    invoiceId: z.nullable(z.string()),
+    description: z.nullable(z.string()),
+    quantity: z.number(),
+    userId: z.nullable(z.string()).optional(),
+    metadata: z.nullable(z.record(z.any())),
+    createdAt: z.string(),
+    updatedAt: z.string(),
+    paidAt: z.nullable(z.string()),
+    partner: z.lazy(() => UpdateCommissionPartner$inboundSchema),
+    customer: z.nullable(z.lazy(() => UpdateCommissionCustomer$inboundSchema))
+      .optional(),
+  })
+);
 
 export function updateCommissionResponseBodyFromJSON(
   jsonString: string,

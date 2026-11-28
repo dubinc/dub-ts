@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type CreateDiscountCodeRequestBody = {
   /**
@@ -31,11 +32,13 @@ export const CreateDiscountCodeRequestBody$outboundSchema: z.ZodType<
   CreateDiscountCodeRequestBody$Outbound,
   z.ZodTypeDef,
   CreateDiscountCodeRequestBody
-> = z.object({
-  code: z.string().optional(),
-  partnerId: z.string(),
-  linkId: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: z.string().optional(),
+    partnerId: z.string(),
+    linkId: z.string(),
+  })
+);
 
 export function createDiscountCodeRequestBodyToJSON(
   createDiscountCodeRequestBody: CreateDiscountCodeRequestBody,

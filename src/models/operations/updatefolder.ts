@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
@@ -46,7 +47,7 @@ export type UpdateFolderRequest = {
 /** @internal */
 export const UpdateFolderAccessLevel$outboundSchema: z.ZodNativeEnum<
   typeof UpdateFolderAccessLevel
-> = z.nativeEnum(UpdateFolderAccessLevel);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UpdateFolderAccessLevel));
 
 /** @internal */
 export type UpdateFolderRequestBody$Outbound = {
@@ -60,11 +61,13 @@ export const UpdateFolderRequestBody$outboundSchema: z.ZodType<
   UpdateFolderRequestBody$Outbound,
   z.ZodTypeDef,
   UpdateFolderRequestBody
-> = z.object({
-  name: z.string().optional(),
-  description: z.nullable(z.string()).optional(),
-  accessLevel: z.nullable(UpdateFolderAccessLevel$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    description: z.nullable(z.string()).optional(),
+    accessLevel: z.nullable(UpdateFolderAccessLevel$outboundSchema).optional(),
+  })
+);
 
 export function updateFolderRequestBodyToJSON(
   updateFolderRequestBody: UpdateFolderRequestBody,
@@ -85,14 +88,17 @@ export const UpdateFolderRequest$outboundSchema: z.ZodType<
   UpdateFolderRequest$Outbound,
   z.ZodTypeDef,
   UpdateFolderRequest
-> = z.object({
-  id: z.string(),
-  requestBody: z.lazy(() => UpdateFolderRequestBody$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    requestBody: z.lazy(() => UpdateFolderRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function updateFolderRequestToJSON(
   updateFolderRequest: UpdateFolderRequest,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -235,10 +235,12 @@ export const TestVariants$inboundSchema: z.ZodType<
   TestVariants,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  url: z.string(),
-  percentage: z.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    url: z.string(),
+    percentage: z.number(),
+  })
+);
 
 export function testVariantsFromJSON(
   jsonString: string,
@@ -255,68 +257,70 @@ export const LinkSchema$inboundSchema: z.ZodType<
   LinkSchema,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  domain: z.string(),
-  key: z.string(),
-  url: z.string(),
-  trackConversion: z.boolean().default(false),
-  externalId: z.nullable(z.string()),
-  tenantId: z.nullable(z.string()),
-  programId: z.nullable(z.string()),
-  partnerId: z.nullable(z.string()),
-  archived: z.boolean().default(false),
-  expiresAt: z.nullable(z.string()),
-  expiredUrl: z.nullable(z.string()),
-  disabledAt: z.nullable(z.string()),
-  password: z.nullable(z.string()),
-  proxy: z.boolean().default(false),
-  title: z.nullable(z.string()),
-  description: z.nullable(z.string()),
-  image: z.nullable(z.string()),
-  video: z.nullable(z.string()),
-  rewrite: z.boolean().default(false),
-  doIndex: z.boolean().default(false),
-  ios: z.nullable(z.string()),
-  android: z.nullable(z.string()),
-  geo: z.nullable(z.record(z.string())),
-  publicStats: z.boolean().default(false),
-  tags: z.nullable(z.array(LinkTagSchemaOutput$inboundSchema)),
-  folderId: z.nullable(z.string()),
-  comments: z.nullable(z.string()),
-  shortLink: z.string(),
-  qrCode: z.string(),
-  utm_source: z.nullable(z.string()),
-  utm_medium: z.nullable(z.string()),
-  utm_campaign: z.nullable(z.string()),
-  utm_term: z.nullable(z.string()),
-  utm_content: z.nullable(z.string()),
-  testVariants: z.nullable(z.array(z.lazy(() => TestVariants$inboundSchema)))
-    .optional(),
-  testStartedAt: z.nullable(z.string()).optional(),
-  testCompletedAt: z.nullable(z.string()).optional(),
-  userId: z.nullable(z.string()),
-  workspaceId: z.string(),
-  clicks: z.number().default(0),
-  leads: z.number().default(0),
-  conversions: z.number().default(0),
-  sales: z.number().default(0),
-  saleAmount: z.number().default(0),
-  lastClicked: z.nullable(z.string()),
-  createdAt: z.string(),
-  updatedAt: z.string(),
-  tagId: z.nullable(z.string()),
-  projectId: z.string(),
-  webhookIds: z.array(z.string()),
-}).transform((v) => {
-  return remap$(v, {
-    "utm_source": "utmSource",
-    "utm_medium": "utmMedium",
-    "utm_campaign": "utmCampaign",
-    "utm_term": "utmTerm",
-    "utm_content": "utmContent",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    domain: z.string(),
+    key: z.string(),
+    url: z.string(),
+    trackConversion: z.boolean().default(false),
+    externalId: z.nullable(z.string()),
+    tenantId: z.nullable(z.string()),
+    programId: z.nullable(z.string()),
+    partnerId: z.nullable(z.string()),
+    archived: z.boolean().default(false),
+    expiresAt: z.nullable(z.string()),
+    expiredUrl: z.nullable(z.string()),
+    disabledAt: z.nullable(z.string()),
+    password: z.nullable(z.string()),
+    proxy: z.boolean().default(false),
+    title: z.nullable(z.string()),
+    description: z.nullable(z.string()),
+    image: z.nullable(z.string()),
+    video: z.nullable(z.string()),
+    rewrite: z.boolean().default(false),
+    doIndex: z.boolean().default(false),
+    ios: z.nullable(z.string()),
+    android: z.nullable(z.string()),
+    geo: z.nullable(z.record(z.string())),
+    publicStats: z.boolean().default(false),
+    tags: z.nullable(z.array(LinkTagSchemaOutput$inboundSchema)),
+    folderId: z.nullable(z.string()),
+    comments: z.nullable(z.string()),
+    shortLink: z.string(),
+    qrCode: z.string(),
+    utm_source: z.nullable(z.string()),
+    utm_medium: z.nullable(z.string()),
+    utm_campaign: z.nullable(z.string()),
+    utm_term: z.nullable(z.string()),
+    utm_content: z.nullable(z.string()),
+    testVariants: z.nullable(z.array(z.lazy(() => TestVariants$inboundSchema)))
+      .optional(),
+    testStartedAt: z.nullable(z.string()).optional(),
+    testCompletedAt: z.nullable(z.string()).optional(),
+    userId: z.nullable(z.string()),
+    workspaceId: z.string(),
+    clicks: z.number().default(0),
+    leads: z.number().default(0),
+    conversions: z.number().default(0),
+    sales: z.number().default(0),
+    saleAmount: z.number().default(0),
+    lastClicked: z.nullable(z.string()),
+    createdAt: z.string(),
+    updatedAt: z.string(),
+    tagId: z.nullable(z.string()),
+    projectId: z.string(),
+    webhookIds: z.array(z.string()),
+  }).transform((v) => {
+    return remap$(v, {
+      "utm_source": "utmSource",
+      "utm_medium": "utmMedium",
+      "utm_campaign": "utmCampaign",
+      "utm_term": "utmTerm",
+      "utm_content": "utmContent",
+    });
+  })
+);
 
 export function linkSchemaFromJSON(
   jsonString: string,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -49,21 +49,23 @@ export type AnalyticsContinents = {
 };
 
 /** @internal */
-export const Continent$inboundSchema: z.ZodNativeEnum<typeof Continent> = z
-  .nativeEnum(Continent);
+export const Continent$inboundSchema: z.ZodNativeEnum<typeof Continent> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Continent));
 
 /** @internal */
 export const AnalyticsContinents$inboundSchema: z.ZodType<
   AnalyticsContinents,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  continent: Continent$inboundSchema,
-  clicks: z.number().default(0),
-  leads: z.number().default(0),
-  sales: z.number().default(0),
-  saleAmount: z.number().default(0),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    continent: Continent$inboundSchema,
+    clicks: z.number().default(0),
+    leads: z.number().default(0),
+    sales: z.number().default(0),
+    saleAmount: z.number().default(0),
+  })
+);
 
 export function analyticsContinentsFromJSON(
   jsonString: string,

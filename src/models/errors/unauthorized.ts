@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { DubError } from "./duberror.js";
@@ -69,22 +69,24 @@ export class Unauthorized extends DubError {
 /** @internal */
 export const UnauthorizedCode$inboundSchema: z.ZodNativeEnum<
   typeof UnauthorizedCode
-> = z.nativeEnum(UnauthorizedCode);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UnauthorizedCode));
 
 /** @internal */
 export const UnauthorizedError$inboundSchema: z.ZodType<
   UnauthorizedError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: UnauthorizedCode$inboundSchema,
-  message: z.string(),
-  doc_url: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "doc_url": "docUrl",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: UnauthorizedCode$inboundSchema,
+    message: z.string(),
+    doc_url: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "doc_url": "docUrl",
+    });
+  })
+);
 
 export function unauthorizedErrorFromJSON(
   jsonString: string,
@@ -101,16 +103,20 @@ export const Unauthorized$inboundSchema: z.ZodType<
   Unauthorized,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  error: z.lazy(() => UnauthorizedError$inboundSchema),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new Unauthorized(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    error: z.lazy(() => UnauthorizedError$inboundSchema),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      const { request$, response$, body$, ...data } = v;
+
+      return new Unauthorized(data, {
+        request: request$,
+        response: response$,
+        body: body$,
+      });
+    })
+);

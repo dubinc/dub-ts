@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
@@ -33,8 +34,8 @@ export type CreateFolderRequestBody = {
 };
 
 /** @internal */
-export const AccessLevel$outboundSchema: z.ZodNativeEnum<typeof AccessLevel> = z
-  .nativeEnum(AccessLevel);
+export const AccessLevel$outboundSchema: z.ZodNativeEnum<typeof AccessLevel> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(AccessLevel));
 
 /** @internal */
 export type CreateFolderRequestBody$Outbound = {
@@ -48,11 +49,13 @@ export const CreateFolderRequestBody$outboundSchema: z.ZodType<
   CreateFolderRequestBody$Outbound,
   z.ZodTypeDef,
   CreateFolderRequestBody
-> = z.object({
-  name: z.string(),
-  description: z.nullable(z.string()).optional(),
-  accessLevel: z.nullable(AccessLevel$outboundSchema.default("write")),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.nullable(z.string()).optional(),
+    accessLevel: z.nullable(AccessLevel$outboundSchema.default("write")),
+  })
+);
 
 export function createFolderRequestBodyToJSON(
   createFolderRequestBody: CreateFolderRequestBody,
