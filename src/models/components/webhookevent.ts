@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -36,6 +36,12 @@ import {
   LinkWebhookEvent$Outbound,
   LinkWebhookEvent$outboundSchema,
 } from "./linkwebhookevent.js";
+import {
+  MessageReceivedEvent,
+  MessageReceivedEvent$inboundSchema,
+  MessageReceivedEvent$Outbound,
+  MessageReceivedEvent$outboundSchema,
+} from "./messagereceivedevent.js";
 import {
   PartnerEnrolledEvent,
   PartnerEnrolledEvent$inboundSchema,
@@ -80,25 +86,29 @@ export type WebhookEvent =
   | ProgramApplicationCreatedEvent
   | PartnerMergedEvent
   | CommissionCreatedEvent
-  | DiscountCodeWebhookEvent;
+  | DiscountCodeWebhookEvent
+  | MessageReceivedEvent;
 
 /** @internal */
 export const WebhookEvent$inboundSchema: z.ZodType<
   WebhookEvent,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  LinkWebhookEvent$inboundSchema,
-  LinkClickedEvent$inboundSchema,
-  LeadCreatedEvent$inboundSchema,
-  SaleCreatedEvent$inboundSchema,
-  PartnerEnrolledEvent$inboundSchema,
-  ProgramApplicationSubmittedEvent$inboundSchema,
-  ProgramApplicationCreatedEvent$inboundSchema,
-  PartnerMergedEvent$inboundSchema,
-  CommissionCreatedEvent$inboundSchema,
-  DiscountCodeWebhookEvent$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    LinkWebhookEvent$inboundSchema,
+    LinkClickedEvent$inboundSchema,
+    LeadCreatedEvent$inboundSchema,
+    SaleCreatedEvent$inboundSchema,
+    PartnerEnrolledEvent$inboundSchema,
+    ProgramApplicationSubmittedEvent$inboundSchema,
+    ProgramApplicationCreatedEvent$inboundSchema,
+    PartnerMergedEvent$inboundSchema,
+    CommissionCreatedEvent$inboundSchema,
+    DiscountCodeWebhookEvent$inboundSchema,
+    MessageReceivedEvent$inboundSchema,
+  ])
+);
 /** @internal */
 export type WebhookEvent$Outbound =
   | LinkWebhookEvent$Outbound
@@ -110,25 +120,29 @@ export type WebhookEvent$Outbound =
   | ProgramApplicationCreatedEvent$Outbound
   | PartnerMergedEvent$Outbound
   | CommissionCreatedEvent$Outbound
-  | DiscountCodeWebhookEvent$Outbound;
+  | DiscountCodeWebhookEvent$Outbound
+  | MessageReceivedEvent$Outbound;
 
 /** @internal */
 export const WebhookEvent$outboundSchema: z.ZodType<
   WebhookEvent$Outbound,
   z.ZodTypeDef,
   WebhookEvent
-> = z.union([
-  LinkWebhookEvent$outboundSchema,
-  LinkClickedEvent$outboundSchema,
-  LeadCreatedEvent$outboundSchema,
-  SaleCreatedEvent$outboundSchema,
-  PartnerEnrolledEvent$outboundSchema,
-  ProgramApplicationSubmittedEvent$outboundSchema,
-  ProgramApplicationCreatedEvent$outboundSchema,
-  PartnerMergedEvent$outboundSchema,
-  CommissionCreatedEvent$outboundSchema,
-  DiscountCodeWebhookEvent$outboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    LinkWebhookEvent$outboundSchema,
+    LinkClickedEvent$outboundSchema,
+    LeadCreatedEvent$outboundSchema,
+    SaleCreatedEvent$outboundSchema,
+    PartnerEnrolledEvent$outboundSchema,
+    ProgramApplicationSubmittedEvent$outboundSchema,
+    ProgramApplicationCreatedEvent$outboundSchema,
+    PartnerMergedEvent$outboundSchema,
+    CommissionCreatedEvent$outboundSchema,
+    DiscountCodeWebhookEvent$outboundSchema,
+    MessageReceivedEvent$outboundSchema,
+  ])
+);
 
 export function webhookEventToJSON(webhookEvent: WebhookEvent): string {
   return JSON.stringify(WebhookEvent$outboundSchema.parse(webhookEvent));

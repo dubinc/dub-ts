@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -324,7 +324,7 @@ export type SaleCreatedEvent = {
 /** @internal */
 export const SaleCreatedEventEvent$inboundSchema: z.ZodNativeEnum<
   typeof SaleCreatedEventEvent
-> = z.nativeEnum(SaleCreatedEventEvent);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(SaleCreatedEventEvent));
 /** @internal */
 export const SaleCreatedEventEvent$outboundSchema: z.ZodNativeEnum<
   typeof SaleCreatedEventEvent
@@ -335,20 +335,22 @@ export const SaleCreatedEventCustomer$inboundSchema: z.ZodType<
   SaleCreatedEventCustomer,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  name: z.nullable(z.string()).optional(),
-  email: z.nullable(z.string()).optional(),
-  avatar: z.nullable(z.string()).optional(),
-  externalId: z.string(),
-  stripeCustomerId: z.nullable(z.string()).optional(),
-  country: z.nullable(z.string()).optional(),
-  sales: z.nullable(z.number()).optional(),
-  saleAmount: z.nullable(z.number()).optional(),
-  createdAt: z.string(),
-  firstSaleAt: z.nullable(z.string()).optional(),
-  subscriptionCanceledAt: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    name: z.nullable(z.string()).optional(),
+    email: z.nullable(z.string()).optional(),
+    avatar: z.nullable(z.string()).optional(),
+    externalId: z.string(),
+    stripeCustomerId: z.nullable(z.string()).optional(),
+    country: z.nullable(z.string()).optional(),
+    sales: z.nullable(z.number()).optional(),
+    saleAmount: z.nullable(z.number()).optional(),
+    createdAt: z.string(),
+    firstSaleAt: z.nullable(z.string()).optional(),
+    subscriptionCanceledAt: z.nullable(z.string()).optional(),
+  })
+);
 /** @internal */
 export type SaleCreatedEventCustomer$Outbound = {
   id: string;
@@ -370,20 +372,22 @@ export const SaleCreatedEventCustomer$outboundSchema: z.ZodType<
   SaleCreatedEventCustomer$Outbound,
   z.ZodTypeDef,
   SaleCreatedEventCustomer
-> = z.object({
-  id: z.string(),
-  name: z.nullable(z.string()).optional(),
-  email: z.nullable(z.string()).optional(),
-  avatar: z.nullable(z.string()).optional(),
-  externalId: z.string(),
-  stripeCustomerId: z.nullable(z.string()).optional(),
-  country: z.nullable(z.string()).optional(),
-  sales: z.nullable(z.number()).optional(),
-  saleAmount: z.nullable(z.number()).optional(),
-  createdAt: z.string(),
-  firstSaleAt: z.nullable(z.string()).optional(),
-  subscriptionCanceledAt: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    name: z.nullable(z.string()).optional(),
+    email: z.nullable(z.string()).optional(),
+    avatar: z.nullable(z.string()).optional(),
+    externalId: z.string(),
+    stripeCustomerId: z.nullable(z.string()).optional(),
+    country: z.nullable(z.string()).optional(),
+    sales: z.nullable(z.number()).optional(),
+    saleAmount: z.nullable(z.number()).optional(),
+    createdAt: z.string(),
+    firstSaleAt: z.nullable(z.string()).optional(),
+    subscriptionCanceledAt: z.nullable(z.string()).optional(),
+  })
+);
 
 export function saleCreatedEventCustomerToJSON(
   saleCreatedEventCustomer: SaleCreatedEventCustomer,
@@ -407,24 +411,26 @@ export const SaleCreatedEventClick$inboundSchema: z.ZodType<
   SaleCreatedEventClick,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  timestamp: z.string(),
-  url: z.string(),
-  country: z.string(),
-  city: z.string(),
-  region: z.string(),
-  continent: z.string(),
-  device: z.string(),
-  browser: z.string(),
-  os: z.string(),
-  ua: z.nullable(z.string()).optional(),
-  trigger: z.nullable(z.string()).optional(),
-  referer: z.string(),
-  refererUrl: z.string(),
-  qr: z.boolean(),
-  ip: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    timestamp: z.string(),
+    url: z.string(),
+    country: z.string(),
+    city: z.string(),
+    region: z.string(),
+    continent: z.string(),
+    device: z.string(),
+    browser: z.string(),
+    os: z.string(),
+    ua: z.nullable(z.string()).optional(),
+    trigger: z.nullable(z.string()).optional(),
+    referer: z.string(),
+    refererUrl: z.string(),
+    qr: z.boolean(),
+    ip: z.string(),
+  })
+);
 /** @internal */
 export type SaleCreatedEventClick$Outbound = {
   id: string;
@@ -450,24 +456,26 @@ export const SaleCreatedEventClick$outboundSchema: z.ZodType<
   SaleCreatedEventClick$Outbound,
   z.ZodTypeDef,
   SaleCreatedEventClick
-> = z.object({
-  id: z.string(),
-  timestamp: z.string(),
-  url: z.string(),
-  country: z.string(),
-  city: z.string(),
-  region: z.string(),
-  continent: z.string(),
-  device: z.string(),
-  browser: z.string(),
-  os: z.string(),
-  ua: z.nullable(z.string()).optional(),
-  trigger: z.nullable(z.string()).optional(),
-  referer: z.string(),
-  refererUrl: z.string(),
-  qr: z.boolean(),
-  ip: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    timestamp: z.string(),
+    url: z.string(),
+    country: z.string(),
+    city: z.string(),
+    region: z.string(),
+    continent: z.string(),
+    device: z.string(),
+    browser: z.string(),
+    os: z.string(),
+    ua: z.nullable(z.string()).optional(),
+    trigger: z.nullable(z.string()).optional(),
+    referer: z.string(),
+    refererUrl: z.string(),
+    qr: z.boolean(),
+    ip: z.string(),
+  })
+);
 
 export function saleCreatedEventClickToJSON(
   saleCreatedEventClick: SaleCreatedEventClick,
@@ -491,10 +499,12 @@ export const SaleCreatedEventTestVariants$inboundSchema: z.ZodType<
   SaleCreatedEventTestVariants,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  url: z.string(),
-  percentage: z.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    url: z.string(),
+    percentage: z.number(),
+  })
+);
 /** @internal */
 export type SaleCreatedEventTestVariants$Outbound = {
   url: string;
@@ -506,10 +516,12 @@ export const SaleCreatedEventTestVariants$outboundSchema: z.ZodType<
   SaleCreatedEventTestVariants$Outbound,
   z.ZodTypeDef,
   SaleCreatedEventTestVariants
-> = z.object({
-  url: z.string(),
-  percentage: z.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    url: z.string(),
+    percentage: z.number(),
+  })
+);
 
 export function saleCreatedEventTestVariantsToJSON(
   saleCreatedEventTestVariants: SaleCreatedEventTestVariants,
@@ -535,69 +547,71 @@ export const SaleCreatedEventLink$inboundSchema: z.ZodType<
   SaleCreatedEventLink,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  domain: z.string(),
-  key: z.string(),
-  url: z.string(),
-  trackConversion: z.boolean(),
-  externalId: z.nullable(z.string()),
-  tenantId: z.nullable(z.string()),
-  programId: z.nullable(z.string()),
-  partnerId: z.nullable(z.string()),
-  archived: z.boolean(),
-  expiresAt: z.nullable(z.string()),
-  expiredUrl: z.nullable(z.string()),
-  disabledAt: z.nullable(z.string()),
-  password: z.nullable(z.string()),
-  proxy: z.boolean(),
-  title: z.nullable(z.string()),
-  description: z.nullable(z.string()),
-  image: z.nullable(z.string()),
-  video: z.nullable(z.string()),
-  rewrite: z.boolean(),
-  doIndex: z.boolean(),
-  ios: z.nullable(z.string()),
-  android: z.nullable(z.string()),
-  geo: z.nullable(z.record(z.string())),
-  publicStats: z.boolean(),
-  tags: z.nullable(z.array(LinkTagSchema$inboundSchema)),
-  folderId: z.nullable(z.string()),
-  comments: z.nullable(z.string()),
-  shortLink: z.string(),
-  qrCode: z.string(),
-  utm_source: z.nullable(z.string()),
-  utm_medium: z.nullable(z.string()),
-  utm_campaign: z.nullable(z.string()),
-  utm_term: z.nullable(z.string()),
-  utm_content: z.nullable(z.string()),
-  testVariants: z.nullable(
-    z.array(z.lazy(() => SaleCreatedEventTestVariants$inboundSchema)),
-  ).optional(),
-  testStartedAt: z.nullable(z.string()),
-  testCompletedAt: z.nullable(z.string()),
-  userId: z.nullable(z.string()),
-  workspaceId: z.string(),
-  clicks: z.number().default(0),
-  leads: z.number().default(0),
-  conversions: z.number().default(0),
-  sales: z.number().default(0),
-  saleAmount: z.number().default(0),
-  lastClicked: z.nullable(z.string()),
-  createdAt: z.string(),
-  updatedAt: z.string(),
-  tagId: z.nullable(z.string()),
-  projectId: z.string(),
-  webhookIds: z.array(z.string()),
-}).transform((v) => {
-  return remap$(v, {
-    "utm_source": "utmSource",
-    "utm_medium": "utmMedium",
-    "utm_campaign": "utmCampaign",
-    "utm_term": "utmTerm",
-    "utm_content": "utmContent",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    domain: z.string(),
+    key: z.string(),
+    url: z.string(),
+    trackConversion: z.boolean(),
+    externalId: z.nullable(z.string()),
+    tenantId: z.nullable(z.string()),
+    programId: z.nullable(z.string()),
+    partnerId: z.nullable(z.string()),
+    archived: z.boolean(),
+    expiresAt: z.nullable(z.string()),
+    expiredUrl: z.nullable(z.string()),
+    disabledAt: z.nullable(z.string()),
+    password: z.nullable(z.string()),
+    proxy: z.boolean(),
+    title: z.nullable(z.string()),
+    description: z.nullable(z.string()),
+    image: z.nullable(z.string()),
+    video: z.nullable(z.string()),
+    rewrite: z.boolean(),
+    doIndex: z.boolean(),
+    ios: z.nullable(z.string()),
+    android: z.nullable(z.string()),
+    geo: z.nullable(z.record(z.string())),
+    publicStats: z.boolean(),
+    tags: z.nullable(z.array(LinkTagSchema$inboundSchema)),
+    folderId: z.nullable(z.string()),
+    comments: z.nullable(z.string()),
+    shortLink: z.string(),
+    qrCode: z.string(),
+    utm_source: z.nullable(z.string()),
+    utm_medium: z.nullable(z.string()),
+    utm_campaign: z.nullable(z.string()),
+    utm_term: z.nullable(z.string()),
+    utm_content: z.nullable(z.string()),
+    testVariants: z.nullable(
+      z.array(z.lazy(() => SaleCreatedEventTestVariants$inboundSchema)),
+    ).optional(),
+    testStartedAt: z.nullable(z.string()),
+    testCompletedAt: z.nullable(z.string()),
+    userId: z.nullable(z.string()),
+    workspaceId: z.string(),
+    clicks: z.number().default(0),
+    leads: z.number().default(0),
+    conversions: z.number().default(0),
+    sales: z.number().default(0),
+    saleAmount: z.number().default(0),
+    lastClicked: z.nullable(z.string()),
+    createdAt: z.string(),
+    updatedAt: z.string(),
+    tagId: z.nullable(z.string()),
+    projectId: z.string(),
+    webhookIds: z.array(z.string()),
+  }).transform((v) => {
+    return remap$(v, {
+      "utm_source": "utmSource",
+      "utm_medium": "utmMedium",
+      "utm_campaign": "utmCampaign",
+      "utm_term": "utmTerm",
+      "utm_content": "utmContent",
+    });
+  })
+);
 /** @internal */
 export type SaleCreatedEventLink$Outbound = {
   id: string;
@@ -661,69 +675,71 @@ export const SaleCreatedEventLink$outboundSchema: z.ZodType<
   SaleCreatedEventLink$Outbound,
   z.ZodTypeDef,
   SaleCreatedEventLink
-> = z.object({
-  id: z.string(),
-  domain: z.string(),
-  key: z.string(),
-  url: z.string(),
-  trackConversion: z.boolean(),
-  externalId: z.nullable(z.string()),
-  tenantId: z.nullable(z.string()),
-  programId: z.nullable(z.string()),
-  partnerId: z.nullable(z.string()),
-  archived: z.boolean(),
-  expiresAt: z.nullable(z.string()),
-  expiredUrl: z.nullable(z.string()),
-  disabledAt: z.nullable(z.string()),
-  password: z.nullable(z.string()),
-  proxy: z.boolean(),
-  title: z.nullable(z.string()),
-  description: z.nullable(z.string()),
-  image: z.nullable(z.string()),
-  video: z.nullable(z.string()),
-  rewrite: z.boolean(),
-  doIndex: z.boolean(),
-  ios: z.nullable(z.string()),
-  android: z.nullable(z.string()),
-  geo: z.nullable(z.record(z.string())),
-  publicStats: z.boolean(),
-  tags: z.nullable(z.array(LinkTagSchema$outboundSchema)),
-  folderId: z.nullable(z.string()),
-  comments: z.nullable(z.string()),
-  shortLink: z.string(),
-  qrCode: z.string(),
-  utmSource: z.nullable(z.string()),
-  utmMedium: z.nullable(z.string()),
-  utmCampaign: z.nullable(z.string()),
-  utmTerm: z.nullable(z.string()),
-  utmContent: z.nullable(z.string()),
-  testVariants: z.nullable(
-    z.array(z.lazy(() => SaleCreatedEventTestVariants$outboundSchema)),
-  ).optional(),
-  testStartedAt: z.nullable(z.string()),
-  testCompletedAt: z.nullable(z.string()),
-  userId: z.nullable(z.string()),
-  workspaceId: z.string(),
-  clicks: z.number().default(0),
-  leads: z.number().default(0),
-  conversions: z.number().default(0),
-  sales: z.number().default(0),
-  saleAmount: z.number().default(0),
-  lastClicked: z.nullable(z.string()),
-  createdAt: z.string(),
-  updatedAt: z.string(),
-  tagId: z.nullable(z.string()),
-  projectId: z.string(),
-  webhookIds: z.array(z.string()),
-}).transform((v) => {
-  return remap$(v, {
-    utmSource: "utm_source",
-    utmMedium: "utm_medium",
-    utmCampaign: "utm_campaign",
-    utmTerm: "utm_term",
-    utmContent: "utm_content",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    domain: z.string(),
+    key: z.string(),
+    url: z.string(),
+    trackConversion: z.boolean(),
+    externalId: z.nullable(z.string()),
+    tenantId: z.nullable(z.string()),
+    programId: z.nullable(z.string()),
+    partnerId: z.nullable(z.string()),
+    archived: z.boolean(),
+    expiresAt: z.nullable(z.string()),
+    expiredUrl: z.nullable(z.string()),
+    disabledAt: z.nullable(z.string()),
+    password: z.nullable(z.string()),
+    proxy: z.boolean(),
+    title: z.nullable(z.string()),
+    description: z.nullable(z.string()),
+    image: z.nullable(z.string()),
+    video: z.nullable(z.string()),
+    rewrite: z.boolean(),
+    doIndex: z.boolean(),
+    ios: z.nullable(z.string()),
+    android: z.nullable(z.string()),
+    geo: z.nullable(z.record(z.string())),
+    publicStats: z.boolean(),
+    tags: z.nullable(z.array(LinkTagSchema$outboundSchema)),
+    folderId: z.nullable(z.string()),
+    comments: z.nullable(z.string()),
+    shortLink: z.string(),
+    qrCode: z.string(),
+    utmSource: z.nullable(z.string()),
+    utmMedium: z.nullable(z.string()),
+    utmCampaign: z.nullable(z.string()),
+    utmTerm: z.nullable(z.string()),
+    utmContent: z.nullable(z.string()),
+    testVariants: z.nullable(
+      z.array(z.lazy(() => SaleCreatedEventTestVariants$outboundSchema)),
+    ).optional(),
+    testStartedAt: z.nullable(z.string()),
+    testCompletedAt: z.nullable(z.string()),
+    userId: z.nullable(z.string()),
+    workspaceId: z.string(),
+    clicks: z.number().default(0),
+    leads: z.number().default(0),
+    conversions: z.number().default(0),
+    sales: z.number().default(0),
+    saleAmount: z.number().default(0),
+    lastClicked: z.nullable(z.string()),
+    createdAt: z.string(),
+    updatedAt: z.string(),
+    tagId: z.nullable(z.string()),
+    projectId: z.string(),
+    webhookIds: z.array(z.string()),
+  }).transform((v) => {
+    return remap$(v, {
+      utmSource: "utm_source",
+      utmMedium: "utm_medium",
+      utmCampaign: "utm_campaign",
+      utmTerm: "utm_term",
+      utmContent: "utm_content",
+    });
+  })
+);
 
 export function saleCreatedEventLinkToJSON(
   saleCreatedEventLink: SaleCreatedEventLink,
@@ -743,13 +759,15 @@ export function saleCreatedEventLinkFromJSON(
 }
 
 /** @internal */
-export const Sale$inboundSchema: z.ZodType<Sale, z.ZodTypeDef, unknown> = z
-  .object({
-    amount: z.number(),
-    currency: z.string(),
-    paymentProcessor: z.string(),
-    invoiceId: z.nullable(z.string()),
-  });
+export const Sale$inboundSchema: z.ZodType<Sale, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      amount: z.number(),
+      currency: z.string(),
+      paymentProcessor: z.string(),
+      invoiceId: z.nullable(z.string()),
+    })
+  );
 /** @internal */
 export type Sale$Outbound = {
   amount: number;
@@ -760,12 +778,14 @@ export type Sale$Outbound = {
 
 /** @internal */
 export const Sale$outboundSchema: z.ZodType<Sale$Outbound, z.ZodTypeDef, Sale> =
-  z.object({
-    amount: z.number(),
-    currency: z.string(),
-    paymentProcessor: z.string(),
-    invoiceId: z.nullable(z.string()),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      amount: z.number(),
+      currency: z.string(),
+      paymentProcessor: z.string(),
+      invoiceId: z.nullable(z.string()),
+    })
+  );
 
 export function saleToJSON(sale: Sale): string {
   return JSON.stringify(Sale$outboundSchema.parse(sale));
@@ -785,21 +805,23 @@ export const SaleCreatedEventPartner$inboundSchema: z.ZodType<
   SaleCreatedEventPartner,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  email: z.nullable(z.string()),
-  image: z.nullable(z.string()),
-  payoutsEnabledAt: z.nullable(z.string()),
-  country: z.nullable(z.string()),
-  groupId: z.nullable(z.string()).optional(),
-  totalClicks: z.number(),
-  totalLeads: z.number(),
-  totalConversions: z.number(),
-  totalSales: z.number(),
-  totalSaleAmount: z.number(),
-  totalCommissions: z.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    name: z.string(),
+    email: z.nullable(z.string()),
+    image: z.nullable(z.string()),
+    payoutsEnabledAt: z.nullable(z.string()),
+    country: z.nullable(z.string()),
+    groupId: z.nullable(z.string()).optional(),
+    totalClicks: z.number(),
+    totalLeads: z.number(),
+    totalConversions: z.number(),
+    totalSales: z.number(),
+    totalSaleAmount: z.number(),
+    totalCommissions: z.number(),
+  })
+);
 /** @internal */
 export type SaleCreatedEventPartner$Outbound = {
   id: string;
@@ -822,21 +844,23 @@ export const SaleCreatedEventPartner$outboundSchema: z.ZodType<
   SaleCreatedEventPartner$Outbound,
   z.ZodTypeDef,
   SaleCreatedEventPartner
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  email: z.nullable(z.string()),
-  image: z.nullable(z.string()),
-  payoutsEnabledAt: z.nullable(z.string()),
-  country: z.nullable(z.string()),
-  groupId: z.nullable(z.string()).optional(),
-  totalClicks: z.number(),
-  totalLeads: z.number(),
-  totalConversions: z.number(),
-  totalSales: z.number(),
-  totalSaleAmount: z.number(),
-  totalCommissions: z.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    name: z.string(),
+    email: z.nullable(z.string()),
+    image: z.nullable(z.string()),
+    payoutsEnabledAt: z.nullable(z.string()),
+    country: z.nullable(z.string()),
+    groupId: z.nullable(z.string()).optional(),
+    totalClicks: z.number(),
+    totalLeads: z.number(),
+    totalConversions: z.number(),
+    totalSales: z.number(),
+    totalSaleAmount: z.number(),
+    totalCommissions: z.number(),
+  })
+);
 
 export function saleCreatedEventPartnerToJSON(
   saleCreatedEventPartner: SaleCreatedEventPartner,
@@ -860,16 +884,18 @@ export const SaleCreatedEventData$inboundSchema: z.ZodType<
   SaleCreatedEventData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  eventName: z.string(),
-  customer: z.lazy(() => SaleCreatedEventCustomer$inboundSchema),
-  click: z.lazy(() => SaleCreatedEventClick$inboundSchema),
-  link: z.lazy(() => SaleCreatedEventLink$inboundSchema),
-  sale: z.lazy(() => Sale$inboundSchema),
-  partner: z.nullable(z.lazy(() => SaleCreatedEventPartner$inboundSchema))
-    .optional(),
-  metadata: z.nullable(z.record(z.any())),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    eventName: z.string(),
+    customer: z.lazy(() => SaleCreatedEventCustomer$inboundSchema),
+    click: z.lazy(() => SaleCreatedEventClick$inboundSchema),
+    link: z.lazy(() => SaleCreatedEventLink$inboundSchema),
+    sale: z.lazy(() => Sale$inboundSchema),
+    partner: z.nullable(z.lazy(() => SaleCreatedEventPartner$inboundSchema))
+      .optional(),
+    metadata: z.nullable(z.record(z.any())),
+  })
+);
 /** @internal */
 export type SaleCreatedEventData$Outbound = {
   eventName: string;
@@ -886,16 +912,18 @@ export const SaleCreatedEventData$outboundSchema: z.ZodType<
   SaleCreatedEventData$Outbound,
   z.ZodTypeDef,
   SaleCreatedEventData
-> = z.object({
-  eventName: z.string(),
-  customer: z.lazy(() => SaleCreatedEventCustomer$outboundSchema),
-  click: z.lazy(() => SaleCreatedEventClick$outboundSchema),
-  link: z.lazy(() => SaleCreatedEventLink$outboundSchema),
-  sale: z.lazy(() => Sale$outboundSchema),
-  partner: z.nullable(z.lazy(() => SaleCreatedEventPartner$outboundSchema))
-    .optional(),
-  metadata: z.nullable(z.record(z.any())),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    eventName: z.string(),
+    customer: z.lazy(() => SaleCreatedEventCustomer$outboundSchema),
+    click: z.lazy(() => SaleCreatedEventClick$outboundSchema),
+    link: z.lazy(() => SaleCreatedEventLink$outboundSchema),
+    sale: z.lazy(() => Sale$outboundSchema),
+    partner: z.nullable(z.lazy(() => SaleCreatedEventPartner$outboundSchema))
+      .optional(),
+    metadata: z.nullable(z.record(z.any())),
+  })
+);
 
 export function saleCreatedEventDataToJSON(
   saleCreatedEventData: SaleCreatedEventData,
@@ -919,12 +947,14 @@ export const SaleCreatedEvent$inboundSchema: z.ZodType<
   SaleCreatedEvent,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  event: SaleCreatedEventEvent$inboundSchema,
-  createdAt: z.string(),
-  data: z.lazy(() => SaleCreatedEventData$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    event: SaleCreatedEventEvent$inboundSchema,
+    createdAt: z.string(),
+    data: z.lazy(() => SaleCreatedEventData$inboundSchema),
+  })
+);
 /** @internal */
 export type SaleCreatedEvent$Outbound = {
   id: string;
@@ -938,12 +968,14 @@ export const SaleCreatedEvent$outboundSchema: z.ZodType<
   SaleCreatedEvent$Outbound,
   z.ZodTypeDef,
   SaleCreatedEvent
-> = z.object({
-  id: z.string(),
-  event: SaleCreatedEventEvent$outboundSchema,
-  createdAt: z.string(),
-  data: z.lazy(() => SaleCreatedEventData$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    event: SaleCreatedEventEvent$outboundSchema,
+    createdAt: z.string(),
+    data: z.lazy(() => SaleCreatedEventData$outboundSchema),
+  })
+);
 
 export function saleCreatedEventToJSON(
   saleCreatedEvent: SaleCreatedEvent,

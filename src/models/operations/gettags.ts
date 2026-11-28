@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
@@ -64,19 +65,19 @@ export type GetTagsRequest = {
 /** @internal */
 export const QueryParamSortBy$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamSortBy
-> = z.nativeEnum(QueryParamSortBy);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(QueryParamSortBy));
 
 /** @internal */
 export const QueryParamSortOrder$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamSortOrder
-> = z.nativeEnum(QueryParamSortOrder);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(QueryParamSortOrder));
 
 /** @internal */
 export type Ids$Outbound = string | Array<string>;
 
 /** @internal */
-export const Ids$outboundSchema: z.ZodType<Ids$Outbound, z.ZodTypeDef, Ids> = z
-  .union([z.string(), z.array(z.string())]);
+export const Ids$outboundSchema: z.ZodType<Ids$Outbound, z.ZodTypeDef, Ids> =
+  /* @__PURE__ */ lazySchema$(() => z.union([z.string(), z.array(z.string())]));
 
 export function idsToJSON(ids: Ids): string {
   return JSON.stringify(Ids$outboundSchema.parse(ids));
@@ -97,14 +98,16 @@ export const GetTagsRequest$outboundSchema: z.ZodType<
   GetTagsRequest$Outbound,
   z.ZodTypeDef,
   GetTagsRequest
-> = z.object({
-  sortBy: QueryParamSortBy$outboundSchema.default("name"),
-  sortOrder: QueryParamSortOrder$outboundSchema.default("asc"),
-  search: z.string().optional(),
-  ids: z.union([z.string(), z.array(z.string())]).optional(),
-  page: z.number().int().optional(),
-  pageSize: z.number().int().default(100),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sortBy: QueryParamSortBy$outboundSchema.default("name"),
+    sortOrder: QueryParamSortOrder$outboundSchema.default("asc"),
+    search: z.string().optional(),
+    ids: z.union([z.string(), z.array(z.string())]).optional(),
+    page: z.number().int().optional(),
+    pageSize: z.number().int().default(100),
+  })
+);
 
 export function getTagsRequestToJSON(getTagsRequest: GetTagsRequest): string {
   return JSON.stringify(GetTagsRequest$outboundSchema.parse(getTagsRequest));

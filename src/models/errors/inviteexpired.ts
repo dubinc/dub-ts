@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { DubError } from "./duberror.js";
@@ -69,22 +69,24 @@ export class InviteExpired extends DubError {
 /** @internal */
 export const InviteExpiredCode$inboundSchema: z.ZodNativeEnum<
   typeof InviteExpiredCode
-> = z.nativeEnum(InviteExpiredCode);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(InviteExpiredCode));
 
 /** @internal */
 export const InviteExpiredError$inboundSchema: z.ZodType<
   InviteExpiredError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: InviteExpiredCode$inboundSchema,
-  message: z.string(),
-  doc_url: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "doc_url": "docUrl",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: InviteExpiredCode$inboundSchema,
+    message: z.string(),
+    doc_url: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "doc_url": "docUrl",
+    });
+  })
+);
 
 export function inviteExpiredErrorFromJSON(
   jsonString: string,
@@ -101,16 +103,20 @@ export const InviteExpired$inboundSchema: z.ZodType<
   InviteExpired,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  error: z.lazy(() => InviteExpiredError$inboundSchema),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new InviteExpired(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    error: z.lazy(() => InviteExpiredError$inboundSchema),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      const { request$, response$, body$, ...data } = v;
+
+      return new InviteExpired(data, {
+        request: request$,
+        response: response$,
+        body: body$,
+      });
+    })
+);

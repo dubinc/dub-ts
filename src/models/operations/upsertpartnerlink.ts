@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 /**
  * The unique IDs of the tags assigned to the short link.
@@ -148,7 +149,9 @@ export const UpsertPartnerLinkTagIds$outboundSchema: z.ZodType<
   UpsertPartnerLinkTagIds$Outbound,
   z.ZodTypeDef,
   UpsertPartnerLinkTagIds
-> = z.union([z.string(), z.array(z.string())]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([z.string(), z.array(z.string())])
+);
 
 export function upsertPartnerLinkTagIdsToJSON(
   upsertPartnerLinkTagIds: UpsertPartnerLinkTagIds,
@@ -166,7 +169,9 @@ export const UpsertPartnerLinkTagNames$outboundSchema: z.ZodType<
   UpsertPartnerLinkTagNames$Outbound,
   z.ZodTypeDef,
   UpsertPartnerLinkTagNames
-> = z.union([z.string(), z.array(z.string())]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([z.string(), z.array(z.string())])
+);
 
 export function upsertPartnerLinkTagNamesToJSON(
   upsertPartnerLinkTagNames: UpsertPartnerLinkTagNames,
@@ -187,10 +192,12 @@ export const UpsertPartnerLinkTestVariants$outboundSchema: z.ZodType<
   UpsertPartnerLinkTestVariants$Outbound,
   z.ZodTypeDef,
   UpsertPartnerLinkTestVariants
-> = z.object({
-  url: z.string(),
-  percentage: z.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    url: z.string(),
+    percentage: z.number(),
+  })
+);
 
 export function upsertPartnerLinkTestVariantsToJSON(
   upsertPartnerLinkTestVariants: UpsertPartnerLinkTestVariants,
@@ -236,32 +243,34 @@ export const UpsertPartnerLinkLinkProps$outboundSchema: z.ZodType<
   UpsertPartnerLinkLinkProps$Outbound,
   z.ZodTypeDef,
   UpsertPartnerLinkLinkProps
-> = z.object({
-  externalId: z.nullable(z.string()).optional(),
-  tenantId: z.nullable(z.string()).optional(),
-  prefix: z.string().optional(),
-  archived: z.boolean().optional(),
-  tagIds: z.union([z.string(), z.array(z.string())]).optional(),
-  tagNames: z.union([z.string(), z.array(z.string())]).optional(),
-  comments: z.nullable(z.string()).optional(),
-  expiresAt: z.nullable(z.string()).optional(),
-  expiredUrl: z.nullable(z.string()).optional(),
-  password: z.nullable(z.string()).optional(),
-  proxy: z.boolean().optional(),
-  title: z.nullable(z.string()).optional(),
-  description: z.nullable(z.string()).optional(),
-  image: z.nullable(z.string()).optional(),
-  video: z.nullable(z.string()).optional(),
-  rewrite: z.boolean().optional(),
-  ios: z.nullable(z.string()).optional(),
-  android: z.nullable(z.string()).optional(),
-  doIndex: z.boolean().optional(),
-  testVariants: z.nullable(
-    z.array(z.lazy(() => UpsertPartnerLinkTestVariants$outboundSchema)),
-  ).optional(),
-  testStartedAt: z.nullable(z.string()).optional(),
-  testCompletedAt: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    externalId: z.nullable(z.string()).optional(),
+    tenantId: z.nullable(z.string()).optional(),
+    prefix: z.string().optional(),
+    archived: z.boolean().optional(),
+    tagIds: z.union([z.string(), z.array(z.string())]).optional(),
+    tagNames: z.union([z.string(), z.array(z.string())]).optional(),
+    comments: z.nullable(z.string()).optional(),
+    expiresAt: z.nullable(z.string()).optional(),
+    expiredUrl: z.nullable(z.string()).optional(),
+    password: z.nullable(z.string()).optional(),
+    proxy: z.boolean().optional(),
+    title: z.nullable(z.string()).optional(),
+    description: z.nullable(z.string()).optional(),
+    image: z.nullable(z.string()).optional(),
+    video: z.nullable(z.string()).optional(),
+    rewrite: z.boolean().optional(),
+    ios: z.nullable(z.string()).optional(),
+    android: z.nullable(z.string()).optional(),
+    doIndex: z.boolean().optional(),
+    testVariants: z.nullable(
+      z.array(z.lazy(() => UpsertPartnerLinkTestVariants$outboundSchema)),
+    ).optional(),
+    testStartedAt: z.nullable(z.string()).optional(),
+    testCompletedAt: z.nullable(z.string()).optional(),
+  })
+);
 
 export function upsertPartnerLinkLinkPropsToJSON(
   upsertPartnerLinkLinkProps: UpsertPartnerLinkLinkProps,
@@ -286,14 +295,17 @@ export const UpsertPartnerLinkRequestBody$outboundSchema: z.ZodType<
   UpsertPartnerLinkRequestBody$Outbound,
   z.ZodTypeDef,
   UpsertPartnerLinkRequestBody
-> = z.object({
-  partnerId: z.nullable(z.string()).optional(),
-  tenantId: z.nullable(z.string()).optional(),
-  url: z.string(),
-  key: z.string().optional(),
-  comments: z.nullable(z.string()).optional(),
-  linkProps: z.lazy(() => UpsertPartnerLinkLinkProps$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    partnerId: z.nullable(z.string()).optional(),
+    tenantId: z.nullable(z.string()).optional(),
+    url: z.string(),
+    key: z.string().optional(),
+    comments: z.nullable(z.string()).optional(),
+    linkProps: z.lazy(() => UpsertPartnerLinkLinkProps$outboundSchema)
+      .optional(),
+  })
+);
 
 export function upsertPartnerLinkRequestBodyToJSON(
   upsertPartnerLinkRequestBody: UpsertPartnerLinkRequestBody,

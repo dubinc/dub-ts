@@ -29,6 +29,8 @@ export * from "./linkschema.js";
 export * from "./linktagschema.js";
 export * from "./linktagschemaoutput.js";
 export * from "./linkwebhookevent.js";
+export * from "./messagereceivedevent.js";
+export * from "./networkpartner.js";
 export * from "./partneranalyticscount.js";
 export * from "./partneranalyticstimeseries.js";
 export * from "./partneranalyticstoplinks.js";

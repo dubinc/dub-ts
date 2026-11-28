@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -44,22 +44,24 @@ export type AnalyticsRegions = {
 /** @internal */
 export const AnalyticsRegionsCity$inboundSchema: z.ZodNativeEnum<
   typeof AnalyticsRegionsCity
-> = z.nativeEnum(AnalyticsRegionsCity);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(AnalyticsRegionsCity));
 
 /** @internal */
 export const AnalyticsRegions$inboundSchema: z.ZodType<
   AnalyticsRegions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  country: z.string(),
-  region: z.string(),
-  city: AnalyticsRegionsCity$inboundSchema.default("*"),
-  clicks: z.number().default(0),
-  leads: z.number().default(0),
-  sales: z.number().default(0),
-  saleAmount: z.number().default(0),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    country: z.string(),
+    region: z.string(),
+    city: AnalyticsRegionsCity$inboundSchema.default("*"),
+    clicks: z.number().default(0),
+    leads: z.number().default(0),
+    sales: z.number().default(0),
+    saleAmount: z.number().default(0),
+  })
+);
 
 export function analyticsRegionsFromJSON(
   jsonString: string,

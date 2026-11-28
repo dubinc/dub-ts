@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 /**
  * The unique IDs of the tags assigned to the short link.
@@ -148,7 +149,9 @@ export const CreatePartnerLinkTagIds$outboundSchema: z.ZodType<
   CreatePartnerLinkTagIds$Outbound,
   z.ZodTypeDef,
   CreatePartnerLinkTagIds
-> = z.union([z.string(), z.array(z.string())]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([z.string(), z.array(z.string())])
+);
 
 export function createPartnerLinkTagIdsToJSON(
   createPartnerLinkTagIds: CreatePartnerLinkTagIds,
@@ -166,7 +169,9 @@ export const CreatePartnerLinkTagNames$outboundSchema: z.ZodType<
   CreatePartnerLinkTagNames$Outbound,
   z.ZodTypeDef,
   CreatePartnerLinkTagNames
-> = z.union([z.string(), z.array(z.string())]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([z.string(), z.array(z.string())])
+);
 
 export function createPartnerLinkTagNamesToJSON(
   createPartnerLinkTagNames: CreatePartnerLinkTagNames,
@@ -187,10 +192,12 @@ export const CreatePartnerLinkTestVariants$outboundSchema: z.ZodType<
   CreatePartnerLinkTestVariants$Outbound,
   z.ZodTypeDef,
   CreatePartnerLinkTestVariants
-> = z.object({
-  url: z.string(),
-  percentage: z.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    url: z.string(),
+    percentage: z.number(),
+  })
+);
 
 export function createPartnerLinkTestVariantsToJSON(
   createPartnerLinkTestVariants: CreatePartnerLinkTestVariants,
@@ -236,32 +243,34 @@ export const CreatePartnerLinkLinkProps$outboundSchema: z.ZodType<
   CreatePartnerLinkLinkProps$Outbound,
   z.ZodTypeDef,
   CreatePartnerLinkLinkProps
-> = z.object({
-  externalId: z.nullable(z.string()).optional(),
-  tenantId: z.nullable(z.string()).optional(),
-  prefix: z.string().optional(),
-  archived: z.boolean().optional(),
-  tagIds: z.union([z.string(), z.array(z.string())]).optional(),
-  tagNames: z.union([z.string(), z.array(z.string())]).optional(),
-  comments: z.nullable(z.string()).optional(),
-  expiresAt: z.nullable(z.string()).optional(),
-  expiredUrl: z.nullable(z.string()).optional(),
-  password: z.nullable(z.string()).optional(),
-  proxy: z.boolean().optional(),
-  title: z.nullable(z.string()).optional(),
-  description: z.nullable(z.string()).optional(),
-  image: z.nullable(z.string()).optional(),
-  video: z.nullable(z.string()).optional(),
-  rewrite: z.boolean().optional(),
-  ios: z.nullable(z.string()).optional(),
-  android: z.nullable(z.string()).optional(),
-  doIndex: z.boolean().optional(),
-  testVariants: z.nullable(
-    z.array(z.lazy(() => CreatePartnerLinkTestVariants$outboundSchema)),
-  ).optional(),
-  testStartedAt: z.nullable(z.string()).optional(),
-  testCompletedAt: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    externalId: z.nullable(z.string()).optional(),
+    tenantId: z.nullable(z.string()).optional(),
+    prefix: z.string().optional(),
+    archived: z.boolean().optional(),
+    tagIds: z.union([z.string(), z.array(z.string())]).optional(),
+    tagNames: z.union([z.string(), z.array(z.string())]).optional(),
+    comments: z.nullable(z.string()).optional(),
+    expiresAt: z.nullable(z.string()).optional(),
+    expiredUrl: z.nullable(z.string()).optional(),
+    password: z.nullable(z.string()).optional(),
+    proxy: z.boolean().optional(),
+    title: z.nullable(z.string()).optional(),
+    description: z.nullable(z.string()).optional(),
+    image: z.nullable(z.string()).optional(),
+    video: z.nullable(z.string()).optional(),
+    rewrite: z.boolean().optional(),
+    ios: z.nullable(z.string()).optional(),
+    android: z.nullable(z.string()).optional(),
+    doIndex: z.boolean().optional(),
+    testVariants: z.nullable(
+      z.array(z.lazy(() => CreatePartnerLinkTestVariants$outboundSchema)),
+    ).optional(),
+    testStartedAt: z.nullable(z.string()).optional(),
+    testCompletedAt: z.nullable(z.string()).optional(),
+  })
+);
 
 export function createPartnerLinkLinkPropsToJSON(
   createPartnerLinkLinkProps: CreatePartnerLinkLinkProps,
@@ -286,14 +295,17 @@ export const CreatePartnerLinkRequestBody$outboundSchema: z.ZodType<
   CreatePartnerLinkRequestBody$Outbound,
   z.ZodTypeDef,
   CreatePartnerLinkRequestBody
-> = z.object({
-  partnerId: z.nullable(z.string()).optional(),
-  tenantId: z.nullable(z.string()).optional(),
-  url: z.nullable(z.string()).optional(),
-  key: z.string().optional(),
-  comments: z.nullable(z.string()).optional(),
-  linkProps: z.lazy(() => CreatePartnerLinkLinkProps$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    partnerId: z.nullable(z.string()).optional(),
+    tenantId: z.nullable(z.string()).optional(),
+    url: z.nullable(z.string()).optional(),
+    key: z.string().optional(),
+    comments: z.nullable(z.string()).optional(),
+    linkProps: z.lazy(() => CreatePartnerLinkLinkProps$outboundSchema)
+      .optional(),
+  })
+);
 
 export function createPartnerLinkRequestBodyToJSON(
   createPartnerLinkRequestBody: CreatePartnerLinkRequestBody,

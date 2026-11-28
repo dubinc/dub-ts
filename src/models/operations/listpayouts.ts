@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -77,6 +77,10 @@ export type ListPayoutsRequest = {
    * Filter the list of payouts by the associated partner group. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `group_abc`, `group_abc,group_xyz`, `-group_abc`.
    */
   groupId?: string | undefined;
+  /**
+   * Filter the list of payouts by the associated partner tag. Supports advanced filtering: single value, multiple values (comma-separated), or exclusion (prefix with `-`). Examples: `ptag_abc`, `ptag_abc,ptag_xyz`, `-ptag_abc`.
+   */
+  partnerTagId?: string | undefined;
   /**
    * The field to sort the list of payouts by.
    */
@@ -228,17 +232,23 @@ export type ListPayoutsResponseBody = {
 /** @internal */
 export const ListPayoutsQueryParamStatus$outboundSchema: z.ZodNativeEnum<
   typeof ListPayoutsQueryParamStatus
-> = z.nativeEnum(ListPayoutsQueryParamStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ListPayoutsQueryParamStatus)
+);
 
 /** @internal */
 export const ListPayoutsQueryParamSortBy$outboundSchema: z.ZodNativeEnum<
   typeof ListPayoutsQueryParamSortBy
-> = z.nativeEnum(ListPayoutsQueryParamSortBy);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ListPayoutsQueryParamSortBy)
+);
 
 /** @internal */
 export const ListPayoutsQueryParamSortOrder$outboundSchema: z.ZodNativeEnum<
   typeof ListPayoutsQueryParamSortOrder
-> = z.nativeEnum(ListPayoutsQueryParamSortOrder);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ListPayoutsQueryParamSortOrder)
+);
 
 /** @internal */
 export type ListPayoutsRequest$Outbound = {
@@ -247,6 +257,7 @@ export type ListPayoutsRequest$Outbound = {
   tenantId?: string | undefined;
   invoiceId?: string | undefined;
   groupId?: string | undefined;
+  partnerTagId?: string | undefined;
   sortBy: string;
   sortOrder: string;
   page?: number | undefined;
@@ -258,17 +269,20 @@ export const ListPayoutsRequest$outboundSchema: z.ZodType<
   ListPayoutsRequest$Outbound,
   z.ZodTypeDef,
   ListPayoutsRequest
-> = z.object({
-  status: ListPayoutsQueryParamStatus$outboundSchema.optional(),
-  partnerId: z.string().optional(),
-  tenantId: z.string().optional(),
-  invoiceId: z.string().optional(),
-  groupId: z.string().optional(),
-  sortBy: ListPayoutsQueryParamSortBy$outboundSchema.default("amount"),
-  sortOrder: ListPayoutsQueryParamSortOrder$outboundSchema.default("desc"),
-  page: z.number().int().optional(),
-  pageSize: z.number().int().default(100),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: ListPayoutsQueryParamStatus$outboundSchema.optional(),
+    partnerId: z.string().optional(),
+    tenantId: z.string().optional(),
+    invoiceId: z.string().optional(),
+    groupId: z.string().optional(),
+    partnerTagId: z.string().optional(),
+    sortBy: ListPayoutsQueryParamSortBy$outboundSchema.default("amount"),
+    sortOrder: ListPayoutsQueryParamSortOrder$outboundSchema.default("desc"),
+    page: z.number().int().optional(),
+    pageSize: z.number().int().default(100),
+  })
+);
 
 export function listPayoutsRequestToJSON(
   listPayoutsRequest: ListPayoutsRequest,
@@ -281,44 +295,50 @@ export function listPayoutsRequestToJSON(
 /** @internal */
 export const ListPayoutsStatus$inboundSchema: z.ZodNativeEnum<
   typeof ListPayoutsStatus
-> = z.nativeEnum(ListPayoutsStatus);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ListPayoutsStatus));
 
 /** @internal */
 export const ListPayoutsMode$inboundSchema: z.ZodNativeEnum<
   typeof ListPayoutsMode
-> = z.nativeEnum(ListPayoutsMode);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ListPayoutsMode));
 
 /** @internal */
-export const Method$inboundSchema: z.ZodNativeEnum<typeof Method> = z
-  .nativeEnum(Method);
+export const Method$inboundSchema: z.ZodNativeEnum<typeof Method> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Method));
 
 /** @internal */
 export const ListPayoutsDefaultPayoutMethod$inboundSchema: z.ZodNativeEnum<
   typeof ListPayoutsDefaultPayoutMethod
-> = z.nativeEnum(ListPayoutsDefaultPayoutMethod);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ListPayoutsDefaultPayoutMethod)
+);
 
 /** @internal */
 export const ListPayoutsNetworkStatus$inboundSchema: z.ZodNativeEnum<
   typeof ListPayoutsNetworkStatus
-> = z.nativeEnum(ListPayoutsNetworkStatus);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ListPayoutsNetworkStatus));
 
 /** @internal */
 export const ListPayoutsPartner$inboundSchema: z.ZodType<
   ListPayoutsPartner,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  email: z.nullable(z.string()),
-  image: z.nullable(z.string()),
-  defaultPayoutMethod: z.nullable(ListPayoutsDefaultPayoutMethod$inboundSchema),
-  payoutsEnabledAt: z.nullable(z.string()),
-  country: z.nullable(z.string()),
-  networkStatus: ListPayoutsNetworkStatus$inboundSchema,
-  groupId: z.nullable(z.string()).optional(),
-  tenantId: z.nullable(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    name: z.string(),
+    email: z.nullable(z.string()),
+    image: z.nullable(z.string()),
+    defaultPayoutMethod: z.nullable(
+      ListPayoutsDefaultPayoutMethod$inboundSchema,
+    ),
+    payoutsEnabledAt: z.nullable(z.string()),
+    country: z.nullable(z.string()),
+    networkStatus: ListPayoutsNetworkStatus$inboundSchema,
+    groupId: z.nullable(z.string()).optional(),
+    tenantId: z.nullable(z.string()),
+  })
+);
 
 export function listPayoutsPartnerFromJSON(
   jsonString: string,
@@ -331,13 +351,15 @@ export function listPayoutsPartnerFromJSON(
 }
 
 /** @internal */
-export const User$inboundSchema: z.ZodType<User, z.ZodTypeDef, unknown> = z
-  .object({
-    id: z.string(),
-    name: z.nullable(z.string()),
-    email: z.nullable(z.string()),
-    image: z.nullable(z.string()),
-  });
+export const User$inboundSchema: z.ZodType<User, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      name: z.nullable(z.string()),
+      email: z.nullable(z.string()),
+      image: z.nullable(z.string()),
+    })
+  );
 
 export function userFromJSON(
   jsonString: string,
@@ -354,26 +376,28 @@ export const ListPayoutsResponseBody$inboundSchema: z.ZodType<
   ListPayoutsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  invoiceId: z.nullable(z.string()),
-  amount: z.number(),
-  currency: z.string(),
-  status: ListPayoutsStatus$inboundSchema,
-  description: z.nullable(z.string()).optional(),
-  periodStart: z.nullable(z.string()),
-  periodEnd: z.nullable(z.string()),
-  createdAt: z.string(),
-  updatedAt: z.string().optional(),
-  initiatedAt: z.nullable(z.string()),
-  paidAt: z.nullable(z.string()),
-  failureReason: z.nullable(z.string()).optional(),
-  mode: z.nullable(ListPayoutsMode$inboundSchema),
-  method: z.nullable(Method$inboundSchema),
-  traceId: z.nullable(z.string()).optional(),
-  partner: z.lazy(() => ListPayoutsPartner$inboundSchema),
-  user: z.nullable(z.lazy(() => User$inboundSchema)).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    invoiceId: z.nullable(z.string()),
+    amount: z.number(),
+    currency: z.string(),
+    status: ListPayoutsStatus$inboundSchema,
+    description: z.nullable(z.string()).optional(),
+    periodStart: z.nullable(z.string()),
+    periodEnd: z.nullable(z.string()),
+    createdAt: z.string(),
+    updatedAt: z.string().optional(),
+    initiatedAt: z.nullable(z.string()),
+    paidAt: z.nullable(z.string()),
+    failureReason: z.nullable(z.string()).optional(),
+    mode: z.nullable(ListPayoutsMode$inboundSchema),
+    method: z.nullable(Method$inboundSchema),
+    traceId: z.nullable(z.string()).optional(),
+    partner: z.lazy(() => ListPayoutsPartner$inboundSchema),
+    user: z.nullable(z.lazy(() => User$inboundSchema)).optional(),
+  })
+);
 
 export function listPayoutsResponseBodyFromJSON(
   jsonString: string,

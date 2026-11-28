@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -124,9 +124,10 @@ export type ProgramApplicationSubmittedEvent = {
 
 /** @internal */
 export const ProgramApplicationSubmittedEventEvent$inboundSchema:
-  z.ZodNativeEnum<typeof ProgramApplicationSubmittedEventEvent> = z.nativeEnum(
-    ProgramApplicationSubmittedEventEvent,
-  );
+  z.ZodNativeEnum<typeof ProgramApplicationSubmittedEventEvent> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(ProgramApplicationSubmittedEventEvent)
+    );
 /** @internal */
 export const ProgramApplicationSubmittedEventEvent$outboundSchema:
   z.ZodNativeEnum<typeof ProgramApplicationSubmittedEventEvent> =
@@ -134,9 +135,10 @@ export const ProgramApplicationSubmittedEventEvent$outboundSchema:
 
 /** @internal */
 export const ProgramApplicationSubmittedEventStatus$inboundSchema:
-  z.ZodNativeEnum<typeof ProgramApplicationSubmittedEventStatus> = z.nativeEnum(
-    ProgramApplicationSubmittedEventStatus,
-  );
+  z.ZodNativeEnum<typeof ProgramApplicationSubmittedEventStatus> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(ProgramApplicationSubmittedEventStatus)
+    );
 /** @internal */
 export const ProgramApplicationSubmittedEventStatus$outboundSchema:
   z.ZodNativeEnum<typeof ProgramApplicationSubmittedEventStatus> =
@@ -147,23 +149,25 @@ export const ProgramApplicationSubmittedEventPartner$inboundSchema: z.ZodType<
   ProgramApplicationSubmittedEventPartner,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  companyName: z.nullable(z.string()),
-  email: z.nullable(z.string()),
-  image: z.nullable(z.string()),
-  description: z.nullable(z.string()).optional(),
-  country: z.nullable(z.string()),
-  groupId: z.nullable(z.string()).optional(),
-  status: ProgramApplicationSubmittedEventStatus$inboundSchema,
-  website: z.nullable(z.string()).optional(),
-  youtube: z.nullable(z.string()).optional(),
-  twitter: z.nullable(z.string()).optional(),
-  linkedin: z.nullable(z.string()).optional(),
-  instagram: z.nullable(z.string()).optional(),
-  tiktok: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    name: z.string(),
+    companyName: z.nullable(z.string()),
+    email: z.nullable(z.string()),
+    image: z.nullable(z.string()),
+    description: z.nullable(z.string()).optional(),
+    country: z.nullable(z.string()),
+    groupId: z.nullable(z.string()).optional(),
+    status: ProgramApplicationSubmittedEventStatus$inboundSchema,
+    website: z.nullable(z.string()).optional(),
+    youtube: z.nullable(z.string()).optional(),
+    twitter: z.nullable(z.string()).optional(),
+    linkedin: z.nullable(z.string()).optional(),
+    instagram: z.nullable(z.string()).optional(),
+    tiktok: z.nullable(z.string()).optional(),
+  })
+);
 /** @internal */
 export type ProgramApplicationSubmittedEventPartner$Outbound = {
   id: string;
@@ -188,23 +192,25 @@ export const ProgramApplicationSubmittedEventPartner$outboundSchema: z.ZodType<
   ProgramApplicationSubmittedEventPartner$Outbound,
   z.ZodTypeDef,
   ProgramApplicationSubmittedEventPartner
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  companyName: z.nullable(z.string()),
-  email: z.nullable(z.string()),
-  image: z.nullable(z.string()),
-  description: z.nullable(z.string()).optional(),
-  country: z.nullable(z.string()),
-  groupId: z.nullable(z.string()).optional(),
-  status: ProgramApplicationSubmittedEventStatus$outboundSchema,
-  website: z.nullable(z.string()).optional(),
-  youtube: z.nullable(z.string()).optional(),
-  twitter: z.nullable(z.string()).optional(),
-  linkedin: z.nullable(z.string()).optional(),
-  instagram: z.nullable(z.string()).optional(),
-  tiktok: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    name: z.string(),
+    companyName: z.nullable(z.string()),
+    email: z.nullable(z.string()),
+    image: z.nullable(z.string()),
+    description: z.nullable(z.string()).optional(),
+    country: z.nullable(z.string()),
+    groupId: z.nullable(z.string()).optional(),
+    status: ProgramApplicationSubmittedEventStatus$outboundSchema,
+    website: z.nullable(z.string()).optional(),
+    youtube: z.nullable(z.string()).optional(),
+    twitter: z.nullable(z.string()).optional(),
+    linkedin: z.nullable(z.string()).optional(),
+    instagram: z.nullable(z.string()).optional(),
+    tiktok: z.nullable(z.string()).optional(),
+  })
+);
 
 export function programApplicationSubmittedEventPartnerToJSON(
   programApplicationSubmittedEventPartner:
@@ -237,10 +243,12 @@ export const ApplicationFormData$inboundSchema: z.ZodType<
   ApplicationFormData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  label: z.string(),
-  value: z.nullable(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: z.string(),
+    value: z.nullable(z.string()),
+  })
+);
 /** @internal */
 export type ApplicationFormData$Outbound = {
   label: string;
@@ -252,10 +260,12 @@ export const ApplicationFormData$outboundSchema: z.ZodType<
   ApplicationFormData$Outbound,
   z.ZodTypeDef,
   ApplicationFormData
-> = z.object({
-  label: z.string(),
-  value: z.nullable(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: z.string(),
+    value: z.nullable(z.string()),
+  })
+);
 
 export function applicationFormDataToJSON(
   applicationFormData: ApplicationFormData,
@@ -279,14 +289,18 @@ export const ProgramApplicationSubmittedEventData$inboundSchema: z.ZodType<
   ProgramApplicationSubmittedEventData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  createdAt: z.string(),
-  partner: z.lazy(() => ProgramApplicationSubmittedEventPartner$inboundSchema),
-  applicationFormData: z.nullable(
-    z.array(z.lazy(() => ApplicationFormData$inboundSchema)),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    createdAt: z.string(),
+    partner: z.lazy(() =>
+      ProgramApplicationSubmittedEventPartner$inboundSchema
+    ),
+    applicationFormData: z.nullable(
+      z.array(z.lazy(() => ApplicationFormData$inboundSchema)),
+    ),
+  })
+);
 /** @internal */
 export type ProgramApplicationSubmittedEventData$Outbound = {
   id: string;
@@ -300,14 +314,18 @@ export const ProgramApplicationSubmittedEventData$outboundSchema: z.ZodType<
   ProgramApplicationSubmittedEventData$Outbound,
   z.ZodTypeDef,
   ProgramApplicationSubmittedEventData
-> = z.object({
-  id: z.string(),
-  createdAt: z.string(),
-  partner: z.lazy(() => ProgramApplicationSubmittedEventPartner$outboundSchema),
-  applicationFormData: z.nullable(
-    z.array(z.lazy(() => ApplicationFormData$outboundSchema)),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    createdAt: z.string(),
+    partner: z.lazy(() =>
+      ProgramApplicationSubmittedEventPartner$outboundSchema
+    ),
+    applicationFormData: z.nullable(
+      z.array(z.lazy(() => ApplicationFormData$outboundSchema)),
+    ),
+  })
+);
 
 export function programApplicationSubmittedEventDataToJSON(
   programApplicationSubmittedEventData: ProgramApplicationSubmittedEventData,
@@ -334,12 +352,14 @@ export const ProgramApplicationSubmittedEvent$inboundSchema: z.ZodType<
   ProgramApplicationSubmittedEvent,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  event: ProgramApplicationSubmittedEventEvent$inboundSchema,
-  createdAt: z.string(),
-  data: z.lazy(() => ProgramApplicationSubmittedEventData$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    event: ProgramApplicationSubmittedEventEvent$inboundSchema,
+    createdAt: z.string(),
+    data: z.lazy(() => ProgramApplicationSubmittedEventData$inboundSchema),
+  })
+);
 /** @internal */
 export type ProgramApplicationSubmittedEvent$Outbound = {
   id: string;
@@ -353,12 +373,14 @@ export const ProgramApplicationSubmittedEvent$outboundSchema: z.ZodType<
   ProgramApplicationSubmittedEvent$Outbound,
   z.ZodTypeDef,
   ProgramApplicationSubmittedEvent
-> = z.object({
-  id: z.string(),
-  event: ProgramApplicationSubmittedEventEvent$outboundSchema,
-  createdAt: z.string(),
-  data: z.lazy(() => ProgramApplicationSubmittedEventData$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    event: ProgramApplicationSubmittedEventEvent$outboundSchema,
+    createdAt: z.string(),
+    data: z.lazy(() => ProgramApplicationSubmittedEventData$outboundSchema),
+  })
+);
 
 export function programApplicationSubmittedEventToJSON(
   programApplicationSubmittedEvent: ProgramApplicationSubmittedEvent,

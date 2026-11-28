@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -90,7 +90,9 @@ export const QueryParamTagIds$outboundSchema: z.ZodType<
   QueryParamTagIds$Outbound,
   z.ZodTypeDef,
   QueryParamTagIds
-> = z.union([z.string(), z.array(z.string())]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([z.string(), z.array(z.string())])
+);
 
 export function queryParamTagIdsToJSON(
   queryParamTagIds: QueryParamTagIds,
@@ -108,7 +110,9 @@ export const QueryParamTagNames$outboundSchema: z.ZodType<
   QueryParamTagNames$Outbound,
   z.ZodTypeDef,
   QueryParamTagNames
-> = z.union([z.string(), z.array(z.string())]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([z.string(), z.array(z.string())])
+);
 
 export function queryParamTagNamesToJSON(
   queryParamTagNames: QueryParamTagNames,
@@ -141,22 +145,24 @@ export const GetLinksRequest$outboundSchema: z.ZodType<
   GetLinksRequest$Outbound,
   z.ZodTypeDef,
   GetLinksRequest
-> = z.object({
-  domain: z.string().optional(),
-  tagId: z.string().optional(),
-  tagIds: z.union([z.string(), z.array(z.string())]).optional(),
-  tagNames: z.union([z.string(), z.array(z.string())]).optional(),
-  folderId: z.string().optional(),
-  search: z.string().optional(),
-  userId: z.string().optional(),
-  tenantId: z.string().optional(),
-  showArchived: z.boolean().default(false),
-  withTags: z.boolean().default(false),
-  endingBefore: z.string().optional(),
-  startingAfter: z.string().optional(),
-  page: z.number().int().optional(),
-  pageSize: z.number().int().default(100),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: z.string().optional(),
+    tagId: z.string().optional(),
+    tagIds: z.union([z.string(), z.array(z.string())]).optional(),
+    tagNames: z.union([z.string(), z.array(z.string())]).optional(),
+    folderId: z.string().optional(),
+    search: z.string().optional(),
+    userId: z.string().optional(),
+    tenantId: z.string().optional(),
+    showArchived: z.boolean().default(false),
+    withTags: z.boolean().default(false),
+    endingBefore: z.string().optional(),
+    startingAfter: z.string().optional(),
+    page: z.number().int().optional(),
+    pageSize: z.number().int().default(100),
+  })
+);
 
 export function getLinksRequestToJSON(
   getLinksRequest: GetLinksRequest,
@@ -169,13 +175,15 @@ export const GetLinksResponse$inboundSchema: z.ZodType<
   GetLinksResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Result: z.array(components.LinkSchema$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Result: z.array(components.LinkSchema$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "Result": "result",
+    });
+  })
+);
 
 export function getLinksResponseFromJSON(
   jsonString: string,
